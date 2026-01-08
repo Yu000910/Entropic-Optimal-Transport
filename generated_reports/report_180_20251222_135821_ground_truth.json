@@ -1,0 +1,113 @@
+{
+    "report_id": "report_180",
+    "generated_at": "20251222_135821",
+    "scenario_target_ids": [
+        "T1590.002",
+        "T1566.003",
+        "T1059.006",
+        "T1176.002",
+        "T1546.008",
+        "T1078",
+        "T1070.006",
+        "T1218.013",
+        "T1480.002",
+        "T1558",
+        "T1580",
+        "T1534",
+        "T1001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.002",
+        "T1566.003",
+        "T1059.006",
+        "T1176.002",
+        "T1546.008",
+        "T1078",
+        "T1070.006",
+        "T1218.013",
+        "T1480.002",
+        "T1558",
+        "T1580",
+        "T1534",
+        "T1001"
+    ],
+    "actual_found_ids": [
+        "T1070.006",
+        "T1218.013",
+        "T1546.008",
+        "T1176.002",
+        "T1590.002",
+        "T1558",
+        "T1580",
+        "T1534",
+        "T1078",
+        "T1566.003",
+        "T1480.002",
+        "T1001",
+        "T1059.006"
+    ],
+    "clean_text": "### Background\nInnovateCorp, a technology firm specializing in cloud-based software solutions, reported anomalous network activity starting in early 2024. Initial alerts from their SIEM indicated spikes in DNS queries to newly registered domains, which were later linked to malicious infrastructure. The company's security team, during a routine audit, discovered unauthorized Visual Studio Code extensions and modified system binaries, prompting a full investigation. Logs from their AWS environment showed API calls that did not align with normal operational patterns, including DescribeInstances requests from a compromised application server. Additionally, internal email systems flagged phishing attempts from compromised employee social media accounts, though initial reviews dismissed them as spam. The incident response team, in collaboration with external forensic analysts, traced the activity to a coordinated attack leveraging multiple advanced techniques.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance by analyzing passive DNS feeds to correlate domain activity and identify related infrastructure, which allowed them to craft targeted spearphishing campaigns. They then used compromised Instagram accounts to send direct messages containing malicious links disguised as photo previews, tricking employees at InnovateCorp into clicking and downloading a payload.\n\n**Execution:** Upon execution, the adversary employed Python to run a backdoor script that was compiled with py2exe, enabling cross-platform compatibility and evasion of traditional antivirus signatures. This script dropped 'productivity-tools.vsix' into the Visual Studio Code extensions folder for persistence, while simultaneously manipulating accessibility binaries to execute cmd.exe with SYSTEM rights from the login screen, ensuring elevated privileges and stealthy operation.\n\n**Persistence and Privilege Escalation:** To maintain access, the threat actors used administrator credentials stolen from a previous breach to gain access to restricted network segments, and they applied timestomping techniques by setting PE timestamps to all zero values to obscure file creation times. They also used mavinject.exe to inject a keylogger DLL into the winlogon.exe process, and queried 'malware.exe' to prevent conflicts with other malicious processes already running on the host, ensuring stable execution without interference.\n\n**Defense Evasion and Credential Access:** For defense evasion, the malware encoded its C2 traffic using base64 -d to evade network detection, and scripts were executed to dump Kerberos authentication credentials, allowing the actors to steal or forge Kerberos tickets for lateral movement. The compromised application queried DescribeInstances API to gather information about cloud compute resources, facilitating further exploitation of InnovateCorp's AWS environment.\n\n**Lateral Movement and Exfiltration:** Once inside, the actors conducted internal spearphishing by dropping a malicious PowerShell script named malicious.ps1 onto compromised systems, which was used to propagate across the network and exfiltrate sensitive data to external servers. Logs showed unusual file access patterns and network traffic spikes during off-hours, though initial reviews attributed this to backup processes. The campaign concluded with data obfuscation and cleanup activities, leaving minimal traces beyond the identified techniques.\n\n### Recommendations\nBlue teams should monitor for unusual DNS queries, inspect IDE extensions for unauthorized installations, and review Kerberos ticket logs for anomalies. Implement network segmentation and multi-factor authentication to mitigate credential theft risks.",
+    "tagged_text": "### Background\nInnovateCorp, a technology firm specializing in cloud-based software solutions, reported anomalous network activity starting in early 2024. Initial alerts from their SIEM indicated spikes in DNS queries to newly registered domains, which were later linked to malicious infrastructure. The company's security team, during a routine audit, discovered unauthorized Visual Studio Code extensions and modified system binaries, prompting a full investigation. Logs from their AWS environment showed API calls that did not align with normal operational patterns, including DescribeInstances requests from a compromised application server. Additionally, internal email systems flagged phishing attempts from compromised employee social media accounts, though initial reviews dismissed them as spam. The incident response team, in collaboration with external forensic analysts, traced the activity to a coordinated attack leveraging multiple advanced techniques.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance by analyzing passive DNS feeds to correlate domain activity and identify related infrastructure [T1590.002], which allowed them to craft targeted spearphishing campaigns. They then used compromised Instagram accounts to send direct messages containing malicious links disguised as photo previews [T1566.003], tricking employees at InnovateCorp into clicking and downloading a payload.\n\n**Execution:** Upon execution, the adversary employed Python [T1059.006] to run a backdoor script that was compiled with py2exe, enabling cross-platform compatibility and evasion of traditional antivirus signatures. This script dropped 'productivity-tools.vsix' into the Visual Studio Code extensions folder for persistence [T1176.002], while simultaneously manipulating accessibility binaries to execute cmd.exe with SYSTEM rights from the login screen [T1546.008], ensuring elevated privileges and stealthy operation.\n\n**Persistence and Privilege Escalation:** To maintain access, the threat actors used administrator credentials stolen from a previous breach to gain access to restricted network segments [T1078], and they applied timestomping techniques by setting PE timestamps to all zero values to obscure file creation times [T1070.006]. They also used mavinject.exe to inject a keylogger DLL into the winlogon.exe process [T1218.013], and queried 'malware.exe' to prevent conflicts with other malicious processes already running on the host [T1480.002], ensuring stable execution without interference.\n\n**Defense Evasion and Credential Access:** For defense evasion, the malware encoded its C2 traffic using base64 -d to evade network detection [T1001], and scripts were executed to dump Kerberos authentication credentials [T1558], allowing the actors to steal or forge Kerberos tickets for lateral movement. The compromised application queried DescribeInstances API to gather information about cloud compute resources [T1580], facilitating further exploitation of InnovateCorp's AWS environment.\n\n**Lateral Movement and Exfiltration:** Once inside, the actors conducted internal spearphishing by dropping a malicious PowerShell script named malicious.ps1 onto compromised systems [T1534], which was used to propagate across the network and exfiltrate sensitive data to external servers. Logs showed unusual file access patterns and network traffic spikes during off-hours, though initial reviews attributed this to backup processes. The campaign concluded with data obfuscation and cleanup activities, leaving minimal traces beyond the identified techniques.\n\n### Recommendations\nBlue teams should monitor for unusual DNS queries, inspect IDE extensions for unauthorized installations, and review Kerberos ticket logs for anomalies. Implement network segmentation and multi-factor authentication to mitigate credential theft risks.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Persistence and Privilege Escalation:** To maintain access, the threat actors used administrator credentials stolen from a previous breach to gain access to restricted network segments, and they applied timestomping techniques by setting PE timestamps to all zero values to obscure file creation times [T1070.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "**Defense Evasion and Credential Access:** For defense evasion, the malware encoded its C2 traffic using base64 -d to evade network detection, and scripts were executed to dump Kerberos authentication credentials, allowing the actors to steal or forge Kerberos tickets for lateral movement.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        },
+        {
+            "sentence": "**Defense Evasion and Credential Access:** For defense evasion, the malware encoded its C2 traffic using base64 -d to evade network detection, and scripts were executed to dump Kerberos authentication credentials, allowing the actors to steal or forge Kerberos tickets for lateral movement.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        },
+        {
+            "sentence": "The compromised application queried DescribeInstances API to gather information about cloud compute resources, facilitating further exploitation of InnovateCorp's AWS environment.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "ps1 onto compromised systems, which was used to propagate across the network and exfiltrate sensitive data to external servers.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Technology Firms",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowWeaver', which targeted a mid-sized technology company, 'InnovateCorp', between January and March 2024. The campaign involved sophisticated techniques across the kill chain, from reconnaissance to data exfiltration, with a focus on evading detection and maintaining persistence in cloud and on-premises environments. Blue teams should review logs for unusual DNS queries, IDE extension installations, and Kerberos ticket anomalies.",
+        "full_report_text": "### Background\nInnovateCorp, a technology firm specializing in cloud-based software solutions, reported anomalous network activity starting in early 2024. Initial alerts from their SIEM indicated spikes in DNS queries to newly registered domains, which were later linked to malicious infrastructure. The company's security team, during a routine audit, discovered unauthorized Visual Studio Code extensions and modified system binaries, prompting a full investigation. Logs from their AWS environment showed API calls that did not align with normal operational patterns, including DescribeInstances requests from a compromised application server. Additionally, internal email systems flagged phishing attempts from compromised employee social media accounts, though initial reviews dismissed them as spam. The incident response team, in collaboration with external forensic analysts, traced the activity to a coordinated attack leveraging multiple advanced techniques.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance by analyzing passive DNS feeds to correlate domain activity and identify related infrastructure [T1590.002], which allowed them to craft targeted spearphishing campaigns. They then used compromised Instagram accounts to send direct messages containing malicious links disguised as photo previews [T1566.003], tricking employees at InnovateCorp into clicking and downloading a payload.\n\n**Execution:** Upon execution, the adversary employed Python [T1059.006] to run a backdoor script that was compiled with py2exe, enabling cross-platform compatibility and evasion of traditional antivirus signatures. This script dropped 'productivity-tools.vsix' into the Visual Studio Code extensions folder for persistence [T1176.002], while simultaneously manipulating accessibility binaries to execute cmd.exe with SYSTEM rights from the login screen [T1546.008], ensuring elevated privileges and stealthy operation.\n\n**Persistence and Privilege Escalation:** To maintain access, the threat actors used administrator credentials stolen from a previous breach to gain access to restricted network segments [T1078], and they applied timestomping techniques by setting PE timestamps to all zero values to obscure file creation times [T1070.006]. They also used mavinject.exe to inject a keylogger DLL into the winlogon.exe process [T1218.013], and queried 'malware.exe' to prevent conflicts with other malicious processes already running on the host [T1480.002], ensuring stable execution without interference.\n\n**Defense Evasion and Credential Access:** For defense evasion, the malware encoded its C2 traffic using base64 -d to evade network detection [T1001], and scripts were executed to dump Kerberos authentication credentials [T1558], allowing the actors to steal or forge Kerberos tickets for lateral movement. The compromised application queried DescribeInstances API to gather information about cloud compute resources [T1580], facilitating further exploitation of InnovateCorp's AWS environment.\n\n**Lateral Movement and Exfiltration:** Once inside, the actors conducted internal spearphishing by dropping a malicious PowerShell script named malicious.ps1 onto compromised systems [T1534], which was used to propagate across the network and exfiltrate sensitive data to external servers. Logs showed unusual file access patterns and network traffic spikes during off-hours, though initial reviews attributed this to backup processes. The campaign concluded with data obfuscation and cleanup activities, leaving minimal traces beyond the identified techniques.\n\n### Recommendations\nBlue teams should monitor for unusual DNS queries, inspect IDE extensions for unauthorized installations, and review Kerberos ticket logs for anomalies. Implement network segmentation and multi-factor authentication to mitigate credential theft risks.",
+        "techniques_used": [
+            "T1590.002",
+            "T1566.003",
+            "T1059.006",
+            "T1176.002",
+            "T1546.008",
+            "T1078",
+            "T1070.006",
+            "T1218.013",
+            "T1480.002",
+            "T1558",
+            "T1580",
+            "T1534",
+            "T1001"
+        ]
+    }
+}

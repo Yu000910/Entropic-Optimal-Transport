@@ -1,0 +1,98 @@
+{
+    "report_id": "report_71",
+    "generated_at": "20251222_131519",
+    "scenario_target_ids": [
+        "T1591.002",
+        "T1586.002",
+        "T1583.002",
+        "T1566",
+        "T1059.004",
+        "T1059",
+        "T1055.002",
+        "T1012",
+        "T1082",
+        "T1069.002",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1591.002",
+        "T1586.002",
+        "T1583.002",
+        "T1566",
+        "T1059.004",
+        "T1059",
+        "T1055.002",
+        "T1012",
+        "T1082",
+        "T1069.002",
+        "T1071.004"
+    ],
+    "actual_found_ids": [
+        "T1055.002",
+        "T1012",
+        "T1591.002",
+        "T1059",
+        "T1566",
+        "T1583.002",
+        "T1071.004",
+        "T1059.004",
+        "T1586.002",
+        "T1082",
+        "T1069.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in a simulated environment. Attackers likely initiated reconnaissance by scraping the victim's corporate website to identify key business partners from the 'Partners' page, which informed subsequent spear-phishing efforts. The campaign employed a spear-phishing campaign that delivered emails with password-protected ZIP files containing malware executables, while a PowerShell script named phishing.ps1 was used to collect login credentials through fake authentication prompts. Upon execution, the malware injected its code into notepad.exe to run with the same privileges as the user and utilized a Unix shell via a command and scripting interpreter with 'bash -c' to execute commands that added a persistent backdoor to the system. The backdoor then used DNS queries to communicate with a controlled DNS server running on a cloud instance, enabling C2 operations. During post-compromise activities, the malware queried registry values, keys, and data to gather system information such as hostname, Windows version, and disk details, and the attacker executed 'net group /domain' to enumerate all domain-level groups and their members. System logs from the victim's network showed routine updates to antivirus definitions, but no alerts were triggered during the initial phases. The company, a mid-sized financial firm with operations in three states, reported unusual network latency spikes coinciding with the DNS queries, though these were initially attributed to routine maintenance. Further analysis revealed that the actors maintained persistence through scheduled tasks and modified system binaries, though these techniques are not detailed in this advisory.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in a simulated environment. Attackers likely initiated reconnaissance by scraping the victim's corporate website to identify key business partners from the 'Partners' page [T1591.002], which informed subsequent spear-phishing efforts. The campaign employed a spear-phishing campaign [T1566] that delivered emails with password-protected ZIP files containing malware executables, while a PowerShell script named phishing.ps1 was used to collect login credentials through fake authentication prompts [T1586.002]. Upon execution, the malware injected its code into notepad.exe to run with the same privileges as the user [T1055.002] and utilized a Unix shell [T1059.004] via a command and scripting interpreter [T1059] with 'bash -c' to execute commands that added a persistent backdoor to the system. The backdoor then used DNS queries [T1071.004] to communicate with a controlled DNS server running on a cloud instance [T1583.002], enabling C2 operations. During post-compromise activities, the malware queried registry values, keys, and data [T1012] to gather system information such as hostname, Windows version, and disk details [T1082], and the attacker executed 'net group /domain' to enumerate all domain-level groups and their members [T1069.002]. System logs from the victim's network showed routine updates to antivirus definitions, but no alerts were triggered during the initial phases. The company, a mid-sized financial firm with operations in three states, reported unusual network latency spikes coinciding with the DNS queries, though these were initially attributed to routine maintenance. Further analysis revealed that the actors maintained persistence through scheduled tasks and modified system binaries, though these techniques are not detailed in this advisory.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign employed a spear-phishing campaign that delivered emails with password-protected ZIP files containing malware executables, while a PowerShell script named phishing.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "004] via a command and scripting interpreter with 'bash -c' to execute commands that added a persistent backdoor to the system.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "During post-compromise activities, the malware queried registry values, keys, and data to gather system information such as hostname, Windows version, and disk details, and the attacker executed 'net group /domain' to enumerate all domain-level groups and their members [T1069.",
+            "technique_id": "T1012",
+            "technique_name": "Query Registry"
+        },
+        {
+            "sentence": "During post-compromise activities, the malware queried registry values, keys, and data to gather system information such as hostname, Windows version, and disk details, and the attacker executed 'net group /domain' to enumerate all domain-level groups and their members [T1069.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector via Spear-Phishing and DNS-Based C2",
+        "summary": "This advisory details a simulated advanced persistent threat (APT) campaign, designated FICT-2024-001, targeting financial institutions in North America. Actors likely conducted reconnaissance on business relationships and executed a multi-stage attack involving spear-phishing, credential theft, and DNS-based command and control (C2). The campaign leveraged PowerShell and Unix shell scripts for initial access and persistence, with techniques including portable executable injection and registry querying for lateral movement and data exfiltration. Blue teams should review logs for anomalous DNS queries and suspicious process injections.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in a simulated environment. Attackers likely initiated reconnaissance by scraping the victim's corporate website to identify key business partners from the 'Partners' page [T1591.002], which informed subsequent spear-phishing efforts. The campaign employed a spear-phishing campaign [T1566] that delivered emails with password-protected ZIP files containing malware executables, while a PowerShell script named phishing.ps1 was used to collect login credentials through fake authentication prompts [T1586.002]. Upon execution, the malware injected its code into notepad.exe to run with the same privileges as the user [T1055.002] and utilized a Unix shell [T1059.004] via a command and scripting interpreter [T1059] with 'bash -c' to execute commands that added a persistent backdoor to the system. The backdoor then used DNS queries [T1071.004] to communicate with a controlled DNS server running on a cloud instance [T1583.002], enabling C2 operations. During post-compromise activities, the malware queried registry values, keys, and data [T1012] to gather system information such as hostname, Windows version, and disk details [T1082], and the attacker executed 'net group /domain' to enumerate all domain-level groups and their members [T1069.002]. System logs from the victim's network showed routine updates to antivirus definitions, but no alerts were triggered during the initial phases. The company, a mid-sized financial firm with operations in three states, reported unusual network latency spikes coinciding with the DNS queries, though these were initially attributed to routine maintenance. Further analysis revealed that the actors maintained persistence through scheduled tasks and modified system binaries, though these techniques are not detailed in this advisory.",
+        "techniques_used": [
+            "T1591.002",
+            "T1586.002",
+            "T1583.002",
+            "T1566",
+            "T1059.004",
+            "T1059",
+            "T1055.002",
+            "T1012",
+            "T1082",
+            "T1069.002",
+            "T1071.004"
+        ]
+    }
+}

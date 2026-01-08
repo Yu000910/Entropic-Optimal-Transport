@@ -1,0 +1,68 @@
+{
+    "report_id": "report_322",
+    "generated_at": "20251222_145811",
+    "scenario_target_ids": [
+        "T1584.005",
+        "T1078.002",
+        "T1059.012",
+        "T1547.010",
+        "T1120",
+        "T1021.006",
+        "T1573.002",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1584.005",
+        "T1078.002",
+        "T1059.012",
+        "T1547.010",
+        "T1120",
+        "T1021.006",
+        "T1573.002",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1059.012",
+        "T1120",
+        "T1584.005",
+        "T1547.010",
+        "T1021.006",
+        "T1078.002",
+        "T1573.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. APT-FICT, a simulated threat actor, has been observed targeting organizations in the energy and healthcare sectors, with a focus on virtualized infrastructure. The campaign began with the actors conducting reconnaissance on publicly available information, though no specific techniques were tagged for this phase. Initial access was achieved by exploiting a botnet where malware.exe executed filelessly to evade antivirus detection. Once inside the network, the adversary used Mimikatz to dump credentials from LSASS memory, compromising domain accounts and leveraging Windows Remote Management (WinRM) via PowerShell to execute commands on remote hosts. For persistence, a suspicious DLL named 'printmon.dll' was dropped into the spool drivers directory to establish port monitors, while the actors employed the Hypervisor CLI to disable the hypervisor firewall using 'esxcli network firewall set --enabled false'. During lateral movement, peripheral device discovery was conducted using ADVSTORESHELL to list connected devices, though this activity was logged in system logs without immediate impact. For C2 communication, the malware utilized asymmetric cryptography by sending a random 64-byte RC4 key encrypted with an RSA public key to actor-controlled servers. Finally, exfiltration was performed over webhooks, where the malware collected system information and transmitted it to webhook.site. Incident responders noted additional noise in network logs, including failed login attempts and routine backup processes, which were unrelated to the attack. This campaign highlights the need for robust monitoring of hypervisor environments and credential management.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. APT-FICT, a simulated threat actor, has been observed targeting organizations in the energy and healthcare sectors, with a focus on virtualized infrastructure. The campaign began with the actors conducting reconnaissance on publicly available information, though no specific techniques were tagged for this phase. Initial access was achieved by exploiting a botnet [T1584.005] where malware.exe executed filelessly to evade antivirus detection. Once inside the network, the adversary used Mimikatz to dump credentials from LSASS memory, compromising domain accounts [T1078.002] and leveraging Windows Remote Management (WinRM) via PowerShell [T1021.006] to execute commands on remote hosts. For persistence, a suspicious DLL named 'printmon.dll' was dropped into the spool drivers directory to establish port monitors [T1547.010], while the actors employed the Hypervisor CLI [T1059.012] to disable the hypervisor firewall using 'esxcli network firewall set --enabled false'. During lateral movement, peripheral device discovery [T1120] was conducted using ADVSTORESHELL to list connected devices, though this activity was logged in system logs without immediate impact. For C2 communication, the malware utilized asymmetric cryptography [T1573.002] by sending a random 64-byte RC4 key encrypted with an RSA public key to actor-controlled servers. Finally, exfiltration was performed over webhooks [T1567.004], where the malware collected system information and transmitted it to webhook.site. Incident responders noted additional noise in network logs, including failed login attempts and routine backup processes, which were unrelated to the attack. This campaign highlights the need for robust monitoring of hypervisor environments and credential management.",
+    "sentence_annotations": [
+        {
+            "sentence": "During lateral movement, peripheral device discovery was conducted using ADVSTORESHELL to list connected devices, though this activity was logged in system logs without immediate impact.",
+            "technique_id": "T1120",
+            "technique_name": "Peripheral Device Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting critical infrastructure sectors. Based on analysis of a recent incident, APT-FICT employs sophisticated techniques to compromise hypervisor environments, maintain persistence, and exfiltrate data. The campaign leverages botnets for initial access, exploits domain accounts for lateral movement, and uses asymmetric cryptography for command and control (C2) communication. This report is intended for blue team training to enhance detection and response capabilities in similar scenarios.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. APT-FICT, a simulated threat actor, has been observed targeting organizations in the energy and healthcare sectors, with a focus on virtualized infrastructure. The campaign began with the actors conducting reconnaissance on publicly available information, though no specific techniques were tagged for this phase. Initial access was achieved by exploiting a botnet [T1584.005] where malware.exe executed filelessly to evade antivirus detection. Once inside the network, the adversary used Mimikatz to dump credentials from LSASS memory, compromising domain accounts [T1078.002] and leveraging Windows Remote Management (WinRM) via PowerShell [T1021.006] to execute commands on remote hosts. For persistence, a suspicious DLL named 'printmon.dll' was dropped into the spool drivers directory to establish port monitors [T1547.010], while the actors employed the Hypervisor CLI [T1059.012] to disable the hypervisor firewall using 'esxcli network firewall set --enabled false'. During lateral movement, peripheral device discovery [T1120] was conducted using ADVSTORESHELL to list connected devices, though this activity was logged in system logs without immediate impact. For C2 communication, the malware utilized asymmetric cryptography [T1573.002] by sending a random 64-byte RC4 key encrypted with an RSA public key to actor-controlled servers. Finally, exfiltration was performed over webhooks [T1567.004], where the malware collected system information and transmitted it to webhook.site. Incident responders noted additional noise in network logs, including failed login attempts and routine backup processes, which were unrelated to the attack. This campaign highlights the need for robust monitoring of hypervisor environments and credential management.",
+        "techniques_used": [
+            "T1584.005",
+            "T1078.002",
+            "T1059.012",
+            "T1547.010",
+            "T1120",
+            "T1021.006",
+            "T1573.002",
+            "T1567.004"
+        ]
+    }
+}

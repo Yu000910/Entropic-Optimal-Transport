@@ -1,0 +1,73 @@
+{
+    "report_id": "report_369",
+    "generated_at": "20251222_151814",
+    "scenario_target_ids": [
+        "T1200",
+        "T1129",
+        "T1053.007",
+        "T1552.005",
+        "T1071.003",
+        "T1052",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1129",
+        "T1053.007",
+        "T1552.005",
+        "T1071.003",
+        "T1052",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1011.001",
+        "T1052",
+        "T1552.005",
+        "T1200",
+        "T1071.003",
+        "T1053.007"
+    ],
+    "clean_text": "On March 15, 2024, network administrators at a fictional financial services company, 'SecureFin Corp.', discovered a passive network tap installed on an Ethernet line in the server room, indicating unauthorized hardware additions. This device was used to intercept unencrypted traffic, allowing the adversary to capture credentials and network data. Following this, the actors deployed a custom malware variant, dubbed 'RotaJakiro', which leverages dynamically linked shared libraries (.so files) to execute additional malicious functionality using dlopen() and dlsym() calls. In the cloud environment, the malware created a CronJob that automatically deploys a privilege escalation container upon node restart, exploiting container orchestration jobs. The attackers then queried the cloud instance metadata API at http://169.254.169.254/latest/meta-data/iam/security-credentials/ to obtain role-based access tokens, enabling lateral movement within the cloud infrastructure. For command and control (C2) communications, the actors used a module called 'LunarMail' that sends and receives encrypted messages via the Outlook Messaging API (MAPI), utilizing mail protocols for stealthy data exchange. During the exfiltration phase, the threat actor saved customer database files to an external hard drive connected to a compromised workstation, employing exfiltration over a physical medium, while simultaneously transferring stolen financial records via Bluetooth RFCOMM channels to a nearby device, exploiting exfiltration over Bluetooth. System logs from SecureFin Corp. showed anomalous network traffic spikes and unauthorized access attempts, but these were initially dismissed as false positives due to routine maintenance activities. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced vulnerabilities in security configurations.",
+    "tagged_text": "On March 15, 2024, network administrators at a fictional financial services company, 'SecureFin Corp.', discovered a passive network tap installed on an Ethernet line in the server room, indicating unauthorized hardware additions [T1200]. This device was used to intercept unencrypted traffic, allowing the adversary to capture credentials and network data. Following this, the actors deployed a custom malware variant, dubbed 'RotaJakiro', which leverages dynamically linked shared libraries (.so files) to execute additional malicious functionality using dlopen() and dlsym() calls [T1129]. In the cloud environment, the malware created a CronJob that automatically deploys a privilege escalation container upon node restart, exploiting container orchestration jobs [T1053.007]. The attackers then queried the cloud instance metadata API at http://169.254.169.254/latest/meta-data/iam/security-credentials/ to obtain role-based access tokens, enabling lateral movement within the cloud infrastructure [T1552.005]. For command and control (C2) communications, the actors used a module called 'LunarMail' that sends and receives encrypted messages via the Outlook Messaging API (MAPI), utilizing mail protocols for stealthy data exchange [T1071.003]. During the exfiltration phase, the threat actor saved customer database files to an external hard drive connected to a compromised workstation, employing exfiltration over a physical medium [T1052], while simultaneously transferring stolen financial records via Bluetooth RFCOMM channels to a nearby device, exploiting exfiltration over Bluetooth [T1011.001]. System logs from SecureFin Corp. showed anomalous network traffic spikes and unauthorized access attempts, but these were initially dismissed as false positives due to routine maintenance activities. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced vulnerabilities in security configurations.",
+    "sentence_annotations": [
+        {
+            "sentence": "', discovered a passive network tap installed on an Ethernet line in the server room, indicating unauthorized hardware additions.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "so files) to execute additional malicious functionality using dlopen() and dlsym() calls.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "During the exfiltration phase, the threat actor saved customer database files to an external hard drive connected to a compromised workstation, employing exfiltration over a physical medium, while simultaneously transferring stolen financial records via Bluetooth RFCOMM channels to a nearby device, exploiting exfiltration over Bluetooth [T1011.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Cloud and Physical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowGale', which combines physical and digital tactics to compromise cloud environments and exfiltrate sensitive data. The campaign involves hardware-based initial access, exploitation of container orchestration, and multi-protocol exfiltration, highlighting the need for robust defense-in-depth strategies.",
+        "full_report_text": "On March 15, 2024, network administrators at a fictional financial services company, 'SecureFin Corp.', discovered a passive network tap installed on an Ethernet line in the server room, indicating unauthorized hardware additions [T1200]. This device was used to intercept unencrypted traffic, allowing the adversary to capture credentials and network data. Following this, the actors deployed a custom malware variant, dubbed 'RotaJakiro', which leverages dynamically linked shared libraries (.so files) to execute additional malicious functionality using dlopen() and dlsym() calls [T1129]. In the cloud environment, the malware created a CronJob that automatically deploys a privilege escalation container upon node restart, exploiting container orchestration jobs [T1053.007]. The attackers then queried the cloud instance metadata API at http://169.254.169.254/latest/meta-data/iam/security-credentials/ to obtain role-based access tokens, enabling lateral movement within the cloud infrastructure [T1552.005]. For command and control (C2) communications, the actors used a module called 'LunarMail' that sends and receives encrypted messages via the Outlook Messaging API (MAPI), utilizing mail protocols for stealthy data exchange [T1071.003]. During the exfiltration phase, the threat actor saved customer database files to an external hard drive connected to a compromised workstation, employing exfiltration over a physical medium [T1052], while simultaneously transferring stolen financial records via Bluetooth RFCOMM channels to a nearby device, exploiting exfiltration over Bluetooth [T1011.001]. System logs from SecureFin Corp. showed anomalous network traffic spikes and unauthorized access attempts, but these were initially dismissed as false positives due to routine maintenance activities. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced vulnerabilities in security configurations.",
+        "techniques_used": [
+            "T1200",
+            "T1129",
+            "T1053.007",
+            "T1552.005",
+            "T1071.003",
+            "T1052",
+            "T1011.001"
+        ]
+    }
+}

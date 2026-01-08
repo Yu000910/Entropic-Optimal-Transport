@@ -1,0 +1,98 @@
+{
+    "report_id": "report_769",
+    "generated_at": "20251223_110632",
+    "scenario_target_ids": [
+        "T1592.001",
+        "T1078.001",
+        "T1204.003",
+        "T1059.001",
+        "T1070.003",
+        "T1550",
+        "T1072",
+        "T1560",
+        "T1102.001",
+        "T1573.002",
+        "T1495"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.001",
+        "T1078.001",
+        "T1204.003",
+        "T1059.001",
+        "T1070.003",
+        "T1550",
+        "T1072",
+        "T1560",
+        "T1102.001",
+        "T1573.002",
+        "T1495"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1560",
+        "T1550",
+        "T1070.003",
+        "T1495",
+        "T1592.001",
+        "T1573.002",
+        "T1072",
+        "T1204.003",
+        "T1078.001",
+        "T1059.001"
+    ],
+    "clean_text": "PowerGrid Inc., a mid-sized energy provider, reported anomalous network activity starting on October 15, 2023, with initial detection via SIEM alerts for unusual process executions. The threat actors, designated as 'ShadowMimic', likely conducted reconnaissance by running nmap.exe with the -O flag to perform operating system detection on target systems, identifying vulnerable endpoints across the corporate network. Subsequently, they exploited default accounts, finding the Guest account with weak credentials on multiple workstations, which allowed initial access and lateral movement. Using a compromised developer account, the actors wrote a Dockerfile with embedded credential harvesting scripts to deploy malicious container images in the development environment, facilitating persistent access. For execution, they employed PowerShell scripts to actively download additional payloads and gather sensitive data while simultaneously using forged SAML tokens to impersonate users and bypass MFA, enabling access to enterprise cloud applications. To maintain stealth, they cleared command history with history -c after each session and utilized SCCM to deploy a malicious Group Policy Object that executed commands on all domain computers, ensuring widespread compromise. Data collection involved compressing exfiltrated files using tools like 7-Zip and leveraging HTTPS for command and control communications, with actors using Pastebin as a dead drop resolver to check malware versions and redirect to updated payloads. In a disruptive phase, they corrupted the firmware of point-of-sale terminals via a flash utility attack, disabling payment processing capabilities until hardware replacement was required. Incident response logs from PowerGrid Inc. show no prior indicators of compromise, with system administrators noting increased CPU usage on affected servers during peak hours, though this was initially attributed to routine maintenance. The campaign highlights the need for robust credential management and container security practices in critical infrastructure environments.",
+    "tagged_text": "PowerGrid Inc., a mid-sized energy provider, reported anomalous network activity starting on October 15, 2023, with initial detection via SIEM alerts for unusual process executions. The threat actors, designated as 'ShadowMimic', likely conducted reconnaissance by running nmap.exe with the -O flag to perform operating system detection on target systems [T1592.001], identifying vulnerable endpoints across the corporate network. Subsequently, they exploited default accounts, finding the Guest account with weak credentials on multiple workstations [T1078.001], which allowed initial access and lateral movement. Using a compromised developer account, the actors wrote a Dockerfile with embedded credential harvesting scripts [T1204.003] to deploy malicious container images in the development environment, facilitating persistent access. For execution, they employed PowerShell scripts [T1059.001] to actively download additional payloads and gather sensitive data while simultaneously using forged SAML tokens to impersonate users and bypass MFA, enabling access to enterprise cloud applications [T1550]. To maintain stealth, they cleared command history with history -c [T1070.003] after each session and utilized SCCM to deploy a malicious Group Policy Object that executed commands on all domain computers [T1072], ensuring widespread compromise. Data collection involved compressing exfiltrated files using tools like 7-Zip [T1560] and leveraging HTTPS for command and control communications [T1573.002], with actors using Pastebin as a dead drop resolver to check malware versions and redirect to updated payloads [T1102.001]. In a disruptive phase, they corrupted the firmware of point-of-sale terminals via a flash utility attack [T1495], disabling payment processing capabilities until hardware replacement was required. Incident response logs from PowerGrid Inc. show no prior indicators of compromise, with system administrators noting increased CPU usage on affected servers during peak hours, though this was initially attributed to routine maintenance. The campaign highlights the need for robust credential management and container security practices in critical infrastructure environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] to actively download additional payloads and gather sensitive data while simultaneously using forged SAML tokens to impersonate users and bypass MFA, enabling access to enterprise cloud applications.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "003] after each session and utilized SCCM to deploy a malicious Group Policy Object that executed commands on all domain computers, ensuring widespread compromise.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "Data collection involved compressing exfiltrated files using tools like 7-Zip and leveraging HTTPS for command and control communications [T1573.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "In a disruptive phase, they corrupted the firmware of point-of-sale terminals via a flash utility attack, disabling payment processing capabilities until hardware replacement was required.",
+            "technique_id": "T1495",
+            "technique_name": "Firmware Corruption"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowMimic', targeting critical infrastructure sectors through a multi-stage attack involving reconnaissance, credential exploitation, and data exfiltration. Based on analysis of logs from a fictional energy company, 'PowerGrid Inc.', the campaign leverages default accounts, malicious container images, and software deployment tools to compromise systems and disrupt operations. This report is intended for blue team training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "PowerGrid Inc., a mid-sized energy provider, reported anomalous network activity starting on October 15, 2023, with initial detection via SIEM alerts for unusual process executions. The threat actors, designated as 'ShadowMimic', likely conducted reconnaissance by running nmap.exe with the -O flag to perform operating system detection on target systems [T1592.001], identifying vulnerable endpoints across the corporate network. Subsequently, they exploited default accounts, finding the Guest account with weak credentials on multiple workstations [T1078.001], which allowed initial access and lateral movement. Using a compromised developer account, the actors wrote a Dockerfile with embedded credential harvesting scripts [T1204.003] to deploy malicious container images in the development environment, facilitating persistent access. For execution, they employed PowerShell scripts [T1059.001] to actively download additional payloads and gather sensitive data while simultaneously using forged SAML tokens to impersonate users and bypass MFA, enabling access to enterprise cloud applications [T1550]. To maintain stealth, they cleared command history with history -c [T1070.003] after each session and utilized SCCM to deploy a malicious Group Policy Object that executed commands on all domain computers [T1072], ensuring widespread compromise. Data collection involved compressing exfiltrated files using tools like 7-Zip [T1560] and leveraging HTTPS for command and control communications [T1573.002], with actors using Pastebin as a dead drop resolver to check malware versions and redirect to updated payloads [T1102.001]. In a disruptive phase, they corrupted the firmware of point-of-sale terminals via a flash utility attack [T1495], disabling payment processing capabilities until hardware replacement was required. Incident response logs from PowerGrid Inc. show no prior indicators of compromise, with system administrators noting increased CPU usage on affected servers during peak hours, though this was initially attributed to routine maintenance. The campaign highlights the need for robust credential management and container security practices in critical infrastructure environments.",
+        "techniques_used": [
+            "T1592.001",
+            "T1078.001",
+            "T1204.003",
+            "T1059.001",
+            "T1070.003",
+            "T1550",
+            "T1072",
+            "T1560",
+            "T1102.001",
+            "T1573.002",
+            "T1495"
+        ]
+    }
+}

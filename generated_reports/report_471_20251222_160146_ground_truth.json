@@ -1,0 +1,73 @@
+{
+    "report_id": "report_471",
+    "generated_at": "20251222_160146",
+    "scenario_target_ids": [
+        "T1597.002",
+        "T1078.001",
+        "T1203",
+        "T1546.012",
+        "T1027.014",
+        "T1562.009",
+        "T1135",
+        "T1219.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1597.002",
+        "T1078.001",
+        "T1203",
+        "T1546.012",
+        "T1027.014",
+        "T1562.009",
+        "T1135",
+        "T1219.002"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1135",
+        "T1546.012",
+        "T1027.014",
+        "T1562.009",
+        "T1219.002",
+        "T1203",
+        "T1078.001"
+    ],
+    "clean_text": "CrimsonViper likely conducted reconnaissance by purchasing technical data from a commercial IP geolocation service to identify the physical locations of the target's servers, enabling more precise targeting. The actors then gained initial access by leveraging default credentials for authenticating myWebMethods (WMS) and QLogic web management interfaces, as observed in historical FIN13 campaigns. Following this, they exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 to execute malicious code on client systems, similar to XLoader tactics. For persistence, the adversary configured HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\explorer.exe to inject a backdoor that runs instead of the legitimate process. To evade detection, they employed polymorphic code in 'malware.exe' by modifying its import address table to bypass signature scanning, while also using bcdedit.exe to modify the boot configuration and disable security software in Safe Mode. System logs from the compromised environment show routine network scans, but no anomalies were flagged initially. The actors then conducted network share discovery using tools like ShimRat to enumerate connected drives on infected hosts, as part of lateral movement efforts. Finally, they used remote desktop software by running a legitimate TeamViewer application, similar to EVILNUM's TerraTV malware, to connect to compromised machines for command and control. The target organization, a mid-sized bank with operations in North America, reported no financial losses but experienced significant downtime during the incident response.",
+    "tagged_text": "CrimsonViper likely conducted reconnaissance by purchasing technical data [T1597.002] from a commercial IP geolocation service to identify the physical locations of the target's servers, enabling more precise targeting. The actors then gained initial access by leveraging default credentials [T1078.001] for authenticating myWebMethods (WMS) and QLogic web management interfaces, as observed in historical FIN13 campaigns. Following this, they exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 [T1203] to execute malicious code on client systems, similar to XLoader tactics. For persistence, the adversary configured HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\explorer.exe to inject a backdoor [T1546.012] that runs instead of the legitimate process. To evade detection, they employed polymorphic code [T1027.014] in 'malware.exe' by modifying its import address table to bypass signature scanning, while also using bcdedit.exe to modify the boot configuration and disable security software in Safe Mode [T1562.009]. System logs from the compromised environment show routine network scans, but no anomalies were flagged initially. The actors then conducted network share discovery [T1135] using tools like ShimRat to enumerate connected drives on infected hosts, as part of lateral movement efforts. Finally, they used remote desktop software [T1219.002] by running a legitimate TeamViewer application, similar to EVILNUM's TerraTV malware, to connect to compromised machines for command and control. The target organization, a mid-sized bank with operations in North America, reported no financial losses but experienced significant downtime during the incident response.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following this, they exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 to execute malicious code on client systems, similar to XLoader tactics.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "The actors then conducted network share discovery using tools like ShimRat to enumerate connected drives on infected hosts, as part of lateral movement efforts.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'CrimsonViper', targeting financial institutions. The campaign involves reconnaissance, initial access via default accounts, exploitation of client vulnerabilities, persistence mechanisms, evasion techniques, and lateral movement using remote desktop software.",
+        "full_report_text": "CrimsonViper likely conducted reconnaissance by purchasing technical data [T1597.002] from a commercial IP geolocation service to identify the physical locations of the target's servers, enabling more precise targeting. The actors then gained initial access by leveraging default credentials [T1078.001] for authenticating myWebMethods (WMS) and QLogic web management interfaces, as observed in historical FIN13 campaigns. Following this, they exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 [T1203] to execute malicious code on client systems, similar to XLoader tactics. For persistence, the adversary configured HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\explorer.exe to inject a backdoor [T1546.012] that runs instead of the legitimate process. To evade detection, they employed polymorphic code [T1027.014] in 'malware.exe' by modifying its import address table to bypass signature scanning, while also using bcdedit.exe to modify the boot configuration and disable security software in Safe Mode [T1562.009]. System logs from the compromised environment show routine network scans, but no anomalies were flagged initially. The actors then conducted network share discovery [T1135] using tools like ShimRat to enumerate connected drives on infected hosts, as part of lateral movement efforts. Finally, they used remote desktop software [T1219.002] by running a legitimate TeamViewer application, similar to EVILNUM's TerraTV malware, to connect to compromised machines for command and control. The target organization, a mid-sized bank with operations in North America, reported no financial losses but experienced significant downtime during the incident response.",
+        "techniques_used": [
+            "T1597.002",
+            "T1078.001",
+            "T1203",
+            "T1546.012",
+            "T1027.014",
+            "T1562.009",
+            "T1135",
+            "T1219.002"
+        ]
+    }
+}

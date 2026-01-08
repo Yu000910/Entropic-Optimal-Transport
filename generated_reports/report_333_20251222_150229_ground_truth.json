@@ -1,0 +1,118 @@
+{
+    "report_id": "report_333",
+    "generated_at": "20251222_150229",
+    "scenario_target_ids": [
+        "T1566",
+        "T1569.003",
+        "T1651",
+        "T1137.006",
+        "T1543",
+        "T1546.007",
+        "T1027.011",
+        "T1134.004",
+        "T1484",
+        "T1613",
+        "T1074",
+        "T1090"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1569.003",
+        "T1651",
+        "T1137.006",
+        "T1543",
+        "T1546.007",
+        "T1027.011",
+        "T1134.004",
+        "T1484",
+        "T1613",
+        "T1074",
+        "T1090"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1027.011",
+        "T1613",
+        "T1484",
+        "T1546.007",
+        "T1543",
+        "T1074",
+        "T1090",
+        "T1566",
+        "T1137.006",
+        "T1134.004",
+        "T1569.003"
+    ],
+    "clean_text": "Crimson Shadow actors likely conducted reconnaissance on targeted executives at a fictional financial services firm, 'SecureFin Corp.', which operates a mix of on-premises servers and AWS cloud instances. The attack began with a spear-phishing campaign that delivered emails with weaponized PDF attachments to key personnel, exploiting human vulnerabilities. Upon execution, the malware leveraged PowerShell to download additional payloads while modifying registry keys for stealth. The actors then used systemctl to enable a persistence mechanism, ensuring long-term control over compromised Linux systems. Concurrently, they employed cloud administration commands via AWS Systems Manager Run Command to execute malicious scripts on EC2 instances, facilitating lateral movement within the cloud environment. For persistence on Windows systems, a malicious WLL add-in was registered to load automatically with Microsoft Word, and the threat modified system processes by altering svchost.exe to execute a malicious DLL on boot, while also using Netsh Helper DLL to register a payload in the HKLM\\SOFTWARE\\Microsoft\\Netsh registry entry for execution on system start. To evade detection, fileless storage techniques were utilized, storing configuration values under the Registry key HKCU\\Software\\Microsoft\\dllname, and parent PID spoofing was employed to spawn svchost.exe as a legitimate process. The actors escalated privileges by modifying domain or tenant policies, adding a rogue account to the Domain Admins group via Group Policy Object changes. In the cloud, they performed container and resource discovery by checking for running containers with docker ps and inspecting Kubernetes pods in the local network. Data staging involved using cmd.exe to gather network configuration data into compressed archives for exfiltration, and proxy mechanisms were set up to route communications through intermediary servers, obscuring command and control traffic. System logs from SecureFin Corp. indicated unusual network traffic spikes and failed login attempts, though these were initially dismissed as routine anomalies. The company's background includes recent mergers and legacy system integrations, which may have introduced security gaps exploited in this campaign.",
+    "tagged_text": "Crimson Shadow actors likely conducted reconnaissance on targeted executives at a fictional financial services firm, 'SecureFin Corp.', which operates a mix of on-premises servers and AWS cloud instances. The attack began with a spear-phishing campaign [T1566] that delivered emails with weaponized PDF attachments to key personnel, exploiting human vulnerabilities. Upon execution, the malware leveraged PowerShell to download additional payloads while modifying registry keys for stealth. The actors then used systemctl [T1569.003] to enable a persistence mechanism, ensuring long-term control over compromised Linux systems. Concurrently, they employed cloud administration commands [T1651] via AWS Systems Manager Run Command to execute malicious scripts on EC2 instances, facilitating lateral movement within the cloud environment. For persistence on Windows systems, a malicious WLL add-in [T1137.006] was registered to load automatically with Microsoft Word, and the threat modified system processes [T1543] by altering svchost.exe to execute a malicious DLL on boot, while also using Netsh Helper DLL [T1546.007] to register a payload in the HKLM\\SOFTWARE\\Microsoft\\Netsh registry entry for execution on system start. To evade detection, fileless storage techniques [T1027.011] were utilized, storing configuration values under the Registry key HKCU\\Software\\Microsoft\\dllname, and parent PID spoofing [T1134.004] was employed to spawn svchost.exe as a legitimate process. The actors escalated privileges by modifying domain or tenant policies [T1484], adding a rogue account to the Domain Admins group via Group Policy Object changes. In the cloud, they performed container and resource discovery [T1613] by checking for running containers with docker ps and inspecting Kubernetes pods in the local network. Data staging [T1074] involved using cmd.exe to gather network configuration data into compressed archives for exfiltration, and proxy mechanisms [T1090] were set up to route communications through intermediary servers, obscuring command and control traffic. System logs from SecureFin Corp. indicated unusual network traffic spikes and failed login attempts, though these were initially dismissed as routine anomalies. The company's background includes recent mergers and legacy system integrations, which may have introduced security gaps exploited in this campaign.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with a spear-phishing campaign that delivered emails with weaponized PDF attachments to key personnel, exploiting human vulnerabilities.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Concurrently, they employed cloud administration commands via AWS Systems Manager Run Command to execute malicious scripts on EC2 instances, facilitating lateral movement within the cloud environment.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "006] was registered to load automatically with Microsoft Word, and the threat modified system processes by altering svchost.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "The actors escalated privileges by modifying domain or tenant policies, adding a rogue account to the Domain Admins group via Group Policy Object changes.",
+            "technique_id": "T1484",
+            "technique_name": "Domain or Tenant Policy Modification"
+        },
+        {
+            "sentence": "In the cloud, they performed container and resource discovery by checking for running containers with docker ps and inspecting Kubernetes pods in the local network.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "Data staging involved using cmd.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "exe to gather network configuration data into compressed archives for exfiltration, and proxy mechanisms were set up to route communications through intermediary servers, obscuring command and control traffic.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting organizations with hybrid cloud infrastructures. The campaign involves initial access via spear-phishing, establishment of persistence through system modifications, lateral movement using cloud administration tools, and data exfiltration via proxy mechanisms. This report is intended for blue team training to enhance detection and response capabilities in complex attack scenarios.",
+        "full_report_text": "Crimson Shadow actors likely conducted reconnaissance on targeted executives at a fictional financial services firm, 'SecureFin Corp.', which operates a mix of on-premises servers and AWS cloud instances. The attack began with a spear-phishing campaign [T1566] that delivered emails with weaponized PDF attachments to key personnel, exploiting human vulnerabilities. Upon execution, the malware leveraged PowerShell to download additional payloads while modifying registry keys for stealth. The actors then used systemctl [T1569.003] to enable a persistence mechanism, ensuring long-term control over compromised Linux systems. Concurrently, they employed cloud administration commands [T1651] via AWS Systems Manager Run Command to execute malicious scripts on EC2 instances, facilitating lateral movement within the cloud environment. For persistence on Windows systems, a malicious WLL add-in [T1137.006] was registered to load automatically with Microsoft Word, and the threat modified system processes [T1543] by altering svchost.exe to execute a malicious DLL on boot, while also using Netsh Helper DLL [T1546.007] to register a payload in the HKLM\\SOFTWARE\\Microsoft\\Netsh registry entry for execution on system start. To evade detection, fileless storage techniques [T1027.011] were utilized, storing configuration values under the Registry key HKCU\\Software\\Microsoft\\dllname, and parent PID spoofing [T1134.004] was employed to spawn svchost.exe as a legitimate process. The actors escalated privileges by modifying domain or tenant policies [T1484], adding a rogue account to the Domain Admins group via Group Policy Object changes. In the cloud, they performed container and resource discovery [T1613] by checking for running containers with docker ps and inspecting Kubernetes pods in the local network. Data staging [T1074] involved using cmd.exe to gather network configuration data into compressed archives for exfiltration, and proxy mechanisms [T1090] were set up to route communications through intermediary servers, obscuring command and control traffic. System logs from SecureFin Corp. indicated unusual network traffic spikes and failed login attempts, though these were initially dismissed as routine anomalies. The company's background includes recent mergers and legacy system integrations, which may have introduced security gaps exploited in this campaign.",
+        "techniques_used": [
+            "T1566",
+            "T1569.003",
+            "T1651",
+            "T1137.006",
+            "T1543",
+            "T1546.007",
+            "T1027.011",
+            "T1134.004",
+            "T1484",
+            "T1613",
+            "T1074",
+            "T1090"
+        ]
+    }
+}

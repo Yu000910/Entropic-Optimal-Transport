@@ -1,0 +1,127 @@
+{
+    "report_id": "report_176",
+    "generated_at": "20251222_135647",
+    "scenario_target_ids": [
+        "T1595",
+        "T1596.003",
+        "T1650",
+        "T1190",
+        "T1204.002",
+        "T1653",
+        "T1127.001",
+        "T1599",
+        "T1110.004",
+        "T1120",
+        "T1673",
+        "T1071.004",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1595",
+        "T1596.003",
+        "T1650",
+        "T1190",
+        "T1204.002",
+        "T1653",
+        "T1127.001",
+        "T1599",
+        "T1110.004",
+        "T1120",
+        "T1673",
+        "T1071.004",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1567",
+        "T1110.004",
+        "T1120",
+        "T1653",
+        "T1127.001",
+        "T1599",
+        "T1650",
+        "T1596.003",
+        "T1673",
+        "T1190",
+        "T1071.004",
+        "T1595"
+    ],
+    "clean_text": "On April 15, 2024, GridSecure Energy reported anomalous network activity after an employee received a phishing email with a malicious attachment. Initial analysis revealed that the adversary likely conducted active scanning using nmap.exe to identify open ports on external web servers, while simultaneously querying certificate authority records to map the victim's digital infrastructure. This reconnaissance phase included employing 'esxcli software vib list' to discover virtual machines and using peripheral device discovery to identify removable drives for potential data extraction. The threat actor then exploited CVE-2021-44207 in the USAHerds application and CVE-2021-44228 in Log4j, along with other .NET deserialization vulnerabilities, to gain initial access and plant a web shell for persistent remote control. Once inside, the adversary used credential stuffing by downloading a file named 'breach_dump.txt' from a compromised server to access additional accounts, and modified firewall rules to allow direct connections between isolated subnets, bridging network boundaries. To maintain persistence, the malware altered power settings to prevent automatic logout and employed MSBuild to execute actor-created files, while using DNS tunnelling tools like dnscat/2 for command and control. The campaign culminated in exfiltration over a web service using a PowerShell script, 'malicious.ps1', to collect and transmit system configuration files. GridSecure Energy's internal logs showed increased DNS queries to suspicious domains, but no immediate alerts were triggered due to misconfigured SIEM rules. The company, which operates power grids across the Midwest, has since patched the vulnerabilities and enhanced monitoring, though residual artifacts may persist in backup systems.",
+    "tagged_text": "On April 15, 2024, GridSecure Energy reported anomalous network activity after an employee received a phishing email with a malicious attachment. Initial analysis revealed that the adversary likely conducted active scanning [T1595] using nmap.exe to identify open ports on external web servers, while simultaneously querying certificate authority records to map the victim's digital infrastructure [T1596.003]. This reconnaissance phase included employing 'esxcli software vib list' to discover virtual machines [T1673] and using peripheral device discovery [T1120] to identify removable drives for potential data extraction. The threat actor then exploited CVE-2021-44207 in the USAHerds application and CVE-2021-44228 in Log4j, along with other .NET deserialization vulnerabilities, to gain initial access [T1190] and plant a web shell for persistent remote control [T1650]. Once inside, the adversary used credential stuffing [T1110.004] by downloading a file named 'breach_dump.txt' from a compromised server to access additional accounts, and modified firewall rules to allow direct connections between isolated subnets [T1599], bridging network boundaries. To maintain persistence, the malware altered power settings [T1653] to prevent automatic logout and employed MSBuild [T1127.001] to execute actor-created files, while using DNS tunnelling tools like dnscat/2 for command and control [T1071.004]. The campaign culminated in exfiltration over a web service [T1567] using a PowerShell script, 'malicious.ps1', to collect and transmit system configuration files. GridSecure Energy's internal logs showed increased DNS queries to suspicious domains, but no immediate alerts were triggered due to misconfigured SIEM rules. The company, which operates power grids across the Midwest, has since patched the vulnerabilities and enhanced monitoring, though residual artifacts may persist in backup systems.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis revealed that the adversary likely conducted active scanning using nmap.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "This reconnaissance phase included employing 'esxcli software vib list' to discover virtual machines and using peripheral device discovery to identify removable drives for potential data extraction.",
+            "technique_id": "T1673",
+            "technique_name": "Virtual Machine Discovery"
+        },
+        {
+            "sentence": "This reconnaissance phase included employing 'esxcli software vib list' to discover virtual machines and using peripheral device discovery to identify removable drives for potential data extraction.",
+            "technique_id": "T1120",
+            "technique_name": "Peripheral Device Discovery"
+        },
+        {
+            "sentence": "NET deserialization vulnerabilities, to gain initial access and plant a web shell for persistent remote control.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "NET deserialization vulnerabilities, to gain initial access and plant a web shell for persistent remote control.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "txt' from a compromised server to access additional accounts, and modified firewall rules to allow direct connections between isolated subnets, bridging network boundaries.",
+            "technique_id": "T1599",
+            "technique_name": "Network Boundary Bridging"
+        },
+        {
+            "sentence": "To maintain persistence, the malware altered power settings to prevent automatic logout and employed MSBuild [T1127.",
+            "technique_id": "T1653",
+            "technique_name": "Power Settings"
+        },
+        {
+            "sentence": "The campaign culminated in exfiltration over a web service using a PowerShell script, 'malicious.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowStride' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowStride', which targeted a U.S.-based energy company, 'GridSecure Energy', to exfiltrate sensitive operational data. The campaign involved sophisticated reconnaissance, exploitation of public-facing applications, and persistent access techniques, leveraging multiple vulnerabilities and tools to bypass network defenses.",
+        "full_report_text": "On April 15, 2024, GridSecure Energy reported anomalous network activity after an employee received a phishing email with a malicious attachment. Initial analysis revealed that the adversary likely conducted active scanning [T1595] using nmap.exe to identify open ports on external web servers, while simultaneously querying certificate authority records to map the victim's digital infrastructure [T1596.003]. This reconnaissance phase included employing 'esxcli software vib list' to discover virtual machines [T1673] and using peripheral device discovery [T1120] to identify removable drives for potential data extraction. The threat actor then exploited CVE-2021-44207 in the USAHerds application and CVE-2021-44228 in Log4j, along with other .NET deserialization vulnerabilities, to gain initial access [T1190] and plant a web shell for persistent remote control [T1650]. Once inside, the adversary used credential stuffing [T1110.004] by downloading a file named 'breach_dump.txt' from a compromised server to access additional accounts, and modified firewall rules to allow direct connections between isolated subnets [T1599], bridging network boundaries. To maintain persistence, the malware altered power settings [T1653] to prevent automatic logout and employed MSBuild [T1127.001] to execute actor-created files, while using DNS tunnelling tools like dnscat/2 for command and control [T1071.004]. The campaign culminated in exfiltration over a web service [T1567] using a PowerShell script, 'malicious.ps1', to collect and transmit system configuration files. GridSecure Energy's internal logs showed increased DNS queries to suspicious domains, but no immediate alerts were triggered due to misconfigured SIEM rules. The company, which operates power grids across the Midwest, has since patched the vulnerabilities and enhanced monitoring, though residual artifacts may persist in backup systems.",
+        "techniques_used": [
+            "T1595",
+            "T1596.003",
+            "T1650",
+            "T1190",
+            "T1204.002",
+            "T1653",
+            "T1127.001",
+            "T1599",
+            "T1110.004",
+            "T1120",
+            "T1673",
+            "T1071.004",
+            "T1567"
+        ]
+    }
+}

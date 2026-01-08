@@ -1,0 +1,88 @@
+{
+    "report_id": "report_529",
+    "generated_at": "20251222_162722",
+    "scenario_target_ids": [
+        "T1608.003",
+        "T1586.003",
+        "T1078.002",
+        "T1059.005",
+        "T1543.004",
+        "T1547.003",
+        "T1556.006",
+        "T1562.003",
+        "T1036.011",
+        "T1008",
+        "T1020.001",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1586.003",
+        "T1078.002",
+        "T1059.005",
+        "T1543.004",
+        "T1547.003",
+        "T1562.003",
+        "T1036.011",
+        "T1008",
+        "T1020.001",
+        "T1608.003",
+        "T1556.006",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1562.003",
+        "T1498.001",
+        "T1008",
+        "T1036.011",
+        "T1059.005",
+        "T1608.003",
+        "T1556.006",
+        "T1586.003",
+        "T1078.002",
+        "T1547.003",
+        "T1543.004",
+        "T1020.001"
+    ],
+    "clean_text": "CrimsonShadow actors likely conduct reconnaissance on target organizations to identify cloud and domain account holders, then deploy a fake Office 365 login page to harvest credentials from employees. Upon compromise, they use stolen domain accounts to authenticate to internal network devices and execute malicious Visual Basic macros embedded in .xlsm files to download backdoor payloads. To maintain persistence, the actors create a custom plist in the LaunchAgents directory and modify registry entries under HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\, ensuring execution after system reboots. They impair command history logging by calling 'unset HISTFILE' and overwrite process arguments in /proc/1122/cmdline to appear as '/bin/sleep 3600', disguising malicious activity. For command and control, they implement fallback channels by cycling through a list of C2 server IPs until one responds and use traffic duplication with ROMMONkit to capture mirrored network traffic. Additionally, they edit Apache configurations to add SSLEngine on and set SSLCertificateFile to /home/user/mal_cert.pem, installing a digital certificate, and disable multi-factor authentication for compromised users using AADInternals commands. Finally, the C2 server executes botnet.exe to coordinate direct network flood attacks, aiming to disrupt services. Logs from affected systems show increased CPU usage and failed login attempts, though these are unrelated to the core techniques. Background checks indicate the campaign primarily targets mid-sized banks with outdated security protocols, but this information is not directly tied to the attack chain.",
+    "tagged_text": "CrimsonShadow actors likely conduct reconnaissance on target organizations to identify cloud and domain account holders [T1586.003], then deploy a fake Office 365 login page to harvest credentials from employees. Upon compromise, they use stolen domain accounts to authenticate to internal network devices [T1078.002] and execute malicious Visual Basic macros embedded in .xlsm files [T1059.005] to download backdoor payloads. To maintain persistence, the actors create a custom plist in the LaunchAgents directory [T1543.004] and modify registry entries under HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ [T1547.003], ensuring execution after system reboots. They impair command history logging by calling 'unset HISTFILE' [T1562.003] and overwrite process arguments in /proc/1122/cmdline to appear as '/bin/sleep 3600' [T1036.011], disguising malicious activity. For command and control, they implement fallback channels by cycling through a list of C2 server IPs until one responds [T1008] and use traffic duplication with ROMMONkit to capture mirrored network traffic [T1020.001]. Additionally, they edit Apache configurations to add SSLEngine on and set SSLCertificateFile to /home/user/mal_cert.pem, installing a digital certificate [T1608.003], and disable multi-factor authentication for compromised users using AADInternals commands [T1556.006]. Finally, the C2 server executes botnet.exe to coordinate direct network flood attacks [T1498.001], aiming to disrupt services. Logs from affected systems show increased CPU usage and failed login attempts, though these are unrelated to the core techniques. Background checks indicate the campaign primarily targets mid-sized banks with outdated security protocols, but this information is not directly tied to the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "For command and control, they implement fallback channels by cycling through a list of C2 server IPs until one responds and use traffic duplication with ROMMONkit to capture mirrored network traffic [T1020.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CrimsonShadow' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, CrimsonShadow, targeting financial institutions to exfiltrate sensitive data and disrupt operations. The campaign leverages credential harvesting, persistence mechanisms, and network obfuscation techniques, as observed in training environments. Blue teams should use this report to enhance detection and response capabilities.",
+        "full_report_text": "CrimsonShadow actors likely conduct reconnaissance on target organizations to identify cloud and domain account holders [T1586.003], then deploy a fake Office 365 login page to harvest credentials from employees. Upon compromise, they use stolen domain accounts to authenticate to internal network devices [T1078.002] and execute malicious Visual Basic macros embedded in .xlsm files [T1059.005] to download backdoor payloads. To maintain persistence, the actors create a custom plist in the LaunchAgents directory [T1543.004] and modify registry entries under HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ [T1547.003], ensuring execution after system reboots. They impair command history logging by calling 'unset HISTFILE' [T1562.003] and overwrite process arguments in /proc/1122/cmdline to appear as '/bin/sleep 3600' [T1036.011], disguising malicious activity. For command and control, they implement fallback channels by cycling through a list of C2 server IPs until one responds [T1008] and use traffic duplication with ROMMONkit to capture mirrored network traffic [T1020.001]. Additionally, they edit Apache configurations to add SSLEngine on and set SSLCertificateFile to /home/user/mal_cert.pem, installing a digital certificate [T1608.003], and disable multi-factor authentication for compromised users using AADInternals commands [T1556.006]. Finally, the C2 server executes botnet.exe to coordinate direct network flood attacks [T1498.001], aiming to disrupt services. Logs from affected systems show increased CPU usage and failed login attempts, though these are unrelated to the core techniques. Background checks indicate the campaign primarily targets mid-sized banks with outdated security protocols, but this information is not directly tied to the attack chain.",
+        "techniques_used": [
+            "T1586.003",
+            "T1078.002",
+            "T1059.005",
+            "T1543.004",
+            "T1547.003",
+            "T1562.003",
+            "T1036.011",
+            "T1008",
+            "T1020.001",
+            "T1608.003",
+            "T1556.006",
+            "T1498.001"
+        ]
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "report_id": "report_361",
+    "generated_at": "20251222_151427",
+    "scenario_target_ids": [
+        "T1596.004",
+        "T1589",
+        "T1133",
+        "T1559.002",
+        "T1070.010",
+        "T1558.004",
+        "T1069.003",
+        "T1021.004",
+        "T1091",
+        "T1219.003",
+        "T1219.002",
+        "T1052.001",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596.004",
+        "T1589",
+        "T1133",
+        "T1559.002",
+        "T1070.010",
+        "T1558.004",
+        "T1069.003",
+        "T1021.004",
+        "T1091",
+        "T1219.003",
+        "T1219.002",
+        "T1052.001",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1070.010",
+        "T1498.001",
+        "T1069.003",
+        "T1589",
+        "T1091",
+        "T1021.004",
+        "T1558.004",
+        "T1133",
+        "T1219.003",
+        "T1219.002",
+        "T1559.002",
+        "T1596.004",
+        "T1052.001"
+    ],
+    "clean_text": "On 2024-10-01, security analysts at a fictional energy company detected anomalous network traffic originating from an internal workstation. The company, 'PowerGrid Inc.', operates multiple remote sites with internet-facing services, including VPN and SSH gateways, which were previously audited without significant findings. Initial investigation revealed that the adversary likely conducted reconnaissance by accessing https://cdn-lookup.com to gather intelligence on the victim's content delivery network and sent a phishing email disguised as a password reset notification from the corporate IT department to collect employee credentials. Following this, Velvet Ant leveraged access to internet-facing remote services, such as a vulnerable VPN portal, to compromise and retain access to the victim environment. Once inside, the actor employed PowerShell to execute malicious scripts that used Dynamic Data Exchange (DDE) to run additional payloads on compromised hosts while simultaneously relocating malware by renaming malware.exe to services.exe to evade process-based detection. The adversary then ran PowerShell.exe to dump Kerberos credentials stored in the LSASS process memory through AS-REP Roasting and executed az ad user get-member-groups to enumerate all distribution and security groups assigned to the compromised identity in the cloud environment. For lateral movement, Leviathan used SSH brute force techniques to move within the network, targeting internal servers during simulated intrusions, and placed a malicious script on removable media as malware.exe to spread to air-gapped networks. To maintain persistence, the backdoor deployed TinyPilot alongside other remote access tools for redundancy and used a modified version of TeamViewer for remote desktop access. Data exfiltration was achieved via a USB Rubber Ducky script designed to collect system configuration files from compromised workstations, and the malicious payload sent UDP flood packets to cause service degradation through network resource exhaustion. Logs from the affected workstation showed unusual PowerShell executions and failed SSH login attempts, but no immediate alerts were triggered due to misconfigured SIEM rules. PowerGrid Inc. has since patched the VPN vulnerability and enhanced monitoring for external remote services.",
+    "tagged_text": "On 2024-10-01, security analysts at a fictional energy company detected anomalous network traffic originating from an internal workstation. The company, 'PowerGrid Inc.', operates multiple remote sites with internet-facing services, including VPN and SSH gateways, which were previously audited without significant findings. Initial investigation revealed that the adversary likely conducted reconnaissance by accessing https://cdn-lookup.com to gather intelligence on the victim's content delivery network [T1596.004] and sent a phishing email disguised as a password reset notification from the corporate IT department to collect employee credentials [T1589]. Following this, Velvet Ant leveraged access to internet-facing remote services, such as a vulnerable VPN portal, to compromise and retain access to the victim environment [T1133]. Once inside, the actor employed PowerShell to execute malicious scripts that used Dynamic Data Exchange (DDE) to run additional payloads on compromised hosts [T1559.002] while simultaneously relocating malware by renaming malware.exe to services.exe to evade process-based detection [T1070.010]. The adversary then ran PowerShell.exe to dump Kerberos credentials stored in the LSASS process memory through AS-REP Roasting [T1558.004] and executed az ad user get-member-groups to enumerate all distribution and security groups assigned to the compromised identity in the cloud environment [T1069.003]. For lateral movement, Leviathan used SSH brute force techniques to move within the network, targeting internal servers during simulated intrusions [T1021.004], and placed a malicious script on removable media as malware.exe to spread to air-gapped networks [T1091]. To maintain persistence, the backdoor deployed TinyPilot alongside other remote access tools for redundancy [T1219.003] and used a modified version of TeamViewer for remote desktop access [T1219.002]. Data exfiltration was achieved via a USB Rubber Ducky script designed to collect system configuration files from compromised workstations [T1052.001], and the malicious payload sent UDP flood packets to cause service degradation through network resource exhaustion [T1498.001]. Logs from the affected workstation showed unusual PowerShell executions and failed SSH login attempts, but no immediate alerts were triggered due to misconfigured SIEM rules. PowerGrid Inc. has since patched the VPN vulnerability and enhanced monitoring for external remote services.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] and sent a phishing email disguised as a password reset notification from the corporate IT department to collect employee credentials.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Following this, Velvet Ant leveraged access to internet-facing remote services, such as a vulnerable VPN portal, to compromise and retain access to the victim environment.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "exe to spread to air-gapped networks.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Velvet Ant' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'Velvet Ant', which targets critical infrastructure sectors through a multi-phase attack involving reconnaissance, initial access via phishing, lateral movement, credential theft, and data exfiltration. The campaign employs techniques such as CDN intelligence gathering, DDE exploitation, SSH brute force, and network flooding to compromise and disrupt victim environments. Blue teams are advised to review logs, implement multi-factor authentication, and monitor for unusual remote access activities.",
+        "full_report_text": "On 2024-10-01, security analysts at a fictional energy company detected anomalous network traffic originating from an internal workstation. The company, 'PowerGrid Inc.', operates multiple remote sites with internet-facing services, including VPN and SSH gateways, which were previously audited without significant findings. Initial investigation revealed that the adversary likely conducted reconnaissance by accessing https://cdn-lookup.com to gather intelligence on the victim's content delivery network [T1596.004] and sent a phishing email disguised as a password reset notification from the corporate IT department to collect employee credentials [T1589]. Following this, Velvet Ant leveraged access to internet-facing remote services, such as a vulnerable VPN portal, to compromise and retain access to the victim environment [T1133]. Once inside, the actor employed PowerShell to execute malicious scripts that used Dynamic Data Exchange (DDE) to run additional payloads on compromised hosts [T1559.002] while simultaneously relocating malware by renaming malware.exe to services.exe to evade process-based detection [T1070.010]. The adversary then ran PowerShell.exe to dump Kerberos credentials stored in the LSASS process memory through AS-REP Roasting [T1558.004] and executed az ad user get-member-groups to enumerate all distribution and security groups assigned to the compromised identity in the cloud environment [T1069.003]. For lateral movement, Leviathan used SSH brute force techniques to move within the network, targeting internal servers during simulated intrusions [T1021.004], and placed a malicious script on removable media as malware.exe to spread to air-gapped networks [T1091]. To maintain persistence, the backdoor deployed TinyPilot alongside other remote access tools for redundancy [T1219.003] and used a modified version of TeamViewer for remote desktop access [T1219.002]. Data exfiltration was achieved via a USB Rubber Ducky script designed to collect system configuration files from compromised workstations [T1052.001], and the malicious payload sent UDP flood packets to cause service degradation through network resource exhaustion [T1498.001]. Logs from the affected workstation showed unusual PowerShell executions and failed SSH login attempts, but no immediate alerts were triggered due to misconfigured SIEM rules. PowerGrid Inc. has since patched the VPN vulnerability and enhanced monitoring for external remote services.",
+        "techniques_used": [
+            "T1596.004",
+            "T1589",
+            "T1133",
+            "T1559.002",
+            "T1070.010",
+            "T1558.004",
+            "T1069.003",
+            "T1021.004",
+            "T1091",
+            "T1219.003",
+            "T1219.002",
+            "T1052.001",
+            "T1498.001"
+        ]
+    }
+}

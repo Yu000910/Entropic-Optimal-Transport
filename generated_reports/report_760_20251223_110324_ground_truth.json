@@ -1,0 +1,103 @@
+{
+    "report_id": "report_760",
+    "generated_at": "20251223_110324",
+    "scenario_target_ids": [
+        "T1585",
+        "T1583",
+        "T1566",
+        "T1651",
+        "T1505",
+        "T1574.008",
+        "T1568.003",
+        "T1529",
+        "T1657"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585",
+        "T1583",
+        "T1566",
+        "T1651",
+        "T1505",
+        "T1574.008",
+        "T1568.003",
+        "T1529",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1583",
+        "T1651",
+        "T1574.008",
+        "T1585",
+        "T1657",
+        "T1566",
+        "T1568.003",
+        "T1505",
+        "T1529"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVendor'. This campaign simulates realistic attack vectors for educational purposes in blue team exercises. Actors likely conduct reconnaissance through open-source intelligence (OSINT) to identify target employees, though no specific techniques are tagged here. Initial access was achieved by establishing fake social media accounts using AI-generated profile pictures to appear legitimate for social engineering. Concurrently, the actors acquired infrastructure by leveraging services like IVPN, SurfShark, and Tor to anonymize their operations and obscure their origins. The campaign then progressed with a phishing attack where malicious spam emails were sent to employees, impersonating trusted entities to lure victims into clicking links that downloaded initial payloads. Upon compromise, execution involved exploiting cloud administration commands in Azure environments, where actors used RunCommand to execute scripts on virtual machines for data exfiltration. For persistence, a server software component was deployed by writing a backdoor DLL to the Apache modules folder, ensuring long-term access. Additionally, path interception by search order hijacking was employed as the malware searched for 'spoolsv.exe' to exploit DLL search order vulnerabilities in print spooler services, allowing it to load malicious code. To evade detection, DNS calculation was used where the malware queried DNS MX records with hidden data to bypass egress filtering and exfiltrate information covertly. Impact included system shutdown/reboot where actors used ShellExecuteA to force victim systems to restart, causing operational disruption. Finally, financial theft occurred through phishing emails that impersonated vendors, requesting payments to compromised bank accounts for fake services, resulting in monetary loss. Throughout the campaign, actors maintained operational security by rotating IP addresses and using encrypted channels, though these details are not tagged. Log analysis from victim systems showed anomalous network traffic spikes and failed login attempts, which are typical indicators but not part of the core techniques. This fictional scenario is designed to enhance defensive capabilities by illustrating multi-stage attacks that blend social engineering, cloud exploitation, and financial motives.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVendor'. This campaign simulates realistic attack vectors for educational purposes in blue team exercises. Actors likely conduct reconnaissance through open-source intelligence (OSINT) to identify target employees, though no specific techniques are tagged here. Initial access was achieved by establishing fake social media accounts [T1585] using AI-generated profile pictures to appear legitimate for social engineering. Concurrently, the actors acquired infrastructure [T1583] by leveraging services like IVPN, SurfShark, and Tor to anonymize their operations and obscure their origins. The campaign then progressed with a phishing attack [T1566] where malicious spam emails were sent to employees, impersonating trusted entities to lure victims into clicking links that downloaded initial payloads. Upon compromise, execution involved exploiting cloud administration commands [T1651] in Azure environments, where actors used RunCommand to execute scripts on virtual machines for data exfiltration. For persistence, a server software component [T1505] was deployed by writing a backdoor DLL to the Apache modules folder, ensuring long-term access. Additionally, path interception by search order hijacking [T1574.008] was employed as the malware searched for 'spoolsv.exe' to exploit DLL search order vulnerabilities in print spooler services, allowing it to load malicious code. To evade detection, DNS calculation [T1568.003] was used where the malware queried DNS MX records with hidden data to bypass egress filtering and exfiltrate information covertly. Impact included system shutdown/reboot [T1529] where actors used ShellExecuteA to force victim systems to restart, causing operational disruption. Finally, financial theft [T1657] occurred through phishing emails that impersonated vendors, requesting payments to compromised bank accounts for fake services, resulting in monetary loss. Throughout the campaign, actors maintained operational security by rotating IP addresses and using encrypted channels, though these details are not tagged. Log analysis from victim systems showed anomalous network traffic spikes and failed login attempts, which are typical indicators but not part of the core techniques. This fictional scenario is designed to enhance defensive capabilities by illustrating multi-stage attacks that blend social engineering, cloud exploitation, and financial motives.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved by establishing fake social media accounts using AI-generated profile pictures to appear legitimate for social engineering.",
+            "technique_id": "T1585",
+            "technique_name": "Establish Accounts"
+        },
+        {
+            "sentence": "Concurrently, the actors acquired infrastructure by leveraging services like IVPN, SurfShark, and Tor to anonymize their operations and obscure their origins.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "The campaign then progressed with a phishing attack where malicious spam emails were sent to employees, impersonating trusted entities to lure victims into clicking links that downloaded initial payloads.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Upon compromise, execution involved exploiting cloud administration commands in Azure environments, where actors used RunCommand to execute scripts on virtual machines for data exfiltration.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "For persistence, a server software component was deployed by writing a backdoor DLL to the Apache modules folder, ensuring long-term access.",
+            "technique_id": "T1505",
+            "technique_name": "Server Software Component"
+        },
+        {
+            "sentence": "Impact included system shutdown/reboot where actors used ShellExecuteA to force victim systems to restart, causing operational disruption.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        },
+        {
+            "sentence": "Finally, financial theft occurred through phishing emails that impersonated vendors, requesting payments to compromised bank accounts for fake services, resulting in monetary loss.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVendor' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVendor', which targets organizations through social engineering, cloud exploitation, and financial theft for blue team training. Actors establish fake accounts, use anonymized infrastructure for phishing, deploy backdoors in cloud environments, hijack system processes for persistence, employ DNS-based data exfiltration, and execute system reboots to disrupt operations while stealing funds via fraudulent vendor payments.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVendor'. This campaign simulates realistic attack vectors for educational purposes in blue team exercises. Actors likely conduct reconnaissance through open-source intelligence (OSINT) to identify target employees, though no specific techniques are tagged here. Initial access was achieved by establishing fake social media accounts [T1585] using AI-generated profile pictures to appear legitimate for social engineering. Concurrently, the actors acquired infrastructure [T1583] by leveraging services like IVPN, SurfShark, and Tor to anonymize their operations and obscure their origins. The campaign then progressed with a phishing attack [T1566] where malicious spam emails were sent to employees, impersonating trusted entities to lure victims into clicking links that downloaded initial payloads. Upon compromise, execution involved exploiting cloud administration commands [T1651] in Azure environments, where actors used RunCommand to execute scripts on virtual machines for data exfiltration. For persistence, a server software component [T1505] was deployed by writing a backdoor DLL to the Apache modules folder, ensuring long-term access. Additionally, path interception by search order hijacking [T1574.008] was employed as the malware searched for 'spoolsv.exe' to exploit DLL search order vulnerabilities in print spooler services, allowing it to load malicious code. To evade detection, DNS calculation [T1568.003] was used where the malware queried DNS MX records with hidden data to bypass egress filtering and exfiltrate information covertly. Impact included system shutdown/reboot [T1529] where actors used ShellExecuteA to force victim systems to restart, causing operational disruption. Finally, financial theft [T1657] occurred through phishing emails that impersonated vendors, requesting payments to compromised bank accounts for fake services, resulting in monetary loss. Throughout the campaign, actors maintained operational security by rotating IP addresses and using encrypted channels, though these details are not tagged. Log analysis from victim systems showed anomalous network traffic spikes and failed login attempts, which are typical indicators but not part of the core techniques. This fictional scenario is designed to enhance defensive capabilities by illustrating multi-stage attacks that blend social engineering, cloud exploitation, and financial motives.",
+        "techniques_used": [
+            "T1585",
+            "T1583",
+            "T1566",
+            "T1651",
+            "T1505",
+            "T1574.008",
+            "T1568.003",
+            "T1529",
+            "T1657"
+        ]
+    }
+}

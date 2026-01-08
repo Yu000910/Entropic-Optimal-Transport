@@ -1,0 +1,81 @@
+{
+    "report_id": "report_740",
+    "generated_at": "20251223_105525",
+    "scenario_target_ids": [
+        "T1659",
+        "T1559.003",
+        "T1003.004",
+        "T1213.005",
+        "T1132",
+        "T1491.001",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1659",
+        "T1559.003",
+        "T1003.004",
+        "T1132",
+        "T1213.005",
+        "T1491.001",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1132",
+        "T1589",
+        "T1213.005",
+        "T1659",
+        "T1498",
+        "T1003.004",
+        "T1559.003",
+        "T1491.001"
+    ],
+    "clean_text": "PowerGrid Inc., a fictional energy provider with operations across the Midwest, reported anomalous network behavior starting on October 15, 2023, including slow DNS resolution and altered intranet content. Initial investigation revealed that the adversary likely conducted reconnaissance by scanning public-facing assets and gathering employee information from social media. The attack commenced with the actors exploiting a compromised ISP channel to inject malicious content, redirecting user traffic through a rogue proxy server that intercepted credentials and session data. Once inside the network, they leveraged a vulnerable XPC service daemon with weak authentication to execute arbitrary code and gain elevated privileges, enabling them to dump LSA secrets using tools like Mimikatz to extract cached domain credentials. Concurrently, the actors employed gzip compression to encode command-and-control (C2) traffic, evading detection by security tools, while actively searching Slack and Microsoft Teams for discussions about the intrusion and incident response efforts. In the later stages, they modified the company intranet homepage to display false information about financial losses, causing internal confusion, and orchestrated a botnet to generate fake DNS queries, overwhelming PowerGrid Inc.'s DNS servers and causing network denial of service. System logs from the affected servers showed increased CPU usage and failed authentication attempts, but no evidence of data exfiltration beyond credential theft. The company's background includes recent mergers, which may have introduced security gaps, though this remains unconfirmed.",
+    "tagged_text": "PowerGrid Inc., a fictional energy provider with operations across the Midwest, reported anomalous network behavior starting on October 15, 2023, including slow DNS resolution and altered intranet content. Initial investigation revealed that the adversary likely conducted reconnaissance [T1589] by scanning public-facing assets and gathering employee information from social media. The attack commenced with the actors exploiting a compromised ISP channel to inject malicious content [T1659], redirecting user traffic through a rogue proxy server that intercepted credentials and session data. Once inside the network, they leveraged a vulnerable XPC service daemon with weak authentication to execute arbitrary code [T1559.003] and gain elevated privileges, enabling them to dump LSA secrets [T1003.004] using tools like Mimikatz to extract cached domain credentials. Concurrently, the actors employed gzip compression [T1132] to encode command-and-control (C2) traffic, evading detection by security tools, while actively searching Slack and Microsoft Teams [T1213.005] for discussions about the intrusion and incident response efforts. In the later stages, they modified the company intranet homepage [T1491.001] to display false information about financial losses, causing internal confusion, and orchestrated a botnet to generate fake DNS queries [T1498], overwhelming PowerGrid Inc.'s DNS servers and causing network denial of service. System logs from the affected servers showed increased CPU usage and failed authentication attempts, but no evidence of data exfiltration beyond credential theft. The company's background includes recent mergers, which may have introduced security gaps, though this remains unconfirmed.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that the adversary likely conducted reconnaissance by scanning public-facing assets and gathering employee information from social media.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The attack commenced with the actors exploiting a compromised ISP channel to inject malicious content, redirecting user traffic through a rogue proxy server that intercepted credentials and session data.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Concurrently, the actors employed gzip compression to encode command-and-control (C2) traffic, evading detection by security tools, while actively searching Slack and Microsoft Teams [T1213.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        },
+        {
+            "sentence": "001] to display false information about financial losses, causing internal confusion, and orchestrated a botnet to generate fake DNS queries, overwhelming PowerGrid Inc.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'Shadow Proxy' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated 'Shadow Proxy', targeting a mid-sized energy company, 'PowerGrid Inc.', to disrupt operations and steal sensitive data. The campaign leverages content injection, privilege escalation, credential theft, and denial-of-service tactics, with observed activities spanning reconnaissance to impact phases. Blue teams are advised to review network configurations, monitor for unusual traffic patterns, and implement strict access controls.",
+        "full_report_text": "PowerGrid Inc., a fictional energy provider with operations across the Midwest, reported anomalous network behavior starting on October 15, 2023, including slow DNS resolution and altered intranet content. Initial investigation revealed that the adversary likely conducted reconnaissance [T1589] by scanning public-facing assets and gathering employee information from social media. The attack commenced with the actors exploiting a compromised ISP channel to inject malicious content [T1659], redirecting user traffic through a rogue proxy server that intercepted credentials and session data. Once inside the network, they leveraged a vulnerable XPC service daemon with weak authentication to execute arbitrary code [T1559.003] and gain elevated privileges, enabling them to dump LSA secrets [T1003.004] using tools like Mimikatz to extract cached domain credentials. Concurrently, the actors employed gzip compression [T1132] to encode command-and-control (C2) traffic, evading detection by security tools, while actively searching Slack and Microsoft Teams [T1213.005] for discussions about the intrusion and incident response efforts. In the later stages, they modified the company intranet homepage [T1491.001] to display false information about financial losses, causing internal confusion, and orchestrated a botnet to generate fake DNS queries [T1498], overwhelming PowerGrid Inc.'s DNS servers and causing network denial of service. System logs from the affected servers showed increased CPU usage and failed authentication attempts, but no evidence of data exfiltration beyond credential theft. The company's background includes recent mergers, which may have introduced security gaps, though this remains unconfirmed.",
+        "techniques_used": [
+            "T1589",
+            "T1659",
+            "T1559.003",
+            "T1003.004",
+            "T1132",
+            "T1213.005",
+            "T1491.001",
+            "T1498"
+        ]
+    }
+}

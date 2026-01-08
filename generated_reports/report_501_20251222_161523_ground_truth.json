@@ -1,0 +1,98 @@
+{
+    "report_id": "report_501",
+    "generated_at": "20251222_161523",
+    "scenario_target_ids": [
+        "T1078",
+        "T1059.002",
+        "T1098.001",
+        "T1546.003",
+        "T1574.001",
+        "T1053.007",
+        "T1600.002",
+        "T1036.009",
+        "T1552.008",
+        "T1113",
+        "T1105",
+        "T1048.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1059.002",
+        "T1098.001",
+        "T1546.003",
+        "T1574.001",
+        "T1053.007",
+        "T1600.002",
+        "T1036.009",
+        "T1552.008",
+        "T1113",
+        "T1105",
+        "T1048.001"
+    ],
+    "actual_found_ids": [
+        "T1048.001",
+        "T1552.008",
+        "T1113",
+        "T1059.002",
+        "T1078",
+        "T1053.007",
+        "T1600.002",
+        "T1036.009",
+        "T1105",
+        "T1574.001",
+        "T1546.003",
+        "T1098.001"
+    ],
+    "clean_text": "AzurePhantom likely began by conducting reconnaissance on target organizations, focusing on employees with access to sensitive cloud and email systems. The actors then used stolen legitimate credentials to gain initial access to corporate email accounts, hijacking communications to spread malicious links. Upon user interaction, the adversary employed AppleScript on macOS systems to create login items for persistence while simultaneously using PowerShell on Windows to download additional payloads from command-and-control servers. In cloud environments, the malware executed Azure CLI commands to assign elevated permissions via 'az role assignment create', and it compiled and registered a malicious MOF file using mofcomp.exe for WMI event subscription persistence. For lateral movement, AzurePhantom abused legitimate executables to side-load weaponized DLLs through search order hijacking and created a CronJob in Kubernetes clusters to periodically execute a container that harvests credentials from other pods. To weaken security, the ransomware altered system firmware to downgrade encryption protocols, and after initial execution, the malware forked itself with the '--init' flag to break process trees, allowing clean-up operations. The actors also scanned Slack Workflow definitions to locate exposed AWS access keys in chat messages and used screen capture tools to monitor user activity. Finally, collected email archives were encrypted using AES-192 and exfiltrated over SMTP. System logs from affected endpoints showed unusual network traffic spikes, and background checks revealed the targeted company had recently migrated to a hybrid cloud setup, though this was not directly exploited in the attack chain.",
+    "tagged_text": "AzurePhantom likely began by conducting reconnaissance on target organizations, focusing on employees with access to sensitive cloud and email systems. The actors then used stolen legitimate credentials [T1078] to gain initial access to corporate email accounts, hijacking communications to spread malicious links. Upon user interaction, the adversary employed AppleScript [T1059.002] on macOS systems to create login items for persistence while simultaneously using PowerShell on Windows to download additional payloads [T1105] from command-and-control servers. In cloud environments, the malware executed Azure CLI commands to assign elevated permissions via 'az role assignment create' [T1098.001], and it compiled and registered a malicious MOF file using mofcomp.exe for WMI event subscription persistence [T1546.003]. For lateral movement, AzurePhantom abused legitimate executables to side-load weaponized DLLs through search order hijacking [T1574.001] and created a CronJob in Kubernetes clusters to periodically execute a container that harvests credentials from other pods [T1053.007]. To weaken security, the ransomware altered system firmware to downgrade encryption protocols [T1600.002], and after initial execution, the malware forked itself with the '--init' flag to break process trees [T1036.009], allowing clean-up operations. The actors also scanned Slack Workflow definitions to locate exposed AWS access keys in chat messages [T1552.008] and used screen capture tools [T1113] to monitor user activity. Finally, collected email archives were encrypted using AES-192 and exfiltrated over SMTP [T1048.001]. System logs from affected endpoints showed unusual network traffic spikes, and background checks revealed the targeted company had recently migrated to a hybrid cloud setup, though this was not directly exploited in the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then used stolen legitimate credentials to gain initial access to corporate email accounts, hijacking communications to spread malicious links.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "002] on macOS systems to create login items for persistence while simultaneously using PowerShell on Windows to download additional payloads from command-and-control servers.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "008] and used screen capture tools to monitor user activity.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'AzurePhantom' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'AzurePhantom', targeting organizations with hybrid cloud infrastructures. The campaign leverages stolen credentials, multi-platform persistence mechanisms, and sophisticated exfiltration techniques to compromise email systems, cloud resources, and containerized environments. Based on analysis of simulated incidents between January and March 2024, this report provides indicators and mitigations for blue team training.",
+        "full_report_text": "AzurePhantom likely began by conducting reconnaissance on target organizations, focusing on employees with access to sensitive cloud and email systems. The actors then used stolen legitimate credentials [T1078] to gain initial access to corporate email accounts, hijacking communications to spread malicious links. Upon user interaction, the adversary employed AppleScript [T1059.002] on macOS systems to create login items for persistence while simultaneously using PowerShell on Windows to download additional payloads [T1105] from command-and-control servers. In cloud environments, the malware executed Azure CLI commands to assign elevated permissions via 'az role assignment create' [T1098.001], and it compiled and registered a malicious MOF file using mofcomp.exe for WMI event subscription persistence [T1546.003]. For lateral movement, AzurePhantom abused legitimate executables to side-load weaponized DLLs through search order hijacking [T1574.001] and created a CronJob in Kubernetes clusters to periodically execute a container that harvests credentials from other pods [T1053.007]. To weaken security, the ransomware altered system firmware to downgrade encryption protocols [T1600.002], and after initial execution, the malware forked itself with the '--init' flag to break process trees [T1036.009], allowing clean-up operations. The actors also scanned Slack Workflow definitions to locate exposed AWS access keys in chat messages [T1552.008] and used screen capture tools [T1113] to monitor user activity. Finally, collected email archives were encrypted using AES-192 and exfiltrated over SMTP [T1048.001]. System logs from affected endpoints showed unusual network traffic spikes, and background checks revealed the targeted company had recently migrated to a hybrid cloud setup, though this was not directly exploited in the attack chain.",
+        "techniques_used": [
+            "T1078",
+            "T1059.002",
+            "T1098.001",
+            "T1546.003",
+            "T1574.001",
+            "T1053.007",
+            "T1600.002",
+            "T1036.009",
+            "T1552.008",
+            "T1113",
+            "T1105",
+            "T1048.001"
+        ]
+    }
+}

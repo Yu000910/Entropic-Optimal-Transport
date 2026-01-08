@@ -1,0 +1,68 @@
+{
+    "report_id": "report_141",
+    "generated_at": "20251222_134252",
+    "scenario_target_ids": [
+        "T1595.003",
+        "T1591.003",
+        "T1195.003",
+        "T1078",
+        "T1059.003",
+        "T1659",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591.003",
+        "T1595.003",
+        "T1195.003",
+        "T1078",
+        "T1059.003",
+        "T1659",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1059.003",
+        "T1595.003",
+        "T1659",
+        "T1591.003",
+        "T1195.003",
+        "T1078",
+        "T1565.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert blue teams to a simulated advanced persistent threat (APT) campaign, designated 'ShadowTempo,' targeting retail organizations. This fictional scenario is designed for training purposes to enhance detection and response capabilities. The victim, 'RetailCorp,' is a mid-sized e-commerce company with seasonal sales peaks. On 2023-10-15, security logs showed unusual network activity from an external IP address, later traced to a known malicious actor infrastructure.\n\nIn the initial reconnaissance phase, the actors conducted open-source intelligence gathering by searching RetailCorp's Facebook page to identify business tempo patterns, such as holiday sales spikes, which informed their attack timing. Concurrently, they performed automated scanning using Dirb with a custom wordlist to probe for exposed administrative interfaces on RetailCorp's web servers, aiming to discover vulnerable endpoints. This activity was logged in web server logs but initially flagged as low-priority noise due to high traffic volumes.\n\nFor initial access, the actors exploited a compromised hardware supply chain by injecting malicious firmware into a wireless router destined for RetailCorp's office, which was delivered on 2023-10-20 and installed without security checks, creating a persistent backdoor. Once inside the network, they leveraged valid accounts by using a previously compromised Exchange administrator credential to search mailboxes for sensitive information and create new Exchange accounts to maintain access and evade detection. System logs from the Exchange server showed anomalous login attempts from an internal IP associated with the compromised router.\n\nDuring execution, the actors employed the Windows Command Shell via cmd.exe to execute commands, using a pipe to read results and send output back to their command-and-control (C2) server for remote control and data exfiltration. They also deployed content injection by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, intercepting and manipulating web sessions to steal credentials. Additionally, they performed transmitted data manipulation by deploying a network sniffer to intercept unencrypted FTP credentials transmitted across RetailCorp's internal network, capturing login details for further lateral movement. Network monitoring tools detected unusual outbound traffic patterns but were initially misconfigured to ignore internal FTP traffic.\n\nThis campaign demonstrates a multi-faceted approach combining reconnaissance, supply chain attacks, and network-based techniques. Blue teams should focus on monitoring for unusual scanning activity, validating hardware integrity, and encrypting sensitive transmissions to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert blue teams to a simulated advanced persistent threat (APT) campaign, designated 'ShadowTempo,' targeting retail organizations. This fictional scenario is designed for training purposes to enhance detection and response capabilities. The victim, 'RetailCorp,' is a mid-sized e-commerce company with seasonal sales peaks. On 2023-10-15, security logs showed unusual network activity from an external IP address, later traced to a known malicious actor infrastructure.\n\nIn the initial reconnaissance phase, the actors conducted open-source intelligence gathering by searching RetailCorp's Facebook page to identify business tempo patterns, such as holiday sales spikes, which informed their attack timing [T1591.003]. Concurrently, they performed automated scanning using Dirb with a custom wordlist to probe for exposed administrative interfaces on RetailCorp's web servers, aiming to discover vulnerable endpoints [T1595.003]. This activity was logged in web server logs but initially flagged as low-priority noise due to high traffic volumes.\n\nFor initial access, the actors exploited a compromised hardware supply chain by injecting malicious firmware into a wireless router destined for RetailCorp's office, which was delivered on 2023-10-20 and installed without security checks, creating a persistent backdoor [T1195.003]. Once inside the network, they leveraged valid accounts by using a previously compromised Exchange administrator credential to search mailboxes for sensitive information and create new Exchange accounts to maintain access and evade detection [T1078]. System logs from the Exchange server showed anomalous login attempts from an internal IP associated with the compromised router.\n\nDuring execution, the actors employed the Windows Command Shell via cmd.exe to execute commands, using a pipe to read results and send output back to their command-and-control (C2) server for remote control and data exfiltration [T1059.003]. They also deployed content injection by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, intercepting and manipulating web sessions to steal credentials [T1659]. Additionally, they performed transmitted data manipulation by deploying a network sniffer to intercept unencrypted FTP credentials transmitted across RetailCorp's internal network, capturing login details for further lateral movement [T1565.002]. Network monitoring tools detected unusual outbound traffic patterns but were initially misconfigured to ignore internal FTP traffic.\n\nThis campaign demonstrates a multi-faceted approach combining reconnaissance, supply chain attacks, and network-based techniques. Blue teams should focus on monitoring for unusual scanning activity, validating hardware integrity, and encrypting sensitive transmissions to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside the network, they leveraged valid accounts by using a previously compromised Exchange administrator credential to search mailboxes for sensitive information and create new Exchange accounts to maintain access and evade detection.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "They also deployed content injection by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, intercepting and manipulating web sessions to steal credentials.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'ShadowTempo' Targeting Retail Sector",
+        "summary": "This advisory details a fictional campaign by threat actors targeting retail organizations to exfiltrate customer data and disrupt operations. Actors combine reconnaissance, supply chain compromise, and network manipulation to achieve persistent access and data theft.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert blue teams to a simulated advanced persistent threat (APT) campaign, designated 'ShadowTempo,' targeting retail organizations. This fictional scenario is designed for training purposes to enhance detection and response capabilities. The victim, 'RetailCorp,' is a mid-sized e-commerce company with seasonal sales peaks. On 2023-10-15, security logs showed unusual network activity from an external IP address, later traced to a known malicious actor infrastructure.\n\nIn the initial reconnaissance phase, the actors conducted open-source intelligence gathering by searching RetailCorp's Facebook page to identify business tempo patterns, such as holiday sales spikes, which informed their attack timing [T1591.003]. Concurrently, they performed automated scanning using Dirb with a custom wordlist to probe for exposed administrative interfaces on RetailCorp's web servers, aiming to discover vulnerable endpoints [T1595.003]. This activity was logged in web server logs but initially flagged as low-priority noise due to high traffic volumes.\n\nFor initial access, the actors exploited a compromised hardware supply chain by injecting malicious firmware into a wireless router destined for RetailCorp's office, which was delivered on 2023-10-20 and installed without security checks, creating a persistent backdoor [T1195.003]. Once inside the network, they leveraged valid accounts by using a previously compromised Exchange administrator credential to search mailboxes for sensitive information and create new Exchange accounts to maintain access and evade detection [T1078]. System logs from the Exchange server showed anomalous login attempts from an internal IP associated with the compromised router.\n\nDuring execution, the actors employed the Windows Command Shell via cmd.exe to execute commands, using a pipe to read results and send output back to their command-and-control (C2) server for remote control and data exfiltration [T1059.003]. They also deployed content injection by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, intercepting and manipulating web sessions to steal credentials [T1659]. Additionally, they performed transmitted data manipulation by deploying a network sniffer to intercept unencrypted FTP credentials transmitted across RetailCorp's internal network, capturing login details for further lateral movement [T1565.002]. Network monitoring tools detected unusual outbound traffic patterns but were initially misconfigured to ignore internal FTP traffic.\n\nThis campaign demonstrates a multi-faceted approach combining reconnaissance, supply chain attacks, and network-based techniques. Blue teams should focus on monitoring for unusual scanning activity, validating hardware integrity, and encrypting sensitive transmissions to mitigate similar threats.",
+        "techniques_used": [
+            "T1591.003",
+            "T1595.003",
+            "T1195.003",
+            "T1078",
+            "T1059.003",
+            "T1659",
+            "T1565.002"
+        ]
+    }
+}

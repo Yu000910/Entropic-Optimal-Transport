@@ -1,0 +1,68 @@
+{
+    "report_id": "report_605",
+    "generated_at": "20251222_170014",
+    "scenario_target_ids": [
+        "T1078",
+        "T1053.002",
+        "T1547.008",
+        "T1212",
+        "T1665",
+        "T1561.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1053.002",
+        "T1547.008",
+        "T1212",
+        "T1665",
+        "T1561.001"
+    ],
+    "actual_found_ids": [
+        "T1212",
+        "T1053.002",
+        "T1078",
+        "T1547.008",
+        "T1665",
+        "T1561.001"
+    ],
+    "clean_text": "On October 15, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA observed activity consistent with the fictional threat actor 'Silent Librarian' targeting university research networks. The campaign began with reconnaissance through open-source intelligence gathering, though no specific techniques were tagged for this phase. The actors then leveraged compromised credentials to gain initial access to a faculty member's email account, which had weak password policies noted in system logs. Once inside, they executed a PowerShell script to schedule a malicious task that ran data exfiltration scripts every Friday at 2:00 AM, as recorded in Windows Event ID 4698. To maintain persistence, the adversary modified the Local Security Authority Subsystem Service (LSASS) driver configuration, ensuring a malicious driver loaded on each system boot while simultaneously exploiting the MS14-068 vulnerability to forge Kerberos tickets for lateral movement. Network traffic analysis showed command and control (C2) communications were routed through a Tor gateway to hide infrastructure, with anomalous outbound connections on port 443 detected in firewall logs. Prior to exfiltration, the actors used a custom script to perform disk content wiping by overwriting file system metadata with garbage data via RawDisk, as indicated in system recovery logs. Additional irrelevant information includes the target institution's background as a mid-sized university with outdated antivirus software and no prior incidents reported.",
+    "tagged_text": "On October 15, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA observed activity consistent with the fictional threat actor 'Silent Librarian' targeting university research networks. The campaign began with reconnaissance through open-source intelligence gathering, though no specific techniques were tagged for this phase. The actors then leveraged compromised credentials [T1078] to gain initial access to a faculty member's email account, which had weak password policies noted in system logs. Once inside, they executed a PowerShell script to schedule a malicious task [T1053.002] that ran data exfiltration scripts every Friday at 2:00 AM, as recorded in Windows Event ID 4698. To maintain persistence, the adversary modified the Local Security Authority Subsystem Service (LSASS) driver configuration [T1547.008], ensuring a malicious driver loaded on each system boot while simultaneously exploiting the MS14-068 vulnerability [T1212] to forge Kerberos tickets for lateral movement. Network traffic analysis showed command and control (C2) communications were routed through a Tor gateway [T1665] to hide infrastructure, with anomalous outbound connections on port 443 detected in firewall logs. Prior to exfiltration, the actors used a custom script to perform disk content wiping [T1561.001] by overwriting file system metadata with garbage data via RawDisk, as indicated in system recovery logs. Additional irrelevant information includes the target institution's background as a mid-sized university with outdated antivirus software and no prior incidents reported.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then leveraged compromised credentials to gain initial access to a faculty member's email account, which had weak password policies noted in system logs.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "008], ensuring a malicious driver loaded on each system boot while simultaneously exploiting the MS14-068 vulnerability to forge Kerberos tickets for lateral movement.",
+            "technique_id": "T1212",
+            "technique_name": "Exploitation for Credential Access"
+        },
+        {
+            "sentence": "Network traffic analysis showed command and control (C2) communications were routed through a Tor gateway to hide infrastructure, with anomalous outbound connections on port 443 detected in firewall logs.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Librarian' Targeting Academic Institutions",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Silent Librarian' targeting academic research databases, using compromised credentials and persistence mechanisms to exfiltrate sensitive data while obscuring infrastructure. The report is for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "On October 15, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA observed activity consistent with the fictional threat actor 'Silent Librarian' targeting university research networks. The campaign began with reconnaissance through open-source intelligence gathering, though no specific techniques were tagged for this phase. The actors then leveraged compromised credentials [T1078] to gain initial access to a faculty member's email account, which had weak password policies noted in system logs. Once inside, they executed a PowerShell script to schedule a malicious task [T1053.002] that ran data exfiltration scripts every Friday at 2:00 AM, as recorded in Windows Event ID 4698. To maintain persistence, the adversary modified the Local Security Authority Subsystem Service (LSASS) driver configuration [T1547.008], ensuring a malicious driver loaded on each system boot while simultaneously exploiting the MS14-068 vulnerability [T1212] to forge Kerberos tickets for lateral movement. Network traffic analysis showed command and control (C2) communications were routed through a Tor gateway [T1665] to hide infrastructure, with anomalous outbound connections on port 443 detected in firewall logs. Prior to exfiltration, the actors used a custom script to perform disk content wiping [T1561.001] by overwriting file system metadata with garbage data via RawDisk, as indicated in system recovery logs. Additional irrelevant information includes the target institution's background as a mid-sized university with outdated antivirus software and no prior incidents reported.",
+        "techniques_used": [
+            "T1078",
+            "T1053.002",
+            "T1547.008",
+            "T1212",
+            "T1665",
+            "T1561.001"
+        ]
+    }
+}

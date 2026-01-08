@@ -1,0 +1,59 @@
+{
+    "report_id": "report_295",
+    "generated_at": "20251222_144627",
+    "scenario_target_ids": [
+        "T1583.001",
+        "T1078.003",
+        "T1059.004",
+        "T1218.007",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1583.001",
+        "T1078.003",
+        "T1059.004",
+        "T1218.007",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1218.007",
+        "T1589",
+        "T1059.004",
+        "T1583.001",
+        "T1573",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign attributed to 'Earth Lusca'. This campaign targets critical infrastructure sectors, including energy and finance, with the objective of data exfiltration and potential disruption. Earth Lusca likely conducts reconnaissance to identify high-value targets, though this is not part of the specified scenario. The attack begins with the actors registering domains that closely mimic legitimate target organizations, such as 'secure-energy-dot-com' instead of 'secureenergy.com', to facilitate watering hole attacks. System logs from a compromised web server show increased traffic to these spoofed domains, but this activity is not directly tagged as malicious. Upon victim interaction, the campaign escalates by exploiting local accounts; for instance, the actors executed Mimikatz's sekurlsa::logonpasswords module to extract plaintext passwords from memory, enabling lateral movement and privilege escalation. In parallel, during the execution phase, threat actors used Unix shell commands, piping output from stdout to bash for remote code execution on Linux-based systems. For payload delivery on Windows environments, Earth Lusca employed msiexec from the command-line to install malicious MSI files, which contained ransomware components and facilitated persistence. Throughout the campaign, the actors maintained encrypted communications between client and server using custom protocols, evading network detection and securing data exfiltration channels. Additional noise includes routine system updates and firewall logs showing blocked attempts from unrelated IP addresses, which are not indicative of this specific threat. Blue teams should prioritize monitoring for domain impersonation, unauthorized credential access, and anomalous command-line usage involving msiexec or bash pipes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign attributed to 'Earth Lusca'. This campaign targets critical infrastructure sectors, including energy and finance, with the objective of data exfiltration and potential disruption. Earth Lusca likely conducts reconnaissance [T1589] to identify high-value targets, though this is not part of the specified scenario. The attack begins with the actors registering domains that closely mimic legitimate target organizations, such as 'secure-energy-dot-com' instead of 'secureenergy.com', to facilitate watering hole attacks [T1583.001]. System logs from a compromised web server show increased traffic to these spoofed domains, but this activity is not directly tagged as malicious. Upon victim interaction, the campaign escalates by exploiting local accounts; for instance, the actors executed Mimikatz's sekurlsa::logonpasswords module to extract plaintext passwords from memory, enabling lateral movement and privilege escalation [T1078.003]. In parallel, during the execution phase, threat actors used Unix shell commands, piping output from stdout to bash for remote code execution on Linux-based systems [T1059.004]. For payload delivery on Windows environments, Earth Lusca employed msiexec from the command-line to install malicious MSI files, which contained ransomware components and facilitated persistence [T1218.007]. Throughout the campaign, the actors maintained encrypted communications between client and server using custom protocols, evading network detection and securing data exfiltration channels [T1573]. Additional noise includes routine system updates and firewall logs showing blocked attempts from unrelated IP addresses, which are not indicative of this specific threat. Blue teams should prioritize monitoring for domain impersonation, unauthorized credential access, and anomalous command-line usage involving msiexec or bash pipes.",
+    "sentence_annotations": [
+        {
+            "sentence": "Earth Lusca likely conducts reconnaissance to identify high-value targets, though this is not part of the specified scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Throughout the campaign, the actors maintained encrypted communications between client and server using custom protocols, evading network detection and securing data exfiltration channels.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'MidnightEclipse' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Earth Lusca', which leverages domain spoofing, credential theft, and encrypted channels to compromise critical infrastructure systems. The campaign employs a multi-stage attack chain, including watering hole attacks, local account exploitation, and payload delivery via MSI files, to establish persistence and exfiltrate data. Blue teams are advised to monitor for suspicious domain registrations, unauthorized credential access, and unusual command-line activity.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign attributed to 'Earth Lusca'. This campaign targets critical infrastructure sectors, including energy and finance, with the objective of data exfiltration and potential disruption. Earth Lusca likely conducts reconnaissance [T1589] to identify high-value targets, though this is not part of the specified scenario. The attack begins with the actors registering domains that closely mimic legitimate target organizations, such as 'secure-energy-dot-com' instead of 'secureenergy.com', to facilitate watering hole attacks [T1583.001]. System logs from a compromised web server show increased traffic to these spoofed domains, but this activity is not directly tagged as malicious. Upon victim interaction, the campaign escalates by exploiting local accounts; for instance, the actors executed Mimikatz's sekurlsa::logonpasswords module to extract plaintext passwords from memory, enabling lateral movement and privilege escalation [T1078.003]. In parallel, during the execution phase, threat actors used Unix shell commands, piping output from stdout to bash for remote code execution on Linux-based systems [T1059.004]. For payload delivery on Windows environments, Earth Lusca employed msiexec from the command-line to install malicious MSI files, which contained ransomware components and facilitated persistence [T1218.007]. Throughout the campaign, the actors maintained encrypted communications between client and server using custom protocols, evading network detection and securing data exfiltration channels [T1573]. Additional noise includes routine system updates and firewall logs showing blocked attempts from unrelated IP addresses, which are not indicative of this specific threat. Blue teams should prioritize monitoring for domain impersonation, unauthorized credential access, and anomalous command-line usage involving msiexec or bash pipes.",
+        "techniques_used": [
+            "T1583.001",
+            "T1078.003",
+            "T1059.004",
+            "T1218.007",
+            "T1573"
+        ]
+    }
+}

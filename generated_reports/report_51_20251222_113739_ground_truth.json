@@ -1,0 +1,78 @@
+{
+    "report_id": "report_51",
+    "generated_at": "20251222_113739",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1059.012",
+        "T1136.002",
+        "T1055.009",
+        "T1055.011",
+        "T1021.005",
+        "T1550.002",
+        "T1125",
+        "T1104"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1550.002",
+        "T1136.002",
+        "T1078.003",
+        "T1104",
+        "T1055.011",
+        "T1055.009",
+        "T1021.005",
+        "T1059.012",
+        "T1125"
+    ],
+    "actual_found_ids": [
+        "T1550.002",
+        "T1136.002",
+        "T1125",
+        "T1078.003",
+        "T1055.009",
+        "T1104",
+        "T1021.005",
+        "T1055.011",
+        "T1059.012"
+    ],
+    "clean_text": "On 2023-10-15, security analysts at a fictional energy company, 'GridSecure Inc.,' detected anomalous activity in their VMware vSphere environment, which led to the discovery of the 'ShadowViper' campaign. The company, which manages power distribution networks across the Midwest, reported unusual system slowdowns and unauthorized account creations. Initial investigation revealed that the actors likely conducted reconnaissance through open-source intelligence gathering, though no specific technique IDs are tagged here as per the scenario. The attack began with the adversary using stolen administrator hashes to authenticate to a file server via pth.exe, enabling them to access sensitive configuration files. Once inside, they employed PsExec to remotely create domain accounts on multiple target systems, including Windows servers hosting critical applications. To maintain access, the actors created local admin accounts on a compromised host and used PowerShell to download malicious scripts, such as 'host_info.ps1', which profiled the system by collecting hardware details and network configurations. For persistence, the malware wrote a malicious DLL into the memory space of explorer.exe and utilized the /proc/ filepath to mount and bind payloads in memory, effectively removing on-disk artifacts to evade detection. Lateral movement was achieved by deploying TightVNC to control compromised hosts, allowing real-time interaction with systems. In a disruptive phase, the adversary executed vim-cmd commands via the hypervisor CLI to power off critical virtual machines, causing temporary service outages. Additionally, a malicious script accessed the integrated camera on a compromised laptop, capturing video surveillance data for potential extortion or intelligence purposes. System logs from GridSecure Inc. showed increased network traffic to unknown IP addresses during this period, but these details are not tagged as they represent irrelevant noise. The campaign highlights the need for robust access controls and monitoring of virtualized infrastructure.",
+    "tagged_text": "On 2023-10-15, security analysts at a fictional energy company, 'GridSecure Inc.,' detected anomalous activity in their VMware vSphere environment, which led to the discovery of the 'ShadowViper' campaign. The company, which manages power distribution networks across the Midwest, reported unusual system slowdowns and unauthorized account creations. Initial investigation revealed that the actors likely conducted reconnaissance through open-source intelligence gathering, though no specific technique IDs are tagged here as per the scenario. The attack began with the adversary using stolen administrator hashes to authenticate to a file server via pth.exe [T1550.002], enabling them to access sensitive configuration files. Once inside, they employed PsExec to remotely create domain accounts [T1136.002] on multiple target systems, including Windows servers hosting critical applications. To maintain access, the actors created local admin accounts [T1078.003] on a compromised host and used PowerShell to download malicious scripts, such as 'host_info.ps1' [T1104], which profiled the system by collecting hardware details and network configurations. For persistence, the malware wrote a malicious DLL into the memory space of explorer.exe [T1055.011] and utilized the /proc/ filepath to mount and bind payloads in memory [T1055.009], effectively removing on-disk artifacts to evade detection. Lateral movement was achieved by deploying TightVNC [T1021.005] to control compromised hosts, allowing real-time interaction with systems. In a disruptive phase, the adversary executed vim-cmd commands via the hypervisor CLI [T1059.012] to power off critical virtual machines, causing temporary service outages. Additionally, a malicious script accessed the integrated camera on a compromised laptop [T1125], capturing video surveillance data for potential extortion or intelligence purposes. System logs from GridSecure Inc. showed increased network traffic to unknown IP addresses during this period, but these details are not tagged as they represent irrelevant noise. The campaign highlights the need for robust access controls and monitoring of virtualized infrastructure.",
+    "sentence_annotations": [
+        {
+            "sentence": "ps1', which profiled the system by collecting hardware details and network configurations.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        },
+        {
+            "sentence": "Additionally, a malicious script accessed the integrated camera on a compromised laptop, capturing video surveillance data for potential extortion or intelligence purposes.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowViper' Targeting Virtualized Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowViper,' targeting virtualized environments in critical infrastructure sectors. The campaign involves initial access via compromised credentials, lateral movement using remote administration tools, and data exfiltration through multi-stage channels, with a focus on disrupting operations by manipulating hypervisor components and establishing persistence in memory.",
+        "full_report_text": "On 2023-10-15, security analysts at a fictional energy company, 'GridSecure Inc.,' detected anomalous activity in their VMware vSphere environment, which led to the discovery of the 'ShadowViper' campaign. The company, which manages power distribution networks across the Midwest, reported unusual system slowdowns and unauthorized account creations. Initial investigation revealed that the actors likely conducted reconnaissance through open-source intelligence gathering, though no specific technique IDs are tagged here as per the scenario. The attack began with the adversary using stolen administrator hashes to authenticate to a file server via pth.exe [T1550.002], enabling them to access sensitive configuration files. Once inside, they employed PsExec to remotely create domain accounts [T1136.002] on multiple target systems, including Windows servers hosting critical applications. To maintain access, the actors created local admin accounts [T1078.003] on a compromised host and used PowerShell to download malicious scripts, such as 'host_info.ps1' [T1104], which profiled the system by collecting hardware details and network configurations. For persistence, the malware wrote a malicious DLL into the memory space of explorer.exe [T1055.011] and utilized the /proc/ filepath to mount and bind payloads in memory [T1055.009], effectively removing on-disk artifacts to evade detection. Lateral movement was achieved by deploying TightVNC [T1021.005] to control compromised hosts, allowing real-time interaction with systems. In a disruptive phase, the adversary executed vim-cmd commands via the hypervisor CLI [T1059.012] to power off critical virtual machines, causing temporary service outages. Additionally, a malicious script accessed the integrated camera on a compromised laptop [T1125], capturing video surveillance data for potential extortion or intelligence purposes. System logs from GridSecure Inc. showed increased network traffic to unknown IP addresses during this period, but these details are not tagged as they represent irrelevant noise. The campaign highlights the need for robust access controls and monitoring of virtualized infrastructure.",
+        "techniques_used": [
+            "T1550.002",
+            "T1136.002",
+            "T1078.003",
+            "T1104",
+            "T1055.011",
+            "T1055.009",
+            "T1021.005",
+            "T1059.012",
+            "T1125"
+        ]
+    }
+}

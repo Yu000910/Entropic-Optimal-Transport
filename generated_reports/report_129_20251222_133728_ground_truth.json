@@ -1,0 +1,71 @@
+{
+    "report_id": "report_129",
+    "generated_at": "20251222_133728",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1059",
+        "T1550.001",
+        "T1550.004",
+        "T1071.004",
+        "T1071.001",
+        "T1491.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.002",
+        "T1059",
+        "T1550.001",
+        "T1550.004",
+        "T1071.004",
+        "T1071.001",
+        "T1491.002"
+    ],
+    "actual_found_ids": [
+        "T1071.001",
+        "T1589",
+        "T1550.004",
+        "T1059",
+        "T1550.001",
+        "T1078.002",
+        "T1071.004",
+        "T1491.002"
+    ],
+    "clean_text": "SecureFin Corp, a financial services provider with 500 employees, reported anomalous network activity on October 26, 2024, after an internal audit flagged unauthorized access to their customer portal. The firm's IT team noted unusual DNS queries and HTTP traffic spikes originating from their primary domain controller. Background: SecureFin recently migrated to a hybrid cloud environment, integrating Azure AD with on-premises Active Directory, which may have introduced configuration gaps. Initial logs show failed login attempts from IP addresses in Eastern Europe, but these were dismissed as noise at the time. The actors likely conducted reconnaissance to identify vulnerable domain accounts. They then used stolen domain admin credentials to gain initial access, exploiting weak password policies. Once inside, the adversary employed a command-line interface to execute malicious scripts, simultaneously using stolen service account tokens to pivot between systems and collecting web session cookies from browser local storage to bypass multi-factor authentication. For command and control, they leveraged DNS tunnelling to exfiltrate data covertly while using HTTP protocols for secondary communication channels. System logs from the web server indicated unauthorized modifications at 03:00 UTC, including altered HTML files. The campaign culminated in the actors modifying the company's main website to redirect visitors to a phishing site, causing customer complaints and a temporary service outage. Incident response teams isolated affected systems, but residual artifacts suggest possible persistence mechanisms.",
+    "tagged_text": "SecureFin Corp, a financial services provider with 500 employees, reported anomalous network activity on October 26, 2024, after an internal audit flagged unauthorized access to their customer portal. The firm's IT team noted unusual DNS queries and HTTP traffic spikes originating from their primary domain controller. Background: SecureFin recently migrated to a hybrid cloud environment, integrating Azure AD with on-premises Active Directory, which may have introduced configuration gaps. Initial logs show failed login attempts from IP addresses in Eastern Europe, but these were dismissed as noise at the time. The actors likely conducted reconnaissance [T1589] to identify vulnerable domain accounts. They then used stolen domain admin credentials [T1078.002] to gain initial access, exploiting weak password policies. Once inside, the adversary employed a command-line interface [T1059] to execute malicious scripts, simultaneously using stolen service account tokens [T1550.001] to pivot between systems and collecting web session cookies [T1550.004] from browser local storage to bypass multi-factor authentication. For command and control, they leveraged DNS tunnelling [T1071.004] to exfiltrate data covertly while using HTTP protocols [T1071.001] for secondary communication channels. System logs from the web server indicated unauthorized modifications at 03:00 UTC, including altered HTML files. The campaign culminated in the actors modifying the company's main website [T1491.002] to redirect visitors to a phishing site, causing customer complaints and a temporary service outage. Incident response teams isolated affected systems, but residual artifacts suggest possible persistence mechanisms.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify vulnerable domain accounts.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Once inside, the adversary employed a command-line interface to execute malicious scripts, simultaneously using stolen service account tokens [T1550.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional Threat Actor 'Crimson Serpent'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Serpent' targeting a mid-sized financial services firm, 'SecureFin Corp', for training purposes. The attack involved credential theft, lateral movement, and data exfiltration, culminating in website defacement.",
+        "full_report_text": "SecureFin Corp, a financial services provider with 500 employees, reported anomalous network activity on October 26, 2024, after an internal audit flagged unauthorized access to their customer portal. The firm's IT team noted unusual DNS queries and HTTP traffic spikes originating from their primary domain controller. Background: SecureFin recently migrated to a hybrid cloud environment, integrating Azure AD with on-premises Active Directory, which may have introduced configuration gaps. Initial logs show failed login attempts from IP addresses in Eastern Europe, but these were dismissed as noise at the time. The actors likely conducted reconnaissance [T1589] to identify vulnerable domain accounts. They then used stolen domain admin credentials [T1078.002] to gain initial access, exploiting weak password policies. Once inside, the adversary employed a command-line interface [T1059] to execute malicious scripts, simultaneously using stolen service account tokens [T1550.001] to pivot between systems and collecting web session cookies [T1550.004] from browser local storage to bypass multi-factor authentication. For command and control, they leveraged DNS tunnelling [T1071.004] to exfiltrate data covertly while using HTTP protocols [T1071.001] for secondary communication channels. System logs from the web server indicated unauthorized modifications at 03:00 UTC, including altered HTML files. The campaign culminated in the actors modifying the company's main website [T1491.002] to redirect visitors to a phishing site, causing customer complaints and a temporary service outage. Incident response teams isolated affected systems, but residual artifacts suggest possible persistence mechanisms.",
+        "techniques_used": [
+            "T1589",
+            "T1078.002",
+            "T1059",
+            "T1550.001",
+            "T1550.004",
+            "T1071.004",
+            "T1071.001",
+            "T1491.002"
+        ]
+    }
+}

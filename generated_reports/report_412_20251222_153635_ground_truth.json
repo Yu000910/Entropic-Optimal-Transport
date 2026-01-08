@@ -1,0 +1,88 @@
+{
+    "report_id": "report_412",
+    "generated_at": "20251222_153635",
+    "scenario_target_ids": [
+        "T1078",
+        "T1053",
+        "T1205.001",
+        "T1087.003",
+        "T1550.002",
+        "T1213.005",
+        "T1219.003",
+        "T1567.001",
+        "T1020.001",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1550.002",
+        "T1053",
+        "T1205.001",
+        "T1087.003",
+        "T1213.005",
+        "T1219.003",
+        "T1567.001",
+        "T1020.001",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1550.002",
+        "T1213.005",
+        "T1489",
+        "T1205.001",
+        "T1219.003",
+        "T1078",
+        "T1087.003",
+        "T1053",
+        "T1020.001",
+        "T1567.001"
+    ],
+    "clean_text": "On 2023-10-15, security analysts at 'GlobalDefense Corp' detected anomalous activity in their internal network, traced to a series of coordinated intrusions beginning in early September. The company, a mid-sized provider of industrial control systems, reported unusual logins from external IP addresses associated with known malicious infrastructure. Initial investigation revealed that the adversary likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though no specific techniques were tagged in this phase. The attack commenced with the compromise of valid user accounts, where threat actors utilized credential dumpers like Mimikatz.exe to harvest NTLM hashes from the Windows security subsystem, enabling pass-the-hash attacks to move laterally across the domain. Subsequently, the actors employed schtasks.exe to create a scheduled task that executed a malicious payload weekly with elevated privileges, while simultaneously using libpcap sniffing to implement port knocking for establishing hidden command-and-control channels. In parallel, malicious scripts were deployed to dump the Google Workspace Directory, extracting all user email accounts and accessing Microsoft Teams via compromised credentials to mine sensitive information from messaging applications. To maintain persistent access, the attackers exploited PiKVM hardware for remote management, ensuring continuity even after primary C2 infrastructure was blocked. For exfiltration, they used a compromised access token to collect system configuration files and store them in a GitHub Gist via the GitHub API, while employing ROMMONkit to create a traffic mirroring channel for continuous data theft through traffic duplication. Finally, in a destructive phase, the malware attempted to kill processes associated with Exchange, Microsoft SQL Server, and MySQL to facilitate data encryption, though this was mitigated by endpoint detection and response (EDR) tools. Log analysis showed multiple failed login attempts from IP 192.168.1.100, unrelated to the tagged techniques, and system administrators noted increased CPU usage on server 'SRV-02' during off-hours, which was later attributed to scheduled maintenance.",
+    "tagged_text": "On 2023-10-15, security analysts at 'GlobalDefense Corp' detected anomalous activity in their internal network, traced to a series of coordinated intrusions beginning in early September. The company, a mid-sized provider of industrial control systems, reported unusual logins from external IP addresses associated with known malicious infrastructure. Initial investigation revealed that the adversary likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though no specific techniques were tagged in this phase. The attack commenced with the compromise of valid user accounts [T1078], where threat actors utilized credential dumpers like Mimikatz.exe to harvest NTLM hashes from the Windows security subsystem, enabling pass-the-hash attacks [T1550.002] to move laterally across the domain. Subsequently, the actors employed schtasks.exe to create a scheduled task [T1053] that executed a malicious payload weekly with elevated privileges, while simultaneously using libpcap sniffing to implement port knocking [T1205.001] for establishing hidden command-and-control channels. In parallel, malicious scripts were deployed to dump the Google Workspace Directory, extracting all user email accounts [T1087.003] and accessing Microsoft Teams via compromised credentials to mine sensitive information from messaging applications [T1213.005]. To maintain persistent access, the attackers exploited PiKVM hardware [T1219.003] for remote management, ensuring continuity even after primary C2 infrastructure was blocked. For exfiltration, they used a compromised access token to collect system configuration files and store them in a GitHub Gist via the GitHub API [T1567.001], while employing ROMMONkit to create a traffic mirroring channel for continuous data theft through traffic duplication [T1020.001]. Finally, in a destructive phase, the malware attempted to kill processes associated with Exchange, Microsoft SQL Server, and MySQL [T1489] to facilitate data encryption, though this was mitigated by endpoint detection and response (EDR) tools. Log analysis showed multiple failed login attempts from IP 192.168.1.100, unrelated to the tagged techniques, and system administrators noted increased CPU usage on server 'SRV-02' during off-hours, which was later attributed to scheduled maintenance.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack commenced with the compromise of valid user accounts, where threat actors utilized credential dumpers like Mimikatz.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "exe to create a scheduled task that executed a malicious payload weekly with elevated privileges, while simultaneously using libpcap sniffing to implement port knocking [T1205.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "Finally, in a destructive phase, the malware attempted to kill processes associated with Exchange, Microsoft SQL Server, and MySQL to facilitate data encryption, though this was mitigated by endpoint detection and response (EDR) tools.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowStride' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowStride', which has been observed targeting critical infrastructure sectors, including energy and telecommunications, through a multi-phase attack leveraging stolen credentials, persistence mechanisms, and sophisticated exfiltration techniques. The campaign demonstrates advanced tactics such as port knocking for stealthy command-and-control and hardware-based remote access for resilience.",
+        "full_report_text": "On 2023-10-15, security analysts at 'GlobalDefense Corp' detected anomalous activity in their internal network, traced to a series of coordinated intrusions beginning in early September. The company, a mid-sized provider of industrial control systems, reported unusual logins from external IP addresses associated with known malicious infrastructure. Initial investigation revealed that the adversary likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though no specific techniques were tagged in this phase. The attack commenced with the compromise of valid user accounts [T1078], where threat actors utilized credential dumpers like Mimikatz.exe to harvest NTLM hashes from the Windows security subsystem, enabling pass-the-hash attacks [T1550.002] to move laterally across the domain. Subsequently, the actors employed schtasks.exe to create a scheduled task [T1053] that executed a malicious payload weekly with elevated privileges, while simultaneously using libpcap sniffing to implement port knocking [T1205.001] for establishing hidden command-and-control channels. In parallel, malicious scripts were deployed to dump the Google Workspace Directory, extracting all user email accounts [T1087.003] and accessing Microsoft Teams via compromised credentials to mine sensitive information from messaging applications [T1213.005]. To maintain persistent access, the attackers exploited PiKVM hardware [T1219.003] for remote management, ensuring continuity even after primary C2 infrastructure was blocked. For exfiltration, they used a compromised access token to collect system configuration files and store them in a GitHub Gist via the GitHub API [T1567.001], while employing ROMMONkit to create a traffic mirroring channel for continuous data theft through traffic duplication [T1020.001]. Finally, in a destructive phase, the malware attempted to kill processes associated with Exchange, Microsoft SQL Server, and MySQL [T1489] to facilitate data encryption, though this was mitigated by endpoint detection and response (EDR) tools. Log analysis showed multiple failed login attempts from IP 192.168.1.100, unrelated to the tagged techniques, and system administrators noted increased CPU usage on server 'SRV-02' during off-hours, which was later attributed to scheduled maintenance.",
+        "techniques_used": [
+            "T1078",
+            "T1550.002",
+            "T1053",
+            "T1205.001",
+            "T1087.003",
+            "T1213.005",
+            "T1219.003",
+            "T1567.001",
+            "T1020.001",
+            "T1489"
+        ]
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "report_id": "report_524",
+    "generated_at": "20251222_162514",
+    "scenario_target_ids": [
+        "T1199",
+        "T1569.002",
+        "T1556.008",
+        "T1546.008",
+        "T1218.003",
+        "T1555",
+        "T1556.004",
+        "T1571",
+        "T1219",
+        "T1048.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1569.002",
+        "T1556.008",
+        "T1546.008",
+        "T1218.003",
+        "T1555",
+        "T1556.004",
+        "T1571",
+        "T1219",
+        "T1048.001"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1555",
+        "T1546.008",
+        "T1218.003",
+        "T1569.002",
+        "T1571",
+        "T1556.008",
+        "T1219",
+        "T1048.001",
+        "T1556.004"
+    ],
+    "clean_text": "Background: 'Sandstone Serpent' is a fictional advanced persistent threat (APT) group believed to operate with espionage and financial motives. In this simulated scenario, the group targeted 'TeleGlobal Networks,' a mid-sized ISP, to gain access to its enterprise customers, including 'FinSecure Bank.' TeleGlobal's network logs show increased anomalous RDP traffic on non-standard ports starting in early April 2024, but initial access likely occurred earlier via trusted relationships. The actors exploited a trusted network connection between TeleGlobal and FinSecure, established for managed security services, to move laterally into the bank's environment without triggering standard perimeter defenses. Once inside FinSecure, they created a Windows service named 'UpdateHelper' to execute encoded PowerShell commands that downloaded and ran a malicious DLL, which simultaneously modified the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry entry to load a credential-capturing DLL at system startup. System administrators reported unusual cmd.exe pop-ups; forensic analysis revealed the actors had replaced utilman.exe with a malicious copy to trigger cmd.exe execution with elevated SYSTEM permissions, allowing them to abuse CMSTP.exe to load a DLL that established a reverse shell to a command and control server. The credential-capturing DLL harvested Outlook passwords from password stores and used code injection to load implanted_code.dll with embedded hardcoded passwords for network device authentication. To maintain persistence and access, the actors opened non-standard ports 28035, 32467, 41578, and 46892 for RDP connections and deployed remote access tools including a VNC plugin and Ammyy Admin. Finally, they employed RC4 encryption on stolen intellectual property, such as financial schematics, before exfiltrating it via FTP over a symmetric encrypted non-C2 protocol. Logs from FinSecure's SIEM showed multiple failed login attempts from unknown IPs prior to the campaign, but these were dismissed as noise. The bank's incident response team was alerted after unusual network traffic spikes were detected during a routine audit.",
+    "tagged_text": "Background: 'Sandstone Serpent' is a fictional advanced persistent threat (APT) group believed to operate with espionage and financial motives. In this simulated scenario, the group targeted 'TeleGlobal Networks,' a mid-sized ISP, to gain access to its enterprise customers, including 'FinSecure Bank.' TeleGlobal's network logs show increased anomalous RDP traffic on non-standard ports starting in early April 2024, but initial access likely occurred earlier via trusted relationships. The actors exploited a trusted network connection between TeleGlobal and FinSecure, established for managed security services, to move laterally into the bank's environment without triggering standard perimeter defenses [T1199]. Once inside FinSecure, they created a Windows service named 'UpdateHelper' to execute encoded PowerShell commands that downloaded and ran a malicious DLL, which simultaneously modified the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry entry to load a credential-capturing DLL at system startup [T1569.002][T1556.008]. System administrators reported unusual cmd.exe pop-ups; forensic analysis revealed the actors had replaced utilman.exe with a malicious copy to trigger cmd.exe execution with elevated SYSTEM permissions, allowing them to abuse CMSTP.exe to load a DLL that established a reverse shell to a command and control server [T1546.008][T1218.003]. The credential-capturing DLL harvested Outlook passwords from password stores and used code injection to load implanted_code.dll with embedded hardcoded passwords for network device authentication [T1555][T1556.004]. To maintain persistence and access, the actors opened non-standard ports 28035, 32467, 41578, and 46892 for RDP connections and deployed remote access tools including a VNC plugin and Ammyy Admin [T1571][T1219]. Finally, they employed RC4 encryption on stolen intellectual property, such as financial schematics, before exfiltrating it via FTP over a symmetric encrypted non-C2 protocol [T1048.001]. Logs from FinSecure's SIEM showed multiple failed login attempts from unknown IPs prior to the campaign, but these were dismissed as noise. The bank's incident response team was alerted after unusual network traffic spikes were detected during a routine audit.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors exploited a trusted network connection between TeleGlobal and FinSecure, established for managed security services, to move laterally into the bank's environment without triggering standard perimeter defenses.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "dll with embedded hardcoded passwords for network device authentication[T1556.",
+            "technique_id": "T1555",
+            "technique_name": "Credentials from Password Stores"
+        },
+        {
+            "sentence": "To maintain persistence and access, the actors opened non-standard ports 28035, 32467, 41578, and 46892 for RDP connections and deployed remote access tools including a VNC plugin and Ammyy Admin.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        },
+        {
+            "sentence": "To maintain persistence and access, the actors opened non-standard ports 28035, 32467, 41578, and 46892 for RDP connections and deployed remote access tools including a VNC plugin and Ammyy Admin.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL Campaign 'Sandstone Serpent' Targeting Telecommunications and Service Providers",
+        "summary": "This advisory details a simulated, fictional campaign by a threat actor designated 'Sandstone Serpent' targeting telecommunications and managed service providers (MSPs) to pivot into customer networks. The activity leverages trusted relationships, service execution, credential theft via network provider DLLs and accessibility feature abuse, and exfiltration over encrypted protocols. This report is for blue team training to recognize complex, multi-technique attack chains.",
+        "full_report_text": "Background: 'Sandstone Serpent' is a fictional advanced persistent threat (APT) group believed to operate with espionage and financial motives. In this simulated scenario, the group targeted 'TeleGlobal Networks,' a mid-sized ISP, to gain access to its enterprise customers, including 'FinSecure Bank.' TeleGlobal's network logs show increased anomalous RDP traffic on non-standard ports starting in early April 2024, but initial access likely occurred earlier via trusted relationships. The actors exploited a trusted network connection between TeleGlobal and FinSecure, established for managed security services, to move laterally into the bank's environment without triggering standard perimeter defenses [T1199]. Once inside FinSecure, they created a Windows service named 'UpdateHelper' to execute encoded PowerShell commands that downloaded and ran a malicious DLL, which simultaneously modified the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry entry to load a credential-capturing DLL at system startup [T1569.002][T1556.008]. System administrators reported unusual cmd.exe pop-ups; forensic analysis revealed the actors had replaced utilman.exe with a malicious copy to trigger cmd.exe execution with elevated SYSTEM permissions, allowing them to abuse CMSTP.exe to load a DLL that established a reverse shell to a command and control server [T1546.008][T1218.003]. The credential-capturing DLL harvested Outlook passwords from password stores and used code injection to load implanted_code.dll with embedded hardcoded passwords for network device authentication [T1555][T1556.004]. To maintain persistence and access, the actors opened non-standard ports 28035, 32467, 41578, and 46892 for RDP connections and deployed remote access tools including a VNC plugin and Ammyy Admin [T1571][T1219]. Finally, they employed RC4 encryption on stolen intellectual property, such as financial schematics, before exfiltrating it via FTP over a symmetric encrypted non-C2 protocol [T1048.001]. Logs from FinSecure's SIEM showed multiple failed login attempts from unknown IPs prior to the campaign, but these were dismissed as noise. The bank's incident response team was alerted after unusual network traffic spikes were detected during a routine audit.",
+        "techniques_used": [
+            "T1199",
+            "T1569.002",
+            "T1556.008",
+            "T1546.008",
+            "T1218.003",
+            "T1555",
+            "T1556.004",
+            "T1571",
+            "T1219",
+            "T1048.001"
+        ]
+    }
+}

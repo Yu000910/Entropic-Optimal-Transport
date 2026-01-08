@@ -1,0 +1,88 @@
+{
+    "report_id": "report_387",
+    "generated_at": "20251222_152546",
+    "scenario_target_ids": [
+        "T1588.001",
+        "T1583.006",
+        "T1190",
+        "T1129",
+        "T1098",
+        "T1036.009",
+        "T1573.001",
+        "T1041",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1588.001",
+        "T1583.006",
+        "T1190",
+        "T1129",
+        "T1098",
+        "T1036.009",
+        "T1573.001",
+        "T1041",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1498.001",
+        "T1583.006",
+        "T1098",
+        "T1573.001",
+        "T1190",
+        "T1036.009",
+        "T1041",
+        "T1588.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional training scenario based on observed tactics of threat actors in the financial sector. This report simulates an attack by 'Crimson Tide', a group with suspected ties to underground forums, using techniques inspired by historical incidents like Night Dragon and Magic Hound. The campaign begins with reconnaissance, where actors likely gather target information from public sources, though specific logs from Acme Financial Corp show no unusual external scans in the weeks prior. Initial access is achieved by exploiting a vulnerability in a public-facing web application, specifically leveraging CVE-2021-35464 in a ForgeRock OpenAM server, as seen in C0027 campaigns. Concurrently, the actors acquire and deploy malware, such as Trojans sourced from hacker websites, and utilize compromised Amazon S3 buckets for command and control (C2) infrastructure, mimicking Magic Hound's use of web services. Once inside, execution involves loading shared modules, where the malware employs dlopen() and dlsym() to dynamically load a .dylib file and execute functions within it, similar to OSX_OCEANLOTUS.D. Persistence is established through account manipulation, with attackers dumping credentials from Windows Credential Manager to obtain domain authentication materials and create backdoor accounts. Defense evasion is enhanced by breaking process trees, where the malware uses fork() to split activities across multiple unrelated processes, and employing symmetric cryptography to encrypt C2 traffic using XOR with a hard-coded key, as observed in StrifeWater. Command and control is maintained through these encrypted channels, leading to exfiltration over C2, where data is siphoned via Cobalt Strike-like beacons, akin to Chimera's methods. Impact culminates in a direct network flood, with infected endpoints sending UDP flood packets to disrupt legitimate communications, causing minor service degradation in test environments. Logs from victim systems show increased network traffic but no actual data loss, as this is a training exercise. Recommendations include patching public applications, monitoring for unusual process trees, and implementing network segmentation to mitigate such attacks.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional training scenario based on observed tactics of threat actors in the financial sector. This report simulates an attack by 'Crimson Tide', a group with suspected ties to underground forums, using techniques inspired by historical incidents like Night Dragon and Magic Hound. The campaign begins with reconnaissance, where actors likely gather target information from public sources, though specific logs from Acme Financial Corp show no unusual external scans in the weeks prior. Initial access is achieved by exploiting a vulnerability in a public-facing web application [T1190], specifically leveraging CVE-2021-35464 in a ForgeRock OpenAM server, as seen in C0027 campaigns. Concurrently, the actors acquire and deploy malware [T1588.001], such as Trojans sourced from hacker websites, and utilize compromised Amazon S3 buckets for command and control (C2) infrastructure [T1583.006], mimicking Magic Hound's use of web services. Once inside, execution involves loading shared modules [T1129], where the malware employs dlopen() and dlsym() to dynamically load a .dylib file and execute functions within it, similar to OSX_OCEANLOTUS.D. Persistence is established through account manipulation [T1098], with attackers dumping credentials from Windows Credential Manager to obtain domain authentication materials and create backdoor accounts. Defense evasion is enhanced by breaking process trees [T1036.009], where the malware uses fork() to split activities across multiple unrelated processes, and employing symmetric cryptography [T1573.001] to encrypt C2 traffic using XOR with a hard-coded key, as observed in StrifeWater. Command and control is maintained through these encrypted channels, leading to exfiltration over C2 [T1041], where data is siphoned via Cobalt Strike-like beacons, akin to Chimera's methods. Impact culminates in a direct network flood [T1498.001], with infected endpoints sending UDP flood packets to disrupt legitimate communications, causing minor service degradation in test environments. Logs from victim systems show increased network traffic but no actual data loss, as this is a training exercise. Recommendations include patching public applications, monitoring for unusual process trees, and implementing network segmentation to mitigate such attacks.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access is achieved by exploiting a vulnerability in a public-facing web application, specifically leveraging CVE-2021-35464 in a ForgeRock OpenAM server, as seen in C0027 campaigns.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Once inside, execution involves loading shared modules, where the malware employs dlopen() and dlsym() to dynamically load a.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "Persistence is established through account manipulation, with attackers dumping credentials from Windows Credential Manager to obtain domain authentication materials and create backdoor accounts.",
+            "technique_id": "T1098",
+            "technique_name": "Account Manipulation"
+        },
+        {
+            "sentence": "Command and control is maintained through these encrypted channels, leading to exfiltration over C2, where data is siphoned via Cobalt Strike-like beacons, akin to Chimera's methods.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Tide' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'Crimson Tide', targeting financial institutions. Based on intelligence from the Federal Bureau of Investigation (FBI), CISA, and NSA, 'Crimson Tide' employs a multi-stage attack leveraging web services, public exploits, and malware to compromise networks, manipulate accounts, and exfiltrate data while using encryption and process manipulation to evade detection. The campaign includes disruptive network flooding as a final stage. This report is for educational purposes to train blue teams on identifying and mitigating such tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional training scenario based on observed tactics of threat actors in the financial sector. This report simulates an attack by 'Crimson Tide', a group with suspected ties to underground forums, using techniques inspired by historical incidents like Night Dragon and Magic Hound. The campaign begins with reconnaissance, where actors likely gather target information from public sources, though specific logs from Acme Financial Corp show no unusual external scans in the weeks prior. Initial access is achieved by exploiting a vulnerability in a public-facing web application [T1190], specifically leveraging CVE-2021-35464 in a ForgeRock OpenAM server, as seen in C0027 campaigns. Concurrently, the actors acquire and deploy malware [T1588.001], such as Trojans sourced from hacker websites, and utilize compromised Amazon S3 buckets for command and control (C2) infrastructure [T1583.006], mimicking Magic Hound's use of web services. Once inside, execution involves loading shared modules [T1129], where the malware employs dlopen() and dlsym() to dynamically load a .dylib file and execute functions within it, similar to OSX_OCEANLOTUS.D. Persistence is established through account manipulation [T1098], with attackers dumping credentials from Windows Credential Manager to obtain domain authentication materials and create backdoor accounts. Defense evasion is enhanced by breaking process trees [T1036.009], where the malware uses fork() to split activities across multiple unrelated processes, and employing symmetric cryptography [T1573.001] to encrypt C2 traffic using XOR with a hard-coded key, as observed in StrifeWater. Command and control is maintained through these encrypted channels, leading to exfiltration over C2 [T1041], where data is siphoned via Cobalt Strike-like beacons, akin to Chimera's methods. Impact culminates in a direct network flood [T1498.001], with infected endpoints sending UDP flood packets to disrupt legitimate communications, causing minor service degradation in test environments. Logs from victim systems show increased network traffic but no actual data loss, as this is a training exercise. Recommendations include patching public applications, monitoring for unusual process trees, and implementing network segmentation to mitigate such attacks.",
+        "techniques_used": [
+            "T1588.001",
+            "T1583.006",
+            "T1190",
+            "T1129",
+            "T1098",
+            "T1036.009",
+            "T1573.001",
+            "T1041",
+            "T1498.001"
+        ]
+    }
+}

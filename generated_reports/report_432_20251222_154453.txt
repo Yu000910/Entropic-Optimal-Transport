@@ -1,0 +1,21 @@
+### Background
+SecureBank Corp., a fictional financial services company based in New York, reported anomalous network activity on March 15, 2024, after an employee discovered unauthorized changes to a network router configuration. Initial investigation revealed a multi-stage attack leveraging both online and physical vectors. The company's security team, in collaboration with fictional incident responders, traced the activity to the threat actor group 'ShadowStrike', known for targeting financial data in training simulations.
+
+### Attack Narrative
+**Reconnaissance and Initial Access:** The actors likely conducted reconnaissance by querying a paid threat intelligence feed [T1597.001] to gather targeting information about SecureBank's executives while simultaneously purchasing access to a private intelligence feed [T1597] containing details on the organization's security policies. To collect credentials, they created a malicious website mimicking a legitimate banking portal [T1589.001]. For physical access, a USB Rubber Ducky was configured to mimic a keyboard and run scripts upon connection [T1200], which an employee inadvertently plugged into a workstation during a simulated phishing exercise.
+
+**Execution and Persistence:** Upon connection, the USB device executed a script that used PowerShell to download a malicious payload while modifying registry keys to establish persistence. The attacker then dropped a malicious .vsix file into the Visual Studio extensions directory [T1176.002] to maintain access and used the 'reg add' command to configure UserInitMprLogonScript [T1037.001], ensuring payload execution at user logon. Additionally, they employed Mimikatz.exe to dump LSASS memory and extract local account credentials [T1078.003], leveraging these to move laterally within the network.
+
+**Privilege Escalation and Defense Evasion:** The adversary exploited network devices by executing 'show running-config' commands via a script [T1059.008] to exfiltrate configuration data while hijacking the vDSO's gettimeofday function [T1055.014] to execute a backdoor in process context. They also used ListPlanting [T1055.015] to inject code into a trusted process, evading detection by security tools. System logs from March 14 showed unusual process spawns, but these were initially dismissed as false positives.
+
+**Exfiltration and Impact:** For command and control (C2) communications, the malware encoded its traffic using modified Base64 with a custom character set [T1132.002] and exfiltrated sensitive financial data over the C2 channel [T1041]. Finally, to inhibit system recovery, the actors deleted shadow copies [T1490], ensuring that compromised data could not be easily restored. SecureBank's backup systems were unaffected in this simulation, but the attack highlighted potential recovery challenges.
+
+### Recommendations for Blue Teams
+- Monitor for unusual USB device activity and implement device control policies.
+- Review and restrict access to threat intelligence feeds to authorized personnel only.
+- Enhance logging for network device CLI commands and process injection techniques.
+- Conduct regular training on phishing and physical security awareness.
+- Test backup and recovery procedures to mitigate inhibition attacks.
+
+### Disclaimer
+This report is entirely fictional and created for educational purposes. Any resemblance to real entities or events is coincidental. Techniques are based on MITRE ATT&CK framework for training scenarios.

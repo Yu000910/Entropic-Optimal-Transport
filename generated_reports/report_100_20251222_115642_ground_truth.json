@@ -1,0 +1,93 @@
+{
+    "report_id": "report_100",
+    "generated_at": "20251222_115642",
+    "scenario_target_ids": [
+        "T1588",
+        "T1588.006",
+        "T1583.002",
+        "T1078.002",
+        "T1651",
+        "T1606.002",
+        "T1552.002",
+        "T1602",
+        "T1557.002",
+        "T1071.001",
+        "T1048.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1588",
+        "T1588.006",
+        "T1583.002",
+        "T1078.002",
+        "T1651",
+        "T1606.002",
+        "T1552.002",
+        "T1602",
+        "T1557.002",
+        "T1071.001",
+        "T1048.003"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1048.003",
+        "T1071.001",
+        "T1583.002",
+        "T1588",
+        "T1078.002",
+        "T1606.002",
+        "T1588.006",
+        "T1602",
+        "T1552.002",
+        "T1557.002"
+    ],
+    "clean_text": "APT-FICT likely began by conducting reconnaissance to obtain capabilities, downloading a keylogger from a hidden service on the Tor network while simultaneously searching the National Vulnerability Database for recently disclosed software flaws. The group then established infrastructure by running a PowerDNS instance on an AWS EC2 instance to create a covert DNS communication channel, which was used for command and control via HTTP protocols. Initial access was achieved by exploiting weak password policies and password reuse to gain domain access, allowing the adversary to move laterally within the network. Once inside, APT-FICT employed malicious code that abused Azure RunCommand to disable security controls on Azure VMs and used tools like AADInternals to create SAML tokens using the AD Federated Services token signing certificate. Credential harvesting was conducted by querying the registry with 'reg query HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall' to extract application installation credentials and extracting system administration credentials from the centralized configuration repository. Network reconnaissance involved monitoring broadcast traffic to find ARP requests revealing network topology through ARP cache poisoning. Data exfiltration was performed by encoding and prepending victim data as subdomains to attacker-controlled domains, exfiltrating over unencrypted non-C2 protocols via DNS lookups. Logs from the affected systems showed increased DNS queries to unknown domains and unauthorized Azure administrative activities, though some entries were related to routine system updates and user login attempts that were not malicious.",
+    "tagged_text": "APT-FICT likely began by conducting reconnaissance to obtain capabilities, downloading a keylogger from a hidden service on the Tor network [T1588] while simultaneously searching the National Vulnerability Database for recently disclosed software flaws [T1588.006]. The group then established infrastructure by running a PowerDNS instance on an AWS EC2 instance to create a covert DNS communication channel [T1583.002], which was used for command and control via HTTP protocols [T1071.001]. Initial access was achieved by exploiting weak password policies and password reuse to gain domain access [T1078.002], allowing the adversary to move laterally within the network. Once inside, APT-FICT employed malicious code that abused Azure RunCommand to disable security controls on Azure VMs [T1651] and used tools like AADInternals to create SAML tokens using the AD Federated Services token signing certificate [T1606.002]. Credential harvesting was conducted by querying the registry with 'reg query HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall' to extract application installation credentials [T1552.002] and extracting system administration credentials from the centralized configuration repository [T1602]. Network reconnaissance involved monitoring broadcast traffic to find ARP requests revealing network topology through ARP cache poisoning [T1557.002]. Data exfiltration was performed by encoding and prepending victim data as subdomains to attacker-controlled domains, exfiltrating over unencrypted non-C2 protocols via DNS lookups [T1048.003]. Logs from the affected systems showed increased DNS queries to unknown domains and unauthorized Azure administrative activities, though some entries were related to routine system updates and user login attempts that were not malicious.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT-FICT likely began by conducting reconnaissance to obtain capabilities, downloading a keylogger from a hidden service on the Tor network while simultaneously searching the National Vulnerability Database for recently disclosed software flaws [T1588.",
+            "technique_id": "T1588",
+            "technique_name": "Obtain Capabilities"
+        },
+        {
+            "sentence": "Once inside, APT-FICT employed malicious code that abused Azure RunCommand to disable security controls on Azure VMs and used tools like AADInternals to create SAML tokens using the AD Federated Services token signing certificate [T1606.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "002] and extracting system administration credentials from the centralized configuration repository.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting hybrid cloud environments. APT-FICT employs a multi-faceted approach, leveraging publicly available vulnerabilities, credential theft, and cloud administration tools to compromise networks. The campaign involves initial reconnaissance, lateral movement using domain accounts, and data exfiltration via covert channels. Blue teams are advised to review logs for anomalous DNS traffic, unauthorized Azure commands, and registry modifications.",
+        "full_report_text": "APT-FICT likely began by conducting reconnaissance to obtain capabilities, downloading a keylogger from a hidden service on the Tor network [T1588] while simultaneously searching the National Vulnerability Database for recently disclosed software flaws [T1588.006]. The group then established infrastructure by running a PowerDNS instance on an AWS EC2 instance to create a covert DNS communication channel [T1583.002], which was used for command and control via HTTP protocols [T1071.001]. Initial access was achieved by exploiting weak password policies and password reuse to gain domain access [T1078.002], allowing the adversary to move laterally within the network. Once inside, APT-FICT employed malicious code that abused Azure RunCommand to disable security controls on Azure VMs [T1651] and used tools like AADInternals to create SAML tokens using the AD Federated Services token signing certificate [T1606.002]. Credential harvesting was conducted by querying the registry with 'reg query HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall' to extract application installation credentials [T1552.002] and extracting system administration credentials from the centralized configuration repository [T1602]. Network reconnaissance involved monitoring broadcast traffic to find ARP requests revealing network topology through ARP cache poisoning [T1557.002]. Data exfiltration was performed by encoding and prepending victim data as subdomains to attacker-controlled domains, exfiltrating over unencrypted non-C2 protocols via DNS lookups [T1048.003]. Logs from the affected systems showed increased DNS queries to unknown domains and unauthorized Azure administrative activities, though some entries were related to routine system updates and user login attempts that were not malicious.",
+        "techniques_used": [
+            "T1588",
+            "T1588.006",
+            "T1583.002",
+            "T1078.002",
+            "T1651",
+            "T1606.002",
+            "T1552.002",
+            "T1602",
+            "T1557.002",
+            "T1071.001",
+            "T1048.003"
+        ]
+    }
+}

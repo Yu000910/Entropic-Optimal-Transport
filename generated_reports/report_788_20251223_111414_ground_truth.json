@@ -1,0 +1,108 @@
+{
+    "report_id": "report_788",
+    "generated_at": "20251223_111414",
+    "scenario_target_ids": [
+        "T1587.004",
+        "T1091",
+        "T1651",
+        "T1047",
+        "T1134.005",
+        "T1003.005",
+        "T1056.004",
+        "T1113",
+        "T1071.002",
+        "T1095",
+        "T1011.001",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1587.004",
+        "T1091",
+        "T1651",
+        "T1047",
+        "T1134.005",
+        "T1003.005",
+        "T1056.004",
+        "T1113",
+        "T1071.002",
+        "T1095",
+        "T1011.001",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1047",
+        "T1651",
+        "T1095",
+        "T1071.002",
+        "T1011.001",
+        "T1003.005",
+        "T1113",
+        "T1587.004",
+        "T1091",
+        "T1056.004",
+        "T1134.005"
+    ],
+    "clean_text": "CRIMSON SHADOW actors likely conduct reconnaissance to identify vulnerable applications in target networks. In one incident, the malicious script executed 'fuzz_tool.exe' to discover input validation weaknesses in a web application, which was then exploited to gain initial access. Upon compromise, the actors deployed njRAT malware, configured to replicate through removable media by copying itself to USB drives when inserted, facilitating lateral movement across air-gapped systems. In hybrid cloud environments, the actors leveraged malicious scripts that used Azure RunCommand to execute privilege escalation commands on virtual machines, while simultaneously employing Windows Management Instrumentation (WMI) queries to detect virtual machine environments and evade sandboxing. For privilege escalation, the attacker manipulated the SID-History attribute to bypass access controls and gain unauthorized administrative rights, then dumped cached domain credentials using tdbdump for lateral movement within the domain. Credential theft was further enhanced through API hooking techniques to intercept authentication calls, and the actors performed screen captures to gather sensitive information from compromised systems. For command and control (C2), the threat actor embedded C2 instructions within SMB write operations to avoid detection, while also using non-application layer protocols such as TCP and KCP over UDP for resilient communication. Data exfiltration involved multiple methods: attackers used Bluetooth pairing spoofing to establish unauthorized connections and transfer stolen data to nearby devices, and the ransomware component collected file metadata and transmitted it to webhook.site for analysis. System logs from affected endpoints showed unusual PowerShell activity and failed login attempts, though these were not directly linked to the campaign. The targeted organization, a mid-sized financial services firm with offices in New York and London, reported no significant operational disruption during this simulated exercise.",
+    "tagged_text": "CRIMSON SHADOW actors likely conduct reconnaissance to identify vulnerable applications in target networks. In one incident, the malicious script executed 'fuzz_tool.exe' to discover input validation weaknesses in a web application [T1587.004], which was then exploited to gain initial access. Upon compromise, the actors deployed njRAT malware, configured to replicate through removable media [T1091] by copying itself to USB drives when inserted, facilitating lateral movement across air-gapped systems. In hybrid cloud environments, the actors leveraged malicious scripts that used Azure RunCommand to execute privilege escalation commands on virtual machines [T1651], while simultaneously employing Windows Management Instrumentation (WMI) queries [T1047] to detect virtual machine environments and evade sandboxing. For privilege escalation, the attacker manipulated the SID-History attribute [T1134.005] to bypass access controls and gain unauthorized administrative rights, then dumped cached domain credentials using tdbdump [T1003.005] for lateral movement within the domain. Credential theft was further enhanced through API hooking techniques [T1056.004] to intercept authentication calls, and the actors performed screen captures [T1113] to gather sensitive information from compromised systems. For command and control (C2), the threat actor embedded C2 instructions within SMB write operations [T1071.002] to avoid detection, while also using non-application layer protocols such as TCP and KCP over UDP [T1095] for resilient communication. Data exfiltration involved multiple methods: attackers used Bluetooth pairing spoofing [T1011.001] to establish unauthorized connections and transfer stolen data to nearby devices, and the ransomware component collected file metadata and transmitted it to webhook.site [T1567.004] for analysis. System logs from affected endpoints showed unusual PowerShell activity and failed login attempts, though these were not directly linked to the campaign. The targeted organization, a mid-sized financial services firm with offices in New York and London, reported no significant operational disruption during this simulated exercise.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon compromise, the actors deployed njRAT malware, configured to replicate through removable media by copying itself to USB drives when inserted, facilitating lateral movement across air-gapped systems.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "In hybrid cloud environments, the actors leveraged malicious scripts that used Azure RunCommand to execute privilege escalation commands on virtual machines, while simultaneously employing Windows Management Instrumentation (WMI) queries to detect virtual machine environments and evade sandboxing.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "In hybrid cloud environments, the actors leveraged malicious scripts that used Azure RunCommand to execute privilege escalation commands on virtual machines, while simultaneously employing Windows Management Instrumentation (WMI) queries to detect virtual machine environments and evade sandboxing.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "004] to intercept authentication calls, and the actors performed screen captures to gather sensitive information from compromised systems.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        },
+        {
+            "sentence": "002] to avoid detection, while also using non-application layer protocols such as TCP and KCP over UDP for resilient communication.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group, designated as 'CRIMSON SHADOW', targeting organizations with hybrid cloud infrastructure. The campaign involves initial exploitation, lateral movement via removable media, cloud-based privilege escalation, credential theft, and data exfiltration over multiple protocols. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "CRIMSON SHADOW actors likely conduct reconnaissance to identify vulnerable applications in target networks. In one incident, the malicious script executed 'fuzz_tool.exe' to discover input validation weaknesses in a web application [T1587.004], which was then exploited to gain initial access. Upon compromise, the actors deployed njRAT malware, configured to replicate through removable media [T1091] by copying itself to USB drives when inserted, facilitating lateral movement across air-gapped systems. In hybrid cloud environments, the actors leveraged malicious scripts that used Azure RunCommand to execute privilege escalation commands on virtual machines [T1651], while simultaneously employing Windows Management Instrumentation (WMI) queries [T1047] to detect virtual machine environments and evade sandboxing. For privilege escalation, the attacker manipulated the SID-History attribute [T1134.005] to bypass access controls and gain unauthorized administrative rights, then dumped cached domain credentials using tdbdump [T1003.005] for lateral movement within the domain. Credential theft was further enhanced through API hooking techniques [T1056.004] to intercept authentication calls, and the actors performed screen captures [T1113] to gather sensitive information from compromised systems. For command and control (C2), the threat actor embedded C2 instructions within SMB write operations [T1071.002] to avoid detection, while also using non-application layer protocols such as TCP and KCP over UDP [T1095] for resilient communication. Data exfiltration involved multiple methods: attackers used Bluetooth pairing spoofing [T1011.001] to establish unauthorized connections and transfer stolen data to nearby devices, and the ransomware component collected file metadata and transmitted it to webhook.site [T1567.004] for analysis. System logs from affected endpoints showed unusual PowerShell activity and failed login attempts, though these were not directly linked to the campaign. The targeted organization, a mid-sized financial services firm with offices in New York and London, reported no significant operational disruption during this simulated exercise.",
+        "techniques_used": [
+            "T1587.004",
+            "T1091",
+            "T1651",
+            "T1047",
+            "T1134.005",
+            "T1003.005",
+            "T1056.004",
+            "T1113",
+            "T1071.002",
+            "T1095",
+            "T1011.001",
+            "T1567.004"
+        ]
+    }
+}

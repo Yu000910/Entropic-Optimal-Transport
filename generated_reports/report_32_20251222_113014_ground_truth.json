@@ -1,0 +1,73 @@
+{
+    "report_id": "report_32",
+    "generated_at": "20251222_113014",
+    "scenario_target_ids": [
+        "T1566",
+        "T1648",
+        "T1106",
+        "T1602",
+        "T1071.001",
+        "T1567.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1648",
+        "T1106",
+        "T1602",
+        "T1071.001",
+        "T1567.003"
+    ],
+    "actual_found_ids": [
+        "T1071.001",
+        "T1648",
+        "T1567.003",
+        "T1602",
+        "T1106",
+        "T1566"
+    ],
+    "clean_text": "Background: APT-42 is a fictional advanced persistent threat group with suspected ties to cybercriminal activities, focusing on data theft from multinational corporations. In this simulated scenario, the group targeted a fictional company, GlobalTech Inc., which operates in the technology sector with offices in North America and Europe. The attack was detected through anomalous network traffic and endpoint alerts, but no actual breach occurred; this narrative is constructed for educational purposes.\n\nInitial Access: The actors initiated the campaign by sending a spoofed HR notification email to employees at GlobalTech Inc., which contained a malicious executable disguised as a policy update document. The email leveraged social engineering tactics, mimicking legitimate corporate communications to bypass user awareness.\n\nExecution: Upon execution of the malicious file, the malware deployed a malicious Lambda function in a cloud environment to run code for data exfiltration, while simultaneously using the execFile function through the NSTask:launch method to execute specified files on compromised macOS systems. This multi-pronged approach allowed for persistence and evasion across different platforms.\n\nDiscovery: To gather intelligence, the adversary conducted SMB protocol queries to discover shared folders containing IT infrastructure documentation, such as network diagrams and configuration files. This activity was logged in system logs as unusual SMB traffic from internal IP addresses, but it was initially overlooked due to high network noise.\n\nCommand and Control (C2): For communication, the malware, codenamed Elise, established C2 channels over HTTP or HTTPS to transmit commands and receive updates. Network monitoring at GlobalTech Inc. captured encrypted traffic to suspicious domains, though it was masked within normal web activity.\n\nExfiltration: Finally, the spyware collected email archives using the 'malicious.ps1' collection module and exfiltrated the data to text storage sites, such as pastebin-like services, to avoid detection. This step involved compressing data before transmission, which was noted in endpoint logs as abnormal PowerShell script execution.\n\nIrrelevant Information: GlobalTech Inc. was founded in 2005 and specializes in cloud computing solutions, with annual revenue of $2 billion. During the investigation, system logs showed routine maintenance activities, including scheduled backups and software updates, which were unrelated to the attack. The company's security team conducted a tabletop exercise the previous week, focusing on phishing response, but this did not prevent the simulated incident.\n\nRecommendations for Blue Teams: Enhance email filtering for spoofed domains, monitor cloud function deployments for unauthorized activities, implement network segmentation to restrict SMB access, and deploy anomaly detection for web protocol traffic. Regular training on social engineering and incident response drills is advised.",
+    "tagged_text": "Background: APT-42 is a fictional advanced persistent threat group with suspected ties to cybercriminal activities, focusing on data theft from multinational corporations. In this simulated scenario, the group targeted a fictional company, GlobalTech Inc., which operates in the technology sector with offices in North America and Europe. The attack was detected through anomalous network traffic and endpoint alerts, but no actual breach occurred; this narrative is constructed for educational purposes.\n\nInitial Access: The actors initiated the campaign by sending a spoofed HR notification email to employees at GlobalTech Inc., which contained a malicious executable disguised as a policy update document [T1566]. The email leveraged social engineering tactics, mimicking legitimate corporate communications to bypass user awareness.\n\nExecution: Upon execution of the malicious file, the malware deployed a malicious Lambda function in a cloud environment to run code for data exfiltration [T1648], while simultaneously using the execFile function through the NSTask:launch method to execute specified files on compromised macOS systems [T1106]. This multi-pronged approach allowed for persistence and evasion across different platforms.\n\nDiscovery: To gather intelligence, the adversary conducted SMB protocol queries to discover shared folders containing IT infrastructure documentation, such as network diagrams and configuration files [T1602]. This activity was logged in system logs as unusual SMB traffic from internal IP addresses, but it was initially overlooked due to high network noise.\n\nCommand and Control (C2): For communication, the malware, codenamed Elise, established C2 channels over HTTP or HTTPS to transmit commands and receive updates [T1071.001]. Network monitoring at GlobalTech Inc. captured encrypted traffic to suspicious domains, though it was masked within normal web activity.\n\nExfiltration: Finally, the spyware collected email archives using the 'malicious.ps1' collection module and exfiltrated the data to text storage sites, such as pastebin-like services, to avoid detection [T1567.003]. This step involved compressing data before transmission, which was noted in endpoint logs as abnormal PowerShell script execution.\n\nIrrelevant Information: GlobalTech Inc. was founded in 2005 and specializes in cloud computing solutions, with annual revenue of $2 billion. During the investigation, system logs showed routine maintenance activities, including scheduled backups and software updates, which were unrelated to the attack. The company's security team conducted a tabletop exercise the previous week, focusing on phishing response, but this did not prevent the simulated incident.\n\nRecommendations for Blue Teams: Enhance email filtering for spoofed domains, monitor cloud function deployments for unauthorized activities, implement network segmentation to restrict SMB access, and deploy anomaly detection for web protocol traffic. Regular training on social engineering and incident response drills is advised.",
+    "sentence_annotations": [
+        {
+            "sentence": ", which contained a malicious executable disguised as a policy update document.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Execution: Upon execution of the malicious file, the malware deployed a malicious Lambda function in a cloud environment to run code for data exfiltration, while simultaneously using the execFile function through the NSTask:launch method to execute specified files on compromised macOS systems.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "Execution: Upon execution of the malicious file, the malware deployed a malicious Lambda function in a cloud environment to run code for data exfiltration, while simultaneously using the execFile function through the NSTask:launch method to execute specified files on compromised macOS systems.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "Discovery: To gather intelligence, the adversary conducted SMB protocol queries to discover shared folders containing IT infrastructure documentation, such as network diagrams and configuration files.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-42, targeting corporate environments through phishing and serverless exploitation. The campaign involves initial access via malicious emails, execution through native APIs, data discovery from configuration repositories, command and control over web protocols, and exfiltration to text storage sites. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "Background: APT-42 is a fictional advanced persistent threat group with suspected ties to cybercriminal activities, focusing on data theft from multinational corporations. In this simulated scenario, the group targeted a fictional company, GlobalTech Inc., which operates in the technology sector with offices in North America and Europe. The attack was detected through anomalous network traffic and endpoint alerts, but no actual breach occurred; this narrative is constructed for educational purposes.\n\nInitial Access: The actors initiated the campaign by sending a spoofed HR notification email to employees at GlobalTech Inc., which contained a malicious executable disguised as a policy update document [T1566]. The email leveraged social engineering tactics, mimicking legitimate corporate communications to bypass user awareness.\n\nExecution: Upon execution of the malicious file, the malware deployed a malicious Lambda function in a cloud environment to run code for data exfiltration [T1648], while simultaneously using the execFile function through the NSTask:launch method to execute specified files on compromised macOS systems [T1106]. This multi-pronged approach allowed for persistence and evasion across different platforms.\n\nDiscovery: To gather intelligence, the adversary conducted SMB protocol queries to discover shared folders containing IT infrastructure documentation, such as network diagrams and configuration files [T1602]. This activity was logged in system logs as unusual SMB traffic from internal IP addresses, but it was initially overlooked due to high network noise.\n\nCommand and Control (C2): For communication, the malware, codenamed Elise, established C2 channels over HTTP or HTTPS to transmit commands and receive updates [T1071.001]. Network monitoring at GlobalTech Inc. captured encrypted traffic to suspicious domains, though it was masked within normal web activity.\n\nExfiltration: Finally, the spyware collected email archives using the 'malicious.ps1' collection module and exfiltrated the data to text storage sites, such as pastebin-like services, to avoid detection [T1567.003]. This step involved compressing data before transmission, which was noted in endpoint logs as abnormal PowerShell script execution.\n\nIrrelevant Information: GlobalTech Inc. was founded in 2005 and specializes in cloud computing solutions, with annual revenue of $2 billion. During the investigation, system logs showed routine maintenance activities, including scheduled backups and software updates, which were unrelated to the attack. The company's security team conducted a tabletop exercise the previous week, focusing on phishing response, but this did not prevent the simulated incident.\n\nRecommendations for Blue Teams: Enhance email filtering for spoofed domains, monitor cloud function deployments for unauthorized activities, implement network segmentation to restrict SMB access, and deploy anomaly detection for web protocol traffic. Regular training on social engineering and incident response drills is advised.",
+        "techniques_used": [
+            "T1566",
+            "T1648",
+            "T1106",
+            "T1602",
+            "T1071.001",
+            "T1567.003"
+        ]
+    }
+}

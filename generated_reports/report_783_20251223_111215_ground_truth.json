@@ -1,0 +1,66 @@
+{
+    "report_id": "report_783",
+    "generated_at": "20251223_111215",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1059.007",
+        "T1059.009",
+        "T1098.007",
+        "T1037.001",
+        "T1001.002",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.001",
+        "T1059.007",
+        "T1059.009",
+        "T1098.007",
+        "T1037.001",
+        "T1001.002",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1098.007",
+        "T1059.007",
+        "T1001.002",
+        "T1589",
+        "T1037.001",
+        "T1059.009",
+        "T1020.001",
+        "T1078.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity attributed to 'Saint Bear'. This campaign demonstrates a sophisticated attack chain designed to infiltrate corporate networks, elevate privileges, maintain persistence, and exfiltrate data while evading detection. The actors likely conduct reconnaissance to identify vulnerable systems, though no specific logs were captured in this instance. Initial access was achieved by exploiting an enabled Guest account with default credentials on a remote Windows server, as discovered in system audit logs showing unauthorized logins from an external IP address. Upon gaining access, the adversary delivered malicious Microsoft Office files containing embedded JavaScript objects that, upon execution by a user, downloaded and executed payloads such as OutSteel and Saint Bot. For lateral movement, the threat actor utilized Azure Automation to remotely execute PowerShell commands across the network, while simultaneously using the backdoor to run 'net group \"Enterprise Admins\" persistent_user /add' to elevate privileges in the domain. Persistence was established by modifying registry keys to set a logon script via 'reg add HKCU\\Environment\\UserInitMprLogonScript /d \"C:\\malware.exe\" /f', ensuring malware execution upon user login. To blend malicious communications, the attacker injected command and control (C2) traffic into image files like file.jpg using steganography and modified system images through patching to establish covert data exfiltration channels via traffic mirroring, as observed in network traffic logs showing duplicated packets to external servers. The campaign highlights the need for robust monitoring of default accounts, document macros, cloud APIs, and anomalous network patterns.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity attributed to 'Saint Bear'. This campaign demonstrates a sophisticated attack chain designed to infiltrate corporate networks, elevate privileges, maintain persistence, and exfiltrate data while evading detection. The actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though no specific logs were captured in this instance. Initial access was achieved by exploiting an enabled Guest account with default credentials on a remote Windows server [T1078.001], as discovered in system audit logs showing unauthorized logins from an external IP address. Upon gaining access, the adversary delivered malicious Microsoft Office files containing embedded JavaScript objects that, upon execution by a user, downloaded and executed payloads such as OutSteel and Saint Bot [T1059.007]. For lateral movement, the threat actor utilized Azure Automation to remotely execute PowerShell commands across the network [T1059.009], while simultaneously using the backdoor to run 'net group \"Enterprise Admins\" persistent_user /add' to elevate privileges in the domain [T1098.007]. Persistence was established by modifying registry keys to set a logon script via 'reg add HKCU\\Environment\\UserInitMprLogonScript /d \"C:\\malware.exe\" /f' [T1037.001], ensuring malware execution upon user login. To blend malicious communications, the attacker injected command and control (C2) traffic into image files like file.jpg using steganography [T1001.002] and modified system images through patching to establish covert data exfiltration channels via traffic mirroring [T1020.001], as observed in network traffic logs showing duplicated packets to external servers. The campaign highlights the need for robust monitoring of default accounts, document macros, cloud APIs, and anomalous network patterns.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify vulnerable systems, though no specific logs were captured in this instance.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Saint Bear' Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Saint Bear', targeting enterprise environments for espionage and data exfiltration. The campaign leverages a combination of initial access via default accounts, execution through malicious documents, lateral movement via cloud APIs, privilege escalation, persistence mechanisms, and covert communication techniques. Blue teams are advised to review this report for training on detecting and mitigating such multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity attributed to 'Saint Bear'. This campaign demonstrates a sophisticated attack chain designed to infiltrate corporate networks, elevate privileges, maintain persistence, and exfiltrate data while evading detection. The actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though no specific logs were captured in this instance. Initial access was achieved by exploiting an enabled Guest account with default credentials on a remote Windows server [T1078.001], as discovered in system audit logs showing unauthorized logins from an external IP address. Upon gaining access, the adversary delivered malicious Microsoft Office files containing embedded JavaScript objects that, upon execution by a user, downloaded and executed payloads such as OutSteel and Saint Bot [T1059.007]. For lateral movement, the threat actor utilized Azure Automation to remotely execute PowerShell commands across the network [T1059.009], while simultaneously using the backdoor to run 'net group \"Enterprise Admins\" persistent_user /add' to elevate privileges in the domain [T1098.007]. Persistence was established by modifying registry keys to set a logon script via 'reg add HKCU\\Environment\\UserInitMprLogonScript /d \"C:\\malware.exe\" /f' [T1037.001], ensuring malware execution upon user login. To blend malicious communications, the attacker injected command and control (C2) traffic into image files like file.jpg using steganography [T1001.002] and modified system images through patching to establish covert data exfiltration channels via traffic mirroring [T1020.001], as observed in network traffic logs showing duplicated packets to external servers. The campaign highlights the need for robust monitoring of default accounts, document macros, cloud APIs, and anomalous network patterns.",
+        "techniques_used": [
+            "T1589",
+            "T1078.001",
+            "T1059.007",
+            "T1059.009",
+            "T1098.007",
+            "T1037.001",
+            "T1001.002",
+            "T1020.001"
+        ]
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "report_id": "report_69",
+    "generated_at": "20251222_131433",
+    "scenario_target_ids": [
+        "T1200",
+        "T1047",
+        "T1053.007",
+        "T1555.002",
+        "T1219.003",
+        "T1537",
+        "T1048",
+        "T1531",
+        "T1561.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1047",
+        "T1053.007",
+        "T1555.002",
+        "T1219.003",
+        "T1537",
+        "T1048",
+        "T1531",
+        "T1561.001"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1200",
+        "T1219.003",
+        "T1561.001",
+        "T1053.007",
+        "T1531",
+        "T1555.002",
+        "T1048",
+        "T1537"
+    ],
+    "clean_text": "On October 15, 2024, network administrators at GlobalTech Solutions, a mid-sized technology firm specializing in industrial control systems, discovered anomalous network traffic during a routine audit. Initial investigation revealed a passive Ethernet tap installed in the server room, likely placed by an intruder posing as maintenance personnel two weeks prior. System logs from October 10 showed unusual WMI activity originating from a compromised workstation, where the adversary employed Windows Management Instrumentation to execute remote commands and move laterally across the network while simultaneously scheduling a malicious Kubernetes CronJob with elevated privileges to deploy containers for persistent access. On macOS endpoints, forensic analysis uncovered a script that queried securityd memory to extract keychain passwords and used these credentials to abuse PiKVM hardware for remote, hardware-level control over critical servers. Between October 12 and 14, the threat actor leveraged the AWS CLI to transfer intellectual property from S3 buckets to an adversary-owned AWS account and utilized FTP to exfiltrate financial records to a malicious host. On October 14, malware executed 'Set-LocalUser -Name 'adminuser' -Enabled $false' to disable administrative accounts and overwrote files with random data before deletion to wipe disk content and hinder recovery efforts. GlobalTech's incident response team noted no prior alerts from their SIEM, highlighting gaps in monitoring for hardware intrusions and container-based attacks. The company, founded in 2005, reported no financial impact but emphasized the need for enhanced physical security and endpoint detection.",
+    "tagged_text": "On October 15, 2024, network administrators at GlobalTech Solutions, a mid-sized technology firm specializing in industrial control systems, discovered anomalous network traffic during a routine audit. Initial investigation revealed a passive Ethernet tap [T1200] installed in the server room, likely placed by an intruder posing as maintenance personnel two weeks prior. System logs from October 10 showed unusual WMI activity originating from a compromised workstation, where the adversary employed Windows Management Instrumentation [T1047] to execute remote commands and move laterally across the network while simultaneously scheduling a malicious Kubernetes CronJob with elevated privileges [T1053.007] to deploy containers for persistent access. On macOS endpoints, forensic analysis uncovered a script that queried securityd memory [T1555.002] to extract keychain passwords and used these credentials to abuse PiKVM hardware [T1219.003] for remote, hardware-level control over critical servers. Between October 12 and 14, the threat actor leveraged the AWS CLI [T1537] to transfer intellectual property from S3 buckets to an adversary-owned AWS account and utilized FTP [T1048] to exfiltrate financial records to a malicious host. On October 14, malware executed 'Set-LocalUser -Name 'adminuser' -Enabled $false' [T1531] to disable administrative accounts and overwrote files with random data before deletion [T1561.001] to wipe disk content and hinder recovery efforts. GlobalTech's incident response team noted no prior alerts from their SIEM, highlighting gaps in monitoring for hardware intrusions and container-based attacks. The company, founded in 2005, reported no financial impact but emphasized the need for enhanced physical security and endpoint detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed a passive Ethernet tap installed in the server room, likely placed by an intruder posing as maintenance personnel two weeks prior.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "System logs from October 10 showed unusual WMI activity originating from a compromised workstation, where the adversary employed Windows Management Instrumentation to execute remote commands and move laterally across the network while simultaneously scheduling a malicious Kubernetes CronJob with elevated privileges [T1053.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "Between October 12 and 14, the threat actor leveraged the AWS CLI to transfer intellectual property from S3 buckets to an adversary-owned AWS account and utilized FTP to exfiltrate financial records to a malicious host.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        },
+        {
+            "sentence": "Between October 12 and 14, the threat actor leveraged the AWS CLI to transfer intellectual property from S3 buckets to an adversary-owned AWS account and utilized FTP to exfiltrate financial records to a malicious host.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        },
+        {
+            "sentence": "On October 14, malware executed 'Set-LocalUser -Name 'adminuser' -Enabled $false' to disable administrative accounts and overwrote files with random data before deletion [T1561.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'Deep Panda' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the advanced persistent threat (APT) group 'Deep Panda' targeting a fictional critical infrastructure organization, 'GlobalTech Solutions'. The campaign involves hardware-based initial access, lateral movement via WMI, container orchestration for persistence, credential theft from macOS systems, remote hardware access for control, data exfiltration to cloud accounts and alternative protocols, account access removal, and disk wiping to obscure activities. This report is for blue team training to enhance detection and response capabilities against sophisticated multi-vector attacks.",
+        "full_report_text": "On October 15, 2024, network administrators at GlobalTech Solutions, a mid-sized technology firm specializing in industrial control systems, discovered anomalous network traffic during a routine audit. Initial investigation revealed a passive Ethernet tap [T1200] installed in the server room, likely placed by an intruder posing as maintenance personnel two weeks prior. System logs from October 10 showed unusual WMI activity originating from a compromised workstation, where the adversary employed Windows Management Instrumentation [T1047] to execute remote commands and move laterally across the network while simultaneously scheduling a malicious Kubernetes CronJob with elevated privileges [T1053.007] to deploy containers for persistent access. On macOS endpoints, forensic analysis uncovered a script that queried securityd memory [T1555.002] to extract keychain passwords and used these credentials to abuse PiKVM hardware [T1219.003] for remote, hardware-level control over critical servers. Between October 12 and 14, the threat actor leveraged the AWS CLI [T1537] to transfer intellectual property from S3 buckets to an adversary-owned AWS account and utilized FTP [T1048] to exfiltrate financial records to a malicious host. On October 14, malware executed 'Set-LocalUser -Name 'adminuser' -Enabled $false' [T1531] to disable administrative accounts and overwrote files with random data before deletion [T1561.001] to wipe disk content and hinder recovery efforts. GlobalTech's incident response team noted no prior alerts from their SIEM, highlighting gaps in monitoring for hardware intrusions and container-based attacks. The company, founded in 2005, reported no financial impact but emphasized the need for enhanced physical security and endpoint detection.",
+        "techniques_used": [
+            "T1200",
+            "T1047",
+            "T1053.007",
+            "T1555.002",
+            "T1219.003",
+            "T1537",
+            "T1048",
+            "T1531",
+            "T1561.001"
+        ]
+    }
+}

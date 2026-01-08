@@ -1,0 +1,88 @@
+{
+    "report_id": "report_93",
+    "generated_at": "20251222_115405",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1091",
+        "T1569.003",
+        "T1542.004",
+        "T1055.002",
+        "T1070.006",
+        "T1027.017",
+        "T1127.002",
+        "T1573",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1091",
+        "T1569.003",
+        "T1542.004",
+        "T1055.002",
+        "T1070.006",
+        "T1027.017",
+        "T1127.002",
+        "T1573",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1027.017",
+        "T1569.003",
+        "T1573",
+        "T1078.001",
+        "T1542.004",
+        "T1127.002",
+        "T1567",
+        "T1055.002",
+        "T1091",
+        "T1070.006"
+    ],
+    "clean_text": "On January 15, 2024, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous activity on their internal network. GridSecure Inc., a mid-sized provider operating in the northeastern U.S., maintains legacy web servers for administrative purposes. Initial investigation revealed that the threat actor, 'ShadowHook', likely conducted reconnaissance to identify vulnerable systems, though no specific logs were captured for this phase. The actors then exploited a default Guest account that had not been disabled on an Apache web server, gaining initial access to the network. Once inside, they used a compromised workstation to drop a malicious executable named 'update.exe' onto a USB drive, which was later inserted into an air-gapped industrial control system (ICS) to facilitate replication. On the ICS, the adversary employed systemctl to start a custom service named 'network-sniffer.service' for packet capture while simultaneously embedding malicious code in the ROMMON image to establish a hidden communication channel. To evade detection, they executed Portable Executable injection into a legitimate process and used Timestomp to alter file timestamps on multiple systems, including a VPN server. For payload delivery, the actors utilized SVG smuggling to inject JavaScript code within vector graphics, bypassing email filters, and leveraged ClickOnce through rundll32.exe loading dfshim.dll to execute reconnaissance scripts. Command and control (C2) communications were secured via an encrypted channel that involved RSA key exchange and TLS-like negotiation, while exfiltration was conducted over web services using a malicious PowerShell script to transfer sensitive files to a trusted cloud storage provider. System logs from GridSecure Inc. show increased network traffic during off-hours, but no further unauthorized access was confirmed.",
+    "tagged_text": "On January 15, 2024, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous activity on their internal network. GridSecure Inc., a mid-sized provider operating in the northeastern U.S., maintains legacy web servers for administrative purposes. Initial investigation revealed that the threat actor, 'ShadowHook', likely conducted reconnaissance to identify vulnerable systems, though no specific logs were captured for this phase. The actors then exploited a default Guest account that had not been disabled on an Apache web server [T1078.001], gaining initial access to the network. Once inside, they used a compromised workstation to drop a malicious executable named 'update.exe' onto a USB drive [T1091], which was later inserted into an air-gapped industrial control system (ICS) to facilitate replication. On the ICS, the adversary employed systemctl [T1569.003] to start a custom service named 'network-sniffer.service' for packet capture while simultaneously embedding malicious code in the ROMMON image [T1542.004] to establish a hidden communication channel. To evade detection, they executed Portable Executable injection [T1055.002] into a legitimate process and used Timestomp [T1070.006] to alter file timestamps on multiple systems, including a VPN server. For payload delivery, the actors utilized SVG smuggling [T1027.017] to inject JavaScript code within vector graphics, bypassing email filters, and leveraged ClickOnce [T1127.002] through rundll32.exe loading dfshim.dll to execute reconnaissance scripts. Command and control (C2) communications were secured via an encrypted channel [T1573] that involved RSA key exchange and TLS-like negotiation, while exfiltration was conducted over web services [T1567] using a malicious PowerShell script to transfer sensitive files to a trusted cloud storage provider. System logs from GridSecure Inc. show increased network traffic during off-hours, but no further unauthorized access was confirmed.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe' onto a USB drive, which was later inserted into an air-gapped industrial control system (ICS) to facilitate replication.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Command and control (C2) communications were secured via an encrypted channel that involved RSA key exchange and TLS-like negotiation, while exfiltration was conducted over web services using a malicious PowerShell script to transfer sensitive files to a trusted cloud storage provider.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        },
+        {
+            "sentence": "Command and control (C2) communications were secured via an encrypted channel that involved RSA key exchange and TLS-like negotiation, while exfiltration was conducted over web services using a malicious PowerShell script to transfer sensitive files to a trusted cloud storage provider.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowHook', targeting critical infrastructure sectors. The campaign involves initial access via default accounts, lateral movement through removable media, and sophisticated persistence mechanisms, with exfiltration over encrypted web channels. Blue teams are advised to review logs, disable default accounts, and monitor for unusual network activity.",
+        "full_report_text": "On January 15, 2024, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous activity on their internal network. GridSecure Inc., a mid-sized provider operating in the northeastern U.S., maintains legacy web servers for administrative purposes. Initial investigation revealed that the threat actor, 'ShadowHook', likely conducted reconnaissance to identify vulnerable systems, though no specific logs were captured for this phase. The actors then exploited a default Guest account that had not been disabled on an Apache web server [T1078.001], gaining initial access to the network. Once inside, they used a compromised workstation to drop a malicious executable named 'update.exe' onto a USB drive [T1091], which was later inserted into an air-gapped industrial control system (ICS) to facilitate replication. On the ICS, the adversary employed systemctl [T1569.003] to start a custom service named 'network-sniffer.service' for packet capture while simultaneously embedding malicious code in the ROMMON image [T1542.004] to establish a hidden communication channel. To evade detection, they executed Portable Executable injection [T1055.002] into a legitimate process and used Timestomp [T1070.006] to alter file timestamps on multiple systems, including a VPN server. For payload delivery, the actors utilized SVG smuggling [T1027.017] to inject JavaScript code within vector graphics, bypassing email filters, and leveraged ClickOnce [T1127.002] through rundll32.exe loading dfshim.dll to execute reconnaissance scripts. Command and control (C2) communications were secured via an encrypted channel [T1573] that involved RSA key exchange and TLS-like negotiation, while exfiltration was conducted over web services [T1567] using a malicious PowerShell script to transfer sensitive files to a trusted cloud storage provider. System logs from GridSecure Inc. show increased network traffic during off-hours, but no further unauthorized access was confirmed.",
+        "techniques_used": [
+            "T1078.001",
+            "T1091",
+            "T1569.003",
+            "T1542.004",
+            "T1055.002",
+            "T1070.006",
+            "T1027.017",
+            "T1127.002",
+            "T1573",
+            "T1567"
+        ]
+    }
+}

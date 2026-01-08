@@ -1,0 +1,113 @@
+{
+    "report_id": "report_189",
+    "generated_at": "20251222_140139",
+    "scenario_target_ids": [
+        "T1591.001",
+        "T1597.002",
+        "T1200",
+        "T1059.009",
+        "T1547.004",
+        "T1036.006",
+        "T1526",
+        "T1124",
+        "T1072",
+        "T1568.002",
+        "T1001.002",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591.001",
+        "T1597.002",
+        "T1200",
+        "T1059.009",
+        "T1547.004",
+        "T1036.006",
+        "T1526",
+        "T1124",
+        "T1072",
+        "T1568.002",
+        "T1001.002",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1591.001",
+        "T1568.002",
+        "T1001.002",
+        "T1526",
+        "T1200",
+        "T1059.009",
+        "T1547.004",
+        "T1124",
+        "T1531",
+        "T1072",
+        "T1036.006"
+    ],
+    "clean_text": "APT Chimera likely conducted reconnaissance by scraping the victim organization's 'Contact Us' page to determine physical locations and purchased firewall configuration details from a dark web technical information broker to plan their attack. For initial access, the adversary dropped multiple USB Rubber Ducky devices in high-traffic areas, which were used to execute malicious scripts. Upon execution, the actors employed PowerShell to run 'az group list' through the CLI for cloud service discovery and used Microsoft Graph to query for all user accounts and their group memberships, while simultaneously checking system time with commands like time /t and net time \\\\ip/hostname. The malware then established persistence by editing HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to load a custom notification package that executes code at logon. To evade detection, the file 'backdoor.exe' was modified to 'photo_album.pdf.exe' using space after filename techniques. For command and control, the malware employed a Domain Generation Algorithm (DGA) to dynamically create new domains and used steganography to receive C2 commands hidden in the structure of .jpg and .gif images. Additionally, the adversary leveraged AWS Systems Manager Run Command to execute a reconnaissance script across multiple AWS accounts. In the final stage, the malware executed 'Set-LocalUser -Name financeuser -Enabled $false' to remove account access, disrupting operations. System logs from the affected Windows servers showed normal authentication events during this period, but network traffic analysis revealed unusual outbound connections to newly registered domains. The organization's IT team noted increased USB usage in lobby areas, though no immediate alerts were triggered by endpoint protection software.",
+    "tagged_text": "APT Chimera likely conducted reconnaissance by scraping the victim organization's 'Contact Us' page to determine physical locations [T1591.001] and purchased firewall configuration details from a dark web technical information broker [T1597.002] to plan their attack. For initial access, the adversary dropped multiple USB Rubber Ducky devices in high-traffic areas [T1200], which were used to execute malicious scripts. Upon execution, the actors employed PowerShell [T1059.009] to run 'az group list' through the CLI for cloud service discovery [T1526] and used Microsoft Graph to query for all user accounts and their group memberships [T1526], while simultaneously checking system time with commands like time /t and net time \\\\ip/hostname [T1124]. The malware then established persistence by editing HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to load a custom notification package that executes code at logon [T1547.004]. To evade detection, the file 'backdoor.exe' was modified to 'photo_album.pdf.exe' using space after filename techniques [T1036.006]. For command and control, the malware employed a Domain Generation Algorithm (DGA) to dynamically create new domains [T1568.002] and used steganography to receive C2 commands hidden in the structure of .jpg and .gif images [T1001.002]. Additionally, the adversary leveraged AWS Systems Manager Run Command to execute a reconnaissance script across multiple AWS accounts [T1072]. In the final stage, the malware executed 'Set-LocalUser -Name financeuser -Enabled $false' to remove account access [T1531], disrupting operations. System logs from the affected Windows servers showed normal authentication events during this period, but network traffic analysis revealed unusual outbound connections to newly registered domains. The organization's IT team noted increased USB usage in lobby areas, though no immediate alerts were triggered by endpoint protection software.",
+    "sentence_annotations": [
+        {
+            "sentence": "For initial access, the adversary dropped multiple USB Rubber Ducky devices in high-traffic areas, which were used to execute malicious scripts.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "009] to run 'az group list' through the CLI for cloud service discovery and used Microsoft Graph to query for all user accounts and their group memberships, while simultaneously checking system time with commands like time /t and net time \\\\ip/hostname.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        },
+        {
+            "sentence": "009] to run 'az group list' through the CLI for cloud service discovery and used Microsoft Graph to query for all user accounts and their group memberships, while simultaneously checking system time with commands like time /t and net time \\\\ip/hostname.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        },
+        {
+            "sentence": "009] to run 'az group list' through the CLI for cloud service discovery and used Microsoft Graph to query for all user accounts and their group memberships, while simultaneously checking system time with commands like time /t and net time \\\\ip/hostname.",
+            "technique_id": "T1124",
+            "technique_name": "System Time Discovery"
+        },
+        {
+            "sentence": "Additionally, the adversary leveraged AWS Systems Manager Run Command to execute a reconnaissance script across multiple AWS accounts.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "In the final stage, the malware executed 'Set-LocalUser -Name financeuser -Enabled $false' to remove account access, disrupting operations.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT Chimera Targeting Cloud and Physical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor APT Chimera, which targeted organizations through a combination of physical and digital tactics. The campaign involved reconnaissance via cloud APIs and dark web purchases, hardware-based initial access, evasion through file manipulation, and persistence mechanisms, culminating in data exfiltration using steganography and account disruption. Blue teams should review logs for unusual cloud queries, USB device usage, and system modifications to enhance detection capabilities.",
+        "full_report_text": "APT Chimera likely conducted reconnaissance by scraping the victim organization's 'Contact Us' page to determine physical locations [T1591.001] and purchased firewall configuration details from a dark web technical information broker [T1597.002] to plan their attack. For initial access, the adversary dropped multiple USB Rubber Ducky devices in high-traffic areas [T1200], which were used to execute malicious scripts. Upon execution, the actors employed PowerShell [T1059.009] to run 'az group list' through the CLI for cloud service discovery [T1526] and used Microsoft Graph to query for all user accounts and their group memberships [T1526], while simultaneously checking system time with commands like time /t and net time \\\\ip/hostname [T1124]. The malware then established persistence by editing HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to load a custom notification package that executes code at logon [T1547.004]. To evade detection, the file 'backdoor.exe' was modified to 'photo_album.pdf.exe' using space after filename techniques [T1036.006]. For command and control, the malware employed a Domain Generation Algorithm (DGA) to dynamically create new domains [T1568.002] and used steganography to receive C2 commands hidden in the structure of .jpg and .gif images [T1001.002]. Additionally, the adversary leveraged AWS Systems Manager Run Command to execute a reconnaissance script across multiple AWS accounts [T1072]. In the final stage, the malware executed 'Set-LocalUser -Name financeuser -Enabled $false' to remove account access [T1531], disrupting operations. System logs from the affected Windows servers showed normal authentication events during this period, but network traffic analysis revealed unusual outbound connections to newly registered domains. The organization's IT team noted increased USB usage in lobby areas, though no immediate alerts were triggered by endpoint protection software.",
+        "techniques_used": [
+            "T1591.001",
+            "T1597.002",
+            "T1200",
+            "T1059.009",
+            "T1547.004",
+            "T1036.006",
+            "T1526",
+            "T1124",
+            "T1072",
+            "T1568.002",
+            "T1001.002",
+            "T1531"
+        ]
+    }
+}

@@ -1,0 +1,121 @@
+{
+    "report_id": "report_695",
+    "generated_at": "20251223_050147",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1053.006",
+        "T1037.002",
+        "T1547.007",
+        "T1110.004",
+        "T1552.004",
+        "T1040",
+        "T1654",
+        "T1560.003",
+        "T1530",
+        "T1213.001",
+        "T1205",
+        "T1132.002",
+        "T1567.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1110.004",
+        "T1078.004",
+        "T1552.004",
+        "T1037.002",
+        "T1053.006",
+        "T1547.007",
+        "T1213.001",
+        "T1530",
+        "T1560.003",
+        "T1040",
+        "T1654",
+        "T1205",
+        "T1132.002",
+        "T1567.003"
+    ],
+    "actual_found_ids": [
+        "T1110.004",
+        "T1053.006",
+        "T1530",
+        "T1547.007",
+        "T1654",
+        "T1589",
+        "T1205",
+        "T1552.004",
+        "T1567.003",
+        "T1037.002",
+        "T1132.002",
+        "T1213.001",
+        "T1560.003",
+        "T1040",
+        "T1078.004"
+    ],
+    "clean_text": "On March 15, 2024, a fictional incident response team at 'TechGlobal Inc.' detected anomalous activity in their Azure environment, leading to the discovery of the 'ShadowMirage' campaign. TechGlobal Inc., a mid-sized software company with offices in New York and London, reported unusual data transfers from their Microsoft 365 tenant to external IP addresses. Initial logs showed failed login attempts from IP 203.0.113.45 to their Confluence server, which were later correlated with successful access using compromised credentials. The actors likely conducted reconnaissance to identify cloud storage buckets and sensitive repositories. They then used credential stuffing against remote services to obtain valid accounts, which allowed them to exploit Azure Managed Identities for persistent access to cloud storage resources while simultaneously intercepting unencrypted private keys and pass-phrases from misconfigured servers. Upon gaining access, the malware employed PowerShell to write a VBScript to the Windows Startup folder for automatic execution and scheduled persistent execution on Linux systems by writing a systemd timer unit that runs a data exfiltration script daily. On macOS endpoints, the infection updated com.apple.loginwindow.UUID.plist to trigger data exfiltration scripts when the user logs in, demonstrating cross-platform adaptability. The actors collected sensitive deployment procedures from the Confluence repository and data from Microsoft 365 environments, then compressed the collected system information using a custom XOR cipher implementation to evade detection. For network operations, they hooked network APIs to monitor traffic and utilized wevtutil.exe to query application logs for sensitive information, while employing raw sockets to create covert channels that disguised malicious ports as legitimate traffic and concealed network traffic through Base64 encoding with padding characters removed to avoid detection. Finally, the malicious tool gathered user documents and uploaded them to a text storage service. Logs from the Azure Activity Monitor showed repeated access to storage accounts by managed identities outside business hours, and network sensors flagged encoded traffic patterns on port 443 that mimicked standard HTTPS but lacked proper TLS handshakes.",
+    "tagged_text": "On March 15, 2024, a fictional incident response team at 'TechGlobal Inc.' detected anomalous activity in their Azure environment, leading to the discovery of the 'ShadowMirage' campaign. TechGlobal Inc., a mid-sized software company with offices in New York and London, reported unusual data transfers from their Microsoft 365 tenant to external IP addresses. Initial logs showed failed login attempts from IP 203.0.113.45 to their Confluence server, which were later correlated with successful access using compromised credentials. The actors likely conducted reconnaissance [T1589] to identify cloud storage buckets and sensitive repositories. They then used credential stuffing [T1110.004] against remote services to obtain valid accounts, which allowed them to exploit Azure Managed Identities [T1078.004] for persistent access to cloud storage resources while simultaneously intercepting unencrypted private keys and pass-phrases [T1552.004] from misconfigured servers. Upon gaining access, the malware employed PowerShell to write a VBScript to the Windows Startup folder for automatic execution [T1037.002] and scheduled persistent execution on Linux systems by writing a systemd timer unit that runs a data exfiltration script daily [T1053.006]. On macOS endpoints, the infection updated com.apple.loginwindow.UUID.plist to trigger data exfiltration scripts when the user logs in [T1547.007], demonstrating cross-platform adaptability. The actors collected sensitive deployment procedures from the Confluence repository [T1213.001] and data from Microsoft 365 environments [T1530], then compressed the collected system information using a custom XOR cipher implementation to evade detection [T1560.003]. For network operations, they hooked network APIs to monitor traffic [T1040] and utilized wevtutil.exe to query application logs for sensitive information [T1654], while employing raw sockets to create covert channels that disguised malicious ports as legitimate traffic [T1205] and concealed network traffic through Base64 encoding with padding characters removed to avoid detection [T1132.002]. Finally, the malicious tool gathered user documents and uploaded them to a text storage service [T1567.003]. Logs from the Azure Activity Monitor showed repeated access to storage accounts by managed identities outside business hours, and network sensors flagged encoded traffic patterns on port 443 that mimicked standard HTTPS but lacked proper TLS handshakes.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify cloud storage buckets and sensitive repositories.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] and data from Microsoft 365 environments, then compressed the collected system information using a custom XOR cipher implementation to evade detection [T1560.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "For network operations, they hooked network APIs to monitor traffic and utilized wevtutil.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "exe to query application logs for sensitive information, while employing raw sockets to create covert channels that disguised malicious ports as legitimate traffic and concealed network traffic through Base64 encoding with padding characters removed to avoid detection [T1132.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "exe to query application logs for sensitive information, while employing raw sockets to create covert channels that disguised malicious ports as legitimate traffic and concealed network traffic through Base64 encoding with padding characters removed to avoid detection [T1132.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMirage' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowMirage', targeting organizations with hybrid cloud infrastructures. The campaign exploits cloud accounts, uses credential stuffing for initial access, and employs multiple persistence and exfiltration techniques across Windows, Linux, and macOS systems. Blue teams should review logs for suspicious Azure Managed Identity usage, scheduled tasks, and anomalous network traffic encoding.",
+        "full_report_text": "On March 15, 2024, a fictional incident response team at 'TechGlobal Inc.' detected anomalous activity in their Azure environment, leading to the discovery of the 'ShadowMirage' campaign. TechGlobal Inc., a mid-sized software company with offices in New York and London, reported unusual data transfers from their Microsoft 365 tenant to external IP addresses. Initial logs showed failed login attempts from IP 203.0.113.45 to their Confluence server, which were later correlated with successful access using compromised credentials. The actors likely conducted reconnaissance [T1589] to identify cloud storage buckets and sensitive repositories. They then used credential stuffing [T1110.004] against remote services to obtain valid accounts, which allowed them to exploit Azure Managed Identities [T1078.004] for persistent access to cloud storage resources while simultaneously intercepting unencrypted private keys and pass-phrases [T1552.004] from misconfigured servers. Upon gaining access, the malware employed PowerShell to write a VBScript to the Windows Startup folder for automatic execution [T1037.002] and scheduled persistent execution on Linux systems by writing a systemd timer unit that runs a data exfiltration script daily [T1053.006]. On macOS endpoints, the infection updated com.apple.loginwindow.UUID.plist to trigger data exfiltration scripts when the user logs in [T1547.007], demonstrating cross-platform adaptability. The actors collected sensitive deployment procedures from the Confluence repository [T1213.001] and data from Microsoft 365 environments [T1530], then compressed the collected system information using a custom XOR cipher implementation to evade detection [T1560.003]. For network operations, they hooked network APIs to monitor traffic [T1040] and utilized wevtutil.exe to query application logs for sensitive information [T1654], while employing raw sockets to create covert channels that disguised malicious ports as legitimate traffic [T1205] and concealed network traffic through Base64 encoding with padding characters removed to avoid detection [T1132.002]. Finally, the malicious tool gathered user documents and uploaded them to a text storage service [T1567.003]. Logs from the Azure Activity Monitor showed repeated access to storage accounts by managed identities outside business hours, and network sensors flagged encoded traffic patterns on port 443 that mimicked standard HTTPS but lacked proper TLS handshakes.",
+        "techniques_used": [
+            "T1589",
+            "T1110.004",
+            "T1078.004",
+            "T1552.004",
+            "T1037.002",
+            "T1053.006",
+            "T1547.007",
+            "T1213.001",
+            "T1530",
+            "T1560.003",
+            "T1040",
+            "T1654",
+            "T1205",
+            "T1132.002",
+            "T1567.003"
+        ]
+    }
+}

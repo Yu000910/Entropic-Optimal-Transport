@@ -1,0 +1,63 @@
+{
+    "report_id": "report_633",
+    "generated_at": "20251222_171123",
+    "scenario_target_ids": [
+        "T1589.003",
+        "T1593.001",
+        "T1091",
+        "T1674",
+        "T1550.003",
+        "T1568.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589.003",
+        "T1593.001",
+        "T1091",
+        "T1674",
+        "T1550.003",
+        "T1568.001"
+    ],
+    "actual_found_ids": [
+        "T1593.001",
+        "T1550.003",
+        "T1568.001",
+        "T1091",
+        "T1589.003",
+        "T1674"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated APT campaign. The fictional group, designated as APT-SIM1, targeted a U.S.-based energy company, 'GridSecure Inc.', which operates air-gapped control systems for power distribution. Background logs from GridSecure's HR system show routine employee onboarding activities, with no initial anomalies detected.\n\nIn the initial phase, APT-SIM1 conducted reconnaissance by collecting employee names and monitoring social media platforms like Reddit to identify disgruntled staff and potential insider threats. This intelligence was used to craft spear-phishing emails, though these were not part of the core scenario. System logs from external firewalls recorded normal traffic patterns during this period.\n\nFor initial access, the actors leveraged removable media, copying the malware 'malware.exe' onto a USB drive to facilitate replication onto air-gapped networks. Once inserted into a target system, they used a simulated Human Interface Device (HID) USB to inject malicious keystrokes, executing commands that bypassed local security controls. Internal network monitoring showed unusual USB activity but was initially flagged as low priority.\n\nDuring execution, APT-SIM1 employed tools like Mimikatz.exe to extract Kerberos tickets from memory, enabling lateral movement via pass-the-ticket attacks. Concurrently, they utilized PowerShell scripts to register temporary DNS A records for command and control domains, establishing fast flux DNS to evade detection. Security logs from domain controllers indicated anomalous ticket requests, but these were not correlated with the DNS anomalies in real-time.\n\nPost-compromise, the actors maintained persistence by modifying registry keys and scheduled tasks, though these techniques are outside the specified scenario. GridSecure's incident response team later identified the compromise during a routine audit, noting that the air-gapped network had been breached via the USB media. No data exfiltration was confirmed in this training scenario, but the simulation highlighted gaps in removable media policies and network segmentation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated APT campaign. The fictional group, designated as APT-SIM1, targeted a U.S.-based energy company, 'GridSecure Inc.', which operates air-gapped control systems for power distribution. Background logs from GridSecure's HR system show routine employee onboarding activities, with no initial anomalies detected.\n\nIn the initial phase, APT-SIM1 conducted reconnaissance by collecting employee names [T1589.003] and monitoring social media platforms like Reddit to identify disgruntled staff and potential insider threats [T1593.001]. This intelligence was used to craft spear-phishing emails, though these were not part of the core scenario. System logs from external firewalls recorded normal traffic patterns during this period.\n\nFor initial access, the actors leveraged removable media, copying the malware 'malware.exe' onto a USB drive to facilitate replication onto air-gapped networks [T1091]. Once inserted into a target system, they used a simulated Human Interface Device (HID) USB to inject malicious keystrokes [T1674], executing commands that bypassed local security controls. Internal network monitoring showed unusual USB activity but was initially flagged as low priority.\n\nDuring execution, APT-SIM1 employed tools like Mimikatz.exe to extract Kerberos tickets from memory [T1550.003], enabling lateral movement via pass-the-ticket attacks. Concurrently, they utilized PowerShell scripts to register temporary DNS A records for command and control domains [T1568.001], establishing fast flux DNS to evade detection. Security logs from domain controllers indicated anomalous ticket requests, but these were not correlated with the DNS anomalies in real-time.\n\nPost-compromise, the actors maintained persistence by modifying registry keys and scheduled tasks, though these techniques are outside the specified scenario. GridSecure's incident response team later identified the compromise during a routine audit, noting that the air-gapped network had been breached via the USB media. No data exfiltration was confirmed in this training scenario, but the simulation highlighted gaps in removable media policies and network segmentation.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe' onto a USB drive to facilitate replication onto air-gapped networks.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Once inserted into a target system, they used a simulated Human Interface Device (HID) USB to inject malicious keystrokes, executing commands that bypassed local security controls.",
+            "technique_id": "T1674",
+            "technique_name": "Input Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Critical Infrastructure via Social Engineering and Removable Media",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group targeting critical infrastructure organizations. The actors employed social engineering, removable media exploitation, and credential theft techniques to infiltrate air-gapped networks and establish command and control. This report is for training blue teams in identifying and mitigating such tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated APT campaign. The fictional group, designated as APT-SIM1, targeted a U.S.-based energy company, 'GridSecure Inc.', which operates air-gapped control systems for power distribution. Background logs from GridSecure's HR system show routine employee onboarding activities, with no initial anomalies detected.\n\nIn the initial phase, APT-SIM1 conducted reconnaissance by collecting employee names [T1589.003] and monitoring social media platforms like Reddit to identify disgruntled staff and potential insider threats [T1593.001]. This intelligence was used to craft spear-phishing emails, though these were not part of the core scenario. System logs from external firewalls recorded normal traffic patterns during this period.\n\nFor initial access, the actors leveraged removable media, copying the malware 'malware.exe' onto a USB drive to facilitate replication onto air-gapped networks [T1091]. Once inserted into a target system, they used a simulated Human Interface Device (HID) USB to inject malicious keystrokes [T1674], executing commands that bypassed local security controls. Internal network monitoring showed unusual USB activity but was initially flagged as low priority.\n\nDuring execution, APT-SIM1 employed tools like Mimikatz.exe to extract Kerberos tickets from memory [T1550.003], enabling lateral movement via pass-the-ticket attacks. Concurrently, they utilized PowerShell scripts to register temporary DNS A records for command and control domains [T1568.001], establishing fast flux DNS to evade detection. Security logs from domain controllers indicated anomalous ticket requests, but these were not correlated with the DNS anomalies in real-time.\n\nPost-compromise, the actors maintained persistence by modifying registry keys and scheduled tasks, though these techniques are outside the specified scenario. GridSecure's incident response team later identified the compromise during a routine audit, noting that the air-gapped network had been breached via the USB media. No data exfiltration was confirmed in this training scenario, but the simulation highlighted gaps in removable media policies and network segmentation.",
+        "techniques_used": [
+            "T1589.003",
+            "T1593.001",
+            "T1091",
+            "T1674",
+            "T1550.003",
+            "T1568.001"
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign, 'Shadow Veil,' designed to simulate real-world threats without actual compromise. This report is based on a constructed scenario for educational purposes only, intended to enhance defensive capabilities against sophisticated hybrid cloud attacks.
+
+Background: The fictional target is 'TechGlobal Inc.,' a mid-sized technology firm with a hybrid infrastructure combining on-premises VMware ESXi servers and cloud-based Kubernetes clusters. Initial detection occurred on 2024-10-15 when anomalous network traffic was flagged by an IDS, though no real breach has occurred; this narrative serves as a training exercise.
+
+Attack Narrative:
+1. Initial Access and Reconnaissance: Attackers likely conducted reconnaissance by deploying malicious web content that exploited browser vulnerabilities to gather victim host information [T1592], such as OS versions and installed software, from employees visiting compromised websites. This phase included scanning internal network segments, though no actual data exfiltration took place in this simulation.
+
+2. Execution and Persistence: Using compromised domain accounts [T1078.002] obtained through previous simulated phishing campaigns, the actors gained initial foothold into the target environment. They then abused the vSphere Web Services SDK to execute ESXi administration commands [T1675], creating persistent backdoors across guest virtual machines while simultaneously modifying the HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment registry key to load a malicious DLL via COR_PROFILER [T1574.012] into .NET processes for stealthy execution.
+
+3. Privilege Escalation and Lateral Movement: To maintain persistence in the Kubernetes environment, the malware created a CronJob [T1053.007] to periodically execute a container that harvested credentials from other pods, leveraging the compromised domain accounts [T1078.002] for lateral movement across nodes. Additionally, the actors used sticky keys to launch a command prompt [T1546.008], bypassing authentication mechanisms on compromised Windows hosts.
+
+4. Credential Access and Collection: The campaign included credential theft via GUI input capture [T1056.002], where an AppleScript was executed to display a counterfeit iCloud authentication window, simulating the theft of Apple ID credentials from macOS users within the environment.
+
+5. Command and Control (C2) and Evasion: For C2 communication, the malicious tool employed domain fronting [T1090.004] by changing TLS compression method indicators in headers to hide traffic, making detection more challenging for network monitoring tools.
+
+Irrelevant Information: During the simulated incident, system logs from TechGlobal Inc. showed routine backup failures and high CPU usage on a non-critical server, which were unrelated to the attack. The company's background includes a recent merger with a smaller firm, leading to integration issues that caused temporary network latency, but this did not impact the fictional attack timeline.
+
+Mitigation Recommendations (Training Focus): Blue teams should practice monitoring for unusual ESXi command executions, review domain account permissions regularly, implement container security policies, and use network traffic analysis to detect domain fronting techniques. This advisory is purely educational; no real indicators of compromise (IOCs) are provided.

@@ -1,0 +1,128 @@
+{
+    "report_id": "report_789",
+    "generated_at": "20251223_111444",
+    "scenario_target_ids": [
+        "T1199",
+        "T1190",
+        "T1047",
+        "T1547.013",
+        "T1546.010",
+        "T1578.005",
+        "T1564.010",
+        "T1003.007",
+        "T1217",
+        "T1049",
+        "T1497.003",
+        "T1534",
+        "T1104",
+        "T1568.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1190",
+        "T1047",
+        "T1547.013",
+        "T1546.010",
+        "T1578.005",
+        "T1564.010",
+        "T1003.007",
+        "T1217",
+        "T1049",
+        "T1497.003",
+        "T1534",
+        "T1104",
+        "T1568.002"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1199",
+        "T1564.010",
+        "T1568.002",
+        "T1104",
+        "T1497.003",
+        "T1217",
+        "T1547.013",
+        "T1546.010",
+        "T1534",
+        "T1190",
+        "T1578.005",
+        "T1049",
+        "T1003.007"
+    ],
+    "clean_text": "APT-99, a fictional threat actor, conducted a sophisticated campaign against multiple organizations by leveraging a compromised third-party service provider account to modify security settings and gain initial access. The actors exploited a public-facing application, specifically targeting a known vulnerability in Citrix software (CVE-2019-19781), to establish a foothold in the victim's network. System logs from the affected Citrix server showed unusual authentication attempts from IP addresses associated with known malicious infrastructure, though these were initially dismissed as false positives due to high traffic volume.\n\nUpon execution, APT-99 used Windows Management Instrumentation (WMI) to set environment variables and deploy malicious scripts, while simultaneously modifying autostart entries at /etc/xdg/autostart/malicious.desktop to ensure persistence across reboots on Linux systems. The actors inserted a malicious DLL into the address space of applications using the AppInit DLL Registry key and modified Azure cloud compute configurations to override resource quota limits, enabling unrestricted access to cloud resources. Background checks on the third-party provider revealed no prior security incidents, but internal audits later identified lapsed access controls.\n\nFor defense evasion, APT-99 employed process argument spoofing by executing 'svchost.exe -k netsvcs' to blend malicious code with legitimate system processes, while examining the proc filesystem to identify memory regions containing password hashes from processes like /proc/3456/maps. The malware remained dormant for up to two weeks to evade time-based detection mechanisms, during which network monitoring tools recorded normal baseline activity with no alerts triggered.\n\nDuring discovery, the actors queried browser information from %APPDATA%/Google/Chrome to retrieve cached network data and cookies, and used commands such as net use and net session to gather details about network connections and sessions. Internal spearphishing was conducted via Microsoft Teams to deliver payloads that hijacked additional corporate accounts, with phishing emails appearing as routine internal communications from HR departments.\n\nFor command and control, APT-99 established multi-stage channels by running 'remote_access_tool.exe' to maintain multiple simultaneous connections, and utilized domain generation algorithms (DGA) to dynamically generate new domain names for C2 communication, complicating blacklisting efforts. Incident response teams noted that the DGA domains resolved to IP addresses in regions with lax cybersecurity regulations, but no actionable intelligence was available at the time of detection.",
+    "tagged_text": "APT-99, a fictional threat actor, conducted a sophisticated campaign against multiple organizations by leveraging a compromised third-party service provider account [T1199] to modify security settings and gain initial access. The actors exploited a public-facing application, specifically targeting a known vulnerability in Citrix software (CVE-2019-19781) [T1190], to establish a foothold in the victim's network. System logs from the affected Citrix server showed unusual authentication attempts from IP addresses associated with known malicious infrastructure, though these were initially dismissed as false positives due to high traffic volume.\n\nUpon execution, APT-99 used Windows Management Instrumentation (WMI) [T1047] to set environment variables and deploy malicious scripts, while simultaneously modifying autostart entries at /etc/xdg/autostart/malicious.desktop [T1547.013] to ensure persistence across reboots on Linux systems. The actors inserted a malicious DLL into the address space of applications using the AppInit DLL Registry key [T1546.010] and modified Azure cloud compute configurations [T1578.005] to override resource quota limits, enabling unrestricted access to cloud resources. Background checks on the third-party provider revealed no prior security incidents, but internal audits later identified lapsed access controls.\n\nFor defense evasion, APT-99 employed process argument spoofing [T1564.010] by executing 'svchost.exe -k netsvcs' to blend malicious code with legitimate system processes, while examining the proc filesystem [T1003.007] to identify memory regions containing password hashes from processes like /proc/3456/maps. The malware remained dormant for up to two weeks [T1497.003] to evade time-based detection mechanisms, during which network monitoring tools recorded normal baseline activity with no alerts triggered.\n\nDuring discovery, the actors queried browser information [T1217] from %APPDATA%/Google/Chrome to retrieve cached network data and cookies, and used commands such as net use and net session [T1049] to gather details about network connections and sessions. Internal spearphishing [T1534] was conducted via Microsoft Teams to deliver payloads that hijacked additional corporate accounts, with phishing emails appearing as routine internal communications from HR departments.\n\nFor command and control, APT-99 established multi-stage channels [T1104] by running 'remote_access_tool.exe' to maintain multiple simultaneous connections, and utilized domain generation algorithms (DGA) [T1568.002] to dynamically generate new domain names for C2 communication, complicating blacklisting efforts. Incident response teams noted that the DGA domains resolved to IP addresses in regions with lax cybersecurity regulations, but no actionable intelligence was available at the time of detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT-99, a fictional threat actor, conducted a sophisticated campaign against multiple organizations by leveraging a compromised third-party service provider account to modify security settings and gain initial access.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "The actors exploited a public-facing application, specifically targeting a known vulnerability in Citrix software (CVE-2019-19781), to establish a foothold in the victim's network.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Upon execution, APT-99 used Windows Management Instrumentation (WMI) to set environment variables and deploy malicious scripts, while simultaneously modifying autostart entries at /etc/xdg/autostart/malicious.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "During discovery, the actors queried browser information from %APPDATA%/Google/Chrome to retrieve cached network data and cookies, and used commands such as net use and net session to gather details about network connections and sessions.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "During discovery, the actors queried browser information from %APPDATA%/Google/Chrome to retrieve cached network data and cookies, and used commands such as net use and net session to gather details about network connections and sessions.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "Internal spearphishing was conducted via Microsoft Teams to deliver payloads that hijacked additional corporate accounts, with phishing emails appearing as routine internal communications from HR departments.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "For command and control, APT-99 established multi-stage channels by running 'remote_access_tool.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Enterprise Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting organizations through third-party service providers and public-facing applications. The campaign involves initial access via trusted relationships and exploits, followed by execution, persistence, defense evasion, discovery, lateral movement, and command and control using multi-stage channels and domain generation algorithms. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "APT-99, a fictional threat actor, conducted a sophisticated campaign against multiple organizations by leveraging a compromised third-party service provider account [T1199] to modify security settings and gain initial access. The actors exploited a public-facing application, specifically targeting a known vulnerability in Citrix software (CVE-2019-19781) [T1190], to establish a foothold in the victim's network. System logs from the affected Citrix server showed unusual authentication attempts from IP addresses associated with known malicious infrastructure, though these were initially dismissed as false positives due to high traffic volume.\n\nUpon execution, APT-99 used Windows Management Instrumentation (WMI) [T1047] to set environment variables and deploy malicious scripts, while simultaneously modifying autostart entries at /etc/xdg/autostart/malicious.desktop [T1547.013] to ensure persistence across reboots on Linux systems. The actors inserted a malicious DLL into the address space of applications using the AppInit DLL Registry key [T1546.010] and modified Azure cloud compute configurations [T1578.005] to override resource quota limits, enabling unrestricted access to cloud resources. Background checks on the third-party provider revealed no prior security incidents, but internal audits later identified lapsed access controls.\n\nFor defense evasion, APT-99 employed process argument spoofing [T1564.010] by executing 'svchost.exe -k netsvcs' to blend malicious code with legitimate system processes, while examining the proc filesystem [T1003.007] to identify memory regions containing password hashes from processes like /proc/3456/maps. The malware remained dormant for up to two weeks [T1497.003] to evade time-based detection mechanisms, during which network monitoring tools recorded normal baseline activity with no alerts triggered.\n\nDuring discovery, the actors queried browser information [T1217] from %APPDATA%/Google/Chrome to retrieve cached network data and cookies, and used commands such as net use and net session [T1049] to gather details about network connections and sessions. Internal spearphishing [T1534] was conducted via Microsoft Teams to deliver payloads that hijacked additional corporate accounts, with phishing emails appearing as routine internal communications from HR departments.\n\nFor command and control, APT-99 established multi-stage channels [T1104] by running 'remote_access_tool.exe' to maintain multiple simultaneous connections, and utilized domain generation algorithms (DGA) [T1568.002] to dynamically generate new domain names for C2 communication, complicating blacklisting efforts. Incident response teams noted that the DGA domains resolved to IP addresses in regions with lax cybersecurity regulations, but no actionable intelligence was available at the time of detection.",
+        "techniques_used": [
+            "T1199",
+            "T1190",
+            "T1047",
+            "T1547.013",
+            "T1546.010",
+            "T1578.005",
+            "T1564.010",
+            "T1003.007",
+            "T1217",
+            "T1049",
+            "T1497.003",
+            "T1534",
+            "T1104",
+            "T1568.002"
+        ]
+    }
+}

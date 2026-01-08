@@ -1,0 +1,68 @@
+{
+    "report_id": "report_508",
+    "generated_at": "20251222_161829",
+    "scenario_target_ids": [
+        "T1590",
+        "T1590.002",
+        "T1199",
+        "T1129",
+        "T1021.006",
+        "T1001.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590",
+        "T1590.002",
+        "T1199",
+        "T1129",
+        "T1021.006",
+        "T1001.001"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1199",
+        "T1590.002",
+        "T1001.001",
+        "T1021.006",
+        "T1590"
+    ],
+    "clean_text": "On October 26, 2023, APT-FICT initiated a campaign against a fictional financial services firm, FinCorp Inc., based in New York with 500 employees. The actors first conducted reconnaissance by sending DNS queries to map the organization's internal domain structure, specifically using a reconnaissance module that queried DNS AXFR to extract mail server, web server, and other service records. This activity generated normal-looking DNS logs on the internal server, which were initially overlooked by analysts. Following this, the adversary abused a compromised Office 365 partner account to escalate privileges within the target tenant, allowing unauthorized access to sensitive SharePoint documents. Once inside, a suspicious process invoked LoadLibraryW to load an unsigned module from a temporary directory, which then enabled the intruder to leverage WinRM to remotely administer the Windows server from a distant location. During exfiltration, the malware injected DNS queries containing base64-encoded C2 traffic to bypass network monitoring, blending malicious data with routine DNS requests. System logs from FinCorp's SIEM showed intermittent failures in email delivery, unrelated to the attack, and background checks revealed no prior incidents at the company.",
+    "tagged_text": "On October 26, 2023, APT-FICT initiated a campaign against a fictional financial services firm, FinCorp Inc., based in New York with 500 employees. The actors first conducted reconnaissance by sending DNS queries to map the organization's internal domain structure [T1590], specifically using a reconnaissance module that queried DNS AXFR to extract mail server, web server, and other service records [T1590.002]. This activity generated normal-looking DNS logs on the internal server, which were initially overlooked by analysts. Following this, the adversary abused a compromised Office 365 partner account to escalate privileges within the target tenant [T1199], allowing unauthorized access to sensitive SharePoint documents. Once inside, a suspicious process invoked LoadLibraryW to load an unsigned module from a temporary directory [T1129], which then enabled the intruder to leverage WinRM to remotely administer the Windows server from a distant location [T1021.006]. During exfiltration, the malware injected DNS queries containing base64-encoded C2 traffic to bypass network monitoring [T1001.001], blending malicious data with routine DNS requests. System logs from FinCorp's SIEM showed intermittent failures in email delivery, unrelated to the attack, and background checks revealed no prior incidents at the company.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors first conducted reconnaissance by sending DNS queries to map the organization's internal domain structure, specifically using a reconnaissance module that queried DNS AXFR to extract mail server, web server, and other service records [T1590.",
+            "technique_id": "T1590",
+            "technique_name": "Gather Victim Network Information"
+        },
+        {
+            "sentence": "Following this, the adversary abused a compromised Office 365 partner account to escalate privileges within the target tenant, allowing unauthorized access to sensitive SharePoint documents.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "Once inside, a suspicious process invoked LoadLibraryW to load an unsigned module from a temporary directory, which then enabled the intruder to leverage WinRM to remotely administer the Windows server from a distant location [T1021.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated cyber campaign by a fictional threat actor, designated as APT-FICT, targeting enterprise environments to exfiltrate sensitive data. The campaign involves initial reconnaissance, exploitation of trusted relationships, and use of obfuscated command and control (C2) techniques for evasion. Blue teams are advised to review logs for suspicious DNS activity, monitor for unauthorized Office 365 access, and implement strict WinRM policies.",
+        "full_report_text": "On October 26, 2023, APT-FICT initiated a campaign against a fictional financial services firm, FinCorp Inc., based in New York with 500 employees. The actors first conducted reconnaissance by sending DNS queries to map the organization's internal domain structure [T1590], specifically using a reconnaissance module that queried DNS AXFR to extract mail server, web server, and other service records [T1590.002]. This activity generated normal-looking DNS logs on the internal server, which were initially overlooked by analysts. Following this, the adversary abused a compromised Office 365 partner account to escalate privileges within the target tenant [T1199], allowing unauthorized access to sensitive SharePoint documents. Once inside, a suspicious process invoked LoadLibraryW to load an unsigned module from a temporary directory [T1129], which then enabled the intruder to leverage WinRM to remotely administer the Windows server from a distant location [T1021.006]. During exfiltration, the malware injected DNS queries containing base64-encoded C2 traffic to bypass network monitoring [T1001.001], blending malicious data with routine DNS requests. System logs from FinCorp's SIEM showed intermittent failures in email delivery, unrelated to the attack, and background checks revealed no prior incidents at the company.",
+        "techniques_used": [
+            "T1590",
+            "T1590.002",
+            "T1199",
+            "T1129",
+            "T1021.006",
+            "T1001.001"
+        ]
+    }
+}

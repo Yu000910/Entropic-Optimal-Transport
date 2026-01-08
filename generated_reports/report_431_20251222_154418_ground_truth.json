@@ -1,0 +1,128 @@
+{
+    "report_id": "report_431",
+    "generated_at": "20251222_154418",
+    "scenario_target_ids": [
+        "T1596.003",
+        "T1592.004",
+        "T1583.002",
+        "T1588.001",
+        "T1195.003",
+        "T1610",
+        "T1554",
+        "T1497",
+        "T1550.001",
+        "T1563.002",
+        "T1568.001",
+        "T1219",
+        "T1029",
+        "T1491.001",
+        "T1667"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596.003",
+        "T1592.004",
+        "T1583.002",
+        "T1588.001",
+        "T1195.003",
+        "T1610",
+        "T1554",
+        "T1497",
+        "T1550.001",
+        "T1563.002",
+        "T1568.001",
+        "T1219",
+        "T1029",
+        "T1491.001",
+        "T1667"
+    ],
+    "actual_found_ids": [
+        "T1497",
+        "T1610",
+        "T1029",
+        "T1568.001",
+        "T1592.004",
+        "T1596.003",
+        "T1195.003",
+        "T1550.001",
+        "T1583.002",
+        "T1563.002",
+        "T1554",
+        "T1491.001",
+        "T1219",
+        "T1667",
+        "T1588.001"
+    ],
+    "clean_text": "Background: The fictional target, 'PowerGrid Inc.', is a mid-sized utility company with operations across the southwestern United States. Initial logs from their SIEM showed unusual DNS queries to public certificate databases, which were later attributed to malicious activity. The attack began with reconnaissance, where the actors queried public certificate databases to identify digital certificates for PowerGrid's email servers and used a phishing email with a fake software update survey to collect client configuration details. For command and control (C2), the adversary configured BIND on a cloud instance to act as the authoritative DNS server for their domain and purchased a custom remote access tool (RAT) from a dark web marketplace. Initial access was achieved via a compromised hardware supply chain, where a modified Teensy USB device was inserted into an onsite workstation, establishing a reverse shell upon system detection. Once inside, the actors executed the RAT, which employed PowerShell to check for sandbox-related processes while simultaneously deploying a Docker container to mask network traffic from security tools. For persistence, the malware patched the system's malicious.dll file after reboots and abused OAuth access tokens to gain unauthorized access to target email accounts, including Gmail and Yahoo Mail. Lateral movement involved exploiting tscon.exe to hijack an active RDP session on the compromised host, and the malware used fast flux DNS by registering a DNS A record with a compromised domain to blend with legitimate traffic. The RAT established a remote command and control channel via a Windows Service and was configured to reconnect at scheduled intervals. For impact, the actors executed internal defacement by replacing the SSH login banner with a message claiming system compromise and ran a Python script to repeatedly send empty emails with large attachments in an email bombing attack. Incident responders noted that PowerGrid's legacy systems, running on Windows Server 2012, were particularly vulnerable, but no actual data exfiltration was confirmed in this fictional scenario.",
+    "tagged_text": "Background: The fictional target, 'PowerGrid Inc.', is a mid-sized utility company with operations across the southwestern United States. Initial logs from their SIEM showed unusual DNS queries to public certificate databases, which were later attributed to malicious activity. The attack began with reconnaissance, where the actors queried public certificate databases to identify digital certificates for PowerGrid's email servers [T1596.003] and used a phishing email with a fake software update survey to collect client configuration details [T1592.004]. For command and control (C2), the adversary configured BIND on a cloud instance to act as the authoritative DNS server for their domain [T1583.002] and purchased a custom remote access tool (RAT) from a dark web marketplace [T1588.001]. Initial access was achieved via a compromised hardware supply chain, where a modified Teensy USB device was inserted into an onsite workstation, establishing a reverse shell upon system detection [T1195.003]. Once inside, the actors executed the RAT, which employed PowerShell to check for sandbox-related processes [T1497] while simultaneously deploying a Docker container to mask network traffic from security tools [T1610]. For persistence, the malware patched the system's malicious.dll file after reboots [T1554] and abused OAuth access tokens to gain unauthorized access to target email accounts, including Gmail and Yahoo Mail [T1550.001]. Lateral movement involved exploiting tscon.exe to hijack an active RDP session on the compromised host [T1563.002], and the malware used fast flux DNS by registering a DNS A record with a compromised domain to blend with legitimate traffic [T1568.001]. The RAT established a remote command and control channel via a Windows Service [T1219] and was configured to reconnect at scheduled intervals [T1029]. For impact, the actors executed internal defacement by replacing the SSH login banner with a message claiming system compromise [T1491.001] and ran a Python script to repeatedly send empty emails with large attachments in an email bombing attack [T1667]. Incident responders noted that PowerGrid's legacy systems, running on Windows Server 2012, were particularly vulnerable, but no actual data exfiltration was confirmed in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, the actors executed the RAT, which employed PowerShell to check for sandbox-related processes while simultaneously deploying a Docker container to mask network traffic from security tools.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "Once inside, the actors executed the RAT, which employed PowerShell to check for sandbox-related processes while simultaneously deploying a Docker container to mask network traffic from security tools.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "dll file after reboots and abused OAuth access tokens to gain unauthorized access to target email accounts, including Gmail and Yahoo Mail [T1550.",
+            "technique_id": "T1554",
+            "technique_name": "Compromise Host Software Binary"
+        },
+        {
+            "sentence": "The RAT established a remote command and control channel via a Windows Service and was configured to reconnect at scheduled intervals.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "The RAT established a remote command and control channel via a Windows Service and was configured to reconnect at scheduled intervals.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        },
+        {
+            "sentence": "001] and ran a Python script to repeatedly send empty emails with large attachments in an email bombing attack.",
+            "technique_id": "T1667",
+            "technique_name": "Email Bombing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRAT' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowRAT', targeting organizations in the energy sector. Based on analysis of fictional incident response data from Q3 2024, the actors employ a multi-stage attack leveraging supply chain compromise, container evasion, and credential abuse to establish persistent access and disrupt operations. The campaign underscores the need for enhanced monitoring of digital certificates, client configurations, and remote access tools.",
+        "full_report_text": "Background: The fictional target, 'PowerGrid Inc.', is a mid-sized utility company with operations across the southwestern United States. Initial logs from their SIEM showed unusual DNS queries to public certificate databases, which were later attributed to malicious activity. The attack began with reconnaissance, where the actors queried public certificate databases to identify digital certificates for PowerGrid's email servers [T1596.003] and used a phishing email with a fake software update survey to collect client configuration details [T1592.004]. For command and control (C2), the adversary configured BIND on a cloud instance to act as the authoritative DNS server for their domain [T1583.002] and purchased a custom remote access tool (RAT) from a dark web marketplace [T1588.001]. Initial access was achieved via a compromised hardware supply chain, where a modified Teensy USB device was inserted into an onsite workstation, establishing a reverse shell upon system detection [T1195.003]. Once inside, the actors executed the RAT, which employed PowerShell to check for sandbox-related processes [T1497] while simultaneously deploying a Docker container to mask network traffic from security tools [T1610]. For persistence, the malware patched the system's malicious.dll file after reboots [T1554] and abused OAuth access tokens to gain unauthorized access to target email accounts, including Gmail and Yahoo Mail [T1550.001]. Lateral movement involved exploiting tscon.exe to hijack an active RDP session on the compromised host [T1563.002], and the malware used fast flux DNS by registering a DNS A record with a compromised domain to blend with legitimate traffic [T1568.001]. The RAT established a remote command and control channel via a Windows Service [T1219] and was configured to reconnect at scheduled intervals [T1029]. For impact, the actors executed internal defacement by replacing the SSH login banner with a message claiming system compromise [T1491.001] and ran a Python script to repeatedly send empty emails with large attachments in an email bombing attack [T1667]. Incident responders noted that PowerGrid's legacy systems, running on Windows Server 2012, were particularly vulnerable, but no actual data exfiltration was confirmed in this fictional scenario.",
+        "techniques_used": [
+            "T1596.003",
+            "T1592.004",
+            "T1583.002",
+            "T1588.001",
+            "T1195.003",
+            "T1610",
+            "T1554",
+            "T1497",
+            "T1550.001",
+            "T1563.002",
+            "T1568.001",
+            "T1219",
+            "T1029",
+            "T1491.001",
+            "T1667"
+        ]
+    }
+}

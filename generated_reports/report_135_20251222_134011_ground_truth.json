@@ -1,0 +1,138 @@
+{
+    "report_id": "report_135",
+    "generated_at": "20251222_134011",
+    "scenario_target_ids": [
+        "T1584.008",
+        "T1669",
+        "T1651",
+        "T1554",
+        "T1136",
+        "T1218.010",
+        "T1111",
+        "T1016.001",
+        "T1087.002",
+        "T1069.003",
+        "T1572",
+        "T1567",
+        "T1537",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.008",
+        "T1669",
+        "T1651",
+        "T1554",
+        "T1136",
+        "T1218.010",
+        "T1111",
+        "T1016.001",
+        "T1087.002",
+        "T1069.003",
+        "T1572",
+        "T1567",
+        "T1537",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1136",
+        "T1016.001",
+        "T1584.008",
+        "T1651",
+        "T1087.002",
+        "T1572",
+        "T1567",
+        "T1491",
+        "T1069.003",
+        "T1669",
+        "T1111",
+        "T1554",
+        "T1218.010",
+        "T1537"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional threat actor, 'RouterShadow,' which has been observed in simulated attacks against SOHO environments. This campaign begins with reconnaissance activities, where actors scan for vulnerable network devices and exploit default credentials on SOHO routers to install backdoor access, enabling them to monitor and manipulate network traffic. Once initial access is gained, the malware is designed to automatically find and join any open wireless network for command and control, facilitating stealthy communication channels. System logs from a compromised router at a fictional company, 'TechFlow Solutions,' showed unusual outbound connections to IP addresses in Eastern Europe, though these were later determined to be part of a red team exercise. The actors then employed AWS Systems Manager to establish persistence by creating scheduled tasks that execute malicious scripts at regular intervals, while simultaneously using PowerShell to download additional payloads. In a key propagation phase, the malware, dubbed 'ShadowBinder,' searches through the /Users/ folder for executable files and prepends a copy of itself to the beginning of each file, compromising host software binaries; when executed, the ShadowBinder code runs first, creating hidden files to maintain the appearance of normal behavior and copying original executables to these files. To ensure continued access, the adversary created a local administrator account using the command 'net user tempadmin Summer2024$ /add /expires:never', and used Regsvr32 to execute malicious DLLs that bypass application whitelisting. During lateral movement, the actors intercepted multi-factor authentication tokens by targeting smart card technologies to proxy authentication for connections to restricted resources, and ran tracert.exe to determine network routes to malicious IP addresses. In cloud environments, they queried active directory servers to obtain lists of employees, including administrator accounts, and executed scripts like 'az ad user get-member-groups' to list all group memberships for the current user account. For data exfiltration, the adversary leveraged SSH dynamic port forwarding to route all traffic through a trusted internal host undetected, and used web services to transfer stolen files to external servers. Additionally, they utilized Google Cloud's gcloud tool to export BigQuery datasets to their controlled GCP project, and modified system DLLs to corrupt font rendering in web browsers as a defacement tactic. Background information on TechFlow Solutions indicates they recently migrated to hybrid cloud infrastructure, but this is unrelated to the attack vectors. Blue teams should monitor for these techniques and implement defensive measures such as disabling default credentials, enforcing MFA, and auditing cloud administration activities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional threat actor, 'RouterShadow,' which has been observed in simulated attacks against SOHO environments. This campaign begins with reconnaissance activities, where actors scan for vulnerable network devices [T1584.008] and exploit default credentials on SOHO routers to install backdoor access, enabling them to monitor and manipulate network traffic. Once initial access is gained, the malware is designed to automatically find and join any open wireless network for command and control [T1669], facilitating stealthy communication channels. System logs from a compromised router at a fictional company, 'TechFlow Solutions,' showed unusual outbound connections to IP addresses in Eastern Europe, though these were later determined to be part of a red team exercise. The actors then employed AWS Systems Manager [T1651] to establish persistence by creating scheduled tasks that execute malicious scripts at regular intervals, while simultaneously using PowerShell to download additional payloads. In a key propagation phase, the malware, dubbed 'ShadowBinder,' searches through the /Users/ folder for executable files and prepends a copy of itself to the beginning of each file, compromising host software binaries [T1554]; when executed, the ShadowBinder code runs first, creating hidden files to maintain the appearance of normal behavior and copying original executables to these files. To ensure continued access, the adversary created a local administrator account using the command 'net user tempadmin Summer2024$ /add /expires:never' [T1136], and used Regsvr32 [T1218.010] to execute malicious DLLs that bypass application whitelisting. During lateral movement, the actors intercepted multi-factor authentication tokens [T1111] by targeting smart card technologies to proxy authentication for connections to restricted resources, and ran tracert.exe [T1016.001] to determine network routes to malicious IP addresses. In cloud environments, they queried active directory servers to obtain lists of employees, including administrator accounts [T1087.002], and executed scripts like 'az ad user get-member-groups' to list all group memberships for the current user account [T1069.003]. For data exfiltration, the adversary leveraged SSH dynamic port forwarding [T1572] to route all traffic through a trusted internal host undetected, and used web services [T1567] to transfer stolen files to external servers. Additionally, they utilized Google Cloud's gcloud tool to export BigQuery datasets to their controlled GCP project [T1537], and modified system DLLs to corrupt font rendering in web browsers as a defacement tactic [T1491]. Background information on TechFlow Solutions indicates they recently migrated to hybrid cloud infrastructure, but this is unrelated to the attack vectors. Blue teams should monitor for these techniques and implement defensive measures such as disabling default credentials, enforcing MFA, and auditing cloud administration activities.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once initial access is gained, the malware is designed to automatically find and join any open wireless network for command and control, facilitating stealthy communication channels.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "The actors then employed AWS Systems Manager to establish persistence by creating scheduled tasks that execute malicious scripts at regular intervals, while simultaneously using PowerShell to download additional payloads.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "In a key propagation phase, the malware, dubbed 'ShadowBinder,' searches through the /Users/ folder for executable files and prepends a copy of itself to the beginning of each file, compromising host software binaries; when executed, the ShadowBinder code runs first, creating hidden files to maintain the appearance of normal behavior and copying original executables to these files.",
+            "technique_id": "T1554",
+            "technique_name": "Compromise Host Software Binary"
+        },
+        {
+            "sentence": "To ensure continued access, the adversary created a local administrator account using the command 'net user tempadmin Summer2024$ /add /expires:never', and used Regsvr32 [T1218.",
+            "technique_id": "T1136",
+            "technique_name": "Create Account"
+        },
+        {
+            "sentence": "During lateral movement, the actors intercepted multi-factor authentication tokens by targeting smart card technologies to proxy authentication for connections to restricted resources, and ran tracert.",
+            "technique_id": "T1111",
+            "technique_name": "Multi-Factor Authentication Interception"
+        },
+        {
+            "sentence": "For data exfiltration, the adversary leveraged SSH dynamic port forwarding to route all traffic through a trusted internal host undetected, and used web services to transfer stolen files to external servers.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "For data exfiltration, the adversary leveraged SSH dynamic port forwarding to route all traffic through a trusted internal host undetected, and used web services to transfer stolen files to external servers.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        },
+        {
+            "sentence": "Additionally, they utilized Google Cloud's gcloud tool to export BigQuery datasets to their controlled GCP project, and modified system DLLs to corrupt font rendering in web browsers as a defacement tactic.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        },
+        {
+            "sentence": "Additionally, they utilized Google Cloud's gcloud tool to export BigQuery datasets to their controlled GCP project, and modified system DLLs to corrupt font rendering in web browsers as a defacement tactic.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'RouterShadow' Targeting SOHO Networks and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'RouterShadow,' targeting small office/home office (SOHO) networks to establish initial access, move laterally into cloud environments, and exfiltrate sensitive data. The campaign leverages a combination of network device exploitation, malware propagation, and cloud administration tools to evade detection and maintain persistence. Blue teams are advised to review network configurations, monitor for unauthorized account creation, and implement multi-factor authentication (MFA) protections.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional threat actor, 'RouterShadow,' which has been observed in simulated attacks against SOHO environments. This campaign begins with reconnaissance activities, where actors scan for vulnerable network devices [T1584.008] and exploit default credentials on SOHO routers to install backdoor access, enabling them to monitor and manipulate network traffic. Once initial access is gained, the malware is designed to automatically find and join any open wireless network for command and control [T1669], facilitating stealthy communication channels. System logs from a compromised router at a fictional company, 'TechFlow Solutions,' showed unusual outbound connections to IP addresses in Eastern Europe, though these were later determined to be part of a red team exercise. The actors then employed AWS Systems Manager [T1651] to establish persistence by creating scheduled tasks that execute malicious scripts at regular intervals, while simultaneously using PowerShell to download additional payloads. In a key propagation phase, the malware, dubbed 'ShadowBinder,' searches through the /Users/ folder for executable files and prepends a copy of itself to the beginning of each file, compromising host software binaries [T1554]; when executed, the ShadowBinder code runs first, creating hidden files to maintain the appearance of normal behavior and copying original executables to these files. To ensure continued access, the adversary created a local administrator account using the command 'net user tempadmin Summer2024$ /add /expires:never' [T1136], and used Regsvr32 [T1218.010] to execute malicious DLLs that bypass application whitelisting. During lateral movement, the actors intercepted multi-factor authentication tokens [T1111] by targeting smart card technologies to proxy authentication for connections to restricted resources, and ran tracert.exe [T1016.001] to determine network routes to malicious IP addresses. In cloud environments, they queried active directory servers to obtain lists of employees, including administrator accounts [T1087.002], and executed scripts like 'az ad user get-member-groups' to list all group memberships for the current user account [T1069.003]. For data exfiltration, the adversary leveraged SSH dynamic port forwarding [T1572] to route all traffic through a trusted internal host undetected, and used web services [T1567] to transfer stolen files to external servers. Additionally, they utilized Google Cloud's gcloud tool to export BigQuery datasets to their controlled GCP project [T1537], and modified system DLLs to corrupt font rendering in web browsers as a defacement tactic [T1491]. Background information on TechFlow Solutions indicates they recently migrated to hybrid cloud infrastructure, but this is unrelated to the attack vectors. Blue teams should monitor for these techniques and implement defensive measures such as disabling default credentials, enforcing MFA, and auditing cloud administration activities.",
+        "techniques_used": [
+            "T1584.008",
+            "T1669",
+            "T1651",
+            "T1554",
+            "T1136",
+            "T1218.010",
+            "T1111",
+            "T1016.001",
+            "T1087.002",
+            "T1069.003",
+            "T1572",
+            "T1567",
+            "T1537",
+            "T1491"
+        ]
+    }
+}

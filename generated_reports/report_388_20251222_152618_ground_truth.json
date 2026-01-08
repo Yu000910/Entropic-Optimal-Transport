@@ -1,0 +1,92 @@
+{
+    "report_id": "report_388",
+    "generated_at": "20251222_152618",
+    "scenario_target_ids": [
+        "T1583.005",
+        "T1587.002",
+        "T1583.001",
+        "T1078.001",
+        "T1566.004",
+        "T1610",
+        "T1059.010",
+        "T1574.009",
+        "T1205.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1583.005",
+        "T1587.002",
+        "T1583.001",
+        "T1078.001",
+        "T1566.004",
+        "T1610",
+        "T1059.010",
+        "T1574.009",
+        "T1205.001"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1566.004",
+        "T1112",
+        "T1589",
+        "T1587.002",
+        "T1574.009",
+        "T1059.010",
+        "T1205.001",
+        "T1105",
+        "T1583.005",
+        "T1583.001",
+        "T1078.001",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on 'Operation Phantom Echo', a simulated APT campaign observed in training exercises. This report outlines the tactics, techniques, and procedures (TTPs) used by the actors to infiltrate networks and maintain persistence. All information is fabricated for training purposes and does not reflect real-world events.\n\nBackground: The fictional company 'SecureTech Solutions', a mid-sized technology firm, reported anomalous network traffic from IoT devices in employee smart homes. Initial logs showed spikes in data transmission during off-hours, but no immediate alerts were triggered. The company's security team, during a routine drill, discovered signs of compromise after a simulated incident response exercise.\n\nAttack Narrative (Kill-Chain Analysis):\n- **Initial Access**: The actors likely conducted reconnaissance to identify vulnerable IoT smart home devices, which were hijacked to form a botnet for coordinated malicious activities. Concurrently, they initiated a spear-phishing campaign using phone calls to direct users to download and run a remote access trojan disguised as a document viewer, exploiting human vulnerabilities to gain initial footholds in the corporate network.\n- **Execution**: Upon access, the adversary employed PowerShell to actively download malicious payloads while simultaneously modifying registry keys for persistence. The malware author used signtool.exe to sign their malicious script with a forged certificate to evade detection, and they executed 'docker create' to establish a covert container environment for data exfiltration operations, blending legitimate administrative tools with malicious intent.\n- **Persistence and Defense Evasion**: The actors registered domains for use in C2, including some crafted to appear as existing legitimate domains, and exploited the default Administrator password 'admin123' to compromise the Windows server. They wrote a malicious.ahk script to simulate user input and bypass application controls, and placed a malicious DLL in C:\\program.exe to intercept and hijack legitimate application loading through path interception by unquoted path. Additionally, using raw sockets, the backdoor transmitted data directly at the network layer to evade port monitoring via port knocking, demonstrating sophisticated evasion techniques.\n- **Exfiltration**: Data was exfiltrated through the botnet and containerized channels, with logs showing encrypted traffic mimicking normal IoT device communications. No real data loss occurred, as this was part of a training simulation.\n\nMitigation Recommendations: Blue teams should implement network segmentation for IoT devices, enforce strong password policies, monitor for unusual container activity, and conduct regular phishing awareness training. This scenario highlights the importance of layered defenses and proactive threat hunting in a controlled training environment.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on 'Operation Phantom Echo', a simulated APT campaign observed in training exercises. This report outlines the tactics, techniques, and procedures (TTPs) used by the actors to infiltrate networks and maintain persistence. All information is fabricated for training purposes and does not reflect real-world events.\n\nBackground: The fictional company 'SecureTech Solutions', a mid-sized technology firm, reported anomalous network traffic from IoT devices in employee smart homes. Initial logs showed spikes in data transmission during off-hours, but no immediate alerts were triggered. The company's security team, during a routine drill, discovered signs of compromise after a simulated incident response exercise.\n\nAttack Narrative (Kill-Chain Analysis):\n- **Initial Access**: The actors likely conducted reconnaissance [T1589] to identify vulnerable IoT smart home devices, which were hijacked to form a botnet for coordinated malicious activities [T1583.005]. Concurrently, they initiated a spear-phishing campaign using phone calls to direct users to download and run a remote access trojan disguised as a document viewer [T1566.004], exploiting human vulnerabilities to gain initial footholds in the corporate network.\n- **Execution**: Upon access, the adversary employed PowerShell [T1059.001] to actively download malicious payloads [T1105] while simultaneously modifying registry keys [T1112] for persistence. The malware author used signtool.exe to sign their malicious script with a forged certificate to evade detection [T1587.002], and they executed 'docker create' to establish a covert container environment for data exfiltration operations [T1610], blending legitimate administrative tools with malicious intent.\n- **Persistence and Defense Evasion**: The actors registered domains for use in C2, including some crafted to appear as existing legitimate domains [T1583.001], and exploited the default Administrator password 'admin123' to compromise the Windows server [T1078.001]. They wrote a malicious.ahk script to simulate user input and bypass application controls [T1059.010], and placed a malicious DLL in C:\\program.exe to intercept and hijack legitimate application loading through path interception by unquoted path [T1574.009]. Additionally, using raw sockets, the backdoor transmitted data directly at the network layer to evade port monitoring via port knocking [T1205.001], demonstrating sophisticated evasion techniques.\n- **Exfiltration**: Data was exfiltrated through the botnet and containerized channels, with logs showing encrypted traffic mimicking normal IoT device communications. No real data loss occurred, as this was part of a training simulation.\n\nMitigation Recommendations: Blue teams should implement network segmentation for IoT devices, enforce strong password policies, monitor for unusual container activity, and conduct regular phishing awareness training. This scenario highlights the importance of layered defenses and proactive threat hunting in a controlled training environment.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative (Kill-Chain Analysis):\n- **Initial Access**: The actors likely conducted reconnaissance to identify vulnerable IoT smart home devices, which were hijacked to form a botnet for coordinated malicious activities [T1583.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to actively download malicious payloads while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download malicious payloads while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "002], and they executed 'docker create' to establish a covert container environment for data exfiltration operations, blending legitimate administrative tools with malicious intent.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Operation Phantom Echo' Targeting IoT and Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Phantom Echo', targeting unsecured IoT devices and corporate networks. The actors employed a multi-stage attack involving botnet formation, social engineering, and containerized exfiltration to compromise systems and evade detection. Blue teams should review this report for training on identifying and mitigating these techniques in a controlled environment.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on 'Operation Phantom Echo', a simulated APT campaign observed in training exercises. This report outlines the tactics, techniques, and procedures (TTPs) used by the actors to infiltrate networks and maintain persistence. All information is fabricated for training purposes and does not reflect real-world events.\n\nBackground: The fictional company 'SecureTech Solutions', a mid-sized technology firm, reported anomalous network traffic from IoT devices in employee smart homes. Initial logs showed spikes in data transmission during off-hours, but no immediate alerts were triggered. The company's security team, during a routine drill, discovered signs of compromise after a simulated incident response exercise.\n\nAttack Narrative (Kill-Chain Analysis):\n- **Initial Access**: The actors likely conducted reconnaissance [T1589] to identify vulnerable IoT smart home devices, which were hijacked to form a botnet for coordinated malicious activities [T1583.005]. Concurrently, they initiated a spear-phishing campaign using phone calls to direct users to download and run a remote access trojan disguised as a document viewer [T1566.004], exploiting human vulnerabilities to gain initial footholds in the corporate network.\n- **Execution**: Upon access, the adversary employed PowerShell [T1059.001] to actively download malicious payloads [T1105] while simultaneously modifying registry keys [T1112] for persistence. The malware author used signtool.exe to sign their malicious script with a forged certificate to evade detection [T1587.002], and they executed 'docker create' to establish a covert container environment for data exfiltration operations [T1610], blending legitimate administrative tools with malicious intent.\n- **Persistence and Defense Evasion**: The actors registered domains for use in C2, including some crafted to appear as existing legitimate domains [T1583.001], and exploited the default Administrator password 'admin123' to compromise the Windows server [T1078.001]. They wrote a malicious.ahk script to simulate user input and bypass application controls [T1059.010], and placed a malicious DLL in C:\\program.exe to intercept and hijack legitimate application loading through path interception by unquoted path [T1574.009]. Additionally, using raw sockets, the backdoor transmitted data directly at the network layer to evade port monitoring via port knocking [T1205.001], demonstrating sophisticated evasion techniques.\n- **Exfiltration**: Data was exfiltrated through the botnet and containerized channels, with logs showing encrypted traffic mimicking normal IoT device communications. No real data loss occurred, as this was part of a training simulation.\n\nMitigation Recommendations: Blue teams should implement network segmentation for IoT devices, enforce strong password policies, monitor for unusual container activity, and conduct regular phishing awareness training. This scenario highlights the importance of layered defenses and proactive threat hunting in a controlled training environment.",
+        "techniques_used": [
+            "T1583.005",
+            "T1587.002",
+            "T1583.001",
+            "T1078.001",
+            "T1566.004",
+            "T1610",
+            "T1059.010",
+            "T1574.009",
+            "T1205.001"
+        ]
+    }
+}

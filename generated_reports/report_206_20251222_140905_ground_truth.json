@@ -1,0 +1,63 @@
+{
+    "report_id": "report_206",
+    "generated_at": "20251222_140905",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1078.001",
+        "T1053.003",
+        "T1564.003",
+        "T1027.002",
+        "T1021.008",
+        "T1571"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1078.001",
+        "T1053.003",
+        "T1564.003",
+        "T1027.002",
+        "T1021.008",
+        "T1571"
+    ],
+    "actual_found_ids": [
+        "T1564.003",
+        "T1021.008",
+        "T1592.003",
+        "T1053.003",
+        "T1571",
+        "T1027.002",
+        "T1078.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowFog'. This report is based on a simulated attack scenario for educational purposes, involving a mid-sized technology firm, 'NexusTech Inc.', which reported anomalous network traffic and unauthorized access to its Azure cloud environment. Initial logs from NexusTech's Security Information and Event Management (SIEM) system showed unusual WMI queries originating from an internal host, later traced to a compromised workstation.\n\nAttack Scenario Analysis:\n- **Reconnaissance**: The actors likely conducted initial reconnaissance by querying system firmware details via WMI to identify vulnerable hardware, while simultaneously scanning for active default accounts like Guest on web servers.\n- **Execution and Persistence**: Upon gaining access, the adversary utilized PowerShell to deploy a packed malicious binary, evading detection through software packing, and established persistence on Linux systems by creating cron jobs, while on Windows, they hid execution windows by importing APIs to conceal console activity.\n- **Command and Control (C2)**: ShadowFog leveraged direct cloud VM connections via Azure Serial Console for remote command execution and communicated over non-standard ports such as 53 and 8080 using raw sockets to bypass network monitoring.\n- **Additional Context**: NexusTech's incident response team noted that the attack coincided with a routine system update, but no actual data exfiltration occurred. The firm's background includes developing IoT devices, which may have been a secondary target, though this remains unconfirmed in the simulation.\n\nMitigation recommendations include disabling default accounts, monitoring for unusual WMI activity, and implementing network segmentation. This advisory serves as a training tool to enhance defensive capabilities against similar TTPs.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowFog'. This report is based on a simulated attack scenario for educational purposes, involving a mid-sized technology firm, 'NexusTech Inc.', which reported anomalous network traffic and unauthorized access to its Azure cloud environment. Initial logs from NexusTech's Security Information and Event Management (SIEM) system showed unusual WMI queries originating from an internal host, later traced to a compromised workstation.\n\nAttack Scenario Analysis:\n- **Reconnaissance**: The actors likely conducted initial reconnaissance by querying system firmware details via WMI to identify vulnerable hardware [T1592.003], while simultaneously scanning for active default accounts like Guest on web servers [T1078.001].\n- **Execution and Persistence**: Upon gaining access, the adversary utilized PowerShell to deploy a packed malicious binary, evading detection through software packing [T1027.002], and established persistence on Linux systems by creating cron jobs [T1053.003], while on Windows, they hid execution windows by importing APIs to conceal console activity [T1564.003].\n- **Command and Control (C2)**: ShadowFog leveraged direct cloud VM connections via Azure Serial Console for remote command execution [T1021.008] and communicated over non-standard ports such as 53 and 8080 using raw sockets to bypass network monitoring [T1571].\n- **Additional Context**: NexusTech's incident response team noted that the attack coincided with a routine system update, but no actual data exfiltration occurred. The firm's background includes developing IoT devices, which may have been a secondary target, though this remains unconfirmed in the simulation.\n\nMitigation recommendations include disabling default accounts, monitoring for unusual WMI activity, and implementing network segmentation. This advisory serves as a training tool to enhance defensive capabilities against similar TTPs.",
+    "sentence_annotations": [
+        {
+            "sentence": "008] and communicated over non-standard ports such as 53 and 8080 using raw sockets to bypass network monitoring.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowFog' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowFog', targeting organizations with hybrid cloud infrastructures. Based on analysis of fictional incidents, ShadowFog employs a multi-stage approach involving reconnaissance, exploitation of default accounts, and use of non-standard ports for command and control (C2). The advisory provides detection and mitigation strategies for blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowFog'. This report is based on a simulated attack scenario for educational purposes, involving a mid-sized technology firm, 'NexusTech Inc.', which reported anomalous network traffic and unauthorized access to its Azure cloud environment. Initial logs from NexusTech's Security Information and Event Management (SIEM) system showed unusual WMI queries originating from an internal host, later traced to a compromised workstation.\n\nAttack Scenario Analysis:\n- **Reconnaissance**: The actors likely conducted initial reconnaissance by querying system firmware details via WMI to identify vulnerable hardware [T1592.003], while simultaneously scanning for active default accounts like Guest on web servers [T1078.001].\n- **Execution and Persistence**: Upon gaining access, the adversary utilized PowerShell to deploy a packed malicious binary, evading detection through software packing [T1027.002], and established persistence on Linux systems by creating cron jobs [T1053.003], while on Windows, they hid execution windows by importing APIs to conceal console activity [T1564.003].\n- **Command and Control (C2)**: ShadowFog leveraged direct cloud VM connections via Azure Serial Console for remote command execution [T1021.008] and communicated over non-standard ports such as 53 and 8080 using raw sockets to bypass network monitoring [T1571].\n- **Additional Context**: NexusTech's incident response team noted that the attack coincided with a routine system update, but no actual data exfiltration occurred. The firm's background includes developing IoT devices, which may have been a secondary target, though this remains unconfirmed in the simulation.\n\nMitigation recommendations include disabling default accounts, monitoring for unusual WMI activity, and implementing network segmentation. This advisory serves as a training tool to enhance defensive capabilities against similar TTPs.",
+        "techniques_used": [
+            "T1592.003",
+            "T1078.001",
+            "T1053.003",
+            "T1564.003",
+            "T1027.002",
+            "T1021.008",
+            "T1571"
+        ]
+    }
+}

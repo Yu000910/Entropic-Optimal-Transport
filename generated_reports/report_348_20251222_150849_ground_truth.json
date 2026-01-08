@@ -1,0 +1,93 @@
+{
+    "report_id": "report_348",
+    "generated_at": "20251222_150849",
+    "scenario_target_ids": [
+        "T1595.003",
+        "T1078.004",
+        "T1053",
+        "T1204",
+        "T1548.005",
+        "T1553.005",
+        "T1114.003",
+        "T1025",
+        "T1102.001",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1595.003",
+        "T1078.004",
+        "T1053",
+        "T1204",
+        "T1548.005",
+        "T1553.005",
+        "T1114.003",
+        "T1025",
+        "T1102.001",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1595.003",
+        "T1052",
+        "T1553.005",
+        "T1548.005",
+        "T1114.003",
+        "T1078.004",
+        "T1053",
+        "T1025",
+        "T1204"
+    ],
+    "clean_text": "On October 26, 2023, multiple financial institutions reported anomalous network activity, leading to the identification of a coordinated attack by Crimson Viper. The organization, 'SecureBank Inc.', a mid-sized bank with hybrid cloud infrastructure, experienced initial access through brute-forced administrative interfaces, where DirBuster was configured to scan for hidden directories. System logs from the web server at 10.0.1.5 showed 10,000 requests over two hours, though only 5% were tagged as suspicious. The actors then used compromised credentials to access cloud assets, specifically an Azure tenant, with logs indicating login attempts from IP 192.168.45.67. Once inside, they employed schtasks.exe to schedule the execution of spyware.exe during off-peak hours, while simultaneously relying on user interaction with malicious LNK files to propagate the malware across workstations. Background checks revealed that SecureBank had recently migrated to Office 365, but legacy systems remained unpatched. To escalate privileges, the malware abused iam.serviceAccountTokenCreator to create short-lived tokens for accessing restricted cloud resources, and dropped a container file with embedded malware to bypass antivirus scanning. Company emails were monitored, and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account, exfiltrating sensitive data. Additionally, a module collected data from removable drives, and PlugX used Pastebin to store C2 addresses for command and control. Finally, rogue software wrote classified project files to a removable USB device for physical exfiltration. Incident response teams noted that the attack spanned three days, with no customer data loss reported, but internal audits are ongoing.",
+    "tagged_text": "On October 26, 2023, multiple financial institutions reported anomalous network activity, leading to the identification of a coordinated attack by Crimson Viper. The organization, 'SecureBank Inc.', a mid-sized bank with hybrid cloud infrastructure, experienced initial access through brute-forced administrative interfaces [T1595.003], where DirBuster was configured to scan for hidden directories. System logs from the web server at 10.0.1.5 showed 10,000 requests over two hours, though only 5% were tagged as suspicious. The actors then used compromised credentials [T1078.004] to access cloud assets, specifically an Azure tenant, with logs indicating login attempts from IP 192.168.45.67. Once inside, they employed schtasks.exe to schedule the execution of spyware.exe [T1053] during off-peak hours, while simultaneously relying on user interaction with malicious LNK files [T1204] to propagate the malware across workstations. Background checks revealed that SecureBank had recently migrated to Office 365, but legacy systems remained unpatched. To escalate privileges, the malware abused iam.serviceAccountTokenCreator to create short-lived tokens [T1548.005] for accessing restricted cloud resources, and dropped a container file with embedded malware to bypass antivirus scanning [T1553.005]. Company emails were monitored, and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords [T1114.003] to a threat actor-controlled account, exfiltrating sensitive data. Additionally, a module collected data from removable drives [T1025], and PlugX used Pastebin to store C2 addresses [T1102.001] for command and control. Finally, rogue software wrote classified project files to a removable USB device [T1052] for physical exfiltration. Incident response teams noted that the attack spanned three days, with no customer data loss reported, but internal audits are ongoing.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe during off-peak hours, while simultaneously relying on user interaction with malicious LNK files to propagate the malware across workstations.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "exe during off-peak hours, while simultaneously relying on user interaction with malicious LNK files to propagate the malware across workstations.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "Additionally, a module collected data from removable drives, and PlugX used Pastebin to store C2 addresses [T1102.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        },
+        {
+            "sentence": "Finally, rogue software wrote classified project files to a removable USB device for physical exfiltration.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud Infrastructure and Data Exfiltration",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'Crimson Viper', targeting organizations in the financial sector. The campaign involves initial reconnaissance, credential abuse, scheduled malware execution, user interaction, cloud privilege escalation, security bypass, email exfiltration, data collection from removable media, C2 communication via dead drop resolvers, and physical exfiltration. Blue teams are advised to review logs, enforce multi-factor authentication, monitor scheduled tasks, and restrict removable media usage.",
+        "full_report_text": "On October 26, 2023, multiple financial institutions reported anomalous network activity, leading to the identification of a coordinated attack by Crimson Viper. The organization, 'SecureBank Inc.', a mid-sized bank with hybrid cloud infrastructure, experienced initial access through brute-forced administrative interfaces [T1595.003], where DirBuster was configured to scan for hidden directories. System logs from the web server at 10.0.1.5 showed 10,000 requests over two hours, though only 5% were tagged as suspicious. The actors then used compromised credentials [T1078.004] to access cloud assets, specifically an Azure tenant, with logs indicating login attempts from IP 192.168.45.67. Once inside, they employed schtasks.exe to schedule the execution of spyware.exe [T1053] during off-peak hours, while simultaneously relying on user interaction with malicious LNK files [T1204] to propagate the malware across workstations. Background checks revealed that SecureBank had recently migrated to Office 365, but legacy systems remained unpatched. To escalate privileges, the malware abused iam.serviceAccountTokenCreator to create short-lived tokens [T1548.005] for accessing restricted cloud resources, and dropped a container file with embedded malware to bypass antivirus scanning [T1553.005]. Company emails were monitored, and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords [T1114.003] to a threat actor-controlled account, exfiltrating sensitive data. Additionally, a module collected data from removable drives [T1025], and PlugX used Pastebin to store C2 addresses [T1102.001] for command and control. Finally, rogue software wrote classified project files to a removable USB device [T1052] for physical exfiltration. Incident response teams noted that the attack spanned three days, with no customer data loss reported, but internal audits are ongoing.",
+        "techniques_used": [
+            "T1595.003",
+            "T1078.004",
+            "T1053",
+            "T1204",
+            "T1548.005",
+            "T1553.005",
+            "T1114.003",
+            "T1025",
+            "T1102.001",
+            "T1052"
+        ]
+    }
+}

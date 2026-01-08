@@ -1,0 +1,113 @@
+{
+    "report_id": "report_259",
+    "generated_at": "20251222_143204",
+    "scenario_target_ids": [
+        "T1595.002",
+        "T1200",
+        "T1566.003",
+        "T1059.008",
+        "T1053",
+        "T1037.005",
+        "T1547.013",
+        "T1557.004",
+        "T1187",
+        "T1557",
+        "T1114.001",
+        "T1090.001",
+        "T1020.001",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.002",
+        "T1200",
+        "T1566.003",
+        "T1059.008",
+        "T1053",
+        "T1037.005",
+        "T1547.013",
+        "T1557.004",
+        "T1187",
+        "T1557",
+        "T1114.001",
+        "T1090.001",
+        "T1020.001",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1059.008",
+        "T1187",
+        "T1090.001",
+        "T1498.001",
+        "T1114.001",
+        "T1200",
+        "T1053",
+        "T1547.013",
+        "T1595.002",
+        "T1566.003",
+        "T1020.001",
+        "T1557.004",
+        "T1557",
+        "T1037.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional, multi-stage attack scenario. The campaign, dubbed 'Shadow Harvest,' targeted 'EnergyCorp Inc.,' a mid-sized utility company with operations across the Midwest. Initial logs from EnergyCorp's SIEM showed anomalous network traffic spikes on March 15, 2024, but these were initially attributed to routine maintenance activities. The adversary likely conducted reconnaissance by scanning for vulnerabilities using tools like nmap to identify exploitable applications on external-facing servers, while simultaneously leveraging a passive network tap to capture unencrypted credentials from internal traffic. To gain initial access, the actors employed spearphishing via WhatsApp, distributing malicious links disguised as COVID-19 relief fund applications, which led to the download of a payload that executed commands via network device CLI to manipulate router configurations. For persistence, the malware created a scheduled task using schtasks.exe to run malicious.exe hourly, while also establishing startup items by creating the /Library/StartupItems folder and editing XDG autostart entries at /etc/xdg/autostart/malicious.desktop to ensure execution on system boot. In parallel, the adversary set up an evil twin Wi-Fi access point in a public area to monitor wireless communications and forced authentication by dropping malicious.docx via phishing emails to harvest credential hashes. The campaign further involved adversary-in-the-middle attacks, where the malware intercepted HTTP requests to a victim Cisco ASA, executing payloads based on specific parameters, and collected local email files using PowerShell to locate and exfiltrate PST files from user directories. For command and control, the actors used an internal proxy by compromising a router to relay traffic between network segments, while employing traffic duplication to mirror and exfiltrate sensitive data automatically. Finally, the attack concluded with a direct network flood, launching a high-volume UDP flood on port 27015 to disrupt services and cover exfiltration activities. EnergyCorp's incident response team noted that no actual data loss occurred, as this was a controlled training exercise, but the scenario highlights the need for robust monitoring of network devices and user awareness programs.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional, multi-stage attack scenario. The campaign, dubbed 'Shadow Harvest,' targeted 'EnergyCorp Inc.,' a mid-sized utility company with operations across the Midwest. Initial logs from EnergyCorp's SIEM showed anomalous network traffic spikes on March 15, 2024, but these were initially attributed to routine maintenance activities. The adversary likely conducted reconnaissance by scanning for vulnerabilities [T1595.002] using tools like nmap to identify exploitable applications on external-facing servers, while simultaneously leveraging a passive network tap [T1200] to capture unencrypted credentials from internal traffic. To gain initial access, the actors employed spearphishing via WhatsApp [T1566.003], distributing malicious links disguised as COVID-19 relief fund applications, which led to the download of a payload that executed commands via network device CLI [T1059.008] to manipulate router configurations. For persistence, the malware created a scheduled task [T1053] using schtasks.exe to run malicious.exe hourly, while also establishing startup items [T1037.005] by creating the /Library/StartupItems folder and editing XDG autostart entries [T1547.013] at /etc/xdg/autostart/malicious.desktop to ensure execution on system boot. In parallel, the adversary set up an evil twin Wi-Fi access point [T1557.004] in a public area to monitor wireless communications and forced authentication [T1187] by dropping malicious.docx via phishing emails to harvest credential hashes. The campaign further involved adversary-in-the-middle attacks [T1557], where the malware intercepted HTTP requests to a victim Cisco ASA, executing payloads based on specific parameters, and collected local email files [T1114.001] using PowerShell to locate and exfiltrate PST files from user directories. For command and control, the actors used an internal proxy [T1090.001] by compromising a router to relay traffic between network segments, while employing traffic duplication [T1020.001] to mirror and exfiltrate sensitive data automatically. Finally, the attack concluded with a direct network flood [T1498.001], launching a high-volume UDP flood on port 27015 to disrupt services and cover exfiltration activities. EnergyCorp's incident response team noted that no actual data loss occurred, as this was a controlled training exercise, but the scenario highlights the need for robust monitoring of network devices and user awareness programs.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] using tools like nmap to identify exploitable applications on external-facing servers, while simultaneously leveraging a passive network tap to capture unencrypted credentials from internal traffic.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "For persistence, the malware created a scheduled task using schtasks.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "004] in a public area to monitor wireless communications and forced authentication by dropping malicious.",
+            "technique_id": "T1187",
+            "technique_name": "Forced Authentication"
+        },
+        {
+            "sentence": "The campaign further involved adversary-in-the-middle attacks, where the malware intercepted HTTP requests to a victim Cisco ASA, executing payloads based on specific parameters, and collected local email files [T1114.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'Shadow Harvest' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Shadow Harvest,' which targeted a critical infrastructure organization in the energy sector. The campaign involved initial reconnaissance via social engineering and technical scanning, followed by multi-vector exploitation, persistence mechanisms, and data exfiltration using compromised network devices. The attack leveraged a combination of phishing, hardware-based interception, and scheduled tasks to maintain access and harvest sensitive information, including email data and credentials, while employing network-level techniques for stealth and disruption.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional, multi-stage attack scenario. The campaign, dubbed 'Shadow Harvest,' targeted 'EnergyCorp Inc.,' a mid-sized utility company with operations across the Midwest. Initial logs from EnergyCorp's SIEM showed anomalous network traffic spikes on March 15, 2024, but these were initially attributed to routine maintenance activities. The adversary likely conducted reconnaissance by scanning for vulnerabilities [T1595.002] using tools like nmap to identify exploitable applications on external-facing servers, while simultaneously leveraging a passive network tap [T1200] to capture unencrypted credentials from internal traffic. To gain initial access, the actors employed spearphishing via WhatsApp [T1566.003], distributing malicious links disguised as COVID-19 relief fund applications, which led to the download of a payload that executed commands via network device CLI [T1059.008] to manipulate router configurations. For persistence, the malware created a scheduled task [T1053] using schtasks.exe to run malicious.exe hourly, while also establishing startup items [T1037.005] by creating the /Library/StartupItems folder and editing XDG autostart entries [T1547.013] at /etc/xdg/autostart/malicious.desktop to ensure execution on system boot. In parallel, the adversary set up an evil twin Wi-Fi access point [T1557.004] in a public area to monitor wireless communications and forced authentication [T1187] by dropping malicious.docx via phishing emails to harvest credential hashes. The campaign further involved adversary-in-the-middle attacks [T1557], where the malware intercepted HTTP requests to a victim Cisco ASA, executing payloads based on specific parameters, and collected local email files [T1114.001] using PowerShell to locate and exfiltrate PST files from user directories. For command and control, the actors used an internal proxy [T1090.001] by compromising a router to relay traffic between network segments, while employing traffic duplication [T1020.001] to mirror and exfiltrate sensitive data automatically. Finally, the attack concluded with a direct network flood [T1498.001], launching a high-volume UDP flood on port 27015 to disrupt services and cover exfiltration activities. EnergyCorp's incident response team noted that no actual data loss occurred, as this was a controlled training exercise, but the scenario highlights the need for robust monitoring of network devices and user awareness programs.",
+        "techniques_used": [
+            "T1595.002",
+            "T1200",
+            "T1566.003",
+            "T1059.008",
+            "T1053",
+            "T1037.005",
+            "T1547.013",
+            "T1557.004",
+            "T1187",
+            "T1557",
+            "T1114.001",
+            "T1090.001",
+            "T1020.001",
+            "T1498.001"
+        ]
+    }
+}

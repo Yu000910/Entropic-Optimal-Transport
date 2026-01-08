@@ -1,0 +1,101 @@
+{
+    "report_id": "report_444",
+    "generated_at": "20251222_155002",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1559",
+        "T1204.002",
+        "T1546.017",
+        "T1557.004",
+        "T1555.004",
+        "T1021",
+        "T1102.003",
+        "T1102.001",
+        "T1029",
+        "T1565.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1204.002",
+        "T1105",
+        "T1546.017",
+        "T1559",
+        "T1565.001",
+        "T1557.004",
+        "T1555.004",
+        "T1021",
+        "T1102.003",
+        "T1102.001",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1546.017",
+        "T1102.001",
+        "T1566.001",
+        "T1029",
+        "T1021",
+        "T1102.003",
+        "T1565.001",
+        "T1559",
+        "T1555.004",
+        "T1105",
+        "T1557.004",
+        "T1204.002"
+    ],
+    "clean_text": "On 2024-10-15, SecureTrust Financial's Security Operations Center (SOC) detected anomalous activity originating from an employee workstation, leading to the discovery of the 'Crimson Shadow' campaign. The attack began with a spearphishing email that appeared to originate from a trusted vendor, containing a malicious Excel attachment with embedded macros designed to execute arbitrary code. Upon opening the attachment, the user was prompted to enable macros, which triggered the execution of a PowerShell script that downloaded a WarzoneRAT payload from a compromised server while simultaneously establishing persistence via a udev rule written to /etc/udev/rules.d/99-persistence.rules to execute on device removal. The adversary then leveraged Component Object Model (COM) for inter-process communication to instantiate malicious script objects and manipulate stored data by editing Excel macros to maintain legitimate appearance. To harvest credentials, the actor deployed an evil twin access point at a company conference and used tools to retrieve credentials from Windows Credential Manager, including Internet Explorer and RDP access via vaultcmd.exe and CredEnumerateW. With valid credentials, the threat actor moved laterally using remote services like Impacket and established command and control (C2) through one-way HTTP communication where commands were intercepted and executed, while also employing a dead drop resolver to access additional payloads from hidden web services. Finally, the campaign initiated scheduled data exfiltration via PowerShell scripts, with logs showing unusual network traffic to external IPs during off-hours, though some of this traffic was later attributed to misconfigured backup systems. SecureTrust's incident response team contained the threat by isolating affected systems and resetting credentials, with no actual data loss reported in this training scenario.",
+    "tagged_text": "On 2024-10-15, SecureTrust Financial's Security Operations Center (SOC) detected anomalous activity originating from an employee workstation, leading to the discovery of the 'Crimson Shadow' campaign. The attack began with a spearphishing email [T1566.001] that appeared to originate from a trusted vendor, containing a malicious Excel attachment with embedded macros designed to execute arbitrary code [T1204.002]. Upon opening the attachment, the user was prompted to enable macros, which triggered the execution of a PowerShell script that downloaded a WarzoneRAT payload from a compromised server [T1105] while simultaneously establishing persistence via a udev rule written to /etc/udev/rules.d/99-persistence.rules to execute on device removal [T1546.017]. The adversary then leveraged Component Object Model (COM) for inter-process communication [T1559] to instantiate malicious script objects and manipulate stored data by editing Excel macros to maintain legitimate appearance [T1565.001]. To harvest credentials, the actor deployed an evil twin access point at a company conference [T1557.004] and used tools to retrieve credentials from Windows Credential Manager, including Internet Explorer and RDP access via vaultcmd.exe and CredEnumerateW [T1555.004]. With valid credentials, the threat actor moved laterally using remote services like Impacket [T1021] and established command and control (C2) through one-way HTTP communication where commands were intercepted and executed [T1102.003], while also employing a dead drop resolver to access additional payloads from hidden web services [T1102.001]. Finally, the campaign initiated scheduled data exfiltration via PowerShell scripts [T1029], with logs showing unusual network traffic to external IPs during off-hours, though some of this traffic was later attributed to misconfigured backup systems. SecureTrust's incident response team contained the threat by isolating affected systems and resetting credentials, with no actual data loss reported in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon opening the attachment, the user was prompted to enable macros, which triggered the execution of a PowerShell script that downloaded a WarzoneRAT payload from a compromised server while simultaneously establishing persistence via a udev rule written to /etc/udev/rules.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "The adversary then leveraged Component Object Model (COM) for inter-process communication to instantiate malicious script objects and manipulate stored data by editing Excel macros to maintain legitimate appearance [T1565.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "With valid credentials, the threat actor moved laterally using remote services like Impacket and established command and control (C2) through one-way HTTP communication where commands were intercepted and executed [T1102.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "Finally, the campaign initiated scheduled data exfiltration via PowerShell scripts, with logs showing unusual network traffic to external IPs during off-hours, though some of this traffic was later attributed to misconfigured backup systems.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Shadow' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, 'Crimson Shadow', targeting financial institutions through a multi-stage attack leveraging social engineering, persistence mechanisms, and credential harvesting. The campaign was identified during a routine blue team exercise at a fictional bank, 'SecureTrust Financial', and serves as an educational tool for defensive training.",
+        "full_report_text": "On 2024-10-15, SecureTrust Financial's Security Operations Center (SOC) detected anomalous activity originating from an employee workstation, leading to the discovery of the 'Crimson Shadow' campaign. The attack began with a spearphishing email [T1566.001] that appeared to originate from a trusted vendor, containing a malicious Excel attachment with embedded macros designed to execute arbitrary code [T1204.002]. Upon opening the attachment, the user was prompted to enable macros, which triggered the execution of a PowerShell script that downloaded a WarzoneRAT payload from a compromised server [T1105] while simultaneously establishing persistence via a udev rule written to /etc/udev/rules.d/99-persistence.rules to execute on device removal [T1546.017]. The adversary then leveraged Component Object Model (COM) for inter-process communication [T1559] to instantiate malicious script objects and manipulate stored data by editing Excel macros to maintain legitimate appearance [T1565.001]. To harvest credentials, the actor deployed an evil twin access point at a company conference [T1557.004] and used tools to retrieve credentials from Windows Credential Manager, including Internet Explorer and RDP access via vaultcmd.exe and CredEnumerateW [T1555.004]. With valid credentials, the threat actor moved laterally using remote services like Impacket [T1021] and established command and control (C2) through one-way HTTP communication where commands were intercepted and executed [T1102.003], while also employing a dead drop resolver to access additional payloads from hidden web services [T1102.001]. Finally, the campaign initiated scheduled data exfiltration via PowerShell scripts [T1029], with logs showing unusual network traffic to external IPs during off-hours, though some of this traffic was later attributed to misconfigured backup systems. SecureTrust's incident response team contained the threat by isolating affected systems and resetting credentials, with no actual data loss reported in this training scenario.",
+        "techniques_used": [
+            "T1566.001",
+            "T1204.002",
+            "T1105",
+            "T1546.017",
+            "T1559",
+            "T1565.001",
+            "T1557.004",
+            "T1555.004",
+            "T1021",
+            "T1102.003",
+            "T1102.001",
+            "T1029"
+        ]
+    }
+}

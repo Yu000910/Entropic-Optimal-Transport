@@ -1,0 +1,113 @@
+{
+    "report_id": "report_46",
+    "generated_at": "20251222_113536",
+    "scenario_target_ids": [
+        "T1592.004",
+        "T1595.002",
+        "T1587.001",
+        "T1584.008",
+        "T1195",
+        "T1195.002",
+        "T1609",
+        "T1547.002",
+        "T1600.002",
+        "T1003.003",
+        "T1040",
+        "T1219.003",
+        "T1561.001",
+        "T1657"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.004",
+        "T1595.002",
+        "T1587.001",
+        "T1584.008",
+        "T1195",
+        "T1195.002",
+        "T1609",
+        "T1547.002",
+        "T1600.002",
+        "T1003.003",
+        "T1040",
+        "T1219.003",
+        "T1561.001",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1592.004",
+        "T1040",
+        "T1195",
+        "T1547.002",
+        "T1587.001",
+        "T1600.002",
+        "T1219.003",
+        "T1584.008",
+        "T1003.003",
+        "T1657",
+        "T1195.002",
+        "T1561.001",
+        "T1595.002",
+        "T1609"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional campaign attributed to the threat actor 'Shadow Serpent'. This group has been observed targeting financial institutions in a multi-stage attack designed to exfiltrate sensitive data and cause operational disruption. The campaign begins with reconnaissance, where actors likely conduct initial reconnaissance by scanning public-facing servers to gather information on client configurations and actively probing for vulnerabilities. In one instance, network logs showed increased traffic on port 3306, though this was unrelated to the attack. Following reconnaissance, the actors compromised the software supply chain by distributing a modified JavaScript library through a cracked software download site and embedding a backdoor in the source code before distribution. The company, FinSecure Corp, reported unusual activity in their development environment, but initial investigations were inconclusive. For initial access, the actors deployed custom malware that was routed through a network device to evade detection, with command and control traffic observed at http://c2.com/payload. Execution involved leveraging container administration commands to run malicious scripts within an Ubuntu container, as seen in a simulated incident where a container entry point executed shell scripts. Persistence was achieved by loading a malicious DLL via LSA authentication packages, ensuring the backdoor remained active across system reboots. System logs indicated multiple failed login attempts, though these were unrelated. For credential access, the actors employed techniques to disable crypto hardware to recover encrypted data and used tools like secretsdump.py to extract NTLM hashes from the domain controller, while also conducting network sniffing to harvest unencrypted Telnet credentials from network communications. Lateral movement included using remote access hardware such as PiKVM to maintain control over compromised systems through hardware-based methods. The company's background includes a recent merger, but this did not impact the attack. Exfiltration was not a primary focus in this scenario, but actors demonstrated capabilities for data theft. Impact actions involved disk content wipes by filling storage volumes with pseudorandom bytes to render files unrecoverable and financial theft through compromising an executive's email account to send fraudulent payment instructions. Defensive teams should monitor for these indicators and apply patches promptly.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional campaign attributed to the threat actor 'Shadow Serpent'. This group has been observed targeting financial institutions in a multi-stage attack designed to exfiltrate sensitive data and cause operational disruption. The campaign begins with reconnaissance, where actors likely conduct initial reconnaissance by scanning public-facing servers to gather information on client configurations [T1592.004] and actively probing for vulnerabilities [T1595.002]. In one instance, network logs showed increased traffic on port 3306, though this was unrelated to the attack. Following reconnaissance, the actors compromised the software supply chain by distributing a modified JavaScript library through a cracked software download site [T1195] and embedding a backdoor in the source code before distribution [T1195.002]. The company, FinSecure Corp, reported unusual activity in their development environment, but initial investigations were inconclusive. For initial access, the actors deployed custom malware [T1587.001] that was routed through a network device to evade detection [T1584.008], with command and control traffic observed at http://c2.com/payload. Execution involved leveraging container administration commands [T1609] to run malicious scripts within an Ubuntu container, as seen in a simulated incident where a container entry point executed shell scripts. Persistence was achieved by loading a malicious DLL via LSA authentication packages [T1547.002], ensuring the backdoor remained active across system reboots. System logs indicated multiple failed login attempts, though these were unrelated. For credential access, the actors employed techniques to disable crypto hardware [T1600.002] to recover encrypted data and used tools like secretsdump.py to extract NTLM hashes from the domain controller [T1003.003], while also conducting network sniffing [T1040] to harvest unencrypted Telnet credentials from network communications. Lateral movement included using remote access hardware [T1219.003] such as PiKVM to maintain control over compromised systems through hardware-based methods. The company's background includes a recent merger, but this did not impact the attack. Exfiltration was not a primary focus in this scenario, but actors demonstrated capabilities for data theft. Impact actions involved disk content wipes [T1561.001] by filling storage volumes with pseudorandom bytes to render files unrecoverable and financial theft [T1657] through compromising an executive's email account to send fraudulent payment instructions. Defensive teams should monitor for these indicators and apply patches promptly.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following reconnaissance, the actors compromised the software supply chain by distributing a modified JavaScript library through a cracked software download site and embedding a backdoor in the source code before distribution [T1195.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Execution involved leveraging container administration commands to run malicious scripts within an Ubuntu container, as seen in a simulated incident where a container entry point executed shell scripts.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "003], while also conducting network sniffing to harvest unencrypted Telnet credentials from network communications.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "001] by filling storage volumes with pseudorandom bytes to render files unrecoverable and financial theft through compromising an executive's email account to send fraudulent payment instructions.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by 'Shadow Serpent' Threat Group",
+        "summary": "This advisory details a simulated campaign by the fictional threat group 'Shadow Serpent', targeting financial institutions to steal sensitive data and disrupt operations. The campaign involves reconnaissance, supply chain compromise, malware deployment, persistence mechanisms, credential theft, and destructive actions, leveraging techniques such as vulnerability scanning, container exploitation, and hardware-based remote access. Organizations are urged to review defensive measures and apply mitigations.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional campaign attributed to the threat actor 'Shadow Serpent'. This group has been observed targeting financial institutions in a multi-stage attack designed to exfiltrate sensitive data and cause operational disruption. The campaign begins with reconnaissance, where actors likely conduct initial reconnaissance by scanning public-facing servers to gather information on client configurations [T1592.004] and actively probing for vulnerabilities [T1595.002]. In one instance, network logs showed increased traffic on port 3306, though this was unrelated to the attack. Following reconnaissance, the actors compromised the software supply chain by distributing a modified JavaScript library through a cracked software download site [T1195] and embedding a backdoor in the source code before distribution [T1195.002]. The company, FinSecure Corp, reported unusual activity in their development environment, but initial investigations were inconclusive. For initial access, the actors deployed custom malware [T1587.001] that was routed through a network device to evade detection [T1584.008], with command and control traffic observed at http://c2.com/payload. Execution involved leveraging container administration commands [T1609] to run malicious scripts within an Ubuntu container, as seen in a simulated incident where a container entry point executed shell scripts. Persistence was achieved by loading a malicious DLL via LSA authentication packages [T1547.002], ensuring the backdoor remained active across system reboots. System logs indicated multiple failed login attempts, though these were unrelated. For credential access, the actors employed techniques to disable crypto hardware [T1600.002] to recover encrypted data and used tools like secretsdump.py to extract NTLM hashes from the domain controller [T1003.003], while also conducting network sniffing [T1040] to harvest unencrypted Telnet credentials from network communications. Lateral movement included using remote access hardware [T1219.003] such as PiKVM to maintain control over compromised systems through hardware-based methods. The company's background includes a recent merger, but this did not impact the attack. Exfiltration was not a primary focus in this scenario, but actors demonstrated capabilities for data theft. Impact actions involved disk content wipes [T1561.001] by filling storage volumes with pseudorandom bytes to render files unrecoverable and financial theft [T1657] through compromising an executive's email account to send fraudulent payment instructions. Defensive teams should monitor for these indicators and apply patches promptly.",
+        "techniques_used": [
+            "T1592.004",
+            "T1595.002",
+            "T1587.001",
+            "T1584.008",
+            "T1195",
+            "T1195.002",
+            "T1609",
+            "T1547.002",
+            "T1600.002",
+            "T1003.003",
+            "T1040",
+            "T1219.003",
+            "T1561.001",
+            "T1657"
+        ]
+    }
+}

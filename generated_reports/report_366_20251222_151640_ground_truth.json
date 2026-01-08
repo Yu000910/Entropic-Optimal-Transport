@@ -1,0 +1,98 @@
+{
+    "report_id": "report_366",
+    "generated_at": "20251222_151640",
+    "scenario_target_ids": [
+        "T1595.001",
+        "T1592.001",
+        "T1195.003",
+        "T1059.009",
+        "T1546.011",
+        "T1543.001",
+        "T1055.011",
+        "T1111",
+        "T1555.005",
+        "T1602.001",
+        "T1071.004",
+        "T1567.001",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.001",
+        "T1592.001",
+        "T1195.003",
+        "T1059.009",
+        "T1546.011",
+        "T1543.001",
+        "T1055.011",
+        "T1111",
+        "T1555.005",
+        "T1602.001",
+        "T1071.004",
+        "T1567.001",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1055.011",
+        "T1602.001",
+        "T1592.001",
+        "T1489",
+        "T1595.001",
+        "T1195.003",
+        "T1546.011",
+        "T1059.009",
+        "T1111",
+        "T1071.004",
+        "T1543.001",
+        "T1555.005",
+        "T1567.001"
+    ],
+    "clean_text": "On June 15, 2024, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network activity originating from external IP addresses. GridSecure Inc., founded in 1998, operates power grids across the Midwest, with headquarters in Chicago and approximately 5,000 employees. Initial logs showed increased ICMP traffic from 203.0.113.0/24, which was later attributed to adversary reconnaissance efforts. The actors likely conducted scanning of IP blocks to map the network topology and identify vulnerable hosts. Following this, they employed nmap.exe with the -O flag to fingerprint operating systems on target systems, including Windows Server 2019 and Ubuntu 20.04 instances. System administrators noted unusual USB device insertions on an engineering workstation, where a modified Teensy USB device simulated keystrokes to install a reverse shell, bypassing air-gapped network segments. Once initial access was achieved, the adversary used a malicious script that invoked 'reg add' via command line to modify registry keys and disable Windows Defender real-time protection, while simultaneously leveraging sdbinst.exe to install a Shim database that elevated privileges for specific applications like PowerShell and cmd.exe. For persistence on macOS systems within the environment, the actors dropped a malicious property list file into the LaunchDaemons directory, ensuring the payload executed at system startup. During execution, the adversary wrote a malicious DLL into the memory space of a legitimate browser process to evade detection and maintain stealth. In credential harvesting phases, they used a custom collection method to intercept two-factor authentication soft tokens and accessed browser memory to retrieve decrypted credentials from an active password manager extension, compromising administrative accounts. The script also performed SNMP walks to gather routing table information from the gateway, aiding in lateral movement. For command and control (C2), LazyScripter malware leveraged dynamic DNS providers to communicate with attacker-controlled servers, blending traffic with legitimate DNS queries. Exfiltration involved storing stolen customer data in a private repository via https://api.github.com, using encrypted channels to avoid data loss prevention tools. Finally, the Hannotog tool stopped critical Windows services, such as 'WinDefend' and 'Spooler', to disrupt operations and cover tracks. Log analysis revealed these activities over a two-week period, with no actual data loss reported in this training scenario.",
+    "tagged_text": "On June 15, 2024, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network activity originating from external IP addresses. GridSecure Inc., founded in 1998, operates power grids across the Midwest, with headquarters in Chicago and approximately 5,000 employees. Initial logs showed increased ICMP traffic from 203.0.113.0/24, which was later attributed to adversary reconnaissance efforts. The actors likely conducted scanning of IP blocks [T1595.001] to map the network topology and identify vulnerable hosts. Following this, they employed nmap.exe with the -O flag [T1592.001] to fingerprint operating systems on target systems, including Windows Server 2019 and Ubuntu 20.04 instances. System administrators noted unusual USB device insertions on an engineering workstation, where a modified Teensy USB device simulated keystrokes [T1195.003] to install a reverse shell, bypassing air-gapped network segments. Once initial access was achieved, the adversary used a malicious script that invoked 'reg add' via command line [T1059.009] to modify registry keys and disable Windows Defender real-time protection, while simultaneously leveraging sdbinst.exe to install a Shim database [T1546.011] that elevated privileges for specific applications like PowerShell and cmd.exe. For persistence on macOS systems within the environment, the actors dropped a malicious property list file into the LaunchDaemons directory [T1543.001], ensuring the payload executed at system startup. During execution, the adversary wrote a malicious DLL into the memory space of a legitimate browser process [T1055.011] to evade detection and maintain stealth. In credential harvesting phases, they used a custom collection method to intercept two-factor authentication soft tokens [T1111] and accessed browser memory to retrieve decrypted credentials from an active password manager extension [T1555.005], compromising administrative accounts. The script also performed SNMP walks [T1602.001] to gather routing table information from the gateway, aiding in lateral movement. For command and control (C2), LazyScripter malware leveraged dynamic DNS providers [T1071.004] to communicate with attacker-controlled servers, blending traffic with legitimate DNS queries. Exfiltration involved storing stolen customer data in a private repository via https://api.github.com [T1567.001], using encrypted channels to avoid data loss prevention tools. Finally, the Hannotog tool stopped critical Windows services [T1489], such as 'WinDefend' and 'Spooler', to disrupt operations and cover tracks. Log analysis revealed these activities over a two-week period, with no actual data loss reported in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "In credential harvesting phases, they used a custom collection method to intercept two-factor authentication soft tokens and accessed browser memory to retrieve decrypted credentials from an active password manager extension [T1555.",
+            "technique_id": "T1111",
+            "technique_name": "Multi-Factor Authentication Interception"
+        },
+        {
+            "sentence": "Finally, the Hannotog tool stopped critical Windows services, such as 'WinDefend' and 'Spooler', to disrupt operations and cover tracks.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowGale', targeting critical infrastructure sectors. The campaign involves initial reconnaissance via network scanning and hardware fingerprinting, followed by supply chain compromise through a malicious USB device, execution via cloud API commands, persistence through application shimming and launch agents, credential theft via multi-factor authentication interception and password manager exploitation, data exfiltration to code repositories, and service disruption. Blue teams are advised to review logs for indicators of compromise (IOCs) and implement mitigations outlined in this report.",
+        "full_report_text": "On June 15, 2024, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network activity originating from external IP addresses. GridSecure Inc., founded in 1998, operates power grids across the Midwest, with headquarters in Chicago and approximately 5,000 employees. Initial logs showed increased ICMP traffic from 203.0.113.0/24, which was later attributed to adversary reconnaissance efforts. The actors likely conducted scanning of IP blocks [T1595.001] to map the network topology and identify vulnerable hosts. Following this, they employed nmap.exe with the -O flag [T1592.001] to fingerprint operating systems on target systems, including Windows Server 2019 and Ubuntu 20.04 instances. System administrators noted unusual USB device insertions on an engineering workstation, where a modified Teensy USB device simulated keystrokes [T1195.003] to install a reverse shell, bypassing air-gapped network segments. Once initial access was achieved, the adversary used a malicious script that invoked 'reg add' via command line [T1059.009] to modify registry keys and disable Windows Defender real-time protection, while simultaneously leveraging sdbinst.exe to install a Shim database [T1546.011] that elevated privileges for specific applications like PowerShell and cmd.exe. For persistence on macOS systems within the environment, the actors dropped a malicious property list file into the LaunchDaemons directory [T1543.001], ensuring the payload executed at system startup. During execution, the adversary wrote a malicious DLL into the memory space of a legitimate browser process [T1055.011] to evade detection and maintain stealth. In credential harvesting phases, they used a custom collection method to intercept two-factor authentication soft tokens [T1111] and accessed browser memory to retrieve decrypted credentials from an active password manager extension [T1555.005], compromising administrative accounts. The script also performed SNMP walks [T1602.001] to gather routing table information from the gateway, aiding in lateral movement. For command and control (C2), LazyScripter malware leveraged dynamic DNS providers [T1071.004] to communicate with attacker-controlled servers, blending traffic with legitimate DNS queries. Exfiltration involved storing stolen customer data in a private repository via https://api.github.com [T1567.001], using encrypted channels to avoid data loss prevention tools. Finally, the Hannotog tool stopped critical Windows services [T1489], such as 'WinDefend' and 'Spooler', to disrupt operations and cover tracks. Log analysis revealed these activities over a two-week period, with no actual data loss reported in this training scenario.",
+        "techniques_used": [
+            "T1595.001",
+            "T1592.001",
+            "T1195.003",
+            "T1059.009",
+            "T1546.011",
+            "T1543.001",
+            "T1055.011",
+            "T1111",
+            "T1555.005",
+            "T1602.001",
+            "T1071.004",
+            "T1567.001",
+            "T1489"
+        ]
+    }
+}

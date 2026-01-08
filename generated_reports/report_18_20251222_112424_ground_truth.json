@@ -1,0 +1,109 @@
+{
+    "report_id": "report_18",
+    "generated_at": "20251222_112424",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1053",
+        "T1059.002",
+        "T1070.008",
+        "T1619",
+        "T1114.003",
+        "T1056.004",
+        "T1104",
+        "T1102.001",
+        "T1537",
+        "T1567.004",
+        "T1499.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.001",
+        "T1053",
+        "T1059.002",
+        "T1070.008",
+        "T1619",
+        "T1114.003",
+        "T1056.004",
+        "T1104",
+        "T1102.001",
+        "T1537",
+        "T1567.004",
+        "T1499.002"
+    ],
+    "actual_found_ids": [
+        "T1053",
+        "T1102.001",
+        "T1059.002",
+        "T1589",
+        "T1104",
+        "T1537",
+        "T1070.008",
+        "T1619",
+        "T1114.003",
+        "T1567.004",
+        "T1195.001",
+        "T1056.004",
+        "T1499.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training on the tactics, techniques, and procedures (TTPs) used by the APT group 'ShadowScript'. This report is based on a simulated attack scenario designed to enhance defensive capabilities. Background: 'ShadowScript' is a fictional threat actor believed to operate with financial espionage motives, targeting sectors such as finance and technology. Initial analysis indicates the campaign began in early 2024, with no real-world impact intended. The actors likely conduct reconnaissance to identify vulnerable systems, though specific details are omitted for training realism.\n\nAttack Narrative:\nInitial Access: The adversary compromised a third-party software repository, injecting malicious code into the PowerShell script 'update.ps1' to exfiltrate sensitive database credentials. This script was distributed to victim organizations through automated update mechanisms.\nExecution: On Windows systems, the malware executed 'malicious.exe' daily at 3 AM using Windows Task Scheduler, while on macOS, it wrote an AppleScript file to /Users/Shared/backdoor.applescript to establish persistence by adding a login item. System logs from affected machines show increased CPU usage during these times, but no alerts were triggered due to misconfigured monitoring.\nPersistence and Defense Evasion: To cover tracks, the attacker used ExchangePowerShell to delete suspicious email logs from the mail server and employed the Windows call SetWindowsHookEx to inject into every GUI process running on the victim's machine for credential API hooking. Additionally, the threat actor initiated 'remote_access_tool.exe' to maintain resilient communication with compromised systems through multi-stage channels, with some components using Twitter as a dead drop resolver to obtain C2 server addresses if hard-coded ones failed.\nDiscovery and Collection: Through the S3 API, the attacker retrieved bucket policies using GetBucketPolicy to assess access controls for cloud storage object discovery, and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account. The organization's internal audit revealed unusual email forwarding patterns but no immediate action was taken.\nExfiltration and Impact: A script utilized the Dropbox API to exfiltrate documents to the attacker's cloud storage, while another malicious script collected network configuration details and sent them to webhook.site via exfiltration over webhook. To disrupt services, the adversary exploited repeated SSL/TLS handshake renegotiations to tie up server worker threads in a service exhaustion flood, causing temporary outages in web applications. Incident response teams noted increased network traffic to external domains, but initial investigations focused on hardware failures rather than malicious activity.\n\nRecommendations: Blue teams should monitor for unusual scheduled tasks, script modifications, cloud API calls, and email forwarding rules. Implement network segmentation and review third-party dependencies regularly. This advisory is purely educational and does not reflect real-world events.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training on the tactics, techniques, and procedures (TTPs) used by the APT group 'ShadowScript'. This report is based on a simulated attack scenario designed to enhance defensive capabilities. Background: 'ShadowScript' is a fictional threat actor believed to operate with financial espionage motives, targeting sectors such as finance and technology. Initial analysis indicates the campaign began in early 2024, with no real-world impact intended. The actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though specific details are omitted for training realism.\n\nAttack Narrative:\nInitial Access: The adversary compromised a third-party software repository, injecting malicious code into the PowerShell script 'update.ps1' to exfiltrate sensitive database credentials [T1195.001]. This script was distributed to victim organizations through automated update mechanisms.\nExecution: On Windows systems, the malware executed 'malicious.exe' daily at 3 AM using Windows Task Scheduler [T1053], while on macOS, it wrote an AppleScript file to /Users/Shared/backdoor.applescript to establish persistence by adding a login item [T1059.002]. System logs from affected machines show increased CPU usage during these times, but no alerts were triggered due to misconfigured monitoring.\nPersistence and Defense Evasion: To cover tracks, the attacker used ExchangePowerShell to delete suspicious email logs from the mail server [T1070.008] and employed the Windows call SetWindowsHookEx to inject into every GUI process running on the victim's machine for credential API hooking [T1056.004]. Additionally, the threat actor initiated 'remote_access_tool.exe' to maintain resilient communication with compromised systems through multi-stage channels [T1104], with some components using Twitter as a dead drop resolver to obtain C2 server addresses if hard-coded ones failed [T1102.001].\nDiscovery and Collection: Through the S3 API, the attacker retrieved bucket policies using GetBucketPolicy to assess access controls for cloud storage object discovery [T1619], and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account [T1114.003]. The organization's internal audit revealed unusual email forwarding patterns but no immediate action was taken.\nExfiltration and Impact: A script utilized the Dropbox API to exfiltrate documents to the attacker's cloud storage [T1537], while another malicious script collected network configuration details and sent them to webhook.site via exfiltration over webhook [T1567.004]. To disrupt services, the adversary exploited repeated SSL/TLS handshake renegotiations to tie up server worker threads in a service exhaustion flood [T1499.002], causing temporary outages in web applications. Incident response teams noted increased network traffic to external domains, but initial investigations focused on hardware failures rather than malicious activity.\n\nRecommendations: Blue teams should monitor for unusual scheduled tasks, script modifications, cloud API calls, and email forwarding rules. Implement network segmentation and review third-party dependencies regularly. This advisory is purely educational and does not reflect real-world events.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify vulnerable systems, though specific details are omitted for training realism.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "exe' daily at 3 AM using Windows Task Scheduler, while on macOS, it wrote an AppleScript file to /Users/Shared/backdoor.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "exe' to maintain resilient communication with compromised systems through multi-stage channels, with some components using Twitter as a dead drop resolver to obtain C2 server addresses if hard-coded ones failed [T1102.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        },
+        {
+            "sentence": "Discovery and Collection: Through the S3 API, the attacker retrieved bucket policies using GetBucketPolicy to assess access controls for cloud storage object discovery, and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account [T1114.",
+            "technique_id": "T1619",
+            "technique_name": "Cloud Storage Object Discovery"
+        },
+        {
+            "sentence": "Exfiltration and Impact: A script utilized the Dropbox API to exfiltrate documents to the attacker's cloud storage, while another malicious script collected network configuration details and sent them to webhook.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowScript' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowScript', targeting organizations with hybrid on-premises and cloud infrastructure. The campaign involves supply chain compromise, multi-platform persistence, credential theft, data exfiltration, and denial-of-service tactics to disrupt operations and steal sensitive information for educational blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training on the tactics, techniques, and procedures (TTPs) used by the APT group 'ShadowScript'. This report is based on a simulated attack scenario designed to enhance defensive capabilities. Background: 'ShadowScript' is a fictional threat actor believed to operate with financial espionage motives, targeting sectors such as finance and technology. Initial analysis indicates the campaign began in early 2024, with no real-world impact intended. The actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though specific details are omitted for training realism.\n\nAttack Narrative:\nInitial Access: The adversary compromised a third-party software repository, injecting malicious code into the PowerShell script 'update.ps1' to exfiltrate sensitive database credentials [T1195.001]. This script was distributed to victim organizations through automated update mechanisms.\nExecution: On Windows systems, the malware executed 'malicious.exe' daily at 3 AM using Windows Task Scheduler [T1053], while on macOS, it wrote an AppleScript file to /Users/Shared/backdoor.applescript to establish persistence by adding a login item [T1059.002]. System logs from affected machines show increased CPU usage during these times, but no alerts were triggered due to misconfigured monitoring.\nPersistence and Defense Evasion: To cover tracks, the attacker used ExchangePowerShell to delete suspicious email logs from the mail server [T1070.008] and employed the Windows call SetWindowsHookEx to inject into every GUI process running on the victim's machine for credential API hooking [T1056.004]. Additionally, the threat actor initiated 'remote_access_tool.exe' to maintain resilient communication with compromised systems through multi-stage channels [T1104], with some components using Twitter as a dead drop resolver to obtain C2 server addresses if hard-coded ones failed [T1102.001].\nDiscovery and Collection: Through the S3 API, the attacker retrieved bucket policies using GetBucketPolicy to assess access controls for cloud storage object discovery [T1619], and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account [T1114.003]. The organization's internal audit revealed unusual email forwarding patterns but no immediate action was taken.\nExfiltration and Impact: A script utilized the Dropbox API to exfiltrate documents to the attacker's cloud storage [T1537], while another malicious script collected network configuration details and sent them to webhook.site via exfiltration over webhook [T1567.004]. To disrupt services, the adversary exploited repeated SSL/TLS handshake renegotiations to tie up server worker threads in a service exhaustion flood [T1499.002], causing temporary outages in web applications. Incident response teams noted increased network traffic to external domains, but initial investigations focused on hardware failures rather than malicious activity.\n\nRecommendations: Blue teams should monitor for unusual scheduled tasks, script modifications, cloud API calls, and email forwarding rules. Implement network segmentation and review third-party dependencies regularly. This advisory is purely educational and does not reflect real-world events.",
+        "techniques_used": [
+            "T1195.001",
+            "T1053",
+            "T1059.002",
+            "T1070.008",
+            "T1619",
+            "T1114.003",
+            "T1056.004",
+            "T1104",
+            "T1102.001",
+            "T1537",
+            "T1567.004",
+            "T1499.002"
+        ]
+    }
+}

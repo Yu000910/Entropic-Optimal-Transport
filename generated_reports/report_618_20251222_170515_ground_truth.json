@@ -1,0 +1,103 @@
+{
+    "report_id": "report_618",
+    "generated_at": "20251222_170515",
+    "scenario_target_ids": [
+        "T1591.002",
+        "T1200",
+        "T1091",
+        "T1204.002",
+        "T1053",
+        "T1574.010",
+        "T1055.012",
+        "T1556.002",
+        "T1056.001",
+        "T1530",
+        "T1560.003",
+        "T1102.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1591.002",
+        "T1200",
+        "T1091",
+        "T1204.002",
+        "T1053",
+        "T1574.010",
+        "T1055.012",
+        "T1556.002",
+        "T1056.001",
+        "T1530",
+        "T1560.003",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1574.010",
+        "T1530",
+        "T1102.001",
+        "T1055.012",
+        "T1056.001",
+        "T1591.002",
+        "T1091",
+        "T1200",
+        "T1560.003",
+        "T1053",
+        "T1556.002",
+        "T1204.002"
+    ],
+    "clean_text": "On March 15, 2024, FinSecure Inc., a provider of investment advisory services based in Chicago, reported anomalous network activity following a routine audit. Initial investigation revealed that adversaries likely conducted reconnaissance by harvesting partnership logos and client lists from the victim's official website to tailor phishing campaigns. Subsequently, on March 20, unauthorized personnel physically connected a Bash Bunny device to an unsecured network port in the office lobby, exploiting weak physical security controls to gain initial access. This hardware addition facilitated the deployment of malware via infected USB media, which spread laterally to adjacent workstations by replicating through removable media. Employees were then targeted with spear-phishing emails containing malicious attachments disguised as financial reports; one user opened the attachment, executing a payload that dropped a keylogger. The adversary established persistence by creating a scheduled task via schtasks.exe to run the keylogger executable daily at midnight, ensuring continuous operation. To escalate privileges, the malware employed 'sc query' to discover services running with SYSTEM privileges that could be hijacked, exploiting a services file permissions weakness. Once elevated, the NETWIRE payload was injected into benign Microsoft executables via process hollowing to evade detection. A credential-stealing DLL was written to the user's profile directory to capture login information, acting as a password filter, while the keylogger tool actively captured keystrokes from financial applications. Data exfiltration involved collecting sensitive documents from the Microsoft 365 environment, including client portfolios and internal memos. Before transmission, the malware saved system information into an XML file that was then XOR-encoded to archive data via a custom method. Command and control was maintained by obtaining updated C2 information from a Google Docs page, using it as a dead drop resolver. Throughout the incident, system logs showed routine backup processes and firewall updates, but no alerts were triggered for the scheduled tasks or unauthorized hardware. FinSecure's background includes partnerships with regional banks, which may have been a factor in the targeting, though no direct evidence links this to the attack.",
+    "tagged_text": "On March 15, 2024, FinSecure Inc., a provider of investment advisory services based in Chicago, reported anomalous network activity following a routine audit. Initial investigation revealed that adversaries likely conducted reconnaissance by harvesting partnership logos and client lists from the victim's official website to tailor phishing campaigns [T1591.002]. Subsequently, on March 20, unauthorized personnel physically connected a Bash Bunny device to an unsecured network port in the office lobby, exploiting weak physical security controls to gain initial access [T1200]. This hardware addition facilitated the deployment of malware via infected USB media, which spread laterally to adjacent workstations by replicating through removable media [T1091]. Employees were then targeted with spear-phishing emails containing malicious attachments disguised as financial reports; one user opened the attachment, executing a payload that dropped a keylogger [T1204.002]. The adversary established persistence by creating a scheduled task via schtasks.exe to run the keylogger executable daily at midnight, ensuring continuous operation [T1053]. To escalate privileges, the malware employed 'sc query' to discover services running with SYSTEM privileges that could be hijacked, exploiting a services file permissions weakness [T1574.010]. Once elevated, the NETWIRE payload was injected into benign Microsoft executables via process hollowing to evade detection [T1055.012]. A credential-stealing DLL was written to the user's profile directory to capture login information, acting as a password filter [T1556.002], while the keylogger tool actively captured keystrokes from financial applications [T1056.001]. Data exfiltration involved collecting sensitive documents from the Microsoft 365 environment, including client portfolios and internal memos [T1530]. Before transmission, the malware saved system information into an XML file that was then XOR-encoded to archive data via a custom method [T1560.003]. Command and control was maintained by obtaining updated C2 information from a Google Docs page, using it as a dead drop resolver [T1102.001]. Throughout the incident, system logs showed routine backup processes and firewall updates, but no alerts were triggered for the scheduled tasks or unauthorized hardware. FinSecure's background includes partnerships with regional banks, which may have been a factor in the targeting, though no direct evidence links this to the attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "Subsequently, on March 20, unauthorized personnel physically connected a Bash Bunny device to an unsecured network port in the office lobby, exploiting weak physical security controls to gain initial access.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "This hardware addition facilitated the deployment of malware via infected USB media, which spread laterally to adjacent workstations by replicating through removable media.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "exe to run the keylogger executable daily at midnight, ensuring continuous operation.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "Data exfiltration involved collecting sensitive documents from the Microsoft 365 environment, including client portfolios and internal memos.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGather' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowGather', which targeted a mid-sized financial services firm, 'FinSecure Inc.', to exfiltrate sensitive client data and intellectual property. The campaign leveraged a multi-vector approach, including physical hardware intrusions, social engineering, and sophisticated persistence mechanisms, to compromise the network over a three-month period. Blue teams are advised to review logs for suspicious scheduled tasks, unauthorized hardware, and anomalous cloud access patterns.",
+        "full_report_text": "On March 15, 2024, FinSecure Inc., a provider of investment advisory services based in Chicago, reported anomalous network activity following a routine audit. Initial investigation revealed that adversaries likely conducted reconnaissance by harvesting partnership logos and client lists from the victim's official website to tailor phishing campaigns [T1591.002]. Subsequently, on March 20, unauthorized personnel physically connected a Bash Bunny device to an unsecured network port in the office lobby, exploiting weak physical security controls to gain initial access [T1200]. This hardware addition facilitated the deployment of malware via infected USB media, which spread laterally to adjacent workstations by replicating through removable media [T1091]. Employees were then targeted with spear-phishing emails containing malicious attachments disguised as financial reports; one user opened the attachment, executing a payload that dropped a keylogger [T1204.002]. The adversary established persistence by creating a scheduled task via schtasks.exe to run the keylogger executable daily at midnight, ensuring continuous operation [T1053]. To escalate privileges, the malware employed 'sc query' to discover services running with SYSTEM privileges that could be hijacked, exploiting a services file permissions weakness [T1574.010]. Once elevated, the NETWIRE payload was injected into benign Microsoft executables via process hollowing to evade detection [T1055.012]. A credential-stealing DLL was written to the user's profile directory to capture login information, acting as a password filter [T1556.002], while the keylogger tool actively captured keystrokes from financial applications [T1056.001]. Data exfiltration involved collecting sensitive documents from the Microsoft 365 environment, including client portfolios and internal memos [T1530]. Before transmission, the malware saved system information into an XML file that was then XOR-encoded to archive data via a custom method [T1560.003]. Command and control was maintained by obtaining updated C2 information from a Google Docs page, using it as a dead drop resolver [T1102.001]. Throughout the incident, system logs showed routine backup processes and firewall updates, but no alerts were triggered for the scheduled tasks or unauthorized hardware. FinSecure's background includes partnerships with regional banks, which may have been a factor in the targeting, though no direct evidence links this to the attack.",
+        "techniques_used": [
+            "T1591.002",
+            "T1200",
+            "T1091",
+            "T1204.002",
+            "T1053",
+            "T1574.010",
+            "T1055.012",
+            "T1556.002",
+            "T1056.001",
+            "T1530",
+            "T1560.003",
+            "T1102.001"
+        ]
+    }
+}

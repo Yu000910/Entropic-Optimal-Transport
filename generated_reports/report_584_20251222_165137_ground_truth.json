@@ -1,0 +1,83 @@
+{
+    "report_id": "report_584",
+    "generated_at": "20251222_165137",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1569.003",
+        "T1574.001",
+        "T1135",
+        "T1046",
+        "T1560.001",
+        "T1205",
+        "T1567.002",
+        "T1485.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1569.003",
+        "T1574.001",
+        "T1135",
+        "T1046",
+        "T1560.001",
+        "T1205",
+        "T1567.002",
+        "T1485.001"
+    ],
+    "actual_found_ids": [
+        "T1046",
+        "T1205",
+        "T1135",
+        "T1566.002",
+        "T1560.001",
+        "T1485.001",
+        "T1567.002",
+        "T1569.003",
+        "T1574.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign designated 'ShadowGale'. This scenario is designed for educational purposes to enhance detection and response capabilities in financial sector environments.\n\nBackground: The fictional company 'FinSecure Corp', a mid-sized financial services provider, reported anomalous network activity starting on October 15, 2023. Initial logs showed increased e-mail traffic from unknown senders, but no immediate alerts were triggered by their legacy security systems. The company's infrastructure includes a mix of on-premises servers running Linux and Windows, with some cloud-based storage solutions.\n\nAttack Narrative:\n- Initial Access: The actors initiated the campaign by sending spearphishing e-mails to FinSecure employees, embedding malicious links that redirected to compromised websites hosting downloaders.\n- Execution and Persistence: Upon user interaction, the malicious script executed systemctl commands to enable a daemon for persistence across reboots while simultaneously hijacking the DLL search order to load malicious libraries, ensuring continued access even after system restarts.\n- Discovery: The adversary conducted network reconnaissance using net view and net share commands to identify shared drives and employed tools like masscan to scan for open ports and vulnerable services in cloud environments, mapping the network topology for lateral movement.\n- Collection and Exfiltration: The actors used built-in utilities such as zip on macOS systems to archive sensitive financial data and leveraged libpcap to monitor network traffic for specific trigger patterns, activating hidden listening ports to facilitate data transfer.\n- Exfiltration and Impact: Archived data was exfiltrated to cloud storage services like Dropbox, uploading to per-victim folders, and the attackers used API calls such as PutBucketLifecycle to set immediate deletion rules for objects in S3 buckets, attempting to cover their tracks by destroying evidence post-exfiltration.\n\nIrrelevant Information: FinSecure Corp was founded in 1995 and has 500 employees across three offices. During the incident, system logs showed routine backup jobs running at 2:00 AM daily, with no correlation to the malicious activity. The company's coffee machine in the break room malfunctioned on the same day, causing minor disruptions but unrelated to cybersecurity events.\n\nRecommendations: Blue teams should monitor for unusual e-mail links, systemctl modifications, DLL hijacking attempts, network discovery commands, data archiving activities, traffic pattern anomalies, cloud storage uploads, and lifecycle API usage. Implement network segmentation, user training, and enhanced logging to detect similar tactics in real-world scenarios.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign designated 'ShadowGale'. This scenario is designed for educational purposes to enhance detection and response capabilities in financial sector environments.\n\nBackground: The fictional company 'FinSecure Corp', a mid-sized financial services provider, reported anomalous network activity starting on October 15, 2023. Initial logs showed increased e-mail traffic from unknown senders, but no immediate alerts were triggered by their legacy security systems. The company's infrastructure includes a mix of on-premises servers running Linux and Windows, with some cloud-based storage solutions.\n\nAttack Narrative:\n- Initial Access: The actors initiated the campaign by sending spearphishing e-mails to FinSecure employees, embedding malicious links [T1566.002] that redirected to compromised websites hosting downloaders.\n- Execution and Persistence: Upon user interaction, the malicious script executed systemctl commands to enable a daemon for persistence across reboots [T1569.003] while simultaneously hijacking the DLL search order to load malicious libraries [T1574.001], ensuring continued access even after system restarts.\n- Discovery: The adversary conducted network reconnaissance using net view and net share commands to identify shared drives [T1135] and employed tools like masscan to scan for open ports and vulnerable services in cloud environments [T1046], mapping the network topology for lateral movement.\n- Collection and Exfiltration: The actors used built-in utilities such as zip on macOS systems to archive sensitive financial data [T1560.001] and leveraged libpcap to monitor network traffic for specific trigger patterns, activating hidden listening ports [T1205] to facilitate data transfer.\n- Exfiltration and Impact: Archived data was exfiltrated to cloud storage services like Dropbox, uploading to per-victim folders [T1567.002], and the attackers used API calls such as PutBucketLifecycle to set immediate deletion rules for objects in S3 buckets [T1485.001], attempting to cover their tracks by destroying evidence post-exfiltration.\n\nIrrelevant Information: FinSecure Corp was founded in 1995 and has 500 employees across three offices. During the incident, system logs showed routine backup jobs running at 2:00 AM daily, with no correlation to the malicious activity. The company's coffee machine in the break room malfunctioned on the same day, causing minor disruptions but unrelated to cybersecurity events.\n\nRecommendations: Blue teams should monitor for unusual e-mail links, systemctl modifications, DLL hijacking attempts, network discovery commands, data archiving activities, traffic pattern anomalies, cloud storage uploads, and lifecycle API usage. Implement network segmentation, user training, and enhanced logging to detect similar tactics in real-world scenarios.",
+    "sentence_annotations": [
+        {
+            "sentence": "- Discovery: The adversary conducted network reconnaissance using net view and net share commands to identify shared drives and employed tools like masscan to scan for open ports and vulnerable services in cloud environments, mapping the network topology for lateral movement.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "- Discovery: The adversary conducted network reconnaissance using net view and net share commands to identify shared drives and employed tools like masscan to scan for open ports and vulnerable services in cloud environments, mapping the network topology for lateral movement.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "001] and leveraged libpcap to monitor network traffic for specific trigger patterns, activating hidden listening ports to facilitate data transfer.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowGale' targeting financial institutions, using spearphishing, persistence mechanisms, and data exfiltration techniques for blue team training. The attack involves initial access via malicious links, system manipulation for persistence, network discovery, data archiving, and cloud-based exfiltration with lifecycle-triggered deletion.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign designated 'ShadowGale'. This scenario is designed for educational purposes to enhance detection and response capabilities in financial sector environments.\n\nBackground: The fictional company 'FinSecure Corp', a mid-sized financial services provider, reported anomalous network activity starting on October 15, 2023. Initial logs showed increased e-mail traffic from unknown senders, but no immediate alerts were triggered by their legacy security systems. The company's infrastructure includes a mix of on-premises servers running Linux and Windows, with some cloud-based storage solutions.\n\nAttack Narrative:\n- Initial Access: The actors initiated the campaign by sending spearphishing e-mails to FinSecure employees, embedding malicious links [T1566.002] that redirected to compromised websites hosting downloaders.\n- Execution and Persistence: Upon user interaction, the malicious script executed systemctl commands to enable a daemon for persistence across reboots [T1569.003] while simultaneously hijacking the DLL search order to load malicious libraries [T1574.001], ensuring continued access even after system restarts.\n- Discovery: The adversary conducted network reconnaissance using net view and net share commands to identify shared drives [T1135] and employed tools like masscan to scan for open ports and vulnerable services in cloud environments [T1046], mapping the network topology for lateral movement.\n- Collection and Exfiltration: The actors used built-in utilities such as zip on macOS systems to archive sensitive financial data [T1560.001] and leveraged libpcap to monitor network traffic for specific trigger patterns, activating hidden listening ports [T1205] to facilitate data transfer.\n- Exfiltration and Impact: Archived data was exfiltrated to cloud storage services like Dropbox, uploading to per-victim folders [T1567.002], and the attackers used API calls such as PutBucketLifecycle to set immediate deletion rules for objects in S3 buckets [T1485.001], attempting to cover their tracks by destroying evidence post-exfiltration.\n\nIrrelevant Information: FinSecure Corp was founded in 1995 and has 500 employees across three offices. During the incident, system logs showed routine backup jobs running at 2:00 AM daily, with no correlation to the malicious activity. The company's coffee machine in the break room malfunctioned on the same day, causing minor disruptions but unrelated to cybersecurity events.\n\nRecommendations: Blue teams should monitor for unusual e-mail links, systemctl modifications, DLL hijacking attempts, network discovery commands, data archiving activities, traffic pattern anomalies, cloud storage uploads, and lifecycle API usage. Implement network segmentation, user training, and enhanced logging to detect similar tactics in real-world scenarios.",
+        "techniques_used": [
+            "T1566.002",
+            "T1569.003",
+            "T1574.001",
+            "T1135",
+            "T1046",
+            "T1560.001",
+            "T1205",
+            "T1567.002",
+            "T1485.001"
+        ]
+    }
+}

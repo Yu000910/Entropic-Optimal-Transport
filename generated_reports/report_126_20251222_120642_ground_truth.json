@@ -1,0 +1,63 @@
+{
+    "report_id": "report_126",
+    "generated_at": "20251222_120642",
+    "scenario_target_ids": [
+        "T1659",
+        "T1059.010",
+        "T1059.008",
+        "T1134.004",
+        "T1001.003",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1659",
+        "T1059.010",
+        "T1059.008",
+        "T1134.004",
+        "T1001.003",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1659",
+        "T1134.004",
+        "T1001.003",
+        "T1567",
+        "T1059.010",
+        "T1059.008"
+    ],
+    "clean_text": "APT-FICT likely conducted initial reconnaissance on target networks, focusing on ISP infrastructure vulnerabilities. The actors exploited a compromised ISP channel to redirect user traffic through a malicious proxy, injecting fraudulent content into legitimate web sessions. Following this, they employed AutoHotKey scripts to automate keystroke logging and data collection, while simultaneously using Telnet sessions to execute commands like 'show running-config' and exfiltrate network device configurations. To evade detection, the malware leveraged CreateProcess API calls to spawn svchost.exe with spoofed parent processes, while dynamically altering URI path segments to impersonate legitimate protocols during C2 communications. Finally, the actors configured ngrok servers to exfiltrate stolen data over encrypted web services. System logs from the targeted environment showed routine HTTP requests to internal servers, with no immediate anomalies detected in firewall traffic. The company, a fictional energy provider, reported minor disruptions in employee access to external websites during the attack period, but initial internal scans did not flag the malicious proxy activity.",
+    "tagged_text": "APT-FICT likely conducted initial reconnaissance on target networks, focusing on ISP infrastructure vulnerabilities. The actors exploited a compromised ISP channel [T1659] to redirect user traffic through a malicious proxy, injecting fraudulent content into legitimate web sessions. Following this, they employed AutoHotKey scripts [T1059.010] to automate keystroke logging and data collection, while simultaneously using Telnet sessions [T1059.008] to execute commands like 'show running-config' and exfiltrate network device configurations. To evade detection, the malware leveraged CreateProcess API calls [T1134.004] to spawn svchost.exe with spoofed parent processes, while dynamically altering URI path segments [T1001.003] to impersonate legitimate protocols during C2 communications. Finally, the actors configured ngrok servers [T1567] to exfiltrate stolen data over encrypted web services. System logs from the targeted environment showed routine HTTP requests to internal servers, with no immediate anomalies detected in firewall traffic. The company, a fictional energy provider, reported minor disruptions in employee access to external websites during the attack period, but initial internal scans did not flag the malicious proxy activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors exploited a compromised ISP channel to redirect user traffic through a malicious proxy, injecting fraudulent content into legitimate web sessions.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Finally, the actors configured ngrok servers to exfiltrate stolen data over encrypted web services.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure via ISP Compromise",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting critical infrastructure sectors. The actors exploited a compromised ISP channel to inject malicious content, automate attacks via scripting tools, exfiltrate network configurations, evade detection through process spoofing, impersonate legitimate services, and exfiltrate data over web services. This report provides blue teams with a realistic scenario for training on identifying and mitigating such multi-stage attacks.",
+        "full_report_text": "APT-FICT likely conducted initial reconnaissance on target networks, focusing on ISP infrastructure vulnerabilities. The actors exploited a compromised ISP channel [T1659] to redirect user traffic through a malicious proxy, injecting fraudulent content into legitimate web sessions. Following this, they employed AutoHotKey scripts [T1059.010] to automate keystroke logging and data collection, while simultaneously using Telnet sessions [T1059.008] to execute commands like 'show running-config' and exfiltrate network device configurations. To evade detection, the malware leveraged CreateProcess API calls [T1134.004] to spawn svchost.exe with spoofed parent processes, while dynamically altering URI path segments [T1001.003] to impersonate legitimate protocols during C2 communications. Finally, the actors configured ngrok servers [T1567] to exfiltrate stolen data over encrypted web services. System logs from the targeted environment showed routine HTTP requests to internal servers, with no immediate anomalies detected in firewall traffic. The company, a fictional energy provider, reported minor disruptions in employee access to external websites during the attack period, but initial internal scans did not flag the malicious proxy activity.",
+        "techniques_used": [
+            "T1659",
+            "T1059.010",
+            "T1059.008",
+            "T1134.004",
+            "T1001.003",
+            "T1567"
+        ]
+    }
+}

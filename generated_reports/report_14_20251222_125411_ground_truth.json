@@ -1,0 +1,88 @@
+{
+    "report_id": "report_14",
+    "generated_at": "20251222_125411",
+    "scenario_target_ids": [
+        "T1189",
+        "T1059.008",
+        "T1569.003",
+        "T1543.002",
+        "T1134",
+        "T1110.004",
+        "T1001.002",
+        "T1008",
+        "T1667"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1059.008",
+        "T1569.003",
+        "T1543.002",
+        "T1134",
+        "T1110.004",
+        "T1001.002",
+        "T1008",
+        "T1667"
+    ],
+    "actual_found_ids": [
+        "T1110.004",
+        "T1008",
+        "T1134",
+        "T1001.002",
+        "T1189",
+        "T1059.008",
+        "T1569.003",
+        "T1543.002",
+        "T1667"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'CharmPower'. This group has been observed targeting technology firms, with initial access often achieved through drive-by compromises where malicious actors distribute fake YouTube video downloader applications via torrent sites, as seen in historical campaigns like KARAE. Upon compromise, the adversaries execute malicious code on network devices using CLI commands, such as 'delete flash:vlan.dat' to disrupt VLAN configurations, while simultaneously employing systemctl to start custom services like 'malicious-service' and modifying systemd services by altering ExecStart directives to run payloads. To escalate privileges, they manipulate access tokens using SetThreadToken for elevated threads and conduct credential stuffing with credentials from 'breach_dump.txt' to query SSH services across the network. For data exfiltration and command-and-control (C2), they use steganography to hide C2 data in image files like 'file.jpg', bypassing network detection, and implement fallback channels that change C2 domains every 360 loops via retrieval from an S3 bucket. Additionally, the campaign includes email bombing with non-malicious spam to prompt victims to interact with fake IT support, as observed in Storm-1811 activities. System logs from the fictional company 'TechCorp Inc.', founded in 2005 and specializing in cloud solutions, show anomalous entries in /var/log/syslog related to service restarts, but these are not tagged as they represent noise. Network traffic analysis revealed increased SSH attempts from internal IPs, though this is part of the simulated environment for training purposes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'CharmPower'. This group has been observed targeting technology firms, with initial access often achieved through drive-by compromises [T1189] where malicious actors distribute fake YouTube video downloader applications via torrent sites, as seen in historical campaigns like KARAE. Upon compromise, the adversaries execute malicious code on network devices using CLI commands [T1059.008], such as 'delete flash:vlan.dat' to disrupt VLAN configurations, while simultaneously employing systemctl [T1569.003] to start custom services like 'malicious-service' and modifying systemd services [T1543.002] by altering ExecStart directives to run payloads. To escalate privileges, they manipulate access tokens [T1134] using SetThreadToken for elevated threads and conduct credential stuffing [T1110.004] with credentials from 'breach_dump.txt' to query SSH services across the network. For data exfiltration and command-and-control (C2), they use steganography [T1001.002] to hide C2 data in image files like 'file.jpg', bypassing network detection, and implement fallback channels [T1008] that change C2 domains every 360 loops via retrieval from an S3 bucket. Additionally, the campaign includes email bombing [T1667] with non-malicious spam to prompt victims to interact with fake IT support, as observed in Storm-1811 activities. System logs from the fictional company 'TechCorp Inc.', founded in 2005 and specializing in cloud solutions, show anomalous entries in /var/log/syslog related to service restarts, but these are not tagged as they represent noise. Network traffic analysis revealed increased SSH attempts from internal IPs, though this is part of the simulated environment for training purposes.",
+    "sentence_annotations": [
+        {
+            "sentence": "This group has been observed targeting technology firms, with initial access often achieved through drive-by compromises where malicious actors distribute fake YouTube video downloader applications via torrent sites, as seen in historical campaigns like KARAE.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "To escalate privileges, they manipulate access tokens using SetThreadToken for elevated threads and conduct credential stuffing [T1110.",
+            "technique_id": "T1134",
+            "technique_name": "Access Token Manipulation"
+        },
+        {
+            "sentence": "jpg', bypassing network detection, and implement fallback channels that change C2 domains every 360 loops via retrieval from an S3 bucket.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        },
+        {
+            "sentence": "Additionally, the campaign includes email bombing with non-malicious spam to prompt victims to interact with fake IT support, as observed in Storm-1811 activities.",
+            "technique_id": "T1667",
+            "technique_name": "Email Bombing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CharmPower' Targeting Network Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, referred to as 'CharmPower', targeting organizations in the technology sector. The campaign leverages drive-by compromises, network device manipulation, and credential stuffing to gain initial access, persist within systems, and exfiltrate data while using steganography and fallback channels for evasion. Blue teams are advised to review logs for suspicious CLI commands, service modifications, and anomalous email traffic to mitigate these tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'CharmPower'. This group has been observed targeting technology firms, with initial access often achieved through drive-by compromises [T1189] where malicious actors distribute fake YouTube video downloader applications via torrent sites, as seen in historical campaigns like KARAE. Upon compromise, the adversaries execute malicious code on network devices using CLI commands [T1059.008], such as 'delete flash:vlan.dat' to disrupt VLAN configurations, while simultaneously employing systemctl [T1569.003] to start custom services like 'malicious-service' and modifying systemd services [T1543.002] by altering ExecStart directives to run payloads. To escalate privileges, they manipulate access tokens [T1134] using SetThreadToken for elevated threads and conduct credential stuffing [T1110.004] with credentials from 'breach_dump.txt' to query SSH services across the network. For data exfiltration and command-and-control (C2), they use steganography [T1001.002] to hide C2 data in image files like 'file.jpg', bypassing network detection, and implement fallback channels [T1008] that change C2 domains every 360 loops via retrieval from an S3 bucket. Additionally, the campaign includes email bombing [T1667] with non-malicious spam to prompt victims to interact with fake IT support, as observed in Storm-1811 activities. System logs from the fictional company 'TechCorp Inc.', founded in 2005 and specializing in cloud solutions, show anomalous entries in /var/log/syslog related to service restarts, but these are not tagged as they represent noise. Network traffic analysis revealed increased SSH attempts from internal IPs, though this is part of the simulated environment for training purposes.",
+        "techniques_used": [
+            "T1189",
+            "T1059.008",
+            "T1569.003",
+            "T1543.002",
+            "T1134",
+            "T1110.004",
+            "T1001.002",
+            "T1008",
+            "T1667"
+        ]
+    }
+}

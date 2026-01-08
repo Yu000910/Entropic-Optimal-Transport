@@ -1,0 +1,96 @@
+{
+    "report_id": "report_298",
+    "generated_at": "20251222_144744",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1610",
+        "T1546.001",
+        "T1037.002",
+        "T1078.001",
+        "T1574.012",
+        "T1615",
+        "T1114.002",
+        "T1056",
+        "T1132.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.002",
+        "T1610",
+        "T1546.001",
+        "T1037.002",
+        "T1078.001",
+        "T1574.012",
+        "T1615",
+        "T1114.002",
+        "T1056",
+        "T1132.002"
+    ],
+    "actual_found_ids": [
+        "T1114.002",
+        "T1610",
+        "T1589",
+        "T1566.002",
+        "T1037.002",
+        "T1574.012",
+        "T1132.002",
+        "T1615",
+        "T1056",
+        "T1546.001",
+        "T1078.001"
+    ],
+    "clean_text": "On June 15, 2024, a fictional financial institution, 'SecureBank Inc.', reported anomalous network activity traced to a sophisticated intrusion. SecureBank, with operations across North America, maintains a hybrid cloud environment using Microsoft Azure and on-premises servers running Windows Server 2019. Initial logs from their SIEM showed unusual PowerShell executions from a user workstation, but no immediate alerts were triggered due to misconfigured thresholds.\n\nThe attack began with the adversary conducting reconnaissance to identify key employees, likely using open-source intelligence (OSINT) from LinkedIn and company websites. They then sent a targeted spearphishing email to a finance department employee, containing a link to a malicious document hosted on a compromised website. The document, disguised as an invoice, prompted the user to enable macros, which executed a script to download a payload.\n\nUpon execution, the adversary deployed a Docker container on a compromised developer workstation, using 'docker start' to activate it; this container was configured with encrypted channels to communicate with command-and-control (C2) servers, evading network monitoring. To establish persistence, the backdoor modified the default file association for .txt files in the registry, altering HKEY_CLASSES_ROOT\\txtfile\\shell\\open\\command to execute a PowerShell script for C2, and simultaneously added a malicious VBScript to the user's Run registry key to ensure automatic execution at logon.\n\nThe attacker then leveraged weak credentials, using the built-in Administrator account with a default password to compromise the domain controller, gaining elevated privileges. They altered the Session Manager Environment registry key to inject a malicious library into .NET runtime processes via COR_PROFILER, enabling code execution in memory. For discovery, they ran the gpresult command to survey Group Policy details, aiding in lateral movement planning.\n\nTo collect sensitive data, the malware employed MailSniper to search Exchange servers and harvest emails containing authentication credentials, while a keylogger was deployed to hook credential input APIs and capture passwords from various applications transparently. All exfiltrated data was encoded using a modified Base64 scheme with URL-safe characters to conceal C2 communications, making detection more challenging. Throughout the campaign, system logs showed increased network traffic to external IPs, but initial analysis dismissed it as benign due to lack of correlation with other events.",
+    "tagged_text": "On June 15, 2024, a fictional financial institution, 'SecureBank Inc.', reported anomalous network activity traced to a sophisticated intrusion. SecureBank, with operations across North America, maintains a hybrid cloud environment using Microsoft Azure and on-premises servers running Windows Server 2019. Initial logs from their SIEM showed unusual PowerShell executions from a user workstation, but no immediate alerts were triggered due to misconfigured thresholds.\n\nThe attack began with the adversary conducting reconnaissance [T1589] to identify key employees, likely using open-source intelligence (OSINT) from LinkedIn and company websites. They then sent a targeted spearphishing email [T1566.002] to a finance department employee, containing a link to a malicious document hosted on a compromised website. The document, disguised as an invoice, prompted the user to enable macros, which executed a script to download a payload.\n\nUpon execution, the adversary deployed a Docker container [T1610] on a compromised developer workstation, using 'docker start' to activate it; this container was configured with encrypted channels to communicate with command-and-control (C2) servers, evading network monitoring. To establish persistence, the backdoor modified the default file association for .txt files in the registry [T1546.001], altering HKEY_CLASSES_ROOT\\txtfile\\shell\\open\\command to execute a PowerShell script for C2, and simultaneously added a malicious VBScript to the user's Run registry key [T1037.002] to ensure automatic execution at logon.\n\nThe attacker then leveraged weak credentials, using the built-in Administrator account with a default password [T1078.001] to compromise the domain controller, gaining elevated privileges. They altered the Session Manager Environment registry key [T1574.012] to inject a malicious library into .NET runtime processes via COR_PROFILER, enabling code execution in memory. For discovery, they ran the gpresult command [T1615] to survey Group Policy details, aiding in lateral movement planning.\n\nTo collect sensitive data, the malware employed MailSniper [T1114.002] to search Exchange servers and harvest emails containing authentication credentials, while a keylogger was deployed [T1056] to hook credential input APIs and capture passwords from various applications transparently. All exfiltrated data was encoded using a modified Base64 scheme with URL-safe characters [T1132.002] to conceal C2 communications, making detection more challenging. Throughout the campaign, system logs showed increased network traffic to external IPs, but initial analysis dismissed it as benign due to lack of correlation with other events.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with the adversary conducting reconnaissance to identify key employees, likely using open-source intelligence (OSINT) from LinkedIn and company websites.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Upon execution, the adversary deployed a Docker container on a compromised developer workstation, using 'docker start' to activate it; this container was configured with encrypted channels to communicate with command-and-control (C2) servers, evading network monitoring.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "For discovery, they ran the gpresult command to survey Group Policy details, aiding in lateral movement planning.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "002] to search Exchange servers and harvest emails containing authentication credentials, while a keylogger was deployed to hook credential input APIs and capture passwords from various applications transparently.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated FIN8-Inspired Campaign Targeting Financial Sector",
+        "summary": "This advisory details a fictional, educational campaign simulating advanced persistent threat (APT) activity, based on techniques attributed to groups like FIN8. It describes a multi-stage attack targeting a financial institution, involving spearphishing, container deployment, persistence mechanisms, credential theft, and data exfiltration, designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "On June 15, 2024, a fictional financial institution, 'SecureBank Inc.', reported anomalous network activity traced to a sophisticated intrusion. SecureBank, with operations across North America, maintains a hybrid cloud environment using Microsoft Azure and on-premises servers running Windows Server 2019. Initial logs from their SIEM showed unusual PowerShell executions from a user workstation, but no immediate alerts were triggered due to misconfigured thresholds.\n\nThe attack began with the adversary conducting reconnaissance [T1589] to identify key employees, likely using open-source intelligence (OSINT) from LinkedIn and company websites. They then sent a targeted spearphishing email [T1566.002] to a finance department employee, containing a link to a malicious document hosted on a compromised website. The document, disguised as an invoice, prompted the user to enable macros, which executed a script to download a payload.\n\nUpon execution, the adversary deployed a Docker container [T1610] on a compromised developer workstation, using 'docker start' to activate it; this container was configured with encrypted channels to communicate with command-and-control (C2) servers, evading network monitoring. To establish persistence, the backdoor modified the default file association for .txt files in the registry [T1546.001], altering HKEY_CLASSES_ROOT\\txtfile\\shell\\open\\command to execute a PowerShell script for C2, and simultaneously added a malicious VBScript to the user's Run registry key [T1037.002] to ensure automatic execution at logon.\n\nThe attacker then leveraged weak credentials, using the built-in Administrator account with a default password [T1078.001] to compromise the domain controller, gaining elevated privileges. They altered the Session Manager Environment registry key [T1574.012] to inject a malicious library into .NET runtime processes via COR_PROFILER, enabling code execution in memory. For discovery, they ran the gpresult command [T1615] to survey Group Policy details, aiding in lateral movement planning.\n\nTo collect sensitive data, the malware employed MailSniper [T1114.002] to search Exchange servers and harvest emails containing authentication credentials, while a keylogger was deployed [T1056] to hook credential input APIs and capture passwords from various applications transparently. All exfiltrated data was encoded using a modified Base64 scheme with URL-safe characters [T1132.002] to conceal C2 communications, making detection more challenging. Throughout the campaign, system logs showed increased network traffic to external IPs, but initial analysis dismissed it as benign due to lack of correlation with other events.",
+        "techniques_used": [
+            "T1589",
+            "T1566.002",
+            "T1610",
+            "T1546.001",
+            "T1037.002",
+            "T1078.001",
+            "T1574.012",
+            "T1615",
+            "T1114.002",
+            "T1056",
+            "T1132.002"
+        ]
+    }
+}

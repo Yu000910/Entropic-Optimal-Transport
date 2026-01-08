@@ -1,0 +1,103 @@
+{
+    "report_id": "report_599",
+    "generated_at": "20251222_165751",
+    "scenario_target_ids": [
+        "T1590.005",
+        "T1195",
+        "T1559.002",
+        "T1059.006",
+        "T1053.007",
+        "T1037.004",
+        "T1556",
+        "T1087",
+        "T1560.002",
+        "T1132",
+        "T1485"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1590.005",
+        "T1195",
+        "T1559.002",
+        "T1059.006",
+        "T1053.007",
+        "T1037.004",
+        "T1556",
+        "T1087",
+        "T1560.002",
+        "T1132",
+        "T1485"
+    ],
+    "actual_found_ids": [
+        "T1485",
+        "T1132",
+        "T1087",
+        "T1590.005",
+        "T1560.002",
+        "T1195",
+        "T1053.007",
+        "T1556",
+        "T1559.002",
+        "T1059.006",
+        "T1037.004"
+    ],
+    "clean_text": "On 2024-08-15, multiple organizations reported anomalous network activity traced back to a phishing campaign. The actors likely conducted reconnaissance by deploying a fake login page via phishing emails that captured victims' IP addresses. Initial access was achieved through a supply chain compromise, where a malicious DLL was injected into a widely used software development kit (SDK), affecting applications built with it, such as a financial analytics tool. Upon execution, the malware leveraged Dynamic Data Exchange (DDE) in a malicious .docx file to execute arbitrary commands, which triggered a Python script to download additional payloads and modify registry keys for persistence. The adversary then abused Kubernetes CronJobs to schedule the deployment of a backdoor container daily at midnight, while adding entries to rc.common files on Linux systems to maintain access. For privilege escalation, the actors altered the SAM database to change password hashes for existing user accounts and used commands like 'wmic useraccount get name' to discover all user accounts on Windows machines. Data collection involved employing Python's rarfile library to create compressed archives of sensitive financial data, which were exfiltrated using base64-encoded commands to evade detection. Finally, the campaign concluded with data destruction, where malicious code overwrote the master boot record with garbage data, rendering systems unbootable. Logs from affected systems showed increased CPU usage and failed boot attempts, but no evidence of data exfiltration to external IPs was found in firewall logs. The fictional company 'Global Energy Solutions' reported a 24-hour outage due to this attack, impacting their operational technology networks.",
+    "tagged_text": "On 2024-08-15, multiple organizations reported anomalous network activity traced back to a phishing campaign. The actors likely conducted reconnaissance by deploying a fake login page via phishing emails that captured victims' IP addresses [T1590.005]. Initial access was achieved through a supply chain compromise [T1195], where a malicious DLL was injected into a widely used software development kit (SDK), affecting applications built with it, such as a financial analytics tool. Upon execution, the malware leveraged Dynamic Data Exchange (DDE) in a malicious .docx file to execute arbitrary commands [T1559.002], which triggered a Python script [T1059.006] to download additional payloads and modify registry keys for persistence. The adversary then abused Kubernetes CronJobs to schedule the deployment of a backdoor container daily at midnight [T1053.007], while adding entries to rc.common files on Linux systems [T1037.004] to maintain access. For privilege escalation, the actors altered the SAM database to change password hashes for existing user accounts [T1556] and used commands like 'wmic useraccount get name' to discover all user accounts on Windows machines [T1087]. Data collection involved employing Python's rarfile library to create compressed archives of sensitive financial data [T1560.002], which were exfiltrated using base64-encoded commands [T1132] to evade detection. Finally, the campaign concluded with data destruction, where malicious code overwrote the master boot record with garbage data, rendering systems unbootable [T1485]. Logs from affected systems showed increased CPU usage and failed boot attempts, but no evidence of data exfiltration to external IPs was found in firewall logs. The fictional company 'Global Energy Solutions' reported a 24-hour outage due to this attack, impacting their operational technology networks.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved through a supply chain compromise, where a malicious DLL was injected into a widely used software development kit (SDK), affecting applications built with it, such as a financial analytics tool.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "For privilege escalation, the actors altered the SAM database to change password hashes for existing user accounts and used commands like 'wmic useraccount get name' to discover all user accounts on Windows machines.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        },
+        {
+            "sentence": "For privilege escalation, the actors altered the SAM database to change password hashes for existing user accounts and used commands like 'wmic useraccount get name' to discover all user accounts on Windows machines.",
+            "technique_id": "T1087",
+            "technique_name": "Account Discovery"
+        },
+        {
+            "sentence": "002], which were exfiltrated using base64-encoded commands to evade detection.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        },
+        {
+            "sentence": "Finally, the campaign concluded with data destruction, where malicious code overwrote the master boot record with garbage data, rendering systems unbootable.",
+            "technique_id": "T1485",
+            "technique_name": "Data Destruction"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CRIMSON_SERPENT', targeting organizations in the energy and financial sectors. The campaign involves a multi-stage attack leveraging supply chain compromise, dynamic data exchange, and container orchestration to achieve persistence, data theft, and destruction. Blue teams should review this report to enhance detection and response capabilities.",
+        "full_report_text": "On 2024-08-15, multiple organizations reported anomalous network activity traced back to a phishing campaign. The actors likely conducted reconnaissance by deploying a fake login page via phishing emails that captured victims' IP addresses [T1590.005]. Initial access was achieved through a supply chain compromise [T1195], where a malicious DLL was injected into a widely used software development kit (SDK), affecting applications built with it, such as a financial analytics tool. Upon execution, the malware leveraged Dynamic Data Exchange (DDE) in a malicious .docx file to execute arbitrary commands [T1559.002], which triggered a Python script [T1059.006] to download additional payloads and modify registry keys for persistence. The adversary then abused Kubernetes CronJobs to schedule the deployment of a backdoor container daily at midnight [T1053.007], while adding entries to rc.common files on Linux systems [T1037.004] to maintain access. For privilege escalation, the actors altered the SAM database to change password hashes for existing user accounts [T1556] and used commands like 'wmic useraccount get name' to discover all user accounts on Windows machines [T1087]. Data collection involved employing Python's rarfile library to create compressed archives of sensitive financial data [T1560.002], which were exfiltrated using base64-encoded commands [T1132] to evade detection. Finally, the campaign concluded with data destruction, where malicious code overwrote the master boot record with garbage data, rendering systems unbootable [T1485]. Logs from affected systems showed increased CPU usage and failed boot attempts, but no evidence of data exfiltration to external IPs was found in firewall logs. The fictional company 'Global Energy Solutions' reported a 24-hour outage due to this attack, impacting their operational technology networks.",
+        "techniques_used": [
+            "T1590.005",
+            "T1195",
+            "T1559.002",
+            "T1059.006",
+            "T1053.007",
+            "T1037.004",
+            "T1556",
+            "T1087",
+            "T1560.002",
+            "T1132",
+            "T1485"
+        ]
+    }
+}

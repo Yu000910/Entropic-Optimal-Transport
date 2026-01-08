@@ -1,0 +1,66 @@
+{
+    "report_id": "report_575",
+    "generated_at": "20251222_164726",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1059.006",
+        "T1053",
+        "T1110.001",
+        "T1219.003",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1195.002",
+        "T1059.006",
+        "T1053",
+        "T1110.001",
+        "T1219.003",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1589",
+        "T1110.001",
+        "T1219.003",
+        "T1053",
+        "T1020.001",
+        "T1059.006"
+    ],
+    "clean_text": "On March 15, 2024, security researchers at CyberDefense Corp. identified anomalous network traffic from a server running version 2.1.5 of the widely used open-source library 'DataParseLib', which had been downloaded over 10,000 times in the past month from official repositories. The library, maintained by the OpenSourceDev community, is commonly integrated into enterprise applications for data processing tasks. Further investigation revealed that the actors likely conducted reconnaissance to identify high-value targets before compromising the software supply chain by injecting malicious code into the library's source code prior to compilation and distribution. This backdoored version, when executed, triggered a Python-based payload that established initial access and downloaded additional scripts from a command-and-control (C2) server at 185.220.101[.]34, while simultaneously creating a scheduled task using schtasks.exe to run 'keylogger.exe' daily at midnight for persistence. System logs from the compromised server, hosted on AWS in the us-east-1 region, showed multiple failed SSH login attempts from IP address 192.168.1.100, which were later attributed to the adversary employing password guessing via a spraying tool against SSH services to avoid account lockouts and gain elevated privileges. Once access was secured, the actors installed TinyPilot on the server to establish persistent remote access through hardware emulation, allowing them to maintain control even after reboots. Additionally, they modified the system image through patching to enable traffic duplication for covert data exfiltration via traffic mirroring, exfiltrating sensitive files to a drop server at 45.77.23[.]189 over encrypted channels. The company background includes a recent merger with TechGlobal Inc., which may have introduced unpatched vulnerabilities, but this is not directly linked to the attack. Network monitoring tools detected unusual outbound traffic spikes during off-hours, but initial alerts were dismissed as false positives due to scheduled maintenance activities.",
+    "tagged_text": "On March 15, 2024, security researchers at CyberDefense Corp. identified anomalous network traffic from a server running version 2.1.5 of the widely used open-source library 'DataParseLib', which had been downloaded over 10,000 times in the past month from official repositories. The library, maintained by the OpenSourceDev community, is commonly integrated into enterprise applications for data processing tasks. Further investigation revealed that the actors likely conducted reconnaissance [T1589] to identify high-value targets before compromising the software supply chain [T1195.002] by injecting malicious code into the library's source code prior to compilation and distribution. This backdoored version, when executed, triggered a Python-based payload [T1059.006] that established initial access and downloaded additional scripts from a command-and-control (C2) server at 185.220.101[.]34, while simultaneously creating a scheduled task [T1053] using schtasks.exe to run 'keylogger.exe' daily at midnight for persistence. System logs from the compromised server, hosted on AWS in the us-east-1 region, showed multiple failed SSH login attempts from IP address 192.168.1.100, which were later attributed to the adversary employing password guessing [T1110.001] via a spraying tool against SSH services to avoid account lockouts and gain elevated privileges. Once access was secured, the actors installed TinyPilot [T1219.003] on the server to establish persistent remote access through hardware emulation, allowing them to maintain control even after reboots. Additionally, they modified the system image through patching to enable traffic duplication [T1020.001] for covert data exfiltration via traffic mirroring, exfiltrating sensitive files to a drop server at 45.77.23[.]189 over encrypted channels. The company background includes a recent merger with TechGlobal Inc., which may have introduced unpatched vulnerabilities, but this is not directly linked to the attack. Network monitoring tools detected unusual outbound traffic spikes during off-hours, but initial alerts were dismissed as false positives due to scheduled maintenance activities.",
+    "sentence_annotations": [
+        {
+            "sentence": "Further investigation revealed that the actors likely conducted reconnaissance to identify high-value targets before compromising the software supply chain [T1195.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "]34, while simultaneously creating a scheduled task using schtasks.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentMimic' Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'SilentMimic', which targets organizations through software supply chain compromise and establishes persistent remote access. The FBI, CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating these tactics, techniques, and procedures (TTPs). The scenario involves the compromise of an open-source library, leading to initial access, credential attacks, and covert data exfiltration.",
+        "full_report_text": "On March 15, 2024, security researchers at CyberDefense Corp. identified anomalous network traffic from a server running version 2.1.5 of the widely used open-source library 'DataParseLib', which had been downloaded over 10,000 times in the past month from official repositories. The library, maintained by the OpenSourceDev community, is commonly integrated into enterprise applications for data processing tasks. Further investigation revealed that the actors likely conducted reconnaissance [T1589] to identify high-value targets before compromising the software supply chain [T1195.002] by injecting malicious code into the library's source code prior to compilation and distribution. This backdoored version, when executed, triggered a Python-based payload [T1059.006] that established initial access and downloaded additional scripts from a command-and-control (C2) server at 185.220.101[.]34, while simultaneously creating a scheduled task [T1053] using schtasks.exe to run 'keylogger.exe' daily at midnight for persistence. System logs from the compromised server, hosted on AWS in the us-east-1 region, showed multiple failed SSH login attempts from IP address 192.168.1.100, which were later attributed to the adversary employing password guessing [T1110.001] via a spraying tool against SSH services to avoid account lockouts and gain elevated privileges. Once access was secured, the actors installed TinyPilot [T1219.003] on the server to establish persistent remote access through hardware emulation, allowing them to maintain control even after reboots. Additionally, they modified the system image through patching to enable traffic duplication [T1020.001] for covert data exfiltration via traffic mirroring, exfiltrating sensitive files to a drop server at 45.77.23[.]189 over encrypted channels. The company background includes a recent merger with TechGlobal Inc., which may have introduced unpatched vulnerabilities, but this is not directly linked to the attack. Network monitoring tools detected unusual outbound traffic spikes during off-hours, but initial alerts were dismissed as false positives due to scheduled maintenance activities.",
+        "techniques_used": [
+            "T1589",
+            "T1195.002",
+            "T1059.006",
+            "T1053",
+            "T1110.001",
+            "T1219.003",
+            "T1020.001"
+        ]
+    }
+}

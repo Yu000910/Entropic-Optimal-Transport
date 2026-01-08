@@ -1,0 +1,78 @@
+{
+    "report_id": "report_132",
+    "generated_at": "20251222_120918",
+    "scenario_target_ids": [
+        "T1583.001",
+        "T1588.007",
+        "T1199",
+        "T1566",
+        "T1059.007",
+        "T1563.001",
+        "T1090.002",
+        "T1561"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.001",
+        "T1199",
+        "T1566",
+        "T1059.007",
+        "T1588.007",
+        "T1563.001",
+        "T1090.002",
+        "T1561"
+    ],
+    "actual_found_ids": [
+        "T1059.007",
+        "T1090.002",
+        "T1563.001",
+        "T1199",
+        "T1561",
+        "T1588.007",
+        "T1583.001",
+        "T1566"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), Cybersecurity and Infrastructure Security Agency (CISA), and National Security Agency (NSA) are releasing this joint Cybersecurity Advisory to disseminate fictional threat intelligence on APT group 'ShadowVeil.' This campaign is based on a training scenario designed to emulate real-world tactics, techniques, and procedures (TTPs).\n\nBackground: ShadowVeil is a fictional threat actor believed to operate with state-sponsored objectives, focusing on espionage and disruption in critical infrastructure. Fictional victim organizations include 'SkyHigh Aviation' and 'LegalShield Partners,' with initial compromises traced to a trusted IT service provider, 'TechSecure Inc.,' whose credentials were stolen in a prior breach. System logs from SkyHigh Aviation show unusual SSH connections from internal IPs, but these were initially dismissed as routine maintenance activity.\n\nAttack Narrative:\n- **Reconnaissance and Initial Access:** ShadowVeil actors conducted open-source intelligence (OSINT) to identify targets, registering domains such as 'skyhigh-aviation-support[.]com' that mimicked legitimate company sites. They then leveraged a trusted relationship by using compromised credentials from TechSecure Inc. to send spear phishing emails to employees at SkyHigh Aviation and LegalShield Partners, with malicious attachments disguised as software updates.\n- **Execution and Persistence:** Upon opening the attachments, victims executed JavaScript payloads embedded in HTML files, which deployed a backdoor and used an automated persistence mechanism to maintain access by executing a malicious PowerShell script ('malicious.ps1') on startup. The script modified registry keys to ensure persistence across reboots.\n- **Lateral Movement:** After establishing a foothold, actors exploited stolen SSH private keys to authenticate to other systems within the network, moving laterally to critical servers hosting sensitive data. This allowed them to access aviation flight plans and legal case files.\n- **Command and Control (C2) and Exfiltration:** To evade detection, ShadowVeil employed external proxies such as HTRAN to encrypt and tunnel C2 traffic through legitimate web services, masking communications with their infrastructure. Data exfiltration occurred over these encrypted channels during off-peak hours.\n- **Impact and Destruction:** In the final phase, actors executed a disk wiping command on primary hard drives of targeted systems at LegalShield Partners, erasing all data to cover tracks and cause operational disruption. This action was preceded by ransomware deployment, though the wipe rendered recovery impossible.\n\nFictional IOCs: Domains: skyhigh-aviation-support[.]com, legal-update[.]net; File hashes: (SHA-256) abc123... for malicious.ps1; IPs: 192.0.2.1 (proxy).\n\nRecommendations: Implement multi-factor authentication, monitor for anomalous SSH activity, and conduct regular phishing simulations. This advisory serves as a training tool; all details are fictional and for educational purposes only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), Cybersecurity and Infrastructure Security Agency (CISA), and National Security Agency (NSA) are releasing this joint Cybersecurity Advisory to disseminate fictional threat intelligence on APT group 'ShadowVeil.' This campaign is based on a training scenario designed to emulate real-world tactics, techniques, and procedures (TTPs).\n\nBackground: ShadowVeil is a fictional threat actor believed to operate with state-sponsored objectives, focusing on espionage and disruption in critical infrastructure. Fictional victim organizations include 'SkyHigh Aviation' and 'LegalShield Partners,' with initial compromises traced to a trusted IT service provider, 'TechSecure Inc.,' whose credentials were stolen in a prior breach. System logs from SkyHigh Aviation show unusual SSH connections from internal IPs, but these were initially dismissed as routine maintenance activity.\n\nAttack Narrative:\n- **Reconnaissance and Initial Access:** ShadowVeil actors conducted open-source intelligence (OSINT) to identify targets, registering domains such as 'skyhigh-aviation-support[.]com' that mimicked legitimate company sites [T1583.001]. They then leveraged a trusted relationship by using compromised credentials from TechSecure Inc. [T1199] to send spear phishing emails [T1566] to employees at SkyHigh Aviation and LegalShield Partners, with malicious attachments disguised as software updates.\n- **Execution and Persistence:** Upon opening the attachments, victims executed JavaScript payloads [T1059.007] embedded in HTML files, which deployed a backdoor and used an automated persistence mechanism [T1588.007] to maintain access by executing a malicious PowerShell script ('malicious.ps1') on startup. The script modified registry keys to ensure persistence across reboots.\n- **Lateral Movement:** After establishing a foothold, actors exploited stolen SSH private keys [T1563.001] to authenticate to other systems within the network, moving laterally to critical servers hosting sensitive data. This allowed them to access aviation flight plans and legal case files.\n- **Command and Control (C2) and Exfiltration:** To evade detection, ShadowVeil employed external proxies [T1090.002] such as HTRAN to encrypt and tunnel C2 traffic through legitimate web services, masking communications with their infrastructure. Data exfiltration occurred over these encrypted channels during off-peak hours.\n- **Impact and Destruction:** In the final phase, actors executed a disk wiping command [T1561] on primary hard drives of targeted systems at LegalShield Partners, erasing all data to cover tracks and cause operational disruption. This action was preceded by ransomware deployment, though the wipe rendered recovery impossible.\n\nFictional IOCs: Domains: skyhigh-aviation-support[.]com, legal-update[.]net; File hashes: (SHA-256) abc123... for malicious.ps1; IPs: 192.0.2.1 (proxy).\n\nRecommendations: Implement multi-factor authentication, monitor for anomalous SSH activity, and conduct regular phishing simulations. This advisory serves as a training tool; all details are fictional and for educational purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "to send spear phishing emails to employees at SkyHigh Aviation and LegalShield Partners, with malicious attachments disguised as software updates.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "to send spear phishing emails to employees at SkyHigh Aviation and LegalShield Partners, with malicious attachments disguised as software updates.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "- **Impact and Destruction:** In the final phase, actors executed a disk wiping command on primary hard drives of targeted systems at LegalShield Partners, erasing all data to cover tracks and cause operational disruption.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil,' targeting critical infrastructure sectors through a multi-phase attack leveraging trusted relationships and sophisticated evasion techniques. Based on analysis of fictional incident reports from October 2023 to January 2024, ShadowVeil actors have compromised entities in the aviation and legal sectors, using domains mimicking legitimate services [T1583.001] and spear phishing emails [T1566] to gain initial access. The campaign involves JavaScript-based payloads [T1059.007], SSH hijacking [T1563.001] for lateral movement, external proxies [T1090.002] for command and control (C2) obfuscation, and disk wiping [T1561] for destructive actions. This report provides fictional indicators of compromise (IOCs) and mitigation strategies for blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), Cybersecurity and Infrastructure Security Agency (CISA), and National Security Agency (NSA) are releasing this joint Cybersecurity Advisory to disseminate fictional threat intelligence on APT group 'ShadowVeil.' This campaign is based on a training scenario designed to emulate real-world tactics, techniques, and procedures (TTPs).\n\nBackground: ShadowVeil is a fictional threat actor believed to operate with state-sponsored objectives, focusing on espionage and disruption in critical infrastructure. Fictional victim organizations include 'SkyHigh Aviation' and 'LegalShield Partners,' with initial compromises traced to a trusted IT service provider, 'TechSecure Inc.,' whose credentials were stolen in a prior breach. System logs from SkyHigh Aviation show unusual SSH connections from internal IPs, but these were initially dismissed as routine maintenance activity.\n\nAttack Narrative:\n- **Reconnaissance and Initial Access:** ShadowVeil actors conducted open-source intelligence (OSINT) to identify targets, registering domains such as 'skyhigh-aviation-support[.]com' that mimicked legitimate company sites [T1583.001]. They then leveraged a trusted relationship by using compromised credentials from TechSecure Inc. [T1199] to send spear phishing emails [T1566] to employees at SkyHigh Aviation and LegalShield Partners, with malicious attachments disguised as software updates.\n- **Execution and Persistence:** Upon opening the attachments, victims executed JavaScript payloads [T1059.007] embedded in HTML files, which deployed a backdoor and used an automated persistence mechanism [T1588.007] to maintain access by executing a malicious PowerShell script ('malicious.ps1') on startup. The script modified registry keys to ensure persistence across reboots.\n- **Lateral Movement:** After establishing a foothold, actors exploited stolen SSH private keys [T1563.001] to authenticate to other systems within the network, moving laterally to critical servers hosting sensitive data. This allowed them to access aviation flight plans and legal case files.\n- **Command and Control (C2) and Exfiltration:** To evade detection, ShadowVeil employed external proxies [T1090.002] such as HTRAN to encrypt and tunnel C2 traffic through legitimate web services, masking communications with their infrastructure. Data exfiltration occurred over these encrypted channels during off-peak hours.\n- **Impact and Destruction:** In the final phase, actors executed a disk wiping command [T1561] on primary hard drives of targeted systems at LegalShield Partners, erasing all data to cover tracks and cause operational disruption. This action was preceded by ransomware deployment, though the wipe rendered recovery impossible.\n\nFictional IOCs: Domains: skyhigh-aviation-support[.]com, legal-update[.]net; File hashes: (SHA-256) abc123... for malicious.ps1; IPs: 192.0.2.1 (proxy).\n\nRecommendations: Implement multi-factor authentication, monitor for anomalous SSH activity, and conduct regular phishing simulations. This advisory serves as a training tool; all details are fictional and for educational purposes only.",
+        "techniques_used": [
+            "T1583.001",
+            "T1199",
+            "T1566",
+            "T1059.007",
+            "T1588.007",
+            "T1563.001",
+            "T1090.002",
+            "T1561"
+        ]
+    }
+}

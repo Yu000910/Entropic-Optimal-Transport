@@ -1,0 +1,78 @@
+{
+    "report_id": "report_661",
+    "generated_at": "20251222_172224",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1569.002",
+        "T1129",
+        "T1053.002",
+        "T1037.005",
+        "T1021.005",
+        "T1570",
+        "T1205.001",
+        "T1132.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1569.002",
+        "T1129",
+        "T1053.002",
+        "T1037.005",
+        "T1021.005",
+        "T1570",
+        "T1205.001",
+        "T1132.001"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1129",
+        "T1570",
+        "T1053.002",
+        "T1021.005",
+        "T1132.001",
+        "T1569.002",
+        "T1205.001",
+        "T1037.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowGate'. This report is based on a simulated attack scenario designed for blue team training purposes. ShadowGate actors have been observed targeting financial organizations by compromising a third-party accounting software update server to distribute malicious builds. During the build process, the adversary altered the source code to include credential harvesting functionality, which was then deployed to victim systems via automated updates. Upon execution, the malware employed PsExec to elevate privileges to SYSTEM by executing as a service, such as cmd /c c:\\temp\\PsExec.exe -accepteula -j -d -s Target Binary, while simultaneously using reflective loading via LoadLibrary to load additional modules for stealth. For persistence, the actors scheduled malicious script execution using at.exe for 3:00 AM and crafted a StartupParameters.plist to launch the backdoor on every system boot. To maintain remote access, they installed and configured a VNC server for unauthorized control and used psexec to copy payloads across accessible systems for lateral movement. For C2 obfuscation, the malware implemented port knocking by monitoring TCP-SYN packets to a configurable sequence of ports (e.g., 200, 80, 22, 53, 3) before opening a communication port and encoded C2 data with a custom Base64 technique. System logs from affected endpoints showed anomalous network traffic spikes at off-hours, though these were unrelated to the core attack chain. The targeted organization, 'Global Finance Corp', reported no actual financial loss, but the simulation highlighted gaps in software update validation and endpoint monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowGate'. This report is based on a simulated attack scenario designed for blue team training purposes. ShadowGate actors have been observed targeting financial organizations by compromising a third-party accounting software update server to distribute malicious builds [T1195.002]. During the build process, the adversary altered the source code to include credential harvesting functionality, which was then deployed to victim systems via automated updates. Upon execution, the malware employed PsExec to elevate privileges to SYSTEM by executing as a service [T1569.002], such as cmd /c c:\\temp\\PsExec.exe -accepteula -j -d -s Target Binary, while simultaneously using reflective loading via LoadLibrary to load additional modules [T1129] for stealth. For persistence, the actors scheduled malicious script execution using at.exe for 3:00 AM [T1053.002] and crafted a StartupParameters.plist to launch the backdoor on every system boot [T1037.005]. To maintain remote access, they installed and configured a VNC server for unauthorized control [T1021.005] and used psexec to copy payloads across accessible systems for lateral movement [T1570]. For C2 obfuscation, the malware implemented port knocking by monitoring TCP-SYN packets to a configurable sequence of ports (e.g., 200, 80, 22, 53, 3) before opening a communication port [T1205.001] and encoded C2 data with a custom Base64 technique [T1132.001]. System logs from affected endpoints showed anomalous network traffic spikes at off-hours, though these were unrelated to the core attack chain. The targeted organization, 'Global Finance Corp', reported no actual financial loss, but the simulation highlighted gaps in software update validation and endpoint monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe -accepteula -j -d -s Target Binary, while simultaneously using reflective loading via LoadLibrary to load additional modules for stealth.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "005] and used psexec to copy payloads across accessible systems for lateral movement.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGate' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowGate', targeting financial institutions through software supply chain compromise and persistent remote access. The campaign leverages multiple techniques for initial access, execution, persistence, and command and control (C2), as observed in training environments. Blue teams are advised to review detection and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowGate'. This report is based on a simulated attack scenario designed for blue team training purposes. ShadowGate actors have been observed targeting financial organizations by compromising a third-party accounting software update server to distribute malicious builds [T1195.002]. During the build process, the adversary altered the source code to include credential harvesting functionality, which was then deployed to victim systems via automated updates. Upon execution, the malware employed PsExec to elevate privileges to SYSTEM by executing as a service [T1569.002], such as cmd /c c:\\temp\\PsExec.exe -accepteula -j -d -s Target Binary, while simultaneously using reflective loading via LoadLibrary to load additional modules [T1129] for stealth. For persistence, the actors scheduled malicious script execution using at.exe for 3:00 AM [T1053.002] and crafted a StartupParameters.plist to launch the backdoor on every system boot [T1037.005]. To maintain remote access, they installed and configured a VNC server for unauthorized control [T1021.005] and used psexec to copy payloads across accessible systems for lateral movement [T1570]. For C2 obfuscation, the malware implemented port knocking by monitoring TCP-SYN packets to a configurable sequence of ports (e.g., 200, 80, 22, 53, 3) before opening a communication port [T1205.001] and encoded C2 data with a custom Base64 technique [T1132.001]. System logs from affected endpoints showed anomalous network traffic spikes at off-hours, though these were unrelated to the core attack chain. The targeted organization, 'Global Finance Corp', reported no actual financial loss, but the simulation highlighted gaps in software update validation and endpoint monitoring.",
+        "techniques_used": [
+            "T1195.002",
+            "T1569.002",
+            "T1129",
+            "T1053.002",
+            "T1037.005",
+            "T1021.005",
+            "T1570",
+            "T1205.001",
+            "T1132.001"
+        ]
+    }
+}

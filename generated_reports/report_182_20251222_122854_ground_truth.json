@@ -1,0 +1,111 @@
+{
+    "report_id": "report_182",
+    "generated_at": "20251222_122854",
+    "scenario_target_ids": [
+        "T1584.003",
+        "T1566.001",
+        "T1053.007",
+        "T1059.003",
+        "T1078",
+        "T1070.004",
+        "T1550",
+        "T1185",
+        "T1219.002",
+        "T1205",
+        "T1490"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.001",
+        "T1584.003",
+        "T1059.003",
+        "T1053.007",
+        "T1078",
+        "T1550",
+        "T1185",
+        "T1219.002",
+        "T1205",
+        "T1070.004",
+        "T1490"
+    ],
+    "actual_found_ids": [
+        "T1219.002",
+        "T1550",
+        "T1584.003",
+        "T1566.001",
+        "T1059.003",
+        "T1053.007",
+        "T1185",
+        "T1205",
+        "T1070.004",
+        "T1490",
+        "T1589",
+        "T1078"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional advanced persistent threat (APT) campaign, 'ShadowGale', observed targeting financial organizations in the United States. This report is based on a simulated scenario for educational purposes and does not reflect real-world events.\n\nBackground: 'ShadowGale' is a fictional cybercriminal group believed to operate with financial motives. In this scenario, they targeted a mid-sized regional bank, 'SecureTrust Financial', which uses a hybrid cloud environment with Windows-based workstations and containerized applications. Initial detection occurred when anomalous network traffic was flagged by an intrusion detection system, but the attack had already progressed through multiple stages.\n\nAttack Narrative:\n- **Initial Access**: The actors conducted reconnaissance and then initiated the campaign by sending spearphishing emails with malicious attachments to key employees at SecureTrust Financial. The emails appeared to originate from a trusted vendor and contained a disguised PDF file that, when opened, executed a PowerShell script to download additional payloads.\n- **Execution and Persistence**: Upon execution, the malware leveraged a virtual private server (VPS) from a cloud service provider's free tier to establish covert command and control infrastructure, while simultaneously using the Windows Command Shell to run commands that modified registry keys for persistence. To maintain access, the actors configured a CronJob in the bank's container orchestration system to run a malicious container image, which established a backdoor and allowed them to use valid accounts obtained through credential harvesting during initial compromise.\n- **Lateral Movement and Defense Evasion**: After gaining a foothold, the actors employed alternate authentication material, such as collected password hashes in a Pass-the-Hash attack, to move laterally across the network while using browser session hijacking via a malicious extension to inject payloads into active sessions. They also installed remote desktop software, like AnyDesk, on compromised systems for direct access. To evade detection, they used traffic signaling by crafting custom packets with raw sockets to conceal command and control ports and deleted files, including registry keys and logs, to cover their tracks.\n- **Impact**: In the final stage, the actors inhibited system recovery by deleting volume shadow copies on compromised hosts to prevent restoration, aiming to maximize disruption and data exfiltration.\n\nIrrelevant Information: SecureTrust Financial's IT team noted increased CPU usage on several servers during the attack, but initial logs showed no clear indicators. The bank had recently updated its firewall rules, which may have inadvertently allowed some malicious traffic. Additionally, a routine backup job failed due to unrelated disk space issues, complicating recovery efforts.\n\nMitigation Recommendations (Fictional): Organizations should implement email filtering, monitor for unusual container activity, enforce multi-factor authentication, and regularly back up systems to isolated networks. This advisory serves as a training tool for blue teams to recognize and respond to complex attack chains.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional advanced persistent threat (APT) campaign, 'ShadowGale', observed targeting financial organizations in the United States. This report is based on a simulated scenario for educational purposes and does not reflect real-world events.\n\nBackground: 'ShadowGale' is a fictional cybercriminal group believed to operate with financial motives. In this scenario, they targeted a mid-sized regional bank, 'SecureTrust Financial', which uses a hybrid cloud environment with Windows-based workstations and containerized applications. Initial detection occurred when anomalous network traffic was flagged by an intrusion detection system, but the attack had already progressed through multiple stages.\n\nAttack Narrative:\n- **Initial Access**: The actors conducted reconnaissance [T1589] and then initiated the campaign by sending spearphishing emails with malicious attachments [T1566.001] to key employees at SecureTrust Financial. The emails appeared to originate from a trusted vendor and contained a disguised PDF file that, when opened, executed a PowerShell script to download additional payloads.\n- **Execution and Persistence**: Upon execution, the malware leveraged a virtual private server (VPS) from a cloud service provider's free tier to establish covert command and control infrastructure [T1584.003], while simultaneously using the Windows Command Shell [T1059.003] to run commands that modified registry keys for persistence. To maintain access, the actors configured a CronJob in the bank's container orchestration system to run a malicious container image [T1053.007], which established a backdoor and allowed them to use valid accounts [T1078] obtained through credential harvesting during initial compromise.\n- **Lateral Movement and Defense Evasion**: After gaining a foothold, the actors employed alternate authentication material [T1550], such as collected password hashes in a Pass-the-Hash attack, to move laterally across the network while using browser session hijacking [T1185] via a malicious extension to inject payloads into active sessions. They also installed remote desktop software [T1219.002], like AnyDesk, on compromised systems for direct access. To evade detection, they used traffic signaling [T1205] by crafting custom packets with raw sockets to conceal command and control ports and deleted files [T1070.004], including registry keys and logs, to cover their tracks.\n- **Impact**: In the final stage, the actors inhibited system recovery [T1490] by deleting volume shadow copies on compromised hosts to prevent restoration, aiming to maximize disruption and data exfiltration.\n\nIrrelevant Information: SecureTrust Financial's IT team noted increased CPU usage on several servers during the attack, but initial logs showed no clear indicators. The bank had recently updated its firewall rules, which may have inadvertently allowed some malicious traffic. Additionally, a routine backup job failed due to unrelated disk space issues, complicating recovery efforts.\n\nMitigation Recommendations (Fictional): Organizations should implement email filtering, monitor for unusual container activity, enforce multi-factor authentication, and regularly back up systems to isolated networks. This advisory serves as a training tool for blue teams to recognize and respond to complex attack chains.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\n- **Initial Access**: The actors conducted reconnaissance and then initiated the campaign by sending spearphishing emails with malicious attachments [T1566.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "007], which established a backdoor and allowed them to use valid accounts obtained through credential harvesting during initial compromise.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "- **Lateral Movement and Defense Evasion**: After gaining a foothold, the actors employed alternate authentication material, such as collected password hashes in a Pass-the-Hash attack, to move laterally across the network while using browser session hijacking via a malicious extension to inject payloads into active sessions.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "- **Lateral Movement and Defense Evasion**: After gaining a foothold, the actors employed alternate authentication material, such as collected password hashes in a Pass-the-Hash attack, to move laterally across the network while using browser session hijacking via a malicious extension to inject payloads into active sessions.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        },
+        {
+            "sentence": "To evade detection, they used traffic signaling by crafting custom packets with raw sockets to conceal command and control ports and deleted files [T1070.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "- **Impact**: In the final stage, the actors inhibited system recovery by deleting volume shadow copies on compromised hosts to prevent restoration, aiming to maximize disruption and data exfiltration.",
+            "technique_id": "T1490",
+            "technique_name": "Inhibit System Recovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'ShadowGale', targeting financial institutions. The campaign involves spearphishing, cloud-based command and control, and lateral movement techniques to compromise networks and inhibit recovery. Blue teams should review this report for training on detecting and mitigating similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional advanced persistent threat (APT) campaign, 'ShadowGale', observed targeting financial organizations in the United States. This report is based on a simulated scenario for educational purposes and does not reflect real-world events.\n\nBackground: 'ShadowGale' is a fictional cybercriminal group believed to operate with financial motives. In this scenario, they targeted a mid-sized regional bank, 'SecureTrust Financial', which uses a hybrid cloud environment with Windows-based workstations and containerized applications. Initial detection occurred when anomalous network traffic was flagged by an intrusion detection system, but the attack had already progressed through multiple stages.\n\nAttack Narrative:\n- **Initial Access**: The actors conducted reconnaissance [T1589] and then initiated the campaign by sending spearphishing emails with malicious attachments [T1566.001] to key employees at SecureTrust Financial. The emails appeared to originate from a trusted vendor and contained a disguised PDF file that, when opened, executed a PowerShell script to download additional payloads.\n- **Execution and Persistence**: Upon execution, the malware leveraged a virtual private server (VPS) from a cloud service provider's free tier to establish covert command and control infrastructure [T1584.003], while simultaneously using the Windows Command Shell [T1059.003] to run commands that modified registry keys for persistence. To maintain access, the actors configured a CronJob in the bank's container orchestration system to run a malicious container image [T1053.007], which established a backdoor and allowed them to use valid accounts [T1078] obtained through credential harvesting during initial compromise.\n- **Lateral Movement and Defense Evasion**: After gaining a foothold, the actors employed alternate authentication material [T1550], such as collected password hashes in a Pass-the-Hash attack, to move laterally across the network while using browser session hijacking [T1185] via a malicious extension to inject payloads into active sessions. They also installed remote desktop software [T1219.002], like AnyDesk, on compromised systems for direct access. To evade detection, they used traffic signaling [T1205] by crafting custom packets with raw sockets to conceal command and control ports and deleted files [T1070.004], including registry keys and logs, to cover their tracks.\n- **Impact**: In the final stage, the actors inhibited system recovery [T1490] by deleting volume shadow copies on compromised hosts to prevent restoration, aiming to maximize disruption and data exfiltration.\n\nIrrelevant Information: SecureTrust Financial's IT team noted increased CPU usage on several servers during the attack, but initial logs showed no clear indicators. The bank had recently updated its firewall rules, which may have inadvertently allowed some malicious traffic. Additionally, a routine backup job failed due to unrelated disk space issues, complicating recovery efforts.\n\nMitigation Recommendations (Fictional): Organizations should implement email filtering, monitor for unusual container activity, enforce multi-factor authentication, and regularly back up systems to isolated networks. This advisory serves as a training tool for blue teams to recognize and respond to complex attack chains.",
+        "techniques_used": [
+            "T1589",
+            "T1566.001",
+            "T1584.003",
+            "T1059.003",
+            "T1053.007",
+            "T1078",
+            "T1550",
+            "T1185",
+            "T1219.002",
+            "T1205",
+            "T1070.004",
+            "T1490"
+        ]
+    }
+}

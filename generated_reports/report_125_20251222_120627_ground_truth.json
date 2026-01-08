@@ -1,0 +1,88 @@
+{
+    "report_id": "report_125",
+    "generated_at": "20251222_120627",
+    "scenario_target_ids": [
+        "T1590.001",
+        "T1589",
+        "T1659",
+        "T1204.004",
+        "T1059.003",
+        "T1546.010",
+        "T1556.002",
+        "T1497.001",
+        "T1021.005",
+        "T1105"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.001",
+        "T1589",
+        "T1659",
+        "T1204.004",
+        "T1059.003",
+        "T1546.010",
+        "T1556.002",
+        "T1497.001",
+        "T1021.005",
+        "T1105"
+    ],
+    "actual_found_ids": [
+        "T1659",
+        "T1546.010",
+        "T1059.003",
+        "T1497.001",
+        "T1589",
+        "T1556.002",
+        "T1021.005",
+        "T1105",
+        "T1204.004",
+        "T1590.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional APT group CrimsonShadow in a recent simulated campaign. CrimsonShadow, believed to operate out of Eastern Europe, has historically targeted critical infrastructure, with this campaign focusing on mid-sized banks in the U.S. and Canada. Initial analysis suggests the group aims to exfiltrate sensitive financial data and deploy ransomware.\n\n**Attack Narrative:**\nCrimsonShadow likely began by conducting reconnaissance to gather victim identity information, such as employee email addresses and organizational roles, through open-source intelligence (OSINT) and social media scraping. System logs from a compromised bank, 'SecureBank Inc.', show unusual API calls to the GetUserRealm service, indicating the actors used domain properties to determine the authentication type (managed vs. federated) for targeted user accounts. This reconnaissance phase lasted approximately two weeks, with no immediate malicious activity detected.\n\nFollowing reconnaissance, the actors employed a multi-vector initial access approach. They likely sent phishing emails containing malicious macros that, when enabled by users, executed PowerShell commands to download additional payloads and used content injection to intercept and modify DNS queries via a compromised ISP channel, redirecting victims to malicious domains hosting credential-stealing pages. For example, on 2023-10-15, SecureBank's network logs recorded anomalous DNS requests to 'malicious-dns[.]com', which were later traced to this technique.\n\nUpon gaining access, CrimsonShadow utilized the Windows Command Shell to execute commands and deploy tools, such as downloading a backdoor via ingress tool transfer to establish persistent communication channels. The actors then modified registry keys to enable AppInit DLLs and deployed a password filter DLL to capture credentials in real-time, while also performing system checks to evade sandboxed environments and avoid detection. Additionally, they configured a VNC server on a non-standard port (e.g., 5901) for remote desktop access, allowing continuous monitoring and control over compromised systems.\n\n**Irrelevant Information:** SecureBank Inc., founded in 1995, operates 50 branches across the Midwest and reported $2 billion in assets last quarter. Their IT infrastructure includes a mix of Windows 10 and Server 2019 systems, with legacy applications running on outdated Java versions. During the incident, routine backup processes were unaffected, and customer data remained encrypted at rest. The bank's security team initially dismissed the anomalous logs as false positives from a recent software update, delaying response by 48 hours.\n\n**Mitigation Recommendations:** Organizations should implement multi-factor authentication, monitor for unusual API and DNS activity, and restrict macro execution in email clients. Regular audits of registry settings and DLL files are advised to detect persistence mechanisms.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional APT group CrimsonShadow in a recent simulated campaign. CrimsonShadow, believed to operate out of Eastern Europe, has historically targeted critical infrastructure, with this campaign focusing on mid-sized banks in the U.S. and Canada. Initial analysis suggests the group aims to exfiltrate sensitive financial data and deploy ransomware.\n\n**Attack Narrative:**\nCrimsonShadow likely began by conducting reconnaissance to gather victim identity information [T1589], such as employee email addresses and organizational roles, through open-source intelligence (OSINT) and social media scraping. System logs from a compromised bank, 'SecureBank Inc.', show unusual API calls to the GetUserRealm service, indicating the actors used domain properties [T1590.001] to determine the authentication type (managed vs. federated) for targeted user accounts. This reconnaissance phase lasted approximately two weeks, with no immediate malicious activity detected.\n\nFollowing reconnaissance, the actors employed a multi-vector initial access approach. They likely sent phishing emails containing malicious macros that, when enabled by users, executed PowerShell commands to download additional payloads [T1204.004] and used content injection [T1659] to intercept and modify DNS queries via a compromised ISP channel, redirecting victims to malicious domains hosting credential-stealing pages. For example, on 2023-10-15, SecureBank's network logs recorded anomalous DNS requests to 'malicious-dns[.]com', which were later traced to this technique.\n\nUpon gaining access, CrimsonShadow utilized the Windows Command Shell [T1059.003] to execute commands and deploy tools, such as downloading a backdoor via ingress tool transfer [T1105] to establish persistent communication channels. The actors then modified registry keys to enable AppInit DLLs [T1546.010] and deployed a password filter DLL [T1556.002] to capture credentials in real-time, while also performing system checks [T1497.001] to evade sandboxed environments and avoid detection. Additionally, they configured a VNC server [T1021.005] on a non-standard port (e.g., 5901) for remote desktop access, allowing continuous monitoring and control over compromised systems.\n\n**Irrelevant Information:** SecureBank Inc., founded in 1995, operates 50 branches across the Midwest and reported $2 billion in assets last quarter. Their IT infrastructure includes a mix of Windows 10 and Server 2019 systems, with legacy applications running on outdated Java versions. During the incident, routine backup processes were unaffected, and customer data remained encrypted at rest. The bank's security team initially dismissed the anomalous logs as false positives from a recent software update, delaying response by 48 hours.\n\n**Mitigation Recommendations:** Organizations should implement multi-factor authentication, monitor for unusual API and DNS activity, and restrict macro execution in email clients. Regular audits of registry settings and DLL files are advised to detect persistence mechanisms.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Attack Narrative:**\nCrimsonShadow likely began by conducting reconnaissance to gather victim identity information, such as employee email addresses and organizational roles, through open-source intelligence (OSINT) and social media scraping.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "004] and used content injection to intercept and modify DNS queries via a compromised ISP channel, redirecting victims to malicious domains hosting credential-stealing pages.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "003] to execute commands and deploy tools, such as downloading a backdoor via ingress tool transfer to establish persistent communication channels.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated as 'CrimsonShadow', targeting financial institutions in North America. The campaign leverages sophisticated techniques for reconnaissance, initial access, and persistence, with a focus on credential theft and remote control. Blue teams should use this report for training to identify and mitigate similar threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional APT group CrimsonShadow in a recent simulated campaign. CrimsonShadow, believed to operate out of Eastern Europe, has historically targeted critical infrastructure, with this campaign focusing on mid-sized banks in the U.S. and Canada. Initial analysis suggests the group aims to exfiltrate sensitive financial data and deploy ransomware.\n\n**Attack Narrative:**\nCrimsonShadow likely began by conducting reconnaissance to gather victim identity information [T1589], such as employee email addresses and organizational roles, through open-source intelligence (OSINT) and social media scraping. System logs from a compromised bank, 'SecureBank Inc.', show unusual API calls to the GetUserRealm service, indicating the actors used domain properties [T1590.001] to determine the authentication type (managed vs. federated) for targeted user accounts. This reconnaissance phase lasted approximately two weeks, with no immediate malicious activity detected.\n\nFollowing reconnaissance, the actors employed a multi-vector initial access approach. They likely sent phishing emails containing malicious macros that, when enabled by users, executed PowerShell commands to download additional payloads [T1204.004] and used content injection [T1659] to intercept and modify DNS queries via a compromised ISP channel, redirecting victims to malicious domains hosting credential-stealing pages. For example, on 2023-10-15, SecureBank's network logs recorded anomalous DNS requests to 'malicious-dns[.]com', which were later traced to this technique.\n\nUpon gaining access, CrimsonShadow utilized the Windows Command Shell [T1059.003] to execute commands and deploy tools, such as downloading a backdoor via ingress tool transfer [T1105] to establish persistent communication channels. The actors then modified registry keys to enable AppInit DLLs [T1546.010] and deployed a password filter DLL [T1556.002] to capture credentials in real-time, while also performing system checks [T1497.001] to evade sandboxed environments and avoid detection. Additionally, they configured a VNC server [T1021.005] on a non-standard port (e.g., 5901) for remote desktop access, allowing continuous monitoring and control over compromised systems.\n\n**Irrelevant Information:** SecureBank Inc., founded in 1995, operates 50 branches across the Midwest and reported $2 billion in assets last quarter. Their IT infrastructure includes a mix of Windows 10 and Server 2019 systems, with legacy applications running on outdated Java versions. During the incident, routine backup processes were unaffected, and customer data remained encrypted at rest. The bank's security team initially dismissed the anomalous logs as false positives from a recent software update, delaying response by 48 hours.\n\n**Mitigation Recommendations:** Organizations should implement multi-factor authentication, monitor for unusual API and DNS activity, and restrict macro execution in email clients. Regular audits of registry settings and DLL files are advised to detect persistence mechanisms.",
+        "techniques_used": [
+            "T1590.001",
+            "T1589",
+            "T1659",
+            "T1204.004",
+            "T1059.003",
+            "T1546.010",
+            "T1556.002",
+            "T1497.001",
+            "T1021.005",
+            "T1105"
+        ]
+    }
+}

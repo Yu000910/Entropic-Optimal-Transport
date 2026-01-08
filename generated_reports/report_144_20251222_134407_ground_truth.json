@@ -1,0 +1,138 @@
+{
+    "report_id": "report_144",
+    "generated_at": "20251222_134407",
+    "scenario_target_ids": [
+        "T1591",
+        "T1669",
+        "T1129",
+        "T1556.002",
+        "T1543",
+        "T1040",
+        "T1069",
+        "T1007",
+        "T1673",
+        "T1091",
+        "T1571",
+        "T1486"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591",
+        "T1669",
+        "T1129",
+        "T1556.002",
+        "T1543",
+        "T1040",
+        "T1069",
+        "T1007",
+        "T1673",
+        "T1091",
+        "T1571",
+        "T1486"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1069",
+        "T1669",
+        "T1543",
+        "T1091",
+        "T1040",
+        "T1591",
+        "T1673",
+        "T1486",
+        "T1571",
+        "T1007",
+        "T1556.002"
+    ],
+    "clean_text": "On May 15, 2024, security analysts at a fictional energy company detected anomalous network traffic originating from an internal system. The company, 'PowerGrid Inc.', operates multiple substations and has a hybrid cloud environment with VMware infrastructure. Initial investigation revealed that the threat actor, likely HYDRAQ, conducted reconnaissance by searching professional forums like Stack Overflow for employees discussing SCADA system vulnerabilities, gathering victim organization information. Concurrently, rogue software was deployed on compromised laptops, continuously monitoring for Wi-Fi SSIDs broadcasting without encryption to identify potential entry points into air-gapped networks. The actor then used a spear-phishing email with a malicious attachment, which executed PowerShell scripts to download a backdoor payload. This backdoor, dubbed 'HydraqLoader', created a persistent mechanism by loading and calling DLL functions through shared modules, while also writing a credential harvesting DLL to the Windows Credential Manager path to capture passwords via a password filter. To maintain persistence, the malicious DLL was executed via svchost.exe modification, creating or modifying system processes. Network logs from the DMZ showed increased traffic on port 4443, with intercepter-NG tools deployed to sniff passwords in unencrypted protocols. The malware then performed discovery activities, querying 'net group \"Domain Admins\" /domain' to identify permission groups and enumerating existing services using commands like 'sc query' for system service discovery. In the virtualized environment, the actor executed 'esxcli software vib list' to gather information about installed VIBs and associated VMs, conducting virtual machine discovery. For lateral movement, the threat actor replicated the backdoor through removable media by copying 'backdoor.dll' onto multiple USB drives distributed to isolated computers. Command and control communication occurred over non-standard ports, with HTTP traffic observed on TCP ports 4443 and 10151. Finally, the actor encrypted critical files using the CryptEncrypt API with an RSA key, appending filenames with '.lock64' for data encrypted for impact. Incident responders noted unrelated log entries from routine backup processes and user login attempts, which did not correlate with the attack timeline.",
+    "tagged_text": "On May 15, 2024, security analysts at a fictional energy company detected anomalous network traffic originating from an internal system. The company, 'PowerGrid Inc.', operates multiple substations and has a hybrid cloud environment with VMware infrastructure. Initial investigation revealed that the threat actor, likely HYDRAQ, conducted reconnaissance by searching professional forums like Stack Overflow for employees discussing SCADA system vulnerabilities, gathering victim organization information [T1591]. Concurrently, rogue software was deployed on compromised laptops, continuously monitoring for Wi-Fi SSIDs broadcasting without encryption to identify potential entry points into air-gapped networks [T1669]. The actor then used a spear-phishing email with a malicious attachment, which executed PowerShell scripts to download a backdoor payload. This backdoor, dubbed 'HydraqLoader', created a persistent mechanism by loading and calling DLL functions through shared modules [T1129], while also writing a credential harvesting DLL to the Windows Credential Manager path to capture passwords via a password filter [T1556.002]. To maintain persistence, the malicious DLL was executed via svchost.exe modification, creating or modifying system processes [T1543]. Network logs from the DMZ showed increased traffic on port 4443, with intercepter-NG tools deployed to sniff passwords in unencrypted protocols [T1040]. The malware then performed discovery activities, querying 'net group \"Domain Admins\" /domain' to identify permission groups [T1069] and enumerating existing services using commands like 'sc query' for system service discovery [T1007]. In the virtualized environment, the actor executed 'esxcli software vib list' to gather information about installed VIBs and associated VMs, conducting virtual machine discovery [T1673]. For lateral movement, the threat actor replicated the backdoor through removable media by copying 'backdoor.dll' onto multiple USB drives distributed to isolated computers [T1091]. Command and control communication occurred over non-standard ports, with HTTP traffic observed on TCP ports 4443 and 10151 [T1571]. Finally, the actor encrypted critical files using the CryptEncrypt API with an RSA key, appending filenames with '.lock64' for data encrypted for impact [T1486]. Incident responders noted unrelated log entries from routine backup processes and user login attempts, which did not correlate with the attack timeline.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that the threat actor, likely HYDRAQ, conducted reconnaissance by searching professional forums like Stack Overflow for employees discussing SCADA system vulnerabilities, gathering victim organization information.",
+            "technique_id": "T1591",
+            "technique_name": "Gather Victim Org Information"
+        },
+        {
+            "sentence": "Concurrently, rogue software was deployed on compromised laptops, continuously monitoring for Wi-Fi SSIDs broadcasting without encryption to identify potential entry points into air-gapped networks.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "This backdoor, dubbed 'HydraqLoader', created a persistent mechanism by loading and calling DLL functions through shared modules, while also writing a credential harvesting DLL to the Windows Credential Manager path to capture passwords via a password filter [T1556.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "exe modification, creating or modifying system processes.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "Network logs from the DMZ showed increased traffic on port 4443, with intercepter-NG tools deployed to sniff passwords in unencrypted protocols.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "The malware then performed discovery activities, querying 'net group \"Domain Admins\" /domain' to identify permission groups and enumerating existing services using commands like 'sc query' for system service discovery.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "The malware then performed discovery activities, querying 'net group \"Domain Admins\" /domain' to identify permission groups and enumerating existing services using commands like 'sc query' for system service discovery.",
+            "technique_id": "T1007",
+            "technique_name": "System Service Discovery"
+        },
+        {
+            "sentence": "In the virtualized environment, the actor executed 'esxcli software vib list' to gather information about installed VIBs and associated VMs, conducting virtual machine discovery.",
+            "technique_id": "T1673",
+            "technique_name": "Virtual Machine Discovery"
+        },
+        {
+            "sentence": "dll' onto multiple USB drives distributed to isolated computers.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Command and control communication occurred over non-standard ports, with HTTP traffic observed on TCP ports 4443 and 10151.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        },
+        {
+            "sentence": "lock64' for data encrypted for impact.",
+            "technique_id": "T1486",
+            "technique_name": "Data Encrypted for Impact"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional Threat Actor 'HYDRAQ' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor HYDRAQ, targeting critical infrastructure sectors through a multi-stage attack involving reconnaissance, credential harvesting, lateral movement, and data encryption. The campaign leverages techniques such as information gathering from professional forums, Wi-Fi network exploitation, DLL injection, and non-standard port communication for command and control. Blue teams are advised to review logs for suspicious activities, including unauthorized DLL modifications, network sniffing, and encrypted file extensions.",
+        "full_report_text": "On May 15, 2024, security analysts at a fictional energy company detected anomalous network traffic originating from an internal system. The company, 'PowerGrid Inc.', operates multiple substations and has a hybrid cloud environment with VMware infrastructure. Initial investigation revealed that the threat actor, likely HYDRAQ, conducted reconnaissance by searching professional forums like Stack Overflow for employees discussing SCADA system vulnerabilities, gathering victim organization information [T1591]. Concurrently, rogue software was deployed on compromised laptops, continuously monitoring for Wi-Fi SSIDs broadcasting without encryption to identify potential entry points into air-gapped networks [T1669]. The actor then used a spear-phishing email with a malicious attachment, which executed PowerShell scripts to download a backdoor payload. This backdoor, dubbed 'HydraqLoader', created a persistent mechanism by loading and calling DLL functions through shared modules [T1129], while also writing a credential harvesting DLL to the Windows Credential Manager path to capture passwords via a password filter [T1556.002]. To maintain persistence, the malicious DLL was executed via svchost.exe modification, creating or modifying system processes [T1543]. Network logs from the DMZ showed increased traffic on port 4443, with intercepter-NG tools deployed to sniff passwords in unencrypted protocols [T1040]. The malware then performed discovery activities, querying 'net group \"Domain Admins\" /domain' to identify permission groups [T1069] and enumerating existing services using commands like 'sc query' for system service discovery [T1007]. In the virtualized environment, the actor executed 'esxcli software vib list' to gather information about installed VIBs and associated VMs, conducting virtual machine discovery [T1673]. For lateral movement, the threat actor replicated the backdoor through removable media by copying 'backdoor.dll' onto multiple USB drives distributed to isolated computers [T1091]. Command and control communication occurred over non-standard ports, with HTTP traffic observed on TCP ports 4443 and 10151 [T1571]. Finally, the actor encrypted critical files using the CryptEncrypt API with an RSA key, appending filenames with '.lock64' for data encrypted for impact [T1486]. Incident responders noted unrelated log entries from routine backup processes and user login attempts, which did not correlate with the attack timeline.",
+        "techniques_used": [
+            "T1591",
+            "T1669",
+            "T1129",
+            "T1556.002",
+            "T1543",
+            "T1040",
+            "T1069",
+            "T1007",
+            "T1673",
+            "T1091",
+            "T1571",
+            "T1486"
+        ]
+    }
+}

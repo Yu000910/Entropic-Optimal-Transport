@@ -1,0 +1,133 @@
+{
+    "report_id": "report_67",
+    "generated_at": "20251222_114402",
+    "scenario_target_ids": [
+        "T1669",
+        "T1078.004",
+        "T1059.012",
+        "T1037.002",
+        "T1546.017",
+        "T1564.003",
+        "T1620",
+        "T1574.010",
+        "T1552.001",
+        "T1555",
+        "T1538",
+        "T1016.001",
+        "T1482",
+        "T1001.002",
+        "T1102.002",
+        "T1048.003",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1669",
+        "T1078.004",
+        "T1059.012",
+        "T1037.002",
+        "T1546.017",
+        "T1564.003",
+        "T1620",
+        "T1574.010",
+        "T1552.001",
+        "T1555",
+        "T1538",
+        "T1016.001",
+        "T1482",
+        "T1001.002",
+        "T1102.002",
+        "T1048.003",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1574.010",
+        "T1538",
+        "T1048.003",
+        "T1078.004",
+        "T1001.002",
+        "T1552.001",
+        "T1620",
+        "T1482",
+        "T1037.002",
+        "T1669",
+        "T1546.017",
+        "T1564.003",
+        "T1016.001",
+        "T1565.003",
+        "T1555",
+        "T1102.002",
+        "T1059.012"
+    ],
+    "clean_text": "APT-99 likely conducts reconnaissance by scanning for open Wi-Fi networks named 'FreeWiFi' to gain initial access, then exploits cloud management APIs to establish persistent access to container registries. Upon execution, the adversary employs a Hypervisor CLI to snapshot virtual machines for data exfiltration while simultaneously writing a malicious VBScript to the user's startup directory for automatic execution via a login hook. For persistence, they create a udev rule in /etc/udev/rules.d/99-persistence.rules to trigger on device removal and hide malicious windows using ProcessWindowStyle.Hidden. The malware uses reflective code loading to run embedded code without disk writes and queries services with 'sc queryex type= service' to exploit file permissions weaknesses. For credential access, the attacker searches /home directories for configuration files containing credentials and extracts passwords from application stores. Discovery activities include using GCP Command Center to identify storage buckets with weak controls, checking C2 connectivity via ping to 8.8.8.8, and gathering domain trust information. Command and control is established using steganography to conceal communications in image files and bidirectional communication via Google Drive. Exfiltration occurs over unencrypted protocols like HTTP POST, and the adversary modifies application.exe to display false system information through runtime data manipulation. System logs from the fictional company 'CloudTech Solutions' show normal traffic patterns, but anomalous API calls were detected in their AWS environment, unrelated to the attack chain.",
+    "tagged_text": "APT-99 likely conducts reconnaissance by scanning for open Wi-Fi networks named 'FreeWiFi' to gain initial access [T1669], then exploits cloud management APIs to establish persistent access to container registries [T1078.004]. Upon execution, the adversary employs a Hypervisor CLI [T1059.012] to snapshot virtual machines for data exfiltration while simultaneously writing a malicious VBScript to the user's startup directory for automatic execution via a login hook [T1037.002]. For persistence, they create a udev rule in /etc/udev/rules.d/99-persistence.rules to trigger on device removal [T1546.017] and hide malicious windows using ProcessWindowStyle.Hidden [T1564.003]. The malware uses reflective code loading [T1620] to run embedded code without disk writes and queries services with 'sc queryex type= service' to exploit file permissions weaknesses [T1574.010]. For credential access, the attacker searches /home directories for configuration files containing credentials [T1552.001] and extracts passwords from application stores [T1555]. Discovery activities include using GCP Command Center to identify storage buckets with weak controls [T1538], checking C2 connectivity via ping to 8.8.8.8 [T1016.001], and gathering domain trust information [T1482]. Command and control is established using steganography to conceal communications in image files [T1001.002] and bidirectional communication via Google Drive [T1102.002]. Exfiltration occurs over unencrypted protocols like HTTP POST [T1048.003], and the adversary modifies application.exe to display false system information through runtime data manipulation [T1565.003]. System logs from the fictional company 'CloudTech Solutions' show normal traffic patterns, but anomalous API calls were detected in their AWS environment, unrelated to the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT-99 likely conducts reconnaissance by scanning for open Wi-Fi networks named 'FreeWiFi' to gain initial access, then exploits cloud management APIs to establish persistent access to container registries [T1078.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "The malware uses reflective code loading to run embedded code without disk writes and queries services with 'sc queryex type= service' to exploit file permissions weaknesses [T1574.",
+            "technique_id": "T1620",
+            "technique_name": "Reflective Code Loading"
+        },
+        {
+            "sentence": "001] and extracts passwords from application stores.",
+            "technique_id": "T1555",
+            "technique_name": "Credentials from Password Stores"
+        },
+        {
+            "sentence": "Discovery activities include using GCP Command Center to identify storage buckets with weak controls, checking C2 connectivity via ping to 8.",
+            "technique_id": "T1538",
+            "technique_name": "Cloud Service Dashboard"
+        },
+        {
+            "sentence": "001], and gathering domain trust information.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting organizations with hybrid cloud environments. The campaign leverages a multi-stage attack chain involving Wi-Fi exploitation, cloud account compromise, and persistent mechanisms to exfiltrate sensitive data and manipulate systems. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "APT-99 likely conducts reconnaissance by scanning for open Wi-Fi networks named 'FreeWiFi' to gain initial access [T1669], then exploits cloud management APIs to establish persistent access to container registries [T1078.004]. Upon execution, the adversary employs a Hypervisor CLI [T1059.012] to snapshot virtual machines for data exfiltration while simultaneously writing a malicious VBScript to the user's startup directory for automatic execution via a login hook [T1037.002]. For persistence, they create a udev rule in /etc/udev/rules.d/99-persistence.rules to trigger on device removal [T1546.017] and hide malicious windows using ProcessWindowStyle.Hidden [T1564.003]. The malware uses reflective code loading [T1620] to run embedded code without disk writes and queries services with 'sc queryex type= service' to exploit file permissions weaknesses [T1574.010]. For credential access, the attacker searches /home directories for configuration files containing credentials [T1552.001] and extracts passwords from application stores [T1555]. Discovery activities include using GCP Command Center to identify storage buckets with weak controls [T1538], checking C2 connectivity via ping to 8.8.8.8 [T1016.001], and gathering domain trust information [T1482]. Command and control is established using steganography to conceal communications in image files [T1001.002] and bidirectional communication via Google Drive [T1102.002]. Exfiltration occurs over unencrypted protocols like HTTP POST [T1048.003], and the adversary modifies application.exe to display false system information through runtime data manipulation [T1565.003]. System logs from the fictional company 'CloudTech Solutions' show normal traffic patterns, but anomalous API calls were detected in their AWS environment, unrelated to the attack chain.",
+        "techniques_used": [
+            "T1669",
+            "T1078.004",
+            "T1059.012",
+            "T1037.002",
+            "T1546.017",
+            "T1564.003",
+            "T1620",
+            "T1574.010",
+            "T1552.001",
+            "T1555",
+            "T1538",
+            "T1016.001",
+            "T1482",
+            "T1001.002",
+            "T1102.002",
+            "T1048.003",
+            "T1565.003"
+        ]
+    }
+}

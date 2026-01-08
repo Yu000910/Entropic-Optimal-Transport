@@ -1,0 +1,108 @@
+{
+    "report_id": "report_235",
+    "generated_at": "20251222_142208",
+    "scenario_target_ids": [
+        "T1595.002",
+        "T1589.003",
+        "T1591.002",
+        "T1584.007",
+        "T1566.003",
+        "T1047",
+        "T1027.007",
+        "T1482",
+        "T1087.001",
+        "T1087.003",
+        "T1114",
+        "T1056.002",
+        "T1213.004",
+        "T1102.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1595.002",
+        "T1589.003",
+        "T1591.002",
+        "T1584.007",
+        "T1566.003",
+        "T1047",
+        "T1027.007",
+        "T1482",
+        "T1087.001",
+        "T1087.003",
+        "T1114",
+        "T1056.002",
+        "T1213.004",
+        "T1102.002"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1114",
+        "T1213.004",
+        "T1591.002",
+        "T1027.007",
+        "T1087.003",
+        "T1589.003",
+        "T1584.007",
+        "T1595.002",
+        "T1566.003",
+        "T1087.001",
+        "T1482",
+        "T1102.002",
+        "T1056.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'Silent Ember,' which has been observed targeting financial organizations in North America. This campaign, active since early 2024, leverages a combination of open-source intelligence, social engineering, and advanced evasion techniques to compromise networks and steal sensitive data.\n\nInitial Access: Silent Ember likely conducted reconnaissance by scanning public-facing web applications for vulnerabilities using tools like Acunetix while simultaneously gathering employee names from social media and corporate directories and harvesting business relationship data, such as partnership logos and client lists, from the victim's official website. This information was used to craft targeted spearphishing attacks via a fake YouTube comment containing a malicious link that claimed to offer free premium account access, leading to initial compromise.\n\nExecution: Upon user interaction with the phishing link, the adversary employed a serverless redirect service hosted on AWS Lambda to deliver malicious payloads and executed them using Windows Management Instrumentation (WMIC) to run remote XSL scripts while dynamically resolving API calls via GetProcAddress to evade static analysis. System logs from the victim's environment showed unusual network traffic spikes during this phase, though no alerts were triggered initially.\n\nPersistence and Discovery: After gaining a foothold, Silent Ember conducted domain trust discovery using DSEnumerateDomainTrusts() to map trust relationships within the forest and enumerated local accounts and groups on compromised machines as well as email accounts via Get-GlobalAddressList in the Exchange environment. The organization, a mid-sized bank with operations in multiple states, reported slow performance in its CRM systems during this period.\n\nCollection and Exfiltration: The actor collected email data by launching Outlook.exe to access and copy attachments from inboxes and captured GUI input through a spoofed login prompt created with PowerShell to steal domain credentials. These credentials were then used to access Microsoft Dynamics 365, downloading customer account details. Stolen data was exfiltrated using bidirectional communication via Dropbox for command reception and data upload. Incident response teams noted encrypted traffic to cloud storage services but lacked sufficient logging to correlate it with internal events.\n\nMitigation recommendations include implementing multi-factor authentication, enhancing email filtering, and monitoring for unusual API calls and serverless function usage. This report is based on fictional data for training purposes only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'Silent Ember,' which has been observed targeting financial organizations in North America. This campaign, active since early 2024, leverages a combination of open-source intelligence, social engineering, and advanced evasion techniques to compromise networks and steal sensitive data.\n\nInitial Access: Silent Ember likely conducted reconnaissance by scanning public-facing web applications for vulnerabilities using tools like Acunetix [T1595.002] while simultaneously gathering employee names from social media and corporate directories [T1589.003] and harvesting business relationship data, such as partnership logos and client lists, from the victim's official website [T1591.002]. This information was used to craft targeted spearphishing attacks via a fake YouTube comment containing a malicious link that claimed to offer free premium account access [T1566.003], leading to initial compromise.\n\nExecution: Upon user interaction with the phishing link, the adversary employed a serverless redirect service hosted on AWS Lambda to deliver malicious payloads [T1584.007] and executed them using Windows Management Instrumentation (WMIC) to run remote XSL scripts [T1047] while dynamically resolving API calls via GetProcAddress to evade static analysis [T1027.007]. System logs from the victim's environment showed unusual network traffic spikes during this phase, though no alerts were triggered initially.\n\nPersistence and Discovery: After gaining a foothold, Silent Ember conducted domain trust discovery using DSEnumerateDomainTrusts() to map trust relationships within the forest [T1482] and enumerated local accounts and groups on compromised machines [T1087.001] as well as email accounts via Get-GlobalAddressList in the Exchange environment [T1087.003]. The organization, a mid-sized bank with operations in multiple states, reported slow performance in its CRM systems during this period.\n\nCollection and Exfiltration: The actor collected email data by launching Outlook.exe to access and copy attachments from inboxes [T1114] and captured GUI input through a spoofed login prompt created with PowerShell to steal domain credentials [T1056.002]. These credentials were then used to access Microsoft Dynamics 365, downloading customer account details [T1213.004]. Stolen data was exfiltrated using bidirectional communication via Dropbox for command reception and data upload [T1102.002]. Incident response teams noted encrypted traffic to cloud storage services but lacked sufficient logging to correlate it with internal events.\n\nMitigation recommendations include implementing multi-factor authentication, enhancing email filtering, and monitoring for unusual API calls and serverless function usage. This report is based on fictional data for training purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "007] and executed them using Windows Management Instrumentation (WMIC) to run remote XSL scripts while dynamically resolving API calls via GetProcAddress to evade static analysis [T1027.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "Persistence and Discovery: After gaining a foothold, Silent Ember conducted domain trust discovery using DSEnumerateDomainTrusts() to map trust relationships within the forest and enumerated local accounts and groups on compromised machines [T1087.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        },
+        {
+            "sentence": "exe to access and copy attachments from inboxes and captured GUI input through a spoofed login prompt created with PowerShell to steal domain credentials [T1056.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Ember' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Silent Ember' targeting financial institutions, involving reconnaissance, spearphishing, credential theft, and data exfiltration to train blue teams in detection and response.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'Silent Ember,' which has been observed targeting financial organizations in North America. This campaign, active since early 2024, leverages a combination of open-source intelligence, social engineering, and advanced evasion techniques to compromise networks and steal sensitive data.\n\nInitial Access: Silent Ember likely conducted reconnaissance by scanning public-facing web applications for vulnerabilities using tools like Acunetix [T1595.002] while simultaneously gathering employee names from social media and corporate directories [T1589.003] and harvesting business relationship data, such as partnership logos and client lists, from the victim's official website [T1591.002]. This information was used to craft targeted spearphishing attacks via a fake YouTube comment containing a malicious link that claimed to offer free premium account access [T1566.003], leading to initial compromise.\n\nExecution: Upon user interaction with the phishing link, the adversary employed a serverless redirect service hosted on AWS Lambda to deliver malicious payloads [T1584.007] and executed them using Windows Management Instrumentation (WMIC) to run remote XSL scripts [T1047] while dynamically resolving API calls via GetProcAddress to evade static analysis [T1027.007]. System logs from the victim's environment showed unusual network traffic spikes during this phase, though no alerts were triggered initially.\n\nPersistence and Discovery: After gaining a foothold, Silent Ember conducted domain trust discovery using DSEnumerateDomainTrusts() to map trust relationships within the forest [T1482] and enumerated local accounts and groups on compromised machines [T1087.001] as well as email accounts via Get-GlobalAddressList in the Exchange environment [T1087.003]. The organization, a mid-sized bank with operations in multiple states, reported slow performance in its CRM systems during this period.\n\nCollection and Exfiltration: The actor collected email data by launching Outlook.exe to access and copy attachments from inboxes [T1114] and captured GUI input through a spoofed login prompt created with PowerShell to steal domain credentials [T1056.002]. These credentials were then used to access Microsoft Dynamics 365, downloading customer account details [T1213.004]. Stolen data was exfiltrated using bidirectional communication via Dropbox for command reception and data upload [T1102.002]. Incident response teams noted encrypted traffic to cloud storage services but lacked sufficient logging to correlate it with internal events.\n\nMitigation recommendations include implementing multi-factor authentication, enhancing email filtering, and monitoring for unusual API calls and serverless function usage. This report is based on fictional data for training purposes only.",
+        "techniques_used": [
+            "T1595.002",
+            "T1589.003",
+            "T1591.002",
+            "T1584.007",
+            "T1566.003",
+            "T1047",
+            "T1027.007",
+            "T1482",
+            "T1087.001",
+            "T1087.003",
+            "T1114",
+            "T1056.002",
+            "T1213.004",
+            "T1102.002"
+        ]
+    }
+}

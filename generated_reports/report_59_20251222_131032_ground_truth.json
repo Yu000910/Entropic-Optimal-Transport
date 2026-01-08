@@ -1,0 +1,58 @@
+{
+    "report_id": "report_59",
+    "generated_at": "20251222_131032",
+    "scenario_target_ids": [
+        "T1091",
+        "T1195.003",
+        "T1059.001",
+        "T1037.005",
+        "T1564.006",
+        "T1102.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1059.001",
+        "T1037.005",
+        "T1091",
+        "T1564.006",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1059.001",
+        "T1102.001",
+        "T1564.006",
+        "T1091",
+        "T1195.003",
+        "T1037.005"
+    ],
+    "clean_text": "Background: The fictional target, 'Global Utilities Inc.', is a mid-sized energy provider with operations across North America, utilizing legacy SCADA systems and disconnected networks for safety compliance. On 2023-10-15, anomalous network traffic was detected from a network-attached storage (NAS) device in a remote substation, logging repeated failed authentication attempts to internal servers, which were initially dismissed as glitches. Attack Scenario: Initial Access: The adversary compromised the hardware supply chain by flashing malicious firmware onto a NAS device during manufacturing, creating a hidden backdoor access point. Execution: Upon deployment at the target site, the NAS device autonomously executed a PowerShell script to gather system information and establish a foothold on connected hosts. Persistence: To ensure long-term access, the script modified startup items by creating entries in /Library/StartupItems, enabling execution on every system reboot. Lateral Movement: The actors used removable media, specifically a USB drive labeled 'Maintenance Tools', to drop a malicious executable named 'update.exe', which replicated across air-gapped systems when inserted by unsuspecting technicians. Defense Evasion: For stealth, the adversary ran a VirtualBox instance with a Windows 7 virtual machine, configured to map shared network drives, allowing encryption and data theft without direct host interaction. Command and Control: Communication was obfuscated through dead drop resolvers, leveraging legitimate websites like GitHub and Pastebin to retrieve commands and exfiltrate data. Additional logs show routine backup failures at 02:00 UTC, unrelated to the attack, and company records indicate a recent software update to version 4.2.1 for the SCADA interface, which had no vulnerabilities exploited in this scenario.",
+    "tagged_text": "Background: The fictional target, 'Global Utilities Inc.', is a mid-sized energy provider with operations across North America, utilizing legacy SCADA systems and disconnected networks for safety compliance. On 2023-10-15, anomalous network traffic was detected from a network-attached storage (NAS) device in a remote substation, logging repeated failed authentication attempts to internal servers, which were initially dismissed as glitches. Attack Scenario: Initial Access: The adversary compromised the hardware supply chain by flashing malicious firmware onto a NAS device during manufacturing, creating a hidden backdoor access point [T1195.003]. Execution: Upon deployment at the target site, the NAS device autonomously executed a PowerShell script to gather system information and establish a foothold on connected hosts [T1059.001]. Persistence: To ensure long-term access, the script modified startup items by creating entries in /Library/StartupItems, enabling execution on every system reboot [T1037.005]. Lateral Movement: The actors used removable media, specifically a USB drive labeled 'Maintenance Tools', to drop a malicious executable named 'update.exe', which replicated across air-gapped systems when inserted by unsuspecting technicians [T1091]. Defense Evasion: For stealth, the adversary ran a VirtualBox instance with a Windows 7 virtual machine, configured to map shared network drives, allowing encryption and data theft without direct host interaction [T1564.006]. Command and Control: Communication was obfuscated through dead drop resolvers, leveraging legitimate websites like GitHub and Pastebin to retrieve commands and exfiltrate data [T1102.001]. Additional logs show routine backup failures at 02:00 UTC, unrelated to the attack, and company records indicate a recent software update to version 4.2.1 for the SCADA interface, which had no vulnerabilities exploited in this scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe', which replicated across air-gapped systems when inserted by unsuspecting technicians.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSneak' Targeting Critical Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowSneak', targeting critical infrastructure sectors. This report provides a realistic training scenario for blue teams, based on a multi-vector attack involving hardware compromise, removable media, and virtualized environments to achieve persistence and data exfiltration. The advisory includes embedded MITRE ATT&CK technique tags for educational purposes, along with extraneous logs and background details to mimic real-world noise.",
+        "full_report_text": "Background: The fictional target, 'Global Utilities Inc.', is a mid-sized energy provider with operations across North America, utilizing legacy SCADA systems and disconnected networks for safety compliance. On 2023-10-15, anomalous network traffic was detected from a network-attached storage (NAS) device in a remote substation, logging repeated failed authentication attempts to internal servers, which were initially dismissed as glitches. Attack Scenario: Initial Access: The adversary compromised the hardware supply chain by flashing malicious firmware onto a NAS device during manufacturing, creating a hidden backdoor access point [T1195.003]. Execution: Upon deployment at the target site, the NAS device autonomously executed a PowerShell script to gather system information and establish a foothold on connected hosts [T1059.001]. Persistence: To ensure long-term access, the script modified startup items by creating entries in /Library/StartupItems, enabling execution on every system reboot [T1037.005]. Lateral Movement: The actors used removable media, specifically a USB drive labeled 'Maintenance Tools', to drop a malicious executable named 'update.exe', which replicated across air-gapped systems when inserted by unsuspecting technicians [T1091]. Defense Evasion: For stealth, the adversary ran a VirtualBox instance with a Windows 7 virtual machine, configured to map shared network drives, allowing encryption and data theft without direct host interaction [T1564.006]. Command and Control: Communication was obfuscated through dead drop resolvers, leveraging legitimate websites like GitHub and Pastebin to retrieve commands and exfiltrate data [T1102.001]. Additional logs show routine backup failures at 02:00 UTC, unrelated to the attack, and company records indicate a recent software update to version 4.2.1 for the SCADA interface, which had no vulnerabilities exploited in this scenario.",
+        "techniques_used": [
+            "T1195.003",
+            "T1059.001",
+            "T1037.005",
+            "T1091",
+            "T1564.006",
+            "T1102.001"
+        ]
+    }
+}

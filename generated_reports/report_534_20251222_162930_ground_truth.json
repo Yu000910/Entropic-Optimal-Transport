@@ -1,0 +1,151 @@
+{
+    "report_id": "report_534",
+    "generated_at": "20251222_162930",
+    "scenario_target_ids": [
+        "T1200",
+        "T1053.007",
+        "T1059.006",
+        "T1543.004",
+        "T1574.014",
+        "T1205.002",
+        "T1027.017",
+        "T1621",
+        "T1614.001",
+        "T1497",
+        "T1550",
+        "T1213.004",
+        "T1560",
+        "T1602.001",
+        "T1092",
+        "T1205",
+        "T1567.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1200",
+        "T1059.006",
+        "T1053.007",
+        "T1543.004",
+        "T1574.014",
+        "T1027.017",
+        "T1497",
+        "T1205.002",
+        "T1205",
+        "T1621",
+        "T1550",
+        "T1614.001",
+        "T1602.001",
+        "T1213.004",
+        "T1092",
+        "T1560",
+        "T1567.001"
+    ],
+    "actual_found_ids": [
+        "T1497",
+        "T1602.001",
+        "T1560",
+        "T1205.002",
+        "T1550",
+        "T1213.004",
+        "T1589",
+        "T1027.017",
+        "T1574.014",
+        "T1200",
+        "T1205",
+        "T1092",
+        "T1053.007",
+        "T1614.001",
+        "T1543.004",
+        "T1621",
+        "T1059.006",
+        "T1567.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign. 'ShadowHook' actors likely conduct reconnaissance through open-source intelligence gathering to identify target employees. In the Initial Access phase, the actors planted a malicious USB device, specifically a USB Rubber Ducky, in a corporate breakroom to exploit employee curiosity and gain physical entry. Upon insertion, the device executed a script that leveraged Python to download and compile a backdoor, known as 'DropBook,' using PyInstaller while simultaneously configuring a CronJob to schedule a cryptocurrency mining container for execution at system startup. The actors then established persistence by creating a custom plist file in /Library/LaunchAgents/ to ensure the backdoor runs on every boot and modified .config file assembly binding settings to load a malicious DLL via AppDomainManager. For Defense Evasion, the malware employed SVG smuggling to embed VBScript in an SVG file, bypassing file type restrictions, and included a 'vmdetect.exe' executable to identify and evade virtual machines or sandboxes. Additionally, the malware used setsockopt to configure raw socket parameters for intercepting trigger packets and exploited libpcap libraries to monitor network traffic and hide malicious communication ports. In the Credential Access phase, the actors abused session hijacking to generate multi-factor authentication requests and used compromised AD FS server SAML tokens as alternate authentication material. For Discovery, the backdoor performed system language checks to ensure keyboard settings were not Russian and executed SNMP queries to dump MIB data and identify active network interfaces. In the Collection phase, the actors leveraged Microsoft Dynamics 365 to export customer contact lists for phishing campaigns and wrote configuration files to a USB drive to bridge commands between disconnected networks. For Exfiltration, the actors archived collected data by encrypting it with AES and encoding it with base64 before transmission and stored exfiltrated customer data in a private GitHub repository via API calls. System logs from the targeted environment show routine network traffic spikes at 03:00 UTC, unrelated to the attack, and the company's background includes a recent merger with a smaller fintech firm, which may have introduced integration vulnerabilities. Blue teams should monitor for unusual USB activity, review CronJob configurations, and inspect network traffic for anomalies associated with these techniques.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign. 'ShadowHook' actors likely conduct reconnaissance through open-source intelligence gathering [T1589] to identify target employees. In the Initial Access phase, the actors planted a malicious USB device, specifically a USB Rubber Ducky, in a corporate breakroom to exploit employee curiosity and gain physical entry [T1200]. Upon insertion, the device executed a script that leveraged Python [T1059.006] to download and compile a backdoor, known as 'DropBook,' using PyInstaller while simultaneously configuring a CronJob [T1053.007] to schedule a cryptocurrency mining container for execution at system startup. The actors then established persistence by creating a custom plist file in /Library/LaunchAgents/ to ensure the backdoor runs on every boot [T1543.004] and modified .config file assembly binding settings to load a malicious DLL via AppDomainManager [T1574.014]. For Defense Evasion, the malware employed SVG smuggling [T1027.017] to embed VBScript in an SVG file, bypassing file type restrictions, and included a 'vmdetect.exe' executable to identify and evade virtual machines or sandboxes [T1497]. Additionally, the malware used setsockopt to configure raw socket parameters for intercepting trigger packets [T1205.002] and exploited libpcap libraries to monitor network traffic and hide malicious communication ports [T1205]. In the Credential Access phase, the actors abused session hijacking to generate multi-factor authentication requests [T1621] and used compromised AD FS server SAML tokens as alternate authentication material [T1550]. For Discovery, the backdoor performed system language checks to ensure keyboard settings were not Russian [T1614.001] and executed SNMP queries to dump MIB data and identify active network interfaces [T1602.001]. In the Collection phase, the actors leveraged Microsoft Dynamics 365 to export customer contact lists for phishing campaigns [T1213.004] and wrote configuration files to a USB drive to bridge commands between disconnected networks [T1092]. For Exfiltration, the actors archived collected data by encrypting it with AES and encoding it with base64 before transmission [T1560] and stored exfiltrated customer data in a private GitHub repository via API calls [T1567.001]. System logs from the targeted environment show routine network traffic spikes at 03:00 UTC, unrelated to the attack, and the company's background includes a recent merger with a smaller fintech firm, which may have introduced integration vulnerabilities. Blue teams should monitor for unusual USB activity, review CronJob configurations, and inspect network traffic for anomalies associated with these techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "'ShadowHook' actors likely conduct reconnaissance through open-source intelligence gathering to identify target employees.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the Initial Access phase, the actors planted a malicious USB device, specifically a USB Rubber Ducky, in a corporate breakroom to exploit employee curiosity and gain physical entry.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "exe' executable to identify and evade virtual machines or sandboxes.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "002] and exploited libpcap libraries to monitor network traffic and hide malicious communication ports.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "In the Credential Access phase, the actors abused session hijacking to generate multi-factor authentication requests and used compromised AD FS server SAML tokens as alternate authentication material.",
+            "technique_id": "T1621",
+            "technique_name": "Multi-Factor Authentication Request Generation"
+        },
+        {
+            "sentence": "In the Credential Access phase, the actors abused session hijacking to generate multi-factor authentication requests and used compromised AD FS server SAML tokens as alternate authentication material.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "004] and wrote configuration files to a USB drive to bridge commands between disconnected networks.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        },
+        {
+            "sentence": "For Exfiltration, the actors archived collected data by encrypting it with AES and encoding it with base64 before transmission and stored exfiltrated customer data in a private GitHub repository via API calls [T1567.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowHook,' targeting financial institutions. The campaign leverages a multi-stage attack involving hardware-based initial access, containerized execution, and sophisticated evasion techniques to deploy backdoors and exfiltrate sensitive data. Blue teams are advised to review logs and implement defensive measures based on the techniques outlined.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign. 'ShadowHook' actors likely conduct reconnaissance through open-source intelligence gathering [T1589] to identify target employees. In the Initial Access phase, the actors planted a malicious USB device, specifically a USB Rubber Ducky, in a corporate breakroom to exploit employee curiosity and gain physical entry [T1200]. Upon insertion, the device executed a script that leveraged Python [T1059.006] to download and compile a backdoor, known as 'DropBook,' using PyInstaller while simultaneously configuring a CronJob [T1053.007] to schedule a cryptocurrency mining container for execution at system startup. The actors then established persistence by creating a custom plist file in /Library/LaunchAgents/ to ensure the backdoor runs on every boot [T1543.004] and modified .config file assembly binding settings to load a malicious DLL via AppDomainManager [T1574.014]. For Defense Evasion, the malware employed SVG smuggling [T1027.017] to embed VBScript in an SVG file, bypassing file type restrictions, and included a 'vmdetect.exe' executable to identify and evade virtual machines or sandboxes [T1497]. Additionally, the malware used setsockopt to configure raw socket parameters for intercepting trigger packets [T1205.002] and exploited libpcap libraries to monitor network traffic and hide malicious communication ports [T1205]. In the Credential Access phase, the actors abused session hijacking to generate multi-factor authentication requests [T1621] and used compromised AD FS server SAML tokens as alternate authentication material [T1550]. For Discovery, the backdoor performed system language checks to ensure keyboard settings were not Russian [T1614.001] and executed SNMP queries to dump MIB data and identify active network interfaces [T1602.001]. In the Collection phase, the actors leveraged Microsoft Dynamics 365 to export customer contact lists for phishing campaigns [T1213.004] and wrote configuration files to a USB drive to bridge commands between disconnected networks [T1092]. For Exfiltration, the actors archived collected data by encrypting it with AES and encoding it with base64 before transmission [T1560] and stored exfiltrated customer data in a private GitHub repository via API calls [T1567.001]. System logs from the targeted environment show routine network traffic spikes at 03:00 UTC, unrelated to the attack, and the company's background includes a recent merger with a smaller fintech firm, which may have introduced integration vulnerabilities. Blue teams should monitor for unusual USB activity, review CronJob configurations, and inspect network traffic for anomalies associated with these techniques.",
+        "techniques_used": [
+            "T1589",
+            "T1200",
+            "T1059.006",
+            "T1053.007",
+            "T1543.004",
+            "T1574.014",
+            "T1027.017",
+            "T1497",
+            "T1205.002",
+            "T1205",
+            "T1621",
+            "T1550",
+            "T1614.001",
+            "T1602.001",
+            "T1213.004",
+            "T1092",
+            "T1560",
+            "T1567.001"
+        ]
+    }
+}

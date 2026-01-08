@@ -1,0 +1,73 @@
+{
+    "report_id": "report_56",
+    "generated_at": "20251222_130933",
+    "scenario_target_ids": [
+        "T1566",
+        "T1566.003",
+        "T1204",
+        "T1574.001",
+        "T1653",
+        "T1098.004",
+        "T1568.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566.003",
+        "T1566",
+        "T1204",
+        "T1574.001",
+        "T1653",
+        "T1098.004",
+        "T1568.002"
+    ],
+    "actual_found_ids": [
+        "T1653",
+        "T1568.002",
+        "T1574.001",
+        "T1566",
+        "T1566.003",
+        "T1098.004",
+        "T1204"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a simulated APT campaign targeting corporate networks. This report is based on fictional data for training purposes.\n\nBackground: The fictional company, TechGlobal Inc., reported unusual network activity after employees received suspicious communications. Initial logs from their SIEM showed multiple failed login attempts from unknown IP addresses, but these were unrelated to the core attack chain.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance by creating fake LinkedIn profiles to send phishing links to employees via direct messages, while also emailing fake software update notifications with attached malicious .exe files. Upon user interaction, the malicious attachment executed, requiring users to click on it to initiate the installation process. Once installed, the malware loaded a malicious DLL placed in the TeamViewer directory instead of the original Windows DLL, exploiting DLL search order hijacking. To maintain persistence, the adversary changed lock screen timeout settings to 'Never' to avoid session termination and used a script to alter sshd_config to allow password authentication, enabling persistent SSH access by adding authorized keys. For command and control, the malware employed a Domain Generation Algorithm (DGA) for fallback channels, generating domains by concatenating words from predefined lists. Additional system logs indicated routine software updates and network scans, but these activities were not part of the malicious sequence.\n\nMitigation recommendations include implementing email filtering, user awareness training, and monitoring for unusual registry or configuration changes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a simulated APT campaign targeting corporate networks. This report is based on fictional data for training purposes.\n\nBackground: The fictional company, TechGlobal Inc., reported unusual network activity after employees received suspicious communications. Initial logs from their SIEM showed multiple failed login attempts from unknown IP addresses, but these were unrelated to the core attack chain.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance by creating fake LinkedIn profiles to send phishing links to employees via direct messages [T1566.003], while also emailing fake software update notifications with attached malicious .exe files [T1566]. Upon user interaction, the malicious attachment executed, requiring users to click on it to initiate the installation process [T1204]. Once installed, the malware loaded a malicious DLL placed in the TeamViewer directory instead of the original Windows DLL, exploiting DLL search order hijacking [T1574.001]. To maintain persistence, the adversary changed lock screen timeout settings to 'Never' to avoid session termination [T1653] and used a script to alter sshd_config to allow password authentication, enabling persistent SSH access by adding authorized keys [T1098.004]. For command and control, the malware employed a Domain Generation Algorithm (DGA) for fallback channels, generating domains by concatenating words from predefined lists [T1568.002]. Additional system logs indicated routine software updates and network scans, but these activities were not part of the malicious sequence.\n\nMitigation recommendations include implementing email filtering, user awareness training, and monitoring for unusual registry or configuration changes.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe files.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Upon user interaction, the malicious attachment executed, requiring users to click on it to initiate the installation process.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "To maintain persistence, the adversary changed lock screen timeout settings to 'Never' to avoid session termination and used a script to alter sshd_config to allow password authentication, enabling persistent SSH access by adding authorized keys [T1098.",
+            "technique_id": "T1653",
+            "technique_name": "Power Settings"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Corporate Networks",
+        "summary": "This advisory details a fictional, educational campaign by a simulated advanced persistent threat (APT) actor, designed for blue team training. The scenario involves phishing, persistence mechanisms, and command-and-control techniques to emulate real-world threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a simulated APT campaign targeting corporate networks. This report is based on fictional data for training purposes.\n\nBackground: The fictional company, TechGlobal Inc., reported unusual network activity after employees received suspicious communications. Initial logs from their SIEM showed multiple failed login attempts from unknown IP addresses, but these were unrelated to the core attack chain.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance by creating fake LinkedIn profiles to send phishing links to employees via direct messages [T1566.003], while also emailing fake software update notifications with attached malicious .exe files [T1566]. Upon user interaction, the malicious attachment executed, requiring users to click on it to initiate the installation process [T1204]. Once installed, the malware loaded a malicious DLL placed in the TeamViewer directory instead of the original Windows DLL, exploiting DLL search order hijacking [T1574.001]. To maintain persistence, the adversary changed lock screen timeout settings to 'Never' to avoid session termination [T1653] and used a script to alter sshd_config to allow password authentication, enabling persistent SSH access by adding authorized keys [T1098.004]. For command and control, the malware employed a Domain Generation Algorithm (DGA) for fallback channels, generating domains by concatenating words from predefined lists [T1568.002]. Additional system logs indicated routine software updates and network scans, but these activities were not part of the malicious sequence.\n\nMitigation recommendations include implementing email filtering, user awareness training, and monitoring for unusual registry or configuration changes.",
+        "techniques_used": [
+            "T1566.003",
+            "T1566",
+            "T1204",
+            "T1574.001",
+            "T1653",
+            "T1098.004",
+            "T1568.002"
+        ]
+    }
+}

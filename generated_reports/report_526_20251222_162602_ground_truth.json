@@ -1,0 +1,93 @@
+{
+    "report_id": "report_526",
+    "generated_at": "20251222_162602",
+    "scenario_target_ids": [
+        "T1597.001",
+        "T1133",
+        "T1610",
+        "T1554",
+        "T1552.005",
+        "T1021.006",
+        "T1550",
+        "T1102.002",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.001",
+        "T1133",
+        "T1610",
+        "T1554",
+        "T1552.005",
+        "T1021.006",
+        "T1550",
+        "T1102.002",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1491",
+        "T1550",
+        "T1552.005",
+        "T1597.001",
+        "T1021.006",
+        "T1133",
+        "T1554",
+        "T1102.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a simulated advanced persistent threat (APT) campaign observed in training environments. The actor, tracked as 'Cobalt Serpent', employs sophisticated techniques to compromise cloud infrastructure and containerized systems. Initial reconnaissance involved querying paid threat intelligence feeds to gather intelligence on target email security configurations and identify vulnerabilities. Following this, the actor exploited misconfigured external remote services, using open-source tools like Weave Scope to target exposed Docker API ports and kubelets in Kubernetes environments, gaining initial access to victim networks. Once inside, the adversary deployed a malicious container via 'docker start' to mask network traffic from security monitoring tools, while simultaneously compromising a host software binary by embedding malicious code into the CAV Python package of an Ivanti Connect Secure VPN located at `/home/venv3/lib/python3.6/site-packages/cav-0.1-py3.6.egg/cav/api/resources/category.py`. To escalate privileges and move laterally, the actor harvested cloud credentials by querying the instance metadata endpoint for temporary security tokens, then used Windows Remote Management (WinRM) to remotely deploy additional payloads across enterprise systems, employing Pass-the-Hash attacks with stolen NTLM hashes for authentication. For command and control, the actor established bidirectional communication through the Gmail web UI to receive commands and exfiltrate sensitive data, and finally executed a defacement script named 'evil.ps1' to distort graphical elements in application windows, leaving a visible impact. Logs from affected systems show routine errors unrelated to the attack, such as 'Failed to connect to database at 10:0:0:5' and 'User session timeout after 30 minutes of inactivity'. The target organization, a mid-sized tech firm with hybrid cloud deployments, reported no operational disruptions during this training exercise, but security teams noted anomalous network traffic spikes correlating with the container deployment phase.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a simulated advanced persistent threat (APT) campaign observed in training environments. The actor, tracked as 'Cobalt Serpent', employs sophisticated techniques to compromise cloud infrastructure and containerized systems. Initial reconnaissance involved querying paid threat intelligence feeds [T1597.001] to gather intelligence on target email security configurations and identify vulnerabilities. Following this, the actor exploited misconfigured external remote services, using open-source tools like Weave Scope to target exposed Docker API ports and kubelets in Kubernetes environments [T1133], gaining initial access to victim networks. Once inside, the adversary deployed a malicious container via 'docker start' [T1610] to mask network traffic from security monitoring tools, while simultaneously compromising a host software binary by embedding malicious code into the CAV Python package of an Ivanti Connect Secure VPN located at `/home/venv3/lib/python3.6/site-packages/cav-0.1-py3.6.egg/cav/api/resources/category.py` [T1554]. To escalate privileges and move laterally, the actor harvested cloud credentials by querying the instance metadata endpoint for temporary security tokens [T1552.005], then used Windows Remote Management (WinRM) [T1021.006] to remotely deploy additional payloads across enterprise systems, employing Pass-the-Hash attacks with stolen NTLM hashes [T1550] for authentication. For command and control, the actor established bidirectional communication through the Gmail web UI [T1102.002] to receive commands and exfiltrate sensitive data, and finally executed a defacement script named 'evil.ps1' [T1491] to distort graphical elements in application windows, leaving a visible impact. Logs from affected systems show routine errors unrelated to the attack, such as 'Failed to connect to database at 10:0:0:5' and 'User session timeout after 30 minutes of inactivity'. The target organization, a mid-sized tech firm with hybrid cloud deployments, reported no operational disruptions during this training exercise, but security teams noted anomalous network traffic spikes correlating with the container deployment phase.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following this, the actor exploited misconfigured external remote services, using open-source tools like Weave Scope to target exposed Docker API ports and kubelets in Kubernetes environments, gaining initial access to victim networks.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Once inside, the adversary deployed a malicious container via 'docker start' to mask network traffic from security monitoring tools, while simultaneously compromising a host software binary by embedding malicious code into the CAV Python package of an Ivanti Connect Secure VPN located at `/home/venv3/lib/python3.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "py`.",
+            "technique_id": "T1554",
+            "technique_name": "Compromise Host Software Binary"
+        },
+        {
+            "sentence": "006] to remotely deploy additional payloads across enterprise systems, employing Pass-the-Hash attacks with stolen NTLM hashes for authentication.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "ps1' to distort graphical elements in application windows, leaving a visible impact.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Cloud and Container Environments",
+        "summary": "This advisory details a fictional campaign by a threat actor, designated 'Cobalt Serpent', targeting organizations with exposed cloud and container services. The campaign involves reconnaissance, initial access via misconfigured services, lateral movement using stolen credentials, and data exfiltration through covert channels, culminating in defacement activities. This report is for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a simulated advanced persistent threat (APT) campaign observed in training environments. The actor, tracked as 'Cobalt Serpent', employs sophisticated techniques to compromise cloud infrastructure and containerized systems. Initial reconnaissance involved querying paid threat intelligence feeds [T1597.001] to gather intelligence on target email security configurations and identify vulnerabilities. Following this, the actor exploited misconfigured external remote services, using open-source tools like Weave Scope to target exposed Docker API ports and kubelets in Kubernetes environments [T1133], gaining initial access to victim networks. Once inside, the adversary deployed a malicious container via 'docker start' [T1610] to mask network traffic from security monitoring tools, while simultaneously compromising a host software binary by embedding malicious code into the CAV Python package of an Ivanti Connect Secure VPN located at `/home/venv3/lib/python3.6/site-packages/cav-0.1-py3.6.egg/cav/api/resources/category.py` [T1554]. To escalate privileges and move laterally, the actor harvested cloud credentials by querying the instance metadata endpoint for temporary security tokens [T1552.005], then used Windows Remote Management (WinRM) [T1021.006] to remotely deploy additional payloads across enterprise systems, employing Pass-the-Hash attacks with stolen NTLM hashes [T1550] for authentication. For command and control, the actor established bidirectional communication through the Gmail web UI [T1102.002] to receive commands and exfiltrate sensitive data, and finally executed a defacement script named 'evil.ps1' [T1491] to distort graphical elements in application windows, leaving a visible impact. Logs from affected systems show routine errors unrelated to the attack, such as 'Failed to connect to database at 10:0:0:5' and 'User session timeout after 30 minutes of inactivity'. The target organization, a mid-sized tech firm with hybrid cloud deployments, reported no operational disruptions during this training exercise, but security teams noted anomalous network traffic spikes correlating with the container deployment phase.",
+        "techniques_used": [
+            "T1597.001",
+            "T1133",
+            "T1610",
+            "T1554",
+            "T1552.005",
+            "T1021.006",
+            "T1550",
+            "T1102.002",
+            "T1491"
+        ]
+    }
+}

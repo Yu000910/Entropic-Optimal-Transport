@@ -1,0 +1,68 @@
+{
+    "report_id": "report_589",
+    "generated_at": "20251222_165340",
+    "scenario_target_ids": [
+        "T1595.002",
+        "T1091",
+        "T1059.001",
+        "T1547.005",
+        "T1568",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1595.002",
+        "T1091",
+        "T1059.001",
+        "T1547.005",
+        "T1568",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1547.005",
+        "T1029",
+        "T1091",
+        "T1595.002",
+        "T1568",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional insights into APT-27's activities, based on simulated logs from a mid-sized energy company, 'PowerGrid Inc.', which reported anomalous network traffic and unauthorized access attempts in early 2024. PowerGrid Inc. operates multiple web servers hosting internal applications, with standard security protocols including firewalls and endpoint protection. Initial investigation revealed that APT-27 actors likely conducted reconnaissance by scanning external IP addresses to identify vulnerable web services, such as outdated Apache versions running on port 80. System logs from March 15, 2024, show increased HTTP requests to server banners, though no immediate alerts were triggered. Subsequently, the adversary gained initial access by exploiting a social engineering vector, where a malicious USB drive was inserted into an employee's workstation at a remote office. The malware modified the Autorun.inf file to execute automatically upon insertion, bypassing default Group Policy settings that disable AutoRun. Once executed, the payload employed PowerShell to download additional modules from a remote server while simultaneously adding exclusion paths to Windows Defender to evade detection. Further analysis of registry modifications indicated that a script was used to edit HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages, registering a rogue SSP to harvest Windows credentials during user logon events. Network traffic logs from April 2, 2024, revealed that APT-27 utilized dynamic DNS services for C2 infrastructure, with domains resolving to changing IP addresses every few hours to avoid blacklisting. Additionally, the backdoor, identified as 'LinfoBackdoor', allowed remote attackers to adjust the frequency of C2 communications, scheduling data transfers during off-peak hours to blend with normal network activity. Incident responders noted unrelated log entries for routine system updates and failed login attempts from legitimate users, which were not part of the attack. The campaign demonstrates a sophisticated blend of techniques aimed at long-term persistence and data exfiltration, emphasizing the need for enhanced monitoring of removable media and PowerShell usage.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional insights into APT-27's activities, based on simulated logs from a mid-sized energy company, 'PowerGrid Inc.', which reported anomalous network traffic and unauthorized access attempts in early 2024. PowerGrid Inc. operates multiple web servers hosting internal applications, with standard security protocols including firewalls and endpoint protection. Initial investigation revealed that APT-27 actors likely conducted reconnaissance by scanning external IP addresses [T1595.002] to identify vulnerable web services, such as outdated Apache versions running on port 80. System logs from March 15, 2024, show increased HTTP requests to server banners, though no immediate alerts were triggered. Subsequently, the adversary gained initial access by exploiting a social engineering vector, where a malicious USB drive was inserted into an employee's workstation at a remote office. The malware modified the Autorun.inf file to execute automatically upon insertion [T1091], bypassing default Group Policy settings that disable AutoRun. Once executed, the payload employed PowerShell [T1059.001] to download additional modules from a remote server while simultaneously adding exclusion paths to Windows Defender to evade detection. Further analysis of registry modifications indicated that a script was used to edit HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages, registering a rogue SSP to harvest Windows credentials [T1547.005] during user logon events. Network traffic logs from April 2, 2024, revealed that APT-27 utilized dynamic DNS services for C2 infrastructure [T1568], with domains resolving to changing IP addresses every few hours to avoid blacklisting. Additionally, the backdoor, identified as 'LinfoBackdoor', allowed remote attackers to adjust the frequency of C2 communications [T1029], scheduling data transfers during off-peak hours to blend with normal network activity. Incident responders noted unrelated log entries for routine system updates and failed login attempts from legitimate users, which were not part of the attack. The campaign demonstrates a sophisticated blend of techniques aimed at long-term persistence and data exfiltration, emphasizing the need for enhanced monitoring of removable media and PowerShell usage.",
+    "sentence_annotations": [
+        {
+            "sentence": "inf file to execute automatically upon insertion, bypassing default Group Policy settings that disable AutoRun.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Network traffic logs from April 2, 2024, revealed that APT-27 utilized dynamic DNS services for C2 infrastructure, with domains resolving to changing IP addresses every few hours to avoid blacklisting.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "Additionally, the backdoor, identified as 'LinfoBackdoor', allowed remote attackers to adjust the frequency of C2 communications, scheduling data transfers during off-peak hours to blend with normal network activity.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-27, targeting organizations in the energy sector. Based on analysis of fictional incident response data, APT-27 employs a multi-stage attack leveraging removable media, PowerShell scripting, and dynamic command-and-control (C2) infrastructure to establish persistence and exfiltrate sensitive data. The campaign involves initial reconnaissance through vulnerability scanning, followed by execution via USB devices, credential harvesting via Security Support Provider (SSP) manipulation, and scheduled data transfers to evade detection. This report is intended for blue team training to enhance defensive capabilities against similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional insights into APT-27's activities, based on simulated logs from a mid-sized energy company, 'PowerGrid Inc.', which reported anomalous network traffic and unauthorized access attempts in early 2024. PowerGrid Inc. operates multiple web servers hosting internal applications, with standard security protocols including firewalls and endpoint protection. Initial investigation revealed that APT-27 actors likely conducted reconnaissance by scanning external IP addresses [T1595.002] to identify vulnerable web services, such as outdated Apache versions running on port 80. System logs from March 15, 2024, show increased HTTP requests to server banners, though no immediate alerts were triggered. Subsequently, the adversary gained initial access by exploiting a social engineering vector, where a malicious USB drive was inserted into an employee's workstation at a remote office. The malware modified the Autorun.inf file to execute automatically upon insertion [T1091], bypassing default Group Policy settings that disable AutoRun. Once executed, the payload employed PowerShell [T1059.001] to download additional modules from a remote server while simultaneously adding exclusion paths to Windows Defender to evade detection. Further analysis of registry modifications indicated that a script was used to edit HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages, registering a rogue SSP to harvest Windows credentials [T1547.005] during user logon events. Network traffic logs from April 2, 2024, revealed that APT-27 utilized dynamic DNS services for C2 infrastructure [T1568], with domains resolving to changing IP addresses every few hours to avoid blacklisting. Additionally, the backdoor, identified as 'LinfoBackdoor', allowed remote attackers to adjust the frequency of C2 communications [T1029], scheduling data transfers during off-peak hours to blend with normal network activity. Incident responders noted unrelated log entries for routine system updates and failed login attempts from legitimate users, which were not part of the attack. The campaign demonstrates a sophisticated blend of techniques aimed at long-term persistence and data exfiltration, emphasizing the need for enhanced monitoring of removable media and PowerShell usage.",
+        "techniques_used": [
+            "T1595.002",
+            "T1091",
+            "T1059.001",
+            "T1547.005",
+            "T1568",
+            "T1029"
+        ]
+    }
+}

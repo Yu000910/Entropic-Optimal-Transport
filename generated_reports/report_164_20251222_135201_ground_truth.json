@@ -1,0 +1,83 @@
+{
+    "report_id": "report_164",
+    "generated_at": "20251222_135201",
+    "scenario_target_ids": [
+        "T1584.001",
+        "T1566.003",
+        "T1189",
+        "T1204.002",
+        "T1040",
+        "T1110.002",
+        "T1104",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.001",
+        "T1566.003",
+        "T1189",
+        "T1204.002",
+        "T1040",
+        "T1110.002",
+        "T1104",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1491",
+        "T1104",
+        "T1566.003",
+        "T1040",
+        "T1189",
+        "T1110.002",
+        "T1584.001",
+        "T1204.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign designed for educational purposes. This report simulates activity by the threat actor 'ShadowWeaver' against GridSecure Inc., a mid-sized energy provider with operations across the southwestern United States. Initial analysis of network logs from GridSecure's perimeter firewall, dated October 2023, showed anomalous DNS queries to non-standard servers, though these were later attributed to a misconfigured internal tool and are not directly related to the attack.\n\nIn the reconnaissance phase, the actors likely conducted open-source intelligence gathering to identify key personnel and infrastructure, though this is not tagged as it falls outside the specified techniques. The campaign began with the adversary altering DNS MX records for GridSecure's email domain to intercept and monitor organizational communications, which was detected during a routine audit but initially dismissed as a configuration error. Following this, they sent spearphishing messages via Telegram, distributing loaders configured to execute Ninja malware as zip archives to targeted employees in the IT department. Concurrently, the group compromised a popular industry forum website, using it to host malicious JavaScript that profiled victims' web browsers and delivered tailored payloads, while also seeding torrent file-sharing sites with malware to cast a wider net.\n\nUpon user interaction, the attack relied on employees executing malicious files, such as disguised PDF attachments, to gain initial execution on victim machines. Once inside, the malware employed network sniffing to capture unencrypted CLI sessions on routers, collecting credentials in plaintext, and it dumped password hashes from the SAM database using registry techniques to facilitate offline cracking. To establish persistence, the adversary used multi-stage channels, downloading secondary payloads to reinforce their foothold and maintain access. Finally, as part of their post-compromise activities, they injected a PowerShell script to modify operating system display settings, simulating a defacement by altering color schemes. Additional logs from GridSecure's SIEM showed unrelated failed login attempts from external IPs, which were investigated but deemed unrelated to this campaign.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign designed for educational purposes. This report simulates activity by the threat actor 'ShadowWeaver' against GridSecure Inc., a mid-sized energy provider with operations across the southwestern United States. Initial analysis of network logs from GridSecure's perimeter firewall, dated October 2023, showed anomalous DNS queries to non-standard servers, though these were later attributed to a misconfigured internal tool and are not directly related to the attack.\n\nIn the reconnaissance phase, the actors likely conducted open-source intelligence gathering to identify key personnel and infrastructure, though this is not tagged as it falls outside the specified techniques. The campaign began with the adversary altering DNS MX records for GridSecure's email domain to intercept and monitor organizational communications [T1584.001], which was detected during a routine audit but initially dismissed as a configuration error. Following this, they sent spearphishing messages via Telegram, distributing loaders configured to execute Ninja malware as zip archives [T1566.003] to targeted employees in the IT department. Concurrently, the group compromised a popular industry forum website, using it to host malicious JavaScript that profiled victims' web browsers and delivered tailored payloads [T1189], while also seeding torrent file-sharing sites with malware to cast a wider net.\n\nUpon user interaction, the attack relied on employees executing malicious files, such as disguised PDF attachments, to gain initial execution on victim machines [T1204.002]. Once inside, the malware employed network sniffing to capture unencrypted CLI sessions on routers, collecting credentials in plaintext [T1040], and it dumped password hashes from the SAM database using registry techniques to facilitate offline cracking [T1110.002]. To establish persistence, the adversary used multi-stage channels, downloading secondary payloads to reinforce their foothold and maintain access [T1104]. Finally, as part of their post-compromise activities, they injected a PowerShell script to modify operating system display settings, simulating a defacement by altering color schemes [T1491]. Additional logs from GridSecure's SIEM showed unrelated failed login attempts from external IPs, which were investigated but deemed unrelated to this campaign.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, the group compromised a popular industry forum website, using it to host malicious JavaScript that profiled victims' web browsers and delivered tailored payloads, while also seeding torrent file-sharing sites with malware to cast a wider net.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Once inside, the malware employed network sniffing to capture unencrypted CLI sessions on routers, collecting credentials in plaintext, and it dumped password hashes from the SAM database using registry techniques to facilitate offline cracking [T1110.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "To establish persistence, the adversary used multi-stage channels, downloading secondary payloads to reinforce their foothold and maintain access.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        },
+        {
+            "sentence": "Finally, as part of their post-compromise activities, they injected a PowerShell script to modify operating system display settings, simulating a defacement by altering color schemes.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT 'ShadowWeaver' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the advanced persistent threat (APT) group 'ShadowWeaver', which targeted a fictional energy sector organization, 'GridSecure Inc.', to compromise email communications, deploy malware, and conduct network reconnaissance for potential defacement. The activity involved DNS manipulation, spearphishing via messaging services, drive-by compromises, and multi-stage payload delivery, leveraging techniques such as malicious file execution, network sniffing, and password cracking. Blue teams should review this report for training on detecting and mitigating similar attack patterns in a controlled environment.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign designed for educational purposes. This report simulates activity by the threat actor 'ShadowWeaver' against GridSecure Inc., a mid-sized energy provider with operations across the southwestern United States. Initial analysis of network logs from GridSecure's perimeter firewall, dated October 2023, showed anomalous DNS queries to non-standard servers, though these were later attributed to a misconfigured internal tool and are not directly related to the attack.\n\nIn the reconnaissance phase, the actors likely conducted open-source intelligence gathering to identify key personnel and infrastructure, though this is not tagged as it falls outside the specified techniques. The campaign began with the adversary altering DNS MX records for GridSecure's email domain to intercept and monitor organizational communications [T1584.001], which was detected during a routine audit but initially dismissed as a configuration error. Following this, they sent spearphishing messages via Telegram, distributing loaders configured to execute Ninja malware as zip archives [T1566.003] to targeted employees in the IT department. Concurrently, the group compromised a popular industry forum website, using it to host malicious JavaScript that profiled victims' web browsers and delivered tailored payloads [T1189], while also seeding torrent file-sharing sites with malware to cast a wider net.\n\nUpon user interaction, the attack relied on employees executing malicious files, such as disguised PDF attachments, to gain initial execution on victim machines [T1204.002]. Once inside, the malware employed network sniffing to capture unencrypted CLI sessions on routers, collecting credentials in plaintext [T1040], and it dumped password hashes from the SAM database using registry techniques to facilitate offline cracking [T1110.002]. To establish persistence, the adversary used multi-stage channels, downloading secondary payloads to reinforce their foothold and maintain access [T1104]. Finally, as part of their post-compromise activities, they injected a PowerShell script to modify operating system display settings, simulating a defacement by altering color schemes [T1491]. Additional logs from GridSecure's SIEM showed unrelated failed login attempts from external IPs, which were investigated but deemed unrelated to this campaign.",
+        "techniques_used": [
+            "T1584.001",
+            "T1566.003",
+            "T1189",
+            "T1204.002",
+            "T1040",
+            "T1110.002",
+            "T1104",
+            "T1491"
+        ]
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "report_id": "report_556",
+    "generated_at": "20251222_163925",
+    "scenario_target_ids": [
+        "T1584.002",
+        "T1584.006",
+        "T1583.006",
+        "T1091",
+        "T1059",
+        "T1574.007",
+        "T1021.008",
+        "T1659",
+        "T1052.001",
+        "T1657",
+        "T1490"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.002",
+        "T1584.006",
+        "T1583.006",
+        "T1091",
+        "T1059",
+        "T1574.007",
+        "T1021.008",
+        "T1659",
+        "T1052.001",
+        "T1657",
+        "T1490"
+    ],
+    "actual_found_ids": [
+        "T1583.006",
+        "T1021.008",
+        "T1091",
+        "T1659",
+        "T1657",
+        "T1059",
+        "T1574.007",
+        "T1584.006",
+        "T1490",
+        "T1052.001",
+        "T1584.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign observed in training simulations. The actors, designated 'SilentRedirect', likely conduct reconnaissance on corporate networks, though no specific logs were captured in this scenario. Initial access was achieved by modifying DNS A records for a corporate login portal to redirect users to a phishing server, which exploited compromised WordPress sites for command and control (C2) infrastructure. Concurrently, the actors created web accounts on Dropbox and GitHub to facilitate C2 communications and document exfiltration. To propagate across isolated environments, malware was copied to multiple USB drives, and a command-line interface was employed using PowerShell to execute scripts that downloaded additional payloads while modifying the PATH environment variable to intercept legitimate system tools like net.exe. Persistence was maintained through direct cloud VM connections via Azure Serial Console using stolen credentials, and the malware exploited a compromised ISP channel to inject malicious content, redirecting user traffic through a proxy. Exfiltration involved using USB devices to collect system information and network configurations, and the actors impersonated a vendor in phishing emails to trick accounting into paying fake invoices for financial theft. Finally, to inhibit system recovery, volume shadow copies were deleted using vssadmin commands. System logs from the affected network showed routine authentication attempts and firewall alerts, but these were unrelated to the campaign. The company, a mid-sized financial firm, reported no actual financial loss in this training exercise, though the simulation highlighted vulnerabilities in their DNS management and cloud security protocols.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign observed in training simulations. The actors, designated 'SilentRedirect', likely conduct reconnaissance on corporate networks, though no specific logs were captured in this scenario. Initial access was achieved by modifying DNS A records for a corporate login portal to redirect users to a phishing server [T1584.002], which exploited compromised WordPress sites for command and control (C2) infrastructure [T1584.006]. Concurrently, the actors created web accounts on Dropbox and GitHub to facilitate C2 communications and document exfiltration [T1583.006]. To propagate across isolated environments, malware was copied to multiple USB drives [T1091], and a command-line interface was employed using PowerShell [T1059] to execute scripts that downloaded additional payloads while modifying the PATH environment variable to intercept legitimate system tools like net.exe [T1574.007]. Persistence was maintained through direct cloud VM connections via Azure Serial Console using stolen credentials [T1021.008], and the malware exploited a compromised ISP channel to inject malicious content, redirecting user traffic through a proxy [T1659]. Exfiltration involved using USB devices to collect system information and network configurations [T1052.001], and the actors impersonated a vendor in phishing emails to trick accounting into paying fake invoices for financial theft [T1657]. Finally, to inhibit system recovery, volume shadow copies were deleted using vssadmin commands [T1490]. System logs from the affected network showed routine authentication attempts and firewall alerts, but these were unrelated to the campaign. The company, a mid-sized financial firm, reported no actual financial loss in this training exercise, though the simulation highlighted vulnerabilities in their DNS management and cloud security protocols.",
+    "sentence_annotations": [
+        {
+            "sentence": "To propagate across isolated environments, malware was copied to multiple USB drives, and a command-line interface was employed using PowerShell to execute scripts that downloaded additional payloads while modifying the PATH environment variable to intercept legitimate system tools like net.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "To propagate across isolated environments, malware was copied to multiple USB drives, and a command-line interface was employed using PowerShell to execute scripts that downloaded additional payloads while modifying the PATH environment variable to intercept legitimate system tools like net.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "008], and the malware exploited a compromised ISP channel to inject malicious content, redirecting user traffic through a proxy.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "001], and the actors impersonated a vendor in phishing emails to trick accounting into paying fake invoices for financial theft.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        },
+        {
+            "sentence": "Finally, to inhibit system recovery, volume shadow copies were deleted using vssadmin commands.",
+            "technique_id": "T1490",
+            "technique_name": "Inhibit System Recovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentRedirect' Targeting Financial and Critical Infrastructure Sectors",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'SilentRedirect', targeting financial institutions and critical infrastructure. The campaign involves DNS manipulation, web service abuse, removable media propagation, and cloud exploitation to achieve initial access, maintain persistence, and exfiltrate data. Blue teams should review the tactics, techniques, and procedures (TTPs) outlined for defensive training and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign observed in training simulations. The actors, designated 'SilentRedirect', likely conduct reconnaissance on corporate networks, though no specific logs were captured in this scenario. Initial access was achieved by modifying DNS A records for a corporate login portal to redirect users to a phishing server [T1584.002], which exploited compromised WordPress sites for command and control (C2) infrastructure [T1584.006]. Concurrently, the actors created web accounts on Dropbox and GitHub to facilitate C2 communications and document exfiltration [T1583.006]. To propagate across isolated environments, malware was copied to multiple USB drives [T1091], and a command-line interface was employed using PowerShell [T1059] to execute scripts that downloaded additional payloads while modifying the PATH environment variable to intercept legitimate system tools like net.exe [T1574.007]. Persistence was maintained through direct cloud VM connections via Azure Serial Console using stolen credentials [T1021.008], and the malware exploited a compromised ISP channel to inject malicious content, redirecting user traffic through a proxy [T1659]. Exfiltration involved using USB devices to collect system information and network configurations [T1052.001], and the actors impersonated a vendor in phishing emails to trick accounting into paying fake invoices for financial theft [T1657]. Finally, to inhibit system recovery, volume shadow copies were deleted using vssadmin commands [T1490]. System logs from the affected network showed routine authentication attempts and firewall alerts, but these were unrelated to the campaign. The company, a mid-sized financial firm, reported no actual financial loss in this training exercise, though the simulation highlighted vulnerabilities in their DNS management and cloud security protocols.",
+        "techniques_used": [
+            "T1584.002",
+            "T1584.006",
+            "T1583.006",
+            "T1091",
+            "T1059",
+            "T1574.007",
+            "T1021.008",
+            "T1659",
+            "T1052.001",
+            "T1657",
+            "T1490"
+        ]
+    }
+}

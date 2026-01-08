@@ -1,0 +1,78 @@
+{
+    "report_id": "report_690",
+    "generated_at": "20251222_173350",
+    "scenario_target_ids": [
+        "T1590.002",
+        "T1566.004",
+        "T1059.002",
+        "T1203",
+        "T1548.001",
+        "T1003.004",
+        "T1021.004",
+        "T1557.004",
+        "T1213.002",
+        "T1568.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.002",
+        "T1566.004",
+        "T1059.002",
+        "T1203",
+        "T1548.001",
+        "T1003.004",
+        "T1021.004",
+        "T1557.004",
+        "T1213.002",
+        "T1568.001"
+    ],
+    "actual_found_ids": [
+        "T1566.004",
+        "T1568.001",
+        "T1590.002",
+        "T1213.002",
+        "T1021.004",
+        "T1548.001",
+        "T1003.004",
+        "T1557.004",
+        "T1203",
+        "T1059.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. In this scenario, 'ShadowHook' actors targeted a mid-sized financial services company, 'SecureBank Corp.', headquartered in New York with branches across the U.S. The company's IT infrastructure includes Windows and macOS endpoints, Linux servers, and cloud-based SharePoint for document management. Initial detection occurred on 2023-10-15 when anomalous DNS queries were flagged by the SIEM, but prior logs from September showed increased reconnaissance activity.\n\nDuring the reconnaissance phase, the actors gathered passive DNS information by analyzing historical DNS query logs from public sources to map SecureBank's external network footprint. This included identifying subdomains like 'mail.securebank.com' and 'vpn.securebank.com', which were later used in phishing campaigns. System logs from the firewall showed no direct breaches at this stage, but the actors likely correlated this data with social media profiles of employees.\n\nFor initial access, the adversary conducted spearphishing voice calls posing as IT support to trick a finance department employee into clicking a malicious link in a follow-up email, which automatically downloaded and executed a remote access tool when opened. The email originated from a spoofed domain resembling SecureBank's internal address, and the link pointed to a compromised server hosting the payload. Upon execution, the malware exploited an Oracle Java vulnerability (CVE-2013-2465) on the employee's macOS system to gain code execution and deploy a backdoor.\n\nTo establish persistence, the malware wrote a persistent AppleScript to the user's LaunchAgents folder that would run on every login, ensuring the backdoor remained active even after reboots. Additionally, the actors modified a binary by adding the setuid flag to facilitate future privilege escalation without requiring user interaction. System logs from the affected endpoint showed repeated execution of the AppleScript at login times, but these were initially overlooked as benign user activity.\n\nFor credential harvesting, the adversary used reg query commands to access HKEY_LOCAL_MACHINE\\SECURITY and extract LSA secrets, obtaining hashed credentials for domain accounts. This allowed them to move laterally within the network by exploiting SSH to gain remote control of a compromised Linux server used for internal applications. The server's logs indicated multiple failed login attempts prior to success, suggesting brute-force attempts that were not immediately blocked.\n\nIn parallel, the actors set up an evil twin Wi-Fi access point in a public café near SecureBank's office to passively monitor all wireless communications from employees using company devices off-site. This enabled interception of unencrypted traffic, though most sensitive data was encrypted via VPN. For data exfiltration, they abused compromised credentials to access and download files from SharePoint, targeting financial reports and customer data stored in cloud repositories. The exfiltration occurred over several days, with data transferred to external servers via encrypted channels.\n\nTo evade detection during the investigation phase, the threat actor de-registered the DNS A record associated with their command-and-control server, making it difficult to attribute the activity and hindering forensic analysis. This was observed when DNS queries from compromised systems suddenly failed to resolve, prompting incident responders to review historical DNS logs. The company's incident response team, after containing the breach, noted that regular patching of Java vulnerabilities could have mitigated the initial exploitation, and recommended enhanced monitoring for anomalous SSH and SharePoint access patterns.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. In this scenario, 'ShadowHook' actors targeted a mid-sized financial services company, 'SecureBank Corp.', headquartered in New York with branches across the U.S. The company's IT infrastructure includes Windows and macOS endpoints, Linux servers, and cloud-based SharePoint for document management. Initial detection occurred on 2023-10-15 when anomalous DNS queries were flagged by the SIEM, but prior logs from September showed increased reconnaissance activity.\n\nDuring the reconnaissance phase, the actors gathered passive DNS information by analyzing historical DNS query logs from public sources to map SecureBank's external network footprint [T1590.002]. This included identifying subdomains like 'mail.securebank.com' and 'vpn.securebank.com', which were later used in phishing campaigns. System logs from the firewall showed no direct breaches at this stage, but the actors likely correlated this data with social media profiles of employees.\n\nFor initial access, the adversary conducted spearphishing voice calls posing as IT support to trick a finance department employee into clicking a malicious link in a follow-up email, which automatically downloaded and executed a remote access tool when opened [T1566.004]. The email originated from a spoofed domain resembling SecureBank's internal address, and the link pointed to a compromised server hosting the payload. Upon execution, the malware exploited an Oracle Java vulnerability (CVE-2013-2465) on the employee's macOS system to gain code execution and deploy a backdoor [T1203].\n\nTo establish persistence, the malware wrote a persistent AppleScript to the user's LaunchAgents folder that would run on every login, ensuring the backdoor remained active even after reboots [T1059.002]. Additionally, the actors modified a binary by adding the setuid flag to facilitate future privilege escalation without requiring user interaction [T1548.001]. System logs from the affected endpoint showed repeated execution of the AppleScript at login times, but these were initially overlooked as benign user activity.\n\nFor credential harvesting, the adversary used reg query commands to access HKEY_LOCAL_MACHINE\\SECURITY and extract LSA secrets, obtaining hashed credentials for domain accounts [T1003.004]. This allowed them to move laterally within the network by exploiting SSH to gain remote control of a compromised Linux server used for internal applications [T1021.004]. The server's logs indicated multiple failed login attempts prior to success, suggesting brute-force attempts that were not immediately blocked.\n\nIn parallel, the actors set up an evil twin Wi-Fi access point in a public café near SecureBank's office to passively monitor all wireless communications from employees using company devices off-site [T1557.004]. This enabled interception of unencrypted traffic, though most sensitive data was encrypted via VPN. For data exfiltration, they abused compromised credentials to access and download files from SharePoint, targeting financial reports and customer data stored in cloud repositories [T1213.002]. The exfiltration occurred over several days, with data transferred to external servers via encrypted channels.\n\nTo evade detection during the investigation phase, the threat actor de-registered the DNS A record associated with their command-and-control server, making it difficult to attribute the activity and hindering forensic analysis [T1568.001]. This was observed when DNS queries from compromised systems suddenly failed to resolve, prompting incident responders to review historical DNS logs. The company's incident response team, after containing the breach, noted that regular patching of Java vulnerabilities could have mitigated the initial exploitation, and recommended enhanced monitoring for anomalous SSH and SharePoint access patterns.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon execution, the malware exploited an Oracle Java vulnerability (CVE-2013-2465) on the employee's macOS system to gain code execution and deploy a backdoor.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowHook', targeting financial institutions in North America. Based on a training scenario, the actors employed a multi-stage attack involving reconnaissance, spearphishing, exploitation, persistence, credential harvesting, lateral movement, data exfiltration, and evasion techniques. The report is intended for blue team training to enhance detection and response capabilities against such threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. In this scenario, 'ShadowHook' actors targeted a mid-sized financial services company, 'SecureBank Corp.', headquartered in New York with branches across the U.S. The company's IT infrastructure includes Windows and macOS endpoints, Linux servers, and cloud-based SharePoint for document management. Initial detection occurred on 2023-10-15 when anomalous DNS queries were flagged by the SIEM, but prior logs from September showed increased reconnaissance activity.\n\nDuring the reconnaissance phase, the actors gathered passive DNS information by analyzing historical DNS query logs from public sources to map SecureBank's external network footprint [T1590.002]. This included identifying subdomains like 'mail.securebank.com' and 'vpn.securebank.com', which were later used in phishing campaigns. System logs from the firewall showed no direct breaches at this stage, but the actors likely correlated this data with social media profiles of employees.\n\nFor initial access, the adversary conducted spearphishing voice calls posing as IT support to trick a finance department employee into clicking a malicious link in a follow-up email, which automatically downloaded and executed a remote access tool when opened [T1566.004]. The email originated from a spoofed domain resembling SecureBank's internal address, and the link pointed to a compromised server hosting the payload. Upon execution, the malware exploited an Oracle Java vulnerability (CVE-2013-2465) on the employee's macOS system to gain code execution and deploy a backdoor [T1203].\n\nTo establish persistence, the malware wrote a persistent AppleScript to the user's LaunchAgents folder that would run on every login, ensuring the backdoor remained active even after reboots [T1059.002]. Additionally, the actors modified a binary by adding the setuid flag to facilitate future privilege escalation without requiring user interaction [T1548.001]. System logs from the affected endpoint showed repeated execution of the AppleScript at login times, but these were initially overlooked as benign user activity.\n\nFor credential harvesting, the adversary used reg query commands to access HKEY_LOCAL_MACHINE\\SECURITY and extract LSA secrets, obtaining hashed credentials for domain accounts [T1003.004]. This allowed them to move laterally within the network by exploiting SSH to gain remote control of a compromised Linux server used for internal applications [T1021.004]. The server's logs indicated multiple failed login attempts prior to success, suggesting brute-force attempts that were not immediately blocked.\n\nIn parallel, the actors set up an evil twin Wi-Fi access point in a public café near SecureBank's office to passively monitor all wireless communications from employees using company devices off-site [T1557.004]. This enabled interception of unencrypted traffic, though most sensitive data was encrypted via VPN. For data exfiltration, they abused compromised credentials to access and download files from SharePoint, targeting financial reports and customer data stored in cloud repositories [T1213.002]. The exfiltration occurred over several days, with data transferred to external servers via encrypted channels.\n\nTo evade detection during the investigation phase, the threat actor de-registered the DNS A record associated with their command-and-control server, making it difficult to attribute the activity and hindering forensic analysis [T1568.001]. This was observed when DNS queries from compromised systems suddenly failed to resolve, prompting incident responders to review historical DNS logs. The company's incident response team, after containing the breach, noted that regular patching of Java vulnerabilities could have mitigated the initial exploitation, and recommended enhanced monitoring for anomalous SSH and SharePoint access patterns.",
+        "techniques_used": [
+            "T1590.002",
+            "T1566.004",
+            "T1059.002",
+            "T1203",
+            "T1548.001",
+            "T1003.004",
+            "T1021.004",
+            "T1557.004",
+            "T1213.002",
+            "T1568.001"
+        ]
+    }
+}

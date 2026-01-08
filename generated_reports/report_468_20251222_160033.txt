@@ -1,0 +1,13 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign attributed to HEXANE. This report is based on simulated incidents observed in test environments and is intended for educational purposes only.
+
+Background: HEXANE is a fictional threat actor believed to operate with objectives of intellectual property theft and espionage. In this scenario, they targeted a mid-sized software development company, 'TechInnovate Inc.', which uses cloud-based continuous integration (CI) tools for its production builds. TechInnovate's infrastructure includes Windows and macOS systems, with Active Directory for domain management. Logs from the affected systems show normal business operations prior to the incident, including routine software updates and user authentication events.
+
+Kill-Chain Analysis:
+- Initial Access: The actors compromised the CI server by injecting malicious code into the build pipeline, leading to a supply chain compromise [T1195] that embedded credential-stealing malware in production software releases distributed to customers.
+- Execution: Upon installation on victim systems, the malware employed PowerShell [T1059.009] to leverage cloud APIs for downloading and executing additional payloads from a remote server, while simultaneously querying securityd memory [T1555.002] to extract plaintext browser passwords stored in the keychain.
+- Persistence: The malware established persistence through registry modifications, though this technique is not tagged as per instructions.
+- Discovery: HEXANE conducted reconnaissance using a PowerShell script that executed nltest /trusted_domains [T1482] to list all domains trusted by the current domain and retrieved password complexity requirements via 'Get-ADDefaultDomainPasswordPolicy' [T1201], while also using BITSAdmin [T1016.001] to test internet connectivity from compromised hosts.
+- Command and Control (C2): The actors implemented stealthy C2 by downloading and executing commands from https://twitter.com/c2_instructions [T1102.003] for one-way communication and used encoded DNS queries [T1568.003] to tunnel traffic through allowed DNS ports.
+- Exfiltration: Data exfiltration occurred over encrypted channels, with logs showing increased network traffic to external IP addresses during off-hours.
+
+Mitigation Recommendations: Blue teams should monitor CI/CD pipelines for unauthorized changes, restrict cloud API permissions, enforce strong password policies, and inspect DNS logs for anomalies. Regular security audits and employee training on supply chain risks are advised. This report includes fictional data; any resemblance to real entities is coincidental.

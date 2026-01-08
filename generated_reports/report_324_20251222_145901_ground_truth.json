@@ -1,0 +1,90 @@
+{
+    "report_id": "report_324",
+    "generated_at": "20251222_145901",
+    "scenario_target_ids": [
+        "T1078",
+        "T1053",
+        "T1497.001",
+        "T1110.004",
+        "T1219.002",
+        "T1499.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1110.004",
+        "T1078",
+        "T1059.001",
+        "T1053",
+        "T1112",
+        "T1497.001",
+        "T1219.002",
+        "T1048",
+        "T1499.001"
+    ],
+    "actual_found_ids": [
+        "T1110.004",
+        "T1112",
+        "T1589",
+        "T1497.001",
+        "T1078",
+        "T1219.002",
+        "T1053",
+        "T1499.001",
+        "T1048",
+        "T1059.001"
+    ],
+    "clean_text": "Background: CrimsonHaze is a fictional advanced persistent threat (APT) group assessed to target financial institutions and Managed Service Providers (MSPs) globally. In this training scenario, the actors exploit weak credential hygiene and shared environments to infiltrate networks, mimicking real-world tactics observed in historical campaigns. Initial logs from a compromised MSP server showed unusual login attempts from external IP addresses, but these were initially dismissed as false positives due to high network traffic during a routine system update.\n\nAttack Narrative: The actors likely conducted initial reconnaissance to identify target organizations and MSP relationships. They then employed credential stuffing using a tool that cross-referenced 'breach_dump.txt' against employee email lists to exploit password reuse, gaining access to valid accounts that were shared between an MSP and its client, allowing lateral movement between environments. Once inside, they used PowerShell to execute a malicious script that scheduled tasks via schtasks.exe to run ransomware.exe every Friday evening for persistence, while simultaneously modifying registry keys to maintain access. To evade detection, the script included system checks through a component called TerraLoader to analyze hardware and file information, ensuring it only executed in non-sandboxed environments. For command and control, the actors configured a compromised host to run a VNC service on a non-standard port (e.g., 8443) for stealthy remote access, enabling further data exfiltration and lateral movement. In the final stage, they deployed malicious code that initiated an OS exhaustion flood via an ACK flood script to overwhelm the load balancer's resources, causing service disruption. Post-incident analysis revealed that the initial access was facilitated by weak password policies, and the scheduled tasks were hidden within legitimate system processes, delaying detection until after the first denial-of-service event.",
+    "tagged_text": "Background: CrimsonHaze is a fictional advanced persistent threat (APT) group assessed to target financial institutions and Managed Service Providers (MSPs) globally. In this training scenario, the actors exploit weak credential hygiene and shared environments to infiltrate networks, mimicking real-world tactics observed in historical campaigns. Initial logs from a compromised MSP server showed unusual login attempts from external IP addresses, but these were initially dismissed as false positives due to high network traffic during a routine system update.\n\nAttack Narrative: The actors likely conducted initial reconnaissance [T1589] to identify target organizations and MSP relationships. They then employed credential stuffing [T1110.004] using a tool that cross-referenced 'breach_dump.txt' against employee email lists to exploit password reuse, gaining access to valid accounts [T1078] that were shared between an MSP and its client, allowing lateral movement between environments. Once inside, they used PowerShell [T1059.001] to execute a malicious script that scheduled tasks [T1053] via schtasks.exe to run ransomware.exe every Friday evening for persistence, while simultaneously modifying registry keys [T1112] to maintain access. To evade detection, the script included system checks [T1497.001] through a component called TerraLoader to analyze hardware and file information, ensuring it only executed in non-sandboxed environments. For command and control, the actors configured a compromised host to run a VNC service [T1219.002] on a non-standard port (e.g., 8443) for stealthy remote access, enabling further data exfiltration [T1048] and lateral movement. In the final stage, they deployed malicious code that initiated an OS exhaustion flood [T1499.001] via an ACK flood script to overwhelm the load balancer's resources, causing service disruption. Post-incident analysis revealed that the initial access was facilitated by weak password policies, and the scheduled tasks were hidden within legitimate system processes, delaying detection until after the first denial-of-service event.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative: The actors likely conducted initial reconnaissance to identify target organizations and MSP relationships.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "txt' against employee email lists to exploit password reuse, gaining access to valid accounts that were shared between an MSP and its client, allowing lateral movement between environments.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "001] to execute a malicious script that scheduled tasks via schtasks.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "exe every Friday evening for persistence, while simultaneously modifying registry keys to maintain access.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": ", 8443) for stealthy remote access, enabling further data exfiltration and lateral movement.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'CrimsonHaze' Targeting Financial and MSP Sectors",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'CrimsonHaze', which leverages compromised valid accounts and credential stuffing to gain initial access, followed by persistence through scheduled tasks, evasion via system checks, and remote access via non-standard VNC, culminating in denial-of-service attacks. The scenario is designed for blue team training to enhance detection and response capabilities against multi-stage intrusions.",
+        "full_report_text": "Background: CrimsonHaze is a fictional advanced persistent threat (APT) group assessed to target financial institutions and Managed Service Providers (MSPs) globally. In this training scenario, the actors exploit weak credential hygiene and shared environments to infiltrate networks, mimicking real-world tactics observed in historical campaigns. Initial logs from a compromised MSP server showed unusual login attempts from external IP addresses, but these were initially dismissed as false positives due to high network traffic during a routine system update.\n\nAttack Narrative: The actors likely conducted initial reconnaissance [T1589] to identify target organizations and MSP relationships. They then employed credential stuffing [T1110.004] using a tool that cross-referenced 'breach_dump.txt' against employee email lists to exploit password reuse, gaining access to valid accounts [T1078] that were shared between an MSP and its client, allowing lateral movement between environments. Once inside, they used PowerShell [T1059.001] to execute a malicious script that scheduled tasks [T1053] via schtasks.exe to run ransomware.exe every Friday evening for persistence, while simultaneously modifying registry keys [T1112] to maintain access. To evade detection, the script included system checks [T1497.001] through a component called TerraLoader to analyze hardware and file information, ensuring it only executed in non-sandboxed environments. For command and control, the actors configured a compromised host to run a VNC service [T1219.002] on a non-standard port (e.g., 8443) for stealthy remote access, enabling further data exfiltration [T1048] and lateral movement. In the final stage, they deployed malicious code that initiated an OS exhaustion flood [T1499.001] via an ACK flood script to overwhelm the load balancer's resources, causing service disruption. Post-incident analysis revealed that the initial access was facilitated by weak password policies, and the scheduled tasks were hidden within legitimate system processes, delaying detection until after the first denial-of-service event.",
+        "techniques_used": [
+            "T1589",
+            "T1110.004",
+            "T1078",
+            "T1059.001",
+            "T1053",
+            "T1112",
+            "T1497.001",
+            "T1219.002",
+            "T1048",
+            "T1499.001"
+        ]
+    }
+}

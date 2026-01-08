@@ -1,0 +1,113 @@
+{
+    "report_id": "report_188",
+    "generated_at": "20251222_140117",
+    "scenario_target_ids": [
+        "T1586.003",
+        "T1133",
+        "T1053",
+        "T1098.003",
+        "T1562",
+        "T1027.007",
+        "T1564.010",
+        "T1606.001",
+        "T1652",
+        "T1069.003",
+        "T1021.002",
+        "T1132",
+        "T1565.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1586.003",
+        "T1133",
+        "T1053",
+        "T1098.003",
+        "T1562",
+        "T1027.007",
+        "T1564.010",
+        "T1606.001",
+        "T1652",
+        "T1069.003",
+        "T1021.002",
+        "T1132",
+        "T1565.001"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1564.010",
+        "T1606.001",
+        "T1069.003",
+        "T1562",
+        "T1132",
+        "T1098.003",
+        "T1565.001",
+        "T1586.003",
+        "T1133",
+        "T1027.007",
+        "T1053",
+        "T1021.002"
+    ],
+    "clean_text": "On 2024-10-15, analysts at a fictional financial services firm, 'SecureCorp Inc.,' detected anomalous activity in their Microsoft 365 environment, originating from a series of phishing emails disguised as cloud service notifications that harvested employee credentials. The attackers used these credentials to authenticate through the organization's VPN gateway, establishing an initial foothold via external remote services. Once inside, they created a persistent scheduled task using schtasks.exe to execute spyware.exe upon user login and added Global Administrator permissions to a low-privilege user account for enhanced persistence in the cloud environment. To evade detection, the malware disabled LSA protection on compromised hosts by modifying registry keys and employed dynamic API resolution to link critical WinApi functions during execution. The actors further obscured their activities by executing malicious.exe with randomly generated filenames to avoid command-line analysis and used stolen web session cookies to maintain persistent access to email accounts without re-authentication. For reconnaissance, the malware programmatically retrieved a list of all loaded device drivers using EnumDeviceDrivers() and enumerated cloud groups assigned to the compromised identity via az ad user get-member-groups. Lateral movement was achieved by accessing network shares, enabling share access to target devices, copying payloads, and scheduling tasks for execution. Data exfiltration involved encoding payloads as URL parameters for transmission to C2 servers, while stored data manipulation altered path information of deleted files to hinder recovery efforts. SecureCorp's SIEM logs showed increased VPN connections from unusual IP ranges, and system administrators noted unauthorized changes in Azure AD role assignments, though no actual financial loss occurred in this training scenario.",
+    "tagged_text": "On 2024-10-15, analysts at a fictional financial services firm, 'SecureCorp Inc.,' detected anomalous activity in their Microsoft 365 environment, originating from a series of phishing emails disguised as cloud service notifications that harvested employee credentials [T1586.003]. The attackers used these credentials to authenticate through the organization's VPN gateway, establishing an initial foothold via external remote services [T1133]. Once inside, they created a persistent scheduled task using schtasks.exe to execute spyware.exe upon user login [T1053] and added Global Administrator permissions to a low-privilege user account for enhanced persistence in the cloud environment [T1098.003]. To evade detection, the malware disabled LSA protection on compromised hosts by modifying registry keys [T1562] and employed dynamic API resolution to link critical WinApi functions during execution [T1027.007]. The actors further obscured their activities by executing malicious.exe with randomly generated filenames to avoid command-line analysis [T1564.010] and used stolen web session cookies to maintain persistent access to email accounts without re-authentication [T1606.001]. For reconnaissance, the malware programmatically retrieved a list of all loaded device drivers using EnumDeviceDrivers() [T1652] and enumerated cloud groups assigned to the compromised identity via az ad user get-member-groups [T1069.003]. Lateral movement was achieved by accessing network shares, enabling share access to target devices, copying payloads, and scheduling tasks for execution [T1021.002]. Data exfiltration involved encoding payloads as URL parameters for transmission to C2 servers [T1132], while stored data manipulation altered path information of deleted files to hinder recovery efforts [T1565.001]. SecureCorp's SIEM logs showed increased VPN connections from unusual IP ranges, and system administrators noted unauthorized changes in Azure AD role assignments, though no actual financial loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attackers used these credentials to authenticate through the organization's VPN gateway, establishing an initial foothold via external remote services.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "exe upon user login and added Global Administrator permissions to a low-privilege user account for enhanced persistence in the cloud environment [T1098.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "To evade detection, the malware disabled LSA protection on compromised hosts by modifying registry keys and employed dynamic API resolution to link critical WinApi functions during execution [T1027.",
+            "technique_id": "T1562",
+            "technique_name": "Impair Defenses"
+        },
+        {
+            "sentence": "For reconnaissance, the malware programmatically retrieved a list of all loaded device drivers using EnumDeviceDrivers() and enumerated cloud groups assigned to the compromised identity via az ad user get-member-groups [T1069.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "Data exfiltration involved encoding payloads as URL parameters for transmission to C2 servers, while stored data manipulation altered path information of deleted files to hinder recovery efforts [T1565.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudPhantom' Targeting Enterprise Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated 'CloudPhantom,' targeting organizations through cloud-based phishing and credential harvesting. The campaign leverages stolen credentials to gain initial access, establish persistence via cloud roles and scheduled tasks, and impair defenses while exfiltrating data through encoded channels. Blue teams should review logs for suspicious cloud activity, unauthorized scheduled tasks, and registry modifications to detect and mitigate similar attacks.",
+        "full_report_text": "On 2024-10-15, analysts at a fictional financial services firm, 'SecureCorp Inc.,' detected anomalous activity in their Microsoft 365 environment, originating from a series of phishing emails disguised as cloud service notifications that harvested employee credentials [T1586.003]. The attackers used these credentials to authenticate through the organization's VPN gateway, establishing an initial foothold via external remote services [T1133]. Once inside, they created a persistent scheduled task using schtasks.exe to execute spyware.exe upon user login [T1053] and added Global Administrator permissions to a low-privilege user account for enhanced persistence in the cloud environment [T1098.003]. To evade detection, the malware disabled LSA protection on compromised hosts by modifying registry keys [T1562] and employed dynamic API resolution to link critical WinApi functions during execution [T1027.007]. The actors further obscured their activities by executing malicious.exe with randomly generated filenames to avoid command-line analysis [T1564.010] and used stolen web session cookies to maintain persistent access to email accounts without re-authentication [T1606.001]. For reconnaissance, the malware programmatically retrieved a list of all loaded device drivers using EnumDeviceDrivers() [T1652] and enumerated cloud groups assigned to the compromised identity via az ad user get-member-groups [T1069.003]. Lateral movement was achieved by accessing network shares, enabling share access to target devices, copying payloads, and scheduling tasks for execution [T1021.002]. Data exfiltration involved encoding payloads as URL parameters for transmission to C2 servers [T1132], while stored data manipulation altered path information of deleted files to hinder recovery efforts [T1565.001]. SecureCorp's SIEM logs showed increased VPN connections from unusual IP ranges, and system administrators noted unauthorized changes in Azure AD role assignments, though no actual financial loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1586.003",
+            "T1133",
+            "T1053",
+            "T1098.003",
+            "T1562",
+            "T1027.007",
+            "T1564.010",
+            "T1606.001",
+            "T1652",
+            "T1069.003",
+            "T1021.002",
+            "T1132",
+            "T1565.001"
+        ]
+    }
+}

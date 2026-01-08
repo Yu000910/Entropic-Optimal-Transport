@@ -1,0 +1,118 @@
+{
+    "report_id": "report_211",
+    "generated_at": "20251222_141141",
+    "scenario_target_ids": [
+        "T1078",
+        "T1669",
+        "T1559",
+        "T1053.003",
+        "T1574",
+        "T1037.004",
+        "T1548.003",
+        "T1055.002",
+        "T1550",
+        "T1211",
+        "T1071.001",
+        "T1571"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1669",
+        "T1078",
+        "T1559",
+        "T1053.003",
+        "T1037.004",
+        "T1548.003",
+        "T1574",
+        "T1055.002",
+        "T1211",
+        "T1550",
+        "T1071.001",
+        "T1571"
+    ],
+    "actual_found_ids": [
+        "T1055.002",
+        "T1071.001",
+        "T1574",
+        "T1669",
+        "T1211",
+        "T1550",
+        "T1571",
+        "T1559",
+        "T1078",
+        "T1053.003",
+        "T1548.003",
+        "T1037.004"
+    ],
+    "clean_text": "Background: The fictional company 'InfraSecure Corp.', a mid-sized energy provider, reported anomalous network activity during routine security audits in Q3 2024. Logs indicated unauthorized access from external IP addresses, prompting an investigation that revealed a coordinated attack campaign.\n\nAttack Scenario: ShadowLink actors initiated the campaign by conducting reconnaissance on InfraSecure's public-facing systems, identifying weak Wi-Fi access points in remote office locations. They exploited default credentials to gain initial access via a compromised employee account, leveraging valid credentials extracted from previous breaches. Once inside, the actors used inter-process communication mechanisms, such as named pipes, to execute malicious commands covertly within the system. To maintain persistence, they modified cron jobs to schedule data exfiltration scripts every hour, ensuring continuous operation, and added malicious entries to RC scripts for reboot persistence, embedding payloads in /etc/rc.local. For privilege escalation, the actors exploited sudo caching vulnerabilities by editing the /etc/sudoers file to grant unrestricted admin access without passwords, and hijacked execution flow through DLL side-loading, targeting svchost.exe to bypass security controls. They further evaded detection by injecting malicious code into winlogon.exe using portable executable injection techniques and tampering with security logging configurations via PowerShell scripts to disable audit trails. For lateral movement, the actors employed alternate authentication material, performing Pass-the-Hash attacks with collected password hashes to access domain controllers and other critical systems. Command and control was established using web protocols over HTTP for communication with external servers, and non-standard ports above 30,000 were utilized to obscure traffic and avoid detection by network monitoring tools. System logs from InfraSecure showed increased outbound traffic to unknown IPs during off-hours, but no actual data loss occurred in this training scenario.\n\nRecommendations: Blue teams should monitor for unusual cron job modifications, unauthorized sudoers changes, and anomalous network traffic on non-standard ports. Implement multi-factor authentication and regular credential audits to mitigate risks associated with valid account abuse.",
+    "tagged_text": "Background: The fictional company 'InfraSecure Corp.', a mid-sized energy provider, reported anomalous network activity during routine security audits in Q3 2024. Logs indicated unauthorized access from external IP addresses, prompting an investigation that revealed a coordinated attack campaign.\n\nAttack Scenario: ShadowLink actors initiated the campaign by conducting reconnaissance on InfraSecure's public-facing systems, identifying weak Wi-Fi access points in remote office locations [T1669]. They exploited default credentials to gain initial access via a compromised employee account, leveraging valid credentials extracted from previous breaches [T1078]. Once inside, the actors used inter-process communication mechanisms, such as named pipes, to execute malicious commands covertly within the system [T1559]. To maintain persistence, they modified cron jobs to schedule data exfiltration scripts every hour, ensuring continuous operation [T1053.003], and added malicious entries to RC scripts for reboot persistence, embedding payloads in /etc/rc.local [T1037.004]. For privilege escalation, the actors exploited sudo caching vulnerabilities by editing the /etc/sudoers file to grant unrestricted admin access without passwords [T1548.003], and hijacked execution flow through DLL side-loading, targeting svchost.exe to bypass security controls [T1574]. They further evaded detection by injecting malicious code into winlogon.exe using portable executable injection techniques [T1055.002] and tampering with security logging configurations via PowerShell scripts to disable audit trails [T1211]. For lateral movement, the actors employed alternate authentication material, performing Pass-the-Hash attacks with collected password hashes to access domain controllers and other critical systems [T1550]. Command and control was established using web protocols over HTTP for communication with external servers [T1071.001], and non-standard ports above 30,000 were utilized to obscure traffic and avoid detection by network monitoring tools [T1571]. System logs from InfraSecure showed increased outbound traffic to unknown IPs during off-hours, but no actual data loss occurred in this training scenario.\n\nRecommendations: Blue teams should monitor for unusual cron job modifications, unauthorized sudoers changes, and anomalous network traffic on non-standard ports. Implement multi-factor authentication and regular credential audits to mitigate risks associated with valid account abuse.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Scenario: ShadowLink actors initiated the campaign by conducting reconnaissance on InfraSecure's public-facing systems, identifying weak Wi-Fi access points in remote office locations.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "They exploited default credentials to gain initial access via a compromised employee account, leveraging valid credentials extracted from previous breaches.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Once inside, the actors used inter-process communication mechanisms, such as named pipes, to execute malicious commands covertly within the system.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "exe to bypass security controls.",
+            "technique_id": "T1574",
+            "technique_name": "Hijack Execution Flow"
+        },
+        {
+            "sentence": "002] and tampering with security logging configurations via PowerShell scripts to disable audit trails.",
+            "technique_id": "T1211",
+            "technique_name": "Exploitation for Defense Evasion"
+        },
+        {
+            "sentence": "For lateral movement, the actors employed alternate authentication material, performing Pass-the-Hash attacks with collected password hashes to access domain controllers and other critical systems.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "001], and non-standard ports above 30,000 were utilized to obscure traffic and avoid detection by network monitoring tools.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'Operation ShadowLink' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated cyber campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowLink', targeting critical infrastructure sectors. Based on analysis of training scenarios, ShadowLink employs a multi-stage attack leveraging valid accounts, lateral movement, and defense evasion techniques to establish persistence and exfiltrate data. The report outlines the kill-chain progression from initial access to command and control, using real-world tactics for educational purposes to enhance blue team detection and response capabilities.",
+        "full_report_text": "Background: The fictional company 'InfraSecure Corp.', a mid-sized energy provider, reported anomalous network activity during routine security audits in Q3 2024. Logs indicated unauthorized access from external IP addresses, prompting an investigation that revealed a coordinated attack campaign.\n\nAttack Scenario: ShadowLink actors initiated the campaign by conducting reconnaissance on InfraSecure's public-facing systems, identifying weak Wi-Fi access points in remote office locations [T1669]. They exploited default credentials to gain initial access via a compromised employee account, leveraging valid credentials extracted from previous breaches [T1078]. Once inside, the actors used inter-process communication mechanisms, such as named pipes, to execute malicious commands covertly within the system [T1559]. To maintain persistence, they modified cron jobs to schedule data exfiltration scripts every hour, ensuring continuous operation [T1053.003], and added malicious entries to RC scripts for reboot persistence, embedding payloads in /etc/rc.local [T1037.004]. For privilege escalation, the actors exploited sudo caching vulnerabilities by editing the /etc/sudoers file to grant unrestricted admin access without passwords [T1548.003], and hijacked execution flow through DLL side-loading, targeting svchost.exe to bypass security controls [T1574]. They further evaded detection by injecting malicious code into winlogon.exe using portable executable injection techniques [T1055.002] and tampering with security logging configurations via PowerShell scripts to disable audit trails [T1211]. For lateral movement, the actors employed alternate authentication material, performing Pass-the-Hash attacks with collected password hashes to access domain controllers and other critical systems [T1550]. Command and control was established using web protocols over HTTP for communication with external servers [T1071.001], and non-standard ports above 30,000 were utilized to obscure traffic and avoid detection by network monitoring tools [T1571]. System logs from InfraSecure showed increased outbound traffic to unknown IPs during off-hours, but no actual data loss occurred in this training scenario.\n\nRecommendations: Blue teams should monitor for unusual cron job modifications, unauthorized sudoers changes, and anomalous network traffic on non-standard ports. Implement multi-factor authentication and regular credential audits to mitigate risks associated with valid account abuse.",
+        "techniques_used": [
+            "T1669",
+            "T1078",
+            "T1559",
+            "T1053.003",
+            "T1037.004",
+            "T1548.003",
+            "T1574",
+            "T1055.002",
+            "T1211",
+            "T1550",
+            "T1071.001",
+            "T1571"
+        ]
+    }
+}

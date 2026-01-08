@@ -1,0 +1,116 @@
+{
+    "report_id": "report_161",
+    "generated_at": "20251222_122011",
+    "scenario_target_ids": [
+        "T1189",
+        "T1133",
+        "T1053",
+        "T1205.001",
+        "T1546.002",
+        "T1547.003",
+        "T1140",
+        "T1218.015",
+        "T1482",
+        "T1497.003",
+        "T1219.003",
+        "T1011"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1133",
+        "T1059.001",
+        "T1140",
+        "T1053",
+        "T1205.001",
+        "T1546.002",
+        "T1547.003",
+        "T1497.003",
+        "T1218.015",
+        "T1482",
+        "T1219.003",
+        "T1011"
+    ],
+    "actual_found_ids": [
+        "T1205.001",
+        "T1053",
+        "T1011",
+        "T1482",
+        "T1189",
+        "T1219.003",
+        "T1218.015",
+        "T1546.002",
+        "T1140",
+        "T1059.001",
+        "T1547.003",
+        "T1133",
+        "T1497.003"
+    ],
+    "clean_text": "ShadowVeil actors likely conduct initial reconnaissance through drive-by compromises, exploiting vulnerabilities via the RIG exploit kit to deliver malware, while simultaneously leveraging external remote services such as WebVPN sessions to establish covert communication channels with compromised devices. Upon execution, the malware employs PowerShell to deobfuscate and decode malicious payloads from compressed CAB files, then creates scheduled tasks using schtasks.exe to run remote_access_tool.exe every 15 minutes, ensuring persistence and periodic execution. For stealth, the actors implement port knocking by sending custom protocol packets via raw sockets to evade detection, and modify the screensaver registry key at HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to point to a malicious executable that activates during user inactivity, while also altering time providers by changing the DllName parameter to load a malicious library instead of the legitimate DLL. Evasion techniques include time-based delays, where the malware waits a specified interval before downloading second-stage payloads, and the use of Electron applications like teams.exe to run encoded PowerShell commands, blending malicious activity with legitimate processes. Post-compromise, ShadowVeil conducts domain trust discovery to profile systems and identify trust relationships, and configures remote access hardware such as PiKVM to bypass security controls and maintain persistent access. Finally, exfiltration occurs over other network mediums, with the malware connecting to unauthorized WiFi networks to transfer intellectual property, leveraging encrypted channels to avoid interception. System logs from affected endpoints show increased network traffic to suspicious IPs, but no direct correlation to the initial compromise vectors was immediately apparent. The targeted financial institution, 'GlobalTrust Bank', reported anomalous activity in its VPN logs, though routine maintenance tasks were ongoing during the incident period.",
+    "tagged_text": "ShadowVeil actors likely conduct initial reconnaissance through drive-by compromises [T1189], exploiting vulnerabilities via the RIG exploit kit to deliver malware, while simultaneously leveraging external remote services [T1133] such as WebVPN sessions to establish covert communication channels with compromised devices. Upon execution, the malware employs PowerShell [T1059.001] to deobfuscate and decode malicious payloads [T1140] from compressed CAB files, then creates scheduled tasks [T1053] using schtasks.exe to run remote_access_tool.exe every 15 minutes, ensuring persistence and periodic execution. For stealth, the actors implement port knocking [T1205.001] by sending custom protocol packets via raw sockets to evade detection, and modify the screensaver registry key [T1546.002] at HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to point to a malicious executable that activates during user inactivity, while also altering time providers [T1547.003] by changing the DllName parameter to load a malicious library instead of the legitimate DLL. Evasion techniques include time-based delays [T1497.003], where the malware waits a specified interval before downloading second-stage payloads, and the use of Electron applications [T1218.015] like teams.exe to run encoded PowerShell commands, blending malicious activity with legitimate processes. Post-compromise, ShadowVeil conducts domain trust discovery [T1482] to profile systems and identify trust relationships, and configures remote access hardware [T1219.003] such as PiKVM to bypass security controls and maintain persistent access. Finally, exfiltration occurs over other network mediums [T1011], with the malware connecting to unauthorized WiFi networks to transfer intellectual property, leveraging encrypted channels to avoid interception. System logs from affected endpoints show increased network traffic to suspicious IPs, but no direct correlation to the initial compromise vectors was immediately apparent. The targeted financial institution, 'GlobalTrust Bank', reported anomalous activity in its VPN logs, though routine maintenance tasks were ongoing during the incident period.",
+    "sentence_annotations": [
+        {
+            "sentence": "ShadowVeil actors likely conduct initial reconnaissance through drive-by compromises, exploiting vulnerabilities via the RIG exploit kit to deliver malware, while simultaneously leveraging external remote services such as WebVPN sessions to establish covert communication channels with compromised devices.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "ShadowVeil actors likely conduct initial reconnaissance through drive-by compromises, exploiting vulnerabilities via the RIG exploit kit to deliver malware, while simultaneously leveraging external remote services such as WebVPN sessions to establish covert communication channels with compromised devices.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "001] to deobfuscate and decode malicious payloads from compressed CAB files, then creates scheduled tasks using schtasks.",
+            "technique_id": "T1140",
+            "technique_name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+            "sentence": "001] to deobfuscate and decode malicious payloads from compressed CAB files, then creates scheduled tasks using schtasks.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "Post-compromise, ShadowVeil conducts domain trust discovery to profile systems and identify trust relationships, and configures remote access hardware [T1219.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        },
+        {
+            "sentence": "Finally, exfiltration occurs over other network mediums, with the malware connecting to unauthorized WiFi networks to transfer intellectual property, leveraging encrypted channels to avoid interception.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil', targeting financial institutions globally. Based on intelligence and incident response data, ShadowVeil employs a multi-stage attack leveraging exploit kits, remote services, and sophisticated persistence mechanisms to exfiltrate sensitive data. The campaign demonstrates the use of drive-by compromises, scheduled tasks, and evasion techniques to maintain stealth and operational resilience. Blue teams are advised to review detection strategies and implement mitigations outlined in this report.",
+        "full_report_text": "ShadowVeil actors likely conduct initial reconnaissance through drive-by compromises [T1189], exploiting vulnerabilities via the RIG exploit kit to deliver malware, while simultaneously leveraging external remote services [T1133] such as WebVPN sessions to establish covert communication channels with compromised devices. Upon execution, the malware employs PowerShell [T1059.001] to deobfuscate and decode malicious payloads [T1140] from compressed CAB files, then creates scheduled tasks [T1053] using schtasks.exe to run remote_access_tool.exe every 15 minutes, ensuring persistence and periodic execution. For stealth, the actors implement port knocking [T1205.001] by sending custom protocol packets via raw sockets to evade detection, and modify the screensaver registry key [T1546.002] at HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to point to a malicious executable that activates during user inactivity, while also altering time providers [T1547.003] by changing the DllName parameter to load a malicious library instead of the legitimate DLL. Evasion techniques include time-based delays [T1497.003], where the malware waits a specified interval before downloading second-stage payloads, and the use of Electron applications [T1218.015] like teams.exe to run encoded PowerShell commands, blending malicious activity with legitimate processes. Post-compromise, ShadowVeil conducts domain trust discovery [T1482] to profile systems and identify trust relationships, and configures remote access hardware [T1219.003] such as PiKVM to bypass security controls and maintain persistent access. Finally, exfiltration occurs over other network mediums [T1011], with the malware connecting to unauthorized WiFi networks to transfer intellectual property, leveraging encrypted channels to avoid interception. System logs from affected endpoints show increased network traffic to suspicious IPs, but no direct correlation to the initial compromise vectors was immediately apparent. The targeted financial institution, 'GlobalTrust Bank', reported anomalous activity in its VPN logs, though routine maintenance tasks were ongoing during the incident period.",
+        "techniques_used": [
+            "T1189",
+            "T1133",
+            "T1059.001",
+            "T1140",
+            "T1053",
+            "T1205.001",
+            "T1546.002",
+            "T1547.003",
+            "T1497.003",
+            "T1218.015",
+            "T1482",
+            "T1219.003",
+            "T1011"
+        ]
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "report_id": "report_216",
+    "generated_at": "20251222_141343",
+    "scenario_target_ids": [
+        "T1091",
+        "T1053.003",
+        "T1021.007",
+        "T1071.002",
+        "T1495",
+        "T1499"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1091",
+        "T1053.003",
+        "T1021.007",
+        "T1071.002",
+        "T1495",
+        "T1499"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1499",
+        "T1495",
+        "T1091",
+        "T1021.007",
+        "T1053.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. 'Silent Echo' actors likely conducted reconnaissance on target networks, focusing on employees with access to sensitive systems. The campaign began with the adversary using a compromised USB drive to replicate malware by altering Autorun.inf to execute a hidden script upon insertion, as observed in system logs from a manufacturing firm's engineering workstation. Following initial access, the actors established persistence by modifying the /var/spool/cron/crontabs/root file to schedule a reverse shell, while simultaneously leveraging compromised Azure credentials for lateral movement to on-premises systems and utilizing pre-existing AWS EC2 instances for data collection. During lateral movement, the group employed FTP for command and control communications, exfiltrating data through anomalous file transfers logged on a backup server. In the final phase, the actors executed a destructive attack by overwriting the system management mode firmware update mechanism to cause permanent corruption and exploited a resource exhaustion vulnerability in a web application framework to trigger endpoint denial of service, disrupting operations at a utility company. Background noise includes routine network scans from internal IT teams and unrelated failed login attempts from legacy systems.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. 'Silent Echo' actors likely conducted reconnaissance on target networks, focusing on employees with access to sensitive systems. The campaign began with the adversary using a compromised USB drive to replicate malware [T1091] by altering Autorun.inf to execute a hidden script upon insertion, as observed in system logs from a manufacturing firm's engineering workstation. Following initial access, the actors established persistence by modifying the /var/spool/cron/crontabs/root file to schedule a reverse shell [T1053.003], while simultaneously leveraging compromised Azure credentials for lateral movement to on-premises systems and utilizing pre-existing AWS EC2 instances for data collection [T1021.007]. During lateral movement, the group employed FTP for command and control communications [T1071.002], exfiltrating data through anomalous file transfers logged on a backup server. In the final phase, the actors executed a destructive attack by overwriting the system management mode firmware update mechanism to cause permanent corruption [T1495] and exploited a resource exhaustion vulnerability in a web application framework to trigger endpoint denial of service [T1499], disrupting operations at a utility company. Background noise includes routine network scans from internal IT teams and unrelated failed login attempts from legacy systems.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign began with the adversary using a compromised USB drive to replicate malware by altering Autorun.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "In the final phase, the actors executed a destructive attack by overwriting the system management mode firmware update mechanism to cause permanent corruption and exploited a resource exhaustion vulnerability in a web application framework to trigger endpoint denial of service, disrupting operations at a utility company.",
+            "technique_id": "T1495",
+            "technique_name": "Firmware Corruption"
+        },
+        {
+            "sentence": "In the final phase, the actors executed a destructive attack by overwriting the system management mode firmware update mechanism to cause permanent corruption and exploited a resource exhaustion vulnerability in a web application framework to trigger endpoint denial of service, disrupting operations at a utility company.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'Silent Echo' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Silent Echo', targeting critical infrastructure sectors. The campaign leverages a multi-vector approach, including removable media, cloud services, and firmware manipulation, to achieve initial access, lateral movement, and denial of service. Blue teams are advised to review logs for unauthorized cron jobs, monitor for anomalous FTP traffic, and implement firmware integrity checks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. 'Silent Echo' actors likely conducted reconnaissance on target networks, focusing on employees with access to sensitive systems. The campaign began with the adversary using a compromised USB drive to replicate malware [T1091] by altering Autorun.inf to execute a hidden script upon insertion, as observed in system logs from a manufacturing firm's engineering workstation. Following initial access, the actors established persistence by modifying the /var/spool/cron/crontabs/root file to schedule a reverse shell [T1053.003], while simultaneously leveraging compromised Azure credentials for lateral movement to on-premises systems and utilizing pre-existing AWS EC2 instances for data collection [T1021.007]. During lateral movement, the group employed FTP for command and control communications [T1071.002], exfiltrating data through anomalous file transfers logged on a backup server. In the final phase, the actors executed a destructive attack by overwriting the system management mode firmware update mechanism to cause permanent corruption [T1495] and exploited a resource exhaustion vulnerability in a web application framework to trigger endpoint denial of service [T1499], disrupting operations at a utility company. Background noise includes routine network scans from internal IT teams and unrelated failed login attempts from legacy systems.",
+        "techniques_used": [
+            "T1091",
+            "T1053.003",
+            "T1021.007",
+            "T1071.002",
+            "T1495",
+            "T1499"
+        ]
+    }
+}

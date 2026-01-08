@@ -1,0 +1,118 @@
+{
+    "report_id": "report_61",
+    "generated_at": "20251222_131123",
+    "scenario_target_ids": [
+        "T1593.001",
+        "T1584.004",
+        "T1587.003",
+        "T1583.004",
+        "T1078.002",
+        "T1078.003",
+        "T1569.002",
+        "T1036.002",
+        "T1556.001",
+        "T1652",
+        "T1040",
+        "T1201",
+        "T1550.004",
+        "T1132",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.001",
+        "T1584.004",
+        "T1587.003",
+        "T1583.004",
+        "T1078.002",
+        "T1078.003",
+        "T1569.002",
+        "T1036.002",
+        "T1556.001",
+        "T1652",
+        "T1040",
+        "T1201",
+        "T1550.004",
+        "T1132",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1593.001",
+        "T1011.001",
+        "T1201",
+        "T1132",
+        "T1584.004",
+        "T1550.004",
+        "T1583.004",
+        "T1569.002",
+        "T1556.001",
+        "T1078.002",
+        "T1040",
+        "T1036.002",
+        "T1078.003",
+        "T1587.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) used by the APT group Crimson Shadow in a fictional campaign against financial organizations. Analysis of network logs from a compromised entity, 'Global Finance Corp', revealed anomalous activities starting in early 2024. The company, which specializes in international transactions, reported unusual outbound traffic patterns and unauthorized access to sensitive customer data.\n\nInitial reconnaissance involved actors collecting publicly available contact information from corporate social media pages to craft targeted spear-phishing emails. They leveraged an exposed SMTP server to relay these malicious emails and establish command and control channels, while simultaneously using Google Cloud Platform's free tier to set up a temporary proxy server for their operations. For command and control, Crimson Shadow established SSL certificates on typo-squatted domains they registered, enabling encrypted communications.\n\nUpon execution, the adversary employed an exfiltration tool similar to STEALHOOK to retrieve valid domain credentials and collected stored passwords from Windows Credential Manager to access local user accounts. They used the net start and net stop commands to execute or stop Windows services for persistence, while renaming 'regedit.exe' to 'gpedit.exe' using a Right-to-Left Override character to disguise the system tool. A Skeleton Key malware variant was deployed to grant authentication bypass across the domain, facilitating lateral movement.\n\nDiscovery activities included running 'driverquery.exe /v' to obtain verbose driver details and using the `net accounts` command to discover password policies. Network sniffing was conducted to collect credentials from unencrypted CLI sessions on routers. For data exfiltration, after encrypting command and control data, the malware converted it into hexadecimal and then encoded it into base64, and hackers leveraged Bluetooth protocol flaws to covertly transmit financial records to an external receiver. Additionally, during the campaign, stolen cookies were used to access cloud resources and bypass multi-factor authentication, mimicking tactics from historical breaches.\n\nSystem logs from Global Finance Corp showed multiple failed login attempts from unrecognized IP addresses, but these were initially dismissed as noise. The company's incident response team later identified suspicious processes running under legitimate service names, leading to the discovery of the compromise. Defensive recommendations include monitoring for unusual network traffic, enforcing strong password policies, and segmenting networks to limit lateral movement.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) used by the APT group Crimson Shadow in a fictional campaign against financial organizations. Analysis of network logs from a compromised entity, 'Global Finance Corp', revealed anomalous activities starting in early 2024. The company, which specializes in international transactions, reported unusual outbound traffic patterns and unauthorized access to sensitive customer data.\n\nInitial reconnaissance involved actors collecting publicly available contact information from corporate social media pages [T1593.001] to craft targeted spear-phishing emails. They leveraged an exposed SMTP server to relay these malicious emails and establish command and control channels [T1584.004], while simultaneously using Google Cloud Platform's free tier to set up a temporary proxy server for their operations [T1583.004]. For command and control, Crimson Shadow established SSL certificates on typo-squatted domains they registered [T1587.003], enabling encrypted communications.\n\nUpon execution, the adversary employed an exfiltration tool similar to STEALHOOK to retrieve valid domain credentials [T1078.002] and collected stored passwords from Windows Credential Manager to access local user accounts [T1078.003]. They used the net start and net stop commands to execute or stop Windows services [T1569.002] for persistence, while renaming 'regedit.exe' to 'gpedit.exe' using a Right-to-Left Override character to disguise the system tool [T1036.002]. A Skeleton Key malware variant was deployed to grant authentication bypass across the domain [T1556.001], facilitating lateral movement.\n\nDiscovery activities included running 'driverquery.exe /v' to obtain verbose driver details [T1652] and using the `net accounts` command to discover password policies [T1201]. Network sniffing was conducted to collect credentials from unencrypted CLI sessions on routers [T1040]. For data exfiltration, after encrypting command and control data, the malware converted it into hexadecimal and then encoded it into base64 [T1132], and hackers leveraged Bluetooth protocol flaws to covertly transmit financial records to an external receiver [T1011.001]. Additionally, during the campaign, stolen cookies were used to access cloud resources and bypass multi-factor authentication [T1550.004], mimicking tactics from historical breaches.\n\nSystem logs from Global Finance Corp showed multiple failed login attempts from unrecognized IP addresses, but these were initially dismissed as noise. The company's incident response team later identified suspicious processes running under legitimate service names, leading to the discovery of the compromise. Defensive recommendations include monitoring for unusual network traffic, enforcing strong password policies, and segmenting networks to limit lateral movement.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe /v' to obtain verbose driver details and using the `net accounts` command to discover password policies.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "exe /v' to obtain verbose driver details and using the `net accounts` command to discover password policies.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "Network sniffing was conducted to collect credentials from unencrypted CLI sessions on routers.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "For data exfiltration, after encrypting command and control data, the malware converted it into hexadecimal and then encoded it into base64, and hackers leveraged Bluetooth protocol flaws to covertly transmit financial records to an external receiver [T1011.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting financial institutions. The campaign involves reconnaissance, initial access via social engineering, credential theft, lateral movement, and data exfiltration using sophisticated techniques. Blue teams are advised to review logs for indicators of compromise and implement defensive measures.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) used by the APT group Crimson Shadow in a fictional campaign against financial organizations. Analysis of network logs from a compromised entity, 'Global Finance Corp', revealed anomalous activities starting in early 2024. The company, which specializes in international transactions, reported unusual outbound traffic patterns and unauthorized access to sensitive customer data.\n\nInitial reconnaissance involved actors collecting publicly available contact information from corporate social media pages [T1593.001] to craft targeted spear-phishing emails. They leveraged an exposed SMTP server to relay these malicious emails and establish command and control channels [T1584.004], while simultaneously using Google Cloud Platform's free tier to set up a temporary proxy server for their operations [T1583.004]. For command and control, Crimson Shadow established SSL certificates on typo-squatted domains they registered [T1587.003], enabling encrypted communications.\n\nUpon execution, the adversary employed an exfiltration tool similar to STEALHOOK to retrieve valid domain credentials [T1078.002] and collected stored passwords from Windows Credential Manager to access local user accounts [T1078.003]. They used the net start and net stop commands to execute or stop Windows services [T1569.002] for persistence, while renaming 'regedit.exe' to 'gpedit.exe' using a Right-to-Left Override character to disguise the system tool [T1036.002]. A Skeleton Key malware variant was deployed to grant authentication bypass across the domain [T1556.001], facilitating lateral movement.\n\nDiscovery activities included running 'driverquery.exe /v' to obtain verbose driver details [T1652] and using the `net accounts` command to discover password policies [T1201]. Network sniffing was conducted to collect credentials from unencrypted CLI sessions on routers [T1040]. For data exfiltration, after encrypting command and control data, the malware converted it into hexadecimal and then encoded it into base64 [T1132], and hackers leveraged Bluetooth protocol flaws to covertly transmit financial records to an external receiver [T1011.001]. Additionally, during the campaign, stolen cookies were used to access cloud resources and bypass multi-factor authentication [T1550.004], mimicking tactics from historical breaches.\n\nSystem logs from Global Finance Corp showed multiple failed login attempts from unrecognized IP addresses, but these were initially dismissed as noise. The company's incident response team later identified suspicious processes running under legitimate service names, leading to the discovery of the compromise. Defensive recommendations include monitoring for unusual network traffic, enforcing strong password policies, and segmenting networks to limit lateral movement.",
+        "techniques_used": [
+            "T1593.001",
+            "T1584.004",
+            "T1587.003",
+            "T1583.004",
+            "T1078.002",
+            "T1078.003",
+            "T1569.002",
+            "T1036.002",
+            "T1556.001",
+            "T1652",
+            "T1040",
+            "T1201",
+            "T1550.004",
+            "T1132",
+            "T1011.001"
+        ]
+    }
+}

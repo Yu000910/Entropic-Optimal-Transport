@@ -1,0 +1,68 @@
+{
+    "report_id": "report_467",
+    "generated_at": "20251222_160004",
+    "scenario_target_ids": [
+        "T1592.004",
+        "T1133",
+        "T1610",
+        "T1187",
+        "T1056.001",
+        "T1573.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.004",
+        "T1133",
+        "T1610",
+        "T1187",
+        "T1056.001",
+        "T1573.002"
+    ],
+    "actual_found_ids": [
+        "T1187",
+        "T1610",
+        "T1056.001",
+        "T1592.004",
+        "T1133",
+        "T1573.002"
+    ],
+    "clean_text": "APT-FICT likely conducted initial reconnaissance by scanning the target's network using Nmap to identify active hosts and gather client configuration details, which revealed an unsecured kubelet instance. The actors then exploited this external remote service to gain initial access to the victim environment, where they deployed a malicious container using Peirates to mount the node's root file system and establish a reverse shell. Following this, they executed a forced authentication attack via a file://remote_address/Normal.dotm exploit that triggered a PowerShell script to harvest LSASS memory for credential hashes, while simultaneously deploying njRAT to capture keystrokes from compromised systems. For command and control, APT-FICT employed asymmetric cryptography by encrypting Attor's Blowfish key with a public RSA key to secure communications. During the investigation, system logs showed routine backup processes and unrelated user login attempts from internal IP addresses, which were not indicative of malicious activity. The target organization, a mid-sized tech firm with hybrid cloud infrastructure, reported no prior incidents but had outdated security policies for container management.",
+    "tagged_text": "APT-FICT likely conducted initial reconnaissance by scanning the target's network using Nmap to identify active hosts and gather client configuration details [T1592.004], which revealed an unsecured kubelet instance. The actors then exploited this external remote service [T1133] to gain initial access to the victim environment, where they deployed a malicious container using Peirates to mount the node's root file system and establish a reverse shell [T1610]. Following this, they executed a forced authentication attack via a file://remote_address/Normal.dotm exploit that triggered a PowerShell script to harvest LSASS memory for credential hashes [T1187], while simultaneously deploying njRAT to capture keystrokes from compromised systems [T1056.001]. For command and control, APT-FICT employed asymmetric cryptography by encrypting Attor's Blowfish key with a public RSA key to secure communications [T1573.002]. During the investigation, system logs showed routine backup processes and unrelated user login attempts from internal IP addresses, which were not indicative of malicious activity. The target organization, a mid-sized tech firm with hybrid cloud infrastructure, reported no prior incidents but had outdated security policies for container management.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then exploited this external remote service to gain initial access to the victim environment, where they deployed a malicious container using Peirates to mount the node's root file system and establish a reverse shell.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "The actors then exploited this external remote service to gain initial access to the victim environment, where they deployed a malicious container using Peirates to mount the node's root file system and establish a reverse shell.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "dotm exploit that triggered a PowerShell script to harvest LSASS memory for credential hashes, while simultaneously deploying njRAT to capture keystrokes from compromised systems [T1056.",
+            "technique_id": "T1187",
+            "technique_name": "Forced Authentication"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign Targeting Cloud Infrastructure via Container Exploitation",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-FICT, targeting organizations with exposed cloud services. APT-FICT leverages reconnaissance, external service exploitation, container deployment, and credential theft to gain persistent access and exfiltrate data. The campaign involves techniques such as network scanning, unsecured kubelet access, forced authentication, and keylogging, with encryption used for command and control. This report is intended for blue team training to enhance detection and response capabilities in cloud environments.",
+        "full_report_text": "APT-FICT likely conducted initial reconnaissance by scanning the target's network using Nmap to identify active hosts and gather client configuration details [T1592.004], which revealed an unsecured kubelet instance. The actors then exploited this external remote service [T1133] to gain initial access to the victim environment, where they deployed a malicious container using Peirates to mount the node's root file system and establish a reverse shell [T1610]. Following this, they executed a forced authentication attack via a file://remote_address/Normal.dotm exploit that triggered a PowerShell script to harvest LSASS memory for credential hashes [T1187], while simultaneously deploying njRAT to capture keystrokes from compromised systems [T1056.001]. For command and control, APT-FICT employed asymmetric cryptography by encrypting Attor's Blowfish key with a public RSA key to secure communications [T1573.002]. During the investigation, system logs showed routine backup processes and unrelated user login attempts from internal IP addresses, which were not indicative of malicious activity. The target organization, a mid-sized tech firm with hybrid cloud infrastructure, reported no prior incidents but had outdated security policies for container management.",
+        "techniques_used": [
+            "T1592.004",
+            "T1133",
+            "T1610",
+            "T1187",
+            "T1056.001",
+            "T1573.002"
+        ]
+    }
+}

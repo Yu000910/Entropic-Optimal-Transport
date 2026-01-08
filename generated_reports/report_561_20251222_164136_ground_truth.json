@@ -1,0 +1,108 @@
+{
+    "report_id": "report_561",
+    "generated_at": "20251222_164136",
+    "scenario_target_ids": [
+        "T1593.001",
+        "T1590",
+        "T1596.004",
+        "T1566.004",
+        "T1053",
+        "T1205.002",
+        "T1134.002",
+        "T1546.004",
+        "T1003",
+        "T1563.002",
+        "T1001",
+        "T1567.004",
+        "T1561.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1593.001",
+        "T1590",
+        "T1596.004",
+        "T1566.004",
+        "T1053",
+        "T1205.002",
+        "T1134.002",
+        "T1546.004",
+        "T1003",
+        "T1563.002",
+        "T1001",
+        "T1567.004",
+        "T1561.001"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1593.001",
+        "T1566.004",
+        "T1205.002",
+        "T1134.002",
+        "T1546.004",
+        "T1003",
+        "T1561.001",
+        "T1053",
+        "T1590",
+        "T1596.004",
+        "T1001",
+        "T1563.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign dubbed 'SilentWiper'. This campaign targets financial organizations, with initial reconnaissance conducted by actors who likely searched professional forums like LinkedIn to identify technical staff and their areas of expertise, while simultaneously querying multiple DNS servers to gather information about the target's domain infrastructure and using command-line tools like nslookup to enumerate the target's CDN configuration. Following reconnaissance, the attacker initiated a phone call posing as IT support to trick a user into revealing their system credentials, which led to initial access. Once inside, the adversary used schtasks.exe to schedule credential_harvester.exe to execute weekly, while programming the backdoor to use setsockopt for enabling promiscuous mode on network interfaces and executing 'runas /user:Administrator cmd.exe' to open a command prompt with administrative rights. For persistence on Unix systems, malware altered ~/.bash_profile to establish persistence by running a backdoor on shell startup. The actors then ran Mimikatz.exe with the 'sekurlsa::logonpasswords' command to harvest credentials and used tscon.exe to forcibly connect to another user's active remote desktop session. DarkGate retrieved encrypted commands from its command and control server for follow-on actions such as cryptocurrency mining, while the attacker used webhook.site to collect system information from compromised hosts. Finally, the wiper malware wrote random data patterns across all sectors of the hard drive to make recovery impossible. System logs from the target environment showed routine backup failures and unusual network traffic spikes, but these were initially dismissed as false positives. The company, 'SecureBank Inc.', reported no actual financial loss in this training scenario, though their incident response team noted gaps in multi-factor authentication and endpoint detection.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign dubbed 'SilentWiper'. This campaign targets financial organizations, with initial reconnaissance conducted by actors who likely searched professional forums like LinkedIn to identify technical staff and their areas of expertise [T1593.001], while simultaneously querying multiple DNS servers to gather information about the target's domain infrastructure [T1590] and using command-line tools like nslookup to enumerate the target's CDN configuration [T1596.004]. Following reconnaissance, the attacker initiated a phone call posing as IT support to trick a user into revealing their system credentials [T1566.004], which led to initial access. Once inside, the adversary used schtasks.exe to schedule credential_harvester.exe to execute weekly [T1053], while programming the backdoor to use setsockopt for enabling promiscuous mode on network interfaces [T1205.002] and executing 'runas /user:Administrator cmd.exe' to open a command prompt with administrative rights [T1134.002]. For persistence on Unix systems, malware altered ~/.bash_profile to establish persistence by running a backdoor on shell startup [T1546.004]. The actors then ran Mimikatz.exe with the 'sekurlsa::logonpasswords' command to harvest credentials [T1003] and used tscon.exe to forcibly connect to another user's active remote desktop session [T1563.002]. DarkGate retrieved encrypted commands from its command and control server for follow-on actions such as cryptocurrency mining [T1001], while the attacker used webhook.site to collect system information from compromised hosts [T1567.004]. Finally, the wiper malware wrote random data patterns across all sectors of the hard drive to make recovery impossible [T1561.001]. System logs from the target environment showed routine backup failures and unusual network traffic spikes, but these were initially dismissed as false positives. The company, 'SecureBank Inc.', reported no actual financial loss in this training scenario, though their incident response team noted gaps in multi-factor authentication and endpoint detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "001], while simultaneously querying multiple DNS servers to gather information about the target's domain infrastructure and using command-line tools like nslookup to enumerate the target's CDN configuration [T1596.",
+            "technique_id": "T1590",
+            "technique_name": "Gather Victim Network Information"
+        },
+        {
+            "sentence": "exe to execute weekly, while programming the backdoor to use setsockopt for enabling promiscuous mode on network interfaces [T1205.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "exe with the 'sekurlsa::logonpasswords' command to harvest credentials and used tscon.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "DarkGate retrieved encrypted commands from its command and control server for follow-on actions such as cryptocurrency mining, while the attacker used webhook.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentWiper' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'SilentWiper', targeting financial institutions to exfiltrate sensitive data and deploy destructive wiper malware. The campaign leverages social engineering, credential theft, and persistence mechanisms across Windows and Unix systems.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign dubbed 'SilentWiper'. This campaign targets financial organizations, with initial reconnaissance conducted by actors who likely searched professional forums like LinkedIn to identify technical staff and their areas of expertise [T1593.001], while simultaneously querying multiple DNS servers to gather information about the target's domain infrastructure [T1590] and using command-line tools like nslookup to enumerate the target's CDN configuration [T1596.004]. Following reconnaissance, the attacker initiated a phone call posing as IT support to trick a user into revealing their system credentials [T1566.004], which led to initial access. Once inside, the adversary used schtasks.exe to schedule credential_harvester.exe to execute weekly [T1053], while programming the backdoor to use setsockopt for enabling promiscuous mode on network interfaces [T1205.002] and executing 'runas /user:Administrator cmd.exe' to open a command prompt with administrative rights [T1134.002]. For persistence on Unix systems, malware altered ~/.bash_profile to establish persistence by running a backdoor on shell startup [T1546.004]. The actors then ran Mimikatz.exe with the 'sekurlsa::logonpasswords' command to harvest credentials [T1003] and used tscon.exe to forcibly connect to another user's active remote desktop session [T1563.002]. DarkGate retrieved encrypted commands from its command and control server for follow-on actions such as cryptocurrency mining [T1001], while the attacker used webhook.site to collect system information from compromised hosts [T1567.004]. Finally, the wiper malware wrote random data patterns across all sectors of the hard drive to make recovery impossible [T1561.001]. System logs from the target environment showed routine backup failures and unusual network traffic spikes, but these were initially dismissed as false positives. The company, 'SecureBank Inc.', reported no actual financial loss in this training scenario, though their incident response team noted gaps in multi-factor authentication and endpoint detection.",
+        "techniques_used": [
+            "T1593.001",
+            "T1590",
+            "T1596.004",
+            "T1566.004",
+            "T1053",
+            "T1205.002",
+            "T1134.002",
+            "T1546.004",
+            "T1003",
+            "T1563.002",
+            "T1001",
+            "T1567.004",
+            "T1561.001"
+        ]
+    }
+}

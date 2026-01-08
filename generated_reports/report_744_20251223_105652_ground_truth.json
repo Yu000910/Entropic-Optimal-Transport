@@ -1,0 +1,66 @@
+{
+    "report_id": "report_744",
+    "generated_at": "20251223_105652",
+    "scenario_target_ids": [
+        "T1189",
+        "T1059.010",
+        "T1553.002",
+        "T1552.004",
+        "T1104"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1189",
+        "T1059.010",
+        "T1553.002",
+        "T1552.004",
+        "T1104"
+    ],
+    "actual_found_ids": [
+        "T1104",
+        "T1589",
+        "T1552.004",
+        "T1059.010",
+        "T1189",
+        "T1553.002"
+    ],
+    "clean_text": "Background: The fictional campaign, dubbed 'ShadowWeaver', was first detected in early 2024, with initial reports from a mid-sized regional bank, 'SecureTrust Financial', which experienced anomalous network traffic and unauthorized access attempts. The bank's security team noted increased activity during business hours, correlating with employee web browsing logs that showed visits to compromised industry news sites. No actual data breaches occurred, as this was part of a red team exercise designed to test incident response protocols.\n\nAttack Narrative: The actors likely conducted reconnaissance by scanning public-facing websites associated with financial services to identify vulnerabilities. In the initial access phase, they exploited a drive-by compromise through a compromised financial news portal, where malicious scripts were injected to register custom URL schemes on remote systems, leading to the automatic execution of payloads when users visited the site. Upon execution, the adversary employed AutoHotKey scripts to write malicious .au3 files that established persistence by creating scheduled tasks, while simultaneously using code signing techniques to resize and add data to certificate tables, enabling the signing of modified files with legitimate signatures to evade detection. To further their objectives, a PowerShell script was deployed to search for certificate files with the extension '.pfx' across the filesystem, extracting private keys for unauthorized access. Throughout the campaign, the compromised system initiated remote_access_tool.exe to maintain multi-stage communication channels with the command server, allowing for continuous data exfiltration and command execution. System logs from SecureTrust Financial showed repeated failed login attempts from IP addresses traced to fictional locations, but these were later confirmed as part of the training simulation. The bank's IT department reported no impact on customer data, as all activities were contained within isolated test environments.\n\nMitigation Recommendations: Blue teams should implement web filtering to block access to known malicious sites, monitor for unusual AutoHotKey or AutoIT script executions, and enforce strict code signing policies. Regular audits of certificate stores and private key management are advised to detect unauthorized modifications. Additionally, network segmentation and anomaly detection systems can help identify multi-stage communication attempts. This advisory serves as an educational tool to enhance defensive capabilities against similar fictional threats.",
+    "tagged_text": "Background: The fictional campaign, dubbed 'ShadowWeaver', was first detected in early 2024, with initial reports from a mid-sized regional bank, 'SecureTrust Financial', which experienced anomalous network traffic and unauthorized access attempts. The bank's security team noted increased activity during business hours, correlating with employee web browsing logs that showed visits to compromised industry news sites. No actual data breaches occurred, as this was part of a red team exercise designed to test incident response protocols.\n\nAttack Narrative: The actors likely conducted reconnaissance [T1589] by scanning public-facing websites associated with financial services to identify vulnerabilities. In the initial access phase, they exploited a drive-by compromise [T1189] through a compromised financial news portal, where malicious scripts were injected to register custom URL schemes on remote systems, leading to the automatic execution of payloads when users visited the site. Upon execution, the adversary employed AutoHotKey scripts [T1059.010] to write malicious .au3 files that established persistence by creating scheduled tasks, while simultaneously using code signing techniques [T1553.002] to resize and add data to certificate tables, enabling the signing of modified files with legitimate signatures to evade detection. To further their objectives, a PowerShell script was deployed to search for certificate files with the extension '.pfx' across the filesystem [T1552.004], extracting private keys for unauthorized access. Throughout the campaign, the compromised system initiated remote_access_tool.exe [T1104] to maintain multi-stage communication channels with the command server, allowing for continuous data exfiltration and command execution. System logs from SecureTrust Financial showed repeated failed login attempts from IP addresses traced to fictional locations, but these were later confirmed as part of the training simulation. The bank's IT department reported no impact on customer data, as all activities were contained within isolated test environments.\n\nMitigation Recommendations: Blue teams should implement web filtering to block access to known malicious sites, monitor for unusual AutoHotKey or AutoIT script executions, and enforce strict code signing policies. Regular audits of certificate stores and private key management are advised to detect unauthorized modifications. Additionally, network segmentation and anomaly detection systems can help identify multi-stage communication attempts. This advisory serves as an educational tool to enhance defensive capabilities against similar fictional threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative: The actors likely conducted reconnaissance by scanning public-facing websites associated with financial services to identify vulnerabilities.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the initial access phase, they exploited a drive-by compromise through a compromised financial news portal, where malicious scripts were injected to register custom URL schemes on remote systems, leading to the automatic execution of payloads when users visited the site.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "exe to maintain multi-stage communication channels with the command server, allowing for continuous data exfiltration and command execution.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowWeaver', which targeted financial institutions through drive-by compromises and multi-stage malware deployment. The FBI, CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating these techniques in a controlled environment.",
+        "full_report_text": "Background: The fictional campaign, dubbed 'ShadowWeaver', was first detected in early 2024, with initial reports from a mid-sized regional bank, 'SecureTrust Financial', which experienced anomalous network traffic and unauthorized access attempts. The bank's security team noted increased activity during business hours, correlating with employee web browsing logs that showed visits to compromised industry news sites. No actual data breaches occurred, as this was part of a red team exercise designed to test incident response protocols.\n\nAttack Narrative: The actors likely conducted reconnaissance [T1589] by scanning public-facing websites associated with financial services to identify vulnerabilities. In the initial access phase, they exploited a drive-by compromise [T1189] through a compromised financial news portal, where malicious scripts were injected to register custom URL schemes on remote systems, leading to the automatic execution of payloads when users visited the site. Upon execution, the adversary employed AutoHotKey scripts [T1059.010] to write malicious .au3 files that established persistence by creating scheduled tasks, while simultaneously using code signing techniques [T1553.002] to resize and add data to certificate tables, enabling the signing of modified files with legitimate signatures to evade detection. To further their objectives, a PowerShell script was deployed to search for certificate files with the extension '.pfx' across the filesystem [T1552.004], extracting private keys for unauthorized access. Throughout the campaign, the compromised system initiated remote_access_tool.exe [T1104] to maintain multi-stage communication channels with the command server, allowing for continuous data exfiltration and command execution. System logs from SecureTrust Financial showed repeated failed login attempts from IP addresses traced to fictional locations, but these were later confirmed as part of the training simulation. The bank's IT department reported no impact on customer data, as all activities were contained within isolated test environments.\n\nMitigation Recommendations: Blue teams should implement web filtering to block access to known malicious sites, monitor for unusual AutoHotKey or AutoIT script executions, and enforce strict code signing policies. Regular audits of certificate stores and private key management are advised to detect unauthorized modifications. Additionally, network segmentation and anomaly detection systems can help identify multi-stage communication attempts. This advisory serves as an educational tool to enhance defensive capabilities against similar fictional threats.",
+        "techniques_used": [
+            "T1589",
+            "T1189",
+            "T1059.010",
+            "T1553.002",
+            "T1552.004",
+            "T1104"
+        ]
+    }
+}

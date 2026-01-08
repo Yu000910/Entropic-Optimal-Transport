@@ -1,0 +1,107 @@
+{
+    "report_id": "report_116",
+    "generated_at": "20251222_120244",
+    "scenario_target_ids": [
+        "T1608.001",
+        "T1608.005",
+        "T1585.003",
+        "T1195.001",
+        "T1559.002",
+        "T1027.013",
+        "T1622",
+        "T1069.001",
+        "T1080",
+        "T1056.002",
+        "T1102.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1608.005",
+        "T1585.003",
+        "T1559.002",
+        "T1059.001",
+        "T1027.013",
+        "T1608.001",
+        "T1195.001",
+        "T1112",
+        "T1069.001",
+        "T1080",
+        "T1622",
+        "T1056.002",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1559.002",
+        "T1622",
+        "T1589",
+        "T1608.001",
+        "T1069.001",
+        "T1059.001",
+        "T1027.013",
+        "T1080",
+        "T1608.005",
+        "T1585.003",
+        "T1195.001",
+        "T1112",
+        "T1056.002"
+    ],
+    "clean_text": "Background: The fictional company 'TechSecure Inc.,' a mid-sized software developer, reported anomalous network activity on March 15, 2024, including unusual outbound connections to Dropbox and Twitter domains. Initial logs showed increased PowerShell usage and failed login attempts to internal development servers, though these were initially dismissed as routine maintenance. The company's security team, using a SIEM solution, later correlated these events with spear-phishing emails sent to employees in the finance department two weeks prior.\n\nKill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance to identify targets, then used spear-phishing emails with malicious links pointing to Dropbox-hosted files, leveraging compromised cloud accounts with two-factor authentication disabled to maintain persistent access for payload delivery.\n- Execution: Upon victim interaction, the adversaries employed a .docx file with embedded Dynamic Data Exchange (DDE) fields to execute system commands, which triggered PowerShell to download and run an encrypted payload from a Blogspot-hosted malware repository, while simultaneously injecting evil.ps1 into software dependencies to dump LSASS memory and extract authentication tokens.\n- Persistence and Privilege Escalation: After execution, the malware modified registry keys and used a PowerShell script to run 'net localgroup administrators', discovering users with administrative rights, and tainted shared content by altering the 'documents.lnk' file in a network folder to point to a malicious script for lateral movement.\n- Defense Evasion: To avoid detection, the actors implemented debugger evasion techniques, such as invoking sysctl to check for P_TRACED and calling ptrace with PTRACE_DENY_ATTACH, while using GUI input capture via AppleScript to display counterfeit iCloud login windows and collect credentials on macOS systems.\n- Command and Control (C2): For C2 communication, the malware utilized a dead drop resolver, storing encrypted commands in a specific tweet on https://twitter.com/user/tweet for later retrieval, and employed encrypted files for configuration to obscure network traffic.\n- Exfiltration: Data exfiltration occurred through the compromised Dropbox accounts, with files uploaded in encrypted formats to avoid data loss prevention tools. Network logs showed periodic connections to Twitter for command updates, but no significant data breaches were confirmed in this training scenario.\n\nRecommendations: Blue teams should monitor for unusual cloud service usage, implement application whitelisting for PowerShell, and conduct regular audits of shared network resources. This fictional report serves as an educational tool to practice identifying and mitigating complex attack chains.",
+    "tagged_text": "Background: The fictional company 'TechSecure Inc.,' a mid-sized software developer, reported anomalous network activity on March 15, 2024, including unusual outbound connections to Dropbox and Twitter domains. Initial logs showed increased PowerShell usage and failed login attempts to internal development servers, though these were initially dismissed as routine maintenance. The company's security team, using a SIEM solution, later correlated these events with spear-phishing emails sent to employees in the finance department two weeks prior.\n\nKill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify targets, then used spear-phishing emails with malicious links pointing to Dropbox-hosted files [T1608.005], leveraging compromised cloud accounts [T1585.003] with two-factor authentication disabled to maintain persistent access for payload delivery.\n- Execution: Upon victim interaction, the adversaries employed a .docx file with embedded Dynamic Data Exchange (DDE) fields [T1559.002] to execute system commands, which triggered PowerShell [T1059.001] to download and run an encrypted payload [T1027.013] from a Blogspot-hosted malware repository [T1608.001], while simultaneously injecting evil.ps1 into software dependencies [T1195.001] to dump LSASS memory and extract authentication tokens.\n- Persistence and Privilege Escalation: After execution, the malware modified registry keys [T1112] and used a PowerShell script to run 'net localgroup administrators' [T1069.001], discovering users with administrative rights, and tainted shared content by altering the 'documents.lnk' file in a network folder [T1080] to point to a malicious script for lateral movement.\n- Defense Evasion: To avoid detection, the actors implemented debugger evasion techniques [T1622], such as invoking sysctl to check for P_TRACED and calling ptrace with PTRACE_DENY_ATTACH, while using GUI input capture via AppleScript [T1056.002] to display counterfeit iCloud login windows and collect credentials on macOS systems.\n- Command and Control (C2): For C2 communication, the malware utilized a dead drop resolver [T1102.001], storing encrypted commands in a specific tweet on https://twitter.com/user/tweet for later retrieval, and employed encrypted files [T1027.013] for configuration to obscure network traffic.\n- Exfiltration: Data exfiltration occurred through the compromised Dropbox accounts [T1585.003], with files uploaded in encrypted formats [T1027.013] to avoid data loss prevention tools. Network logs showed periodic connections to Twitter for command updates, but no significant data breaches were confirmed in this training scenario.\n\nRecommendations: Blue teams should monitor for unusual cloud service usage, implement application whitelisting for PowerShell, and conduct regular audits of shared network resources. This fictional report serves as an educational tool to practice identifying and mitigating complex attack chains.",
+    "sentence_annotations": [
+        {
+            "sentence": "Kill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance to identify targets, then used spear-phishing emails with malicious links pointing to Dropbox-hosted files [T1608.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "- Persistence and Privilege Escalation: After execution, the malware modified registry keys and used a PowerShell script to run 'net localgroup administrators' [T1069.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "lnk' file in a network folder to point to a malicious script for lateral movement.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        },
+        {
+            "sentence": "- Defense Evasion: To avoid detection, the actors implemented debugger evasion techniques, such as invoking sysctl to check for P_TRACED and calling ptrace with PTRACE_DENY_ATTACH, while using GUI input capture via AppleScript [T1056.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowDrop' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowDrop,' targeting organizations in the technology and financial sectors. The campaign leverages compromised cloud accounts and spear-phishing to deploy malware, with a focus on evading detection and exfiltrating sensitive data. Based on analysis of simulated incidents between January and March 2024, the actors employ a multi-stage approach involving cloud-hosted malware, development tool compromises, and anti-debugging techniques. This report is intended for blue team training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "Background: The fictional company 'TechSecure Inc.,' a mid-sized software developer, reported anomalous network activity on March 15, 2024, including unusual outbound connections to Dropbox and Twitter domains. Initial logs showed increased PowerShell usage and failed login attempts to internal development servers, though these were initially dismissed as routine maintenance. The company's security team, using a SIEM solution, later correlated these events with spear-phishing emails sent to employees in the finance department two weeks prior.\n\nKill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify targets, then used spear-phishing emails with malicious links pointing to Dropbox-hosted files [T1608.005], leveraging compromised cloud accounts [T1585.003] with two-factor authentication disabled to maintain persistent access for payload delivery.\n- Execution: Upon victim interaction, the adversaries employed a .docx file with embedded Dynamic Data Exchange (DDE) fields [T1559.002] to execute system commands, which triggered PowerShell [T1059.001] to download and run an encrypted payload [T1027.013] from a Blogspot-hosted malware repository [T1608.001], while simultaneously injecting evil.ps1 into software dependencies [T1195.001] to dump LSASS memory and extract authentication tokens.\n- Persistence and Privilege Escalation: After execution, the malware modified registry keys [T1112] and used a PowerShell script to run 'net localgroup administrators' [T1069.001], discovering users with administrative rights, and tainted shared content by altering the 'documents.lnk' file in a network folder [T1080] to point to a malicious script for lateral movement.\n- Defense Evasion: To avoid detection, the actors implemented debugger evasion techniques [T1622], such as invoking sysctl to check for P_TRACED and calling ptrace with PTRACE_DENY_ATTACH, while using GUI input capture via AppleScript [T1056.002] to display counterfeit iCloud login windows and collect credentials on macOS systems.\n- Command and Control (C2): For C2 communication, the malware utilized a dead drop resolver [T1102.001], storing encrypted commands in a specific tweet on https://twitter.com/user/tweet for later retrieval, and employed encrypted files [T1027.013] for configuration to obscure network traffic.\n- Exfiltration: Data exfiltration occurred through the compromised Dropbox accounts [T1585.003], with files uploaded in encrypted formats [T1027.013] to avoid data loss prevention tools. Network logs showed periodic connections to Twitter for command updates, but no significant data breaches were confirmed in this training scenario.\n\nRecommendations: Blue teams should monitor for unusual cloud service usage, implement application whitelisting for PowerShell, and conduct regular audits of shared network resources. This fictional report serves as an educational tool to practice identifying and mitigating complex attack chains.",
+        "techniques_used": [
+            "T1589",
+            "T1608.005",
+            "T1585.003",
+            "T1559.002",
+            "T1059.001",
+            "T1027.013",
+            "T1608.001",
+            "T1195.001",
+            "T1112",
+            "T1069.001",
+            "T1080",
+            "T1622",
+            "T1056.002",
+            "T1102.001"
+        ]
+    }
+}

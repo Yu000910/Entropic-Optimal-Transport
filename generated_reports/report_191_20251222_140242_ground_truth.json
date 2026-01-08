@@ -1,0 +1,103 @@
+{
+    "report_id": "report_191",
+    "generated_at": "20251222_140242",
+    "scenario_target_ids": [
+        "T1589",
+        "T1659",
+        "T1569.001",
+        "T1204.003",
+        "T1578.005",
+        "T1555.005",
+        "T1654",
+        "T1021.003",
+        "T1090.004",
+        "T1029",
+        "T1048.003",
+        "T1499.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1659",
+        "T1569.001",
+        "T1204.003",
+        "T1578.005",
+        "T1555.005",
+        "T1654",
+        "T1021.003",
+        "T1090.004",
+        "T1029",
+        "T1048.003",
+        "T1499.001"
+    ],
+    "actual_found_ids": [
+        "T1029",
+        "T1654",
+        "T1589",
+        "T1659",
+        "T1569.001",
+        "T1048.003",
+        "T1499.001",
+        "T1090.004",
+        "T1204.003",
+        "T1021.003",
+        "T1578.005",
+        "T1555.005"
+    ],
+    "clean_text": "On April 15, 2024, a mid-sized financial services company, 'SecureFin Corp.', reported anomalous activity in its hybrid cloud environment, involving unauthorized access and data exfiltration. Initial investigation revealed that the threat actors likely conducted reconnaissance to gather victim identity information by sending phishing emails disguised as login notifications, which harvested employee credentials. System logs from the corporate email server showed a spike in failed login attempts from unknown IP addresses, though these were unrelated to the primary attack vector. The actors then used content injection to embed a keylogger payload into encrypted network communications, exploiting a vulnerability in the company's VPN software to intercept and modify data in transit. Following this, they executed malicious commands via Launchctl to replace a legitimate service with a malicious one, using 'launchctl unload /Library/LaunchDaemons/legitimate.plist && launchctl load /Library/LaunchDaemons/malicious.plist' to maintain persistence on macOS endpoints. Concurrently, the attackers deployed a malicious image in the AWS environment, dropping an AMI with embedded credential harvesting tools disguised as legitimate monitoring software, which was then used to modify cloud compute configurations by changing Google Cloud project quotas to enable higher resource consumption for data exfiltration activities. Background checks on SecureFin's cloud administrators revealed no prior security incidents, but this was irrelevant to the attack. The malware, identified as a variant of MarkiRAT, targeted password managers to extract credentials from KeePass, while employing log enumeration via PowerShell commands to query and filter System logs for suspicious activities, such as failed authentication events. Attackers further exploited Distributed Component Object Model through Microsoft Excel's DCOM interface to run malicious code on remote machines, and used domain fronting to manipulate HTTP Referer headers and obfuscate the destination of encrypted web traffic. A scheduled transfer was established via a scheduled task running 'malicious.ps1' via PowerShell for periodic data exfiltration, which leveraged exfiltration over unencrypted non-C2 protocol by generating email messages via SMTP containing information about newly infected victims, mimicking tactics of the Lazarus Group. Finally, the malware executed an OS exhaustion flood through a SYN flood script targeting specific services to cause resource exhaustion, disrupting operations. Network traffic analysis indicated unusual spikes in outbound SMTP connections, but no correlation was found with legitimate business processes.",
+    "tagged_text": "On April 15, 2024, a mid-sized financial services company, 'SecureFin Corp.', reported anomalous activity in its hybrid cloud environment, involving unauthorized access and data exfiltration. Initial investigation revealed that the threat actors likely conducted reconnaissance to gather victim identity information [T1589] by sending phishing emails disguised as login notifications, which harvested employee credentials. System logs from the corporate email server showed a spike in failed login attempts from unknown IP addresses, though these were unrelated to the primary attack vector. The actors then used content injection [T1659] to embed a keylogger payload into encrypted network communications, exploiting a vulnerability in the company's VPN software to intercept and modify data in transit. Following this, they executed malicious commands via Launchctl [T1569.001] to replace a legitimate service with a malicious one, using 'launchctl unload /Library/LaunchDaemons/legitimate.plist && launchctl load /Library/LaunchDaemons/malicious.plist' to maintain persistence on macOS endpoints. Concurrently, the attackers deployed a malicious image [T1204.003] in the AWS environment, dropping an AMI with embedded credential harvesting tools disguised as legitimate monitoring software, which was then used to modify cloud compute configurations [T1578.005] by changing Google Cloud project quotas to enable higher resource consumption for data exfiltration activities. Background checks on SecureFin's cloud administrators revealed no prior security incidents, but this was irrelevant to the attack. The malware, identified as a variant of MarkiRAT, targeted password managers [T1555.005] to extract credentials from KeePass, while employing log enumeration [T1654] via PowerShell commands to query and filter System logs for suspicious activities, such as failed authentication events. Attackers further exploited Distributed Component Object Model [T1021.003] through Microsoft Excel's DCOM interface to run malicious code on remote machines, and used domain fronting [T1090.004] to manipulate HTTP Referer headers and obfuscate the destination of encrypted web traffic. A scheduled transfer [T1029] was established via a scheduled task running 'malicious.ps1' via PowerShell for periodic data exfiltration, which leveraged exfiltration over unencrypted non-C2 protocol [T1048.003] by generating email messages via SMTP containing information about newly infected victims, mimicking tactics of the Lazarus Group. Finally, the malware executed an OS exhaustion flood [T1499.001] through a SYN flood script targeting specific services to cause resource exhaustion, disrupting operations. Network traffic analysis indicated unusual spikes in outbound SMTP connections, but no correlation was found with legitimate business processes.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that the threat actors likely conducted reconnaissance to gather victim identity information by sending phishing emails disguised as login notifications, which harvested employee credentials.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The actors then used content injection to embed a keylogger payload into encrypted network communications, exploiting a vulnerability in the company's VPN software to intercept and modify data in transit.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "005] to extract credentials from KeePass, while employing log enumeration via PowerShell commands to query and filter System logs for suspicious activities, such as failed authentication events.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "A scheduled transfer was established via a scheduled task running 'malicious.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Cloud and Enterprise Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil', targeting organizations in the technology and finance sectors. The campaign employs sophisticated techniques to harvest credentials, inject malicious payloads, manipulate cloud configurations, and exfiltrate data, with a focus on evading detection and causing operational disruption. Blue teams are advised to review logs, monitor for unusual network traffic, and implement multi-factor authentication.",
+        "full_report_text": "On April 15, 2024, a mid-sized financial services company, 'SecureFin Corp.', reported anomalous activity in its hybrid cloud environment, involving unauthorized access and data exfiltration. Initial investigation revealed that the threat actors likely conducted reconnaissance to gather victim identity information [T1589] by sending phishing emails disguised as login notifications, which harvested employee credentials. System logs from the corporate email server showed a spike in failed login attempts from unknown IP addresses, though these were unrelated to the primary attack vector. The actors then used content injection [T1659] to embed a keylogger payload into encrypted network communications, exploiting a vulnerability in the company's VPN software to intercept and modify data in transit. Following this, they executed malicious commands via Launchctl [T1569.001] to replace a legitimate service with a malicious one, using 'launchctl unload /Library/LaunchDaemons/legitimate.plist && launchctl load /Library/LaunchDaemons/malicious.plist' to maintain persistence on macOS endpoints. Concurrently, the attackers deployed a malicious image [T1204.003] in the AWS environment, dropping an AMI with embedded credential harvesting tools disguised as legitimate monitoring software, which was then used to modify cloud compute configurations [T1578.005] by changing Google Cloud project quotas to enable higher resource consumption for data exfiltration activities. Background checks on SecureFin's cloud administrators revealed no prior security incidents, but this was irrelevant to the attack. The malware, identified as a variant of MarkiRAT, targeted password managers [T1555.005] to extract credentials from KeePass, while employing log enumeration [T1654] via PowerShell commands to query and filter System logs for suspicious activities, such as failed authentication events. Attackers further exploited Distributed Component Object Model [T1021.003] through Microsoft Excel's DCOM interface to run malicious code on remote machines, and used domain fronting [T1090.004] to manipulate HTTP Referer headers and obfuscate the destination of encrypted web traffic. A scheduled transfer [T1029] was established via a scheduled task running 'malicious.ps1' via PowerShell for periodic data exfiltration, which leveraged exfiltration over unencrypted non-C2 protocol [T1048.003] by generating email messages via SMTP containing information about newly infected victims, mimicking tactics of the Lazarus Group. Finally, the malware executed an OS exhaustion flood [T1499.001] through a SYN flood script targeting specific services to cause resource exhaustion, disrupting operations. Network traffic analysis indicated unusual spikes in outbound SMTP connections, but no correlation was found with legitimate business processes.",
+        "techniques_used": [
+            "T1589",
+            "T1659",
+            "T1569.001",
+            "T1204.003",
+            "T1578.005",
+            "T1555.005",
+            "T1654",
+            "T1021.003",
+            "T1090.004",
+            "T1029",
+            "T1048.003",
+            "T1499.001"
+        ]
+    }
+}

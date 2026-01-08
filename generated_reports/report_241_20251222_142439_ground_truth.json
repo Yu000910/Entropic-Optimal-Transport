@@ -1,0 +1,88 @@
+{
+    "report_id": "report_241",
+    "generated_at": "20251222_142439",
+    "scenario_target_ids": [
+        "T1592.002",
+        "T1585.001",
+        "T1608.004",
+        "T1189",
+        "T1059.011",
+        "T1542.002",
+        "T1547.002",
+        "T1021.007",
+        "T1560.001",
+        "T1205.001",
+        "T1071.002",
+        "T1485.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.002",
+        "T1585.001",
+        "T1608.004",
+        "T1189",
+        "T1059.011",
+        "T1542.002",
+        "T1547.002",
+        "T1021.007",
+        "T1560.001",
+        "T1205.001",
+        "T1071.002",
+        "T1485.001"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1059.011",
+        "T1585.001",
+        "T1542.002",
+        "T1021.007",
+        "T1205.001",
+        "T1189",
+        "T1560.001",
+        "T1547.002",
+        "T1485.001",
+        "T1592.002",
+        "T1608.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure organizations about the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) actor 'ShadowHydra'. This campaign, observed in a simulated environment, demonstrates a sophisticated attack chain aimed at compromising network integrity and exfiltrating sensitive data.\n\nBackground: The victim organization, 'GlobalEnergy Corp', is a mid-sized energy provider with operations across North America. Initial logs from their perimeter firewall showed unusual traffic spikes from IP addresses associated with known malicious actors, but no immediate alerts were triggered due to misconfigured thresholds. The company's IT infrastructure includes a mix of on-premises servers, cloud-based Microsoft 365 services, and legacy industrial control systems, with patch management lagging by approximately 30 days on average.\n\nAttack Narrative: ShadowHydra likely began by conducting reconnaissance to gather intelligence on target software and personnel. The actors collected HTTP server banners to determine web server versions and configurations while simultaneously creating fake social media accounts to monitor news, security trends, and potential targets. This information was used to identify vulnerabilities in publicly accessible websites.\n\nFor initial access, the adversary compromised legitimate websites frequented by energy sector employees, setting up drive-by targets that redirected traffic to host exploit kits, leading to drive-by compromises when users visited these sites. Upon successful exploitation, the actors employed PowerShell to execute malicious Lua scripts that established persistence by creating scheduled tasks and modifying registry keys.\n\nTo maintain long-term access, ShadowHydra patched legitimate device firmware, including that of network appliances, when it was downloaded and modified the Authentication Packages key to execute 'spyware.dll' at system boot. Lateral movement involved using stolen credentials to execute Connect-MgGraph, gaining access to Microsoft 365 services and data, while the tar utility was abused to create local archives of email data for exfiltration.\n\nCommand and control was established through a port knocking and handshake procedure to authenticate implants, with data exfiltration conducted via FTP protocols. Finally, to cover tracks, the malware used stolen credentials to execute PutLifecycleConfiguration, automatically emptying cloud storage buckets in a lifecycle-triggered deletion. System logs from affected servers showed anomalous file access patterns, but these were initially overlooked due to high volume during peak operational hours.\n\nRecommendations: Organizations should implement robust patch management, monitor for unusual network traffic, and enhance user awareness training to mitigate similar threats. This fictional scenario underscores the importance of proactive defense measures in critical infrastructure environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure organizations about the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) actor 'ShadowHydra'. This campaign, observed in a simulated environment, demonstrates a sophisticated attack chain aimed at compromising network integrity and exfiltrating sensitive data.\n\nBackground: The victim organization, 'GlobalEnergy Corp', is a mid-sized energy provider with operations across North America. Initial logs from their perimeter firewall showed unusual traffic spikes from IP addresses associated with known malicious actors, but no immediate alerts were triggered due to misconfigured thresholds. The company's IT infrastructure includes a mix of on-premises servers, cloud-based Microsoft 365 services, and legacy industrial control systems, with patch management lagging by approximately 30 days on average.\n\nAttack Narrative: ShadowHydra likely began by conducting reconnaissance to gather intelligence on target software and personnel. The actors collected HTTP server banners to determine web server versions and configurations [T1592.002] while simultaneously creating fake social media accounts to monitor news, security trends, and potential targets [T1585.001]. This information was used to identify vulnerabilities in publicly accessible websites.\n\nFor initial access, the adversary compromised legitimate websites frequented by energy sector employees, setting up drive-by targets [T1608.004] that redirected traffic to host exploit kits, leading to drive-by compromises [T1189] when users visited these sites. Upon successful exploitation, the actors employed PowerShell to execute malicious Lua scripts [T1059.011] that established persistence by creating scheduled tasks and modifying registry keys.\n\nTo maintain long-term access, ShadowHydra patched legitimate device firmware, including that of network appliances, when it was downloaded [T1542.002] and modified the Authentication Packages key to execute 'spyware.dll' at system boot [T1547.002]. Lateral movement involved using stolen credentials to execute Connect-MgGraph, gaining access to Microsoft 365 services and data [T1021.007], while the tar utility was abused to create local archives of email data for exfiltration [T1560.001].\n\nCommand and control was established through a port knocking and handshake procedure to authenticate implants [T1205.001], with data exfiltration conducted via FTP protocols [T1071.002]. Finally, to cover tracks, the malware used stolen credentials to execute PutLifecycleConfiguration, automatically emptying cloud storage buckets in a lifecycle-triggered deletion [T1485.001]. System logs from affected servers showed anomalous file access patterns, but these were initially overlooked due to high volume during peak operational hours.\n\nRecommendations: Organizations should implement robust patch management, monitor for unusual network traffic, and enhance user awareness training to mitigate similar threats. This fictional scenario underscores the importance of proactive defense measures in critical infrastructure environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] that redirected traffic to host exploit kits, leading to drive-by compromises when users visited these sites.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHydra' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowHydra', which targets critical infrastructure sectors through a multi-stage attack involving reconnaissance, initial access via compromised websites, persistence through firmware and authentication mechanisms, lateral movement to cloud services, data exfiltration using archiving utilities, and command and control via file transfer protocols, culminating in lifecycle-triggered deletion of evidence. The scenario is designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure organizations about the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) actor 'ShadowHydra'. This campaign, observed in a simulated environment, demonstrates a sophisticated attack chain aimed at compromising network integrity and exfiltrating sensitive data.\n\nBackground: The victim organization, 'GlobalEnergy Corp', is a mid-sized energy provider with operations across North America. Initial logs from their perimeter firewall showed unusual traffic spikes from IP addresses associated with known malicious actors, but no immediate alerts were triggered due to misconfigured thresholds. The company's IT infrastructure includes a mix of on-premises servers, cloud-based Microsoft 365 services, and legacy industrial control systems, with patch management lagging by approximately 30 days on average.\n\nAttack Narrative: ShadowHydra likely began by conducting reconnaissance to gather intelligence on target software and personnel. The actors collected HTTP server banners to determine web server versions and configurations [T1592.002] while simultaneously creating fake social media accounts to monitor news, security trends, and potential targets [T1585.001]. This information was used to identify vulnerabilities in publicly accessible websites.\n\nFor initial access, the adversary compromised legitimate websites frequented by energy sector employees, setting up drive-by targets [T1608.004] that redirected traffic to host exploit kits, leading to drive-by compromises [T1189] when users visited these sites. Upon successful exploitation, the actors employed PowerShell to execute malicious Lua scripts [T1059.011] that established persistence by creating scheduled tasks and modifying registry keys.\n\nTo maintain long-term access, ShadowHydra patched legitimate device firmware, including that of network appliances, when it was downloaded [T1542.002] and modified the Authentication Packages key to execute 'spyware.dll' at system boot [T1547.002]. Lateral movement involved using stolen credentials to execute Connect-MgGraph, gaining access to Microsoft 365 services and data [T1021.007], while the tar utility was abused to create local archives of email data for exfiltration [T1560.001].\n\nCommand and control was established through a port knocking and handshake procedure to authenticate implants [T1205.001], with data exfiltration conducted via FTP protocols [T1071.002]. Finally, to cover tracks, the malware used stolen credentials to execute PutLifecycleConfiguration, automatically emptying cloud storage buckets in a lifecycle-triggered deletion [T1485.001]. System logs from affected servers showed anomalous file access patterns, but these were initially overlooked due to high volume during peak operational hours.\n\nRecommendations: Organizations should implement robust patch management, monitor for unusual network traffic, and enhance user awareness training to mitigate similar threats. This fictional scenario underscores the importance of proactive defense measures in critical infrastructure environments.",
+        "techniques_used": [
+            "T1592.002",
+            "T1585.001",
+            "T1608.004",
+            "T1189",
+            "T1059.011",
+            "T1542.002",
+            "T1547.002",
+            "T1021.007",
+            "T1560.001",
+            "T1205.001",
+            "T1071.002",
+            "T1485.001"
+        ]
+    }
+}

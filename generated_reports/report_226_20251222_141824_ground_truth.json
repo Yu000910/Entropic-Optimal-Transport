@@ -1,0 +1,61 @@
+{
+    "report_id": "report_226",
+    "generated_at": "20251222_141824",
+    "scenario_target_ids": [
+        "T1587.001",
+        "T1091",
+        "T1559.002",
+        "T1134.003",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1587.001",
+        "T1091",
+        "T1559.002",
+        "T1134.003",
+        "T1071.004"
+    ],
+    "actual_found_ids": [
+        "T1589",
+        "T1587.001",
+        "T1091",
+        "T1134.003",
+        "T1071.004",
+        "T1559.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign, 'Mango Mirage', observed targeting energy companies in North America. This report is for blue team training purposes only, based on a simulated scenario involving techniques such as malware development, removable media replication, Dynamic Data Exchange, token impersonation, and DNS communications.\n\nBackground: The fictional victim organization, 'PowerGrid Dynamics', reported unusual network activity after an employee inadvertently inserted an infected USB drive into a workstation. Initial logs from the SIEM system showed multiple failed login attempts from unknown IP addresses, which were later determined to be unrelated noise. PowerGrid Dynamics operates critical infrastructure with a mix of legacy Windows 7 systems and modern Windows 10 endpoints, running proprietary SCADA software for grid management.\n\nAttack Narrative:\n- Initial Access: The adversary likely conducted reconnaissance to identify vulnerable entry points, though this phase is not explicitly detailed in the provided techniques. Attackers gained initial foothold by exploiting human error through infected removable media, as the Mango backdoor was deployed via USB devices to replicate across systems.\n- Execution: Upon insertion, the USB drive triggered a malicious OLE object that used Dynamic Data Exchange to execute embedded shellcode, which in turn launched the Mango backdoor while simultaneously establishing persistence through registry modifications.\n- Persistence and Privilege Escalation: The Mango backdoor employed token manipulation techniques, making and impersonating tokens from stolen credentials to escalate privileges and move laterally within the network, evading detection by mimicking legitimate user sessions.\n- Command and Control (C2): For C2 communications, the malware utilized DNS queries to blend with normal network traffic, exfiltrating data and receiving further instructions from attacker-controlled domains.\n- Impact: The campaign resulted in unauthorized access to SCADA systems, though no actual disruption occurred as this is a training scenario. Incident response teams at PowerGrid Dynamics contained the threat by isolating affected systems and implementing enhanced monitoring for USB usage and DNS anomalies.\n\nMitigation Recommendations: Organizations should disable unnecessary DDE features, restrict USB device usage, monitor DNS traffic for unusual patterns, and implement multi-factor authentication to reduce token-based attacks. Regular employee training on phishing and social engineering is also advised.\n\nNote: This advisory is fictional and intended solely for educational purposes to enhance defensive capabilities against similar real-world threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign, 'Mango Mirage', observed targeting energy companies in North America. This report is for blue team training purposes only, based on a simulated scenario involving techniques such as malware development, removable media replication, Dynamic Data Exchange, token impersonation, and DNS communications.\n\nBackground: The fictional victim organization, 'PowerGrid Dynamics', reported unusual network activity after an employee inadvertently inserted an infected USB drive into a workstation. Initial logs from the SIEM system showed multiple failed login attempts from unknown IP addresses, which were later determined to be unrelated noise. PowerGrid Dynamics operates critical infrastructure with a mix of legacy Windows 7 systems and modern Windows 10 endpoints, running proprietary SCADA software for grid management.\n\nAttack Narrative:\n- Initial Access: The adversary likely conducted reconnaissance [T1589] to identify vulnerable entry points, though this phase is not explicitly detailed in the provided techniques. Attackers gained initial foothold by exploiting human error through infected removable media, as the Mango backdoor was deployed via USB devices to replicate across systems [T1091].\n- Execution: Upon insertion, the USB drive triggered a malicious OLE object that used Dynamic Data Exchange [T1559.002] to execute embedded shellcode, which in turn launched the Mango backdoor [T1587.001] while simultaneously establishing persistence through registry modifications.\n- Persistence and Privilege Escalation: The Mango backdoor employed token manipulation techniques, making and impersonating tokens [T1134.003] from stolen credentials to escalate privileges and move laterally within the network, evading detection by mimicking legitimate user sessions.\n- Command and Control (C2): For C2 communications, the malware utilized DNS queries [T1071.004] to blend with normal network traffic, exfiltrating data and receiving further instructions from attacker-controlled domains.\n- Impact: The campaign resulted in unauthorized access to SCADA systems, though no actual disruption occurred as this is a training scenario. Incident response teams at PowerGrid Dynamics contained the threat by isolating affected systems and implementing enhanced monitoring for USB usage and DNS anomalies.\n\nMitigation Recommendations: Organizations should disable unnecessary DDE features, restrict USB device usage, monitor DNS traffic for unusual patterns, and implement multi-factor authentication to reduce token-based attacks. Regular employee training on phishing and social engineering is also advised.\n\nNote: This advisory is fictional and intended solely for educational purposes to enhance defensive capabilities against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\n- Initial Access: The adversary likely conducted reconnaissance to identify vulnerable entry points, though this phase is not explicitly detailed in the provided techniques.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Attackers gained initial foothold by exploiting human error through infected removable media, as the Mango backdoor was deployed via USB devices to replicate across systems.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Mango Mirage' Targeting Energy Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated 'Mango Mirage', targeting energy sector organizations to deploy the Mango backdoor via removable media and DNS-based C2, with observed use of Dynamic Data Exchange and token impersonation for lateral movement.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign, 'Mango Mirage', observed targeting energy companies in North America. This report is for blue team training purposes only, based on a simulated scenario involving techniques such as malware development, removable media replication, Dynamic Data Exchange, token impersonation, and DNS communications.\n\nBackground: The fictional victim organization, 'PowerGrid Dynamics', reported unusual network activity after an employee inadvertently inserted an infected USB drive into a workstation. Initial logs from the SIEM system showed multiple failed login attempts from unknown IP addresses, which were later determined to be unrelated noise. PowerGrid Dynamics operates critical infrastructure with a mix of legacy Windows 7 systems and modern Windows 10 endpoints, running proprietary SCADA software for grid management.\n\nAttack Narrative:\n- Initial Access: The adversary likely conducted reconnaissance [T1589] to identify vulnerable entry points, though this phase is not explicitly detailed in the provided techniques. Attackers gained initial foothold by exploiting human error through infected removable media, as the Mango backdoor was deployed via USB devices to replicate across systems [T1091].\n- Execution: Upon insertion, the USB drive triggered a malicious OLE object that used Dynamic Data Exchange [T1559.002] to execute embedded shellcode, which in turn launched the Mango backdoor [T1587.001] while simultaneously establishing persistence through registry modifications.\n- Persistence and Privilege Escalation: The Mango backdoor employed token manipulation techniques, making and impersonating tokens [T1134.003] from stolen credentials to escalate privileges and move laterally within the network, evading detection by mimicking legitimate user sessions.\n- Command and Control (C2): For C2 communications, the malware utilized DNS queries [T1071.004] to blend with normal network traffic, exfiltrating data and receiving further instructions from attacker-controlled domains.\n- Impact: The campaign resulted in unauthorized access to SCADA systems, though no actual disruption occurred as this is a training scenario. Incident response teams at PowerGrid Dynamics contained the threat by isolating affected systems and implementing enhanced monitoring for USB usage and DNS anomalies.\n\nMitigation Recommendations: Organizations should disable unnecessary DDE features, restrict USB device usage, monitor DNS traffic for unusual patterns, and implement multi-factor authentication to reduce token-based attacks. Regular employee training on phishing and social engineering is also advised.\n\nNote: This advisory is fictional and intended solely for educational purposes to enhance defensive capabilities against similar real-world threats.",
+        "techniques_used": [
+            "T1589",
+            "T1587.001",
+            "T1091",
+            "T1559.002",
+            "T1134.003",
+            "T1071.004"
+        ]
+    }
+}

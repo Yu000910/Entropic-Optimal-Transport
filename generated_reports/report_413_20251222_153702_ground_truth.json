@@ -1,0 +1,113 @@
+{
+    "report_id": "report_413",
+    "generated_at": "20251222_153702",
+    "scenario_target_ids": [
+        "T1585",
+        "T1195",
+        "T1059.005",
+        "T1556",
+        "T1562.008",
+        "T1556.007",
+        "T1056.004",
+        "T1528",
+        "T1526",
+        "T1213.002",
+        "T1090",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585",
+        "T1195",
+        "T1059.005",
+        "T1556",
+        "T1562.008",
+        "T1556.007",
+        "T1056.004",
+        "T1528",
+        "T1526",
+        "T1213.002",
+        "T1090",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1496.001",
+        "T1585",
+        "T1528",
+        "T1059.005",
+        "T1526",
+        "T1213.002",
+        "T1090",
+        "T1056.004",
+        "T1195",
+        "T1556",
+        "T1562.008",
+        "T1556.007"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics in a fictional scenario. This report is based on simulated activity attributed to the group 'CloudShadow,' which has been observed targeting entities in the financial and technology sectors since early 2023. Background analysis indicates that the group operates primarily from Eastern European regions, though attribution remains unconfirmed for training purposes.\n\nInitial Access: The actors established fake LinkedIn profiles using AI-generated images to appear authentic, likely as part of social engineering efforts to gain initial trust. Subsequently, they compromised a software development supply chain by modifying a compiler executable to inject backdoor code into all compiled applications, enabling widespread initial access. System logs from affected endpoints show anomalous compilation timestamps, but these were initially overlooked during routine monitoring.\n\nExecution and Persistence: Upon execution, the adversary employed Visual Basic 6 (VB6) payloads to deploy malware that hooked credential APIs for stealing browser traffic data while simultaneously using PsExec to access and alter the LSASS process for credential theft. To maintain persistent cloud access, they modified the AzureADConnectAuthenticationAgentService registry keys, and disabled CloudTrail multi-region logging to limit detection coverage in AWS environments. Network traffic analysis revealed sporadic connections to unknown IPs, but these were masked by proxy redirections through Cloudflare CDN infrastructure.\n\nPrivilege Escalation and Discovery: The malware leveraged container privileges to read and collect authentication tokens from configuration files, and used tools like AADInternals to enumerate information about cloud services such as Office 365 and SharePoint instances. The actors then exploited SharePoint permissions to access and collect strategic planning documents, with internal audits later identifying unauthorized access logs that were not flagged in real-time.\n\nImpact and Exfiltration: Finally, the trojan downloaded and executed XMRig miner software, hijacking system resources for Monero mining, causing significant performance degradation on affected servers. Incident response teams noted increased CPU usage patterns, but initial investigations attributed this to legitimate workload spikes. No data exfiltration was confirmed in this simulation, though the techniques used suggest potential for further exploitation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics in a fictional scenario. This report is based on simulated activity attributed to the group 'CloudShadow,' which has been observed targeting entities in the financial and technology sectors since early 2023. Background analysis indicates that the group operates primarily from Eastern European regions, though attribution remains unconfirmed for training purposes.\n\nInitial Access: The actors established fake LinkedIn profiles using AI-generated images to appear authentic, likely as part of social engineering efforts to gain initial trust [T1585]. Subsequently, they compromised a software development supply chain by modifying a compiler executable to inject backdoor code into all compiled applications, enabling widespread initial access [T1195]. System logs from affected endpoints show anomalous compilation timestamps, but these were initially overlooked during routine monitoring.\n\nExecution and Persistence: Upon execution, the adversary employed Visual Basic 6 (VB6) payloads [T1059.005] to deploy malware that hooked credential APIs [T1056.004] for stealing browser traffic data while simultaneously using PsExec to access and alter the LSASS process for credential theft [T1556]. To maintain persistent cloud access, they modified the AzureADConnectAuthenticationAgentService registry keys [T1556.007], and disabled CloudTrail multi-region logging to limit detection coverage in AWS environments [T1562.008]. Network traffic analysis revealed sporadic connections to unknown IPs, but these were masked by proxy redirections through Cloudflare CDN infrastructure [T1090].\n\nPrivilege Escalation and Discovery: The malware leveraged container privileges to read and collect authentication tokens from configuration files [T1528], and used tools like AADInternals to enumerate information about cloud services such as Office 365 and SharePoint instances [T1526]. The actors then exploited SharePoint permissions to access and collect strategic planning documents [T1213.002], with internal audits later identifying unauthorized access logs that were not flagged in real-time.\n\nImpact and Exfiltration: Finally, the trojan downloaded and executed XMRig miner software, hijacking system resources for Monero mining [T1496.001], causing significant performance degradation on affected servers. Incident response teams noted increased CPU usage patterns, but initial investigations attributed this to legitimate workload spikes. No data exfiltration was confirmed in this simulation, though the techniques used suggest potential for further exploitation.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors established fake LinkedIn profiles using AI-generated images to appear authentic, likely as part of social engineering efforts to gain initial trust.",
+            "technique_id": "T1585",
+            "technique_name": "Establish Accounts"
+        },
+        {
+            "sentence": "Subsequently, they compromised a software development supply chain by modifying a compiler executable to inject backdoor code into all compiled applications, enabling widespread initial access.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "004] for stealing browser traffic data while simultaneously using PsExec to access and alter the LSASS process for credential theft.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        },
+        {
+            "sentence": "Network traffic analysis revealed sporadic connections to unknown IPs, but these were masked by proxy redirections through Cloudflare CDN infrastructure.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        },
+        {
+            "sentence": "Privilege Escalation and Discovery: The malware leveraged container privileges to read and collect authentication tokens from configuration files, and used tools like AADInternals to enumerate information about cloud services such as Office 365 and SharePoint instances.",
+            "technique_id": "T1528",
+            "technique_name": "Steal Application Access Token"
+        },
+        {
+            "sentence": "Privilege Escalation and Discovery: The malware leveraged container privileges to read and collect authentication tokens from configuration files, and used tools like AADInternals to enumerate information about cloud services such as Office 365 and SharePoint instances.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'CloudShadow,' targeting organizations with hybrid cloud infrastructures. The campaign involves supply chain compromise, credential theft, and resource hijacking for cryptomining, leveraging techniques such as Visual Basic payloads and cloud service discovery to evade detection and maintain persistence.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics in a fictional scenario. This report is based on simulated activity attributed to the group 'CloudShadow,' which has been observed targeting entities in the financial and technology sectors since early 2023. Background analysis indicates that the group operates primarily from Eastern European regions, though attribution remains unconfirmed for training purposes.\n\nInitial Access: The actors established fake LinkedIn profiles using AI-generated images to appear authentic, likely as part of social engineering efforts to gain initial trust [T1585]. Subsequently, they compromised a software development supply chain by modifying a compiler executable to inject backdoor code into all compiled applications, enabling widespread initial access [T1195]. System logs from affected endpoints show anomalous compilation timestamps, but these were initially overlooked during routine monitoring.\n\nExecution and Persistence: Upon execution, the adversary employed Visual Basic 6 (VB6) payloads [T1059.005] to deploy malware that hooked credential APIs [T1056.004] for stealing browser traffic data while simultaneously using PsExec to access and alter the LSASS process for credential theft [T1556]. To maintain persistent cloud access, they modified the AzureADConnectAuthenticationAgentService registry keys [T1556.007], and disabled CloudTrail multi-region logging to limit detection coverage in AWS environments [T1562.008]. Network traffic analysis revealed sporadic connections to unknown IPs, but these were masked by proxy redirections through Cloudflare CDN infrastructure [T1090].\n\nPrivilege Escalation and Discovery: The malware leveraged container privileges to read and collect authentication tokens from configuration files [T1528], and used tools like AADInternals to enumerate information about cloud services such as Office 365 and SharePoint instances [T1526]. The actors then exploited SharePoint permissions to access and collect strategic planning documents [T1213.002], with internal audits later identifying unauthorized access logs that were not flagged in real-time.\n\nImpact and Exfiltration: Finally, the trojan downloaded and executed XMRig miner software, hijacking system resources for Monero mining [T1496.001], causing significant performance degradation on affected servers. Incident response teams noted increased CPU usage patterns, but initial investigations attributed this to legitimate workload spikes. No data exfiltration was confirmed in this simulation, though the techniques used suggest potential for further exploitation.",
+        "techniques_used": [
+            "T1585",
+            "T1195",
+            "T1059.005",
+            "T1556",
+            "T1562.008",
+            "T1556.007",
+            "T1056.004",
+            "T1528",
+            "T1526",
+            "T1213.002",
+            "T1090",
+            "T1496.001"
+        ]
+    }
+}

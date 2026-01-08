@@ -1,0 +1,113 @@
+{
+    "report_id": "report_110",
+    "generated_at": "20251222_120025",
+    "scenario_target_ids": [
+        "T1598.001",
+        "T1593.001",
+        "T1583.008",
+        "T1588.002",
+        "T1583.006",
+        "T1195",
+        "T1053.002",
+        "T1136.003",
+        "T1003",
+        "T1550.003",
+        "T1001",
+        "T1052.001",
+        "T1048.003",
+        "T1657"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1598.001",
+        "T1593.001",
+        "T1583.008",
+        "T1588.002",
+        "T1583.006",
+        "T1195",
+        "T1053.002",
+        "T1136.003",
+        "T1003",
+        "T1550.003",
+        "T1001",
+        "T1052.001",
+        "T1048.003",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1583.008",
+        "T1195",
+        "T1048.003",
+        "T1598.001",
+        "T1136.003",
+        "T1550.003",
+        "T1053.002",
+        "T1588.002",
+        "T1593.001",
+        "T1052.001",
+        "T1657",
+        "T1583.006",
+        "T1001",
+        "T1003"
+    ],
+    "clean_text": "On June 15, 2024, a mid-sized financial services firm, 'SecureFin Corp.', reported anomalous activity in its AWS environment, including unauthorized IAM policy modifications and data exfiltration over HTTP. Investigation revealed a sophisticated attack chain initiated weeks prior. The actors likely conducted reconnaissance by establishing counterfeit professional networking profiles to harvest corporate contact details and scraping publicly available information from social media platforms. Subsequently, they deployed malvertising campaigns using malicious HTML5 code to exploit browser vulnerabilities without user interaction, while simultaneously distributing tools like Impacket and Mimikatz via file sharing services such as OneHub and TeraBox. The campaign escalated through a supply chain compromise, where malicious code was injected into a popular open-source library dependency used by thousands of applications. Upon execution, the adversary employed the 'at' command to schedule tasks running self-extracting RAR archives that installed backdoors on network victims and used AWS CLI to modify IAM policies, granting persistent access to cloud storage buckets. For lateral movement, they leveraged Mimikatz to dump Kerberos tickets and NTLM hashes from memory and injected forged Kerberos tickets to gain unauthorized access to the domain controller. Data obfuscation was achieved by utilizing base64 -d decoding to hide command and control traffic from network monitoring tools, with exfiltration occurring over USB via files like thumb.dd on connected drives and over unencrypted non-C2 protocols using HTTP POST requests. The campaign concluded with financial theft, where attackers used a compromised vendor email account to request payments to fraudulent bank accounts. System logs from SecureFin Corp. showed increased AWS API calls at unusual hours, but no immediate alerts were triggered due to misconfigured monitoring rules. The company's background includes recent mergers, which may have introduced security gaps in integrated systems.",
+    "tagged_text": "On June 15, 2024, a mid-sized financial services firm, 'SecureFin Corp.', reported anomalous activity in its AWS environment, including unauthorized IAM policy modifications and data exfiltration over HTTP. Investigation revealed a sophisticated attack chain initiated weeks prior. The actors likely conducted reconnaissance by establishing counterfeit professional networking profiles to harvest corporate contact details [T1598.001] and scraping publicly available information from social media platforms [T1593.001]. Subsequently, they deployed malvertising campaigns using malicious HTML5 code to exploit browser vulnerabilities without user interaction [T1583.008], while simultaneously distributing tools like Impacket and Mimikatz via file sharing services such as OneHub and TeraBox [T1583.006] [T1588.002]. The campaign escalated through a supply chain compromise, where malicious code was injected into a popular open-source library dependency used by thousands of applications [T1195]. Upon execution, the adversary employed the 'at' command to schedule tasks running self-extracting RAR archives that installed backdoors on network victims [T1053.002] and used AWS CLI to modify IAM policies, granting persistent access to cloud storage buckets [T1136.003]. For lateral movement, they leveraged Mimikatz to dump Kerberos tickets and NTLM hashes from memory [T1003] and injected forged Kerberos tickets to gain unauthorized access to the domain controller [T1550.003]. Data obfuscation was achieved by utilizing base64 -d decoding to hide command and control traffic from network monitoring tools [T1001], with exfiltration occurring over USB via files like thumb.dd on connected drives [T1052.001] and over unencrypted non-C2 protocols using HTTP POST requests [T1048.003]. The campaign concluded with financial theft, where attackers used a compromised vendor email account to request payments to fraudulent bank accounts [T1657]. System logs from SecureFin Corp. showed increased AWS API calls at unusual hours, but no immediate alerts were triggered due to misconfigured monitoring rules. The company's background includes recent mergers, which may have introduced security gaps in integrated systems.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign escalated through a supply chain compromise, where malicious code was injected into a popular open-source library dependency used by thousands of applications.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "For lateral movement, they leveraged Mimikatz to dump Kerberos tickets and NTLM hashes from memory and injected forged Kerberos tickets to gain unauthorized access to the domain controller [T1550.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "Data obfuscation was achieved by utilizing base64 -d decoding to hide command and control traffic from network monitoring tools, with exfiltration occurring over USB via files like thumb.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        },
+        {
+            "sentence": "The campaign concluded with financial theft, where attackers used a compromised vendor email account to request payments to fraudulent bank accounts.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentHarvest' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'SilentHarvest', targeting financial institutions through a multi-vector attack involving social engineering, supply chain compromise, and cloud exploitation. The campaign leverages spearphishing, malvertising, and credential theft for initial access and lateral movement, culminating in data exfiltration and financial theft. Blue teams should review logs for suspicious cloud activity, scheduled tasks, and anomalous network traffic to detect similar tactics.",
+        "full_report_text": "On June 15, 2024, a mid-sized financial services firm, 'SecureFin Corp.', reported anomalous activity in its AWS environment, including unauthorized IAM policy modifications and data exfiltration over HTTP. Investigation revealed a sophisticated attack chain initiated weeks prior. The actors likely conducted reconnaissance by establishing counterfeit professional networking profiles to harvest corporate contact details [T1598.001] and scraping publicly available information from social media platforms [T1593.001]. Subsequently, they deployed malvertising campaigns using malicious HTML5 code to exploit browser vulnerabilities without user interaction [T1583.008], while simultaneously distributing tools like Impacket and Mimikatz via file sharing services such as OneHub and TeraBox [T1583.006] [T1588.002]. The campaign escalated through a supply chain compromise, where malicious code was injected into a popular open-source library dependency used by thousands of applications [T1195]. Upon execution, the adversary employed the 'at' command to schedule tasks running self-extracting RAR archives that installed backdoors on network victims [T1053.002] and used AWS CLI to modify IAM policies, granting persistent access to cloud storage buckets [T1136.003]. For lateral movement, they leveraged Mimikatz to dump Kerberos tickets and NTLM hashes from memory [T1003] and injected forged Kerberos tickets to gain unauthorized access to the domain controller [T1550.003]. Data obfuscation was achieved by utilizing base64 -d decoding to hide command and control traffic from network monitoring tools [T1001], with exfiltration occurring over USB via files like thumb.dd on connected drives [T1052.001] and over unencrypted non-C2 protocols using HTTP POST requests [T1048.003]. The campaign concluded with financial theft, where attackers used a compromised vendor email account to request payments to fraudulent bank accounts [T1657]. System logs from SecureFin Corp. showed increased AWS API calls at unusual hours, but no immediate alerts were triggered due to misconfigured monitoring rules. The company's background includes recent mergers, which may have introduced security gaps in integrated systems.",
+        "techniques_used": [
+            "T1598.001",
+            "T1593.001",
+            "T1583.008",
+            "T1588.002",
+            "T1583.006",
+            "T1195",
+            "T1053.002",
+            "T1136.003",
+            "T1003",
+            "T1550.003",
+            "T1001",
+            "T1052.001",
+            "T1048.003",
+            "T1657"
+        ]
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "report_id": "report_735",
+    "generated_at": "20251223_105313",
+    "scenario_target_ids": [
+        "T1592.001",
+        "T1593.002",
+        "T1593",
+        "T1133",
+        "T1053.005",
+        "T1059.004",
+        "T1037.005",
+        "T1547.006",
+        "T1211",
+        "T1021.002",
+        "T1219.001",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592.001",
+        "T1593.002",
+        "T1593",
+        "T1133",
+        "T1053.005",
+        "T1059.004",
+        "T1037.005",
+        "T1547.006",
+        "T1211",
+        "T1021.002",
+        "T1219.001",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1547.006",
+        "T1052",
+        "T1211",
+        "T1593.002",
+        "T1592.001",
+        "T1133",
+        "T1059.004",
+        "T1021.002",
+        "T1593",
+        "T1053.005",
+        "T1219.001",
+        "T1037.005"
+    ],
+    "clean_text": "On October 15, 2023, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network activity originating from external IP addresses. GridSecure Inc., a mid-sized provider operating in the northeastern U.S., reported unusual spikes in outbound traffic to unknown domains during routine log analysis. Initial investigation revealed that the adversary likely conducted reconnaissance by using nmap.exe with service detection to enumerate hardware services on remote hosts and conducted a Google search for 'GridSecure Inc. partner list' to map business relationships while simultaneously querying business directories to gather organizational structure details. The actors then exploited external remote services by installing a modified Dropbear SSH client as a backdoor, reminiscent of the 2015 Ukraine Electric Power Attack. Once access was established, the malware employed the Windows `SilentCleanup` scheduled task to enable payload execution and used Unix shell scripting to execute additional payloads. For persistence, the threat actors created a malicious executable in /Library/StartupItems and utilized kernel modules to maintain access. To evade detection, a PowerShell command was executed to stop critical security services on the endpoint. Lateral movement was achieved by using SMB to drop a Cobalt Strike Beacon on a domain controller, and command and control was maintained through Visual Studio Code's remote development features for persistent access. Finally, the malware automatically transferred sensitive trade secrets to a connected removable media device. Logs from GridSecure's firewall showed multiple failed login attempts prior to the incident, but these were initially dismissed as noise.",
+    "tagged_text": "On October 15, 2023, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network activity originating from external IP addresses. GridSecure Inc., a mid-sized provider operating in the northeastern U.S., reported unusual spikes in outbound traffic to unknown domains during routine log analysis. Initial investigation revealed that the adversary likely conducted reconnaissance by using nmap.exe with service detection to enumerate hardware services on remote hosts [T1592.001] and conducted a Google search for 'GridSecure Inc. partner list' to map business relationships [T1593.002] while simultaneously querying business directories to gather organizational structure details [T1593]. The actors then exploited external remote services by installing a modified Dropbear SSH client as a backdoor, reminiscent of the 2015 Ukraine Electric Power Attack [T1133]. Once access was established, the malware employed the Windows `SilentCleanup` scheduled task to enable payload execution [T1053.005] and used Unix shell scripting to execute additional payloads [T1059.004]. For persistence, the threat actors created a malicious executable in /Library/StartupItems [T1037.005] and utilized kernel modules to maintain access [T1547.006]. To evade detection, a PowerShell command was executed to stop critical security services on the endpoint [T1211]. Lateral movement was achieved by using SMB to drop a Cobalt Strike Beacon on a domain controller [T1021.002], and command and control was maintained through Visual Studio Code's remote development features for persistent access [T1219.001]. Finally, the malware automatically transferred sensitive trade secrets to a connected removable media device [T1052]. Logs from GridSecure's firewall showed multiple failed login attempts prior to the incident, but these were initially dismissed as noise.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] while simultaneously querying business directories to gather organizational structure details.",
+            "technique_id": "T1593",
+            "technique_name": "Search Open Websites/Domains"
+        },
+        {
+            "sentence": "The actors then exploited external remote services by installing a modified Dropbear SSH client as a backdoor, reminiscent of the 2015 Ukraine Electric Power Attack.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "To evade detection, a PowerShell command was executed to stop critical security services on the endpoint.",
+            "technique_id": "T1211",
+            "technique_name": "Exploitation for Defense Evasion"
+        },
+        {
+            "sentence": "Finally, the malware automatically transferred sensitive trade secrets to a connected removable media device.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMend' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowMend', targeting critical infrastructure sectors. The campaign involves reconnaissance, initial access via external services, execution through scheduled tasks and shell scripts, persistence via kernel modules and startup items, defense evasion by exploiting security services, lateral movement using SMB shares, command and control via IDE tunneling, and exfiltration over physical media. Blue teams are advised to review logs and implement mitigations.",
+        "full_report_text": "On October 15, 2023, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network activity originating from external IP addresses. GridSecure Inc., a mid-sized provider operating in the northeastern U.S., reported unusual spikes in outbound traffic to unknown domains during routine log analysis. Initial investigation revealed that the adversary likely conducted reconnaissance by using nmap.exe with service detection to enumerate hardware services on remote hosts [T1592.001] and conducted a Google search for 'GridSecure Inc. partner list' to map business relationships [T1593.002] while simultaneously querying business directories to gather organizational structure details [T1593]. The actors then exploited external remote services by installing a modified Dropbear SSH client as a backdoor, reminiscent of the 2015 Ukraine Electric Power Attack [T1133]. Once access was established, the malware employed the Windows `SilentCleanup` scheduled task to enable payload execution [T1053.005] and used Unix shell scripting to execute additional payloads [T1059.004]. For persistence, the threat actors created a malicious executable in /Library/StartupItems [T1037.005] and utilized kernel modules to maintain access [T1547.006]. To evade detection, a PowerShell command was executed to stop critical security services on the endpoint [T1211]. Lateral movement was achieved by using SMB to drop a Cobalt Strike Beacon on a domain controller [T1021.002], and command and control was maintained through Visual Studio Code's remote development features for persistent access [T1219.001]. Finally, the malware automatically transferred sensitive trade secrets to a connected removable media device [T1052]. Logs from GridSecure's firewall showed multiple failed login attempts prior to the incident, but these were initially dismissed as noise.",
+        "techniques_used": [
+            "T1592.001",
+            "T1593.002",
+            "T1593",
+            "T1133",
+            "T1053.005",
+            "T1059.004",
+            "T1037.005",
+            "T1547.006",
+            "T1211",
+            "T1021.002",
+            "T1219.001",
+            "T1052"
+        ]
+    }
+}

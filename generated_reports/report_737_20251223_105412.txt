@@ -1,0 +1,19 @@
+Crimson Serpent, a fictional advanced persistent threat (APT) group, has been observed targeting financial organizations in a simulated campaign designed for cybersecurity training. The group operates with a focus on stealth and persistence, leveraging multiple attack vectors to compromise systems and exfiltrate sensitive data.
+
+**Initial Access and Reconnaissance**
+The campaign begins with actors conducting reconnaissance by enumerating compromised web application resources to identify additional endpoints and resources linked to victim-owned websites [T1594]. Concurrently, they craft spearphishing emails with hyperlinks designed to trick recipients into revealing account credentials [T1598.003], and use social media channels to spearphish victims via services [T1566.003]. Upon successful phishing, the actors gain initial foothold into the network.
+
+**Execution and Persistence**
+Once inside, the adversary employs AppleScript [T1059.002] to inject malicious JavaScript into browsers while executing processes in hidden windows [T1564.003] to avoid detection. They install and configure dnsmasq to act as a local DNS server for covert communication [T1583.002] and deploy malicious firmware on network interface cards to enable persistent command and control [T1542.002]. Additionally, the malware utilizes LoadLibrary to load shared network communication modules for data exfiltration [T1129].
+
+**Credential Access and Discovery**
+The actors collect stored passwords from Windows Credential Manager to access local user accounts [T1078.003] and use tools like CrackMapExec to discover password policies applied to target systems [T1201]. They also execute Outlook.exe to export email messages to local PST files for email collection [T1114] and run commands like 'forfiles /p D:\ /s /m *.docx' to find Word documents on external drives for data from removable media [T1025].
+
+**Lateral Movement and Exfiltration**
+For lateral movement, the malware uses DHCP protocol to redirect client traffic through an attacker-controlled proxy via DHCP spoofing [T1557.003]. Data exfiltration is achieved by posting stolen credentials to webhook endpoints using HTTP POST requests over exfiltration via webhook [T1567.004], while botnet malware hijacks network resources for large-scale data exfiltration through bandwidth hijacking [T1496.002]. To mask traffic, actors register suspicious DNS A records for domains like 'cdn-service.org' using fast flux DNS [T1568.001].
+
+**Impact**
+The campaign culminates in a denial-of-service attack where scripts execute ACK floods against database servers, consuming processing capacity through OS exhaustion floods [T1499.001]. This disrupts operations and highlights the need for robust incident response.
+
+**Mitigation Recommendations**
+Blue teams should implement multi-factor authentication, monitor for unusual DNS and network traffic, and conduct regular security awareness training to counter spearphishing attempts. Logs from this scenario include routine system updates and user login attempts, which are not indicative of malicious activity but should be reviewed for anomalies.

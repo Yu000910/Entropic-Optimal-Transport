@@ -1,0 +1,88 @@
+{
+    "report_id": "report_708",
+    "generated_at": "20251223_104213",
+    "scenario_target_ids": [
+        "T1583.001",
+        "T1583.002",
+        "T1133",
+        "T1659",
+        "T1106",
+        "T1056.003",
+        "T1572",
+        "T1008"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1583.001",
+        "T1583.002",
+        "T1133",
+        "T1659",
+        "T1106",
+        "T1056.003",
+        "T1572",
+        "T1008"
+    ],
+    "actual_found_ids": [
+        "T1572",
+        "T1008",
+        "T1106",
+        "T1659",
+        "T1056.003",
+        "T1133",
+        "T1583.002",
+        "T1583.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The simulated group, dubbed 'Cobalt Serpent', has been observed targeting organizations in the financial and telecommunications sectors over the past six months. Initial analysis suggests the actors conduct reconnaissance on target networks, but this report focuses on post-initial access behaviors for defensive training. Background: Cobalt Serpent is believed to operate out of a fictional region, with motivations centered on espionage and financial gain. Their campaigns often involve multi-stage attacks with high operational security. System logs from a simulated victim environment show unusual DNS queries and VPN connections originating from IP addresses associated with known malicious infrastructure, though some of these logs may be noise from legitimate user activity or misconfigured internal services.\n\nIn the Initial Access phase, the actors registered multiple domains to host malicious payloads and built adversary-in-the-middle DNS servers to impersonate legitimate services, which were later used to capture credentials. They then exploited external remote services, such as VPN gateways including SoftEther VPN, to access and maintain persistence in victim environments. During Execution, the adversary employed content injection by exploiting a vulnerable ISP infrastructure to insert malicious advertisements into web traffic, while simultaneously using the Windows API ObtainUserAgentString to obtain the User-Agent from compromised hosts for C2 communication and leveraging various, often lesser-known, functions for discovery and process injection. For Persistence, they implemented web portal capture with tools like the IceApple OWA credential logger to monitor for OWA authentication requests and log credentials. In Command and Control, the actors utilized protocol tunneling through open-source tools such as ngrok and custom tool SSHMinion for communication and RDP activity on compromised hosts, and established fallback channels with capabilities like Cardinal RAT to communicate over multiple C2 host and port combinations. Additional noise in logs includes routine system updates and false positives from legacy antivirus software, which are not indicative of malicious activity.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The simulated group, dubbed 'Cobalt Serpent', has been observed targeting organizations in the financial and telecommunications sectors over the past six months. Initial analysis suggests the actors conduct reconnaissance on target networks, but this report focuses on post-initial access behaviors for defensive training. Background: Cobalt Serpent is believed to operate out of a fictional region, with motivations centered on espionage and financial gain. Their campaigns often involve multi-stage attacks with high operational security. System logs from a simulated victim environment show unusual DNS queries and VPN connections originating from IP addresses associated with known malicious infrastructure, though some of these logs may be noise from legitimate user activity or misconfigured internal services.\n\nIn the Initial Access phase, the actors registered multiple domains [T1583.001] to host malicious payloads and built adversary-in-the-middle DNS servers [T1583.002] to impersonate legitimate services, which were later used to capture credentials. They then exploited external remote services [T1133], such as VPN gateways including SoftEther VPN, to access and maintain persistence in victim environments. During Execution, the adversary employed content injection [T1659] by exploiting a vulnerable ISP infrastructure to insert malicious advertisements into web traffic, while simultaneously using the Windows API ObtainUserAgentString [T1106] to obtain the User-Agent from compromised hosts for C2 communication and leveraging various, often lesser-known, functions for discovery and process injection. For Persistence, they implemented web portal capture [T1056.003] with tools like the IceApple OWA credential logger to monitor for OWA authentication requests and log credentials. In Command and Control, the actors utilized protocol tunneling [T1572] through open-source tools such as ngrok and custom tool SSHMinion for communication and RDP activity on compromised hosts, and established fallback channels [T1008] with capabilities like Cardinal RAT to communicate over multiple C2 host and port combinations. Additional noise in logs includes routine system updates and false positives from legacy antivirus software, which are not indicative of malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then exploited external remote services, such as VPN gateways including SoftEther VPN, to access and maintain persistence in victim environments.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "During Execution, the adversary employed content injection by exploiting a vulnerable ISP infrastructure to insert malicious advertisements into web traffic, while simultaneously using the Windows API ObtainUserAgentString to obtain the User-Agent from compromised hosts for C2 communication and leveraging various, often lesser-known, functions for discovery and process injection.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "During Execution, the adversary employed content injection by exploiting a vulnerable ISP infrastructure to insert malicious advertisements into web traffic, while simultaneously using the Windows API ObtainUserAgentString to obtain the User-Agent from compromised hosts for C2 communication and leveraging various, often lesser-known, functions for discovery and process injection.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "In Command and Control, the actors utilized protocol tunneling through open-source tools such as ngrok and custom tool SSHMinion for communication and RDP activity on compromised hosts, and established fallback channels with capabilities like Cardinal RAT to communicate over multiple C2 host and port combinations.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "In Command and Control, the actors utilized protocol tunneling through open-source tools such as ngrok and custom tool SSHMinion for communication and RDP activity on compromised hosts, and established fallback channels with capabilities like Cardinal RAT to communicate over multiple C2 host and port combinations.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional APT Group 'Cobalt Serpent' Targeting Financial and Telecommunications Sectors",
+        "summary": "This advisory details a fictional, educational campaign by the simulated advanced persistent threat (APT) group 'Cobalt Serpent' targeting financial institutions and telecommunications providers. The campaign involves domain and DNS server acquisition, exploitation of external remote services, content injection, and credential theft via web portal capture, with techniques adapted from real-world threat actors for training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The simulated group, dubbed 'Cobalt Serpent', has been observed targeting organizations in the financial and telecommunications sectors over the past six months. Initial analysis suggests the actors conduct reconnaissance on target networks, but this report focuses on post-initial access behaviors for defensive training. Background: Cobalt Serpent is believed to operate out of a fictional region, with motivations centered on espionage and financial gain. Their campaigns often involve multi-stage attacks with high operational security. System logs from a simulated victim environment show unusual DNS queries and VPN connections originating from IP addresses associated with known malicious infrastructure, though some of these logs may be noise from legitimate user activity or misconfigured internal services.\n\nIn the Initial Access phase, the actors registered multiple domains [T1583.001] to host malicious payloads and built adversary-in-the-middle DNS servers [T1583.002] to impersonate legitimate services, which were later used to capture credentials. They then exploited external remote services [T1133], such as VPN gateways including SoftEther VPN, to access and maintain persistence in victim environments. During Execution, the adversary employed content injection [T1659] by exploiting a vulnerable ISP infrastructure to insert malicious advertisements into web traffic, while simultaneously using the Windows API ObtainUserAgentString [T1106] to obtain the User-Agent from compromised hosts for C2 communication and leveraging various, often lesser-known, functions for discovery and process injection. For Persistence, they implemented web portal capture [T1056.003] with tools like the IceApple OWA credential logger to monitor for OWA authentication requests and log credentials. In Command and Control, the actors utilized protocol tunneling [T1572] through open-source tools such as ngrok and custom tool SSHMinion for communication and RDP activity on compromised hosts, and established fallback channels [T1008] with capabilities like Cardinal RAT to communicate over multiple C2 host and port combinations. Additional noise in logs includes routine system updates and false positives from legacy antivirus software, which are not indicative of malicious activity.",
+        "techniques_used": [
+            "T1583.001",
+            "T1583.002",
+            "T1133",
+            "T1659",
+            "T1106",
+            "T1056.003",
+            "T1572",
+            "T1008"
+        ]
+    }
+}

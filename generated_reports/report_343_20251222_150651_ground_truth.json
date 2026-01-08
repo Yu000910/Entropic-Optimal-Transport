@@ -1,0 +1,92 @@
+{
+    "report_id": "report_343",
+    "generated_at": "20251222_150651",
+    "scenario_target_ids": [
+        "T1608.002",
+        "T1199",
+        "T1053",
+        "T1205.002",
+        "T1134",
+        "T1095"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1199",
+        "T1608.002",
+        "T1059.001",
+        "T1053",
+        "T1112",
+        "T1205.002",
+        "T1134",
+        "T1095"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1608.002",
+        "T1199",
+        "T1112",
+        "T1205.002",
+        "T1134",
+        "T1589",
+        "T1053",
+        "T1059.001"
+    ],
+    "clean_text": "On 2024-10-01, security analysts at a fictional energy company, GridPower Inc., detected anomalous network traffic from a third-party vendor account, leading to the discovery of the 'ShadowMimic' campaign. Initial analysis revealed that the actors likely conducted reconnaissance to identify weak points in delegated administrator access. The adversary exploited a trusted relationship with a third-party IT management vendor to gain initial administrative privileges, allowing them to upload PsExec.exe to a shared network drive for lateral movement across Windows systems. Once established, they used PowerShell to deploy the 'CryptoLock' ransomware, which employed schtasks.exe to create a scheduled task that executes the encryption routine every 12 hours, while simultaneously modifying registry keys to maintain persistence. Additionally, the actors implanted the 'PITHOOK' malware, which creates a domain socket at `/data/runtime/cockpit/wd.fd` for PITSTOP to listen and evaluate incoming commands using socket filters, enabling command-and-control (C2) communication over TLS after duplicating the socket. To escalate privileges, a malicious script called ImpersonateLoggedOnUser to manipulate access tokens, assuming the security context of a privileged domain admin account. For data exfiltration, the 'SnappyTCP' tool was deployed, spawning a reverse TCP shell following an HTTP-based negotiation to bypass network monitoring. Incident responders noted irrelevant system logs showing routine backup failures and increased CPU usage on database servers, unrelated to the attack. The campaign's sophistication suggests prolonged access, with actors leveraging multiple techniques to evade detection and maximize impact.",
+    "tagged_text": "On 2024-10-01, security analysts at a fictional energy company, GridPower Inc., detected anomalous network traffic from a third-party vendor account, leading to the discovery of the 'ShadowMimic' campaign. Initial analysis revealed that the actors likely conducted reconnaissance [T1589] to identify weak points in delegated administrator access. The adversary exploited a trusted relationship with a third-party IT management vendor [T1199] to gain initial administrative privileges, allowing them to upload PsExec.exe to a shared network drive [T1608.002] for lateral movement across Windows systems. Once established, they used PowerShell [T1059.001] to deploy the 'CryptoLock' ransomware, which employed schtasks.exe to create a scheduled task [T1053] that executes the encryption routine every 12 hours, while simultaneously modifying registry keys [T1112] to maintain persistence. Additionally, the actors implanted the 'PITHOOK' malware, which creates a domain socket at `/data/runtime/cockpit/wd.fd` for PITSTOP to listen and evaluate incoming commands using socket filters [T1205.002], enabling command-and-control (C2) communication over TLS after duplicating the socket. To escalate privileges, a malicious script called ImpersonateLoggedOnUser to manipulate access tokens [T1134], assuming the security context of a privileged domain admin account. For data exfiltration, the 'SnappyTCP' tool was deployed, spawning a reverse TCP shell [T1095] following an HTTP-based negotiation to bypass network monitoring. Incident responders noted irrelevant system logs showing routine backup failures and increased CPU usage on database servers, unrelated to the attack. The campaign's sophistication suggests prolonged access, with actors leveraging multiple techniques to evade detection and maximize impact.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis revealed that the actors likely conducted reconnaissance to identify weak points in delegated administrator access.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The adversary exploited a trusted relationship with a third-party IT management vendor to gain initial administrative privileges, allowing them to upload PsExec.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "exe to create a scheduled task that executes the encryption routine every 12 hours, while simultaneously modifying registry keys to maintain persistence.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "exe to create a scheduled task that executes the encryption routine every 12 hours, while simultaneously modifying registry keys to maintain persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "To escalate privileges, a malicious script called ImpersonateLoggedOnUser to manipulate access tokens, assuming the security context of a privileged domain admin account.",
+            "technique_id": "T1134",
+            "technique_name": "Access Token Manipulation"
+        },
+        {
+            "sentence": "For data exfiltration, the 'SnappyTCP' tool was deployed, spawning a reverse TCP shell following an HTTP-based negotiation to bypass network monitoring.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowMimic', targeting critical infrastructure sectors through third-party exploitation and advanced persistence mechanisms. The campaign leverages trusted relationships and non-standard protocols to deploy ransomware and maintain access, with observed activities including tool uploads, scheduled tasks, socket filtering, and token manipulation for lateral movement and data exfiltration.",
+        "full_report_text": "On 2024-10-01, security analysts at a fictional energy company, GridPower Inc., detected anomalous network traffic from a third-party vendor account, leading to the discovery of the 'ShadowMimic' campaign. Initial analysis revealed that the actors likely conducted reconnaissance [T1589] to identify weak points in delegated administrator access. The adversary exploited a trusted relationship with a third-party IT management vendor [T1199] to gain initial administrative privileges, allowing them to upload PsExec.exe to a shared network drive [T1608.002] for lateral movement across Windows systems. Once established, they used PowerShell [T1059.001] to deploy the 'CryptoLock' ransomware, which employed schtasks.exe to create a scheduled task [T1053] that executes the encryption routine every 12 hours, while simultaneously modifying registry keys [T1112] to maintain persistence. Additionally, the actors implanted the 'PITHOOK' malware, which creates a domain socket at `/data/runtime/cockpit/wd.fd` for PITSTOP to listen and evaluate incoming commands using socket filters [T1205.002], enabling command-and-control (C2) communication over TLS after duplicating the socket. To escalate privileges, a malicious script called ImpersonateLoggedOnUser to manipulate access tokens [T1134], assuming the security context of a privileged domain admin account. For data exfiltration, the 'SnappyTCP' tool was deployed, spawning a reverse TCP shell [T1095] following an HTTP-based negotiation to bypass network monitoring. Incident responders noted irrelevant system logs showing routine backup failures and increased CPU usage on database servers, unrelated to the attack. The campaign's sophistication suggests prolonged access, with actors leveraging multiple techniques to evade detection and maximize impact.",
+        "techniques_used": [
+            "T1589",
+            "T1199",
+            "T1608.002",
+            "T1059.001",
+            "T1053",
+            "T1112",
+            "T1205.002",
+            "T1134",
+            "T1095"
+        ]
+    }
+}

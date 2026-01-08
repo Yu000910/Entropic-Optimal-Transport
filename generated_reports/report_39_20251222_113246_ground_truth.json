@@ -1,0 +1,73 @@
+{
+    "report_id": "report_39",
+    "generated_at": "20251222_113246",
+    "scenario_target_ids": [
+        "T1669",
+        "T1059.006",
+        "T1574.001",
+        "T1505",
+        "T1021.008",
+        "T1132.002",
+        "T1567.004",
+        "T1498.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1669",
+        "T1059.006",
+        "T1574.001",
+        "T1505",
+        "T1021.008",
+        "T1132.002",
+        "T1567.004",
+        "T1498.002"
+    ],
+    "actual_found_ids": [
+        "T1059.006",
+        "T1498.002",
+        "T1669",
+        "T1574.001",
+        "T1021.008",
+        "T1567.004",
+        "T1505",
+        "T1132.002"
+    ],
+    "clean_text": "On 2024-10-01, a simulated incident was reported at a fictional financial services firm, FinSecure Inc., where threat actors targeted an employee using an open Wi-Fi network at a local coffee shop to establish initial access. The employee's laptop, running Windows 10 with outdated patches, connected to the network, and the adversary intercepted traffic to deploy a malicious Python script that installed a backdoor DLL via side-loading. This DLL was then written to the Apache modules directory on a company web server, establishing persistence as a server software component. System logs from the server show unusual process spawns at 14:30 UTC, but no alerts were triggered due to misconfigured SIEM rules. The actors subsequently leveraged the Azure Serial Console to directly connect to and manipulate a virtual machine in the cloud environment, bypassing standard authentication mechanisms. During this phase, the malware encoded its command-and-control communications using a modified Base64 scheme with custom character substitutions to evade detection. A malicious PowerShell script, executed from the compromised VM, collected sensitive system information such as user credentials and network configurations and exfiltrated it to a webhook.site address. Additionally, the actors conducted DNS reflection amplification attacks by querying multiple open resolvers for large DNS records with spoofed source IPs, aiming to obscure their activities and potentially disrupt external monitoring. FinSecure's internal network traffic analysis revealed anomalous outbound connections to unknown IP addresses, but these were initially dismissed as false positives. The campaign highlights the need for enhanced security on public networks and robust cloud VM access controls.",
+    "tagged_text": "On 2024-10-01, a simulated incident was reported at a fictional financial services firm, FinSecure Inc., where threat actors targeted an employee using an open Wi-Fi network at a local coffee shop to establish initial access [T1669]. The employee's laptop, running Windows 10 with outdated patches, connected to the network, and the adversary intercepted traffic to deploy a malicious Python script [T1059.006] that installed a backdoor DLL via side-loading [T1574.001]. This DLL was then written to the Apache modules directory on a company web server, establishing persistence as a server software component [T1505]. System logs from the server show unusual process spawns at 14:30 UTC, but no alerts were triggered due to misconfigured SIEM rules. The actors subsequently leveraged the Azure Serial Console to directly connect to and manipulate a virtual machine in the cloud environment, bypassing standard authentication mechanisms [T1021.008]. During this phase, the malware encoded its command-and-control communications using a modified Base64 scheme with custom character substitutions to evade detection [T1132.002]. A malicious PowerShell script, executed from the compromised VM, collected sensitive system information such as user credentials and network configurations and exfiltrated it to a webhook.site address [T1567.004]. Additionally, the actors conducted DNS reflection amplification attacks by querying multiple open resolvers for large DNS records with spoofed source IPs, aiming to obscure their activities and potentially disrupt external monitoring [T1498.002]. FinSecure's internal network traffic analysis revealed anomalous outbound connections to unknown IP addresses, but these were initially dismissed as false positives. The campaign highlights the need for enhanced security on public networks and robust cloud VM access controls.",
+    "sentence_annotations": [
+        {
+            "sentence": ", where threat actors targeted an employee using an open Wi-Fi network at a local coffee shop to establish initial access.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "This DLL was then written to the Apache modules directory on a company web server, establishing persistence as a server software component.",
+            "technique_id": "T1505",
+            "technique_name": "Server Software Component"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Cloud Infrastructure via Public Wi-Fi",
+        "summary": "This advisory details a fictional campaign by threat actors exploiting public Wi-Fi networks to gain initial access, deploy Python-based malware via DLL side-loading, establish persistence in server software, manipulate cloud VMs, and exfiltrate data using encoded communications and webhooks, while conducting DNS reflection attacks for obfuscation. It is intended for blue team training to recognize and mitigate such multi-stage attacks.",
+        "full_report_text": "On 2024-10-01, a simulated incident was reported at a fictional financial services firm, FinSecure Inc., where threat actors targeted an employee using an open Wi-Fi network at a local coffee shop to establish initial access [T1669]. The employee's laptop, running Windows 10 with outdated patches, connected to the network, and the adversary intercepted traffic to deploy a malicious Python script [T1059.006] that installed a backdoor DLL via side-loading [T1574.001]. This DLL was then written to the Apache modules directory on a company web server, establishing persistence as a server software component [T1505]. System logs from the server show unusual process spawns at 14:30 UTC, but no alerts were triggered due to misconfigured SIEM rules. The actors subsequently leveraged the Azure Serial Console to directly connect to and manipulate a virtual machine in the cloud environment, bypassing standard authentication mechanisms [T1021.008]. During this phase, the malware encoded its command-and-control communications using a modified Base64 scheme with custom character substitutions to evade detection [T1132.002]. A malicious PowerShell script, executed from the compromised VM, collected sensitive system information such as user credentials and network configurations and exfiltrated it to a webhook.site address [T1567.004]. Additionally, the actors conducted DNS reflection amplification attacks by querying multiple open resolvers for large DNS records with spoofed source IPs, aiming to obscure their activities and potentially disrupt external monitoring [T1498.002]. FinSecure's internal network traffic analysis revealed anomalous outbound connections to unknown IP addresses, but these were initially dismissed as false positives. The campaign highlights the need for enhanced security on public networks and robust cloud VM access controls.",
+        "techniques_used": [
+            "T1669",
+            "T1059.006",
+            "T1574.001",
+            "T1505",
+            "T1021.008",
+            "T1132.002",
+            "T1567.004",
+            "T1498.002"
+        ]
+    }
+}

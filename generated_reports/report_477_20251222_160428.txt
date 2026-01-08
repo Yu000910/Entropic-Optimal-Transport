@@ -1,0 +1,22 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated SHADOWSPIRE. This report is based on simulated activity observed in controlled environments between January and March 2024.
+
+**Campaign Overview**
+SHADOWSPIRE actors likely conducted initial reconnaissance by searching victim-owned websites [T1594] to gather intelligence on organizational structure and external-facing assets. System logs from a compromised web server show unusual traffic patterns from IP addresses associated with known malicious infrastructure, though these logs are not directly correlated with the initial access vector.
+
+**Infrastructure and Initial Access**
+The adversary compromised a third-party DNS server [T1584] to redirect legitimate domain queries to attacker-controlled IP addresses while simultaneously purchasing Cloudflare Workers [T1583.007] to obscure the origin of their command and control (C2) infrastructure. This dual approach allowed them to establish resilient C2 channels. The company, a mid-sized manufacturing firm with hybrid VMware ESXi and Azure environments, reported no initial breaches during this phase, but network monitoring tools later detected anomalous DNS resolutions.
+
+**Execution and Persistence**
+Upon gaining initial access, likely through a spear-phishing campaign not detailed here, the actors employed PowerShell to upload PsExec.exe to an internal file share [T1608.002] for staging tools and establish persistence by writing to the Active Setup registry key [T1547.014] using a command similar to 'reg add HKLM\SOFTWARE\Microsoft\Active Setup\Installed Components\{GUID} /v StubPath /t REG_SZ /d C:\Windows\System32\malware.exe'. On macOS systems within the environment, they manipulated Mach-O binary load commands to persistently load a harmful dylib [T1546.006]. Network logs show increased SMB traffic to the file share, but this was initially attributed to routine backups.
+
+**Lateral Movement and Data Collection**
+The actors used the uploaded PsExec.exe to execute malicious scripts across Windows systems, leveraging the vSphere Web Services SDK to run ESXi administration commands [T1675] across multiple guest virtual machines (VMs), enabling lateral movement within the VMware environment. They also replicated malware through removable media [T1091] to breach isolated network segments, as observed in a secure lab environment where a USB device was inserted into an air-gapped system. System administrators reported unexplained VM performance issues, but these were initially dismissed as resource contention.
+
+**Exfiltration and C2**
+Collected data was exfiltrated using encrypted channels [T1573] over web services [T1567], with the malware employing openssl to encrypt stolen files prior to uploading them to trusted platforms like GitHub or Dropbox. In one instance, the malware connected to an unprotected wireless network [T1669] to bypass network monitoring and exfiltrate data from a mobile device used by an employee working remotely. Network traffic analysis later revealed unusual outbound connections to Cloudflare IPs, but these were masked by legitimate-looking HTTPS streams.
+
+**Destructive Phase**
+In the final stage, the actors deployed a wiper malware that used diskpart to clean the primary partition [T1561.002], effectively wiping all system files on targeted endpoints. This activity was preceded by the exfiltration of critical data, as confirmed in forensic analysis of affected systems. The company's incident response team recovered some data from backups, but several VMs were permanently lost, highlighting the importance of offline backups.
+
+**Mitigation Recommendations**
+Organizations should monitor for unusual DNS resolutions, restrict use of removable media in secure areas, implement network segmentation for ESXi environments, and review registry modifications for persistence mechanisms. This advisory is fictional and intended for training purposes only.

@@ -1,0 +1,78 @@
+{
+    "report_id": "report_451",
+    "generated_at": "20251222_155327",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1059.001",
+        "T1027.011",
+        "T1574.005",
+        "T1557.003",
+        "T1074",
+        "T1123",
+        "T1071"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1059.001",
+        "T1027.011",
+        "T1574.005",
+        "T1557.003",
+        "T1074",
+        "T1123",
+        "T1071"
+    ],
+    "actual_found_ids": [
+        "T1027.011",
+        "T1574.005",
+        "T1566.004",
+        "T1074",
+        "T1123",
+        "T1557.003",
+        "T1071",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. This report is based on a simulated scenario involving 'SilentEcho', a threat actor with suspected ties to fictional cybercriminal networks, targeting U.S. financial organizations since early 2024. Background analysis indicates that 'SilentEcho' has historically focused on espionage and financial theft, with this campaign representing an evolution in their tactics.\n\nInitial Access: The campaign began with a spearphishing attack where actors impersonated a trusted vendor via phone calls, directing victims to open a malicious document attached in a follow-up email, which exploited macros to deliver a remote access trojan (RAT). System logs from the targeted organization, 'FinSecure Corp.', show an unusual spike in document opens from external IP addresses around 10:00 AM EST on March 15, 2024, though no actual breach occurred in this training scenario.\n\nExecution and Persistence: Upon execution, the malware employed PowerShell to download additional payloads from a command-and-control (C2) server while simultaneously storing configuration data in a randomly named subkey under HKCU\\Software\\Microsoft to evade file-based detection. The actors then exploited weak permissions in a %TEMP% subdirectory, modifying the ACL to allow unauthorized code execution with elevated rights, facilitating persistence and lateral movement. Network traffic analysis revealed anomalous SMB connections between internal systems, though these were part of simulated lateral movement efforts using SMB for tool transfer to evade network-based detection.\n\nCollection and Exfiltration: To gather sensitive data, 'SilentEcho' leveraged DHCP spoofing by exhausting the legitimate DHCP pool and introducing a rogue server to intercept network traffic, while also using the RAT's capability to stage collected data in encrypted archives on compromised systems prior to exfiltration. Additionally, the malware included functionality to record audio using existing hardware devices, capturing ambient sounds and meetings for intelligence purposes. Incident responders noted that no actual data loss or audio was recorded in this training exercise.\n\nMitigation and Recommendations: Organizations are advised to review and strengthen email security protocols, restrict PowerShell usage, monitor for unusual registry modifications, and implement network segmentation. This advisory serves as a training tool to highlight the importance of proactive defense measures against sophisticated attack chains.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. This report is based on a simulated scenario involving 'SilentEcho', a threat actor with suspected ties to fictional cybercriminal networks, targeting U.S. financial organizations since early 2024. Background analysis indicates that 'SilentEcho' has historically focused on espionage and financial theft, with this campaign representing an evolution in their tactics.\n\nInitial Access: The campaign began with a spearphishing attack where actors impersonated a trusted vendor via phone calls, directing victims to open a malicious document attached in a follow-up email, which exploited macros to deliver a remote access trojan (RAT) [T1566.004]. System logs from the targeted organization, 'FinSecure Corp.', show an unusual spike in document opens from external IP addresses around 10:00 AM EST on March 15, 2024, though no actual breach occurred in this training scenario.\n\nExecution and Persistence: Upon execution, the malware employed PowerShell [T1059.001] to download additional payloads from a command-and-control (C2) server while simultaneously storing configuration data in a randomly named subkey under HKCU\\Software\\Microsoft to evade file-based detection [T1027.011]. The actors then exploited weak permissions in a %TEMP% subdirectory, modifying the ACL to allow unauthorized code execution with elevated rights, facilitating persistence and lateral movement [T1574.005]. Network traffic analysis revealed anomalous SMB connections between internal systems, though these were part of simulated lateral movement efforts using SMB for tool transfer to evade network-based detection [T1071].\n\nCollection and Exfiltration: To gather sensitive data, 'SilentEcho' leveraged DHCP spoofing [T1557.003] by exhausting the legitimate DHCP pool and introducing a rogue server to intercept network traffic, while also using the RAT's capability to stage collected data in encrypted archives on compromised systems prior to exfiltration [T1074]. Additionally, the malware included functionality to record audio using existing hardware devices, capturing ambient sounds and meetings for intelligence purposes [T1123]. Incident responders noted that no actual data loss or audio was recorded in this training exercise.\n\nMitigation and Recommendations: Organizations are advised to review and strengthen email security protocols, restrict PowerShell usage, monitor for unusual registry modifications, and implement network segmentation. This advisory serves as a training tool to highlight the importance of proactive defense measures against sophisticated attack chains.",
+    "sentence_annotations": [
+        {
+            "sentence": "Network traffic analysis revealed anomalous SMB connections between internal systems, though these were part of simulated lateral movement efforts using SMB for tool transfer to evade network-based detection.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        },
+        {
+            "sentence": "003] by exhausting the legitimate DHCP pool and introducing a rogue server to intercept network traffic, while also using the RAT's capability to stage collected data in encrypted archives on compromised systems prior to exfiltration.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "Additionally, the malware included functionality to record audio using existing hardware devices, capturing ambient sounds and meetings for intelligence purposes.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentEcho' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'SilentEcho', targeting financial institutions. Based on industry reporting and analysis, this scenario illustrates a multi-stage attack leveraging social engineering, fileless techniques, and network manipulation for data exfiltration and audio surveillance. The information is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. This report is based on a simulated scenario involving 'SilentEcho', a threat actor with suspected ties to fictional cybercriminal networks, targeting U.S. financial organizations since early 2024. Background analysis indicates that 'SilentEcho' has historically focused on espionage and financial theft, with this campaign representing an evolution in their tactics.\n\nInitial Access: The campaign began with a spearphishing attack where actors impersonated a trusted vendor via phone calls, directing victims to open a malicious document attached in a follow-up email, which exploited macros to deliver a remote access trojan (RAT) [T1566.004]. System logs from the targeted organization, 'FinSecure Corp.', show an unusual spike in document opens from external IP addresses around 10:00 AM EST on March 15, 2024, though no actual breach occurred in this training scenario.\n\nExecution and Persistence: Upon execution, the malware employed PowerShell [T1059.001] to download additional payloads from a command-and-control (C2) server while simultaneously storing configuration data in a randomly named subkey under HKCU\\Software\\Microsoft to evade file-based detection [T1027.011]. The actors then exploited weak permissions in a %TEMP% subdirectory, modifying the ACL to allow unauthorized code execution with elevated rights, facilitating persistence and lateral movement [T1574.005]. Network traffic analysis revealed anomalous SMB connections between internal systems, though these were part of simulated lateral movement efforts using SMB for tool transfer to evade network-based detection [T1071].\n\nCollection and Exfiltration: To gather sensitive data, 'SilentEcho' leveraged DHCP spoofing [T1557.003] by exhausting the legitimate DHCP pool and introducing a rogue server to intercept network traffic, while also using the RAT's capability to stage collected data in encrypted archives on compromised systems prior to exfiltration [T1074]. Additionally, the malware included functionality to record audio using existing hardware devices, capturing ambient sounds and meetings for intelligence purposes [T1123]. Incident responders noted that no actual data loss or audio was recorded in this training exercise.\n\nMitigation and Recommendations: Organizations are advised to review and strengthen email security protocols, restrict PowerShell usage, monitor for unusual registry modifications, and implement network segmentation. This advisory serves as a training tool to highlight the importance of proactive defense measures against sophisticated attack chains.",
+        "techniques_used": [
+            "T1566.004",
+            "T1059.001",
+            "T1027.011",
+            "T1574.005",
+            "T1557.003",
+            "T1074",
+            "T1123",
+            "T1071"
+        ]
+    }
+}

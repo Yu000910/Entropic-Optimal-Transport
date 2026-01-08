@@ -1,0 +1,93 @@
+{
+    "report_id": "report_691",
+    "generated_at": "20251222_173418",
+    "scenario_target_ids": [
+        "T1592.004",
+        "T1586.001",
+        "T1566",
+        "T1059.011",
+        "T1059.010",
+        "T1574.006",
+        "T1606.001",
+        "T1021.004",
+        "T1021.002",
+        "T1602.001",
+        "T1090.003",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592.004",
+        "T1586.001",
+        "T1566",
+        "T1059.011",
+        "T1059.010",
+        "T1574.006",
+        "T1606.001",
+        "T1021.004",
+        "T1021.002",
+        "T1602.001",
+        "T1090.003",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1602.001",
+        "T1606.001",
+        "T1059.011",
+        "T1052",
+        "T1592.004",
+        "T1586.001",
+        "T1059.010",
+        "T1566",
+        "T1574.006",
+        "T1021.004",
+        "T1021.002",
+        "T1090.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'Shadow Serpent'. This campaign targets financial institutions in North America, leveraging a multi-phase attack chain for data theft and network compromise.\n\nBackground: The targeted organization, 'Global Finance Corp', reported unusual network activity starting in early 2024, including slow system performance and unauthorized access alerts. Initial logs from their SIEM showed multiple failed login attempts from external IPs, but these were dismissed as noise at the time. The company's IT infrastructure includes Windows and Linux servers, with employee workstations running standard office software.\n\nAttack Narrative: The actors began by conducting reconnaissance to gather client configurations using tools like nmap to scan for open ports and service versions, while simultaneously leveraging compromised social media accounts to spread fake authentication popups on trusted websites. This led to a spearphishing campaign where employees received emails with malicious links, mimicking internal communications to steal credentials. Upon initial access, the adversary employed Lua scripts to execute payloads and AutoHotkey scripts to remotely run commands on compromised systems. For persistence, they modified the LD_PRELOAD environment variable to hijack dynamic linkers, loading malicious shared objects to evade detection. The threat actor then used a cookie editor browser extension to manipulate web cookies for session hijacking, while employing SSH via tools like Putty to access systems and SMB/Windows admin shares to move laterally across the network. To map the network topology, they executed SNMP walk commands to dump MIB data, and used multi-hop proxies to obscure their traffic origins. Finally, data exfiltration was achieved by saving sensitive customer database files to an external hard drive.\n\nIrrelevant Information: During the investigation, routine system maintenance logs from March 2024 showed scheduled updates to antivirus definitions, which were unrelated to the attack. Additionally, the company's annual financial report indicated a 5% revenue growth, with no direct impact from the security incident. Network traffic analysis revealed normal backup processes running overnight, which did not correlate with malicious activity.\n\nRecommendations for Training: Blue teams should monitor for unusual scanning activity, implement phishing awareness programs, restrict scripting language usage, audit library loading mechanisms, enforce session management controls, limit remote access protocols, segment network shares, disable unnecessary SNMP services, inspect proxy traffic, and monitor physical media connections to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'Shadow Serpent'. This campaign targets financial institutions in North America, leveraging a multi-phase attack chain for data theft and network compromise.\n\nBackground: The targeted organization, 'Global Finance Corp', reported unusual network activity starting in early 2024, including slow system performance and unauthorized access alerts. Initial logs from their SIEM showed multiple failed login attempts from external IPs, but these were dismissed as noise at the time. The company's IT infrastructure includes Windows and Linux servers, with employee workstations running standard office software.\n\nAttack Narrative: The actors began by conducting reconnaissance to gather client configurations [T1592.004] using tools like nmap to scan for open ports and service versions, while simultaneously leveraging compromised social media accounts [T1586.001] to spread fake authentication popups on trusted websites. This led to a spearphishing campaign [T1566] where employees received emails with malicious links, mimicking internal communications to steal credentials. Upon initial access, the adversary employed Lua scripts [T1059.011] to execute payloads and AutoHotkey scripts [T1059.010] to remotely run commands on compromised systems. For persistence, they modified the LD_PRELOAD environment variable to hijack dynamic linkers [T1574.006], loading malicious shared objects to evade detection. The threat actor then used a cookie editor browser extension to manipulate web cookies [T1606.001] for session hijacking, while employing SSH [T1021.004] via tools like Putty to access systems and SMB/Windows admin shares [T1021.002] to move laterally across the network. To map the network topology, they executed SNMP walk commands [T1602.001] to dump MIB data, and used multi-hop proxies [T1090.003] to obscure their traffic origins. Finally, data exfiltration was achieved by saving sensitive customer database files to an external hard drive [T1052].\n\nIrrelevant Information: During the investigation, routine system maintenance logs from March 2024 showed scheduled updates to antivirus definitions, which were unrelated to the attack. Additionally, the company's annual financial report indicated a 5% revenue growth, with no direct impact from the security incident. Network traffic analysis revealed normal backup processes running overnight, which did not correlate with malicious activity.\n\nRecommendations for Training: Blue teams should monitor for unusual scanning activity, implement phishing awareness programs, restrict scripting language usage, audit library loading mechanisms, enforce session management controls, limit remote access protocols, segment network shares, disable unnecessary SNMP services, inspect proxy traffic, and monitor physical media connections to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "This led to a spearphishing campaign where employees received emails with malicious links, mimicking internal communications to steal credentials.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Finally, data exfiltration was achieved by saving sensitive customer database files to an external hard drive.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Serpent' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Shadow Serpent' targeting financial institutions, involving reconnaissance, initial access via phishing, execution through scripting, persistence via hijacking, lateral movement, and data exfiltration. The report is for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'Shadow Serpent'. This campaign targets financial institutions in North America, leveraging a multi-phase attack chain for data theft and network compromise.\n\nBackground: The targeted organization, 'Global Finance Corp', reported unusual network activity starting in early 2024, including slow system performance and unauthorized access alerts. Initial logs from their SIEM showed multiple failed login attempts from external IPs, but these were dismissed as noise at the time. The company's IT infrastructure includes Windows and Linux servers, with employee workstations running standard office software.\n\nAttack Narrative: The actors began by conducting reconnaissance to gather client configurations [T1592.004] using tools like nmap to scan for open ports and service versions, while simultaneously leveraging compromised social media accounts [T1586.001] to spread fake authentication popups on trusted websites. This led to a spearphishing campaign [T1566] where employees received emails with malicious links, mimicking internal communications to steal credentials. Upon initial access, the adversary employed Lua scripts [T1059.011] to execute payloads and AutoHotkey scripts [T1059.010] to remotely run commands on compromised systems. For persistence, they modified the LD_PRELOAD environment variable to hijack dynamic linkers [T1574.006], loading malicious shared objects to evade detection. The threat actor then used a cookie editor browser extension to manipulate web cookies [T1606.001] for session hijacking, while employing SSH [T1021.004] via tools like Putty to access systems and SMB/Windows admin shares [T1021.002] to move laterally across the network. To map the network topology, they executed SNMP walk commands [T1602.001] to dump MIB data, and used multi-hop proxies [T1090.003] to obscure their traffic origins. Finally, data exfiltration was achieved by saving sensitive customer database files to an external hard drive [T1052].\n\nIrrelevant Information: During the investigation, routine system maintenance logs from March 2024 showed scheduled updates to antivirus definitions, which were unrelated to the attack. Additionally, the company's annual financial report indicated a 5% revenue growth, with no direct impact from the security incident. Network traffic analysis revealed normal backup processes running overnight, which did not correlate with malicious activity.\n\nRecommendations for Training: Blue teams should monitor for unusual scanning activity, implement phishing awareness programs, restrict scripting language usage, audit library loading mechanisms, enforce session management controls, limit remote access protocols, segment network shares, disable unnecessary SNMP services, inspect proxy traffic, and monitor physical media connections to mitigate similar threats.",
+        "techniques_used": [
+            "T1592.004",
+            "T1586.001",
+            "T1566",
+            "T1059.011",
+            "T1059.010",
+            "T1574.006",
+            "T1606.001",
+            "T1021.004",
+            "T1021.002",
+            "T1602.001",
+            "T1090.003",
+            "T1052"
+        ]
+    }
+}

@@ -1,0 +1,105 @@
+{
+    "report_id": "report_445",
+    "generated_at": "20251222_155033",
+    "scenario_target_ids": [
+        "T1195",
+        "T1203",
+        "T1556.005",
+        "T1543",
+        "T1546.013",
+        "T1550.002",
+        "T1119",
+        "T1025",
+        "T1557.004",
+        "T1219.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1203",
+        "T1556.005",
+        "T1543",
+        "T1546.013",
+        "T1550.002",
+        "T1119",
+        "T1025",
+        "T1557.004",
+        "T1219.001"
+    ],
+    "actual_found_ids": [
+        "T1546.013",
+        "T1550.002",
+        "T1589",
+        "T1543",
+        "T1556.005",
+        "T1195",
+        "T1119",
+        "T1025",
+        "T1557.004",
+        "T1203",
+        "T1219.001",
+        "T1059.001"
+    ],
+    "clean_text": "Background: The fictional company 'TechGlobal Inc.', a mid-sized technology firm with operations in North America and Europe, reported anomalous network activity starting in early 2024. Initial logs from their SIEM showed unusual outbound connections from developer workstations, but no immediate alerts were triggered due to encrypted traffic patterns. The company's infrastructure includes a mix of Windows and Linux systems, with Active Directory for identity management and regular use of removable media for data transfers between secure environments.\n\nAttack Narrative: The actors likely conducted reconnaissance to identify targets, though no specific evidence was logged in this scenario. The campaign began with a supply chain compromise, where the adversary modified the 'development_tools.exe' installer used by TechGlobal's software team to include additional malicious payloads, which were then distributed through a compromised vendor update server. Upon installation, the malicious code exploited a vulnerability in Microsoft Word to gain initial execution on a developer's workstation, leveraging a known CVE-2023-XXXXX flaw in document parsing. After execution, the adversary employed PowerShell to extract plaintext passwords from the G$RADIUSCHAP attribute in Active Directory using reversible encryption techniques, while simultaneously creating a persistent system process by modifying startup scripts in /etc/init.d/ on Linux systems to ensure survival across reboots. For further persistence, they configured a script to execute automatically through modification of the user's PowerShell profile, enabling ongoing access. To move laterally, the actors used the pass-the-hash technique with stolen NTLM hashes, employing tools like Invoke-SMBExec to authenticate to other systems in the network without needing plaintext credentials. During lateral movement, they performed automated collection by scanning for files with specific extensions (e.g., .docx, .pdf) and archiving them for exfiltration, while also searching removable media using commands like 'findstr /s password *.txt' to locate additional credential files. In a parallel effort, the adversary deployed an evil twin access point mimicking the corporate guest Wi-Fi to capture login credentials from unsuspecting employees, though this was detected by network monitoring tools. Finally, data exfiltration was achieved through IDE tunneling, where a compromised Visual Studio Code extension established SSH tunnels to covertly transfer collected data to external servers, blending with legitimate developer traffic to avoid detection. Throughout the campaign, routine system logs showed normal user activity, such as failed login attempts and scheduled backups, which were unrelated to the attack but added noise to the investigation.",
+    "tagged_text": "Background: The fictional company 'TechGlobal Inc.', a mid-sized technology firm with operations in North America and Europe, reported anomalous network activity starting in early 2024. Initial logs from their SIEM showed unusual outbound connections from developer workstations, but no immediate alerts were triggered due to encrypted traffic patterns. The company's infrastructure includes a mix of Windows and Linux systems, with Active Directory for identity management and regular use of removable media for data transfers between secure environments.\n\nAttack Narrative: The actors likely conducted reconnaissance [T1589] to identify targets, though no specific evidence was logged in this scenario. The campaign began with a supply chain compromise [T1195], where the adversary modified the 'development_tools.exe' installer used by TechGlobal's software team to include additional malicious payloads, which were then distributed through a compromised vendor update server. Upon installation, the malicious code exploited a vulnerability in Microsoft Word [T1203] to gain initial execution on a developer's workstation, leveraging a known CVE-2023-XXXXX flaw in document parsing. After execution, the adversary employed PowerShell [T1059.001] to extract plaintext passwords from the G$RADIUSCHAP attribute in Active Directory using reversible encryption techniques [T1556.005], while simultaneously creating a persistent system process [T1543] by modifying startup scripts in /etc/init.d/ on Linux systems to ensure survival across reboots. For further persistence, they configured a script to execute automatically through modification of the user's PowerShell profile [T1546.013], enabling ongoing access. To move laterally, the actors used the pass-the-hash technique [T1550.002] with stolen NTLM hashes, employing tools like Invoke-SMBExec to authenticate to other systems in the network without needing plaintext credentials. During lateral movement, they performed automated collection [T1119] by scanning for files with specific extensions (e.g., .docx, .pdf) and archiving them for exfiltration, while also searching removable media [T1025] using commands like 'findstr /s password *.txt' to locate additional credential files. In a parallel effort, the adversary deployed an evil twin access point [T1557.004] mimicking the corporate guest Wi-Fi to capture login credentials from unsuspecting employees, though this was detected by network monitoring tools. Finally, data exfiltration was achieved through IDE tunneling [T1219.001], where a compromised Visual Studio Code extension established SSH tunnels to covertly transfer collected data to external servers, blending with legitimate developer traffic to avoid detection. Throughout the campaign, routine system logs showed normal user activity, such as failed login attempts and scheduled backups, which were unrelated to the attack but added noise to the investigation.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative: The actors likely conducted reconnaissance to identify targets, though no specific evidence was logged in this scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The campaign began with a supply chain compromise, where the adversary modified the 'development_tools.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Upon installation, the malicious code exploited a vulnerability in Microsoft Word to gain initial execution on a developer's workstation, leveraging a known CVE-2023-XXXXX flaw in document parsing.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "005], while simultaneously creating a persistent system process by modifying startup scripts in /etc/init.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "During lateral movement, they performed automated collection by scanning for files with specific extensions (e.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        },
+        {
+            "sentence": "pdf) and archiving them for exfiltration, while also searching removable media using commands like 'findstr /s password *.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowLink' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowLink', which compromised software development tools to infiltrate corporate networks, exploit client applications for execution, and use advanced persistence and lateral movement techniques to exfiltrate sensitive data. The campaign demonstrates a multi-stage attack leveraging supply chain compromises, credential theft, and automated collection methods, with observed activity mimicking real-world APT tactics for training blue teams in detection and response.",
+        "full_report_text": "Background: The fictional company 'TechGlobal Inc.', a mid-sized technology firm with operations in North America and Europe, reported anomalous network activity starting in early 2024. Initial logs from their SIEM showed unusual outbound connections from developer workstations, but no immediate alerts were triggered due to encrypted traffic patterns. The company's infrastructure includes a mix of Windows and Linux systems, with Active Directory for identity management and regular use of removable media for data transfers between secure environments.\n\nAttack Narrative: The actors likely conducted reconnaissance [T1589] to identify targets, though no specific evidence was logged in this scenario. The campaign began with a supply chain compromise [T1195], where the adversary modified the 'development_tools.exe' installer used by TechGlobal's software team to include additional malicious payloads, which were then distributed through a compromised vendor update server. Upon installation, the malicious code exploited a vulnerability in Microsoft Word [T1203] to gain initial execution on a developer's workstation, leveraging a known CVE-2023-XXXXX flaw in document parsing. After execution, the adversary employed PowerShell [T1059.001] to extract plaintext passwords from the G$RADIUSCHAP attribute in Active Directory using reversible encryption techniques [T1556.005], while simultaneously creating a persistent system process [T1543] by modifying startup scripts in /etc/init.d/ on Linux systems to ensure survival across reboots. For further persistence, they configured a script to execute automatically through modification of the user's PowerShell profile [T1546.013], enabling ongoing access. To move laterally, the actors used the pass-the-hash technique [T1550.002] with stolen NTLM hashes, employing tools like Invoke-SMBExec to authenticate to other systems in the network without needing plaintext credentials. During lateral movement, they performed automated collection [T1119] by scanning for files with specific extensions (e.g., .docx, .pdf) and archiving them for exfiltration, while also searching removable media [T1025] using commands like 'findstr /s password *.txt' to locate additional credential files. In a parallel effort, the adversary deployed an evil twin access point [T1557.004] mimicking the corporate guest Wi-Fi to capture login credentials from unsuspecting employees, though this was detected by network monitoring tools. Finally, data exfiltration was achieved through IDE tunneling [T1219.001], where a compromised Visual Studio Code extension established SSH tunnels to covertly transfer collected data to external servers, blending with legitimate developer traffic to avoid detection. Throughout the campaign, routine system logs showed normal user activity, such as failed login attempts and scheduled backups, which were unrelated to the attack but added noise to the investigation.",
+        "techniques_used": [
+            "T1195",
+            "T1203",
+            "T1556.005",
+            "T1543",
+            "T1546.013",
+            "T1550.002",
+            "T1119",
+            "T1025",
+            "T1557.004",
+            "T1219.001"
+        ]
+    }
+}

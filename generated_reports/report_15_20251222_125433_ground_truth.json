@@ -1,0 +1,79 @@
+{
+    "report_id": "report_15",
+    "generated_at": "20251222_125433",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1199",
+        "T1059.009",
+        "T1021.001",
+        "T1090.003",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.004",
+        "T1199",
+        "T1059.009",
+        "T1021.001",
+        "T1090.003",
+        "T1029",
+        "T1112"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1029",
+        "T1566.004",
+        "T1112",
+        "T1589",
+        "T1059.009",
+        "T1021.001",
+        "T1090.003"
+    ],
+    "clean_text": "On 2024-07-15, a fictional cloud service provider, CloudSecure Inc., reported suspicious activity in its Office 365 environment, with logs indicating unauthorized access from an external IP address. CloudSecure Inc., a mid-sized company specializing in SaaS solutions, has a history of minor security incidents, including a phishing attempt in Q1 2024 that was mitigated by their SOC team. The adversary likely conducted reconnaissance to identify high-value targets, such as IT administrators, before initiating the attack. The campaign began with the actors using spearphishing voice calls to impersonate legitimate IT support personnel, directing victims to download a remote monitoring and management (RMM) tool that enabled remote control of their systems. For example, a call was made to an employee at 10:30 AM EST, with the actor claiming to be from 'Tech Support' and providing a fake ticket number; system logs show the download occurred at 10:45 AM EST from a domain mimicking a known vendor. Once initial access was gained, the actors exploited a trusted relationship by compromising a partner account in Office 365, which allowed them to elevate privileges and access customer tenant data without triggering immediate alerts. The actors then employed Azure Cloud Shell to run CLI commands that downloaded and executed malware from external sources while simultaneously establishing Remote Desktop Protocol (RDP) connections through non-standard ports like 28035 and 32467 to maintain persistence. To obscure their activities, they used multi-hop proxies by chaining compromised routers to proxy command and control (C2) communications between them and cloud service providers, and they implemented scheduled transfers to pause C2 communications for specified intervals, reducing detection likelihood. Additional logs from CloudSecure Inc.'s firewall show increased traffic on port 443 during off-hours, but this was initially dismissed as routine backup activity. The actors also attempted to modify registry keys to disable security software, though this was blocked by endpoint protection. This campaign highlights the need for enhanced monitoring of cloud APIs and social engineering defenses.",
+    "tagged_text": "On 2024-07-15, a fictional cloud service provider, CloudSecure Inc., reported suspicious activity in its Office 365 environment, with logs indicating unauthorized access from an external IP address. CloudSecure Inc., a mid-sized company specializing in SaaS solutions, has a history of minor security incidents, including a phishing attempt in Q1 2024 that was mitigated by their SOC team. The adversary likely conducted reconnaissance [T1589] to identify high-value targets, such as IT administrators, before initiating the attack. The campaign began with the actors using spearphishing voice calls [T1566.004] to impersonate legitimate IT support personnel, directing victims to download a remote monitoring and management (RMM) tool that enabled remote control of their systems. For example, a call was made to an employee at 10:30 AM EST, with the actor claiming to be from 'Tech Support' and providing a fake ticket number; system logs show the download occurred at 10:45 AM EST from a domain mimicking a known vendor. Once initial access was gained, the actors exploited a trusted relationship [T1199] by compromising a partner account in Office 365, which allowed them to elevate privileges and access customer tenant data without triggering immediate alerts. The actors then employed Azure Cloud Shell [T1059.009] to run CLI commands that downloaded and executed malware from external sources while simultaneously establishing Remote Desktop Protocol (RDP) connections [T1021.001] through non-standard ports like 28035 and 32467 to maintain persistence. To obscure their activities, they used multi-hop proxies [T1090.003] by chaining compromised routers to proxy command and control (C2) communications between them and cloud service providers, and they implemented scheduled transfers [T1029] to pause C2 communications for specified intervals, reducing detection likelihood. Additional logs from CloudSecure Inc.'s firewall show increased traffic on port 443 during off-hours, but this was initially dismissed as routine backup activity. The actors also attempted to modify registry keys [T1112] to disable security software, though this was blocked by endpoint protection. This campaign highlights the need for enhanced monitoring of cloud APIs and social engineering defenses.",
+    "sentence_annotations": [
+        {
+            "sentence": "The adversary likely conducted reconnaissance to identify high-value targets, such as IT administrators, before initiating the attack.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Once initial access was gained, the actors exploited a trusted relationship by compromising a partner account in Office 365, which allowed them to elevate privileges and access customer tenant data without triggering immediate alerts.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "003] by chaining compromised routers to proxy command and control (C2) communications between them and cloud service providers, and they implemented scheduled transfers to pause C2 communications for specified intervals, reducing detection likelihood.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        },
+        {
+            "sentence": "The actors also attempted to modify registry keys to disable security software, though this was blocked by endpoint protection.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Scattered Echo' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'Scattered Echo', targeting cloud service providers and their customers. Based on threat intelligence from recent incidents, the actors employ sophisticated social engineering, trusted relationship exploitation, and cloud-based command and control to compromise systems and exfiltrate data. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "On 2024-07-15, a fictional cloud service provider, CloudSecure Inc., reported suspicious activity in its Office 365 environment, with logs indicating unauthorized access from an external IP address. CloudSecure Inc., a mid-sized company specializing in SaaS solutions, has a history of minor security incidents, including a phishing attempt in Q1 2024 that was mitigated by their SOC team. The adversary likely conducted reconnaissance [T1589] to identify high-value targets, such as IT administrators, before initiating the attack. The campaign began with the actors using spearphishing voice calls [T1566.004] to impersonate legitimate IT support personnel, directing victims to download a remote monitoring and management (RMM) tool that enabled remote control of their systems. For example, a call was made to an employee at 10:30 AM EST, with the actor claiming to be from 'Tech Support' and providing a fake ticket number; system logs show the download occurred at 10:45 AM EST from a domain mimicking a known vendor. Once initial access was gained, the actors exploited a trusted relationship [T1199] by compromising a partner account in Office 365, which allowed them to elevate privileges and access customer tenant data without triggering immediate alerts. The actors then employed Azure Cloud Shell [T1059.009] to run CLI commands that downloaded and executed malware from external sources while simultaneously establishing Remote Desktop Protocol (RDP) connections [T1021.001] through non-standard ports like 28035 and 32467 to maintain persistence. To obscure their activities, they used multi-hop proxies [T1090.003] by chaining compromised routers to proxy command and control (C2) communications between them and cloud service providers, and they implemented scheduled transfers [T1029] to pause C2 communications for specified intervals, reducing detection likelihood. Additional logs from CloudSecure Inc.'s firewall show increased traffic on port 443 during off-hours, but this was initially dismissed as routine backup activity. The actors also attempted to modify registry keys [T1112] to disable security software, though this was blocked by endpoint protection. This campaign highlights the need for enhanced monitoring of cloud APIs and social engineering defenses.",
+        "techniques_used": [
+            "T1589",
+            "T1566.004",
+            "T1199",
+            "T1059.009",
+            "T1021.001",
+            "T1090.003",
+            "T1029",
+            "T1112"
+        ]
+    }
+}

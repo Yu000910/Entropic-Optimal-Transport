@@ -1,0 +1,98 @@
+{
+    "report_id": "report_111",
+    "generated_at": "20251222_133022",
+    "scenario_target_ids": [
+        "T1584.004",
+        "T1078.003",
+        "T1203",
+        "T1059.002",
+        "T1140",
+        "T1003.004",
+        "T1606.001",
+        "T1025",
+        "T1132.001",
+        "T1105",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1584.004",
+        "T1078.003",
+        "T1203",
+        "T1059.002",
+        "T1140",
+        "T1003.004",
+        "T1606.001",
+        "T1025",
+        "T1132.001",
+        "T1105",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1606.001",
+        "T1584.004",
+        "T1132.001",
+        "T1140",
+        "T1003.004",
+        "T1105",
+        "T1025",
+        "T1203",
+        "T1059.002",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actor 'ShadowVeil'. This campaign targets financial organizations through a multi-stage attack designed to evade detection and maintain long-term access. Analysis of network logs from a simulated breach at 'FinSecure Corp' reveals anomalous traffic patterns originating from external IP addresses, with system administrators reporting unexplained slowdowns in Microsoft Exchange performance over the past week. FinSecure Corp, a mid-sized bank with operations in North America, had recently migrated to cloud-based services, though legacy on-premises servers remained in use.\n\nInitial Access: The actors likely conducted reconnaissance to identify a misconfigured Microsoft Exchange server, which they leveraged to establish persistent access. This server, running an outdated version, was exposed to the internet without proper security patches, as noted in internal audit reports from last month.\n\nExecution: ShadowVeil exploited a Microsoft Office vulnerability, CVE-2017-11882, to execute malicious code on client systems, while simultaneously using AppleScript to generate password-stealing prompts and duplicate sensitive files on macOS endpoints within the network. System logs show multiple failed login attempts from unrecognized user accounts during this phase.\n\nPersistence and Credential Access: After gaining access, the adversary employed a compromised script to execute Mimikatz.exe, extracting NTLM hashes from local system accounts and running reg save HKLM\\SECURITY security.hiv to export the SECURITY hive for offline LSA secrets extraction. Additionally, they used base64-encoded variants of ASPXSpy to deobfuscate files and employed S-Type's Base64 encoding for command and control (C2) traffic to evade network monitoring tools.\n\nCollection and Exfiltration: The malware collected sensitive documents, including customer data from newly connected USB drives, and used stolen web session cookies to bypass authentication on the corporate portal. It then prepared the data for transmission, leveraging RAPIDPULSE to transfer files to and from compromised hosts and exfiltrating over webhook.site. Network traffic analysis indicates data packets were sent to external domains with high frequency during off-hours.\n\nDefensive recommendations include patching vulnerable software, monitoring for unusual registry changes, and implementing strict access controls. This report is fictional and intended for educational use only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actor 'ShadowVeil'. This campaign targets financial organizations through a multi-stage attack designed to evade detection and maintain long-term access. Analysis of network logs from a simulated breach at 'FinSecure Corp' reveals anomalous traffic patterns originating from external IP addresses, with system administrators reporting unexplained slowdowns in Microsoft Exchange performance over the past week. FinSecure Corp, a mid-sized bank with operations in North America, had recently migrated to cloud-based services, though legacy on-premises servers remained in use.\n\nInitial Access: The actors likely conducted reconnaissance to identify a misconfigured Microsoft Exchange server, which they leveraged to establish persistent access [T1584.004]. This server, running an outdated version, was exposed to the internet without proper security patches, as noted in internal audit reports from last month.\n\nExecution: ShadowVeil exploited a Microsoft Office vulnerability, CVE-2017-11882, to execute malicious code on client systems [T1203], while simultaneously using AppleScript [T1059.002] to generate password-stealing prompts and duplicate sensitive files on macOS endpoints within the network. System logs show multiple failed login attempts from unrecognized user accounts during this phase.\n\nPersistence and Credential Access: After gaining access, the adversary employed a compromised script to execute Mimikatz.exe, extracting NTLM hashes from local system accounts [T1078.003] and running reg save HKLM\\SECURITY security.hiv to export the SECURITY hive for offline LSA secrets extraction [T1003.004]. Additionally, they used base64-encoded variants of ASPXSpy to deobfuscate files [T1140] and employed S-Type's Base64 encoding for command and control (C2) traffic [T1132.001] to evade network monitoring tools.\n\nCollection and Exfiltration: The malware collected sensitive documents, including customer data from newly connected USB drives [T1025], and used stolen web session cookies to bypass authentication on the corporate portal [T1606.001]. It then prepared the data for transmission, leveraging RAPIDPULSE to transfer files to and from compromised hosts [T1105] and exfiltrating over webhook.site [T1567.004]. Network traffic analysis indicates data packets were sent to external domains with high frequency during off-hours.\n\nDefensive recommendations include patching vulnerable software, monitoring for unusual registry changes, and implementing strict access controls. This report is fictional and intended for educational use only.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution: ShadowVeil exploited a Microsoft Office vulnerability, CVE-2017-11882, to execute malicious code on client systems, while simultaneously using AppleScript [T1059.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "Additionally, they used base64-encoded variants of ASPXSpy to deobfuscate files and employed S-Type's Base64 encoding for command and control (C2) traffic [T1132.",
+            "technique_id": "T1140",
+            "technique_name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The malware collected sensitive documents, including customer data from newly connected USB drives, and used stolen web session cookies to bypass authentication on the corporate portal [T1606.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        },
+        {
+            "sentence": "It then prepared the data for transmission, leveraging RAPIDPULSE to transfer files to and from compromised hosts and exfiltrating over webhook.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVeil' targeting financial institutions, leveraging misconfigured servers and client-side exploits to establish persistence, steal credentials, and exfiltrate data via webhooks for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actor 'ShadowVeil'. This campaign targets financial organizations through a multi-stage attack designed to evade detection and maintain long-term access. Analysis of network logs from a simulated breach at 'FinSecure Corp' reveals anomalous traffic patterns originating from external IP addresses, with system administrators reporting unexplained slowdowns in Microsoft Exchange performance over the past week. FinSecure Corp, a mid-sized bank with operations in North America, had recently migrated to cloud-based services, though legacy on-premises servers remained in use.\n\nInitial Access: The actors likely conducted reconnaissance to identify a misconfigured Microsoft Exchange server, which they leveraged to establish persistent access [T1584.004]. This server, running an outdated version, was exposed to the internet without proper security patches, as noted in internal audit reports from last month.\n\nExecution: ShadowVeil exploited a Microsoft Office vulnerability, CVE-2017-11882, to execute malicious code on client systems [T1203], while simultaneously using AppleScript [T1059.002] to generate password-stealing prompts and duplicate sensitive files on macOS endpoints within the network. System logs show multiple failed login attempts from unrecognized user accounts during this phase.\n\nPersistence and Credential Access: After gaining access, the adversary employed a compromised script to execute Mimikatz.exe, extracting NTLM hashes from local system accounts [T1078.003] and running reg save HKLM\\SECURITY security.hiv to export the SECURITY hive for offline LSA secrets extraction [T1003.004]. Additionally, they used base64-encoded variants of ASPXSpy to deobfuscate files [T1140] and employed S-Type's Base64 encoding for command and control (C2) traffic [T1132.001] to evade network monitoring tools.\n\nCollection and Exfiltration: The malware collected sensitive documents, including customer data from newly connected USB drives [T1025], and used stolen web session cookies to bypass authentication on the corporate portal [T1606.001]. It then prepared the data for transmission, leveraging RAPIDPULSE to transfer files to and from compromised hosts [T1105] and exfiltrating over webhook.site [T1567.004]. Network traffic analysis indicates data packets were sent to external domains with high frequency during off-hours.\n\nDefensive recommendations include patching vulnerable software, monitoring for unusual registry changes, and implementing strict access controls. This report is fictional and intended for educational use only.",
+        "techniques_used": [
+            "T1584.004",
+            "T1078.003",
+            "T1203",
+            "T1059.002",
+            "T1140",
+            "T1003.004",
+            "T1606.001",
+            "T1025",
+            "T1132.001",
+            "T1105",
+            "T1567.004"
+        ]
+    }
+}

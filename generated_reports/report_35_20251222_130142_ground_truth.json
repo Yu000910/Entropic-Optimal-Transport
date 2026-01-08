@@ -1,0 +1,83 @@
+{
+    "report_id": "report_35",
+    "generated_at": "20251222_130142",
+    "scenario_target_ids": [
+        "T1595",
+        "T1566.004",
+        "T1059.007",
+        "T1546.017",
+        "T1127",
+        "T1069.002",
+        "T1025",
+        "T1132"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1595",
+        "T1566.004",
+        "T1059.007",
+        "T1546.017",
+        "T1127",
+        "T1069.002",
+        "T1025",
+        "T1132"
+    ],
+    "actual_found_ids": [
+        "T1546.017",
+        "T1059.007",
+        "T1566.004",
+        "T1132",
+        "T1069.002",
+        "T1025",
+        "T1595",
+        "T1127"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional training scenario based on observed tactics, techniques, and procedures (TTPs) of the APT group Crimson Shadow. This report simulates a realistic attack chain for educational purposes, incorporating noise such as irrelevant system logs and company background to mimic real-world analysis. Crimson Shadow likely conducts initial reconnaissance by actively scanning victim IP ranges using nmap.exe to identify open ports and services. Following this, the threat actor employs spearphishing via a voice call, impersonating Microsoft support to instruct the victim to download and run a TeamViewer installer, facilitating remote access. Once initial access is achieved, the adversary uses JavaScript files to execute malicious code within the victim's environment, often embedding payloads in web-based attacks. For persistence, upon device detection, udev rules are manipulated to trigger the execution of persistence.ps1, ensuring continued presence on Linux systems. The actor then leverages trusted developer utilities, such as msiexec.exe, to proxy execution of a harmful DLL payload, bypassing application whitelisting protections. Concurrently, reconnaissance tools are used to gather information about domain-level administrative groups and their members via commands like 'net group /domain', while data from removable media is extracted using commands like 'tree F:\\ /f' to display all files and directories. Finally, data exfiltration involves encoding payloads from the C2 server as URL parameters, using techniques like base64 encoding to evade detection. Background noise: The victim organization, a mid-sized manufacturing company, reported unusual network traffic spikes in their firewall logs, with no prior incidents of this nature. System logs show routine updates from Windows Server 2019, but no correlation to the malicious activities described.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional training scenario based on observed tactics, techniques, and procedures (TTPs) of the APT group Crimson Shadow. This report simulates a realistic attack chain for educational purposes, incorporating noise such as irrelevant system logs and company background to mimic real-world analysis. Crimson Shadow likely conducts initial reconnaissance by actively scanning victim IP ranges using nmap.exe to identify open ports and services [T1595]. Following this, the threat actor employs spearphishing via a voice call, impersonating Microsoft support to instruct the victim to download and run a TeamViewer installer, facilitating remote access [T1566.004]. Once initial access is achieved, the adversary uses JavaScript files to execute malicious code within the victim's environment, often embedding payloads in web-based attacks [T1059.007]. For persistence, upon device detection, udev rules are manipulated to trigger the execution of persistence.ps1, ensuring continued presence on Linux systems [T1546.017]. The actor then leverages trusted developer utilities, such as msiexec.exe, to proxy execution of a harmful DLL payload, bypassing application whitelisting protections [T1127]. Concurrently, reconnaissance tools are used to gather information about domain-level administrative groups and their members via commands like 'net group /domain' [T1069.002], while data from removable media is extracted using commands like 'tree F:\\ /f' to display all files and directories [T1025]. Finally, data exfiltration involves encoding payloads from the C2 server as URL parameters, using techniques like base64 encoding to evade detection [T1132]. Background noise: The victim organization, a mid-sized manufacturing company, reported unusual network traffic spikes in their firewall logs, with no prior incidents of this nature. System logs show routine updates from Windows Server 2019, but no correlation to the malicious activities described.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to identify open ports and services.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "exe, to proxy execution of a harmful DLL payload, bypassing application whitelisting protections.",
+            "technique_id": "T1127",
+            "technique_name": "Trusted Developer Utilities Proxy Execution"
+        },
+        {
+            "sentence": "002], while data from removable media is extracted using commands like 'tree F:\\ /f' to display all files and directories.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        },
+        {
+            "sentence": "Finally, data exfiltration involves encoding payloads from the C2 server as URL parameters, using techniques like base64 encoding to evade detection.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Networks via Multi-Vector Intrusion",
+        "summary": "This advisory details a simulated campaign by a fictional Advanced Persistent Threat (APT) group, designated as 'Crimson Shadow', targeting corporate networks through a combination of reconnaissance, social engineering, and persistence techniques. The campaign leverages active scanning, spearphishing, and trusted utilities to establish initial access and maintain presence, with observed activities including data gathering from removable media and domain reconnaissance. Blue teams should review logs for nmap scans, TeamViewer installations, and suspicious msiexec executions to enhance detection capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional training scenario based on observed tactics, techniques, and procedures (TTPs) of the APT group Crimson Shadow. This report simulates a realistic attack chain for educational purposes, incorporating noise such as irrelevant system logs and company background to mimic real-world analysis. Crimson Shadow likely conducts initial reconnaissance by actively scanning victim IP ranges using nmap.exe to identify open ports and services [T1595]. Following this, the threat actor employs spearphishing via a voice call, impersonating Microsoft support to instruct the victim to download and run a TeamViewer installer, facilitating remote access [T1566.004]. Once initial access is achieved, the adversary uses JavaScript files to execute malicious code within the victim's environment, often embedding payloads in web-based attacks [T1059.007]. For persistence, upon device detection, udev rules are manipulated to trigger the execution of persistence.ps1, ensuring continued presence on Linux systems [T1546.017]. The actor then leverages trusted developer utilities, such as msiexec.exe, to proxy execution of a harmful DLL payload, bypassing application whitelisting protections [T1127]. Concurrently, reconnaissance tools are used to gather information about domain-level administrative groups and their members via commands like 'net group /domain' [T1069.002], while data from removable media is extracted using commands like 'tree F:\\ /f' to display all files and directories [T1025]. Finally, data exfiltration involves encoding payloads from the C2 server as URL parameters, using techniques like base64 encoding to evade detection [T1132]. Background noise: The victim organization, a mid-sized manufacturing company, reported unusual network traffic spikes in their firewall logs, with no prior incidents of this nature. System logs show routine updates from Windows Server 2019, but no correlation to the malicious activities described.",
+        "techniques_used": [
+            "T1595",
+            "T1566.004",
+            "T1059.007",
+            "T1546.017",
+            "T1127",
+            "T1069.002",
+            "T1025",
+            "T1132"
+        ]
+    }
+}

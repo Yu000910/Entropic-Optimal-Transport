@@ -1,0 +1,73 @@
+{
+    "report_id": "report_425",
+    "generated_at": "20251222_154151",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1053.003",
+        "T1556.003",
+        "T1033",
+        "T1550.001",
+        "T1219",
+        "T1659"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1053.003",
+        "T1556.003",
+        "T1033",
+        "T1550.001",
+        "T1219",
+        "T1659"
+    ],
+    "actual_found_ids": [
+        "T1556.003",
+        "T1566.004",
+        "T1659",
+        "T1550.001",
+        "T1053.003",
+        "T1033",
+        "T1219"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional Advanced Persistent Threat (APT) campaign, dubbed 'VoicePhantom', which has been observed targeting energy and financial sectors since early 2024. This report is based on simulated incident response data and is intended for training purposes to enhance defensive capabilities against similar real-world tactics.\n\nInitial Access: The actors initiated contact through spearphishing voice calls, impersonating IT support personnel to convince users to download and execute a malicious remote access trojan (RAT) disguised as a legitimate document viewer application. Upon execution, the RAT established a foothold on the victim's system, leveraging system utilities for discovery and token harvesting.\n\nExecution and Persistence: Once installed, the malware executed a cron job to schedule periodic tasks for maintaining persistence on compromised Mac devices, while simultaneously conducting system owner/user discovery to identify active usernames and profiles. The actors then exploited application access tokens harvested from the compromised device to gain unauthorized access to corporate email accounts, facilitating further lateral movement.\n\nPrivilege Escalation and Defense Evasion: To ensure long-term access, the attackers altered Pluggable Authentication Modules (PAM) by modifying pam_unix.so to extend password expiration dates indefinitely for compromised accounts, thereby evading standard credential rotation policies. Concurrently, they deployed remote access tools, such as Google Chrome Remote Desktop, to establish persistent remote access channels for data exfiltration and command-and-control (C2) communications.\n\nImpact and Exfiltration: The campaign culminated in content injection, where malicious actors exploited simulated ISP-level vulnerabilities to inject adware into HTTP responses, redirecting users to malicious sites and potentially stealing sensitive data. Analysis of system logs revealed anomalous network traffic patterns and unauthorized modifications to authentication files, though no actual data loss occurred in this training scenario.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication, monitor for unusual cron job creations, regularly audit PAM configurations, and restrict the use of unauthorized remote access software. This fictional exercise highlights the importance of user awareness training against social engineering attacks and robust endpoint detection mechanisms.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional Advanced Persistent Threat (APT) campaign, dubbed 'VoicePhantom', which has been observed targeting energy and financial sectors since early 2024. This report is based on simulated incident response data and is intended for training purposes to enhance defensive capabilities against similar real-world tactics.\n\nInitial Access: The actors initiated contact through spearphishing voice calls [T1566.004], impersonating IT support personnel to convince users to download and execute a malicious remote access trojan (RAT) disguised as a legitimate document viewer application. Upon execution, the RAT established a foothold on the victim's system, leveraging system utilities for discovery and token harvesting.\n\nExecution and Persistence: Once installed, the malware executed a cron job [T1053.003] to schedule periodic tasks for maintaining persistence on compromised Mac devices, while simultaneously conducting system owner/user discovery [T1033] to identify active usernames and profiles. The actors then exploited application access tokens [T1550.001] harvested from the compromised device to gain unauthorized access to corporate email accounts, facilitating further lateral movement.\n\nPrivilege Escalation and Defense Evasion: To ensure long-term access, the attackers altered Pluggable Authentication Modules (PAM) [T1556.003] by modifying pam_unix.so to extend password expiration dates indefinitely for compromised accounts, thereby evading standard credential rotation policies. Concurrently, they deployed remote access tools [T1219], such as Google Chrome Remote Desktop, to establish persistent remote access channels for data exfiltration and command-and-control (C2) communications.\n\nImpact and Exfiltration: The campaign culminated in content injection [T1659], where malicious actors exploited simulated ISP-level vulnerabilities to inject adware into HTTP responses, redirecting users to malicious sites and potentially stealing sensitive data. Analysis of system logs revealed anomalous network traffic patterns and unauthorized modifications to authentication files, though no actual data loss occurred in this training scenario.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication, monitor for unusual cron job creations, regularly audit PAM configurations, and restrict the use of unauthorized remote access software. This fictional exercise highlights the importance of user awareness training against social engineering attacks and robust endpoint detection mechanisms.",
+    "sentence_annotations": [
+        {
+            "sentence": "003] to schedule periodic tasks for maintaining persistence on compromised Mac devices, while simultaneously conducting system owner/user discovery to identify active usernames and profiles.",
+            "technique_id": "T1033",
+            "technique_name": "System Owner/User Discovery"
+        },
+        {
+            "sentence": "Concurrently, they deployed remote access tools, such as Google Chrome Remote Desktop, to establish persistent remote access channels for data exfiltration and command-and-control (C2) communications.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "Impact and Exfiltration: The campaign culminated in content injection, where malicious actors exploited simulated ISP-level vulnerabilities to inject adware into HTTP responses, redirecting users to malicious sites and potentially stealing sensitive data.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'VoicePhantom' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'VoicePhantom', targeting critical infrastructure sectors. The campaign involves spearphishing via phone calls to deploy remote access tools, establish persistence, and conduct credential manipulation for prolonged access. Blue teams are advised to review logs for suspicious cron jobs, PAM modifications, and unauthorized remote access activities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional Advanced Persistent Threat (APT) campaign, dubbed 'VoicePhantom', which has been observed targeting energy and financial sectors since early 2024. This report is based on simulated incident response data and is intended for training purposes to enhance defensive capabilities against similar real-world tactics.\n\nInitial Access: The actors initiated contact through spearphishing voice calls [T1566.004], impersonating IT support personnel to convince users to download and execute a malicious remote access trojan (RAT) disguised as a legitimate document viewer application. Upon execution, the RAT established a foothold on the victim's system, leveraging system utilities for discovery and token harvesting.\n\nExecution and Persistence: Once installed, the malware executed a cron job [T1053.003] to schedule periodic tasks for maintaining persistence on compromised Mac devices, while simultaneously conducting system owner/user discovery [T1033] to identify active usernames and profiles. The actors then exploited application access tokens [T1550.001] harvested from the compromised device to gain unauthorized access to corporate email accounts, facilitating further lateral movement.\n\nPrivilege Escalation and Defense Evasion: To ensure long-term access, the attackers altered Pluggable Authentication Modules (PAM) [T1556.003] by modifying pam_unix.so to extend password expiration dates indefinitely for compromised accounts, thereby evading standard credential rotation policies. Concurrently, they deployed remote access tools [T1219], such as Google Chrome Remote Desktop, to establish persistent remote access channels for data exfiltration and command-and-control (C2) communications.\n\nImpact and Exfiltration: The campaign culminated in content injection [T1659], where malicious actors exploited simulated ISP-level vulnerabilities to inject adware into HTTP responses, redirecting users to malicious sites and potentially stealing sensitive data. Analysis of system logs revealed anomalous network traffic patterns and unauthorized modifications to authentication files, though no actual data loss occurred in this training scenario.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication, monitor for unusual cron job creations, regularly audit PAM configurations, and restrict the use of unauthorized remote access software. This fictional exercise highlights the importance of user awareness training against social engineering attacks and robust endpoint detection mechanisms.",
+        "techniques_used": [
+            "T1566.004",
+            "T1053.003",
+            "T1556.003",
+            "T1033",
+            "T1550.001",
+            "T1219",
+            "T1659"
+        ]
+    }
+}

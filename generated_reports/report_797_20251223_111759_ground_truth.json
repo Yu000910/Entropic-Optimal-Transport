@@ -1,0 +1,68 @@
+{
+    "report_id": "report_797",
+    "generated_at": "20251223_111759",
+    "scenario_target_ids": [
+        "T1588.001",
+        "T1608.003",
+        "T1566",
+        "T1059.011",
+        "T1574.014",
+        "T1562.001",
+        "T1218.015",
+        "T1001.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1588.001",
+        "T1608.003",
+        "T1566",
+        "T1059.011",
+        "T1574.014",
+        "T1562.001",
+        "T1218.015",
+        "T1001.003"
+    ],
+    "actual_found_ids": [
+        "T1001.003",
+        "T1059.011",
+        "T1218.015",
+        "T1608.003",
+        "T1562.001",
+        "T1566",
+        "T1574.014",
+        "T1588.001"
+    ],
+    "clean_text": "On October 26, 2023, Acme Corp, a mid-sized technology firm based in San Francisco with 500 employees, reported anomalous network activity originating from its HR department's systems. Initial logs showed unusual outbound HTTP traffic to external IP addresses, prompting an investigation. The threat actors, likely operating under the moniker APT-99, initiated their campaign by sending a spoofed HR notification email that contained a malicious executable disguised as a policy update document, which, when executed, downloaded a custom remote access trojan (RAT) from a private GitHub repository. Upon execution, the malware employed PowerShell to modify Apache's SSL configuration, installing a compromised digital certificate chain to facilitate credential harvesting from web traffic. System administrators noted that the malware then used a Lua script to create scheduled tasks for persistence while simultaneously updating the .config file's assembly probing path to load a rogue library via AppDomainManager. To evade detection, the actors disabled Windows Defender and other security tools and spawned chrome.exe with custom command-line arguments through Electron applications to run harmful code. During beaconing, the malicious script transmitted encoded commands through HTTP Referer headers, impersonating legitimate protocols. Additional logs from Acme Corp's firewall indicated intermittent connections to unknown domains, but these were unrelated to the attack and part of normal business operations. The company's incident response team contained the threat within 48 hours, but data loss assessment is ongoing.",
+    "tagged_text": "On October 26, 2023, Acme Corp, a mid-sized technology firm based in San Francisco with 500 employees, reported anomalous network activity originating from its HR department's systems. Initial logs showed unusual outbound HTTP traffic to external IP addresses, prompting an investigation. The threat actors, likely operating under the moniker APT-99, initiated their campaign by sending a spoofed HR notification email [T1566] that contained a malicious executable disguised as a policy update document, which, when executed, downloaded a custom remote access trojan (RAT) from a private GitHub repository [T1588.001]. Upon execution, the malware employed PowerShell to modify Apache's SSL configuration, installing a compromised digital certificate chain [T1608.003] to facilitate credential harvesting from web traffic. System administrators noted that the malware then used a Lua script [T1059.011] to create scheduled tasks for persistence while simultaneously updating the .config file's assembly probing path to load a rogue library via AppDomainManager [T1574.014]. To evade detection, the actors disabled Windows Defender and other security tools [T1562.001] and spawned chrome.exe with custom command-line arguments through Electron applications [T1218.015] to run harmful code. During beaconing, the malicious script transmitted encoded commands through HTTP Referer headers, impersonating legitimate protocols [T1001.003]. Additional logs from Acme Corp's firewall indicated intermittent connections to unknown domains, but these were unrelated to the attack and part of normal business operations. The company's incident response team contained the threat within 48 hours, but data loss assessment is ongoing.",
+    "sentence_annotations": [
+        {
+            "sentence": "The threat actors, likely operating under the moniker APT-99, initiated their campaign by sending a spoofed HR notification email that contained a malicious executable disguised as a policy update document, which, when executed, downloaded a custom remote access trojan (RAT) from a private GitHub repository [T1588.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting corporate environments for credential harvesting and data exfiltration. Based on analysis of a recent incident at a fictional company, Acme Corp, this report provides insights into the tactics, techniques, and procedures (TTPs) used, aimed at enhancing blue team defensive capabilities.",
+        "full_report_text": "On October 26, 2023, Acme Corp, a mid-sized technology firm based in San Francisco with 500 employees, reported anomalous network activity originating from its HR department's systems. Initial logs showed unusual outbound HTTP traffic to external IP addresses, prompting an investigation. The threat actors, likely operating under the moniker APT-99, initiated their campaign by sending a spoofed HR notification email [T1566] that contained a malicious executable disguised as a policy update document, which, when executed, downloaded a custom remote access trojan (RAT) from a private GitHub repository [T1588.001]. Upon execution, the malware employed PowerShell to modify Apache's SSL configuration, installing a compromised digital certificate chain [T1608.003] to facilitate credential harvesting from web traffic. System administrators noted that the malware then used a Lua script [T1059.011] to create scheduled tasks for persistence while simultaneously updating the .config file's assembly probing path to load a rogue library via AppDomainManager [T1574.014]. To evade detection, the actors disabled Windows Defender and other security tools [T1562.001] and spawned chrome.exe with custom command-line arguments through Electron applications [T1218.015] to run harmful code. During beaconing, the malicious script transmitted encoded commands through HTTP Referer headers, impersonating legitimate protocols [T1001.003]. Additional logs from Acme Corp's firewall indicated intermittent connections to unknown domains, but these were unrelated to the attack and part of normal business operations. The company's incident response team contained the threat within 48 hours, but data loss assessment is ongoing.",
+        "techniques_used": [
+            "T1588.001",
+            "T1608.003",
+            "T1566",
+            "T1059.011",
+            "T1574.014",
+            "T1562.001",
+            "T1218.015",
+            "T1001.003"
+        ]
+    }
+}

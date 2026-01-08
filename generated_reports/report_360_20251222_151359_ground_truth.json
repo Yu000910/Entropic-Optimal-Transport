@@ -1,0 +1,91 @@
+{
+    "report_id": "report_360",
+    "generated_at": "20251222_151359",
+    "scenario_target_ids": [
+        "T1189",
+        "T1559.002",
+        "T1078.002",
+        "T1027.017",
+        "T1553.002",
+        "T1005",
+        "T1568.003",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1559.002",
+        "T1078.002",
+        "T1027.017",
+        "T1553.002",
+        "T1005",
+        "T1568.003",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1112",
+        "T1105",
+        "T1589",
+        "T1027.017",
+        "T1005",
+        "T1189",
+        "T1078.002",
+        "T1568.003",
+        "T1559.002",
+        "T1553.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on the fictional threat actor group 'SilentWeb', which has been observed targeting financial organizations in a simulated training scenario. This report is based on a hypothetical attack to enhance defensive readiness and does not reflect real-world incidents.\n\nBackground: 'SilentWeb' is a fictional advanced persistent threat (APT) group with suspected ties to cybercriminal activities, focusing on data theft and financial fraud. In this scenario, the group targets a mid-sized bank, 'SecureBank Corp.', which uses legacy systems and has recently migrated some services to cloud platforms. Initial logs from SecureBank's web servers show unusual traffic spikes from IP addresses associated with known malicious infrastructure, but these were initially dismissed as false positives due to ongoing marketing campaigns.\n\nAttack Narrative:\n- **Initial Access**: The actors likely conducted reconnaissance to identify vulnerable web applications. They then executed a drive-by compromise by injecting malicious JavaScript into a compromised third-party vendor website frequented by SecureBank employees, exploiting browser vulnerabilities to deliver initial payloads. System logs from affected workstations recorded multiple failed script executions before successful compromise, with no immediate alerts from endpoint protection.\n- **Execution**: Upon compromise, the adversary employed a weaponized .docx file containing Dynamic Data Exchange (DDE) auto-links to download and execute malicious payloads while simultaneously using SVG smuggling to embed obfuscated JavaScript for evasion. This multi-vector approach bypassed traditional email filters, as the .docx file appeared legitimate and the SVG file was hosted on a trusted CDN.\n- **Persistence and Privilege Escalation**: The actors used a compromised domain admin account to move laterally across the network, modifying registry keys and deploying signed binaries to establish persistence and create reverse shells. SecureBank's Active Directory logs showed unusual login attempts from the compromised account during off-hours, but these were not flagged due to misconfigured alerting thresholds.\n- **Collection and Exfiltration**: The adversary leveraged the ability to upload files from local systems to gather sensitive financial data, then employed DNS calculation to tunnel this data through DNS SRV record queries, bypassing egress filtering. Additionally, they used exfiltration over webhook to send system information to external sites like webhook.site, blending with normal web traffic. Network monitoring tools at SecureBank detected anomalous DNS query volumes but lacked correlation with data loss incidents.\n\nMitigation Recommendations: Organizations should implement application whitelisting, monitor for unusual DDE and SVG file usage, enforce multi-factor authentication for domain accounts, and deploy DNS filtering solutions. Regular security training for employees on phishing and web threats is also advised. This fictional scenario underscores the importance of layered defenses and proactive threat hunting.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on the fictional threat actor group 'SilentWeb', which has been observed targeting financial organizations in a simulated training scenario. This report is based on a hypothetical attack to enhance defensive readiness and does not reflect real-world incidents.\n\nBackground: 'SilentWeb' is a fictional advanced persistent threat (APT) group with suspected ties to cybercriminal activities, focusing on data theft and financial fraud. In this scenario, the group targets a mid-sized bank, 'SecureBank Corp.', which uses legacy systems and has recently migrated some services to cloud platforms. Initial logs from SecureBank's web servers show unusual traffic spikes from IP addresses associated with known malicious infrastructure, but these were initially dismissed as false positives due to ongoing marketing campaigns.\n\nAttack Narrative:\n- **Initial Access**: The actors likely conducted reconnaissance [T1589] to identify vulnerable web applications. They then executed a drive-by compromise [T1189] by injecting malicious JavaScript into a compromised third-party vendor website frequented by SecureBank employees, exploiting browser vulnerabilities to deliver initial payloads. System logs from affected workstations recorded multiple failed script executions before successful compromise, with no immediate alerts from endpoint protection.\n- **Execution**: Upon compromise, the adversary employed a weaponized .docx file containing Dynamic Data Exchange (DDE) auto-links [T1559.002] to download and execute malicious payloads [T1105] while simultaneously using SVG smuggling [T1027.017] to embed obfuscated JavaScript for evasion. This multi-vector approach bypassed traditional email filters, as the .docx file appeared legitimate and the SVG file was hosted on a trusted CDN.\n- **Persistence and Privilege Escalation**: The actors used a compromised domain admin account [T1078.002] to move laterally across the network, modifying registry keys [T1112] and deploying signed binaries [T1553.002] to establish persistence and create reverse shells. SecureBank's Active Directory logs showed unusual login attempts from the compromised account during off-hours, but these were not flagged due to misconfigured alerting thresholds.\n- **Collection and Exfiltration**: The adversary leveraged the ability to upload files from local systems [T1005] to gather sensitive financial data, then employed DNS calculation [T1568.003] to tunnel this data through DNS SRV record queries, bypassing egress filtering. Additionally, they used exfiltration over webhook [T1567.004] to send system information to external sites like webhook.site, blending with normal web traffic. Network monitoring tools at SecureBank detected anomalous DNS query volumes but lacked correlation with data loss incidents.\n\nMitigation Recommendations: Organizations should implement application whitelisting, monitor for unusual DDE and SVG file usage, enforce multi-factor authentication for domain accounts, and deploy DNS filtering solutions. Regular security training for employees on phishing and web threats is also advised. This fictional scenario underscores the importance of layered defenses and proactive threat hunting.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\n- **Initial Access**: The actors likely conducted reconnaissance to identify vulnerable web applications.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "They then executed a drive-by compromise by injecting malicious JavaScript into a compromised third-party vendor website frequented by SecureBank employees, exploiting browser vulnerabilities to deliver initial payloads.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "002] to download and execute malicious payloads while simultaneously using SVG smuggling [T1027.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "002] to move laterally across the network, modifying registry keys and deploying signed binaries [T1553.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "- **Collection and Exfiltration**: The adversary leveraged the ability to upload files from local systems to gather sensitive financial data, then employed DNS calculation [T1568.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentWeb' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'SilentWeb', targeting financial institutions. The campaign employs sophisticated techniques to compromise systems, move laterally, and exfiltrate sensitive data, leveraging web-based attacks, file manipulation, and DNS tunneling for evasion. Blue teams are advised to review detection and mitigation strategies outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on the fictional threat actor group 'SilentWeb', which has been observed targeting financial organizations in a simulated training scenario. This report is based on a hypothetical attack to enhance defensive readiness and does not reflect real-world incidents.\n\nBackground: 'SilentWeb' is a fictional advanced persistent threat (APT) group with suspected ties to cybercriminal activities, focusing on data theft and financial fraud. In this scenario, the group targets a mid-sized bank, 'SecureBank Corp.', which uses legacy systems and has recently migrated some services to cloud platforms. Initial logs from SecureBank's web servers show unusual traffic spikes from IP addresses associated with known malicious infrastructure, but these were initially dismissed as false positives due to ongoing marketing campaigns.\n\nAttack Narrative:\n- **Initial Access**: The actors likely conducted reconnaissance [T1589] to identify vulnerable web applications. They then executed a drive-by compromise [T1189] by injecting malicious JavaScript into a compromised third-party vendor website frequented by SecureBank employees, exploiting browser vulnerabilities to deliver initial payloads. System logs from affected workstations recorded multiple failed script executions before successful compromise, with no immediate alerts from endpoint protection.\n- **Execution**: Upon compromise, the adversary employed a weaponized .docx file containing Dynamic Data Exchange (DDE) auto-links [T1559.002] to download and execute malicious payloads [T1105] while simultaneously using SVG smuggling [T1027.017] to embed obfuscated JavaScript for evasion. This multi-vector approach bypassed traditional email filters, as the .docx file appeared legitimate and the SVG file was hosted on a trusted CDN.\n- **Persistence and Privilege Escalation**: The actors used a compromised domain admin account [T1078.002] to move laterally across the network, modifying registry keys [T1112] and deploying signed binaries [T1553.002] to establish persistence and create reverse shells. SecureBank's Active Directory logs showed unusual login attempts from the compromised account during off-hours, but these were not flagged due to misconfigured alerting thresholds.\n- **Collection and Exfiltration**: The adversary leveraged the ability to upload files from local systems [T1005] to gather sensitive financial data, then employed DNS calculation [T1568.003] to tunnel this data through DNS SRV record queries, bypassing egress filtering. Additionally, they used exfiltration over webhook [T1567.004] to send system information to external sites like webhook.site, blending with normal web traffic. Network monitoring tools at SecureBank detected anomalous DNS query volumes but lacked correlation with data loss incidents.\n\nMitigation Recommendations: Organizations should implement application whitelisting, monitor for unusual DDE and SVG file usage, enforce multi-factor authentication for domain accounts, and deploy DNS filtering solutions. Regular security training for employees on phishing and web threats is also advised. This fictional scenario underscores the importance of layered defenses and proactive threat hunting.",
+        "techniques_used": [
+            "T1189",
+            "T1559.002",
+            "T1078.002",
+            "T1027.017",
+            "T1553.002",
+            "T1005",
+            "T1568.003",
+            "T1567.004"
+        ]
+    }
+}

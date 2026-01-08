@@ -1,0 +1,108 @@
+{
+    "report_id": "report_118",
+    "generated_at": "20251222_133326",
+    "scenario_target_ids": [
+        "T1608.003",
+        "T1195",
+        "T1559",
+        "T1505.005",
+        "T1037.004",
+        "T1606",
+        "T1021.007",
+        "T1119",
+        "T1213.005",
+        "T1219.001",
+        "T1565.002",
+        "T1495"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1559",
+        "T1505.005",
+        "T1037.004",
+        "T1219.001",
+        "T1608.003",
+        "T1606",
+        "T1021.007",
+        "T1213.005",
+        "T1119",
+        "T1565.002",
+        "T1495"
+    ],
+    "actual_found_ids": [
+        "T1037.004",
+        "T1495",
+        "T1608.003",
+        "T1213.005",
+        "T1505.005",
+        "T1021.007",
+        "T1559",
+        "T1195",
+        "T1119",
+        "T1565.002",
+        "T1606",
+        "T1219.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional threat actor, Sandworm Team, conducting a sophisticated cyber campaign. This report is based on simulated activity designed for blue team training. The targeted organization, a mid-sized e-commerce company named 'TechRetail Inc.', reported unusual network traffic and system anomalies during a routine audit on October 15, 2023. TechRetail Inc. operates a hybrid environment with on-premises servers running Linux and Windows, alongside Azure cloud services for customer data storage. Initial logs showed increased outbound connections from development servers to unknown IP addresses, but no immediate impact on sales operations was noted.\n\nThe attack began with the adversary staging compromised versions of legitimate software installers on popular developer forums, exploiting trust in third-party sources to achieve untargeted initial access in victim environments. Upon execution, the malicious code exploited COM interfaces to create and execute a remote script component on the target machine, while a malicious script altered termsrv.dll to disable RDP security features. For persistence, the actor added an entry to the rc.common file and established a persistent connection by executing a code tunnel through the compromised development environment. To facilitate encrypted communications, the threat actor created a new certificate.pem file in /var/www/html/ssl/.\n\nIn the cloud environment, using compromised IAM user permissions, the threat actor invoked AssumeRole to obtain cross-account access credentials and ran Connect-AZAccount to gain access to Azure virtual machines and storage. The malware then queried Microsoft Teams API to collect user credentials and authentication tokens and monitored files for changes, automatically collecting sensitive data. During data exfiltration, the malware intercepted HTTP POST requests using a network sniffer to capture form submission data. Finally, as a disruptive measure, ransomware corrupted the point-of-sale terminal's firmware flash utility, disabling payment processing capabilities until hardware replacement. System logs from TechRetail Inc. indicated failed backup attempts and increased CPU usage on development servers, but these were initially attributed to routine maintenance activities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional threat actor, Sandworm Team, conducting a sophisticated cyber campaign. This report is based on simulated activity designed for blue team training. The targeted organization, a mid-sized e-commerce company named 'TechRetail Inc.', reported unusual network traffic and system anomalies during a routine audit on October 15, 2023. TechRetail Inc. operates a hybrid environment with on-premises servers running Linux and Windows, alongside Azure cloud services for customer data storage. Initial logs showed increased outbound connections from development servers to unknown IP addresses, but no immediate impact on sales operations was noted.\n\nThe attack began with the adversary staging compromised versions of legitimate software installers on popular developer forums, exploiting trust in third-party sources to achieve untargeted initial access in victim environments [T1195]. Upon execution, the malicious code exploited COM interfaces to create and execute a remote script component on the target machine [T1559], while a malicious script altered termsrv.dll to disable RDP security features [T1505.005]. For persistence, the actor added an entry to the rc.common file [T1037.004] and established a persistent connection by executing a code tunnel through the compromised development environment [T1219.001]. To facilitate encrypted communications, the threat actor created a new certificate.pem file in /var/www/html/ssl/ [T1608.003].\n\nIn the cloud environment, using compromised IAM user permissions, the threat actor invoked AssumeRole to obtain cross-account access credentials [T1606] and ran Connect-AZAccount to gain access to Azure virtual machines and storage [T1021.007]. The malware then queried Microsoft Teams API to collect user credentials and authentication tokens [T1213.005] and monitored files for changes, automatically collecting sensitive data [T1119]. During data exfiltration, the malware intercepted HTTP POST requests using a network sniffer to capture form submission data [T1565.002]. Finally, as a disruptive measure, ransomware corrupted the point-of-sale terminal's firmware flash utility, disabling payment processing capabilities until hardware replacement [T1495]. System logs from TechRetail Inc. indicated failed backup attempts and increased CPU usage on development servers, but these were initially attributed to routine maintenance activities.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with the adversary staging compromised versions of legitimate software installers on popular developer forums, exploiting trust in third-party sources to achieve untargeted initial access in victim environments.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Upon execution, the malicious code exploited COM interfaces to create and execute a remote script component on the target machine, while a malicious script altered termsrv.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "In the cloud environment, using compromised IAM user permissions, the threat actor invoked AssumeRole to obtain cross-account access credentials and ran Connect-AZAccount to gain access to Azure virtual machines and storage [T1021.",
+            "technique_id": "T1606",
+            "technique_name": "Forge Web Credentials"
+        },
+        {
+            "sentence": "005] and monitored files for changes, automatically collecting sensitive data.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        },
+        {
+            "sentence": "Finally, as a disruptive measure, ransomware corrupted the point-of-sale terminal's firmware flash utility, disabling payment processing capabilities until hardware replacement.",
+            "technique_id": "T1495",
+            "technique_name": "Firmware Corruption"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Sandworm Team Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional Sandworm Team, which leverages supply chain compromises to gain initial access, followed by a multi-faceted attack involving credential forgery, cloud service exploitation, and persistent backdoors. The campaign demonstrates advanced techniques for data collection, manipulation, and system disruption, including firmware corruption. Blue teams should use this report for training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional threat actor, Sandworm Team, conducting a sophisticated cyber campaign. This report is based on simulated activity designed for blue team training. The targeted organization, a mid-sized e-commerce company named 'TechRetail Inc.', reported unusual network traffic and system anomalies during a routine audit on October 15, 2023. TechRetail Inc. operates a hybrid environment with on-premises servers running Linux and Windows, alongside Azure cloud services for customer data storage. Initial logs showed increased outbound connections from development servers to unknown IP addresses, but no immediate impact on sales operations was noted.\n\nThe attack began with the adversary staging compromised versions of legitimate software installers on popular developer forums, exploiting trust in third-party sources to achieve untargeted initial access in victim environments [T1195]. Upon execution, the malicious code exploited COM interfaces to create and execute a remote script component on the target machine [T1559], while a malicious script altered termsrv.dll to disable RDP security features [T1505.005]. For persistence, the actor added an entry to the rc.common file [T1037.004] and established a persistent connection by executing a code tunnel through the compromised development environment [T1219.001]. To facilitate encrypted communications, the threat actor created a new certificate.pem file in /var/www/html/ssl/ [T1608.003].\n\nIn the cloud environment, using compromised IAM user permissions, the threat actor invoked AssumeRole to obtain cross-account access credentials [T1606] and ran Connect-AZAccount to gain access to Azure virtual machines and storage [T1021.007]. The malware then queried Microsoft Teams API to collect user credentials and authentication tokens [T1213.005] and monitored files for changes, automatically collecting sensitive data [T1119]. During data exfiltration, the malware intercepted HTTP POST requests using a network sniffer to capture form submission data [T1565.002]. Finally, as a disruptive measure, ransomware corrupted the point-of-sale terminal's firmware flash utility, disabling payment processing capabilities until hardware replacement [T1495]. System logs from TechRetail Inc. indicated failed backup attempts and increased CPU usage on development servers, but these were initially attributed to routine maintenance activities.",
+        "techniques_used": [
+            "T1195",
+            "T1559",
+            "T1505.005",
+            "T1037.004",
+            "T1219.001",
+            "T1608.003",
+            "T1606",
+            "T1021.007",
+            "T1213.005",
+            "T1119",
+            "T1565.002",
+            "T1495"
+        ]
+    }
+}

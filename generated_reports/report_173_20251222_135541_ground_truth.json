@@ -1,0 +1,94 @@
+{
+    "report_id": "report_173",
+    "generated_at": "20251222_135541",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1559.002",
+        "T1651",
+        "T1547",
+        "T1556.002",
+        "T1560",
+        "T1205.002",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.004",
+        "T1559.002",
+        "T1059.001",
+        "T1651",
+        "T1547",
+        "T1556.002",
+        "T1560",
+        "T1205.002",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1560",
+        "T1052",
+        "T1547",
+        "T1205.002",
+        "T1589",
+        "T1078.004",
+        "T1559.002",
+        "T1556.002",
+        "T1059.001"
+    ],
+    "clean_text": "On 2024-09-15, TechNova Solutions, a fictional company specializing in cloud-based analytics software, reported anomalous activity in their Azure environment, prompting an investigation by internal security teams. Initial logs showed unusual API calls from a compromised user account, which had been dormant for several months due to an employee departure. The actors likely conducted reconnaissance to identify this account, though no specific techniques were tagged in the provided scenario. The attack began with the adversary exploiting weak password policies to gain unauthorized access to a cloud administrator account, enabling them to manipulate virtual machine instances via the cloud API. Subsequently, they delivered a malicious .docx file through a spear-phishing email, which leveraged Dynamic Data Exchange (DDE) to execute PowerShell scripts for initial payload deployment. Once inside the network, the threat actor used Azure RunCommand to execute lateral movement commands across the virtual network while simultaneously modifying the HKLM Run registry entry to ensure their backdoor launched automatically on system startup. To harvest credentials, the malware dropped a malicious Password Filter DLL that intercepted plain-text passwords, which were then archived using custom encryption algorithms before exfiltration. For C2 communication, the backdoor employed setsockopt to modify socket options, enabling reception of hidden activation packets while evading network detection. Finally, the actor exfiltrated proprietary source code by writing it to a removable USB drive, as detected by endpoint logs showing unauthorized hardware access during off-hours. Additional noise includes routine system updates and unrelated firewall alerts that were investigated but deemed benign.",
+    "tagged_text": "On 2024-09-15, TechNova Solutions, a fictional company specializing in cloud-based analytics software, reported anomalous activity in their Azure environment, prompting an investigation by internal security teams. Initial logs showed unusual API calls from a compromised user account, which had been dormant for several months due to an employee departure. The actors likely conducted reconnaissance [T1589] to identify this account, though no specific techniques were tagged in the provided scenario. The attack began with the adversary exploiting weak password policies to gain unauthorized access to a cloud administrator account [T1078.004], enabling them to manipulate virtual machine instances via the cloud API. Subsequently, they delivered a malicious .docx file through a spear-phishing email, which leveraged Dynamic Data Exchange (DDE) [T1559.002] to execute PowerShell scripts [T1059.001] for initial payload deployment. Once inside the network, the threat actor used Azure RunCommand [T1651] to execute lateral movement commands across the virtual network while simultaneously modifying the HKLM Run registry entry [T1547] to ensure their backdoor launched automatically on system startup. To harvest credentials, the malware dropped a malicious Password Filter DLL [T1556.002] that intercepted plain-text passwords, which were then archived using custom encryption algorithms [T1560] before exfiltration. For C2 communication, the backdoor employed setsockopt to modify socket options [T1205.002], enabling reception of hidden activation packets while evading network detection. Finally, the actor exfiltrated proprietary source code by writing it to a removable USB drive [T1052], as detected by endpoint logs showing unauthorized hardware access during off-hours. Additional noise includes routine system updates and unrelated firewall alerts that were investigated but deemed benign.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify this account, though no specific techniques were tagged in the provided scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Once inside the network, the threat actor used Azure RunCommand to execute lateral movement commands across the virtual network while simultaneously modifying the HKLM Run registry entry to ensure their backdoor launched automatically on system startup.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "Once inside the network, the threat actor used Azure RunCommand to execute lateral movement commands across the virtual network while simultaneously modifying the HKLM Run registry entry to ensure their backdoor launched automatically on system startup.",
+            "technique_id": "T1547",
+            "technique_name": "Boot or Logon Autostart Execution"
+        },
+        {
+            "sentence": "002] that intercepted plain-text passwords, which were then archived using custom encryption algorithms before exfiltration.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "Finally, the actor exfiltrated proprietary source code by writing it to a removable USB drive, as detected by endpoint logs showing unauthorized hardware access during off-hours.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CRIMSON SHADOW', targeting cloud environments in the technology sector. Based on analysis of a fictional incident at a mid-sized software company, 'TechNova Solutions', this report outlines the attack lifecycle using the MITRE ATT&CK framework for blue team training. The campaign involved initial access via cloud account compromise, execution through document-based exploits, lateral movement via cloud administration tools, persistence mechanisms, credential theft, data collection, command and control (C2) evasion, and exfiltration over physical media. Organizations are urged to review defensive measures, including monitoring cloud API activity, restricting administrative commands, and implementing endpoint detection for registry modifications and unauthorized hardware usage.",
+        "full_report_text": "On 2024-09-15, TechNova Solutions, a fictional company specializing in cloud-based analytics software, reported anomalous activity in their Azure environment, prompting an investigation by internal security teams. Initial logs showed unusual API calls from a compromised user account, which had been dormant for several months due to an employee departure. The actors likely conducted reconnaissance [T1589] to identify this account, though no specific techniques were tagged in the provided scenario. The attack began with the adversary exploiting weak password policies to gain unauthorized access to a cloud administrator account [T1078.004], enabling them to manipulate virtual machine instances via the cloud API. Subsequently, they delivered a malicious .docx file through a spear-phishing email, which leveraged Dynamic Data Exchange (DDE) [T1559.002] to execute PowerShell scripts [T1059.001] for initial payload deployment. Once inside the network, the threat actor used Azure RunCommand [T1651] to execute lateral movement commands across the virtual network while simultaneously modifying the HKLM Run registry entry [T1547] to ensure their backdoor launched automatically on system startup. To harvest credentials, the malware dropped a malicious Password Filter DLL [T1556.002] that intercepted plain-text passwords, which were then archived using custom encryption algorithms [T1560] before exfiltration. For C2 communication, the backdoor employed setsockopt to modify socket options [T1205.002], enabling reception of hidden activation packets while evading network detection. Finally, the actor exfiltrated proprietary source code by writing it to a removable USB drive [T1052], as detected by endpoint logs showing unauthorized hardware access during off-hours. Additional noise includes routine system updates and unrelated firewall alerts that were investigated but deemed benign.",
+        "techniques_used": [
+            "T1589",
+            "T1078.004",
+            "T1559.002",
+            "T1059.001",
+            "T1651",
+            "T1547",
+            "T1556.002",
+            "T1560",
+            "T1205.002",
+            "T1052"
+        ]
+    }
+}

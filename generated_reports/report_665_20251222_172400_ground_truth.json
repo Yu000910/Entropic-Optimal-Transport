@@ -1,0 +1,116 @@
+{
+    "report_id": "report_665",
+    "generated_at": "20251222_172400",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1569",
+        "T1653",
+        "T1614.001",
+        "T1091",
+        "T1021",
+        "T1056.003",
+        "T1185",
+        "T1115",
+        "T1219"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.004",
+        "T1569",
+        "T1653",
+        "T1614.001",
+        "T1091",
+        "T1021",
+        "T1056.003",
+        "T1185",
+        "T1115",
+        "T1219"
+    ],
+    "actual_found_ids": [
+        "T1653",
+        "T1566.004",
+        "T1021",
+        "T1589",
+        "T1091",
+        "T1056.003",
+        "T1115",
+        "T1185",
+        "T1569",
+        "T1614.001",
+        "T1219"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in simulated environments. 'Silent Echo' actors likely conduct reconnaissance to identify high-value targets within financial organizations. In the initial access phase, the actors sent spearphishing emails with embedded links that, when clicked, automatically downloaded and executed a remote access tool. Upon execution, the malware abused svchost.exe to load a malicious DLL for data exfiltration while simultaneously modifying the system's lock screen timeout settings to prevent automatic logout and maintain persistent access. The actors then examined HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Nls\\Language registry values to identify the system's location and propagated the malware via removable media using an autorun.inf file to infect air-gapped systems. With compromised credentials obtained earlier, the actors established an SSH tunnel to an internal web server for lateral movement and injected keylogging functionality into the organization's web portal login form to capture additional credentials. A malicious browser extension was deployed to hijack browser sessions and inject payloads for further lateral movement, while the malware collected data stored in the victim's clipboard. Finally, the actors leveraged Google Chrome Remote Desktop to remotely control the compromised system. System logs from the simulated environment showed routine network traffic and unrelated user activity, such as failed login attempts from legacy systems and scheduled backup processes running on auxiliary servers, which did not correlate with the attack chain. The targeted organization, 'Global Finance Corp', reported no actual breaches, but this scenario highlights the need for enhanced monitoring of endpoint behaviors and network anomalies in financial sectors.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in simulated environments. 'Silent Echo' actors likely conduct reconnaissance [T1589] to identify high-value targets within financial organizations. In the initial access phase, the actors sent spearphishing emails with embedded links that, when clicked, automatically downloaded and executed a remote access tool [T1566.004]. Upon execution, the malware abused svchost.exe to load a malicious DLL for data exfiltration [T1569] while simultaneously modifying the system's lock screen timeout settings to prevent automatic logout and maintain persistent access [T1653]. The actors then examined HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Nls\\Language registry values to identify the system's location [T1614.001] and propagated the malware via removable media using an autorun.inf file to infect air-gapped systems [T1091]. With compromised credentials obtained earlier, the actors established an SSH tunnel to an internal web server for lateral movement [T1021] and injected keylogging functionality into the organization's web portal login form to capture additional credentials [T1056.003]. A malicious browser extension was deployed to hijack browser sessions and inject payloads for further lateral movement [T1185], while the malware collected data stored in the victim's clipboard [T1115]. Finally, the actors leveraged Google Chrome Remote Desktop to remotely control the compromised system [T1219]. System logs from the simulated environment showed routine network traffic and unrelated user activity, such as failed login attempts from legacy systems and scheduled backup processes running on auxiliary servers, which did not correlate with the attack chain. The targeted organization, 'Global Finance Corp', reported no actual breaches, but this scenario highlights the need for enhanced monitoring of endpoint behaviors and network anomalies in financial sectors.",
+    "sentence_annotations": [
+        {
+            "sentence": "'Silent Echo' actors likely conduct reconnaissance to identify high-value targets within financial organizations.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "exe to load a malicious DLL for data exfiltration while simultaneously modifying the system's lock screen timeout settings to prevent automatic logout and maintain persistent access.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "exe to load a malicious DLL for data exfiltration while simultaneously modifying the system's lock screen timeout settings to prevent automatic logout and maintain persistent access.",
+            "technique_id": "T1653",
+            "technique_name": "Power Settings"
+        },
+        {
+            "sentence": "inf file to infect air-gapped systems.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "With compromised credentials obtained earlier, the actors established an SSH tunnel to an internal web server for lateral movement and injected keylogging functionality into the organization's web portal login form to capture additional credentials [T1056.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "A malicious browser extension was deployed to hijack browser sessions and inject payloads for further lateral movement, while the malware collected data stored in the victim's clipboard.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        },
+        {
+            "sentence": "A malicious browser extension was deployed to hijack browser sessions and inject payloads for further lateral movement, while the malware collected data stored in the victim's clipboard.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        },
+        {
+            "sentence": "Finally, the actors leveraged Google Chrome Remote Desktop to remotely control the compromised system.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Echo' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Silent Echo', targeting financial institutions to exfiltrate sensitive data and maintain persistent access. The campaign employs sophisticated social engineering, system manipulation, and lateral movement techniques, as observed in recent training exercises. Blue teams should use this report to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in simulated environments. 'Silent Echo' actors likely conduct reconnaissance [T1589] to identify high-value targets within financial organizations. In the initial access phase, the actors sent spearphishing emails with embedded links that, when clicked, automatically downloaded and executed a remote access tool [T1566.004]. Upon execution, the malware abused svchost.exe to load a malicious DLL for data exfiltration [T1569] while simultaneously modifying the system's lock screen timeout settings to prevent automatic logout and maintain persistent access [T1653]. The actors then examined HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Nls\\Language registry values to identify the system's location [T1614.001] and propagated the malware via removable media using an autorun.inf file to infect air-gapped systems [T1091]. With compromised credentials obtained earlier, the actors established an SSH tunnel to an internal web server for lateral movement [T1021] and injected keylogging functionality into the organization's web portal login form to capture additional credentials [T1056.003]. A malicious browser extension was deployed to hijack browser sessions and inject payloads for further lateral movement [T1185], while the malware collected data stored in the victim's clipboard [T1115]. Finally, the actors leveraged Google Chrome Remote Desktop to remotely control the compromised system [T1219]. System logs from the simulated environment showed routine network traffic and unrelated user activity, such as failed login attempts from legacy systems and scheduled backup processes running on auxiliary servers, which did not correlate with the attack chain. The targeted organization, 'Global Finance Corp', reported no actual breaches, but this scenario highlights the need for enhanced monitoring of endpoint behaviors and network anomalies in financial sectors.",
+        "techniques_used": [
+            "T1589",
+            "T1566.004",
+            "T1569",
+            "T1653",
+            "T1614.001",
+            "T1091",
+            "T1021",
+            "T1056.003",
+            "T1185",
+            "T1115",
+            "T1219"
+        ]
+    }
+}

@@ -1,0 +1,108 @@
+{
+    "report_id": "report_533",
+    "generated_at": "20251222_162858",
+    "scenario_target_ids": [
+        "T1190",
+        "T1059.002",
+        "T1059.010",
+        "T1546.015",
+        "T1556.002",
+        "T1115",
+        "T1530",
+        "T1056.002",
+        "T1071",
+        "T1011",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1059.002",
+        "T1059.010",
+        "T1546.015",
+        "T1556.002",
+        "T1115",
+        "T1530",
+        "T1056.002",
+        "T1071",
+        "T1011",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1491",
+        "T1011",
+        "T1530",
+        "T1546.015",
+        "T1115",
+        "T1059.010",
+        "T1190",
+        "T1556.002",
+        "T1059.002",
+        "T1071",
+        "T1056.002"
+    ],
+    "clean_text": "On 2024-07-15, AlphaCorp Global's Security Operations Center (SOC) detected anomalous activity originating from their public-facing FortiGate firewall, which was running an outdated firmware version 6.4.5. Initial logs showed multiple failed login attempts from IP 192.0.2.100, followed by a successful exploit that deployed a backdoor payload. The adversary then utilized AppleScript to execute malicious commands via `osascript` in a Launch Agent .plist file, while simultaneously writing an AutoIt script to inject code into legitimate processes like `svchost.exe` for evasion. System administrators noted unusual registry modifications in HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF12-3456-7890-ABCDEF123456}\\InprocServer32, indicating Component Object Model hijacking. A subsequent scan revealed a DLL file named `credharvest.dll` in the Windows temp folder, consistent with a Password Filter DLL attack. The malware also captured clipboard data, including copied passwords and sensitive text snippets. Exfiltration activities involved collecting database snapshots from an improperly configured Amazon S3 bucket and using SSH over non-standard port 2222 for command and control. Additionally, the actor employed GUI input capture via a counterfeit iCloud login window to harvest Apple IDs, and transferred intellectual property files over an open WiFi access point. Finally, the exploit kit injected 'evil.ps1' to alter system error message displays, resulting in defacement. AlphaCorp's incident response team contained the threat by isolating affected systems and applying patches, with no real data loss reported in this training scenario.",
+    "tagged_text": "On 2024-07-15, AlphaCorp Global's Security Operations Center (SOC) detected anomalous activity originating from their public-facing FortiGate firewall, which was running an outdated firmware version 6.4.5. Initial logs showed multiple failed login attempts from IP 192.0.2.100, followed by a successful exploit that deployed a backdoor payload [T1190]. The adversary then utilized AppleScript [T1059.002] to execute malicious commands via `osascript` in a Launch Agent .plist file, while simultaneously writing an AutoIt script [T1059.010] to inject code into legitimate processes like `svchost.exe` for evasion. System administrators noted unusual registry modifications in HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF12-3456-7890-ABCDEF123456}\\InprocServer32, indicating Component Object Model hijacking [T1546.015]. A subsequent scan revealed a DLL file named `credharvest.dll` in the Windows temp folder, consistent with a Password Filter DLL attack [T1556.002]. The malware also captured clipboard data [T1115], including copied passwords and sensitive text snippets. Exfiltration activities involved collecting database snapshots from an improperly configured Amazon S3 bucket [T1530] and using SSH over non-standard port 2222 for command and control [T1071]. Additionally, the actor employed GUI input capture [T1056.002] via a counterfeit iCloud login window to harvest Apple IDs, and transferred intellectual property files over an open WiFi access point [T1011]. Finally, the exploit kit injected 'evil.ps1' to alter system error message displays, resulting in defacement [T1491]. AlphaCorp's incident response team contained the threat by isolating affected systems and applying patches, with no real data loss reported in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "100, followed by a successful exploit that deployed a backdoor payload.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "The malware also captured clipboard data, including copied passwords and sensitive text snippets.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        },
+        {
+            "sentence": "Exfiltration activities involved collecting database snapshots from an improperly configured Amazon S3 bucket and using SSH over non-standard port 2222 for command and control.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "Exfiltration activities involved collecting database snapshots from an improperly configured Amazon S3 bucket and using SSH over non-standard port 2222 for command and control.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        },
+        {
+            "sentence": "002] via a counterfeit iCloud login window to harvest Apple IDs, and transferred intellectual property files over an open WiFi access point.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        },
+        {
+            "sentence": "ps1' to alter system error message displays, resulting in defacement.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor 'CRIMSON TIDE'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'CRIMSON TIDE' targeting a fictional multinational corporation, 'AlphaCorp Global', for training purposes. The campaign involves exploitation of public-facing applications, use of scripting for execution and evasion, credential harvesting, data exfiltration, and defacement, as observed in a controlled environment to educate blue teams on multi-technique attacks.",
+        "full_report_text": "On 2024-07-15, AlphaCorp Global's Security Operations Center (SOC) detected anomalous activity originating from their public-facing FortiGate firewall, which was running an outdated firmware version 6.4.5. Initial logs showed multiple failed login attempts from IP 192.0.2.100, followed by a successful exploit that deployed a backdoor payload [T1190]. The adversary then utilized AppleScript [T1059.002] to execute malicious commands via `osascript` in a Launch Agent .plist file, while simultaneously writing an AutoIt script [T1059.010] to inject code into legitimate processes like `svchost.exe` for evasion. System administrators noted unusual registry modifications in HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF12-3456-7890-ABCDEF123456}\\InprocServer32, indicating Component Object Model hijacking [T1546.015]. A subsequent scan revealed a DLL file named `credharvest.dll` in the Windows temp folder, consistent with a Password Filter DLL attack [T1556.002]. The malware also captured clipboard data [T1115], including copied passwords and sensitive text snippets. Exfiltration activities involved collecting database snapshots from an improperly configured Amazon S3 bucket [T1530] and using SSH over non-standard port 2222 for command and control [T1071]. Additionally, the actor employed GUI input capture [T1056.002] via a counterfeit iCloud login window to harvest Apple IDs, and transferred intellectual property files over an open WiFi access point [T1011]. Finally, the exploit kit injected 'evil.ps1' to alter system error message displays, resulting in defacement [T1491]. AlphaCorp's incident response team contained the threat by isolating affected systems and applying patches, with no real data loss reported in this training scenario.",
+        "techniques_used": [
+            "T1190",
+            "T1059.002",
+            "T1059.010",
+            "T1546.015",
+            "T1556.002",
+            "T1115",
+            "T1530",
+            "T1056.002",
+            "T1071",
+            "T1011",
+            "T1491"
+        ]
+    }
+}

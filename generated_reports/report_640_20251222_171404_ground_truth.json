@@ -1,0 +1,78 @@
+{
+    "report_id": "report_640",
+    "generated_at": "20251222_171404",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1566.004",
+        "T1059.009",
+        "T1574",
+        "T1497.002",
+        "T1021.005",
+        "T1102.001",
+        "T1041",
+        "T1052.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1566.004",
+        "T1059.009",
+        "T1574",
+        "T1497.002",
+        "T1021.005",
+        "T1102.001",
+        "T1041",
+        "T1052.001"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1566.001",
+        "T1566.004",
+        "T1497.002",
+        "T1021.005",
+        "T1059.009",
+        "T1041",
+        "T1574",
+        "T1052.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional threat actor designated as 'Saint Bear'. This actor has been observed targeting various sectors, including financial services and healthcare, with a focus on cloud environments. Initial reconnaissance involved gathering employee information from social media platforms, though no specific techniques were tagged for this phase.\n\nIn the Initial Access phase, the adversary conducted a multi-vector spearphishing campaign by sending malicious Microsoft Office documents as attachments and simultaneously making voice calls impersonating Microsoft support to direct users to install remote access tools like AnyDesk. Upon execution, the malware leveraged Azure PowerShell to enumerate virtual machines via 'Get-AzVM' commands while hijacking the execution flow by planting a malicious DLL in the application directory to side-load through svchost.exe. System logs from the compromised machine showed unusual network traffic on port 443, but this was not indicative of malicious activity.\n\nDuring the Persistence and Defense Evasion stages, the infection routine performed user activity-based checks by searching for 'malware.exe' process names to detect sandbox environments, and the actor used VNC to establish remote connections into systems for lateral movement. For Command and Control (C2), the malware employed a dead drop resolver by retrieving C2 information from Google Docs, and exfiltration was carried out over the C2 channel to receive stolen data while also using USB devices to collect system information and network configurations from the compromised machine. Additional background noise included routine system updates and firewall alerts that were unrelated to the attack.\n\nThis campaign highlights the need for enhanced monitoring of cloud APIs, user training against social engineering, and robust endpoint detection to mitigate such threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional threat actor designated as 'Saint Bear'. This actor has been observed targeting various sectors, including financial services and healthcare, with a focus on cloud environments. Initial reconnaissance involved gathering employee information from social media platforms, though no specific techniques were tagged for this phase.\n\nIn the Initial Access phase, the adversary conducted a multi-vector spearphishing campaign by sending malicious Microsoft Office documents as attachments [T1566.001] and simultaneously making voice calls impersonating Microsoft support to direct users to install remote access tools like AnyDesk [T1566.004]. Upon execution, the malware leveraged Azure PowerShell [T1059.009] to enumerate virtual machines via 'Get-AzVM' commands while hijacking the execution flow by planting a malicious DLL in the application directory to side-load through svchost.exe [T1574]. System logs from the compromised machine showed unusual network traffic on port 443, but this was not indicative of malicious activity.\n\nDuring the Persistence and Defense Evasion stages, the infection routine performed user activity-based checks by searching for 'malware.exe' process names to detect sandbox environments [T1497.002], and the actor used VNC [T1021.005] to establish remote connections into systems for lateral movement. For Command and Control (C2), the malware employed a dead drop resolver by retrieving C2 information from Google Docs [T1102.001], and exfiltration was carried out over the C2 channel to receive stolen data [T1041] while also using USB devices to collect system information and network configurations from the compromised machine [T1052.001]. Additional background noise included routine system updates and firewall alerts that were unrelated to the attack.\n\nThis campaign highlights the need for enhanced monitoring of cloud APIs, user training against social engineering, and robust endpoint detection to mitigate such threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe.",
+            "technique_id": "T1574",
+            "technique_name": "Hijack Execution Flow"
+        },
+        {
+            "sentence": "001], and exfiltration was carried out over the C2 channel to receive stolen data while also using USB devices to collect system information and network configurations from the compromised machine [T1052.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'Saint Bear' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the threat actor 'Saint Bear', which employs sophisticated spearphishing and cloud exploitation techniques to compromise organizations, leveraging multi-faceted initial access, execution flow hijacking, and data exfiltration methods for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional threat actor designated as 'Saint Bear'. This actor has been observed targeting various sectors, including financial services and healthcare, with a focus on cloud environments. Initial reconnaissance involved gathering employee information from social media platforms, though no specific techniques were tagged for this phase.\n\nIn the Initial Access phase, the adversary conducted a multi-vector spearphishing campaign by sending malicious Microsoft Office documents as attachments [T1566.001] and simultaneously making voice calls impersonating Microsoft support to direct users to install remote access tools like AnyDesk [T1566.004]. Upon execution, the malware leveraged Azure PowerShell [T1059.009] to enumerate virtual machines via 'Get-AzVM' commands while hijacking the execution flow by planting a malicious DLL in the application directory to side-load through svchost.exe [T1574]. System logs from the compromised machine showed unusual network traffic on port 443, but this was not indicative of malicious activity.\n\nDuring the Persistence and Defense Evasion stages, the infection routine performed user activity-based checks by searching for 'malware.exe' process names to detect sandbox environments [T1497.002], and the actor used VNC [T1021.005] to establish remote connections into systems for lateral movement. For Command and Control (C2), the malware employed a dead drop resolver by retrieving C2 information from Google Docs [T1102.001], and exfiltration was carried out over the C2 channel to receive stolen data [T1041] while also using USB devices to collect system information and network configurations from the compromised machine [T1052.001]. Additional background noise included routine system updates and firewall alerts that were unrelated to the attack.\n\nThis campaign highlights the need for enhanced monitoring of cloud APIs, user training against social engineering, and robust endpoint detection to mitigate such threats.",
+        "techniques_used": [
+            "T1566.001",
+            "T1566.004",
+            "T1059.009",
+            "T1574",
+            "T1497.002",
+            "T1021.005",
+            "T1102.001",
+            "T1041",
+            "T1052.001"
+        ]
+    }
+}

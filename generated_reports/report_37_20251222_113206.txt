@@ -1,0 +1,16 @@
+### Background
+SecureBank Inc., a mid-sized financial services company with operations in North America and Europe, reported anomalous network activity starting on October 15, 2023. Initial logs from their SIEM showed unusual outbound traffic to cloud storage services, but no immediate alerts were triggered due to misconfigured thresholds. The company's IT infrastructure includes a hybrid cloud environment with Docker containers for application deployment and standard endpoint protection software.
+
+### Attack Narrative
+**Initial Access:** The actors likely conducted reconnaissance [T1589] to identify key employees at SecureBank, then created fake Instagram profiles posing as industry influencers to share links to malware-infected mobile applications [T1566.003], luring users to click on malicious URLs [T1204.001] that delivered the initial payload.
+
+**Execution:** Upon execution, the malware established persistence by modifying registry keys [T1112] and employed PowerShell [T1059.001] to download additional modules [T1105], including a remote access tool (RAT) that checked for LogMein event logs [T1219] to facilitate lateral movement.
+
+**Persistence and Privilege Escalation:** The adversary gained interactive shell access to a sensitive Docker container using the command 'docker exec -it app_container /bin/bash' [T1609] and executed a hidden code tunnel through development tools [T1219.001] to maintain covert access while evading detection by security software.
+
+**Collection:** From the compromised container, the actors used PowerShell to query IMAP servers for email metadata [T1114] and activated the computer's microphone to capture audio [T1123], gathering sensitive financial discussions and login credentials.
+
+**Exfiltration and Impact:** The collected data was exfiltrated to Dropbox using an uploader tool similar to LUNCHMONEY [T1567.002], and finally, a wiper tool deployed the 'shred' command to erase all data partitions [T1561], rendering recovery impossible and causing significant operational disruption.
+
+### Recommendations
+Blue teams should monitor for unusual container administration commands, enhance email security protocols, and implement network segmentation to limit lateral movement. Regular audits of cloud storage access and user training on phishing threats are advised.

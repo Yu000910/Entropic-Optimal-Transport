@@ -1,0 +1,52 @@
+{
+    "report_id": "report_423",
+    "generated_at": "20251222_154107",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1053.006",
+        "T1552.005",
+        "T1552.003",
+        "T1213.002",
+        "T1573.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.001",
+        "T1573.001",
+        "T1053.006",
+        "T1552.005",
+        "T1552.003",
+        "T1213.002"
+    ],
+    "actual_found_ids": [
+        "T1053.006",
+        "T1195.001",
+        "T1552.003",
+        "T1552.005",
+        "T1573.001",
+        "T1213.002"
+    ],
+    "clean_text": "Background: APT-EDU-01 is a fictional threat actor with suspected ties to educational training scenarios, focusing on exploiting software dependencies and cloud misconfigurations. The campaign was first observed in a simulated environment at a fictional company, TechCorp Inc., which uses AWS cloud services and maintains internal SharePoint repositories for HR documents. Initial logs from TechCorp's SIEM showed unusual network traffic patterns from development servers, but no immediate alerts were triggered.\n\nAttack Narrative: The actors initiated the campaign by compromising a third-party PowerShell module repository, injecting a backdoor into a widely used script named evil.ps1. This backdoor was designed to establish persistent access and exfiltrate sensitive documents. Upon execution in TechCorp's development environment, the backdoor employed symmetric cryptography to encrypt command and control (C2) traffic using XOR, evading basic network monitoring tools. The adversary then leveraged systemd timers by writing a custom service file to ensure the backdoor ran persistently after system boot, while simultaneously querying the Cloud Instance Metadata API at http://169.254.169.254/latest/meta-data/iam/security-credentials/ to obtain role-based access tokens for AWS resources. To further escalate privileges, the threat actor searched through bash history entries on compromised Linux servers to locate SSH private key passphrases, enabling lateral movement. Concurrently, custom scripts were deployed to query SharePoint repositories for HR documents containing employee details, facilitating targeted data exfiltration. Throughout the campaign, APT-EDU-01 maintained low visibility by blending malicious activities with normal system operations, such as routine log rotations and backup processes, which were not tagged as part of the kill chain.",
+    "tagged_text": "Background: APT-EDU-01 is a fictional threat actor with suspected ties to educational training scenarios, focusing on exploiting software dependencies and cloud misconfigurations. The campaign was first observed in a simulated environment at a fictional company, TechCorp Inc., which uses AWS cloud services and maintains internal SharePoint repositories for HR documents. Initial logs from TechCorp's SIEM showed unusual network traffic patterns from development servers, but no immediate alerts were triggered.\n\nAttack Narrative: The actors initiated the campaign by compromising a third-party PowerShell module repository, injecting a backdoor into a widely used script named evil.ps1 [T1195.001]. This backdoor was designed to establish persistent access and exfiltrate sensitive documents. Upon execution in TechCorp's development environment, the backdoor employed symmetric cryptography [T1573.001] to encrypt command and control (C2) traffic using XOR, evading basic network monitoring tools. The adversary then leveraged systemd timers [T1053.006] by writing a custom service file to ensure the backdoor ran persistently after system boot, while simultaneously querying the Cloud Instance Metadata API [T1552.005] at http://169.254.169.254/latest/meta-data/iam/security-credentials/ to obtain role-based access tokens for AWS resources. To further escalate privileges, the threat actor searched through bash history entries [T1552.003] on compromised Linux servers to locate SSH private key passphrases, enabling lateral movement. Concurrently, custom scripts were deployed to query SharePoint repositories [T1213.002] for HR documents containing employee details, facilitating targeted data exfiltration. Throughout the campaign, APT-EDU-01 maintained low visibility by blending malicious activities with normal system operations, such as routine log rotations and backup processes, which were not tagged as part of the kill chain.",
+    "sentence_annotations": [],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Development Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-EDU-01, targeting organizations with cloud infrastructure and software development pipelines. The campaign involves supply chain compromise, cloud credential theft, and data exfiltration, designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "Background: APT-EDU-01 is a fictional threat actor with suspected ties to educational training scenarios, focusing on exploiting software dependencies and cloud misconfigurations. The campaign was first observed in a simulated environment at a fictional company, TechCorp Inc., which uses AWS cloud services and maintains internal SharePoint repositories for HR documents. Initial logs from TechCorp's SIEM showed unusual network traffic patterns from development servers, but no immediate alerts were triggered.\n\nAttack Narrative: The actors initiated the campaign by compromising a third-party PowerShell module repository, injecting a backdoor into a widely used script named evil.ps1 [T1195.001]. This backdoor was designed to establish persistent access and exfiltrate sensitive documents. Upon execution in TechCorp's development environment, the backdoor employed symmetric cryptography [T1573.001] to encrypt command and control (C2) traffic using XOR, evading basic network monitoring tools. The adversary then leveraged systemd timers [T1053.006] by writing a custom service file to ensure the backdoor ran persistently after system boot, while simultaneously querying the Cloud Instance Metadata API [T1552.005] at http://169.254.169.254/latest/meta-data/iam/security-credentials/ to obtain role-based access tokens for AWS resources. To further escalate privileges, the threat actor searched through bash history entries [T1552.003] on compromised Linux servers to locate SSH private key passphrases, enabling lateral movement. Concurrently, custom scripts were deployed to query SharePoint repositories [T1213.002] for HR documents containing employee details, facilitating targeted data exfiltration. Throughout the campaign, APT-EDU-01 maintained low visibility by blending malicious activities with normal system operations, such as routine log rotations and backup processes, which were not tagged as part of the kill chain.",
+        "techniques_used": [
+            "T1195.001",
+            "T1573.001",
+            "T1053.006",
+            "T1552.005",
+            "T1552.003",
+            "T1213.002"
+        ]
+    }
+}

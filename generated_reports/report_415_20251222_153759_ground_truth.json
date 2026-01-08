@@ -1,0 +1,93 @@
+{
+    "report_id": "report_415",
+    "generated_at": "20251222_153759",
+    "scenario_target_ids": [
+        "T1078",
+        "T1195",
+        "T1648",
+        "T1574.008",
+        "T1003.005",
+        "T1056.003",
+        "T1113",
+        "T1219.002",
+        "T1011"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1195",
+        "T1648",
+        "T1574.008",
+        "T1003.005",
+        "T1056.003",
+        "T1113",
+        "T1219.002",
+        "T1011"
+    ],
+    "actual_found_ids": [
+        "T1011",
+        "T1574.008",
+        "T1003.005",
+        "T1113",
+        "T1056.003",
+        "T1078",
+        "T1195",
+        "T1219.002",
+        "T1648"
+    ],
+    "clean_text": "Background: The fictional financial firm 'SecureFin Corp' reported anomalous activity in its development environment, leading to a broader investigation. Initial logs from their VPN server showed unusual access patterns from an IP address in a non-business region, but this was later determined to be a misconfigured employee device and is not directly related to the attack. The company, founded in 2005, specializes in digital payment solutions and has 500 employees across three offices. Attack Narrative: The actors first conducted reconnaissance to identify valid VPN accounts, which they used to gain initial access into the corporate network. Concurrently, they compromised the development environment by altering the compiler executable to insert malicious backdoor functionality into software builds. Once inside, the adversary employed serverless execution by updating an IAM role policy to include sts:AssumeRole, enabling unauthorized actions in cloud resources. To maintain persistence, they performed path interception by writing a malicious DLL to the same directory as 'notepad.exe', hijacking its execution to load additional payloads. For credential access, they executed Mimikatz to recover plaintext passwords from LSASS memory dumps and modified the JavaScript on the Ivanti Connect Secure login page to capture credentials entered by users. The actors then used screen capture capabilities to take screenshots of sensitive financial data on compromised hosts and established command and control through abused TeamViewer connections for interactive remote access. Finally, they exfiltrated harvested authentication tokens by having the compromised device connect to a nearby cellular network, transmitting data over this alternative medium. Additional logs from the network firewall showed increased traffic to a benign marketing website during off-hours, but this was unrelated to the attack and attributed to a scheduled system update.",
+    "tagged_text": "Background: The fictional financial firm 'SecureFin Corp' reported anomalous activity in its development environment, leading to a broader investigation. Initial logs from their VPN server showed unusual access patterns from an IP address in a non-business region, but this was later determined to be a misconfigured employee device and is not directly related to the attack. The company, founded in 2005, specializes in digital payment solutions and has 500 employees across three offices. Attack Narrative: The actors first conducted reconnaissance to identify valid VPN accounts [T1078], which they used to gain initial access into the corporate network. Concurrently, they compromised the development environment by altering the compiler executable to insert malicious backdoor functionality into software builds [T1195]. Once inside, the adversary employed serverless execution by updating an IAM role policy to include sts:AssumeRole, enabling unauthorized actions in cloud resources [T1648]. To maintain persistence, they performed path interception by writing a malicious DLL to the same directory as 'notepad.exe', hijacking its execution to load additional payloads [T1574.008]. For credential access, they executed Mimikatz to recover plaintext passwords from LSASS memory dumps [T1003.005] and modified the JavaScript on the Ivanti Connect Secure login page to capture credentials entered by users [T1056.003]. The actors then used screen capture capabilities to take screenshots of sensitive financial data on compromised hosts [T1113] and established command and control through abused TeamViewer connections for interactive remote access [T1219.002]. Finally, they exfiltrated harvested authentication tokens by having the compromised device connect to a nearby cellular network, transmitting data over this alternative medium [T1011]. Additional logs from the network firewall showed increased traffic to a benign marketing website during off-hours, but this was unrelated to the attack and attributed to a scheduled system update.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative: The actors first conducted reconnaissance to identify valid VPN accounts, which they used to gain initial access into the corporate network.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Concurrently, they compromised the development environment by altering the compiler executable to insert malicious backdoor functionality into software builds.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Once inside, the adversary employed serverless execution by updating an IAM role policy to include sts:AssumeRole, enabling unauthorized actions in cloud resources.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "The actors then used screen capture capabilities to take screenshots of sensitive financial data on compromised hosts and established command and control through abused TeamViewer connections for interactive remote access [T1219.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        },
+        {
+            "sentence": "Finally, they exfiltrated harvested authentication tokens by having the compromised device connect to a nearby cellular network, transmitting data over this alternative medium.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowWeaver', targeting financial institutions through a multi-vector attack involving supply chain compromise, credential theft, and exfiltration. The scenario is designed for blue team training to enhance detection and response capabilities against sophisticated techniques.",
+        "full_report_text": "Background: The fictional financial firm 'SecureFin Corp' reported anomalous activity in its development environment, leading to a broader investigation. Initial logs from their VPN server showed unusual access patterns from an IP address in a non-business region, but this was later determined to be a misconfigured employee device and is not directly related to the attack. The company, founded in 2005, specializes in digital payment solutions and has 500 employees across three offices. Attack Narrative: The actors first conducted reconnaissance to identify valid VPN accounts [T1078], which they used to gain initial access into the corporate network. Concurrently, they compromised the development environment by altering the compiler executable to insert malicious backdoor functionality into software builds [T1195]. Once inside, the adversary employed serverless execution by updating an IAM role policy to include sts:AssumeRole, enabling unauthorized actions in cloud resources [T1648]. To maintain persistence, they performed path interception by writing a malicious DLL to the same directory as 'notepad.exe', hijacking its execution to load additional payloads [T1574.008]. For credential access, they executed Mimikatz to recover plaintext passwords from LSASS memory dumps [T1003.005] and modified the JavaScript on the Ivanti Connect Secure login page to capture credentials entered by users [T1056.003]. The actors then used screen capture capabilities to take screenshots of sensitive financial data on compromised hosts [T1113] and established command and control through abused TeamViewer connections for interactive remote access [T1219.002]. Finally, they exfiltrated harvested authentication tokens by having the compromised device connect to a nearby cellular network, transmitting data over this alternative medium [T1011]. Additional logs from the network firewall showed increased traffic to a benign marketing website during off-hours, but this was unrelated to the attack and attributed to a scheduled system update.",
+        "techniques_used": [
+            "T1078",
+            "T1195",
+            "T1648",
+            "T1574.008",
+            "T1003.005",
+            "T1056.003",
+            "T1113",
+            "T1219.002",
+            "T1011"
+        ]
+    }
+}

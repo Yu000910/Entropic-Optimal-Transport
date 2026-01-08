@@ -1,0 +1,96 @@
+{
+    "report_id": "report_38",
+    "generated_at": "20251222_130250",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1195.001",
+        "T1569.003",
+        "T1547.013",
+        "T1546.008",
+        "T1134.005",
+        "T1562.009",
+        "T1564.008",
+        "T1003.001",
+        "T1560.001",
+        "T1213.001",
+        "T1090"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.001",
+        "T1195.001",
+        "T1569.003",
+        "T1547.013",
+        "T1546.008",
+        "T1562.009",
+        "T1134.005",
+        "T1003.001",
+        "T1213.001",
+        "T1560.001",
+        "T1564.008",
+        "T1090"
+    ],
+    "actual_found_ids": [
+        "T1566.001",
+        "T1195.001",
+        "T1546.008",
+        "T1589",
+        "T1003.001",
+        "T1547.013",
+        "T1090",
+        "T1213.001",
+        "T1560.001",
+        "T1562.009",
+        "T1569.003",
+        "T1564.008",
+        "T1134.005"
+    ],
+    "clean_text": "APT-99, a fictional advanced persistent threat group, has been observed targeting financial organizations in a multi-stage attack campaign. The actors likely conduct reconnaissance to identify key personnel, such as IT administrators and security staff, before initiating the attack. Initial access was achieved through a spearphishing email campaign that delivered a malicious attachment disguised as an invoice update, which, when opened, executed a trojanized version of a common software dependency by replacing utils.dll with malware. Upon execution, the malware employed systemctl to enable a reverse shell service for persistent remote access while simultaneously creating XDG autostart entries in user directories to maintain persistence without root privileges. To evade detection, the actors leveraged accessibility features by replacing sethc.exe with cmd.exe via WMI debugging and implemented safe mode boot to reboot systems into Safe Mode prior to data encryption stages. For privilege escalation, they performed SID-History injection on a compromised account to impersonate a Backup Operator, allowing them to access and dump LSASS memory using PowerShell-based tools like Mimikatz to harvest credentials. Data collection involved querying Confluence repositories for API documentation and integration endpoints, after which the actors used built-in PowerShell capabilities to compress collected data via the Compress-Archive cmdlet for exfiltration. To obscure their activities, they created email hiding rules on compromised accounts of security personnel to automatically delete alerts from vendor security products and utilized a custom proxy tool with multiple hops to route traffic through intermediary servers. Throughout the campaign, APT-99 demonstrated a high level of sophistication by combining these techniques in a coordinated manner, as evidenced by system logs showing unusual network traffic patterns and failed login attempts from unknown IP addresses, though some of these logs were later tampered with to cover tracks. The financial organization's background includes a recent merger, which may have introduced vulnerabilities in integrated systems, but this was not directly exploited in the simulated scenario.",
+    "tagged_text": "APT-99, a fictional advanced persistent threat group, has been observed targeting financial organizations in a multi-stage attack campaign. The actors likely conduct reconnaissance [T1589] to identify key personnel, such as IT administrators and security staff, before initiating the attack. Initial access was achieved through a spearphishing email campaign [T1566.001] that delivered a malicious attachment disguised as an invoice update, which, when opened, executed a trojanized version of a common software dependency [T1195.001] by replacing utils.dll with malware. Upon execution, the malware employed systemctl [T1569.003] to enable a reverse shell service for persistent remote access while simultaneously creating XDG autostart entries [T1547.013] in user directories to maintain persistence without root privileges. To evade detection, the actors leveraged accessibility features [T1546.008] by replacing sethc.exe with cmd.exe via WMI debugging and implemented safe mode boot [T1562.009] to reboot systems into Safe Mode prior to data encryption stages. For privilege escalation, they performed SID-History injection [T1134.005] on a compromised account to impersonate a Backup Operator, allowing them to access and dump LSASS memory [T1003.001] using PowerShell-based tools like Mimikatz to harvest credentials. Data collection involved querying Confluence repositories [T1213.001] for API documentation and integration endpoints, after which the actors used built-in PowerShell capabilities [T1560.001] to compress collected data via the Compress-Archive cmdlet for exfiltration. To obscure their activities, they created email hiding rules [T1564.008] on compromised accounts of security personnel to automatically delete alerts from vendor security products and utilized a custom proxy tool [T1090] with multiple hops to route traffic through intermediary servers. Throughout the campaign, APT-99 demonstrated a high level of sophistication by combining these techniques in a coordinated manner, as evidenced by system logs showing unusual network traffic patterns and failed login attempts from unknown IP addresses, though some of these logs were later tampered with to cover tracks. The financial organization's background includes a recent merger, which may have introduced vulnerabilities in integrated systems, but this was not directly exploited in the simulated scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify key personnel, such as IT administrators and security staff, before initiating the attack.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "008] on compromised accounts of security personnel to automatically delete alerts from vendor security products and utilized a custom proxy tool with multiple hops to route traffic through intermediary servers.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-99, targeting financial institutions to exfiltrate sensitive data and establish persistent remote access. The campaign employs sophisticated techniques across the kill-chain, including spearphishing, software supply chain compromise, and evasion tactics. Blue teams should use this report for training to enhance detection and response capabilities.",
+        "full_report_text": "APT-99, a fictional advanced persistent threat group, has been observed targeting financial organizations in a multi-stage attack campaign. The actors likely conduct reconnaissance [T1589] to identify key personnel, such as IT administrators and security staff, before initiating the attack. Initial access was achieved through a spearphishing email campaign [T1566.001] that delivered a malicious attachment disguised as an invoice update, which, when opened, executed a trojanized version of a common software dependency [T1195.001] by replacing utils.dll with malware. Upon execution, the malware employed systemctl [T1569.003] to enable a reverse shell service for persistent remote access while simultaneously creating XDG autostart entries [T1547.013] in user directories to maintain persistence without root privileges. To evade detection, the actors leveraged accessibility features [T1546.008] by replacing sethc.exe with cmd.exe via WMI debugging and implemented safe mode boot [T1562.009] to reboot systems into Safe Mode prior to data encryption stages. For privilege escalation, they performed SID-History injection [T1134.005] on a compromised account to impersonate a Backup Operator, allowing them to access and dump LSASS memory [T1003.001] using PowerShell-based tools like Mimikatz to harvest credentials. Data collection involved querying Confluence repositories [T1213.001] for API documentation and integration endpoints, after which the actors used built-in PowerShell capabilities [T1560.001] to compress collected data via the Compress-Archive cmdlet for exfiltration. To obscure their activities, they created email hiding rules [T1564.008] on compromised accounts of security personnel to automatically delete alerts from vendor security products and utilized a custom proxy tool [T1090] with multiple hops to route traffic through intermediary servers. Throughout the campaign, APT-99 demonstrated a high level of sophistication by combining these techniques in a coordinated manner, as evidenced by system logs showing unusual network traffic patterns and failed login attempts from unknown IP addresses, though some of these logs were later tampered with to cover tracks. The financial organization's background includes a recent merger, which may have introduced vulnerabilities in integrated systems, but this was not directly exploited in the simulated scenario.",
+        "techniques_used": [
+            "T1589",
+            "T1566.001",
+            "T1195.001",
+            "T1569.003",
+            "T1547.013",
+            "T1546.008",
+            "T1562.009",
+            "T1134.005",
+            "T1003.001",
+            "T1213.001",
+            "T1560.001",
+            "T1564.008",
+            "T1090"
+        ]
+    }
+}

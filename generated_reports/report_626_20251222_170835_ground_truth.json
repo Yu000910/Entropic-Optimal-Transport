@@ -1,0 +1,153 @@
+{
+    "report_id": "report_626",
+    "generated_at": "20251222_170835",
+    "scenario_target_ids": [
+        "T1590.002",
+        "T1592.004",
+        "T1591",
+        "T1585.003",
+        "T1566",
+        "T1053.005",
+        "T1552",
+        "T1016",
+        "T1619",
+        "T1217",
+        "T1021",
+        "T1550.003",
+        "T1213.003",
+        "T1056.001",
+        "T1119",
+        "T1071",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1590.002",
+        "T1592.004",
+        "T1591",
+        "T1585.003",
+        "T1566",
+        "T1053.005",
+        "T1552",
+        "T1016",
+        "T1619",
+        "T1217",
+        "T1021",
+        "T1550.003",
+        "T1213.003",
+        "T1056.001",
+        "T1119",
+        "T1071",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1550.003",
+        "T1056.001",
+        "T1021",
+        "T1552",
+        "T1213.003",
+        "T1590.002",
+        "T1619",
+        "T1592.004",
+        "T1217",
+        "T1020.001",
+        "T1566",
+        "T1591",
+        "T1119",
+        "T1585.003",
+        "T1016",
+        "T1053.005",
+        "T1071"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the advanced persistent threat (APT) group 'ShadowGale', a fictional entity created for training purposes. This campaign, observed between June and August 2024, targets financial organizations and their cloud-based assets, leveraging a multi-stage attack chain for intelligence gathering and data theft.\n\nInitial reconnaissance began with the adversary querying DNS AXFR records to extract mail server, web server, and other service configurations, while simultaneously gathering financial intelligence by scraping the victim's investor relations website. In a parallel effort, the actors sent a fake IT survey email to harvest VPN client configuration settings, which was later used to tailor phishing campaigns. The phishing campaign distributed emails with attached password-protected ZIP files containing malware, leading to initial compromise. Upon execution, the malware established persistence by creating scheduled tasks and propagated via peer-to-peer communication using RPC. Credential harvesting involved parsing bash history files for sudo commands to reveal user passwords and querying Chrome's local storage in %APPDATA%/Google/Chrome to gather session information, while keylogging capabilities were deployed to capture additional inputs. Discovery activities included collecting information on network settings and Internet proxy configurations, making ListObjectsV2 requests to the S3 API to catalog files in compromised buckets, and deploying scripts to collect source code and documentation from multiple GitHub repositories. For lateral movement, the actors gained remote access using pass the ticket techniques. Exfiltration was facilitated by establishing a Dropbox account with two-factor authentication disabled to maintain persistent access, with automated collection of data from USB drives, keystrokes, and screen images before using wget requests to communicate with command-and-control servers over application layer protocols. Additionally, the threat actor patched the boot image to embed traffic mirroring capabilities for automated data theft. System logs from the victim's environment showed normal activity during off-hours, with no immediate alerts triggered, and the company background includes a recent merger that may have expanded its attack surface. Blue teams should monitor for unusual DNS queries, enforce strict access controls on cloud storage, and implement network segmentation to disrupt these attack vectors.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the advanced persistent threat (APT) group 'ShadowGale', a fictional entity created for training purposes. This campaign, observed between June and August 2024, targets financial organizations and their cloud-based assets, leveraging a multi-stage attack chain for intelligence gathering and data theft.\n\nInitial reconnaissance began with the adversary querying DNS AXFR records to extract mail server, web server, and other service configurations [T1590.002], while simultaneously gathering financial intelligence by scraping the victim's investor relations website [T1591]. In a parallel effort, the actors sent a fake IT survey email to harvest VPN client configuration settings [T1592.004], which was later used to tailor phishing campaigns. The phishing campaign distributed emails with attached password-protected ZIP files containing malware [T1566], leading to initial compromise. Upon execution, the malware established persistence by creating scheduled tasks [T1053.005] and propagated via peer-to-peer communication using RPC [T1021]. Credential harvesting involved parsing bash history files for sudo commands to reveal user passwords [T1552] and querying Chrome's local storage in %APPDATA%/Google/Chrome to gather session information [T1217], while keylogging capabilities were deployed to capture additional inputs [T1056.001]. Discovery activities included collecting information on network settings and Internet proxy configurations [T1016], making ListObjectsV2 requests to the S3 API to catalog files in compromised buckets [T1619], and deploying scripts to collect source code and documentation from multiple GitHub repositories [T1213.003]. For lateral movement, the actors gained remote access using pass the ticket techniques [T1550.003]. Exfiltration was facilitated by establishing a Dropbox account with two-factor authentication disabled to maintain persistent access [T1585.003], with automated collection of data from USB drives, keystrokes, and screen images [T1119] before using wget requests to communicate with command-and-control servers over application layer protocols [T1071]. Additionally, the threat actor patched the boot image to embed traffic mirroring capabilities for automated data theft [T1020.001]. System logs from the victim's environment showed normal activity during off-hours, with no immediate alerts triggered, and the company background includes a recent merger that may have expanded its attack surface. Blue teams should monitor for unusual DNS queries, enforce strict access controls on cloud storage, and implement network segmentation to disrupt these attack vectors.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], while simultaneously gathering financial intelligence by scraping the victim's investor relations website.",
+            "technique_id": "T1591",
+            "technique_name": "Gather Victim Org Information"
+        },
+        {
+            "sentence": "The phishing campaign distributed emails with attached password-protected ZIP files containing malware, leading to initial compromise.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "005] and propagated via peer-to-peer communication using RPC.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "Credential harvesting involved parsing bash history files for sudo commands to reveal user passwords and querying Chrome's local storage in %APPDATA%/Google/Chrome to gather session information, while keylogging capabilities were deployed to capture additional inputs [T1056.",
+            "technique_id": "T1552",
+            "technique_name": "Unsecured Credentials"
+        },
+        {
+            "sentence": "Credential harvesting involved parsing bash history files for sudo commands to reveal user passwords and querying Chrome's local storage in %APPDATA%/Google/Chrome to gather session information, while keylogging capabilities were deployed to capture additional inputs [T1056.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "Discovery activities included collecting information on network settings and Internet proxy configurations, making ListObjectsV2 requests to the S3 API to catalog files in compromised buckets, and deploying scripts to collect source code and documentation from multiple GitHub repositories [T1213.",
+            "technique_id": "T1016",
+            "technique_name": "System Network Configuration Discovery"
+        },
+        {
+            "sentence": "Discovery activities included collecting information on network settings and Internet proxy configurations, making ListObjectsV2 requests to the S3 API to catalog files in compromised buckets, and deploying scripts to collect source code and documentation from multiple GitHub repositories [T1213.",
+            "technique_id": "T1619",
+            "technique_name": "Cloud Storage Object Discovery"
+        },
+        {
+            "sentence": "003], with automated collection of data from USB drives, keystrokes, and screen images before using wget requests to communicate with command-and-control servers over application layer protocols.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        },
+        {
+            "sentence": "003], with automated collection of data from USB drives, keystrokes, and screen images before using wget requests to communicate with command-and-control servers over application layer protocols.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Financial and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowGale' targeting financial institutions and cloud environments. The campaign involves extensive reconnaissance, credential harvesting, and automated data exfiltration using cloud storage and application layer protocols. Blue teams should review network configurations, monitor for unauthorized scheduled tasks, and enforce multi-factor authentication to mitigate these techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the advanced persistent threat (APT) group 'ShadowGale', a fictional entity created for training purposes. This campaign, observed between June and August 2024, targets financial organizations and their cloud-based assets, leveraging a multi-stage attack chain for intelligence gathering and data theft.\n\nInitial reconnaissance began with the adversary querying DNS AXFR records to extract mail server, web server, and other service configurations [T1590.002], while simultaneously gathering financial intelligence by scraping the victim's investor relations website [T1591]. In a parallel effort, the actors sent a fake IT survey email to harvest VPN client configuration settings [T1592.004], which was later used to tailor phishing campaigns. The phishing campaign distributed emails with attached password-protected ZIP files containing malware [T1566], leading to initial compromise. Upon execution, the malware established persistence by creating scheduled tasks [T1053.005] and propagated via peer-to-peer communication using RPC [T1021]. Credential harvesting involved parsing bash history files for sudo commands to reveal user passwords [T1552] and querying Chrome's local storage in %APPDATA%/Google/Chrome to gather session information [T1217], while keylogging capabilities were deployed to capture additional inputs [T1056.001]. Discovery activities included collecting information on network settings and Internet proxy configurations [T1016], making ListObjectsV2 requests to the S3 API to catalog files in compromised buckets [T1619], and deploying scripts to collect source code and documentation from multiple GitHub repositories [T1213.003]. For lateral movement, the actors gained remote access using pass the ticket techniques [T1550.003]. Exfiltration was facilitated by establishing a Dropbox account with two-factor authentication disabled to maintain persistent access [T1585.003], with automated collection of data from USB drives, keystrokes, and screen images [T1119] before using wget requests to communicate with command-and-control servers over application layer protocols [T1071]. Additionally, the threat actor patched the boot image to embed traffic mirroring capabilities for automated data theft [T1020.001]. System logs from the victim's environment showed normal activity during off-hours, with no immediate alerts triggered, and the company background includes a recent merger that may have expanded its attack surface. Blue teams should monitor for unusual DNS queries, enforce strict access controls on cloud storage, and implement network segmentation to disrupt these attack vectors.",
+        "techniques_used": [
+            "T1590.002",
+            "T1592.004",
+            "T1591",
+            "T1585.003",
+            "T1566",
+            "T1053.005",
+            "T1552",
+            "T1016",
+            "T1619",
+            "T1217",
+            "T1021",
+            "T1550.003",
+            "T1213.003",
+            "T1056.001",
+            "T1119",
+            "T1071",
+            "T1020.001"
+        ]
+    }
+}

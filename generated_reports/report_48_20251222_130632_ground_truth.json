@@ -1,0 +1,93 @@
+{
+    "report_id": "report_48",
+    "generated_at": "20251222_130632",
+    "scenario_target_ids": [
+        "T1593",
+        "T1608.003",
+        "T1587.001",
+        "T1195.001",
+        "T1053.002",
+        "T1552.001",
+        "T1087.002",
+        "T1654",
+        "T1560.002",
+        "T1001.001",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1593",
+        "T1195.001",
+        "T1654",
+        "T1587.001",
+        "T1608.003",
+        "T1053.002",
+        "T1087.002",
+        "T1552.001",
+        "T1560.002",
+        "T1001.001",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1087.002",
+        "T1491",
+        "T1053.002",
+        "T1195.001",
+        "T1654",
+        "T1560.002",
+        "T1587.001",
+        "T1608.003",
+        "T1001.001",
+        "T1552.001",
+        "T1593"
+    ],
+    "clean_text": "Crimson Viper, a suspected state-sponsored actor, initiated the campaign by conducting reconnaissance on open websites and domains, specifically querying financial news sites for articles about recent corporate mergers to identify potential targets. The actors then compromised software dependencies and development tools by injecting a backdoor via evil.ps1 into a legitimate software update, which established persistent access and exfiltrated documents while simultaneously using PowerShell to extract service control manager logs from the compromised host. For initial access, the malware dropper.ps1 was deployed to download additional payloads and modify the web server configuration to install a malicious digital certificate from /var/tmp/fake_cert.pem. During execution, the adversary employed the 'at' command to register a scheduled task for lateral movement and used net user /domain to enumerate domain accounts while performing a recursive grep search for 'apikey' across all document files in user directories to harvest credentials. For data exfiltration, the script leveraged Python rarfile to archive stolen financial records into multi-volume RAR sets and inserted pseudo-random characters into its network encryption setup to obfuscate traffic. Finally, the adversary injected payload through 'evil.ps1' to tamper with image integrity during runtime, resulting in defacement of internal web portals. System logs from the affected servers, including routine backup alerts and user login attempts, showed no anomalies unrelated to this activity, and the company's background in retail banking provided no direct correlation to the attack vector.",
+    "tagged_text": "Crimson Viper, a suspected state-sponsored actor, initiated the campaign by conducting reconnaissance on open websites and domains [T1593], specifically querying financial news sites for articles about recent corporate mergers to identify potential targets. The actors then compromised software dependencies and development tools [T1195.001] by injecting a backdoor via evil.ps1 into a legitimate software update, which established persistent access and exfiltrated documents while simultaneously using PowerShell to extract service control manager logs from the compromised host [T1654]. For initial access, the malware dropper.ps1 was deployed [T1587.001] to download additional payloads and modify the web server configuration to install a malicious digital certificate from /var/tmp/fake_cert.pem [T1608.003]. During execution, the adversary employed the 'at' command [T1053.002] to register a scheduled task for lateral movement and used net user /domain to enumerate domain accounts [T1087.002] while performing a recursive grep search for 'apikey' across all document files in user directories to harvest credentials [T1552.001]. For data exfiltration, the script leveraged Python rarfile to archive stolen financial records into multi-volume RAR sets [T1560.002] and inserted pseudo-random characters into its network encryption setup to obfuscate traffic [T1001.001]. Finally, the adversary injected payload through 'evil.ps1' to tamper with image integrity during runtime, resulting in defacement of internal web portals [T1491]. System logs from the affected servers, including routine backup alerts and user login attempts, showed no anomalies unrelated to this activity, and the company's background in retail banking provided no direct correlation to the attack vector.",
+    "sentence_annotations": [
+        {
+            "sentence": "Crimson Viper, a suspected state-sponsored actor, initiated the campaign by conducting reconnaissance on open websites and domains, specifically querying financial news sites for articles about recent corporate mergers to identify potential targets.",
+            "technique_id": "T1593",
+            "technique_name": "Search Open Websites/Domains"
+        },
+        {
+            "sentence": "ps1 into a legitimate software update, which established persistent access and exfiltrated documents while simultaneously using PowerShell to extract service control manager logs from the compromised host.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "ps1' to tamper with image integrity during runtime, resulting in defacement of internal web portals.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated cyber campaign by a fictional threat actor, designated as 'Crimson Viper', targeting financial institutions to steal sensitive data and disrupt operations. The campaign leverages open-source intelligence, malware deployment, and persistence mechanisms to compromise networks and exfiltrate information. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "Crimson Viper, a suspected state-sponsored actor, initiated the campaign by conducting reconnaissance on open websites and domains [T1593], specifically querying financial news sites for articles about recent corporate mergers to identify potential targets. The actors then compromised software dependencies and development tools [T1195.001] by injecting a backdoor via evil.ps1 into a legitimate software update, which established persistent access and exfiltrated documents while simultaneously using PowerShell to extract service control manager logs from the compromised host [T1654]. For initial access, the malware dropper.ps1 was deployed [T1587.001] to download additional payloads and modify the web server configuration to install a malicious digital certificate from /var/tmp/fake_cert.pem [T1608.003]. During execution, the adversary employed the 'at' command [T1053.002] to register a scheduled task for lateral movement and used net user /domain to enumerate domain accounts [T1087.002] while performing a recursive grep search for 'apikey' across all document files in user directories to harvest credentials [T1552.001]. For data exfiltration, the script leveraged Python rarfile to archive stolen financial records into multi-volume RAR sets [T1560.002] and inserted pseudo-random characters into its network encryption setup to obfuscate traffic [T1001.001]. Finally, the adversary injected payload through 'evil.ps1' to tamper with image integrity during runtime, resulting in defacement of internal web portals [T1491]. System logs from the affected servers, including routine backup alerts and user login attempts, showed no anomalies unrelated to this activity, and the company's background in retail banking provided no direct correlation to the attack vector.",
+        "techniques_used": [
+            "T1593",
+            "T1195.001",
+            "T1654",
+            "T1587.001",
+            "T1608.003",
+            "T1053.002",
+            "T1087.002",
+            "T1552.001",
+            "T1560.002",
+            "T1001.001",
+            "T1491"
+        ]
+    }
+}

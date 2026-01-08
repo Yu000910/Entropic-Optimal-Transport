@@ -1,0 +1,114 @@
+{
+    "report_id": "report_62",
+    "generated_at": "20251222_114209",
+    "scenario_target_ids": [
+        "T1190",
+        "T1204",
+        "T1059.012",
+        "T1542.005",
+        "T1497.002",
+        "T1049",
+        "T1069.001",
+        "T1550.002",
+        "T1123",
+        "T1114.001",
+        "T1056.001",
+        "T1102.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1190",
+        "T1204",
+        "T1059.001",
+        "T1059.012",
+        "T1542.005",
+        "T1497.002",
+        "T1049",
+        "T1069.001",
+        "T1550.002",
+        "T1123",
+        "T1114.001",
+        "T1056.001",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1204",
+        "T1102.001",
+        "T1550.002",
+        "T1542.005",
+        "T1049",
+        "T1123",
+        "T1190",
+        "T1114.001",
+        "T1056.001",
+        "T1589",
+        "T1069.001",
+        "T1059.001",
+        "T1497.002",
+        "T1059.012"
+    ],
+    "clean_text": "On 2023-10-15, our Security Operations Center (SOC) at 'GlobalTech Solutions', a mid-sized technology firm with offices in North America and Europe, detected anomalous activity originating from their Microsoft Exchange server, which was running an outdated version with known vulnerabilities. The actors likely conducted reconnaissance to identify this weakness. Initial access was achieved by exploiting the Microsoft Exchange memory corruption vulnerability (CVE-2020-0688), allowing unauthorized entry into the corporate network. Following this, the adversary leveraged an insider threat, where a compromised contractor provided credentials and approved an MFA prompt, enabling user execution to install remote management software on a workstation, granting control over an authenticated system. Once established, the actors employed PowerShell to execute a malicious script that utilized vim-cmd to snapshot critical virtual machines for data exfiltration purposes, while simultaneously modifying the boot configuration to load an unauthorized network OS through the TFTP protocol. To evade detection, the malware incorporated user activity-based checks by repeatedly monitoring mouse cursor positions to determine if a real user was present, and it performed system network connections discovery by listing active connections to map the environment. On macOS systems within the network, the malware executed 'dscl . -list /Groups' to discover all available local groups, and it employed pth.exe to perform pass-the-hash authentication, accessing a file server to exfiltrate sensitive data. Additionally, the attacker's script enabled the webcam to capture video of the user's physical workspace, and it leveraged a module that scrapes email data from Outlook for local email collection. Keylogging was implemented using a PowerShell-based tool to log keystrokes, and the threat actor stored encrypted commands in a specific tweet on Twitter for the malware to retrieve as a dead drop resolver. Throughout the incident, system logs showed routine backup processes and unrelated firewall alerts, which were not indicative of malicious activity. The campaign persisted for approximately 72 hours before containment efforts began, highlighting the need for enhanced monitoring of insider threats and application vulnerabilities.",
+    "tagged_text": "On 2023-10-15, our Security Operations Center (SOC) at 'GlobalTech Solutions', a mid-sized technology firm with offices in North America and Europe, detected anomalous activity originating from their Microsoft Exchange server, which was running an outdated version with known vulnerabilities. The actors likely conducted reconnaissance [T1589] to identify this weakness. Initial access was achieved by exploiting the Microsoft Exchange memory corruption vulnerability (CVE-2020-0688) [T1190], allowing unauthorized entry into the corporate network. Following this, the adversary leveraged an insider threat, where a compromised contractor provided credentials and approved an MFA prompt, enabling user execution [T1204] to install remote management software on a workstation, granting control over an authenticated system. Once established, the actors employed PowerShell [T1059.001] to execute a malicious script that utilized vim-cmd to snapshot critical virtual machines for data exfiltration purposes [T1059.012], while simultaneously modifying the boot configuration to load an unauthorized network OS through the TFTP protocol [T1542.005]. To evade detection, the malware incorporated user activity-based checks [T1497.002] by repeatedly monitoring mouse cursor positions to determine if a real user was present, and it performed system network connections discovery [T1049] by listing active connections to map the environment. On macOS systems within the network, the malware executed 'dscl . -list /Groups' to discover all available local groups [T1069.001], and it employed pth.exe to perform pass-the-hash authentication [T1550.002], accessing a file server to exfiltrate sensitive data. Additionally, the attacker's script enabled the webcam to capture video of the user's physical workspace [T1123], and it leveraged a module that scrapes email data from Outlook for local email collection [T1114.001]. Keylogging was implemented using a PowerShell-based tool [T1056.001] to log keystrokes, and the threat actor stored encrypted commands in a specific tweet on Twitter for the malware to retrieve as a dead drop resolver [T1102.001]. Throughout the incident, system logs showed routine backup processes and unrelated firewall alerts, which were not indicative of malicious activity. The campaign persisted for approximately 72 hours before containment efforts began, highlighting the need for enhanced monitoring of insider threats and application vulnerabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify this weakness.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Initial access was achieved by exploiting the Microsoft Exchange memory corruption vulnerability (CVE-2020-0688), allowing unauthorized entry into the corporate network.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Following this, the adversary leveraged an insider threat, where a compromised contractor provided credentials and approved an MFA prompt, enabling user execution to install remote management software on a workstation, granting control over an authenticated system.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "002] by repeatedly monitoring mouse cursor positions to determine if a real user was present, and it performed system network connections discovery by listing active connections to map the environment.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "Additionally, the attacker's script enabled the webcam to capture video of the user's physical workspace, and it leveraged a module that scrapes email data from Outlook for local email collection [T1114.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowMimic', designed for blue team training. The campaign exploits public-facing applications, leverages insider threats, and employs sophisticated techniques for persistence, discovery, and data exfiltration in a multi-platform environment, including Windows, macOS, and virtualized systems. Actors combine initial access with user execution and evasion tactics to compromise networks.",
+        "full_report_text": "On 2023-10-15, our Security Operations Center (SOC) at 'GlobalTech Solutions', a mid-sized technology firm with offices in North America and Europe, detected anomalous activity originating from their Microsoft Exchange server, which was running an outdated version with known vulnerabilities. The actors likely conducted reconnaissance [T1589] to identify this weakness. Initial access was achieved by exploiting the Microsoft Exchange memory corruption vulnerability (CVE-2020-0688) [T1190], allowing unauthorized entry into the corporate network. Following this, the adversary leveraged an insider threat, where a compromised contractor provided credentials and approved an MFA prompt, enabling user execution [T1204] to install remote management software on a workstation, granting control over an authenticated system. Once established, the actors employed PowerShell [T1059.001] to execute a malicious script that utilized vim-cmd to snapshot critical virtual machines for data exfiltration purposes [T1059.012], while simultaneously modifying the boot configuration to load an unauthorized network OS through the TFTP protocol [T1542.005]. To evade detection, the malware incorporated user activity-based checks [T1497.002] by repeatedly monitoring mouse cursor positions to determine if a real user was present, and it performed system network connections discovery [T1049] by listing active connections to map the environment. On macOS systems within the network, the malware executed 'dscl . -list /Groups' to discover all available local groups [T1069.001], and it employed pth.exe to perform pass-the-hash authentication [T1550.002], accessing a file server to exfiltrate sensitive data. Additionally, the attacker's script enabled the webcam to capture video of the user's physical workspace [T1123], and it leveraged a module that scrapes email data from Outlook for local email collection [T1114.001]. Keylogging was implemented using a PowerShell-based tool [T1056.001] to log keystrokes, and the threat actor stored encrypted commands in a specific tweet on Twitter for the malware to retrieve as a dead drop resolver [T1102.001]. Throughout the incident, system logs showed routine backup processes and unrelated firewall alerts, which were not indicative of malicious activity. The campaign persisted for approximately 72 hours before containment efforts began, highlighting the need for enhanced monitoring of insider threats and application vulnerabilities.",
+        "techniques_used": [
+            "T1589",
+            "T1190",
+            "T1204",
+            "T1059.001",
+            "T1059.012",
+            "T1542.005",
+            "T1497.002",
+            "T1049",
+            "T1069.001",
+            "T1550.002",
+            "T1123",
+            "T1114.001",
+            "T1056.001",
+            "T1102.001"
+        ]
+    }
+}

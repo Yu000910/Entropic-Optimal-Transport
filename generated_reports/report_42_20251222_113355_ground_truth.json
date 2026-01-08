@@ -1,0 +1,108 @@
+{
+    "report_id": "report_42",
+    "generated_at": "20251222_113355",
+    "scenario_target_ids": [
+        "T1595",
+        "T1596.001",
+        "T1091",
+        "T1059.006",
+        "T1548.004",
+        "T1562.011",
+        "T1556.005",
+        "T1036.003",
+        "T1518",
+        "T1005",
+        "T1102.003",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1595",
+        "T1596.001",
+        "T1091",
+        "T1059.006",
+        "T1548.004",
+        "T1562.011",
+        "T1556.005",
+        "T1036.003",
+        "T1518",
+        "T1005",
+        "T1102.003",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1548.004",
+        "T1059.006",
+        "T1562.011",
+        "T1518",
+        "T1036.003",
+        "T1029",
+        "T1596.001",
+        "T1102.003",
+        "T1005",
+        "T1556.005",
+        "T1091",
+        "T1595"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign, 'ShadowVeil', observed targeting energy and manufacturing sectors. This report is for training purposes only, based on a simulated scenario. The actors likely conduct reconnaissance by actively scanning network segments and performing iterative DNS queries to map organizational infrastructure. Initial access was achieved through a phishing email with a malicious attachment, though this detail is not tagged as it falls outside the provided techniques. Upon execution, the malware employed Python scripts to download and deploy a web shell while simultaneously replicating through removable media by infecting portable executable files on USB drives. System logs from the compromised host show normal user activity during this phase, but these entries are irrelevant noise. For privilege escalation, the attackers leveraged world-writable files in /tmp to gain elevated execution and spoofed security alerting by injecting a fake Windows Defender tray icon to create the illusion of active monitoring. The malware then conducted software discovery to identify installed applications like kubectl and used Set-ADUser to modify user account properties, extracting credentials through reversible encryption. To evade detection, the actors renamed legitimate utilities, such as masquerading rundll32.exe in a custom directory, and collected data from the local system, including sensitive files. Command and control was maintained using one-way communication via PowerShell to download additional payloads, with scheduled transfers pausing C2 communications at specified intervals. Network traffic analysis revealed anomalous outbound connections, but these logs are included as noise without technique tagging. The campaign demonstrates a sophisticated blend of persistence and exfiltration tactics, emphasizing the need for robust endpoint monitoring and user awareness training.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign, 'ShadowVeil', observed targeting energy and manufacturing sectors. This report is for training purposes only, based on a simulated scenario. The actors likely conduct reconnaissance by actively scanning network segments [T1595] and performing iterative DNS queries to map organizational infrastructure [T1596.001]. Initial access was achieved through a phishing email with a malicious attachment, though this detail is not tagged as it falls outside the provided techniques. Upon execution, the malware employed Python scripts [T1059.006] to download and deploy a web shell while simultaneously replicating through removable media by infecting portable executable files on USB drives [T1091]. System logs from the compromised host show normal user activity during this phase, but these entries are irrelevant noise. For privilege escalation, the attackers leveraged world-writable files in /tmp to gain elevated execution [T1548.004] and spoofed security alerting by injecting a fake Windows Defender tray icon to create the illusion of active monitoring [T1562.011]. The malware then conducted software discovery to identify installed applications like kubectl [T1518] and used Set-ADUser to modify user account properties, extracting credentials through reversible encryption [T1556.005]. To evade detection, the actors renamed legitimate utilities, such as masquerading rundll32.exe in a custom directory [T1036.003], and collected data from the local system, including sensitive files [T1005]. Command and control was maintained using one-way communication via PowerShell to download additional payloads [T1102.003], with scheduled transfers pausing C2 communications at specified intervals [T1029]. Network traffic analysis revealed anomalous outbound connections, but these logs are included as noise without technique tagging. The campaign demonstrates a sophisticated blend of persistence and exfiltration tactics, emphasizing the need for robust endpoint monitoring and user awareness training.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance by actively scanning network segments and performing iterative DNS queries to map organizational infrastructure [T1596.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "006] to download and deploy a web shell while simultaneously replicating through removable media by infecting portable executable files on USB drives.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "The malware then conducted software discovery to identify installed applications like kubectl and used Set-ADUser to modify user account properties, extracting credentials through reversible encryption [T1556.",
+            "technique_id": "T1518",
+            "technique_name": "Software Discovery"
+        },
+        {
+            "sentence": "003], and collected data from the local system, including sensitive files.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "003], with scheduled transfers pausing C2 communications at specified intervals.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated as 'ShadowVeil', targeting critical infrastructure sectors. The actors employ a multi-stage attack leveraging reconnaissance, privilege escalation, and data exfiltration techniques to compromise networks and maintain persistence. Blue teams are advised to review logs and implement defensive measures based on the described kill-chain.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign, 'ShadowVeil', observed targeting energy and manufacturing sectors. This report is for training purposes only, based on a simulated scenario. The actors likely conduct reconnaissance by actively scanning network segments [T1595] and performing iterative DNS queries to map organizational infrastructure [T1596.001]. Initial access was achieved through a phishing email with a malicious attachment, though this detail is not tagged as it falls outside the provided techniques. Upon execution, the malware employed Python scripts [T1059.006] to download and deploy a web shell while simultaneously replicating through removable media by infecting portable executable files on USB drives [T1091]. System logs from the compromised host show normal user activity during this phase, but these entries are irrelevant noise. For privilege escalation, the attackers leveraged world-writable files in /tmp to gain elevated execution [T1548.004] and spoofed security alerting by injecting a fake Windows Defender tray icon to create the illusion of active monitoring [T1562.011]. The malware then conducted software discovery to identify installed applications like kubectl [T1518] and used Set-ADUser to modify user account properties, extracting credentials through reversible encryption [T1556.005]. To evade detection, the actors renamed legitimate utilities, such as masquerading rundll32.exe in a custom directory [T1036.003], and collected data from the local system, including sensitive files [T1005]. Command and control was maintained using one-way communication via PowerShell to download additional payloads [T1102.003], with scheduled transfers pausing C2 communications at specified intervals [T1029]. Network traffic analysis revealed anomalous outbound connections, but these logs are included as noise without technique tagging. The campaign demonstrates a sophisticated blend of persistence and exfiltration tactics, emphasizing the need for robust endpoint monitoring and user awareness training.",
+        "techniques_used": [
+            "T1595",
+            "T1596.001",
+            "T1091",
+            "T1059.006",
+            "T1548.004",
+            "T1562.011",
+            "T1556.005",
+            "T1036.003",
+            "T1518",
+            "T1005",
+            "T1102.003",
+            "T1029"
+        ]
+    }
+}

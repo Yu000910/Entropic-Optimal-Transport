@@ -1,0 +1,66 @@
+{
+    "report_id": "report_350",
+    "generated_at": "20251222_150931",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1059.002",
+        "T1114.002",
+        "T1113",
+        "T1090.004",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.001",
+        "T1059.002",
+        "T1114.002",
+        "T1113",
+        "T1090.004",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1114.002",
+        "T1078.001",
+        "T1567.004",
+        "T1589",
+        "T1113",
+        "T1090.004",
+        "T1059.002"
+    ],
+    "clean_text": "Background: 'Silent Harvest' is a fictional threat actor group modeled after real-world APTs, with this scenario designed for blue team training at a mid-sized financial services company, 'SecureFin Corp.' The company's network includes Windows and macOS systems, with Exchange servers for email management. Initial logs from SecureFin's SIEM showed unusual RDP connections from an internal IP, later traced to a compromised default administrator account. The actors likely conducted reconnaissance to identify vulnerable systems before exploiting default credentials. In the Initial Access phase, the actors used the built-in administrator account to gain unauthorized entry via RDP, then moved laterally using Impacket tools to access a macOS workstation. Upon Execution, they employed AppleScript to create a login item for persistence while simultaneously downloading additional scripts from a command-and-control server. During Persistence, the actors modified system settings to maintain access and used PowerShell to export emails from the compromised Exchange server through the cmdlet `New-MailboxExportRequest`. In the Collection phase, they captured desktop screenshots of sensitive financial data and aggregated stolen emails into compressed archives. For Command and Control, the actors utilized domain fronting by setting custom request headers to mimic legitimate traffic to cloud services, evading network detection. Finally, in the Exfiltration phase, they transmitted the collected data, including file metadata and screenshots, to a webhook endpoint at webhook.site for analysis and further distribution. Additional noise: SecureFin's background includes a recent merger, leading to inconsistent security policies across departments. System logs from the affected macOS workstation showed routine software updates unrelated to the attack, and network traffic analysis revealed normal user activity interleaved with malicious connections. The company's incident response team detected anomalies during a scheduled audit, prompting this training report.",
+    "tagged_text": "Background: 'Silent Harvest' is a fictional threat actor group modeled after real-world APTs, with this scenario designed for blue team training at a mid-sized financial services company, 'SecureFin Corp.' The company's network includes Windows and macOS systems, with Exchange servers for email management. Initial logs from SecureFin's SIEM showed unusual RDP connections from an internal IP, later traced to a compromised default administrator account. The actors likely conducted reconnaissance [T1589] to identify vulnerable systems before exploiting default credentials. In the Initial Access phase, the actors used the built-in administrator account [T1078.001] to gain unauthorized entry via RDP, then moved laterally using Impacket tools to access a macOS workstation. Upon Execution, they employed AppleScript [T1059.002] to create a login item for persistence while simultaneously downloading additional scripts from a command-and-control server. During Persistence, the actors modified system settings to maintain access and used PowerShell to export emails from the compromised Exchange server through the cmdlet `New-MailboxExportRequest` [T1114.002]. In the Collection phase, they captured desktop screenshots [T1113] of sensitive financial data and aggregated stolen emails into compressed archives. For Command and Control, the actors utilized domain fronting [T1090.004] by setting custom request headers to mimic legitimate traffic to cloud services, evading network detection. Finally, in the Exfiltration phase, they transmitted the collected data, including file metadata and screenshots, to a webhook endpoint at webhook.site [T1567.004] for analysis and further distribution. Additional noise: SecureFin's background includes a recent merger, leading to inconsistent security policies across departments. System logs from the affected macOS workstation showed routine software updates unrelated to the attack, and network traffic analysis revealed normal user activity interleaved with malicious connections. The company's incident response team detected anomalies during a scheduled audit, prompting this training report.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify vulnerable systems before exploiting default credentials.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the Collection phase, they captured desktop screenshots of sensitive financial data and aggregated stolen emails into compressed archives.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Harvest' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'Silent Harvest,' targeting financial institutions to exfiltrate sensitive data. The campaign leverages default accounts, AppleScript for persistence, email collection, screen capture, domain fronting, and webhook exfiltration, as observed in recent training exercises.",
+        "full_report_text": "Background: 'Silent Harvest' is a fictional threat actor group modeled after real-world APTs, with this scenario designed for blue team training at a mid-sized financial services company, 'SecureFin Corp.' The company's network includes Windows and macOS systems, with Exchange servers for email management. Initial logs from SecureFin's SIEM showed unusual RDP connections from an internal IP, later traced to a compromised default administrator account. The actors likely conducted reconnaissance [T1589] to identify vulnerable systems before exploiting default credentials. In the Initial Access phase, the actors used the built-in administrator account [T1078.001] to gain unauthorized entry via RDP, then moved laterally using Impacket tools to access a macOS workstation. Upon Execution, they employed AppleScript [T1059.002] to create a login item for persistence while simultaneously downloading additional scripts from a command-and-control server. During Persistence, the actors modified system settings to maintain access and used PowerShell to export emails from the compromised Exchange server through the cmdlet `New-MailboxExportRequest` [T1114.002]. In the Collection phase, they captured desktop screenshots [T1113] of sensitive financial data and aggregated stolen emails into compressed archives. For Command and Control, the actors utilized domain fronting [T1090.004] by setting custom request headers to mimic legitimate traffic to cloud services, evading network detection. Finally, in the Exfiltration phase, they transmitted the collected data, including file metadata and screenshots, to a webhook endpoint at webhook.site [T1567.004] for analysis and further distribution. Additional noise: SecureFin's background includes a recent merger, leading to inconsistent security policies across departments. System logs from the affected macOS workstation showed routine software updates unrelated to the attack, and network traffic analysis revealed normal user activity interleaved with malicious connections. The company's incident response team detected anomalies during a scheduled audit, prompting this training report.",
+        "techniques_used": [
+            "T1589",
+            "T1078.001",
+            "T1059.002",
+            "T1114.002",
+            "T1113",
+            "T1090.004",
+            "T1567.004"
+        ]
+    }
+}

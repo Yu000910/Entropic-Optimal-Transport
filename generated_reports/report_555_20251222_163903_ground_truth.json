@@ -1,0 +1,83 @@
+{
+    "report_id": "report_555",
+    "generated_at": "20251222_163903",
+    "scenario_target_ids": [
+        "T1608.001",
+        "T1566.004",
+        "T1559",
+        "T1497.002",
+        "T1069",
+        "T1619",
+        "T1092",
+        "T1499.002"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1608.001",
+        "T1566.004",
+        "T1559",
+        "T1497.002",
+        "T1069",
+        "T1619",
+        "T1092",
+        "T1499.002"
+    ],
+    "actual_found_ids": [
+        "T1566.004",
+        "T1497.002",
+        "T1069",
+        "T1499.002",
+        "T1559",
+        "T1092",
+        "T1608.001",
+        "T1619"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional advanced persistent threat (APT) group Moonstone Sleet, which has been observed targeting organizations in the financial and technology sectors since early 2024. Moonstone Sleet operates with a focus on cloud-based assets, using a blend of social engineering and technical exploits to gain unauthorized access and disrupt services.\n\nInitial Access: The campaign began with Moonstone Sleet actors conducting reconnaissance to identify key personnel, followed by the use of spearphishing voice calls to deceive targets into opening malicious attachments that installed remote access tools. Concurrently, the actors uploaded malware to compromised websites for later download by victims, establishing initial footholds in target networks. System logs from affected organizations show anomalous network traffic spikes during this phase, though no immediate alerts were triggered due to encrypted payloads.\n\nExecution: Upon execution, the malicious code leveraged COM objects for inter-process communication to bypass security controls and execute unauthorized commands locally, while the infection routine performed user activity based checks by searching for 'malware.exe' process names to detect and evade sandbox environments. This allowed the payload to remain stealthy and avoid automated analysis tools.\n\nPersistence and Discovery: To maintain access, the malware wrote operational commands to a USB drive for manual execution on target systems, enabling persistence through removable media. Additionally, the actors used the net group command to discover permission groups and utilized the Azure Blob Service REST API to list all blobs across multiple storage accounts, facilitating lateral movement and data exfiltration from cloud environments. Background checks revealed that Moonstone Sleet has historically targeted similar infrastructures, but this campaign introduced new evasion tactics.\n\nImpact: In the final stage, the malware initiated continuous SSL/TLS renegotiation requests to deplete the server's cryptographic resources, causing service exhaustion floods that disrupted critical services and led to operational downtime. Incident response teams reported increased CPU usage and failed authentication attempts during these attacks, though no data loss was confirmed in this fictional scenario.\n\nRecommendations: Blue teams should monitor for unusual network traffic patterns, implement strict access controls for cloud storage, and conduct regular security awareness training to mitigate spearphishing risks. This advisory serves as a training tool to enhance defensive capabilities against multi-vector threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional advanced persistent threat (APT) group Moonstone Sleet, which has been observed targeting organizations in the financial and technology sectors since early 2024. Moonstone Sleet operates with a focus on cloud-based assets, using a blend of social engineering and technical exploits to gain unauthorized access and disrupt services.\n\nInitial Access: The campaign began with Moonstone Sleet actors conducting reconnaissance to identify key personnel, followed by the use of spearphishing voice calls [T1566.004] to deceive targets into opening malicious attachments that installed remote access tools. Concurrently, the actors uploaded malware to compromised websites [T1608.001] for later download by victims, establishing initial footholds in target networks. System logs from affected organizations show anomalous network traffic spikes during this phase, though no immediate alerts were triggered due to encrypted payloads.\n\nExecution: Upon execution, the malicious code leveraged COM objects for inter-process communication [T1559] to bypass security controls and execute unauthorized commands locally, while the infection routine performed user activity based checks [T1497.002] by searching for 'malware.exe' process names to detect and evade sandbox environments. This allowed the payload to remain stealthy and avoid automated analysis tools.\n\nPersistence and Discovery: To maintain access, the malware wrote operational commands to a USB drive for manual execution on target systems [T1092], enabling persistence through removable media. Additionally, the actors used the net group command to discover permission groups [T1069] and utilized the Azure Blob Service REST API to list all blobs across multiple storage accounts [T1619], facilitating lateral movement and data exfiltration from cloud environments. Background checks revealed that Moonstone Sleet has historically targeted similar infrastructures, but this campaign introduced new evasion tactics.\n\nImpact: In the final stage, the malware initiated continuous SSL/TLS renegotiation requests to deplete the server's cryptographic resources [T1499.002], causing service exhaustion floods that disrupted critical services and led to operational downtime. Incident response teams reported increased CPU usage and failed authentication attempts during these attacks, though no data loss was confirmed in this fictional scenario.\n\nRecommendations: Blue teams should monitor for unusual network traffic patterns, implement strict access controls for cloud storage, and conduct regular security awareness training to mitigate spearphishing risks. This advisory serves as a training tool to enhance defensive capabilities against multi-vector threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution: Upon execution, the malicious code leveraged COM objects for inter-process communication to bypass security controls and execute unauthorized commands locally, while the infection routine performed user activity based checks [T1497.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "Persistence and Discovery: To maintain access, the malware wrote operational commands to a USB drive for manual execution on target systems, enabling persistence through removable media.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        },
+        {
+            "sentence": "Additionally, the actors used the net group command to discover permission groups and utilized the Azure Blob Service REST API to list all blobs across multiple storage accounts, facilitating lateral movement and data exfiltration from cloud environments.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "Additionally, the actors used the net group command to discover permission groups and utilized the Azure Blob Service REST API to list all blobs across multiple storage accounts, facilitating lateral movement and data exfiltration from cloud environments.",
+            "technique_id": "T1619",
+            "technique_name": "Cloud Storage Object Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Moonstone Sleet' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor Moonstone Sleet, which leverages sophisticated techniques to compromise cloud storage systems and evade detection. The campaign involves initial access via spearphishing, execution through inter-process communication, and persistence via removable media, culminating in service exhaustion attacks. Blue teams should use this report for training to identify and mitigate such multi-stage threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional advanced persistent threat (APT) group Moonstone Sleet, which has been observed targeting organizations in the financial and technology sectors since early 2024. Moonstone Sleet operates with a focus on cloud-based assets, using a blend of social engineering and technical exploits to gain unauthorized access and disrupt services.\n\nInitial Access: The campaign began with Moonstone Sleet actors conducting reconnaissance to identify key personnel, followed by the use of spearphishing voice calls [T1566.004] to deceive targets into opening malicious attachments that installed remote access tools. Concurrently, the actors uploaded malware to compromised websites [T1608.001] for later download by victims, establishing initial footholds in target networks. System logs from affected organizations show anomalous network traffic spikes during this phase, though no immediate alerts were triggered due to encrypted payloads.\n\nExecution: Upon execution, the malicious code leveraged COM objects for inter-process communication [T1559] to bypass security controls and execute unauthorized commands locally, while the infection routine performed user activity based checks [T1497.002] by searching for 'malware.exe' process names to detect and evade sandbox environments. This allowed the payload to remain stealthy and avoid automated analysis tools.\n\nPersistence and Discovery: To maintain access, the malware wrote operational commands to a USB drive for manual execution on target systems [T1092], enabling persistence through removable media. Additionally, the actors used the net group command to discover permission groups [T1069] and utilized the Azure Blob Service REST API to list all blobs across multiple storage accounts [T1619], facilitating lateral movement and data exfiltration from cloud environments. Background checks revealed that Moonstone Sleet has historically targeted similar infrastructures, but this campaign introduced new evasion tactics.\n\nImpact: In the final stage, the malware initiated continuous SSL/TLS renegotiation requests to deplete the server's cryptographic resources [T1499.002], causing service exhaustion floods that disrupted critical services and led to operational downtime. Incident response teams reported increased CPU usage and failed authentication attempts during these attacks, though no data loss was confirmed in this fictional scenario.\n\nRecommendations: Blue teams should monitor for unusual network traffic patterns, implement strict access controls for cloud storage, and conduct regular security awareness training to mitigate spearphishing risks. This advisory serves as a training tool to enhance defensive capabilities against multi-vector threats.",
+        "techniques_used": [
+            "T1608.001",
+            "T1566.004",
+            "T1559",
+            "T1497.002",
+            "T1069",
+            "T1619",
+            "T1092",
+            "T1499.002"
+        ]
+    }
+}

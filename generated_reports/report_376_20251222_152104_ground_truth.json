@@ -1,0 +1,113 @@
+{
+    "report_id": "report_376",
+    "generated_at": "20251222_152104",
+    "scenario_target_ids": [
+        "T1608.004",
+        "T1587.002",
+        "T1608",
+        "T1078",
+        "T1059.006",
+        "T1204",
+        "T1055.005",
+        "T1622",
+        "T1016.001",
+        "T1201",
+        "T1090",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1608.004",
+        "T1587.002",
+        "T1608",
+        "T1078",
+        "T1059.006",
+        "T1204",
+        "T1055.005",
+        "T1622",
+        "T1016.001",
+        "T1201",
+        "T1090",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1016.001",
+        "T1496.001",
+        "T1587.002",
+        "T1608",
+        "T1090",
+        "T1078",
+        "T1055.005",
+        "T1622",
+        "T1201",
+        "T1204",
+        "T1059.006",
+        "T1608.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'CrimsonTide'. This group has been observed targeting financial organizations in North America since early 2024, with incidents reported at three major banks. Background checks reveal the actors likely operate from Eastern Europe, but attribution remains inconclusive due to proxy use. The campaign begins with the actors conducting reconnaissance to identify vulnerable web servers, though no specific technique tags apply to this general activity. They then compromise a legitimate corporate website to host a malicious JavaScript file that executes a PowerShell payload when loaded in a victim's browser, which downloads additional capabilities from Pastebin. The payload is signed with self-signed certificates spoofing legitimate software companies to evade detection. Once initial access is achieved, the actors use a malicious Excel file disguised as a financial report to trick users into enabling macros, leading to execution. This triggers a Python script that generates and executes shellcode for persistence, while simultaneously injecting a malicious DLL into the winlogon.exe process using Thread Local Storage for privilege escalation. To evade analysis, the malware employs the IsDebuggerPresent() API call before encryption routines. The actors then use stolen valid credentials to move laterally across the network, executing commands to discover internet connectivity and password policies via 'Get-ADDefaultDomainPasswordPolicy'. They establish proxy connections using ngrok to mask command-and-control traffic. In the final stage, the actors exploit exposed Docker APIs on cloud infrastructure to deploy cryptocurrency mining containers, hijacking compute resources. Logs from affected systems show increased CPU usage and unusual network flows to external IP addresses, but these are not tagged as specific techniques. The campaign demonstrates a sophisticated blend of social engineering, code signing abuse, and cloud exploitation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'CrimsonTide'. This group has been observed targeting financial organizations in North America since early 2024, with incidents reported at three major banks. Background checks reveal the actors likely operate from Eastern Europe, but attribution remains inconclusive due to proxy use. The campaign begins with the actors conducting reconnaissance to identify vulnerable web servers, though no specific technique tags apply to this general activity. They then compromise a legitimate corporate website to host a malicious JavaScript file that executes a PowerShell payload when loaded in a victim's browser [T1608.004], which downloads additional capabilities from Pastebin [T1608]. The payload is signed with self-signed certificates spoofing legitimate software companies to evade detection [T1587.002]. Once initial access is achieved, the actors use a malicious Excel file disguised as a financial report to trick users into enabling macros, leading to execution [T1204]. This triggers a Python script that generates and executes shellcode for persistence [T1059.006], while simultaneously injecting a malicious DLL into the winlogon.exe process using Thread Local Storage for privilege escalation [T1055.005]. To evade analysis, the malware employs the IsDebuggerPresent() API call before encryption routines [T1622]. The actors then use stolen valid credentials [T1078] to move laterally across the network, executing commands to discover internet connectivity [T1016.001] and password policies via 'Get-ADDefaultDomainPasswordPolicy' [T1201]. They establish proxy connections using ngrok to mask command-and-control traffic [T1090]. In the final stage, the actors exploit exposed Docker APIs on cloud infrastructure to deploy cryptocurrency mining containers, hijacking compute resources [T1496.001]. Logs from affected systems show increased CPU usage and unusual network flows to external IP addresses, but these are not tagged as specific techniques. The campaign demonstrates a sophisticated blend of social engineering, code signing abuse, and cloud exploitation.",
+    "sentence_annotations": [
+        {
+            "sentence": "004], which downloads additional capabilities from Pastebin.",
+            "technique_id": "T1608",
+            "technique_name": "Stage Capabilities"
+        },
+        {
+            "sentence": "Once initial access is achieved, the actors use a malicious Excel file disguised as a financial report to trick users into enabling macros, leading to execution.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "To evade analysis, the malware employs the IsDebuggerPresent() API call before encryption routines.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "The actors then use stolen valid credentials to move laterally across the network, executing commands to discover internet connectivity [T1016.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "001] and password policies via 'Get-ADDefaultDomainPasswordPolicy'.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "They establish proxy connections using ngrok to mask command-and-control traffic.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CrimsonTide' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'CrimsonTide', targeting financial institutions to deploy ransomware and cryptocurrency miners. The actors employed a multi-stage attack leveraging web-based initial access, signed malware, and lateral movement techniques. Blue teams should review logs for unusual PowerShell activity, certificate anomalies, and unauthorized container deployments.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'CrimsonTide'. This group has been observed targeting financial organizations in North America since early 2024, with incidents reported at three major banks. Background checks reveal the actors likely operate from Eastern Europe, but attribution remains inconclusive due to proxy use. The campaign begins with the actors conducting reconnaissance to identify vulnerable web servers, though no specific technique tags apply to this general activity. They then compromise a legitimate corporate website to host a malicious JavaScript file that executes a PowerShell payload when loaded in a victim's browser [T1608.004], which downloads additional capabilities from Pastebin [T1608]. The payload is signed with self-signed certificates spoofing legitimate software companies to evade detection [T1587.002]. Once initial access is achieved, the actors use a malicious Excel file disguised as a financial report to trick users into enabling macros, leading to execution [T1204]. This triggers a Python script that generates and executes shellcode for persistence [T1059.006], while simultaneously injecting a malicious DLL into the winlogon.exe process using Thread Local Storage for privilege escalation [T1055.005]. To evade analysis, the malware employs the IsDebuggerPresent() API call before encryption routines [T1622]. The actors then use stolen valid credentials [T1078] to move laterally across the network, executing commands to discover internet connectivity [T1016.001] and password policies via 'Get-ADDefaultDomainPasswordPolicy' [T1201]. They establish proxy connections using ngrok to mask command-and-control traffic [T1090]. In the final stage, the actors exploit exposed Docker APIs on cloud infrastructure to deploy cryptocurrency mining containers, hijacking compute resources [T1496.001]. Logs from affected systems show increased CPU usage and unusual network flows to external IP addresses, but these are not tagged as specific techniques. The campaign demonstrates a sophisticated blend of social engineering, code signing abuse, and cloud exploitation.",
+        "techniques_used": [
+            "T1608.004",
+            "T1587.002",
+            "T1608",
+            "T1078",
+            "T1059.006",
+            "T1204",
+            "T1055.005",
+            "T1622",
+            "T1016.001",
+            "T1201",
+            "T1090",
+            "T1496.001"
+        ]
+    }
+}

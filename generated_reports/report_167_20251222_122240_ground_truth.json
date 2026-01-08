@@ -1,0 +1,86 @@
+{
+    "report_id": "report_167",
+    "generated_at": "20251222_122240",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1059.003",
+        "T1136",
+        "T1555.004",
+        "T1538",
+        "T1021.006",
+        "T1560.003",
+        "T1659"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.002",
+        "T1059.003",
+        "T1136",
+        "T1659",
+        "T1555.004",
+        "T1021.006",
+        "T1538",
+        "T1560.003"
+    ],
+    "actual_found_ids": [
+        "T1659",
+        "T1538",
+        "T1136",
+        "T1021.006",
+        "T1078.002",
+        "T1059.003",
+        "T1560.003",
+        "T1589",
+        "T1555.004"
+    ],
+    "clean_text": "On October 15, 2023, a fictional organization, 'GlobalTech Inc.', reported suspicious activity in its hybrid cloud environment. GlobalTech Inc. is a mid-sized technology firm with operations in North America and Europe, specializing in software development and cloud services. The company's security team detected anomalous logins from unusual geographic locations, prompting an investigation.\n\nInitial Access: The actors likely conducted reconnaissance to identify target employees. Using stolen credentials, they gained initial access to the network by logging into a domain account, which had been compromised in a prior phishing campaign. System logs show multiple failed login attempts from IP addresses associated with known malicious infrastructure, but these were not tagged as they represent noise.\n\nExecution: Upon access, the adversary employed the Windows Command Shell to execute a batch file that downloaded additional tools while simultaneously using PowerShell to modify system configurations. This allowed them to establish persistence and move laterally across the network.\n\nPersistence: To maintain access, the attacker created a secondary administrative account named 'svc_backup' using the command 'net user svc_backup MySecurePass1 /add', leveraging the compromised domain credentials. Additionally, they injected a command and control beacon into DNS queries to ensure continuous communication with their infrastructure, evading network detection mechanisms.\n\nCredential Access: The threat actor used CredEnumerateA to enumerate all stored credentials in the Windows Credential Manager, harvesting sensitive authentication data. They then employed Windows Remote Management (WinRM) to remotely execute commands on other Windows systems, spreading the compromise further into the environment.\n\nDiscovery: In the cloud segment, the script leveraged the Google Cloud Platform (GCP) Command Center to enumerate all active projects and their resource configurations, identifying critical assets for potential exfiltration. This activity was logged in cloud audit trails, but no immediate alerts were triggered due to misconfigured monitoring settings.\n\nCollection and Exfiltration: The adversary collected sensitive data from both on-premises and cloud resources. They used a custom encryption method, similar to Stuxnet, with static 31-byte long XOR keys to archive the exfiltrated data, preparing it for transfer. The data was then exfiltrated via encrypted channels, blending with normal network traffic to avoid detection.\n\nImpact: The campaign resulted in the theft of proprietary intellectual property and customer data, with potential financial and reputational damage to GlobalTech Inc. The company's incident response team contained the breach after two weeks, but residual risks remain due to undetected persistence mechanisms.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication for all accounts, monitor for unusual account creation and credential access, segment networks to limit lateral movement, and implement robust logging and alerting for cloud and on-premises environments. Regular training on phishing awareness and threat hunting exercises are also advised.",
+    "tagged_text": "On October 15, 2023, a fictional organization, 'GlobalTech Inc.', reported suspicious activity in its hybrid cloud environment. GlobalTech Inc. is a mid-sized technology firm with operations in North America and Europe, specializing in software development and cloud services. The company's security team detected anomalous logins from unusual geographic locations, prompting an investigation.\n\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify target employees. Using stolen credentials, they gained initial access to the network by logging into a domain account [T1078.002], which had been compromised in a prior phishing campaign. System logs show multiple failed login attempts from IP addresses associated with known malicious infrastructure, but these were not tagged as they represent noise.\n\nExecution: Upon access, the adversary employed the Windows Command Shell [T1059.003] to execute a batch file that downloaded additional tools while simultaneously using PowerShell to modify system configurations. This allowed them to establish persistence and move laterally across the network.\n\nPersistence: To maintain access, the attacker created a secondary administrative account named 'svc_backup' using the command 'net user svc_backup MySecurePass1 /add' [T1136], leveraging the compromised domain credentials [T1078.002]. Additionally, they injected a command and control beacon into DNS queries [T1659] to ensure continuous communication with their infrastructure, evading network detection mechanisms.\n\nCredential Access: The threat actor used CredEnumerateA to enumerate all stored credentials in the Windows Credential Manager [T1555.004], harvesting sensitive authentication data. They then employed Windows Remote Management (WinRM) [T1021.006] to remotely execute commands on other Windows systems, spreading the compromise further into the environment.\n\nDiscovery: In the cloud segment, the script leveraged the Google Cloud Platform (GCP) Command Center [T1538] to enumerate all active projects and their resource configurations, identifying critical assets for potential exfiltration. This activity was logged in cloud audit trails, but no immediate alerts were triggered due to misconfigured monitoring settings.\n\nCollection and Exfiltration: The adversary collected sensitive data from both on-premises and cloud resources. They used a custom encryption method, similar to Stuxnet, with static 31-byte long XOR keys to archive the exfiltrated data [T1560.003], preparing it for transfer. The data was then exfiltrated via encrypted channels, blending with normal network traffic to avoid detection.\n\nImpact: The campaign resulted in the theft of proprietary intellectual property and customer data, with potential financial and reputational damage to GlobalTech Inc. The company's incident response team contained the breach after two weeks, but residual risks remain due to undetected persistence mechanisms.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication for all accounts, monitor for unusual account creation and credential access, segment networks to limit lateral movement, and implement robust logging and alerting for cloud and on-premises environments. Regular training on phishing awareness and threat hunting exercises are also advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conducted reconnaissance to identify target employees.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Persistence: To maintain access, the attacker created a secondary administrative account named 'svc_backup' using the command 'net user svc_backup MySecurePass1 /add', leveraging the compromised domain credentials [T1078.",
+            "technique_id": "T1136",
+            "technique_name": "Create Account"
+        },
+        {
+            "sentence": "Additionally, they injected a command and control beacon into DNS queries to ensure continuous communication with their infrastructure, evading network detection mechanisms.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Discovery: In the cloud segment, the script leveraged the Google Cloud Platform (GCP) Command Center to enumerate all active projects and their resource configurations, identifying critical assets for potential exfiltration.",
+            "technique_id": "T1538",
+            "technique_name": "Cloud Service Dashboard"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHawk' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, 'ShadowHawk', targeting hybrid environments. The activity involves initial access via compromised credentials, lateral movement, credential harvesting, and data exfiltration. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "On October 15, 2023, a fictional organization, 'GlobalTech Inc.', reported suspicious activity in its hybrid cloud environment. GlobalTech Inc. is a mid-sized technology firm with operations in North America and Europe, specializing in software development and cloud services. The company's security team detected anomalous logins from unusual geographic locations, prompting an investigation.\n\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify target employees. Using stolen credentials, they gained initial access to the network by logging into a domain account [T1078.002], which had been compromised in a prior phishing campaign. System logs show multiple failed login attempts from IP addresses associated with known malicious infrastructure, but these were not tagged as they represent noise.\n\nExecution: Upon access, the adversary employed the Windows Command Shell [T1059.003] to execute a batch file that downloaded additional tools while simultaneously using PowerShell to modify system configurations. This allowed them to establish persistence and move laterally across the network.\n\nPersistence: To maintain access, the attacker created a secondary administrative account named 'svc_backup' using the command 'net user svc_backup MySecurePass1 /add' [T1136], leveraging the compromised domain credentials [T1078.002]. Additionally, they injected a command and control beacon into DNS queries [T1659] to ensure continuous communication with their infrastructure, evading network detection mechanisms.\n\nCredential Access: The threat actor used CredEnumerateA to enumerate all stored credentials in the Windows Credential Manager [T1555.004], harvesting sensitive authentication data. They then employed Windows Remote Management (WinRM) [T1021.006] to remotely execute commands on other Windows systems, spreading the compromise further into the environment.\n\nDiscovery: In the cloud segment, the script leveraged the Google Cloud Platform (GCP) Command Center [T1538] to enumerate all active projects and their resource configurations, identifying critical assets for potential exfiltration. This activity was logged in cloud audit trails, but no immediate alerts were triggered due to misconfigured monitoring settings.\n\nCollection and Exfiltration: The adversary collected sensitive data from both on-premises and cloud resources. They used a custom encryption method, similar to Stuxnet, with static 31-byte long XOR keys to archive the exfiltrated data [T1560.003], preparing it for transfer. The data was then exfiltrated via encrypted channels, blending with normal network traffic to avoid detection.\n\nImpact: The campaign resulted in the theft of proprietary intellectual property and customer data, with potential financial and reputational damage to GlobalTech Inc. The company's incident response team contained the breach after two weeks, but residual risks remain due to undetected persistence mechanisms.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication for all accounts, monitor for unusual account creation and credential access, segment networks to limit lateral movement, and implement robust logging and alerting for cloud and on-premises environments. Regular training on phishing awareness and threat hunting exercises are also advised.",
+        "techniques_used": [
+            "T1589",
+            "T1078.002",
+            "T1059.003",
+            "T1136",
+            "T1659",
+            "T1555.004",
+            "T1021.006",
+            "T1538",
+            "T1560.003"
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform defenders about simulated threat actor activity, designated as 'ShadowScript', observed in training environments. This campaign focuses on hybrid networks combining Windows and macOS systems. Initial analysis indicates the actors likely conduct reconnaissance [T1589] to identify high-value targets, though specific methods are not detailed in this scenario.
+
+Initial Access: The actors gained initial access through phishing campaigns, exploiting weak email filters. System logs from the fictional company 'TechGlobal Inc.', a mid-sized software firm with offices in New York and London, show anomalous login attempts from unrecognized IP addresses, but these were not tagged as malicious at the time.
+
+Execution: Upon compromise, the adversary employed AppleScript [T1059.002] to execute a script that modified system firewall rules on macOS endpoints, disabling security controls to facilitate further attacks. This was coupled with using stolen domain administrator credentials [T1078.002] for lateral movement across the network, accessing shared drives and sensitive servers.
+
+Persistence: To maintain access, the actors created or modified system processes [T1543] by injecting malicious DLLs into svchost.exe on Windows systems, establishing persistence that evaded standard antivirus scans. Additionally, they dumped LSA secrets [T1003.004] from compromised machines to harvest credentials for long-term access, leveraging tools like AADInternals in simulated environments.
+
+Discovery: The campaign involved extensive discovery activities, including Group Policy discovery [T1615] to map administrative privileges and identify misconfigurations, and remote system discovery [T1018] using network scans to locate domain controllers and critical services, mimicking techniques observed in tools like BloodHound and Chimera.
+
+Collection: Actors collected sensitive information by accessing messaging applications [T1213.005], such as Microsoft Teams, to mine valuable data from security and IT discussions, exfiltrating files and chat logs. Background noise includes routine system updates and user activity logs from TechGlobal Inc.'s HR department, which are irrelevant to the attack but present in the environment.
+
+Command and Control (C2): C2 traffic was secured using asymmetric cryptography [T1573.002], with the actors employing OpenSSL libraries to encrypt communications, making detection more challenging. Network logs show increased outbound traffic to suspicious domains, but initial alerts were dismissed as false positives.
+
+Impact: The simulated exfiltration included proprietary software code and customer data, though no real data was compromised in this training scenario. Defenders should monitor for these behaviors to enhance detection capabilities.

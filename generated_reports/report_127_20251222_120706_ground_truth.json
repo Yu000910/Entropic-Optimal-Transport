@@ -1,0 +1,108 @@
+{
+    "report_id": "report_127",
+    "generated_at": "20251222_120706",
+    "scenario_target_ids": [
+        "T1587.004",
+        "T1584.003",
+        "T1078.003",
+        "T1204.002",
+        "T1053",
+        "T1078.002",
+        "T1547.009",
+        "T1480.002",
+        "T1127",
+        "T1127.003",
+        "T1555.006",
+        "T1606.001",
+        "T1534",
+        "T1090.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1587.004",
+        "T1584.003",
+        "T1078.003",
+        "T1204.002",
+        "T1053",
+        "T1078.002",
+        "T1547.009",
+        "T1480.002",
+        "T1127",
+        "T1127.003",
+        "T1555.006",
+        "T1606.001",
+        "T1534",
+        "T1090.001"
+    ],
+    "actual_found_ids": [
+        "T1587.004",
+        "T1534",
+        "T1053",
+        "T1127",
+        "T1584.003",
+        "T1078.003",
+        "T1078.002",
+        "T1204.002",
+        "T1127.003",
+        "T1090.001",
+        "T1480.002",
+        "T1547.009",
+        "T1555.006",
+        "T1606.001"
+    ],
+    "clean_text": "On October 15, 2023, analysts at SecureBank Inc. detected anomalous activity originating from a compromised internal Microsoft Teams account, where the adversary conducted internal spearphishing to send fake authentication requests and harvest employee credentials. Initial access was gained when a targeted user opened a macro-enabled Word document, which executed a PowerShell script that downloaded a custom buffer overflow exploit from a Google Cloud Platform compute instance purchased with prepaid cards to obscure command-and-control infrastructure. The malware then used Mimikatz.exe to dump credential material from LSASS process memory and extract Kerberos tickets and domain authentication tokens, enabling lateral movement across the network. For persistence, the threat actor employed schtasks.exe to schedule data_exfil.exe to run every 30 minutes and added a .lnk file to the Windows startup folder, while using msiexec.exe to execute a harmful DLL payload and JamPlus.exe to compile and execute malicious.jam scripts that deployed ransomware components. System logs from the affected server, running Windows Server 2019, showed unusual process creation events, but these were initially dismissed as routine maintenance. To ensure operational security, the malware created a mutex with the hard-coded value `{531511FA-190D-5D85-8A4A-279F2F592CC7}` to prevent multiple instances and used 'gcloud secrets describe' to access API keys stored in Google Cloud Secret Manager. The adversary then utilized stolen web session cookies to maintain persistent access to the admin panel and leveraged local servers with both local network and Internet access to act as internal proxy nodes, facilitating data exfiltration from isolated network segments without direct external connectivity. Background investigation revealed that SecureBank Inc., a mid-sized financial firm with 500 employees, had recently migrated some services to cloud platforms, but security audits were pending due to budget constraints.",
+    "tagged_text": "On October 15, 2023, analysts at SecureBank Inc. detected anomalous activity originating from a compromised internal Microsoft Teams account, where the adversary conducted internal spearphishing [T1534] to send fake authentication requests and harvest employee credentials. Initial access was gained when a targeted user opened a macro-enabled Word document [T1204.002], which executed a PowerShell script that downloaded a custom buffer overflow exploit [T1587.004] from a Google Cloud Platform compute instance [T1584.003] purchased with prepaid cards to obscure command-and-control infrastructure. The malware then used Mimikatz.exe to dump credential material from LSASS process memory [T1078.003] and extract Kerberos tickets and domain authentication tokens [T1078.002], enabling lateral movement across the network. For persistence, the threat actor employed schtasks.exe to schedule data_exfil.exe to run every 30 minutes [T1053] and added a .lnk file to the Windows startup folder [T1547.009], while using msiexec.exe to execute a harmful DLL payload [T1127] and JamPlus.exe to compile and execute malicious.jam scripts [T1127.003] that deployed ransomware components. System logs from the affected server, running Windows Server 2019, showed unusual process creation events, but these were initially dismissed as routine maintenance. To ensure operational security, the malware created a mutex with the hard-coded value `{531511FA-190D-5D85-8A4A-279F2F592CC7}` [T1480.002] to prevent multiple instances and used 'gcloud secrets describe' to access API keys stored in Google Cloud Secret Manager [T1555.006]. The adversary then utilized stolen web session cookies [T1606.001] to maintain persistent access to the admin panel and leveraged local servers with both local network and Internet access to act as internal proxy nodes [T1090.001], facilitating data exfiltration from isolated network segments without direct external connectivity. Background investigation revealed that SecureBank Inc., a mid-sized financial firm with 500 employees, had recently migrated some services to cloud platforms, but security audits were pending due to budget constraints.",
+    "sentence_annotations": [
+        {
+            "sentence": "detected anomalous activity originating from a compromised internal Microsoft Teams account, where the adversary conducted internal spearphishing to send fake authentication requests and harvest employee credentials.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "exe to run every 30 minutes and added a.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "exe to execute a harmful DLL payload and JamPlus.",
+            "technique_id": "T1127",
+            "technique_name": "Trusted Developer Utilities Proxy Execution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowWeaver', which targeted a financial institution using a blend of custom exploits, credential theft, and cloud-based evasion tactics. The attack leveraged internal spearphishing, malicious documents, and scheduled tasks to establish persistence and exfiltrate sensitive data, with techniques including exploit development, virtual private servers, and trusted utility abuse for operational security.",
+        "full_report_text": "On October 15, 2023, analysts at SecureBank Inc. detected anomalous activity originating from a compromised internal Microsoft Teams account, where the adversary conducted internal spearphishing [T1534] to send fake authentication requests and harvest employee credentials. Initial access was gained when a targeted user opened a macro-enabled Word document [T1204.002], which executed a PowerShell script that downloaded a custom buffer overflow exploit [T1587.004] from a Google Cloud Platform compute instance [T1584.003] purchased with prepaid cards to obscure command-and-control infrastructure. The malware then used Mimikatz.exe to dump credential material from LSASS process memory [T1078.003] and extract Kerberos tickets and domain authentication tokens [T1078.002], enabling lateral movement across the network. For persistence, the threat actor employed schtasks.exe to schedule data_exfil.exe to run every 30 minutes [T1053] and added a .lnk file to the Windows startup folder [T1547.009], while using msiexec.exe to execute a harmful DLL payload [T1127] and JamPlus.exe to compile and execute malicious.jam scripts [T1127.003] that deployed ransomware components. System logs from the affected server, running Windows Server 2019, showed unusual process creation events, but these were initially dismissed as routine maintenance. To ensure operational security, the malware created a mutex with the hard-coded value `{531511FA-190D-5D85-8A4A-279F2F592CC7}` [T1480.002] to prevent multiple instances and used 'gcloud secrets describe' to access API keys stored in Google Cloud Secret Manager [T1555.006]. The adversary then utilized stolen web session cookies [T1606.001] to maintain persistent access to the admin panel and leveraged local servers with both local network and Internet access to act as internal proxy nodes [T1090.001], facilitating data exfiltration from isolated network segments without direct external connectivity. Background investigation revealed that SecureBank Inc., a mid-sized financial firm with 500 employees, had recently migrated some services to cloud platforms, but security audits were pending due to budget constraints.",
+        "techniques_used": [
+            "T1587.004",
+            "T1584.003",
+            "T1078.003",
+            "T1204.002",
+            "T1053",
+            "T1078.002",
+            "T1547.009",
+            "T1480.002",
+            "T1127",
+            "T1127.003",
+            "T1555.006",
+            "T1606.001",
+            "T1534",
+            "T1090.001"
+        ]
+    }
+}

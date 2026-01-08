@@ -1,0 +1,114 @@
+{
+    "report_id": "report_166",
+    "generated_at": "20251222_122212",
+    "scenario_target_ids": [
+        "T1608.003",
+        "T1587.003",
+        "T1608.004",
+        "T1566.001",
+        "T1559.003",
+        "T1647",
+        "T1564.010",
+        "T1535",
+        "T1538",
+        "T1550",
+        "T1071.001",
+        "T1567.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1608.004",
+        "T1059.001",
+        "T1112",
+        "T1559.003",
+        "T1071.001",
+        "T1608.003",
+        "T1587.003",
+        "T1647",
+        "T1564.010",
+        "T1535",
+        "T1538",
+        "T1550",
+        "T1567.001"
+    ],
+    "actual_found_ids": [
+        "T1538",
+        "T1071.001",
+        "T1564.010",
+        "T1535",
+        "T1608.003",
+        "T1566.001",
+        "T1550",
+        "T1567.001",
+        "T1647",
+        "T1059.001",
+        "T1608.004",
+        "T1587.003",
+        "T1112",
+        "T1559.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign attributed to 'Winter Vivern'. This group, active since early 2023, focuses on financial and cloud-based targets, with recent activity against a U.S. banking entity. Initial reconnaissance involved scanning public GitHub repositories for exposed credentials, though no specific techniques were tagged from this phase.\n\nInitial access was achieved through a spearphishing campaign where malicious attachments were delivered via email, mimicking legitimate banking communications. Once executed, the payload injected malicious JavaScript into the online banking portal's libraries, enabling drive-by compromises for subsequent visitors. The actors then used PowerShell to download additional tools and modify registry keys for persistence, while simultaneously exploiting a misconfigured XPC service daemon to gain root access on macOS systems. To establish covert channels, they employed HTTP requests for command and control (C2) communications and installed a fraudulent SSL certificate using certmgr.msc to add it to the trusted root store, facilitating man-in-the-middle operations.\n\nPrivilege escalation involved modifying the Info.plist file to register a privileged helper tool and using process argument spoofing in spawned processes to execute beacon commands without detection. In cloud environments, the actors developed Python scripts to automatically create instances across unused or unsupported regions for redundancy and used GCP Command Center to discover resources lacking security controls. They conducted Pass-the-Hash attacks to bypass authentication and access sensitive file shares, while exfiltrating harvested email archives to a private GitHub repository via HTTPS API calls. System logs from the affected bank showed increased network traffic to unknown IPs, but these were not tagged as they represented noise. The campaign highlights the need for enhanced monitoring of certificate stores, cloud dashboards, and GitHub API usage.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign attributed to 'Winter Vivern'. This group, active since early 2023, focuses on financial and cloud-based targets, with recent activity against a U.S. banking entity. Initial reconnaissance involved scanning public GitHub repositories for exposed credentials, though no specific techniques were tagged from this phase.\n\nInitial access was achieved through a spearphishing campaign [T1566.001] where malicious attachments were delivered via email, mimicking legitimate banking communications. Once executed, the payload injected malicious JavaScript into the online banking portal's libraries [T1608.004], enabling drive-by compromises for subsequent visitors. The actors then used PowerShell [T1059.001] to download additional tools and modify registry keys [T1112] for persistence, while simultaneously exploiting a misconfigured XPC service daemon [T1559.003] to gain root access on macOS systems. To establish covert channels, they employed HTTP requests for command and control (C2) communications [T1071.001] and installed a fraudulent SSL certificate [T1608.003] using certmgr.msc to add it to the trusted root store [T1587.003], facilitating man-in-the-middle operations.\n\nPrivilege escalation involved modifying the Info.plist file [T1647] to register a privileged helper tool and using process argument spoofing [T1564.010] in spawned processes to execute beacon commands without detection. In cloud environments, the actors developed Python scripts to automatically create instances across unused or unsupported regions [T1535] for redundancy and used GCP Command Center [T1538] to discover resources lacking security controls. They conducted Pass-the-Hash attacks [T1550] to bypass authentication and access sensitive file shares, while exfiltrating harvested email archives to a private GitHub repository via HTTPS API calls [T1567.001]. System logs from the affected bank showed increased network traffic to unknown IPs, but these were not tagged as they represented noise. The campaign highlights the need for enhanced monitoring of certificate stores, cloud dashboards, and GitHub API usage.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] to download additional tools and modify registry keys for persistence, while simultaneously exploiting a misconfigured XPC service daemon [T1559.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "plist file to register a privileged helper tool and using process argument spoofing [T1564.",
+            "technique_id": "T1647",
+            "technique_name": "Plist File Modification"
+        },
+        {
+            "sentence": "In cloud environments, the actors developed Python scripts to automatically create instances across unused or unsupported regions for redundancy and used GCP Command Center to discover resources lacking security controls.",
+            "technique_id": "T1535",
+            "technique_name": "Unused/Unsupported Cloud Regions"
+        },
+        {
+            "sentence": "In cloud environments, the actors developed Python scripts to automatically create instances across unused or unsupported regions for redundancy and used GCP Command Center to discover resources lacking security controls.",
+            "technique_id": "T1538",
+            "technique_name": "Cloud Service Dashboard"
+        },
+        {
+            "sentence": "They conducted Pass-the-Hash attacks to bypass authentication and access sensitive file shares, while exfiltrating harvested email archives to a private GitHub repository via HTTPS API calls [T1567.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Winter Vivern' Targeting Financial and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'Winter Vivern', which targeted a financial institution's online banking portal and cloud environments. The actors employed spearphishing, certificate manipulation, cloud exploitation, and exfiltration techniques to compromise systems and exfiltrate sensitive data. Blue teams should review logs for suspicious PowerShell activity, unauthorized certificate installations, and anomalous cloud API calls.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign attributed to 'Winter Vivern'. This group, active since early 2023, focuses on financial and cloud-based targets, with recent activity against a U.S. banking entity. Initial reconnaissance involved scanning public GitHub repositories for exposed credentials, though no specific techniques were tagged from this phase.\n\nInitial access was achieved through a spearphishing campaign [T1566.001] where malicious attachments were delivered via email, mimicking legitimate banking communications. Once executed, the payload injected malicious JavaScript into the online banking portal's libraries [T1608.004], enabling drive-by compromises for subsequent visitors. The actors then used PowerShell [T1059.001] to download additional tools and modify registry keys [T1112] for persistence, while simultaneously exploiting a misconfigured XPC service daemon [T1559.003] to gain root access on macOS systems. To establish covert channels, they employed HTTP requests for command and control (C2) communications [T1071.001] and installed a fraudulent SSL certificate [T1608.003] using certmgr.msc to add it to the trusted root store [T1587.003], facilitating man-in-the-middle operations.\n\nPrivilege escalation involved modifying the Info.plist file [T1647] to register a privileged helper tool and using process argument spoofing [T1564.010] in spawned processes to execute beacon commands without detection. In cloud environments, the actors developed Python scripts to automatically create instances across unused or unsupported regions [T1535] for redundancy and used GCP Command Center [T1538] to discover resources lacking security controls. They conducted Pass-the-Hash attacks [T1550] to bypass authentication and access sensitive file shares, while exfiltrating harvested email archives to a private GitHub repository via HTTPS API calls [T1567.001]. System logs from the affected bank showed increased network traffic to unknown IPs, but these were not tagged as they represented noise. The campaign highlights the need for enhanced monitoring of certificate stores, cloud dashboards, and GitHub API usage.",
+        "techniques_used": [
+            "T1566.001",
+            "T1608.004",
+            "T1059.001",
+            "T1112",
+            "T1559.003",
+            "T1071.001",
+            "T1608.003",
+            "T1587.003",
+            "T1647",
+            "T1564.010",
+            "T1535",
+            "T1538",
+            "T1550",
+            "T1567.001"
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "report_id": "report_688",
+    "generated_at": "20251222_173254",
+    "scenario_target_ids": [
+        "T1598.004",
+        "T1566.004",
+        "T1674",
+        "T1542.001",
+        "T1601.002",
+        "T1205",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1598.004",
+        "T1566.004",
+        "T1674",
+        "T1542.001",
+        "T1601.002",
+        "T1205",
+        "T1020"
+    ],
+    "actual_found_ids": [
+        "T1566.004",
+        "T1542.001",
+        "T1205",
+        "T1598.004",
+        "T1674",
+        "T1601.002",
+        "T1020"
+    ],
+    "clean_text": "### Background\nEchoPhish, a fictional APT group, has been observed targeting telecommunications and energy companies since early 2024. The group leverages social engineering and technical exploits to gain initial access and establish persistent footholds. This report is based on simulated incident response data from a fictional victim, 'InfraCorp', where anomalous network traffic and system behavior were detected during routine audits. InfraCorp's security team noted increased CPU usage on several servers and unusual outbound connections to IP addresses in Eastern Europe, though these were later determined to be part of a red team exercise.\n\n### Attack Narrative\nInitial Access: The campaign began with spearphishing voice calls to high-level executives at InfraCorp, where actors impersonated trusted vendors to trick victims into installing a malicious smartphone app that continuously recorded ambient audio to capture sensitive discussions. This was followed by spearphishing emails containing malicious documents that automatically installed a remote access trojan upon opening, enabling initial compromise of corporate endpoints.\n\nExecution and Persistence: Once inside the network, the actors employed PowerShell scripts to inject malicious code into the UEFI firmware, ensuring persistence even after OS reinstallation, while simultaneously using input injection to monitor the Windows message loop and capture keystrokes from user applications. They then executed a downgrade attack by downloading deprecated_software.bin from a remote server to roll back security patches, weakening system defenses.\n\nCommand and Control (C2) and Exfiltration: To evade detection, the actors implemented traffic signaling using raw sockets to create a custom protocol that disguised malicious traffic as legitimate network chatter. During the exfiltration phase, automated tools collected sensitive data via a simulated Empire framework, which was automatically sent back to the adversary's C2. Logs from InfraCorp's firewall showed sporadic spikes in data transfer during off-hours, but initial analysis attributed this to backup processes until deeper investigation revealed the malicious activity.\n\n### Defensive Recommendations\nBlue teams should enhance monitoring for unusual voice-based social engineering attempts, implement firmware integrity checks, and deploy network traffic analysis tools to detect custom protocols. Regular patching and user awareness training are critical to mitigate similar threats.",
+    "tagged_text": "### Background\nEchoPhish, a fictional APT group, has been observed targeting telecommunications and energy companies since early 2024. The group leverages social engineering and technical exploits to gain initial access and establish persistent footholds. This report is based on simulated incident response data from a fictional victim, 'InfraCorp', where anomalous network traffic and system behavior were detected during routine audits. InfraCorp's security team noted increased CPU usage on several servers and unusual outbound connections to IP addresses in Eastern Europe, though these were later determined to be part of a red team exercise.\n\n### Attack Narrative\nInitial Access: The campaign began with spearphishing voice calls [T1598.004] to high-level executives at InfraCorp, where actors impersonated trusted vendors to trick victims into installing a malicious smartphone app that continuously recorded ambient audio to capture sensitive discussions. This was followed by spearphishing emails [T1566.004] containing malicious documents that automatically installed a remote access trojan upon opening, enabling initial compromise of corporate endpoints.\n\nExecution and Persistence: Once inside the network, the actors employed PowerShell scripts to inject malicious code into the UEFI firmware [T1542.001], ensuring persistence even after OS reinstallation, while simultaneously using input injection [T1674] to monitor the Windows message loop and capture keystrokes from user applications. They then executed a downgrade attack [T1601.002] by downloading deprecated_software.bin from a remote server to roll back security patches, weakening system defenses.\n\nCommand and Control (C2) and Exfiltration: To evade detection, the actors implemented traffic signaling [T1205] using raw sockets to create a custom protocol that disguised malicious traffic as legitimate network chatter. During the exfiltration phase, automated tools collected sensitive data via a simulated Empire framework, which was automatically sent back to the adversary's C2 [T1020]. Logs from InfraCorp's firewall showed sporadic spikes in data transfer during off-hours, but initial analysis attributed this to backup processes until deeper investigation revealed the malicious activity.\n\n### Defensive Recommendations\nBlue teams should enhance monitoring for unusual voice-based social engineering attempts, implement firmware integrity checks, and deploy network traffic analysis tools to detect custom protocols. Regular patching and user awareness training are critical to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "001], ensuring persistence even after OS reinstallation, while simultaneously using input injection to monitor the Windows message loop and capture keystrokes from user applications.",
+            "technique_id": "T1674",
+            "technique_name": "Input Injection"
+        },
+        {
+            "sentence": "Command and Control (C2) and Exfiltration: To evade detection, the actors implemented traffic signaling using raw sockets to create a custom protocol that disguised malicious traffic as legitimate network chatter.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "During the exfiltration phase, automated tools collected sensitive data via a simulated Empire framework, which was automatically sent back to the adversary's C2.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'EchoPhish' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'EchoPhish', targeting critical infrastructure sectors. The campaign employs sophisticated techniques, including voice-based spearphishing, firmware-level persistence, and automated exfiltration, to compromise systems and maintain long-term access. Blue teams are advised to review defensive measures and enhance monitoring for similar tactics.",
+        "full_report_text": "### Background\nEchoPhish, a fictional APT group, has been observed targeting telecommunications and energy companies since early 2024. The group leverages social engineering and technical exploits to gain initial access and establish persistent footholds. This report is based on simulated incident response data from a fictional victim, 'InfraCorp', where anomalous network traffic and system behavior were detected during routine audits. InfraCorp's security team noted increased CPU usage on several servers and unusual outbound connections to IP addresses in Eastern Europe, though these were later determined to be part of a red team exercise.\n\n### Attack Narrative\nInitial Access: The campaign began with spearphishing voice calls [T1598.004] to high-level executives at InfraCorp, where actors impersonated trusted vendors to trick victims into installing a malicious smartphone app that continuously recorded ambient audio to capture sensitive discussions. This was followed by spearphishing emails [T1566.004] containing malicious documents that automatically installed a remote access trojan upon opening, enabling initial compromise of corporate endpoints.\n\nExecution and Persistence: Once inside the network, the actors employed PowerShell scripts to inject malicious code into the UEFI firmware [T1542.001], ensuring persistence even after OS reinstallation, while simultaneously using input injection [T1674] to monitor the Windows message loop and capture keystrokes from user applications. They then executed a downgrade attack [T1601.002] by downloading deprecated_software.bin from a remote server to roll back security patches, weakening system defenses.\n\nCommand and Control (C2) and Exfiltration: To evade detection, the actors implemented traffic signaling [T1205] using raw sockets to create a custom protocol that disguised malicious traffic as legitimate network chatter. During the exfiltration phase, automated tools collected sensitive data via a simulated Empire framework, which was automatically sent back to the adversary's C2 [T1020]. Logs from InfraCorp's firewall showed sporadic spikes in data transfer during off-hours, but initial analysis attributed this to backup processes until deeper investigation revealed the malicious activity.\n\n### Defensive Recommendations\nBlue teams should enhance monitoring for unusual voice-based social engineering attempts, implement firmware integrity checks, and deploy network traffic analysis tools to detect custom protocols. Regular patching and user awareness training are critical to mitigate similar threats.",
+        "techniques_used": [
+            "T1598.004",
+            "T1566.004",
+            "T1674",
+            "T1542.001",
+            "T1601.002",
+            "T1205",
+            "T1020"
+        ]
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "report_id": "report_54",
+    "generated_at": "20251222_130852",
+    "scenario_target_ids": [
+        "T1584.006",
+        "T1195.001",
+        "T1610",
+        "T1055",
+        "T1001.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1584.006",
+        "T1195.001",
+        "T1610",
+        "T1055",
+        "T1001.003"
+    ],
+    "actual_found_ids": [
+        "T1001.003",
+        "T1610",
+        "T1195.001",
+        "T1055",
+        "T1584.006"
+    ],
+    "clean_text": "On April 15, 2024, SecureFin Corp. detected anomalous network traffic from a compromised internal server. The firm, based in New York with 500 employees, reported no prior significant security incidents. Initial analysis revealed that the adversary likely conducted reconnaissance on SecureFin's public-facing assets, including their corporate blog hosted on a WordPress platform. The actors then established command and control (C2) infrastructure by compromising a third-party WordPress site, which was used to host malicious payloads and relay commands. SecureFin's development team had recently updated their deployment scripts, and the adversary injected a malicious payload into the 'setup.ps1' script used for automating server configurations. This script, when executed by an administrator during a routine update, downloaded additional tools and exfiltrated configuration files to the compromised C2 server. System logs from the affected server showed unusual process activity, including the deployment of an Ubuntu container via Docker commands to run the Kinsing malware, which facilitated cryptocurrency mining and lateral movement. The malware employed process injection techniques to evade detection by injecting code into a legitimate system process, which then spawned a child process to execute commands. Network traffic analysis revealed that the C2 communications used custom HTTP headers to transmit encoded instructions, mimicking legitimate API calls to blend in with normal web traffic. Incident responders noted that the attack persisted for 72 hours before containment, with no customer data confirmed as exfiltrated in this simulation. Recommendations include monitoring for unauthorized container deployments, validating software dependencies, and inspecting HTTP headers for anomalies.",
+    "tagged_text": "On April 15, 2024, SecureFin Corp. detected anomalous network traffic from a compromised internal server. The firm, based in New York with 500 employees, reported no prior significant security incidents. Initial analysis revealed that the adversary likely conducted reconnaissance on SecureFin's public-facing assets, including their corporate blog hosted on a WordPress platform. The actors then established command and control (C2) infrastructure by compromising a third-party WordPress site [T1584.006], which was used to host malicious payloads and relay commands. SecureFin's development team had recently updated their deployment scripts, and the adversary injected a malicious payload into the 'setup.ps1' script used for automating server configurations [T1195.001]. This script, when executed by an administrator during a routine update, downloaded additional tools and exfiltrated configuration files to the compromised C2 server. System logs from the affected server showed unusual process activity, including the deployment of an Ubuntu container via Docker commands to run the Kinsing malware, which facilitated cryptocurrency mining and lateral movement [T1610]. The malware employed process injection techniques to evade detection by injecting code into a legitimate system process, which then spawned a child process to execute commands [T1055]. Network traffic analysis revealed that the C2 communications used custom HTTP headers to transmit encoded instructions, mimicking legitimate API calls to blend in with normal web traffic [T1001.003]. Incident responders noted that the attack persisted for 72 hours before containment, with no customer data confirmed as exfiltrated in this simulation. Recommendations include monitoring for unauthorized container deployments, validating software dependencies, and inspecting HTTP headers for anomalies.",
+    "sentence_annotations": [
+        {
+            "sentence": "System logs from the affected server showed unusual process activity, including the deployment of an Ubuntu container via Docker commands to run the Kinsing malware, which facilitated cryptocurrency mining and lateral movement.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "The malware employed process injection techniques to evade detection by injecting code into a legitimate system process, which then spawned a child process to execute commands.",
+            "technique_id": "T1055",
+            "technique_name": "Process Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional APT Group 'Crimson Serpent'",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'Crimson Serpent', targeting a mid-sized financial services firm, 'SecureFin Corp.', to exfiltrate sensitive customer data. The attack leveraged compromised web services, malicious software dependencies, container deployment, process injection, and protocol impersonation. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "On April 15, 2024, SecureFin Corp. detected anomalous network traffic from a compromised internal server. The firm, based in New York with 500 employees, reported no prior significant security incidents. Initial analysis revealed that the adversary likely conducted reconnaissance on SecureFin's public-facing assets, including their corporate blog hosted on a WordPress platform. The actors then established command and control (C2) infrastructure by compromising a third-party WordPress site [T1584.006], which was used to host malicious payloads and relay commands. SecureFin's development team had recently updated their deployment scripts, and the adversary injected a malicious payload into the 'setup.ps1' script used for automating server configurations [T1195.001]. This script, when executed by an administrator during a routine update, downloaded additional tools and exfiltrated configuration files to the compromised C2 server. System logs from the affected server showed unusual process activity, including the deployment of an Ubuntu container via Docker commands to run the Kinsing malware, which facilitated cryptocurrency mining and lateral movement [T1610]. The malware employed process injection techniques to evade detection by injecting code into a legitimate system process, which then spawned a child process to execute commands [T1055]. Network traffic analysis revealed that the C2 communications used custom HTTP headers to transmit encoded instructions, mimicking legitimate API calls to blend in with normal web traffic [T1001.003]. Incident responders noted that the attack persisted for 72 hours before containment, with no customer data confirmed as exfiltrated in this simulation. Recommendations include monitoring for unauthorized container deployments, validating software dependencies, and inspecting HTTP headers for anomalies.",
+        "techniques_used": [
+            "T1584.006",
+            "T1195.001",
+            "T1610",
+            "T1055",
+            "T1001.003"
+        ]
+    }
+}

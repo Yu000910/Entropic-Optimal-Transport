@@ -1,0 +1,101 @@
+{
+    "report_id": "report_510",
+    "generated_at": "20251222_161921",
+    "scenario_target_ids": [
+        "T1189",
+        "T1059.009",
+        "T1055.012",
+        "T1615",
+        "T1069",
+        "T1005",
+        "T1056.003",
+        "T1602.001",
+        "T1071"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1189",
+        "T1059.009",
+        "T1055.012",
+        "T1615",
+        "T1069",
+        "T1602.001",
+        "T1005",
+        "T1056.003",
+        "T1071"
+    ],
+    "actual_found_ids": [
+        "T1602.001",
+        "T1055.012",
+        "T1069",
+        "T1589",
+        "T1056.003",
+        "T1005",
+        "T1059.009",
+        "T1189",
+        "T1615",
+        "T1071"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowHawk'. This report is based on a simulated attack scenario designed to educate defenders on identifying and mitigating complex threats in cloud and on-premises environments.\n\nInitial Access: The actors likely conduct reconnaissance to identify target organizations, followed by a drive-by compromise where malicious JavaScript was injected into a legitimate ad network, causing browser.exe to execute unwanted processes that initiated the attack chain. This activity was observed in logs showing unusual network traffic from compromised endpoints, though no actual data breach occurred in this training scenario.\n\nExecution and Persistence: Upon gaining access, the adversary employed Azure PowerShell to actively execute 'Get-AzVM' commands for enumerating virtual machines while simultaneously using process hollowing to inject malicious code into the svchost.exe process, evading detection by masquerading as legitimate system activity. System logs indicated anomalous PowerShell executions during off-hours, but these were part of the simulated attack.\n\nDiscovery: The campaign then focused on discovery techniques, leveraging Group Policy discovery to enumerate domain policies and permission groups discovery to identify members of privileged groups using commands like 'net group /domain', all while conducting SNMP walks to gather device inventory data from network infrastructure. These actions were logged in standard system events, though no real credentials were compromised.\n\nCollection and Exfiltration: For data collection, the actors extracted files from the local system using tools like ZxShell and implemented web portal capture by redirecting login codes to controlled websites, mimicking the Triton attack, while employing application layer protocols such as IRC for command and control communication to exfiltrate stolen data. Network monitoring tools flagged unusual outbound traffic, but this was contained within the training environment.\n\nThis advisory serves as an educational tool to highlight the importance of monitoring for these techniques in real-world scenarios. Organizations are encouraged to review their security postures and implement defensive measures outlined in the MITRE ATT&CK framework.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowHawk'. This report is based on a simulated attack scenario designed to educate defenders on identifying and mitigating complex threats in cloud and on-premises environments.\n\nInitial Access: The actors likely conduct reconnaissance [T1589] to identify target organizations, followed by a drive-by compromise [T1189] where malicious JavaScript was injected into a legitimate ad network, causing browser.exe to execute unwanted processes that initiated the attack chain. This activity was observed in logs showing unusual network traffic from compromised endpoints, though no actual data breach occurred in this training scenario.\n\nExecution and Persistence: Upon gaining access, the adversary employed Azure PowerShell [T1059.009] to actively execute 'Get-AzVM' commands for enumerating virtual machines while simultaneously using process hollowing [T1055.012] to inject malicious code into the svchost.exe process, evading detection by masquerading as legitimate system activity. System logs indicated anomalous PowerShell executions during off-hours, but these were part of the simulated attack.\n\nDiscovery: The campaign then focused on discovery techniques, leveraging Group Policy discovery [T1615] to enumerate domain policies and permission groups discovery [T1069] to identify members of privileged groups using commands like 'net group /domain', all while conducting SNMP walks [T1602.001] to gather device inventory data from network infrastructure. These actions were logged in standard system events, though no real credentials were compromised.\n\nCollection and Exfiltration: For data collection, the actors extracted files from the local system [T1005] using tools like ZxShell and implemented web portal capture [T1056.003] by redirecting login codes to controlled websites, mimicking the Triton attack, while employing application layer protocols [T1071] such as IRC for command and control communication to exfiltrate stolen data. Network monitoring tools flagged unusual outbound traffic, but this was contained within the training environment.\n\nThis advisory serves as an educational tool to highlight the importance of monitoring for these techniques in real-world scenarios. Organizations are encouraged to review their security postures and implement defensive measures outlined in the MITRE ATT&CK framework.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conduct reconnaissance to identify target organizations, followed by a drive-by compromise where malicious JavaScript was injected into a legitimate ad network, causing browser.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Initial Access: The actors likely conduct reconnaissance to identify target organizations, followed by a drive-by compromise where malicious JavaScript was injected into a legitimate ad network, causing browser.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Discovery: The campaign then focused on discovery techniques, leveraging Group Policy discovery to enumerate domain policies and permission groups discovery to identify members of privileged groups using commands like 'net group /domain', all while conducting SNMP walks [T1602.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "Discovery: The campaign then focused on discovery techniques, leveraging Group Policy discovery to enumerate domain policies and permission groups discovery to identify members of privileged groups using commands like 'net group /domain', all while conducting SNMP walks [T1602.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "Collection and Exfiltration: For data collection, the actors extracted files from the local system using tools like ZxShell and implemented web portal capture [T1056.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "003] by redirecting login codes to controlled websites, mimicking the Triton attack, while employing application layer protocols such as IRC for command and control communication to exfiltrate stolen data.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHawk' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowHawk', which exploits web-based vulnerabilities to gain initial access, leverages cloud APIs for execution and discovery, and uses sophisticated evasion and data exfiltration techniques. The campaign targets organizations with hybrid cloud environments, emphasizing the need for robust monitoring and defense-in-depth strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowHawk'. This report is based on a simulated attack scenario designed to educate defenders on identifying and mitigating complex threats in cloud and on-premises environments.\n\nInitial Access: The actors likely conduct reconnaissance [T1589] to identify target organizations, followed by a drive-by compromise [T1189] where malicious JavaScript was injected into a legitimate ad network, causing browser.exe to execute unwanted processes that initiated the attack chain. This activity was observed in logs showing unusual network traffic from compromised endpoints, though no actual data breach occurred in this training scenario.\n\nExecution and Persistence: Upon gaining access, the adversary employed Azure PowerShell [T1059.009] to actively execute 'Get-AzVM' commands for enumerating virtual machines while simultaneously using process hollowing [T1055.012] to inject malicious code into the svchost.exe process, evading detection by masquerading as legitimate system activity. System logs indicated anomalous PowerShell executions during off-hours, but these were part of the simulated attack.\n\nDiscovery: The campaign then focused on discovery techniques, leveraging Group Policy discovery [T1615] to enumerate domain policies and permission groups discovery [T1069] to identify members of privileged groups using commands like 'net group /domain', all while conducting SNMP walks [T1602.001] to gather device inventory data from network infrastructure. These actions were logged in standard system events, though no real credentials were compromised.\n\nCollection and Exfiltration: For data collection, the actors extracted files from the local system [T1005] using tools like ZxShell and implemented web portal capture [T1056.003] by redirecting login codes to controlled websites, mimicking the Triton attack, while employing application layer protocols [T1071] such as IRC for command and control communication to exfiltrate stolen data. Network monitoring tools flagged unusual outbound traffic, but this was contained within the training environment.\n\nThis advisory serves as an educational tool to highlight the importance of monitoring for these techniques in real-world scenarios. Organizations are encouraged to review their security postures and implement defensive measures outlined in the MITRE ATT&CK framework.",
+        "techniques_used": [
+            "T1589",
+            "T1189",
+            "T1059.009",
+            "T1055.012",
+            "T1615",
+            "T1069",
+            "T1602.001",
+            "T1005",
+            "T1056.003",
+            "T1071"
+        ]
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "report_id": "report_500",
+    "generated_at": "20251222_161500",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1648",
+        "T1111",
+        "T1071.002",
+        "T1001.003",
+        "T1041"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1648",
+        "T1111",
+        "T1071.002",
+        "T1001.003",
+        "T1041"
+    ],
+    "actual_found_ids": [
+        "T1001.003",
+        "T1071.002",
+        "T1566.002",
+        "T1111",
+        "T1041",
+        "T1648"
+    ],
+    "clean_text": "Background: The fictional APT group 'Cloud Phantom' has been observed targeting mid-sized financial institutions in North America since early 2024. The group's motives appear financial, with a focus on stealing customer data and transaction logs. Initial reports from a simulated incident at 'SecureBank Corp' indicate unauthorized access to cloud infrastructure and data exfiltration. System logs from SecureBank show unusual spikes in Lambda function invocations and SMB traffic during off-hours, though some of these alerts were later attributed to scheduled maintenance tasks unrelated to the attack.\n\nAttack Narrative: The actors likely conduct reconnaissance to identify key employees, though specific details are omitted here. The campaign began with spearphishing emails containing malicious links that directed victims to a compromised website hosting a credential-harvesting page. Upon compromise, the adversary established persistence by creating a rogue Lambda function in the victim's AWS environment, which was used to execute unauthorized commands and deploy additional payloads while evading traditional endpoint detection. Concurrently, the group employed a tool to intercept one-time passwords, bypassing multi-factor authentication to gain deeper access to internal systems. Once inside, they leveraged SMB session hijacking to relay commands through authenticated connections, blending with legitimate file-sharing traffic. To maintain stealth, the actors used custom HTTP headers to encode command and control instructions, making malicious traffic appear as normal web requests. Finally, they exfiltrated encrypted system information directly over the established C2 channel, siphoning data without triggering data loss prevention alerts. Post-incident analysis at SecureBank revealed residual artifacts in cloud logs, but no evidence of lateral movement beyond the initial compromised accounts.",
+    "tagged_text": "Background: The fictional APT group 'Cloud Phantom' has been observed targeting mid-sized financial institutions in North America since early 2024. The group's motives appear financial, with a focus on stealing customer data and transaction logs. Initial reports from a simulated incident at 'SecureBank Corp' indicate unauthorized access to cloud infrastructure and data exfiltration. System logs from SecureBank show unusual spikes in Lambda function invocations and SMB traffic during off-hours, though some of these alerts were later attributed to scheduled maintenance tasks unrelated to the attack.\n\nAttack Narrative: The actors likely conduct reconnaissance to identify key employees, though specific details are omitted here. The campaign began with spearphishing emails containing malicious links [T1566.002] that directed victims to a compromised website hosting a credential-harvesting page. Upon compromise, the adversary established persistence by creating a rogue Lambda function in the victim's AWS environment [T1648], which was used to execute unauthorized commands and deploy additional payloads while evading traditional endpoint detection. Concurrently, the group employed a tool to intercept one-time passwords [T1111], bypassing multi-factor authentication to gain deeper access to internal systems. Once inside, they leveraged SMB session hijacking [T1071.002] to relay commands through authenticated connections, blending with legitimate file-sharing traffic. To maintain stealth, the actors used custom HTTP headers to encode command and control instructions [T1001.003], making malicious traffic appear as normal web requests. Finally, they exfiltrated encrypted system information directly over the established C2 channel [T1041], siphoning data without triggering data loss prevention alerts. Post-incident analysis at SecureBank revealed residual artifacts in cloud logs, but no evidence of lateral movement beyond the initial compromised accounts.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon compromise, the adversary established persistence by creating a rogue Lambda function in the victim's AWS environment, which was used to execute unauthorized commands and deploy additional payloads while evading traditional endpoint detection.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "Concurrently, the group employed a tool to intercept one-time passwords, bypassing multi-factor authentication to gain deeper access to internal systems.",
+            "technique_id": "T1111",
+            "technique_name": "Multi-Factor Authentication Interception"
+        },
+        {
+            "sentence": "Finally, they exfiltrated encrypted system information directly over the established C2 channel, siphoning data without triggering data loss prevention alerts.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Cloud Phantom' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'Cloud Phantom', targeting financial institutions to exfiltrate sensitive data. The campaign employs sophisticated techniques including spearphishing, serverless execution, and multi-factor authentication interception. Blue teams should review this report for training on detection and mitigation strategies.",
+        "full_report_text": "Background: The fictional APT group 'Cloud Phantom' has been observed targeting mid-sized financial institutions in North America since early 2024. The group's motives appear financial, with a focus on stealing customer data and transaction logs. Initial reports from a simulated incident at 'SecureBank Corp' indicate unauthorized access to cloud infrastructure and data exfiltration. System logs from SecureBank show unusual spikes in Lambda function invocations and SMB traffic during off-hours, though some of these alerts were later attributed to scheduled maintenance tasks unrelated to the attack.\n\nAttack Narrative: The actors likely conduct reconnaissance to identify key employees, though specific details are omitted here. The campaign began with spearphishing emails containing malicious links [T1566.002] that directed victims to a compromised website hosting a credential-harvesting page. Upon compromise, the adversary established persistence by creating a rogue Lambda function in the victim's AWS environment [T1648], which was used to execute unauthorized commands and deploy additional payloads while evading traditional endpoint detection. Concurrently, the group employed a tool to intercept one-time passwords [T1111], bypassing multi-factor authentication to gain deeper access to internal systems. Once inside, they leveraged SMB session hijacking [T1071.002] to relay commands through authenticated connections, blending with legitimate file-sharing traffic. To maintain stealth, the actors used custom HTTP headers to encode command and control instructions [T1001.003], making malicious traffic appear as normal web requests. Finally, they exfiltrated encrypted system information directly over the established C2 channel [T1041], siphoning data without triggering data loss prevention alerts. Post-incident analysis at SecureBank revealed residual artifacts in cloud logs, but no evidence of lateral movement beyond the initial compromised accounts.",
+        "techniques_used": [
+            "T1566.002",
+            "T1648",
+            "T1111",
+            "T1071.002",
+            "T1001.003",
+            "T1041"
+        ]
+    }
+}

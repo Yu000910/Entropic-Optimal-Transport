@@ -1,0 +1,150 @@
+{
+    "report_id": "report_377",
+    "generated_at": "20251222_152132",
+    "scenario_target_ids": [
+        "T1587.001",
+        "T1669",
+        "T1072",
+        "T1129",
+        "T1543",
+        "T1558.001",
+        "T1652",
+        "T1580",
+        "T1021.002",
+        "T1113",
+        "T1573",
+        "T1496.002"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1587.001",
+        "T1669",
+        "T1573",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1543",
+        "T1129",
+        "T1558.001",
+        "T1072",
+        "T1652",
+        "T1580",
+        "T1021.002",
+        "T1113",
+        "T1496.002"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1129",
+        "T1072",
+        "T1558.001",
+        "T1112",
+        "T1669",
+        "T1589",
+        "T1587.001",
+        "T1113",
+        "T1543",
+        "T1580",
+        "T1496.002",
+        "T1105",
+        "T1021.002",
+        "T1573",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign dubbed 'ShadowVeil'. This report is based on a simulated attack scenario designed for educational purposes, involving no real-world incidents. Background: The targeted organization, 'FinSecure Corp.', is a mid-sized financial services company with hybrid on-premises and cloud infrastructure, including AWS S3 buckets for data storage. System logs from initial detection showed anomalous network traffic from an employee workstation, later traced to a phishing email with a malicious attachment. The actors likely conduct reconnaissance to identify key personnel and infrastructure. Initial Access was achieved through a spear-phishing email containing a malicious PS1 script, which executed upon opening, deploying custom malware including CostaBricks and SombRAT. The malware then connected to any available open Wi-Fi networks to communicate with command-and-control (C2) servers, using encrypted channels via cryptcat binaries to evade detection. Execution involved the adversary employing PowerShell to actively download additional payloads while simultaneously modifying registry keys for persistence. The malware injected malicious code into svchost.exe to create a system process and loaded DLLs for extended functionality. Persistence was maintained by exploiting the KRBTGT password hash to forge a golden ticket, granting unlimited domain access, and using RAdmin software deployment tools to remotely control workstations. Discovery activities included programmatically retrieving a list of all loaded device drivers using the Windows API function EnumDeviceDrivers() and using the ListBuckets API call to discover cloud storage resources accessible with stolen credentials. Lateral Movement was facilitated by enabling SMB on compromised hosts via batch scripts to access Windows admin shares. Collection involved taking screenshots of the compromised computer every minute and hijacking network resources for large-scale data exfiltration using botnet malware. Exfiltration occurred over the encrypted channels, with data sent to C2 servers via the open Wi-Fi connections. Mitigation recommendations include monitoring for unusual PowerShell activity, restricting SMB shares, implementing multi-factor authentication, and regularly auditing cloud permissions. This scenario is fictional and intended solely for training exercises to enhance defensive capabilities against similar real-world threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign dubbed 'ShadowVeil'. This report is based on a simulated attack scenario designed for educational purposes, involving no real-world incidents. Background: The targeted organization, 'FinSecure Corp.', is a mid-sized financial services company with hybrid on-premises and cloud infrastructure, including AWS S3 buckets for data storage. System logs from initial detection showed anomalous network traffic from an employee workstation, later traced to a phishing email with a malicious attachment. The actors likely conduct reconnaissance [T1589] to identify key personnel and infrastructure. Initial Access was achieved through a spear-phishing email containing a malicious PS1 script, which executed upon opening, deploying custom malware including CostaBricks and SombRAT [T1587.001]. The malware then connected to any available open Wi-Fi networks [T1669] to communicate with command-and-control (C2) servers, using encrypted channels [T1573] via cryptcat binaries to evade detection. Execution involved the adversary employing PowerShell [T1059.001] to actively download additional payloads [T1105] while simultaneously modifying registry keys [T1112] for persistence. The malware injected malicious code into svchost.exe to create a system process [T1543] and loaded DLLs [T1129] for extended functionality. Persistence was maintained by exploiting the KRBTGT password hash to forge a golden ticket [T1558.001], granting unlimited domain access, and using RAdmin software deployment tools [T1072] to remotely control workstations. Discovery activities included programmatically retrieving a list of all loaded device drivers [T1652] using the Windows API function EnumDeviceDrivers() and using the ListBuckets API call to discover cloud storage resources [T1580] accessible with stolen credentials. Lateral Movement was facilitated by enabling SMB on compromised hosts [T1021.002] via batch scripts to access Windows admin shares. Collection involved taking screenshots of the compromised computer every minute [T1113] and hijacking network resources for large-scale data exfiltration [T1496.002] using botnet malware. Exfiltration occurred over the encrypted channels, with data sent to C2 servers via the open Wi-Fi connections. Mitigation recommendations include monitoring for unusual PowerShell activity, restricting SMB shares, implementing multi-factor authentication, and regularly auditing cloud permissions. This scenario is fictional and intended solely for training exercises to enhance defensive capabilities against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify key personnel and infrastructure.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The malware then connected to any available open Wi-Fi networks to communicate with command-and-control (C2) servers, using encrypted channels via cryptcat binaries to evade detection.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "The malware then connected to any available open Wi-Fi networks to communicate with command-and-control (C2) servers, using encrypted channels via cryptcat binaries to evade detection.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        },
+        {
+            "sentence": "001] to actively download additional payloads while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download additional payloads while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "exe to create a system process and loaded DLLs for extended functionality.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "exe to create a system process and loaded DLLs for extended functionality.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "001], granting unlimited domain access, and using RAdmin software deployment tools to remotely control workstations.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "Discovery activities included programmatically retrieving a list of all loaded device drivers using the Windows API function EnumDeviceDrivers() and using the ListBuckets API call to discover cloud storage resources accessible with stolen credentials.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "Discovery activities included programmatically retrieving a list of all loaded device drivers using the Windows API function EnumDeviceDrivers() and using the ListBuckets API call to discover cloud storage resources accessible with stolen credentials.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "Collection involved taking screenshots of the compromised computer every minute and hijacking network resources for large-scale data exfiltration [T1496.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowVeil', which targets financial institutions and cloud environments to exfiltrate sensitive data and maintain persistent access. The campaign employs a multi-stage approach involving malware deployment, credential exploitation, and network manipulation for training blue teams in detection and response.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign dubbed 'ShadowVeil'. This report is based on a simulated attack scenario designed for educational purposes, involving no real-world incidents. Background: The targeted organization, 'FinSecure Corp.', is a mid-sized financial services company with hybrid on-premises and cloud infrastructure, including AWS S3 buckets for data storage. System logs from initial detection showed anomalous network traffic from an employee workstation, later traced to a phishing email with a malicious attachment. The actors likely conduct reconnaissance [T1589] to identify key personnel and infrastructure. Initial Access was achieved through a spear-phishing email containing a malicious PS1 script, which executed upon opening, deploying custom malware including CostaBricks and SombRAT [T1587.001]. The malware then connected to any available open Wi-Fi networks [T1669] to communicate with command-and-control (C2) servers, using encrypted channels [T1573] via cryptcat binaries to evade detection. Execution involved the adversary employing PowerShell [T1059.001] to actively download additional payloads [T1105] while simultaneously modifying registry keys [T1112] for persistence. The malware injected malicious code into svchost.exe to create a system process [T1543] and loaded DLLs [T1129] for extended functionality. Persistence was maintained by exploiting the KRBTGT password hash to forge a golden ticket [T1558.001], granting unlimited domain access, and using RAdmin software deployment tools [T1072] to remotely control workstations. Discovery activities included programmatically retrieving a list of all loaded device drivers [T1652] using the Windows API function EnumDeviceDrivers() and using the ListBuckets API call to discover cloud storage resources [T1580] accessible with stolen credentials. Lateral Movement was facilitated by enabling SMB on compromised hosts [T1021.002] via batch scripts to access Windows admin shares. Collection involved taking screenshots of the compromised computer every minute [T1113] and hijacking network resources for large-scale data exfiltration [T1496.002] using botnet malware. Exfiltration occurred over the encrypted channels, with data sent to C2 servers via the open Wi-Fi connections. Mitigation recommendations include monitoring for unusual PowerShell activity, restricting SMB shares, implementing multi-factor authentication, and regularly auditing cloud permissions. This scenario is fictional and intended solely for training exercises to enhance defensive capabilities against similar real-world threats.",
+        "techniques_used": [
+            "T1589",
+            "T1587.001",
+            "T1669",
+            "T1573",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1543",
+            "T1129",
+            "T1558.001",
+            "T1072",
+            "T1652",
+            "T1580",
+            "T1021.002",
+            "T1113",
+            "T1496.002"
+        ]
+    }
+}

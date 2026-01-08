@@ -1,0 +1,71 @@
+{
+    "report_id": "report_127",
+    "generated_at": "20251222_133639",
+    "scenario_target_ids": [
+        "T1091",
+        "T1648",
+        "T1047",
+        "T1003.006",
+        "T1219",
+        "T1132.002",
+        "T1052.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1091",
+        "T1648",
+        "T1047",
+        "T1003.006",
+        "T1219",
+        "T1132.002",
+        "T1052.001"
+    ],
+    "actual_found_ids": [
+        "T1091",
+        "T1132.002",
+        "T1219",
+        "T1052.001",
+        "T1648"
+    ],
+    "clean_text": "On October 15, 2023, APT-99 initiated a campaign against a fictional energy company, 'PowerGrid Inc.', which operates air-gapped systems for critical control networks. The actors likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were observed in this phase. Initial access was achieved when an employee inadvertently inserted a compromised USB drive into an air-gapped workstation, allowing the malware to replicate across isolated networks. Once established, the adversary leveraged a compromised AWS Lambda function to execute unauthorized shell commands, enabling serverless execution in the cloud environment to evade traditional detection mechanisms. The malware then used Windows Management Instrumentation (WMI) to query system information and identify domain controllers, while simultaneously performing DCSync attacks to retrieve password hashes from the local security authority for credential theft [T1047, T1003.006]. To maintain persistence, APT-99 deployed remote access tools such as AnyDesk, facilitating covert command and control channels within the victim environment. Prior to exfiltration, the actors encoded stolen credentials using a modified Base64 implementation that reversed character order to obfuscate data. Finally, exfiltration was conducted by copying the encoded data onto removable USB devices, which were then physically transferred to internet-connected systems for data retrieval. Incident response logs from PowerGrid Inc. showed anomalous network traffic spikes, but these were initially attributed to routine maintenance activities. The company's background includes operations across multiple regions, with no prior significant security breaches reported.",
+    "tagged_text": "On October 15, 2023, APT-99 initiated a campaign against a fictional energy company, 'PowerGrid Inc.', which operates air-gapped systems for critical control networks. The actors likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were observed in this phase. Initial access was achieved when an employee inadvertently inserted a compromised USB drive into an air-gapped workstation, allowing the malware to replicate across isolated networks [T1091]. Once established, the adversary leveraged a compromised AWS Lambda function to execute unauthorized shell commands, enabling serverless execution in the cloud environment to evade traditional detection mechanisms [T1648]. The malware then used Windows Management Instrumentation (WMI) to query system information and identify domain controllers, while simultaneously performing DCSync attacks to retrieve password hashes from the local security authority for credential theft [T1047, T1003.006]. To maintain persistence, APT-99 deployed remote access tools such as AnyDesk, facilitating covert command and control channels within the victim environment [T1219]. Prior to exfiltration, the actors encoded stolen credentials using a modified Base64 implementation that reversed character order to obfuscate data [T1132.002]. Finally, exfiltration was conducted by copying the encoded data onto removable USB devices, which were then physically transferred to internet-connected systems for data retrieval [T1052.001]. Incident response logs from PowerGrid Inc. showed anomalous network traffic spikes, but these were initially attributed to routine maintenance activities. The company's background includes operations across multiple regions, with no prior significant security breaches reported.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved when an employee inadvertently inserted a compromised USB drive into an air-gapped workstation, allowing the malware to replicate across isolated networks.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Once established, the adversary leveraged a compromised AWS Lambda function to execute unauthorized shell commands, enabling serverless execution in the cloud environment to evade traditional detection mechanisms.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "To maintain persistence, APT-99 deployed remote access tools such as AnyDesk, facilitating covert command and control channels within the victim environment.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as APT-99, targeting critical infrastructure sectors. The campaign involves initial access via removable media, execution through serverless functions, and data exfiltration using encoded transfers over USB devices, with techniques adapted from real-world APT activities for educational purposes.",
+        "full_report_text": "On October 15, 2023, APT-99 initiated a campaign against a fictional energy company, 'PowerGrid Inc.', which operates air-gapped systems for critical control networks. The actors likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were observed in this phase. Initial access was achieved when an employee inadvertently inserted a compromised USB drive into an air-gapped workstation, allowing the malware to replicate across isolated networks [T1091]. Once established, the adversary leveraged a compromised AWS Lambda function to execute unauthorized shell commands, enabling serverless execution in the cloud environment to evade traditional detection mechanisms [T1648]. The malware then used Windows Management Instrumentation (WMI) to query system information and identify domain controllers, while simultaneously performing DCSync attacks to retrieve password hashes from the local security authority for credential theft [T1047, T1003.006]. To maintain persistence, APT-99 deployed remote access tools such as AnyDesk, facilitating covert command and control channels within the victim environment [T1219]. Prior to exfiltration, the actors encoded stolen credentials using a modified Base64 implementation that reversed character order to obfuscate data [T1132.002]. Finally, exfiltration was conducted by copying the encoded data onto removable USB devices, which were then physically transferred to internet-connected systems for data retrieval [T1052.001]. Incident response logs from PowerGrid Inc. showed anomalous network traffic spikes, but these were initially attributed to routine maintenance activities. The company's background includes operations across multiple regions, with no prior significant security breaches reported.",
+        "techniques_used": [
+            "T1091",
+            "T1648",
+            "T1047",
+            "T1003.006",
+            "T1219",
+            "T1132.002",
+            "T1052.001"
+        ]
+    }
+}

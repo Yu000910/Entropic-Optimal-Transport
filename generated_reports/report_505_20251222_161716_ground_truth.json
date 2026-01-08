@@ -1,0 +1,88 @@
+{
+    "report_id": "report_505",
+    "generated_at": "20251222_161716",
+    "scenario_target_ids": [
+        "T1588.006",
+        "T1586.002",
+        "T1584.008",
+        "T1078",
+        "T1059.002",
+        "T1053.006",
+        "T1555.006",
+        "T1074.002",
+        "T1560",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1588.006",
+        "T1584.008",
+        "T1586.002",
+        "T1078",
+        "T1059.002",
+        "T1053.006",
+        "T1555.006",
+        "T1074.002",
+        "T1560",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1584.008",
+        "T1588.006",
+        "T1053.006",
+        "T1555.006",
+        "T1560",
+        "T1078",
+        "T1074.002",
+        "T1586.002",
+        "T1573",
+        "T1059.002"
+    ],
+    "clean_text": "Background: ShadowPhish is a fictional APT group believed to operate with state-sponsored objectives, focusing on energy and telecommunications sectors. Initial analysis suggests the group conducts extensive reconnaissance, including monitoring public vulnerability databases for recently disclosed software flaws. In a recent incident at a fictional company, 'InfraSecure Inc.', network logs showed unusual traffic patterns from compromised Ubiquiti devices, which were later identified as collection points for credentials harvested via phishing campaigns. The actors deployed a malicious script, phishing.ps1, that captured email authentication details from unsuspecting users through deceptive login pages. Once initial access was achieved, the adversary used valid administrator credentials, likely obtained from previous breaches, to move laterally into restricted network segments. On macOS systems within the environment, malware wrote an AppleScript payload to the Documents folder, which was designed to download and execute additional malware. To maintain persistence, the malware installed a malicious service disguised as 'Windows Audio Enhancement' using systemd timers. During the execution phase, the script leveraged cloud secrets management stores by executing commands like 'aws secretsmanager get-secret-value --secret-id ssl-certificates' to steal TLS private keys. For data collection, MoustachedBouncer plugins were used to save captured screenshots to a remote SMB share at `.\\AActdata\\`, and Empire tools were employed to ZIP directories on the target system for archiving collected data. Finally, the remote access tool established command and control (C2) communications using RSA encryption to avoid signature detection. Additional logs from InfraSecure's SIEM indicated routine system updates and user login attempts, which were unrelated to the attack but provided context for the investigation.",
+    "tagged_text": "Background: ShadowPhish is a fictional APT group believed to operate with state-sponsored objectives, focusing on energy and telecommunications sectors. Initial analysis suggests the group conducts extensive reconnaissance, including monitoring public vulnerability databases for recently disclosed software flaws [T1588.006]. In a recent incident at a fictional company, 'InfraSecure Inc.', network logs showed unusual traffic patterns from compromised Ubiquiti devices, which were later identified as collection points for credentials harvested via phishing campaigns [T1584.008]. The actors deployed a malicious script, phishing.ps1, that captured email authentication details from unsuspecting users through deceptive login pages [T1586.002]. Once initial access was achieved, the adversary used valid administrator credentials, likely obtained from previous breaches, to move laterally into restricted network segments [T1078]. On macOS systems within the environment, malware wrote an AppleScript payload to the Documents folder, which was designed to download and execute additional malware [T1059.002]. To maintain persistence, the malware installed a malicious service disguised as 'Windows Audio Enhancement' using systemd timers [T1053.006]. During the execution phase, the script leveraged cloud secrets management stores by executing commands like 'aws secretsmanager get-secret-value --secret-id ssl-certificates' to steal TLS private keys [T1555.006]. For data collection, MoustachedBouncer plugins were used to save captured screenshots to a remote SMB share at `.\\AActdata\\` [T1074.002], and Empire tools were employed to ZIP directories on the target system for archiving collected data [T1560]. Finally, the remote access tool established command and control (C2) communications using RSA encryption to avoid signature detection [T1573]. Additional logs from InfraSecure's SIEM indicated routine system updates and user login attempts, which were unrelated to the attack but provided context for the investigation.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once initial access was achieved, the adversary used valid administrator credentials, likely obtained from previous breaches, to move laterally into restricted network segments.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "002], and Empire tools were employed to ZIP directories on the target system for archiving collected data.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "Finally, the remote access tool established command and control (C2) communications using RSA encryption to avoid signature detection.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowPhish' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowPhish', targeting critical infrastructure sectors. The campaign leverages a multi-stage attack involving vulnerability exploitation, credential harvesting, and data exfiltration to compromise network integrity and steal sensitive information. Blue teams are advised to review detection and mitigation strategies outlined in this report.",
+        "full_report_text": "Background: ShadowPhish is a fictional APT group believed to operate with state-sponsored objectives, focusing on energy and telecommunications sectors. Initial analysis suggests the group conducts extensive reconnaissance, including monitoring public vulnerability databases for recently disclosed software flaws [T1588.006]. In a recent incident at a fictional company, 'InfraSecure Inc.', network logs showed unusual traffic patterns from compromised Ubiquiti devices, which were later identified as collection points for credentials harvested via phishing campaigns [T1584.008]. The actors deployed a malicious script, phishing.ps1, that captured email authentication details from unsuspecting users through deceptive login pages [T1586.002]. Once initial access was achieved, the adversary used valid administrator credentials, likely obtained from previous breaches, to move laterally into restricted network segments [T1078]. On macOS systems within the environment, malware wrote an AppleScript payload to the Documents folder, which was designed to download and execute additional malware [T1059.002]. To maintain persistence, the malware installed a malicious service disguised as 'Windows Audio Enhancement' using systemd timers [T1053.006]. During the execution phase, the script leveraged cloud secrets management stores by executing commands like 'aws secretsmanager get-secret-value --secret-id ssl-certificates' to steal TLS private keys [T1555.006]. For data collection, MoustachedBouncer plugins were used to save captured screenshots to a remote SMB share at `.\\AActdata\\` [T1074.002], and Empire tools were employed to ZIP directories on the target system for archiving collected data [T1560]. Finally, the remote access tool established command and control (C2) communications using RSA encryption to avoid signature detection [T1573]. Additional logs from InfraSecure's SIEM indicated routine system updates and user login attempts, which were unrelated to the attack but provided context for the investigation.",
+        "techniques_used": [
+            "T1588.006",
+            "T1584.008",
+            "T1586.002",
+            "T1078",
+            "T1059.002",
+            "T1053.006",
+            "T1555.006",
+            "T1074.002",
+            "T1560",
+            "T1573"
+        ]
+    }
+}

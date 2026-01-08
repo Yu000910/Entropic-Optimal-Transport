@@ -1,0 +1,73 @@
+{
+    "report_id": "report_567",
+    "generated_at": "20251222_164412",
+    "scenario_target_ids": [
+        "T1199",
+        "T1047",
+        "T1548",
+        "T1574.001",
+        "T1555.005",
+        "T1132"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1047",
+        "T1548",
+        "T1574.001",
+        "T1555.005",
+        "T1132"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1199",
+        "T1548",
+        "T1132",
+        "T1574.001",
+        "T1555.005"
+    ],
+    "clean_text": "Background: CrimsonShadow, a financially motivated APT group, has been active since early 2023, focusing on MSPs in the healthcare and finance sectors. The group leverages social engineering and supply chain attacks to compromise trusted entities. In this fictional scenario, an MSP, 'SecureNet Solutions', reported unauthorized access to their administrative portal, leading to downstream client infections. Logs from SecureNet's SIEM showed anomalous login attempts from IP addresses associated with known botnets, but these were initially dismissed as false positives due to high network traffic during a scheduled maintenance window.\n\nAttack Narrative:\n- Initial Access: The actors exploited a trusted relationship by compromising a third-party vendor with delegated administrator access to SecureNet's cloud environment, using stolen credentials from a previous phishing campaign that went undetected for weeks.\n- Execution: Upon gaining access, they employed Windows Management Instrumentation (WMI) to execute malicious scripts across multiple client systems, leveraging wmic commands to deploy ransomware payloads while simultaneously abusing sudo-like mechanisms on Linux servers to escalate privileges without authentication, bypassing security controls.\n- Persistence: To maintain access, the group utilized DLL side-loading by replacing legitimate DLLs in trusted applications, tricking them into loading malicious code that established backdoors and communicated with command-and-control (C2) servers hosted on compromised infrastructure in Eastern Europe.\n- Credential Access: The actors targeted password managers, copying database files such as RoboForm from AppData folders on infected workstations to extract plaintext credentials, which were then used to move laterally within the network and access sensitive financial data.\n- Exfiltration: Data was exfiltrated using encoded commands, with the backdoor decoding base64-encoded instructions from the C2 channel to obfuscate traffic and evade network-based detection tools, while also logging failed attempts to access encrypted backup servers that were unrelated to the attack.\n- Impact: The campaign resulted in ransomware deployment across 50+ client systems, causing operational disruption and data loss estimated at $2 million in fictional damages. SecureNet's incident response team contained the threat after 72 hours, but residual malware persisted in isolated segments, highlighting gaps in patch management and third-party risk assessments.",
+    "tagged_text": "Background: CrimsonShadow, a financially motivated APT group, has been active since early 2023, focusing on MSPs in the healthcare and finance sectors. The group leverages social engineering and supply chain attacks to compromise trusted entities. In this fictional scenario, an MSP, 'SecureNet Solutions', reported unauthorized access to their administrative portal, leading to downstream client infections. Logs from SecureNet's SIEM showed anomalous login attempts from IP addresses associated with known botnets, but these were initially dismissed as false positives due to high network traffic during a scheduled maintenance window.\n\nAttack Narrative:\n- Initial Access: The actors exploited a trusted relationship [T1199] by compromising a third-party vendor with delegated administrator access to SecureNet's cloud environment, using stolen credentials from a previous phishing campaign that went undetected for weeks.\n- Execution: Upon gaining access, they employed Windows Management Instrumentation (WMI) [T1047] to execute malicious scripts across multiple client systems, leveraging wmic commands to deploy ransomware payloads while simultaneously abusing sudo-like mechanisms on Linux servers [T1548] to escalate privileges without authentication, bypassing security controls.\n- Persistence: To maintain access, the group utilized DLL side-loading [T1574.001] by replacing legitimate DLLs in trusted applications, tricking them into loading malicious code that established backdoors and communicated with command-and-control (C2) servers hosted on compromised infrastructure in Eastern Europe.\n- Credential Access: The actors targeted password managers [T1555.005], copying database files such as RoboForm from AppData folders on infected workstations to extract plaintext credentials, which were then used to move laterally within the network and access sensitive financial data.\n- Exfiltration: Data was exfiltrated using encoded commands [T1132], with the backdoor decoding base64-encoded instructions from the C2 channel to obfuscate traffic and evade network-based detection tools, while also logging failed attempts to access encrypted backup servers that were unrelated to the attack.\n- Impact: The campaign resulted in ransomware deployment across 50+ client systems, causing operational disruption and data loss estimated at $2 million in fictional damages. SecureNet's incident response team contained the threat after 72 hours, but residual malware persisted in isolated segments, highlighting gaps in patch management and third-party risk assessments.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\n- Initial Access: The actors exploited a trusted relationship by compromising a third-party vendor with delegated administrator access to SecureNet's cloud environment, using stolen credentials from a previous phishing campaign that went undetected for weeks.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "- Execution: Upon gaining access, they employed Windows Management Instrumentation (WMI) to execute malicious scripts across multiple client systems, leveraging wmic commands to deploy ransomware payloads while simultaneously abusing sudo-like mechanisms on Linux servers to escalate privileges without authentication, bypassing security controls.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "- Execution: Upon gaining access, they employed Windows Management Instrumentation (WMI) to execute malicious scripts across multiple client systems, leveraging wmic commands to deploy ransomware payloads while simultaneously abusing sudo-like mechanisms on Linux servers to escalate privileges without authentication, bypassing security controls.",
+            "technique_id": "T1548",
+            "technique_name": "Abuse Elevation Control Mechanism"
+        },
+        {
+            "sentence": "- Exfiltration: Data was exfiltrated using encoded commands, with the backdoor decoding base64-encoded instructions from the C2 channel to obfuscate traffic and evade network-based detection tools, while also logging failed attempts to access encrypted backup servers that were unrelated to the attack.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Managed Service Providers",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CrimsonShadow', targeting managed service providers (MSPs) and their clients. The actors exploit trusted relationships to gain initial access, deploy ransomware via WMI, abuse elevation mechanisms, establish persistence through DLL side-loading, steal credentials from password managers, and exfiltrate data using encoded commands. This report is for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "Background: CrimsonShadow, a financially motivated APT group, has been active since early 2023, focusing on MSPs in the healthcare and finance sectors. The group leverages social engineering and supply chain attacks to compromise trusted entities. In this fictional scenario, an MSP, 'SecureNet Solutions', reported unauthorized access to their administrative portal, leading to downstream client infections. Logs from SecureNet's SIEM showed anomalous login attempts from IP addresses associated with known botnets, but these were initially dismissed as false positives due to high network traffic during a scheduled maintenance window.\n\nAttack Narrative:\n- Initial Access: The actors exploited a trusted relationship [T1199] by compromising a third-party vendor with delegated administrator access to SecureNet's cloud environment, using stolen credentials from a previous phishing campaign that went undetected for weeks.\n- Execution: Upon gaining access, they employed Windows Management Instrumentation (WMI) [T1047] to execute malicious scripts across multiple client systems, leveraging wmic commands to deploy ransomware payloads while simultaneously abusing sudo-like mechanisms on Linux servers [T1548] to escalate privileges without authentication, bypassing security controls.\n- Persistence: To maintain access, the group utilized DLL side-loading [T1574.001] by replacing legitimate DLLs in trusted applications, tricking them into loading malicious code that established backdoors and communicated with command-and-control (C2) servers hosted on compromised infrastructure in Eastern Europe.\n- Credential Access: The actors targeted password managers [T1555.005], copying database files such as RoboForm from AppData folders on infected workstations to extract plaintext credentials, which were then used to move laterally within the network and access sensitive financial data.\n- Exfiltration: Data was exfiltrated using encoded commands [T1132], with the backdoor decoding base64-encoded instructions from the C2 channel to obfuscate traffic and evade network-based detection tools, while also logging failed attempts to access encrypted backup servers that were unrelated to the attack.\n- Impact: The campaign resulted in ransomware deployment across 50+ client systems, causing operational disruption and data loss estimated at $2 million in fictional damages. SecureNet's incident response team contained the threat after 72 hours, but residual malware persisted in isolated segments, highlighting gaps in patch management and third-party risk assessments.",
+        "techniques_used": [
+            "T1199",
+            "T1047",
+            "T1548",
+            "T1574.001",
+            "T1555.005",
+            "T1132"
+        ]
+    }
+}

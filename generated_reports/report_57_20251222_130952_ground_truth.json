@@ -1,0 +1,81 @@
+{
+    "report_id": "report_57",
+    "generated_at": "20251222_130952",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1059.010",
+        "T1574.009",
+        "T1112",
+        "T1578.004",
+        "T1212",
+        "T1071.002",
+        "T1090.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.001",
+        "T1059.010",
+        "T1574.009",
+        "T1112",
+        "T1212",
+        "T1071.002",
+        "T1090.003",
+        "T1578.004"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1566.001",
+        "T1212",
+        "T1112",
+        "T1589",
+        "T1574.009",
+        "T1059.010",
+        "T1578.004",
+        "T1090.003"
+    ],
+    "clean_text": "On March 15, 2024, multiple financial organizations reported suspicious email activity originating from spoofed domains mimicking legitimate vendors. The actors likely conducted reconnaissance to identify key personnel, including IT administrators and financial analysts. Initial access was achieved through spearphishing emails with malicious .doc attachments that exploited macros to download and execute AutoHotKey scripts. Upon execution, the malware wrote a malicious executable to C:\\program.exe to hijack the legitimate program path via unquoted path interception while simultaneously modifying registry keys to establish persistence and alter its behavior. The adversary then exploited vulnerable network appliances to collect valid credentials, which were exfiltrated using FTP protocols relayed through multi-hop proxies to mask their location. In cloud environments, the attacker reverted cloud instances to remove traces of unauthorized access, complicating forensic analysis. System logs from affected endpoints showed anomalous PowerShell activity, but no direct correlation to the campaign was initially identified, as the actors used encrypted channels for command and control. The campaign leveraged a combination of social engineering and technical exploits, with indicators including registry modifications at HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run and unusual outbound FTP connections to IP addresses in non-standard regions. Blue teams should monitor for these behaviors and implement email filtering, endpoint detection, and cloud audit trails to mitigate similar threats.",
+    "tagged_text": "On March 15, 2024, multiple financial organizations reported suspicious email activity originating from spoofed domains mimicking legitimate vendors. The actors likely conducted reconnaissance [T1589] to identify key personnel, including IT administrators and financial analysts. Initial access was achieved through spearphishing emails with malicious .doc attachments [T1566.001] that exploited macros to download and execute AutoHotKey scripts [T1059.010]. Upon execution, the malware wrote a malicious executable to C:\\program.exe to hijack the legitimate program path via unquoted path interception [T1574.009] while simultaneously modifying registry keys [T1112] to establish persistence and alter its behavior. The adversary then exploited vulnerable network appliances [T1212] to collect valid credentials, which were exfiltrated using FTP protocols [T1071.002] relayed through multi-hop proxies [T1090.003] to mask their location. In cloud environments, the attacker reverted cloud instances [T1578.004] to remove traces of unauthorized access, complicating forensic analysis. System logs from affected endpoints showed anomalous PowerShell activity, but no direct correlation to the campaign was initially identified, as the actors used encrypted channels for command and control. The campaign leveraged a combination of social engineering and technical exploits, with indicators including registry modifications at HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run and unusual outbound FTP connections to IP addresses in non-standard regions. Blue teams should monitor for these behaviors and implement email filtering, endpoint detection, and cloud audit trails to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify key personnel, including IT administrators and financial analysts.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "009] while simultaneously modifying registry keys to establish persistence and alter its behavior.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "The adversary then exploited vulnerable network appliances to collect valid credentials, which were exfiltrated using FTP protocols [T1071.",
+            "technique_id": "T1212",
+            "technique_name": "Exploitation for Credential Access"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVeil' targeting financial institutions, using spearphishing, malware deployment, and cloud infrastructure manipulation to exfiltrate sensitive data and maintain persistence. The report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "On March 15, 2024, multiple financial organizations reported suspicious email activity originating from spoofed domains mimicking legitimate vendors. The actors likely conducted reconnaissance [T1589] to identify key personnel, including IT administrators and financial analysts. Initial access was achieved through spearphishing emails with malicious .doc attachments [T1566.001] that exploited macros to download and execute AutoHotKey scripts [T1059.010]. Upon execution, the malware wrote a malicious executable to C:\\program.exe to hijack the legitimate program path via unquoted path interception [T1574.009] while simultaneously modifying registry keys [T1112] to establish persistence and alter its behavior. The adversary then exploited vulnerable network appliances [T1212] to collect valid credentials, which were exfiltrated using FTP protocols [T1071.002] relayed through multi-hop proxies [T1090.003] to mask their location. In cloud environments, the attacker reverted cloud instances [T1578.004] to remove traces of unauthorized access, complicating forensic analysis. System logs from affected endpoints showed anomalous PowerShell activity, but no direct correlation to the campaign was initially identified, as the actors used encrypted channels for command and control. The campaign leveraged a combination of social engineering and technical exploits, with indicators including registry modifications at HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run and unusual outbound FTP connections to IP addresses in non-standard regions. Blue teams should monitor for these behaviors and implement email filtering, endpoint detection, and cloud audit trails to mitigate similar threats.",
+        "techniques_used": [
+            "T1589",
+            "T1566.001",
+            "T1059.010",
+            "T1574.009",
+            "T1112",
+            "T1212",
+            "T1071.002",
+            "T1090.003",
+            "T1578.004"
+        ]
+    }
+}

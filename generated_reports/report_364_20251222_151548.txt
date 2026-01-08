@@ -1,0 +1,18 @@
+### Background
+On October 15, 2023, a mid-sized financial institution, 'SecureBank Inc.', reported anomalous network activity. SecureBank, headquartered in New York with 500 employees, specializes in digital payment solutions. Initial logs from their SIEM showed unusual outbound traffic to unknown IP addresses, but no alerts were triggered for common malware signatures. The incident response team was activated after a user reported suspicious emails.
+
+### Attack Narrative
+**Reconnaissance:** The actors likely conducted reconnaissance by searching various online WHOIS lookup tools [T1596.002] to identify SecureBank's domain registration patterns and technical contacts, while simultaneously targeting employees with credential phishing e-mails [T1598] to gather initial intelligence.
+
+**Initial Access:** The adversary gained initial access through a multi-vector approach, using a phone call to persuade a user to download and run a TeamViewer executable [T1566.004] and delivering malicious email attachments [T1566.001] that mimicked legitimate invoices.
+
+**Execution:** Upon execution, the attacker used social engineering to trick the user into pasting and executing a malicious command in the terminal [T1204.004], which exploited the Docker engine API to launch a container that concealed fileless malware execution [T1612] while reading data from the Registry including from `HKLM\Software\NFC\IPA` and `HKLM\Software\NFC\` [T1012].
+
+**Persistence and Defense Evasion:** To maintain access, the malware removed backup snapshots to ensure persistence and hinder forensic investigation efforts [T1578], and the trojan searched system logs for 'malware.exe' entries to assess detection status [T1497.002]. Additionally, the AADInternals `Set-AADIntUserMFA` command was used to disable MFA for a specified user [T1556.006].
+
+**Lateral Movement and Privilege Escalation:** The actors moved laterally by using masscan to look for kubelets in the internal Kubernetes network [T1046] and injected a forged Kerberos ticket into the current session to bypass access controls on the target server [T1550.003]. They also modified the firewall's access control lists to permit cross-segment communication for data exfiltration [T1599].
+
+**Collection and Exfiltration:** Sensitive deployment procedures were collected from the company's Confluence repository [T1213.001], and the malware collected malicious.exe from the compromised system before exfiltration [T1020], using a modified version of HTRAN to redirect connections between networks [T1090.002].
+
+### Mitigation Recommendations
+Implement multi-factor authentication, restrict Docker API access, monitor for unusual registry queries, and conduct regular security awareness training. No further details on actor attribution are available in this fictional scenario.

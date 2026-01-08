@@ -1,0 +1,98 @@
+{
+    "report_id": "report_6",
+    "generated_at": "20251222_125049",
+    "scenario_target_ids": [
+        "T1590.004",
+        "T1592.003",
+        "T1590.006",
+        "T1190",
+        "T1559.001",
+        "T1562.004",
+        "T1610",
+        "T1556.006",
+        "T1552.002",
+        "T1497.001",
+        "T1119",
+        "T1573.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.004",
+        "T1592.003",
+        "T1590.006",
+        "T1190",
+        "T1559.001",
+        "T1562.004",
+        "T1610",
+        "T1556.006",
+        "T1552.002",
+        "T1497.001",
+        "T1119",
+        "T1573.002"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1590.004",
+        "T1497.001",
+        "T1559.001",
+        "T1552.002",
+        "T1556.006",
+        "T1592.003",
+        "T1119",
+        "T1573.002",
+        "T1190",
+        "T1590.006",
+        "T1562.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated advanced persistent threat (APT) campaign. The threat actor, designated as SALT TYPHOON, targeted a fictional critical infrastructure organization, 'InfraCorp', which operates energy distribution networks across the Midwest. InfraCorp's security team initially detected anomalous network traffic from a legacy Cisco router, prompting an investigation that revealed a multi-stage intrusion.\n\nIn the initial phase, SALT TYPHOON exploited a vulnerability in a public-facing application, specifically leveraging CVE-2018-0171 in the Smart Install feature of Cisco IOS software to gain unauthorized access to InfraCorp's network perimeter. System logs from the compromised router showed unusual configuration changes at 03:14 UTC on October 15, 2023, but these were initially overlooked due to routine maintenance schedules. Following initial access, the actors conducted reconnaissance by executing an nmap scan to map the internal network topology and using DNS lookups with dig to identify IP addresses of the company's web proxies, while simultaneously collecting host firmware details through a WMI query targeting the Win32_BIOS class to assess system vulnerabilities.\n\nFor execution and persistence, the adversary employed Component Object Model (COM) techniques to inject malicious shellcode into Excel.exe using a Microsoft.Office.Interop object, which was triggered when a user opened a spear-phishing attachment. This allowed the malware to run anti-sandbox checks using the Microsoft Excel 4.0 function GET.WORKSPACE to determine the OS version, check for mouse presence, and verify sound capabilities, ensuring evasion of security tools. Concurrently, the script used reg query HKLM\\SYSTEM\\CurrentControlSet\\Services\\* /v ImagePath to locate service executables that might contain embedded credentials, facilitating lateral movement.\n\nTo maintain access and evade detection, SALT TYPHOON disabled or modified the system firewall by blocking the Deibold Warsaw GAS Tecnologia security tool, and deployed a container using the docker create command to instantiate a malicious image designed to bypass host-based security controls. After compromising user accounts through credential harvesting, the actors registered their own multi-factor authentication (MFA) tokens to maintain persistent access, while using the Plink utility to tunnel RDP back to command-and-control (C2) infrastructure via asymmetric cryptography for secure exfiltration.\n\nIn the final stages, the malware automated collection of packet capture and system configuration information for exfiltration, which was detected by InfraCorp's security operations center during a routine audit of network traffic patterns. The organization's incident response team contained the threat by isolating affected systems and revoking compromised credentials, but the simulation highlights the need for enhanced monitoring of container deployments and MFA token management.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated advanced persistent threat (APT) campaign. The threat actor, designated as SALT TYPHOON, targeted a fictional critical infrastructure organization, 'InfraCorp', which operates energy distribution networks across the Midwest. InfraCorp's security team initially detected anomalous network traffic from a legacy Cisco router, prompting an investigation that revealed a multi-stage intrusion.\n\nIn the initial phase, SALT TYPHOON exploited a vulnerability in a public-facing application [T1190], specifically leveraging CVE-2018-0171 in the Smart Install feature of Cisco IOS software to gain unauthorized access to InfraCorp's network perimeter. System logs from the compromised router showed unusual configuration changes at 03:14 UTC on October 15, 2023, but these were initially overlooked due to routine maintenance schedules. Following initial access, the actors conducted reconnaissance by executing an nmap scan to map the internal network topology [T1590.004] and using DNS lookups with dig to identify IP addresses of the company's web proxies [T1590.006], while simultaneously collecting host firmware details through a WMI query targeting the Win32_BIOS class [T1592.003] to assess system vulnerabilities.\n\nFor execution and persistence, the adversary employed Component Object Model (COM) techniques [T1559.001] to inject malicious shellcode into Excel.exe using a Microsoft.Office.Interop object, which was triggered when a user opened a spear-phishing attachment. This allowed the malware to run anti-sandbox checks using the Microsoft Excel 4.0 function GET.WORKSPACE [T1497.001] to determine the OS version, check for mouse presence, and verify sound capabilities, ensuring evasion of security tools. Concurrently, the script used reg query HKLM\\SYSTEM\\CurrentControlSet\\Services\\* /v ImagePath to locate service executables that might contain embedded credentials [T1552.002], facilitating lateral movement.\n\nTo maintain access and evade detection, SALT TYPHOON disabled or modified the system firewall [T1562.004] by blocking the Deibold Warsaw GAS Tecnologia security tool, and deployed a container using the docker create command to instantiate a malicious image designed to bypass host-based security controls [T1610]. After compromising user accounts through credential harvesting, the actors registered their own multi-factor authentication (MFA) tokens [T1556.006] to maintain persistent access, while using the Plink utility to tunnel RDP back to command-and-control (C2) infrastructure via asymmetric cryptography [T1573.002] for secure exfiltration.\n\nIn the final stages, the malware automated collection of packet capture and system configuration information [T1119] for exfiltration, which was detected by InfraCorp's security operations center during a routine audit of network traffic patterns. The organization's incident response team contained the threat by isolating affected systems and revoking compromised credentials, but the simulation highlights the need for enhanced monitoring of container deployments and MFA token management.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the initial phase, SALT TYPHOON exploited a vulnerability in a public-facing application, specifically leveraging CVE-2018-0171 in the Smart Install feature of Cisco IOS software to gain unauthorized access to InfraCorp's network perimeter.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "004] by blocking the Deibold Warsaw GAS Tecnologia security tool, and deployed a container using the docker create command to instantiate a malicious image designed to bypass host-based security controls.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "In the final stages, the malware automated collection of packet capture and system configuration information for exfiltration, which was detected by InfraCorp's security operations center during a routine audit of network traffic patterns.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a fictional campaign by the threat actor group 'SALT TYPHOON' targeting a critical infrastructure organization, designed for blue team training to enhance detection and response capabilities against advanced persistent threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated advanced persistent threat (APT) campaign. The threat actor, designated as SALT TYPHOON, targeted a fictional critical infrastructure organization, 'InfraCorp', which operates energy distribution networks across the Midwest. InfraCorp's security team initially detected anomalous network traffic from a legacy Cisco router, prompting an investigation that revealed a multi-stage intrusion.\n\nIn the initial phase, SALT TYPHOON exploited a vulnerability in a public-facing application [T1190], specifically leveraging CVE-2018-0171 in the Smart Install feature of Cisco IOS software to gain unauthorized access to InfraCorp's network perimeter. System logs from the compromised router showed unusual configuration changes at 03:14 UTC on October 15, 2023, but these were initially overlooked due to routine maintenance schedules. Following initial access, the actors conducted reconnaissance by executing an nmap scan to map the internal network topology [T1590.004] and using DNS lookups with dig to identify IP addresses of the company's web proxies [T1590.006], while simultaneously collecting host firmware details through a WMI query targeting the Win32_BIOS class [T1592.003] to assess system vulnerabilities.\n\nFor execution and persistence, the adversary employed Component Object Model (COM) techniques [T1559.001] to inject malicious shellcode into Excel.exe using a Microsoft.Office.Interop object, which was triggered when a user opened a spear-phishing attachment. This allowed the malware to run anti-sandbox checks using the Microsoft Excel 4.0 function GET.WORKSPACE [T1497.001] to determine the OS version, check for mouse presence, and verify sound capabilities, ensuring evasion of security tools. Concurrently, the script used reg query HKLM\\SYSTEM\\CurrentControlSet\\Services\\* /v ImagePath to locate service executables that might contain embedded credentials [T1552.002], facilitating lateral movement.\n\nTo maintain access and evade detection, SALT TYPHOON disabled or modified the system firewall [T1562.004] by blocking the Deibold Warsaw GAS Tecnologia security tool, and deployed a container using the docker create command to instantiate a malicious image designed to bypass host-based security controls [T1610]. After compromising user accounts through credential harvesting, the actors registered their own multi-factor authentication (MFA) tokens [T1556.006] to maintain persistent access, while using the Plink utility to tunnel RDP back to command-and-control (C2) infrastructure via asymmetric cryptography [T1573.002] for secure exfiltration.\n\nIn the final stages, the malware automated collection of packet capture and system configuration information [T1119] for exfiltration, which was detected by InfraCorp's security operations center during a routine audit of network traffic patterns. The organization's incident response team contained the threat by isolating affected systems and revoking compromised credentials, but the simulation highlights the need for enhanced monitoring of container deployments and MFA token management.",
+        "techniques_used": [
+            "T1590.004",
+            "T1592.003",
+            "T1590.006",
+            "T1190",
+            "T1559.001",
+            "T1562.004",
+            "T1610",
+            "T1556.006",
+            "T1552.002",
+            "T1497.001",
+            "T1119",
+            "T1573.002"
+        ]
+    }
+}

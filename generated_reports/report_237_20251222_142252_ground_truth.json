@@ -1,0 +1,88 @@
+{
+    "report_id": "report_237",
+    "generated_at": "20251222_142252",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1091",
+        "T1659",
+        "T1569.001",
+        "T1546.005",
+        "T1556",
+        "T1563.001",
+        "T1568.003",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1659",
+        "T1091",
+        "T1568.003",
+        "T1573",
+        "T1569.001",
+        "T1546.005",
+        "T1556",
+        "T1563.001"
+    ],
+    "actual_found_ids": [
+        "T1659",
+        "T1091",
+        "T1569.001",
+        "T1563.001",
+        "T1592.003",
+        "T1568.003",
+        "T1556",
+        "T1573",
+        "T1546.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about the fictional APT group 'ShadowVeil', which has been observed targeting energy and manufacturing sectors. Initial reconnaissance involved a PowerShell script that performed a WMI query to Win32_ComputerSystem to collect system manufacturer and model information, while malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses, leading to the download of additional payloads. For initial access, the actors placed a malicious script named malware.exe on removable media to spread to air-gapped networks, and they used iodine to tunnel TCP traffic through DNS queries while encrypting all communication channels with custom cryptographic protocols to bypass network filtering and maintain stealth. Upon execution, the attacker ran 'launchctl load -w /System/Library/LaunchDaemons/trojan.plist' to ensure the malicious service loads at boot and employed a persistence mechanism using trap SIGALRM to trigger a malicious binary upon alarm signals. For credential access and lateral movement, SILENTTRINITY created a backdoor in KeePass using a malicious config file and in TortoiseSVN using a registry hook, and the threat actor exploited weak SSH key pairs to authenticate to laterally connected systems. System logs from affected networks showed routine traffic patterns, but deeper analysis revealed anomalous DNS queries and encrypted outbound connections. The company background includes a history of legacy systems with outdated firmware, which may have facilitated initial reconnaissance efforts. This campaign underscores the importance of monitoring for unusual WMI queries, securing removable media, and implementing strong authentication controls.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about the fictional APT group 'ShadowVeil', which has been observed targeting energy and manufacturing sectors. Initial reconnaissance involved a PowerShell script that performed a WMI query to Win32_ComputerSystem to collect system manufacturer and model information [T1592.003], while malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses [T1659], leading to the download of additional payloads. For initial access, the actors placed a malicious script named malware.exe on removable media to spread to air-gapped networks [T1091], and they used iodine to tunnel TCP traffic through DNS queries [T1568.003] while encrypting all communication channels with custom cryptographic protocols [T1573] to bypass network filtering and maintain stealth. Upon execution, the attacker ran 'launchctl load -w /System/Library/LaunchDaemons/trojan.plist' to ensure the malicious service loads at boot [T1569.001] and employed a persistence mechanism using trap SIGALRM to trigger a malicious binary upon alarm signals [T1546.005]. For credential access and lateral movement, SILENTTRINITY created a backdoor in KeePass using a malicious config file and in TortoiseSVN using a registry hook [T1556], and the threat actor exploited weak SSH key pairs to authenticate to laterally connected systems [T1563.001]. System logs from affected networks showed routine traffic patterns, but deeper analysis revealed anomalous DNS queries and encrypted outbound connections. The company background includes a history of legacy systems with outdated firmware, which may have facilitated initial reconnaissance efforts. This campaign underscores the importance of monitoring for unusual WMI queries, securing removable media, and implementing strong authentication controls.",
+    "sentence_annotations": [
+        {
+            "sentence": "003], while malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses, leading to the download of additional payloads.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "exe on removable media to spread to air-gapped networks, and they used iodine to tunnel TCP traffic through DNS queries [T1568.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "003] while encrypting all communication channels with custom cryptographic protocols to bypass network filtering and maintain stealth.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        },
+        {
+            "sentence": "For credential access and lateral movement, SILENTTRINITY created a backdoor in KeePass using a malicious config file and in TortoiseSVN using a registry hook, and the threat actor exploited weak SSH key pairs to authenticate to laterally connected systems [T1563.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowVeil', which targets critical infrastructure sectors using a multi-vector approach involving reconnaissance, lateral movement, and persistence mechanisms. The campaign leverages techniques such as firmware reconnaissance, removable media replication, and encrypted channels to evade detection and maintain access.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about the fictional APT group 'ShadowVeil', which has been observed targeting energy and manufacturing sectors. Initial reconnaissance involved a PowerShell script that performed a WMI query to Win32_ComputerSystem to collect system manufacturer and model information [T1592.003], while malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses [T1659], leading to the download of additional payloads. For initial access, the actors placed a malicious script named malware.exe on removable media to spread to air-gapped networks [T1091], and they used iodine to tunnel TCP traffic through DNS queries [T1568.003] while encrypting all communication channels with custom cryptographic protocols [T1573] to bypass network filtering and maintain stealth. Upon execution, the attacker ran 'launchctl load -w /System/Library/LaunchDaemons/trojan.plist' to ensure the malicious service loads at boot [T1569.001] and employed a persistence mechanism using trap SIGALRM to trigger a malicious binary upon alarm signals [T1546.005]. For credential access and lateral movement, SILENTTRINITY created a backdoor in KeePass using a malicious config file and in TortoiseSVN using a registry hook [T1556], and the threat actor exploited weak SSH key pairs to authenticate to laterally connected systems [T1563.001]. System logs from affected networks showed routine traffic patterns, but deeper analysis revealed anomalous DNS queries and encrypted outbound connections. The company background includes a history of legacy systems with outdated firmware, which may have facilitated initial reconnaissance efforts. This campaign underscores the importance of monitoring for unusual WMI queries, securing removable media, and implementing strong authentication controls.",
+        "techniques_used": [
+            "T1592.003",
+            "T1659",
+            "T1091",
+            "T1568.003",
+            "T1573",
+            "T1569.001",
+            "T1546.005",
+            "T1556",
+            "T1563.001"
+        ]
+    }
+}

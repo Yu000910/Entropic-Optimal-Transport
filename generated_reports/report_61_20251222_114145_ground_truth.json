@@ -1,0 +1,128 @@
+{
+    "report_id": "report_61",
+    "generated_at": "20251222_114145",
+    "scenario_target_ids": [
+        "T1585.002",
+        "T1588",
+        "T1195.003",
+        "T1059.011",
+        "T1505.005",
+        "T1543",
+        "T1070.002",
+        "T1480",
+        "T1553.003",
+        "T1080",
+        "T1530",
+        "T1114",
+        "T1104",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585.002",
+        "T1588",
+        "T1195.003",
+        "T1059.011",
+        "T1505.005",
+        "T1543",
+        "T1070.002",
+        "T1480",
+        "T1553.003",
+        "T1080",
+        "T1530",
+        "T1114",
+        "T1104",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1505.005",
+        "T1059.011",
+        "T1195.003",
+        "T1588",
+        "T1480",
+        "T1530",
+        "T1543",
+        "T1104",
+        "T1080",
+        "T1499.003",
+        "T1070.002",
+        "T1553.003",
+        "T1585.002",
+        "T1114"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'Cobalt Serpent'. This group has been observed conducting sophisticated attacks against financial sectors globally, with a focus on evading detection and maintaining long-term access.\n\nInitial Access: The actors likely conduct reconnaissance by creating spoofed email accounts to impersonate targeted organizations, such as 'Global Finance Corp', and send phishing emails with malicious attachments. System logs from the victim's mail server show increased login attempts from unrecognized IP addresses, though these were unrelated to the attack. Concurrently, the adversary obtained a zero-day exploit kit from a criminal forum to exploit vulnerabilities in widely used financial software, enabling initial foothold.\n\nExecution and Persistence: Upon compromise, the attacker deployed a Teensy device programmed to automatically run PowerShell scripts for lateral movement, while executing Lua code to establish a reverse shell connection to their command-and-control infrastructure. The malicious script overwrote termsrv.dll to disable RDP security features and maintain persistent access, and modified Windows tasks to reference a retrieved PE file through path manipulation, ensuring execution on system startup.\n\nDefense Evasion: To obscure their activities, the malicious process systematically wiped /var/log/messages on Linux systems to prevent detection of network reconnaissance, and the script checked the user-agent string to ensure it was running in the intended browser environment before executing payloads. Additionally, ransomware modified registry keys in HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\OID\\EncodingType 0\\CryptSIPDllVerifyIndirectData\\{603BCC1F-4B59-4E08-B724-D2C6297EF351} to bypass code signing verification, allowing unsigned malware to run undetected.\n\nLateral Movement and Impact: The group tainted shared content by deploying ransomware from a batch file in a network share, spreading across the victim's environment and encrypting critical files. They also queried the AWS CloudTrail API to collect logs containing sensitive IAM user activity, and invoked Outlook.exe to programmatically access and extract contact information from emails for further phishing campaigns. The malware utilized multi-stage channels to download and execute additional payloads and modules over separate communication channels, enhancing its capabilities. Finally, a DDoS tool executed sustained requests to the image processing service, causing rendering delays and application exhaustion floods to disrupt business operations.\n\nBackground: The victim organization, 'SecureBank Inc.', reported unusual network traffic and system slowdowns, with initial investigations pointing to compromised third-party vendors. No actual financial losses were confirmed in this fictional scenario, but the attack highlights the need for robust supply chain security and continuous monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'Cobalt Serpent'. This group has been observed conducting sophisticated attacks against financial sectors globally, with a focus on evading detection and maintaining long-term access.\n\nInitial Access: The actors likely conduct reconnaissance by creating spoofed email accounts [T1585.002] to impersonate targeted organizations, such as 'Global Finance Corp', and send phishing emails with malicious attachments. System logs from the victim's mail server show increased login attempts from unrecognized IP addresses, though these were unrelated to the attack. Concurrently, the adversary obtained a zero-day exploit kit from a criminal forum [T1588] to exploit vulnerabilities in widely used financial software, enabling initial foothold.\n\nExecution and Persistence: Upon compromise, the attacker deployed a Teensy device programmed to automatically run PowerShell scripts for lateral movement [T1195.003], while executing Lua code [T1059.011] to establish a reverse shell connection to their command-and-control infrastructure. The malicious script overwrote termsrv.dll [T1505.005] to disable RDP security features and maintain persistent access, and modified Windows tasks [T1543] to reference a retrieved PE file through path manipulation, ensuring execution on system startup.\n\nDefense Evasion: To obscure their activities, the malicious process systematically wiped /var/log/messages [T1070.002] on Linux systems to prevent detection of network reconnaissance, and the script checked the user-agent string [T1480] to ensure it was running in the intended browser environment before executing payloads. Additionally, ransomware modified registry keys in HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\OID\\EncodingType 0\\CryptSIPDllVerifyIndirectData\\{603BCC1F-4B59-4E08-B724-D2C6297EF351} [T1553.003] to bypass code signing verification, allowing unsigned malware to run undetected.\n\nLateral Movement and Impact: The group tainted shared content by deploying ransomware from a batch file in a network share [T1080], spreading across the victim's environment and encrypting critical files. They also queried the AWS CloudTrail API [T1530] to collect logs containing sensitive IAM user activity, and invoked Outlook.exe [T1114] to programmatically access and extract contact information from emails for further phishing campaigns. The malware utilized multi-stage channels [T1104] to download and execute additional payloads and modules over separate communication channels, enhancing its capabilities. Finally, a DDoS tool executed sustained requests to the image processing service [T1499.003], causing rendering delays and application exhaustion floods to disrupt business operations.\n\nBackground: The victim organization, 'SecureBank Inc.', reported unusual network traffic and system slowdowns, with initial investigations pointing to compromised third-party vendors. No actual financial losses were confirmed in this fictional scenario, but the attack highlights the need for robust supply chain security and continuous monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, the adversary obtained a zero-day exploit kit from a criminal forum to exploit vulnerabilities in widely used financial software, enabling initial foothold.",
+            "technique_id": "T1588",
+            "technique_name": "Obtain Capabilities"
+        },
+        {
+            "sentence": "005] to disable RDP security features and maintain persistent access, and modified Windows tasks to reference a retrieved PE file through path manipulation, ensuring execution on system startup.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "002] on Linux systems to prevent detection of network reconnaissance, and the script checked the user-agent string to ensure it was running in the intended browser environment before executing payloads.",
+            "technique_id": "T1480",
+            "technique_name": "Execution Guardrails"
+        },
+        {
+            "sentence": "Lateral Movement and Impact: The group tainted shared content by deploying ransomware from a batch file in a network share, spreading across the victim's environment and encrypting critical files.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        },
+        {
+            "sentence": "They also queried the AWS CloudTrail API to collect logs containing sensitive IAM user activity, and invoked Outlook.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "exe to programmatically access and extract contact information from emails for further phishing campaigns.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "The malware utilized multi-stage channels to download and execute additional payloads and modules over separate communication channels, enhancing its capabilities.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT Group 'Cobalt Serpent'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Cobalt Serpent', targeting financial institutions through a multi-stage attack involving supply chain compromise, credential theft, and data exfiltration. The campaign leverages zero-day exploits, hardware implants, and cloud reconnaissance to achieve persistence and disruption.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'Cobalt Serpent'. This group has been observed conducting sophisticated attacks against financial sectors globally, with a focus on evading detection and maintaining long-term access.\n\nInitial Access: The actors likely conduct reconnaissance by creating spoofed email accounts [T1585.002] to impersonate targeted organizations, such as 'Global Finance Corp', and send phishing emails with malicious attachments. System logs from the victim's mail server show increased login attempts from unrecognized IP addresses, though these were unrelated to the attack. Concurrently, the adversary obtained a zero-day exploit kit from a criminal forum [T1588] to exploit vulnerabilities in widely used financial software, enabling initial foothold.\n\nExecution and Persistence: Upon compromise, the attacker deployed a Teensy device programmed to automatically run PowerShell scripts for lateral movement [T1195.003], while executing Lua code [T1059.011] to establish a reverse shell connection to their command-and-control infrastructure. The malicious script overwrote termsrv.dll [T1505.005] to disable RDP security features and maintain persistent access, and modified Windows tasks [T1543] to reference a retrieved PE file through path manipulation, ensuring execution on system startup.\n\nDefense Evasion: To obscure their activities, the malicious process systematically wiped /var/log/messages [T1070.002] on Linux systems to prevent detection of network reconnaissance, and the script checked the user-agent string [T1480] to ensure it was running in the intended browser environment before executing payloads. Additionally, ransomware modified registry keys in HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\OID\\EncodingType 0\\CryptSIPDllVerifyIndirectData\\{603BCC1F-4B59-4E08-B724-D2C6297EF351} [T1553.003] to bypass code signing verification, allowing unsigned malware to run undetected.\n\nLateral Movement and Impact: The group tainted shared content by deploying ransomware from a batch file in a network share [T1080], spreading across the victim's environment and encrypting critical files. They also queried the AWS CloudTrail API [T1530] to collect logs containing sensitive IAM user activity, and invoked Outlook.exe [T1114] to programmatically access and extract contact information from emails for further phishing campaigns. The malware utilized multi-stage channels [T1104] to download and execute additional payloads and modules over separate communication channels, enhancing its capabilities. Finally, a DDoS tool executed sustained requests to the image processing service [T1499.003], causing rendering delays and application exhaustion floods to disrupt business operations.\n\nBackground: The victim organization, 'SecureBank Inc.', reported unusual network traffic and system slowdowns, with initial investigations pointing to compromised third-party vendors. No actual financial losses were confirmed in this fictional scenario, but the attack highlights the need for robust supply chain security and continuous monitoring.",
+        "techniques_used": [
+            "T1585.002",
+            "T1588",
+            "T1195.003",
+            "T1059.011",
+            "T1505.005",
+            "T1543",
+            "T1070.002",
+            "T1480",
+            "T1553.003",
+            "T1080",
+            "T1530",
+            "T1114",
+            "T1104",
+            "T1499.003"
+        ]
+    }
+}

@@ -1,0 +1,131 @@
+{
+    "report_id": "report_151",
+    "generated_at": "20251222_134658",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1566.002",
+        "T1610",
+        "T1574.001",
+        "T1556.003",
+        "T1016",
+        "T1046",
+        "T1072",
+        "T1132.002",
+        "T1496"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.002",
+        "T1078.004",
+        "T1610",
+        "T1574.001",
+        "T1556.003",
+        "T1016",
+        "T1046",
+        "T1072",
+        "T1132.002",
+        "T1496"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1556.003",
+        "T1046",
+        "T1589",
+        "T1566.002",
+        "T1132.002",
+        "T1078.004",
+        "T1072",
+        "T1016",
+        "T1574.001",
+        "T1496"
+    ],
+    "clean_text": "### Executive Summary\nOn March 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional APT campaign, 'CloudMiner,' targeting financial and technology sectors with hybrid cloud environments. The actors likely conduct reconnaissance to gather target information, including employee email addresses and cloud service configurations. Initial access was achieved through spearphishing emails containing malicious links that directed victims to external servers hosting ZIP and RAR archives with embedded malware. Upon execution, the malware exploited compromised Azure Managed Identities to persistently access cloud databases and deployed containers using 'docker start' commands to run cryptocurrency mining software while evading process monitoring. The actors employed a malicious loader DLL file to execute the `credwiz.exe` process and side-load the payload `Duser.dll`, which replaced the pam_unix.so file with a malicious version that accepted a backdoor password for all users. Discovery activities included gathering victim internal and external IPs and using tools like NetScan to enumerate network services. Persistence was maintained through AWS Systems Manager to execute commands uninstalling security agents from EC2 instances. Command and control (C2) traffic was concealed using modified Base64 encoding with alternative symbols, and resource hijacking involved installing a cryptocurrency miner that consumed 90% of CPU resources.\n\n### Attack Narrative\n**Initial Access:** The campaign began with spearphishing emails sent to targeted employees in the finance department of a fictional company, 'TechGlobal Inc.,' which operates a hybrid cloud environment with Azure and AWS services. The emails appeared to originate from a trusted vendor and contained links to external servers hosting malicious ZIP archives. System logs from the email gateway showed an increase in suspicious traffic from IP addresses associated with known threat actor infrastructure, but no immediate alerts were triggered due to the use of legitimate-looking domains.\n\n**Execution and Persistence:** Upon clicking the link, victims downloaded and extracted the archives, which executed a PowerShell script that leveraged compromised Azure Managed Identities to access cloud databases and deploy containers for mining operations. The script also loaded a malicious DLL to side-load `Duser.dll`, modifying authentication modules to establish backdoor access. The company's internal monitoring tools recorded unusual spikes in CPU usage on several servers, but initial investigations attributed this to routine maintenance activities.\n\n**Discovery and Lateral Movement:** The malware conducted network discovery by gathering IP addresses and scanning for open ports and services across the victim's environment. Using AWS Systems Manager, the actors executed commands to uninstall security agents from EC2 instances, facilitating lateral movement. Background noise included routine system updates and network traffic from employee VPN connections, which complicated early detection efforts.\n\n**Command and Control and Impact:** C2 communications were obfuscated through non-standard encoding, making network traffic analysis challenging. The final stage involved resource hijacking, with the cryptocurrency miner consuming significant CPU resources, leading to performance degradation and increased cloud costs. Incident response teams at TechGlobal Inc. eventually identified the activity through anomalous container logs and authentication failures, but the campaign persisted for approximately two weeks before containment.\n\n### Recommendations\nBlue teams should implement multi-factor authentication for cloud accounts, monitor for unusual container deployments, and review authentication module integrity. Regular training on phishing awareness and enhanced logging for cloud management tools are also advised.",
+    "tagged_text": "### Executive Summary\nOn March 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional APT campaign, 'CloudMiner,' targeting financial and technology sectors with hybrid cloud environments. The actors likely conduct reconnaissance [T1589] to gather target information, including employee email addresses and cloud service configurations. Initial access was achieved through spearphishing emails containing malicious links [T1566.002] that directed victims to external servers hosting ZIP and RAR archives with embedded malware. Upon execution, the malware exploited compromised Azure Managed Identities [T1078.004] to persistently access cloud databases and deployed containers using 'docker start' commands [T1610] to run cryptocurrency mining software while evading process monitoring. The actors employed a malicious loader DLL file [T1574.001] to execute the `credwiz.exe` process and side-load the payload `Duser.dll`, which replaced the pam_unix.so file with a malicious version [T1556.003] that accepted a backdoor password for all users. Discovery activities included gathering victim internal and external IPs [T1016] and using tools like NetScan to enumerate network services [T1046]. Persistence was maintained through AWS Systems Manager [T1072] to execute commands uninstalling security agents from EC2 instances. Command and control (C2) traffic was concealed using modified Base64 encoding with alternative symbols [T1132.002], and resource hijacking involved installing a cryptocurrency miner that consumed 90% of CPU resources [T1496].\n\n### Attack Narrative\n**Initial Access:** The campaign began with spearphishing emails sent to targeted employees in the finance department of a fictional company, 'TechGlobal Inc.,' which operates a hybrid cloud environment with Azure and AWS services. The emails appeared to originate from a trusted vendor and contained links to external servers hosting malicious ZIP archives. System logs from the email gateway showed an increase in suspicious traffic from IP addresses associated with known threat actor infrastructure, but no immediate alerts were triggered due to the use of legitimate-looking domains.\n\n**Execution and Persistence:** Upon clicking the link, victims downloaded and extracted the archives, which executed a PowerShell script that leveraged compromised Azure Managed Identities [T1078.004] to access cloud databases and deploy containers [T1610] for mining operations. The script also loaded a malicious DLL [T1574.001] to side-load `Duser.dll`, modifying authentication modules [T1556.003] to establish backdoor access. The company's internal monitoring tools recorded unusual spikes in CPU usage on several servers, but initial investigations attributed this to routine maintenance activities.\n\n**Discovery and Lateral Movement:** The malware conducted network discovery by gathering IP addresses [T1016] and scanning for open ports and services [T1046] across the victim's environment. Using AWS Systems Manager [T1072], the actors executed commands to uninstall security agents from EC2 instances, facilitating lateral movement. Background noise included routine system updates and network traffic from employee VPN connections, which complicated early detection efforts.\n\n**Command and Control and Impact:** C2 communications were obfuscated through non-standard encoding [T1132.002], making network traffic analysis challenging. The final stage involved resource hijacking [T1496], with the cryptocurrency miner consuming significant CPU resources, leading to performance degradation and increased cloud costs. Incident response teams at TechGlobal Inc. eventually identified the activity through anomalous container logs and authentication failures, but the campaign persisted for approximately two weeks before containment.\n\n### Recommendations\nBlue teams should implement multi-factor authentication for cloud accounts, monitor for unusual container deployments, and review authentication module integrity. Regular training on phishing awareness and enhanced logging for cloud management tools are also advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to gather target information, including employee email addresses and cloud service configurations.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "004] to persistently access cloud databases and deployed containers using 'docker start' commands to run cryptocurrency mining software while evading process monitoring.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "Discovery activities included gathering victim internal and external IPs and using tools like NetScan to enumerate network services.",
+            "technique_id": "T1016",
+            "technique_name": "System Network Configuration Discovery"
+        },
+        {
+            "sentence": "Discovery activities included gathering victim internal and external IPs and using tools like NetScan to enumerate network services.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "Persistence was maintained through AWS Systems Manager to execute commands uninstalling security agents from EC2 instances.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "002], and resource hijacking involved installing a cryptocurrency miner that consumed 90% of CPU resources.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        },
+        {
+            "sentence": "004] to access cloud databases and deploy containers for mining operations.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "**Discovery and Lateral Movement:** The malware conducted network discovery by gathering IP addresses and scanning for open ports and services across the victim's environment.",
+            "technique_id": "T1016",
+            "technique_name": "System Network Configuration Discovery"
+        },
+        {
+            "sentence": "**Discovery and Lateral Movement:** The malware conducted network discovery by gathering IP addresses and scanning for open ports and services across the victim's environment.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "Using AWS Systems Manager, the actors executed commands to uninstall security agents from EC2 instances, facilitating lateral movement.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "The final stage involved resource hijacking, with the cryptocurrency miner consuming significant CPU resources, leading to performance degradation and increased cloud costs.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudMiner' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CloudMiner,' targeting organizations with hybrid cloud infrastructures. The campaign leverages compromised cloud accounts, spearphishing, and container deployment to achieve persistence, credential theft, and resource hijacking for cryptocurrency mining. Blue teams should review this report to enhance detection and response capabilities in similar scenarios.",
+        "full_report_text": "### Executive Summary\nOn March 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional APT campaign, 'CloudMiner,' targeting financial and technology sectors with hybrid cloud environments. The actors likely conduct reconnaissance [T1589] to gather target information, including employee email addresses and cloud service configurations. Initial access was achieved through spearphishing emails containing malicious links [T1566.002] that directed victims to external servers hosting ZIP and RAR archives with embedded malware. Upon execution, the malware exploited compromised Azure Managed Identities [T1078.004] to persistently access cloud databases and deployed containers using 'docker start' commands [T1610] to run cryptocurrency mining software while evading process monitoring. The actors employed a malicious loader DLL file [T1574.001] to execute the `credwiz.exe` process and side-load the payload `Duser.dll`, which replaced the pam_unix.so file with a malicious version [T1556.003] that accepted a backdoor password for all users. Discovery activities included gathering victim internal and external IPs [T1016] and using tools like NetScan to enumerate network services [T1046]. Persistence was maintained through AWS Systems Manager [T1072] to execute commands uninstalling security agents from EC2 instances. Command and control (C2) traffic was concealed using modified Base64 encoding with alternative symbols [T1132.002], and resource hijacking involved installing a cryptocurrency miner that consumed 90% of CPU resources [T1496].\n\n### Attack Narrative\n**Initial Access:** The campaign began with spearphishing emails sent to targeted employees in the finance department of a fictional company, 'TechGlobal Inc.,' which operates a hybrid cloud environment with Azure and AWS services. The emails appeared to originate from a trusted vendor and contained links to external servers hosting malicious ZIP archives. System logs from the email gateway showed an increase in suspicious traffic from IP addresses associated with known threat actor infrastructure, but no immediate alerts were triggered due to the use of legitimate-looking domains.\n\n**Execution and Persistence:** Upon clicking the link, victims downloaded and extracted the archives, which executed a PowerShell script that leveraged compromised Azure Managed Identities [T1078.004] to access cloud databases and deploy containers [T1610] for mining operations. The script also loaded a malicious DLL [T1574.001] to side-load `Duser.dll`, modifying authentication modules [T1556.003] to establish backdoor access. The company's internal monitoring tools recorded unusual spikes in CPU usage on several servers, but initial investigations attributed this to routine maintenance activities.\n\n**Discovery and Lateral Movement:** The malware conducted network discovery by gathering IP addresses [T1016] and scanning for open ports and services [T1046] across the victim's environment. Using AWS Systems Manager [T1072], the actors executed commands to uninstall security agents from EC2 instances, facilitating lateral movement. Background noise included routine system updates and network traffic from employee VPN connections, which complicated early detection efforts.\n\n**Command and Control and Impact:** C2 communications were obfuscated through non-standard encoding [T1132.002], making network traffic analysis challenging. The final stage involved resource hijacking [T1496], with the cryptocurrency miner consuming significant CPU resources, leading to performance degradation and increased cloud costs. Incident response teams at TechGlobal Inc. eventually identified the activity through anomalous container logs and authentication failures, but the campaign persisted for approximately two weeks before containment.\n\n### Recommendations\nBlue teams should implement multi-factor authentication for cloud accounts, monitor for unusual container deployments, and review authentication module integrity. Regular training on phishing awareness and enhanced logging for cloud management tools are also advised.",
+        "techniques_used": [
+            "T1589",
+            "T1566.002",
+            "T1078.004",
+            "T1610",
+            "T1574.001",
+            "T1556.003",
+            "T1016",
+            "T1046",
+            "T1072",
+            "T1132.002",
+            "T1496"
+        ]
+    }
+}

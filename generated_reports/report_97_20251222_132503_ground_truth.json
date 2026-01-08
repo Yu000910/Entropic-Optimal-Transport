@@ -1,0 +1,118 @@
+{
+    "report_id": "report_97",
+    "generated_at": "20251222_132503",
+    "scenario_target_ids": [
+        "T1590.001",
+        "T1596.001",
+        "T1592.001",
+        "T1588.003",
+        "T1608.002",
+        "T1195",
+        "T1669",
+        "T1569.001",
+        "T1218.014",
+        "T1599.001",
+        "T1555.006",
+        "T1069",
+        "T1056.004",
+        "T1071",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1590.001",
+        "T1596.001",
+        "T1592.001",
+        "T1588.003",
+        "T1608.002",
+        "T1195",
+        "T1669",
+        "T1569.001",
+        "T1218.014",
+        "T1599.001",
+        "T1555.006",
+        "T1069",
+        "T1056.004",
+        "T1071",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1608.002",
+        "T1555.006",
+        "T1069",
+        "T1669",
+        "T1592.001",
+        "T1569.001",
+        "T1599.001",
+        "T1056.004",
+        "T1195",
+        "T1588.003",
+        "T1596.001",
+        "T1590.001",
+        "T1218.014",
+        "T1071"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowWeaver.' This group has been observed targeting organizations with Microsoft Azure Active Directory (AAD) and Google Cloud integrations. Initial analysis indicates the actors likely conduct reconnaissance by gathering domain properties and querying DNS records to map the target's network infrastructure. System logs from the target's DNS servers show increased queries for subdomains like 'mail.corp.example.com' and 'vpn.corp.example.com,' though these logs are not directly linked to the attack. The adversary then used nmap.exe to scan the network and identify hosts with specific hardware configurations, such as servers running outdated firmware. Background on the targeted company, 'TechGlobal Inc.,' reveals they operate in the financial sector with offices in New York and London, but this information is not part of the attack chain. To establish initial access, the malware exploited an open Wi-Fi network at a remote office, allowing the attacker to tunnel malicious traffic by exploiting misconfigured NAT rules in the perimeter firewall. The threat actor uploaded a custom RAT from https://c2.com/tools, which was signed with code signing certificates obtained from DigiCert, GlobalSign, and COMOOD to evade detection. Additionally, the attackers injected a malicious DLL into the software supply chain through a compromised third-party component, affecting several internal applications. For execution and persistence, the adversary employed 'launchctl' to replace a legitimate service with a malicious one and modified registry keys to execute encrypted payloads through MMC. In the cloud environment, the compromised application called 'gcloud secrets describe database-passwords' to retrieve database connection strings from Google Cloud, while the attacker executed 'net group' to enumerate domain groups and their members. Carberp malware was used to hook several Windows API functions to steal credentials, which were then exfiltrated over the Wireguard VPN protocol for command and control. Finally, the script posted stolen credentials to https://webhook.site/endpoint using HTTP POST requests, completing the data theft phase. Logs from the firewall show normal traffic patterns during off-hours, but these are unrelated to the incident.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowWeaver.' This group has been observed targeting organizations with Microsoft Azure Active Directory (AAD) and Google Cloud integrations. Initial analysis indicates the actors likely conduct reconnaissance by gathering domain properties [T1590.001] and querying DNS records [T1596.001] to map the target's network infrastructure. System logs from the target's DNS servers show increased queries for subdomains like 'mail.corp.example.com' and 'vpn.corp.example.com,' though these logs are not directly linked to the attack. The adversary then used nmap.exe [T1592.001] to scan the network and identify hosts with specific hardware configurations, such as servers running outdated firmware. Background on the targeted company, 'TechGlobal Inc.,' reveals they operate in the financial sector with offices in New York and London, but this information is not part of the attack chain. To establish initial access, the malware exploited an open Wi-Fi network [T1669] at a remote office, allowing the attacker to tunnel malicious traffic by exploiting misconfigured NAT rules in the perimeter firewall [T1599.001]. The threat actor uploaded a custom RAT from https://c2.com/tools [T1608.002], which was signed with code signing certificates obtained from DigiCert, GlobalSign, and COMOOD [T1588.003] to evade detection. Additionally, the attackers injected a malicious DLL into the software supply chain through a compromised third-party component [T1195], affecting several internal applications. For execution and persistence, the adversary employed 'launchctl' [T1569.001] to replace a legitimate service with a malicious one and modified registry keys [T1218.014] to execute encrypted payloads through MMC. In the cloud environment, the compromised application called 'gcloud secrets describe database-passwords' [T1555.006] to retrieve database connection strings from Google Cloud, while the attacker executed 'net group' [T1069] to enumerate domain groups and their members. Carberp malware was used to hook several Windows API functions [T1056.004] to steal credentials, which were then exfiltrated over the Wireguard VPN protocol [T1071] for command and control. Finally, the script posted stolen credentials to https://webhook.site/endpoint [T1567.004] using HTTP POST requests, completing the data theft phase. Logs from the firewall show normal traffic patterns during off-hours, but these are unrelated to the incident.",
+    "sentence_annotations": [
+        {
+            "sentence": "To establish initial access, the malware exploited an open Wi-Fi network at a remote office, allowing the attacker to tunnel malicious traffic by exploiting misconfigured NAT rules in the perimeter firewall [T1599.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Additionally, the attackers injected a malicious DLL into the software supply chain through a compromised third-party component, affecting several internal applications.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "006] to retrieve database connection strings from Google Cloud, while the attacker executed 'net group' to enumerate domain groups and their members.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "004] to steal credentials, which were then exfiltrated over the Wireguard VPN protocol for command and control.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowWeaver,' targeting organizations with hybrid cloud environments. The campaign leverages reconnaissance, supply chain compromise, and credential theft to achieve persistence and exfiltration. Blue teams should review logs for signs of these techniques to enhance detection capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowWeaver.' This group has been observed targeting organizations with Microsoft Azure Active Directory (AAD) and Google Cloud integrations. Initial analysis indicates the actors likely conduct reconnaissance by gathering domain properties [T1590.001] and querying DNS records [T1596.001] to map the target's network infrastructure. System logs from the target's DNS servers show increased queries for subdomains like 'mail.corp.example.com' and 'vpn.corp.example.com,' though these logs are not directly linked to the attack. The adversary then used nmap.exe [T1592.001] to scan the network and identify hosts with specific hardware configurations, such as servers running outdated firmware. Background on the targeted company, 'TechGlobal Inc.,' reveals they operate in the financial sector with offices in New York and London, but this information is not part of the attack chain. To establish initial access, the malware exploited an open Wi-Fi network [T1669] at a remote office, allowing the attacker to tunnel malicious traffic by exploiting misconfigured NAT rules in the perimeter firewall [T1599.001]. The threat actor uploaded a custom RAT from https://c2.com/tools [T1608.002], which was signed with code signing certificates obtained from DigiCert, GlobalSign, and COMOOD [T1588.003] to evade detection. Additionally, the attackers injected a malicious DLL into the software supply chain through a compromised third-party component [T1195], affecting several internal applications. For execution and persistence, the adversary employed 'launchctl' [T1569.001] to replace a legitimate service with a malicious one and modified registry keys [T1218.014] to execute encrypted payloads through MMC. In the cloud environment, the compromised application called 'gcloud secrets describe database-passwords' [T1555.006] to retrieve database connection strings from Google Cloud, while the attacker executed 'net group' [T1069] to enumerate domain groups and their members. Carberp malware was used to hook several Windows API functions [T1056.004] to steal credentials, which were then exfiltrated over the Wireguard VPN protocol [T1071] for command and control. Finally, the script posted stolen credentials to https://webhook.site/endpoint [T1567.004] using HTTP POST requests, completing the data theft phase. Logs from the firewall show normal traffic patterns during off-hours, but these are unrelated to the incident.",
+        "techniques_used": [
+            "T1590.001",
+            "T1596.001",
+            "T1592.001",
+            "T1588.003",
+            "T1608.002",
+            "T1195",
+            "T1669",
+            "T1569.001",
+            "T1218.014",
+            "T1599.001",
+            "T1555.006",
+            "T1069",
+            "T1056.004",
+            "T1071",
+            "T1567.004"
+        ]
+    }
+}

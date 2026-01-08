@@ -1,0 +1,78 @@
+{
+    "report_id": "report_657",
+    "generated_at": "20251222_172100",
+    "scenario_target_ids": [
+        "T1591.001",
+        "T1597.002",
+        "T1189",
+        "T1106",
+        "T1542.003",
+        "T1558.003",
+        "T1573.002",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1591.001",
+        "T1597.002",
+        "T1189",
+        "T1106",
+        "T1542.003",
+        "T1558.003",
+        "T1573.002",
+        "T1020"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1558.003",
+        "T1591.001",
+        "T1106",
+        "T1189",
+        "T1573.002",
+        "T1542.003",
+        "T1020"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure defenders about simulated APT activity attributed to the fictional threat actor group 'ShadowHawk'. This campaign targets energy companies in North America, leveraging a multi-stage attack chain for espionage and data theft.\n\nBackground: The targeted organization, 'EnergyGrid Corp', operates power distribution networks across multiple states. System logs from their SIEM showed unusual DNS queries to unknown domains starting in early 2024, but initial triage dismissed them as false positives. The company's firewall, a Cisco ASA model, had outdated firmware, though no known vulnerabilities were exploited in this scenario.\n\nAttack Narrative:\n1. Reconnaissance: The actors conducted reconnaissance to gather intelligence on physical locations by analyzing visitor data from phishing sites impersonating industry conferences. Concurrently, they purchased technical data, including firewall configurations and network diagrams, from underground forums to plan their intrusion. This data was used to map out EnergyGrid Corp's infrastructure, focusing on remote offices with weaker security controls.\n2. Initial Access: Using the gathered information, the adversaries performed a drive-by compromise by injecting malicious JavaScript into a legitimate industry news website frequently visited by EnergyGrid Corp employees. When an employee accessed the site, the script redirected to a malicious server that delivered a payload without user interaction, exploiting a patched vulnerability in the browser.\n3. Execution: Upon successful compromise, the malware employed native API calls, specifically using CreateProcessA() and CreateProcessAsUserA() to spawn processes and execute additional payloads while evading traditional antivirus detection by operating at a low system level.\n4. Persistence: To maintain long-term access, the actors deployed a bootkit that modified the Master Boot Record (MBR), ensuring persistence across reboots and allowing the malware to load before the operating system, thereby bypassing security measures.\n5. Credential Access: After establishing persistence, the threat actors conducted Kerberoasting by querying the domain controller with automated tools to extract service account hashes, which were later cracked offline to obtain plaintext credentials for lateral movement within the network.\n6. Command and Control (C2): The malware used asymmetric cryptography to establish encrypted HTTPS channels for C2 communication, mimicking legitimate traffic to avoid detection by network monitoring tools. This allowed for stealthy data exchange and command execution.\n7. Exfiltration: Finally, the actors performed automated exfiltration by compressing and encrypting stolen data, including sensitive operational documents, and uploading it to cloud storage services via scheduled tasks, blending with normal outbound traffic to evade data loss prevention systems.\n\nIrrelevant Information: EnergyGrid Corp's employee training records indicated a 95% completion rate for cybersecurity awareness programs in Q1 2024. Network traffic analysis showed a spike in HTTP requests to weather APIs during the attack period, unrelated to the compromise. The company's backup system, located in a secondary data center, was not accessed during this incident.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual API calls, update firmware regularly, enforce strong password policies, and use encryption detection tools. This advisory serves as a training exercise to improve incident response readiness.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure defenders about simulated APT activity attributed to the fictional threat actor group 'ShadowHawk'. This campaign targets energy companies in North America, leveraging a multi-stage attack chain for espionage and data theft.\n\nBackground: The targeted organization, 'EnergyGrid Corp', operates power distribution networks across multiple states. System logs from their SIEM showed unusual DNS queries to unknown domains starting in early 2024, but initial triage dismissed them as false positives. The company's firewall, a Cisco ASA model, had outdated firmware, though no known vulnerabilities were exploited in this scenario.\n\nAttack Narrative:\n1. Reconnaissance: The actors conducted reconnaissance to gather intelligence on physical locations [T1591.001] by analyzing visitor data from phishing sites impersonating industry conferences. Concurrently, they purchased technical data, including firewall configurations and network diagrams, from underground forums to plan their intrusion [T1597.002]. This data was used to map out EnergyGrid Corp's infrastructure, focusing on remote offices with weaker security controls.\n2. Initial Access: Using the gathered information, the adversaries performed a drive-by compromise [T1189] by injecting malicious JavaScript into a legitimate industry news website frequently visited by EnergyGrid Corp employees. When an employee accessed the site, the script redirected to a malicious server that delivered a payload without user interaction, exploiting a patched vulnerability in the browser.\n3. Execution: Upon successful compromise, the malware employed native API calls [T1106], specifically using CreateProcessA() and CreateProcessAsUserA() to spawn processes and execute additional payloads while evading traditional antivirus detection by operating at a low system level.\n4. Persistence: To maintain long-term access, the actors deployed a bootkit [T1542.003] that modified the Master Boot Record (MBR), ensuring persistence across reboots and allowing the malware to load before the operating system, thereby bypassing security measures.\n5. Credential Access: After establishing persistence, the threat actors conducted Kerberoasting [T1558.003] by querying the domain controller with automated tools to extract service account hashes, which were later cracked offline to obtain plaintext credentials for lateral movement within the network.\n6. Command and Control (C2): The malware used asymmetric cryptography [T1573.002] to establish encrypted HTTPS channels for C2 communication, mimicking legitimate traffic to avoid detection by network monitoring tools. This allowed for stealthy data exchange and command execution.\n7. Exfiltration: Finally, the actors performed automated exfiltration [T1020] by compressing and encrypting stolen data, including sensitive operational documents, and uploading it to cloud storage services via scheduled tasks, blending with normal outbound traffic to evade data loss prevention systems.\n\nIrrelevant Information: EnergyGrid Corp's employee training records indicated a 95% completion rate for cybersecurity awareness programs in Q1 2024. Network traffic analysis showed a spike in HTTP requests to weather APIs during the attack period, unrelated to the compromise. The company's backup system, located in a secondary data center, was not accessed during this incident.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual API calls, update firmware regularly, enforce strong password policies, and use encryption detection tools. This advisory serves as a training exercise to improve incident response readiness.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: Using the gathered information, the adversaries performed a drive-by compromise by injecting malicious JavaScript into a legitimate industry news website frequently visited by EnergyGrid Corp employees.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Execution: Upon successful compromise, the malware employed native API calls, specifically using CreateProcessA() and CreateProcessAsUserA() to spawn processes and execute additional payloads while evading traditional antivirus detection by operating at a low system level.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "Exfiltration: Finally, the actors performed automated exfiltration by compressing and encrypting stolen data, including sensitive operational documents, and uploading it to cloud storage services via scheduled tasks, blending with normal outbound traffic to evade data loss prevention systems.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'ShadowHawk' Targeting Critical Infrastructure",
+        "summary": "This advisory details a fictional campaign by threat actor group 'ShadowHawk', simulating an advanced persistent threat (APT) targeting energy sector organizations. The scenario involves reconnaissance, initial access via compromised websites, execution through native APIs, persistence via bootkits, credential theft via Kerberoasting, encrypted C2, and automated data exfiltration. This report is for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure defenders about simulated APT activity attributed to the fictional threat actor group 'ShadowHawk'. This campaign targets energy companies in North America, leveraging a multi-stage attack chain for espionage and data theft.\n\nBackground: The targeted organization, 'EnergyGrid Corp', operates power distribution networks across multiple states. System logs from their SIEM showed unusual DNS queries to unknown domains starting in early 2024, but initial triage dismissed them as false positives. The company's firewall, a Cisco ASA model, had outdated firmware, though no known vulnerabilities were exploited in this scenario.\n\nAttack Narrative:\n1. Reconnaissance: The actors conducted reconnaissance to gather intelligence on physical locations [T1591.001] by analyzing visitor data from phishing sites impersonating industry conferences. Concurrently, they purchased technical data, including firewall configurations and network diagrams, from underground forums to plan their intrusion [T1597.002]. This data was used to map out EnergyGrid Corp's infrastructure, focusing on remote offices with weaker security controls.\n2. Initial Access: Using the gathered information, the adversaries performed a drive-by compromise [T1189] by injecting malicious JavaScript into a legitimate industry news website frequently visited by EnergyGrid Corp employees. When an employee accessed the site, the script redirected to a malicious server that delivered a payload without user interaction, exploiting a patched vulnerability in the browser.\n3. Execution: Upon successful compromise, the malware employed native API calls [T1106], specifically using CreateProcessA() and CreateProcessAsUserA() to spawn processes and execute additional payloads while evading traditional antivirus detection by operating at a low system level.\n4. Persistence: To maintain long-term access, the actors deployed a bootkit [T1542.003] that modified the Master Boot Record (MBR), ensuring persistence across reboots and allowing the malware to load before the operating system, thereby bypassing security measures.\n5. Credential Access: After establishing persistence, the threat actors conducted Kerberoasting [T1558.003] by querying the domain controller with automated tools to extract service account hashes, which were later cracked offline to obtain plaintext credentials for lateral movement within the network.\n6. Command and Control (C2): The malware used asymmetric cryptography [T1573.002] to establish encrypted HTTPS channels for C2 communication, mimicking legitimate traffic to avoid detection by network monitoring tools. This allowed for stealthy data exchange and command execution.\n7. Exfiltration: Finally, the actors performed automated exfiltration [T1020] by compressing and encrypting stolen data, including sensitive operational documents, and uploading it to cloud storage services via scheduled tasks, blending with normal outbound traffic to evade data loss prevention systems.\n\nIrrelevant Information: EnergyGrid Corp's employee training records indicated a 95% completion rate for cybersecurity awareness programs in Q1 2024. Network traffic analysis showed a spike in HTTP requests to weather APIs during the attack period, unrelated to the compromise. The company's backup system, located in a secondary data center, was not accessed during this incident.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual API calls, update firmware regularly, enforce strong password policies, and use encryption detection tools. This advisory serves as a training exercise to improve incident response readiness.",
+        "techniques_used": [
+            "T1591.001",
+            "T1597.002",
+            "T1189",
+            "T1106",
+            "T1542.003",
+            "T1558.003",
+            "T1573.002",
+            "T1020"
+        ]
+    }
+}

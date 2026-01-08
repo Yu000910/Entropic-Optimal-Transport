@@ -1,0 +1,108 @@
+{
+    "report_id": "report_398",
+    "generated_at": "20251222_153039",
+    "scenario_target_ids": [
+        "T1590.001",
+        "T1650",
+        "T1585.001",
+        "T1587.001",
+        "T1566.004",
+        "T1648",
+        "T1055",
+        "T1546.015",
+        "T1557.004",
+        "T1580",
+        "T1568.001",
+        "T1048.003",
+        "T1491.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1650",
+        "T1590.001",
+        "T1585.001",
+        "T1587.001",
+        "T1566.004",
+        "T1648",
+        "T1055",
+        "T1546.015",
+        "T1557.004",
+        "T1580",
+        "T1568.001",
+        "T1048.003",
+        "T1491.001"
+    ],
+    "actual_found_ids": [
+        "T1546.015",
+        "T1566.004",
+        "T1585.001",
+        "T1587.001",
+        "T1568.001",
+        "T1055",
+        "T1580",
+        "T1557.004",
+        "T1048.003",
+        "T1491.001",
+        "T1590.001",
+        "T1650",
+        "T1648"
+    ],
+    "clean_text": "On [Date], a fictional multinational corporation, 'CloudTech Solutions', reported suspicious activity in its AWS environment. Background investigation revealed that CloudTech Solutions, founded in 2010, specializes in cloud migration services and maintains a hybrid infrastructure with over 500 employees. Initial logs from the SIEM showed unusual API calls from an internal server, but these were initially dismissed as false positives during routine maintenance. The threat actors, likely operating as 'ShadowGate', began by purchasing initial network access from an underground access-selling service, which provided credentials to a low-privilege user account. Using this access, they conducted reconnaissance by employing a PowerShell script to invoke the GetUserRealm API, gathering domain properties such as federation settings to map the environment. Subsequently, the actors established fake social media accounts to disseminate stolen internal documents, though this activity was not directly linked to the initial breach and served as a distraction. In the execution phase, they deployed two custom malware types, Line Dancer and Line Runner, via a spearphishing voice attack where a compromised website silently installed a remote access trojan without user interaction. The malware then abused an existing Lambda function by updating its code with a reverse shell payload for serverless execution, enabling further exploitation. For persistence, the actors injected shellcode into svchost.exe using process injection and performed Component Object Model hijacking by using reg add to overwrite HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF01-2345-6789-ABCD-EF0123456789}\\InprocServer32 with a path to the malware payload. Additionally, they deployed a fake captive portal that mimicked the corporate login page to steal credentials through an evil twin attack. In the discovery phase, the compromised application queried the DescribeInstances API to gather information about cloud compute resources, while a malicious script automatically registered a DNS A record for a temporary C2 domain using fast flux DNS to evade detection. For exfiltration, the backdoor transmitted collected system information using plain HTTP without encryption over an unencrypted non-C2 protocol. Finally, the actors conducted internal defacement by renaming disk labels on victim hosts to the threat actor's email address to enable contact for ransom negotiation. Logs from the affected systems showed increased CPU usage and network traffic spikes, but no immediate alerts were triggered due to misconfigured monitoring rules.",
+    "tagged_text": "On [Date], a fictional multinational corporation, 'CloudTech Solutions', reported suspicious activity in its AWS environment. Background investigation revealed that CloudTech Solutions, founded in 2010, specializes in cloud migration services and maintains a hybrid infrastructure with over 500 employees. Initial logs from the SIEM showed unusual API calls from an internal server, but these were initially dismissed as false positives during routine maintenance. The threat actors, likely operating as 'ShadowGate', began by purchasing initial network access [T1650] from an underground access-selling service, which provided credentials to a low-privilege user account. Using this access, they conducted reconnaissance by employing a PowerShell script to invoke the GetUserRealm API, gathering domain properties such as federation settings to map the environment [T1590.001]. Subsequently, the actors established fake social media accounts [T1585.001] to disseminate stolen internal documents, though this activity was not directly linked to the initial breach and served as a distraction. In the execution phase, they deployed two custom malware types, Line Dancer and Line Runner [T1587.001], via a spearphishing voice attack where a compromised website silently installed a remote access trojan without user interaction [T1566.004]. The malware then abused an existing Lambda function by updating its code with a reverse shell payload for serverless execution [T1648], enabling further exploitation. For persistence, the actors injected shellcode into svchost.exe using process injection [T1055] and performed Component Object Model hijacking by using reg add to overwrite HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF01-2345-6789-ABCD-EF0123456789}\\InprocServer32 with a path to the malware payload [T1546.015]. Additionally, they deployed a fake captive portal that mimicked the corporate login page to steal credentials through an evil twin attack [T1557.004]. In the discovery phase, the compromised application queried the DescribeInstances API to gather information about cloud compute resources [T1580], while a malicious script automatically registered a DNS A record for a temporary C2 domain using fast flux DNS [T1568.001] to evade detection. For exfiltration, the backdoor transmitted collected system information using plain HTTP without encryption over an unencrypted non-C2 protocol [T1048.003]. Finally, the actors conducted internal defacement by renaming disk labels on victim hosts to the threat actor's email address to enable contact for ransom negotiation [T1491.001]. Logs from the affected systems showed increased CPU usage and network traffic spikes, but no immediate alerts were triggered due to misconfigured monitoring rules.",
+    "sentence_annotations": [
+        {
+            "sentence": "The threat actors, likely operating as 'ShadowGate', began by purchasing initial network access from an underground access-selling service, which provided credentials to a low-privilege user account.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "The malware then abused an existing Lambda function by updating its code with a reverse shell payload for serverless execution, enabling further exploitation.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "exe using process injection and performed Component Object Model hijacking by using reg add to overwrite HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF01-2345-6789-ABCD-EF0123456789}\\InprocServer32 with a path to the malware payload [T1546.",
+            "technique_id": "T1055",
+            "technique_name": "Process Injection"
+        },
+        {
+            "sentence": "In the discovery phase, the compromised application queried the DescribeInstances API to gather information about cloud compute resources, while a malicious script automatically registered a DNS A record for a temporary C2 domain using fast flux DNS [T1568.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGate' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowGate', targeting cloud-based corporate environments. The campaign involves initial access acquisition, malware deployment, persistence mechanisms, and data exfiltration, designed to train blue teams in detection and response.",
+        "full_report_text": "On [Date], a fictional multinational corporation, 'CloudTech Solutions', reported suspicious activity in its AWS environment. Background investigation revealed that CloudTech Solutions, founded in 2010, specializes in cloud migration services and maintains a hybrid infrastructure with over 500 employees. Initial logs from the SIEM showed unusual API calls from an internal server, but these were initially dismissed as false positives during routine maintenance. The threat actors, likely operating as 'ShadowGate', began by purchasing initial network access [T1650] from an underground access-selling service, which provided credentials to a low-privilege user account. Using this access, they conducted reconnaissance by employing a PowerShell script to invoke the GetUserRealm API, gathering domain properties such as federation settings to map the environment [T1590.001]. Subsequently, the actors established fake social media accounts [T1585.001] to disseminate stolen internal documents, though this activity was not directly linked to the initial breach and served as a distraction. In the execution phase, they deployed two custom malware types, Line Dancer and Line Runner [T1587.001], via a spearphishing voice attack where a compromised website silently installed a remote access trojan without user interaction [T1566.004]. The malware then abused an existing Lambda function by updating its code with a reverse shell payload for serverless execution [T1648], enabling further exploitation. For persistence, the actors injected shellcode into svchost.exe using process injection [T1055] and performed Component Object Model hijacking by using reg add to overwrite HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF01-2345-6789-ABCD-EF0123456789}\\InprocServer32 with a path to the malware payload [T1546.015]. Additionally, they deployed a fake captive portal that mimicked the corporate login page to steal credentials through an evil twin attack [T1557.004]. In the discovery phase, the compromised application queried the DescribeInstances API to gather information about cloud compute resources [T1580], while a malicious script automatically registered a DNS A record for a temporary C2 domain using fast flux DNS [T1568.001] to evade detection. For exfiltration, the backdoor transmitted collected system information using plain HTTP without encryption over an unencrypted non-C2 protocol [T1048.003]. Finally, the actors conducted internal defacement by renaming disk labels on victim hosts to the threat actor's email address to enable contact for ransom negotiation [T1491.001]. Logs from the affected systems showed increased CPU usage and network traffic spikes, but no immediate alerts were triggered due to misconfigured monitoring rules.",
+        "techniques_used": [
+            "T1650",
+            "T1590.001",
+            "T1585.001",
+            "T1587.001",
+            "T1566.004",
+            "T1648",
+            "T1055",
+            "T1546.015",
+            "T1557.004",
+            "T1580",
+            "T1568.001",
+            "T1048.003",
+            "T1491.001"
+        ]
+    }
+}

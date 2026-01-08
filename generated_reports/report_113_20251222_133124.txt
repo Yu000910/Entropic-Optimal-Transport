@@ -1,0 +1,16 @@
+### Background
+SilentScribe, a fictional APT group with suspected ties to cybercriminal elements, has been active since early 2023, focusing on technology firms in North America and Europe. The group leverages a blend of open-source intelligence (OSINT) and custom malware to achieve its objectives, which include data exfiltration and credential harvesting. Initial reports from a fictional incident response firm, CyberDefense Inc., indicate that the campaign began with reconnaissance activities targeting employees via professional networking sites.
+
+### Attack Narrative
+**Initial Access:** The actors established a fake LinkedIn profile posing as a recruiter from a legitimate tech company to build trust with potential targets [T1585]. Subsequently, they compromised a digital product website, modifying download links to point to trojanized versions of software, which victims unwittingly installed during routine updates [T1608.004].
+
+**Execution and Persistence:** Upon execution, the malware exploited domain accounts by harvesting credentials from compromised systems, leveraging techniques similar to those observed in historical Leviathan intrusions [T1078.002]. To ensure persistence, the adversary used hardware additions, such as passive network taps, to capture unencrypted credentials transmitted over local networks [T1200], while simultaneously employing Launchctl on macOS systems to load a malicious service at boot [T1569.001] and configuring a VBA add-in in Excel to execute automatically upon application launch [T1137.006].
+
+**Privilege Escalation and Defense Evasion:** The malware employed thread execution hijacking by manipulating OpenThread in browser processes to run keylogging code covertly [T1055.003] and used the trap command on Unix-like systems to maintain persistence by executing a backdoor script upon receiving SIGTERM signals [T1546.005]. Additionally, the actors accessed cloud instance metadata APIs to extract service account credentials from virtual machines [T1552.005].
+
+**Discovery and Collection:** SilentScribe conducted file and directory discovery across local and network drives to identify valuable intellectual property [T1083], using asymmetric cryptography via HTTPS for secure command and control communications [T1573.002] and leveraging dead drop resolvers, such as Twitter, to dynamically obtain C2 server addresses as fallbacks [T1102.001].
+
+**Exfiltration and Impact:** Data exfiltration was achieved by encrypting harvested files with RC4 before transmitting them over FTP [T1048.001], while transmitted data manipulation involved modifying API request packets to alter user authentication tokens during transmission [T1565.002]. Logs from affected systems show increased network traffic to unknown IP addresses, though some entries may be benign or unrelated to the campaign.
+
+### Defensive Recommendations
+Organizations should implement multi-factor authentication, monitor for unusual network activity, and restrict access to cloud metadata services. Regular software updates and employee training on social engineering are also critical. IoCs include specific file hashes and domain names, which are available upon request from fictional sources like CISA.

@@ -1,0 +1,68 @@
+{
+    "report_id": "report_281",
+    "generated_at": "20251222_144049",
+    "scenario_target_ids": [
+        "T1195.003",
+        "T1569",
+        "T1059.005",
+        "T1547.004",
+        "T1497.002",
+        "T1104",
+        "T1048.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1569",
+        "T1059.005",
+        "T1547.004",
+        "T1497.002",
+        "T1104",
+        "T1048.003"
+    ],
+    "actual_found_ids": [
+        "T1497.002",
+        "T1104",
+        "T1059.005",
+        "T1195.003",
+        "T1547.004",
+        "T1569",
+        "T1048.003"
+    ],
+    "clean_text": "On 2024-08-15, a fictional cybersecurity firm, SecureTech Inc., reported anomalous activity in their network logs, involving unexpected USB device connections and subsequent service executions. The company, which specializes in IoT device manufacturing, has a global presence with offices in North America and Europe, employing over 5,000 staff. Initial investigation revealed that modified Teensy USB devices, distributed through compromised hardware supply chains, were inserted into consumer electronics shipments to gain initial access. Upon connection to target systems, the adversary abused svchost.exe to execute a malicious payload disguised as a legitimate service, while simultaneously using Visual Basic for Applications (VBA) macros in Microsoft Word attachments to drop additional files onto the host. For persistence, the actors modified registry keys at HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to reference a compromised DLL, ensuring continued access after reboots. To evade detection, the malware conducted user activity-based checks by searching process memory for 'malware.exe' strings to identify sandbox environments. Command and control was maintained through multi-stage channels, where the backdoor launched 'remote_access_tool.exe' to establish resilient connections with the C2 server, and data exfiltration was performed over unencrypted non-C2 protocols, such as HTTP POST headers, to blend with normal traffic. Logs from SecureTech's SIEM showed increased network traffic to suspicious IP addresses, but no actual data loss occurred in this training scenario.",
+    "tagged_text": "On 2024-08-15, a fictional cybersecurity firm, SecureTech Inc., reported anomalous activity in their network logs, involving unexpected USB device connections and subsequent service executions. The company, which specializes in IoT device manufacturing, has a global presence with offices in North America and Europe, employing over 5,000 staff. Initial investigation revealed that modified Teensy USB devices, distributed through compromised hardware supply chains, were inserted into consumer electronics shipments to gain initial access [T1195.003]. Upon connection to target systems, the adversary abused svchost.exe to execute a malicious payload disguised as a legitimate service [T1569], while simultaneously using Visual Basic for Applications (VBA) macros in Microsoft Word attachments to drop additional files onto the host [T1059.005]. For persistence, the actors modified registry keys at HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to reference a compromised DLL, ensuring continued access after reboots [T1547.004]. To evade detection, the malware conducted user activity-based checks by searching process memory for 'malware.exe' strings to identify sandbox environments [T1497.002]. Command and control was maintained through multi-stage channels, where the backdoor launched 'remote_access_tool.exe' to establish resilient connections with the C2 server [T1104], and data exfiltration was performed over unencrypted non-C2 protocols, such as HTTP POST headers, to blend with normal traffic [T1048.003]. Logs from SecureTech's SIEM showed increased network traffic to suspicious IP addresses, but no actual data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to execute a malicious payload disguised as a legitimate service, while simultaneously using Visual Basic for Applications (VBA) macros in Microsoft Word attachments to drop additional files onto the host [T1059.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "exe' to establish resilient connections with the C2 server, and data exfiltration was performed over unencrypted non-C2 protocols, such as HTTP POST headers, to blend with normal traffic [T1048.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL Campaign Involving Compromised Hardware and Multi-Stage Persistence",
+        "summary": "This advisory details a simulated, educational campaign by a fictional threat actor targeting consumer electronics through hardware supply chain compromises and leveraging multi-stage persistence mechanisms for blue team training purposes. The scenario involves initial access via modified USB devices, execution through abused system services and VBA macros, persistence via Winlogon modifications, evasion through user activity checks, command and control via multi-stage channels, and exfiltration over unencrypted protocols.",
+        "full_report_text": "On 2024-08-15, a fictional cybersecurity firm, SecureTech Inc., reported anomalous activity in their network logs, involving unexpected USB device connections and subsequent service executions. The company, which specializes in IoT device manufacturing, has a global presence with offices in North America and Europe, employing over 5,000 staff. Initial investigation revealed that modified Teensy USB devices, distributed through compromised hardware supply chains, were inserted into consumer electronics shipments to gain initial access [T1195.003]. Upon connection to target systems, the adversary abused svchost.exe to execute a malicious payload disguised as a legitimate service [T1569], while simultaneously using Visual Basic for Applications (VBA) macros in Microsoft Word attachments to drop additional files onto the host [T1059.005]. For persistence, the actors modified registry keys at HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to reference a compromised DLL, ensuring continued access after reboots [T1547.004]. To evade detection, the malware conducted user activity-based checks by searching process memory for 'malware.exe' strings to identify sandbox environments [T1497.002]. Command and control was maintained through multi-stage channels, where the backdoor launched 'remote_access_tool.exe' to establish resilient connections with the C2 server [T1104], and data exfiltration was performed over unencrypted non-C2 protocols, such as HTTP POST headers, to blend with normal traffic [T1048.003]. Logs from SecureTech's SIEM showed increased network traffic to suspicious IP addresses, but no actual data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1195.003",
+            "T1569",
+            "T1059.005",
+            "T1547.004",
+            "T1497.002",
+            "T1104",
+            "T1048.003"
+        ]
+    }
+}

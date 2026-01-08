@@ -1,0 +1,108 @@
+{
+    "report_id": "report_159",
+    "generated_at": "20251222_121927",
+    "scenario_target_ids": [
+        "T1593.002",
+        "T1608.001",
+        "T1585.001",
+        "T1659",
+        "T1072",
+        "T1505.005",
+        "T1484",
+        "T1564.005",
+        "T1578.003",
+        "T1563.001",
+        "T1071.003",
+        "T1048.001",
+        "T1041"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.002",
+        "T1608.001",
+        "T1585.001",
+        "T1659",
+        "T1072",
+        "T1505.005",
+        "T1484",
+        "T1564.005",
+        "T1578.003",
+        "T1563.001",
+        "T1071.003",
+        "T1048.001",
+        "T1041"
+    ],
+    "actual_found_ids": [
+        "T1659",
+        "T1505.005",
+        "T1563.001",
+        "T1578.003",
+        "T1564.005",
+        "T1071.003",
+        "T1048.001",
+        "T1608.001",
+        "T1041",
+        "T1585.001",
+        "T1484",
+        "T1072",
+        "T1593.002"
+    ],
+    "clean_text": "Background: ShadowWeave, a fictional advanced persistent threat (APT) group with suspected ties to cybercriminal networks, has been active since early 2023, focusing on espionage and data theft. Initial analysis suggests they operate primarily in Eastern European time zones, with infrastructure spanning multiple cloud providers. In this simulated scenario, the group targeted 'Global Energy Corp', a multinational company with operations in renewable energy, by exploiting human vulnerabilities and system misconfigurations. Logs from their firewall showed increased traffic to suspicious domains in the weeks leading up to the incident, but these were initially dismissed as false positives due to high network noise.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The actors conducted reconnaissance by searching for vulnerabilities and geopolitical trends related to energy policies using Google, while simultaneously establishing a fake Facebook persona with stolen biographical information to gather intelligence on employees. This allowed them to identify weak points in social media profiles, leading to targeted spear-phishing campaigns that bypassed traditional email filters.\n2. Execution and Persistence: Upon gaining access through a compromised user account, the adversary employed PowerShell to inject malicious JavaScript into HTTP responses, executing cross-site scripting attacks that redirected victims to a staged payload hosted on a registered domain. They then exploited SCCM software deployment tools to execute commands that established persistence across all corporate devices, while replacing the legitimate termsrv.dll with a backdoored version to maintain long-term access. Additionally, they created a new Group Policy Object (GPO) that forced all domain computers to run malicious scripts with SYSTEM privileges, and used disk partitioning tools to create a hidden file system that doesn't appear in standard directory listings, evading routine audits.\n3. Lateral Movement and Exfiltration: The threat actor pivoted through the network by forwarding the SSH agent socket to hijack sessions and move laterally between systems. Data collection involved malware that leveraged POP3 to periodically check for new commands from a compromised email account, while the backdoor encrypted collected system information using RC4 for covert transmission over symmetric encrypted non-C2 protocols and uploaded files from the compromised host over DNS or HTTP C2 channels. After completing data theft operations, the adversary deleted the Google Cloud Compute Engine instance used for staging, covering their tracks and complicating forensic analysis. Post-incident reviews at Global Energy Corp revealed gaps in endpoint detection and cloud monitoring, highlighting the need for enhanced logging and user training.\n\nRecommendations: Blue teams should monitor for unusual search engine activity, enforce multi-factor authentication on social media accounts, audit GPO changes regularly, and implement network segmentation to limit lateral movement. This fictional scenario underscores the importance of proactive threat hunting and incident response drills.",
+    "tagged_text": "Background: ShadowWeave, a fictional advanced persistent threat (APT) group with suspected ties to cybercriminal networks, has been active since early 2023, focusing on espionage and data theft. Initial analysis suggests they operate primarily in Eastern European time zones, with infrastructure spanning multiple cloud providers. In this simulated scenario, the group targeted 'Global Energy Corp', a multinational company with operations in renewable energy, by exploiting human vulnerabilities and system misconfigurations. Logs from their firewall showed increased traffic to suspicious domains in the weeks leading up to the incident, but these were initially dismissed as false positives due to high network noise.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The actors conducted reconnaissance by searching for vulnerabilities and geopolitical trends related to energy policies using Google [T1593.002], while simultaneously establishing a fake Facebook persona with stolen biographical information to gather intelligence on employees [T1585.001]. This allowed them to identify weak points in social media profiles, leading to targeted spear-phishing campaigns that bypassed traditional email filters.\n2. Execution and Persistence: Upon gaining access through a compromised user account, the adversary employed PowerShell to inject malicious JavaScript into HTTP responses, executing cross-site scripting attacks [T1659] that redirected victims to a staged payload hosted on a registered domain [T1608.001]. They then exploited SCCM software deployment tools to execute commands that established persistence across all corporate devices [T1072], while replacing the legitimate termsrv.dll with a backdoored version to maintain long-term access [T1505.005]. Additionally, they created a new Group Policy Object (GPO) that forced all domain computers to run malicious scripts with SYSTEM privileges [T1484], and used disk partitioning tools to create a hidden file system that doesn't appear in standard directory listings [T1564.005], evading routine audits.\n3. Lateral Movement and Exfiltration: The threat actor pivoted through the network by forwarding the SSH agent socket to hijack sessions and move laterally between systems [T1563.001]. Data collection involved malware that leveraged POP3 to periodically check for new commands from a compromised email account [T1071.003], while the backdoor encrypted collected system information using RC4 for covert transmission over symmetric encrypted non-C2 protocols [T1048.001] and uploaded files from the compromised host over DNS or HTTP C2 channels [T1041]. After completing data theft operations, the adversary deleted the Google Cloud Compute Engine instance used for staging [T1578.003], covering their tracks and complicating forensic analysis. Post-incident reviews at Global Energy Corp revealed gaps in endpoint detection and cloud monitoring, highlighting the need for enhanced logging and user training.\n\nRecommendations: Blue teams should monitor for unusual search engine activity, enforce multi-factor authentication on social media accounts, audit GPO changes regularly, and implement network segmentation to limit lateral movement. This fictional scenario underscores the importance of proactive threat hunting and incident response drills.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution and Persistence: Upon gaining access through a compromised user account, the adversary employed PowerShell to inject malicious JavaScript into HTTP responses, executing cross-site scripting attacks that redirected victims to a staged payload hosted on a registered domain [T1608.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "They then exploited SCCM software deployment tools to execute commands that established persistence across all corporate devices, while replacing the legitimate termsrv.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "Additionally, they created a new Group Policy Object (GPO) that forced all domain computers to run malicious scripts with SYSTEM privileges, and used disk partitioning tools to create a hidden file system that doesn't appear in standard directory listings [T1564.",
+            "technique_id": "T1484",
+            "technique_name": "Domain or Tenant Policy Modification"
+        },
+        {
+            "sentence": "001] and uploaded files from the compromised host over DNS or HTTP C2 channels.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeave' Targeting Critical Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated campaign by the fictional threat actor group 'ShadowWeave', which has targeted critical infrastructure sectors, including energy and finance, through a multi-phase attack leveraging social engineering, persistence mechanisms, and covert exfiltration. This report is intended for blue team training to enhance detection and response capabilities against sophisticated intrusion techniques.",
+        "full_report_text": "Background: ShadowWeave, a fictional advanced persistent threat (APT) group with suspected ties to cybercriminal networks, has been active since early 2023, focusing on espionage and data theft. Initial analysis suggests they operate primarily in Eastern European time zones, with infrastructure spanning multiple cloud providers. In this simulated scenario, the group targeted 'Global Energy Corp', a multinational company with operations in renewable energy, by exploiting human vulnerabilities and system misconfigurations. Logs from their firewall showed increased traffic to suspicious domains in the weeks leading up to the incident, but these were initially dismissed as false positives due to high network noise.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The actors conducted reconnaissance by searching for vulnerabilities and geopolitical trends related to energy policies using Google [T1593.002], while simultaneously establishing a fake Facebook persona with stolen biographical information to gather intelligence on employees [T1585.001]. This allowed them to identify weak points in social media profiles, leading to targeted spear-phishing campaigns that bypassed traditional email filters.\n2. Execution and Persistence: Upon gaining access through a compromised user account, the adversary employed PowerShell to inject malicious JavaScript into HTTP responses, executing cross-site scripting attacks [T1659] that redirected victims to a staged payload hosted on a registered domain [T1608.001]. They then exploited SCCM software deployment tools to execute commands that established persistence across all corporate devices [T1072], while replacing the legitimate termsrv.dll with a backdoored version to maintain long-term access [T1505.005]. Additionally, they created a new Group Policy Object (GPO) that forced all domain computers to run malicious scripts with SYSTEM privileges [T1484], and used disk partitioning tools to create a hidden file system that doesn't appear in standard directory listings [T1564.005], evading routine audits.\n3. Lateral Movement and Exfiltration: The threat actor pivoted through the network by forwarding the SSH agent socket to hijack sessions and move laterally between systems [T1563.001]. Data collection involved malware that leveraged POP3 to periodically check for new commands from a compromised email account [T1071.003], while the backdoor encrypted collected system information using RC4 for covert transmission over symmetric encrypted non-C2 protocols [T1048.001] and uploaded files from the compromised host over DNS or HTTP C2 channels [T1041]. After completing data theft operations, the adversary deleted the Google Cloud Compute Engine instance used for staging [T1578.003], covering their tracks and complicating forensic analysis. Post-incident reviews at Global Energy Corp revealed gaps in endpoint detection and cloud monitoring, highlighting the need for enhanced logging and user training.\n\nRecommendations: Blue teams should monitor for unusual search engine activity, enforce multi-factor authentication on social media accounts, audit GPO changes regularly, and implement network segmentation to limit lateral movement. This fictional scenario underscores the importance of proactive threat hunting and incident response drills.",
+        "techniques_used": [
+            "T1593.002",
+            "T1608.001",
+            "T1585.001",
+            "T1659",
+            "T1072",
+            "T1505.005",
+            "T1484",
+            "T1564.005",
+            "T1578.003",
+            "T1563.001",
+            "T1071.003",
+            "T1048.001",
+            "T1041"
+        ]
+    }
+}

@@ -1,0 +1,143 @@
+{
+    "report_id": "report_704",
+    "generated_at": "20251223_104035",
+    "scenario_target_ids": [
+        "T1597.002",
+        "T1596.005",
+        "T1589.002",
+        "T1583.002",
+        "T1584.001",
+        "T1585.003",
+        "T1195.001",
+        "T1091",
+        "T1675",
+        "T1525",
+        "T1127.003",
+        "T1036.004",
+        "T1614",
+        "T1057",
+        "T1010",
+        "T1550.003",
+        "T1205"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1597.002",
+        "T1596.005",
+        "T1589.002",
+        "T1583.002",
+        "T1584.001",
+        "T1585.003",
+        "T1195.001",
+        "T1091",
+        "T1675",
+        "T1525",
+        "T1127.003",
+        "T1036.004",
+        "T1614",
+        "T1057",
+        "T1010",
+        "T1550.003",
+        "T1205"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1596.005",
+        "T1550.003",
+        "T1525",
+        "T1195.001",
+        "T1585.003",
+        "T1127.003",
+        "T1205",
+        "T1091",
+        "T1057",
+        "T1589.002",
+        "T1583.002",
+        "T1036.004",
+        "T1675",
+        "T1584.001",
+        "T1010",
+        "T1614"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil'. This campaign demonstrates a multi-stage attack leveraging cloud infrastructure and virtualization technologies.\n\n**Initial Access and Reconnaissance**\nThe actors likely conducted reconnaissance by purchasing technical data from dark web marketplaces and scanning databases like Shodan for exposed Redis servers with default configurations. They validated email addresses using GetCredentialType API calls to prepare for spear-phishing, though no phishing emails were observed in this scenario. System logs from the target organization, 'TechGlobal Inc.', showed unusual DNS queries to unknown domains starting two weeks prior to the incident.\n\n**Resource Development and Initial Compromise**\nTo facilitate command and control (C2), the adversary set up a rogue DNS server and compromised AWS credentials to hijack Route53 hosted zones, redirecting email traffic. They created malicious cloud accounts on Microsoft Teams, spoofing IT support themes. The initial compromise involved injecting malicious PowerShell code into a software dependency file, maintenance.ps1, to harvest sensitive documents. Additionally, the Autorun.inf file was altered to execute malware upon insertion of removable media, though this vector was not actively used in the main attack chain.\n\n**Execution and Persistence**\nOn compromised systems, the malware used ESXi administration commands via StartProgramInGuest to launch a reverse shell on target virtual machines. Persistent access was established by modifying a Docker image to include a web shell accessible through port 8080. The infection chain involved executing malicious.jam via JamPlus.exe to deploy ransomware across the network, while Registry run keys were masqueraded as legitimate service names such as 'OneNote Update'. Network traffic analysis revealed sporadic spikes in DNS queries to the rogue server, but no data exfiltration was confirmed.\n\n**Discovery and Lateral Movement**\nFor discovery, a PowerShell script called GetLocaleInfoW to identify the host's country and language settings, while RainyDay enumerated processes on target systems and HotCroissant listed the names of all open windows. The actors maintained administrative access by creating forged Kerberos Ticket Granting Ticket (TGT) and Ticket Granting Service (TGS) tickets. Traffic signaling was observed with special packets sent to SYNful Knock to change its functionality, including code for new capabilities. Background information: TechGlobal Inc. is a mid-sized tech firm with operations in North America and Europe, focusing on cloud solutions and virtualization services.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual DNS activity, secure cloud credentials, and audit virtual infrastructure for unauthorized modifications. Regular updates to software dependencies and restrictions on removable media usage are advised.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil'. This campaign demonstrates a multi-stage attack leveraging cloud infrastructure and virtualization technologies.\n\n**Initial Access and Reconnaissance**\nThe actors likely conducted reconnaissance by purchasing technical data from dark web marketplaces [T1597.002] and scanning databases like Shodan for exposed Redis servers with default configurations [T1596.005]. They validated email addresses using GetCredentialType API calls [T1589.002] to prepare for spear-phishing, though no phishing emails were observed in this scenario. System logs from the target organization, 'TechGlobal Inc.', showed unusual DNS queries to unknown domains starting two weeks prior to the incident.\n\n**Resource Development and Initial Compromise**\nTo facilitate command and control (C2), the adversary set up a rogue DNS server [T1583.002] and compromised AWS credentials to hijack Route53 hosted zones, redirecting email traffic [T1584.001]. They created malicious cloud accounts on Microsoft Teams, spoofing IT support themes [T1585.003]. The initial compromise involved injecting malicious PowerShell code into a software dependency file, maintenance.ps1, to harvest sensitive documents [T1195.001]. Additionally, the Autorun.inf file was altered to execute malware upon insertion of removable media [T1091], though this vector was not actively used in the main attack chain.\n\n**Execution and Persistence**\nOn compromised systems, the malware used ESXi administration commands via StartProgramInGuest to launch a reverse shell on target virtual machines [T1675]. Persistent access was established by modifying a Docker image to include a web shell accessible through port 8080 [T1525]. The infection chain involved executing malicious.jam via JamPlus.exe to deploy ransomware across the network [T1127.003], while Registry run keys were masqueraded as legitimate service names such as 'OneNote Update' [T1036.004]. Network traffic analysis revealed sporadic spikes in DNS queries to the rogue server, but no data exfiltration was confirmed.\n\n**Discovery and Lateral Movement**\nFor discovery, a PowerShell script called GetLocaleInfoW to identify the host's country and language settings [T1614], while RainyDay enumerated processes on target systems [T1057] and HotCroissant listed the names of all open windows [T1010]. The actors maintained administrative access by creating forged Kerberos Ticket Granting Ticket (TGT) and Ticket Granting Service (TGS) tickets [T1550.003]. Traffic signaling was observed with special packets sent to SYNful Knock to change its functionality, including code for new capabilities [T1205]. Background information: TechGlobal Inc. is a mid-sized tech firm with operations in North America and Europe, focusing on cloud solutions and virtualization services.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual DNS activity, secure cloud credentials, and audit virtual infrastructure for unauthorized modifications. Regular updates to software dependencies and restrictions on removable media usage are advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "inf file was altered to execute malware upon insertion of removable media, though this vector was not actively used in the main attack chain.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "**Execution and Persistence**\nOn compromised systems, the malware used ESXi administration commands via StartProgramInGuest to launch a reverse shell on target virtual machines.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "Persistent access was established by modifying a Docker image to include a web shell accessible through port 8080.",
+            "technique_id": "T1525",
+            "technique_name": "Implant Internal Image"
+        },
+        {
+            "sentence": "**Discovery and Lateral Movement**\nFor discovery, a PowerShell script called GetLocaleInfoW to identify the host's country and language settings, while RainyDay enumerated processes on target systems and HotCroissant listed the names of all open windows.",
+            "technique_id": "T1614",
+            "technique_name": "System Location Discovery"
+        },
+        {
+            "sentence": "**Discovery and Lateral Movement**\nFor discovery, a PowerShell script called GetLocaleInfoW to identify the host's country and language settings, while RainyDay enumerated processes on target systems and HotCroissant listed the names of all open windows.",
+            "technique_id": "T1057",
+            "technique_name": "Process Discovery"
+        },
+        {
+            "sentence": "**Discovery and Lateral Movement**\nFor discovery, a PowerShell script called GetLocaleInfoW to identify the host's country and language settings, while RainyDay enumerated processes on target systems and HotCroissant listed the names of all open windows.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        },
+        {
+            "sentence": "Traffic signaling was observed with special packets sent to SYNful Knock to change its functionality, including code for new capabilities.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Cloud and Virtual Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVeil', which targets organizations with exposed cloud services and virtual environments. The campaign involves initial reconnaissance through purchased data and scanning, followed by exploitation of compromised software dependencies and removable media to deploy ransomware via malicious build tools, while establishing persistence through Docker image modifications and Kerberos ticket forgery.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil'. This campaign demonstrates a multi-stage attack leveraging cloud infrastructure and virtualization technologies.\n\n**Initial Access and Reconnaissance**\nThe actors likely conducted reconnaissance by purchasing technical data from dark web marketplaces [T1597.002] and scanning databases like Shodan for exposed Redis servers with default configurations [T1596.005]. They validated email addresses using GetCredentialType API calls [T1589.002] to prepare for spear-phishing, though no phishing emails were observed in this scenario. System logs from the target organization, 'TechGlobal Inc.', showed unusual DNS queries to unknown domains starting two weeks prior to the incident.\n\n**Resource Development and Initial Compromise**\nTo facilitate command and control (C2), the adversary set up a rogue DNS server [T1583.002] and compromised AWS credentials to hijack Route53 hosted zones, redirecting email traffic [T1584.001]. They created malicious cloud accounts on Microsoft Teams, spoofing IT support themes [T1585.003]. The initial compromise involved injecting malicious PowerShell code into a software dependency file, maintenance.ps1, to harvest sensitive documents [T1195.001]. Additionally, the Autorun.inf file was altered to execute malware upon insertion of removable media [T1091], though this vector was not actively used in the main attack chain.\n\n**Execution and Persistence**\nOn compromised systems, the malware used ESXi administration commands via StartProgramInGuest to launch a reverse shell on target virtual machines [T1675]. Persistent access was established by modifying a Docker image to include a web shell accessible through port 8080 [T1525]. The infection chain involved executing malicious.jam via JamPlus.exe to deploy ransomware across the network [T1127.003], while Registry run keys were masqueraded as legitimate service names such as 'OneNote Update' [T1036.004]. Network traffic analysis revealed sporadic spikes in DNS queries to the rogue server, but no data exfiltration was confirmed.\n\n**Discovery and Lateral Movement**\nFor discovery, a PowerShell script called GetLocaleInfoW to identify the host's country and language settings [T1614], while RainyDay enumerated processes on target systems [T1057] and HotCroissant listed the names of all open windows [T1010]. The actors maintained administrative access by creating forged Kerberos Ticket Granting Ticket (TGT) and Ticket Granting Service (TGS) tickets [T1550.003]. Traffic signaling was observed with special packets sent to SYNful Knock to change its functionality, including code for new capabilities [T1205]. Background information: TechGlobal Inc. is a mid-sized tech firm with operations in North America and Europe, focusing on cloud solutions and virtualization services.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual DNS activity, secure cloud credentials, and audit virtual infrastructure for unauthorized modifications. Regular updates to software dependencies and restrictions on removable media usage are advised.",
+        "techniques_used": [
+            "T1597.002",
+            "T1596.005",
+            "T1589.002",
+            "T1583.002",
+            "T1584.001",
+            "T1585.003",
+            "T1195.001",
+            "T1091",
+            "T1675",
+            "T1525",
+            "T1127.003",
+            "T1036.004",
+            "T1614",
+            "T1057",
+            "T1010",
+            "T1550.003",
+            "T1205"
+        ]
+    }
+}

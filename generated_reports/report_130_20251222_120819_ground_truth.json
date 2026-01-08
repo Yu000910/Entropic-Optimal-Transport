@@ -1,0 +1,142 @@
+{
+    "report_id": "report_130",
+    "generated_at": "20251222_120819",
+    "scenario_target_ids": [
+        "T1584.002",
+        "T1608.003",
+        "T1195",
+        "T1566.002",
+        "T1059.007",
+        "T1204.004",
+        "T1564.014",
+        "T1564.009",
+        "T1027",
+        "T1003.004",
+        "T1049",
+        "T1069.001",
+        "T1033",
+        "T1021.005",
+        "T1102"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1195",
+        "T1566.002",
+        "T1059.007",
+        "T1204.004",
+        "T1059.001",
+        "T1105",
+        "T1102",
+        "T1584.002",
+        "T1608.003",
+        "T1564.014",
+        "T1564.009",
+        "T1027",
+        "T1003.004",
+        "T1049",
+        "T1069.001",
+        "T1033",
+        "T1021.005"
+    ],
+    "actual_found_ids": [
+        "T1059.007",
+        "T1564.014",
+        "T1195",
+        "T1566.002",
+        "T1003.004",
+        "T1049",
+        "T1102",
+        "T1584.002",
+        "T1589",
+        "T1564.009",
+        "T1069.001",
+        "T1059.001",
+        "T1033",
+        "T1021.005",
+        "T1105",
+        "T1608.003",
+        "T1204.004",
+        "T1027"
+    ],
+    "clean_text": "On October 15, 2023, security teams at a fictional technology firm, CloudSync Inc., detected anomalous network traffic originating from their development environment. CloudSync Inc., a provider of cloud-based collaboration tools with 500 employees, reported unusual DNS queries to external domains not associated with their services. Initial logs from their SIEM showed increased failed login attempts on build servers, but these were initially dismissed as noise from automated testing scripts.\n\nThe actors likely conducted reconnaissance to identify targets, then initiated the attack by tampering with the build automation tool to include a trojanized component in the final software package, which was distributed to users via software updates. Subsequently, Mustard Tempest sent victims emails containing links to compromised websites, where Astaroth used JavaScript to perform its core functionalities and presented a fake 'Windows Security Alert' dialog box that executed a malicious command when the user selected 'Fix Now'. Upon execution, the malware employed PowerShell to actively download additional payloads from Amazon Web Services while simultaneously modifying CNAME records in cloud DNS to redirect users from legitimate services to phishing sites. The adversary then modified httpd.conf to enable SSL and specify the malicious certificate at /usr/local/apache2/conf/server.crt, and used 'setfattr -n user.malicious_data' to conceal command and control information in file attributes while dropping malicious.exe into the resource fork of a text document. BUSHWALK encrypted the resulting data generated from C2 commands with RC4, and the malware performed a registry query to access LSA secrets stored in HKEY_LOCAL_MACHINE. BackdoorDiplomacy used NetCat and PortQry to enumerate network connections and display the status of related TCP and UDP ports, and Tonto Team used the ShowLocalGroupDetails command to identify administrator, user, and guest accounts on a compromised host. RATANKBA ran the whoami and query user commands, leading to the deployment of an unauthorized VNC server on the endpoint to facilitate remote control. System logs from affected Windows 10 machines showed increased CPU usage during off-hours, but no alerts were triggered due to misconfigured thresholds. The incident was contained after 72 hours, with no evidence of data exfiltration beyond internal reconnaissance.",
+    "tagged_text": "On October 15, 2023, security teams at a fictional technology firm, CloudSync Inc., detected anomalous network traffic originating from their development environment. CloudSync Inc., a provider of cloud-based collaboration tools with 500 employees, reported unusual DNS queries to external domains not associated with their services. Initial logs from their SIEM showed increased failed login attempts on build servers, but these were initially dismissed as noise from automated testing scripts.\n\nThe actors likely conducted reconnaissance [T1589] to identify targets, then initiated the attack by tampering with the build automation tool to include a trojanized component in the final software package [T1195], which was distributed to users via software updates. Subsequently, Mustard Tempest sent victims emails containing links to compromised websites [T1566.002], where Astaroth used JavaScript to perform its core functionalities [T1059.007] and presented a fake 'Windows Security Alert' dialog box that executed a malicious command when the user selected 'Fix Now' [T1204.004]. Upon execution, the malware employed PowerShell [T1059.001] to actively download additional payloads [T1105] from Amazon Web Services [T1102] while simultaneously modifying CNAME records in cloud DNS to redirect users from legitimate services to phishing sites [T1584.002]. The adversary then modified httpd.conf to enable SSL and specify the malicious certificate at /usr/local/apache2/conf/server.crt [T1608.003], and used 'setfattr -n user.malicious_data' to conceal command and control information in file attributes [T1564.014] while dropping malicious.exe into the resource fork of a text document [T1564.009]. BUSHWALK encrypted the resulting data generated from C2 commands with RC4 [T1027], and the malware performed a registry query to access LSA secrets stored in HKEY_LOCAL_MACHINE [T1003.004]. BackdoorDiplomacy used NetCat and PortQry to enumerate network connections and display the status of related TCP and UDP ports [T1049], and Tonto Team used the ShowLocalGroupDetails command to identify administrator, user, and guest accounts on a compromised host [T1069.001]. RATANKBA ran the whoami and query user commands [T1033], leading to the deployment of an unauthorized VNC server on the endpoint to facilitate remote control [T1021.005]. System logs from affected Windows 10 machines showed increased CPU usage during off-hours, but no alerts were triggered due to misconfigured thresholds. The incident was contained after 72 hours, with no evidence of data exfiltration beyond internal reconnaissance.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify targets, then initiated the attack by tampering with the build automation tool to include a trojanized component in the final software package, which was distributed to users via software updates.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify targets, then initiated the attack by tampering with the build automation tool to include a trojanized component in the final software package, which was distributed to users via software updates.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "001] to actively download additional payloads from Amazon Web Services while simultaneously modifying CNAME records in cloud DNS to redirect users from legitimate services to phishing sites [T1584.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download additional payloads from Amazon Web Services while simultaneously modifying CNAME records in cloud DNS to redirect users from legitimate services to phishing sites [T1584.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "BUSHWALK encrypted the resulting data generated from C2 commands with RC4, and the malware performed a registry query to access LSA secrets stored in HKEY_LOCAL_MACHINE [T1003.",
+            "technique_id": "T1027",
+            "technique_name": "Obfuscated Files or Information"
+        },
+        {
+            "sentence": "BackdoorDiplomacy used NetCat and PortQry to enumerate network connections and display the status of related TCP and UDP ports, and Tonto Team used the ShowLocalGroupDetails command to identify administrator, user, and guest accounts on a compromised host [T1069.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "RATANKBA ran the whoami and query user commands, leading to the deployment of an unauthorized VNC server on the endpoint to facilitate remote control [T1021.",
+            "technique_id": "T1033",
+            "technique_name": "System Owner/User Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRedirect' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowRedirect', which compromised a software supply chain to deploy trojanized components, redirect users via DNS manipulation, and establish persistent remote access through obfuscated techniques. The activity spans from initial access through spearphishing to lateral movement and data exfiltration, leveraging cloud services and file system attributes for stealth.",
+        "full_report_text": "On October 15, 2023, security teams at a fictional technology firm, CloudSync Inc., detected anomalous network traffic originating from their development environment. CloudSync Inc., a provider of cloud-based collaboration tools with 500 employees, reported unusual DNS queries to external domains not associated with their services. Initial logs from their SIEM showed increased failed login attempts on build servers, but these were initially dismissed as noise from automated testing scripts.\n\nThe actors likely conducted reconnaissance [T1589] to identify targets, then initiated the attack by tampering with the build automation tool to include a trojanized component in the final software package [T1195], which was distributed to users via software updates. Subsequently, Mustard Tempest sent victims emails containing links to compromised websites [T1566.002], where Astaroth used JavaScript to perform its core functionalities [T1059.007] and presented a fake 'Windows Security Alert' dialog box that executed a malicious command when the user selected 'Fix Now' [T1204.004]. Upon execution, the malware employed PowerShell [T1059.001] to actively download additional payloads [T1105] from Amazon Web Services [T1102] while simultaneously modifying CNAME records in cloud DNS to redirect users from legitimate services to phishing sites [T1584.002]. The adversary then modified httpd.conf to enable SSL and specify the malicious certificate at /usr/local/apache2/conf/server.crt [T1608.003], and used 'setfattr -n user.malicious_data' to conceal command and control information in file attributes [T1564.014] while dropping malicious.exe into the resource fork of a text document [T1564.009]. BUSHWALK encrypted the resulting data generated from C2 commands with RC4 [T1027], and the malware performed a registry query to access LSA secrets stored in HKEY_LOCAL_MACHINE [T1003.004]. BackdoorDiplomacy used NetCat and PortQry to enumerate network connections and display the status of related TCP and UDP ports [T1049], and Tonto Team used the ShowLocalGroupDetails command to identify administrator, user, and guest accounts on a compromised host [T1069.001]. RATANKBA ran the whoami and query user commands [T1033], leading to the deployment of an unauthorized VNC server on the endpoint to facilitate remote control [T1021.005]. System logs from affected Windows 10 machines showed increased CPU usage during off-hours, but no alerts were triggered due to misconfigured thresholds. The incident was contained after 72 hours, with no evidence of data exfiltration beyond internal reconnaissance.",
+        "techniques_used": [
+            "T1589",
+            "T1195",
+            "T1566.002",
+            "T1059.007",
+            "T1204.004",
+            "T1059.001",
+            "T1105",
+            "T1102",
+            "T1584.002",
+            "T1608.003",
+            "T1564.014",
+            "T1564.009",
+            "T1027",
+            "T1003.004",
+            "T1049",
+            "T1069.001",
+            "T1033",
+            "T1021.005"
+        ]
+    }
+}

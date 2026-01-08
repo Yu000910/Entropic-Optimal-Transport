@@ -1,0 +1,106 @@
+{
+    "report_id": "report_354",
+    "generated_at": "20251222_151110",
+    "scenario_target_ids": [
+        "T1133",
+        "T1106",
+        "T1542.003",
+        "T1547.001",
+        "T1542.001",
+        "T1036.002",
+        "T1124",
+        "T1040",
+        "T1568.003",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1133",
+        "T1106",
+        "T1542.001",
+        "T1547.001",
+        "T1036.002",
+        "T1542.003",
+        "T1124",
+        "T1040",
+        "T1568.003",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1567",
+        "T1542.001",
+        "T1589",
+        "T1106",
+        "T1133",
+        "T1040",
+        "T1542.003",
+        "T1124",
+        "T1568.003",
+        "T1036.002",
+        "T1547.001"
+    ],
+    "clean_text": "### Background\nShadowHook actors, a fictional APT group, have been observed targeting organizations in the energy and manufacturing sectors, with initial campaigns dating back to early 2023. The attack begins with reconnaissance activities, where actors likely conduct open-source intelligence gathering to identify potential targets, though this phase is not detailed in the provided scenario. The company, 'GlobalTech Industries', reported unusual network activity starting on October 15, 2023, with logs showing multiple failed login attempts to their VPN portal from IP addresses linked to known malicious infrastructure in Eastern Europe. System administrators noted increased CPU usage on several servers, but initial scans detected no malware, leading to delayed response.\n\n### Attack Narrative\n**Initial Access:** The actors gained initial access by exploiting external remote services, specifically initiating a connection to the company's remote access VPN using harvested employee credentials obtained from a prior phishing campaign. Once inside the network, they deployed the 'Chrommme' malware, which employed the Windows Native API, including calls to `WinExec`, to execute malicious payloads while simultaneously modifying system firmware by compromising the UEFI to ensure persistence beyond disk formatting. The malware then established persistence through Registry Run keys, adding an entry at `KCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\SystemTextEncoding` to maintain access after reboots.\n\n**Execution and Persistence:** To further evade detection, the actors used Right-to-Left Override techniques, renaming 'regedit.exe' to 'gedit🠔exe.pdf' to disguise it as a harmless document, while also deploying a bootkit that modified the Master Boot Record to encrypt system files before the operating system could start. Concurrently, the 'SVCReady' tool collected system time information to coordinate attacks and avoid time-based security measures, and the malware hooked network APIs to monitor traffic for sensitive data.\n\n**Exfiltration:** For data exfiltration, the actors utilized DNS calculation, querying DNS MX records with hidden data to bypass egress filtering, and configured servers using 'ngrok' to exfiltrate stolen information over web services. Network logs from GlobalTech Industries showed anomalous DNS queries to domains like 'mail-secure[.]com' and increased outbound traffic to cloud storage services, though initial firewall rules failed to block these activities due to the use of encrypted channels.\n\n**Additional Context:** The attack resulted in partial encryption of critical systems, with ransom demands issued in Bitcoin. Incident responders at GlobalTech Industries reported challenges in removing the bootkit and firmware compromises, requiring hardware replacements. This scenario highlights the importance of monitoring for unusual API calls, registry modifications, and DNS anomalies, as well as implementing multi-factor authentication for remote access services.",
+    "tagged_text": "### Background\nShadowHook actors, a fictional APT group, have been observed targeting organizations in the energy and manufacturing sectors, with initial campaigns dating back to early 2023. The attack begins with reconnaissance activities, where actors likely conduct open-source intelligence gathering [T1589] to identify potential targets, though this phase is not detailed in the provided scenario. The company, 'GlobalTech Industries', reported unusual network activity starting on October 15, 2023, with logs showing multiple failed login attempts to their VPN portal from IP addresses linked to known malicious infrastructure in Eastern Europe. System administrators noted increased CPU usage on several servers, but initial scans detected no malware, leading to delayed response.\n\n### Attack Narrative\n**Initial Access:** The actors gained initial access by exploiting external remote services [T1133], specifically initiating a connection to the company's remote access VPN using harvested employee credentials obtained from a prior phishing campaign. Once inside the network, they deployed the 'Chrommme' malware, which employed the Windows Native API [T1106], including calls to `WinExec`, to execute malicious payloads while simultaneously modifying system firmware [T1542.001] by compromising the UEFI to ensure persistence beyond disk formatting. The malware then established persistence through Registry Run keys [T1547.001], adding an entry at `KCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\SystemTextEncoding` to maintain access after reboots.\n\n**Execution and Persistence:** To further evade detection, the actors used Right-to-Left Override techniques [T1036.002], renaming 'regedit.exe' to 'gedit🠔exe.pdf' to disguise it as a harmless document, while also deploying a bootkit [T1542.003] that modified the Master Boot Record to encrypt system files before the operating system could start. Concurrently, the 'SVCReady' tool collected system time information [T1124] to coordinate attacks and avoid time-based security measures, and the malware hooked network APIs [T1040] to monitor traffic for sensitive data.\n\n**Exfiltration:** For data exfiltration, the actors utilized DNS calculation [T1568.003], querying DNS MX records with hidden data to bypass egress filtering, and configured servers using 'ngrok' [T1567] to exfiltrate stolen information over web services. Network logs from GlobalTech Industries showed anomalous DNS queries to domains like 'mail-secure[.]com' and increased outbound traffic to cloud storage services, though initial firewall rules failed to block these activities due to the use of encrypted channels.\n\n**Additional Context:** The attack resulted in partial encryption of critical systems, with ransom demands issued in Bitcoin. Incident responders at GlobalTech Industries reported challenges in removing the bootkit and firmware compromises, requiring hardware replacements. This scenario highlights the importance of monitoring for unusual API calls, registry modifications, and DNS anomalies, as well as implementing multi-factor authentication for remote access services.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack begins with reconnaissance activities, where actors likely conduct open-source intelligence gathering to identify potential targets, though this phase is not detailed in the provided scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "### Attack Narrative\n**Initial Access:** The actors gained initial access by exploiting external remote services, specifically initiating a connection to the company's remote access VPN using harvested employee credentials obtained from a prior phishing campaign.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Once inside the network, they deployed the 'Chrommme' malware, which employed the Windows Native API, including calls to `WinExec`, to execute malicious payloads while simultaneously modifying system firmware [T1542.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "Concurrently, the 'SVCReady' tool collected system time information to coordinate attacks and avoid time-based security measures, and the malware hooked network APIs to monitor traffic for sensitive data.",
+            "technique_id": "T1124",
+            "technique_name": "System Time Discovery"
+        },
+        {
+            "sentence": "Concurrently, the 'SVCReady' tool collected system time information to coordinate attacks and avoid time-based security measures, and the malware hooked network APIs to monitor traffic for sensitive data.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "003], querying DNS MX records with hidden data to bypass egress filtering, and configured servers using 'ngrok' to exfiltrate stolen information over web services.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated advanced persistent threat (APT) campaign, designated 'ShadowHook', targeting critical infrastructure sectors. This fictional report is designed for blue team training purposes, illustrating a multi-stage attack leveraging sophisticated techniques to compromise systems, establish persistence, and exfiltrate sensitive data. The scenario involves a ransomware variant, 'Chrommme', and associated tools like 'SVCReady' and 'ngrok', mimicking real-world threat actor behaviors such as MuddyWater and Emotet, but all content is fabricated for educational use.",
+        "full_report_text": "### Background\nShadowHook actors, a fictional APT group, have been observed targeting organizations in the energy and manufacturing sectors, with initial campaigns dating back to early 2023. The attack begins with reconnaissance activities, where actors likely conduct open-source intelligence gathering [T1589] to identify potential targets, though this phase is not detailed in the provided scenario. The company, 'GlobalTech Industries', reported unusual network activity starting on October 15, 2023, with logs showing multiple failed login attempts to their VPN portal from IP addresses linked to known malicious infrastructure in Eastern Europe. System administrators noted increased CPU usage on several servers, but initial scans detected no malware, leading to delayed response.\n\n### Attack Narrative\n**Initial Access:** The actors gained initial access by exploiting external remote services [T1133], specifically initiating a connection to the company's remote access VPN using harvested employee credentials obtained from a prior phishing campaign. Once inside the network, they deployed the 'Chrommme' malware, which employed the Windows Native API [T1106], including calls to `WinExec`, to execute malicious payloads while simultaneously modifying system firmware [T1542.001] by compromising the UEFI to ensure persistence beyond disk formatting. The malware then established persistence through Registry Run keys [T1547.001], adding an entry at `KCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\SystemTextEncoding` to maintain access after reboots.\n\n**Execution and Persistence:** To further evade detection, the actors used Right-to-Left Override techniques [T1036.002], renaming 'regedit.exe' to 'gedit🠔exe.pdf' to disguise it as a harmless document, while also deploying a bootkit [T1542.003] that modified the Master Boot Record to encrypt system files before the operating system could start. Concurrently, the 'SVCReady' tool collected system time information [T1124] to coordinate attacks and avoid time-based security measures, and the malware hooked network APIs [T1040] to monitor traffic for sensitive data.\n\n**Exfiltration:** For data exfiltration, the actors utilized DNS calculation [T1568.003], querying DNS MX records with hidden data to bypass egress filtering, and configured servers using 'ngrok' [T1567] to exfiltrate stolen information over web services. Network logs from GlobalTech Industries showed anomalous DNS queries to domains like 'mail-secure[.]com' and increased outbound traffic to cloud storage services, though initial firewall rules failed to block these activities due to the use of encrypted channels.\n\n**Additional Context:** The attack resulted in partial encryption of critical systems, with ransom demands issued in Bitcoin. Incident responders at GlobalTech Industries reported challenges in removing the bootkit and firmware compromises, requiring hardware replacements. This scenario highlights the importance of monitoring for unusual API calls, registry modifications, and DNS anomalies, as well as implementing multi-factor authentication for remote access services.",
+        "techniques_used": [
+            "T1589",
+            "T1133",
+            "T1106",
+            "T1542.001",
+            "T1547.001",
+            "T1036.002",
+            "T1542.003",
+            "T1124",
+            "T1040",
+            "T1568.003",
+            "T1567"
+        ]
+    }
+}

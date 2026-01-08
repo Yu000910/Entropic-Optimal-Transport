@@ -1,0 +1,106 @@
+{
+    "report_id": "report_128",
+    "generated_at": "20251222_120729",
+    "scenario_target_ids": [
+        "T1190",
+        "T1669",
+        "T1609",
+        "T1098.003",
+        "T1546.009",
+        "T1021.004",
+        "T1550.004",
+        "T1114.003",
+        "T1074.001",
+        "T1090",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1190",
+        "T1669",
+        "T1090",
+        "T1609",
+        "T1098.003",
+        "T1546.009",
+        "T1021.004",
+        "T1550.004",
+        "T1114.003",
+        "T1074.001",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1550.004",
+        "T1021.004",
+        "T1190",
+        "T1589",
+        "T1669",
+        "T1098.003",
+        "T1114.003",
+        "T1090",
+        "T1546.009",
+        "T1074.001",
+        "T1609",
+        "T1011.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign, 'Cobalt Octopus'. This campaign targets organizations using cloud and container technologies, with observed activity between January and March 2024. Actors likely conduct reconnaissance to identify vulnerable systems. In the attack, the adversary exploited a public-facing application by targeting a zero-day vulnerability (CVE-2024-39717) in Versa Director servers to gain initial access and execute code. Upon compromise, the malware was designed to automatically find and join any open wireless network for command and control, while simultaneously using a modified version of Invoke-Ngrok to expose open local ports to the internet as a proxy. System logs from the compromised server show unusual SSH connections at 03:45 UTC, but these were unrelated to the initial breach. The actors then leveraged 'docker exec' to run reconnaissance scripts inside a production container, and modified user roles in the cloud environment to include Global Administrator for persistent control. For persistence on Windows hosts, a backdoor DLL named 'svchost_helper.dll' was dropped and registered via AppCertDLLs. The company, a mid-sized financial services firm, reported no prior incidents in Q4 2023. Additionally, the malware used Cobalt Strike to SSH to a remote service for lateral movement, and collected browser session files to hijack authenticated sessions and bypass MFA. In one instance, PowerShell commands were executed to set up Exchange transport rules that forward executive emails to a malicious recipient. Collected information, such as financial records, was stored in the Application Data directory on compromised hosts before exfiltration. Finally, hackers leveraged Bluetooth protocol flaws to covertly transmit this staged data to an external receiver. Network traffic analysis indicated normal backup operations during the exfiltration phase, which was not part of the attack.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign, 'Cobalt Octopus'. This campaign targets organizations using cloud and container technologies, with observed activity between January and March 2024. Actors likely conduct reconnaissance [T1589] to identify vulnerable systems. In the attack, the adversary exploited a public-facing application [T1190] by targeting a zero-day vulnerability (CVE-2024-39717) in Versa Director servers to gain initial access and execute code. Upon compromise, the malware was designed to automatically find and join any open wireless network [T1669] for command and control, while simultaneously using a modified version of Invoke-Ngrok to expose open local ports to the internet [T1090] as a proxy. System logs from the compromised server show unusual SSH connections at 03:45 UTC, but these were unrelated to the initial breach. The actors then leveraged 'docker exec' [T1609] to run reconnaissance scripts inside a production container, and modified user roles in the cloud environment to include Global Administrator [T1098.003] for persistent control. For persistence on Windows hosts, a backdoor DLL named 'svchost_helper.dll' was dropped and registered via AppCertDLLs [T1546.009]. The company, a mid-sized financial services firm, reported no prior incidents in Q4 2023. Additionally, the malware used Cobalt Strike to SSH to a remote service [T1021.004] for lateral movement, and collected browser session files to hijack authenticated sessions and bypass MFA [T1550.004]. In one instance, PowerShell commands were executed to set up Exchange transport rules that forward executive emails to a malicious recipient [T1114.003]. Collected information, such as financial records, was stored in the Application Data directory on compromised hosts [T1074.001] before exfiltration. Finally, hackers leveraged Bluetooth protocol flaws to covertly transmit this staged data to an external receiver [T1011.001]. Network traffic analysis indicated normal backup operations during the exfiltration phase, which was not part of the attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "Actors likely conduct reconnaissance to identify vulnerable systems.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the attack, the adversary exploited a public-facing application by targeting a zero-day vulnerability (CVE-2024-39717) in Versa Director servers to gain initial access and execute code.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Upon compromise, the malware was designed to automatically find and join any open wireless network for command and control, while simultaneously using a modified version of Invoke-Ngrok to expose open local ports to the internet as a proxy.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Upon compromise, the malware was designed to automatically find and join any open wireless network for command and control, while simultaneously using a modified version of Invoke-Ngrok to expose open local ports to the internet as a proxy.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        },
+        {
+            "sentence": "The actors then leveraged 'docker exec' to run reconnaissance scripts inside a production container, and modified user roles in the cloud environment to include Global Administrator [T1098.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'Cobalt Octopus' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'Cobalt Octopus', targeting cloud management platforms and containerized environments. The campaign leverages a zero-day exploit for initial access, uses wireless networks and proxies for command and control, and employs container commands, role escalation, and persistence mechanisms to maintain access and exfiltrate data. This report is for blue team training to recognize complex, multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign, 'Cobalt Octopus'. This campaign targets organizations using cloud and container technologies, with observed activity between January and March 2024. Actors likely conduct reconnaissance [T1589] to identify vulnerable systems. In the attack, the adversary exploited a public-facing application [T1190] by targeting a zero-day vulnerability (CVE-2024-39717) in Versa Director servers to gain initial access and execute code. Upon compromise, the malware was designed to automatically find and join any open wireless network [T1669] for command and control, while simultaneously using a modified version of Invoke-Ngrok to expose open local ports to the internet [T1090] as a proxy. System logs from the compromised server show unusual SSH connections at 03:45 UTC, but these were unrelated to the initial breach. The actors then leveraged 'docker exec' [T1609] to run reconnaissance scripts inside a production container, and modified user roles in the cloud environment to include Global Administrator [T1098.003] for persistent control. For persistence on Windows hosts, a backdoor DLL named 'svchost_helper.dll' was dropped and registered via AppCertDLLs [T1546.009]. The company, a mid-sized financial services firm, reported no prior incidents in Q4 2023. Additionally, the malware used Cobalt Strike to SSH to a remote service [T1021.004] for lateral movement, and collected browser session files to hijack authenticated sessions and bypass MFA [T1550.004]. In one instance, PowerShell commands were executed to set up Exchange transport rules that forward executive emails to a malicious recipient [T1114.003]. Collected information, such as financial records, was stored in the Application Data directory on compromised hosts [T1074.001] before exfiltration. Finally, hackers leveraged Bluetooth protocol flaws to covertly transmit this staged data to an external receiver [T1011.001]. Network traffic analysis indicated normal backup operations during the exfiltration phase, which was not part of the attack.",
+        "techniques_used": [
+            "T1589",
+            "T1190",
+            "T1669",
+            "T1090",
+            "T1609",
+            "T1098.003",
+            "T1546.009",
+            "T1021.004",
+            "T1550.004",
+            "T1114.003",
+            "T1074.001",
+            "T1011.001"
+        ]
+    }
+}

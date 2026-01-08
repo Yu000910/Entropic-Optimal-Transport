@@ -1,0 +1,73 @@
+{
+    "report_id": "report_52",
+    "generated_at": "20251222_130804",
+    "scenario_target_ids": [
+        "T1590.001",
+        "T1598.002",
+        "T1190",
+        "T1059.011",
+        "T1555.001",
+        "T1572",
+        "T1568.002",
+        "T1048.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1590.001",
+        "T1598.002",
+        "T1190",
+        "T1059.011",
+        "T1555.001",
+        "T1572",
+        "T1568.002",
+        "T1048.002"
+    ],
+    "actual_found_ids": [
+        "T1572",
+        "T1568.002",
+        "T1059.011",
+        "T1190",
+        "T1555.001",
+        "T1590.001",
+        "T1048.002",
+        "T1598.002"
+    ],
+    "clean_text": "Background: 'ShadowStrike' is a fictional advanced persistent threat (APT) group assessed to be state-sponsored, with a focus on financial data theft. This report simulates their activities against a mid-sized bank, 'SecureBank Inc.', to provide realistic training scenarios for defensive teams. The bank's infrastructure includes Microsoft Exchange servers, Windows endpoints, and cloud-based authentication systems. Initial detection occurred through anomalous network traffic and suspicious PowerShell executions logged in SIEM alerts, though no actual breach has occurred; this is purely educational.\n\nAttack Narrative:\n1. Initial Access: The actors first conducted reconnaissance by querying the GetUserRealm API to identify authentication realms and namespace types for targeted domains. They then exploited the ProxyLogon vulnerability (CVE-2021-26855) on SecureBank's public-facing Exchange servers to gain initial foothold, while simultaneously sending spearphishing emails with malicious attachments labeled 'SecurityCheck.ps1' to key employees.\n2. Execution and Persistence: Upon compromise, the adversary employed PowerShell to execute a Lua script that harvested credentials from memory and exfiltrated them to a remote server, while also using Cuckoo Stealer to capture files from users' keychain directories. System logs showed unusual registry modifications and scheduled tasks, though these were not directly linked to the attack.\n3. Command and Control (C2): For C2 communications, the group utilized Cobalt Strike with protocol tunneling over HTTP, HTTPS, and DNS on standard ports, and conducted peer-to-peer communication via Windows named pipes encapsulated in SMB. Additionally, they employed ShadowPad with a domain generation algorithm (DGA) based on the day of the month to dynamically generate C2 server domains. Network monitoring detected spikes in encrypted traffic to unknown IPs.\n4. Exfiltration: The actors exfiltrated collected data using SMTPS for asymmetric encrypted transmission over non-C2 protocols, bypassing traditional detection mechanisms. SecureBank's data loss prevention (DLP) tools flagged unusual outbound connections, but no data was actually stolen in this simulation.\n\nIrrelevant Information: SecureBank Inc. was founded in 1995 and operates primarily in North America, with 500 employees and annual revenue of $50 million. During the investigation, routine system maintenance caused temporary downtime in the HR department's database, unrelated to the attack. Log entries from the marketing server showed failed login attempts due to password expiration, which were resolved internally.",
+    "tagged_text": "Background: 'ShadowStrike' is a fictional advanced persistent threat (APT) group assessed to be state-sponsored, with a focus on financial data theft. This report simulates their activities against a mid-sized bank, 'SecureBank Inc.', to provide realistic training scenarios for defensive teams. The bank's infrastructure includes Microsoft Exchange servers, Windows endpoints, and cloud-based authentication systems. Initial detection occurred through anomalous network traffic and suspicious PowerShell executions logged in SIEM alerts, though no actual breach has occurred; this is purely educational.\n\nAttack Narrative:\n1. Initial Access: The actors first conducted reconnaissance by querying the GetUserRealm API to identify authentication realms and namespace types for targeted domains [T1590.001]. They then exploited the ProxyLogon vulnerability (CVE-2021-26855) on SecureBank's public-facing Exchange servers to gain initial foothold [T1190], while simultaneously sending spearphishing emails with malicious attachments labeled 'SecurityCheck.ps1' to key employees [T1598.002].\n2. Execution and Persistence: Upon compromise, the adversary employed PowerShell [T1059.011] to execute a Lua script that harvested credentials from memory and exfiltrated them to a remote server [T1059.011], while also using Cuckoo Stealer to capture files from users' keychain directories [T1555.001]. System logs showed unusual registry modifications and scheduled tasks, though these were not directly linked to the attack.\n3. Command and Control (C2): For C2 communications, the group utilized Cobalt Strike with protocol tunneling over HTTP, HTTPS, and DNS on standard ports, and conducted peer-to-peer communication via Windows named pipes encapsulated in SMB [T1572]. Additionally, they employed ShadowPad with a domain generation algorithm (DGA) based on the day of the month to dynamically generate C2 server domains [T1568.002]. Network monitoring detected spikes in encrypted traffic to unknown IPs.\n4. Exfiltration: The actors exfiltrated collected data using SMTPS for asymmetric encrypted transmission over non-C2 protocols [T1048.002], bypassing traditional detection mechanisms. SecureBank's data loss prevention (DLP) tools flagged unusual outbound connections, but no data was actually stolen in this simulation.\n\nIrrelevant Information: SecureBank Inc. was founded in 1995 and operates primarily in North America, with 500 employees and annual revenue of $50 million. During the investigation, routine system maintenance caused temporary downtime in the HR department's database, unrelated to the attack. Log entries from the marketing server showed failed login attempts due to password expiration, which were resolved internally.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then exploited the ProxyLogon vulnerability (CVE-2021-26855) on SecureBank's public-facing Exchange servers to gain initial foothold, while simultaneously sending spearphishing emails with malicious attachments labeled 'SecurityCheck.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Command and Control (C2): For C2 communications, the group utilized Cobalt Strike with protocol tunneling over HTTP, HTTPS, and DNS on standard ports, and conducted peer-to-peer communication via Windows named pipes encapsulated in SMB.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowStrike' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowStrike', targeting financial institutions to exfiltrate sensitive data. The campaign employs sophisticated techniques including reconnaissance, exploitation, credential harvesting, and encrypted exfiltration, based on provided scenario techniques for blue team training.",
+        "full_report_text": "Background: 'ShadowStrike' is a fictional advanced persistent threat (APT) group assessed to be state-sponsored, with a focus on financial data theft. This report simulates their activities against a mid-sized bank, 'SecureBank Inc.', to provide realistic training scenarios for defensive teams. The bank's infrastructure includes Microsoft Exchange servers, Windows endpoints, and cloud-based authentication systems. Initial detection occurred through anomalous network traffic and suspicious PowerShell executions logged in SIEM alerts, though no actual breach has occurred; this is purely educational.\n\nAttack Narrative:\n1. Initial Access: The actors first conducted reconnaissance by querying the GetUserRealm API to identify authentication realms and namespace types for targeted domains [T1590.001]. They then exploited the ProxyLogon vulnerability (CVE-2021-26855) on SecureBank's public-facing Exchange servers to gain initial foothold [T1190], while simultaneously sending spearphishing emails with malicious attachments labeled 'SecurityCheck.ps1' to key employees [T1598.002].\n2. Execution and Persistence: Upon compromise, the adversary employed PowerShell [T1059.011] to execute a Lua script that harvested credentials from memory and exfiltrated them to a remote server [T1059.011], while also using Cuckoo Stealer to capture files from users' keychain directories [T1555.001]. System logs showed unusual registry modifications and scheduled tasks, though these were not directly linked to the attack.\n3. Command and Control (C2): For C2 communications, the group utilized Cobalt Strike with protocol tunneling over HTTP, HTTPS, and DNS on standard ports, and conducted peer-to-peer communication via Windows named pipes encapsulated in SMB [T1572]. Additionally, they employed ShadowPad with a domain generation algorithm (DGA) based on the day of the month to dynamically generate C2 server domains [T1568.002]. Network monitoring detected spikes in encrypted traffic to unknown IPs.\n4. Exfiltration: The actors exfiltrated collected data using SMTPS for asymmetric encrypted transmission over non-C2 protocols [T1048.002], bypassing traditional detection mechanisms. SecureBank's data loss prevention (DLP) tools flagged unusual outbound connections, but no data was actually stolen in this simulation.\n\nIrrelevant Information: SecureBank Inc. was founded in 1995 and operates primarily in North America, with 500 employees and annual revenue of $50 million. During the investigation, routine system maintenance caused temporary downtime in the HR department's database, unrelated to the attack. Log entries from the marketing server showed failed login attempts due to password expiration, which were resolved internally.",
+        "techniques_used": [
+            "T1590.001",
+            "T1598.002",
+            "T1190",
+            "T1059.011",
+            "T1555.001",
+            "T1572",
+            "T1568.002",
+            "T1048.002"
+        ]
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "report_id": "report_582",
+    "generated_at": "20251222_165045",
+    "scenario_target_ids": [
+        "T1078",
+        "T1204.004",
+        "T1059.010",
+        "T1069",
+        "T1016.001",
+        "T1550.002",
+        "T1072",
+        "T1090.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1204.004",
+        "T1059.010",
+        "T1016.001",
+        "T1078",
+        "T1550.002",
+        "T1069",
+        "T1072",
+        "T1090.001"
+    ],
+    "actual_found_ids": [
+        "T1016.001",
+        "T1090.001",
+        "T1069",
+        "T1059.010",
+        "T1204.004",
+        "T1072"
+    ],
+    "clean_text": "On 2023-10-15, a financial services company, 'SecureBank Inc.', reported anomalous activity on its internal network. SecureBank, headquartered in New York with 5,000 employees, operates a hybrid cloud environment using AWS and on-premises Windows servers. Initial logs showed unusual PowerShell executions from a user workstation, but no immediate alerts were triggered by the SIEM system, which had been experiencing minor latency issues due to a recent software update.\n\nThe attack began when an employee visited a compromised industry news website that displayed a fake 'Java Runtime Error' message, urging the user to copy and paste a malicious script into a terminal to fix the issue. The script, written in AutoHotKey, executed automatically upon pasting, downloading and running a payload from a command-and-control (C2) server. This payload performed internet connection discovery by pinging internal IP addresses to confirm network connectivity before establishing C2 channels.\n\nOnce inside, the adversary used stolen credentials, likely obtained from earlier phishing campaigns, to authenticate to multiple systems, including a domain controller, using pass-the-hash techniques with tools like pth.exe to move laterally without needing plaintext passwords [T1078, T1550.002]. They then conducted permission groups discovery by running commands such as 'net group \"Enterprise Admins\"' to identify high-privileged accounts across the forest. Network traffic logs indicated increased SMB activity during this phase, but no alerts were generated due to misconfigured thresholds.\n\nTo maintain persistence and expand control, the attacker leveraged AWS Systems Manager Run Command to deploy a backdoor across all managed cloud instances, simulating legitimate software updates. Additionally, they set up internal proxies using custom tools to create SOCK5 and custom protocol proxies between infected hosts, facilitating covert communication and data exfiltration. SecureBank's incident response team noted that these activities blended with normal administrative traffic, delaying detection until a routine audit flagged unusual proxy configurations on a server in the London office, which had been undergoing maintenance that week.",
+    "tagged_text": "On 2023-10-15, a financial services company, 'SecureBank Inc.', reported anomalous activity on its internal network. SecureBank, headquartered in New York with 5,000 employees, operates a hybrid cloud environment using AWS and on-premises Windows servers. Initial logs showed unusual PowerShell executions from a user workstation, but no immediate alerts were triggered by the SIEM system, which had been experiencing minor latency issues due to a recent software update.\n\nThe attack began when an employee visited a compromised industry news website that displayed a fake 'Java Runtime Error' message, urging the user to copy and paste a malicious script into a terminal to fix the issue [T1204.004]. The script, written in AutoHotKey, executed automatically upon pasting, downloading and running a payload from a command-and-control (C2) server [T1059.010]. This payload performed internet connection discovery by pinging internal IP addresses to confirm network connectivity before establishing C2 channels [T1016.001].\n\nOnce inside, the adversary used stolen credentials, likely obtained from earlier phishing campaigns, to authenticate to multiple systems, including a domain controller, using pass-the-hash techniques with tools like pth.exe to move laterally without needing plaintext passwords [T1078, T1550.002]. They then conducted permission groups discovery by running commands such as 'net group \"Enterprise Admins\"' to identify high-privileged accounts across the forest [T1069]. Network traffic logs indicated increased SMB activity during this phase, but no alerts were generated due to misconfigured thresholds.\n\nTo maintain persistence and expand control, the attacker leveraged AWS Systems Manager Run Command to deploy a backdoor across all managed cloud instances, simulating legitimate software updates [T1072]. Additionally, they set up internal proxies using custom tools to create SOCK5 and custom protocol proxies between infected hosts, facilitating covert communication and data exfiltration [T1090.001]. SecureBank's incident response team noted that these activities blended with normal administrative traffic, delaying detection until a routine audit flagged unusual proxy configurations on a server in the London office, which had been undergoing maintenance that week.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then conducted permission groups discovery by running commands such as 'net group \"Enterprise Admins\"' to identify high-privileged accounts across the forest.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "To maintain persistence and expand control, the attacker leveraged AWS Systems Manager Run Command to deploy a backdoor across all managed cloud instances, simulating legitimate software updates.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowGale', targeting financial institutions. The campaign involves initial access through social engineering, lateral movement using stolen credentials, and deployment of backdoors via software management tools. Blue teams should review this report for training on detecting and mitigating similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "On 2023-10-15, a financial services company, 'SecureBank Inc.', reported anomalous activity on its internal network. SecureBank, headquartered in New York with 5,000 employees, operates a hybrid cloud environment using AWS and on-premises Windows servers. Initial logs showed unusual PowerShell executions from a user workstation, but no immediate alerts were triggered by the SIEM system, which had been experiencing minor latency issues due to a recent software update.\n\nThe attack began when an employee visited a compromised industry news website that displayed a fake 'Java Runtime Error' message, urging the user to copy and paste a malicious script into a terminal to fix the issue [T1204.004]. The script, written in AutoHotKey, executed automatically upon pasting, downloading and running a payload from a command-and-control (C2) server [T1059.010]. This payload performed internet connection discovery by pinging internal IP addresses to confirm network connectivity before establishing C2 channels [T1016.001].\n\nOnce inside, the adversary used stolen credentials, likely obtained from earlier phishing campaigns, to authenticate to multiple systems, including a domain controller, using pass-the-hash techniques with tools like pth.exe to move laterally without needing plaintext passwords [T1078, T1550.002]. They then conducted permission groups discovery by running commands such as 'net group \"Enterprise Admins\"' to identify high-privileged accounts across the forest [T1069]. Network traffic logs indicated increased SMB activity during this phase, but no alerts were generated due to misconfigured thresholds.\n\nTo maintain persistence and expand control, the attacker leveraged AWS Systems Manager Run Command to deploy a backdoor across all managed cloud instances, simulating legitimate software updates [T1072]. Additionally, they set up internal proxies using custom tools to create SOCK5 and custom protocol proxies between infected hosts, facilitating covert communication and data exfiltration [T1090.001]. SecureBank's incident response team noted that these activities blended with normal administrative traffic, delaying detection until a routine audit flagged unusual proxy configurations on a server in the London office, which had been undergoing maintenance that week.",
+        "techniques_used": [
+            "T1204.004",
+            "T1059.010",
+            "T1016.001",
+            "T1078",
+            "T1550.002",
+            "T1069",
+            "T1072",
+            "T1090.001"
+        ]
+    }
+}

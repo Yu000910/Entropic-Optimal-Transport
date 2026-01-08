@@ -1,0 +1,16 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil'. This campaign demonstrates a multi-stage attack leveraging cloud infrastructure and virtualization technologies.
+
+**Initial Access and Reconnaissance**
+The actors likely conducted reconnaissance by purchasing technical data from dark web marketplaces [T1597.002] and scanning databases like Shodan for exposed Redis servers with default configurations [T1596.005]. They validated email addresses using GetCredentialType API calls [T1589.002] to prepare for spear-phishing, though no phishing emails were observed in this scenario. System logs from the target organization, 'TechGlobal Inc.', showed unusual DNS queries to unknown domains starting two weeks prior to the incident.
+
+**Resource Development and Initial Compromise**
+To facilitate command and control (C2), the adversary set up a rogue DNS server [T1583.002] and compromised AWS credentials to hijack Route53 hosted zones, redirecting email traffic [T1584.001]. They created malicious cloud accounts on Microsoft Teams, spoofing IT support themes [T1585.003]. The initial compromise involved injecting malicious PowerShell code into a software dependency file, maintenance.ps1, to harvest sensitive documents [T1195.001]. Additionally, the Autorun.inf file was altered to execute malware upon insertion of removable media [T1091], though this vector was not actively used in the main attack chain.
+
+**Execution and Persistence**
+On compromised systems, the malware used ESXi administration commands via StartProgramInGuest to launch a reverse shell on target virtual machines [T1675]. Persistent access was established by modifying a Docker image to include a web shell accessible through port 8080 [T1525]. The infection chain involved executing malicious.jam via JamPlus.exe to deploy ransomware across the network [T1127.003], while Registry run keys were masqueraded as legitimate service names such as 'OneNote Update' [T1036.004]. Network traffic analysis revealed sporadic spikes in DNS queries to the rogue server, but no data exfiltration was confirmed.
+
+**Discovery and Lateral Movement**
+For discovery, a PowerShell script called GetLocaleInfoW to identify the host's country and language settings [T1614], while RainyDay enumerated processes on target systems [T1057] and HotCroissant listed the names of all open windows [T1010]. The actors maintained administrative access by creating forged Kerberos Ticket Granting Ticket (TGT) and Ticket Granting Service (TGS) tickets [T1550.003]. Traffic signaling was observed with special packets sent to SYNful Knock to change its functionality, including code for new capabilities [T1205]. Background information: TechGlobal Inc. is a mid-sized tech firm with operations in North America and Europe, focusing on cloud solutions and virtualization services.
+
+**Mitigation Recommendations**
+Blue teams should monitor for unusual DNS activity, secure cloud credentials, and audit virtual infrastructure for unauthorized modifications. Regular updates to software dependencies and restrictions on removable media usage are advised.

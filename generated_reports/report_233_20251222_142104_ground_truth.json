@@ -1,0 +1,98 @@
+{
+    "report_id": "report_233",
+    "generated_at": "20251222_142104",
+    "scenario_target_ids": [
+        "T1584.006",
+        "T1078.004",
+        "T1053",
+        "T1059.012",
+        "T1546.012",
+        "T1098.003",
+        "T1555.006",
+        "T1110.001",
+        "T1563",
+        "T1071.002",
+        "T1048.003",
+        "T1499.004",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.006",
+        "T1110.001",
+        "T1078.004",
+        "T1098.003",
+        "T1053",
+        "T1546.012",
+        "T1059.012",
+        "T1563",
+        "T1071.002",
+        "T1048.003",
+        "T1555.006",
+        "T1499.003",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1059.012",
+        "T1071.002",
+        "T1555.006",
+        "T1098.003",
+        "T1110.001",
+        "T1048.003",
+        "T1584.006",
+        "T1546.012",
+        "T1078.004",
+        "T1563",
+        "T1053",
+        "T1499.003",
+        "T1499.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. APT-42, a sophisticated cyber actor, initiated this campaign by compromising a public GitHub gist to host command and control (C2) configuration data, which was later retrieved via scheduled tasks. Initial access was achieved through password guessing attacks against a list of mailboxes, leveraging weak credentials in an Office 365 environment. Once inside, the actors used valid cloud accounts to deploy the Pacu tool for reconnaissance and privilege escalation, adding Global Admin roles to an existing account to expand access. For persistence, the malware employed schtasks.exe to schedule data_exfil.exe every 30 minutes and configured Image File Execution Options Injection by modifying HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SilentProcessExit\\winlogon.exe to execute a script upon process exit. Lateral movement involved using the Hypervisor CLI to execute vim-cmd and create a new virtual machine, while remote service session hijacking was used to compromise RDP sessions on domain-joined workstations. Data exfiltration was conducted over FTP and unencrypted HTTP posts, mimicking variants that posted data to a web server. The actors also accessed cloud secrets management stores using 'gcloud secrets describe api-keys' to harvest API credentials from Google Cloud. Disruption tactics included application exhaustion floods with repeated HTTP POST requests to login endpoints and weaponizing a zero-day vulnerability in a database management system to cause persistent unavailability. System logs from the affected environment showed routine backup processes running at 02:00 UTC, but these were unrelated to the attack. The company, a mid-sized financial services firm with offices in North America and Europe, reported no prior incidents in the last quarter, though network latency spikes were noted during the campaign.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. APT-42, a sophisticated cyber actor, initiated this campaign by compromising a public GitHub gist [T1584.006] to host command and control (C2) configuration data, which was later retrieved via scheduled tasks. Initial access was achieved through password guessing attacks [T1110.001] against a list of mailboxes, leveraging weak credentials in an Office 365 environment. Once inside, the actors used valid cloud accounts [T1078.004] to deploy the Pacu tool for reconnaissance and privilege escalation, adding Global Admin roles [T1098.003] to an existing account to expand access. For persistence, the malware employed schtasks.exe to schedule data_exfil.exe every 30 minutes [T1053] and configured Image File Execution Options Injection [T1546.012] by modifying HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SilentProcessExit\\winlogon.exe to execute a script upon process exit. Lateral movement involved using the Hypervisor CLI [T1059.012] to execute vim-cmd and create a new virtual machine, while remote service session hijacking [T1563] was used to compromise RDP sessions on domain-joined workstations. Data exfiltration was conducted over FTP [T1071.002] and unencrypted HTTP posts [T1048.003], mimicking variants that posted data to a web server. The actors also accessed cloud secrets management stores [T1555.006] using 'gcloud secrets describe api-keys' to harvest API credentials from Google Cloud. Disruption tactics included application exhaustion floods [T1499.003] with repeated HTTP POST requests to login endpoints and weaponizing a zero-day vulnerability [T1499.004] in a database management system to cause persistent unavailability. System logs from the affected environment showed routine backup processes running at 02:00 UTC, but these were unrelated to the attack. The company, a mid-sized financial services firm with offices in North America and Europe, reported no prior incidents in the last quarter, though network latency spikes were noted during the campaign.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe every 30 minutes and configured Image File Execution Options Injection [T1546.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "012] to execute vim-cmd and create a new virtual machine, while remote service session hijacking was used to compromise RDP sessions on domain-joined workstations.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Cloud and Virtualized Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-42, targeting organizations with hybrid cloud and on-premises infrastructure. The campaign leverages compromised web services, cloud account abuse, and sophisticated persistence mechanisms to exfiltrate data and disrupt operations. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. APT-42, a sophisticated cyber actor, initiated this campaign by compromising a public GitHub gist [T1584.006] to host command and control (C2) configuration data, which was later retrieved via scheduled tasks. Initial access was achieved through password guessing attacks [T1110.001] against a list of mailboxes, leveraging weak credentials in an Office 365 environment. Once inside, the actors used valid cloud accounts [T1078.004] to deploy the Pacu tool for reconnaissance and privilege escalation, adding Global Admin roles [T1098.003] to an existing account to expand access. For persistence, the malware employed schtasks.exe to schedule data_exfil.exe every 30 minutes [T1053] and configured Image File Execution Options Injection [T1546.012] by modifying HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SilentProcessExit\\winlogon.exe to execute a script upon process exit. Lateral movement involved using the Hypervisor CLI [T1059.012] to execute vim-cmd and create a new virtual machine, while remote service session hijacking [T1563] was used to compromise RDP sessions on domain-joined workstations. Data exfiltration was conducted over FTP [T1071.002] and unencrypted HTTP posts [T1048.003], mimicking variants that posted data to a web server. The actors also accessed cloud secrets management stores [T1555.006] using 'gcloud secrets describe api-keys' to harvest API credentials from Google Cloud. Disruption tactics included application exhaustion floods [T1499.003] with repeated HTTP POST requests to login endpoints and weaponizing a zero-day vulnerability [T1499.004] in a database management system to cause persistent unavailability. System logs from the affected environment showed routine backup processes running at 02:00 UTC, but these were unrelated to the attack. The company, a mid-sized financial services firm with offices in North America and Europe, reported no prior incidents in the last quarter, though network latency spikes were noted during the campaign.",
+        "techniques_used": [
+            "T1584.006",
+            "T1110.001",
+            "T1078.004",
+            "T1098.003",
+            "T1053",
+            "T1546.012",
+            "T1059.012",
+            "T1563",
+            "T1071.002",
+            "T1048.003",
+            "T1555.006",
+            "T1499.003",
+            "T1499.004"
+        ]
+    }
+}

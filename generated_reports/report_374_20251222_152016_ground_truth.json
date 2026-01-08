@@ -1,0 +1,114 @@
+{
+    "report_id": "report_374",
+    "generated_at": "20251222_152016",
+    "scenario_target_ids": [
+        "T1584.002",
+        "T1078",
+        "T1204.001",
+        "T1202",
+        "T1562.008",
+        "T1056.001",
+        "T1021.007",
+        "T1560",
+        "T1039",
+        "T1056.002",
+        "T1132.002",
+        "T1090.004",
+        "T1496.003",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.002",
+        "T1078",
+        "T1204.001",
+        "T1202",
+        "T1562.008",
+        "T1056.001",
+        "T1021.007",
+        "T1560",
+        "T1039",
+        "T1056.002",
+        "T1132.002",
+        "T1090.004",
+        "T1496.003",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1496.001",
+        "T1056.001",
+        "T1496.003",
+        "T1204.001",
+        "T1021.007",
+        "T1132.002",
+        "T1078",
+        "T1202",
+        "T1090.004",
+        "T1560",
+        "T1562.008",
+        "T1056.002",
+        "T1584.002",
+        "T1059.001"
+    ],
+    "clean_text": "On October 15, 2023, Globex Corp, a technology firm with offices in North America and Europe, reported anomalous login attempts to its corporate portal. Initial investigation revealed that malicious actors had modified DNS A records for the corporate login portal to redirect users to a phishing server, leveraging compromised VPN accounts to bypass initial authentication. Employees received spear-phishing emails containing malicious links that, when clicked, executed code via pcalua.exe to run a malicious COM object while appearing as a legitimate compatibility tool. Once inside the network, the adversary employed PowerShell to disable SNS topics configured for forwarding VPC Flow Logs from CloudWatch and installed keylogging software to capture credentials. Using compromised high-privileged on-premises accounts synced to Office 365, the actors moved laterally into the cloud environment via Azure AD PowerShell, where they collected data from network shared drives and used AppleScript to display counterfeit iCloud authentication dialogs for GUI input capture. The collected data was compressed using archive tools and exfiltrated using modified Base64 encoding with URL-safe characters to obfuscate command and control traffic, while the backdoor manipulated TLS session ID values in headers to evade detection. Additionally, the reconnaissance module attempted to find Twilio webhook URLs in application source code, and attackers leveraged unsecured cloud instance metadata APIs to install cryptocurrency mining software. System logs from the affected Windows servers showed increased CPU usage and failed login attempts, but no critical alerts were triggered due to the disabled cloud logs. Globex Corp's IT team noted that the attack originated from IP addresses associated with previous campaigns, but this was later determined to be a false lead. The company's background in software development made it a high-value target, though no customer data was confirmed stolen in this simulation.",
+    "tagged_text": "On October 15, 2023, Globex Corp, a technology firm with offices in North America and Europe, reported anomalous login attempts to its corporate portal. Initial investigation revealed that malicious actors had modified DNS A records for the corporate login portal to redirect users to a phishing server [T1584.002], leveraging compromised VPN accounts [T1078] to bypass initial authentication. Employees received spear-phishing emails containing malicious links [T1204.001] that, when clicked, executed code via pcalua.exe to run a malicious COM object while appearing as a legitimate compatibility tool [T1202]. Once inside the network, the adversary employed PowerShell [T1059.001] to disable SNS topics configured for forwarding VPC Flow Logs from CloudWatch [T1562.008] and installed keylogging software [T1056.001] to capture credentials. Using compromised high-privileged on-premises accounts synced to Office 365, the actors moved laterally into the cloud environment via Azure AD PowerShell [T1021.007], where they collected data from network shared drives [T1039] and used AppleScript to display counterfeit iCloud authentication dialogs for GUI input capture [T1056.002]. The collected data was compressed using archive tools [T1560] and exfiltrated using modified Base64 encoding with URL-safe characters to obfuscate command and control traffic [T1132.002], while the backdoor manipulated TLS session ID values in headers to evade detection [T1090.004]. Additionally, the reconnaissance module attempted to find Twilio webhook URLs in application source code [T1496.003], and attackers leveraged unsecured cloud instance metadata APIs to install cryptocurrency mining software [T1496.001]. System logs from the affected Windows servers showed increased CPU usage and failed login attempts, but no critical alerts were triggered due to the disabled cloud logs. Globex Corp's IT team noted that the attack originated from IP addresses associated with previous campaigns, but this was later determined to be a false lead. The company's background in software development made it a high-value target, though no customer data was confirmed stolen in this simulation.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], leveraging compromised VPN accounts to bypass initial authentication.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "exe to run a malicious COM object while appearing as a legitimate compatibility tool.",
+            "technique_id": "T1202",
+            "technique_name": "Indirect Command Execution"
+        },
+        {
+            "sentence": "007], where they collected data from network shared drives and used AppleScript to display counterfeit iCloud authentication dialogs for GUI input capture [T1056.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "The collected data was compressed using archive tools and exfiltrated using modified Base64 encoding with URL-safe characters to obfuscate command and control traffic [T1132.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign C0032 by TEMP.Veles Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by threat actor TEMP.Veles, targeting a fictional multinational corporation, 'Globex Corp', to compromise cloud services and exfiltrate sensitive data. The campaign involves DNS manipulation, credential theft, lateral movement, and evasion techniques, based on real-world tactics for blue team training.",
+        "full_report_text": "On October 15, 2023, Globex Corp, a technology firm with offices in North America and Europe, reported anomalous login attempts to its corporate portal. Initial investigation revealed that malicious actors had modified DNS A records for the corporate login portal to redirect users to a phishing server [T1584.002], leveraging compromised VPN accounts [T1078] to bypass initial authentication. Employees received spear-phishing emails containing malicious links [T1204.001] that, when clicked, executed code via pcalua.exe to run a malicious COM object while appearing as a legitimate compatibility tool [T1202]. Once inside the network, the adversary employed PowerShell [T1059.001] to disable SNS topics configured for forwarding VPC Flow Logs from CloudWatch [T1562.008] and installed keylogging software [T1056.001] to capture credentials. Using compromised high-privileged on-premises accounts synced to Office 365, the actors moved laterally into the cloud environment via Azure AD PowerShell [T1021.007], where they collected data from network shared drives [T1039] and used AppleScript to display counterfeit iCloud authentication dialogs for GUI input capture [T1056.002]. The collected data was compressed using archive tools [T1560] and exfiltrated using modified Base64 encoding with URL-safe characters to obfuscate command and control traffic [T1132.002], while the backdoor manipulated TLS session ID values in headers to evade detection [T1090.004]. Additionally, the reconnaissance module attempted to find Twilio webhook URLs in application source code [T1496.003], and attackers leveraged unsecured cloud instance metadata APIs to install cryptocurrency mining software [T1496.001]. System logs from the affected Windows servers showed increased CPU usage and failed login attempts, but no critical alerts were triggered due to the disabled cloud logs. Globex Corp's IT team noted that the attack originated from IP addresses associated with previous campaigns, but this was later determined to be a false lead. The company's background in software development made it a high-value target, though no customer data was confirmed stolen in this simulation.",
+        "techniques_used": [
+            "T1584.002",
+            "T1078",
+            "T1204.001",
+            "T1202",
+            "T1562.008",
+            "T1056.001",
+            "T1021.007",
+            "T1560",
+            "T1039",
+            "T1056.002",
+            "T1132.002",
+            "T1090.004",
+            "T1496.003",
+            "T1496.001"
+        ]
+    }
+}

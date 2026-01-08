@@ -1,0 +1,113 @@
+{
+    "report_id": "report_488",
+    "generated_at": "20251222_160945",
+    "scenario_target_ids": [
+        "T1583.008",
+        "T1608.005",
+        "T1659",
+        "T1133",
+        "T1053",
+        "T1176.002",
+        "T1548.004",
+        "T1070.004",
+        "T1552.004",
+        "T1570",
+        "T1095",
+        "T1485"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.008",
+        "T1608.005",
+        "T1659",
+        "T1133",
+        "T1053",
+        "T1176.002",
+        "T1548.004",
+        "T1070.004",
+        "T1552.004",
+        "T1570",
+        "T1095",
+        "T1485"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1570",
+        "T1070.004",
+        "T1485",
+        "T1176.002",
+        "T1583.008",
+        "T1659",
+        "T1548.004",
+        "T1552.004",
+        "T1133",
+        "T1608.005",
+        "T1053"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign dubbed 'ShadowGamer'. This report outlines a multi-stage attack scenario designed for educational purposes, incorporating realistic but simulated techniques. Background: 'ShadowGamer' is a fictional threat actor with suspected ties to cybercriminal forums, focusing on data exfiltration and disruption in the gaming industry. Initial logs from a compromised gaming company, 'GameSphere Inc.', show unusual network traffic patterns starting in early 2024, but no actual breaches have occurred. Attack Scenario: In the initial access phase, the actors likely purchased ad inventory on a popular gaming platform to distribute trojanized software through malvertising. Once users interacted with the ads, malicious JavaScript was injected into a compromised gaming forum to capture user passwords during login attempts, exploiting weak authentication mechanisms. System logs from 'GameSphere Inc.' indicate increased proxy usage, though this was unrelated to the attack. During execution, the malware exploited a compromised ISP channel to redirect user traffic through a malicious proxy for content injection, enabling command and control (C2) communication. The actors then set up remote tunneling using an SSH tool to maintain persistent access to the compromised environment via external remote services, bypassing firewall rules. For persistence, the malware created a scheduled task via schtasks.exe to execute a keylogger every hour and dropped a malicious 'productivity-tools.vsix' file into the Visual Studio Code extensions folder to ensure long-term access. On macOS systems, the malware escalated privileges to root by prompting users for credentials, though no actual macOS incidents were reported in this simulation. In the defense evasion phase, the backdoor used file deletion capabilities to remove attack artifacts from infected systems, while a custom tool searched for and extracted private keys from the Windows certificate store to facilitate encrypted communications. Network logs showed anomalous TCP packets, but these were part of routine maintenance. For lateral movement, the malware copied files to other machines on the compromised network and used a custom binary protocol over TCP for C2, mimicking legitimate gaming traffic. Finally, in the impact phase, the actors employed a custom secure delete function to overwrite file contents with data from heap memory for data destruction, simulating a ransomware-like wipe. No real data loss occurred in this training scenario. This advisory serves as a fictional case study for blue teams to practice detection and response strategies.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign dubbed 'ShadowGamer'. This report outlines a multi-stage attack scenario designed for educational purposes, incorporating realistic but simulated techniques. Background: 'ShadowGamer' is a fictional threat actor with suspected ties to cybercriminal forums, focusing on data exfiltration and disruption in the gaming industry. Initial logs from a compromised gaming company, 'GameSphere Inc.', show unusual network traffic patterns starting in early 2024, but no actual breaches have occurred. Attack Scenario: In the initial access phase, the actors likely purchased ad inventory on a popular gaming platform to distribute trojanized software through malvertising [T1583.008]. Once users interacted with the ads, malicious JavaScript was injected into a compromised gaming forum to capture user passwords during login attempts [T1608.005], exploiting weak authentication mechanisms. System logs from 'GameSphere Inc.' indicate increased proxy usage, though this was unrelated to the attack. During execution, the malware exploited a compromised ISP channel to redirect user traffic through a malicious proxy for content injection [T1659], enabling command and control (C2) communication. The actors then set up remote tunneling using an SSH tool to maintain persistent access to the compromised environment via external remote services [T1133], bypassing firewall rules. For persistence, the malware created a scheduled task via schtasks.exe to execute a keylogger every hour [T1053] and dropped a malicious 'productivity-tools.vsix' file into the Visual Studio Code extensions folder [T1176.002] to ensure long-term access. On macOS systems, the malware escalated privileges to root by prompting users for credentials [T1548.004], though no actual macOS incidents were reported in this simulation. In the defense evasion phase, the backdoor used file deletion capabilities to remove attack artifacts from infected systems [T1070.004], while a custom tool searched for and extracted private keys from the Windows certificate store [T1552.004] to facilitate encrypted communications. Network logs showed anomalous TCP packets, but these were part of routine maintenance. For lateral movement, the malware copied files to other machines on the compromised network [T1570] and used a custom binary protocol over TCP for C2 [T1095], mimicking legitimate gaming traffic. Finally, in the impact phase, the actors employed a custom secure delete function to overwrite file contents with data from heap memory for data destruction [T1485], simulating a ransomware-like wipe. No real data loss occurred in this training scenario. This advisory serves as a fictional case study for blue teams to practice detection and response strategies.",
+    "sentence_annotations": [
+        {
+            "sentence": "During execution, the malware exploited a compromised ISP channel to redirect user traffic through a malicious proxy for content injection, enabling command and control (C2) communication.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "The actors then set up remote tunneling using an SSH tool to maintain persistent access to the compromised environment via external remote services, bypassing firewall rules.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "exe to execute a keylogger every hour and dropped a malicious 'productivity-tools.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "For lateral movement, the malware copied files to other machines on the compromised network and used a custom binary protocol over TCP for C2, mimicking legitimate gaming traffic.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "For lateral movement, the malware copied files to other machines on the compromised network and used a custom binary protocol over TCP for C2, mimicking legitimate gaming traffic.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "Finally, in the impact phase, the actors employed a custom secure delete function to overwrite file contents with data from heap memory for data destruction, simulating a ransomware-like wipe.",
+            "technique_id": "T1485",
+            "technique_name": "Data Destruction"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGamer' Targeting Gaming and Tech Sectors",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowGamer', targeting gaming platforms and technology companies through malvertising, content injection, and lateral movement, culminating in data destruction. The campaign leverages compromised infrastructure and custom tools to maintain persistence and evade detection.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign dubbed 'ShadowGamer'. This report outlines a multi-stage attack scenario designed for educational purposes, incorporating realistic but simulated techniques. Background: 'ShadowGamer' is a fictional threat actor with suspected ties to cybercriminal forums, focusing on data exfiltration and disruption in the gaming industry. Initial logs from a compromised gaming company, 'GameSphere Inc.', show unusual network traffic patterns starting in early 2024, but no actual breaches have occurred. Attack Scenario: In the initial access phase, the actors likely purchased ad inventory on a popular gaming platform to distribute trojanized software through malvertising [T1583.008]. Once users interacted with the ads, malicious JavaScript was injected into a compromised gaming forum to capture user passwords during login attempts [T1608.005], exploiting weak authentication mechanisms. System logs from 'GameSphere Inc.' indicate increased proxy usage, though this was unrelated to the attack. During execution, the malware exploited a compromised ISP channel to redirect user traffic through a malicious proxy for content injection [T1659], enabling command and control (C2) communication. The actors then set up remote tunneling using an SSH tool to maintain persistent access to the compromised environment via external remote services [T1133], bypassing firewall rules. For persistence, the malware created a scheduled task via schtasks.exe to execute a keylogger every hour [T1053] and dropped a malicious 'productivity-tools.vsix' file into the Visual Studio Code extensions folder [T1176.002] to ensure long-term access. On macOS systems, the malware escalated privileges to root by prompting users for credentials [T1548.004], though no actual macOS incidents were reported in this simulation. In the defense evasion phase, the backdoor used file deletion capabilities to remove attack artifacts from infected systems [T1070.004], while a custom tool searched for and extracted private keys from the Windows certificate store [T1552.004] to facilitate encrypted communications. Network logs showed anomalous TCP packets, but these were part of routine maintenance. For lateral movement, the malware copied files to other machines on the compromised network [T1570] and used a custom binary protocol over TCP for C2 [T1095], mimicking legitimate gaming traffic. Finally, in the impact phase, the actors employed a custom secure delete function to overwrite file contents with data from heap memory for data destruction [T1485], simulating a ransomware-like wipe. No real data loss occurred in this training scenario. This advisory serves as a fictional case study for blue teams to practice detection and response strategies.",
+        "techniques_used": [
+            "T1583.008",
+            "T1608.005",
+            "T1659",
+            "T1133",
+            "T1053",
+            "T1176.002",
+            "T1548.004",
+            "T1070.004",
+            "T1552.004",
+            "T1570",
+            "T1095",
+            "T1485"
+        ]
+    }
+}

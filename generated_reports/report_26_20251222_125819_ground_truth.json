@@ -1,0 +1,68 @@
+{
+    "report_id": "report_26",
+    "generated_at": "20251222_125819",
+    "scenario_target_ids": [
+        "T1195.003",
+        "T1059.002",
+        "T1574.006",
+        "T1557.002",
+        "T1114.002",
+        "T1213.004",
+        "T1102.003",
+        "T1490"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1059.002",
+        "T1574.006",
+        "T1557.002",
+        "T1114.002",
+        "T1213.004",
+        "T1102.003",
+        "T1490"
+    ],
+    "actual_found_ids": [
+        "T1114.002",
+        "T1557.002",
+        "T1213.004",
+        "T1102.003",
+        "T1574.006",
+        "T1195.003",
+        "T1490",
+        "T1059.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The actors, designated as 'SilentVendor', initiated their campaign by distributing compromised USB-to-Ethernet adapters through a hardware supplier, which performed automated network reconnaissance upon connection to target systems. Once initial access was achieved, the malware wrote a persistent AppleScript to the user's LaunchAgents folder, ensuring execution on every login to maintain persistence. To evade detection, the threat actor set the LD_PRELOAD environment variable to point to a malicious shared object file, hijacking library loading processes. Concurrently, the attacker scanned the local network to identify ARP requests between the gateway and target workstations, enabling ARP cache poisoning to intercept and manipulate network traffic. Using this intercepted data, the adversary employed tools like MailSniper to remotely search for and collect emails containing sensitive financial transaction details. Additionally, the actors leveraged compromised credentials to access Microsoft Dynamics 365, gathering extensive customer purchase histories from the CRM software. To cover their tracks, a PowerShell command was executed to delete system event logs, implementing one-way communication to obscure malicious activities. Finally, to inhibit system recovery, the malware used vssadmin.exe to delete all shadow copy backups with the command 'delete shadows /all /quiet', preventing restoration efforts. Background noise: The targeted organization, 'FinSecure Corp.', reported unusual network latency spikes and multiple failed login attempts from unrecognized IP addresses in their SIEM logs, though these were initially attributed to routine maintenance. System administrators noted increased CPU usage on several macOS workstations, but no immediate alerts were triggered due to misconfigured monitoring thresholds.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The actors, designated as 'SilentVendor', initiated their campaign by distributing compromised USB-to-Ethernet adapters through a hardware supplier, which performed automated network reconnaissance upon connection to target systems [T1195.003]. Once initial access was achieved, the malware wrote a persistent AppleScript to the user's LaunchAgents folder, ensuring execution on every login to maintain persistence [T1059.002]. To evade detection, the threat actor set the LD_PRELOAD environment variable to point to a malicious shared object file, hijacking library loading processes [T1574.006]. Concurrently, the attacker scanned the local network to identify ARP requests between the gateway and target workstations, enabling ARP cache poisoning to intercept and manipulate network traffic [T1557.002]. Using this intercepted data, the adversary employed tools like MailSniper to remotely search for and collect emails containing sensitive financial transaction details [T1114.002]. Additionally, the actors leveraged compromised credentials to access Microsoft Dynamics 365, gathering extensive customer purchase histories from the CRM software [T1213.004]. To cover their tracks, a PowerShell command was executed to delete system event logs, implementing one-way communication to obscure malicious activities [T1102.003]. Finally, to inhibit system recovery, the malware used vssadmin.exe to delete all shadow copy backups with the command 'delete shadows /all /quiet', preventing restoration efforts [T1490]. Background noise: The targeted organization, 'FinSecure Corp.', reported unusual network latency spikes and multiple failed login attempts from unrecognized IP addresses in their SIEM logs, though these were initially attributed to routine maintenance. System administrators noted increased CPU usage on several macOS workstations, but no immediate alerts were triggered due to misconfigured monitoring thresholds.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to delete all shadow copy backups with the command 'delete shadows /all /quiet', preventing restoration efforts.",
+            "technique_id": "T1490",
+            "technique_name": "Inhibit System Recovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentVendor' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'SilentVendor', targeting financial institutions. The campaign involves hardware supply chain compromise, macOS persistence mechanisms, network manipulation, and data exfiltration to disrupt operations and steal sensitive information. Blue teams should review this report for training on detecting and mitigating multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The actors, designated as 'SilentVendor', initiated their campaign by distributing compromised USB-to-Ethernet adapters through a hardware supplier, which performed automated network reconnaissance upon connection to target systems [T1195.003]. Once initial access was achieved, the malware wrote a persistent AppleScript to the user's LaunchAgents folder, ensuring execution on every login to maintain persistence [T1059.002]. To evade detection, the threat actor set the LD_PRELOAD environment variable to point to a malicious shared object file, hijacking library loading processes [T1574.006]. Concurrently, the attacker scanned the local network to identify ARP requests between the gateway and target workstations, enabling ARP cache poisoning to intercept and manipulate network traffic [T1557.002]. Using this intercepted data, the adversary employed tools like MailSniper to remotely search for and collect emails containing sensitive financial transaction details [T1114.002]. Additionally, the actors leveraged compromised credentials to access Microsoft Dynamics 365, gathering extensive customer purchase histories from the CRM software [T1213.004]. To cover their tracks, a PowerShell command was executed to delete system event logs, implementing one-way communication to obscure malicious activities [T1102.003]. Finally, to inhibit system recovery, the malware used vssadmin.exe to delete all shadow copy backups with the command 'delete shadows /all /quiet', preventing restoration efforts [T1490]. Background noise: The targeted organization, 'FinSecure Corp.', reported unusual network latency spikes and multiple failed login attempts from unrecognized IP addresses in their SIEM logs, though these were initially attributed to routine maintenance. System administrators noted increased CPU usage on several macOS workstations, but no immediate alerts were triggered due to misconfigured monitoring thresholds.",
+        "techniques_used": [
+            "T1195.003",
+            "T1059.002",
+            "T1574.006",
+            "T1557.002",
+            "T1114.002",
+            "T1213.004",
+            "T1102.003",
+            "T1490"
+        ]
+    }
+}

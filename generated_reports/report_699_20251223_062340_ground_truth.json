@@ -1,0 +1,78 @@
+{
+    "report_id": "report_699",
+    "generated_at": "20251223_062340",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1059.008",
+        "T1106",
+        "T1218",
+        "T1574",
+        "T1606.001",
+        "T1550.002",
+        "T1001.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1059.008",
+        "T1106",
+        "T1218",
+        "T1574",
+        "T1606.001",
+        "T1550.002",
+        "T1001.003"
+    ],
+    "actual_found_ids": [
+        "T1001.003",
+        "T1606.001",
+        "T1550.002",
+        "T1218",
+        "T1106",
+        "T1574",
+        "T1059.008",
+        "T1078.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowSwitch'. This group has been observed targeting energy and telecommunications sectors, with a focus on disrupting network operations and stealing sensitive data. Initial analysis indicates the campaign began in early 2024, leveraging common misconfigurations in enterprise environments. System logs from affected organizations show unusual login attempts from external IP addresses, though these were initially dismissed as routine scanning activity.\n\nIn the initial access phase, the actors conducted network reconnaissance to identify systems with enabled Guest accounts, exploiting default credentials to gain a foothold. Once inside, they executed malicious commands via the network device CLI, such as 'delete flash:vlan.dat', to disrupt VLAN configurations and cause operational delays. The attackers then employed SharpHound, using .NET API calls to collect Active Directory data, while simultaneously leveraging svchost.exe to host and run malicious payloads, evading process monitoring. For privilege escalation, they hijacked the execution flow by targeting cryptbase.dll within migwiz.exe, bypassing UAC controls and gaining elevated access.\n\nDuring lateral movement, the group used pass the hash techniques to authenticate across systems, while intercepting and forging web cookies through a proxy to maintain unauthorized access to web applications. To obscure command and control (C2) communications, they employed protocol impersonation, using fake TLS to mimic legitimate traffic and avoid detection by network security tools. Additional noise in logs included routine backup failures and DNS query timeouts, which were unrelated to the attack but complicated initial triage efforts. The campaign's impact included temporary network outages and potential data leakage, though no real-world incidents have been reported as this is a training scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowSwitch'. This group has been observed targeting energy and telecommunications sectors, with a focus on disrupting network operations and stealing sensitive data. Initial analysis indicates the campaign began in early 2024, leveraging common misconfigurations in enterprise environments. System logs from affected organizations show unusual login attempts from external IP addresses, though these were initially dismissed as routine scanning activity.\n\nIn the initial access phase, the actors conducted network reconnaissance to identify systems with enabled Guest accounts, exploiting default credentials [T1078.001] to gain a foothold. Once inside, they executed malicious commands via the network device CLI, such as 'delete flash:vlan.dat' [T1059.008], to disrupt VLAN configurations and cause operational delays. The attackers then employed SharpHound, using .NET API calls [T1106] to collect Active Directory data, while simultaneously leveraging svchost.exe [T1218] to host and run malicious payloads, evading process monitoring. For privilege escalation, they hijacked the execution flow by targeting cryptbase.dll within migwiz.exe [T1574], bypassing UAC controls and gaining elevated access.\n\nDuring lateral movement, the group used pass the hash techniques [T1550.002] to authenticate across systems, while intercepting and forging web cookies [T1606.001] through a proxy to maintain unauthorized access to web applications. To obscure command and control (C2) communications, they employed protocol impersonation, using fake TLS [T1001.003] to mimic legitimate traffic and avoid detection by network security tools. Additional noise in logs included routine backup failures and DNS query timeouts, which were unrelated to the attack but complicated initial triage efforts. The campaign's impact included temporary network outages and potential data leakage, though no real-world incidents have been reported as this is a training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "NET API calls to collect Active Directory data, while simultaneously leveraging svchost.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "exe to host and run malicious payloads, evading process monitoring.",
+            "technique_id": "T1218",
+            "technique_name": "System Binary Proxy Execution"
+        },
+        {
+            "sentence": "exe, bypassing UAC controls and gaining elevated access.",
+            "technique_id": "T1574",
+            "technique_name": "Hijack Execution Flow"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSwitch' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowSwitch', targeting critical infrastructure sectors. Based on observed activity, the actors exploit default accounts to gain initial access, manipulate network devices, and use sophisticated techniques for persistence, lateral movement, and data exfiltration. The report is intended for blue team training to enhance detection and response capabilities in realistic scenarios.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowSwitch'. This group has been observed targeting energy and telecommunications sectors, with a focus on disrupting network operations and stealing sensitive data. Initial analysis indicates the campaign began in early 2024, leveraging common misconfigurations in enterprise environments. System logs from affected organizations show unusual login attempts from external IP addresses, though these were initially dismissed as routine scanning activity.\n\nIn the initial access phase, the actors conducted network reconnaissance to identify systems with enabled Guest accounts, exploiting default credentials [T1078.001] to gain a foothold. Once inside, they executed malicious commands via the network device CLI, such as 'delete flash:vlan.dat' [T1059.008], to disrupt VLAN configurations and cause operational delays. The attackers then employed SharpHound, using .NET API calls [T1106] to collect Active Directory data, while simultaneously leveraging svchost.exe [T1218] to host and run malicious payloads, evading process monitoring. For privilege escalation, they hijacked the execution flow by targeting cryptbase.dll within migwiz.exe [T1574], bypassing UAC controls and gaining elevated access.\n\nDuring lateral movement, the group used pass the hash techniques [T1550.002] to authenticate across systems, while intercepting and forging web cookies [T1606.001] through a proxy to maintain unauthorized access to web applications. To obscure command and control (C2) communications, they employed protocol impersonation, using fake TLS [T1001.003] to mimic legitimate traffic and avoid detection by network security tools. Additional noise in logs included routine backup failures and DNS query timeouts, which were unrelated to the attack but complicated initial triage efforts. The campaign's impact included temporary network outages and potential data leakage, though no real-world incidents have been reported as this is a training scenario.",
+        "techniques_used": [
+            "T1078.001",
+            "T1059.008",
+            "T1106",
+            "T1218",
+            "T1574",
+            "T1606.001",
+            "T1550.002",
+            "T1001.003"
+        ]
+    }
+}

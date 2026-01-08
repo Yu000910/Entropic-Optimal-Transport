@@ -1,0 +1,93 @@
+{
+    "report_id": "report_705",
+    "generated_at": "20251223_104104",
+    "scenario_target_ids": [
+        "T1583.003",
+        "T1586.001",
+        "T1195.002",
+        "T1204",
+        "T1550.002",
+        "T1574.005",
+        "T1040",
+        "T1573.001",
+        "T1090.002",
+        "T1567",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1583.003",
+        "T1586.001",
+        "T1195.002",
+        "T1204",
+        "T1550.002",
+        "T1574.005",
+        "T1040",
+        "T1573.001",
+        "T1090.002",
+        "T1567",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1567",
+        "T1574.005",
+        "T1550.002",
+        "T1586.001",
+        "T1583.003",
+        "T1573.001",
+        "T1040",
+        "T1090.002",
+        "T1020.001",
+        "T1204"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign designated 'ShadowLedger'. This report is based on simulated activities for educational purposes and does not reflect real-world incidents. Background: The targeted organization, 'FinSecure Corp.', is a mid-sized financial services company with offices in North America and Europe, using standard Windows-based infrastructure and cloud services like AWS for some operations. System logs from FinSecure's SIEM showed unusual network traffic patterns starting on 2023-10-15, but initial investigations flagged them as false positives due to a recent software update.\n\nAttack Narrative:\nInitial Access: The actors likely acquired infrastructure by renting a Virtual Private Server (VPS) from a European hosting provider with minimal verification requirements and used it to host credential capture webpages, compromising legitimate social media accounts to distribute malicious links. They then replaced the legitimate compiled binary of the 'AccountPro' accounting software with a trojanized version on the official download server, which users executed by interacting with malicious LNK files embedded in phishing emails.\n\nExecution and Persistence: Upon execution, the malware leveraged an Executable Installer File Permissions Weakness by locating installer.exe in the current user's downloads folder to gain higher permissions, enabling it to run Mimikatz.exe to collect Kerberos tickets and NTLM hashes from the compromised workstation while simultaneously employing PowerShell to actively download additional payloads and modify registry keys for persistence.\n\nDefense Evasion and Command & Control: To evade detection, the malware used Symmetric Cryptography with a custom XOR key and bit rotation for encrypting C2 traffic and tunneled this traffic through legitimate web services using an External Proxy like HTRAN. It also performed Network Sniffing by leveraging AWS Traffic Mirroring to intercept plaintext passwords during user login sequences and used Traffic Duplication with tools like ROMMONkit to capture mirrored traffic containing confidential information.\n\nExfiltration: Finally, the actors conducted Exfiltration Over Web Service by using a PowerShell script to collect sensitive documents from the user's Documents folder and exfiltrated them through the proxy infrastructure. Unrelated log entries from FinSecure's firewall showed increased DNS queries to benign domains like update.microsoft.com during this period, which were later determined to be coincidental with scheduled maintenance activities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign designated 'ShadowLedger'. This report is based on simulated activities for educational purposes and does not reflect real-world incidents. Background: The targeted organization, 'FinSecure Corp.', is a mid-sized financial services company with offices in North America and Europe, using standard Windows-based infrastructure and cloud services like AWS for some operations. System logs from FinSecure's SIEM showed unusual network traffic patterns starting on 2023-10-15, but initial investigations flagged them as false positives due to a recent software update.\n\nAttack Narrative:\nInitial Access: The actors likely acquired infrastructure by renting a Virtual Private Server (VPS) from a European hosting provider with minimal verification requirements [T1583.003] and used it to host credential capture webpages, compromising legitimate social media accounts [T1586.001] to distribute malicious links. They then replaced the legitimate compiled binary of the 'AccountPro' accounting software with a trojanized version on the official download server [T1195.002], which users executed by interacting with malicious LNK files embedded in phishing emails [T1204].\n\nExecution and Persistence: Upon execution, the malware leveraged an Executable Installer File Permissions Weakness by locating installer.exe in the current user's downloads folder to gain higher permissions [T1574.005], enabling it to run Mimikatz.exe to collect Kerberos tickets and NTLM hashes from the compromised workstation [T1550.002] while simultaneously employing PowerShell to actively download additional payloads and modify registry keys for persistence.\n\nDefense Evasion and Command & Control: To evade detection, the malware used Symmetric Cryptography with a custom XOR key and bit rotation for encrypting C2 traffic [T1573.001] and tunneled this traffic through legitimate web services using an External Proxy like HTRAN [T1090.002]. It also performed Network Sniffing by leveraging AWS Traffic Mirroring to intercept plaintext passwords during user login sequences [T1040] and used Traffic Duplication with tools like ROMMONkit to capture mirrored traffic containing confidential information [T1020.001].\n\nExfiltration: Finally, the actors conducted Exfiltration Over Web Service by using a PowerShell script to collect sensitive documents from the user's Documents folder [T1567] and exfiltrated them through the proxy infrastructure. Unrelated log entries from FinSecure's firewall showed increased DNS queries to benign domains like update.microsoft.com during this period, which were later determined to be coincidental with scheduled maintenance activities.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], which users executed by interacting with malicious LNK files embedded in phishing emails.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "It also performed Network Sniffing by leveraging AWS Traffic Mirroring to intercept plaintext passwords during user login sequences and used Traffic Duplication with tools like ROMMONkit to capture mirrored traffic containing confidential information [T1020.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "Exfiltration: Finally, the actors conducted Exfiltration Over Web Service by using a PowerShell script to collect sensitive documents from the user's Documents folder and exfiltrated them through the proxy infrastructure.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowLedger' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowLedger', which targets financial institutions through a supply chain compromise and social engineering tactics. The campaign leverages a trojanized accounting software to gain initial access, followed by credential theft, lateral movement, and data exfiltration. Blue teams should review this report for training on detecting and mitigating multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign designated 'ShadowLedger'. This report is based on simulated activities for educational purposes and does not reflect real-world incidents. Background: The targeted organization, 'FinSecure Corp.', is a mid-sized financial services company with offices in North America and Europe, using standard Windows-based infrastructure and cloud services like AWS for some operations. System logs from FinSecure's SIEM showed unusual network traffic patterns starting on 2023-10-15, but initial investigations flagged them as false positives due to a recent software update.\n\nAttack Narrative:\nInitial Access: The actors likely acquired infrastructure by renting a Virtual Private Server (VPS) from a European hosting provider with minimal verification requirements [T1583.003] and used it to host credential capture webpages, compromising legitimate social media accounts [T1586.001] to distribute malicious links. They then replaced the legitimate compiled binary of the 'AccountPro' accounting software with a trojanized version on the official download server [T1195.002], which users executed by interacting with malicious LNK files embedded in phishing emails [T1204].\n\nExecution and Persistence: Upon execution, the malware leveraged an Executable Installer File Permissions Weakness by locating installer.exe in the current user's downloads folder to gain higher permissions [T1574.005], enabling it to run Mimikatz.exe to collect Kerberos tickets and NTLM hashes from the compromised workstation [T1550.002] while simultaneously employing PowerShell to actively download additional payloads and modify registry keys for persistence.\n\nDefense Evasion and Command & Control: To evade detection, the malware used Symmetric Cryptography with a custom XOR key and bit rotation for encrypting C2 traffic [T1573.001] and tunneled this traffic through legitimate web services using an External Proxy like HTRAN [T1090.002]. It also performed Network Sniffing by leveraging AWS Traffic Mirroring to intercept plaintext passwords during user login sequences [T1040] and used Traffic Duplication with tools like ROMMONkit to capture mirrored traffic containing confidential information [T1020.001].\n\nExfiltration: Finally, the actors conducted Exfiltration Over Web Service by using a PowerShell script to collect sensitive documents from the user's Documents folder [T1567] and exfiltrated them through the proxy infrastructure. Unrelated log entries from FinSecure's firewall showed increased DNS queries to benign domains like update.microsoft.com during this period, which were later determined to be coincidental with scheduled maintenance activities.",
+        "techniques_used": [
+            "T1583.003",
+            "T1586.001",
+            "T1195.002",
+            "T1204",
+            "T1550.002",
+            "T1574.005",
+            "T1040",
+            "T1573.001",
+            "T1090.002",
+            "T1567",
+            "T1020.001"
+        ]
+    }
+}

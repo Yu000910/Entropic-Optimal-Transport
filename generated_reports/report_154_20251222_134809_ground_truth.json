@@ -1,0 +1,108 @@
+{
+    "report_id": "report_154",
+    "generated_at": "20251222_134809",
+    "scenario_target_ids": [
+        "T1669",
+        "T1566",
+        "T1203",
+        "T1546.014",
+        "T1207",
+        "T1564.014",
+        "T1027.011",
+        "T1003.002",
+        "T1673",
+        "T1021.002",
+        "T1071.003",
+        "T1567.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1669",
+        "T1566",
+        "T1203",
+        "T1546.014",
+        "T1207",
+        "T1564.014",
+        "T1027.011",
+        "T1003.002",
+        "T1673",
+        "T1021.002",
+        "T1071.003",
+        "T1567.001"
+    ],
+    "actual_found_ids": [
+        "T1027.011",
+        "T1669",
+        "T1003.002",
+        "T1546.014",
+        "T1566",
+        "T1673",
+        "T1207",
+        "T1071.003",
+        "T1021.002",
+        "T1564.014",
+        "T1203",
+        "T1567.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign, designated 'Nearest Neighbor,' which has been observed targeting organizations in the financial and technology sectors. This campaign leverages a combination of initial access via compromised Wi-Fi networks and multi-stage payload delivery to establish long-term persistence and exfiltrate sensitive data.\n\n**Attack Narrative**\nThe actors began by conducting reconnaissance on target organizations, focusing on physical locations and network infrastructure. System logs from a victim company, 'TechGlobal Inc.,' show unusual wireless connection attempts from unauthorized devices over the past month, though these were initially dismissed as benign anomalies. The adversary established connections to secure enterprise Wi-Fi networks to gain initial footholds into the environment, exploiting weak encryption protocols in some legacy access points.\n\nOnce inside the network, the threat actors sent spear-phishing emails disguised as critical software updates from a trusted vendor, which contained hidden executable payloads. A user in the marketing department reported receiving an email titled 'Adobe Flash Player Security Patch Required,' which triggered an alert in the email gateway but was not blocked due to a misconfigured filter. The payload exploited a known vulnerability, CVE-2011-0611 in Adobe Flash Player, to execute malicious code on the compromised system, bypassing traditional antivirus solutions that failed to detect the obfuscated exploit.\n\nFor persistence, the actors wrote a plist file to the /etc/emond.d/rules/ directory to maintain access across system reboots, while simultaneously using the 'setfattr -h -n user.hidden_data -v base64_encoded_payload' command to conceal malicious code in file metadata and storing configuration data as an RC4-encrypted Registry key under `HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameCon`. Background checks on system administrators revealed no prior incidents, but internal audits noted inconsistent patch management practices that may have facilitated the attack.\n\nIn later stages, the adversary employed 'esxcli software vib list' to discover virtual machines and used SMBexec for lateral movement via SMB/Windows Admin Shares, targeting domain controllers to inject malicious objects directly into the Active Directory database using tools like DCShadow.exe. During this phase, the actors used the `reg save` command to save registry hives, including the Security Account Manager, to harvest credentials for privilege escalation. Network traffic analysis showed spikes in IMAP protocol usage for command and control communications, correlating with data exfiltration to a Bitbucket repository using automated API requests, where stolen intellectual property was stored under fake user accounts. The company's incident response team is currently investigating the full scope, with no confirmed data loss reported publicly.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign, designated 'Nearest Neighbor,' which has been observed targeting organizations in the financial and technology sectors. This campaign leverages a combination of initial access via compromised Wi-Fi networks and multi-stage payload delivery to establish long-term persistence and exfiltrate sensitive data.\n\n**Attack Narrative**\nThe actors began by conducting reconnaissance on target organizations, focusing on physical locations and network infrastructure. System logs from a victim company, 'TechGlobal Inc.,' show unusual wireless connection attempts from unauthorized devices over the past month, though these were initially dismissed as benign anomalies. The adversary established connections to secure enterprise Wi-Fi networks [T1669] to gain initial footholds into the environment, exploiting weak encryption protocols in some legacy access points.\n\nOnce inside the network, the threat actors sent spear-phishing emails disguised as critical software updates from a trusted vendor, which contained hidden executable payloads [T1566]. A user in the marketing department reported receiving an email titled 'Adobe Flash Player Security Patch Required,' which triggered an alert in the email gateway but was not blocked due to a misconfigured filter. The payload exploited a known vulnerability, CVE-2011-0611 in Adobe Flash Player [T1203], to execute malicious code on the compromised system, bypassing traditional antivirus solutions that failed to detect the obfuscated exploit.\n\nFor persistence, the actors wrote a plist file to the /etc/emond.d/rules/ directory [T1546.014] to maintain access across system reboots, while simultaneously using the 'setfattr -h -n user.hidden_data -v base64_encoded_payload' command to conceal malicious code in file metadata [T1564.014] and storing configuration data as an RC4-encrypted Registry key under `HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameCon` [T1027.011]. Background checks on system administrators revealed no prior incidents, but internal audits noted inconsistent patch management practices that may have facilitated the attack.\n\nIn later stages, the adversary employed 'esxcli software vib list' to discover virtual machines [T1673] and used SMBexec for lateral movement via SMB/Windows Admin Shares [T1021.002], targeting domain controllers to inject malicious objects directly into the Active Directory database using tools like DCShadow.exe [T1207]. During this phase, the actors used the `reg save` command to save registry hives [T1003.002], including the Security Account Manager, to harvest credentials for privilege escalation. Network traffic analysis showed spikes in IMAP protocol usage [T1071.003] for command and control communications, correlating with data exfiltration to a Bitbucket repository using automated API requests [T1567.001], where stolen intellectual property was stored under fake user accounts. The company's incident response team is currently investigating the full scope, with no confirmed data loss reported publicly.",
+    "sentence_annotations": [
+        {
+            "sentence": "The adversary established connections to secure enterprise Wi-Fi networks to gain initial footholds into the environment, exploiting weak encryption protocols in some legacy access points.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Once inside the network, the threat actors sent spear-phishing emails disguised as critical software updates from a trusted vendor, which contained hidden executable payloads.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "The payload exploited a known vulnerability, CVE-2011-0611 in Adobe Flash Player, to execute malicious code on the compromised system, bypassing traditional antivirus solutions that failed to detect the obfuscated exploit.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "In later stages, the adversary employed 'esxcli software vib list' to discover virtual machines and used SMBexec for lateral movement via SMB/Windows Admin Shares [T1021.",
+            "technique_id": "T1673",
+            "technique_name": "Virtual Machine Discovery"
+        },
+        {
+            "sentence": "exe.",
+            "technique_id": "T1207",
+            "technique_name": "Rogue Domain Controller"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Nearest Neighbor' Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, based on real-world techniques, targeting enterprise environments through Wi-Fi infiltration, phishing, and advanced persistence mechanisms. It is intended for blue team training to enhance detection and response capabilities against sophisticated threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign, designated 'Nearest Neighbor,' which has been observed targeting organizations in the financial and technology sectors. This campaign leverages a combination of initial access via compromised Wi-Fi networks and multi-stage payload delivery to establish long-term persistence and exfiltrate sensitive data.\n\n**Attack Narrative**\nThe actors began by conducting reconnaissance on target organizations, focusing on physical locations and network infrastructure. System logs from a victim company, 'TechGlobal Inc.,' show unusual wireless connection attempts from unauthorized devices over the past month, though these were initially dismissed as benign anomalies. The adversary established connections to secure enterprise Wi-Fi networks [T1669] to gain initial footholds into the environment, exploiting weak encryption protocols in some legacy access points.\n\nOnce inside the network, the threat actors sent spear-phishing emails disguised as critical software updates from a trusted vendor, which contained hidden executable payloads [T1566]. A user in the marketing department reported receiving an email titled 'Adobe Flash Player Security Patch Required,' which triggered an alert in the email gateway but was not blocked due to a misconfigured filter. The payload exploited a known vulnerability, CVE-2011-0611 in Adobe Flash Player [T1203], to execute malicious code on the compromised system, bypassing traditional antivirus solutions that failed to detect the obfuscated exploit.\n\nFor persistence, the actors wrote a plist file to the /etc/emond.d/rules/ directory [T1546.014] to maintain access across system reboots, while simultaneously using the 'setfattr -h -n user.hidden_data -v base64_encoded_payload' command to conceal malicious code in file metadata [T1564.014] and storing configuration data as an RC4-encrypted Registry key under `HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameCon` [T1027.011]. Background checks on system administrators revealed no prior incidents, but internal audits noted inconsistent patch management practices that may have facilitated the attack.\n\nIn later stages, the adversary employed 'esxcli software vib list' to discover virtual machines [T1673] and used SMBexec for lateral movement via SMB/Windows Admin Shares [T1021.002], targeting domain controllers to inject malicious objects directly into the Active Directory database using tools like DCShadow.exe [T1207]. During this phase, the actors used the `reg save` command to save registry hives [T1003.002], including the Security Account Manager, to harvest credentials for privilege escalation. Network traffic analysis showed spikes in IMAP protocol usage [T1071.003] for command and control communications, correlating with data exfiltration to a Bitbucket repository using automated API requests [T1567.001], where stolen intellectual property was stored under fake user accounts. The company's incident response team is currently investigating the full scope, with no confirmed data loss reported publicly.",
+        "techniques_used": [
+            "T1669",
+            "T1566",
+            "T1203",
+            "T1546.014",
+            "T1207",
+            "T1564.014",
+            "T1027.011",
+            "T1003.002",
+            "T1673",
+            "T1021.002",
+            "T1071.003",
+            "T1567.001"
+        ]
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "report_id": "report_196",
+    "generated_at": "20251222_123428",
+    "scenario_target_ids": [
+        "T1591.001",
+        "T1583.008",
+        "T1195.003",
+        "T1204",
+        "T1053",
+        "T1546.013",
+        "T1606",
+        "T1110.004",
+        "T1021.001",
+        "T1001",
+        "T1020.001",
+        "T1491.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591.001",
+        "T1583.008",
+        "T1195.003",
+        "T1204",
+        "T1053",
+        "T1546.013",
+        "T1606",
+        "T1110.004",
+        "T1021.001",
+        "T1001",
+        "T1020.001",
+        "T1491.001"
+    ],
+    "actual_found_ids": [
+        "T1204",
+        "T1583.008",
+        "T1053",
+        "T1110.004",
+        "T1195.003",
+        "T1021.001",
+        "T1020.001",
+        "T1591.001",
+        "T1606",
+        "T1001",
+        "T1546.013",
+        "T1491.001"
+    ],
+    "clean_text": "On March 15, 2024, security teams at a fictional energy company, 'PowerGrid Inc.', detected anomalous activity indicative of a coordinated cyber intrusion. PowerGrid Inc., headquartered in Houston, Texas, operates multiple facilities across the southwestern United States, with a focus on renewable energy production. Initial logs from their web server showed unusual spikes in traffic from IP addresses associated with known malicious actors, but no immediate alerts were triggered.\n\nThe adversary, 'ShadowSupply', likely began by conducting reconnaissance to determine physical locations of PowerGrid Inc.'s facilities through their corporate website, which listed addresses and contact details for offices in Arizona and Nevada. System administrators noted increased scanning activity on perimeter firewalls, but this was initially attributed to routine botnet noise.\n\nFollowing reconnaissance, the actors employed malvertising by embedding malicious code in online ads that exploited a vulnerability in Adobe Flash Player, targeting employees browsing news sites during work hours. Concurrently, they compromised the hardware supply chain by distributing modified Teensy USB devices through a third-party vendor, which were later plugged into workstations at PowerGrid Inc.'s Nevada facility, as reported in internal IT support tickets.\n\nTo gain initial access, the adversary leveraged user execution by hosting a compromised website that delivered a malicious PDF; when an employee in the finance department opened the PDF in their browser, it dropped and executed njRAT, establishing a foothold. The malware then used scheduled tasks to set timers via 'timeSetEvent' for persistence and timed execution of subsequent stages.\n\nFor further persistence and reconnaissance, the actors modified the PowerShell profile to run automated commands upon PowerShell startup, enabling continuous data collection. They also forged web credentials by leveraging the AWS AssumeRole API to generate temporary security credentials for cross-account access into PowerGrid Inc.'s cloud infrastructure, as detected in anomalous IAM logs.\n\nTo escalate privileges, the adversary conducted credential stuffing against remote services, using previously leaked credentials to obtain valid accounts for lateral movement. They then utilized Remote Desktop Protocol to move laterally across the network, accessing servers in the Arizona data center.\n\nTo conceal command and control activities, the malware employed data obfuscation through DLL injection with malicious.dll, hiding traffic in legitimate processes. Additionally, it used traffic duplication via ROMMONkit's mirroring capabilities to automatically exfiltrate sensitive data, such as operational schematics and employee records, to external servers.\n\nFinally, after exfiltration, the actors executed internal defacement by encrypting files, capturing the desktop background, setting it to black, and changing the wallpaper to a bitmap image with the text 'All your files are encrypted! For more information see README-FOR-DECRYPT.txt', simulating ransomware deployment. Incident response teams at PowerGrid Inc. are currently investigating, with no real impact as this is a training scenario.",
+    "tagged_text": "On March 15, 2024, security teams at a fictional energy company, 'PowerGrid Inc.', detected anomalous activity indicative of a coordinated cyber intrusion. PowerGrid Inc., headquartered in Houston, Texas, operates multiple facilities across the southwestern United States, with a focus on renewable energy production. Initial logs from their web server showed unusual spikes in traffic from IP addresses associated with known malicious actors, but no immediate alerts were triggered.\n\nThe adversary, 'ShadowSupply', likely began by conducting reconnaissance to determine physical locations [T1591.001] of PowerGrid Inc.'s facilities through their corporate website, which listed addresses and contact details for offices in Arizona and Nevada. System administrators noted increased scanning activity on perimeter firewalls, but this was initially attributed to routine botnet noise.\n\nFollowing reconnaissance, the actors employed malvertising [T1583.008] by embedding malicious code in online ads that exploited a vulnerability in Adobe Flash Player, targeting employees browsing news sites during work hours. Concurrently, they compromised the hardware supply chain [T1195.003] by distributing modified Teensy USB devices through a third-party vendor, which were later plugged into workstations at PowerGrid Inc.'s Nevada facility, as reported in internal IT support tickets.\n\nTo gain initial access, the adversary leveraged user execution [T1204] by hosting a compromised website that delivered a malicious PDF; when an employee in the finance department opened the PDF in their browser, it dropped and executed njRAT, establishing a foothold. The malware then used scheduled tasks [T1053] to set timers via 'timeSetEvent' for persistence and timed execution of subsequent stages.\n\nFor further persistence and reconnaissance, the actors modified the PowerShell profile [T1546.013] to run automated commands upon PowerShell startup, enabling continuous data collection. They also forged web credentials [T1606] by leveraging the AWS AssumeRole API to generate temporary security credentials for cross-account access into PowerGrid Inc.'s cloud infrastructure, as detected in anomalous IAM logs.\n\nTo escalate privileges, the adversary conducted credential stuffing [T1110.004] against remote services, using previously leaked credentials to obtain valid accounts for lateral movement. They then utilized Remote Desktop Protocol [T1021.001] to move laterally across the network, accessing servers in the Arizona data center.\n\nTo conceal command and control activities, the malware employed data obfuscation [T1001] through DLL injection with malicious.dll, hiding traffic in legitimate processes. Additionally, it used traffic duplication [T1020.001] via ROMMONkit's mirroring capabilities to automatically exfiltrate sensitive data, such as operational schematics and employee records, to external servers.\n\nFinally, after exfiltration, the actors executed internal defacement [T1491.001] by encrypting files, capturing the desktop background, setting it to black, and changing the wallpaper to a bitmap image with the text 'All your files are encrypted! For more information see README-FOR-DECRYPT.txt', simulating ransomware deployment. Incident response teams at PowerGrid Inc. are currently investigating, with no real impact as this is a training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "To gain initial access, the adversary leveraged user execution by hosting a compromised website that delivered a malicious PDF; when an employee in the finance department opened the PDF in their browser, it dropped and executed njRAT, establishing a foothold.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "The malware then used scheduled tasks to set timers via 'timeSetEvent' for persistence and timed execution of subsequent stages.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "They also forged web credentials by leveraging the AWS AssumeRole API to generate temporary security credentials for cross-account access into PowerGrid Inc.",
+            "technique_id": "T1606",
+            "technique_name": "Forge Web Credentials"
+        },
+        {
+            "sentence": "To conceal command and control activities, the malware employed data obfuscation through DLL injection with malicious.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL Campaign 'ShadowSupply' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowSupply', targeting critical infrastructure sectors. The campaign combines reconnaissance, supply chain compromise, and sophisticated execution techniques to infiltrate networks, exfiltrate data, and deploy ransomware. This report is for educational purposes to train blue teams on identifying and mitigating such multi-stage attacks.",
+        "full_report_text": "On March 15, 2024, security teams at a fictional energy company, 'PowerGrid Inc.', detected anomalous activity indicative of a coordinated cyber intrusion. PowerGrid Inc., headquartered in Houston, Texas, operates multiple facilities across the southwestern United States, with a focus on renewable energy production. Initial logs from their web server showed unusual spikes in traffic from IP addresses associated with known malicious actors, but no immediate alerts were triggered.\n\nThe adversary, 'ShadowSupply', likely began by conducting reconnaissance to determine physical locations [T1591.001] of PowerGrid Inc.'s facilities through their corporate website, which listed addresses and contact details for offices in Arizona and Nevada. System administrators noted increased scanning activity on perimeter firewalls, but this was initially attributed to routine botnet noise.\n\nFollowing reconnaissance, the actors employed malvertising [T1583.008] by embedding malicious code in online ads that exploited a vulnerability in Adobe Flash Player, targeting employees browsing news sites during work hours. Concurrently, they compromised the hardware supply chain [T1195.003] by distributing modified Teensy USB devices through a third-party vendor, which were later plugged into workstations at PowerGrid Inc.'s Nevada facility, as reported in internal IT support tickets.\n\nTo gain initial access, the adversary leveraged user execution [T1204] by hosting a compromised website that delivered a malicious PDF; when an employee in the finance department opened the PDF in their browser, it dropped and executed njRAT, establishing a foothold. The malware then used scheduled tasks [T1053] to set timers via 'timeSetEvent' for persistence and timed execution of subsequent stages.\n\nFor further persistence and reconnaissance, the actors modified the PowerShell profile [T1546.013] to run automated commands upon PowerShell startup, enabling continuous data collection. They also forged web credentials [T1606] by leveraging the AWS AssumeRole API to generate temporary security credentials for cross-account access into PowerGrid Inc.'s cloud infrastructure, as detected in anomalous IAM logs.\n\nTo escalate privileges, the adversary conducted credential stuffing [T1110.004] against remote services, using previously leaked credentials to obtain valid accounts for lateral movement. They then utilized Remote Desktop Protocol [T1021.001] to move laterally across the network, accessing servers in the Arizona data center.\n\nTo conceal command and control activities, the malware employed data obfuscation [T1001] through DLL injection with malicious.dll, hiding traffic in legitimate processes. Additionally, it used traffic duplication [T1020.001] via ROMMONkit's mirroring capabilities to automatically exfiltrate sensitive data, such as operational schematics and employee records, to external servers.\n\nFinally, after exfiltration, the actors executed internal defacement [T1491.001] by encrypting files, capturing the desktop background, setting it to black, and changing the wallpaper to a bitmap image with the text 'All your files are encrypted! For more information see README-FOR-DECRYPT.txt', simulating ransomware deployment. Incident response teams at PowerGrid Inc. are currently investigating, with no real impact as this is a training scenario.",
+        "techniques_used": [
+            "T1591.001",
+            "T1583.008",
+            "T1195.003",
+            "T1204",
+            "T1053",
+            "T1546.013",
+            "T1606",
+            "T1110.004",
+            "T1021.001",
+            "T1001",
+            "T1020.001",
+            "T1491.001"
+        ]
+    }
+}

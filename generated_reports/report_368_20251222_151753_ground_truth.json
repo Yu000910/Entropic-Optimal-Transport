@@ -1,0 +1,98 @@
+{
+    "report_id": "report_368",
+    "generated_at": "20251222_151753",
+    "scenario_target_ids": [
+        "T1593.002",
+        "T1590.003",
+        "T1189",
+        "T1106",
+        "T1547.007",
+        "T1555.005",
+        "T1069.001",
+        "T1615",
+        "T1102.001",
+        "T1102.003",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.002",
+        "T1590.003",
+        "T1189",
+        "T1106",
+        "T1547.007",
+        "T1555.005",
+        "T1069.001",
+        "T1615",
+        "T1102.001",
+        "T1102.003",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1590.003",
+        "T1102.001",
+        "T1029",
+        "T1547.007",
+        "T1593.002",
+        "T1106",
+        "T1102.003",
+        "T1069.001",
+        "T1189",
+        "T1615",
+        "T1555.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report outlines the TTPs of 'ShadowMirage,' a simulated threat actor targeting organizations in the energy and manufacturing sectors. Initial analysis indicates the campaign began in early 2024, with actors exploiting publicly available information and weak web security to gain initial footholds.\n\n**Reconnaissance Phase:**\nThe actors likely conducted extensive reconnaissance to identify potential targets and vulnerabilities. Using specialized query syntax on search engines, they searched for exposed backup files with queries like 'intitle:\"index of\" \"target company\" backup,' uncovering sensitive data on misconfigured web servers. Additionally, they queried public WHOIS databases to discover organizational subsidiaries and their network trust dependencies, mapping out potential entry points through less-secure partner networks. System logs from target firewalls showed increased scanning activity from IP addresses associated with known proxy services, though this was not directly linked to the initial compromise.\n\n**Initial Access and Execution:**\nTo gain initial access, the actors employed a drive-by compromise by infecting a legitimate industry news website frequented by employees, turning it into a watering hole that delivered malicious JavaScript payloads when visited. Upon execution, the payload leveraged native API calls to bypass security software and inject code into legitimate processes, such as svchost.exe, while simultaneously modifying registry keys to establish persistence. For persistence on macOS systems, the actors modified com.apple.loginwindow.UUID.plist to re-open applications, ensuring network scanning utilities executed automatically upon user authentication, though this was observed in a limited test environment only.\n\n**Credential Access and Discovery:**\nAfter establishing a foothold, the actors focused on credential harvesting and system discovery. A script was deployed to locate and exfiltrate the LastPass vault file stored in the browser's local application data directory, extracting stored passwords for further lateral movement. To understand the local environment, a PowerShell script ran 'net localgroup administrators' to discover users with administrative rights on the target machine, while also using tools like BloodHound to collect local admin information via Group Policy discovery, mapping out privilege escalation paths across the domain. Network traffic analysis revealed anomalous SMB connections during off-hours, but these were unrelated to the primary attack chain.\n\n**Command and Control (C2):**\nFor C2 communication, the actors implemented sophisticated methods to evade detection. They used a dead drop resolver by reading C2 instructions from publicly accessible Google Documents, with malware configured to parse specific fields for commands. Additionally, they established one-way communication by downloading resources from Web services like Twitter and GitHub, where binaries contained algorithms to generate different Twitter handles daily for instruction retrieval, mimicking HAMMERTOSS TTPs. To avoid pattern detection, the malware employed scheduled transfers, sleeping for randomized intervals between data exfiltration attempts, though some network logs showed failed connections due to firewall rules blocking unknown domains. The target company, 'Global Energy Solutions,' reported no actual data loss, but this scenario highlights potential weaknesses in their security posture.\n\n**Mitigation Recommendations (Fictional):**\nBlue teams should monitor for unusual search engine queries targeting their organization, secure web servers against misconfigurations, implement application whitelisting to block unauthorized native API usage, audit persistence mechanisms on all operating systems, enforce strong password manager security policies, regularly review local group memberships and GPO settings, and deploy network monitoring tools to detect anomalous C2 traffic patterns. This advisory serves as a training exercise to enhance defensive capabilities against similar real-world threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report outlines the TTPs of 'ShadowMirage,' a simulated threat actor targeting organizations in the energy and manufacturing sectors. Initial analysis indicates the campaign began in early 2024, with actors exploiting publicly available information and weak web security to gain initial footholds.\n\n**Reconnaissance Phase:**\nThe actors likely conducted extensive reconnaissance to identify potential targets and vulnerabilities. Using specialized query syntax on search engines [T1593.002], they searched for exposed backup files with queries like 'intitle:\"index of\" \"target company\" backup,' uncovering sensitive data on misconfigured web servers. Additionally, they queried public WHOIS databases to discover organizational subsidiaries and their network trust dependencies [T1590.003], mapping out potential entry points through less-secure partner networks. System logs from target firewalls showed increased scanning activity from IP addresses associated with known proxy services, though this was not directly linked to the initial compromise.\n\n**Initial Access and Execution:**\nTo gain initial access, the actors employed a drive-by compromise [T1189] by infecting a legitimate industry news website frequented by employees, turning it into a watering hole that delivered malicious JavaScript payloads when visited. Upon execution, the payload leveraged native API calls [T1106] to bypass security software and inject code into legitimate processes, such as svchost.exe, while simultaneously modifying registry keys to establish persistence. For persistence on macOS systems, the actors modified com.apple.loginwindow.UUID.plist to re-open applications [T1547.007], ensuring network scanning utilities executed automatically upon user authentication, though this was observed in a limited test environment only.\n\n**Credential Access and Discovery:**\nAfter establishing a foothold, the actors focused on credential harvesting and system discovery. A script was deployed to locate and exfiltrate the LastPass vault file stored in the browser's local application data directory [T1555.005], extracting stored passwords for further lateral movement. To understand the local environment, a PowerShell script ran 'net localgroup administrators' [T1069.001] to discover users with administrative rights on the target machine, while also using tools like BloodHound to collect local admin information via Group Policy discovery [T1615], mapping out privilege escalation paths across the domain. Network traffic analysis revealed anomalous SMB connections during off-hours, but these were unrelated to the primary attack chain.\n\n**Command and Control (C2):**\nFor C2 communication, the actors implemented sophisticated methods to evade detection. They used a dead drop resolver [T1102.001] by reading C2 instructions from publicly accessible Google Documents, with malware configured to parse specific fields for commands. Additionally, they established one-way communication [T1102.003] by downloading resources from Web services like Twitter and GitHub, where binaries contained algorithms to generate different Twitter handles daily for instruction retrieval, mimicking HAMMERTOSS TTPs. To avoid pattern detection, the malware employed scheduled transfers [T1029], sleeping for randomized intervals between data exfiltration attempts, though some network logs showed failed connections due to firewall rules blocking unknown domains. The target company, 'Global Energy Solutions,' reported no actual data loss, but this scenario highlights potential weaknesses in their security posture.\n\n**Mitigation Recommendations (Fictional):**\nBlue teams should monitor for unusual search engine queries targeting their organization, secure web servers against misconfigurations, implement application whitelisting to block unauthorized native API usage, audit persistence mechanisms on all operating systems, enforce strong password manager security policies, regularly review local group memberships and GPO settings, and deploy network monitoring tools to detect anomalous C2 traffic patterns. This advisory serves as a training exercise to enhance defensive capabilities against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Initial Access and Execution:**\nTo gain initial access, the actors employed a drive-by compromise by infecting a legitimate industry news website frequented by employees, turning it into a watering hole that delivered malicious JavaScript payloads when visited.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Upon execution, the payload leveraged native API calls to bypass security software and inject code into legitimate processes, such as svchost.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "001] to discover users with administrative rights on the target machine, while also using tools like BloodHound to collect local admin information via Group Policy discovery, mapping out privilege escalation paths across the domain.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "To avoid pattern detection, the malware employed scheduled transfers, sleeping for randomized intervals between data exfiltration attempts, though some network logs showed failed connections due to firewall rules blocking unknown domains.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMirage' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowMirage,' targeting critical infrastructure sectors. Based on observed tactics, techniques, and procedures (TTPs), this report aims to educate blue teams on reconnaissance, initial access, execution, persistence, credential access, discovery, and command and control (C2) methods. The scenario involves a multi-stage attack leveraging public data, compromised websites, native APIs, persistence mechanisms, password manager exploitation, local system discovery, and covert C2 channels. All information is fictional and intended for training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report outlines the TTPs of 'ShadowMirage,' a simulated threat actor targeting organizations in the energy and manufacturing sectors. Initial analysis indicates the campaign began in early 2024, with actors exploiting publicly available information and weak web security to gain initial footholds.\n\n**Reconnaissance Phase:**\nThe actors likely conducted extensive reconnaissance to identify potential targets and vulnerabilities. Using specialized query syntax on search engines [T1593.002], they searched for exposed backup files with queries like 'intitle:\"index of\" \"target company\" backup,' uncovering sensitive data on misconfigured web servers. Additionally, they queried public WHOIS databases to discover organizational subsidiaries and their network trust dependencies [T1590.003], mapping out potential entry points through less-secure partner networks. System logs from target firewalls showed increased scanning activity from IP addresses associated with known proxy services, though this was not directly linked to the initial compromise.\n\n**Initial Access and Execution:**\nTo gain initial access, the actors employed a drive-by compromise [T1189] by infecting a legitimate industry news website frequented by employees, turning it into a watering hole that delivered malicious JavaScript payloads when visited. Upon execution, the payload leveraged native API calls [T1106] to bypass security software and inject code into legitimate processes, such as svchost.exe, while simultaneously modifying registry keys to establish persistence. For persistence on macOS systems, the actors modified com.apple.loginwindow.UUID.plist to re-open applications [T1547.007], ensuring network scanning utilities executed automatically upon user authentication, though this was observed in a limited test environment only.\n\n**Credential Access and Discovery:**\nAfter establishing a foothold, the actors focused on credential harvesting and system discovery. A script was deployed to locate and exfiltrate the LastPass vault file stored in the browser's local application data directory [T1555.005], extracting stored passwords for further lateral movement. To understand the local environment, a PowerShell script ran 'net localgroup administrators' [T1069.001] to discover users with administrative rights on the target machine, while also using tools like BloodHound to collect local admin information via Group Policy discovery [T1615], mapping out privilege escalation paths across the domain. Network traffic analysis revealed anomalous SMB connections during off-hours, but these were unrelated to the primary attack chain.\n\n**Command and Control (C2):**\nFor C2 communication, the actors implemented sophisticated methods to evade detection. They used a dead drop resolver [T1102.001] by reading C2 instructions from publicly accessible Google Documents, with malware configured to parse specific fields for commands. Additionally, they established one-way communication [T1102.003] by downloading resources from Web services like Twitter and GitHub, where binaries contained algorithms to generate different Twitter handles daily for instruction retrieval, mimicking HAMMERTOSS TTPs. To avoid pattern detection, the malware employed scheduled transfers [T1029], sleeping for randomized intervals between data exfiltration attempts, though some network logs showed failed connections due to firewall rules blocking unknown domains. The target company, 'Global Energy Solutions,' reported no actual data loss, but this scenario highlights potential weaknesses in their security posture.\n\n**Mitigation Recommendations (Fictional):**\nBlue teams should monitor for unusual search engine queries targeting their organization, secure web servers against misconfigurations, implement application whitelisting to block unauthorized native API usage, audit persistence mechanisms on all operating systems, enforce strong password manager security policies, regularly review local group memberships and GPO settings, and deploy network monitoring tools to detect anomalous C2 traffic patterns. This advisory serves as a training exercise to enhance defensive capabilities against similar real-world threats.",
+        "techniques_used": [
+            "T1593.002",
+            "T1590.003",
+            "T1189",
+            "T1106",
+            "T1547.007",
+            "T1555.005",
+            "T1069.001",
+            "T1615",
+            "T1102.001",
+            "T1102.003",
+            "T1029"
+        ]
+    }
+}

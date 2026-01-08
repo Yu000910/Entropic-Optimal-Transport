@@ -1,0 +1,98 @@
+{
+    "report_id": "report_103",
+    "generated_at": "20251222_115748",
+    "scenario_target_ids": [
+        "T1589.003",
+        "T1078.001",
+        "T1072",
+        "T1098",
+        "T1546.013",
+        "T1563.001",
+        "T1602.002",
+        "T1001.003",
+        "T1020",
+        "T1052.001",
+        "T1496"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589.003",
+        "T1078.001",
+        "T1072",
+        "T1098",
+        "T1546.013",
+        "T1563.001",
+        "T1602.002",
+        "T1001.003",
+        "T1020",
+        "T1052.001",
+        "T1496"
+    ],
+    "actual_found_ids": [
+        "T1602.002",
+        "T1563.001",
+        "T1001.003",
+        "T1020",
+        "T1589.003",
+        "T1078.001",
+        "T1098",
+        "T1052.001",
+        "T1496",
+        "T1072",
+        "T1546.013"
+    ],
+    "clean_text": "APT-FICT actors likely conducted reconnaissance by scraping employee names from public-facing staff biographies to craft targeted phishing campaigns. The penetration tester identified an active Guest account using common default password lists, which the adversary exploited for initial access. Once inside, the actors employed AWS Systems Manager Run Command to execute a reconnaissance script across multiple AWS accounts while simultaneously modifying account credentials using Mimikatz modules like LSADUMP::ChangeNTLM to manipulate password hashes without clear text values. To maintain persistence, the threat actor configured the AllUsers profile.ps1 to run reconnaissance scripts during PowerShell startup, enabling automated execution upon user login. For lateral movement, the attacker exploited stolen SSH private keys to authenticate to multiple systems in the network, querying SNMP to gather network device configurations for mapping the infrastructure. To evade detection, the actors modified URI endpoints by adding random query parameters to disguise command and control (C2) traffic, which was used to automate exfiltration of documents matching specific extensions to C2 servers. Additionally, the adversary utilized USB devices to collect system information and network configurations from compromised machines, while secretly installing mining software that hijacked system resources to generate cryptocurrency revenue. Throughout the campaign, APT-FICT leveraged a combination of these techniques to achieve their objectives, with logs showing increased CPU usage on several servers and network traffic spikes during exfiltration phases. The target organization, a fictional energy provider, reported no operational disruptions, but the simulation highlights vulnerabilities in default account management and insufficient monitoring of cloud deployment tools.",
+    "tagged_text": "APT-FICT actors likely conducted reconnaissance by scraping employee names from public-facing staff biographies [T1589.003] to craft targeted phishing campaigns. The penetration tester identified an active Guest account using common default password lists, which the adversary exploited for initial access [T1078.001]. Once inside, the actors employed AWS Systems Manager Run Command [T1072] to execute a reconnaissance script across multiple AWS accounts while simultaneously modifying account credentials using Mimikatz modules like LSADUMP::ChangeNTLM to manipulate password hashes without clear text values [T1098]. To maintain persistence, the threat actor configured the AllUsers profile.ps1 [T1546.013] to run reconnaissance scripts during PowerShell startup, enabling automated execution upon user login. For lateral movement, the attacker exploited stolen SSH private keys [T1563.001] to authenticate to multiple systems in the network, querying SNMP to gather network device configurations [T1602.002] for mapping the infrastructure. To evade detection, the actors modified URI endpoints by adding random query parameters [T1001.003] to disguise command and control (C2) traffic, which was used to automate exfiltration of documents matching specific extensions to C2 servers [T1020]. Additionally, the adversary utilized USB devices [T1052.001] to collect system information and network configurations from compromised machines, while secretly installing mining software that hijacked system resources to generate cryptocurrency revenue [T1496]. Throughout the campaign, APT-FICT leveraged a combination of these techniques to achieve their objectives, with logs showing increased CPU usage on several servers and network traffic spikes during exfiltration phases. The target organization, a fictional energy provider, reported no operational disruptions, but the simulation highlights vulnerabilities in default account management and insufficient monitoring of cloud deployment tools.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, the actors employed AWS Systems Manager Run Command to execute a reconnaissance script across multiple AWS accounts while simultaneously modifying account credentials using Mimikatz modules like LSADUMP::ChangeNTLM to manipulate password hashes without clear text values.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "Once inside, the actors employed AWS Systems Manager Run Command to execute a reconnaissance script across multiple AWS accounts while simultaneously modifying account credentials using Mimikatz modules like LSADUMP::ChangeNTLM to manipulate password hashes without clear text values.",
+            "technique_id": "T1098",
+            "technique_name": "Account Manipulation"
+        },
+        {
+            "sentence": "003] to disguise command and control (C2) traffic, which was used to automate exfiltration of documents matching specific extensions to C2 servers.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        },
+        {
+            "sentence": "001] to collect system information and network configurations from compromised machines, while secretly installing mining software that hijacked system resources to generate cryptocurrency revenue.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting critical infrastructure sectors. The campaign involves reconnaissance, initial access via default accounts, lateral movement using stolen credentials, and data exfiltration through multiple covert channels. Blue teams should use this report for training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "APT-FICT actors likely conducted reconnaissance by scraping employee names from public-facing staff biographies [T1589.003] to craft targeted phishing campaigns. The penetration tester identified an active Guest account using common default password lists, which the adversary exploited for initial access [T1078.001]. Once inside, the actors employed AWS Systems Manager Run Command [T1072] to execute a reconnaissance script across multiple AWS accounts while simultaneously modifying account credentials using Mimikatz modules like LSADUMP::ChangeNTLM to manipulate password hashes without clear text values [T1098]. To maintain persistence, the threat actor configured the AllUsers profile.ps1 [T1546.013] to run reconnaissance scripts during PowerShell startup, enabling automated execution upon user login. For lateral movement, the attacker exploited stolen SSH private keys [T1563.001] to authenticate to multiple systems in the network, querying SNMP to gather network device configurations [T1602.002] for mapping the infrastructure. To evade detection, the actors modified URI endpoints by adding random query parameters [T1001.003] to disguise command and control (C2) traffic, which was used to automate exfiltration of documents matching specific extensions to C2 servers [T1020]. Additionally, the adversary utilized USB devices [T1052.001] to collect system information and network configurations from compromised machines, while secretly installing mining software that hijacked system resources to generate cryptocurrency revenue [T1496]. Throughout the campaign, APT-FICT leveraged a combination of these techniques to achieve their objectives, with logs showing increased CPU usage on several servers and network traffic spikes during exfiltration phases. The target organization, a fictional energy provider, reported no operational disruptions, but the simulation highlights vulnerabilities in default account management and insufficient monitoring of cloud deployment tools.",
+        "techniques_used": [
+            "T1589.003",
+            "T1078.001",
+            "T1072",
+            "T1098",
+            "T1546.013",
+            "T1563.001",
+            "T1602.002",
+            "T1001.003",
+            "T1020",
+            "T1052.001",
+            "T1496"
+        ]
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "report_id": "report_630",
+    "generated_at": "20251222_171015",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1129",
+        "T1070.002",
+        "T1556.007",
+        "T1570",
+        "T1550.004",
+        "T1219",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.002",
+        "T1059.001",
+        "T1129",
+        "T1556.007",
+        "T1550.004",
+        "T1070.002",
+        "T1570",
+        "T1219",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1570",
+        "T1070.002",
+        "T1589",
+        "T1550.004",
+        "T1566.002",
+        "T1499.003",
+        "T1219",
+        "T1556.007",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowLink'. This report is based on a simulated incident at a fictional multinational corporation, 'Globex Corp', which operates a hybrid Azure AD and on-premises environment. Initial analysis of network logs from Globex Corp's email gateway showed an increase in suspicious traffic from external IPs, though these were later determined to be unrelated to the attack. The actors likely conduct reconnaissance to identify targets, though specific details are omitted for brevity.\n\nInitial Access: The campaign began with spearphishing emails containing malicious links that, when clicked, downloaded a payload mimicking Hancitor malware. Execution: Upon execution, the malware employed PowerShell to load shared DLL modules into memory, facilitating persistence and evasion. Persistence: To maintain access, the adversary modified the AzureADConnectAuthenticationAgentService configuration to bypass cloud authentication mechanisms, leveraging hybrid identity vulnerabilities.\n\nPrivilege Escalation: The attackers used stolen web session cookies to hijack authenticated sessions and bypass multi-factor authentication, gaining elevated privileges. Defense Evasion: To cover their tracks, they cleared system logs, specifically targeting /var/log/auth.log on Linux systems to remove records of privilege escalation attempts. Lateral Movement: Using compromised credentials, they performed lateral tool transfers across the corporate network, moving tools between IT and operational segments, similar to tactics observed in historical incidents.\n\nCommand and Control: The actors established covert remote access using tools like Google Chrome Remote Desktop to maintain persistent connections for data exfiltration. Impact: In the final stage, they executed an application exhaustion flood by scripting repeated AJAX calls to autocomplete features, consuming server resources and causing service degradation. Post-incident, Globex Corp's security team noted anomalous database queries, but these were unrelated to the primary attack vector.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowLink'. This report is based on a simulated incident at a fictional multinational corporation, 'Globex Corp', which operates a hybrid Azure AD and on-premises environment. Initial analysis of network logs from Globex Corp's email gateway showed an increase in suspicious traffic from external IPs, though these were later determined to be unrelated to the attack. The actors likely conduct reconnaissance [T1589] to identify targets, though specific details are omitted for brevity.\n\nInitial Access: The campaign began with spearphishing emails [T1566.002] containing malicious links that, when clicked, downloaded a payload mimicking Hancitor malware. Execution: Upon execution, the malware employed PowerShell [T1059.001] to load shared DLL modules [T1129] into memory, facilitating persistence and evasion. Persistence: To maintain access, the adversary modified the AzureADConnectAuthenticationAgentService configuration [T1556.007] to bypass cloud authentication mechanisms, leveraging hybrid identity vulnerabilities.\n\nPrivilege Escalation: The attackers used stolen web session cookies [T1550.004] to hijack authenticated sessions and bypass multi-factor authentication, gaining elevated privileges. Defense Evasion: To cover their tracks, they cleared system logs [T1070.002], specifically targeting /var/log/auth.log on Linux systems to remove records of privilege escalation attempts. Lateral Movement: Using compromised credentials, they performed lateral tool transfers [T1570] across the corporate network, moving tools between IT and operational segments, similar to tactics observed in historical incidents.\n\nCommand and Control: The actors established covert remote access [T1219] using tools like Google Chrome Remote Desktop to maintain persistent connections for data exfiltration. Impact: In the final stage, they executed an application exhaustion flood [T1499.003] by scripting repeated AJAX calls to autocomplete features, consuming server resources and causing service degradation. Post-incident, Globex Corp's security team noted anomalous database queries, but these were unrelated to the primary attack vector.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify targets, though specific details are omitted for brevity.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to load shared DLL modules into memory, facilitating persistence and evasion.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "Lateral Movement: Using compromised credentials, they performed lateral tool transfers across the corporate network, moving tools between IT and operational segments, similar to tactics observed in historical incidents.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "Command and Control: The actors established covert remote access using tools like Google Chrome Remote Desktop to maintain persistent connections for data exfiltration.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowLink' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated 'ShadowLink', targeting organizations with hybrid cloud infrastructures. The campaign involves spearphishing, credential theft, lateral movement, and application-layer denial-of-service attacks for training blue teams in detection and response.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowLink'. This report is based on a simulated incident at a fictional multinational corporation, 'Globex Corp', which operates a hybrid Azure AD and on-premises environment. Initial analysis of network logs from Globex Corp's email gateway showed an increase in suspicious traffic from external IPs, though these were later determined to be unrelated to the attack. The actors likely conduct reconnaissance [T1589] to identify targets, though specific details are omitted for brevity.\n\nInitial Access: The campaign began with spearphishing emails [T1566.002] containing malicious links that, when clicked, downloaded a payload mimicking Hancitor malware. Execution: Upon execution, the malware employed PowerShell [T1059.001] to load shared DLL modules [T1129] into memory, facilitating persistence and evasion. Persistence: To maintain access, the adversary modified the AzureADConnectAuthenticationAgentService configuration [T1556.007] to bypass cloud authentication mechanisms, leveraging hybrid identity vulnerabilities.\n\nPrivilege Escalation: The attackers used stolen web session cookies [T1550.004] to hijack authenticated sessions and bypass multi-factor authentication, gaining elevated privileges. Defense Evasion: To cover their tracks, they cleared system logs [T1070.002], specifically targeting /var/log/auth.log on Linux systems to remove records of privilege escalation attempts. Lateral Movement: Using compromised credentials, they performed lateral tool transfers [T1570] across the corporate network, moving tools between IT and operational segments, similar to tactics observed in historical incidents.\n\nCommand and Control: The actors established covert remote access [T1219] using tools like Google Chrome Remote Desktop to maintain persistent connections for data exfiltration. Impact: In the final stage, they executed an application exhaustion flood [T1499.003] by scripting repeated AJAX calls to autocomplete features, consuming server resources and causing service degradation. Post-incident, Globex Corp's security team noted anomalous database queries, but these were unrelated to the primary attack vector.",
+        "techniques_used": [
+            "T1589",
+            "T1566.002",
+            "T1059.001",
+            "T1129",
+            "T1556.007",
+            "T1550.004",
+            "T1070.002",
+            "T1570",
+            "T1219",
+            "T1499.003"
+        ]
+    }
+}

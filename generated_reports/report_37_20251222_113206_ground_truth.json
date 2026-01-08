@@ -1,0 +1,120 @@
+{
+    "report_id": "report_37",
+    "generated_at": "20251222_113206",
+    "scenario_target_ids": [
+        "T1566.003",
+        "T1204.001",
+        "T1609",
+        "T1123",
+        "T1114",
+        "T1219",
+        "T1219.001",
+        "T1567.002",
+        "T1561"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.003",
+        "T1204.001",
+        "T1112",
+        "T1059.001",
+        "T1105",
+        "T1219",
+        "T1609",
+        "T1219.001",
+        "T1114",
+        "T1123",
+        "T1567.002",
+        "T1561"
+    ],
+    "actual_found_ids": [
+        "T1566.003",
+        "T1567.002",
+        "T1204.001",
+        "T1123",
+        "T1561",
+        "T1219",
+        "T1589",
+        "T1059.001",
+        "T1105",
+        "T1114",
+        "T1219.001",
+        "T1609",
+        "T1112"
+    ],
+    "clean_text": "### Background\nSecureBank Inc., a mid-sized financial services company with operations in North America and Europe, reported anomalous network activity starting on October 15, 2023. Initial logs from their SIEM showed unusual outbound traffic to cloud storage services, but no immediate alerts were triggered due to misconfigured thresholds. The company's IT infrastructure includes a hybrid cloud environment with Docker containers for application deployment and standard endpoint protection software.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify key employees at SecureBank, then created fake Instagram profiles posing as industry influencers to share links to malware-infected mobile applications, luring users to click on malicious URLs that delivered the initial payload.\n\n**Execution:** Upon execution, the malware established persistence by modifying registry keys and employed PowerShell to download additional modules, including a remote access tool (RAT) that checked for LogMein event logs to facilitate lateral movement.\n\n**Persistence and Privilege Escalation:** The adversary gained interactive shell access to a sensitive Docker container using the command 'docker exec -it app_container /bin/bash' and executed a hidden code tunnel through development tools to maintain covert access while evading detection by security software.\n\n**Collection:** From the compromised container, the actors used PowerShell to query IMAP servers for email metadata and activated the computer's microphone to capture audio, gathering sensitive financial discussions and login credentials.\n\n**Exfiltration and Impact:** The collected data was exfiltrated to Dropbox using an uploader tool similar to LUNCHMONEY, and finally, a wiper tool deployed the 'shred' command to erase all data partitions, rendering recovery impossible and causing significant operational disruption.\n\n### Recommendations\nBlue teams should monitor for unusual container administration commands, enhance email security protocols, and implement network segmentation to limit lateral movement. Regular audits of cloud storage access and user training on phishing threats are advised.",
+    "tagged_text": "### Background\nSecureBank Inc., a mid-sized financial services company with operations in North America and Europe, reported anomalous network activity starting on October 15, 2023. Initial logs from their SIEM showed unusual outbound traffic to cloud storage services, but no immediate alerts were triggered due to misconfigured thresholds. The company's IT infrastructure includes a hybrid cloud environment with Docker containers for application deployment and standard endpoint protection software.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance [T1589] to identify key employees at SecureBank, then created fake Instagram profiles posing as industry influencers to share links to malware-infected mobile applications [T1566.003], luring users to click on malicious URLs [T1204.001] that delivered the initial payload.\n\n**Execution:** Upon execution, the malware established persistence by modifying registry keys [T1112] and employed PowerShell [T1059.001] to download additional modules [T1105], including a remote access tool (RAT) that checked for LogMein event logs [T1219] to facilitate lateral movement.\n\n**Persistence and Privilege Escalation:** The adversary gained interactive shell access to a sensitive Docker container using the command 'docker exec -it app_container /bin/bash' [T1609] and executed a hidden code tunnel through development tools [T1219.001] to maintain covert access while evading detection by security software.\n\n**Collection:** From the compromised container, the actors used PowerShell to query IMAP servers for email metadata [T1114] and activated the computer's microphone to capture audio [T1123], gathering sensitive financial discussions and login credentials.\n\n**Exfiltration and Impact:** The collected data was exfiltrated to Dropbox using an uploader tool similar to LUNCHMONEY [T1567.002], and finally, a wiper tool deployed the 'shred' command to erase all data partitions [T1561], rendering recovery impossible and causing significant operational disruption.\n\n### Recommendations\nBlue teams should monitor for unusual container administration commands, enhance email security protocols, and implement network segmentation to limit lateral movement. Regular audits of cloud storage access and user training on phishing threats are advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify key employees at SecureBank, then created fake Instagram profiles posing as industry influencers to share links to malware-infected mobile applications [T1566.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "**Execution:** Upon execution, the malware established persistence by modifying registry keys and employed PowerShell [T1059.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "001] to download additional modules, including a remote access tool (RAT) that checked for LogMein event logs to facilitate lateral movement.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to download additional modules, including a remote access tool (RAT) that checked for LogMein event logs to facilitate lateral movement.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "**Persistence and Privilege Escalation:** The adversary gained interactive shell access to a sensitive Docker container using the command 'docker exec -it app_container /bin/bash' and executed a hidden code tunnel through development tools [T1219.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "**Collection:** From the compromised container, the actors used PowerShell to query IMAP servers for email metadata and activated the computer's microphone to capture audio, gathering sensitive financial discussions and login credentials.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "**Collection:** From the compromised container, the actors used PowerShell to query IMAP servers for email metadata and activated the computer's microphone to capture audio, gathering sensitive financial discussions and login credentials.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        },
+        {
+            "sentence": "002], and finally, a wiper tool deployed the 'shred' command to erase all data partitions, rendering recovery impossible and causing significant operational disruption.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentWave' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'SilentWave' against a financial institution, 'SecureBank Inc.', leveraging social engineering, container exploitation, and data exfiltration to compromise systems and steal sensitive information for blue team training purposes.",
+        "full_report_text": "### Background\nSecureBank Inc., a mid-sized financial services company with operations in North America and Europe, reported anomalous network activity starting on October 15, 2023. Initial logs from their SIEM showed unusual outbound traffic to cloud storage services, but no immediate alerts were triggered due to misconfigured thresholds. The company's IT infrastructure includes a hybrid cloud environment with Docker containers for application deployment and standard endpoint protection software.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance [T1589] to identify key employees at SecureBank, then created fake Instagram profiles posing as industry influencers to share links to malware-infected mobile applications [T1566.003], luring users to click on malicious URLs [T1204.001] that delivered the initial payload.\n\n**Execution:** Upon execution, the malware established persistence by modifying registry keys [T1112] and employed PowerShell [T1059.001] to download additional modules [T1105], including a remote access tool (RAT) that checked for LogMein event logs [T1219] to facilitate lateral movement.\n\n**Persistence and Privilege Escalation:** The adversary gained interactive shell access to a sensitive Docker container using the command 'docker exec -it app_container /bin/bash' [T1609] and executed a hidden code tunnel through development tools [T1219.001] to maintain covert access while evading detection by security software.\n\n**Collection:** From the compromised container, the actors used PowerShell to query IMAP servers for email metadata [T1114] and activated the computer's microphone to capture audio [T1123], gathering sensitive financial discussions and login credentials.\n\n**Exfiltration and Impact:** The collected data was exfiltrated to Dropbox using an uploader tool similar to LUNCHMONEY [T1567.002], and finally, a wiper tool deployed the 'shred' command to erase all data partitions [T1561], rendering recovery impossible and causing significant operational disruption.\n\n### Recommendations\nBlue teams should monitor for unusual container administration commands, enhance email security protocols, and implement network segmentation to limit lateral movement. Regular audits of cloud storage access and user training on phishing threats are advised.",
+        "techniques_used": [
+            "T1589",
+            "T1566.003",
+            "T1204.001",
+            "T1112",
+            "T1059.001",
+            "T1105",
+            "T1219",
+            "T1609",
+            "T1219.001",
+            "T1114",
+            "T1123",
+            "T1567.002",
+            "T1561"
+        ]
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "report_id": "report_799",
+    "generated_at": "20251223_111847",
+    "scenario_target_ids": [
+        "T1592.001",
+        "T1584.005",
+        "T1078.003",
+        "T1053.006",
+        "T1053.002",
+        "T1574.004",
+        "T1053.005",
+        "T1216",
+        "T1560.002",
+        "T1132",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592.001",
+        "T1584.005",
+        "T1078.003",
+        "T1053.006",
+        "T1053.002",
+        "T1574.004",
+        "T1053.005",
+        "T1216",
+        "T1560.002",
+        "T1132",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1011.001",
+        "T1053.006",
+        "T1053.002",
+        "T1574.004",
+        "T1132",
+        "T1560.002",
+        "T1584.005",
+        "T1592.001",
+        "T1216",
+        "T1053.005",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional campaign attributed to APT group 'ShadowHawk', active since early 2023. This group targets energy companies in North America, with observed incidents at 'PowerGrid Inc.', a mid-sized utility provider. Initial analysis indicates the actors conducted reconnaissance by querying Windows event logs using wevtutil.exe to gather hardware details like processor and memory information, while simultaneously employing a botnet to inject C2 server commands for establishing persistent communication channels. On compromised systems, the actors used known credentials to run commands and spawn processes as local user accounts, deploying a malicious service file to maintain access by executing a keylogger on system startup via Systemd timers. For persistence and evasion, they scheduled encryption of user files during off-hours using Win32_ScheduledJob and created additional scheduled tasks, while employing Microsoft-signed binaries to disable security controls and execute malicious files without triggering alerts. On macOS systems, lateral movement was enabled by dropping a malicious 'libjpeg.dylib' file into ~/Library/Frameworks. For C2 communication, the malware encoded its configuration data in base64 format and compressed communications using the standard Zlib compression library. In exfiltration phases, attackers exploited Bluetooth protocol weaknesses to transfer stolen credentials to a nearby device. Logs from affected systems show routine network traffic spikes unrelated to the attack, and 'PowerGrid Inc.' reported no operational disruptions during the incident. This scenario emphasizes the importance of monitoring for unusual scheduled tasks and encoded network traffic.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional campaign attributed to APT group 'ShadowHawk', active since early 2023. This group targets energy companies in North America, with observed incidents at 'PowerGrid Inc.', a mid-sized utility provider. Initial analysis indicates the actors conducted reconnaissance by querying Windows event logs using wevtutil.exe to gather hardware details like processor and memory information [T1592.001], while simultaneously employing a botnet to inject C2 server commands for establishing persistent communication channels [T1584.005]. On compromised systems, the actors used known credentials to run commands and spawn processes as local user accounts [T1078.003], deploying a malicious service file to maintain access by executing a keylogger on system startup via Systemd timers [T1053.006]. For persistence and evasion, they scheduled encryption of user files during off-hours using Win32_ScheduledJob [T1053.002] and created additional scheduled tasks [T1053.005], while employing Microsoft-signed binaries to disable security controls and execute malicious files without triggering alerts [T1216]. On macOS systems, lateral movement was enabled by dropping a malicious 'libjpeg.dylib' file into ~/Library/Frameworks [T1574.004]. For C2 communication, the malware encoded its configuration data in base64 format [T1132] and compressed communications using the standard Zlib compression library [T1560.002]. In exfiltration phases, attackers exploited Bluetooth protocol weaknesses to transfer stolen credentials to a nearby device [T1011.001]. Logs from affected systems show routine network traffic spikes unrelated to the attack, and 'PowerGrid Inc.' reported no operational disruptions during the incident. This scenario emphasizes the importance of monitoring for unusual scheduled tasks and encoded network traffic.",
+    "sentence_annotations": [
+        {
+            "sentence": "005], while employing Microsoft-signed binaries to disable security controls and execute malicious files without triggering alerts.",
+            "technique_id": "T1216",
+            "technique_name": "System Script Proxy Execution"
+        },
+        {
+            "sentence": "For C2 communication, the malware encoded its configuration data in base64 format and compressed communications using the standard Zlib compression library [T1560.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT Group 'ShadowHawk' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowHawk' targeting energy sector organizations, involving reconnaissance, persistence, and data exfiltration techniques for blue team training. Actors leveraged botnet infrastructure and local account abuse to maintain access and execute malicious activities across Windows and macOS systems.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional campaign attributed to APT group 'ShadowHawk', active since early 2023. This group targets energy companies in North America, with observed incidents at 'PowerGrid Inc.', a mid-sized utility provider. Initial analysis indicates the actors conducted reconnaissance by querying Windows event logs using wevtutil.exe to gather hardware details like processor and memory information [T1592.001], while simultaneously employing a botnet to inject C2 server commands for establishing persistent communication channels [T1584.005]. On compromised systems, the actors used known credentials to run commands and spawn processes as local user accounts [T1078.003], deploying a malicious service file to maintain access by executing a keylogger on system startup via Systemd timers [T1053.006]. For persistence and evasion, they scheduled encryption of user files during off-hours using Win32_ScheduledJob [T1053.002] and created additional scheduled tasks [T1053.005], while employing Microsoft-signed binaries to disable security controls and execute malicious files without triggering alerts [T1216]. On macOS systems, lateral movement was enabled by dropping a malicious 'libjpeg.dylib' file into ~/Library/Frameworks [T1574.004]. For C2 communication, the malware encoded its configuration data in base64 format [T1132] and compressed communications using the standard Zlib compression library [T1560.002]. In exfiltration phases, attackers exploited Bluetooth protocol weaknesses to transfer stolen credentials to a nearby device [T1011.001]. Logs from affected systems show routine network traffic spikes unrelated to the attack, and 'PowerGrid Inc.' reported no operational disruptions during the incident. This scenario emphasizes the importance of monitoring for unusual scheduled tasks and encoded network traffic.",
+        "techniques_used": [
+            "T1592.001",
+            "T1584.005",
+            "T1078.003",
+            "T1053.006",
+            "T1053.002",
+            "T1574.004",
+            "T1053.005",
+            "T1216",
+            "T1560.002",
+            "T1132",
+            "T1011.001"
+        ]
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "report_id": "report_134",
+    "generated_at": "20251222_121003",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1059",
+        "T1556.008",
+        "T1021",
+        "T1095",
+        "T1205.001",
+        "T1048",
+        "T1485.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1059",
+        "T1556.008",
+        "T1021",
+        "T1095",
+        "T1205.001",
+        "T1048",
+        "T1485.001"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1048",
+        "T1556.008",
+        "T1078.001",
+        "T1485.001",
+        "T1021",
+        "T1205.001",
+        "T1059"
+    ],
+    "clean_text": "APT-99, a financially motivated threat group, conducted a campaign against a mid-sized retail bank, 'SecureBank Inc.', which operates 200 branches nationwide and uses legacy PoS systems. Initial reconnaissance identified multiple workstations with the default Guest account active and unprotected, allowing the adversary to gain initial access. Once inside, the actors employed PowerShell scripting to iterate through compromised PoS systems, copy transaction data to a log file, and remove original files while simultaneously modifying the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry key to prioritize a credential-capturing network provider DLL. System logs from 03:00 UTC showed anomalous PowerShell execution events, but no alerts were triggered due to misconfigured SIEM rules. The attacker then leveraged SSH with stolen credentials to access a remote database server, where they exfiltrated customer data using a custom binary protocol over port 443 for command and control (C2) traffic. To evade detection, the backdoor used raw sockets to transmit data directly at the network layer, implementing port knocking techniques. APT-99 further exfiltrated collected data to their C2 server using the MIME protocol over alternative channels. In the final stage, using stolen cloud credentials, the attacker called the PutBucketLifecycle API to implement a one-day retention policy for cloud backups, triggering automated deletion of critical data. SecureBank's incident response team noted unusual API calls in their AWS CloudTrail logs but attributed them to maintenance activity initially.",
+    "tagged_text": "APT-99, a financially motivated threat group, conducted a campaign against a mid-sized retail bank, 'SecureBank Inc.', which operates 200 branches nationwide and uses legacy PoS systems. Initial reconnaissance identified multiple workstations with the default Guest account active and unprotected, allowing the adversary to gain initial access [T1078.001]. Once inside, the actors employed PowerShell scripting [T1059] to iterate through compromised PoS systems, copy transaction data to a log file, and remove original files while simultaneously modifying the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry key to prioritize a credential-capturing network provider DLL [T1556.008]. System logs from 03:00 UTC showed anomalous PowerShell execution events, but no alerts were triggered due to misconfigured SIEM rules. The attacker then leveraged SSH with stolen credentials to access a remote database server [T1021], where they exfiltrated customer data using a custom binary protocol over port 443 for command and control (C2) traffic [T1095]. To evade detection, the backdoor used raw sockets to transmit data directly at the network layer, implementing port knocking techniques [T1205.001]. APT-99 further exfiltrated collected data to their C2 server using the MIME protocol over alternative channels [T1048]. In the final stage, using stolen cloud credentials, the attacker called the PutBucketLifecycle API to implement a one-day retention policy for cloud backups, triggering automated deletion of critical data [T1485.001]. SecureBank's incident response team noted unusual API calls in their AWS CloudTrail logs but attributed them to maintenance activity initially.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, the actors employed PowerShell scripting to iterate through compromised PoS systems, copy transaction data to a log file, and remove original files while simultaneously modifying the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry key to prioritize a credential-capturing network provider DLL [T1556.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "The attacker then leveraged SSH with stolen credentials to access a remote database server, where they exfiltrated customer data using a custom binary protocol over port 443 for command and control (C2) traffic.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "The attacker then leveraged SSH with stolen credentials to access a remote database server, where they exfiltrated customer data using a custom binary protocol over port 443 for command and control (C2) traffic.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "APT-99 further exfiltrated collected data to their C2 server using the MIME protocol over alternative channels.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-99, targeting financial institutions. The campaign leverages default account vulnerabilities, credential theft, and sophisticated exfiltration techniques to compromise point-of-sale (PoS) systems and cloud backups. Blue teams are advised to review default account policies, monitor for unusual scripting activity, and implement network segmentation.",
+        "full_report_text": "APT-99, a financially motivated threat group, conducted a campaign against a mid-sized retail bank, 'SecureBank Inc.', which operates 200 branches nationwide and uses legacy PoS systems. Initial reconnaissance identified multiple workstations with the default Guest account active and unprotected, allowing the adversary to gain initial access [T1078.001]. Once inside, the actors employed PowerShell scripting [T1059] to iterate through compromised PoS systems, copy transaction data to a log file, and remove original files while simultaneously modifying the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry key to prioritize a credential-capturing network provider DLL [T1556.008]. System logs from 03:00 UTC showed anomalous PowerShell execution events, but no alerts were triggered due to misconfigured SIEM rules. The attacker then leveraged SSH with stolen credentials to access a remote database server [T1021], where they exfiltrated customer data using a custom binary protocol over port 443 for command and control (C2) traffic [T1095]. To evade detection, the backdoor used raw sockets to transmit data directly at the network layer, implementing port knocking techniques [T1205.001]. APT-99 further exfiltrated collected data to their C2 server using the MIME protocol over alternative channels [T1048]. In the final stage, using stolen cloud credentials, the attacker called the PutBucketLifecycle API to implement a one-day retention policy for cloud backups, triggering automated deletion of critical data [T1485.001]. SecureBank's incident response team noted unusual API calls in their AWS CloudTrail logs but attributed them to maintenance activity initially.",
+        "techniques_used": [
+            "T1078.001",
+            "T1059",
+            "T1556.008",
+            "T1021",
+            "T1095",
+            "T1205.001",
+            "T1048",
+            "T1485.001"
+        ]
+    }
+}

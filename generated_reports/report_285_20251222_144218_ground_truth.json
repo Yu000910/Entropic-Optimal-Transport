@@ -1,0 +1,93 @@
+{
+    "report_id": "report_285",
+    "generated_at": "20251222_144218",
+    "scenario_target_ids": [
+        "T1591.004",
+        "T1590.003",
+        "T1597.001",
+        "T1195.002",
+        "T1053",
+        "T1574.008",
+        "T1556",
+        "T1484.001",
+        "T1092",
+        "T1486"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "defense-evasion",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591.004",
+        "T1590.003",
+        "T1597.001",
+        "T1195.002",
+        "T1053",
+        "T1574.008",
+        "T1556",
+        "T1484.001",
+        "T1092",
+        "T1486"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1590.003",
+        "T1574.008",
+        "T1484.001",
+        "T1591.004",
+        "T1597.001",
+        "T1092",
+        "T1486",
+        "T1556",
+        "T1053"
+    ],
+    "clean_text": "The actors initiated reconnaissance by using an automated script to query SecureBank's corporate website, extracting employee directory information to identify key roles such as IT administrators and financial officers, while simultaneously querying public DNS records to map subdomains and understand network trust dependencies, revealing segmentation between internal and external zones. They then leveraged a paid threat intelligence feed to gather intelligence on the target's email infrastructure, identifying vulnerabilities in mail server configurations. Following this, the adversary compromised the software supply chain by replacing a legitimate compiled binary on SecureBank's software distribution server with a trojanized version, which was subsequently deployed to endpoints during routine updates. Upon execution, the malware established persistence by creating a scheduled task in Windows Task Scheduler to run malicious.exe daily at 3 AM and employed path interception by writing a malicious version of 'crypt32.dll' into a directory with higher search precedence, hijacking the search order to load the malicious DLL. The malware then modified the authentication process by intercepting private keys through a trojanized ssh-add function, allowing unauthorized access to encrypted communications, and evaded detection by modifying Group Policy Objects to disable security logging and alter firewall rules. For command and control, the actors used removable media, writing encrypted commands to a USB flash drive to bypass network segmentation and exfiltrate data from air-gapped systems. Finally, the malware encrypted targeted files for impact using a combination of RSA and AES-CBC algorithms on a predefined list of file extensions, rendering critical financial data inaccessible. System logs from SecureBank's SIEM showed increased CPU usage on affected servers during the encryption phase, but this noise did not correlate with the attack techniques.",
+    "tagged_text": "The actors initiated reconnaissance by using an automated script to query SecureBank's corporate website, extracting employee directory information to identify key roles such as IT administrators and financial officers [T1591.004], while simultaneously querying public DNS records to map subdomains and understand network trust dependencies, revealing segmentation between internal and external zones [T1590.003]. They then leveraged a paid threat intelligence feed to gather intelligence on the target's email infrastructure, identifying vulnerabilities in mail server configurations [T1597.001]. Following this, the adversary compromised the software supply chain by replacing a legitimate compiled binary on SecureBank's software distribution server with a trojanized version, which was subsequently deployed to endpoints during routine updates [T1195.002]. Upon execution, the malware established persistence by creating a scheduled task in Windows Task Scheduler to run malicious.exe daily at 3 AM [T1053] and employed path interception by writing a malicious version of 'crypt32.dll' into a directory with higher search precedence, hijacking the search order to load the malicious DLL [T1574.008]. The malware then modified the authentication process by intercepting private keys through a trojanized ssh-add function, allowing unauthorized access to encrypted communications [T1556], and evaded detection by modifying Group Policy Objects to disable security logging and alter firewall rules [T1484.001]. For command and control, the actors used removable media, writing encrypted commands to a USB flash drive to bypass network segmentation and exfiltrate data from air-gapped systems [T1092]. Finally, the malware encrypted targeted files for impact using a combination of RSA and AES-CBC algorithms on a predefined list of file extensions, rendering critical financial data inaccessible [T1486]. System logs from SecureBank's SIEM showed increased CPU usage on affected servers during the encryption phase, but this noise did not correlate with the attack techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe daily at 3 AM and employed path interception by writing a malicious version of 'crypt32.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "The malware then modified the authentication process by intercepting private keys through a trojanized ssh-add function, allowing unauthorized access to encrypted communications, and evaded detection by modifying Group Policy Objects to disable security logging and alter firewall rules [T1484.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        },
+        {
+            "sentence": "For command and control, the actors used removable media, writing encrypted commands to a USB flash drive to bypass network segmentation and exfiltrate data from air-gapped systems.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        },
+        {
+            "sentence": "Finally, the malware encrypted targeted files for impact using a combination of RSA and AES-CBC algorithms on a predefined list of file extensions, rendering critical financial data inaccessible.",
+            "technique_id": "T1486",
+            "technique_name": "Data Encrypted for Impact"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowVeil' against a mid-sized financial institution, 'SecureBank Corp.', involving reconnaissance, supply chain compromise, and data encryption. The activity was detected through routine network monitoring and analysis of anomalous system logs, including unusual DNS queries and scheduled task executions. SecureBank Corp., founded in 1998, operates primarily in the Northeastern United States with a focus on commercial lending, and its IT infrastructure includes a mix of on-premises servers and cloud-based services, though these details are not directly relevant to the attack chain.",
+        "full_report_text": "The actors initiated reconnaissance by using an automated script to query SecureBank's corporate website, extracting employee directory information to identify key roles such as IT administrators and financial officers [T1591.004], while simultaneously querying public DNS records to map subdomains and understand network trust dependencies, revealing segmentation between internal and external zones [T1590.003]. They then leveraged a paid threat intelligence feed to gather intelligence on the target's email infrastructure, identifying vulnerabilities in mail server configurations [T1597.001]. Following this, the adversary compromised the software supply chain by replacing a legitimate compiled binary on SecureBank's software distribution server with a trojanized version, which was subsequently deployed to endpoints during routine updates [T1195.002]. Upon execution, the malware established persistence by creating a scheduled task in Windows Task Scheduler to run malicious.exe daily at 3 AM [T1053] and employed path interception by writing a malicious version of 'crypt32.dll' into a directory with higher search precedence, hijacking the search order to load the malicious DLL [T1574.008]. The malware then modified the authentication process by intercepting private keys through a trojanized ssh-add function, allowing unauthorized access to encrypted communications [T1556], and evaded detection by modifying Group Policy Objects to disable security logging and alter firewall rules [T1484.001]. For command and control, the actors used removable media, writing encrypted commands to a USB flash drive to bypass network segmentation and exfiltrate data from air-gapped systems [T1092]. Finally, the malware encrypted targeted files for impact using a combination of RSA and AES-CBC algorithms on a predefined list of file extensions, rendering critical financial data inaccessible [T1486]. System logs from SecureBank's SIEM showed increased CPU usage on affected servers during the encryption phase, but this noise did not correlate with the attack techniques.",
+        "techniques_used": [
+            "T1591.004",
+            "T1590.003",
+            "T1597.001",
+            "T1195.002",
+            "T1053",
+            "T1574.008",
+            "T1556",
+            "T1484.001",
+            "T1092",
+            "T1486"
+        ]
+    }
+}

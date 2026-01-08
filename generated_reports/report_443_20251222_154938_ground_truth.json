@@ -1,0 +1,73 @@
+{
+    "report_id": "report_443",
+    "generated_at": "20251222_154938",
+    "scenario_target_ids": [
+        "T1584.003",
+        "T1588.004",
+        "T1190",
+        "T1203",
+        "T1606.001",
+        "T1071",
+        "T1568.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1203",
+        "T1584.003",
+        "T1568.001",
+        "T1606.001",
+        "T1588.004",
+        "T1071"
+    ],
+    "actual_found_ids": [
+        "T1606.001",
+        "T1568.001",
+        "T1584.003",
+        "T1190",
+        "T1588.004",
+        "T1203",
+        "T1071"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics. This report is based on a fictional scenario involving the actor 'Sea Phantom', which has been observed targeting organizations in the financial and technology sectors since early 2023. Background checks on affected systems revealed no prior incidents, but routine logs showed increased network traffic anomalies starting two weeks before detection.\n\nInitial Access: Sea Phantom actors conducted reconnaissance to identify vulnerable public-facing applications, exploiting known vulnerabilities such as CVE-2019-3396 and CVE-2017-11882 to gain initial footholds into victim networks. System administrators reported unusual login attempts from IP addresses associated with cloud providers, though initial firewall logs did not flag these as malicious.\n\nExecution: Upon access, the adversary leveraged exploitation techniques for client execution, using weaponized documents that triggered PowerShell scripts to download additional payloads. These payloads were hosted on command and control servers set up on compromised Google Cloud Platform compute instances, with the actors employing fast flux DNS to rapidly change IP addresses and evade detection. Network monitoring tools captured encrypted traffic over standard HTTP ports, but deep packet inspection revealed anomalous patterns consistent with malware communication.\n\nPersistence: To maintain access, Sea Phantom used stolen web session cookies obtained from compromised user accounts, allowing persistent entry without re-authentication. Additionally, the actors created digital certificates through certificate impersonation, signing malicious software to appear legitimate and bypass security controls. Internal audits showed that several machines had unauthorized registry modifications, though these were initially overlooked during routine checks.\n\nCommand and Control: The command and control infrastructure relied on application layer protocols, with the actors using valid accounts over RDP to connect to targeted systems and exfiltrate data. During the investigation phase, Sea Phantom de-registered DNS A records to obscure their infrastructure and hinder attribution efforts. Incident responders noted that some compromised servers showed signs of data wiping, but forensic analysis recovered partial logs indicating data theft occurred over a period of 48 hours.\n\nThis scenario highlights the importance of monitoring for unusual certificate activities, securing cloud instances, and implementing robust session management. Blue teams should practice responding to multi-vector attacks that combine exploitation, persistence, and evasion techniques.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics. This report is based on a fictional scenario involving the actor 'Sea Phantom', which has been observed targeting organizations in the financial and technology sectors since early 2023. Background checks on affected systems revealed no prior incidents, but routine logs showed increased network traffic anomalies starting two weeks before detection.\n\nInitial Access: Sea Phantom actors conducted reconnaissance to identify vulnerable public-facing applications, exploiting known vulnerabilities such as CVE-2019-3396 and CVE-2017-11882 [T1190] to gain initial footholds into victim networks. System administrators reported unusual login attempts from IP addresses associated with cloud providers, though initial firewall logs did not flag these as malicious.\n\nExecution: Upon access, the adversary leveraged exploitation techniques for client execution, using weaponized documents that triggered PowerShell scripts to download additional payloads [T1203]. These payloads were hosted on command and control servers set up on compromised Google Cloud Platform compute instances [T1584.003], with the actors employing fast flux DNS to rapidly change IP addresses and evade detection [T1568.001]. Network monitoring tools captured encrypted traffic over standard HTTP ports, but deep packet inspection revealed anomalous patterns consistent with malware communication.\n\nPersistence: To maintain access, Sea Phantom used stolen web session cookies obtained from compromised user accounts [T1606.001], allowing persistent entry without re-authentication. Additionally, the actors created digital certificates through certificate impersonation, signing malicious software to appear legitimate and bypass security controls [T1588.004]. Internal audits showed that several machines had unauthorized registry modifications, though these were initially overlooked during routine checks.\n\nCommand and Control: The command and control infrastructure relied on application layer protocols, with the actors using valid accounts over RDP to connect to targeted systems and exfiltrate data [T1071]. During the investigation phase, Sea Phantom de-registered DNS A records to obscure their infrastructure and hinder attribution efforts [T1568.001]. Incident responders noted that some compromised servers showed signs of data wiping, but forensic analysis recovered partial logs indicating data theft occurred over a period of 48 hours.\n\nThis scenario highlights the importance of monitoring for unusual certificate activities, securing cloud instances, and implementing robust session management. Blue teams should practice responding to multi-vector attacks that combine exploitation, persistence, and evasion techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: Sea Phantom actors conducted reconnaissance to identify vulnerable public-facing applications, exploiting known vulnerabilities such as CVE-2019-3396 and CVE-2017-11882 to gain initial footholds into victim networks.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Execution: Upon access, the adversary leveraged exploitation techniques for client execution, using weaponized documents that triggered PowerShell scripts to download additional payloads.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "Command and Control: The command and control infrastructure relied on application layer protocols, with the actors using valid accounts over RDP to connect to targeted systems and exfiltrate data.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT 'Sea Phantom' Campaign Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Sea Phantom', which exploited public-facing applications and cloud resources to compromise organizations. The activity involves initial access through vulnerabilities, use of digital certificates for impersonation, and persistence via stolen web cookies, with command and control hosted on virtual private servers and obfuscated through fast flux DNS techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics. This report is based on a fictional scenario involving the actor 'Sea Phantom', which has been observed targeting organizations in the financial and technology sectors since early 2023. Background checks on affected systems revealed no prior incidents, but routine logs showed increased network traffic anomalies starting two weeks before detection.\n\nInitial Access: Sea Phantom actors conducted reconnaissance to identify vulnerable public-facing applications, exploiting known vulnerabilities such as CVE-2019-3396 and CVE-2017-11882 [T1190] to gain initial footholds into victim networks. System administrators reported unusual login attempts from IP addresses associated with cloud providers, though initial firewall logs did not flag these as malicious.\n\nExecution: Upon access, the adversary leveraged exploitation techniques for client execution, using weaponized documents that triggered PowerShell scripts to download additional payloads [T1203]. These payloads were hosted on command and control servers set up on compromised Google Cloud Platform compute instances [T1584.003], with the actors employing fast flux DNS to rapidly change IP addresses and evade detection [T1568.001]. Network monitoring tools captured encrypted traffic over standard HTTP ports, but deep packet inspection revealed anomalous patterns consistent with malware communication.\n\nPersistence: To maintain access, Sea Phantom used stolen web session cookies obtained from compromised user accounts [T1606.001], allowing persistent entry without re-authentication. Additionally, the actors created digital certificates through certificate impersonation, signing malicious software to appear legitimate and bypass security controls [T1588.004]. Internal audits showed that several machines had unauthorized registry modifications, though these were initially overlooked during routine checks.\n\nCommand and Control: The command and control infrastructure relied on application layer protocols, with the actors using valid accounts over RDP to connect to targeted systems and exfiltrate data [T1071]. During the investigation phase, Sea Phantom de-registered DNS A records to obscure their infrastructure and hinder attribution efforts [T1568.001]. Incident responders noted that some compromised servers showed signs of data wiping, but forensic analysis recovered partial logs indicating data theft occurred over a period of 48 hours.\n\nThis scenario highlights the importance of monitoring for unusual certificate activities, securing cloud instances, and implementing robust session management. Blue teams should practice responding to multi-vector attacks that combine exploitation, persistence, and evasion techniques.",
+        "techniques_used": [
+            "T1190",
+            "T1203",
+            "T1584.003",
+            "T1568.001",
+            "T1606.001",
+            "T1588.004",
+            "T1071"
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+SecureBank Inc., a mid-sized financial services provider with operations in North America and Europe, reported anomalous network activity on its corporate email servers and internal systems. Initial logs from their SIEM showed unusual outbound connections to unknown IP addresses, but no immediate data exfiltration was detected. The actors likely conducted reconnaissance [T1589] to identify key employees, such as IT administrators and financial analysts, before launching the attack.
+
+Initial Access: The adversary sent spearphishing emails [T1566.002] containing malicious links disguised as urgent security updates, which, when clicked, redirected victims to a compromised website hosting exploit kits.
+
+Execution: Upon visiting the site, a malicious script executed in the background, leveraging PowerShell [T1059.001] to download and deploy a keylogger payload [T1105] while simultaneously modifying the root crontab file [T1053.003] to ensure persistence at system startup.
+
+Persistence: The attacker further established persistence by hijacking the AppDomainManager [T1574.014] to load a rogue DLL during application startup, enabling long-term access without user interaction.
+
+Defense Evasion: To obscure their activities, the adversary modified the Windows Event Log [T1546] to remove evidence of unauthorized access and used a VPN service [T1665] to mask their command-and-control (C2) communications from network monitoring tools.
+
+Credential Access: The keylogger captured user credentials and session cookies [T1606.001], which the threat actor then used to gain unauthorized access to SecureBank's internal web applications without requiring passwords.
+
+Additional noise: System logs from SecureBank's firewall indicated intermittent spikes in traffic to cloud storage services, but these were later attributed to a scheduled backup process. The company's background includes a recent merger with a smaller regional bank, which may have introduced integration vulnerabilities, though this was not directly exploited in this scenario.

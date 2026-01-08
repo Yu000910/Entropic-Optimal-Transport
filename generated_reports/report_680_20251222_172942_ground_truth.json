@@ -1,0 +1,63 @@
+{
+    "report_id": "report_680",
+    "generated_at": "20251222_172942",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1129",
+        "T1003.006",
+        "T1550.003",
+        "T1659",
+        "T1568.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.002",
+        "T1129",
+        "T1003.006",
+        "T1550.003",
+        "T1659",
+        "T1568.002"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1550.003",
+        "T1568.002",
+        "T1659",
+        "T1003.006",
+        "T1078.002"
+    ],
+    "clean_text": "Background: The fictional financial firm 'SecureFin Corp' reported anomalous activity in its Active Directory environment, with unusual logins from compromised workstations. Initial investigation revealed that the actors likely conducted reconnaissance on employee social media profiles to identify targets, though no specific technique tags apply to this general behavior. The attack began with initial access via a spear-phishing email that delivered a malicious attachment, executing a PowerShell script to download additional payloads. Once inside, the adversary used Mimikatz's sekurlsa module to harvest domain authentication credentials from memory, enabling them to access shared resources. They then performed a DCSync attack to gather credentials for privilege escalation, simultaneously forging a Kerberos ticket and injecting it into the current session to bypass access controls on critical servers. To deploy ransomware, a compromised application invoked LoadLibrary to import an encryption module for file encryption, while the threat actor injected a keylogger payload into encrypted network communications to capture additional credentials. For command and control, the compromised system generated domain names using a DGA algorithm to evade DNS-based blocking, with logs showing failed connections to benign domains like 'update.microsoft.com' as noise. The actors maintained persistence by creating scheduled tasks and modifying registry keys, though these actions are not tagged as they fall outside the specified techniques. Remediation involved resetting passwords, implementing multi-factor authentication, and monitoring for unusual Kerberos ticket usage.",
+    "tagged_text": "Background: The fictional financial firm 'SecureFin Corp' reported anomalous activity in its Active Directory environment, with unusual logins from compromised workstations. Initial investigation revealed that the actors likely conducted reconnaissance on employee social media profiles to identify targets, though no specific technique tags apply to this general behavior. The attack began with initial access via a spear-phishing email that delivered a malicious attachment, executing a PowerShell script to download additional payloads. Once inside, the adversary used Mimikatz's sekurlsa module to harvest domain authentication credentials from memory [T1078.002], enabling them to access shared resources. They then performed a DCSync attack [T1003.006] to gather credentials for privilege escalation, simultaneously forging a Kerberos ticket and injecting it into the current session to bypass access controls on critical servers [T1550.003]. To deploy ransomware, a compromised application invoked LoadLibrary to import an encryption module for file encryption [T1129], while the threat actor injected a keylogger payload into encrypted network communications [T1659] to capture additional credentials. For command and control, the compromised system generated domain names using a DGA algorithm to evade DNS-based blocking [T1568.002], with logs showing failed connections to benign domains like 'update.microsoft.com' as noise. The actors maintained persistence by creating scheduled tasks and modifying registry keys, though these actions are not tagged as they fall outside the specified techniques. Remediation involved resetting passwords, implementing multi-factor authentication, and monitoring for unusual Kerberos ticket usage.",
+    "sentence_annotations": [
+        {
+            "sentence": "To deploy ransomware, a compromised application invoked LoadLibrary to import an encryption module for file encryption, while the threat actor injected a keylogger payload into encrypted network communications to capture additional credentials.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "To deploy ransomware, a compromised application invoked LoadLibrary to import an encryption module for file encryption, while the threat actor injected a keylogger payload into encrypted network communications to capture additional credentials.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowScythe' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowScythe' targeting financial institutions to exfiltrate sensitive data and deploy ransomware. Based on intelligence from the Federal Bureau of Investigation (FBI), CISA, and NSA, the actors exploited domain accounts and Kerberos protocols to move laterally across networks, using techniques like DCSync and Pass the Ticket for privilege escalation, while employing DGAs and content injection to evade detection and maintain persistence.",
+        "full_report_text": "Background: The fictional financial firm 'SecureFin Corp' reported anomalous activity in its Active Directory environment, with unusual logins from compromised workstations. Initial investigation revealed that the actors likely conducted reconnaissance on employee social media profiles to identify targets, though no specific technique tags apply to this general behavior. The attack began with initial access via a spear-phishing email that delivered a malicious attachment, executing a PowerShell script to download additional payloads. Once inside, the adversary used Mimikatz's sekurlsa module to harvest domain authentication credentials from memory [T1078.002], enabling them to access shared resources. They then performed a DCSync attack [T1003.006] to gather credentials for privilege escalation, simultaneously forging a Kerberos ticket and injecting it into the current session to bypass access controls on critical servers [T1550.003]. To deploy ransomware, a compromised application invoked LoadLibrary to import an encryption module for file encryption [T1129], while the threat actor injected a keylogger payload into encrypted network communications [T1659] to capture additional credentials. For command and control, the compromised system generated domain names using a DGA algorithm to evade DNS-based blocking [T1568.002], with logs showing failed connections to benign domains like 'update.microsoft.com' as noise. The actors maintained persistence by creating scheduled tasks and modifying registry keys, though these actions are not tagged as they fall outside the specified techniques. Remediation involved resetting passwords, implementing multi-factor authentication, and monitoring for unusual Kerberos ticket usage.",
+        "techniques_used": [
+            "T1078.002",
+            "T1129",
+            "T1003.006",
+            "T1550.003",
+            "T1659",
+            "T1568.002"
+        ]
+    }
+}

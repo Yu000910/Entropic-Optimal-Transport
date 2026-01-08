@@ -1,0 +1,81 @@
+{
+    "report_id": "report_743",
+    "generated_at": "20251223_105628",
+    "scenario_target_ids": [
+        "T1195.003",
+        "T1059.003",
+        "T1564.002",
+        "T1218.003",
+        "T1056.004",
+        "T1568.001",
+        "T1048",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1195.003",
+        "T1059.003",
+        "T1564.002",
+        "T1218.003",
+        "T1056.004",
+        "T1568.001",
+        "T1048",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1059.003",
+        "T1589",
+        "T1218.003",
+        "T1568.001",
+        "T1056.004",
+        "T1195.003",
+        "T1564.002",
+        "T1498",
+        "T1048"
+    ],
+    "clean_text": "On October 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional campaign, dubbed 'ShadowHook,' targeting technology firms and financial institutions. The actors likely conduct reconnaissance to identify supply chain vulnerabilities. In the Initial Access phase, the adversary compromised the hardware supply chain by reprogramming a Teensy USB device to mount as a storage device containing malware for automatic execution. Upon insertion into a target macOS system, the malware executed via the Windows Command Shell to run cmd.exe with parameters, while simultaneously employing dscl commands to hide backdoor accounts from the macOS login screens. System logs from the affected host, 'CorpMac-01,' showed unusual process spawns at 03:45 UTC, though these were initially dismissed as routine maintenance. In the Execution phase, the actors manipulated CMSTP.exe to execute a DLL containing backdoor code, which then hooked the GetUserNameW function to capture Windows usernames during authentication. Network traffic analysis revealed a suspicious DNS A record registered for 'cdn-service.org' to mask malicious traffic as legitimate content delivery. Irrelevant background: The targeted company, 'TechGlobal Inc.,' reported no prior incidents in Q3 2024. For exfiltration, stolen user credentials were packaged and transferred via FTP to a remote host, and in the Impact phase, the malware leveraged a botnet to overwhelm the DNS server with recursive queries, causing service disruptions noted in internal incident reports.",
+    "tagged_text": "On October 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional campaign, dubbed 'ShadowHook,' targeting technology firms and financial institutions. The actors likely conduct reconnaissance [T1589] to identify supply chain vulnerabilities. In the Initial Access phase, the adversary compromised the hardware supply chain by reprogramming a Teensy USB device to mount as a storage device containing malware for automatic execution [T1195.003]. Upon insertion into a target macOS system, the malware executed via the Windows Command Shell [T1059.003] to run cmd.exe with parameters, while simultaneously employing dscl commands to hide backdoor accounts from the macOS login screens [T1564.002]. System logs from the affected host, 'CorpMac-01,' showed unusual process spawns at 03:45 UTC, though these were initially dismissed as routine maintenance. In the Execution phase, the actors manipulated CMSTP.exe to execute a DLL containing backdoor code [T1218.003], which then hooked the GetUserNameW function to capture Windows usernames during authentication [T1056.004]. Network traffic analysis revealed a suspicious DNS A record registered for 'cdn-service.org' to mask malicious traffic as legitimate content delivery [T1568.001]. Irrelevant background: The targeted company, 'TechGlobal Inc.,' reported no prior incidents in Q3 2024. For exfiltration, stolen user credentials were packaged and transferred via FTP to a remote host [T1048], and in the Impact phase, the malware leveraged a botnet to overwhelm the DNS server with recursive queries [T1498], causing service disruptions noted in internal incident reports.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify supply chain vulnerabilities.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "For exfiltration, stolen user credentials were packaged and transferred via FTP to a remote host, and in the Impact phase, the malware leveraged a botnet to overwhelm the DNS server with recursive queries, causing service disruptions noted in internal incident reports.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        },
+        {
+            "sentence": "For exfiltration, stolen user credentials were packaged and transferred via FTP to a remote host, and in the Impact phase, the malware leveraged a botnet to overwhelm the DNS server with recursive queries, causing service disruptions noted in internal incident reports.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL Campaign 'ShadowHook' Targeting Supply Chains and macOS/Windows Systems",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowHook' targeting organizations through hardware supply chain compromises and multi-platform exploitation for credential theft and network disruption. The activity leverages techniques such as compromised USB devices, hidden user accounts, and DNS manipulation, with observed behaviors across Initial Access, Execution, Persistence, Defense Evasion, Credential Access, Command and Control, and Impact phases. This report is for educational purposes to train blue teams on identifying and mitigating complex attack chains.",
+        "full_report_text": "On October 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional campaign, dubbed 'ShadowHook,' targeting technology firms and financial institutions. The actors likely conduct reconnaissance [T1589] to identify supply chain vulnerabilities. In the Initial Access phase, the adversary compromised the hardware supply chain by reprogramming a Teensy USB device to mount as a storage device containing malware for automatic execution [T1195.003]. Upon insertion into a target macOS system, the malware executed via the Windows Command Shell [T1059.003] to run cmd.exe with parameters, while simultaneously employing dscl commands to hide backdoor accounts from the macOS login screens [T1564.002]. System logs from the affected host, 'CorpMac-01,' showed unusual process spawns at 03:45 UTC, though these were initially dismissed as routine maintenance. In the Execution phase, the actors manipulated CMSTP.exe to execute a DLL containing backdoor code [T1218.003], which then hooked the GetUserNameW function to capture Windows usernames during authentication [T1056.004]. Network traffic analysis revealed a suspicious DNS A record registered for 'cdn-service.org' to mask malicious traffic as legitimate content delivery [T1568.001]. Irrelevant background: The targeted company, 'TechGlobal Inc.,' reported no prior incidents in Q3 2024. For exfiltration, stolen user credentials were packaged and transferred via FTP to a remote host [T1048], and in the Impact phase, the malware leveraged a botnet to overwhelm the DNS server with recursive queries [T1498], causing service disruptions noted in internal incident reports.",
+        "techniques_used": [
+            "T1589",
+            "T1195.003",
+            "T1059.003",
+            "T1564.002",
+            "T1218.003",
+            "T1056.004",
+            "T1568.001",
+            "T1048",
+            "T1498"
+        ]
+    }
+}

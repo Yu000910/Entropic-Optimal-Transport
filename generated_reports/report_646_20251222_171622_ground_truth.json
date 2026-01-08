@@ -1,0 +1,91 @@
+{
+    "report_id": "report_646",
+    "generated_at": "20251222_171622",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1566",
+        "T1559.001",
+        "T1563",
+        "T1123",
+        "T1219",
+        "T1495"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.004",
+        "T1566",
+        "T1559.001",
+        "T1563",
+        "T1123",
+        "T1219",
+        "T1495"
+    ],
+    "actual_found_ids": [
+        "T1566.004",
+        "T1589",
+        "T1495",
+        "T1559.001",
+        "T1566",
+        "T1563",
+        "T1123",
+        "T1219"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on the fictional APT group 'ShadowWhisper'. This group has been observed targeting energy and telecommunications sectors in a simulated training scenario. Initial analysis of network logs from a fictional victim organization, 'PowerGrid Inc.', shows anomalous RDP connections originating from external IP addresses, though these were later determined to be false positives during the investigation. The actors likely conduct reconnaissance to identify high-value targets, such as system administrators, before initiating the attack.\n\nIn the initial access phase, the threat actor employed spearphishing voice calls to trick an employee into opening a malicious attachment, which installed a remote access tool. Simultaneously, they sent phishing emails with fake software update notifications containing attached malicious .exe files, exploiting user trust to gain entry. Upon execution, the adversary used PowerShell scripts to download additional payloads while modifying system configurations to evade detection.\n\nFor persistence and execution, the malware leveraged Component Object Model (COM) interfaces, specifically ITaskService, ITaskDefinition, and ITaskSettings, to schedule malicious tasks that run at system startup. This allowed the actor to maintain access even after reboots. The system logs from 'PowerGrid Inc.' indicated unusual task scheduler entries, but initial reviews attributed them to routine maintenance activities.\n\nIn the lateral movement phase, the threat actor conducted remote service session hijacking by exploiting RDP sessions to move from the initially compromised workstation to the domain controller, enabling broader network access. During this phase, they deployed remote access tools (RATs), such as a VNC module downloaded from command and control (C2) servers, to facilitate real-time control and data exfiltration. Network traffic analysis showed spikes in outbound connections to unknown IPs, though these were initially overlooked due to high baseline noise.\n\nFor collection and impact, the actor utilized audio capture through tools like MacSpy to record sounds from microphones on compromised computers, potentially gathering sensitive verbal communications. Additionally, they executed firmware corruption by deploying an executable that installs a modified bootloader to prevent normal boot-up, aiming to disrupt operations and cause permanent damage. The victim organization's incident response team noted boot failures on several servers, initially suspected as hardware issues before forensic analysis revealed the malicious activity. Background information on 'PowerGrid Inc.' includes its role in regional energy distribution, with no prior major security incidents reported, though this campaign is purely fictional for training purposes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on the fictional APT group 'ShadowWhisper'. This group has been observed targeting energy and telecommunications sectors in a simulated training scenario. Initial analysis of network logs from a fictional victim organization, 'PowerGrid Inc.', shows anomalous RDP connections originating from external IP addresses, though these were later determined to be false positives during the investigation. The actors likely conduct reconnaissance [T1589] to identify high-value targets, such as system administrators, before initiating the attack.\n\nIn the initial access phase, the threat actor employed spearphishing voice calls [T1566.004] to trick an employee into opening a malicious attachment, which installed a remote access tool. Simultaneously, they sent phishing emails [T1566] with fake software update notifications containing attached malicious .exe files, exploiting user trust to gain entry. Upon execution, the adversary used PowerShell scripts to download additional payloads while modifying system configurations to evade detection.\n\nFor persistence and execution, the malware leveraged Component Object Model (COM) interfaces [T1559.001], specifically ITaskService, ITaskDefinition, and ITaskSettings, to schedule malicious tasks that run at system startup. This allowed the actor to maintain access even after reboots. The system logs from 'PowerGrid Inc.' indicated unusual task scheduler entries, but initial reviews attributed them to routine maintenance activities.\n\nIn the lateral movement phase, the threat actor conducted remote service session hijacking [T1563] by exploiting RDP sessions to move from the initially compromised workstation to the domain controller, enabling broader network access. During this phase, they deployed remote access tools (RATs) [T1219], such as a VNC module downloaded from command and control (C2) servers, to facilitate real-time control and data exfiltration. Network traffic analysis showed spikes in outbound connections to unknown IPs, though these were initially overlooked due to high baseline noise.\n\nFor collection and impact, the actor utilized audio capture [T1123] through tools like MacSpy to record sounds from microphones on compromised computers, potentially gathering sensitive verbal communications. Additionally, they executed firmware corruption [T1495] by deploying an executable that installs a modified bootloader to prevent normal boot-up, aiming to disrupt operations and cause permanent damage. The victim organization's incident response team noted boot failures on several servers, initially suspected as hardware issues before forensic analysis revealed the malicious activity. Background information on 'PowerGrid Inc.' includes its role in regional energy distribution, with no prior major security incidents reported, though this campaign is purely fictional for training purposes.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify high-value targets, such as system administrators, before initiating the attack.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Simultaneously, they sent phishing emails with fake software update notifications containing attached malicious.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "In the lateral movement phase, the threat actor conducted remote service session hijacking by exploiting RDP sessions to move from the initially compromised workstation to the domain controller, enabling broader network access.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "During this phase, they deployed remote access tools (RATs), such as a VNC module downloaded from command and control (C2) servers, to facilitate real-time control and data exfiltration.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "For collection and impact, the actor utilized audio capture through tools like MacSpy to record sounds from microphones on compromised computers, potentially gathering sensitive verbal communications.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        },
+        {
+            "sentence": "Additionally, they executed firmware corruption by deploying an executable that installs a modified bootloader to prevent normal boot-up, aiming to disrupt operations and cause permanent damage.",
+            "technique_id": "T1495",
+            "technique_name": "Firmware Corruption"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWhisper' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowWhisper', targeting critical infrastructure sectors. The campaign involves multi-vector phishing, remote access tool deployment, and lateral movement with audio capture and firmware corruption capabilities, based on provided techniques for blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on the fictional APT group 'ShadowWhisper'. This group has been observed targeting energy and telecommunications sectors in a simulated training scenario. Initial analysis of network logs from a fictional victim organization, 'PowerGrid Inc.', shows anomalous RDP connections originating from external IP addresses, though these were later determined to be false positives during the investigation. The actors likely conduct reconnaissance [T1589] to identify high-value targets, such as system administrators, before initiating the attack.\n\nIn the initial access phase, the threat actor employed spearphishing voice calls [T1566.004] to trick an employee into opening a malicious attachment, which installed a remote access tool. Simultaneously, they sent phishing emails [T1566] with fake software update notifications containing attached malicious .exe files, exploiting user trust to gain entry. Upon execution, the adversary used PowerShell scripts to download additional payloads while modifying system configurations to evade detection.\n\nFor persistence and execution, the malware leveraged Component Object Model (COM) interfaces [T1559.001], specifically ITaskService, ITaskDefinition, and ITaskSettings, to schedule malicious tasks that run at system startup. This allowed the actor to maintain access even after reboots. The system logs from 'PowerGrid Inc.' indicated unusual task scheduler entries, but initial reviews attributed them to routine maintenance activities.\n\nIn the lateral movement phase, the threat actor conducted remote service session hijacking [T1563] by exploiting RDP sessions to move from the initially compromised workstation to the domain controller, enabling broader network access. During this phase, they deployed remote access tools (RATs) [T1219], such as a VNC module downloaded from command and control (C2) servers, to facilitate real-time control and data exfiltration. Network traffic analysis showed spikes in outbound connections to unknown IPs, though these were initially overlooked due to high baseline noise.\n\nFor collection and impact, the actor utilized audio capture [T1123] through tools like MacSpy to record sounds from microphones on compromised computers, potentially gathering sensitive verbal communications. Additionally, they executed firmware corruption [T1495] by deploying an executable that installs a modified bootloader to prevent normal boot-up, aiming to disrupt operations and cause permanent damage. The victim organization's incident response team noted boot failures on several servers, initially suspected as hardware issues before forensic analysis revealed the malicious activity. Background information on 'PowerGrid Inc.' includes its role in regional energy distribution, with no prior major security incidents reported, though this campaign is purely fictional for training purposes.",
+        "techniques_used": [
+            "T1589",
+            "T1566.004",
+            "T1566",
+            "T1559.001",
+            "T1563",
+            "T1123",
+            "T1219",
+            "T1495"
+        ]
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "report_id": "report_199",
+    "generated_at": "20251222_140608",
+    "scenario_target_ids": [
+        "T1596",
+        "T1133",
+        "T1569",
+        "T1037.004",
+        "T1542.001",
+        "T1564",
+        "T1110.002",
+        "T1102.003",
+        "T1565.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1133",
+        "T1569",
+        "T1037.004",
+        "T1542.001",
+        "T1564",
+        "T1110.002",
+        "T1102.003",
+        "T1565.001"
+    ],
+    "actual_found_ids": [
+        "T1542.001",
+        "T1102.003",
+        "T1564",
+        "T1565.001",
+        "T1133",
+        "T1569",
+        "T1110.002",
+        "T1596",
+        "T1037.004"
+    ],
+    "clean_text": "APT-FICT, a fictional threat actor, likely initiated operations by querying SSL certificate transparency logs to identify subdomains associated with the target financial organization, enabling detailed reconnaissance of external assets. Subsequently, the actors leveraged a compromised VPN gateway to establish persistent remote access into the corporate network, bypassing perimeter defenses and maintaining a foothold for further exploitation. Once inside, they employed svchost.exe to load a malicious DLL, facilitating command and control communication while evading detection by blending with legitimate system processes. To ensure persistence across reboots, the adversary edited rc.common to launch a cryptocurrency miner at system startup, embedding malicious activity into standard initialization scripts, and simultaneously altered UEFI secure boot settings to disable security controls, embedding persistence at the firmware level to survive operating system reinstallation. During execution, the malware used the mktemp utility to create random and unique filenames for payloads, such as export tmpDir=\"$(mktemp -d /tmp/XXXXXXXXXXXX)\", effectively hiding artifacts from standard file system scans. Additionally, the actors collected password hashes by dumping the SAM database using registry techniques, enabling offline password cracking to escalate privileges and move laterally within the network. For data exfiltration, the attacker used powershell.exe to run a script that collected system information from the infected host, establishing one-way communication to a command server without requiring bidirectional interaction. In a final stage, APT-FICT manipulated pivot table data in Excel files to distort financial analysis results, altering stored data to sow confusion and potentially impact business decisions. Background noise: The target organization, a mid-sized financial firm, reported unusual network traffic spikes from its VPN server, with logs showing multiple failed login attempts from IP addresses in Eastern Europe. System administrators noted increased CPU usage on several servers, initially attributed to routine maintenance tasks, but later traced to unauthorized processes. Forensic analysis revealed modified system files and anomalous registry entries, though initial scans missed the firmware-level changes due to limited hardware inspection capabilities. The incident was contained after a week, with no actual data loss reported in this fictional scenario.",
+    "tagged_text": "APT-FICT, a fictional threat actor, likely initiated operations by querying SSL certificate transparency logs to identify subdomains associated with the target financial organization, enabling detailed reconnaissance of external assets [T1596]. Subsequently, the actors leveraged a compromised VPN gateway to establish persistent remote access into the corporate network, bypassing perimeter defenses and maintaining a foothold for further exploitation [T1133]. Once inside, they employed svchost.exe to load a malicious DLL, facilitating command and control communication while evading detection by blending with legitimate system processes [T1569]. To ensure persistence across reboots, the adversary edited rc.common to launch a cryptocurrency miner at system startup, embedding malicious activity into standard initialization scripts [T1037.004], and simultaneously altered UEFI secure boot settings to disable security controls, embedding persistence at the firmware level to survive operating system reinstallation [T1542.001]. During execution, the malware used the mktemp utility to create random and unique filenames for payloads, such as export tmpDir=\"$(mktemp -d /tmp/XXXXXXXXXXXX)\", effectively hiding artifacts from standard file system scans [T1564]. Additionally, the actors collected password hashes by dumping the SAM database using registry techniques, enabling offline password cracking to escalate privileges and move laterally within the network [T1110.002]. For data exfiltration, the attacker used powershell.exe to run a script that collected system information from the infected host, establishing one-way communication to a command server without requiring bidirectional interaction [T1102.003]. In a final stage, APT-FICT manipulated pivot table data in Excel files to distort financial analysis results, altering stored data to sow confusion and potentially impact business decisions [T1565.001]. Background noise: The target organization, a mid-sized financial firm, reported unusual network traffic spikes from its VPN server, with logs showing multiple failed login attempts from IP addresses in Eastern Europe. System administrators noted increased CPU usage on several servers, initially attributed to routine maintenance tasks, but later traced to unauthorized processes. Forensic analysis revealed modified system files and anomalous registry entries, though initial scans missed the firmware-level changes due to limited hardware inspection capabilities. The incident was contained after a week, with no actual data loss reported in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT-FICT, a fictional threat actor, likely initiated operations by querying SSL certificate transparency logs to identify subdomains associated with the target financial organization, enabling detailed reconnaissance of external assets.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "Subsequently, the actors leveraged a compromised VPN gateway to establish persistent remote access into the corporate network, bypassing perimeter defenses and maintaining a foothold for further exploitation.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "exe to load a malicious DLL, facilitating command and control communication while evading detection by blending with legitimate system processes.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "During execution, the malware used the mktemp utility to create random and unique filenames for payloads, such as export tmpDir=\"$(mktemp -d /tmp/XXXXXXXXXXXX)\", effectively hiding artifacts from standard file system scans.",
+            "technique_id": "T1564",
+            "technique_name": "Hide Artifacts"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated APT-FICT, targeting financial organizations to disrupt operations and exfiltrate sensitive data. Based on analysis of a fictional incident, APT-FICT employs a multi-stage attack leveraging open-source intelligence, compromised infrastructure, and sophisticated persistence mechanisms. The campaign involves initial reconnaissance, remote access via VPN, service abuse for command and control, firmware manipulation, and data manipulation, with techniques spanning the MITRE ATT&CK framework. This report is intended for blue team training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "APT-FICT, a fictional threat actor, likely initiated operations by querying SSL certificate transparency logs to identify subdomains associated with the target financial organization, enabling detailed reconnaissance of external assets [T1596]. Subsequently, the actors leveraged a compromised VPN gateway to establish persistent remote access into the corporate network, bypassing perimeter defenses and maintaining a foothold for further exploitation [T1133]. Once inside, they employed svchost.exe to load a malicious DLL, facilitating command and control communication while evading detection by blending with legitimate system processes [T1569]. To ensure persistence across reboots, the adversary edited rc.common to launch a cryptocurrency miner at system startup, embedding malicious activity into standard initialization scripts [T1037.004], and simultaneously altered UEFI secure boot settings to disable security controls, embedding persistence at the firmware level to survive operating system reinstallation [T1542.001]. During execution, the malware used the mktemp utility to create random and unique filenames for payloads, such as export tmpDir=\"$(mktemp -d /tmp/XXXXXXXXXXXX)\", effectively hiding artifacts from standard file system scans [T1564]. Additionally, the actors collected password hashes by dumping the SAM database using registry techniques, enabling offline password cracking to escalate privileges and move laterally within the network [T1110.002]. For data exfiltration, the attacker used powershell.exe to run a script that collected system information from the infected host, establishing one-way communication to a command server without requiring bidirectional interaction [T1102.003]. In a final stage, APT-FICT manipulated pivot table data in Excel files to distort financial analysis results, altering stored data to sow confusion and potentially impact business decisions [T1565.001]. Background noise: The target organization, a mid-sized financial firm, reported unusual network traffic spikes from its VPN server, with logs showing multiple failed login attempts from IP addresses in Eastern Europe. System administrators noted increased CPU usage on several servers, initially attributed to routine maintenance tasks, but later traced to unauthorized processes. Forensic analysis revealed modified system files and anomalous registry entries, though initial scans missed the firmware-level changes due to limited hardware inspection capabilities. The incident was contained after a week, with no actual data loss reported in this fictional scenario.",
+        "techniques_used": [
+            "T1596",
+            "T1133",
+            "T1569",
+            "T1037.004",
+            "T1542.001",
+            "T1564",
+            "T1110.002",
+            "T1102.003",
+            "T1565.001"
+        ]
+    }
+}

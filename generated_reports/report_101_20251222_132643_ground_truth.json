@@ -1,0 +1,123 @@
+{
+    "report_id": "report_101",
+    "generated_at": "20251222_132643",
+    "scenario_target_ids": [
+        "T1588.007",
+        "T1585.001",
+        "T1608",
+        "T1659",
+        "T1559.003",
+        "T1525",
+        "T1652",
+        "T1213.004",
+        "T1557.001",
+        "T1665",
+        "T1029",
+        "T1565.003",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585.001",
+        "T1608",
+        "T1588.007",
+        "T1659",
+        "T1559.003",
+        "T1652",
+        "T1565.003",
+        "T1525",
+        "T1665",
+        "T1557.001",
+        "T1213.004",
+        "T1029",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1029",
+        "T1525",
+        "T1213.004",
+        "T1585.001",
+        "T1659",
+        "T1565.003",
+        "T1608",
+        "T1557.001",
+        "T1665",
+        "T1498",
+        "T1588.007",
+        "T1559.003"
+    ],
+    "clean_text": "On October 15, 2023, PowerGrid Inc., a fictional energy provider based in Chicago, reported anomalous network activity, including increased DNS query volumes and unauthorized access to customer data in their Microsoft Dynamics 365 system. Initial logs from their SIEM showed spikes in traffic from IP addresses masquerading as legitimate Akamai CDN services, but further analysis revealed these were part of a coordinated attack. The company's background includes operations across five states, with a recent migration to cloud-based infrastructure, though no prior major incidents were recorded.\n\nThe attack began with reconnaissance, where the adversary created a deceptive Facebook profile with carefully crafted employment history and educational background to impersonate a trusted contractor, enabling initial social engineering attempts. Subsequently, the actors staged capabilities by uploading backdoor source code to a private Pastebin paste accessible only via a shared link, preparing for later deployment. For initial access, they employed artificial intelligence to execute malicious.ps1, which automatically established persistence and maintained access to the victim's system while simultaneously injecting a backdoor payload into DNS queries to establish persistent communication channels.\n\nDuring execution, the exploit targeted an XPC service daemon with weak input validation to achieve privilege escalation, allowing the adversary to run driverquery.exe /fo table to list device drivers in a formatted table for analysis and modify registry keys to redirect video files to a compromised media player. Persistence was further ensured by modifying a Docker image to include a web shell accessible through port 8080, and the command and control infrastructure was hidden using hard-coded domains in the malware masquerading as legitimate services such as Akamai CDN or Amazon Web Services.\n\nFor lateral movement and credential access, Empire was used with Inveigh to conduct name service poisoning for credential theft and associated relay attacks, which facilitated access to Microsoft Dynamics 365, where compromised credentials were leveraged to gather customer data. Data exfiltration involved ADVSTORESHELL collecting, compressing, encrypting, and exfiltrating data to the C2 server every 10 minutes, while an IP spoofing script was executed to evade IP-based blocking mechanisms during the attack. Network logs from PowerGrid Inc. showed intermittent outages, but these were initially attributed to routine maintenance, delaying full incident response.",
+    "tagged_text": "On October 15, 2023, PowerGrid Inc., a fictional energy provider based in Chicago, reported anomalous network activity, including increased DNS query volumes and unauthorized access to customer data in their Microsoft Dynamics 365 system. Initial logs from their SIEM showed spikes in traffic from IP addresses masquerading as legitimate Akamai CDN services, but further analysis revealed these were part of a coordinated attack. The company's background includes operations across five states, with a recent migration to cloud-based infrastructure, though no prior major incidents were recorded.\n\nThe attack began with reconnaissance, where the adversary created a deceptive Facebook profile with carefully crafted employment history and educational background to impersonate a trusted contractor [T1585.001], enabling initial social engineering attempts. Subsequently, the actors staged capabilities by uploading backdoor source code to a private Pastebin paste accessible only via a shared link [T1608], preparing for later deployment. For initial access, they employed artificial intelligence [T1588.007] to execute malicious.ps1, which automatically established persistence and maintained access to the victim's system while simultaneously injecting a backdoor payload into DNS queries to establish persistent communication channels [T1659].\n\nDuring execution, the exploit targeted an XPC service daemon with weak input validation to achieve privilege escalation [T1559.003], allowing the adversary to run driverquery.exe /fo table to list device drivers in a formatted table for analysis [T1652] and modify registry keys to redirect video files to a compromised media player [T1565.003]. Persistence was further ensured by modifying a Docker image to include a web shell accessible through port 8080 [T1525], and the command and control infrastructure was hidden using hard-coded domains in the malware masquerading as legitimate services such as Akamai CDN or Amazon Web Services [T1665].\n\nFor lateral movement and credential access, Empire was used with Inveigh to conduct name service poisoning for credential theft and associated relay attacks [T1557.001], which facilitated access to Microsoft Dynamics 365, where compromised credentials were leveraged to gather customer data [T1213.004]. Data exfiltration involved ADVSTORESHELL collecting, compressing, encrypting, and exfiltrating data to the C2 server every 10 minutes [T1029], while an IP spoofing script was executed to evade IP-based blocking mechanisms during the attack [T1498]. Network logs from PowerGrid Inc. showed intermittent outages, but these were initially attributed to routine maintenance, delaying full incident response.",
+    "sentence_annotations": [
+        {
+            "sentence": "Subsequently, the actors staged capabilities by uploading backdoor source code to a private Pastebin paste accessible only via a shared link, preparing for later deployment.",
+            "technique_id": "T1608",
+            "technique_name": "Stage Capabilities"
+        },
+        {
+            "sentence": "ps1, which automatically established persistence and maintained access to the victim's system while simultaneously injecting a backdoor payload into DNS queries to establish persistent communication channels.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "exe /fo table to list device drivers in a formatted table for analysis and modify registry keys to redirect video files to a compromised media player [T1565.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "Persistence was further ensured by modifying a Docker image to include a web shell accessible through port 8080, and the command and control infrastructure was hidden using hard-coded domains in the malware masquerading as legitimate services such as Akamai CDN or Amazon Web Services.",
+            "technique_id": "T1525",
+            "technique_name": "Implant Internal Image"
+        },
+        {
+            "sentence": "Persistence was further ensured by modifying a Docker image to include a web shell accessible through port 8080, and the command and control infrastructure was hidden using hard-coded domains in the malware masquerading as legitimate services such as Akamai CDN or Amazon Web Services.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        },
+        {
+            "sentence": "Data exfiltration involved ADVSTORESHELL collecting, compressing, encrypting, and exfiltrating data to the C2 server every 10 minutes, while an IP spoofing script was executed to evade IP-based blocking mechanisms during the attack.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        },
+        {
+            "sentence": "Data exfiltration involved ADVSTORESHELL collecting, compressing, encrypting, and exfiltrating data to the C2 server every 10 minutes, while an IP spoofing script was executed to evade IP-based blocking mechanisms during the attack.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowWeaver', which targeted a mid-sized energy company, 'PowerGrid Inc.', through a multi-phase attack involving social engineering, AI-driven automation, and sophisticated persistence mechanisms. The campaign leveraged compromised social media accounts, DNS-based content injection, and Docker image manipulation to establish and maintain access, while using scheduled data exfiltration and network denial-of-service techniques to obscure malicious activities. This report is intended for blue team training to enhance detection and response capabilities against similar advanced threats.",
+        "full_report_text": "On October 15, 2023, PowerGrid Inc., a fictional energy provider based in Chicago, reported anomalous network activity, including increased DNS query volumes and unauthorized access to customer data in their Microsoft Dynamics 365 system. Initial logs from their SIEM showed spikes in traffic from IP addresses masquerading as legitimate Akamai CDN services, but further analysis revealed these were part of a coordinated attack. The company's background includes operations across five states, with a recent migration to cloud-based infrastructure, though no prior major incidents were recorded.\n\nThe attack began with reconnaissance, where the adversary created a deceptive Facebook profile with carefully crafted employment history and educational background to impersonate a trusted contractor [T1585.001], enabling initial social engineering attempts. Subsequently, the actors staged capabilities by uploading backdoor source code to a private Pastebin paste accessible only via a shared link [T1608], preparing for later deployment. For initial access, they employed artificial intelligence [T1588.007] to execute malicious.ps1, which automatically established persistence and maintained access to the victim's system while simultaneously injecting a backdoor payload into DNS queries to establish persistent communication channels [T1659].\n\nDuring execution, the exploit targeted an XPC service daemon with weak input validation to achieve privilege escalation [T1559.003], allowing the adversary to run driverquery.exe /fo table to list device drivers in a formatted table for analysis [T1652] and modify registry keys to redirect video files to a compromised media player [T1565.003]. Persistence was further ensured by modifying a Docker image to include a web shell accessible through port 8080 [T1525], and the command and control infrastructure was hidden using hard-coded domains in the malware masquerading as legitimate services such as Akamai CDN or Amazon Web Services [T1665].\n\nFor lateral movement and credential access, Empire was used with Inveigh to conduct name service poisoning for credential theft and associated relay attacks [T1557.001], which facilitated access to Microsoft Dynamics 365, where compromised credentials were leveraged to gather customer data [T1213.004]. Data exfiltration involved ADVSTORESHELL collecting, compressing, encrypting, and exfiltrating data to the C2 server every 10 minutes [T1029], while an IP spoofing script was executed to evade IP-based blocking mechanisms during the attack [T1498]. Network logs from PowerGrid Inc. showed intermittent outages, but these were initially attributed to routine maintenance, delaying full incident response.",
+        "techniques_used": [
+            "T1585.001",
+            "T1608",
+            "T1588.007",
+            "T1659",
+            "T1559.003",
+            "T1652",
+            "T1565.003",
+            "T1525",
+            "T1665",
+            "T1557.001",
+            "T1213.004",
+            "T1029",
+            "T1498"
+        ]
+    }
+}

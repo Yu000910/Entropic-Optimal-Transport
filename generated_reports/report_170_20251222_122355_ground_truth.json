@@ -1,0 +1,128 @@
+{
+    "report_id": "report_170",
+    "generated_at": "20251222_122355",
+    "scenario_target_ids": [
+        "T1592.002",
+        "T1592.004",
+        "T1595.003",
+        "T1583.006",
+        "T1608.003",
+        "T1566.002",
+        "T1059",
+        "T1134.002",
+        "T1480.001",
+        "T1027.011",
+        "T1202",
+        "T1560.003",
+        "T1602.001",
+        "T1090.004",
+        "T1052",
+        "T1020",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.002",
+        "T1592.004",
+        "T1595.003",
+        "T1583.006",
+        "T1608.003",
+        "T1566.002",
+        "T1059",
+        "T1134.002",
+        "T1480.001",
+        "T1027.011",
+        "T1202",
+        "T1560.003",
+        "T1602.001",
+        "T1090.004",
+        "T1052",
+        "T1020",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1592.004",
+        "T1566.002",
+        "T1052",
+        "T1496.001",
+        "T1020",
+        "T1027.011",
+        "T1134.002",
+        "T1560.003",
+        "T1202",
+        "T1090.004",
+        "T1602.001",
+        "T1595.003",
+        "T1480.001",
+        "T1583.006",
+        "T1059",
+        "T1608.003",
+        "T1592.002"
+    ],
+    "clean_text": "Background: SilentSentry, a fictional APT group, has been observed targeting energy and manufacturing sectors since early 2024. The group leverages open-source intelligence and custom tools to infiltrate networks. Initial analysis indicates the campaign aims to steal intellectual property and disrupt operations. On March 15, 2024, anomalous network traffic was detected from a subsidiary's web server, prompting an investigation that revealed unauthorized access and data exfiltration logs.\n\nKill-Chain Analysis:\n- Initial Access: The actors conducted reconnaissance by querying remote systems using nmap to discover installed software versions and identify client configurations such as SMTP server details, followed by probing for outdated plugin directories with DirBuster to exploit known vulnerabilities. They then established command and control (C2) infrastructure by creating web accounts on Dropbox and GitHub and modified the httpd.conf file to enable SSL with a malicious digital certificate. Initial compromise was achieved through spearphishing links in emails targeting employees.\n- Execution: Upon victim interaction, the adversary employed a command and scripting interpreter to download and execute malicious SCT files while using AdvancedRun.exe to create processes with elevated tokens for disabling security services. Execution was conditioned on environmental keying, relying on specific hostnames to decrypt payloads, and they stored encrypted C2 configuration data filelessly in Windows Registry keys.\n- Persistence and Defense Evasion: To maintain access, the group utilized indirect command execution via forfiles.exe to run .htm files and employed domain fronting by manipulating HTTP Referer headers to obfuscate C2 traffic.\n- Exfiltration: Data theft involved compressing sensitive files with a custom XOR cipher algorithm to minimize network footprint, querying SNMP for ARP table data on network devices, and automatically transferring data to C2 servers and connected removable media devices.\n- Impact: The campaign culminated in compute hijacking by exploiting exposed Kubernetes APIs to deploy cryptocurrency mining containers, causing resource degradation and operational disruption.\n\nMitigation Recommendations: Implement network segmentation, enforce multi-factor authentication, monitor for unusual registry modifications, and conduct regular vulnerability assessments. Blue teams should focus on detecting anomalous outbound traffic and unauthorized process creation.",
+    "tagged_text": "Background: SilentSentry, a fictional APT group, has been observed targeting energy and manufacturing sectors since early 2024. The group leverages open-source intelligence and custom tools to infiltrate networks. Initial analysis indicates the campaign aims to steal intellectual property and disrupt operations. On March 15, 2024, anomalous network traffic was detected from a subsidiary's web server, prompting an investigation that revealed unauthorized access and data exfiltration logs.\n\nKill-Chain Analysis:\n- Initial Access: The actors conducted reconnaissance by querying remote systems using nmap to discover installed software versions [T1592.002] and identify client configurations such as SMTP server details [T1592.004], followed by probing for outdated plugin directories with DirBuster to exploit known vulnerabilities [T1595.003]. They then established command and control (C2) infrastructure by creating web accounts on Dropbox and GitHub [T1583.006] and modified the httpd.conf file to enable SSL with a malicious digital certificate [T1608.003]. Initial compromise was achieved through spearphishing links in emails targeting employees [T1566.002].\n- Execution: Upon victim interaction, the adversary employed a command and scripting interpreter [T1059] to download and execute malicious SCT files while using AdvancedRun.exe to create processes with elevated tokens for disabling security services [T1134.002]. Execution was conditioned on environmental keying, relying on specific hostnames to decrypt payloads [T1480.001], and they stored encrypted C2 configuration data filelessly in Windows Registry keys [T1027.011].\n- Persistence and Defense Evasion: To maintain access, the group utilized indirect command execution via forfiles.exe to run .htm files [T1202] and employed domain fronting by manipulating HTTP Referer headers to obfuscate C2 traffic [T1090.004].\n- Exfiltration: Data theft involved compressing sensitive files with a custom XOR cipher algorithm to minimize network footprint [T1560.003], querying SNMP for ARP table data on network devices [T1602.001], and automatically transferring data to C2 servers [T1020] and connected removable media devices [T1052].\n- Impact: The campaign culminated in compute hijacking by exploiting exposed Kubernetes APIs to deploy cryptocurrency mining containers [T1496.001], causing resource degradation and operational disruption.\n\nMitigation Recommendations: Implement network segmentation, enforce multi-factor authentication, monitor for unusual registry modifications, and conduct regular vulnerability assessments. Blue teams should focus on detecting anomalous outbound traffic and unauthorized process creation.",
+    "sentence_annotations": [
+        {
+            "sentence": "- Execution: Upon victim interaction, the adversary employed a command and scripting interpreter to download and execute malicious SCT files while using AdvancedRun.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "htm files and employed domain fronting by manipulating HTTP Referer headers to obfuscate C2 traffic [T1090.",
+            "technique_id": "T1202",
+            "technique_name": "Indirect Command Execution"
+        },
+        {
+            "sentence": "001], and automatically transferring data to C2 servers and connected removable media devices.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        },
+        {
+            "sentence": "001], and automatically transferring data to C2 servers and connected removable media devices.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentSentry' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'SilentSentry', targeting critical infrastructure sectors. The campaign employs sophisticated reconnaissance, initial access via phishing, and multi-stage execution with evasion techniques, culminating in data exfiltration and resource hijacking. Blue teams are advised to review detection strategies and mitigation recommendations.",
+        "full_report_text": "Background: SilentSentry, a fictional APT group, has been observed targeting energy and manufacturing sectors since early 2024. The group leverages open-source intelligence and custom tools to infiltrate networks. Initial analysis indicates the campaign aims to steal intellectual property and disrupt operations. On March 15, 2024, anomalous network traffic was detected from a subsidiary's web server, prompting an investigation that revealed unauthorized access and data exfiltration logs.\n\nKill-Chain Analysis:\n- Initial Access: The actors conducted reconnaissance by querying remote systems using nmap to discover installed software versions [T1592.002] and identify client configurations such as SMTP server details [T1592.004], followed by probing for outdated plugin directories with DirBuster to exploit known vulnerabilities [T1595.003]. They then established command and control (C2) infrastructure by creating web accounts on Dropbox and GitHub [T1583.006] and modified the httpd.conf file to enable SSL with a malicious digital certificate [T1608.003]. Initial compromise was achieved through spearphishing links in emails targeting employees [T1566.002].\n- Execution: Upon victim interaction, the adversary employed a command and scripting interpreter [T1059] to download and execute malicious SCT files while using AdvancedRun.exe to create processes with elevated tokens for disabling security services [T1134.002]. Execution was conditioned on environmental keying, relying on specific hostnames to decrypt payloads [T1480.001], and they stored encrypted C2 configuration data filelessly in Windows Registry keys [T1027.011].\n- Persistence and Defense Evasion: To maintain access, the group utilized indirect command execution via forfiles.exe to run .htm files [T1202] and employed domain fronting by manipulating HTTP Referer headers to obfuscate C2 traffic [T1090.004].\n- Exfiltration: Data theft involved compressing sensitive files with a custom XOR cipher algorithm to minimize network footprint [T1560.003], querying SNMP for ARP table data on network devices [T1602.001], and automatically transferring data to C2 servers [T1020] and connected removable media devices [T1052].\n- Impact: The campaign culminated in compute hijacking by exploiting exposed Kubernetes APIs to deploy cryptocurrency mining containers [T1496.001], causing resource degradation and operational disruption.\n\nMitigation Recommendations: Implement network segmentation, enforce multi-factor authentication, monitor for unusual registry modifications, and conduct regular vulnerability assessments. Blue teams should focus on detecting anomalous outbound traffic and unauthorized process creation.",
+        "techniques_used": [
+            "T1592.002",
+            "T1592.004",
+            "T1595.003",
+            "T1583.006",
+            "T1608.003",
+            "T1566.002",
+            "T1059",
+            "T1134.002",
+            "T1480.001",
+            "T1027.011",
+            "T1202",
+            "T1560.003",
+            "T1602.001",
+            "T1090.004",
+            "T1052",
+            "T1020",
+            "T1496.001"
+        ]
+    }
+}

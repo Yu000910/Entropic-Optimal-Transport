@@ -1,0 +1,108 @@
+{
+    "report_id": "report_189",
+    "generated_at": "20251222_123137",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1587",
+        "T1199",
+        "T1059.012",
+        "T1204",
+        "T1218.013",
+        "T1082",
+        "T1563.002",
+        "T1219.003",
+        "T1030",
+        "T1496.001",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1587",
+        "T1199",
+        "T1059.012",
+        "T1204",
+        "T1218.013",
+        "T1082",
+        "T1563.002",
+        "T1219.003",
+        "T1030",
+        "T1496.001",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1204",
+        "T1082",
+        "T1199",
+        "T1496.001",
+        "T1587",
+        "T1218.013",
+        "T1219.003",
+        "T1592.003",
+        "T1499.003",
+        "T1563.002",
+        "T1030",
+        "T1059.012"
+    ],
+    "clean_text": "CrimsonVortex likely conducted initial reconnaissance by exploiting a trusted relationship with a third-party contractor to gain access to the victim's network, where they remotely executed systeminfo.exe to collect UEFI firmware version details and other system information for targeting purposes. The adversary then developed custom capabilities, including a credential dumping tool to extract password hashes from Windows domain controllers, and leveraged the hypervisor CLI by running 'esxcli system snmp set --enable true' to enable SNMP for additional reconnaissance. User execution was achieved through a compromised website delivering a malicious PDF that drops and executes njRAT when viewed in the browser, after which the attacker abused mavinject.exe to inject a malicious DLL into a legitimate process. To maintain persistence and lateral movement, CrimsonVortex executed RDP hijacking using tscon.exe to disconnect legitimate users and hijack their remote desktop sessions while configuring PiKVM to establish redundant remote control over critical infrastructure systems. For data exfiltration, the group employed techniques to break large files of interest into smaller chunks to bypass size limits. In the final stages, the adversary deployed a Monero cryptocurrency mining tool to hijack compute resources and exploited the user registration feature by automating thousands of sign-up attempts that overwhelmed the database in an application exhaustion flood. Logs from the victim's SIEM showed routine network traffic spikes unrelated to the attack, and background checks revealed the company had recently upgraded its firewall firmware without incident.",
+    "tagged_text": "CrimsonVortex likely conducted initial reconnaissance by exploiting a trusted relationship with a third-party contractor [T1199] to gain access to the victim's network, where they remotely executed systeminfo.exe to collect UEFI firmware version details [T1592.003] and other system information [T1082] for targeting purposes. The adversary then developed custom capabilities, including a credential dumping tool to extract password hashes from Windows domain controllers [T1587], and leveraged the hypervisor CLI by running 'esxcli system snmp set --enable true' to enable SNMP for additional reconnaissance [T1059.012]. User execution was achieved through a compromised website delivering a malicious PDF that drops and executes njRAT when viewed in the browser [T1204], after which the attacker abused mavinject.exe to inject a malicious DLL into a legitimate process [T1218.013]. To maintain persistence and lateral movement, CrimsonVortex executed RDP hijacking using tscon.exe to disconnect legitimate users and hijack their remote desktop sessions [T1563.002] while configuring PiKVM to establish redundant remote control over critical infrastructure systems [T1219.003]. For data exfiltration, the group employed techniques to break large files of interest into smaller chunks to bypass size limits [T1030]. In the final stages, the adversary deployed a Monero cryptocurrency mining tool to hijack compute resources [T1496.001] and exploited the user registration feature by automating thousands of sign-up attempts that overwhelmed the database in an application exhaustion flood [T1499.003]. Logs from the victim's SIEM showed routine network traffic spikes unrelated to the attack, and background checks revealed the company had recently upgraded its firewall firmware without incident.",
+    "sentence_annotations": [
+        {
+            "sentence": "CrimsonVortex likely conducted initial reconnaissance by exploiting a trusted relationship with a third-party contractor to gain access to the victim's network, where they remotely executed systeminfo.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "003] and other system information for targeting purposes.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        },
+        {
+            "sentence": "The adversary then developed custom capabilities, including a credential dumping tool to extract password hashes from Windows domain controllers, and leveraged the hypervisor CLI by running 'esxcli system snmp set --enable true' to enable SNMP for additional reconnaissance [T1059.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "User execution was achieved through a compromised website delivering a malicious PDF that drops and executes njRAT when viewed in the browser, after which the attacker abused mavinject.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "For data exfiltration, the group employed techniques to break large files of interest into smaller chunks to bypass size limits.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CrimsonVortex,' targeting critical infrastructure sectors. The campaign leverages trusted relationships, hypervisor exploitation, and credential theft to compromise systems, deploy ransomware, and conduct resource hijacking for cryptocurrency mining. Blue teams should review this report to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "CrimsonVortex likely conducted initial reconnaissance by exploiting a trusted relationship with a third-party contractor [T1199] to gain access to the victim's network, where they remotely executed systeminfo.exe to collect UEFI firmware version details [T1592.003] and other system information [T1082] for targeting purposes. The adversary then developed custom capabilities, including a credential dumping tool to extract password hashes from Windows domain controllers [T1587], and leveraged the hypervisor CLI by running 'esxcli system snmp set --enable true' to enable SNMP for additional reconnaissance [T1059.012]. User execution was achieved through a compromised website delivering a malicious PDF that drops and executes njRAT when viewed in the browser [T1204], after which the attacker abused mavinject.exe to inject a malicious DLL into a legitimate process [T1218.013]. To maintain persistence and lateral movement, CrimsonVortex executed RDP hijacking using tscon.exe to disconnect legitimate users and hijack their remote desktop sessions [T1563.002] while configuring PiKVM to establish redundant remote control over critical infrastructure systems [T1219.003]. For data exfiltration, the group employed techniques to break large files of interest into smaller chunks to bypass size limits [T1030]. In the final stages, the adversary deployed a Monero cryptocurrency mining tool to hijack compute resources [T1496.001] and exploited the user registration feature by automating thousands of sign-up attempts that overwhelmed the database in an application exhaustion flood [T1499.003]. Logs from the victim's SIEM showed routine network traffic spikes unrelated to the attack, and background checks revealed the company had recently upgraded its firewall firmware without incident.",
+        "techniques_used": [
+            "T1592.003",
+            "T1587",
+            "T1199",
+            "T1059.012",
+            "T1204",
+            "T1218.013",
+            "T1082",
+            "T1563.002",
+            "T1219.003",
+            "T1030",
+            "T1496.001",
+            "T1499.003"
+        ]
+    }
+}

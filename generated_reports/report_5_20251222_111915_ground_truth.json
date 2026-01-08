@@ -1,0 +1,114 @@
+{
+    "report_id": "report_5",
+    "generated_at": "20251222_111915",
+    "scenario_target_ids": [
+        "T1669",
+        "T1559.001",
+        "T1137.004",
+        "T1563",
+        "T1001.003",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1669",
+        "T1059.001",
+        "T1559.001",
+        "T1105",
+        "T1112",
+        "T1137.004",
+        "T1563",
+        "T1486",
+        "T1001.003",
+        "T1020",
+        "T1048",
+        "T1070.001"
+    ],
+    "actual_found_ids": [
+        "T1048",
+        "T1001.003",
+        "T1559.001",
+        "T1020",
+        "T1589",
+        "T1669",
+        "T1059.001",
+        "T1137.004",
+        "T1070.001",
+        "T1105",
+        "T1486",
+        "T1563",
+        "T1112"
+    ],
+    "clean_text": "### Background\nAPT-FICT is a fictional advanced persistent threat group assessed to target organizations in the financial and technology sectors. This campaign was observed in a simulated environment during a training exercise at a mid-sized company, TechCorp Inc., which reported unusual network activity after an employee connected to an unsecured public Wi-Fi at a coffee shop. System logs from TechCorp's internal monitoring tools showed anomalous RDP sessions and Outlook registry modifications, though initial scans flagged no malware.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify vulnerable targets, then exploited an open Wi-Fi access point at a public location to gain initial network access, compromising an employee's device when it automatically connected to the network.\n\n**Execution:** Upon access, the adversary employed PowerShell to execute malicious scripts that leveraged the Internet Explorer Component Object Model (COM) to run arbitrary commands on the system, while simultaneously downloading additional payloads from a command-and-control (C2) server.\n\n**Persistence:** To maintain access, the malware modified registry keys to update Outlook settings, forcing it to load and execute a malicious HTML file each time the application launched, ensuring persistent execution across reboots.\n\n**Lateral Movement:** The threat actor used hijacked Remote Desktop Protocol (RDP) sessions to move laterally across the network, deploying ransomware to multiple workstations while evading detection by mimicking legitimate user activity.\n\n**Command and Control:** For stealth, APT-FICT implemented FakeTLS to impersonate legitimate TLS sessions for authentication and data transmission, blending malicious traffic with normal network flows to avoid network-based alerts.\n\n**Exfiltration:** The automated process collected sensitive files, including a malicious executable, and prepared them for transmission to the C2 server using encrypted channels, while also clearing event logs to obscure traces of the activity.\n\n### Detection and Mitigation\nBlue teams should monitor for unusual Wi-Fi connections, anomalous COM object usage, Outlook registry changes, unauthorized RDP sessions, and unexpected TLS handshakes. Implement network segmentation, enforce multi-factor authentication, and conduct regular security training.\n\n### References\nThis report is for educational purposes only, based on fictional scenarios and MITRE ATT&CK techniques.",
+    "tagged_text": "### Background\nAPT-FICT is a fictional advanced persistent threat group assessed to target organizations in the financial and technology sectors. This campaign was observed in a simulated environment during a training exercise at a mid-sized company, TechCorp Inc., which reported unusual network activity after an employee connected to an unsecured public Wi-Fi at a coffee shop. System logs from TechCorp's internal monitoring tools showed anomalous RDP sessions and Outlook registry modifications, though initial scans flagged no malware.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance [T1589] to identify vulnerable targets, then exploited an open Wi-Fi access point at a public location to gain initial network access [T1669], compromising an employee's device when it automatically connected to the network.\n\n**Execution:** Upon access, the adversary employed PowerShell [T1059.001] to execute malicious scripts that leveraged the Internet Explorer Component Object Model (COM) [T1559.001] to run arbitrary commands on the system, while simultaneously downloading additional payloads [T1105] from a command-and-control (C2) server.\n\n**Persistence:** To maintain access, the malware modified registry keys [T1112] to update Outlook settings, forcing it to load and execute a malicious HTML file [T1137.004] each time the application launched, ensuring persistent execution across reboots.\n\n**Lateral Movement:** The threat actor used hijacked Remote Desktop Protocol (RDP) sessions [T1563] to move laterally across the network, deploying ransomware [T1486] to multiple workstations while evading detection by mimicking legitimate user activity.\n\n**Command and Control:** For stealth, APT-FICT implemented FakeTLS [T1001.003] to impersonate legitimate TLS sessions for authentication and data transmission, blending malicious traffic with normal network flows to avoid network-based alerts.\n\n**Exfiltration:** The automated process collected sensitive files, including a malicious executable [T1020], and prepared them for transmission to the C2 server using encrypted channels [T1048], while also clearing event logs [T1070.001] to obscure traces of the activity.\n\n### Detection and Mitigation\nBlue teams should monitor for unusual Wi-Fi connections, anomalous COM object usage, Outlook registry changes, unauthorized RDP sessions, and unexpected TLS handshakes. Implement network segmentation, enforce multi-factor authentication, and conduct regular security training.\n\n### References\nThis report is for educational purposes only, based on fictional scenarios and MITRE ATT&CK techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify vulnerable targets, then exploited an open Wi-Fi access point at a public location to gain initial network access, compromising an employee's device when it automatically connected to the network.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify vulnerable targets, then exploited an open Wi-Fi access point at a public location to gain initial network access, compromising an employee's device when it automatically connected to the network.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "001] to run arbitrary commands on the system, while simultaneously downloading additional payloads from a command-and-control (C2) server.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "**Persistence:** To maintain access, the malware modified registry keys to update Outlook settings, forcing it to load and execute a malicious HTML file [T1137.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "**Lateral Movement:** The threat actor used hijacked Remote Desktop Protocol (RDP) sessions to move laterally across the network, deploying ransomware to multiple workstations while evading detection by mimicking legitimate user activity.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "**Lateral Movement:** The threat actor used hijacked Remote Desktop Protocol (RDP) sessions to move laterally across the network, deploying ransomware to multiple workstations while evading detection by mimicking legitimate user activity.",
+            "technique_id": "T1486",
+            "technique_name": "Data Encrypted for Impact"
+        },
+        {
+            "sentence": "**Exfiltration:** The automated process collected sensitive files, including a malicious executable, and prepared them for transmission to the C2 server using encrypted channels, while also clearing event logs [T1070.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        },
+        {
+            "sentence": "**Exfiltration:** The automated process collected sensitive files, including a malicious executable, and prepared them for transmission to the C2 server using encrypted channels, while also clearing event logs [T1070.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Networks via Wi-Fi Exploitation",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-FICT, targeting corporate environments. APT-FICT exploits open Wi-Fi networks for initial access, leverages COM objects for execution, establishes persistence via Outlook, hijacks remote services for lateral movement, uses protocol impersonation for stealth, and automates data exfiltration. The advisory provides detection and mitigation strategies for blue team training.",
+        "full_report_text": "### Background\nAPT-FICT is a fictional advanced persistent threat group assessed to target organizations in the financial and technology sectors. This campaign was observed in a simulated environment during a training exercise at a mid-sized company, TechCorp Inc., which reported unusual network activity after an employee connected to an unsecured public Wi-Fi at a coffee shop. System logs from TechCorp's internal monitoring tools showed anomalous RDP sessions and Outlook registry modifications, though initial scans flagged no malware.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance [T1589] to identify vulnerable targets, then exploited an open Wi-Fi access point at a public location to gain initial network access [T1669], compromising an employee's device when it automatically connected to the network.\n\n**Execution:** Upon access, the adversary employed PowerShell [T1059.001] to execute malicious scripts that leveraged the Internet Explorer Component Object Model (COM) [T1559.001] to run arbitrary commands on the system, while simultaneously downloading additional payloads [T1105] from a command-and-control (C2) server.\n\n**Persistence:** To maintain access, the malware modified registry keys [T1112] to update Outlook settings, forcing it to load and execute a malicious HTML file [T1137.004] each time the application launched, ensuring persistent execution across reboots.\n\n**Lateral Movement:** The threat actor used hijacked Remote Desktop Protocol (RDP) sessions [T1563] to move laterally across the network, deploying ransomware [T1486] to multiple workstations while evading detection by mimicking legitimate user activity.\n\n**Command and Control:** For stealth, APT-FICT implemented FakeTLS [T1001.003] to impersonate legitimate TLS sessions for authentication and data transmission, blending malicious traffic with normal network flows to avoid network-based alerts.\n\n**Exfiltration:** The automated process collected sensitive files, including a malicious executable [T1020], and prepared them for transmission to the C2 server using encrypted channels [T1048], while also clearing event logs [T1070.001] to obscure traces of the activity.\n\n### Detection and Mitigation\nBlue teams should monitor for unusual Wi-Fi connections, anomalous COM object usage, Outlook registry changes, unauthorized RDP sessions, and unexpected TLS handshakes. Implement network segmentation, enforce multi-factor authentication, and conduct regular security training.\n\n### References\nThis report is for educational purposes only, based on fictional scenarios and MITRE ATT&CK techniques.",
+        "techniques_used": [
+            "T1589",
+            "T1669",
+            "T1059.001",
+            "T1559.001",
+            "T1105",
+            "T1112",
+            "T1137.004",
+            "T1563",
+            "T1486",
+            "T1001.003",
+            "T1020",
+            "T1048",
+            "T1070.001"
+        ]
+    }
+}

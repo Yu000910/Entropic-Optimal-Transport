@@ -1,0 +1,108 @@
+{
+    "report_id": "report_31",
+    "generated_at": "20251222_112946",
+    "scenario_target_ids": [
+        "T1650",
+        "T1583.003",
+        "T1608",
+        "T1078.001",
+        "T1675",
+        "T1574.005",
+        "T1547.006",
+        "T1562.002",
+        "T1562.001",
+        "T1187",
+        "T1563.002",
+        "T1219.002",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1650",
+        "T1583.003",
+        "T1608",
+        "T1078.001",
+        "T1675",
+        "T1574.005",
+        "T1547.006",
+        "T1562.002",
+        "T1562.001",
+        "T1187",
+        "T1563.002",
+        "T1219.002",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1219.002",
+        "T1547.006",
+        "T1583.003",
+        "T1078.001",
+        "T1020.001",
+        "T1574.005",
+        "T1675",
+        "T1608",
+        "T1563.002",
+        "T1562.002",
+        "T1650",
+        "T1187",
+        "T1562.001"
+    ],
+    "clean_text": "APT-42, a financially motivated threat actor, initiated their campaign by acquiring compromised administrator credentials from an access broker network and rented a Virtual Private Server (VPS) from Linode using temporary email accounts and fake identity information to establish a command-and-control infrastructure. The actors staged reconnaissance tools on a public GitHub gist to avoid detection during initial deployment. On April 12, 2024, at 03:45 UTC, system logs from the target organization, 'VirtualCorp Inc.', showed anomalous login attempts to their vSphere web interface. The threat actor successfully logged into the web interface using default vendor credentials for the Administrator account, bypassing multi-factor authentication due to misconfigured access controls. VirtualCorp Inc., a mid-sized cloud services provider, had recently migrated its infrastructure to VMware ESXi 7.0, with over 200 guest VMs hosting critical applications. Once inside, APT-42 employed a malicious script that utilized the vSphere Web Services SDK to execute system commands across multiple guest VMs and located installer.exe in the Program Files folder to run with administrative rights by exploiting executable installer file permissions weaknesses. During Operation CuckooBees, attackers used a signed kernel rootkit to establish additional persistence while the malicious tool modified HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\WMI\\Autologger\\EventLog-Security to disable security event logging. ShrinkLocker was deployed to disable protectors used to secure the BitLocker encryption key on victim systems. Through exploitation of file://remote_address/Normal.dotm, the malware gained access to extract cached domain credential hashes via forced authentication. The adversary exploited tscon.exe to hijack a disconnected but still active remote desktop session and abused TeamViewer to provide interactive remote control capabilities. Finally, the malicious script leveraged ROMMONkit to set up traffic duplication for stealthy data exfiltration, exfiltrating approximately 500 GB of sensitive data over encrypted channels. Incident responders noted that the attack was detected only after anomalous network traffic patterns were flagged by an IDS, highlighting gaps in endpoint monitoring.",
+    "tagged_text": "APT-42, a financially motivated threat actor, initiated their campaign by acquiring compromised administrator credentials from an access broker network [T1650] and rented a Virtual Private Server (VPS) from Linode using temporary email accounts and fake identity information to establish a command-and-control infrastructure [T1583.003]. The actors staged reconnaissance tools on a public GitHub gist to avoid detection during initial deployment [T1608]. On April 12, 2024, at 03:45 UTC, system logs from the target organization, 'VirtualCorp Inc.', showed anomalous login attempts to their vSphere web interface. The threat actor successfully logged into the web interface using default vendor credentials for the Administrator account [T1078.001], bypassing multi-factor authentication due to misconfigured access controls. VirtualCorp Inc., a mid-sized cloud services provider, had recently migrated its infrastructure to VMware ESXi 7.0, with over 200 guest VMs hosting critical applications. Once inside, APT-42 employed a malicious script that utilized the vSphere Web Services SDK to execute system commands across multiple guest VMs [T1675] and located installer.exe in the Program Files folder to run with administrative rights by exploiting executable installer file permissions weaknesses [T1574.005]. During Operation CuckooBees, attackers used a signed kernel rootkit to establish additional persistence [T1547.006] while the malicious tool modified HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\WMI\\Autologger\\EventLog-Security to disable security event logging [T1562.002]. ShrinkLocker was deployed to disable protectors used to secure the BitLocker encryption key on victim systems [T1562.001]. Through exploitation of file://remote_address/Normal.dotm, the malware gained access to extract cached domain credential hashes via forced authentication [T1187]. The adversary exploited tscon.exe to hijack a disconnected but still active remote desktop session [T1563.002] and abused TeamViewer to provide interactive remote control capabilities [T1219.002]. Finally, the malicious script leveraged ROMMONkit to set up traffic duplication for stealthy data exfiltration [T1020.001], exfiltrating approximately 500 GB of sensitive data over encrypted channels. Incident responders noted that the attack was detected only after anomalous network traffic patterns were flagged by an IDS, highlighting gaps in endpoint monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT-42, a financially motivated threat actor, initiated their campaign by acquiring compromised administrator credentials from an access broker network and rented a Virtual Private Server (VPS) from Linode using temporary email accounts and fake identity information to establish a command-and-control infrastructure [T1583.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "The actors staged reconnaissance tools on a public GitHub gist to avoid detection during initial deployment.",
+            "technique_id": "T1608",
+            "technique_name": "Stage Capabilities"
+        },
+        {
+            "sentence": "Once inside, APT-42 employed a malicious script that utilized the vSphere Web Services SDK to execute system commands across multiple guest VMs and located installer.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "dotm, the malware gained access to extract cached domain credential hashes via forced authentication.",
+            "technique_id": "T1187",
+            "technique_name": "Forced Authentication"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'CuckooBees' Targeting Virtual Infrastructure",
+        "summary": "This advisory details a simulated cyber campaign by a fictional threat actor group, designated APT-42, targeting enterprise virtual environments. APT-42 employed a multi-stage attack leveraging purchased credentials, staged tools, and kernel-level persistence to compromise ESXi hosts, disable logging, and exfiltrate data. The report is intended for blue team training to enhance detection and response capabilities against such tactics.",
+        "full_report_text": "APT-42, a financially motivated threat actor, initiated their campaign by acquiring compromised administrator credentials from an access broker network [T1650] and rented a Virtual Private Server (VPS) from Linode using temporary email accounts and fake identity information to establish a command-and-control infrastructure [T1583.003]. The actors staged reconnaissance tools on a public GitHub gist to avoid detection during initial deployment [T1608]. On April 12, 2024, at 03:45 UTC, system logs from the target organization, 'VirtualCorp Inc.', showed anomalous login attempts to their vSphere web interface. The threat actor successfully logged into the web interface using default vendor credentials for the Administrator account [T1078.001], bypassing multi-factor authentication due to misconfigured access controls. VirtualCorp Inc., a mid-sized cloud services provider, had recently migrated its infrastructure to VMware ESXi 7.0, with over 200 guest VMs hosting critical applications. Once inside, APT-42 employed a malicious script that utilized the vSphere Web Services SDK to execute system commands across multiple guest VMs [T1675] and located installer.exe in the Program Files folder to run with administrative rights by exploiting executable installer file permissions weaknesses [T1574.005]. During Operation CuckooBees, attackers used a signed kernel rootkit to establish additional persistence [T1547.006] while the malicious tool modified HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\WMI\\Autologger\\EventLog-Security to disable security event logging [T1562.002]. ShrinkLocker was deployed to disable protectors used to secure the BitLocker encryption key on victim systems [T1562.001]. Through exploitation of file://remote_address/Normal.dotm, the malware gained access to extract cached domain credential hashes via forced authentication [T1187]. The adversary exploited tscon.exe to hijack a disconnected but still active remote desktop session [T1563.002] and abused TeamViewer to provide interactive remote control capabilities [T1219.002]. Finally, the malicious script leveraged ROMMONkit to set up traffic duplication for stealthy data exfiltration [T1020.001], exfiltrating approximately 500 GB of sensitive data over encrypted channels. Incident responders noted that the attack was detected only after anomalous network traffic patterns were flagged by an IDS, highlighting gaps in endpoint monitoring.",
+        "techniques_used": [
+            "T1650",
+            "T1583.003",
+            "T1608",
+            "T1078.001",
+            "T1675",
+            "T1574.005",
+            "T1547.006",
+            "T1562.002",
+            "T1562.001",
+            "T1187",
+            "T1563.002",
+            "T1219.002",
+            "T1020.001"
+        ]
+    }
+}

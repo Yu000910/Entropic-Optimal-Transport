@@ -1,0 +1,68 @@
+{
+    "report_id": "report_478",
+    "generated_at": "20251222_160500",
+    "scenario_target_ids": [
+        "T1584.003",
+        "T1195",
+        "T1059.011",
+        "T1205.002",
+        "T1556.001",
+        "T1614.001",
+        "T1008"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1584.003",
+        "T1195",
+        "T1059.011",
+        "T1205.002",
+        "T1556.001",
+        "T1614.001",
+        "T1008"
+    ],
+    "actual_found_ids": [
+        "T1008",
+        "T1059.011",
+        "T1205.002",
+        "T1556.001",
+        "T1584.003",
+        "T1195",
+        "T1614.001"
+    ],
+    "clean_text": "### Background\nShadowVeil is a fictional APT group believed to operate with state-sponsored objectives, focusing on espionage and data exfiltration. The campaign was first identified in early 2024, with initial incidents reported at a mid-sized energy company, 'GridPower Inc.', where anomalous network traffic was detected originating from an unknown AWS EC2 instance. Subsequent analysis revealed a multi-stage attack leveraging compromised software development tools.\n\n### Attack Narrative\n**Initial Access and Execution:** The actors initiated their campaign by compromising the software supply chain of a popular development tool, 'DevTools Suite', widely used in target organizations. They modified the legitimate installer, development_tools.exe, to include a malicious Lua-based payload. Upon execution by unsuspecting developers, this payload employed Lua commands to enumerate system information, such as OS version and installed applications, while simultaneously querying registry keys to discover the system language; for instance, it checked HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Nls\\Language for values like 0x419 (Russian), and if detected, it would halt execution to avoid targeting specific regions.\n\n**Persistence and Command and Control:** To establish command and control (C2), the adversaries utilized a virtual private server (VPS) on AWS EC2, paid for with cryptocurrency to enhance anonymity. The backdoor, once activated, employed socket filters via libpcap to capture network packets, triggering based on specific packet signatures to evade detection. It also implemented fallback channels, maintaining a list of alternate C2 URLs to ensure resilience if primary domains were blocked. For example, logs from GridPower Inc. showed repeated connections to IP addresses 192.0.2.1 and 198.51.100.1, with failover to 203.0.113.1 after firewall rules were updated.\n\n**Privilege Escalation and Lateral Movement:** After gaining a foothold, the actors moved laterally within the network, targeting domain controllers. They injected a Skeleton Key into the domain controller authentication process, enabling universal password access to bypass multi-factor authentication and facilitate further compromise. This was coupled with ongoing packet capture to monitor administrative traffic and exfiltrate credentials.\n\n**Impact and Indicators:** The campaign resulted in the exfiltration of sensitive operational data, including network diagrams and user credentials. Blue teams should monitor for unusual Lua script executions, registry modifications related to language settings, and anomalous outbound traffic to cloud-based VPS instances. System logs from affected machines may show entries like 'Process DevTools.exe spawned unexpected network connections' or 'Registry key access to Nls\\Language detected'.\n\n### Mitigation Recommendations\nOrganizations are advised to implement application allowlisting, regularly update and verify software integrity, monitor for unauthorized VPS usage, and enhance network segmentation to limit lateral movement. Training on supply chain risks and incident response drills is critical.",
+    "tagged_text": "### Background\nShadowVeil is a fictional APT group believed to operate with state-sponsored objectives, focusing on espionage and data exfiltration. The campaign was first identified in early 2024, with initial incidents reported at a mid-sized energy company, 'GridPower Inc.', where anomalous network traffic was detected originating from an unknown AWS EC2 instance. Subsequent analysis revealed a multi-stage attack leveraging compromised software development tools.\n\n### Attack Narrative\n**Initial Access and Execution:** The actors initiated their campaign by compromising the software supply chain of a popular development tool, 'DevTools Suite', widely used in target organizations. They modified the legitimate installer, development_tools.exe, to include a malicious Lua-based payload [T1195]. Upon execution by unsuspecting developers, this payload employed Lua commands [T1059.011] to enumerate system information, such as OS version and installed applications, while simultaneously querying registry keys to discover the system language [T1614.001]; for instance, it checked HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Nls\\Language for values like 0x419 (Russian), and if detected, it would halt execution to avoid targeting specific regions.\n\n**Persistence and Command and Control:** To establish command and control (C2), the adversaries utilized a virtual private server (VPS) on AWS EC2, paid for with cryptocurrency to enhance anonymity [T1584.003]. The backdoor, once activated, employed socket filters via libpcap to capture network packets [T1205.002], triggering based on specific packet signatures to evade detection. It also implemented fallback channels [T1008], maintaining a list of alternate C2 URLs to ensure resilience if primary domains were blocked. For example, logs from GridPower Inc. showed repeated connections to IP addresses 192.0.2.1 and 198.51.100.1, with failover to 203.0.113.1 after firewall rules were updated.\n\n**Privilege Escalation and Lateral Movement:** After gaining a foothold, the actors moved laterally within the network, targeting domain controllers. They injected a Skeleton Key into the domain controller authentication process [T1556.001], enabling universal password access to bypass multi-factor authentication and facilitate further compromise. This was coupled with ongoing packet capture to monitor administrative traffic and exfiltrate credentials.\n\n**Impact and Indicators:** The campaign resulted in the exfiltration of sensitive operational data, including network diagrams and user credentials. Blue teams should monitor for unusual Lua script executions, registry modifications related to language settings, and anomalous outbound traffic to cloud-based VPS instances. System logs from affected machines may show entries like 'Process DevTools.exe spawned unexpected network connections' or 'Registry key access to Nls\\Language detected'.\n\n### Mitigation Recommendations\nOrganizations are advised to implement application allowlisting, regularly update and verify software integrity, monitor for unauthorized VPS usage, and enhance network segmentation to limit lateral movement. Training on supply chain risks and incident response drills is critical.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe, to include a malicious Lua-based payload.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "It also implemented fallback channels, maintaining a list of alternate C2 URLs to ensure resilience if primary domains were blocked.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), Cybersecurity and Infrastructure Security Agency (CISA), and National Security Agency (NSA) are releasing this joint Cybersecurity Advisory to detail a simulated advanced persistent threat (APT) campaign, designated 'ShadowVeil,' which targets critical infrastructure sectors, including energy and finance, through a sophisticated supply chain compromise and persistent backdoor mechanisms. This advisory provides technical indicators, attack narratives, and mitigation strategies to aid blue teams in detection and response training.",
+        "full_report_text": "### Background\nShadowVeil is a fictional APT group believed to operate with state-sponsored objectives, focusing on espionage and data exfiltration. The campaign was first identified in early 2024, with initial incidents reported at a mid-sized energy company, 'GridPower Inc.', where anomalous network traffic was detected originating from an unknown AWS EC2 instance. Subsequent analysis revealed a multi-stage attack leveraging compromised software development tools.\n\n### Attack Narrative\n**Initial Access and Execution:** The actors initiated their campaign by compromising the software supply chain of a popular development tool, 'DevTools Suite', widely used in target organizations. They modified the legitimate installer, development_tools.exe, to include a malicious Lua-based payload [T1195]. Upon execution by unsuspecting developers, this payload employed Lua commands [T1059.011] to enumerate system information, such as OS version and installed applications, while simultaneously querying registry keys to discover the system language [T1614.001]; for instance, it checked HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Nls\\Language for values like 0x419 (Russian), and if detected, it would halt execution to avoid targeting specific regions.\n\n**Persistence and Command and Control:** To establish command and control (C2), the adversaries utilized a virtual private server (VPS) on AWS EC2, paid for with cryptocurrency to enhance anonymity [T1584.003]. The backdoor, once activated, employed socket filters via libpcap to capture network packets [T1205.002], triggering based on specific packet signatures to evade detection. It also implemented fallback channels [T1008], maintaining a list of alternate C2 URLs to ensure resilience if primary domains were blocked. For example, logs from GridPower Inc. showed repeated connections to IP addresses 192.0.2.1 and 198.51.100.1, with failover to 203.0.113.1 after firewall rules were updated.\n\n**Privilege Escalation and Lateral Movement:** After gaining a foothold, the actors moved laterally within the network, targeting domain controllers. They injected a Skeleton Key into the domain controller authentication process [T1556.001], enabling universal password access to bypass multi-factor authentication and facilitate further compromise. This was coupled with ongoing packet capture to monitor administrative traffic and exfiltrate credentials.\n\n**Impact and Indicators:** The campaign resulted in the exfiltration of sensitive operational data, including network diagrams and user credentials. Blue teams should monitor for unusual Lua script executions, registry modifications related to language settings, and anomalous outbound traffic to cloud-based VPS instances. System logs from affected machines may show entries like 'Process DevTools.exe spawned unexpected network connections' or 'Registry key access to Nls\\Language detected'.\n\n### Mitigation Recommendations\nOrganizations are advised to implement application allowlisting, regularly update and verify software integrity, monitor for unauthorized VPS usage, and enhance network segmentation to limit lateral movement. Training on supply chain risks and incident response drills is critical.",
+        "techniques_used": [
+            "T1584.003",
+            "T1195",
+            "T1059.011",
+            "T1205.002",
+            "T1556.001",
+            "T1614.001",
+            "T1008"
+        ]
+    }
+}

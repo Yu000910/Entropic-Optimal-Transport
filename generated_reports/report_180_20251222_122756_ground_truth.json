@@ -1,0 +1,86 @@
+{
+    "report_id": "report_180",
+    "generated_at": "20251222_122756",
+    "scenario_target_ids": [
+        "T1200",
+        "T1559.003",
+        "T1098.001",
+        "T1216.001",
+        "T1027.003",
+        "T1218.007",
+        "T1550",
+        "T1602.001",
+        "T1102.003",
+        "T1001",
+        "T1561.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1559.003",
+        "T1098.001",
+        "T1216.001",
+        "T1027.003",
+        "T1218.007",
+        "T1550",
+        "T1602.001",
+        "T1102.003",
+        "T1001",
+        "T1561.002"
+    ],
+    "actual_found_ids": [
+        "T1550",
+        "T1216.001",
+        "T1561.002",
+        "T1218.007",
+        "T1602.001",
+        "T1200",
+        "T1559.003",
+        "T1027.003",
+        "T1098.001"
+    ],
+    "clean_text": "Background: The targeted organization, 'InfraCorp', operates energy grid management systems with a hybrid cloud environment. Initial detection occurred when network administrators, during a routine audit, discovered an unauthorized passive tap device installed on the Ethernet line in the server room, indicating physical access. Logs from the affected servers showed unusual activity starting two weeks prior, including failed login attempts from unknown IP addresses, though these were initially dismissed as noise.\n\nAttack Narrative: Following hardware insertion, the adversary exploited an insecure XPC service daemon on a macOS-based administrative workstation to escalate privileges and gain root access. They then used this access to pivot to the cloud environment, where they employed aws_consoler to create temporary federated credentials for fake users, obfuscating compromised AWS credentials and enabling pivoting from the AWS CLI to console sessions without MFA. Concurrently, the attacker executed a malicious VBScript hosted on an attacker-controlled website using cscript.exe, which downloaded and extracted obfuscated main code routines hidden within bitmap images as part of anti-analysis techniques. The payload was delivered as an unsigned MSI package executed with msiexec.exe, allowing for stealthy installation. To maintain persistence and move laterally, the adversary conducted a Pass-the-Hash attack to bypass authentication controls and access sensitive file shares, while also collecting device configuration details through SNMP GET requests to map the network. Command and control was established using HTTP traffic where commands were intercepted, parsed for identifiers, and executed, with C2 traffic masquerading as legitimate Google Notifications HTTP requests to evade detection [T1102.003, T1001]. Finally, in the exfiltration phase, the attacker used a boot sector virus to overwrite critical bootloader files with corrupted versions, causing widespread system failures. Incident response teams noted that backup systems were unaffected, but recovery required significant downtime.\n\nIrrelevant Information: InfraCorp was founded in 1998 and employs over 5,000 staff across 20 countries. The server room temperature logs showed normal fluctuations between 18-22°C during the incident. Employee training records indicated 85% compliance with cybersecurity awareness programs in the last quarter.",
+    "tagged_text": "Background: The targeted organization, 'InfraCorp', operates energy grid management systems with a hybrid cloud environment. Initial detection occurred when network administrators, during a routine audit, discovered an unauthorized passive tap device installed on the Ethernet line in the server room, indicating physical access [T1200]. Logs from the affected servers showed unusual activity starting two weeks prior, including failed login attempts from unknown IP addresses, though these were initially dismissed as noise.\n\nAttack Narrative: Following hardware insertion, the adversary exploited an insecure XPC service daemon on a macOS-based administrative workstation to escalate privileges and gain root access [T1559.003]. They then used this access to pivot to the cloud environment, where they employed aws_consoler to create temporary federated credentials for fake users, obfuscating compromised AWS credentials and enabling pivoting from the AWS CLI to console sessions without MFA [T1098.001]. Concurrently, the attacker executed a malicious VBScript hosted on an attacker-controlled website using cscript.exe [T1216.001], which downloaded and extracted obfuscated main code routines hidden within bitmap images as part of anti-analysis techniques [T1027.003]. The payload was delivered as an unsigned MSI package executed with msiexec.exe [T1218.007], allowing for stealthy installation. To maintain persistence and move laterally, the adversary conducted a Pass-the-Hash attack to bypass authentication controls and access sensitive file shares [T1550], while also collecting device configuration details through SNMP GET requests to map the network [T1602.001]. Command and control was established using HTTP traffic where commands were intercepted, parsed for identifiers, and executed, with C2 traffic masquerading as legitimate Google Notifications HTTP requests to evade detection [T1102.003, T1001]. Finally, in the exfiltration phase, the attacker used a boot sector virus to overwrite critical bootloader files with corrupted versions, causing widespread system failures [T1561.002]. Incident response teams noted that backup systems were unaffected, but recovery required significant downtime.\n\nIrrelevant Information: InfraCorp was founded in 1998 and employs over 5,000 staff across 20 countries. The server room temperature logs showed normal fluctuations between 18-22°C during the incident. Employee training records indicated 85% compliance with cybersecurity awareness programs in the last quarter.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial detection occurred when network administrators, during a routine audit, discovered an unauthorized passive tap device installed on the Ethernet line in the server room, indicating physical access.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "To maintain persistence and move laterally, the adversary conducted a Pass-the-Hash attack to bypass authentication controls and access sensitive file shares, while also collecting device configuration details through SNMP GET requests to map the network [T1602.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGrasp' Targeting Critical Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated campaign by the fictional threat actor group 'ShadowGrasp'. This report describes a multi-stage attack targeting a critical infrastructure organization, involving hardware tampering, privilege escalation, cloud credential manipulation, and data destruction. The advisory is intended for blue team training to enhance detection and response capabilities against sophisticated adversaries.",
+        "full_report_text": "Background: The targeted organization, 'InfraCorp', operates energy grid management systems with a hybrid cloud environment. Initial detection occurred when network administrators, during a routine audit, discovered an unauthorized passive tap device installed on the Ethernet line in the server room, indicating physical access [T1200]. Logs from the affected servers showed unusual activity starting two weeks prior, including failed login attempts from unknown IP addresses, though these were initially dismissed as noise.\n\nAttack Narrative: Following hardware insertion, the adversary exploited an insecure XPC service daemon on a macOS-based administrative workstation to escalate privileges and gain root access [T1559.003]. They then used this access to pivot to the cloud environment, where they employed aws_consoler to create temporary federated credentials for fake users, obfuscating compromised AWS credentials and enabling pivoting from the AWS CLI to console sessions without MFA [T1098.001]. Concurrently, the attacker executed a malicious VBScript hosted on an attacker-controlled website using cscript.exe [T1216.001], which downloaded and extracted obfuscated main code routines hidden within bitmap images as part of anti-analysis techniques [T1027.003]. The payload was delivered as an unsigned MSI package executed with msiexec.exe [T1218.007], allowing for stealthy installation. To maintain persistence and move laterally, the adversary conducted a Pass-the-Hash attack to bypass authentication controls and access sensitive file shares [T1550], while also collecting device configuration details through SNMP GET requests to map the network [T1602.001]. Command and control was established using HTTP traffic where commands were intercepted, parsed for identifiers, and executed, with C2 traffic masquerading as legitimate Google Notifications HTTP requests to evade detection [T1102.003, T1001]. Finally, in the exfiltration phase, the attacker used a boot sector virus to overwrite critical bootloader files with corrupted versions, causing widespread system failures [T1561.002]. Incident response teams noted that backup systems were unaffected, but recovery required significant downtime.\n\nIrrelevant Information: InfraCorp was founded in 1998 and employs over 5,000 staff across 20 countries. The server room temperature logs showed normal fluctuations between 18-22°C during the incident. Employee training records indicated 85% compliance with cybersecurity awareness programs in the last quarter.",
+        "techniques_used": [
+            "T1200",
+            "T1559.003",
+            "T1098.001",
+            "T1216.001",
+            "T1027.003",
+            "T1218.007",
+            "T1550",
+            "T1602.001",
+            "T1102.003",
+            "T1001",
+            "T1561.002"
+        ]
+    }
+}

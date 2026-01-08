@@ -1,0 +1,93 @@
+{
+    "report_id": "report_511",
+    "generated_at": "20251222_161949",
+    "scenario_target_ids": [
+        "T1190",
+        "T1669",
+        "T1559.001",
+        "T1078.003",
+        "T1098.003",
+        "T1611",
+        "T1021.008",
+        "T1090",
+        "T1496.004",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "lateral-movement",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1669",
+        "T1559.001",
+        "T1078.003",
+        "T1098.003",
+        "T1611",
+        "T1021.008",
+        "T1090",
+        "T1496.004",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1496.001",
+        "T1669",
+        "T1098.003",
+        "T1559.001",
+        "T1021.008",
+        "T1090",
+        "T1190",
+        "T1611",
+        "T1496.004",
+        "T1078.003"
+    ],
+    "clean_text": "CrimsonTide, a fictional advanced persistent threat (APT) group, has been observed conducting a campaign against hybrid cloud infrastructures, primarily focusing on organizations in the technology and finance sectors. The actors likely gather target information through open-source intelligence (OSINT) and scanning of public IP ranges, though this phase is not detailed in the provided scenario. Initial access was achieved by exploiting a vulnerability in a public-facing web application, specifically targeting an outdated content management system (CMS) plugin, which allowed arbitrary code execution. Following compromise, the malicious payload executed a script that scanned for and automatically connected to any available open Wi-Fi networks to establish covert communication channels and evade network monitoring. On the compromised host, the adversary employed Component Object Model (COM) objects by abusing the WScript.Shell interface to run system commands, such as executing PowerShell scripts to download additional tools. Concurrently, they accessed the Windows Credential Manager database to harvest locally stored credentials, including saved passwords for cloud services and domain accounts. Using these credentials, the actors escalated privileges by modifying user roles in the cloud environment to include Global Administrator, granting persistent control over the tenant. To further evade detection, they deployed a privileged container that mounted the filesystem of the victim machine, allowing direct access to host resources and facilitating data exfiltration. The attacker then used Azure Serial Console to gain command-line access to a virtual machine, leveraging compromised credentials for lateral movement within the cloud infrastructure. For command and control (C2), CrimsonTide utilized a custom proxy tool with support for multiple hops, mimicking traffic patterns observed in Operation Wocao to obscure their origin. In the final stages, the actors engaged in resource hijacking by deploying a script to abuse AWS Simple Email Service (SES), sending high-volume automated emails that led to throttling and service unavailability for other users, and simultaneously ran a Bitcoin cryptocurrency miner on compromised compute instances to generate illicit revenue. Throughout the campaign, system logs showed routine administrative activities, such as scheduled backups and user login attempts, which were unrelated to the malicious behavior. The targeted organization, a mid-sized fintech company with offices in multiple regions, reported no significant operational disruptions during this simulated exercise, highlighting the need for enhanced monitoring of cloud roles and network anomalies.",
+    "tagged_text": "CrimsonTide, a fictional advanced persistent threat (APT) group, has been observed conducting a campaign against hybrid cloud infrastructures, primarily focusing on organizations in the technology and finance sectors. The actors likely gather target information through open-source intelligence (OSINT) and scanning of public IP ranges, though this phase is not detailed in the provided scenario. Initial access was achieved by exploiting a vulnerability in a public-facing web application [T1190], specifically targeting an outdated content management system (CMS) plugin, which allowed arbitrary code execution. Following compromise, the malicious payload executed a script that scanned for and automatically connected to any available open Wi-Fi networks [T1669] to establish covert communication channels and evade network monitoring. On the compromised host, the adversary employed Component Object Model (COM) objects [T1559.001] by abusing the WScript.Shell interface to run system commands, such as executing PowerShell scripts to download additional tools. Concurrently, they accessed the Windows Credential Manager database [T1078.003] to harvest locally stored credentials, including saved passwords for cloud services and domain accounts. Using these credentials, the actors escalated privileges by modifying user roles in the cloud environment to include Global Administrator [T1098.003], granting persistent control over the tenant. To further evade detection, they deployed a privileged container that mounted the filesystem of the victim machine [T1611], allowing direct access to host resources and facilitating data exfiltration. The attacker then used Azure Serial Console [T1021.008] to gain command-line access to a virtual machine, leveraging compromised credentials for lateral movement within the cloud infrastructure. For command and control (C2), CrimsonTide utilized a custom proxy tool [T1090] with support for multiple hops, mimicking traffic patterns observed in Operation Wocao to obscure their origin. In the final stages, the actors engaged in resource hijacking by deploying a script to abuse AWS Simple Email Service (SES) [T1496.004], sending high-volume automated emails that led to throttling and service unavailability for other users, and simultaneously ran a Bitcoin cryptocurrency miner [T1496.001] on compromised compute instances to generate illicit revenue. Throughout the campaign, system logs showed routine administrative activities, such as scheduled backups and user login attempts, which were unrelated to the malicious behavior. The targeted organization, a mid-sized fintech company with offices in multiple regions, reported no significant operational disruptions during this simulated exercise, highlighting the need for enhanced monitoring of cloud roles and network anomalies.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved by exploiting a vulnerability in a public-facing web application, specifically targeting an outdated content management system (CMS) plugin, which allowed arbitrary code execution.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Following compromise, the malicious payload executed a script that scanned for and automatically connected to any available open Wi-Fi networks to establish covert communication channels and evade network monitoring.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "To further evade detection, they deployed a privileged container that mounted the filesystem of the victim machine, allowing direct access to host resources and facilitating data exfiltration.",
+            "technique_id": "T1611",
+            "technique_name": "Escape to Host"
+        },
+        {
+            "sentence": "For command and control (C2), CrimsonTide utilized a custom proxy tool with support for multiple hops, mimicking traffic patterns observed in Operation Wocao to obscure their origin.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor 'CrimsonTide'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor CrimsonTide, targeting cloud and on-premises environments through a multi-vector approach. The activity involves initial access via web application exploits, lateral movement through cloud services, and resource hijacking for financial gain. This report is intended for blue team training to recognize and mitigate such tactics.",
+        "full_report_text": "CrimsonTide, a fictional advanced persistent threat (APT) group, has been observed conducting a campaign against hybrid cloud infrastructures, primarily focusing on organizations in the technology and finance sectors. The actors likely gather target information through open-source intelligence (OSINT) and scanning of public IP ranges, though this phase is not detailed in the provided scenario. Initial access was achieved by exploiting a vulnerability in a public-facing web application [T1190], specifically targeting an outdated content management system (CMS) plugin, which allowed arbitrary code execution. Following compromise, the malicious payload executed a script that scanned for and automatically connected to any available open Wi-Fi networks [T1669] to establish covert communication channels and evade network monitoring. On the compromised host, the adversary employed Component Object Model (COM) objects [T1559.001] by abusing the WScript.Shell interface to run system commands, such as executing PowerShell scripts to download additional tools. Concurrently, they accessed the Windows Credential Manager database [T1078.003] to harvest locally stored credentials, including saved passwords for cloud services and domain accounts. Using these credentials, the actors escalated privileges by modifying user roles in the cloud environment to include Global Administrator [T1098.003], granting persistent control over the tenant. To further evade detection, they deployed a privileged container that mounted the filesystem of the victim machine [T1611], allowing direct access to host resources and facilitating data exfiltration. The attacker then used Azure Serial Console [T1021.008] to gain command-line access to a virtual machine, leveraging compromised credentials for lateral movement within the cloud infrastructure. For command and control (C2), CrimsonTide utilized a custom proxy tool [T1090] with support for multiple hops, mimicking traffic patterns observed in Operation Wocao to obscure their origin. In the final stages, the actors engaged in resource hijacking by deploying a script to abuse AWS Simple Email Service (SES) [T1496.004], sending high-volume automated emails that led to throttling and service unavailability for other users, and simultaneously ran a Bitcoin cryptocurrency miner [T1496.001] on compromised compute instances to generate illicit revenue. Throughout the campaign, system logs showed routine administrative activities, such as scheduled backups and user login attempts, which were unrelated to the malicious behavior. The targeted organization, a mid-sized fintech company with offices in multiple regions, reported no significant operational disruptions during this simulated exercise, highlighting the need for enhanced monitoring of cloud roles and network anomalies.",
+        "techniques_used": [
+            "T1190",
+            "T1669",
+            "T1559.001",
+            "T1078.003",
+            "T1098.003",
+            "T1611",
+            "T1021.008",
+            "T1090",
+            "T1496.004",
+            "T1496.001"
+        ]
+    }
+}

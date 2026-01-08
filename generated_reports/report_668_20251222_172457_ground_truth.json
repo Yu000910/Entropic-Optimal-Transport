@@ -1,0 +1,82 @@
+{
+    "report_id": "report_668",
+    "generated_at": "20251222_172457",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1053.003",
+        "T1546",
+        "T1574.014",
+        "T1606.001",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.002",
+        "T1059.001",
+        "T1105",
+        "T1053.003",
+        "T1574.014",
+        "T1546",
+        "T1665",
+        "T1606.001"
+    ],
+    "actual_found_ids": [
+        "T1606.001",
+        "T1546",
+        "T1589",
+        "T1574.014",
+        "T1566.002",
+        "T1665",
+        "T1053.003",
+        "T1105",
+        "T1059.001"
+    ],
+    "clean_text": "SecureBank Inc., a mid-sized financial services provider with operations in North America and Europe, reported anomalous network activity on its corporate email servers and internal systems. Initial logs from their SIEM showed unusual outbound connections to unknown IP addresses, but no immediate data exfiltration was detected. The actors likely conducted reconnaissance to identify key employees, such as IT administrators and financial analysts, before launching the attack.\n\nInitial Access: The adversary sent spearphishing emails containing malicious links disguised as urgent security updates, which, when clicked, redirected victims to a compromised website hosting exploit kits.\n\nExecution: Upon visiting the site, a malicious script executed in the background, leveraging PowerShell to download and deploy a keylogger payload while simultaneously modifying the root crontab file to ensure persistence at system startup.\n\nPersistence: The attacker further established persistence by hijacking the AppDomainManager to load a rogue DLL during application startup, enabling long-term access without user interaction.\n\nDefense Evasion: To obscure their activities, the adversary modified the Windows Event Log to remove evidence of unauthorized access and used a VPN service to mask their command-and-control (C2) communications from network monitoring tools.\n\nCredential Access: The keylogger captured user credentials and session cookies, which the threat actor then used to gain unauthorized access to SecureBank's internal web applications without requiring passwords.\n\nAdditional noise: System logs from SecureBank's firewall indicated intermittent spikes in traffic to cloud storage services, but these were later attributed to a scheduled backup process. The company's background includes a recent merger with a smaller regional bank, which may have introduced integration vulnerabilities, though this was not directly exploited in this scenario.",
+    "tagged_text": "SecureBank Inc., a mid-sized financial services provider with operations in North America and Europe, reported anomalous network activity on its corporate email servers and internal systems. Initial logs from their SIEM showed unusual outbound connections to unknown IP addresses, but no immediate data exfiltration was detected. The actors likely conducted reconnaissance [T1589] to identify key employees, such as IT administrators and financial analysts, before launching the attack.\n\nInitial Access: The adversary sent spearphishing emails [T1566.002] containing malicious links disguised as urgent security updates, which, when clicked, redirected victims to a compromised website hosting exploit kits.\n\nExecution: Upon visiting the site, a malicious script executed in the background, leveraging PowerShell [T1059.001] to download and deploy a keylogger payload [T1105] while simultaneously modifying the root crontab file [T1053.003] to ensure persistence at system startup.\n\nPersistence: The attacker further established persistence by hijacking the AppDomainManager [T1574.014] to load a rogue DLL during application startup, enabling long-term access without user interaction.\n\nDefense Evasion: To obscure their activities, the adversary modified the Windows Event Log [T1546] to remove evidence of unauthorized access and used a VPN service [T1665] to mask their command-and-control (C2) communications from network monitoring tools.\n\nCredential Access: The keylogger captured user credentials and session cookies [T1606.001], which the threat actor then used to gain unauthorized access to SecureBank's internal web applications without requiring passwords.\n\nAdditional noise: System logs from SecureBank's firewall indicated intermittent spikes in traffic to cloud storage services, but these were later attributed to a scheduled backup process. The company's background includes a recent merger with a smaller regional bank, which may have introduced integration vulnerabilities, though this was not directly exploited in this scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify key employees, such as IT administrators and financial analysts, before launching the attack.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to download and deploy a keylogger payload while simultaneously modifying the root crontab file [T1053.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "Defense Evasion: To obscure their activities, the adversary modified the Windows Event Log to remove evidence of unauthorized access and used a VPN service to mask their command-and-control (C2) communications from network monitoring tools.",
+            "technique_id": "T1546",
+            "technique_name": "Event Triggered Execution"
+        },
+        {
+            "sentence": "Defense Evasion: To obscure their activities, the adversary modified the Windows Event Log to remove evidence of unauthorized access and used a VPN service to mask their command-and-control (C2) communications from network monitoring tools.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentCrawler' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated 'SilentCrawler', targeting financial institutions. Based on analysis of a recent incident at a fictional company, 'SecureBank Inc.', this report outlines the attack lifecycle using a kill-chain structure to educate blue teams on detection and mitigation strategies.",
+        "full_report_text": "SecureBank Inc., a mid-sized financial services provider with operations in North America and Europe, reported anomalous network activity on its corporate email servers and internal systems. Initial logs from their SIEM showed unusual outbound connections to unknown IP addresses, but no immediate data exfiltration was detected. The actors likely conducted reconnaissance [T1589] to identify key employees, such as IT administrators and financial analysts, before launching the attack.\n\nInitial Access: The adversary sent spearphishing emails [T1566.002] containing malicious links disguised as urgent security updates, which, when clicked, redirected victims to a compromised website hosting exploit kits.\n\nExecution: Upon visiting the site, a malicious script executed in the background, leveraging PowerShell [T1059.001] to download and deploy a keylogger payload [T1105] while simultaneously modifying the root crontab file [T1053.003] to ensure persistence at system startup.\n\nPersistence: The attacker further established persistence by hijacking the AppDomainManager [T1574.014] to load a rogue DLL during application startup, enabling long-term access without user interaction.\n\nDefense Evasion: To obscure their activities, the adversary modified the Windows Event Log [T1546] to remove evidence of unauthorized access and used a VPN service [T1665] to mask their command-and-control (C2) communications from network monitoring tools.\n\nCredential Access: The keylogger captured user credentials and session cookies [T1606.001], which the threat actor then used to gain unauthorized access to SecureBank's internal web applications without requiring passwords.\n\nAdditional noise: System logs from SecureBank's firewall indicated intermittent spikes in traffic to cloud storage services, but these were later attributed to a scheduled backup process. The company's background includes a recent merger with a smaller regional bank, which may have introduced integration vulnerabilities, though this was not directly exploited in this scenario.",
+        "techniques_used": [
+            "T1589",
+            "T1566.002",
+            "T1059.001",
+            "T1105",
+            "T1053.003",
+            "T1574.014",
+            "T1546",
+            "T1665",
+            "T1606.001"
+        ]
+    }
+}

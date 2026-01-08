@@ -1,0 +1,68 @@
+{
+    "report_id": "report_7",
+    "generated_at": "20251222_112003",
+    "scenario_target_ids": [
+        "T1199",
+        "T1204.002",
+        "T1574.008",
+        "T1557.001",
+        "T1205",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1204.002",
+        "T1574.008",
+        "T1557.001",
+        "T1205",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1574.008",
+        "T1199",
+        "T1205",
+        "T1204.002",
+        "T1557.001",
+        "T1531"
+    ],
+    "clean_text": "On October 15, 2023, Crimson Shadow actors initiated a campaign against a fictional organization, 'GlobalEd Corp', an educational technology provider. System logs from their SIEM showed unusual login attempts from an IP address in a non-business region, but these were initially dismissed as false positives. The actors first abused a trusted Office 365 partner account to gain administrative access to GlobalEd's tenant, leveraging this relationship to bypass standard authentication controls. Subsequently, they delivered a spear-phishing email containing a malicious Word document to a student intern at GlobalEd, who inadvertently opened it, executing embedded macros that downloaded additional payloads. Once executed, the malware wrote a malicious DLL named 'netapi32.dll' into a user-writable directory to hijack the search order and achieve persistence. The malware then initiated Responder.exe to poison LLMNR and NBT-NS queries, intercepting and relaying authentication credentials across the network. For command and control, the backdoor employed libpcap to monitor network traffic patterns and dynamically select hidden ports to evade detection. Finally, the actors used a PowerShell script to modify the local user account 'backupsvc' by setting its password to never expire, interfering with security policies and hindering account recovery efforts. GlobalEd's incident response team noted increased CPU usage on several endpoints, but initial scans failed to identify the root cause due to the stealthy nature of the traffic signaling.",
+    "tagged_text": "On October 15, 2023, Crimson Shadow actors initiated a campaign against a fictional organization, 'GlobalEd Corp', an educational technology provider. System logs from their SIEM showed unusual login attempts from an IP address in a non-business region, but these were initially dismissed as false positives. The actors first abused a trusted Office 365 partner account to gain administrative access to GlobalEd's tenant [T1199], leveraging this relationship to bypass standard authentication controls. Subsequently, they delivered a spear-phishing email containing a malicious Word document to a student intern at GlobalEd, who inadvertently opened it, executing embedded macros that downloaded additional payloads [T1204.002]. Once executed, the malware wrote a malicious DLL named 'netapi32.dll' into a user-writable directory to hijack the search order and achieve persistence [T1574.008]. The malware then initiated Responder.exe to poison LLMNR and NBT-NS queries, intercepting and relaying authentication credentials across the network [T1557.001]. For command and control, the backdoor employed libpcap to monitor network traffic patterns and dynamically select hidden ports to evade detection [T1205]. Finally, the actors used a PowerShell script to modify the local user account 'backupsvc' by setting its password to never expire, interfering with security policies and hindering account recovery efforts [T1531]. GlobalEd's incident response team noted increased CPU usage on several endpoints, but initial scans failed to identify the root cause due to the stealthy nature of the traffic signaling.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors first abused a trusted Office 365 partner account to gain administrative access to GlobalEd's tenant, leveraging this relationship to bypass standard authentication controls.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "For command and control, the backdoor employed libpcap to monitor network traffic patterns and dynamically select hidden ports to evade detection.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "Finally, the actors used a PowerShell script to modify the local user account 'backupsvc' by setting its password to never expire, interfering with security policies and hindering account recovery efforts.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Educational and Corporate Entities",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated as 'Crimson Shadow', targeting organizations through trusted relationships and multi-stage malware deployment. The campaign involves initial access via compromised partner accounts, execution through malicious documents, persistence via DLL hijacking, credential theft via network poisoning, stealthy command and control via traffic signaling, and disruption of account management.",
+        "full_report_text": "On October 15, 2023, Crimson Shadow actors initiated a campaign against a fictional organization, 'GlobalEd Corp', an educational technology provider. System logs from their SIEM showed unusual login attempts from an IP address in a non-business region, but these were initially dismissed as false positives. The actors first abused a trusted Office 365 partner account to gain administrative access to GlobalEd's tenant [T1199], leveraging this relationship to bypass standard authentication controls. Subsequently, they delivered a spear-phishing email containing a malicious Word document to a student intern at GlobalEd, who inadvertently opened it, executing embedded macros that downloaded additional payloads [T1204.002]. Once executed, the malware wrote a malicious DLL named 'netapi32.dll' into a user-writable directory to hijack the search order and achieve persistence [T1574.008]. The malware then initiated Responder.exe to poison LLMNR and NBT-NS queries, intercepting and relaying authentication credentials across the network [T1557.001]. For command and control, the backdoor employed libpcap to monitor network traffic patterns and dynamically select hidden ports to evade detection [T1205]. Finally, the actors used a PowerShell script to modify the local user account 'backupsvc' by setting its password to never expire, interfering with security policies and hindering account recovery efforts [T1531]. GlobalEd's incident response team noted increased CPU usage on several endpoints, but initial scans failed to identify the root cause due to the stealthy nature of the traffic signaling.",
+        "techniques_used": [
+            "T1199",
+            "T1204.002",
+            "T1574.008",
+            "T1557.001",
+            "T1205",
+            "T1531"
+        ]
+    }
+}

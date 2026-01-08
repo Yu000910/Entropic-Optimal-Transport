@@ -1,0 +1,107 @@
+{
+    "report_id": "report_120",
+    "generated_at": "20251222_120429",
+    "scenario_target_ids": [
+        "T1608.005",
+        "T1091",
+        "T1059.010",
+        "T1578.004",
+        "T1027.005",
+        "T1049",
+        "T1185",
+        "T1102.001",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1608.005",
+        "T1185",
+        "T1091",
+        "T1059.010",
+        "T1105",
+        "T1112",
+        "T1020.001",
+        "T1027.005",
+        "T1578.004",
+        "T1049",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1578.004",
+        "T1185",
+        "T1091",
+        "T1027.005",
+        "T1105",
+        "T1020.001",
+        "T1049",
+        "T1589",
+        "T1059.010",
+        "T1608.005",
+        "T1112"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor, 'ShadowBanker', observed targeting financial organizations. This campaign leverages sophisticated techniques to evade detection and maintain persistence. Initial Access: The actors likely conduct reconnaissance to identify high-value targets, then inject JavaScript code into a legitimate banking website to display a fake session timeout warning and capture login credentials, while simultaneously using form-grabbing to extract data from web forms. Execution: Upon user interaction, the malicious script alters the Autorun.inf configuration to run a hidden script upon media insertion, and the adversary employs AutoIt scripts dropped to a hidden directory during initial installation phases, such as `test.au3`, to download additional payloads and modify registry keys. Persistence: The malware establishes persistent traffic mirroring for data theft using ROMMONkit. Defense Evasion: After installing the main payload, the ransomware removes its dropper component, and by restoring the cloud management dashboard, the attacker removes logs of their resource modifications. Discovery: The actors use the arp -a command to discover system network connections. Command and Control: PolyglotDuke can use Twitter, Reddit, Imgur, and other websites to resolve C2 URLs. Exfiltration: Data is exfiltrated through duplicated traffic channels. System logs from the affected organization, 'SecureBank Inc.', show anomalous network activity on port 443, but initial scans did not detect the JavaScript injection. The company's background includes a recent migration to cloud services, which may have introduced vulnerabilities. Blue teams should monitor for unusual AutoIt scripts and Autorun modifications, as these are key indicators of compromise.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor, 'ShadowBanker', observed targeting financial organizations. This campaign leverages sophisticated techniques to evade detection and maintain persistence. Initial Access: The actors likely conduct reconnaissance [T1589] to identify high-value targets, then inject JavaScript code into a legitimate banking website to display a fake session timeout warning and capture login credentials [T1608.005], while simultaneously using form-grabbing to extract data from web forms [T1185]. Execution: Upon user interaction, the malicious script alters the Autorun.inf configuration to run a hidden script upon media insertion [T1091], and the adversary employs AutoIt scripts dropped to a hidden directory during initial installation phases, such as `test.au3` [T1059.010], to download additional payloads [T1105] and modify registry keys [T1112]. Persistence: The malware establishes persistent traffic mirroring for data theft using ROMMONkit [T1020.001]. Defense Evasion: After installing the main payload, the ransomware removes its dropper component [T1027.005], and by restoring the cloud management dashboard, the attacker removes logs of their resource modifications [T1578.004]. Discovery: The actors use the arp -a command to discover system network connections [T1049]. Command and Control: PolyglotDuke can use Twitter, Reddit, Imgur, and other websites to resolve C2 URLs [T1102.001]. Exfiltration: Data is exfiltrated through duplicated traffic channels. System logs from the affected organization, 'SecureBank Inc.', show anomalous network activity on port 443, but initial scans did not detect the JavaScript injection. The company's background includes a recent migration to cloud services, which may have introduced vulnerabilities. Blue teams should monitor for unusual AutoIt scripts and Autorun modifications, as these are key indicators of compromise.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conduct reconnaissance to identify high-value targets, then inject JavaScript code into a legitimate banking website to display a fake session timeout warning and capture login credentials [T1608.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "005], while simultaneously using form-grabbing to extract data from web forms.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        },
+        {
+            "sentence": "inf configuration to run a hidden script upon media insertion, and the adversary employs AutoIt scripts dropped to a hidden directory during initial installation phases, such as `test.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "010], to download additional payloads and modify registry keys.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "010], to download additional payloads and modify registry keys.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "Discovery: The actors use the arp -a command to discover system network connections.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowBanker' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'ShadowBanker', targeting financial institutions. The campaign employs a multi-faceted approach involving web-based phishing, removable media propagation, and cloud infrastructure manipulation to compromise systems and exfiltrate sensitive data. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor, 'ShadowBanker', observed targeting financial organizations. This campaign leverages sophisticated techniques to evade detection and maintain persistence. Initial Access: The actors likely conduct reconnaissance [T1589] to identify high-value targets, then inject JavaScript code into a legitimate banking website to display a fake session timeout warning and capture login credentials [T1608.005], while simultaneously using form-grabbing to extract data from web forms [T1185]. Execution: Upon user interaction, the malicious script alters the Autorun.inf configuration to run a hidden script upon media insertion [T1091], and the adversary employs AutoIt scripts dropped to a hidden directory during initial installation phases, such as `test.au3` [T1059.010], to download additional payloads [T1105] and modify registry keys [T1112]. Persistence: The malware establishes persistent traffic mirroring for data theft using ROMMONkit [T1020.001]. Defense Evasion: After installing the main payload, the ransomware removes its dropper component [T1027.005], and by restoring the cloud management dashboard, the attacker removes logs of their resource modifications [T1578.004]. Discovery: The actors use the arp -a command to discover system network connections [T1049]. Command and Control: PolyglotDuke can use Twitter, Reddit, Imgur, and other websites to resolve C2 URLs [T1102.001]. Exfiltration: Data is exfiltrated through duplicated traffic channels. System logs from the affected organization, 'SecureBank Inc.', show anomalous network activity on port 443, but initial scans did not detect the JavaScript injection. The company's background includes a recent migration to cloud services, which may have introduced vulnerabilities. Blue teams should monitor for unusual AutoIt scripts and Autorun modifications, as these are key indicators of compromise.",
+        "techniques_used": [
+            "T1589",
+            "T1608.005",
+            "T1185",
+            "T1091",
+            "T1059.010",
+            "T1105",
+            "T1112",
+            "T1020.001",
+            "T1027.005",
+            "T1578.004",
+            "T1049",
+            "T1102.001"
+        ]
+    }
+}

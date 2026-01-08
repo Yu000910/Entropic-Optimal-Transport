@@ -1,0 +1,88 @@
+{
+    "report_id": "report_284",
+    "generated_at": "20251222_144154",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1596.005",
+        "T1078.003",
+        "T1569.001",
+        "T1055.001",
+        "T1078.001",
+        "T1558",
+        "T1074",
+        "T1114",
+        "T1071.005"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1596.005",
+        "T1078.003",
+        "T1569.001",
+        "T1055.001",
+        "T1078.001",
+        "T1558",
+        "T1074",
+        "T1114",
+        "T1071.005"
+    ],
+    "actual_found_ids": [
+        "T1596.005",
+        "T1114",
+        "T1558",
+        "T1569.001",
+        "T1074",
+        "T1592.003",
+        "T1071.005",
+        "T1078.001",
+        "T1078.003",
+        "T1055.001"
+    ],
+    "clean_text": "CrimsonWraith actors initiated their campaign by conducting reconnaissance to gather information on target infrastructure. They queried Shodan to identify FTP servers with anonymous login enabled within the organization's IP blocks, while simultaneously using systeminfo.exe to extract firmware data as part of host enumeration. Following initial access via an FTP server, the adversary employed Mimikatz.exe to dump credential material from the LSASS process memory and used HyperStack to connect to IPC$ shares on remote machines using default credentials. For execution and persistence, the attacker used 'launchctl load /Library/LaunchDaemons/malware.plist' to execute malicious code as a system service and leveraged Cobalt Strike to load DLLs via reflective injection while malware executed klist to enumerate available Kerberos service tickets in memory. In the data collection phase, a malicious script launched Outlook.exe to access and copy sensitive email attachments and employed bash scripts to save harvested credentials to a hidden folder before exfiltration. Finally, the malware established covert command and control channels using MQTT publish/subscribe messages. System logs from the affected Windows Server 2019 instances showed unusual spikes in network traffic at 03:00 UTC, coinciding with scheduled maintenance windows, though no actual data loss occurred in this training scenario. The organization, a mid-sized utility provider in the Midwest, reported no operational impact, but the simulation highlights vulnerabilities in legacy FTP configurations and insufficient monitoring of service account activities.",
+    "tagged_text": "CrimsonWraith actors initiated their campaign by conducting reconnaissance to gather information on target infrastructure. They queried Shodan [T1596.005] to identify FTP servers with anonymous login enabled within the organization's IP blocks, while simultaneously using systeminfo.exe to extract firmware data as part of host enumeration [T1592.003]. Following initial access via an FTP server, the adversary employed Mimikatz.exe to dump credential material from the LSASS process memory [T1078.003] and used HyperStack to connect to IPC$ shares on remote machines using default credentials [T1078.001]. For execution and persistence, the attacker used 'launchctl load /Library/LaunchDaemons/malware.plist' to execute malicious code as a system service [T1569.001] and leveraged Cobalt Strike to load DLLs via reflective injection [T1055.001] while malware executed klist to enumerate available Kerberos service tickets in memory [T1558]. In the data collection phase, a malicious script launched Outlook.exe to access and copy sensitive email attachments [T1114] and employed bash scripts to save harvested credentials to a hidden folder before exfiltration [T1074]. Finally, the malware established covert command and control channels using MQTT publish/subscribe messages [T1071.005]. System logs from the affected Windows Server 2019 instances showed unusual spikes in network traffic at 03:00 UTC, coinciding with scheduled maintenance windows, though no actual data loss occurred in this training scenario. The organization, a mid-sized utility provider in the Midwest, reported no operational impact, but the simulation highlights vulnerabilities in legacy FTP configurations and insufficient monitoring of service account activities.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] while malware executed klist to enumerate available Kerberos service tickets in memory.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        },
+        {
+            "sentence": "exe to access and copy sensitive email attachments and employed bash scripts to save harvested credentials to a hidden folder before exfiltration.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "exe to access and copy sensitive email attachments and employed bash scripts to save harvested credentials to a hidden folder before exfiltration.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CrimsonWraith', targeting organizations in the energy sector. The campaign involves initial reconnaissance via public databases, exploitation of default credentials, lateral movement using stolen Kerberos tickets, and data exfiltration over covert channels. Blue teams are advised to review logs for anomalous FTP access, unexpected service executions, and MQTT protocol usage.",
+        "full_report_text": "CrimsonWraith actors initiated their campaign by conducting reconnaissance to gather information on target infrastructure. They queried Shodan [T1596.005] to identify FTP servers with anonymous login enabled within the organization's IP blocks, while simultaneously using systeminfo.exe to extract firmware data as part of host enumeration [T1592.003]. Following initial access via an FTP server, the adversary employed Mimikatz.exe to dump credential material from the LSASS process memory [T1078.003] and used HyperStack to connect to IPC$ shares on remote machines using default credentials [T1078.001]. For execution and persistence, the attacker used 'launchctl load /Library/LaunchDaemons/malware.plist' to execute malicious code as a system service [T1569.001] and leveraged Cobalt Strike to load DLLs via reflective injection [T1055.001] while malware executed klist to enumerate available Kerberos service tickets in memory [T1558]. In the data collection phase, a malicious script launched Outlook.exe to access and copy sensitive email attachments [T1114] and employed bash scripts to save harvested credentials to a hidden folder before exfiltration [T1074]. Finally, the malware established covert command and control channels using MQTT publish/subscribe messages [T1071.005]. System logs from the affected Windows Server 2019 instances showed unusual spikes in network traffic at 03:00 UTC, coinciding with scheduled maintenance windows, though no actual data loss occurred in this training scenario. The organization, a mid-sized utility provider in the Midwest, reported no operational impact, but the simulation highlights vulnerabilities in legacy FTP configurations and insufficient monitoring of service account activities.",
+        "techniques_used": [
+            "T1592.003",
+            "T1596.005",
+            "T1078.003",
+            "T1569.001",
+            "T1055.001",
+            "T1078.001",
+            "T1558",
+            "T1074",
+            "T1114",
+            "T1071.005"
+        ]
+    }
+}

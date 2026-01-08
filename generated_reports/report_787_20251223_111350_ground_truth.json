@@ -1,0 +1,83 @@
+{
+    "report_id": "report_787",
+    "generated_at": "20251223_111350",
+    "scenario_target_ids": [
+        "T1195",
+        "T1204.003",
+        "T1110.002",
+        "T1570",
+        "T1563.001",
+        "T1123",
+        "T1573.002",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1204.003",
+        "T1110.002",
+        "T1570",
+        "T1563.001",
+        "T1123",
+        "T1573.002",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1570",
+        "T1498",
+        "T1563.001",
+        "T1195",
+        "T1573.002",
+        "T1123",
+        "T1110.002",
+        "T1204.003"
+    ],
+    "clean_text": "Ember Bear, a suspected state-sponsored actor, initiated their campaign by compromising a third-party software developer that provides services to multiple target organizations, leveraging this access to distribute malicious artifacts through trusted channels. The actors used a compromised developer account to upload a backdoored Amazon Machine Image (AMI) to the AWS Marketplace, which contained a reverse shell payload disguised as a legitimate application update. Upon deployment by victim organizations, the AMI executed the payload, establishing initial access and enabling the adversary to conduct reconnaissance on the cloud environment. System logs from affected instances showed unusual network connections to external IP addresses, though initial alerts were dismissed as false positives due to high traffic volumes. The actors then employed password cracking tools to extract credentials from cached hashes found on compromised instances, using techniques similar to those observed in historical campaigns like Night Dragon. With stolen credentials, they moved laterally within the victim network by transferring custom tools via RPC protocols to other systems, mimicking the peer-to-peer communication methods used in Stuxnet. Additionally, the actors exploited weak SSH key authentication to hijack existing sessions and gain unauthorized access to additional servers, facilitating further lateral movement across the network. During this phase, the actors silently enabled audio capture on compromised devices to record sensitive meetings and document reviews, exfiltrating this data alongside other stolen information. All command and control (C2) communications were encrypted using asymmetric cryptography, specifically RSA, to evade detection by network security tools. In the final stage, the actors launched a network denial of service attack against internal services to create distractions and cover their tracks, similar to tactics used by APT28 in past incidents. The campaign resulted in significant data loss and operational disruption, with forensic analysis revealing persistence mechanisms and backdoors left for potential future access. Background information on the victim organizations, including their use of hybrid cloud setups and reliance on third-party vendors, was irrelevant to the attack but provided context for the initial compromise vector.",
+    "tagged_text": "Ember Bear, a suspected state-sponsored actor, initiated their campaign by compromising a third-party software developer that provides services to multiple target organizations, leveraging this access to distribute malicious artifacts through trusted channels [T1195]. The actors used a compromised developer account to upload a backdoored Amazon Machine Image (AMI) to the AWS Marketplace, which contained a reverse shell payload disguised as a legitimate application update [T1204.003]. Upon deployment by victim organizations, the AMI executed the payload, establishing initial access and enabling the adversary to conduct reconnaissance on the cloud environment. System logs from affected instances showed unusual network connections to external IP addresses, though initial alerts were dismissed as false positives due to high traffic volumes. The actors then employed password cracking tools to extract credentials from cached hashes found on compromised instances, using techniques similar to those observed in historical campaigns like Night Dragon [T1110.002]. With stolen credentials, they moved laterally within the victim network by transferring custom tools via RPC protocols to other systems, mimicking the peer-to-peer communication methods used in Stuxnet [T1570]. Additionally, the actors exploited weak SSH key authentication to hijack existing sessions and gain unauthorized access to additional servers, facilitating further lateral movement across the network [T1563.001]. During this phase, the actors silently enabled audio capture on compromised devices to record sensitive meetings and document reviews, exfiltrating this data alongside other stolen information [T1123]. All command and control (C2) communications were encrypted using asymmetric cryptography, specifically RSA, to evade detection by network security tools [T1573.002]. In the final stage, the actors launched a network denial of service attack against internal services to create distractions and cover their tracks, similar to tactics used by APT28 in past incidents [T1498]. The campaign resulted in significant data loss and operational disruption, with forensic analysis revealing persistence mechanisms and backdoors left for potential future access. Background information on the victim organizations, including their use of hybrid cloud setups and reliance on third-party vendors, was irrelevant to the attack but provided context for the initial compromise vector.",
+    "sentence_annotations": [
+        {
+            "sentence": "Ember Bear, a suspected state-sponsored actor, initiated their campaign by compromising a third-party software developer that provides services to multiple target organizations, leveraging this access to distribute malicious artifacts through trusted channels.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "With stolen credentials, they moved laterally within the victim network by transferring custom tools via RPC protocols to other systems, mimicking the peer-to-peer communication methods used in Stuxnet.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "During this phase, the actors silently enabled audio capture on compromised devices to record sensitive meetings and document reviews, exfiltrating this data alongside other stolen information.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        },
+        {
+            "sentence": "In the final stage, the actors launched a network denial of service attack against internal services to create distractions and cover their tracks, similar to tactics used by APT28 in past incidents.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Night Ember' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Ember Bear,' which exploited supply chain vulnerabilities to compromise cloud environments, leading to credential theft, lateral movement, and data exfiltration. The activity was identified through analysis of AWS logs and network traffic, highlighting the need for enhanced monitoring of third-party software and SSH configurations.",
+        "full_report_text": "Ember Bear, a suspected state-sponsored actor, initiated their campaign by compromising a third-party software developer that provides services to multiple target organizations, leveraging this access to distribute malicious artifacts through trusted channels [T1195]. The actors used a compromised developer account to upload a backdoored Amazon Machine Image (AMI) to the AWS Marketplace, which contained a reverse shell payload disguised as a legitimate application update [T1204.003]. Upon deployment by victim organizations, the AMI executed the payload, establishing initial access and enabling the adversary to conduct reconnaissance on the cloud environment. System logs from affected instances showed unusual network connections to external IP addresses, though initial alerts were dismissed as false positives due to high traffic volumes. The actors then employed password cracking tools to extract credentials from cached hashes found on compromised instances, using techniques similar to those observed in historical campaigns like Night Dragon [T1110.002]. With stolen credentials, they moved laterally within the victim network by transferring custom tools via RPC protocols to other systems, mimicking the peer-to-peer communication methods used in Stuxnet [T1570]. Additionally, the actors exploited weak SSH key authentication to hijack existing sessions and gain unauthorized access to additional servers, facilitating further lateral movement across the network [T1563.001]. During this phase, the actors silently enabled audio capture on compromised devices to record sensitive meetings and document reviews, exfiltrating this data alongside other stolen information [T1123]. All command and control (C2) communications were encrypted using asymmetric cryptography, specifically RSA, to evade detection by network security tools [T1573.002]. In the final stage, the actors launched a network denial of service attack against internal services to create distractions and cover their tracks, similar to tactics used by APT28 in past incidents [T1498]. The campaign resulted in significant data loss and operational disruption, with forensic analysis revealing persistence mechanisms and backdoors left for potential future access. Background information on the victim organizations, including their use of hybrid cloud setups and reliance on third-party vendors, was irrelevant to the attack but provided context for the initial compromise vector.",
+        "techniques_used": [
+            "T1195",
+            "T1204.003",
+            "T1110.002",
+            "T1570",
+            "T1563.001",
+            "T1123",
+            "T1573.002",
+            "T1498"
+        ]
+    }
+}

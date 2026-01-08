@@ -1,0 +1,104 @@
+{
+    "report_id": "report_195",
+    "generated_at": "20251222_123358",
+    "scenario_target_ids": [
+        "T1078",
+        "T1569.001",
+        "T1176",
+        "T1546.011",
+        "T1613",
+        "T1580",
+        "T1021.004",
+        "T1074.001",
+        "T1571",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1569.001",
+        "T1176",
+        "T1546.011",
+        "T1613",
+        "T1580",
+        "T1021.004",
+        "T1074.001",
+        "T1571",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1613",
+        "T1021.004",
+        "T1176",
+        "T1020.001",
+        "T1589",
+        "T1546.011",
+        "T1571",
+        "T1078",
+        "T1074.001",
+        "T1580",
+        "T1569.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. ShadowHive actors likely conduct reconnaissance through open-source intelligence, though specific logs from victim firewalls show normal traffic patterns on port 80. The attack began with Initial Access, where the adversary used credential dumpers to obtain legitimate credentials from a compromised employee workstation, allowing them to log into a corporate VPN and cloud console via valid accounts. During Execution, they employed launchctl to load a malicious LaunchAgent for persistence on macOS systems, while simultaneously using sdbinst.exe to install a Shim database that enables privilege escalation through application shimming. For Persistence, the malware leveraged browser extension permissions to establish a persistent backdoor connection via software extensions, and system logs indicated routine software updates that were unrelated. In Discovery, the attacker ran 'kubectl describe node' commands to gather detailed information about cluster resources for container and resource discovery, and queried the DescribeInstances API to identify running virtual machines in the cloud environment for cloud infrastructure discovery, with network scans showing benign SSH traffic on port 22. For Lateral Movement, they used Putty to access compromised systems via SSH, while internal monitoring tools recorded failed login attempts from unknown IPs. In Collection, menuPass stages data prior to exfiltration in multi-part archives, often saved in the Recycle Bin for local data staging, and company background notes indicate no prior data breaches. For Command and Control, TYPEFRAME has used ports 443, 8080, and 8443 with a FakeTLS method over non-standard ports, and exfiltration logs show encrypted traffic during off-hours. In Exfiltration, ROMMONkit was deployed to intercept and copy network communications for automated data collection via traffic duplication, while firewall rules were updated to block suspicious IPs post-incident.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. ShadowHive actors likely conduct reconnaissance [T1589] through open-source intelligence, though specific logs from victim firewalls show normal traffic patterns on port 80. The attack began with Initial Access, where the adversary used credential dumpers to obtain legitimate credentials from a compromised employee workstation, allowing them to log into a corporate VPN and cloud console via valid accounts [T1078]. During Execution, they employed launchctl [T1569.001] to load a malicious LaunchAgent for persistence on macOS systems, while simultaneously using sdbinst.exe to install a Shim database that enables privilege escalation through application shimming [T1546.011]. For Persistence, the malware leveraged browser extension permissions to establish a persistent backdoor connection via software extensions [T1176], and system logs indicated routine software updates that were unrelated. In Discovery, the attacker ran 'kubectl describe node' commands to gather detailed information about cluster resources for container and resource discovery [T1613], and queried the DescribeInstances API to identify running virtual machines in the cloud environment for cloud infrastructure discovery [T1580], with network scans showing benign SSH traffic on port 22. For Lateral Movement, they used Putty to access compromised systems via SSH [T1021.004], while internal monitoring tools recorded failed login attempts from unknown IPs. In Collection, menuPass stages data prior to exfiltration in multi-part archives, often saved in the Recycle Bin for local data staging [T1074.001], and company background notes indicate no prior data breaches. For Command and Control, TYPEFRAME has used ports 443, 8080, and 8443 with a FakeTLS method over non-standard ports [T1571], and exfiltration logs show encrypted traffic during off-hours. In Exfiltration, ROMMONkit was deployed to intercept and copy network communications for automated data collection via traffic duplication [T1020.001], while firewall rules were updated to block suspicious IPs post-incident.",
+    "sentence_annotations": [
+        {
+            "sentence": "ShadowHive actors likely conduct reconnaissance through open-source intelligence, though specific logs from victim firewalls show normal traffic patterns on port 80.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The attack began with Initial Access, where the adversary used credential dumpers to obtain legitimate credentials from a compromised employee workstation, allowing them to log into a corporate VPN and cloud console via valid accounts.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "For Persistence, the malware leveraged browser extension permissions to establish a persistent backdoor connection via software extensions, and system logs indicated routine software updates that were unrelated.",
+            "technique_id": "T1176",
+            "technique_name": "Software Extensions"
+        },
+        {
+            "sentence": "In Discovery, the attacker ran 'kubectl describe node' commands to gather detailed information about cluster resources for container and resource discovery, and queried the DescribeInstances API to identify running virtual machines in the cloud environment for cloud infrastructure discovery, with network scans showing benign SSH traffic on port 22.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "In Discovery, the attacker ran 'kubectl describe node' commands to gather detailed information about cluster resources for container and resource discovery, and queried the DescribeInstances API to identify running virtual machines in the cloud environment for cloud infrastructure discovery, with network scans showing benign SSH traffic on port 22.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "For Command and Control, TYPEFRAME has used ports 443, 8080, and 8443 with a FakeTLS method over non-standard ports, and exfiltration logs show encrypted traffic during off-hours.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Container Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'ShadowHive', targeting organizations with hybrid cloud and Kubernetes infrastructure. The campaign leverages stolen credentials, persistence mechanisms, and data exfiltration techniques to compromise systems and evade detection. This report is intended for blue team training to enhance defensive capabilities against such multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for educational purposes. ShadowHive actors likely conduct reconnaissance [T1589] through open-source intelligence, though specific logs from victim firewalls show normal traffic patterns on port 80. The attack began with Initial Access, where the adversary used credential dumpers to obtain legitimate credentials from a compromised employee workstation, allowing them to log into a corporate VPN and cloud console via valid accounts [T1078]. During Execution, they employed launchctl [T1569.001] to load a malicious LaunchAgent for persistence on macOS systems, while simultaneously using sdbinst.exe to install a Shim database that enables privilege escalation through application shimming [T1546.011]. For Persistence, the malware leveraged browser extension permissions to establish a persistent backdoor connection via software extensions [T1176], and system logs indicated routine software updates that were unrelated. In Discovery, the attacker ran 'kubectl describe node' commands to gather detailed information about cluster resources for container and resource discovery [T1613], and queried the DescribeInstances API to identify running virtual machines in the cloud environment for cloud infrastructure discovery [T1580], with network scans showing benign SSH traffic on port 22. For Lateral Movement, they used Putty to access compromised systems via SSH [T1021.004], while internal monitoring tools recorded failed login attempts from unknown IPs. In Collection, menuPass stages data prior to exfiltration in multi-part archives, often saved in the Recycle Bin for local data staging [T1074.001], and company background notes indicate no prior data breaches. For Command and Control, TYPEFRAME has used ports 443, 8080, and 8443 with a FakeTLS method over non-standard ports [T1571], and exfiltration logs show encrypted traffic during off-hours. In Exfiltration, ROMMONkit was deployed to intercept and copy network communications for automated data collection via traffic duplication [T1020.001], while firewall rules were updated to block suspicious IPs post-incident.",
+        "techniques_used": [
+            "T1078",
+            "T1569.001",
+            "T1176",
+            "T1546.011",
+            "T1613",
+            "T1580",
+            "T1021.004",
+            "T1074.001",
+            "T1571",
+            "T1020.001"
+        ]
+    }
+}

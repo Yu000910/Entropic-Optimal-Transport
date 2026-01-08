@@ -1,0 +1,88 @@
+{
+    "report_id": "report_678",
+    "generated_at": "20251222_172901",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1597.002",
+        "T1588.001",
+        "T1585.002",
+        "T1566.003",
+        "T1059.002",
+        "T1574.008",
+        "T1027.013",
+        "T1568.002",
+        "T1219",
+        "T1485"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1597.002",
+        "T1588.001",
+        "T1585.002",
+        "T1566.003",
+        "T1059.002",
+        "T1574.008",
+        "T1027.013",
+        "T1568.002",
+        "T1219",
+        "T1485"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1574.008",
+        "T1485",
+        "T1568.002",
+        "T1585.002",
+        "T1592.003",
+        "T1027.013",
+        "T1566.003",
+        "T1219",
+        "T1059.002",
+        "T1588.001"
+    ],
+    "clean_text": "### Background\nLeviathan, a fictional advanced persistent threat (APT) group, is assessed to be conducting cyber operations against global industrial sectors, with a focus on energy and manufacturing. The group operates with moderate sophistication, utilizing a mix of publicly available tools and custom malware. This report is based on simulated incident response data from a fictional victim, 'Global Industrial Solutions Inc.', which reported anomalous network activity in early 2024. Logs from their SIEM showed unusual PowerShell executions and failed backup attempts, but initial scans did not detect known malware signatures.\n\n### Attack Narrative\n**Initial Access:** Leviathan likely conducted reconnaissance by purchasing technical documentation about the victim's industrial control systems from specialized dark web markets and then used WhatsApp to send malicious links in group chats disguised as COVID-19 relief information, targeting employees with access to critical infrastructure. The malware ran systeminfo.exe to enumerate firmware characteristics as part of initial reconnaissance, while the adversary created new email accounts for targeting efforts.\n\n**Execution:** Upon victim interaction, the threat actor downloaded the banking trojan from a compromised web server at malware-distribution.net, which used obfuscated URLs to download a ZIP file. The malware then wrote an AppleScript file to /Users/Shared/backdoor.applescript that would establish persistence by adding a login item, and the adversary wrote a malicious version of 'crypt32.dll' into a directory with higher search precedence to hijack system processes.\n\n**Persistence and Command & Control:** SombRAT can use a custom DGA to generate a subdomain for C2, and a malicious Windows Service called 'SystemHealthMonitor' was created to maintain interactive remote control of the infected host, allowing Leviathan to exfiltrate data and move laterally within the network.\n\n**Impact:** The threat actor deleted all backup files from the network share using PowerShell Remove-Item commands, causing significant operational disruption. Incident responders noted that system logs showed repeated failed access attempts to backup directories, but no alerts were triggered due to misconfigured monitoring rules.\n\n### Mitigation Recommendations\nOrganizations should implement multi-factor authentication, regularly update firmware, and monitor for unusual scripting activities. Training employees on phishing via messaging services is critical. This advisory is for educational purposes only; any resemblance to real entities is coincidental.",
+    "tagged_text": "### Background\nLeviathan, a fictional advanced persistent threat (APT) group, is assessed to be conducting cyber operations against global industrial sectors, with a focus on energy and manufacturing. The group operates with moderate sophistication, utilizing a mix of publicly available tools and custom malware. This report is based on simulated incident response data from a fictional victim, 'Global Industrial Solutions Inc.', which reported anomalous network activity in early 2024. Logs from their SIEM showed unusual PowerShell executions and failed backup attempts, but initial scans did not detect known malware signatures.\n\n### Attack Narrative\n**Initial Access:** Leviathan likely conducted reconnaissance by purchasing technical documentation about the victim's industrial control systems from specialized dark web markets [T1597.002] and then used WhatsApp to send malicious links in group chats disguised as COVID-19 relief information [T1566.003], targeting employees with access to critical infrastructure. The malware ran systeminfo.exe to enumerate firmware characteristics as part of initial reconnaissance [T1592.003], while the adversary created new email accounts for targeting efforts [T1585.002].\n\n**Execution:** Upon victim interaction, the threat actor downloaded the banking trojan from a compromised web server at malware-distribution.net [T1588.001], which used obfuscated URLs to download a ZIP file [T1027.013]. The malware then wrote an AppleScript file to /Users/Shared/backdoor.applescript that would establish persistence by adding a login item [T1059.002], and the adversary wrote a malicious version of 'crypt32.dll' into a directory with higher search precedence [T1574.008] to hijack system processes.\n\n**Persistence and Command & Control:** SombRAT can use a custom DGA to generate a subdomain for C2 [T1568.002], and a malicious Windows Service called 'SystemHealthMonitor' was created to maintain interactive remote control of the infected host [T1219], allowing Leviathan to exfiltrate data and move laterally within the network.\n\n**Impact:** The threat actor deleted all backup files from the network share using PowerShell Remove-Item commands [T1485], causing significant operational disruption. Incident responders noted that system logs showed repeated failed access attempts to backup directories, but no alerts were triggered due to misconfigured monitoring rules.\n\n### Mitigation Recommendations\nOrganizations should implement multi-factor authentication, regularly update firmware, and monitor for unusual scripting activities. Training employees on phishing via messaging services is critical. This advisory is for educational purposes only; any resemblance to real entities is coincidental.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], and a malicious Windows Service called 'SystemHealthMonitor' was created to maintain interactive remote control of the infected host, allowing Leviathan to exfiltrate data and move laterally within the network.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "**Impact:** The threat actor deleted all backup files from the network share using PowerShell Remove-Item commands, causing significant operational disruption.",
+            "technique_id": "T1485",
+            "technique_name": "Data Destruction"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'Leviathan' Targeting Industrial Control Systems",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Leviathan' targeting industrial control systems (ICS) through a multi-stage attack involving reconnaissance, malware deployment, and data destruction. The campaign leverages social engineering, technical exploitation, and persistence mechanisms to compromise victim networks, with observed activities including firmware enumeration, phishing via messaging services, and the use of remote access tools for control.",
+        "full_report_text": "### Background\nLeviathan, a fictional advanced persistent threat (APT) group, is assessed to be conducting cyber operations against global industrial sectors, with a focus on energy and manufacturing. The group operates with moderate sophistication, utilizing a mix of publicly available tools and custom malware. This report is based on simulated incident response data from a fictional victim, 'Global Industrial Solutions Inc.', which reported anomalous network activity in early 2024. Logs from their SIEM showed unusual PowerShell executions and failed backup attempts, but initial scans did not detect known malware signatures.\n\n### Attack Narrative\n**Initial Access:** Leviathan likely conducted reconnaissance by purchasing technical documentation about the victim's industrial control systems from specialized dark web markets [T1597.002] and then used WhatsApp to send malicious links in group chats disguised as COVID-19 relief information [T1566.003], targeting employees with access to critical infrastructure. The malware ran systeminfo.exe to enumerate firmware characteristics as part of initial reconnaissance [T1592.003], while the adversary created new email accounts for targeting efforts [T1585.002].\n\n**Execution:** Upon victim interaction, the threat actor downloaded the banking trojan from a compromised web server at malware-distribution.net [T1588.001], which used obfuscated URLs to download a ZIP file [T1027.013]. The malware then wrote an AppleScript file to /Users/Shared/backdoor.applescript that would establish persistence by adding a login item [T1059.002], and the adversary wrote a malicious version of 'crypt32.dll' into a directory with higher search precedence [T1574.008] to hijack system processes.\n\n**Persistence and Command & Control:** SombRAT can use a custom DGA to generate a subdomain for C2 [T1568.002], and a malicious Windows Service called 'SystemHealthMonitor' was created to maintain interactive remote control of the infected host [T1219], allowing Leviathan to exfiltrate data and move laterally within the network.\n\n**Impact:** The threat actor deleted all backup files from the network share using PowerShell Remove-Item commands [T1485], causing significant operational disruption. Incident responders noted that system logs showed repeated failed access attempts to backup directories, but no alerts were triggered due to misconfigured monitoring rules.\n\n### Mitigation Recommendations\nOrganizations should implement multi-factor authentication, regularly update firmware, and monitor for unusual scripting activities. Training employees on phishing via messaging services is critical. This advisory is for educational purposes only; any resemblance to real entities is coincidental.",
+        "techniques_used": [
+            "T1592.003",
+            "T1597.002",
+            "T1588.001",
+            "T1585.002",
+            "T1566.003",
+            "T1059.002",
+            "T1574.008",
+            "T1027.013",
+            "T1568.002",
+            "T1219",
+            "T1485"
+        ]
+    }
+}

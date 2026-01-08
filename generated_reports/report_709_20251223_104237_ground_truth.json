@@ -1,0 +1,83 @@
+{
+    "report_id": "report_709",
+    "generated_at": "20251223_104237",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1204.004",
+        "T1078",
+        "T1564.003",
+        "T1070.009",
+        "T1205",
+        "T1048.003",
+        "T1048",
+        "T1498.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1204.004",
+        "T1078",
+        "T1564.003",
+        "T1070.009",
+        "T1205",
+        "T1048.003",
+        "T1048",
+        "T1498.002"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1564.003",
+        "T1205",
+        "T1078",
+        "T1048.003",
+        "T1204.004",
+        "T1070.009",
+        "T1498.002",
+        "T1048"
+    ],
+    "clean_text": "Crimson Shadow, a fictional advanced persistent threat (APT) group, has been observed targeting financial organizations in North America since early 2024. The campaign begins with the actors distributing a trojanized version of PuTTY software via a compromised third-party download site, exploiting the software supply chain to gain initial access. Upon installation, victims receive phishing emails containing links that display a fabricated 'Adobe Flash Player Update Required' popup; when users click 'Update', malicious commands are executed through copy-and-paste actions, bypassing traditional security measures. The actors then use compromised credentials obtained from previous breaches to log into internal systems, leveraging valid accounts to move laterally across the network. To maintain stealth, they employ PowerShell with the WindowStyle parameter set to hidden, concealing execution windows from users and administrators. As part of persistence cleanup, the group deletes any temporary accounts created during the attack to remove traces of their presence. For data collection, the malware exploits libpcap libraries to capture network traffic and hide malicious communication ports, implementing traffic signaling to evade network monitoring. Exfiltration occurs through multiple protocols: financial records are first moved using the Net/SMB protocol over port 445, and then sensitive data is transferred via FTP in an unencrypted manner to external servers. In a diversionary tactic, the actors leverage NTP servers with monlist enabled to reflect and amplify traffic toward the organization's IP, potentially overwhelming defenses and masking exfiltration activities. Logs from affected systems show increased FTP connections during off-hours, but no unusual user activity was flagged by standard monitoring tools. The targeted organizations, including a mid-sized bank in the Midwest, reported no initial signs of compromise, highlighting the need for enhanced blue team training on these techniques.",
+    "tagged_text": "Crimson Shadow, a fictional advanced persistent threat (APT) group, has been observed targeting financial organizations in North America since early 2024. The campaign begins with the actors distributing a trojanized version of PuTTY software via a compromised third-party download site, exploiting the software supply chain to gain initial access [T1195.002]. Upon installation, victims receive phishing emails containing links that display a fabricated 'Adobe Flash Player Update Required' popup; when users click 'Update', malicious commands are executed through copy-and-paste actions, bypassing traditional security measures [T1204.004]. The actors then use compromised credentials obtained from previous breaches to log into internal systems, leveraging valid accounts to move laterally across the network [T1078]. To maintain stealth, they employ PowerShell with the WindowStyle parameter set to hidden, concealing execution windows from users and administrators [T1564.003]. As part of persistence cleanup, the group deletes any temporary accounts created during the attack to remove traces of their presence [T1070.009]. For data collection, the malware exploits libpcap libraries to capture network traffic and hide malicious communication ports, implementing traffic signaling to evade network monitoring [T1205]. Exfiltration occurs through multiple protocols: financial records are first moved using the Net/SMB protocol over port 445 [T1048], and then sensitive data is transferred via FTP in an unencrypted manner to external servers [T1048.003]. In a diversionary tactic, the actors leverage NTP servers with monlist enabled to reflect and amplify traffic toward the organization's IP, potentially overwhelming defenses and masking exfiltration activities [T1498.002]. Logs from affected systems show increased FTP connections during off-hours, but no unusual user activity was flagged by standard monitoring tools. The targeted organizations, including a mid-sized bank in the Midwest, reported no initial signs of compromise, highlighting the need for enhanced blue team training on these techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then use compromised credentials obtained from previous breaches to log into internal systems, leveraging valid accounts to move laterally across the network.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "For data collection, the malware exploits libpcap libraries to capture network traffic and hide malicious communication ports, implementing traffic signaling to evade network monitoring.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "Exfiltration occurs through multiple protocols: financial records are first moved using the Net/SMB protocol over port 445, and then sensitive data is transferred via FTP in an unencrypted manner to external servers [T1048.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'Crimson Shadow', targeting financial institutions through a multi-stage attack involving supply chain compromise, phishing, and data exfiltration. The campaign leverages known techniques to gain initial access, maintain persistence, and exfiltrate sensitive data, with observed activities including the use of trojanized software, hidden PowerShell windows, and traffic signaling to evade detection.",
+        "full_report_text": "Crimson Shadow, a fictional advanced persistent threat (APT) group, has been observed targeting financial organizations in North America since early 2024. The campaign begins with the actors distributing a trojanized version of PuTTY software via a compromised third-party download site, exploiting the software supply chain to gain initial access [T1195.002]. Upon installation, victims receive phishing emails containing links that display a fabricated 'Adobe Flash Player Update Required' popup; when users click 'Update', malicious commands are executed through copy-and-paste actions, bypassing traditional security measures [T1204.004]. The actors then use compromised credentials obtained from previous breaches to log into internal systems, leveraging valid accounts to move laterally across the network [T1078]. To maintain stealth, they employ PowerShell with the WindowStyle parameter set to hidden, concealing execution windows from users and administrators [T1564.003]. As part of persistence cleanup, the group deletes any temporary accounts created during the attack to remove traces of their presence [T1070.009]. For data collection, the malware exploits libpcap libraries to capture network traffic and hide malicious communication ports, implementing traffic signaling to evade network monitoring [T1205]. Exfiltration occurs through multiple protocols: financial records are first moved using the Net/SMB protocol over port 445 [T1048], and then sensitive data is transferred via FTP in an unencrypted manner to external servers [T1048.003]. In a diversionary tactic, the actors leverage NTP servers with monlist enabled to reflect and amplify traffic toward the organization's IP, potentially overwhelming defenses and masking exfiltration activities [T1498.002]. Logs from affected systems show increased FTP connections during off-hours, but no unusual user activity was flagged by standard monitoring tools. The targeted organizations, including a mid-sized bank in the Midwest, reported no initial signs of compromise, highlighting the need for enhanced blue team training on these techniques.",
+        "techniques_used": [
+            "T1195.002",
+            "T1204.004",
+            "T1078",
+            "T1564.003",
+            "T1070.009",
+            "T1205",
+            "T1048.003",
+            "T1048",
+            "T1498.002"
+        ]
+    }
+}

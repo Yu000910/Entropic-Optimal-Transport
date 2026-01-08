@@ -1,0 +1,15 @@
+On 2023-10-15, a fictional multinational corporation, 'TechGlobal Inc.', reported anomalous network activity originating from its AWS and on-premises environments. Initial analysis revealed a coordinated attack campaign with the following kill-chain progression.
+
+Reconnaissance and Resource Development: The actors likely conducted reconnaissance [T1589] to identify TechGlobal's cloud assets, though specific logs from this phase were not captured. They then registered a GitHub account [T1583.006] to host malicious repositories distributing malware, while simultaneously configuring AWS Lambda functions [T1583.007] with rotating IP addresses to evade detection and attribution during payload delivery.
+
+Initial Access: Using stolen credentials obtained from a prior breach, the adversaries authenticated through the Citrix gateway [T1133] to access internal resources, where they executed a malicious PowerShell script, malicious.ps1 [T1588.007], to escalate privileges on the compromised host.
+
+Execution and Persistence: Upon execution, the malware dropped a credential-harvesting DLL into the Windows temp folder [T1556.002] and modified the registry value AppCertDLLs [T1546.009] to point to this malicious library for persistence. Additionally, on Linux systems within the environment, it modified /etc/xdg/autostart/network-manager.desktop [T1547.013] to execute its payload during system startup. System logs from 2023-10-16 showed increased CPU usage on several virtual machines, but no immediate alerts were triggered.
+
+Privilege Escalation and Discovery: The actors used net localgroup administrators [T1069.001] to identify accounts with local administrative rights, and executed a PowerShell script via WinRM [T1021.006] to collect system information from remote hosts, including IP configurations and running services.
+
+Lateral Movement: To facilitate lateral movement, the threat actors employed vim-cmd [T1059.012] to reconfigure virtual network settings within the VMware environment, allowing them to pivot to other segments. Background network traffic indicated sporadic connections to external IPs, but these were initially dismissed as benign.
+
+Collection and Exfiltration: The malware, identified as a variant of 'Manjusaka', took screenshots of victim desktops [T1113] to gather sensitive data. It then used jRAT to serve as a SOCKS proxy server [T1090] for command and control, and leveraged BITSAdmin [T1048.003] to create BITS jobs for uploading files from compromised hosts over unencrypted protocols, exfiltrating data to a serverless endpoint. TechGlobal's security team noted unusual outbound traffic on port 80, but attribution was complicated by the rotating IPs.
+
+Impact: The fictional campaign resulted in the exfiltration of approximately 500 MB of proprietary data, including source code and customer records, before containment on 2023-10-20. No real-world entities were harmed in this training scenario.

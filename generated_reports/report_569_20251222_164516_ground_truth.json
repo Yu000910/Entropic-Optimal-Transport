@@ -1,0 +1,128 @@
+{
+    "report_id": "report_569",
+    "generated_at": "20251222_164516",
+    "scenario_target_ids": [
+        "T1587.001",
+        "T1608",
+        "T1195",
+        "T1129",
+        "T1027.002",
+        "T1574.008",
+        "T1056",
+        "T1069.002",
+        "T1557.004",
+        "T1074",
+        "T1074.002",
+        "T1071.003",
+        "T1052.001",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1587.001",
+        "T1608",
+        "T1195",
+        "T1129",
+        "T1027.002",
+        "T1574.008",
+        "T1056",
+        "T1069.002",
+        "T1557.004",
+        "T1074",
+        "T1074.002",
+        "T1071.003",
+        "T1052.001",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1574.008",
+        "T1589",
+        "T1608",
+        "T1557.004",
+        "T1074",
+        "T1489",
+        "T1056",
+        "T1195",
+        "T1069.002",
+        "T1071.003",
+        "T1074.002",
+        "T1027.002",
+        "T1052.001"
+    ],
+    "clean_text": "### Attack Scenario: ShadowWeaver Campaign\n\n**Background:** ShadowWeaver is a fictional APT group with suspected ties to state-sponsored actors, focusing on energy and financial sectors. Initial detection occurred at 'Global Utilities Inc.', where anomalous network traffic and system slowdowns were reported. Logs showed unusual DLL loads and unauthorized SMTP communications to external IPs in Eastern Europe.\n\n**Kill-Chain Analysis:**\n\n1. **Initial Access & Execution:** The actors likely conducted reconnaissance to identify targets, then compromised the software supply chain by injecting a backdoor into a third-party library, malicious_dependency.dll, used by multiple applications across the network. Upon execution, the malware, codenamed 'VERMIN', was initially packed to evade detection and utilized dlopen to load a shared object containing backdoor functionality.\n\n2. **Persistence & Privilege Escalation:** To maintain access, ShadowWeaver developed unique malware, including tools like 'Mafalda' for mouse event logging and 'SoreFang' to enumerate domain groups by executing net.exe group /domain. They staged reconnaissance tools on a public GitHub gist to avoid detection and employed path interception by writing a malicious DLL named 'netapi32.dll' into the system32 folder to hijack legitimate API calls.\n\n3. **Defense Evasion & Credential Access:** The group deployed an evil twin captive portal that mimicked the corporate login page to steal credentials. Using cmd.exe, they gathered network configuration data into a compressed archive for staging and employed cmd.exe commands to collect process lists and network connections into a central file for remote data staging. Additionally, 'Meteor' malware was used to disconnect all network adapters on compromised hosts using PowerShell commands to disrupt monitoring.\n\n4. **Exfiltration:** ShadowWeaver leveraged SMTP to transmit harvested browser cookies to an external email server and used tools like 'USBStealer' to exfiltrate collected files via removable media from air-gapped victims. Network logs at Global Utilities Inc. showed spikes in outbound traffic to suspicious domains, though no actual data loss was confirmed in this training scenario.\n\n**Recommendations for Blue Teams:** Monitor for unusual DLL loads, unauthorized SMTP traffic, and GitHub gist accesses. Implement application whitelisting and network segmentation to limit lateral movement. Regularly audit third-party software and conduct phishing simulations to train users against credential theft.\n\n**Note:** This is a fictional report for educational purposes; any resemblance to real incidents is coincidental.",
+    "tagged_text": "### Attack Scenario: ShadowWeaver Campaign\n\n**Background:** ShadowWeaver is a fictional APT group with suspected ties to state-sponsored actors, focusing on energy and financial sectors. Initial detection occurred at 'Global Utilities Inc.', where anomalous network traffic and system slowdowns were reported. Logs showed unusual DLL loads and unauthorized SMTP communications to external IPs in Eastern Europe.\n\n**Kill-Chain Analysis:**\n\n1. **Initial Access & Execution:** The actors likely conducted reconnaissance [T1589] to identify targets, then compromised the software supply chain by injecting a backdoor into a third-party library, malicious_dependency.dll, used by multiple applications across the network [T1195]. Upon execution, the malware, codenamed 'VERMIN', was initially packed [T1027.002] to evade detection and utilized dlopen to load a shared object containing backdoor functionality [T1129].\n\n2. **Persistence & Privilege Escalation:** To maintain access, ShadowWeaver developed unique malware, including tools like 'Mafalda' for mouse event logging [T1056] and 'SoreFang' to enumerate domain groups by executing net.exe group /domain [T1069.002]. They staged reconnaissance tools on a public GitHub gist to avoid detection [T1608] and employed path interception by writing a malicious DLL named 'netapi32.dll' into the system32 folder to hijack legitimate API calls [T1574.008].\n\n3. **Defense Evasion & Credential Access:** The group deployed an evil twin captive portal that mimicked the corporate login page to steal credentials [T1557.004]. Using cmd.exe, they gathered network configuration data into a compressed archive for staging [T1074] and employed cmd.exe commands to collect process lists and network connections into a central file for remote data staging [T1074.002]. Additionally, 'Meteor' malware was used to disconnect all network adapters on compromised hosts using PowerShell commands to disrupt monitoring [T1489].\n\n4. **Exfiltration:** ShadowWeaver leveraged SMTP to transmit harvested browser cookies to an external email server [T1071.003] and used tools like 'USBStealer' to exfiltrate collected files via removable media from air-gapped victims [T1052.001]. Network logs at Global Utilities Inc. showed spikes in outbound traffic to suspicious domains, though no actual data loss was confirmed in this training scenario.\n\n**Recommendations for Blue Teams:** Monitor for unusual DLL loads, unauthorized SMTP traffic, and GitHub gist accesses. Implement application whitelisting and network segmentation to limit lateral movement. Regularly audit third-party software and conduct phishing simulations to train users against credential theft.\n\n**Note:** This is a fictional report for educational purposes; any resemblance to real incidents is coincidental.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Initial Access & Execution:** The actors likely conducted reconnaissance to identify targets, then compromised the software supply chain by injecting a backdoor into a third-party library, malicious_dependency.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "dll, used by multiple applications across the network.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "002] to evade detection and utilized dlopen to load a shared object containing backdoor functionality.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "**Persistence & Privilege Escalation:** To maintain access, ShadowWeaver developed unique malware, including tools like 'Mafalda' for mouse event logging and 'SoreFang' to enumerate domain groups by executing net.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "They staged reconnaissance tools on a public GitHub gist to avoid detection and employed path interception by writing a malicious DLL named 'netapi32.",
+            "technique_id": "T1608",
+            "technique_name": "Stage Capabilities"
+        },
+        {
+            "sentence": "exe, they gathered network configuration data into a compressed archive for staging and employed cmd.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "Additionally, 'Meteor' malware was used to disconnect all network adapters on compromised hosts using PowerShell commands to disrupt monitoring.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowWeaver', targeting critical infrastructure sectors. Based on observed tactics, techniques, and procedures (TTPs), the group employs sophisticated malware, supply chain compromises, and credential theft to infiltrate networks, maintain persistence, and exfiltrate sensitive data. This report is intended for blue team training to enhance detection and response capabilities against similar threats.",
+        "full_report_text": "### Attack Scenario: ShadowWeaver Campaign\n\n**Background:** ShadowWeaver is a fictional APT group with suspected ties to state-sponsored actors, focusing on energy and financial sectors. Initial detection occurred at 'Global Utilities Inc.', where anomalous network traffic and system slowdowns were reported. Logs showed unusual DLL loads and unauthorized SMTP communications to external IPs in Eastern Europe.\n\n**Kill-Chain Analysis:**\n\n1. **Initial Access & Execution:** The actors likely conducted reconnaissance [T1589] to identify targets, then compromised the software supply chain by injecting a backdoor into a third-party library, malicious_dependency.dll, used by multiple applications across the network [T1195]. Upon execution, the malware, codenamed 'VERMIN', was initially packed [T1027.002] to evade detection and utilized dlopen to load a shared object containing backdoor functionality [T1129].\n\n2. **Persistence & Privilege Escalation:** To maintain access, ShadowWeaver developed unique malware, including tools like 'Mafalda' for mouse event logging [T1056] and 'SoreFang' to enumerate domain groups by executing net.exe group /domain [T1069.002]. They staged reconnaissance tools on a public GitHub gist to avoid detection [T1608] and employed path interception by writing a malicious DLL named 'netapi32.dll' into the system32 folder to hijack legitimate API calls [T1574.008].\n\n3. **Defense Evasion & Credential Access:** The group deployed an evil twin captive portal that mimicked the corporate login page to steal credentials [T1557.004]. Using cmd.exe, they gathered network configuration data into a compressed archive for staging [T1074] and employed cmd.exe commands to collect process lists and network connections into a central file for remote data staging [T1074.002]. Additionally, 'Meteor' malware was used to disconnect all network adapters on compromised hosts using PowerShell commands to disrupt monitoring [T1489].\n\n4. **Exfiltration:** ShadowWeaver leveraged SMTP to transmit harvested browser cookies to an external email server [T1071.003] and used tools like 'USBStealer' to exfiltrate collected files via removable media from air-gapped victims [T1052.001]. Network logs at Global Utilities Inc. showed spikes in outbound traffic to suspicious domains, though no actual data loss was confirmed in this training scenario.\n\n**Recommendations for Blue Teams:** Monitor for unusual DLL loads, unauthorized SMTP traffic, and GitHub gist accesses. Implement application whitelisting and network segmentation to limit lateral movement. Regularly audit third-party software and conduct phishing simulations to train users against credential theft.\n\n**Note:** This is a fictional report for educational purposes; any resemblance to real incidents is coincidental.",
+        "techniques_used": [
+            "T1587.001",
+            "T1608",
+            "T1195",
+            "T1129",
+            "T1027.002",
+            "T1574.008",
+            "T1056",
+            "T1069.002",
+            "T1557.004",
+            "T1074",
+            "T1074.002",
+            "T1071.003",
+            "T1052.001",
+            "T1489"
+        ]
+    }
+}

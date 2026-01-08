@@ -1,0 +1,113 @@
+{
+    "report_id": "report_662",
+    "generated_at": "20251222_172249",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1559",
+        "T1559.002",
+        "T1205.002",
+        "T1546.007",
+        "T1548.006",
+        "T1216",
+        "T1216.001",
+        "T1069.002",
+        "T1105",
+        "T1020.001",
+        "T1029",
+        "T1561"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1559",
+        "T1559.002",
+        "T1205.002",
+        "T1546.007",
+        "T1548.006",
+        "T1216",
+        "T1216.001",
+        "T1069.002",
+        "T1105",
+        "T1020.001",
+        "T1029",
+        "T1561"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1029",
+        "T1205.002",
+        "T1105",
+        "T1546.007",
+        "T1216",
+        "T1216.001",
+        "T1559",
+        "T1548.006",
+        "T1069.002",
+        "T1559.002",
+        "T1020.001",
+        "T1561"
+    ],
+    "clean_text": "On 2023-10-15, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network traffic from a software update server. Investigation revealed that a threat actor, likely 'ShadowSupply', had compromised the software supply chain by replacing a legitimate compiled binary on the distribution server with a trojanized version containing backdoor functionality. This malicious binary was distributed to multiple internal systems via automated updates, leading to initial infection. Upon execution, the malware abused Windows Dynamic Data Exchange (DDE) to launch a PowerShell script for local code execution and, specifically manipulating DDE protocol in Office documents to execute system commands on victim machines. The implant then employed setsockopt to set socket flags for detecting covert channel communications, while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Netsh registry entry to execute a payload on system start via Netsh Helper DLL and altering TCC.db to grant itself camera access permissions. To maintain persistence and evade detection, the adversary executed a malicious DLL using a legitimate Microsoft-signed binary for proxy execution, including abuse of pubprn.vbs to run a remote VBScript that installed a backdoor. System logs from 2023-10-16 showed increased PowerShell activity, unrelated to normal operations, as the actor used batch scripts to enumerate administrators and users in the domain and employed FTP to transfer additional tools from an external system into the compromised environment. Network monitoring detected anomalous traffic patterns, where the threat actor used ROMMONkit to create a covert channel that mirrored network communications for automated data extraction, and a script named 'log_cleaner.ps1' was found compressing and scheduling data transfer during nighttime hours. Finally, on 2023-10-20, the malware executed the 'format' command to wipe the primary hard drive, rendering systems unusable. GridSecure Inc. reported no financial impact, but recovery efforts are ongoing.",
+    "tagged_text": "On 2023-10-15, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network traffic from a software update server. Investigation revealed that a threat actor, likely 'ShadowSupply', had compromised the software supply chain by replacing a legitimate compiled binary on the distribution server with a trojanized version containing backdoor functionality [T1195.002]. This malicious binary was distributed to multiple internal systems via automated updates, leading to initial infection. Upon execution, the malware abused Windows Dynamic Data Exchange (DDE) to launch a PowerShell script for local code execution [T1559] and [T1559.002], specifically manipulating DDE protocol in Office documents to execute system commands on victim machines. The implant then employed setsockopt to set socket flags for detecting covert channel communications [T1205.002], while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Netsh registry entry to execute a payload on system start via Netsh Helper DLL [T1546.007] and altering TCC.db to grant itself camera access permissions [T1548.006]. To maintain persistence and evade detection, the adversary executed a malicious DLL using a legitimate Microsoft-signed binary for proxy execution [T1216], including abuse of pubprn.vbs to run a remote VBScript that installed a backdoor [T1216.001]. System logs from 2023-10-16 showed increased PowerShell activity, unrelated to normal operations, as the actor used batch scripts to enumerate administrators and users in the domain [T1069.002] and employed FTP to transfer additional tools from an external system into the compromised environment [T1105]. Network monitoring detected anomalous traffic patterns, where the threat actor used ROMMONkit to create a covert channel that mirrored network communications for automated data extraction [T1020.001], and a script named 'log_cleaner.ps1' was found compressing and scheduling data transfer during nighttime hours [T1029]. Finally, on 2023-10-20, the malware executed the 'format' command to wipe the primary hard drive, rendering systems unusable [T1561]. GridSecure Inc. reported no financial impact, but recovery efforts are ongoing.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon execution, the malware abused Windows Dynamic Data Exchange (DDE) to launch a PowerShell script for local code execution and [T1559.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "To maintain persistence and evade detection, the adversary executed a malicious DLL using a legitimate Microsoft-signed binary for proxy execution, including abuse of pubprn.",
+            "technique_id": "T1216",
+            "technique_name": "System Script Proxy Execution"
+        },
+        {
+            "sentence": "002] and employed FTP to transfer additional tools from an external system into the compromised environment.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "ps1' was found compressing and scheduling data transfer during nighttime hours.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        },
+        {
+            "sentence": "Finally, on 2023-10-20, the malware executed the 'format' command to wipe the primary hard drive, rendering systems unusable.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSupply' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowSupply', targeting critical infrastructure sectors through software supply chain compromise and persistent backdoor deployment. The campaign involves trojanized software, abuse of legitimate Windows components, and data exfiltration via covert channels, culminating in destructive disk wiping. Blue teams are advised to review detection and mitigation strategies.",
+        "full_report_text": "On 2023-10-15, security analysts at a fictional energy company, 'GridSecure Inc.', detected anomalous network traffic from a software update server. Investigation revealed that a threat actor, likely 'ShadowSupply', had compromised the software supply chain by replacing a legitimate compiled binary on the distribution server with a trojanized version containing backdoor functionality [T1195.002]. This malicious binary was distributed to multiple internal systems via automated updates, leading to initial infection. Upon execution, the malware abused Windows Dynamic Data Exchange (DDE) to launch a PowerShell script for local code execution [T1559] and [T1559.002], specifically manipulating DDE protocol in Office documents to execute system commands on victim machines. The implant then employed setsockopt to set socket flags for detecting covert channel communications [T1205.002], while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Netsh registry entry to execute a payload on system start via Netsh Helper DLL [T1546.007] and altering TCC.db to grant itself camera access permissions [T1548.006]. To maintain persistence and evade detection, the adversary executed a malicious DLL using a legitimate Microsoft-signed binary for proxy execution [T1216], including abuse of pubprn.vbs to run a remote VBScript that installed a backdoor [T1216.001]. System logs from 2023-10-16 showed increased PowerShell activity, unrelated to normal operations, as the actor used batch scripts to enumerate administrators and users in the domain [T1069.002] and employed FTP to transfer additional tools from an external system into the compromised environment [T1105]. Network monitoring detected anomalous traffic patterns, where the threat actor used ROMMONkit to create a covert channel that mirrored network communications for automated data extraction [T1020.001], and a script named 'log_cleaner.ps1' was found compressing and scheduling data transfer during nighttime hours [T1029]. Finally, on 2023-10-20, the malware executed the 'format' command to wipe the primary hard drive, rendering systems unusable [T1561]. GridSecure Inc. reported no financial impact, but recovery efforts are ongoing.",
+        "techniques_used": [
+            "T1195.002",
+            "T1559",
+            "T1559.002",
+            "T1205.002",
+            "T1546.007",
+            "T1548.006",
+            "T1216",
+            "T1216.001",
+            "T1069.002",
+            "T1105",
+            "T1020.001",
+            "T1029",
+            "T1561"
+        ]
+    }
+}

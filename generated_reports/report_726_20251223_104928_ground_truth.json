@@ -1,0 +1,91 @@
+{
+    "report_id": "report_726",
+    "generated_at": "20251223_104928",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1566.002",
+        "T1651",
+        "T1574.006",
+        "T1036.001",
+        "T1574.005",
+        "T1574.012",
+        "T1021",
+        "T1001.003",
+        "T1001.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.002",
+        "T1078.004",
+        "T1651",
+        "T1021",
+        "T1574.012",
+        "T1574.005",
+        "T1036.001",
+        "T1574.006",
+        "T1001.003",
+        "T1001.001"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1001.003",
+        "T1574.005",
+        "T1021",
+        "T1589",
+        "T1001.001",
+        "T1566.002",
+        "T1574.012",
+        "T1574.006",
+        "T1078.004",
+        "T1036.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign, 'CloudShadow'. This campaign targets organizations using Office 365 and Azure environments, leveraging compromised credentials for initial access. Background: The fictional victim, 'GlobalTech Inc.', is a mid-sized manufacturing company with 500 employees, using a hybrid infrastructure of Office 365 for email and Azure for virtual machines. System logs from their SIEM showed unusual login attempts from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to employee travel. The actors likely conduct reconnaissance to identify high-value targets within GlobalTech's cloud environment. Attack Scenario: The campaign began with the adversary using spearphishing links sent to employees' Office 365 accounts, which were already compromised through stolen credentials, allowing unauthorized access without triggering multi-factor authentication alerts. Once inside, the actors employed Azure RunCommand to execute privilege escalation commands on virtual machines, while simultaneously using remote services like RPC to propagate laterally across the network. To establish persistence, they modified registry keys in HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment to load a malicious DLL via COR_PROFILER into .NET processes, and exploited executable installer file permissions weaknesses by replacing unsigned system files like 'winlogon.exe' with malicious versions. Additionally, they performed dynamic linker hijacking by injecting a malicious .so library to override legitimate functions, and used protocol or service impersonation to mimic HTTP with custom verbs for command and control (C2) communication, while injecting junk data such as base64-encoded DNS queries to bypass network monitoring. Irrelevant Information: GlobalTech's IT team noted increased CPU usage on several VMs during off-hours, but attributed it to scheduled backups. The company's firewall logs showed normal traffic patterns, with no immediate alerts from their endpoint detection system. Recommendations: Blue teams should monitor for unusual cloud account activity, enforce strong authentication policies, and review registry and file system changes for signs of hijacking and persistence.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign, 'CloudShadow'. This campaign targets organizations using Office 365 and Azure environments, leveraging compromised credentials for initial access. Background: The fictional victim, 'GlobalTech Inc.', is a mid-sized manufacturing company with 500 employees, using a hybrid infrastructure of Office 365 for email and Azure for virtual machines. System logs from their SIEM showed unusual login attempts from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to employee travel. The actors likely conduct reconnaissance [T1589] to identify high-value targets within GlobalTech's cloud environment. Attack Scenario: The campaign began with the adversary using spearphishing links [T1566.002] sent to employees' Office 365 accounts, which were already compromised through stolen credentials [T1078.004], allowing unauthorized access without triggering multi-factor authentication alerts. Once inside, the actors employed Azure RunCommand [T1651] to execute privilege escalation commands on virtual machines, while simultaneously using remote services [T1021] like RPC to propagate laterally across the network. To establish persistence, they modified registry keys in HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment [T1574.012] to load a malicious DLL via COR_PROFILER into .NET processes, and exploited executable installer file permissions weaknesses [T1574.005] by replacing unsigned system files like 'winlogon.exe' with malicious versions [T1036.001]. Additionally, they performed dynamic linker hijacking [T1574.006] by injecting a malicious .so library to override legitimate functions, and used protocol or service impersonation [T1001.003] to mimic HTTP with custom verbs for command and control (C2) communication, while injecting junk data [T1001.001] such as base64-encoded DNS queries to bypass network monitoring. Irrelevant Information: GlobalTech's IT team noted increased CPU usage on several VMs during off-hours, but attributed it to scheduled backups. The company's firewall logs showed normal traffic patterns, with no immediate alerts from their endpoint detection system. Recommendations: Blue teams should monitor for unusual cloud account activity, enforce strong authentication policies, and review registry and file system changes for signs of hijacking and persistence.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify high-value targets within GlobalTech's cloud environment.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Once inside, the actors employed Azure RunCommand to execute privilege escalation commands on virtual machines, while simultaneously using remote services like RPC to propagate laterally across the network.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "Once inside, the actors employed Azure RunCommand to execute privilege escalation commands on virtual machines, while simultaneously using remote services like RPC to propagate laterally across the network.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'CloudShadow', targeting organizations with hybrid cloud and on-premises infrastructure. The campaign involves initial access via compromised cloud accounts, followed by multi-stage exploitation using phishing, command execution, and persistence mechanisms. Techniques are based on real-world tactics to provide realistic training for blue teams in detecting and mitigating advanced threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign, 'CloudShadow'. This campaign targets organizations using Office 365 and Azure environments, leveraging compromised credentials for initial access. Background: The fictional victim, 'GlobalTech Inc.', is a mid-sized manufacturing company with 500 employees, using a hybrid infrastructure of Office 365 for email and Azure for virtual machines. System logs from their SIEM showed unusual login attempts from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to employee travel. The actors likely conduct reconnaissance [T1589] to identify high-value targets within GlobalTech's cloud environment. Attack Scenario: The campaign began with the adversary using spearphishing links [T1566.002] sent to employees' Office 365 accounts, which were already compromised through stolen credentials [T1078.004], allowing unauthorized access without triggering multi-factor authentication alerts. Once inside, the actors employed Azure RunCommand [T1651] to execute privilege escalation commands on virtual machines, while simultaneously using remote services [T1021] like RPC to propagate laterally across the network. To establish persistence, they modified registry keys in HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment [T1574.012] to load a malicious DLL via COR_PROFILER into .NET processes, and exploited executable installer file permissions weaknesses [T1574.005] by replacing unsigned system files like 'winlogon.exe' with malicious versions [T1036.001]. Additionally, they performed dynamic linker hijacking [T1574.006] by injecting a malicious .so library to override legitimate functions, and used protocol or service impersonation [T1001.003] to mimic HTTP with custom verbs for command and control (C2) communication, while injecting junk data [T1001.001] such as base64-encoded DNS queries to bypass network monitoring. Irrelevant Information: GlobalTech's IT team noted increased CPU usage on several VMs during off-hours, but attributed it to scheduled backups. The company's firewall logs showed normal traffic patterns, with no immediate alerts from their endpoint detection system. Recommendations: Blue teams should monitor for unusual cloud account activity, enforce strong authentication policies, and review registry and file system changes for signs of hijacking and persistence.",
+        "techniques_used": [
+            "T1589",
+            "T1566.002",
+            "T1078.004",
+            "T1651",
+            "T1021",
+            "T1574.012",
+            "T1574.005",
+            "T1036.001",
+            "T1574.006",
+            "T1001.003",
+            "T1001.001"
+        ]
+    }
+}

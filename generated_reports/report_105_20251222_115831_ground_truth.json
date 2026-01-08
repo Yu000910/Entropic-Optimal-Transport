@@ -1,0 +1,73 @@
+{
+    "report_id": "report_105",
+    "generated_at": "20251222_115831",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1059.012",
+        "T1059.008",
+        "T1134.005",
+        "T1484",
+        "T1526",
+        "T1114.003",
+        "T1219.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1059.012",
+        "T1059.008",
+        "T1134.005",
+        "T1484",
+        "T1526",
+        "T1114.003",
+        "T1219.003"
+    ],
+    "actual_found_ids": [
+        "T1566.004",
+        "T1134.005",
+        "T1219.003",
+        "T1526",
+        "T1114.003",
+        "T1484",
+        "T1059.008",
+        "T1059.012"
+    ],
+    "clean_text": "APT-99, a fictional threat actor with suspected ties to cybercriminal elements, has been observed conducting targeted campaigns against financial and technology sectors since early 2023. Initial analysis of fictional logs from a compromised organization, 'GlobalTech Inc.', shows anomalous network traffic patterns starting on 2023-10-15, with increased outbound connections to suspicious IP addresses in Eastern Europe. GlobalTech Inc., a mid-sized company with 500 employees, operates a hybrid infrastructure including VMware ESXi hypervisors, Cisco network devices, and Microsoft Azure cloud services, which were all impacted in this simulated attack.\n\nThe attack began with APT-99 using spearphishing voice calls to deceive an employee into opening a malicious attachment that installed a remote access tool, granting the attacker full system control. Once initial access was achieved, the adversary employed the hypervisor CLI via esxcli to list all virtual machines and identify high-value targets, while simultaneously using the network device CLI to execute 'copy running-config tftp' and transfer device configurations to an external server under their control. To escalate privileges, APT-99 exploited the SID-History attribute of a compromised account to impersonate a Backup Operator and exfiltrate critical data, and modified domain policies by altering the 'Restricted Groups' GPO to add their account to the Domain Admins group. In the cloud environment, the attacker conducted cloud service discovery by calling Azure Resource Manager APIs to enumerate all network security groups and their rules, and set an email forwarding rule at the Office 365 tenant level to redirect all organizational mail to a newly created account. For persistence, APT-99 abused remote access hardware such as PiKVM to maintain hardware-level control over the compromised infrastructure. Additional fictional logs show routine system updates and user login activities that were unrelated to the attack, including failed password attempts from legitimate employees and scheduled backup jobs running normally on 2023-10-20.",
+    "tagged_text": "APT-99, a fictional threat actor with suspected ties to cybercriminal elements, has been observed conducting targeted campaigns against financial and technology sectors since early 2023. Initial analysis of fictional logs from a compromised organization, 'GlobalTech Inc.', shows anomalous network traffic patterns starting on 2023-10-15, with increased outbound connections to suspicious IP addresses in Eastern Europe. GlobalTech Inc., a mid-sized company with 500 employees, operates a hybrid infrastructure including VMware ESXi hypervisors, Cisco network devices, and Microsoft Azure cloud services, which were all impacted in this simulated attack.\n\nThe attack began with APT-99 using spearphishing voice calls [T1566.004] to deceive an employee into opening a malicious attachment that installed a remote access tool, granting the attacker full system control. Once initial access was achieved, the adversary employed the hypervisor CLI via esxcli [T1059.012] to list all virtual machines and identify high-value targets, while simultaneously using the network device CLI [T1059.008] to execute 'copy running-config tftp' and transfer device configurations to an external server under their control. To escalate privileges, APT-99 exploited the SID-History attribute [T1134.005] of a compromised account to impersonate a Backup Operator and exfiltrate critical data, and modified domain policies [T1484] by altering the 'Restricted Groups' GPO to add their account to the Domain Admins group. In the cloud environment, the attacker conducted cloud service discovery [T1526] by calling Azure Resource Manager APIs to enumerate all network security groups and their rules, and set an email forwarding rule [T1114.003] at the Office 365 tenant level to redirect all organizational mail to a newly created account. For persistence, APT-99 abused remote access hardware [T1219.003] such as PiKVM to maintain hardware-level control over the compromised infrastructure. Additional fictional logs show routine system updates and user login activities that were unrelated to the attack, including failed password attempts from legitimate employees and scheduled backup jobs running normally on 2023-10-20.",
+    "sentence_annotations": [
+        {
+            "sentence": "005] of a compromised account to impersonate a Backup Operator and exfiltrate critical data, and modified domain policies by altering the 'Restricted Groups' GPO to add their account to the Domain Admins group.",
+            "technique_id": "T1484",
+            "technique_name": "Domain or Tenant Policy Modification"
+        },
+        {
+            "sentence": "In the cloud environment, the attacker conducted cloud service discovery by calling Azure Resource Manager APIs to enumerate all network security groups and their rules, and set an email forwarding rule [T1114.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting organizations with hybrid on-premises and cloud environments. Based on analysis of fictional incidents, APT-99 employs sophisticated techniques including spearphishing, hypervisor and network device CLI exploitation, and cloud service discovery to gain initial access, escalate privileges, and maintain persistence. The campaign leverages multi-vector attacks to compromise virtualized infrastructure, network devices, and cloud tenants, resulting in data exfiltration and unauthorized administrative control. This report is intended for blue team training to enhance detection and response capabilities in similar scenarios.",
+        "full_report_text": "APT-99, a fictional threat actor with suspected ties to cybercriminal elements, has been observed conducting targeted campaigns against financial and technology sectors since early 2023. Initial analysis of fictional logs from a compromised organization, 'GlobalTech Inc.', shows anomalous network traffic patterns starting on 2023-10-15, with increased outbound connections to suspicious IP addresses in Eastern Europe. GlobalTech Inc., a mid-sized company with 500 employees, operates a hybrid infrastructure including VMware ESXi hypervisors, Cisco network devices, and Microsoft Azure cloud services, which were all impacted in this simulated attack.\n\nThe attack began with APT-99 using spearphishing voice calls [T1566.004] to deceive an employee into opening a malicious attachment that installed a remote access tool, granting the attacker full system control. Once initial access was achieved, the adversary employed the hypervisor CLI via esxcli [T1059.012] to list all virtual machines and identify high-value targets, while simultaneously using the network device CLI [T1059.008] to execute 'copy running-config tftp' and transfer device configurations to an external server under their control. To escalate privileges, APT-99 exploited the SID-History attribute [T1134.005] of a compromised account to impersonate a Backup Operator and exfiltrate critical data, and modified domain policies [T1484] by altering the 'Restricted Groups' GPO to add their account to the Domain Admins group. In the cloud environment, the attacker conducted cloud service discovery [T1526] by calling Azure Resource Manager APIs to enumerate all network security groups and their rules, and set an email forwarding rule [T1114.003] at the Office 365 tenant level to redirect all organizational mail to a newly created account. For persistence, APT-99 abused remote access hardware [T1219.003] such as PiKVM to maintain hardware-level control over the compromised infrastructure. Additional fictional logs show routine system updates and user login activities that were unrelated to the attack, including failed password attempts from legitimate employees and scheduled backup jobs running normally on 2023-10-20.",
+        "techniques_used": [
+            "T1566.004",
+            "T1059.012",
+            "T1059.008",
+            "T1134.005",
+            "T1484",
+            "T1526",
+            "T1114.003",
+            "T1219.003"
+        ]
+    }
+}

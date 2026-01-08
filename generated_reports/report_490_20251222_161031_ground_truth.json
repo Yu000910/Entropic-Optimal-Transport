@@ -1,0 +1,68 @@
+{
+    "report_id": "report_490",
+    "generated_at": "20251222_161031",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1675",
+        "T1548.003",
+        "T1007",
+        "T1071.002",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1675",
+        "T1548.003",
+        "T1007",
+        "T1071.002",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1029",
+        "T1566.002",
+        "T1548.003",
+        "T1675",
+        "T1007"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional threat actor, NIGHTFALL, observed targeting organizations in the financial and healthcare sectors. NIGHTFALL is believed to operate from an undisclosed region, with motivations likely tied to espionage and data theft. In a recent incident, the actor initiated the attack by sending a spearphishing email to a system administrator, which contained a malicious link that, when clicked, downloaded a script designed to exploit VMware ESXi environments. Upon execution, the script utilized the vSphere Web Services SDK to issue ESXi administration commands across multiple guest virtual machines, while simultaneously monitoring /var/db/sudo/timestamp for privilege escalation opportunities through sudo caching. The script then performed system service discovery to identify programs and services configured to auto-start, and used FTP protocols to communicate with a command-and-control (C2) server, coordinating scheduled data transfers during system idle periods to avoid detection. Logs from the affected ESXi host showed unusual activity spikes at 03:00 UTC, but no immediate alerts were triggered due to misconfigured monitoring tools. The organization, a mid-sized hospital network, reported no data loss in this simulated scenario, but the attack highlighted vulnerabilities in their virtual infrastructure management.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional threat actor, NIGHTFALL, observed targeting organizations in the financial and healthcare sectors. NIGHTFALL is believed to operate from an undisclosed region, with motivations likely tied to espionage and data theft. In a recent incident, the actor initiated the attack by sending a spearphishing email to a system administrator, which contained a malicious link [T1566.002] that, when clicked, downloaded a script designed to exploit VMware ESXi environments. Upon execution, the script utilized the vSphere Web Services SDK to issue ESXi administration commands [T1675] across multiple guest virtual machines, while simultaneously monitoring /var/db/sudo/timestamp for privilege escalation opportunities through sudo caching [T1548.003]. The script then performed system service discovery [T1007] to identify programs and services configured to auto-start, and used FTP protocols [T1071.002] to communicate with a command-and-control (C2) server, coordinating scheduled data transfers [T1029] during system idle periods to avoid detection. Logs from the affected ESXi host showed unusual activity spikes at 03:00 UTC, but no immediate alerts were triggered due to misconfigured monitoring tools. The organization, a mid-sized hospital network, reported no data loss in this simulated scenario, but the attack highlighted vulnerabilities in their virtual infrastructure management.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon execution, the script utilized the vSphere Web Services SDK to issue ESXi administration commands across multiple guest virtual machines, while simultaneously monitoring /var/db/sudo/timestamp for privilege escalation opportunities through sudo caching [T1548.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "The script then performed system service discovery to identify programs and services configured to auto-start, and used FTP protocols [T1071.",
+            "technique_id": "T1007",
+            "technique_name": "System Service Discovery"
+        },
+        {
+            "sentence": "002] to communicate with a command-and-control (C2) server, coordinating scheduled data transfers during system idle periods to avoid detection.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Virtualized Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'NIGHTFALL', targeting organizations using VMware ESXi environments. The campaign leverages spearphishing to gain initial access, followed by exploitation of ESXi administration tools and privilege escalation techniques to execute commands across guest virtual machines, discover system services, and exfiltrate data via scheduled file transfers using FTP protocols. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional threat actor, NIGHTFALL, observed targeting organizations in the financial and healthcare sectors. NIGHTFALL is believed to operate from an undisclosed region, with motivations likely tied to espionage and data theft. In a recent incident, the actor initiated the attack by sending a spearphishing email to a system administrator, which contained a malicious link [T1566.002] that, when clicked, downloaded a script designed to exploit VMware ESXi environments. Upon execution, the script utilized the vSphere Web Services SDK to issue ESXi administration commands [T1675] across multiple guest virtual machines, while simultaneously monitoring /var/db/sudo/timestamp for privilege escalation opportunities through sudo caching [T1548.003]. The script then performed system service discovery [T1007] to identify programs and services configured to auto-start, and used FTP protocols [T1071.002] to communicate with a command-and-control (C2) server, coordinating scheduled data transfers [T1029] during system idle periods to avoid detection. Logs from the affected ESXi host showed unusual activity spikes at 03:00 UTC, but no immediate alerts were triggered due to misconfigured monitoring tools. The organization, a mid-sized hospital network, reported no data loss in this simulated scenario, but the attack highlighted vulnerabilities in their virtual infrastructure management.",
+        "techniques_used": [
+            "T1566.002",
+            "T1675",
+            "T1548.003",
+            "T1007",
+            "T1071.002",
+            "T1029"
+        ]
+    }
+}

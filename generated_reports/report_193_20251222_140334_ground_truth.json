@@ -1,0 +1,89 @@
+{
+    "report_id": "report_193",
+    "generated_at": "20251222_140334",
+    "scenario_target_ids": [
+        "T1588.004",
+        "T1585.002",
+        "T1587.003",
+        "T1566.004",
+        "T1091",
+        "T1059.011",
+        "T1036.001",
+        "T1132.002",
+        "T1572",
+        "T1048.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1585.002",
+        "T1059.011",
+        "T1132.002",
+        "T1091",
+        "T1587.003",
+        "T1588.004",
+        "T1036.001",
+        "T1572",
+        "T1048.001"
+    ],
+    "actual_found_ids": [
+        "T1572",
+        "T1566.004",
+        "T1585.002",
+        "T1059.011",
+        "T1589",
+        "T1091",
+        "T1132.002",
+        "T1588.004",
+        "T1048.001",
+        "T1036.001",
+        "T1587.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional APT actor 'ShadowVeil' in a recent simulated campaign against financial organizations. 'ShadowVeil' is a cyber espionage group with suspected ties to fictional nation-state interests, focusing on intellectual property theft and financial disruption. Initial analysis indicates the campaign began in early 2024, with targets including banks and investment firms in North America and Europe. System logs from a compromised network show unusual outbound traffic to IP addresses in Eastern Europe, though these may be unrelated to the attack. The actors likely conduct reconnaissance to identify high-value targets, though specific details are not covered in this scenario.\n\nIn the Initial Access phase, the adversary employed spearphishing voice calls to deliver malicious documents that automatically installed remote access trojans, while simultaneously creating anonymous email accounts using Guerrilla Mail's instant signup feature to maintain operational security. For Execution, they utilized Lua scripts to execute commands and download additional payloads, often obfuscating communications with modified Base64 encoding. Persistence was achieved through replication via removable media, where a tool infected USB devices to transmit malware to air-gapped systems upon insertion.\n\nFor Defense Evasion, the actors used self-signed certificates on VPS C2 infrastructure and obtained SSL certificates for their C2 domains, with PcShare malware employing an invalid code signature in an attempt to appear legitimate. Command and Control involved protocol tunneling, leveraging SSH dynamic port forwarding to route all traffic through a compromised jump server, while using non-standard encoding to further obfuscate data. In the Exfiltration phase, they encrypted email archives using AES before transferring them to an external server over symmetric encrypted non-C2 protocols. Post-incident, network scans revealed residual artifacts on several endpoints, but no additional compromises were detected. This campaign underscores the need for enhanced monitoring of certificate usage and encrypted data transfers in financial environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional APT actor 'ShadowVeil' in a recent simulated campaign against financial organizations. 'ShadowVeil' is a cyber espionage group with suspected ties to fictional nation-state interests, focusing on intellectual property theft and financial disruption. Initial analysis indicates the campaign began in early 2024, with targets including banks and investment firms in North America and Europe. System logs from a compromised network show unusual outbound traffic to IP addresses in Eastern Europe, though these may be unrelated to the attack. The actors likely conduct reconnaissance [T1589] to identify high-value targets, though specific details are not covered in this scenario.\n\nIn the Initial Access phase, the adversary employed spearphishing voice calls [T1566.004] to deliver malicious documents that automatically installed remote access trojans, while simultaneously creating anonymous email accounts using Guerrilla Mail's instant signup feature [T1585.002] to maintain operational security. For Execution, they utilized Lua scripts [T1059.011] to execute commands and download additional payloads, often obfuscating communications with modified Base64 encoding [T1132.002]. Persistence was achieved through replication via removable media [T1091], where a tool infected USB devices to transmit malware to air-gapped systems upon insertion.\n\nFor Defense Evasion, the actors used self-signed certificates on VPS C2 infrastructure [T1587.003] and obtained SSL certificates for their C2 domains [T1588.004], with PcShare malware employing an invalid code signature [T1036.001] in an attempt to appear legitimate. Command and Control involved protocol tunneling [T1572], leveraging SSH dynamic port forwarding to route all traffic through a compromised jump server, while using non-standard encoding [T1132.002] to further obfuscate data. In the Exfiltration phase, they encrypted email archives using AES before transferring them to an external server over symmetric encrypted non-C2 protocols [T1048.001]. Post-incident, network scans revealed residual artifacts on several endpoints, but no additional compromises were detected. This campaign underscores the need for enhanced monitoring of certificate usage and encrypted data transfers in financial environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify high-value targets, though specific details are not covered in this scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Persistence was achieved through replication via removable media, where a tool infected USB devices to transmit malware to air-gapped systems upon insertion.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Command and Control involved protocol tunneling, leveraging SSH dynamic port forwarding to route all traffic through a compromised jump server, while using non-standard encoding [T1132.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) actor, designated 'ShadowVeil', targeting financial institutions. Based on intelligence from CISA, FBI, and NSA, the campaign employs sophisticated techniques including spearphishing, certificate abuse, and encrypted exfiltration to compromise networks and steal sensitive data. The report is designed for blue team training to enhance detection and response capabilities against similar real-world threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional APT actor 'ShadowVeil' in a recent simulated campaign against financial organizations. 'ShadowVeil' is a cyber espionage group with suspected ties to fictional nation-state interests, focusing on intellectual property theft and financial disruption. Initial analysis indicates the campaign began in early 2024, with targets including banks and investment firms in North America and Europe. System logs from a compromised network show unusual outbound traffic to IP addresses in Eastern Europe, though these may be unrelated to the attack. The actors likely conduct reconnaissance [T1589] to identify high-value targets, though specific details are not covered in this scenario.\n\nIn the Initial Access phase, the adversary employed spearphishing voice calls [T1566.004] to deliver malicious documents that automatically installed remote access trojans, while simultaneously creating anonymous email accounts using Guerrilla Mail's instant signup feature [T1585.002] to maintain operational security. For Execution, they utilized Lua scripts [T1059.011] to execute commands and download additional payloads, often obfuscating communications with modified Base64 encoding [T1132.002]. Persistence was achieved through replication via removable media [T1091], where a tool infected USB devices to transmit malware to air-gapped systems upon insertion.\n\nFor Defense Evasion, the actors used self-signed certificates on VPS C2 infrastructure [T1587.003] and obtained SSL certificates for their C2 domains [T1588.004], with PcShare malware employing an invalid code signature [T1036.001] in an attempt to appear legitimate. Command and Control involved protocol tunneling [T1572], leveraging SSH dynamic port forwarding to route all traffic through a compromised jump server, while using non-standard encoding [T1132.002] to further obfuscate data. In the Exfiltration phase, they encrypted email archives using AES before transferring them to an external server over symmetric encrypted non-C2 protocols [T1048.001]. Post-incident, network scans revealed residual artifacts on several endpoints, but no additional compromises were detected. This campaign underscores the need for enhanced monitoring of certificate usage and encrypted data transfers in financial environments.",
+        "techniques_used": [
+            "T1566.004",
+            "T1585.002",
+            "T1059.011",
+            "T1132.002",
+            "T1091",
+            "T1587.003",
+            "T1588.004",
+            "T1036.001",
+            "T1572",
+            "T1048.001"
+        ]
+    }
+}

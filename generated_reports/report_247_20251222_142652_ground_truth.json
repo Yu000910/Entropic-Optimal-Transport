@@ -1,0 +1,73 @@
+{
+    "report_id": "report_247",
+    "generated_at": "20251222_142652",
+    "scenario_target_ids": [
+        "T1592.004",
+        "T1189",
+        "T1053.002",
+        "T1556.003",
+        "T1558.004",
+        "T1021.003",
+        "T1563.002",
+        "T1095"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.004",
+        "T1189",
+        "T1053.002",
+        "T1556.003",
+        "T1558.004",
+        "T1021.003",
+        "T1563.002",
+        "T1095"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1556.003",
+        "T1053.002",
+        "T1592.004",
+        "T1558.004",
+        "T1189",
+        "T1021.003",
+        "T1563.002"
+    ],
+    "clean_text": "On 2024-03-15, security analysts at a fictional multinational corporation, 'GlobalTech Inc.', detected anomalous network traffic originating from an internal workstation. The company, which specializes in cloud infrastructure and has offices in North America and Europe, reported unusual spikes in outbound connections to unknown IP addresses. Initial investigation revealed that the threat actors, likely operating under the APT group CRIMSON_SHADOW, conducted reconnaissance by scanning client configurations using nmap version detection to identify outdated software versions on employee devices. Subsequently, they exploited a drive-by compromise by injecting malicious JavaScript into a third-party ad network, which caused browser.exe to execute unwanted processes when employees visited compromised websites. This led to the initial infection of a workstation in the marketing department. The actors then leveraged CrackMapExec to set a scheduled task using the 'at' command on the compromised system, enabling remote execution of commands for persistence and lateral movement. To maintain access, they tampered with the sshd configuration by deactivating Pluggable Authentication Modules (PAM) using tools like Ebury, allowing unauthorized SSH connections. Additionally, they performed AS-REP roasting by using PowerShell.exe to extract cached Kerberos credentials from the LSASS process, facilitating credential theft for further access. For lateral movement, the actors employed Cobalt Strike to deliver Beacon payloads via Distributed Component Object Model (DCOM) execution, enabling remote control of additional systems across the network. They also hijacked RDP sessions by using tscon.exe to switch to another user's active session without authentication, gaining elevated privileges. Throughout the campaign, network communication was conducted via raw sockets using the MoonWind tool, bypassing traditional application layer protocols for stealthy command and control (C2). Logs from the affected systems showed multiple failed login attempts and unusual process creations, but no data exfiltration was confirmed at this time. The company's incident response team is currently containing the threat and reviewing firewall rules.",
+    "tagged_text": "On 2024-03-15, security analysts at a fictional multinational corporation, 'GlobalTech Inc.', detected anomalous network traffic originating from an internal workstation. The company, which specializes in cloud infrastructure and has offices in North America and Europe, reported unusual spikes in outbound connections to unknown IP addresses. Initial investigation revealed that the threat actors, likely operating under the APT group CRIMSON_SHADOW, conducted reconnaissance by scanning client configurations using nmap version detection to identify outdated software versions on employee devices [T1592.004]. Subsequently, they exploited a drive-by compromise by injecting malicious JavaScript into a third-party ad network, which caused browser.exe to execute unwanted processes when employees visited compromised websites [T1189]. This led to the initial infection of a workstation in the marketing department. The actors then leveraged CrackMapExec to set a scheduled task using the 'at' command on the compromised system, enabling remote execution of commands for persistence and lateral movement [T1053.002]. To maintain access, they tampered with the sshd configuration by deactivating Pluggable Authentication Modules (PAM) using tools like Ebury, allowing unauthorized SSH connections [T1556.003]. Additionally, they performed AS-REP roasting by using PowerShell.exe to extract cached Kerberos credentials from the LSASS process, facilitating credential theft for further access [T1558.004]. For lateral movement, the actors employed Cobalt Strike to deliver Beacon payloads via Distributed Component Object Model (DCOM) execution, enabling remote control of additional systems across the network [T1021.003]. They also hijacked RDP sessions by using tscon.exe to switch to another user's active session without authentication, gaining elevated privileges [T1563.002]. Throughout the campaign, network communication was conducted via raw sockets using the MoonWind tool, bypassing traditional application layer protocols for stealthy command and control (C2) [T1095]. Logs from the affected systems showed multiple failed login attempts and unusual process creations, but no data exfiltration was confirmed at this time. The company's incident response team is currently containing the threat and reviewing firewall rules.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to execute unwanted processes when employees visited compromised websites.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Throughout the campaign, network communication was conducted via raw sockets using the MoonWind tool, bypassing traditional application layer protocols for stealthy command and control (C2).",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CRIMSON_SHADOW', targeting enterprise environments to exfiltrate sensitive data. The campaign involves initial reconnaissance, drive-by compromise for initial access, credential theft, lateral movement via scheduled tasks and DCOM, and persistence through PAM tampering and RDP hijacking, utilizing non-standard protocols for C2 communication. Blue teams are advised to review logs and implement mitigations as outlined.",
+        "full_report_text": "On 2024-03-15, security analysts at a fictional multinational corporation, 'GlobalTech Inc.', detected anomalous network traffic originating from an internal workstation. The company, which specializes in cloud infrastructure and has offices in North America and Europe, reported unusual spikes in outbound connections to unknown IP addresses. Initial investigation revealed that the threat actors, likely operating under the APT group CRIMSON_SHADOW, conducted reconnaissance by scanning client configurations using nmap version detection to identify outdated software versions on employee devices [T1592.004]. Subsequently, they exploited a drive-by compromise by injecting malicious JavaScript into a third-party ad network, which caused browser.exe to execute unwanted processes when employees visited compromised websites [T1189]. This led to the initial infection of a workstation in the marketing department. The actors then leveraged CrackMapExec to set a scheduled task using the 'at' command on the compromised system, enabling remote execution of commands for persistence and lateral movement [T1053.002]. To maintain access, they tampered with the sshd configuration by deactivating Pluggable Authentication Modules (PAM) using tools like Ebury, allowing unauthorized SSH connections [T1556.003]. Additionally, they performed AS-REP roasting by using PowerShell.exe to extract cached Kerberos credentials from the LSASS process, facilitating credential theft for further access [T1558.004]. For lateral movement, the actors employed Cobalt Strike to deliver Beacon payloads via Distributed Component Object Model (DCOM) execution, enabling remote control of additional systems across the network [T1021.003]. They also hijacked RDP sessions by using tscon.exe to switch to another user's active session without authentication, gaining elevated privileges [T1563.002]. Throughout the campaign, network communication was conducted via raw sockets using the MoonWind tool, bypassing traditional application layer protocols for stealthy command and control (C2) [T1095]. Logs from the affected systems showed multiple failed login attempts and unusual process creations, but no data exfiltration was confirmed at this time. The company's incident response team is currently containing the threat and reviewing firewall rules.",
+        "techniques_used": [
+            "T1592.004",
+            "T1189",
+            "T1053.002",
+            "T1556.003",
+            "T1558.004",
+            "T1021.003",
+            "T1563.002",
+            "T1095"
+        ]
+    }
+}

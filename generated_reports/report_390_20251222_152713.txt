@@ -1,0 +1,21 @@
+On October 15, 2023, multiple financial institutions reported suspicious network activity originating from a compromised open-source library. Subsequent investigation revealed a coordinated campaign with the following kill-chain progression:
+
+**RECONNAISSANCE:** The threat actors initially conducted reconnaissance by scanning target networks with nmap using service version detection to map network topology and identify vulnerable services [T1590.004].
+
+**INITIAL ACCESS:** DAGGERFLY compromised the software supply chain by modifying the source code of the popular open-source financial parsing library 'FinParse v2.1.4' to include a backdoor before compilation and distribution [T1195.002]. The attackers then leveraged strategic website compromises to deliver malicious links through financial industry forums, requiring user interaction for initial execution [T1204.001].
+
+**EXECUTION:** Upon successful user interaction with the malicious link, the compromised library executed its backdoor functionality. System logs from victim endpoints showed unusual PowerShell activity at 03:14:22 UTC on October 16, 2023.
+
+**PERSISTENCE:** The malware established persistence by writing a malicious bash script to the system's login hook directory, ensuring execution upon user login [T1037.002]. Additionally, the threat actors discovered that the built-in Guest account had not been disabled on several web servers, which they leveraged for continued access [T1078.001].
+
+**PRIVILEGE ESCALATION:** Using Mimikatz, the actors dumped plaintext passwords from the LSASS process memory to obtain cached domain credentials [T1003.005]. The financial institution's security team noted unusual authentication attempts from the Guest account at 04:22:17 UTC.
+
+**LATERAL MOVEMENT:** With valid service account credentials obtained through credential dumping, the attackers leveraged SSH to access the web application server [T1021]. Network monitoring showed unusual SSH connections from internal IP 192.168.45.23 to the application server at 192.168.45.67.
+
+**COLLECTION:** The threat actors collected email data by running Outlook.exe with command-line parameters to export contacts and email metadata [T1114]. A system administrator at First Regional Bank reported unusual Outlook processes running outside normal business hours.
+
+**COMMAND AND CONTROL:** The malware established persistent remote control using VNC to maintain interactive access to compromised systems [T1219.002]. Additionally, the C2 infrastructure employed evasion techniques by dynamically altering URI paths during each communication session to evade pattern-based detection [T1001.003].
+
+**BACKGROUND:** First Regional Bank (FRB) is a mid-sized financial institution with approximately 150 branches across the northeastern United States. The bank's IT infrastructure includes both on-premises and cloud-based systems, with approximately 2,500 endpoints across their network. FRB's security team first detected anomalous activity during routine log review on October 17, 2023.
+
+**MITIGATION RECOMMENDATIONS:** Organizations should implement application allowlisting, disable unnecessary default accounts, implement network segmentation, and monitor for unusual authentication patterns. Regular software supply chain audits and user awareness training about suspicious links are also recommended.

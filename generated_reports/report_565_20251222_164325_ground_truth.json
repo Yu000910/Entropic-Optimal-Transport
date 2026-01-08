@@ -1,0 +1,82 @@
+{
+    "report_id": "report_565",
+    "generated_at": "20251222_164325",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1566.003",
+        "T1609",
+        "T1098.002",
+        "T1213.001",
+        "T1132.002",
+        "T1568.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.003",
+        "T1059.001",
+        "T1078.002",
+        "T1112",
+        "T1098.002",
+        "T1609",
+        "T1213.001",
+        "T1132.002",
+        "T1568.002"
+    ],
+    "actual_found_ids": [
+        "T1609",
+        "T1568.002",
+        "T1112",
+        "T1589",
+        "T1132.002",
+        "T1078.002",
+        "T1098.002",
+        "T1213.001",
+        "T1566.003",
+        "T1059.001"
+    ],
+    "clean_text": "Background: Crimson Veil is a fictitious APT group believed to operate with financial and espionage motives, focusing on technology and manufacturing sectors. Initial analysis suggests they leverage social engineering and cloud vulnerabilities to gain initial access. On 2023-10-15, anomalous login attempts were detected from IP 192.168.45.67 to a corporate Confluence server, but these were initially dismissed as false positives due to network latency issues.\n\nThe actors likely conduct reconnaissance by monitoring social media platforms, where they used fake personas to engage and target victims via spearphishing, sending malicious links disguised as collaboration tools. Upon victim interaction, the adversary employed PowerShell to download and execute Mimikatz.exe, extracting Kerberos tickets from LSASS memory for unauthorized domain access while simultaneously modifying registry keys to maintain persistence. Once inside the network, they leveraged compromised domain accounts to add themselves as delegates to multiple corporate email accounts using administrative privileges in the Google Admin console, enabling them to monitor communications and send phishing emails internally.\n\nFurther, Crimson Veil exploited containerized environments by sending kubectl commands through an IRC channel to victim clusters, allowing them to deploy malicious pods and spread laterally within the infrastructure. They also used compromised credentials to collect testing procedures and quality assurance documentation from Confluence, exfiltrating data via encoded channels. The malicious script employed non-standard encoding with modified Base64 and special character substitutions to obfuscate command and control (C2) communications, which utilized domain generation algorithms (DGAs) to dynamically generate C2 domains and evade detection. System logs from 2023-10-20 showed increased network traffic to unusual ports, but this was attributed to a scheduled backup process, highlighting the need for enhanced monitoring of container administration activities.",
+    "tagged_text": "Background: Crimson Veil is a fictitious APT group believed to operate with financial and espionage motives, focusing on technology and manufacturing sectors. Initial analysis suggests they leverage social engineering and cloud vulnerabilities to gain initial access. On 2023-10-15, anomalous login attempts were detected from IP 192.168.45.67 to a corporate Confluence server, but these were initially dismissed as false positives due to network latency issues.\n\nThe actors likely conduct reconnaissance [T1589] by monitoring social media platforms, where they used fake personas to engage and target victims via spearphishing [T1566.003], sending malicious links disguised as collaboration tools. Upon victim interaction, the adversary employed PowerShell [T1059.001] to download and execute Mimikatz.exe, extracting Kerberos tickets from LSASS memory for unauthorized domain access [T1078.002] while simultaneously modifying registry keys [T1112] to maintain persistence. Once inside the network, they leveraged compromised domain accounts to add themselves as delegates to multiple corporate email accounts using administrative privileges in the Google Admin console [T1098.002], enabling them to monitor communications and send phishing emails internally.\n\nFurther, Crimson Veil exploited containerized environments by sending kubectl commands through an IRC channel to victim clusters [T1609], allowing them to deploy malicious pods and spread laterally within the infrastructure. They also used compromised credentials to collect testing procedures and quality assurance documentation from Confluence [T1213.001], exfiltrating data via encoded channels. The malicious script employed non-standard encoding with modified Base64 and special character substitutions [T1132.002] to obfuscate command and control (C2) communications, which utilized domain generation algorithms (DGAs) [T1568.002] to dynamically generate C2 domains and evade detection. System logs from 2023-10-20 showed increased network traffic to unusual ports, but this was attributed to a scheduled backup process, highlighting the need for enhanced monitoring of container administration activities.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance by monitoring social media platforms, where they used fake personas to engage and target victims via spearphishing [T1566.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "002] while simultaneously modifying registry keys to maintain persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "Further, Crimson Veil exploited containerized environments by sending kubectl commands through an IRC channel to victim clusters, allowing them to deploy malicious pods and spread laterally within the infrastructure.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Container Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Veil,' targeting organizations with hybrid cloud and containerized environments. The campaign involves spearphishing, credential theft, and exploitation of container administration tools to establish persistence and exfiltrate sensitive data. Blue teams should review this report for training on detecting and mitigating multi-stage attacks.",
+        "full_report_text": "Background: Crimson Veil is a fictitious APT group believed to operate with financial and espionage motives, focusing on technology and manufacturing sectors. Initial analysis suggests they leverage social engineering and cloud vulnerabilities to gain initial access. On 2023-10-15, anomalous login attempts were detected from IP 192.168.45.67 to a corporate Confluence server, but these were initially dismissed as false positives due to network latency issues.\n\nThe actors likely conduct reconnaissance [T1589] by monitoring social media platforms, where they used fake personas to engage and target victims via spearphishing [T1566.003], sending malicious links disguised as collaboration tools. Upon victim interaction, the adversary employed PowerShell [T1059.001] to download and execute Mimikatz.exe, extracting Kerberos tickets from LSASS memory for unauthorized domain access [T1078.002] while simultaneously modifying registry keys [T1112] to maintain persistence. Once inside the network, they leveraged compromised domain accounts to add themselves as delegates to multiple corporate email accounts using administrative privileges in the Google Admin console [T1098.002], enabling them to monitor communications and send phishing emails internally.\n\nFurther, Crimson Veil exploited containerized environments by sending kubectl commands through an IRC channel to victim clusters [T1609], allowing them to deploy malicious pods and spread laterally within the infrastructure. They also used compromised credentials to collect testing procedures and quality assurance documentation from Confluence [T1213.001], exfiltrating data via encoded channels. The malicious script employed non-standard encoding with modified Base64 and special character substitutions [T1132.002] to obfuscate command and control (C2) communications, which utilized domain generation algorithms (DGAs) [T1568.002] to dynamically generate C2 domains and evade detection. System logs from 2023-10-20 showed increased network traffic to unusual ports, but this was attributed to a scheduled backup process, highlighting the need for enhanced monitoring of container administration activities.",
+        "techniques_used": [
+            "T1589",
+            "T1566.003",
+            "T1059.001",
+            "T1078.002",
+            "T1112",
+            "T1098.002",
+            "T1609",
+            "T1213.001",
+            "T1132.002",
+            "T1568.002"
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "report_id": "report_655",
+    "generated_at": "20251222_172004",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1059.008",
+        "T1137.006",
+        "T1580",
+        "T1071.005"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1059.008",
+        "T1137.006",
+        "T1580",
+        "T1071.005"
+    ],
+    "actual_found_ids": [
+        "T1071.005",
+        "T1580",
+        "T1137.006",
+        "T1059.008",
+        "T1078.001"
+    ],
+    "clean_text": "On October 15, 2023, APT-99 initiated a campaign against a fictional mid-sized technology firm, TechCorp Inc., which operates hybrid cloud environments with AWS and Azure services. TechCorp's security team reported anomalous network traffic from internal IP addresses, prompting an investigation that revealed a series of coordinated attacks.\n\nInitial Access: The actors gained initial access by exploiting an active Guest account on a Windows server, using brute-force attacks with common default password lists. System logs from the server showed multiple failed login attempts followed by a successful authentication at 02:34 UTC, which was not flagged due to misconfigured alerting rules.\n\nExecution: Upon access, the adversary employed the network device command-line interface (CLI) to execute commands that modified firewall rules on a Cisco router, allowing unauthorized inbound connections from external IP addresses while simultaneously disabling logging features to evade detection.\n\nPersistence: To maintain persistence, the threat actors configured a malicious VBA add-in in Microsoft Excel, which was set to execute automatically upon application launch, enabling the download of additional payloads and exfiltration of sensitive data from spreadsheets stored on shared drives.\n\nDiscovery: The campaign included reconnaissance activities where APT-99 used the ListBuckets API to map all accessible cloud storage resources in TechCorp's AWS environment, identifying S3 buckets with misconfigured permissions that could be leveraged for data theft or further exploitation.\n\nCommand and Control (C2): For covert communication, the malware established command and control channels using the MQTT publish/subscribe protocol, enabling the exfiltration of stolen credentials and receipt of new commands while blending in with legitimate IoT device traffic on the network. Network analysis revealed unusual MQTT packets originating from an internal server, which were initially overlooked due to high volume of normal IoT communications.\n\nAdditional context: TechCorp's incident response team noted that the default Guest account had not been disabled as per company policy, and a recent audit highlighted gaps in cloud security configurations. No real data breaches occurred, as this was a controlled training exercise designed to test blue team capabilities.",
+    "tagged_text": "On October 15, 2023, APT-99 initiated a campaign against a fictional mid-sized technology firm, TechCorp Inc., which operates hybrid cloud environments with AWS and Azure services. TechCorp's security team reported anomalous network traffic from internal IP addresses, prompting an investigation that revealed a series of coordinated attacks.\n\nInitial Access: The actors gained initial access by exploiting an active Guest account on a Windows server [T1078.001], using brute-force attacks with common default password lists. System logs from the server showed multiple failed login attempts followed by a successful authentication at 02:34 UTC, which was not flagged due to misconfigured alerting rules.\n\nExecution: Upon access, the adversary employed the network device command-line interface (CLI) [T1059.008] to execute commands that modified firewall rules on a Cisco router, allowing unauthorized inbound connections from external IP addresses while simultaneously disabling logging features to evade detection.\n\nPersistence: To maintain persistence, the threat actors configured a malicious VBA add-in [T1137.006] in Microsoft Excel, which was set to execute automatically upon application launch, enabling the download of additional payloads and exfiltration of sensitive data from spreadsheets stored on shared drives.\n\nDiscovery: The campaign included reconnaissance activities where APT-99 used the ListBuckets API [T1580] to map all accessible cloud storage resources in TechCorp's AWS environment, identifying S3 buckets with misconfigured permissions that could be leveraged for data theft or further exploitation.\n\nCommand and Control (C2): For covert communication, the malware established command and control channels using the MQTT publish/subscribe protocol [T1071.005], enabling the exfiltration of stolen credentials and receipt of new commands while blending in with legitimate IoT device traffic on the network. Network analysis revealed unusual MQTT packets originating from an internal server, which were initially overlooked due to high volume of normal IoT communications.\n\nAdditional context: TechCorp's incident response team noted that the default Guest account had not been disabled as per company policy, and a recent audit highlighted gaps in cloud security configurations. No real data breaches occurred, as this was a controlled training exercise designed to test blue team capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "Discovery: The campaign included reconnaissance activities where APT-99 used the ListBuckets API to map all accessible cloud storage resources in TechCorp's AWS environment, identifying S3 buckets with misconfigured permissions that could be leveraged for data theft or further exploitation.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Network Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting organizations with weak default account security and leveraging cloud discovery for lateral movement. The campaign involves initial access through default accounts, execution via network device CLI, persistence through malicious add-ins, reconnaissance of cloud infrastructure, and command and control using publish/subscribe protocols. Blue teams should review this report for training on detecting and mitigating such multi-vector attacks.",
+        "full_report_text": "On October 15, 2023, APT-99 initiated a campaign against a fictional mid-sized technology firm, TechCorp Inc., which operates hybrid cloud environments with AWS and Azure services. TechCorp's security team reported anomalous network traffic from internal IP addresses, prompting an investigation that revealed a series of coordinated attacks.\n\nInitial Access: The actors gained initial access by exploiting an active Guest account on a Windows server [T1078.001], using brute-force attacks with common default password lists. System logs from the server showed multiple failed login attempts followed by a successful authentication at 02:34 UTC, which was not flagged due to misconfigured alerting rules.\n\nExecution: Upon access, the adversary employed the network device command-line interface (CLI) [T1059.008] to execute commands that modified firewall rules on a Cisco router, allowing unauthorized inbound connections from external IP addresses while simultaneously disabling logging features to evade detection.\n\nPersistence: To maintain persistence, the threat actors configured a malicious VBA add-in [T1137.006] in Microsoft Excel, which was set to execute automatically upon application launch, enabling the download of additional payloads and exfiltration of sensitive data from spreadsheets stored on shared drives.\n\nDiscovery: The campaign included reconnaissance activities where APT-99 used the ListBuckets API [T1580] to map all accessible cloud storage resources in TechCorp's AWS environment, identifying S3 buckets with misconfigured permissions that could be leveraged for data theft or further exploitation.\n\nCommand and Control (C2): For covert communication, the malware established command and control channels using the MQTT publish/subscribe protocol [T1071.005], enabling the exfiltration of stolen credentials and receipt of new commands while blending in with legitimate IoT device traffic on the network. Network analysis revealed unusual MQTT packets originating from an internal server, which were initially overlooked due to high volume of normal IoT communications.\n\nAdditional context: TechCorp's incident response team noted that the default Guest account had not been disabled as per company policy, and a recent audit highlighted gaps in cloud security configurations. No real data breaches occurred, as this was a controlled training exercise designed to test blue team capabilities.",
+        "techniques_used": [
+            "T1078.001",
+            "T1059.008",
+            "T1137.006",
+            "T1580",
+            "T1071.005"
+        ]
+    }
+}

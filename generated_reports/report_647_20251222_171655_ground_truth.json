@@ -1,0 +1,103 @@
+{
+    "report_id": "report_647",
+    "generated_at": "20251222_171655",
+    "scenario_target_ids": [
+        "T1583.004",
+        "T1583.006",
+        "T1583.007",
+        "T1078.003",
+        "T1072",
+        "T1197",
+        "T1098.005",
+        "T1134.002",
+        "T1556.001",
+        "T1550.004",
+        "T1021.006",
+        "T1071.001",
+        "T1485"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.004",
+        "T1583.006",
+        "T1583.007",
+        "T1078.003",
+        "T1072",
+        "T1197",
+        "T1098.005",
+        "T1134.002",
+        "T1556.001",
+        "T1550.004",
+        "T1021.006",
+        "T1071.001",
+        "T1485"
+    ],
+    "actual_found_ids": [
+        "T1071.001",
+        "T1485",
+        "T1197",
+        "T1583.006",
+        "T1550.004",
+        "T1583.004",
+        "T1134.002",
+        "T1556.001",
+        "T1021.006",
+        "T1583.007",
+        "T1072",
+        "T1078.003",
+        "T1098.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'CloudWiper'. This group has been observed targeting energy and healthcare organizations in a coordinated campaign aimed at data exfiltration and destruction.\n\nBackground: 'CloudWiper' is believed to operate out of Eastern Europe, with campaigns dating back to early 2023. Their motivations appear financial, with ransom demands following data encryption. Victim organizations reported initial compromises via phishing emails, though this advisory focuses on cloud-based vectors. Internal network scans from one victim showed unusual spikes in BITS traffic on subnet 192.168.1.0/24, logged at 2024-07-15T14:30:00Z, but these were initially dismissed as benign system updates.\n\nAttack Narrative:\n- **Reconnaissance and Resource Development**: The actors likely conducted reconnaissance to identify target cloud environments, though specific techniques are not detailed in this scenario. They then established operational infrastructure by using Google Cloud Platform's free tier to set up a temporary proxy server, leveraged file sharing services like OneHub and TeraBox to distribute tools, and purchased multiple Cloudflare Workers accounts with stolen payment methods to deploy serverless functions for command and control (C2).\n- **Initial Access and Execution**: After gaining a foothold, the adversary brute-forced a local admin password to access a workstation and abused a patch management system for an anti-virus product to deploy wiper malware across the network. They used BITSAdmin to configure persistent background jobs that downloaded and executed a backdoor, while simultaneously registering a compromised device in Entra ID to maintain persistence after password resets.\n- **Privilege Escalation and Defense Evasion**: To elevate privileges, the actors ran 'runas /savecred /user:DomainAdmin powershell.exe' to launch PowerShell with domain administrator credentials and manipulated LSASS memory to accept any password for domain user accounts, bypassing authentication controls.\n- **Lateral Movement and Collection**: The group moved laterally through the network using Windows Remote Management, collected browser session files to hijack authenticated sessions and bypass multi-factor authentication (MFA), and sent HTTP GET requests to C2 servers using web protocols for data exfiltration.\n- **Impact**: Finally, the actors destroyed Linux-based databases as part of their ransomware payload, causing significant operational disruption. Logs from a victim's SIEM indicated failed login attempts from IP 10.0.2.15 prior to the attack, but these were not investigated due to high volume.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual BITS job creations, enforce strong password policies, and regularly audit cloud service configurations. Reviewing Entra ID for unauthorized device registrations and patching anti-virus management systems are critical steps to prevent similar incidents.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'CloudWiper'. This group has been observed targeting energy and healthcare organizations in a coordinated campaign aimed at data exfiltration and destruction.\n\nBackground: 'CloudWiper' is believed to operate out of Eastern Europe, with campaigns dating back to early 2023. Their motivations appear financial, with ransom demands following data encryption. Victim organizations reported initial compromises via phishing emails, though this advisory focuses on cloud-based vectors. Internal network scans from one victim showed unusual spikes in BITS traffic on subnet 192.168.1.0/24, logged at 2024-07-15T14:30:00Z, but these were initially dismissed as benign system updates.\n\nAttack Narrative:\n- **Reconnaissance and Resource Development**: The actors likely conducted reconnaissance to identify target cloud environments, though specific techniques are not detailed in this scenario. They then established operational infrastructure by using Google Cloud Platform's free tier to set up a temporary proxy server [T1583.004], leveraged file sharing services like OneHub and TeraBox to distribute tools [T1583.006], and purchased multiple Cloudflare Workers accounts with stolen payment methods to deploy serverless functions for command and control (C2) [T1583.007].\n- **Initial Access and Execution**: After gaining a foothold, the adversary brute-forced a local admin password to access a workstation [T1078.003] and abused a patch management system for an anti-virus product to deploy wiper malware across the network [T1072]. They used BITSAdmin to configure persistent background jobs that downloaded and executed a backdoor [T1197], while simultaneously registering a compromised device in Entra ID to maintain persistence after password resets [T1098.005].\n- **Privilege Escalation and Defense Evasion**: To elevate privileges, the actors ran 'runas /savecred /user:DomainAdmin powershell.exe' to launch PowerShell with domain administrator credentials [T1134.002] and manipulated LSASS memory to accept any password for domain user accounts, bypassing authentication controls [T1556.001].\n- **Lateral Movement and Collection**: The group moved laterally through the network using Windows Remote Management [T1021.006], collected browser session files to hijack authenticated sessions and bypass multi-factor authentication (MFA) [T1550.004], and sent HTTP GET requests to C2 servers using web protocols for data exfiltration [T1071.001].\n- **Impact**: Finally, the actors destroyed Linux-based databases as part of their ransomware payload, causing significant operational disruption [T1485]. Logs from a victim's SIEM indicated failed login attempts from IP 10.0.2.15 prior to the attack, but these were not investigated due to high volume.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual BITS job creations, enforce strong password policies, and regularly audit cloud service configurations. Reviewing Entra ID for unauthorized device registrations and patching anti-virus management systems are critical steps to prevent similar incidents.",
+    "sentence_annotations": [
+        {
+            "sentence": "003] and abused a patch management system for an anti-virus product to deploy wiper malware across the network.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "They used BITSAdmin to configure persistent background jobs that downloaded and executed a backdoor, while simultaneously registering a compromised device in Entra ID to maintain persistence after password resets [T1098.",
+            "technique_id": "T1197",
+            "technique_name": "BITS Jobs"
+        },
+        {
+            "sentence": "- **Impact**: Finally, the actors destroyed Linux-based databases as part of their ransomware payload, causing significant operational disruption.",
+            "technique_id": "T1485",
+            "technique_name": "Data Destruction"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudWiper' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'CloudWiper', targeting critical infrastructure sectors. The campaign leverages cloud services for initial access and employs a combination of credential abuse, lateral movement, and data destruction techniques to compromise networks. Blue teams are advised to review logs for suspicious cloud activity, monitor for unauthorized device registrations, and implement robust patch management controls.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'CloudWiper'. This group has been observed targeting energy and healthcare organizations in a coordinated campaign aimed at data exfiltration and destruction.\n\nBackground: 'CloudWiper' is believed to operate out of Eastern Europe, with campaigns dating back to early 2023. Their motivations appear financial, with ransom demands following data encryption. Victim organizations reported initial compromises via phishing emails, though this advisory focuses on cloud-based vectors. Internal network scans from one victim showed unusual spikes in BITS traffic on subnet 192.168.1.0/24, logged at 2024-07-15T14:30:00Z, but these were initially dismissed as benign system updates.\n\nAttack Narrative:\n- **Reconnaissance and Resource Development**: The actors likely conducted reconnaissance to identify target cloud environments, though specific techniques are not detailed in this scenario. They then established operational infrastructure by using Google Cloud Platform's free tier to set up a temporary proxy server [T1583.004], leveraged file sharing services like OneHub and TeraBox to distribute tools [T1583.006], and purchased multiple Cloudflare Workers accounts with stolen payment methods to deploy serverless functions for command and control (C2) [T1583.007].\n- **Initial Access and Execution**: After gaining a foothold, the adversary brute-forced a local admin password to access a workstation [T1078.003] and abused a patch management system for an anti-virus product to deploy wiper malware across the network [T1072]. They used BITSAdmin to configure persistent background jobs that downloaded and executed a backdoor [T1197], while simultaneously registering a compromised device in Entra ID to maintain persistence after password resets [T1098.005].\n- **Privilege Escalation and Defense Evasion**: To elevate privileges, the actors ran 'runas /savecred /user:DomainAdmin powershell.exe' to launch PowerShell with domain administrator credentials [T1134.002] and manipulated LSASS memory to accept any password for domain user accounts, bypassing authentication controls [T1556.001].\n- **Lateral Movement and Collection**: The group moved laterally through the network using Windows Remote Management [T1021.006], collected browser session files to hijack authenticated sessions and bypass multi-factor authentication (MFA) [T1550.004], and sent HTTP GET requests to C2 servers using web protocols for data exfiltration [T1071.001].\n- **Impact**: Finally, the actors destroyed Linux-based databases as part of their ransomware payload, causing significant operational disruption [T1485]. Logs from a victim's SIEM indicated failed login attempts from IP 10.0.2.15 prior to the attack, but these were not investigated due to high volume.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual BITS job creations, enforce strong password policies, and regularly audit cloud service configurations. Reviewing Entra ID for unauthorized device registrations and patching anti-virus management systems are critical steps to prevent similar incidents.",
+        "techniques_used": [
+            "T1583.004",
+            "T1583.006",
+            "T1583.007",
+            "T1078.003",
+            "T1072",
+            "T1197",
+            "T1098.005",
+            "T1134.002",
+            "T1556.001",
+            "T1550.004",
+            "T1021.006",
+            "T1071.001",
+            "T1485"
+        ]
+    }
+}

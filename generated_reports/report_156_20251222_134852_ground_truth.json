@@ -1,0 +1,123 @@
+{
+    "report_id": "report_156",
+    "generated_at": "20251222_134852",
+    "scenario_target_ids": [
+        "T1598.003",
+        "T1592.003",
+        "T1608.001",
+        "T1588.007",
+        "T1650",
+        "T1195.002",
+        "T1106",
+        "T1059.004",
+        "T1018",
+        "T1550.002",
+        "T1114.003",
+        "T1102.003",
+        "T1567.001",
+        "T1011",
+        "T1529"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1598.003",
+        "T1592.003",
+        "T1608.001",
+        "T1588.007",
+        "T1650",
+        "T1195.002",
+        "T1106",
+        "T1059.004",
+        "T1018",
+        "T1550.002",
+        "T1114.003",
+        "T1102.003",
+        "T1567.001",
+        "T1011",
+        "T1529"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1011",
+        "T1529",
+        "T1550.002",
+        "T1106",
+        "T1102.003",
+        "T1018",
+        "T1592.003",
+        "T1114.003",
+        "T1608.001",
+        "T1059.004",
+        "T1588.007",
+        "T1598.003",
+        "T1650",
+        "T1567.001"
+    ],
+    "clean_text": "On October 15, 2023, multiple energy sector organizations reported suspicious activity following a spearphishing campaign that delivered malicious links to adversary-controlled websites, leading to credential harvesting. Initial analysis revealed that the malware, upon execution, invoked systeminfo.exe to query host firmware details before proceeding with the attack chain. The threat actors had previously uploaded ransomware components to IPFS nodes to ensure persistent availability, and they employed an AI-driven persistence mechanism that executed malicious.ps1 every hour to maintain access to compromised systems. System logs from a vulnerable web server showed unauthorized access attempts, culminating in the deployment of a web shell for persistent control. Investigation uncovered that the initial intrusion involved compromising the software supply chain, where malware was inserted into a third-party monitoring tool used by the targets, similar to the SUNSPOT incident. During execution, the malware used various Native API calls to evade sandbox detection, and on Unix-based systems, it employed a shell script as the main executable, dropping an embedded base64-encoded payload to the /tmp folder. Once established, the actors conducted remote system discovery by scanning the local network segment for exploitable systems, and they used Pass the Hash techniques with tools like Mimikatz for lateral movement. To maintain covert communication, the threat actor modified Exchange transport agent settings to intercept and forward all emails from the finance department, and they received C2 instructions from user profiles on legitimate websites such as GitHub. Exfiltration activities included using compromised access tokens to collect system configuration files and store them in a GitHub Gist via the GitHub API, as well as establishing a persistent cellular data link for continuous data exfiltration. Finally, after exfiltrating data, the actors initiated a system shutdown/reboot to destroy files and wipe the MBR, mimicking tactics used by groups like Lazarus. Background noise: The targeted organizations, including 'PowerGrid Inc.' and 'EnergyFlow Corp.', reported no prior incidents in Q3 2023, and routine firewall logs showed normal traffic patterns until the attack.",
+    "tagged_text": "On October 15, 2023, multiple energy sector organizations reported suspicious activity following a spearphishing campaign [T1598.003] that delivered malicious links to adversary-controlled websites, leading to credential harvesting. Initial analysis revealed that the malware, upon execution, invoked systeminfo.exe to query host firmware details [T1592.003] before proceeding with the attack chain. The threat actors had previously uploaded ransomware components to IPFS nodes [T1608.001] to ensure persistent availability, and they employed an AI-driven persistence mechanism [T1588.007] that executed malicious.ps1 every hour to maintain access to compromised systems. System logs from a vulnerable web server showed unauthorized access attempts, culminating in the deployment of a web shell [T1650] for persistent control. Investigation uncovered that the initial intrusion involved compromising the software supply chain [T1195.002], where malware was inserted into a third-party monitoring tool used by the targets, similar to the SUNSPOT incident. During execution, the malware used various Native API calls [T1106] to evade sandbox detection, and on Unix-based systems, it employed a shell script [T1059.004] as the main executable, dropping an embedded base64-encoded payload to the /tmp folder. Once established, the actors conducted remote system discovery [T1018] by scanning the local network segment for exploitable systems, and they used Pass the Hash techniques [T1550.002] with tools like Mimikatz for lateral movement. To maintain covert communication, the threat actor modified Exchange transport agent settings to intercept and forward all emails from the finance department [T1114.003], and they received C2 instructions from user profiles on legitimate websites such as GitHub [T1102.003]. Exfiltration activities included using compromised access tokens to collect system configuration files and store them in a GitHub Gist via the GitHub API [T1567.001], as well as establishing a persistent cellular data link for continuous data exfiltration [T1011]. Finally, after exfiltrating data, the actors initiated a system shutdown/reboot [T1529] to destroy files and wipe the MBR, mimicking tactics used by groups like Lazarus. Background noise: The targeted organizations, including 'PowerGrid Inc.' and 'EnergyFlow Corp.', reported no prior incidents in Q3 2023, and routine firewall logs showed normal traffic patterns until the attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "System logs from a vulnerable web server showed unauthorized access attempts, culminating in the deployment of a web shell for persistent control.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "During execution, the malware used various Native API calls to evade sandbox detection, and on Unix-based systems, it employed a shell script [T1059.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "Once established, the actors conducted remote system discovery by scanning the local network segment for exploitable systems, and they used Pass the Hash techniques [T1550.",
+            "technique_id": "T1018",
+            "technique_name": "Remote System Discovery"
+        },
+        {
+            "sentence": "001], as well as establishing a persistent cellular data link for continuous data exfiltration.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        },
+        {
+            "sentence": "Finally, after exfiltrating data, the actors initiated a system shutdown/reboot to destroy files and wipe the MBR, mimicking tactics used by groups like Lazarus.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Cobalt Serpent' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Cobalt Serpent' targeting energy sector organizations, leveraging spearphishing, supply chain compromise, and advanced persistence mechanisms to exfiltrate sensitive data and disrupt operations.",
+        "full_report_text": "On October 15, 2023, multiple energy sector organizations reported suspicious activity following a spearphishing campaign [T1598.003] that delivered malicious links to adversary-controlled websites, leading to credential harvesting. Initial analysis revealed that the malware, upon execution, invoked systeminfo.exe to query host firmware details [T1592.003] before proceeding with the attack chain. The threat actors had previously uploaded ransomware components to IPFS nodes [T1608.001] to ensure persistent availability, and they employed an AI-driven persistence mechanism [T1588.007] that executed malicious.ps1 every hour to maintain access to compromised systems. System logs from a vulnerable web server showed unauthorized access attempts, culminating in the deployment of a web shell [T1650] for persistent control. Investigation uncovered that the initial intrusion involved compromising the software supply chain [T1195.002], where malware was inserted into a third-party monitoring tool used by the targets, similar to the SUNSPOT incident. During execution, the malware used various Native API calls [T1106] to evade sandbox detection, and on Unix-based systems, it employed a shell script [T1059.004] as the main executable, dropping an embedded base64-encoded payload to the /tmp folder. Once established, the actors conducted remote system discovery [T1018] by scanning the local network segment for exploitable systems, and they used Pass the Hash techniques [T1550.002] with tools like Mimikatz for lateral movement. To maintain covert communication, the threat actor modified Exchange transport agent settings to intercept and forward all emails from the finance department [T1114.003], and they received C2 instructions from user profiles on legitimate websites such as GitHub [T1102.003]. Exfiltration activities included using compromised access tokens to collect system configuration files and store them in a GitHub Gist via the GitHub API [T1567.001], as well as establishing a persistent cellular data link for continuous data exfiltration [T1011]. Finally, after exfiltrating data, the actors initiated a system shutdown/reboot [T1529] to destroy files and wipe the MBR, mimicking tactics used by groups like Lazarus. Background noise: The targeted organizations, including 'PowerGrid Inc.' and 'EnergyFlow Corp.', reported no prior incidents in Q3 2023, and routine firewall logs showed normal traffic patterns until the attack.",
+        "techniques_used": [
+            "T1598.003",
+            "T1592.003",
+            "T1608.001",
+            "T1588.007",
+            "T1650",
+            "T1195.002",
+            "T1106",
+            "T1059.004",
+            "T1018",
+            "T1550.002",
+            "T1114.003",
+            "T1102.003",
+            "T1567.001",
+            "T1011",
+            "T1529"
+        ]
+    }
+}

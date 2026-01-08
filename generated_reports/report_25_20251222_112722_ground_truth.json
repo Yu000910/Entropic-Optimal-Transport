@@ -1,0 +1,133 @@
+{
+    "report_id": "report_25",
+    "generated_at": "20251222_112722",
+    "scenario_target_ids": [
+        "T1589",
+        "T1199",
+        "T1569.001",
+        "T1053.007",
+        "T1136",
+        "T1201",
+        "T1074",
+        "T1119",
+        "T1665",
+        "T1095",
+        "T1052.001",
+        "T1496.003",
+        "T1496"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1199",
+        "T1569.001",
+        "T1053.007",
+        "T1136",
+        "T1201",
+        "T1074",
+        "T1119",
+        "T1665",
+        "T1095",
+        "T1052.001",
+        "T1496.003",
+        "T1496"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1201",
+        "T1136",
+        "T1199",
+        "T1053.007",
+        "T1119",
+        "T1496.003",
+        "T1589",
+        "T1052.001",
+        "T1496",
+        "T1665",
+        "T1074",
+        "T1569.001"
+    ],
+    "clean_text": "### Background\nShadowMimic is a fictional APT group assessed to operate with moderate sophistication, focusing on financial and technology sectors. This report simulates an incident at 'TechGlobal Inc.', a mid-sized software company, to provide training on detection and response. Initial access was gained through a phishing campaign where actors sent emails impersonating the HR system to gather employee login credentials. After compromising an employee account, the actors exploited a trusted relationship with a partner network, using the initial foothold to pivot into the internal DNC-equivalent system.\n\n### Attack Details\nUpon gaining access, the adversary executed malicious commands via Launchctl to load a backdoor as a system service on macOS systems, while simultaneously configuring a CronJob to deploy a container for data exfiltration during off-peak hours. To maintain persistence, they created a new user account named 'backdoor_admin' using net user commands and conducted password policy discovery by executing 'net accounts /domain' to assess security controls. System logs from TechGlobal Inc. showed unusual activity in the /var/log/ directory, but no immediate alerts were triggered.\n\nFor data collection, the malware employed bash scripts to stage harvested credentials into a consolidated archive file, with automated processes identifying and archiving files based on specific extensions like .docx and .pdf. The backdoor communicated through the corporate web proxy to hide its infrastructure and bypass network egress restrictions, using TCP for command and control (C2) communications. Additionally, the actors used USB-based methods with scripts designed to exfiltrate system configuration files from compromised workstations, and reconnaissance modules attempted to locate Twilio webhook URLs in application source code as part of SMS pumping tactics. The infection also included a cryptocurrency miner that hijacked the system's graphics card for resource exploitation.\n\n### Recommendations\nBlue teams should monitor for unauthorized account creations, review scheduled tasks and container jobs, inspect proxy logs for anomalous traffic, and implement USB device controls. Regular employee training on phishing awareness is critical to mitigate initial access vectors.",
+    "tagged_text": "### Background\nShadowMimic is a fictional APT group assessed to operate with moderate sophistication, focusing on financial and technology sectors. This report simulates an incident at 'TechGlobal Inc.', a mid-sized software company, to provide training on detection and response. Initial access was gained through a phishing campaign where actors sent emails impersonating the HR system to gather employee login credentials [T1589]. After compromising an employee account, the actors exploited a trusted relationship with a partner network, using the initial foothold to pivot into the internal DNC-equivalent system [T1199].\n\n### Attack Details\nUpon gaining access, the adversary executed malicious commands via Launchctl to load a backdoor as a system service on macOS systems [T1569.001], while simultaneously configuring a CronJob to deploy a container for data exfiltration during off-peak hours [T1053.007]. To maintain persistence, they created a new user account named 'backdoor_admin' using net user commands [T1136] and conducted password policy discovery by executing 'net accounts /domain' to assess security controls [T1201]. System logs from TechGlobal Inc. showed unusual activity in the /var/log/ directory, but no immediate alerts were triggered.\n\nFor data collection, the malware employed bash scripts to stage harvested credentials into a consolidated archive file [T1074], with automated processes identifying and archiving files based on specific extensions like .docx and .pdf [T1119]. The backdoor communicated through the corporate web proxy to hide its infrastructure and bypass network egress restrictions [T1665], using TCP for command and control (C2) communications [T1095]. Additionally, the actors used USB-based methods with scripts designed to exfiltrate system configuration files from compromised workstations [T1052.001], and reconnaissance modules attempted to locate Twilio webhook URLs in application source code as part of SMS pumping tactics [T1496.003]. The infection also included a cryptocurrency miner that hijacked the system's graphics card for resource exploitation [T1496].\n\n### Recommendations\nBlue teams should monitor for unauthorized account creations, review scheduled tasks and container jobs, inspect proxy logs for anomalous traffic, and implement USB device controls. Regular employee training on phishing awareness is critical to mitigate initial access vectors.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was gained through a phishing campaign where actors sent emails impersonating the HR system to gather employee login credentials.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "After compromising an employee account, the actors exploited a trusted relationship with a partner network, using the initial foothold to pivot into the internal DNC-equivalent system.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "To maintain persistence, they created a new user account named 'backdoor_admin' using net user commands and conducted password policy discovery by executing 'net accounts /domain' to assess security controls.",
+            "technique_id": "T1136",
+            "technique_name": "Create Account"
+        },
+        {
+            "sentence": "To maintain persistence, they created a new user account named 'backdoor_admin' using net user commands and conducted password policy discovery by executing 'net accounts /domain' to assess security controls.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "For data collection, the malware employed bash scripts to stage harvested credentials into a consolidated archive file, with automated processes identifying and archiving files based on specific extensions like.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "pdf.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        },
+        {
+            "sentence": "The backdoor communicated through the corporate web proxy to hide its infrastructure and bypass network egress restrictions, using TCP for command and control (C2) communications.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        },
+        {
+            "sentence": "The backdoor communicated through the corporate web proxy to hide its infrastructure and bypass network egress restrictions, using TCP for command and control (C2) communications.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "The infection also included a cryptocurrency miner that hijacked the system's graphics card for resource exploitation.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Corporate Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowMimic', targeting corporate environments for data theft and resource exploitation. The campaign leverages phishing, trusted relationships, and multi-platform persistence mechanisms, with exfiltration via USB and network protocols. Blue teams should review logs for suspicious account creation, scheduled tasks, and unusual outbound traffic.",
+        "full_report_text": "### Background\nShadowMimic is a fictional APT group assessed to operate with moderate sophistication, focusing on financial and technology sectors. This report simulates an incident at 'TechGlobal Inc.', a mid-sized software company, to provide training on detection and response. Initial access was gained through a phishing campaign where actors sent emails impersonating the HR system to gather employee login credentials [T1589]. After compromising an employee account, the actors exploited a trusted relationship with a partner network, using the initial foothold to pivot into the internal DNC-equivalent system [T1199].\n\n### Attack Details\nUpon gaining access, the adversary executed malicious commands via Launchctl to load a backdoor as a system service on macOS systems [T1569.001], while simultaneously configuring a CronJob to deploy a container for data exfiltration during off-peak hours [T1053.007]. To maintain persistence, they created a new user account named 'backdoor_admin' using net user commands [T1136] and conducted password policy discovery by executing 'net accounts /domain' to assess security controls [T1201]. System logs from TechGlobal Inc. showed unusual activity in the /var/log/ directory, but no immediate alerts were triggered.\n\nFor data collection, the malware employed bash scripts to stage harvested credentials into a consolidated archive file [T1074], with automated processes identifying and archiving files based on specific extensions like .docx and .pdf [T1119]. The backdoor communicated through the corporate web proxy to hide its infrastructure and bypass network egress restrictions [T1665], using TCP for command and control (C2) communications [T1095]. Additionally, the actors used USB-based methods with scripts designed to exfiltrate system configuration files from compromised workstations [T1052.001], and reconnaissance modules attempted to locate Twilio webhook URLs in application source code as part of SMS pumping tactics [T1496.003]. The infection also included a cryptocurrency miner that hijacked the system's graphics card for resource exploitation [T1496].\n\n### Recommendations\nBlue teams should monitor for unauthorized account creations, review scheduled tasks and container jobs, inspect proxy logs for anomalous traffic, and implement USB device controls. Regular employee training on phishing awareness is critical to mitigate initial access vectors.",
+        "techniques_used": [
+            "T1589",
+            "T1199",
+            "T1569.001",
+            "T1053.007",
+            "T1136",
+            "T1201",
+            "T1074",
+            "T1119",
+            "T1665",
+            "T1095",
+            "T1052.001",
+            "T1496.003",
+            "T1496"
+        ]
+    }
+}

@@ -1,0 +1,81 @@
+{
+    "report_id": "report_113",
+    "generated_at": "20251222_120124",
+    "scenario_target_ids": [
+        "T1199",
+        "T1072",
+        "T1542",
+        "T1003.005",
+        "T1071.004",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1199",
+        "T1072",
+        "T1542",
+        "T1003.005",
+        "T1071.004",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1071.004",
+        "T1542",
+        "T1589",
+        "T1498",
+        "T1072",
+        "T1003.005"
+    ],
+    "clean_text": "Background: Cobalt Serpent is a simulated advanced persistent threat (APT) group with suspected ties to fictional nation-state actors, focusing on healthcare entities for data exfiltration and disruption. The campaign began in early 2024, with initial reports from a mid-sized hospital network, 'MediCare Systems Inc.,' which experienced a ransomware incident after routine MSP maintenance. MediCare Systems, based in Chicago, operates 50 clinics nationwide and uses AWS for cloud infrastructure, with system logs showing unusual activity during off-hours, such as increased DNS queries to non-standard domains like 'update.health-check[.]net' and failed login attempts from unrecognized IP addresses, though these were initially dismissed as false positives by IT staff.\n\nThe actors likely conduct reconnaissance to identify MSP partners with access to target networks, then exploit a trusted relationship by compromising legitimate MSP credentials through phishing or social engineering, as observed in logs showing anomalous access from MSP IPs during non-business hours. Once inside, they used AWS Systems Manager to deploy a malicious script that disabled security controls like antivirus and firewalls on all connected EC2 instances while simultaneously extracting cached domain credentials from memory using tools similar to Mimikatz, which allowed lateral movement to domain controllers. For persistence, the ransomware modified UEFI firmware to create a backdoor that survives disk formatting, ensuring continued access even after system reinstallation. Command and control was maintained through DNS queries to obfuscated domains, blending with normal traffic, and the actors employed network denial of service via IP spoofing scripts to hide the true origin of DDoS attacks, which overwhelmed external firewalls and distracted incident response teams. Additional noise includes routine system updates from 'PatchManager v3.2' that coincided with malicious activity, making detection challenging without correlation of logs across endpoints and network segments.",
+    "tagged_text": "Background: Cobalt Serpent is a simulated advanced persistent threat (APT) group with suspected ties to fictional nation-state actors, focusing on healthcare entities for data exfiltration and disruption. The campaign began in early 2024, with initial reports from a mid-sized hospital network, 'MediCare Systems Inc.,' which experienced a ransomware incident after routine MSP maintenance. MediCare Systems, based in Chicago, operates 50 clinics nationwide and uses AWS for cloud infrastructure, with system logs showing unusual activity during off-hours, such as increased DNS queries to non-standard domains like 'update.health-check[.]net' and failed login attempts from unrecognized IP addresses, though these were initially dismissed as false positives by IT staff.\n\nThe actors likely conduct reconnaissance [T1589] to identify MSP partners with access to target networks, then exploit a trusted relationship [T1199] by compromising legitimate MSP credentials through phishing or social engineering, as observed in logs showing anomalous access from MSP IPs during non-business hours. Once inside, they used AWS Systems Manager [T1072] to deploy a malicious script that disabled security controls like antivirus and firewalls on all connected EC2 instances while simultaneously extracting cached domain credentials [T1003.005] from memory using tools similar to Mimikatz, which allowed lateral movement to domain controllers. For persistence, the ransomware modified UEFI firmware [T1542] to create a backdoor that survives disk formatting, ensuring continued access even after system reinstallation. Command and control was maintained through DNS queries [T1071.004] to obfuscated domains, blending with normal traffic, and the actors employed network denial of service [T1498] via IP spoofing scripts to hide the true origin of DDoS attacks, which overwhelmed external firewalls and distracted incident response teams. Additional noise includes routine system updates from 'PatchManager v3.2' that coincided with malicious activity, making detection challenging without correlation of logs across endpoints and network segments.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify MSP partners with access to target networks, then exploit a trusted relationship by compromising legitimate MSP credentials through phishing or social engineering, as observed in logs showing anomalous access from MSP IPs during non-business hours.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify MSP partners with access to target networks, then exploit a trusted relationship by compromising legitimate MSP credentials through phishing or social engineering, as observed in logs showing anomalous access from MSP IPs during non-business hours.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "Once inside, they used AWS Systems Manager to deploy a malicious script that disabled security controls like antivirus and firewalls on all connected EC2 instances while simultaneously extracting cached domain credentials [T1003.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "For persistence, the ransomware modified UEFI firmware to create a backdoor that survives disk formatting, ensuring continued access even after system reinstallation.",
+            "technique_id": "T1542",
+            "technique_name": "Pre-OS Boot"
+        },
+        {
+            "sentence": "004] to obfuscated domains, blending with normal traffic, and the actors employed network denial of service via IP spoofing scripts to hide the true origin of DDoS attacks, which overwhelmed external firewalls and distracted incident response teams.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Leveraging Trusted Relationships and Firmware Persistence",
+        "summary": "This advisory details a fictional campaign by a simulated threat actor, referred to as 'Cobalt Serpent,' targeting organizations in the healthcare sector. The campaign exploits trusted relationships with Managed Service Providers (MSPs) to gain initial access, deploys ransomware via software management tools, and establishes persistence through UEFI firmware modification. Techniques include credential theft, DNS-based command and control, and network denial of service to obscure malicious activities. This report is for educational purposes to train blue teams on detecting and mitigating such multi-stage attacks.",
+        "full_report_text": "Background: Cobalt Serpent is a simulated advanced persistent threat (APT) group with suspected ties to fictional nation-state actors, focusing on healthcare entities for data exfiltration and disruption. The campaign began in early 2024, with initial reports from a mid-sized hospital network, 'MediCare Systems Inc.,' which experienced a ransomware incident after routine MSP maintenance. MediCare Systems, based in Chicago, operates 50 clinics nationwide and uses AWS for cloud infrastructure, with system logs showing unusual activity during off-hours, such as increased DNS queries to non-standard domains like 'update.health-check[.]net' and failed login attempts from unrecognized IP addresses, though these were initially dismissed as false positives by IT staff.\n\nThe actors likely conduct reconnaissance [T1589] to identify MSP partners with access to target networks, then exploit a trusted relationship [T1199] by compromising legitimate MSP credentials through phishing or social engineering, as observed in logs showing anomalous access from MSP IPs during non-business hours. Once inside, they used AWS Systems Manager [T1072] to deploy a malicious script that disabled security controls like antivirus and firewalls on all connected EC2 instances while simultaneously extracting cached domain credentials [T1003.005] from memory using tools similar to Mimikatz, which allowed lateral movement to domain controllers. For persistence, the ransomware modified UEFI firmware [T1542] to create a backdoor that survives disk formatting, ensuring continued access even after system reinstallation. Command and control was maintained through DNS queries [T1071.004] to obfuscated domains, blending with normal traffic, and the actors employed network denial of service [T1498] via IP spoofing scripts to hide the true origin of DDoS attacks, which overwhelmed external firewalls and distracted incident response teams. Additional noise includes routine system updates from 'PatchManager v3.2' that coincided with malicious activity, making detection challenging without correlation of logs across endpoints and network segments.",
+        "techniques_used": [
+            "T1589",
+            "T1199",
+            "T1072",
+            "T1542",
+            "T1003.005",
+            "T1071.004",
+            "T1498"
+        ]
+    }
+}

@@ -1,0 +1,98 @@
+{
+    "report_id": "report_611",
+    "generated_at": "20251222_170228",
+    "scenario_target_ids": [
+        "T1595.003",
+        "T1587",
+        "T1566.001",
+        "T1053",
+        "T1542.002",
+        "T1069",
+        "T1087.004",
+        "T1568.002",
+        "T1052.001",
+        "T1041",
+        "T1491.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.003",
+        "T1587",
+        "T1566.001",
+        "T1053",
+        "T1542.002",
+        "T1069",
+        "T1087.004",
+        "T1568.002",
+        "T1052.001",
+        "T1041",
+        "T1491.002"
+    ],
+    "actual_found_ids": [
+        "T1587",
+        "T1566.001",
+        "T1595.003",
+        "T1069",
+        "T1568.002",
+        "T1542.002",
+        "T1041",
+        "T1053",
+        "T1087.004",
+        "T1491.002",
+        "T1052.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'ShadowHawk'. This group targeted VoltGrid Inc., a fictional energy provider based in Chicago, Illinois, with 500 employees and operations across the Midwest. Initial detection occurred when VoltGrid's security team noted anomalous HTTP traffic patterns and a modified company homepage displaying fake cryptocurrency donation requests. Investigation revealed that the actors likely conducted reconnaissance by employing DirBuster to identify vulnerable plugin directories with known security flaws, which was logged in server logs as multiple 404 errors for obscure paths like '/wp-admin/plugins/old_backup/'. Following this, ShadowHawk developed and used a custom mailing toolkit to craft spearphishing emails, sending malicious Microsoft Office documents attached to targeted employees; one such email, from a spoofed vendor account, was opened by a finance department user on March 10, 2024, triggering macro execution. Upon execution, the malware employed schtasks.exe to create a scheduled task that runs remote_access_tool.exe every 15 minutes while simultaneously altering the BIOS firmware to load a malicious payload during system startup. The actors then used WMIC to query user accounts with 'wmic useraccount get name,sid' to identify privileged users and ran 'az ad user list' with specific filters to target only enabled user accounts in the Azure Active Directory, as seen in cloud audit logs showing unusual command executions. For command and control, the malware utilized a domain generation algorithm to establish communications, generating domains like 'dga1234.example.com' that resolved to IP addresses in suspicious ranges. Data exfiltration involved using a USB device to collect system information and network configurations from the compromised machine and exfiltrating sensitive data via HTTP to already established C2 servers, with network captures showing large outbound transfers to foreign IPs. VoltGrid's incident response team isolated affected systems and restored backups, but the campaign highlights the need for robust monitoring of firmware integrity and cloud account activities. This scenario is purely educational and based on simulated logs, including irrelevant entries like routine system updates and user login attempts from trusted IPs.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'ShadowHawk'. This group targeted VoltGrid Inc., a fictional energy provider based in Chicago, Illinois, with 500 employees and operations across the Midwest. Initial detection occurred when VoltGrid's security team noted anomalous HTTP traffic patterns and a modified company homepage displaying fake cryptocurrency donation requests [T1491.002]. Investigation revealed that the actors likely conducted reconnaissance by employing DirBuster to identify vulnerable plugin directories with known security flaws [T1595.003], which was logged in server logs as multiple 404 errors for obscure paths like '/wp-admin/plugins/old_backup/'. Following this, ShadowHawk developed and used a custom mailing toolkit to craft spearphishing emails [T1587], sending malicious Microsoft Office documents attached to targeted employees [T1566.001]; one such email, from a spoofed vendor account, was opened by a finance department user on March 10, 2024, triggering macro execution. Upon execution, the malware employed schtasks.exe to create a scheduled task that runs remote_access_tool.exe every 15 minutes [T1053] while simultaneously altering the BIOS firmware to load a malicious payload during system startup [T1542.002]. The actors then used WMIC to query user accounts with 'wmic useraccount get name,sid' to identify privileged users [T1069] and ran 'az ad user list' with specific filters to target only enabled user accounts in the Azure Active Directory [T1087.004], as seen in cloud audit logs showing unusual command executions. For command and control, the malware utilized a domain generation algorithm to establish communications [T1568.002], generating domains like 'dga1234.example.com' that resolved to IP addresses in suspicious ranges. Data exfiltration involved using a USB device to collect system information and network configurations from the compromised machine [T1052.001] and exfiltrating sensitive data via HTTP to already established C2 servers [T1041], with network captures showing large outbound transfers to foreign IPs. VoltGrid's incident response team isolated affected systems and restored backups, but the campaign highlights the need for robust monitoring of firmware integrity and cloud account activities. This scenario is purely educational and based on simulated logs, including irrelevant entries like routine system updates and user login attempts from trusted IPs.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following this, ShadowHawk developed and used a custom mailing toolkit to craft spearphishing emails, sending malicious Microsoft Office documents attached to targeted employees [T1566.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "exe every 15 minutes while simultaneously altering the BIOS firmware to load a malicious payload during system startup [T1542.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "The actors then used WMIC to query user accounts with 'wmic useraccount get name,sid' to identify privileged users and ran 'az ad user list' with specific filters to target only enabled user accounts in the Azure Active Directory [T1087.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "001] and exfiltrating sensitive data via HTTP to already established C2 servers, with network captures showing large outbound transfers to foreign IPs.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHawk' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowHawk', which targeted a mid-sized energy company, 'VoltGrid Inc.', to exfiltrate sensitive operational data and disrupt services. The actors employed a multi-phase approach involving reconnaissance, spearphishing, persistence mechanisms, and data exfiltration, leveraging techniques such as firmware manipulation and cloud account discovery. VoltGrid Inc. reported unusual network activity on March 15, 2024, leading to the discovery of compromised systems and altered web content. This report is for blue team training purposes to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'ShadowHawk'. This group targeted VoltGrid Inc., a fictional energy provider based in Chicago, Illinois, with 500 employees and operations across the Midwest. Initial detection occurred when VoltGrid's security team noted anomalous HTTP traffic patterns and a modified company homepage displaying fake cryptocurrency donation requests [T1491.002]. Investigation revealed that the actors likely conducted reconnaissance by employing DirBuster to identify vulnerable plugin directories with known security flaws [T1595.003], which was logged in server logs as multiple 404 errors for obscure paths like '/wp-admin/plugins/old_backup/'. Following this, ShadowHawk developed and used a custom mailing toolkit to craft spearphishing emails [T1587], sending malicious Microsoft Office documents attached to targeted employees [T1566.001]; one such email, from a spoofed vendor account, was opened by a finance department user on March 10, 2024, triggering macro execution. Upon execution, the malware employed schtasks.exe to create a scheduled task that runs remote_access_tool.exe every 15 minutes [T1053] while simultaneously altering the BIOS firmware to load a malicious payload during system startup [T1542.002]. The actors then used WMIC to query user accounts with 'wmic useraccount get name,sid' to identify privileged users [T1069] and ran 'az ad user list' with specific filters to target only enabled user accounts in the Azure Active Directory [T1087.004], as seen in cloud audit logs showing unusual command executions. For command and control, the malware utilized a domain generation algorithm to establish communications [T1568.002], generating domains like 'dga1234.example.com' that resolved to IP addresses in suspicious ranges. Data exfiltration involved using a USB device to collect system information and network configurations from the compromised machine [T1052.001] and exfiltrating sensitive data via HTTP to already established C2 servers [T1041], with network captures showing large outbound transfers to foreign IPs. VoltGrid's incident response team isolated affected systems and restored backups, but the campaign highlights the need for robust monitoring of firmware integrity and cloud account activities. This scenario is purely educational and based on simulated logs, including irrelevant entries like routine system updates and user login attempts from trusted IPs.",
+        "techniques_used": [
+            "T1595.003",
+            "T1587",
+            "T1566.001",
+            "T1053",
+            "T1542.002",
+            "T1069",
+            "T1087.004",
+            "T1568.002",
+            "T1052.001",
+            "T1041",
+            "T1491.002"
+        ]
+    }
+}

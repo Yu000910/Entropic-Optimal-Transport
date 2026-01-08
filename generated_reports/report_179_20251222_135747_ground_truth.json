@@ -1,0 +1,103 @@
+{
+    "report_id": "report_179",
+    "generated_at": "20251222_135747",
+    "scenario_target_ids": [
+        "T1592.002",
+        "T1078.002",
+        "T1053.003",
+        "T1218.007",
+        "T1003",
+        "T1049",
+        "T1497",
+        "T1213",
+        "T1095",
+        "T1205"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.002",
+        "T1078.002",
+        "T1218.007",
+        "T1003",
+        "T1213",
+        "T1053.003",
+        "T1049",
+        "T1497",
+        "T1095",
+        "T1205"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1497",
+        "T1218.007",
+        "T1205",
+        "T1003",
+        "T1078.002",
+        "T1053.003",
+        "T1592.002",
+        "T1049",
+        "T1213"
+    ],
+    "clean_text": "In March 2024, FinSecure Bank, a mid-sized financial institution with operations across North America, reported anomalous network traffic and performance degradation on its internal servers. Initial analysis revealed unauthorized access and malicious activity spanning multiple systems. The actors likely conducted reconnaissance by scanning FTP servers to gather software banners and identify vulnerable versions, which facilitated initial access through weak domain account passwords and password reuse. Upon gaining access, the adversary employed msiexec.exe with the /i parameter to load and execute a rogue DLL file while simultaneously using PowerShell to dump OS credentials and query SharePoint repositories to collect sensitive project documentation. For persistence, a cryptocurrency miner was scheduled to execute through cron during off-peak hours, and the malware used netstat to list TCP connection status to monitor network activity. To evade detection, the malware incorporated checks to detect if it was running within a sandbox or other virtualized analysis environment, and it established a TCP socket for C2 communication using the API WSASocketW while leveraging raw sockets to craft custom network packets that bypassed standard firewall port monitoring. System logs from FinSecure Bank's FTP server (IP: 192.168.1.100) showed multiple failed login attempts prior to the breach, though these were initially dismissed as noise. The bank's IT team noted increased CPU usage on Linux servers during nighttime hours, correlating with the cron-scheduled miner execution. No customer data was exfiltrated in this fictional scenario, but the incident highlights the need for robust password policies and network monitoring.",
+    "tagged_text": "In March 2024, FinSecure Bank, a mid-sized financial institution with operations across North America, reported anomalous network traffic and performance degradation on its internal servers. Initial analysis revealed unauthorized access and malicious activity spanning multiple systems. The actors likely conducted reconnaissance by scanning FTP servers to gather software banners and identify vulnerable versions [T1592.002], which facilitated initial access through weak domain account passwords and password reuse [T1078.002]. Upon gaining access, the adversary employed msiexec.exe with the /i parameter to load and execute a rogue DLL file [T1218.007] while simultaneously using PowerShell to dump OS credentials [T1003] and query SharePoint repositories to collect sensitive project documentation [T1213]. For persistence, a cryptocurrency miner was scheduled to execute through cron during off-peak hours [T1053.003], and the malware used netstat to list TCP connection status [T1049] to monitor network activity. To evade detection, the malware incorporated checks to detect if it was running within a sandbox or other virtualized analysis environment [T1497], and it established a TCP socket for C2 communication using the API WSASocketW [T1095] while leveraging raw sockets to craft custom network packets that bypassed standard firewall port monitoring [T1205]. System logs from FinSecure Bank's FTP server (IP: 192.168.1.100) showed multiple failed login attempts prior to the breach, though these were initially dismissed as noise. The bank's IT team noted increased CPU usage on Linux servers during nighttime hours, correlating with the cron-scheduled miner execution. No customer data was exfiltrated in this fictional scenario, but the incident highlights the need for robust password policies and network monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "007] while simultaneously using PowerShell to dump OS credentials and query SharePoint repositories to collect sensitive project documentation.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "007] while simultaneously using PowerShell to dump OS credentials and query SharePoint repositories to collect sensitive project documentation.",
+            "technique_id": "T1213",
+            "technique_name": "Data from Information Repositories"
+        },
+        {
+            "sentence": "003], and the malware used netstat to list TCP connection status to monitor network activity.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "To evade detection, the malware incorporated checks to detect if it was running within a sandbox or other virtualized analysis environment, and it established a TCP socket for C2 communication using the API WSASocketW while leveraging raw sockets to craft custom network packets that bypassed standard firewall port monitoring.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "To evade detection, the malware incorporated checks to detect if it was running within a sandbox or other virtualized analysis environment, and it established a TCP socket for C2 communication using the API WSASocketW while leveraging raw sockets to craft custom network packets that bypassed standard firewall port monitoring.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "To evade detection, the malware incorporated checks to detect if it was running within a sandbox or other virtualized analysis environment, and it established a TCP socket for C2 communication using the API WSASocketW while leveraging raw sockets to craft custom network packets that bypassed standard firewall port monitoring.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMiner' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated 'ShadowMiner,' targeting financial institutions to deploy cryptocurrency miners and exfiltrate sensitive data. The activity involves initial reconnaissance, credential exploitation, persistence mechanisms, and evasion techniques, as observed in a fictional incident at 'FinSecure Bank' from March to April 2024.",
+        "full_report_text": "In March 2024, FinSecure Bank, a mid-sized financial institution with operations across North America, reported anomalous network traffic and performance degradation on its internal servers. Initial analysis revealed unauthorized access and malicious activity spanning multiple systems. The actors likely conducted reconnaissance by scanning FTP servers to gather software banners and identify vulnerable versions [T1592.002], which facilitated initial access through weak domain account passwords and password reuse [T1078.002]. Upon gaining access, the adversary employed msiexec.exe with the /i parameter to load and execute a rogue DLL file [T1218.007] while simultaneously using PowerShell to dump OS credentials [T1003] and query SharePoint repositories to collect sensitive project documentation [T1213]. For persistence, a cryptocurrency miner was scheduled to execute through cron during off-peak hours [T1053.003], and the malware used netstat to list TCP connection status [T1049] to monitor network activity. To evade detection, the malware incorporated checks to detect if it was running within a sandbox or other virtualized analysis environment [T1497], and it established a TCP socket for C2 communication using the API WSASocketW [T1095] while leveraging raw sockets to craft custom network packets that bypassed standard firewall port monitoring [T1205]. System logs from FinSecure Bank's FTP server (IP: 192.168.1.100) showed multiple failed login attempts prior to the breach, though these were initially dismissed as noise. The bank's IT team noted increased CPU usage on Linux servers during nighttime hours, correlating with the cron-scheduled miner execution. No customer data was exfiltrated in this fictional scenario, but the incident highlights the need for robust password policies and network monitoring.",
+        "techniques_used": [
+            "T1592.002",
+            "T1078.002",
+            "T1218.007",
+            "T1003",
+            "T1213",
+            "T1053.003",
+            "T1049",
+            "T1497",
+            "T1095",
+            "T1205"
+        ]
+    }
+}

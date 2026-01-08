@@ -1,0 +1,81 @@
+{
+    "report_id": "report_164",
+    "generated_at": "20251222_122126",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1569.001",
+        "T1653",
+        "T1078.003",
+        "T1546.002",
+        "T1558.001",
+        "T1001.003",
+        "T1041"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.002",
+        "T1558.001",
+        "T1569.001",
+        "T1546.002",
+        "T1653",
+        "T1078.003",
+        "T1001.003",
+        "T1041"
+    ],
+    "actual_found_ids": [
+        "T1001.003",
+        "T1558.001",
+        "T1078.002",
+        "T1653",
+        "T1078.003",
+        "T1589",
+        "T1041",
+        "T1546.002",
+        "T1569.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional advanced persistent threat (APT) group 'Velvet Ant.' This group has been observed targeting organizations in the energy and telecommunications sectors, with a focus on maintaining long-term access and exfiltrating sensitive data. The campaign leverages a combination of credential theft, persistence mechanisms, and stealthy communication to evade detection.\n\nInitial analysis indicates that Velvet Ant likely conducted reconnaissance to identify vulnerable systems, though specific details are omitted for brevity. Upon gaining initial access, the actors executed Mimikatz.exe to extract Kerberos tickets from LSASS memory, enabling unauthorized access to domain accounts. Subsequently, they exploited the KRBTGT NTLM hash to generate a golden ticket with unlimited lifetime, facilitating persistent domain-level privileges.\n\nFor persistence on macOS systems, the attacker used 'launchctl load -F /System/Library/LaunchDaemons/compromised.plist' to force-load a malicious launch daemon while simultaneously modifying Windows registry keys to change HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that runs every time the screen saver activates. Additionally, a malicious script ran 'powercfg.exe /setactive scheme_min' to keep systems awake and prevent automatic shutdown, ensuring continuous operation of malicious processes.\n\nLateral movement involved Velvet Ant accessing vulnerable Cisco switch devices using local accounts with administrator privileges, allowing for network reconnaissance and further compromise. The malware embedded command data within HTTP User-Agent headers to blend with normal web traffic, enabling stealthy command and control (C2) communications. Exfiltration was conducted by sending victim data to an actor-controlled C2 server, with logs showing anomalous outbound traffic patterns during off-hours.\n\nSystem logs from affected endpoints recorded multiple failed login attempts and unusual process spawns, though these were not directly tied to the techniques used. The targeted organizations reported minor disruptions in network performance, but no significant operational impact was observed. This scenario highlights the importance of monitoring for credential misuse, persistence mechanisms, and abnormal network traffic to detect and mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional advanced persistent threat (APT) group 'Velvet Ant.' This group has been observed targeting organizations in the energy and telecommunications sectors, with a focus on maintaining long-term access and exfiltrating sensitive data. The campaign leverages a combination of credential theft, persistence mechanisms, and stealthy communication to evade detection.\n\nInitial analysis indicates that Velvet Ant likely conducted reconnaissance [T1589] to identify vulnerable systems, though specific details are omitted for brevity. Upon gaining initial access, the actors executed Mimikatz.exe to extract Kerberos tickets from LSASS memory, enabling unauthorized access to domain accounts [T1078.002]. Subsequently, they exploited the KRBTGT NTLM hash to generate a golden ticket with unlimited lifetime [T1558.001], facilitating persistent domain-level privileges.\n\nFor persistence on macOS systems, the attacker used 'launchctl load -F /System/Library/LaunchDaemons/compromised.plist' to force-load a malicious launch daemon [T1569.001] while simultaneously modifying Windows registry keys to change HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that runs every time the screen saver activates [T1546.002]. Additionally, a malicious script ran 'powercfg.exe /setactive scheme_min' to keep systems awake and prevent automatic shutdown [T1653], ensuring continuous operation of malicious processes.\n\nLateral movement involved Velvet Ant accessing vulnerable Cisco switch devices using local accounts with administrator privileges [T1078.003], allowing for network reconnaissance and further compromise. The malware embedded command data within HTTP User-Agent headers to blend with normal web traffic [T1001.003], enabling stealthy command and control (C2) communications. Exfiltration was conducted by sending victim data to an actor-controlled C2 server [T1041], with logs showing anomalous outbound traffic patterns during off-hours.\n\nSystem logs from affected endpoints recorded multiple failed login attempts and unusual process spawns, though these were not directly tied to the techniques used. The targeted organizations reported minor disruptions in network performance, but no significant operational impact was observed. This scenario highlights the importance of monitoring for credential misuse, persistence mechanisms, and abnormal network traffic to detect and mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis indicates that Velvet Ant likely conducted reconnaissance to identify vulnerable systems, though specific details are omitted for brevity.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "exe /setactive scheme_min' to keep systems awake and prevent automatic shutdown, ensuring continuous operation of malicious processes.",
+            "technique_id": "T1653",
+            "technique_name": "Power Settings"
+        },
+        {
+            "sentence": "Exfiltration was conducted by sending victim data to an actor-controlled C2 server, with logs showing anomalous outbound traffic patterns during off-hours.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Velvet Ant' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Velvet Ant' targeting critical infrastructure sectors, focusing on domain persistence, lateral movement, and data exfiltration for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional advanced persistent threat (APT) group 'Velvet Ant.' This group has been observed targeting organizations in the energy and telecommunications sectors, with a focus on maintaining long-term access and exfiltrating sensitive data. The campaign leverages a combination of credential theft, persistence mechanisms, and stealthy communication to evade detection.\n\nInitial analysis indicates that Velvet Ant likely conducted reconnaissance [T1589] to identify vulnerable systems, though specific details are omitted for brevity. Upon gaining initial access, the actors executed Mimikatz.exe to extract Kerberos tickets from LSASS memory, enabling unauthorized access to domain accounts [T1078.002]. Subsequently, they exploited the KRBTGT NTLM hash to generate a golden ticket with unlimited lifetime [T1558.001], facilitating persistent domain-level privileges.\n\nFor persistence on macOS systems, the attacker used 'launchctl load -F /System/Library/LaunchDaemons/compromised.plist' to force-load a malicious launch daemon [T1569.001] while simultaneously modifying Windows registry keys to change HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that runs every time the screen saver activates [T1546.002]. Additionally, a malicious script ran 'powercfg.exe /setactive scheme_min' to keep systems awake and prevent automatic shutdown [T1653], ensuring continuous operation of malicious processes.\n\nLateral movement involved Velvet Ant accessing vulnerable Cisco switch devices using local accounts with administrator privileges [T1078.003], allowing for network reconnaissance and further compromise. The malware embedded command data within HTTP User-Agent headers to blend with normal web traffic [T1001.003], enabling stealthy command and control (C2) communications. Exfiltration was conducted by sending victim data to an actor-controlled C2 server [T1041], with logs showing anomalous outbound traffic patterns during off-hours.\n\nSystem logs from affected endpoints recorded multiple failed login attempts and unusual process spawns, though these were not directly tied to the techniques used. The targeted organizations reported minor disruptions in network performance, but no significant operational impact was observed. This scenario highlights the importance of monitoring for credential misuse, persistence mechanisms, and abnormal network traffic to detect and mitigate similar threats.",
+        "techniques_used": [
+            "T1589",
+            "T1078.002",
+            "T1558.001",
+            "T1569.001",
+            "T1546.002",
+            "T1653",
+            "T1078.003",
+            "T1001.003",
+            "T1041"
+        ]
+    }
+}

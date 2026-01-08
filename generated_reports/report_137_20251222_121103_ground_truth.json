@@ -1,0 +1,56 @@
+{
+    "report_id": "report_137",
+    "generated_at": "20251222_121103",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1204.001",
+        "T1218.003",
+        "T1666",
+        "T1571",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.001",
+        "T1204.001",
+        "T1218.003",
+        "T1666",
+        "T1571",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1204.001",
+        "T1195.001",
+        "T1565.002",
+        "T1666"
+    ],
+    "clean_text": "On October 15, 2024, a mid-sized financial services company, FinSecure Inc., reported anomalous network activity originating from its internal development environment. Initial logs showed unusual PowerShell executions and outbound connections on non-standard ports, prompting an investigation. FinSecure Inc., headquartered in New York with 500 employees, primarily handles online banking and investment platforms, maintaining hybrid infrastructure with on-premises servers and Azure cloud resources. The attack began with the compromise of a third-party software repository used for system management scripts, where adversaries injected malicious code into 'cleanup.ps1' to harvest browser history and cookies. Subsequently, targeted phishing emails containing malicious links were sent to FinSecure employees, with one user clicking the link, leading to the execution of QakBot malware. Once initial access was achieved, the actors abused CMSTP.exe's trusted status to load a credential-harvesting DLL without triggering security alerts while simultaneously establishing command and control (C2) communications over port 4050 to evade standard monitoring [T1218.003, T1571]. In the cloud environment, the adversary created a new Azure subscription to deploy malicious virtual machines and storage accounts, modifying the resource hierarchy to blend in with legitimate operations. During data exfiltration, the malware injected forged packets into the network stream to alter financial transaction amounts in real-time, manipulating transmitted data to siphon funds. System logs from FinSecure's SIEM indicated increased CPU usage on development servers, but these were initially dismissed as routine maintenance noise. The campaign persisted for two weeks before detection, highlighting gaps in software supply chain security and cloud governance.",
+    "tagged_text": "On October 15, 2024, a mid-sized financial services company, FinSecure Inc., reported anomalous network activity originating from its internal development environment. Initial logs showed unusual PowerShell executions and outbound connections on non-standard ports, prompting an investigation. FinSecure Inc., headquartered in New York with 500 employees, primarily handles online banking and investment platforms, maintaining hybrid infrastructure with on-premises servers and Azure cloud resources. The attack began with the compromise of a third-party software repository used for system management scripts, where adversaries injected malicious code into 'cleanup.ps1' to harvest browser history and cookies [T1195.001]. Subsequently, targeted phishing emails containing malicious links were sent to FinSecure employees, with one user clicking the link, leading to the execution of QakBot malware [T1204.001]. Once initial access was achieved, the actors abused CMSTP.exe's trusted status to load a credential-harvesting DLL without triggering security alerts while simultaneously establishing command and control (C2) communications over port 4050 to evade standard monitoring [T1218.003, T1571]. In the cloud environment, the adversary created a new Azure subscription to deploy malicious virtual machines and storage accounts, modifying the resource hierarchy to blend in with legitimate operations [T1666]. During data exfiltration, the malware injected forged packets into the network stream to alter financial transaction amounts in real-time, manipulating transmitted data to siphon funds [T1565.002]. System logs from FinSecure's SIEM indicated increased CPU usage on development servers, but these were initially dismissed as routine maintenance noise. The campaign persisted for two weeks before detection, highlighting gaps in software supply chain security and cloud governance.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the cloud environment, the adversary created a new Azure subscription to deploy malicious virtual machines and storage accounts, modifying the resource hierarchy to blend in with legitimate operations.",
+            "technique_id": "T1666",
+            "technique_name": "Modify Cloud Resource Hierarchy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector via Supply Chain and Cloud Compromise",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated advanced persistent threat (APT) campaign, designated FICT-2024-001, targeting financial institutions. This campaign leverages compromised software dependencies, social engineering, and cloud resource manipulation to exfiltrate sensitive data and manipulate financial transactions. The advisory provides a fictional narrative for blue team training, emphasizing detection and mitigation strategies across the attack lifecycle.",
+        "full_report_text": "On October 15, 2024, a mid-sized financial services company, FinSecure Inc., reported anomalous network activity originating from its internal development environment. Initial logs showed unusual PowerShell executions and outbound connections on non-standard ports, prompting an investigation. FinSecure Inc., headquartered in New York with 500 employees, primarily handles online banking and investment platforms, maintaining hybrid infrastructure with on-premises servers and Azure cloud resources. The attack began with the compromise of a third-party software repository used for system management scripts, where adversaries injected malicious code into 'cleanup.ps1' to harvest browser history and cookies [T1195.001]. Subsequently, targeted phishing emails containing malicious links were sent to FinSecure employees, with one user clicking the link, leading to the execution of QakBot malware [T1204.001]. Once initial access was achieved, the actors abused CMSTP.exe's trusted status to load a credential-harvesting DLL without triggering security alerts while simultaneously establishing command and control (C2) communications over port 4050 to evade standard monitoring [T1218.003, T1571]. In the cloud environment, the adversary created a new Azure subscription to deploy malicious virtual machines and storage accounts, modifying the resource hierarchy to blend in with legitimate operations [T1666]. During data exfiltration, the malware injected forged packets into the network stream to alter financial transaction amounts in real-time, manipulating transmitted data to siphon funds [T1565.002]. System logs from FinSecure's SIEM indicated increased CPU usage on development servers, but these were initially dismissed as routine maintenance noise. The campaign persisted for two weeks before detection, highlighting gaps in software supply chain security and cloud governance.",
+        "techniques_used": [
+            "T1195.001",
+            "T1204.001",
+            "T1218.003",
+            "T1666",
+            "T1571",
+            "T1565.002"
+        ]
+    }
+}

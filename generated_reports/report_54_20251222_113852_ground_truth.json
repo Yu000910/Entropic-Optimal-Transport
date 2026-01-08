@@ -1,0 +1,108 @@
+{
+    "report_id": "report_54",
+    "generated_at": "20251222_113852",
+    "scenario_target_ids": [
+        "T1078",
+        "T1648",
+        "T1547.005",
+        "T1564.001",
+        "T1600",
+        "T1222",
+        "T1621",
+        "T1550.001",
+        "T1071.005",
+        "T1567.002",
+        "T1529"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1648",
+        "T1547.005",
+        "T1564.001",
+        "T1600",
+        "T1222",
+        "T1621",
+        "T1550.001",
+        "T1071.005",
+        "T1567.002",
+        "T1529"
+    ],
+    "actual_found_ids": [
+        "T1621",
+        "T1564.001",
+        "T1567.002",
+        "T1222",
+        "T1529",
+        "T1600",
+        "T1648",
+        "T1071.005",
+        "T1547.005",
+        "T1078",
+        "T1550.001"
+    ],
+    "clean_text": "Shadow Serpent, a fictional advanced persistent threat (APT) group, has been observed conducting a sophisticated campaign against organizations with mixed on-premises and cloud infrastructures. The group likely initiated reconnaissance through open-source intelligence gathering, though specific techniques are not detailed in this scenario. In the Initial Access phase, the actors exploited a compromised valid account to gain entry into the victim's network, using it to schedule tasks for persistence. Once inside, they executed malicious activities by abusing a serverless Lambda function in the cloud environment to run unauthorized shell commands, while simultaneously modifying the Security Support Provider (SSP) in the Windows registry at HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages to install a custom authentication package for credential harvesting. To maintain stealth, the actors hid critical directories, such as VirtualBox and VBoxVmService, by setting their attributes to 'hidden', and weakened encryption by altering a crypto hardware driver to intercept keys before they reached secure modules. In the Persistence and Privilege Escalation phase, they modified file permissions using commands like 'chmod 666 /var/log/auth.log' to allow unauthorized read/write access to authentication logs. For Defense Evasion, the group employed multi-factor authentication (MFA) request generation, continuously sending MFA push notifications to overwhelm victims until acceptance, and used stolen application access tokens to query administrative REST APIs for elevated privileges. During Command and Control (C2), the actors leveraged publish/subscribe protocols, abusing XMPP's multi-user chat features for encrypted communications to coordinate activities. In the Exfiltration phase, data was transferred to cloud storage services like Dropbox using encrypted channels. Finally, to disrupt operations, the group executed system shutdowns via commands like `ExitWindowsEx` with the `EXW_SHUTDOWN` flag, causing reboots on compromised hosts. Throughout the campaign, system logs showed normal traffic patterns, and the organization's background in financial services provided no direct indicators; irrelevant network alerts included false positives from legacy systems, which were not tagged as part of the attack chain.",
+    "tagged_text": "Shadow Serpent, a fictional advanced persistent threat (APT) group, has been observed conducting a sophisticated campaign against organizations with mixed on-premises and cloud infrastructures. The group likely initiated reconnaissance through open-source intelligence gathering, though specific techniques are not detailed in this scenario. In the Initial Access phase, the actors exploited a compromised valid account [T1078] to gain entry into the victim's network, using it to schedule tasks for persistence. Once inside, they executed malicious activities by abusing a serverless Lambda function in the cloud environment [T1648] to run unauthorized shell commands, while simultaneously modifying the Security Support Provider (SSP) in the Windows registry at HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages [T1547.005] to install a custom authentication package for credential harvesting. To maintain stealth, the actors hid critical directories, such as VirtualBox and VBoxVmService, by setting their attributes to 'hidden' [T1564.001], and weakened encryption by altering a crypto hardware driver to intercept keys before they reached secure modules [T1600]. In the Persistence and Privilege Escalation phase, they modified file permissions using commands like 'chmod 666 /var/log/auth.log' [T1222] to allow unauthorized read/write access to authentication logs. For Defense Evasion, the group employed multi-factor authentication (MFA) request generation [T1621], continuously sending MFA push notifications to overwhelm victims until acceptance, and used stolen application access tokens [T1550.001] to query administrative REST APIs for elevated privileges. During Command and Control (C2), the actors leveraged publish/subscribe protocols [T1071.005], abusing XMPP's multi-user chat features for encrypted communications to coordinate activities. In the Exfiltration phase, data was transferred to cloud storage services like Dropbox [T1567.002] using encrypted channels. Finally, to disrupt operations, the group executed system shutdowns [T1529] via commands like `ExitWindowsEx` with the `EXW_SHUTDOWN` flag, causing reboots on compromised hosts. Throughout the campaign, system logs showed normal traffic patterns, and the organization's background in financial services provided no direct indicators; irrelevant network alerts included false positives from legacy systems, which were not tagged as part of the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the Initial Access phase, the actors exploited a compromised valid account to gain entry into the victim's network, using it to schedule tasks for persistence.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Once inside, they executed malicious activities by abusing a serverless Lambda function in the cloud environment to run unauthorized shell commands, while simultaneously modifying the Security Support Provider (SSP) in the Windows registry at HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages [T1547.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "001], and weakened encryption by altering a crypto hardware driver to intercept keys before they reached secure modules.",
+            "technique_id": "T1600",
+            "technique_name": "Weaken Encryption"
+        },
+        {
+            "sentence": "log' to allow unauthorized read/write access to authentication logs.",
+            "technique_id": "T1222",
+            "technique_name": "File and Directory Permissions Modification"
+        },
+        {
+            "sentence": "For Defense Evasion, the group employed multi-factor authentication (MFA) request generation, continuously sending MFA push notifications to overwhelm victims until acceptance, and used stolen application access tokens [T1550.",
+            "technique_id": "T1621",
+            "technique_name": "Multi-Factor Authentication Request Generation"
+        },
+        {
+            "sentence": "Finally, to disrupt operations, the group executed system shutdowns via commands like `ExitWindowsEx` with the `EXW_SHUTDOWN` flag, causing reboots on compromised hosts.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Serpent' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Shadow Serpent,' which targets hybrid cloud environments using a blend of credential theft, persistence mechanisms, and data exfiltration techniques. The campaign leverages valid accounts, serverless execution, and multi-factor authentication abuse to compromise systems and weaken security controls, providing training insights for blue teams on detecting and mitigating such advanced threats.",
+        "full_report_text": "Shadow Serpent, a fictional advanced persistent threat (APT) group, has been observed conducting a sophisticated campaign against organizations with mixed on-premises and cloud infrastructures. The group likely initiated reconnaissance through open-source intelligence gathering, though specific techniques are not detailed in this scenario. In the Initial Access phase, the actors exploited a compromised valid account [T1078] to gain entry into the victim's network, using it to schedule tasks for persistence. Once inside, they executed malicious activities by abusing a serverless Lambda function in the cloud environment [T1648] to run unauthorized shell commands, while simultaneously modifying the Security Support Provider (SSP) in the Windows registry at HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages [T1547.005] to install a custom authentication package for credential harvesting. To maintain stealth, the actors hid critical directories, such as VirtualBox and VBoxVmService, by setting their attributes to 'hidden' [T1564.001], and weakened encryption by altering a crypto hardware driver to intercept keys before they reached secure modules [T1600]. In the Persistence and Privilege Escalation phase, they modified file permissions using commands like 'chmod 666 /var/log/auth.log' [T1222] to allow unauthorized read/write access to authentication logs. For Defense Evasion, the group employed multi-factor authentication (MFA) request generation [T1621], continuously sending MFA push notifications to overwhelm victims until acceptance, and used stolen application access tokens [T1550.001] to query administrative REST APIs for elevated privileges. During Command and Control (C2), the actors leveraged publish/subscribe protocols [T1071.005], abusing XMPP's multi-user chat features for encrypted communications to coordinate activities. In the Exfiltration phase, data was transferred to cloud storage services like Dropbox [T1567.002] using encrypted channels. Finally, to disrupt operations, the group executed system shutdowns [T1529] via commands like `ExitWindowsEx` with the `EXW_SHUTDOWN` flag, causing reboots on compromised hosts. Throughout the campaign, system logs showed normal traffic patterns, and the organization's background in financial services provided no direct indicators; irrelevant network alerts included false positives from legacy systems, which were not tagged as part of the attack chain.",
+        "techniques_used": [
+            "T1078",
+            "T1648",
+            "T1547.005",
+            "T1564.001",
+            "T1600",
+            "T1222",
+            "T1621",
+            "T1550.001",
+            "T1071.005",
+            "T1567.002",
+            "T1529"
+        ]
+    }
+}

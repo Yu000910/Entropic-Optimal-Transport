@@ -1,0 +1,84 @@
+{
+    "report_id": "report_786",
+    "generated_at": "20251223_111326",
+    "scenario_target_ids": [
+        "T1078",
+        "T1648",
+        "T1547.014",
+        "T1606.001",
+        "T1539",
+        "T1090.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078",
+        "T1648",
+        "T1105",
+        "T1547.014",
+        "T1539",
+        "T1606.001",
+        "T1090.003"
+    ],
+    "actual_found_ids": [
+        "T1539",
+        "T1606.001",
+        "T1589",
+        "T1078",
+        "T1105",
+        "T1547.014",
+        "T1090.003",
+        "T1648"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) in a fictional scenario. Crimson Shadow, a suspected state-sponsored group, has been observed targeting financial and technology sectors globally since early 2024. The actors likely conduct reconnaissance by scanning public repositories and social media for employee credentials, though no specific logs confirm this activity. In one simulated incident at a fictional company, 'CloudTech Inc.', network logs from March 15, 2024, showed anomalous login attempts from IP addresses in Eastern Europe, but these were unrelated to the primary attack vector. The adversary gained initial access by exploiting compromised employee credentials obtained from a previous data breach, using valid accounts to authenticate into the victim's AWS environment. Once inside, they employed serverless execution by uploading a malicious Python script as a Lambda function and triggering it with crafted event data to download additional payloads while simultaneously establishing persistence through Active Setup by modifying the registry key HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\StubPath to point to a backdoor executable. During the lateral movement phase, system administrators reported unusual CPU spikes in development servers, but forensic analysis later attributed this to a misconfigured monitoring tool. The actors then stole web session cookies by copying Chrome profile directories from targeted user workstations and used a cookie-editing browser extension to manipulate web cookies, generating valid session tokens for accessing sensitive internal dashboards. For C2 communications, they implemented a multi-hop proxy by routing traffic through chains of compromised routers and cloud service providers to obfuscate their origin. Post-incident, CloudTech Inc. conducted a review that found no evidence of data loss, but the simulation highlighted gaps in cloud security monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) in a fictional scenario. Crimson Shadow, a suspected state-sponsored group, has been observed targeting financial and technology sectors globally since early 2024. The actors likely conduct reconnaissance [T1589] by scanning public repositories and social media for employee credentials, though no specific logs confirm this activity. In one simulated incident at a fictional company, 'CloudTech Inc.', network logs from March 15, 2024, showed anomalous login attempts from IP addresses in Eastern Europe, but these were unrelated to the primary attack vector. The adversary gained initial access by exploiting compromised employee credentials obtained from a previous data breach, using valid accounts [T1078] to authenticate into the victim's AWS environment. Once inside, they employed serverless execution [T1648] by uploading a malicious Python script as a Lambda function and triggering it with crafted event data to download additional payloads [T1105] while simultaneously establishing persistence through Active Setup [T1547.014] by modifying the registry key HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\StubPath to point to a backdoor executable. During the lateral movement phase, system administrators reported unusual CPU spikes in development servers, but forensic analysis later attributed this to a misconfigured monitoring tool. The actors then stole web session cookies [T1539] by copying Chrome profile directories from targeted user workstations and used a cookie-editing browser extension to manipulate web cookies [T1606.001], generating valid session tokens for accessing sensitive internal dashboards. For C2 communications, they implemented a multi-hop proxy [T1090.003] by routing traffic through chains of compromised routers and cloud service providers to obfuscate their origin. Post-incident, CloudTech Inc. conducted a review that found no evidence of data loss, but the simulation highlighted gaps in cloud security monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance by scanning public repositories and social media for employee credentials, though no specific logs confirm this activity.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The adversary gained initial access by exploiting compromised employee credentials obtained from a previous data breach, using valid accounts to authenticate into the victim's AWS environment.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Once inside, they employed serverless execution by uploading a malicious Python script as a Lambda function and triggering it with crafted event data to download additional payloads while simultaneously establishing persistence through Active Setup [T1547.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "Once inside, they employed serverless execution by uploading a malicious Python script as a Lambda function and triggering it with crafted event data to download additional payloads while simultaneously establishing persistence through Active Setup [T1547.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "The actors then stole web session cookies by copying Chrome profile directories from targeted user workstations and used a cookie-editing browser extension to manipulate web cookies [T1606.",
+            "technique_id": "T1539",
+            "technique_name": "Steal Web Session Cookie"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Shadow' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Crimson Shadow' targeting organizations with cloud-based serverless architectures. The actors leveraged valid credentials to gain initial access, executed malicious code via serverless functions, established persistence through Active Setup modifications, and utilized cookie manipulation and multi-hop proxies for stealthy data exfiltration and command-and-control (C2) communications.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) in a fictional scenario. Crimson Shadow, a suspected state-sponsored group, has been observed targeting financial and technology sectors globally since early 2024. The actors likely conduct reconnaissance [T1589] by scanning public repositories and social media for employee credentials, though no specific logs confirm this activity. In one simulated incident at a fictional company, 'CloudTech Inc.', network logs from March 15, 2024, showed anomalous login attempts from IP addresses in Eastern Europe, but these were unrelated to the primary attack vector. The adversary gained initial access by exploiting compromised employee credentials obtained from a previous data breach, using valid accounts [T1078] to authenticate into the victim's AWS environment. Once inside, they employed serverless execution [T1648] by uploading a malicious Python script as a Lambda function and triggering it with crafted event data to download additional payloads [T1105] while simultaneously establishing persistence through Active Setup [T1547.014] by modifying the registry key HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\StubPath to point to a backdoor executable. During the lateral movement phase, system administrators reported unusual CPU spikes in development servers, but forensic analysis later attributed this to a misconfigured monitoring tool. The actors then stole web session cookies [T1539] by copying Chrome profile directories from targeted user workstations and used a cookie-editing browser extension to manipulate web cookies [T1606.001], generating valid session tokens for accessing sensitive internal dashboards. For C2 communications, they implemented a multi-hop proxy [T1090.003] by routing traffic through chains of compromised routers and cloud service providers to obfuscate their origin. Post-incident, CloudTech Inc. conducted a review that found no evidence of data loss, but the simulation highlighted gaps in cloud security monitoring.",
+        "techniques_used": [
+            "T1589",
+            "T1078",
+            "T1648",
+            "T1105",
+            "T1547.014",
+            "T1539",
+            "T1606.001",
+            "T1090.003"
+        ]
+    }
+}

@@ -1,0 +1,118 @@
+{
+    "report_id": "report_316",
+    "generated_at": "20251222_145542",
+    "scenario_target_ids": [
+        "T1598.004",
+        "T1589",
+        "T1590.004",
+        "T1195.002",
+        "T1195.003",
+        "T1053.005",
+        "T1547.013",
+        "T1053.006",
+        "T1112",
+        "T1558.003",
+        "T1021.002",
+        "T1113",
+        "T1557.002",
+        "T1001.003",
+        "T1030"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1598.004",
+        "T1589",
+        "T1590.004",
+        "T1195.002",
+        "T1195.003",
+        "T1053.005",
+        "T1547.013",
+        "T1053.006",
+        "T1112",
+        "T1558.003",
+        "T1021.002",
+        "T1113",
+        "T1557.002",
+        "T1001.003",
+        "T1030"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1557.002",
+        "T1558.003",
+        "T1053.006",
+        "T1001.003",
+        "T1030",
+        "T1112",
+        "T1590.004",
+        "T1589",
+        "T1113",
+        "T1547.013",
+        "T1195.003",
+        "T1598.004",
+        "T1021.002",
+        "T1053.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional APT campaign, 'Shadow Echo', which has been observed targeting critical infrastructure entities, including energy and telecommunications sectors. This report is based on simulated threat intelligence for training purposes and does not reflect real-world incidents.\n\nAttack Narrative:\nInitial Access: The actors initiated contact by conducting spearphishing voice calls to impersonate trusted vendors, while simultaneously gathering victim identity information from public social media profiles and professional networks to tailor their approach. They researched the target organization's network topology by scraping public websites for architecture details, such as server layouts and IP ranges.\n\nExecution: Shadow Echo compromised the software supply chain by trojanizing a legitimate software update binary, and in parallel, they injected malicious firmware into wireless routers during the hardware supply chain to establish persistent backdoor access. System logs from the victim environment showed unusual network traffic spikes at 03:00 UTC, correlating with the deployment of these payloads.\n\nPersistence: Upon execution, the malware created a scheduled task to run malicious scripts at system startup, and it established persistence via XDG autostart entries by adding a hidden .desktop file in the user's autostart directory. Additionally, the adversary installed a systemd timer to periodically execute data exfiltration routines and modified registry keys under HKEY_CURRENT_USER to store configuration data for later use.\n\nPrivilege Escalation and Lateral Movement: The actors employed Kerberoasting techniques to extract service account credentials from Active Directory, enabling them to move laterally across the network using SMB/Windows admin shares to access sensitive files and systems. During this phase, network monitoring tools detected anomalous ARP requests indicative of ARP cache poisoning as the malware scanned for active hosts on the local subnet.\n\nCollection and Exfiltration: Shadow Echo captured screen images of victim desktops, saving them as 'Filter3.jpg' in temporary directories, and used protocol impersonation with custom HTTP headers to communicate with command-and-control (C2) servers. Data was exfiltrated in small chunks to evade detection, adhering to strict data transfer size limits by sending information in 27-character segments. The company's background includes a recent merger, which may have introduced security gaps exploited in this campaign.\n\nDefensive Recommendations: Organizations should implement network segmentation, monitor for unusual scheduled tasks and autostart entries, and enforce strong authentication mechanisms to mitigate similar threats. Regular audits of software and hardware supply chains are also advised.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional APT campaign, 'Shadow Echo', which has been observed targeting critical infrastructure entities, including energy and telecommunications sectors. This report is based on simulated threat intelligence for training purposes and does not reflect real-world incidents.\n\nAttack Narrative:\nInitial Access: The actors initiated contact by conducting spearphishing voice calls [T1598.004] to impersonate trusted vendors, while simultaneously gathering victim identity information [T1589] from public social media profiles and professional networks to tailor their approach. They researched the target organization's network topology [T1590.004] by scraping public websites for architecture details, such as server layouts and IP ranges.\n\nExecution: Shadow Echo compromised the software supply chain [T1195.002] by trojanizing a legitimate software update binary, and in parallel, they injected malicious firmware into wireless routers during the hardware supply chain [T1195.003] to establish persistent backdoor access. System logs from the victim environment showed unusual network traffic spikes at 03:00 UTC, correlating with the deployment of these payloads.\n\nPersistence: Upon execution, the malware created a scheduled task [T1053.005] to run malicious scripts at system startup, and it established persistence via XDG autostart entries [T1547.013] by adding a hidden .desktop file in the user's autostart directory. Additionally, the adversary installed a systemd timer [T1053.006] to periodically execute data exfiltration routines and modified registry keys [T1112] under HKEY_CURRENT_USER to store configuration data for later use.\n\nPrivilege Escalation and Lateral Movement: The actors employed Kerberoasting techniques [T1558.003] to extract service account credentials from Active Directory, enabling them to move laterally across the network using SMB/Windows admin shares [T1021.002] to access sensitive files and systems. During this phase, network monitoring tools detected anomalous ARP requests indicative of ARP cache poisoning [T1557.002] as the malware scanned for active hosts on the local subnet.\n\nCollection and Exfiltration: Shadow Echo captured screen images [T1113] of victim desktops, saving them as 'Filter3.jpg' in temporary directories, and used protocol impersonation [T1001.003] with custom HTTP headers to communicate with command-and-control (C2) servers. Data was exfiltrated in small chunks to evade detection, adhering to strict data transfer size limits [T1030] by sending information in 27-character segments. The company's background includes a recent merger, which may have introduced security gaps exploited in this campaign.\n\nDefensive Recommendations: Organizations should implement network segmentation, monitor for unusual scheduled tasks and autostart entries, and enforce strong authentication mechanisms to mitigate similar threats. Regular audits of software and hardware supply chains are also advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] to impersonate trusted vendors, while simultaneously gathering victim identity information from public social media profiles and professional networks to tailor their approach.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "006] to periodically execute data exfiltration routines and modified registry keys under HKEY_CURRENT_USER to store configuration data for later use.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "Collection and Exfiltration: Shadow Echo captured screen images of victim desktops, saving them as 'Filter3.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        },
+        {
+            "sentence": "Data was exfiltrated in small chunks to evade detection, adhering to strict data transfer size limits by sending information in 27-character segments.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Echo' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Shadow Echo', targeting critical infrastructure sectors. The campaign employs sophisticated techniques across the kill chain, including supply chain compromises, persistence mechanisms, and data exfiltration methods. Blue teams are advised to review defensive measures and indicators of compromise (IoCs) provided in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional APT campaign, 'Shadow Echo', which has been observed targeting critical infrastructure entities, including energy and telecommunications sectors. This report is based on simulated threat intelligence for training purposes and does not reflect real-world incidents.\n\nAttack Narrative:\nInitial Access: The actors initiated contact by conducting spearphishing voice calls [T1598.004] to impersonate trusted vendors, while simultaneously gathering victim identity information [T1589] from public social media profiles and professional networks to tailor their approach. They researched the target organization's network topology [T1590.004] by scraping public websites for architecture details, such as server layouts and IP ranges.\n\nExecution: Shadow Echo compromised the software supply chain [T1195.002] by trojanizing a legitimate software update binary, and in parallel, they injected malicious firmware into wireless routers during the hardware supply chain [T1195.003] to establish persistent backdoor access. System logs from the victim environment showed unusual network traffic spikes at 03:00 UTC, correlating with the deployment of these payloads.\n\nPersistence: Upon execution, the malware created a scheduled task [T1053.005] to run malicious scripts at system startup, and it established persistence via XDG autostart entries [T1547.013] by adding a hidden .desktop file in the user's autostart directory. Additionally, the adversary installed a systemd timer [T1053.006] to periodically execute data exfiltration routines and modified registry keys [T1112] under HKEY_CURRENT_USER to store configuration data for later use.\n\nPrivilege Escalation and Lateral Movement: The actors employed Kerberoasting techniques [T1558.003] to extract service account credentials from Active Directory, enabling them to move laterally across the network using SMB/Windows admin shares [T1021.002] to access sensitive files and systems. During this phase, network monitoring tools detected anomalous ARP requests indicative of ARP cache poisoning [T1557.002] as the malware scanned for active hosts on the local subnet.\n\nCollection and Exfiltration: Shadow Echo captured screen images [T1113] of victim desktops, saving them as 'Filter3.jpg' in temporary directories, and used protocol impersonation [T1001.003] with custom HTTP headers to communicate with command-and-control (C2) servers. Data was exfiltrated in small chunks to evade detection, adhering to strict data transfer size limits [T1030] by sending information in 27-character segments. The company's background includes a recent merger, which may have introduced security gaps exploited in this campaign.\n\nDefensive Recommendations: Organizations should implement network segmentation, monitor for unusual scheduled tasks and autostart entries, and enforce strong authentication mechanisms to mitigate similar threats. Regular audits of software and hardware supply chains are also advised.",
+        "techniques_used": [
+            "T1598.004",
+            "T1589",
+            "T1590.004",
+            "T1195.002",
+            "T1195.003",
+            "T1053.005",
+            "T1547.013",
+            "T1053.006",
+            "T1112",
+            "T1558.003",
+            "T1021.002",
+            "T1113",
+            "T1557.002",
+            "T1001.003",
+            "T1030"
+        ]
+    }
+}

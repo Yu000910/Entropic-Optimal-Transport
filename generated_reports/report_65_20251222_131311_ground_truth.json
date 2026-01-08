@@ -1,0 +1,88 @@
+{
+    "report_id": "report_65",
+    "generated_at": "20251222_131311",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1078.003",
+        "T1609",
+        "T1098.003",
+        "T1546.011",
+        "T1055.011",
+        "T1564.001",
+        "T1564.005",
+        "T1553.006",
+        "T1102.003",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1078.003",
+        "T1609",
+        "T1098.003",
+        "T1546.011",
+        "T1055.011",
+        "T1564.001",
+        "T1564.005",
+        "T1553.006",
+        "T1102.003",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1564.001",
+        "T1098.003",
+        "T1102.003",
+        "T1048",
+        "T1546.011",
+        "T1564.005",
+        "T1609",
+        "T1055.011",
+        "T1078.003",
+        "T1553.006"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) associated with the threat actor GOLD SOUTHFIELD. This report is designed for training purposes and does not reflect real-world incidents.\n\nBackground: GOLD SOUTHFIELD is a fictional advanced persistent threat (APT) group believed to operate with financial motives, targeting organizations in the technology and financial sectors. In this scenario, the actor compromised a software distribution site hosting Italian WinRAR installers, leading to initial access via backdoored software. System logs from the victim's network show anomalous download activity from the compromised site, with subsequent installation events triggering alerts in endpoint detection systems.\n\nInitial Access: The campaign began with the compromise of a legitimate software supply chain, where GOLD SOUTHFIELD backdoored WinRAR installers hosted on a web server, allowing them to gain initial foothold in victim environments. Upon execution, the malicious installer dropped payloads that leveraged application shimming for persistence by creating a shim database to patch services.exe when running as admin on older Windows systems, while simultaneously using extra window memory injection to write a malicious DLL into the memory space of a legitimate browser process to evade detection.\n\nExecution and Persistence: After initial access, the actors employed Mimikatz.exe to extract clear-text passwords from memory for abuse of local accounts, and they used these credentials to add Global Admin privileges to an existing account in cloud environments. To further maintain access, the malware allocated reserved disk clusters typically used for bad sector mapping to hide its data fragments in a hidden file system, and it executed a .command script from a hidden directory in a mounted DMG on macOS systems. Additionally, an infected payload executed 'bcdedit.exe -set TESTSIGNING ON' to modify code signing policies and turn off driver signature verification, enabling the loading of malicious kernel modules.\n\nDefense Evasion and Command and Control: For defense evasion, the malware invoked PowerShell to disable Windows Defender real-time protection using one-way communication techniques. In containerized environments, the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers. Network traffic analysis revealed that collected email archives were uploaded to a remote server using anonymous FTP access for exfiltration over alternative protocols.\n\nImpact and Mitigation: This fictional campaign resulted in data exfiltration and potential ransomware deployment. Blue teams are advised to monitor for signs of software supply chain compromises, unusual local account activity, container administration commands, and hidden file systems. Implementing application allowlisting, regular credential audits, and network segmentation can help mitigate these threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) associated with the threat actor GOLD SOUTHFIELD. This report is designed for training purposes and does not reflect real-world incidents.\n\nBackground: GOLD SOUTHFIELD is a fictional advanced persistent threat (APT) group believed to operate with financial motives, targeting organizations in the technology and financial sectors. In this scenario, the actor compromised a software distribution site hosting Italian WinRAR installers, leading to initial access via backdoored software [T1195.002]. System logs from the victim's network show anomalous download activity from the compromised site, with subsequent installation events triggering alerts in endpoint detection systems.\n\nInitial Access: The campaign began with the compromise of a legitimate software supply chain, where GOLD SOUTHFIELD backdoored WinRAR installers hosted on a web server, allowing them to gain initial foothold in victim environments [T1195.002]. Upon execution, the malicious installer dropped payloads that leveraged application shimming for persistence by creating a shim database to patch services.exe when running as admin on older Windows systems [T1546.011], while simultaneously using extra window memory injection to write a malicious DLL into the memory space of a legitimate browser process to evade detection [T1055.011].\n\nExecution and Persistence: After initial access, the actors employed Mimikatz.exe to extract clear-text passwords from memory for abuse of local accounts [T1078.003], and they used these credentials to add Global Admin privileges to an existing account in cloud environments [T1098.003]. To further maintain access, the malware allocated reserved disk clusters typically used for bad sector mapping to hide its data fragments in a hidden file system [T1564.005], and it executed a .command script from a hidden directory in a mounted DMG on macOS systems [T1564.001]. Additionally, an infected payload executed 'bcdedit.exe -set TESTSIGNING ON' to modify code signing policies and turn off driver signature verification, enabling the loading of malicious kernel modules [T1553.006].\n\nDefense Evasion and Command and Control: For defense evasion, the malware invoked PowerShell to disable Windows Defender real-time protection using one-way communication techniques [T1102.003]. In containerized environments, the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers [T1609]. Network traffic analysis revealed that collected email archives were uploaded to a remote server using anonymous FTP access for exfiltration over alternative protocols [T1048].\n\nImpact and Mitigation: This fictional campaign resulted in data exfiltration and potential ransomware deployment. Blue teams are advised to monitor for signs of software supply chain compromises, unusual local account activity, container administration commands, and hidden file systems. Implementing application allowlisting, regular credential audits, and network segmentation can help mitigate these threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "In containerized environments, the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "Network traffic analysis revealed that collected email archives were uploaded to a remote server using anonymous FTP access for exfiltration over alternative protocols.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'GOLD SOUTHFIELD' Targeting Software Supply Chain and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor GOLD SOUTHFIELD, which has been observed distributing ransomware through a compromised software supply chain and exploiting local accounts, container environments, and cloud roles to achieve persistence, evasion, and data exfiltration. The activity leverages a combination of techniques including application shimming, memory injection, hidden file systems, and alternative protocols for communication and exfiltration, highlighting the need for robust detection and response measures.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) associated with the threat actor GOLD SOUTHFIELD. This report is designed for training purposes and does not reflect real-world incidents.\n\nBackground: GOLD SOUTHFIELD is a fictional advanced persistent threat (APT) group believed to operate with financial motives, targeting organizations in the technology and financial sectors. In this scenario, the actor compromised a software distribution site hosting Italian WinRAR installers, leading to initial access via backdoored software [T1195.002]. System logs from the victim's network show anomalous download activity from the compromised site, with subsequent installation events triggering alerts in endpoint detection systems.\n\nInitial Access: The campaign began with the compromise of a legitimate software supply chain, where GOLD SOUTHFIELD backdoored WinRAR installers hosted on a web server, allowing them to gain initial foothold in victim environments [T1195.002]. Upon execution, the malicious installer dropped payloads that leveraged application shimming for persistence by creating a shim database to patch services.exe when running as admin on older Windows systems [T1546.011], while simultaneously using extra window memory injection to write a malicious DLL into the memory space of a legitimate browser process to evade detection [T1055.011].\n\nExecution and Persistence: After initial access, the actors employed Mimikatz.exe to extract clear-text passwords from memory for abuse of local accounts [T1078.003], and they used these credentials to add Global Admin privileges to an existing account in cloud environments [T1098.003]. To further maintain access, the malware allocated reserved disk clusters typically used for bad sector mapping to hide its data fragments in a hidden file system [T1564.005], and it executed a .command script from a hidden directory in a mounted DMG on macOS systems [T1564.001]. Additionally, an infected payload executed 'bcdedit.exe -set TESTSIGNING ON' to modify code signing policies and turn off driver signature verification, enabling the loading of malicious kernel modules [T1553.006].\n\nDefense Evasion and Command and Control: For defense evasion, the malware invoked PowerShell to disable Windows Defender real-time protection using one-way communication techniques [T1102.003]. In containerized environments, the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers [T1609]. Network traffic analysis revealed that collected email archives were uploaded to a remote server using anonymous FTP access for exfiltration over alternative protocols [T1048].\n\nImpact and Mitigation: This fictional campaign resulted in data exfiltration and potential ransomware deployment. Blue teams are advised to monitor for signs of software supply chain compromises, unusual local account activity, container administration commands, and hidden file systems. Implementing application allowlisting, regular credential audits, and network segmentation can help mitigate these threats.",
+        "techniques_used": [
+            "T1195.002",
+            "T1078.003",
+            "T1609",
+            "T1098.003",
+            "T1546.011",
+            "T1055.011",
+            "T1564.001",
+            "T1564.005",
+            "T1553.006",
+            "T1102.003",
+            "T1048"
+        ]
+    }
+}

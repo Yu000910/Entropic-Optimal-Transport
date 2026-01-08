@@ -1,0 +1,108 @@
+{
+    "report_id": "report_719",
+    "generated_at": "20251223_104646",
+    "scenario_target_ids": [
+        "T1593.001",
+        "T1595.001",
+        "T1592",
+        "T1566.003",
+        "T1133",
+        "T1059.011",
+        "T1559.003",
+        "T1078.004",
+        "T1127.001",
+        "T1003",
+        "T1557.001",
+        "T1001.003",
+        "T1020.001",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.001",
+        "T1595.001",
+        "T1592",
+        "T1566.003",
+        "T1133",
+        "T1059.011",
+        "T1559.003",
+        "T1078.004",
+        "T1127.001",
+        "T1003",
+        "T1557.001",
+        "T1001.003",
+        "T1020.001",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1593.001",
+        "T1592",
+        "T1001.003",
+        "T1059.011",
+        "T1127.001",
+        "T1003",
+        "T1595.001",
+        "T1557.001",
+        "T1133",
+        "T1078.004",
+        "T1566.003",
+        "T1020.001",
+        "T1559.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) group 'ShadowWeave'. This report is based on a simulated incident involving a mid-sized technology firm, 'CloudSync Inc.', which reported anomalous activity in its hybrid cloud environment starting in early 2024. Initial logs from CloudSync's SIEM showed unusual outbound traffic patterns, but no immediate alerts were triggered due to misconfigured thresholds.\n\nShadowWeave likely began by conducting reconnaissance on CloudSync employees through social media platforms, specifically monitoring Twitter profiles to gather personal details for targeted attacks, while simultaneously scanning IP blocks to map the internal network structure and identify vulnerable endpoints. The actors then gathered victim host information by querying User-Agent headers from web traffic to determine browser versions and operating systems, enabling them to craft tailored exploits. Using this intelligence, they executed spearphishing via service by sending malicious links through LinkedIn messages to key IT personnel, which led to the initial compromise of a developer's workstation.\n\nUpon gaining access, the adversaries exploited external remote services by connecting to an unsecured kubelet instance that allowed anonymous access, enabling them to deploy a malicious payload. This payload executed embedded Lua commands to exfiltrate configuration data while establishing persistence through XPC services by creating an NSXPCConnection to system services. ShadowWeave further leveraged cloud accounts by exploiting cloud management APIs to establish backdoor access to cloud databases, and used MSBuild with a crafted .csproj file to bypass application controls and execute additional malicious code.\n\nFor credential harvesting, the group performed OS credential dumping using tools like Mimikatz to extract Kerberos tickets and NTLM hashes, and conducted LLMNR/NBT-NS poisoning and SMB relay with Responder to capture hashes from other systems on the local network. To conceal command and control (C2) communications, they employed protocol or service impersonation by modifying URI query parameters with encoded commands, and implemented traffic duplication using ROMMONkit to mirror network traffic for systematic data exfiltration. Finally, exfiltration over webhook was conducted by sending harvested browser cookies to webhook.site, completing the data theft phase. CloudSync's incident response team detected the exfiltration via anomalous DNS queries and initiated containment procedures, but the simulation highlighted gaps in network monitoring and cloud security configurations.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) group 'ShadowWeave'. This report is based on a simulated incident involving a mid-sized technology firm, 'CloudSync Inc.', which reported anomalous activity in its hybrid cloud environment starting in early 2024. Initial logs from CloudSync's SIEM showed unusual outbound traffic patterns, but no immediate alerts were triggered due to misconfigured thresholds.\n\nShadowWeave likely began by conducting reconnaissance on CloudSync employees through social media platforms [T1593.001], specifically monitoring Twitter profiles to gather personal details for targeted attacks, while simultaneously scanning IP blocks [T1595.001] to map the internal network structure and identify vulnerable endpoints. The actors then gathered victim host information [T1592] by querying User-Agent headers from web traffic to determine browser versions and operating systems, enabling them to craft tailored exploits. Using this intelligence, they executed spearphishing via service [T1566.003] by sending malicious links through LinkedIn messages to key IT personnel, which led to the initial compromise of a developer's workstation.\n\nUpon gaining access, the adversaries exploited external remote services [T1133] by connecting to an unsecured kubelet instance that allowed anonymous access, enabling them to deploy a malicious payload. This payload executed embedded Lua commands [T1059.011] to exfiltrate configuration data while establishing persistence through XPC services [T1559.003] by creating an NSXPCConnection to system services. ShadowWeave further leveraged cloud accounts [T1078.004] by exploiting cloud management APIs to establish backdoor access to cloud databases, and used MSBuild [T1127.001] with a crafted .csproj file to bypass application controls and execute additional malicious code.\n\nFor credential harvesting, the group performed OS credential dumping [T1003] using tools like Mimikatz to extract Kerberos tickets and NTLM hashes, and conducted LLMNR/NBT-NS poisoning and SMB relay [T1557.001] with Responder to capture hashes from other systems on the local network. To conceal command and control (C2) communications, they employed protocol or service impersonation [T1001.003] by modifying URI query parameters with encoded commands, and implemented traffic duplication [T1020.001] using ROMMONkit to mirror network traffic for systematic data exfiltration. Finally, exfiltration over webhook [T1567.004] was conducted by sending harvested browser cookies to webhook.site, completing the data theft phase. CloudSync's incident response team detected the exfiltration via anomalous DNS queries and initiated containment procedures, but the simulation highlighted gaps in network monitoring and cloud security configurations.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then gathered victim host information by querying User-Agent headers from web traffic to determine browser versions and operating systems, enabling them to craft tailored exploits.",
+            "technique_id": "T1592",
+            "technique_name": "Gather Victim Host Information"
+        },
+        {
+            "sentence": "Upon gaining access, the adversaries exploited external remote services by connecting to an unsecured kubelet instance that allowed anonymous access, enabling them to deploy a malicious payload.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "For credential harvesting, the group performed OS credential dumping using tools like Mimikatz to extract Kerberos tickets and NTLM hashes, and conducted LLMNR/NBT-NS poisoning and SMB relay [T1557.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeave' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowWeave', which targeted cloud-based environments through a multi-stage attack involving social engineering, exploitation of external services, and sophisticated data exfiltration. The campaign leveraged reconnaissance via social media and network scanning, spearphishing, and abuse of cloud accounts to establish persistence and exfiltrate sensitive data. Blue teams are advised to review detection strategies and implement mitigations outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) group 'ShadowWeave'. This report is based on a simulated incident involving a mid-sized technology firm, 'CloudSync Inc.', which reported anomalous activity in its hybrid cloud environment starting in early 2024. Initial logs from CloudSync's SIEM showed unusual outbound traffic patterns, but no immediate alerts were triggered due to misconfigured thresholds.\n\nShadowWeave likely began by conducting reconnaissance on CloudSync employees through social media platforms [T1593.001], specifically monitoring Twitter profiles to gather personal details for targeted attacks, while simultaneously scanning IP blocks [T1595.001] to map the internal network structure and identify vulnerable endpoints. The actors then gathered victim host information [T1592] by querying User-Agent headers from web traffic to determine browser versions and operating systems, enabling them to craft tailored exploits. Using this intelligence, they executed spearphishing via service [T1566.003] by sending malicious links through LinkedIn messages to key IT personnel, which led to the initial compromise of a developer's workstation.\n\nUpon gaining access, the adversaries exploited external remote services [T1133] by connecting to an unsecured kubelet instance that allowed anonymous access, enabling them to deploy a malicious payload. This payload executed embedded Lua commands [T1059.011] to exfiltrate configuration data while establishing persistence through XPC services [T1559.003] by creating an NSXPCConnection to system services. ShadowWeave further leveraged cloud accounts [T1078.004] by exploiting cloud management APIs to establish backdoor access to cloud databases, and used MSBuild [T1127.001] with a crafted .csproj file to bypass application controls and execute additional malicious code.\n\nFor credential harvesting, the group performed OS credential dumping [T1003] using tools like Mimikatz to extract Kerberos tickets and NTLM hashes, and conducted LLMNR/NBT-NS poisoning and SMB relay [T1557.001] with Responder to capture hashes from other systems on the local network. To conceal command and control (C2) communications, they employed protocol or service impersonation [T1001.003] by modifying URI query parameters with encoded commands, and implemented traffic duplication [T1020.001] using ROMMONkit to mirror network traffic for systematic data exfiltration. Finally, exfiltration over webhook [T1567.004] was conducted by sending harvested browser cookies to webhook.site, completing the data theft phase. CloudSync's incident response team detected the exfiltration via anomalous DNS queries and initiated containment procedures, but the simulation highlighted gaps in network monitoring and cloud security configurations.",
+        "techniques_used": [
+            "T1593.001",
+            "T1595.001",
+            "T1592",
+            "T1566.003",
+            "T1133",
+            "T1059.011",
+            "T1559.003",
+            "T1078.004",
+            "T1127.001",
+            "T1003",
+            "T1557.001",
+            "T1001.003",
+            "T1020.001",
+            "T1567.004"
+        ]
+    }
+}

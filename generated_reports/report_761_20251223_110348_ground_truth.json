@@ -1,0 +1,78 @@
+{
+    "report_id": "report_761",
+    "generated_at": "20251223_110348",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1559.003",
+        "T1556.007",
+        "T1558.005",
+        "T1570",
+        "T1005",
+        "T1213.005",
+        "T1105"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1559.003",
+        "T1556.007",
+        "T1558.005",
+        "T1570",
+        "T1005",
+        "T1213.005",
+        "T1105"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1570",
+        "T1556.007",
+        "T1558.005",
+        "T1213.005",
+        "T1005",
+        "T1105",
+        "T1559.003"
+    ],
+    "clean_text": "On October 15, 2023, SpectralShadow actors likely conducted reconnaissance on a popular open-source JavaScript library, 'SecureUI', by monitoring its GitHub repository for vulnerabilities. They then compromised the software supply chain by injecting malicious code into the library's source code before its official release, enabling backdoor access upon installation by unsuspecting users. Initial logs from victim systems showed unusual network traffic from the library's update server, though this was initially dismissed as routine maintenance. Once the backdoor was activated, the actors executed a payload that abused XPC services to escalate privileges from a standard user to administrator level, bypassing macOS security controls. Concurrently, they modified the AzureADConnectAuthenticationAgentService configuration to manipulate hybrid identity settings and evade cloud-based authentication mechanisms, allowing persistence in hybrid environments. The actors then used klist queries to analyze available Kerberos service tickets, identifying targets for silver ticket forgery to facilitate lateral movement. They employed scp to transfer a custom keylogger tool across multiple Windows workstations within the domain, while simultaneously downloading additional reconnaissance scripts from a command-and-control server to bolster their foothold. During this phase, Sardonic malware was deployed to collect sensitive files and system information from compromised machines, exfiltrating data to a drop point. Additionally, the actors searched the victim's network for organization collaboration channels like MS Teams or Slack to harvest high-privilege account credentials, though no successful breaches were recorded in this simulated scenario. Background noise included routine system logs showing failed login attempts from legacy accounts and unrelated network scans by internal IT teams, which were not indicative of malicious activity.",
+    "tagged_text": "On October 15, 2023, SpectralShadow actors likely conducted reconnaissance on a popular open-source JavaScript library, 'SecureUI', by monitoring its GitHub repository for vulnerabilities. They then compromised the software supply chain [T1195.002] by injecting malicious code into the library's source code before its official release, enabling backdoor access upon installation by unsuspecting users. Initial logs from victim systems showed unusual network traffic from the library's update server, though this was initially dismissed as routine maintenance. Once the backdoor was activated, the actors executed a payload that abused XPC services [T1559.003] to escalate privileges from a standard user to administrator level, bypassing macOS security controls. Concurrently, they modified the AzureADConnectAuthenticationAgentService configuration [T1556.007] to manipulate hybrid identity settings and evade cloud-based authentication mechanisms, allowing persistence in hybrid environments. The actors then used klist queries to analyze available Kerberos service tickets [T1558.005], identifying targets for silver ticket forgery to facilitate lateral movement. They employed scp to transfer a custom keylogger tool [T1570] across multiple Windows workstations within the domain, while simultaneously downloading additional reconnaissance scripts [T1105] from a command-and-control server to bolster their foothold. During this phase, Sardonic malware was deployed to collect sensitive files and system information [T1005] from compromised machines, exfiltrating data to a drop point. Additionally, the actors searched the victim's network for organization collaboration channels like MS Teams or Slack [T1213.005] to harvest high-privilege account credentials, though no successful breaches were recorded in this simulated scenario. Background noise included routine system logs showing failed login attempts from legacy accounts and unrelated network scans by internal IT teams, which were not indicative of malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "They employed scp to transfer a custom keylogger tool across multiple Windows workstations within the domain, while simultaneously downloading additional reconnaissance scripts from a command-and-control server to bolster their foothold.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "They employed scp to transfer a custom keylogger tool across multiple Windows workstations within the domain, while simultaneously downloading additional reconnaissance scripts from a command-and-control server to bolster their foothold.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "During this phase, Sardonic malware was deployed to collect sensitive files and system information from compromised machines, exfiltrating data to a drop point.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL Campaign by APT Group 'SpectralShadow' Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'SpectralShadow', designed for blue team training purposes. The campaign involves compromising a widely used JavaScript library to gain initial access, abusing XPC services for privilege escalation, manipulating hybrid identity configurations to bypass cloud authentication, and leveraging Kerberos tickets for lateral movement. Actors then transferred tools across the network, collected sensitive data, and searched messaging applications for credentials. This report provides a narrative based on the MITRE ATT&CK framework to enhance defensive readiness.",
+        "full_report_text": "On October 15, 2023, SpectralShadow actors likely conducted reconnaissance on a popular open-source JavaScript library, 'SecureUI', by monitoring its GitHub repository for vulnerabilities. They then compromised the software supply chain [T1195.002] by injecting malicious code into the library's source code before its official release, enabling backdoor access upon installation by unsuspecting users. Initial logs from victim systems showed unusual network traffic from the library's update server, though this was initially dismissed as routine maintenance. Once the backdoor was activated, the actors executed a payload that abused XPC services [T1559.003] to escalate privileges from a standard user to administrator level, bypassing macOS security controls. Concurrently, they modified the AzureADConnectAuthenticationAgentService configuration [T1556.007] to manipulate hybrid identity settings and evade cloud-based authentication mechanisms, allowing persistence in hybrid environments. The actors then used klist queries to analyze available Kerberos service tickets [T1558.005], identifying targets for silver ticket forgery to facilitate lateral movement. They employed scp to transfer a custom keylogger tool [T1570] across multiple Windows workstations within the domain, while simultaneously downloading additional reconnaissance scripts [T1105] from a command-and-control server to bolster their foothold. During this phase, Sardonic malware was deployed to collect sensitive files and system information [T1005] from compromised machines, exfiltrating data to a drop point. Additionally, the actors searched the victim's network for organization collaboration channels like MS Teams or Slack [T1213.005] to harvest high-privilege account credentials, though no successful breaches were recorded in this simulated scenario. Background noise included routine system logs showing failed login attempts from legacy accounts and unrelated network scans by internal IT teams, which were not indicative of malicious activity.",
+        "techniques_used": [
+            "T1195.002",
+            "T1559.003",
+            "T1556.007",
+            "T1558.005",
+            "T1570",
+            "T1005",
+            "T1213.005",
+            "T1105"
+        ]
+    }
+}

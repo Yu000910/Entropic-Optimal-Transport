@@ -1,0 +1,75 @@
+{
+    "report_id": "report_745",
+    "generated_at": "20251223_105720",
+    "scenario_target_ids": [
+        "T1189",
+        "T1053",
+        "T1070.009",
+        "T1114.001",
+        "T1219",
+        "T1071.005"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1053",
+        "T1070.009",
+        "T1114.001",
+        "T1219",
+        "T1071.005"
+    ],
+    "actual_found_ids": [
+        "T1114.001",
+        "T1219",
+        "T1112",
+        "T1071.005",
+        "T1189",
+        "T1053",
+        "T1070.009",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on detecting and mitigating advanced persistent threats. This report is based on a fictional scenario involving APT-CRIMSON, a threat actor with suspected ties to criminal organizations, which targeted a regional bank headquartered in Chicago, Illinois. The bank, with approximately 500 employees and operations across three states, reported anomalous network traffic and suspicious system behavior during a routine audit in early 2024.\n\nInitial analysis indicates that APT-CRIMSON likely conducted reconnaissance on employees through social media platforms, though no specific techniques were identified in logs. The attack began when employees visited a compromised third-party financial news website, which hosted malicious Flash content that exploited a known vulnerability to deliver malware. Upon infection, the malware established persistence by creating a scheduled task using schtasks.exe to execute a payload named 'finbot.exe' every Friday at 8:00 PM local time, mimicking legitimate maintenance activities. System logs from the affected Windows 10 workstations showed increased CPU usage during these times, but no alerts were triggered due to misconfigured monitoring tools.\n\nTo maintain stealth, the adversary employed PowerShell scripts to actively download additional modules while simultaneously modifying registry keys to disable security features. After data collection, APT-CRIMSON executed commands to remove the scheduled task and delete associated service entries, such as 'sc delete FinService', in an attempt to erase evidence of persistence. The malware then scanned user profiles for Outlook data files, including .pst and .ost files, and archived them into a compressed folder for exfiltration. Network traffic analysis revealed that the actor established remote access by installing a Windows Service named 'UpdateManager', which communicated with command-and-control servers over encrypted channels to provide persistent control over the compromised systems. Finally, exfiltration was conducted using XMPP protocols, where documents were transferred as file attachments in chat messages, blending with normal employee communication traffic to avoid detection. Incident responders noted that the bank's email server logs showed unusual outbound connections to external IP addresses, but these were initially dismissed as false positives.\n\nThis fictional scenario highlights the importance of monitoring for scheduled tasks, analyzing email collection artifacts, and inspecting network protocols for anomalies. Blue teams should implement application whitelisting, enhance logging for service modifications, and use threat intelligence feeds to identify known malicious domains. No actual systems were harmed in this training exercise.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on detecting and mitigating advanced persistent threats. This report is based on a fictional scenario involving APT-CRIMSON, a threat actor with suspected ties to criminal organizations, which targeted a regional bank headquartered in Chicago, Illinois. The bank, with approximately 500 employees and operations across three states, reported anomalous network traffic and suspicious system behavior during a routine audit in early 2024.\n\nInitial analysis indicates that APT-CRIMSON likely conducted reconnaissance on employees through social media platforms, though no specific techniques were identified in logs. The attack began when employees visited a compromised third-party financial news website, which hosted malicious Flash content that exploited a known vulnerability to deliver malware [T1189]. Upon infection, the malware established persistence by creating a scheduled task using schtasks.exe to execute a payload named 'finbot.exe' every Friday at 8:00 PM local time, mimicking legitimate maintenance activities [T1053]. System logs from the affected Windows 10 workstations showed increased CPU usage during these times, but no alerts were triggered due to misconfigured monitoring tools.\n\nTo maintain stealth, the adversary employed PowerShell scripts to actively download additional modules [T1059.001] while simultaneously modifying registry keys to disable security features [T1112]. After data collection, APT-CRIMSON executed commands to remove the scheduled task and delete associated service entries, such as 'sc delete FinService', in an attempt to erase evidence of persistence [T1070.009]. The malware then scanned user profiles for Outlook data files, including .pst and .ost files, and archived them into a compressed folder for exfiltration [T1114.001]. Network traffic analysis revealed that the actor established remote access by installing a Windows Service named 'UpdateManager', which communicated with command-and-control servers over encrypted channels to provide persistent control over the compromised systems [T1219]. Finally, exfiltration was conducted using XMPP protocols, where documents were transferred as file attachments in chat messages, blending with normal employee communication traffic to avoid detection [T1071.005]. Incident responders noted that the bank's email server logs showed unusual outbound connections to external IP addresses, but these were initially dismissed as false positives.\n\nThis fictional scenario highlights the importance of monitoring for scheduled tasks, analyzing email collection artifacts, and inspecting network protocols for anomalies. Blue teams should implement application whitelisting, enhance logging for service modifications, and use threat intelligence feeds to identify known malicious domains. No actual systems were harmed in this training exercise.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began when employees visited a compromised third-party financial news website, which hosted malicious Flash content that exploited a known vulnerability to deliver malware.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "exe' every Friday at 8:00 PM local time, mimicking legitimate maintenance activities.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "001] while simultaneously modifying registry keys to disable security features.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "Network traffic analysis revealed that the actor established remote access by installing a Windows Service named 'UpdateManager', which communicated with command-and-control servers over encrypted channels to provide persistent control over the compromised systems.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated APT-CRIMSON, targeting financial institutions in the United States. Based on analysis of incident response data from a mid-sized regional bank, APT-CRIMSON employed watering hole attacks, scheduled tasks for persistence, and sophisticated exfiltration methods. The campaign resulted in unauthorized access to email data and establishment of remote control over compromised systems.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on detecting and mitigating advanced persistent threats. This report is based on a fictional scenario involving APT-CRIMSON, a threat actor with suspected ties to criminal organizations, which targeted a regional bank headquartered in Chicago, Illinois. The bank, with approximately 500 employees and operations across three states, reported anomalous network traffic and suspicious system behavior during a routine audit in early 2024.\n\nInitial analysis indicates that APT-CRIMSON likely conducted reconnaissance on employees through social media platforms, though no specific techniques were identified in logs. The attack began when employees visited a compromised third-party financial news website, which hosted malicious Flash content that exploited a known vulnerability to deliver malware [T1189]. Upon infection, the malware established persistence by creating a scheduled task using schtasks.exe to execute a payload named 'finbot.exe' every Friday at 8:00 PM local time, mimicking legitimate maintenance activities [T1053]. System logs from the affected Windows 10 workstations showed increased CPU usage during these times, but no alerts were triggered due to misconfigured monitoring tools.\n\nTo maintain stealth, the adversary employed PowerShell scripts to actively download additional modules [T1059.001] while simultaneously modifying registry keys to disable security features [T1112]. After data collection, APT-CRIMSON executed commands to remove the scheduled task and delete associated service entries, such as 'sc delete FinService', in an attempt to erase evidence of persistence [T1070.009]. The malware then scanned user profiles for Outlook data files, including .pst and .ost files, and archived them into a compressed folder for exfiltration [T1114.001]. Network traffic analysis revealed that the actor established remote access by installing a Windows Service named 'UpdateManager', which communicated with command-and-control servers over encrypted channels to provide persistent control over the compromised systems [T1219]. Finally, exfiltration was conducted using XMPP protocols, where documents were transferred as file attachments in chat messages, blending with normal employee communication traffic to avoid detection [T1071.005]. Incident responders noted that the bank's email server logs showed unusual outbound connections to external IP addresses, but these were initially dismissed as false positives.\n\nThis fictional scenario highlights the importance of monitoring for scheduled tasks, analyzing email collection artifacts, and inspecting network protocols for anomalies. Blue teams should implement application whitelisting, enhance logging for service modifications, and use threat intelligence feeds to identify known malicious domains. No actual systems were harmed in this training exercise.",
+        "techniques_used": [
+            "T1189",
+            "T1053",
+            "T1070.009",
+            "T1114.001",
+            "T1219",
+            "T1071.005"
+        ]
+    }
+}

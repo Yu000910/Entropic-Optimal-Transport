@@ -1,0 +1,13 @@
+Background: The fictional company 'SecureFin Corp', a mid-sized financial services provider, reported anomalous network activity during a routine security audit, prompting this investigation. Logs from their email gateway showed a spike in suspicious messages, but initial scans flagged only 2% as malicious, with the rest being routine business correspondence.
+
+Initial Access: The actors initiated the campaign by sending spearphishing emails with malicious Microsoft Word attachments to key employees in the finance department [T1566.001], leveraging social engineering tactics to appear as legitimate vendor invoices.
+
+Execution and Persistence: Upon opening the attachment, a macro executed a PowerShell script that created a scheduled task using the command 'schtasks /create /sc daily' to maintain persistence on the compromised system [T1053.005], while simultaneously downloading additional payloads from a command-and-control server.
+
+Privilege Escalation and Credential Access: The adversary then employed Mimikatz's kerberos module to forge Kerberos service tickets, creating a Silver Ticket to gain unauthorized access to domain resources [T1558.002], and used network discovery tools like 'net view /all' to map out accessible shares and identify high-value targets [T1135].
+
+Lateral Movement: To spread internally, the malware dropped a malicious PowerShell script to the Temp directory, which was used to conduct internal spearphishing attacks to compromise additional accounts [T1534], while disguising beaconing signals as routine business emails sent via SMTP protocols to evade detection [T1071.003].
+
+Impact: In the final stage, the attackers exploited an unpatched zero-day vulnerability in the database service to create persistent deadlock conditions that prevented legitimate access, aiming to disrupt operations and exfiltrate data [T1499.004]. System logs from the database server indicated unusual lock patterns, but no actual data loss occurred in this training scenario.
+
+Recommendations: Blue teams should enhance email filtering, monitor for anomalous scheduled tasks, implement strict Kerberos ticket policies, segment network shares, and prioritize patch management to mitigate similar threats.

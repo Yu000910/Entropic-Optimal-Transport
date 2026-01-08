@@ -1,0 +1,103 @@
+{
+    "report_id": "report_47",
+    "generated_at": "20251222_113603",
+    "scenario_target_ids": [
+        "T1598.003",
+        "T1591.001",
+        "T1200",
+        "T1569.001",
+        "T1059.003",
+        "T1547.012",
+        "T1218.008",
+        "T1010",
+        "T1087.003",
+        "T1087.001",
+        "T1550.003",
+        "T1102.002",
+        "T1495"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591.001",
+        "T1598.003",
+        "T1218.008",
+        "T1059.003",
+        "T1087.001",
+        "T1087.003",
+        "T1569.001",
+        "T1547.012",
+        "T1550.003",
+        "T1200",
+        "T1010",
+        "T1102.002",
+        "T1495"
+    ],
+    "actual_found_ids": [
+        "T1087.001",
+        "T1102.002",
+        "T1550.003",
+        "T1059.003",
+        "T1495",
+        "T1591.001",
+        "T1598.003",
+        "T1087.003",
+        "T1200",
+        "T1010",
+        "T1218.008",
+        "T1569.001",
+        "T1547.012"
+    ],
+    "clean_text": "PowerGrid Inc., a fictional energy provider with operations across the U.S., reported anomalous network activity starting on October 15, 2023, after an employee received a phishing email purporting to be from a trusted vendor. Initial logs from their SIEM showed multiple failed login attempts from external IPs, but these were dismissed as noise at the time. The actors likely conducted reconnaissance by scraping the company's public website, including the 'Contact Us' page, to determine physical locations for potential future physical attacks or social engineering. Subsequently, they sent a spearphishing email with a malicious link designed to harvest user credentials when clicked, which led to the compromise of an employee account with limited privileges.\n\nUpon gaining initial access, the adversary executed a multi-stage payload using odbcconf.exe to proxy execution of a malicious DLL, bypassing application whitelisting, while simultaneously employing the Windows Command Shell to run scripts that enumerated local accounts on network shares and queried the Global Address List via Exchange Web Services to collect corporate email addresses. To maintain persistence, they used launchctl to load a payload as a system-level service and placed a malicious DLL in a location where it would be loaded by print services. For lateral movement, the actors injected Kerberos golden tickets to pass tickets across the network without detection, and they deployed a passive network tap to intercept unencrypted credentials from network traffic, allowing further escalation.\n\nDuring the exploitation phase, the malware conducted application window discovery to report window names along with keylogger data, providing context for targeted data theft. The actors established bidirectional communication using the Microsoft Graph API to connect to an actor-controlled OneDrive account, enabling them to download and execute additional files, run shell commands, and create directories to share exfiltrated data. In the final stage, as part of the impact objective, the attacker overwrote the BIOS firmware flash utility with a corrupted version, rendering several critical systems unbootable and causing operational disruption. PowerGrid Inc.'s incident response team, upon discovering the firmware corruption, initiated a full forensic investigation, which revealed the extent of the campaign and led to the containment efforts detailed in this advisory.",
+    "tagged_text": "PowerGrid Inc., a fictional energy provider with operations across the U.S., reported anomalous network activity starting on October 15, 2023, after an employee received a phishing email purporting to be from a trusted vendor. Initial logs from their SIEM showed multiple failed login attempts from external IPs, but these were dismissed as noise at the time. The actors likely conducted reconnaissance by scraping the company's public website, including the 'Contact Us' page, to determine physical locations [T1591.001] for potential future physical attacks or social engineering. Subsequently, they sent a spearphishing email with a malicious link designed to harvest user credentials when clicked [T1598.003], which led to the compromise of an employee account with limited privileges.\n\nUpon gaining initial access, the adversary executed a multi-stage payload using odbcconf.exe to proxy execution of a malicious DLL [T1218.008], bypassing application whitelisting, while simultaneously employing the Windows Command Shell [T1059.003] to run scripts that enumerated local accounts on network shares [T1087.001] and queried the Global Address List via Exchange Web Services to collect corporate email addresses [T1087.003]. To maintain persistence, they used launchctl to load a payload as a system-level service [T1569.001] and placed a malicious DLL in a location where it would be loaded by print services [T1547.012]. For lateral movement, the actors injected Kerberos golden tickets to pass tickets across the network without detection [T1550.003], and they deployed a passive network tap to intercept unencrypted credentials from network traffic [T1200], allowing further escalation.\n\nDuring the exploitation phase, the malware conducted application window discovery [T1010] to report window names along with keylogger data, providing context for targeted data theft. The actors established bidirectional communication using the Microsoft Graph API to connect to an actor-controlled OneDrive account [T1102.002], enabling them to download and execute additional files, run shell commands, and create directories to share exfiltrated data. In the final stage, as part of the impact objective, the attacker overwrote the BIOS firmware flash utility with a corrupted version [T1495], rendering several critical systems unbootable and causing operational disruption. PowerGrid Inc.'s incident response team, upon discovering the firmware corruption, initiated a full forensic investigation, which revealed the extent of the campaign and led to the containment efforts detailed in this advisory.",
+    "sentence_annotations": [
+        {
+            "sentence": "003], and they deployed a passive network tap to intercept unencrypted credentials from network traffic, allowing further escalation.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "During the exploitation phase, the malware conducted application window discovery to report window names along with keylogger data, providing context for targeted data theft.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        },
+        {
+            "sentence": "In the final stage, as part of the impact objective, the attacker overwrote the BIOS firmware flash utility with a corrupted version, rendering several critical systems unbootable and causing operational disruption.",
+            "technique_id": "T1495",
+            "technique_name": "Firmware Corruption"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowReaper' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowReaper', targeting a mid-sized energy company, 'PowerGrid Inc.', to exfiltrate sensitive data and disrupt operations. The campaign employs sophisticated techniques across the kill-chain, including spearphishing, lateral movement, and firmware corruption, based on real-world TTPs for blue team training.",
+        "full_report_text": "PowerGrid Inc., a fictional energy provider with operations across the U.S., reported anomalous network activity starting on October 15, 2023, after an employee received a phishing email purporting to be from a trusted vendor. Initial logs from their SIEM showed multiple failed login attempts from external IPs, but these were dismissed as noise at the time. The actors likely conducted reconnaissance by scraping the company's public website, including the 'Contact Us' page, to determine physical locations [T1591.001] for potential future physical attacks or social engineering. Subsequently, they sent a spearphishing email with a malicious link designed to harvest user credentials when clicked [T1598.003], which led to the compromise of an employee account with limited privileges.\n\nUpon gaining initial access, the adversary executed a multi-stage payload using odbcconf.exe to proxy execution of a malicious DLL [T1218.008], bypassing application whitelisting, while simultaneously employing the Windows Command Shell [T1059.003] to run scripts that enumerated local accounts on network shares [T1087.001] and queried the Global Address List via Exchange Web Services to collect corporate email addresses [T1087.003]. To maintain persistence, they used launchctl to load a payload as a system-level service [T1569.001] and placed a malicious DLL in a location where it would be loaded by print services [T1547.012]. For lateral movement, the actors injected Kerberos golden tickets to pass tickets across the network without detection [T1550.003], and they deployed a passive network tap to intercept unencrypted credentials from network traffic [T1200], allowing further escalation.\n\nDuring the exploitation phase, the malware conducted application window discovery [T1010] to report window names along with keylogger data, providing context for targeted data theft. The actors established bidirectional communication using the Microsoft Graph API to connect to an actor-controlled OneDrive account [T1102.002], enabling them to download and execute additional files, run shell commands, and create directories to share exfiltrated data. In the final stage, as part of the impact objective, the attacker overwrote the BIOS firmware flash utility with a corrupted version [T1495], rendering several critical systems unbootable and causing operational disruption. PowerGrid Inc.'s incident response team, upon discovering the firmware corruption, initiated a full forensic investigation, which revealed the extent of the campaign and led to the containment efforts detailed in this advisory.",
+        "techniques_used": [
+            "T1591.001",
+            "T1598.003",
+            "T1218.008",
+            "T1059.003",
+            "T1087.001",
+            "T1087.003",
+            "T1569.001",
+            "T1547.012",
+            "T1550.003",
+            "T1200",
+            "T1010",
+            "T1102.002",
+            "T1495"
+        ]
+    }
+}

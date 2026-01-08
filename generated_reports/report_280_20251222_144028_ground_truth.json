@@ -1,0 +1,83 @@
+{
+    "report_id": "report_280",
+    "generated_at": "20251222_144028",
+    "scenario_target_ids": [
+        "T1596.005",
+        "T1595.002",
+        "T1598.002",
+        "T1195",
+        "T1651",
+        "T1078.003",
+        "T1056.004",
+        "T1040",
+        "T1205.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596.005",
+        "T1595.002",
+        "T1598.002",
+        "T1195",
+        "T1651",
+        "T1078.003",
+        "T1056.004",
+        "T1040",
+        "T1205.001"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1596.005",
+        "T1205.001",
+        "T1056.004",
+        "T1195",
+        "T1040",
+        "T1595.002",
+        "T1598.002",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to document the tactics, techniques, and procedures (TTPs) of the fictional APT group 'ShadowDrain'. This report is based on a training scenario designed to educate blue teams on detecting and mitigating multi-vector attacks. ShadowDrain operates with a focus on financial and critical infrastructure sectors, using a blend of open-source intelligence and automated tools. Initial analysis indicates the group likely conducted reconnaissance by scanning Shodan for exposed Redis servers with default configurations and analyzing HTTP response headers to identify exploitable web application vulnerabilities, which was logged in system audit trails as routine network noise. For initial access, the actors staged compromised versions of legitimate software installers on forums to achieve untargeted access in victim environments, while simultaneously sending spearphishing emails with malicious .ps1 attachments designed to extract credential information from Windows Credential Manager. Once inside, they executed commands by using Azure RunCommand to run PowerShell scripts on virtual machines in the target environment and compromised local cPanel accounts to establish persistence, with additional logs showing failed login attempts from IP addresses in Eastern Europe. To harvest credentials, the group employed credential API hooking to spawn system threads and conducted network sniffing by hooking the Catalina application filter chain to monitor inbound requests for parameters like passwords, while using libpcap to sniff traffic and identify open ports for command channels via port knocking. This activity was part of a broader campaign that included lateral movement attempts, though no data exfiltration was confirmed in this fictional scenario. Blue teams should monitor for unusual cloud administrative commands and anomalous network traffic patterns.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to document the tactics, techniques, and procedures (TTPs) of the fictional APT group 'ShadowDrain'. This report is based on a training scenario designed to educate blue teams on detecting and mitigating multi-vector attacks. ShadowDrain operates with a focus on financial and critical infrastructure sectors, using a blend of open-source intelligence and automated tools. Initial analysis indicates the group likely conducted reconnaissance by scanning Shodan for exposed Redis servers with default configurations [T1596.005] and analyzing HTTP response headers to identify exploitable web application vulnerabilities [T1595.002], which was logged in system audit trails as routine network noise. For initial access, the actors staged compromised versions of legitimate software installers on forums to achieve untargeted access in victim environments [T1195], while simultaneously sending spearphishing emails with malicious .ps1 attachments designed to extract credential information from Windows Credential Manager [T1598.002]. Once inside, they executed commands by using Azure RunCommand to run PowerShell scripts on virtual machines in the target environment [T1651] and compromised local cPanel accounts to establish persistence [T1078.003], with additional logs showing failed login attempts from IP addresses in Eastern Europe. To harvest credentials, the group employed credential API hooking to spawn system threads [T1056.004] and conducted network sniffing by hooking the Catalina application filter chain to monitor inbound requests for parameters like passwords [T1040], while using libpcap to sniff traffic and identify open ports for command channels via port knocking [T1205.001]. This activity was part of a broader campaign that included lateral movement attempts, though no data exfiltration was confirmed in this fictional scenario. Blue teams should monitor for unusual cloud administrative commands and anomalous network traffic patterns.",
+    "sentence_annotations": [
+        {
+            "sentence": "For initial access, the actors staged compromised versions of legitimate software installers on forums to achieve untargeted access in victim environments, while simultaneously sending spearphishing emails with malicious.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Once inside, they executed commands by using Azure RunCommand to run PowerShell scripts on virtual machines in the target environment and compromised local cPanel accounts to establish persistence [T1078.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "004] and conducted network sniffing by hooking the Catalina application filter chain to monitor inbound requests for parameters like passwords, while using libpcap to sniff traffic and identify open ports for command channels via port knocking [T1205.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowDrain' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, 'ShadowDrain', which combines reconnaissance, supply chain attacks, and cloud exploitation to compromise hybrid environments. The activity leverages exposed databases, spearphishing, and credential theft techniques, observed in training scenarios for blue team defense enhancement.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to document the tactics, techniques, and procedures (TTPs) of the fictional APT group 'ShadowDrain'. This report is based on a training scenario designed to educate blue teams on detecting and mitigating multi-vector attacks. ShadowDrain operates with a focus on financial and critical infrastructure sectors, using a blend of open-source intelligence and automated tools. Initial analysis indicates the group likely conducted reconnaissance by scanning Shodan for exposed Redis servers with default configurations [T1596.005] and analyzing HTTP response headers to identify exploitable web application vulnerabilities [T1595.002], which was logged in system audit trails as routine network noise. For initial access, the actors staged compromised versions of legitimate software installers on forums to achieve untargeted access in victim environments [T1195], while simultaneously sending spearphishing emails with malicious .ps1 attachments designed to extract credential information from Windows Credential Manager [T1598.002]. Once inside, they executed commands by using Azure RunCommand to run PowerShell scripts on virtual machines in the target environment [T1651] and compromised local cPanel accounts to establish persistence [T1078.003], with additional logs showing failed login attempts from IP addresses in Eastern Europe. To harvest credentials, the group employed credential API hooking to spawn system threads [T1056.004] and conducted network sniffing by hooking the Catalina application filter chain to monitor inbound requests for parameters like passwords [T1040], while using libpcap to sniff traffic and identify open ports for command channels via port knocking [T1205.001]. This activity was part of a broader campaign that included lateral movement attempts, though no data exfiltration was confirmed in this fictional scenario. Blue teams should monitor for unusual cloud administrative commands and anomalous network traffic patterns.",
+        "techniques_used": [
+            "T1596.005",
+            "T1595.002",
+            "T1598.002",
+            "T1195",
+            "T1651",
+            "T1078.003",
+            "T1056.004",
+            "T1040",
+            "T1205.001"
+        ]
+    }
+}

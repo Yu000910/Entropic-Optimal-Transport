@@ -1,0 +1,58 @@
+{
+    "report_id": "report_753",
+    "generated_at": "20251223_110023",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1059.005",
+        "T1176.002",
+        "T1003",
+        "T1071.004",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.001",
+        "T1059.005",
+        "T1176.002",
+        "T1003",
+        "T1071.004",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1195.001",
+        "T1176.002",
+        "T1059.005",
+        "T1003",
+        "T1071.004",
+        "T1565.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign designed for blue team training. APT-FICT, a simulated advanced persistent threat group, has been observed targeting organizations in the technology and finance sectors, with a focus on software development teams. Initial analysis suggests the campaign began in early 2024, exploiting vulnerabilities in third-party libraries to gain initial access.\n\nAttack Narrative:\nInitial Access: The actors compromised a widely used open-source library by injecting malicious code into its dependencies, which was then distributed through legitimate package managers to unsuspecting developers. System logs from affected organizations show anomalous downloads of the tainted library version 2.1.3, but no immediate alerts were triggered due to its trusted source.\n\nExecution: Upon installation, the malicious dependency executed a Visual Basic script that leveraged IDE extensions to run hidden code within development environments, such as Visual Studio Code, while simultaneously downloading additional payloads from a remote server. This allowed the script to create a persistent backdoor by modifying project configurations and registry keys.\n\nPersistence: The backdoor established persistence through scheduled tasks and startup items, with network traffic analysis revealing intermittent connections to external IP addresses, though these were initially dismissed as benign update checks.\n\nCredential Access: The malware then performed OS credential dumping by extracting LSASS memory to harvest user credentials, including domain admin accounts, which were stored in a temporary file before exfiltration.\n\nCommand and Control (C2): For C2 communications, the actors used DNS queries to encode data in subdomains, blending with normal network traffic to evade detection. Routine DNS logs showed increased query volumes to suspicious domains, but these were not flagged by standard security tools.\n\nExfiltration: Finally, the malware employed transmitted data manipulation to intercept HTTP POST requests using a network sniffer, capturing form submission data such as login credentials and financial information, which was then exfiltrated via encrypted channels. Incident responders noted that the company's background in fintech made it a high-value target, with internal audits revealing gaps in dependency management policies.\n\nMitigation recommendations include implementing strict software supply chain controls, monitoring for unusual IDE activity, and enhancing network segmentation to limit lateral movement.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign designed for blue team training. APT-FICT, a simulated advanced persistent threat group, has been observed targeting organizations in the technology and finance sectors, with a focus on software development teams. Initial analysis suggests the campaign began in early 2024, exploiting vulnerabilities in third-party libraries to gain initial access.\n\nAttack Narrative:\nInitial Access: The actors compromised a widely used open-source library by injecting malicious code into its dependencies [T1195.001], which was then distributed through legitimate package managers to unsuspecting developers. System logs from affected organizations show anomalous downloads of the tainted library version 2.1.3, but no immediate alerts were triggered due to its trusted source.\n\nExecution: Upon installation, the malicious dependency executed a Visual Basic script [T1059.005] that leveraged IDE extensions [T1176.002] to run hidden code within development environments, such as Visual Studio Code, while simultaneously downloading additional payloads from a remote server. This allowed the script to create a persistent backdoor by modifying project configurations and registry keys.\n\nPersistence: The backdoor established persistence through scheduled tasks and startup items, with network traffic analysis revealing intermittent connections to external IP addresses, though these were initially dismissed as benign update checks.\n\nCredential Access: The malware then performed OS credential dumping [T1003] by extracting LSASS memory to harvest user credentials, including domain admin accounts, which were stored in a temporary file before exfiltration.\n\nCommand and Control (C2): For C2 communications, the actors used DNS queries [T1071.004] to encode data in subdomains, blending with normal network traffic to evade detection. Routine DNS logs showed increased query volumes to suspicious domains, but these were not flagged by standard security tools.\n\nExfiltration: Finally, the malware employed transmitted data manipulation [T1565.002] to intercept HTTP POST requests using a network sniffer, capturing form submission data such as login credentials and financial information, which was then exfiltrated via encrypted channels. Incident responders noted that the company's background in fintech made it a high-value target, with internal audits revealing gaps in dependency management policies.\n\nMitigation recommendations include implementing strict software supply chain controls, monitoring for unusual IDE activity, and enhancing network segmentation to limit lateral movement.",
+    "sentence_annotations": [
+        {
+            "sentence": "Credential Access: The malware then performed OS credential dumping by extracting LSASS memory to harvest user credentials, including domain admin accounts, which were stored in a temporary file before exfiltration.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Software Supply Chain",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-FICT, targeting software development environments to compromise dependencies and exfiltrate sensitive data. The campaign leverages a multi-stage attack involving dependency compromise, script execution, and network manipulation for persistence and data theft.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign designed for blue team training. APT-FICT, a simulated advanced persistent threat group, has been observed targeting organizations in the technology and finance sectors, with a focus on software development teams. Initial analysis suggests the campaign began in early 2024, exploiting vulnerabilities in third-party libraries to gain initial access.\n\nAttack Narrative:\nInitial Access: The actors compromised a widely used open-source library by injecting malicious code into its dependencies [T1195.001], which was then distributed through legitimate package managers to unsuspecting developers. System logs from affected organizations show anomalous downloads of the tainted library version 2.1.3, but no immediate alerts were triggered due to its trusted source.\n\nExecution: Upon installation, the malicious dependency executed a Visual Basic script [T1059.005] that leveraged IDE extensions [T1176.002] to run hidden code within development environments, such as Visual Studio Code, while simultaneously downloading additional payloads from a remote server. This allowed the script to create a persistent backdoor by modifying project configurations and registry keys.\n\nPersistence: The backdoor established persistence through scheduled tasks and startup items, with network traffic analysis revealing intermittent connections to external IP addresses, though these were initially dismissed as benign update checks.\n\nCredential Access: The malware then performed OS credential dumping [T1003] by extracting LSASS memory to harvest user credentials, including domain admin accounts, which were stored in a temporary file before exfiltration.\n\nCommand and Control (C2): For C2 communications, the actors used DNS queries [T1071.004] to encode data in subdomains, blending with normal network traffic to evade detection. Routine DNS logs showed increased query volumes to suspicious domains, but these were not flagged by standard security tools.\n\nExfiltration: Finally, the malware employed transmitted data manipulation [T1565.002] to intercept HTTP POST requests using a network sniffer, capturing form submission data such as login credentials and financial information, which was then exfiltrated via encrypted channels. Incident responders noted that the company's background in fintech made it a high-value target, with internal audits revealing gaps in dependency management policies.\n\nMitigation recommendations include implementing strict software supply chain controls, monitoring for unusual IDE activity, and enhancing network segmentation to limit lateral movement.",
+        "techniques_used": [
+            "T1195.001",
+            "T1059.005",
+            "T1176.002",
+            "T1003",
+            "T1071.004",
+            "T1565.002"
+        ]
+    }
+}

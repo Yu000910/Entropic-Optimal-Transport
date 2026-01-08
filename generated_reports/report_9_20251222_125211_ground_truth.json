@@ -1,0 +1,138 @@
+{
+    "report_id": "report_9",
+    "generated_at": "20251222_125211",
+    "scenario_target_ids": [
+        "T1583.001",
+        "T1078",
+        "T1609",
+        "T1204",
+        "T1134.001",
+        "T1027.005",
+        "T1553.004",
+        "T1542.001",
+        "T1135",
+        "T1016.002",
+        "T1021.005",
+        "T1563",
+        "T1071.005",
+        "T1001.003",
+        "T1020.001",
+        "T1048.001",
+        "T1485"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.001",
+        "T1078",
+        "T1609",
+        "T1204",
+        "T1134.001",
+        "T1027.005",
+        "T1553.004",
+        "T1542.001",
+        "T1135",
+        "T1016.002",
+        "T1021.005",
+        "T1563",
+        "T1071.005",
+        "T1001.003",
+        "T1020.001",
+        "T1048.001",
+        "T1485"
+    ],
+    "actual_found_ids": [
+        "T1001.003",
+        "T1048.001",
+        "T1016.002",
+        "T1485",
+        "T1027.005",
+        "T1542.001",
+        "T1021.005",
+        "T1071.005",
+        "T1135",
+        "T1553.004",
+        "T1078",
+        "T1563",
+        "T1134.001",
+        "T1609",
+        "T1020.001",
+        "T1583.001",
+        "T1204"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report simulates a campaign by the threat actor 'Crimson Shadow,' which has been active since early 2023, focusing on sectors such as banking and energy. The attack begins with reconnaissance, where actors acquire domains that mimic legitimate financial services to serve as distribution points for malware and command-and-control (C2) channels. Initial access is achieved by exploiting valid accounts obtained through previous credential theft or phishing campaigns, allowing the adversary to bypass perimeter defenses and gain a foothold in the target network. Once inside, execution occurs when a user is tricked into interacting with a fake CAPTCHA that instructs them to open the Windows Run dialog and paste a Base64-encoded PowerShell command, which downloads and runs a malicious payload. The payload then employs container administration commands to manipulate Kubernetes clusters within the environment, spreading laterally by sending kubectl instructions through compromised nodes. For privilege escalation, the malware uses token impersonation to duplicate SYSTEM tokens, granting elevated privileges while simultaneously removing its executable file after execution to evade file-based detection tools. Persistence is established by installing a root certificate to bypass certificate validation and modifying UEFI firmware settings to load a malicious module during the boot process, ensuring long-term access. Discovery activities include enumerating network shares to identify sensitive data and using Wi-Fi discovery commands to collect SSIDs of previously connected networks, aiding in lateral movement planning. Lateral movement is facilitated through VNC for remote desktop access and hijacking remote service sessions, such as RDP, to move across systems without authentication. Command and control is maintained using publish/subscribe protocols, where the adversary leverages MQTT topics to receive commands from C2 servers without direct connections, while data exfiltration involves protocol impersonation with custom HTTP headers to transmit stolen information and traffic duplication to intercept and copy network communications for automated collection. Exfiltration is conducted over symmetric encrypted non-C2 protocols, employing RC4 encryption on harvested intellectual property before transferring it via FTP, and the campaign concludes with data destruction, where a script overwrites the master boot record with zeros, rendering systems unbootable and causing operational disruption. System logs from affected entities show anomalous network traffic patterns, including spikes in outbound FTP connections and unauthorized access attempts to administrative interfaces, though some of these logs may be unrelated noise from routine maintenance activities. Background on the targeted organizations includes a mix of large multinational banks and regional energy providers, with varying levels of cybersecurity maturity, but this information is provided for context and not directly linked to the attack techniques.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report simulates a campaign by the threat actor 'Crimson Shadow,' which has been active since early 2023, focusing on sectors such as banking and energy. The attack begins with reconnaissance, where actors acquire domains [T1583.001] that mimic legitimate financial services to serve as distribution points for malware and command-and-control (C2) channels. Initial access is achieved by exploiting valid accounts [T1078] obtained through previous credential theft or phishing campaigns, allowing the adversary to bypass perimeter defenses and gain a foothold in the target network. Once inside, execution occurs when a user is tricked into interacting with a fake CAPTCHA that instructs them to open the Windows Run dialog and paste a Base64-encoded PowerShell command [T1204], which downloads and runs a malicious payload. The payload then employs container administration commands [T1609] to manipulate Kubernetes clusters within the environment, spreading laterally by sending kubectl instructions through compromised nodes. For privilege escalation, the malware uses token impersonation [T1134.001] to duplicate SYSTEM tokens, granting elevated privileges while simultaneously removing its executable file after execution [T1027.005] to evade file-based detection tools. Persistence is established by installing a root certificate [T1553.004] to bypass certificate validation and modifying UEFI firmware settings [T1542.001] to load a malicious module during the boot process, ensuring long-term access. Discovery activities include enumerating network shares [T1135] to identify sensitive data and using Wi-Fi discovery commands [T1016.002] to collect SSIDs of previously connected networks, aiding in lateral movement planning. Lateral movement is facilitated through VNC [T1021.005] for remote desktop access and hijacking remote service sessions [T1563], such as RDP, to move across systems without authentication. Command and control is maintained using publish/subscribe protocols [T1071.005], where the adversary leverages MQTT topics to receive commands from C2 servers without direct connections, while data exfiltration involves protocol impersonation [T1001.003] with custom HTTP headers to transmit stolen information and traffic duplication [T1020.001] to intercept and copy network communications for automated collection. Exfiltration is conducted over symmetric encrypted non-C2 protocols [T1048.001], employing RC4 encryption on harvested intellectual property before transferring it via FTP, and the campaign concludes with data destruction [T1485], where a script overwrites the master boot record with zeros, rendering systems unbootable and causing operational disruption. System logs from affected entities show anomalous network traffic patterns, including spikes in outbound FTP connections and unauthorized access attempts to administrative interfaces, though some of these logs may be unrelated noise from routine maintenance activities. Background on the targeted organizations includes a mix of large multinational banks and regional energy providers, with varying levels of cybersecurity maturity, but this information is provided for context and not directly linked to the attack techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access is achieved by exploiting valid accounts obtained through previous credential theft or phishing campaigns, allowing the adversary to bypass perimeter defenses and gain a foothold in the target network.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Once inside, execution occurs when a user is tricked into interacting with a fake CAPTCHA that instructs them to open the Windows Run dialog and paste a Base64-encoded PowerShell command, which downloads and runs a malicious payload.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "The payload then employs container administration commands to manipulate Kubernetes clusters within the environment, spreading laterally by sending kubectl instructions through compromised nodes.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "Discovery activities include enumerating network shares to identify sensitive data and using Wi-Fi discovery commands [T1016.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "005] for remote desktop access and hijacking remote service sessions, such as RDP, to move across systems without authentication.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "001], employing RC4 encryption on harvested intellectual property before transferring it via FTP, and the campaign concludes with data destruction, where a script overwrites the master boot record with zeros, rendering systems unbootable and causing operational disruption.",
+            "technique_id": "T1485",
+            "technique_name": "Data Destruction"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT 'Crimson Shadow' Targeting Financial and Critical Infrastructure Sectors",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'Crimson Shadow,' which has been observed targeting financial institutions and critical infrastructure entities globally. The campaign leverages a multi-stage attack chain involving initial access through compromised domains and valid accounts, execution via user interaction, privilege escalation, persistence through firmware manipulation, lateral movement via VNC and session hijacking, command and control using publish/subscribe protocols, and data exfiltration with encryption and destruction. Blue teams are advised to review the tactics, techniques, and procedures (TTPs) outlined for defensive training and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report simulates a campaign by the threat actor 'Crimson Shadow,' which has been active since early 2023, focusing on sectors such as banking and energy. The attack begins with reconnaissance, where actors acquire domains [T1583.001] that mimic legitimate financial services to serve as distribution points for malware and command-and-control (C2) channels. Initial access is achieved by exploiting valid accounts [T1078] obtained through previous credential theft or phishing campaigns, allowing the adversary to bypass perimeter defenses and gain a foothold in the target network. Once inside, execution occurs when a user is tricked into interacting with a fake CAPTCHA that instructs them to open the Windows Run dialog and paste a Base64-encoded PowerShell command [T1204], which downloads and runs a malicious payload. The payload then employs container administration commands [T1609] to manipulate Kubernetes clusters within the environment, spreading laterally by sending kubectl instructions through compromised nodes. For privilege escalation, the malware uses token impersonation [T1134.001] to duplicate SYSTEM tokens, granting elevated privileges while simultaneously removing its executable file after execution [T1027.005] to evade file-based detection tools. Persistence is established by installing a root certificate [T1553.004] to bypass certificate validation and modifying UEFI firmware settings [T1542.001] to load a malicious module during the boot process, ensuring long-term access. Discovery activities include enumerating network shares [T1135] to identify sensitive data and using Wi-Fi discovery commands [T1016.002] to collect SSIDs of previously connected networks, aiding in lateral movement planning. Lateral movement is facilitated through VNC [T1021.005] for remote desktop access and hijacking remote service sessions [T1563], such as RDP, to move across systems without authentication. Command and control is maintained using publish/subscribe protocols [T1071.005], where the adversary leverages MQTT topics to receive commands from C2 servers without direct connections, while data exfiltration involves protocol impersonation [T1001.003] with custom HTTP headers to transmit stolen information and traffic duplication [T1020.001] to intercept and copy network communications for automated collection. Exfiltration is conducted over symmetric encrypted non-C2 protocols [T1048.001], employing RC4 encryption on harvested intellectual property before transferring it via FTP, and the campaign concludes with data destruction [T1485], where a script overwrites the master boot record with zeros, rendering systems unbootable and causing operational disruption. System logs from affected entities show anomalous network traffic patterns, including spikes in outbound FTP connections and unauthorized access attempts to administrative interfaces, though some of these logs may be unrelated noise from routine maintenance activities. Background on the targeted organizations includes a mix of large multinational banks and regional energy providers, with varying levels of cybersecurity maturity, but this information is provided for context and not directly linked to the attack techniques.",
+        "techniques_used": [
+            "T1583.001",
+            "T1078",
+            "T1609",
+            "T1204",
+            "T1134.001",
+            "T1027.005",
+            "T1553.004",
+            "T1542.001",
+            "T1135",
+            "T1016.002",
+            "T1021.005",
+            "T1563",
+            "T1071.005",
+            "T1001.003",
+            "T1020.001",
+            "T1048.001",
+            "T1485"
+        ]
+    }
+}

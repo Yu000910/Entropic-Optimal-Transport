@@ -1,0 +1,146 @@
+{
+    "report_id": "report_384",
+    "generated_at": "20251222_152423",
+    "scenario_target_ids": [
+        "T1585.002",
+        "T1078.004",
+        "T1651",
+        "T1055.008",
+        "T1070.001",
+        "T1036.006",
+        "T1202",
+        "T1497.001",
+        "T1615",
+        "T1550.003",
+        "T1534",
+        "T1005",
+        "T1102.003",
+        "T1001.001",
+        "T1048.002",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1585.002",
+        "T1078.004",
+        "T1651",
+        "T1055.008",
+        "T1070.001",
+        "T1036.006",
+        "T1202",
+        "T1497.001",
+        "T1615",
+        "T1550.003",
+        "T1534",
+        "T1005",
+        "T1102.003",
+        "T1001.001",
+        "T1048.002",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1550.003",
+        "T1497.001",
+        "T1001.001",
+        "T1005",
+        "T1202",
+        "T1078.004",
+        "T1105",
+        "T1048.002",
+        "T1567",
+        "T1589",
+        "T1651",
+        "T1585.002",
+        "T1534",
+        "T1070.001",
+        "T1059.001",
+        "T1102.003",
+        "T1615",
+        "T1055.008",
+        "T1036.006"
+    ],
+    "clean_text": "Background: The fictional company 'TechGlobal Inc.', a mid-sized technology firm with hybrid Microsoft Azure and on-premises infrastructure, reported anomalous activity in its Microsoft 365 environment starting in early 2024. Initial investigation revealed unauthorized access from IP addresses associated with known APT infrastructure, though no real-world breaches occurred as this is a training scenario.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The adversaries likely conducted reconnaissance to identify target email accounts, then abused a free trial of a secure messaging service to set up temporary encrypted chat rooms for command and control. They subsequently accessed the Microsoft M365 cloud environment using stolen credentials obtained from a prior phishing campaign, logging in from a suspicious location at 03:45 UTC on 2024-03-15, as noted in Azure AD logs (Event ID 1003).\n2. Execution and Persistence: Upon gaining access, the actors employed Azure RunCommand to deploy backdoors across virtual machines while using PowerShell to download additional payloads. They executed malicious code that utilized malloc to allocate memory in a target process before writing shellcode, and renamed 'malware.dll' to 'annual_report.docx ' with a trailing space to evade file extension checks. To obscure their actions, they utilized pcalua.exe to execute a malicious DLL by simulating application compatibility troubleshooting and performed anti-VM and anti-sandbox checks using string hashing and API calls like EnumWindows.\n3. Discovery and Lateral Movement: The malware invoked 'gpresult /h report.html' to export Group Policy results for analysis, and the actors injected a golden ticket to gain unauthorized access to domain resources. They exploited Microsoft Teams' collaboration features to spread malware internally across departments, as observed in Teams logs showing unusual file shares from compromised accounts.\n4. Collection and Exfiltration: The server component collected data from local systems, including configuration files, and obfuscated the FML.dll with 200MB of junk data to hinder analysis. Exfiltration was conducted over SMTPS to avoid C2 protocol detection and over web services using collected system files, with one-way communication via Telegram Messenger to discover C2 IP addresses.\n5. Defense Evasion and Impact: To remove evidence, the actors selectively cleared Windows Event Logs and system logs, though residual artifacts were found in backup logs. The campaign resulted in simulated data loss of 500GB, but no real impact occurred as part of this training exercise.\n\nIrrelevant Information: TechGlobal Inc. was founded in 2010 and specializes in cloud solutions, with offices in New York and London. System logs from the affected period show routine maintenance tasks, such as Windows updates applied on 2024-03-14, which are unrelated to the attack. The company's HR department reported a normal employee turnover rate of 8% last quarter, and network traffic analysis included benign streaming service usage during off-hours.",
+    "tagged_text": "Background: The fictional company 'TechGlobal Inc.', a mid-sized technology firm with hybrid Microsoft Azure and on-premises infrastructure, reported anomalous activity in its Microsoft 365 environment starting in early 2024. Initial investigation revealed unauthorized access from IP addresses associated with known APT infrastructure, though no real-world breaches occurred as this is a training scenario.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The adversaries likely conducted reconnaissance [T1589] to identify target email accounts, then abused a free trial of a secure messaging service to set up temporary encrypted chat rooms for command and control [T1585.002]. They subsequently accessed the Microsoft M365 cloud environment using stolen credentials obtained from a prior phishing campaign [T1078.004], logging in from a suspicious location at 03:45 UTC on 2024-03-15, as noted in Azure AD logs (Event ID 1003).\n2. Execution and Persistence: Upon gaining access, the actors employed Azure RunCommand to deploy backdoors across virtual machines [T1651] while using PowerShell [T1059.001] to download additional payloads [T1105]. They executed malicious code that utilized malloc to allocate memory in a target process before writing shellcode [T1055.008], and renamed 'malware.dll' to 'annual_report.docx ' with a trailing space to evade file extension checks [T1036.006]. To obscure their actions, they utilized pcalua.exe to execute a malicious DLL by simulating application compatibility troubleshooting [T1202] and performed anti-VM and anti-sandbox checks using string hashing and API calls like EnumWindows [T1497.001].\n3. Discovery and Lateral Movement: The malware invoked 'gpresult /h report.html' to export Group Policy results for analysis [T1615], and the actors injected a golden ticket to gain unauthorized access to domain resources [T1550.003]. They exploited Microsoft Teams' collaboration features to spread malware internally across departments [T1534], as observed in Teams logs showing unusual file shares from compromised accounts.\n4. Collection and Exfiltration: The server component collected data from local systems, including configuration files [T1005], and obfuscated the FML.dll with 200MB of junk data to hinder analysis [T1001.001]. Exfiltration was conducted over SMTPS to avoid C2 protocol detection [T1048.002] and over web services using collected system files [T1567], with one-way communication via Telegram Messenger to discover C2 IP addresses [T1102.003].\n5. Defense Evasion and Impact: To remove evidence, the actors selectively cleared Windows Event Logs and system logs [T1070.001], though residual artifacts were found in backup logs. The campaign resulted in simulated data loss of 500GB, but no real impact occurred as part of this training exercise.\n\nIrrelevant Information: TechGlobal Inc. was founded in 2010 and specializes in cloud solutions, with offices in New York and London. System logs from the affected period show routine maintenance tasks, such as Windows updates applied on 2024-03-14, which are unrelated to the attack. The company's HR department reported a normal employee turnover rate of 8% last quarter, and network traffic analysis included benign streaming service usage during off-hours.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access and Reconnaissance: The adversaries likely conducted reconnaissance to identify target email accounts, then abused a free trial of a secure messaging service to set up temporary encrypted chat rooms for command and control [T1585.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Execution and Persistence: Upon gaining access, the actors employed Azure RunCommand to deploy backdoors across virtual machines while using PowerShell [T1059.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "001] to download additional payloads.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "exe to execute a malicious DLL by simulating application compatibility troubleshooting and performed anti-VM and anti-sandbox checks using string hashing and API calls like EnumWindows [T1497.",
+            "technique_id": "T1202",
+            "technique_name": "Indirect Command Execution"
+        },
+        {
+            "sentence": "html' to export Group Policy results for analysis, and the actors injected a golden ticket to gain unauthorized access to domain resources [T1550.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "They exploited Microsoft Teams' collaboration features to spread malware internally across departments, as observed in Teams logs showing unusual file shares from compromised accounts.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The server component collected data from local systems, including configuration files, and obfuscated the FML.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "002] and over web services using collected system files, with one-way communication via Telegram Messenger to discover C2 IP addresses [T1102.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'CloudShadow', which exploits cloud services and internal communication tools to infiltrate organizations, persist in environments, and exfiltrate sensitive data. The activity involves initial access via compromised credentials, lateral movement using cloud administration commands, and sophisticated evasion techniques to avoid detection. Blue teams are advised to review logs, enforce multi-factor authentication, and monitor for unusual cloud and internal network activity.",
+        "full_report_text": "Background: The fictional company 'TechGlobal Inc.', a mid-sized technology firm with hybrid Microsoft Azure and on-premises infrastructure, reported anomalous activity in its Microsoft 365 environment starting in early 2024. Initial investigation revealed unauthorized access from IP addresses associated with known APT infrastructure, though no real-world breaches occurred as this is a training scenario.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The adversaries likely conducted reconnaissance [T1589] to identify target email accounts, then abused a free trial of a secure messaging service to set up temporary encrypted chat rooms for command and control [T1585.002]. They subsequently accessed the Microsoft M365 cloud environment using stolen credentials obtained from a prior phishing campaign [T1078.004], logging in from a suspicious location at 03:45 UTC on 2024-03-15, as noted in Azure AD logs (Event ID 1003).\n2. Execution and Persistence: Upon gaining access, the actors employed Azure RunCommand to deploy backdoors across virtual machines [T1651] while using PowerShell [T1059.001] to download additional payloads [T1105]. They executed malicious code that utilized malloc to allocate memory in a target process before writing shellcode [T1055.008], and renamed 'malware.dll' to 'annual_report.docx ' with a trailing space to evade file extension checks [T1036.006]. To obscure their actions, they utilized pcalua.exe to execute a malicious DLL by simulating application compatibility troubleshooting [T1202] and performed anti-VM and anti-sandbox checks using string hashing and API calls like EnumWindows [T1497.001].\n3. Discovery and Lateral Movement: The malware invoked 'gpresult /h report.html' to export Group Policy results for analysis [T1615], and the actors injected a golden ticket to gain unauthorized access to domain resources [T1550.003]. They exploited Microsoft Teams' collaboration features to spread malware internally across departments [T1534], as observed in Teams logs showing unusual file shares from compromised accounts.\n4. Collection and Exfiltration: The server component collected data from local systems, including configuration files [T1005], and obfuscated the FML.dll with 200MB of junk data to hinder analysis [T1001.001]. Exfiltration was conducted over SMTPS to avoid C2 protocol detection [T1048.002] and over web services using collected system files [T1567], with one-way communication via Telegram Messenger to discover C2 IP addresses [T1102.003].\n5. Defense Evasion and Impact: To remove evidence, the actors selectively cleared Windows Event Logs and system logs [T1070.001], though residual artifacts were found in backup logs. The campaign resulted in simulated data loss of 500GB, but no real impact occurred as part of this training exercise.\n\nIrrelevant Information: TechGlobal Inc. was founded in 2010 and specializes in cloud solutions, with offices in New York and London. System logs from the affected period show routine maintenance tasks, such as Windows updates applied on 2024-03-14, which are unrelated to the attack. The company's HR department reported a normal employee turnover rate of 8% last quarter, and network traffic analysis included benign streaming service usage during off-hours.",
+        "techniques_used": [
+            "T1585.002",
+            "T1078.004",
+            "T1651",
+            "T1055.008",
+            "T1070.001",
+            "T1036.006",
+            "T1202",
+            "T1497.001",
+            "T1615",
+            "T1550.003",
+            "T1534",
+            "T1005",
+            "T1102.003",
+            "T1001.001",
+            "T1048.002",
+            "T1567"
+        ]
+    }
+}

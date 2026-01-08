@@ -1,0 +1,58 @@
+{
+    "report_id": "report_339",
+    "generated_at": "20251222_150451",
+    "scenario_target_ids": [
+        "T1590.002",
+        "T1566.003",
+        "T1059.007",
+        "T1556.005",
+        "T1001.002",
+        "T1568"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.002",
+        "T1566.003",
+        "T1059.007",
+        "T1556.005",
+        "T1001.002",
+        "T1568"
+    ],
+    "actual_found_ids": [
+        "T1059.007",
+        "T1001.002",
+        "T1568",
+        "T1590.002",
+        "T1556.005",
+        "T1566.003"
+    ],
+    "clean_text": "APT_ECHO likely initiated their campaign by conducting passive reconnaissance using DNS feeds to map target infrastructure and identify potential entry points, correlating domain activity to uncover related systems. Following this, the actors sent spearphishing emails via the legitimate service Constant Contact, mimicking internal communications to trick employees into clicking malicious links. Upon execution, embedded JavaScript payloads in the emails triggered code execution to download additional malware, leveraging browser vulnerabilities for initial foothold. Once inside the network, APT_ECHO used PowerShell scripts to manipulate Active Directory settings, specifically executing Set-ADUser commands to enable reversible encryption for password storage, facilitating credential harvesting. To maintain stealth, the group employed steganography tools to hide command and control (C2) traffic within seemingly benign image files, evading network-based detection while exfiltrating data. Additionally, they utilized dynamic DNS resolution by re-registering previously dormant ClouDNS subdomains, dynamically updating C2 infrastructure to avoid blacklisting and maintain persistence. Throughout the attack, system logs showed normal user activity with intermittent spikes in DNS queries, and background checks revealed APT_ECHO has historically targeted sectors with high-value data, though this specific campaign remains fictional for training. Blue teams should monitor for anomalous PowerShell usage, unexpected DNS changes, and suspicious image file transfers to detect similar tactics.",
+    "tagged_text": "APT_ECHO likely initiated their campaign by conducting passive reconnaissance using DNS feeds to map target infrastructure and identify potential entry points, correlating domain activity to uncover related systems [T1590.002]. Following this, the actors sent spearphishing emails via the legitimate service Constant Contact, mimicking internal communications to trick employees into clicking malicious links [T1566.003]. Upon execution, embedded JavaScript payloads in the emails triggered code execution to download additional malware, leveraging browser vulnerabilities for initial foothold [T1059.007]. Once inside the network, APT_ECHO used PowerShell scripts to manipulate Active Directory settings, specifically executing Set-ADUser commands to enable reversible encryption for password storage, facilitating credential harvesting [T1556.005]. To maintain stealth, the group employed steganography tools to hide command and control (C2) traffic within seemingly benign image files, evading network-based detection while exfiltrating data [T1001.002]. Additionally, they utilized dynamic DNS resolution by re-registering previously dormant ClouDNS subdomains, dynamically updating C2 infrastructure to avoid blacklisting and maintain persistence [T1568]. Throughout the attack, system logs showed normal user activity with intermittent spikes in DNS queries, and background checks revealed APT_ECHO has historically targeted sectors with high-value data, though this specific campaign remains fictional for training. Blue teams should monitor for anomalous PowerShell usage, unexpected DNS changes, and suspicious image file transfers to detect similar tactics.",
+    "sentence_annotations": [
+        {
+            "sentence": "Additionally, they utilized dynamic DNS resolution by re-registering previously dormant ClouDNS subdomains, dynamically updating C2 infrastructure to avoid blacklisting and maintain persistence.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SHADOW_DNS' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as APT_ECHO, targeting financial institutions in North America. APT_ECHO employs sophisticated techniques including DNS reconnaissance, spearphishing via services, JavaScript execution, reversible encryption manipulation, steganography, and dynamic DNS resolution to compromise networks and exfiltrate sensitive data. The campaign was identified through proactive threat hunting and analysis of anomalous network traffic patterns, with no real-world incidents reported; this report is for educational purposes to train blue teams on detecting and mitigating such multi-stage attacks.",
+        "full_report_text": "APT_ECHO likely initiated their campaign by conducting passive reconnaissance using DNS feeds to map target infrastructure and identify potential entry points, correlating domain activity to uncover related systems [T1590.002]. Following this, the actors sent spearphishing emails via the legitimate service Constant Contact, mimicking internal communications to trick employees into clicking malicious links [T1566.003]. Upon execution, embedded JavaScript payloads in the emails triggered code execution to download additional malware, leveraging browser vulnerabilities for initial foothold [T1059.007]. Once inside the network, APT_ECHO used PowerShell scripts to manipulate Active Directory settings, specifically executing Set-ADUser commands to enable reversible encryption for password storage, facilitating credential harvesting [T1556.005]. To maintain stealth, the group employed steganography tools to hide command and control (C2) traffic within seemingly benign image files, evading network-based detection while exfiltrating data [T1001.002]. Additionally, they utilized dynamic DNS resolution by re-registering previously dormant ClouDNS subdomains, dynamically updating C2 infrastructure to avoid blacklisting and maintain persistence [T1568]. Throughout the attack, system logs showed normal user activity with intermittent spikes in DNS queries, and background checks revealed APT_ECHO has historically targeted sectors with high-value data, though this specific campaign remains fictional for training. Blue teams should monitor for anomalous PowerShell usage, unexpected DNS changes, and suspicious image file transfers to detect similar tactics.",
+        "techniques_used": [
+            "T1590.002",
+            "T1566.003",
+            "T1059.007",
+            "T1556.005",
+            "T1001.002",
+            "T1568"
+        ]
+    }
+}

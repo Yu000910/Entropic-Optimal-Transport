@@ -1,0 +1,114 @@
+{
+    "report_id": "report_252",
+    "generated_at": "20251222_142905",
+    "scenario_target_ids": [
+        "T1597.001",
+        "T1078",
+        "T1053.002",
+        "T1543",
+        "T1558",
+        "T1619",
+        "T1482",
+        "T1563.001",
+        "T1056",
+        "T1102.003",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.001",
+        "T1078",
+        "T1053.002",
+        "T1543",
+        "T1558",
+        "T1619",
+        "T1482",
+        "T1563.001",
+        "T1056",
+        "T1102.003",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1053.002",
+        "T1102.003",
+        "T1543",
+        "T1597.001",
+        "T1558",
+        "T1563.001",
+        "T1489",
+        "T1078",
+        "T1056",
+        "T1619",
+        "T1482",
+        "T1059.001"
+    ],
+    "clean_text": "On October 15, 2023, Crimson Serpent initiated reconnaissance by searching a private threat intelligence portal for data on target employee email addresses to identify potential entry points. Using compromised credentials obtained from previous breaches, the actors gained initial access via valid accounts with administrative privileges on a domain controller. Once inside, they employed PowerShell to schedule malicious encryption routines during low-activity periods using the At utility and simultaneously modified system processes by configuring svchost.exe to load a backdoor DLL for continuous execution. For credential harvesting, the malware implemented API hooking on CredRead to capture domain credentials when users accessed network resources and executed klist with the purge option to clear cached Kerberos tickets after extraction. Lateral movement was achieved by hijacking the SSH agent socket to reuse existing SSH connections, while reconnaissance tools were used to discover parent-child and cross-forest trust relationships via DSEnumerateDomainTrusts() and enumerate AWS storage services, such as S3 buckets and Elastic Block Store volumes. The attacker used PowerShell to run scripts that collected system information in a one-way communication channel, and the malware, identified as a variant of LookBack, killed processes and deleted services to evade detection. System logs from the affected domain controller showed routine authentication events at 02:00 UTC, unrelated to the attack, and the company's background includes a recent merger with a tech startup, which expanded its cloud footprint but introduced integration vulnerabilities. Network traffic analysis revealed anomalous SSH connections from internal IPs to unauthorized external servers, though some were false positives from misconfigured DevOps tools.",
+    "tagged_text": "On October 15, 2023, Crimson Serpent initiated reconnaissance by searching a private threat intelligence portal for data on target employee email addresses [T1597.001] to identify potential entry points. Using compromised credentials obtained from previous breaches, the actors gained initial access via valid accounts [T1078] with administrative privileges on a domain controller. Once inside, they employed PowerShell [T1059.001] to schedule malicious encryption routines during low-activity periods using the At utility [T1053.002] and simultaneously modified system processes by configuring svchost.exe to load a backdoor DLL for continuous execution [T1543]. For credential harvesting, the malware implemented API hooking on CredRead to capture domain credentials when users accessed network resources [T1056] and executed klist with the purge option to clear cached Kerberos tickets after extraction [T1558]. Lateral movement was achieved by hijacking the SSH agent socket to reuse existing SSH connections [T1563.001], while reconnaissance tools were used to discover parent-child and cross-forest trust relationships via DSEnumerateDomainTrusts() [T1482] and enumerate AWS storage services, such as S3 buckets and Elastic Block Store volumes [T1619]. The attacker used PowerShell to run scripts that collected system information in a one-way communication channel [T1102.003], and the malware, identified as a variant of LookBack, killed processes and deleted services to evade detection [T1489]. System logs from the affected domain controller showed routine authentication events at 02:00 UTC, unrelated to the attack, and the company's background includes a recent merger with a tech startup, which expanded its cloud footprint but introduced integration vulnerabilities. Network traffic analysis revealed anomalous SSH connections from internal IPs to unauthorized external servers, though some were false positives from misconfigured DevOps tools.",
+    "sentence_annotations": [
+        {
+            "sentence": "Using compromised credentials obtained from previous breaches, the actors gained initial access via valid accounts with administrative privileges on a domain controller.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "exe to load a backdoor DLL for continuous execution.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "For credential harvesting, the malware implemented API hooking on CredRead to capture domain credentials when users accessed network resources and executed klist with the purge option to clear cached Kerberos tickets after extraction.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "For credential harvesting, the malware implemented API hooking on CredRead to capture domain credentials when users accessed network resources and executed klist with the purge option to clear cached Kerberos tickets after extraction.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        },
+        {
+            "sentence": "001], while reconnaissance tools were used to discover parent-child and cross-forest trust relationships via DSEnumerateDomainTrusts() and enumerate AWS storage services, such as S3 buckets and Elastic Block Store volumes.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        },
+        {
+            "sentence": "001], while reconnaissance tools were used to discover parent-child and cross-forest trust relationships via DSEnumerateDomainTrusts() and enumerate AWS storage services, such as S3 buckets and Elastic Block Store volumes.",
+            "technique_id": "T1619",
+            "technique_name": "Cloud Storage Object Discovery"
+        },
+        {
+            "sentence": "003], and the malware, identified as a variant of LookBack, killed processes and deleted services to evade detection.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'Crimson Serpent,' targeting organizations with hybrid on-premises and cloud environments. The campaign involves reconnaissance, credential theft, lateral movement, and persistence mechanisms, leveraging techniques such as threat intelligence gathering, valid account abuse, and Kerberos ticket manipulation. Blue teams should review logs for suspicious scheduled tasks, SSH anomalies, and service disruptions.",
+        "full_report_text": "On October 15, 2023, Crimson Serpent initiated reconnaissance by searching a private threat intelligence portal for data on target employee email addresses [T1597.001] to identify potential entry points. Using compromised credentials obtained from previous breaches, the actors gained initial access via valid accounts [T1078] with administrative privileges on a domain controller. Once inside, they employed PowerShell [T1059.001] to schedule malicious encryption routines during low-activity periods using the At utility [T1053.002] and simultaneously modified system processes by configuring svchost.exe to load a backdoor DLL for continuous execution [T1543]. For credential harvesting, the malware implemented API hooking on CredRead to capture domain credentials when users accessed network resources [T1056] and executed klist with the purge option to clear cached Kerberos tickets after extraction [T1558]. Lateral movement was achieved by hijacking the SSH agent socket to reuse existing SSH connections [T1563.001], while reconnaissance tools were used to discover parent-child and cross-forest trust relationships via DSEnumerateDomainTrusts() [T1482] and enumerate AWS storage services, such as S3 buckets and Elastic Block Store volumes [T1619]. The attacker used PowerShell to run scripts that collected system information in a one-way communication channel [T1102.003], and the malware, identified as a variant of LookBack, killed processes and deleted services to evade detection [T1489]. System logs from the affected domain controller showed routine authentication events at 02:00 UTC, unrelated to the attack, and the company's background includes a recent merger with a tech startup, which expanded its cloud footprint but introduced integration vulnerabilities. Network traffic analysis revealed anomalous SSH connections from internal IPs to unauthorized external servers, though some were false positives from misconfigured DevOps tools.",
+        "techniques_used": [
+            "T1597.001",
+            "T1078",
+            "T1053.002",
+            "T1543",
+            "T1558",
+            "T1619",
+            "T1482",
+            "T1563.001",
+            "T1056",
+            "T1102.003",
+            "T1489"
+        ]
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "report_id": "report_102",
+    "generated_at": "20251222_115729",
+    "scenario_target_ids": [
+        "T1091",
+        "T1059.011",
+        "T1558.003",
+        "T1069.003",
+        "T1557",
+        "T1102"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1091",
+        "T1059.011",
+        "T1558.003",
+        "T1069.003",
+        "T1557",
+        "T1102"
+    ],
+    "actual_found_ids": [
+        "T1059.011",
+        "T1557",
+        "T1102",
+        "T1589",
+        "T1069.003",
+        "T1091",
+        "T1558.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated activity attributed to the threat actor 'ShadowWorm'. This campaign targets organizations with secure network perimeters, exploiting human factors and misconfigurations. Initial investigation logs from a fictional financial firm, 'SecureFin Corp', show anomalous USB device activity on an isolated workstation, which was later found to be part of a broader intrusion.\n\nAttack Scenario Narrative:\nThe actors likely conduct reconnaissance to identify high-value targets, though specific methods are not detailed in this simulation. In the initial access phase, the adversary employed a dropper that replicates through removable media, such as USB drives, to breach the secure network environment. This was observed when an employee inadvertently connected an infected device, bypassing air-gapped defenses. Upon execution, the compromised application utilized embedded Lua commands to exfiltrate sensitive financial data while simultaneously querying Active Directory for user account details to enable targeted brute force attacks. The malware then enumerated all Azure AD groups the compromised user belonged to using az ad user get-member-groups, mapping cloud permissions for lateral movement. To facilitate credential capture, the actors modified DNS records at service providers to redirect traffic from legitimate resources to adversary-controlled servers, enabling adversary-in-the-middle attacks. Additionally, the payload demonstrated the ability to download secondary malware from Google Drive, leveraging web services for command and control. System logs from SecureFin Corp indicated increased network latency during these activities, though this was initially attributed to routine maintenance. The campaign highlights the need for enhanced monitoring of removable media and cloud group permissions in training exercises.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated activity attributed to the threat actor 'ShadowWorm'. This campaign targets organizations with secure network perimeters, exploiting human factors and misconfigurations. Initial investigation logs from a fictional financial firm, 'SecureFin Corp', show anomalous USB device activity on an isolated workstation, which was later found to be part of a broader intrusion.\n\nAttack Scenario Narrative:\nThe actors likely conduct reconnaissance [T1589] to identify high-value targets, though specific methods are not detailed in this simulation. In the initial access phase, the adversary employed a dropper that replicates through removable media [T1091], such as USB drives, to breach the secure network environment. This was observed when an employee inadvertently connected an infected device, bypassing air-gapped defenses. Upon execution, the compromised application utilized embedded Lua commands [T1059.011] to exfiltrate sensitive financial data while simultaneously querying Active Directory for user account details [T1558.003] to enable targeted brute force attacks. The malware then enumerated all Azure AD groups the compromised user belonged to using az ad user get-member-groups [T1069.003], mapping cloud permissions for lateral movement. To facilitate credential capture, the actors modified DNS records at service providers [T1557] to redirect traffic from legitimate resources to adversary-controlled servers, enabling adversary-in-the-middle attacks. Additionally, the payload demonstrated the ability to download secondary malware from Google Drive [T1102], leveraging web services for command and control. System logs from SecureFin Corp indicated increased network latency during these activities, though this was initially attributed to routine maintenance. The campaign highlights the need for enhanced monitoring of removable media and cloud group permissions in training exercises.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Scenario Narrative:\nThe actors likely conduct reconnaissance to identify high-value targets, though specific methods are not detailed in this simulation.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the initial access phase, the adversary employed a dropper that replicates through removable media, such as USB drives, to breach the secure network environment.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "To facilitate credential capture, the actors modified DNS records at service providers to redirect traffic from legitimate resources to adversary-controlled servers, enabling adversary-in-the-middle attacks.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        },
+        {
+            "sentence": "Additionally, the payload demonstrated the ability to download secondary malware from Google Drive, leveraging web services for command and control.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign 'ShadowWorm' Targeting Hybrid Environments",
+        "summary": "This advisory details a fictional campaign by a threat actor designated as 'ShadowWorm', which employs a multi-stage attack leveraging removable media, scripting languages, and cloud enumeration to compromise networks and exfiltrate data. The scenario is designed for blue team training to enhance detection and response capabilities in hybrid IT environments.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated activity attributed to the threat actor 'ShadowWorm'. This campaign targets organizations with secure network perimeters, exploiting human factors and misconfigurations. Initial investigation logs from a fictional financial firm, 'SecureFin Corp', show anomalous USB device activity on an isolated workstation, which was later found to be part of a broader intrusion.\n\nAttack Scenario Narrative:\nThe actors likely conduct reconnaissance [T1589] to identify high-value targets, though specific methods are not detailed in this simulation. In the initial access phase, the adversary employed a dropper that replicates through removable media [T1091], such as USB drives, to breach the secure network environment. This was observed when an employee inadvertently connected an infected device, bypassing air-gapped defenses. Upon execution, the compromised application utilized embedded Lua commands [T1059.011] to exfiltrate sensitive financial data while simultaneously querying Active Directory for user account details [T1558.003] to enable targeted brute force attacks. The malware then enumerated all Azure AD groups the compromised user belonged to using az ad user get-member-groups [T1069.003], mapping cloud permissions for lateral movement. To facilitate credential capture, the actors modified DNS records at service providers [T1557] to redirect traffic from legitimate resources to adversary-controlled servers, enabling adversary-in-the-middle attacks. Additionally, the payload demonstrated the ability to download secondary malware from Google Drive [T1102], leveraging web services for command and control. System logs from SecureFin Corp indicated increased network latency during these activities, though this was initially attributed to routine maintenance. The campaign highlights the need for enhanced monitoring of removable media and cloud group permissions in training exercises.",
+        "techniques_used": [
+            "T1589",
+            "T1091",
+            "T1059.011",
+            "T1558.003",
+            "T1069.003",
+            "T1557",
+            "T1102"
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "report_id": "report_135",
+    "generated_at": "20251222_121024",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1053.006",
+        "T1003.002",
+        "T1021.007",
+        "T1210",
+        "T1008",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1210",
+        "T1003.002",
+        "T1078.004",
+        "T1053.006",
+        "T1021.007",
+        "T1008",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1003.002",
+        "T1210",
+        "T1078.004",
+        "T1021.007",
+        "T1053.006",
+        "T1008",
+        "T1498"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional advanced persistent threat (APT) group 'CloudShadow'. This group has been observed targeting organizations with hybrid Azure cloud and Linux-based on-premises infrastructure, as part of a training scenario for defensive cybersecurity teams. The campaign begins with reconnaissance, where actors likely conduct open-source intelligence (OSINT) gathering to identify potential targets, though no specific techniques are tagged here to simulate noise. Initial access was achieved through exploitation of remote services, using tools like Nmap to scan for and target vulnerable SSH and web services on Linux servers, which allowed unauthorized entry into the network. Once inside, the actors executed malicious commands to dump the Security Account Manager (SAM) file from Windows systems, capturing local credentials for lateral movement. For persistence in the cloud environment, they used compromised Azure Managed Identities to maintain access to virtual machines, while on Linux systems, they created a malicious systemd timer to schedule regular execution of payloads, ensuring long-term foothold. The actors then leveraged cloud services by running Connect-AZAccount to authenticate and access Azure resources, such as virtual machines and storage accounts, for data exfiltration and further exploitation. To evade detection, the malware employed fallback channels, using an HTTP beacon as a backup communication method when primary command-and-control (C2) servers were blocked. Additionally, the campaign included disruptive activities, where the malware established a botnet of compromised IoT devices to launch a coordinated network denial of service (DDoS) attack against the corporate network, aiming to overwhelm resources and create distractions. Throughout the incident, system logs from the victim organization, 'TechGlobal Inc.', showed normal user activity and routine maintenance events, which are irrelevant but included to simulate real-world noise in analysis. The actors' use of these techniques demonstrates a multi-faceted approach to compromise, persistence, and disruption, requiring coordinated defensive measures.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional advanced persistent threat (APT) group 'CloudShadow'. This group has been observed targeting organizations with hybrid Azure cloud and Linux-based on-premises infrastructure, as part of a training scenario for defensive cybersecurity teams. The campaign begins with reconnaissance, where actors likely conduct open-source intelligence (OSINT) gathering to identify potential targets, though no specific techniques are tagged here to simulate noise. Initial access was achieved through exploitation of remote services [T1210], using tools like Nmap to scan for and target vulnerable SSH and web services on Linux servers, which allowed unauthorized entry into the network. Once inside, the actors executed malicious commands to dump the Security Account Manager (SAM) file [T1003.002] from Windows systems, capturing local credentials for lateral movement. For persistence in the cloud environment, they used compromised Azure Managed Identities [T1078.004] to maintain access to virtual machines, while on Linux systems, they created a malicious systemd timer [T1053.006] to schedule regular execution of payloads, ensuring long-term foothold. The actors then leveraged cloud services [T1021.007] by running Connect-AZAccount to authenticate and access Azure resources, such as virtual machines and storage accounts, for data exfiltration and further exploitation. To evade detection, the malware employed fallback channels [T1008], using an HTTP beacon as a backup communication method when primary command-and-control (C2) servers were blocked. Additionally, the campaign included disruptive activities, where the malware established a botnet of compromised IoT devices to launch a coordinated network denial of service (DDoS) attack [T1498] against the corporate network, aiming to overwhelm resources and create distractions. Throughout the incident, system logs from the victim organization, 'TechGlobal Inc.', showed normal user activity and routine maintenance events, which are irrelevant but included to simulate real-world noise in analysis. The actors' use of these techniques demonstrates a multi-faceted approach to compromise, persistence, and disruption, requiring coordinated defensive measures.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved through exploitation of remote services, using tools like Nmap to scan for and target vulnerable SSH and web services on Linux servers, which allowed unauthorized entry into the network.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "To evade detection, the malware employed fallback channels, using an HTTP beacon as a backup communication method when primary command-and-control (C2) servers were blocked.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        },
+        {
+            "sentence": "Additionally, the campaign included disruptive activities, where the malware established a botnet of compromised IoT devices to launch a coordinated network denial of service (DDoS) attack against the corporate network, aiming to overwhelm resources and create distractions.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'CloudShadow', targeting hybrid cloud and on-premises environments. The campaign leverages compromised cloud identities, credential harvesting, and remote exploitation to establish persistence, exfiltrate data, and conduct disruptive activities. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional advanced persistent threat (APT) group 'CloudShadow'. This group has been observed targeting organizations with hybrid Azure cloud and Linux-based on-premises infrastructure, as part of a training scenario for defensive cybersecurity teams. The campaign begins with reconnaissance, where actors likely conduct open-source intelligence (OSINT) gathering to identify potential targets, though no specific techniques are tagged here to simulate noise. Initial access was achieved through exploitation of remote services [T1210], using tools like Nmap to scan for and target vulnerable SSH and web services on Linux servers, which allowed unauthorized entry into the network. Once inside, the actors executed malicious commands to dump the Security Account Manager (SAM) file [T1003.002] from Windows systems, capturing local credentials for lateral movement. For persistence in the cloud environment, they used compromised Azure Managed Identities [T1078.004] to maintain access to virtual machines, while on Linux systems, they created a malicious systemd timer [T1053.006] to schedule regular execution of payloads, ensuring long-term foothold. The actors then leveraged cloud services [T1021.007] by running Connect-AZAccount to authenticate and access Azure resources, such as virtual machines and storage accounts, for data exfiltration and further exploitation. To evade detection, the malware employed fallback channels [T1008], using an HTTP beacon as a backup communication method when primary command-and-control (C2) servers were blocked. Additionally, the campaign included disruptive activities, where the malware established a botnet of compromised IoT devices to launch a coordinated network denial of service (DDoS) attack [T1498] against the corporate network, aiming to overwhelm resources and create distractions. Throughout the incident, system logs from the victim organization, 'TechGlobal Inc.', showed normal user activity and routine maintenance events, which are irrelevant but included to simulate real-world noise in analysis. The actors' use of these techniques demonstrates a multi-faceted approach to compromise, persistence, and disruption, requiring coordinated defensive measures.",
+        "techniques_used": [
+            "T1210",
+            "T1003.002",
+            "T1078.004",
+            "T1053.006",
+            "T1021.007",
+            "T1008",
+            "T1498"
+        ]
+    }
+}

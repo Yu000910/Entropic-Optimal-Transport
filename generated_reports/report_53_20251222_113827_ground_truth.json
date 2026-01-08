@@ -1,0 +1,118 @@
+{
+    "report_id": "report_53",
+    "generated_at": "20251222_113827",
+    "scenario_target_ids": [
+        "T1590.001",
+        "T1596.005",
+        "T1583.004",
+        "T1199",
+        "T1569.003",
+        "T1648",
+        "T1556.004",
+        "T1654",
+        "T1518.001",
+        "T1018",
+        "T1550.004",
+        "T1001.002",
+        "T1095",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1590.001",
+        "T1596.005",
+        "T1583.004",
+        "T1199",
+        "T1569.003",
+        "T1648",
+        "T1556.004",
+        "T1654",
+        "T1518.001",
+        "T1018",
+        "T1550.004",
+        "T1001.002",
+        "T1095",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1550.004",
+        "T1569.003",
+        "T1199",
+        "T1018",
+        "T1001.002",
+        "T1556.004",
+        "T1648",
+        "T1567.004",
+        "T1583.004",
+        "T1654",
+        "T1518.001",
+        "T1596.005",
+        "T1590.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign for training purposes. SHADOWFALL actors likely conduct reconnaissance by scanning public databases and collecting domain properties using APIs like GetUserRealm to gather authentication information. They then establish initial access by leveraging a trusted relationship with a compromised IT service provider, using stolen credentials to target downstream customers, including a manufacturing firm and energy company. For command and control, the actors set up infrastructure on a free AWS EC2 trial server and employed serverless execution by uploading malicious code to an AWS Lambda function to run arbitrary commands. Upon execution, they used systemctl to start a service for data theft while simultaneously employing PowerShell to query and filter System logs for suspicious activities and enumerate running processes to discover security software like Wireshark. For lateral movement, the actors conducted remote system discovery by enumerating domain controllers with commands such as `net group 'Domain computers'` and created persistence by injecting a backdoor into network devices using hardcoded credentials in implanted_code.dll. Data exfiltration was achieved through steganography by concealing C2 communications in image files via pixel manipulation and using non-application layer protocols like TCP for C2 channels, while harvested web session cookies from browser caches bypassed authentication, and exfiltration over webhooks via webhook.site collected system information from compromised hosts. Logs from the affected systems showed normal user activity during the attack period, with no immediate alerts from legacy antivirus software, and the company's background in industrial control systems made it a high-value target, though internal audits later revealed misconfigurations in cloud settings.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign for training purposes. SHADOWFALL actors likely conduct reconnaissance by scanning public databases [T1596.005] and collecting domain properties using APIs like GetUserRealm [T1590.001] to gather authentication information. They then establish initial access by leveraging a trusted relationship with a compromised IT service provider, using stolen credentials [T1199] to target downstream customers, including a manufacturing firm and energy company. For command and control, the actors set up infrastructure on a free AWS EC2 trial server [T1583.004] and employed serverless execution by uploading malicious code to an AWS Lambda function [T1648] to run arbitrary commands. Upon execution, they used systemctl [T1569.003] to start a service for data theft while simultaneously employing PowerShell [T1654] to query and filter System logs for suspicious activities and enumerate running processes to discover security software like Wireshark [T1518.001]. For lateral movement, the actors conducted remote system discovery by enumerating domain controllers with commands such as `net group 'Domain computers'` [T1018] and created persistence by injecting a backdoor into network devices using hardcoded credentials in implanted_code.dll [T1556.004]. Data exfiltration was achieved through steganography by concealing C2 communications in image files via pixel manipulation [T1001.002] and using non-application layer protocols like TCP [T1095] for C2 channels, while harvested web session cookies from browser caches [T1550.004] bypassed authentication, and exfiltration over webhooks via webhook.site [T1567.004] collected system information from compromised hosts. Logs from the affected systems showed normal user activity during the attack period, with no immediate alerts from legacy antivirus software, and the company's background in industrial control systems made it a high-value target, though internal audits later revealed misconfigurations in cloud settings.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then establish initial access by leveraging a trusted relationship with a compromised IT service provider, using stolen credentials to target downstream customers, including a manufacturing firm and energy company.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "004] and employed serverless execution by uploading malicious code to an AWS Lambda function to run arbitrary commands.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "003] to start a service for data theft while simultaneously employing PowerShell to query and filter System logs for suspicious activities and enumerate running processes to discover security software like Wireshark [T1518.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "For lateral movement, the actors conducted remote system discovery by enumerating domain controllers with commands such as `net group 'Domain computers'` and created persistence by injecting a backdoor into network devices using hardcoded credentials in implanted_code.",
+            "technique_id": "T1018",
+            "technique_name": "Remote System Discovery"
+        },
+        {
+            "sentence": "002] and using non-application layer protocols like TCP for C2 channels, while harvested web session cookies from browser caches [T1550.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated as 'SHADOWFALL', targeting critical infrastructure sectors through a multi-stage attack leveraging cloud infrastructure and trusted relationships. The campaign involves reconnaissance, initial access via compromised credentials, execution using serverless functions, persistence through network device backdoors, and data exfiltration over webhooks, with techniques adapted from real-world threats like APT41, POLONIUM, and HAFNIUM for educational blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign for training purposes. SHADOWFALL actors likely conduct reconnaissance by scanning public databases [T1596.005] and collecting domain properties using APIs like GetUserRealm [T1590.001] to gather authentication information. They then establish initial access by leveraging a trusted relationship with a compromised IT service provider, using stolen credentials [T1199] to target downstream customers, including a manufacturing firm and energy company. For command and control, the actors set up infrastructure on a free AWS EC2 trial server [T1583.004] and employed serverless execution by uploading malicious code to an AWS Lambda function [T1648] to run arbitrary commands. Upon execution, they used systemctl [T1569.003] to start a service for data theft while simultaneously employing PowerShell [T1654] to query and filter System logs for suspicious activities and enumerate running processes to discover security software like Wireshark [T1518.001]. For lateral movement, the actors conducted remote system discovery by enumerating domain controllers with commands such as `net group 'Domain computers'` [T1018] and created persistence by injecting a backdoor into network devices using hardcoded credentials in implanted_code.dll [T1556.004]. Data exfiltration was achieved through steganography by concealing C2 communications in image files via pixel manipulation [T1001.002] and using non-application layer protocols like TCP [T1095] for C2 channels, while harvested web session cookies from browser caches [T1550.004] bypassed authentication, and exfiltration over webhooks via webhook.site [T1567.004] collected system information from compromised hosts. Logs from the affected systems showed normal user activity during the attack period, with no immediate alerts from legacy antivirus software, and the company's background in industrial control systems made it a high-value target, though internal audits later revealed misconfigurations in cloud settings.",
+        "techniques_used": [
+            "T1590.001",
+            "T1596.005",
+            "T1583.004",
+            "T1199",
+            "T1569.003",
+            "T1648",
+            "T1556.004",
+            "T1654",
+            "T1518.001",
+            "T1018",
+            "T1550.004",
+            "T1001.002",
+            "T1095",
+            "T1567.004"
+        ]
+    }
+}

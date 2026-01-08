@@ -1,0 +1,98 @@
+{
+    "report_id": "report_499",
+    "generated_at": "20251222_161438",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1195.001",
+        "T1059.003",
+        "T1053.002",
+        "T1574.011",
+        "T1548.005",
+        "T1556.009",
+        "T1556.002",
+        "T1087.004",
+        "T1114.002",
+        "T1071.001",
+        "T1496",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1195.001",
+        "T1059.003",
+        "T1053.002",
+        "T1574.011",
+        "T1548.005",
+        "T1556.009",
+        "T1556.002",
+        "T1087.004",
+        "T1114.002",
+        "T1071.001",
+        "T1496",
+        "T1565"
+    ],
+    "actual_found_ids": [
+        "T1114.002",
+        "T1071.001",
+        "T1059.003",
+        "T1053.002",
+        "T1566.004",
+        "T1195.001",
+        "T1548.005",
+        "T1565",
+        "T1556.009",
+        "T1087.004",
+        "T1574.011",
+        "T1496",
+        "T1556.002"
+    ],
+    "clean_text": "On 2024-05-15, a financial services organization reported anomalous activities traced back to a spearphishing voice call where an employee was tricked into opening a malicious attachment that installed a remote access tool (RAT), granting the attacker full system control. Subsequent analysis revealed that the actors had previously compromised software dependencies by injecting malicious code into the deployment script deploy.ps1 to capture and transmit financial records. Once initial access was established, the adversary employed Windows Command Shell to execute commands using cmd.exe /c, such as 'dir C:\\Users\\Finance' and 'net user', while simultaneously scheduling tasks with the At utility to run a data exfiltration script every Friday via Win32_ScheduledJob. For persistence, the backdoor hijacked the Messenger service registry key in HKLM\\SYSTEM\\CurrentControlSet\\Services to maintain access and leveraged temporary elevated cloud access by using iam.serviceAccountTokenCreator to create short-lived tokens for elevated cloud API access, which allowed them to update Entra ID conditional access policies to exclude their compromised accounts from security controls. Additionally, the malware dropped a malicious version of wdigest.dll to extract plaintext credentials from LSASS memory and used AADInternals to enumerate Azure AD users, facilitating lateral movement. The attacker then employed MailSniper to search for emails containing financial information in the compromised Exchange server and utilized web protocols for C2 communications via HTTP. To monetize access, the actors sold access to a network of compromised corporate workstations functioning as HTTP proxies and injected a malicious DLL into the banking application to modify transaction histories. System logs from the affected environment show routine backup processes at 02:00 UTC daily, with no anomalies detected in those logs, and the organization, 'FinSecure Corp', operates primarily in North America with 500+ employees, though this background is unrelated to the attack chain.",
+    "tagged_text": "On 2024-05-15, a financial services organization reported anomalous activities traced back to a spearphishing voice call [T1566.004] where an employee was tricked into opening a malicious attachment that installed a remote access tool (RAT), granting the attacker full system control. Subsequent analysis revealed that the actors had previously compromised software dependencies by injecting malicious code into the deployment script deploy.ps1 [T1195.001] to capture and transmit financial records. Once initial access was established, the adversary employed Windows Command Shell [T1059.003] to execute commands using cmd.exe /c, such as 'dir C:\\Users\\Finance' and 'net user', while simultaneously scheduling tasks with the At utility [T1053.002] to run a data exfiltration script every Friday via Win32_ScheduledJob. For persistence, the backdoor hijacked the Messenger service registry key in HKLM\\SYSTEM\\CurrentControlSet\\Services [T1574.011] to maintain access and leveraged temporary elevated cloud access [T1548.005] by using iam.serviceAccountTokenCreator to create short-lived tokens for elevated cloud API access, which allowed them to update Entra ID conditional access policies [T1556.009] to exclude their compromised accounts from security controls. Additionally, the malware dropped a malicious version of wdigest.dll [T1556.002] to extract plaintext credentials from LSASS memory and used AADInternals [T1087.004] to enumerate Azure AD users, facilitating lateral movement. The attacker then employed MailSniper [T1114.002] to search for emails containing financial information in the compromised Exchange server and utilized web protocols [T1071.001] for C2 communications via HTTP. To monetize access, the actors sold access to a network of compromised corporate workstations functioning as HTTP proxies [T1496] and injected a malicious DLL into the banking application [T1565] to modify transaction histories. System logs from the affected environment show routine backup processes at 02:00 UTC daily, with no anomalies detected in those logs, and the organization, 'FinSecure Corp', operates primarily in North America with 500+ employees, though this background is unrelated to the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "To monetize access, the actors sold access to a network of compromised corporate workstations functioning as HTTP proxies and injected a malicious DLL into the banking application to modify transaction histories.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        },
+        {
+            "sentence": "To monetize access, the actors sold access to a network of compromised corporate workstations functioning as HTTP proxies and injected a malicious DLL into the banking application to modify transaction histories.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowFin' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowFin', targeting financial institutions. The campaign involves initial access via spearphishing, exploitation of software dependencies, and multi-stage execution leading to data exfiltration and credential theft. Actors leverage cloud and on-premises techniques for persistence, evasion, and resource hijacking, with observed activities spanning from initial compromise to data manipulation. This report is intended for blue team training to enhance detection and response capabilities against sophisticated attack chains.",
+        "full_report_text": "On 2024-05-15, a financial services organization reported anomalous activities traced back to a spearphishing voice call [T1566.004] where an employee was tricked into opening a malicious attachment that installed a remote access tool (RAT), granting the attacker full system control. Subsequent analysis revealed that the actors had previously compromised software dependencies by injecting malicious code into the deployment script deploy.ps1 [T1195.001] to capture and transmit financial records. Once initial access was established, the adversary employed Windows Command Shell [T1059.003] to execute commands using cmd.exe /c, such as 'dir C:\\Users\\Finance' and 'net user', while simultaneously scheduling tasks with the At utility [T1053.002] to run a data exfiltration script every Friday via Win32_ScheduledJob. For persistence, the backdoor hijacked the Messenger service registry key in HKLM\\SYSTEM\\CurrentControlSet\\Services [T1574.011] to maintain access and leveraged temporary elevated cloud access [T1548.005] by using iam.serviceAccountTokenCreator to create short-lived tokens for elevated cloud API access, which allowed them to update Entra ID conditional access policies [T1556.009] to exclude their compromised accounts from security controls. Additionally, the malware dropped a malicious version of wdigest.dll [T1556.002] to extract plaintext credentials from LSASS memory and used AADInternals [T1087.004] to enumerate Azure AD users, facilitating lateral movement. The attacker then employed MailSniper [T1114.002] to search for emails containing financial information in the compromised Exchange server and utilized web protocols [T1071.001] for C2 communications via HTTP. To monetize access, the actors sold access to a network of compromised corporate workstations functioning as HTTP proxies [T1496] and injected a malicious DLL into the banking application [T1565] to modify transaction histories. System logs from the affected environment show routine backup processes at 02:00 UTC daily, with no anomalies detected in those logs, and the organization, 'FinSecure Corp', operates primarily in North America with 500+ employees, though this background is unrelated to the attack chain.",
+        "techniques_used": [
+            "T1566.004",
+            "T1195.001",
+            "T1059.003",
+            "T1053.002",
+            "T1574.011",
+            "T1548.005",
+            "T1556.009",
+            "T1556.002",
+            "T1087.004",
+            "T1114.002",
+            "T1071.001",
+            "T1496",
+            "T1565"
+        ]
+    }
+}

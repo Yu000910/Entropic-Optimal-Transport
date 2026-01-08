@@ -1,0 +1,88 @@
+{
+    "report_id": "report_479",
+    "generated_at": "20251222_160521",
+    "scenario_target_ids": [
+        "T1566.003",
+        "T1072",
+        "T1098.007",
+        "T1552.003",
+        "T1033",
+        "T1602",
+        "T1557.002",
+        "T1213.001",
+        "T1001.003",
+        "T1499.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.003",
+        "T1072",
+        "T1098.007",
+        "T1552.003",
+        "T1033",
+        "T1602",
+        "T1557.002",
+        "T1213.001",
+        "T1001.003",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1072",
+        "T1557.002",
+        "T1001.003",
+        "T1098.007",
+        "T1552.003",
+        "T1602",
+        "T1213.001",
+        "T1566.003",
+        "T1033",
+        "T1499.004"
+    ],
+    "clean_text": "On October 15, 2023, APT-99 initiated a spearphishing campaign via Twitter, sharing a fake software update link that, when clicked, installed malware. The malware leveraged SCCM's software distribution feature to execute PowerShell scripts on connected workstations, enabling the adversary to run 'net localgroup \"Backup Operators\" malicious_account /add' to gain backup privileges while simultaneously using 'whoami' to gather user information. Following this, APT-99 parsed the bash_history file to extract command line entries containing API keys and accessed sensitive system configuration data from the centralized configuration management repository. The actors then monitored broadcast traffic to find ARP requests, revealing network topology through ARP cache poisoning and collected sensitive deployment procedures from the Confluence repository using the compromised user account. To evade detection, APT-99 altered URI paths dynamically, impersonating legitimate protocols or services, and exploited a zero-day flaw in the database management system to trigger infinite loops that persistently degraded performance. Logs from the affected systems showed increased CPU usage and network anomalies, but no actual data loss occurred in this training scenario. The organization, a fictional energy provider, had recently updated its firewall policies, which were not directly related to the attack. Analysis indicated that APT-99 likely operated from compromised infrastructure in Eastern Europe, though attribution remains uncertain for educational purposes.",
+    "tagged_text": "On October 15, 2023, APT-99 initiated a spearphishing campaign via Twitter, sharing a fake software update link that, when clicked, installed malware [T1566.003]. The malware leveraged SCCM's software distribution feature to execute PowerShell scripts on connected workstations [T1072], enabling the adversary to run 'net localgroup \"Backup Operators\" malicious_account /add' to gain backup privileges [T1098.007] while simultaneously using 'whoami' to gather user information [T1033]. Following this, APT-99 parsed the bash_history file to extract command line entries containing API keys [T1552.003] and accessed sensitive system configuration data from the centralized configuration management repository [T1602]. The actors then monitored broadcast traffic to find ARP requests, revealing network topology through ARP cache poisoning [T1557.002] and collected sensitive deployment procedures from the Confluence repository using the compromised user account [T1213.001]. To evade detection, APT-99 altered URI paths dynamically, impersonating legitimate protocols or services [T1001.003], and exploited a zero-day flaw in the database management system to trigger infinite loops that persistently degraded performance [T1499.004]. Logs from the affected systems showed increased CPU usage and network anomalies, but no actual data loss occurred in this training scenario. The organization, a fictional energy provider, had recently updated its firewall policies, which were not directly related to the attack. Analysis indicated that APT-99 likely operated from compromised infrastructure in Eastern Europe, though attribution remains uncertain for educational purposes.",
+    "sentence_annotations": [
+        {
+            "sentence": "The malware leveraged SCCM's software distribution feature to execute PowerShell scripts on connected workstations, enabling the adversary to run 'net localgroup \"Backup Operators\" malicious_account /add' to gain backup privileges [T1098.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "007] while simultaneously using 'whoami' to gather user information.",
+            "technique_id": "T1033",
+            "technique_name": "System Owner/User Discovery"
+        },
+        {
+            "sentence": "003] and accessed sensitive system configuration data from the centralized configuration management repository.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting organizations in the critical infrastructure sector. APT-99 employs sophisticated techniques to gain initial access, move laterally, and exfiltrate sensitive data, leveraging social engineering, software deployment tools, and network manipulation. The campaign was identified through analysis of simulated incident response data and threat intelligence feeds, highlighting the need for enhanced defensive measures.",
+        "full_report_text": "On October 15, 2023, APT-99 initiated a spearphishing campaign via Twitter, sharing a fake software update link that, when clicked, installed malware [T1566.003]. The malware leveraged SCCM's software distribution feature to execute PowerShell scripts on connected workstations [T1072], enabling the adversary to run 'net localgroup \"Backup Operators\" malicious_account /add' to gain backup privileges [T1098.007] while simultaneously using 'whoami' to gather user information [T1033]. Following this, APT-99 parsed the bash_history file to extract command line entries containing API keys [T1552.003] and accessed sensitive system configuration data from the centralized configuration management repository [T1602]. The actors then monitored broadcast traffic to find ARP requests, revealing network topology through ARP cache poisoning [T1557.002] and collected sensitive deployment procedures from the Confluence repository using the compromised user account [T1213.001]. To evade detection, APT-99 altered URI paths dynamically, impersonating legitimate protocols or services [T1001.003], and exploited a zero-day flaw in the database management system to trigger infinite loops that persistently degraded performance [T1499.004]. Logs from the affected systems showed increased CPU usage and network anomalies, but no actual data loss occurred in this training scenario. The organization, a fictional energy provider, had recently updated its firewall policies, which were not directly related to the attack. Analysis indicated that APT-99 likely operated from compromised infrastructure in Eastern Europe, though attribution remains uncertain for educational purposes.",
+        "techniques_used": [
+            "T1566.003",
+            "T1072",
+            "T1098.007",
+            "T1552.003",
+            "T1033",
+            "T1602",
+            "T1557.002",
+            "T1213.001",
+            "T1001.003",
+            "T1499.004"
+        ]
+    }
+}

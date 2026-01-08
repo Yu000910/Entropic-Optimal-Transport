@@ -1,0 +1,90 @@
+{
+    "report_id": "report_286",
+    "generated_at": "20251222_144238",
+    "scenario_target_ids": [
+        "T1608.002",
+        "T1199",
+        "T1053.007",
+        "T1204",
+        "T1078.001",
+        "T1055.015",
+        "T1564.003",
+        "T1205.001",
+        "T1021.008",
+        "T1659",
+        "T1048.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1204",
+        "T1199",
+        "T1564.003",
+        "T1055.015",
+        "T1053.007",
+        "T1659",
+        "T1205.001",
+        "T1608.002",
+        "T1021.008",
+        "T1048.001"
+    ],
+    "actual_found_ids": [
+        "T1608.002",
+        "T1199",
+        "T1055.015",
+        "T1048.001",
+        "T1564.003",
+        "T1659",
+        "T1021.008",
+        "T1205.001",
+        "T1053.007",
+        "T1204"
+    ],
+    "clean_text": "Scattered Spider likely conducted reconnaissance, identifying multiple workstations with active Guest accounts during initial scans, which were not tagged as malicious activity. The attack began with Initial Access, where the actor impersonated organization IT and helpdesk staff to instruct victims to execute commercial remote access tools, exploiting user trust. Once inside, they abused delegated administrative privileges to create new administrative accounts, leveraging trusted relationships within the network. For Execution, the adversary employed PowerShell with a modified WindowStyle property to launch a hidden window, while simultaneously using FindWindow to discover an Internet Explorer window for process hijacking. They then established Persistence by configuring a CronJob to run a malicious container image that established persistent backdoor access and injected a command and control beacon into DNS queries to maintain covert communication channels. For Defense Evasion, the malware created raw socket connections to hide its command and control communications through port knocking techniques. In Lateral Movement, PsExec.exe was uploaded to the file server to facilitate movement across the network, and the attacker used Azure Serial Console to gain command-line access to a virtual machine using compromised credentials. Finally, for Exfiltration, data was encrypted with the RC4 algorithm and then uploaded to a cloud storage service over symmetric encrypted non-C2 protocols. Throughout the campaign, system logs showed normal user activity, including routine software updates and network scans, which were not indicative of the attack. The organization's background includes a hybrid cloud infrastructure with legacy systems, but this information is irrelevant to the tagged behaviors.",
+    "tagged_text": "Scattered Spider likely conducted reconnaissance, identifying multiple workstations with active Guest accounts during initial scans, which were not tagged as malicious activity. The attack began with Initial Access, where the actor impersonated organization IT and helpdesk staff to instruct victims to execute commercial remote access tools, exploiting user trust [T1204]. Once inside, they abused delegated administrative privileges to create new administrative accounts, leveraging trusted relationships within the network [T1199]. For Execution, the adversary employed PowerShell with a modified WindowStyle property to launch a hidden window [T1564.003], while simultaneously using FindWindow to discover an Internet Explorer window for process hijacking [T1055.015]. They then established Persistence by configuring a CronJob to run a malicious container image that established persistent backdoor access [T1053.007] and injected a command and control beacon into DNS queries to maintain covert communication channels [T1659]. For Defense Evasion, the malware created raw socket connections to hide its command and control communications through port knocking techniques [T1205.001]. In Lateral Movement, PsExec.exe was uploaded to the file server to facilitate movement across the network [T1608.002], and the attacker used Azure Serial Console to gain command-line access to a virtual machine using compromised credentials [T1021.008]. Finally, for Exfiltration, data was encrypted with the RC4 algorithm and then uploaded to a cloud storage service over symmetric encrypted non-C2 protocols [T1048.001]. Throughout the campaign, system logs showed normal user activity, including routine software updates and network scans, which were not indicative of the attack. The organization's background includes a hybrid cloud infrastructure with legacy systems, but this information is irrelevant to the tagged behaviors.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with Initial Access, where the actor impersonated organization IT and helpdesk staff to instruct victims to execute commercial remote access tools, exploiting user trust.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "Once inside, they abused delegated administrative privileges to create new administrative accounts, leveraging trusted relationships within the network.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "007] and injected a command and control beacon into DNS queries to maintain covert communication channels.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'Scattered Spider'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Scattered Spider', targeting organizations through social engineering, lateral movement, and data exfiltration. Based on provided techniques, this report serves as an educational tool for blue teams to recognize and mitigate complex attack chains.",
+        "full_report_text": "Scattered Spider likely conducted reconnaissance, identifying multiple workstations with active Guest accounts during initial scans, which were not tagged as malicious activity. The attack began with Initial Access, where the actor impersonated organization IT and helpdesk staff to instruct victims to execute commercial remote access tools, exploiting user trust [T1204]. Once inside, they abused delegated administrative privileges to create new administrative accounts, leveraging trusted relationships within the network [T1199]. For Execution, the adversary employed PowerShell with a modified WindowStyle property to launch a hidden window [T1564.003], while simultaneously using FindWindow to discover an Internet Explorer window for process hijacking [T1055.015]. They then established Persistence by configuring a CronJob to run a malicious container image that established persistent backdoor access [T1053.007] and injected a command and control beacon into DNS queries to maintain covert communication channels [T1659]. For Defense Evasion, the malware created raw socket connections to hide its command and control communications through port knocking techniques [T1205.001]. In Lateral Movement, PsExec.exe was uploaded to the file server to facilitate movement across the network [T1608.002], and the attacker used Azure Serial Console to gain command-line access to a virtual machine using compromised credentials [T1021.008]. Finally, for Exfiltration, data was encrypted with the RC4 algorithm and then uploaded to a cloud storage service over symmetric encrypted non-C2 protocols [T1048.001]. Throughout the campaign, system logs showed normal user activity, including routine software updates and network scans, which were not indicative of the attack. The organization's background includes a hybrid cloud infrastructure with legacy systems, but this information is irrelevant to the tagged behaviors.",
+        "techniques_used": [
+            "T1204",
+            "T1199",
+            "T1564.003",
+            "T1055.015",
+            "T1053.007",
+            "T1659",
+            "T1205.001",
+            "T1608.002",
+            "T1021.008",
+            "T1048.001"
+        ]
+    }
+}

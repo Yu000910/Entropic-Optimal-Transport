@@ -1,0 +1,118 @@
+{
+    "report_id": "report_341",
+    "generated_at": "20251222_150558",
+    "scenario_target_ids": [
+        "T1589.003",
+        "T1608.001",
+        "T1608",
+        "T1583.008",
+        "T1566.001",
+        "T1053.006",
+        "T1556.008",
+        "T1021.001",
+        "T1091",
+        "T1115",
+        "T1213.005",
+        "T1071.005",
+        "T1052",
+        "T1490"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589.003",
+        "T1608.001",
+        "T1608",
+        "T1583.008",
+        "T1566.001",
+        "T1053.006",
+        "T1556.008",
+        "T1021.001",
+        "T1091",
+        "T1115",
+        "T1213.005",
+        "T1071.005",
+        "T1052",
+        "T1490"
+    ],
+    "actual_found_ids": [
+        "T1053.006",
+        "T1566.001",
+        "T1490",
+        "T1052",
+        "T1583.008",
+        "T1213.005",
+        "T1091",
+        "T1608",
+        "T1115",
+        "T1589.003",
+        "T1608.001",
+        "T1021.001",
+        "T1071.005",
+        "T1556.008"
+    ],
+    "clean_text": "On October 15, 2023, FinSecure Bank, a mid-sized financial services company based in Chicago with approximately 500 employees and operations across the Midwest, detected anomalous network traffic originating from an internal workstation. Initial logs from their SIEM showed unusual PowerShell executions and failed RDP attempts, prompting an investigation that revealed a multi-stage intrusion. The company's IT infrastructure includes Windows 10 and Server 2019 systems, with Microsoft Teams deployed for internal communication.\n\nReconnaissance and Initial Access: The actors likely conducted reconnaissance by scraping employee names from FinSecure Bank's public 'About Us' webpage to tailor social engineering efforts. They then staged capabilities by uploading an encrypted PowerShell backdoor script to a public GitHub repository for later retrieval and stored additional malware binaries across multiple IPFS nodes to ensure redundancy in delivery. To gain initial access, the adversary employed malvertising that exploited a known vulnerability in Adobe Flash Player through compromised online ads and distributed a spearphishing attachment, masquerading as a legitimate invoice, to deliver StrelaStealer malware.\n\nExecution and Persistence: Upon execution, the malware established persistence by creating a custom systemd timer to launch a reverse shell at regular intervals and dropped a malicious DLL into the System32 directory to intercept authentication credentials by hooking into network provider APIs. The attackers used Remote Desktop Protocol (RDP) for lateral movement across the network, targeting servers with weak credentials, and replicated through removable media by infecting portable executable files on USB drives to spread to air-gapped systems.\n\nCollection and Exfiltration: The malware collected sensitive data by stealing information from the victim's clipboard, capturing copied passwords and financial data, and queried Microsoft Teams channels to gather intellectual property shared among team members. For exfiltration, the actors employed XMPP file transfer capabilities to send documents while blending in with normal chat traffic and wrote proprietary source code to a removable USB drive for physical extraction.\n\nImpact and Defense Evasion: To inhibit system recovery and hinder forensic analysis, the malware used vssadmin.exe to delete volume shadow copies, preventing data restoration. FinSecure Bank's incident response team noted that the attack caused minimal operational disruption due to early detection, but highlighted gaps in endpoint monitoring and user training. No real data was compromised in this fictional scenario.\n\nRecommendations for Blue Teams: Implement network segmentation to limit RDP exposure, deploy application whitelisting to block unauthorized scripts, and conduct regular security awareness training on phishing and removable media risks. Monitor for unusual PowerShell activity and DLL modifications in System32.",
+    "tagged_text": "On October 15, 2023, FinSecure Bank, a mid-sized financial services company based in Chicago with approximately 500 employees and operations across the Midwest, detected anomalous network traffic originating from an internal workstation. Initial logs from their SIEM showed unusual PowerShell executions and failed RDP attempts, prompting an investigation that revealed a multi-stage intrusion. The company's IT infrastructure includes Windows 10 and Server 2019 systems, with Microsoft Teams deployed for internal communication.\n\nReconnaissance and Initial Access: The actors likely conducted reconnaissance by scraping employee names from FinSecure Bank's public 'About Us' webpage to tailor social engineering efforts [T1589.003]. They then staged capabilities by uploading an encrypted PowerShell backdoor script to a public GitHub repository for later retrieval [T1608] and stored additional malware binaries across multiple IPFS nodes to ensure redundancy in delivery [T1608.001]. To gain initial access, the adversary employed malvertising that exploited a known vulnerability in Adobe Flash Player through compromised online ads [T1583.008] and distributed a spearphishing attachment, masquerading as a legitimate invoice, to deliver StrelaStealer malware [T1566.001].\n\nExecution and Persistence: Upon execution, the malware established persistence by creating a custom systemd timer to launch a reverse shell at regular intervals [T1053.006] and dropped a malicious DLL into the System32 directory to intercept authentication credentials by hooking into network provider APIs [T1556.008]. The attackers used Remote Desktop Protocol (RDP) for lateral movement across the network, targeting servers with weak credentials [T1021.001], and replicated through removable media by infecting portable executable files on USB drives to spread to air-gapped systems [T1091].\n\nCollection and Exfiltration: The malware collected sensitive data by stealing information from the victim's clipboard, capturing copied passwords and financial data [T1115], and queried Microsoft Teams channels to gather intellectual property shared among team members [T1213.005]. For exfiltration, the actors employed XMPP file transfer capabilities to send documents while blending in with normal chat traffic [T1071.005] and wrote proprietary source code to a removable USB drive for physical extraction [T1052].\n\nImpact and Defense Evasion: To inhibit system recovery and hinder forensic analysis, the malware used vssadmin.exe to delete volume shadow copies, preventing data restoration [T1490]. FinSecure Bank's incident response team noted that the attack caused minimal operational disruption due to early detection, but highlighted gaps in endpoint monitoring and user training. No real data was compromised in this fictional scenario.\n\nRecommendations for Blue Teams: Implement network segmentation to limit RDP exposure, deploy application whitelisting to block unauthorized scripts, and conduct regular security awareness training on phishing and removable media risks. Monitor for unusual PowerShell activity and DLL modifications in System32.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then staged capabilities by uploading an encrypted PowerShell backdoor script to a public GitHub repository for later retrieval and stored additional malware binaries across multiple IPFS nodes to ensure redundancy in delivery [T1608.",
+            "technique_id": "T1608",
+            "technique_name": "Stage Capabilities"
+        },
+        {
+            "sentence": "001], and replicated through removable media by infecting portable executable files on USB drives to spread to air-gapped systems.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The malware collected sensitive data by stealing information from the victim's clipboard, capturing copied passwords and financial data, and queried Microsoft Teams channels to gather intellectual property shared among team members [T1213.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        },
+        {
+            "sentence": "005] and wrote proprietary source code to a removable USB drive for physical extraction.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        },
+        {
+            "sentence": "exe to delete volume shadow copies, preventing data restoration.",
+            "technique_id": "T1490",
+            "technique_name": "Inhibit System Recovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeave' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowWeave', targeting financial institutions in North America. Based on analysis of mock incident response data from a fictional victim, 'FinSecure Bank', the campaign involves sophisticated initial access, persistence, lateral movement, and data exfiltration techniques. The advisory provides actionable intelligence for blue teams to enhance detection and mitigation strategies in training environments.",
+        "full_report_text": "On October 15, 2023, FinSecure Bank, a mid-sized financial services company based in Chicago with approximately 500 employees and operations across the Midwest, detected anomalous network traffic originating from an internal workstation. Initial logs from their SIEM showed unusual PowerShell executions and failed RDP attempts, prompting an investigation that revealed a multi-stage intrusion. The company's IT infrastructure includes Windows 10 and Server 2019 systems, with Microsoft Teams deployed for internal communication.\n\nReconnaissance and Initial Access: The actors likely conducted reconnaissance by scraping employee names from FinSecure Bank's public 'About Us' webpage to tailor social engineering efforts [T1589.003]. They then staged capabilities by uploading an encrypted PowerShell backdoor script to a public GitHub repository for later retrieval [T1608] and stored additional malware binaries across multiple IPFS nodes to ensure redundancy in delivery [T1608.001]. To gain initial access, the adversary employed malvertising that exploited a known vulnerability in Adobe Flash Player through compromised online ads [T1583.008] and distributed a spearphishing attachment, masquerading as a legitimate invoice, to deliver StrelaStealer malware [T1566.001].\n\nExecution and Persistence: Upon execution, the malware established persistence by creating a custom systemd timer to launch a reverse shell at regular intervals [T1053.006] and dropped a malicious DLL into the System32 directory to intercept authentication credentials by hooking into network provider APIs [T1556.008]. The attackers used Remote Desktop Protocol (RDP) for lateral movement across the network, targeting servers with weak credentials [T1021.001], and replicated through removable media by infecting portable executable files on USB drives to spread to air-gapped systems [T1091].\n\nCollection and Exfiltration: The malware collected sensitive data by stealing information from the victim's clipboard, capturing copied passwords and financial data [T1115], and queried Microsoft Teams channels to gather intellectual property shared among team members [T1213.005]. For exfiltration, the actors employed XMPP file transfer capabilities to send documents while blending in with normal chat traffic [T1071.005] and wrote proprietary source code to a removable USB drive for physical extraction [T1052].\n\nImpact and Defense Evasion: To inhibit system recovery and hinder forensic analysis, the malware used vssadmin.exe to delete volume shadow copies, preventing data restoration [T1490]. FinSecure Bank's incident response team noted that the attack caused minimal operational disruption due to early detection, but highlighted gaps in endpoint monitoring and user training. No real data was compromised in this fictional scenario.\n\nRecommendations for Blue Teams: Implement network segmentation to limit RDP exposure, deploy application whitelisting to block unauthorized scripts, and conduct regular security awareness training on phishing and removable media risks. Monitor for unusual PowerShell activity and DLL modifications in System32.",
+        "techniques_used": [
+            "T1589.003",
+            "T1608.001",
+            "T1608",
+            "T1583.008",
+            "T1566.001",
+            "T1053.006",
+            "T1556.008",
+            "T1021.001",
+            "T1091",
+            "T1115",
+            "T1213.005",
+            "T1071.005",
+            "T1052",
+            "T1490"
+        ]
+    }
+}

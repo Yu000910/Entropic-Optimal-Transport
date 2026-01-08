@@ -1,0 +1,133 @@
+{
+    "report_id": "report_363",
+    "generated_at": "20251222_151519",
+    "scenario_target_ids": [
+        "T1583",
+        "T1584.006",
+        "T1583.006",
+        "T1195.002",
+        "T1566.003",
+        "T1059",
+        "T1556.009",
+        "T1547.008",
+        "T1546.003",
+        "T1654",
+        "T1615",
+        "T1021",
+        "T1056",
+        "T1205.001",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583",
+        "T1583.006",
+        "T1195.002",
+        "T1584.006",
+        "T1566.003",
+        "T1059",
+        "T1547.008",
+        "T1546.003",
+        "T1556.009",
+        "T1654",
+        "T1615",
+        "T1021",
+        "T1056",
+        "T1205.001",
+        "T1565"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1583",
+        "T1654",
+        "T1583.006",
+        "T1021",
+        "T1205.001",
+        "T1059",
+        "T1565",
+        "T1547.008",
+        "T1584.006",
+        "T1556.009",
+        "T1615",
+        "T1056",
+        "T1566.003",
+        "T1546.003"
+    ],
+    "clean_text": "ShadowWeaver actors likely began by acquiring infrastructure, including creating temporary cloud instances during free trial periods to host phishing websites and registering multiple GitHub accounts to establish redundant infrastructure for malware distribution. They then compromised software supply chains by inserting malicious code into an open-source library's source repository before its next release, while simultaneously using compromised GitHub accounts to store and retrieve command and control configuration data. For initial access, the group conducted a spearphishing campaign via WhatsApp, sending malicious links disguised as package delivery notifications. Upon execution, the actors employed highly obfuscated Windows Script Files (WSF) to download and run payloads, and they established persistence by infecting the Security Accounts Manager (SAM) DLL to load a malicious DLL dropped to disk, combined with using a WMI event subscription with living-off-the-land binaries like 'cdb.exe'. To escalate privileges and evade detection, compromised credentials were used to modify Okta conditional access settings, removing device compliance requirements. The actors then conducted discovery activities, utilizing 'wevtutil.exe' to query application logs for sensitive information and using commands like 'Get-DomainGPO -Properties displayname' to identify specific Group Policy Objects. For lateral movement, they leveraged the WebDAV protocol to execute payloads hosted on network file shares, while intercepting and harvesting credentials from user logins to compromised devices. To obscure command and control traffic, raw socket communication was employed for port knocking within normal network packets, and data manipulation was performed by injecting a malicious DLL into web browsers to hijack user accounts. Throughout the campaign, system logs from various endpoints showed anomalous spikes in network traffic, and background checks revealed the targeted financial firm had recently migrated to a hybrid cloud environment, though these details are not directly related to the attack techniques.",
+    "tagged_text": "ShadowWeaver actors likely began by acquiring infrastructure [T1583], including creating temporary cloud instances during free trial periods to host phishing websites and registering multiple GitHub accounts [T1583.006] to establish redundant infrastructure for malware distribution. They then compromised software supply chains [T1195.002] by inserting malicious code into an open-source library's source repository before its next release, while simultaneously using compromised GitHub accounts [T1584.006] to store and retrieve command and control configuration data. For initial access, the group conducted a spearphishing campaign via WhatsApp [T1566.003], sending malicious links disguised as package delivery notifications. Upon execution, the actors employed highly obfuscated Windows Script Files (WSF) [T1059] to download and run payloads, and they established persistence by infecting the Security Accounts Manager (SAM) DLL to load a malicious DLL dropped to disk [T1547.008], combined with using a WMI event subscription [T1546.003] with living-off-the-land binaries like 'cdb.exe'. To escalate privileges and evade detection, compromised credentials were used to modify Okta conditional access settings, removing device compliance requirements [T1556.009]. The actors then conducted discovery activities, utilizing 'wevtutil.exe' [T1654] to query application logs for sensitive information and using commands like 'Get-DomainGPO -Properties displayname' [T1615] to identify specific Group Policy Objects. For lateral movement, they leveraged the WebDAV protocol [T1021] to execute payloads hosted on network file shares, while intercepting and harvesting credentials from user logins [T1056] to compromised devices. To obscure command and control traffic, raw socket communication was employed for port knocking [T1205.001] within normal network packets, and data manipulation was performed by injecting a malicious DLL into web browsers [T1565] to hijack user accounts. Throughout the campaign, system logs from various endpoints showed anomalous spikes in network traffic, and background checks revealed the targeted financial firm had recently migrated to a hybrid cloud environment, though these details are not directly related to the attack techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "ShadowWeaver actors likely began by acquiring infrastructure, including creating temporary cloud instances during free trial periods to host phishing websites and registering multiple GitHub accounts [T1583.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "Upon execution, the actors employed highly obfuscated Windows Script Files (WSF) to download and run payloads, and they established persistence by infecting the Security Accounts Manager (SAM) DLL to load a malicious DLL dropped to disk [T1547.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "exe' to query application logs for sensitive information and using commands like 'Get-DomainGPO -Properties displayname' to identify specific Group Policy Objects.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "exe' to query application logs for sensitive information and using commands like 'Get-DomainGPO -Properties displayname' to identify specific Group Policy Objects.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "For lateral movement, they leveraged the WebDAV protocol to execute payloads hosted on network file shares, while intercepting and harvesting credentials from user logins to compromised devices.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "For lateral movement, they leveraged the WebDAV protocol to execute payloads hosted on network file shares, while intercepting and harvesting credentials from user logins to compromised devices.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "001] within normal network packets, and data manipulation was performed by injecting a malicious DLL into web browsers to hijack user accounts.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowWeaver', targeting financial institutions globally. The actors employed a multi-faceted approach involving infrastructure acquisition, supply chain compromise, and sophisticated persistence mechanisms to infiltrate networks, exfiltrate data, and maintain long-term access. The report is intended for blue team training to enhance detection and response capabilities against realistic attack patterns.",
+        "full_report_text": "ShadowWeaver actors likely began by acquiring infrastructure [T1583], including creating temporary cloud instances during free trial periods to host phishing websites and registering multiple GitHub accounts [T1583.006] to establish redundant infrastructure for malware distribution. They then compromised software supply chains [T1195.002] by inserting malicious code into an open-source library's source repository before its next release, while simultaneously using compromised GitHub accounts [T1584.006] to store and retrieve command and control configuration data. For initial access, the group conducted a spearphishing campaign via WhatsApp [T1566.003], sending malicious links disguised as package delivery notifications. Upon execution, the actors employed highly obfuscated Windows Script Files (WSF) [T1059] to download and run payloads, and they established persistence by infecting the Security Accounts Manager (SAM) DLL to load a malicious DLL dropped to disk [T1547.008], combined with using a WMI event subscription [T1546.003] with living-off-the-land binaries like 'cdb.exe'. To escalate privileges and evade detection, compromised credentials were used to modify Okta conditional access settings, removing device compliance requirements [T1556.009]. The actors then conducted discovery activities, utilizing 'wevtutil.exe' [T1654] to query application logs for sensitive information and using commands like 'Get-DomainGPO -Properties displayname' [T1615] to identify specific Group Policy Objects. For lateral movement, they leveraged the WebDAV protocol [T1021] to execute payloads hosted on network file shares, while intercepting and harvesting credentials from user logins [T1056] to compromised devices. To obscure command and control traffic, raw socket communication was employed for port knocking [T1205.001] within normal network packets, and data manipulation was performed by injecting a malicious DLL into web browsers [T1565] to hijack user accounts. Throughout the campaign, system logs from various endpoints showed anomalous spikes in network traffic, and background checks revealed the targeted financial firm had recently migrated to a hybrid cloud environment, though these details are not directly related to the attack techniques.",
+        "techniques_used": [
+            "T1583",
+            "T1583.006",
+            "T1195.002",
+            "T1584.006",
+            "T1566.003",
+            "T1059",
+            "T1547.008",
+            "T1546.003",
+            "T1556.009",
+            "T1654",
+            "T1615",
+            "T1021",
+            "T1056",
+            "T1205.001",
+            "T1565"
+        ]
+    }
+}

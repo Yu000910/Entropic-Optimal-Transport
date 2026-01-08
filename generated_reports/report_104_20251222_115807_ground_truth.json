@@ -1,0 +1,72 @@
+{
+    "report_id": "report_104",
+    "generated_at": "20251222_115807",
+    "scenario_target_ids": [
+        "T1566",
+        "T1569.003",
+        "T1055.015",
+        "T1071.003",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1569.003",
+        "T1055.015",
+        "T1071.003",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1569.003",
+        "T1071.003",
+        "T1565.003",
+        "T1059.001",
+        "T1055.015",
+        "T1105",
+        "T1566",
+        "T1112"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) based on a fictional scenario. This report outlines the 'ShadowFox' campaign, which targets financial organizations to steal and manipulate transaction data. \n\nInitial reconnaissance was conducted through open-source intelligence (OSINT) gathering, though no specific techniques are tagged here as per instruction. The attack began with a phishing campaign that distributed emails with attached password-protected ZIP files containing malware, exploiting user trust to gain initial access. Upon execution, the malware leveraged PowerShell to download additional payloads and establish persistence by modifying registry keys. The adversary then used 'systemctl enable data-exfiltration.service' to create a continuous data theft service, ensuring long-term access to compromised systems. For evasion, the malware employed FindWindow to locate the explorer.exe process and inject malicious code, hiding its activities within legitimate processes. Data exfiltration was achieved by abusing SMTP protocols to send encrypted stolen data through emails disguised as normal traffic, blending in with legitimate communications. Additionally, runtime data manipulation was used to alter PDF data in real-time, removing traces of fraudulent SWIFT transactions from displayed information to deceive end-users and avoid detection. System logs from affected servers showed unusual network traffic spikes and failed authentication attempts, but these are not tagged as they represent noise. The campaign's infrastructure included compromised domains and cloud services, with actors using encryption to obscure command-and-control communications.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) based on a fictional scenario. This report outlines the 'ShadowFox' campaign, which targets financial organizations to steal and manipulate transaction data. \n\nInitial reconnaissance was conducted through open-source intelligence (OSINT) gathering, though no specific techniques are tagged here as per instruction. The attack began with a phishing campaign [T1566] that distributed emails with attached password-protected ZIP files containing malware, exploiting user trust to gain initial access. Upon execution, the malware leveraged PowerShell [T1059.001] to download additional payloads [T1105] and establish persistence by modifying registry keys [T1112]. The adversary then used 'systemctl enable data-exfiltration.service' [T1569.003] to create a continuous data theft service, ensuring long-term access to compromised systems. For evasion, the malware employed FindWindow to locate the explorer.exe process and inject malicious code [T1055.015], hiding its activities within legitimate processes. Data exfiltration was achieved by abusing SMTP protocols [T1071.003] to send encrypted stolen data through emails disguised as normal traffic, blending in with legitimate communications. Additionally, runtime data manipulation [T1565.003] was used to alter PDF data in real-time, removing traces of fraudulent SWIFT transactions from displayed information to deceive end-users and avoid detection. System logs from affected servers showed unusual network traffic spikes and failed authentication attempts, but these are not tagged as they represent noise. The campaign's infrastructure included compromised domains and cloud services, with actors using encryption to obscure command-and-control communications.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with a phishing campaign that distributed emails with attached password-protected ZIP files containing malware, exploiting user trust to gain initial access.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "001] to download additional payloads and establish persistence by modifying registry keys.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to download additional payloads and establish persistence by modifying registry keys.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowFox' Targeting Financial Institutions",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowFox' targeting financial institutions to exfiltrate sensitive transaction data. The campaign involves phishing, persistence mechanisms, process injection, and data exfiltration via email protocols, with runtime data manipulation to conceal fraudulent activities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) based on a fictional scenario. This report outlines the 'ShadowFox' campaign, which targets financial organizations to steal and manipulate transaction data. \n\nInitial reconnaissance was conducted through open-source intelligence (OSINT) gathering, though no specific techniques are tagged here as per instruction. The attack began with a phishing campaign [T1566] that distributed emails with attached password-protected ZIP files containing malware, exploiting user trust to gain initial access. Upon execution, the malware leveraged PowerShell [T1059.001] to download additional payloads [T1105] and establish persistence by modifying registry keys [T1112]. The adversary then used 'systemctl enable data-exfiltration.service' [T1569.003] to create a continuous data theft service, ensuring long-term access to compromised systems. For evasion, the malware employed FindWindow to locate the explorer.exe process and inject malicious code [T1055.015], hiding its activities within legitimate processes. Data exfiltration was achieved by abusing SMTP protocols [T1071.003] to send encrypted stolen data through emails disguised as normal traffic, blending in with legitimate communications. Additionally, runtime data manipulation [T1565.003] was used to alter PDF data in real-time, removing traces of fraudulent SWIFT transactions from displayed information to deceive end-users and avoid detection. System logs from affected servers showed unusual network traffic spikes and failed authentication attempts, but these are not tagged as they represent noise. The campaign's infrastructure included compromised domains and cloud services, with actors using encryption to obscure command-and-control communications.",
+        "techniques_used": [
+            "T1566",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1569.003",
+            "T1055.015",
+            "T1071.003",
+            "T1565.003"
+        ]
+    }
+}

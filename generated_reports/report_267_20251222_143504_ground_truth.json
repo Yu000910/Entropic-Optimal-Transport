@@ -1,0 +1,104 @@
+{
+    "report_id": "report_267",
+    "generated_at": "20251222_143504",
+    "scenario_target_ids": [
+        "T1585.003",
+        "T1587.001",
+        "T1659",
+        "T1195",
+        "T1559",
+        "T1546.010",
+        "T1078.001",
+        "T1055.011",
+        "T1556.008",
+        "T1526",
+        "T1105"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1585.003",
+        "T1587.001",
+        "T1659",
+        "T1195",
+        "T1559",
+        "T1546.010",
+        "T1078.001",
+        "T1055.011",
+        "T1556.008",
+        "T1526",
+        "T1105"
+    ],
+    "actual_found_ids": [
+        "T1055.011",
+        "T1105",
+        "T1526",
+        "T1587.001",
+        "T1659",
+        "T1546.010",
+        "T1559",
+        "T1195",
+        "T1585.003",
+        "T1556.008",
+        "T1078.001",
+        "T1059.001"
+    ],
+    "clean_text": "**Background**: The simulated APT group 'LuminousMoth' targeted a fictional technology firm, 'CloudSync Innovations', which operates a hybrid infrastructure with AWS cloud services and on-premises Windows servers. Initial logs showed unusual DNS queries from internal systems, but no immediate alerts were triggered.\n\n**Attack Narrative**: The actors likely conducted reconnaissance by creating multiple temporary email accounts through Guerrilla Mail for disposable communications to obscure their identity. They then compromised the software supply chain by altering the compiler in development_tools.exe to insert covert functionality, which was distributed via a trusted update channel. Upon execution, the malware employed PowerShell to actively download additional payloads from a command and control server while simultaneously leveraging Component Object Model to run arbitrary code through a malicious script. For persistence, the adversary modified HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows to load a malicious DLL via AppInit_DLLs and altered the registry value at HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order to include a rogue network provider, ensuring covert network access. To evade detection, they injected a malicious DLL into the memory space of a legitimate browser process using Extra Window Memory Injection and maintained command and control by injecting a beacon into DNS queries. The group used unique malware for information theft and exfiltration, and they discovered and exploited the Guest account with weak credentials on multiple network devices to move laterally. Additionally, they employed tools like Pacu to enumerate AWS services, such as CloudTrail and CloudWatch, for cloud service discovery. System logs indicated failed login attempts from unknown IPs, but these were initially dismissed as noise.\n\n**Mitigation Recommendations**: Organizations should monitor for unusual registry modifications, enforce multi-factor authentication on all accounts, and regularly audit cloud service configurations. This scenario underscores the importance of defense-in-depth strategies against sophisticated threats.",
+    "tagged_text": "**Background**: The simulated APT group 'LuminousMoth' targeted a fictional technology firm, 'CloudSync Innovations', which operates a hybrid infrastructure with AWS cloud services and on-premises Windows servers. Initial logs showed unusual DNS queries from internal systems, but no immediate alerts were triggered.\n\n**Attack Narrative**: The actors likely conducted reconnaissance by creating multiple temporary email accounts through Guerrilla Mail for disposable communications [T1585.003] to obscure their identity. They then compromised the software supply chain by altering the compiler in development_tools.exe to insert covert functionality [T1195], which was distributed via a trusted update channel. Upon execution, the malware employed PowerShell [T1059.001] to actively download additional payloads from a command and control server [T1105] while simultaneously leveraging Component Object Model to run arbitrary code through a malicious script [T1559]. For persistence, the adversary modified HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows to load a malicious DLL via AppInit_DLLs [T1546.010] and altered the registry value at HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order to include a rogue network provider [T1556.008], ensuring covert network access. To evade detection, they injected a malicious DLL into the memory space of a legitimate browser process using Extra Window Memory Injection [T1055.011] and maintained command and control by injecting a beacon into DNS queries [T1659]. The group used unique malware for information theft and exfiltration [T1587.001], and they discovered and exploited the Guest account with weak credentials on multiple network devices [T1078.001] to move laterally. Additionally, they employed tools like Pacu to enumerate AWS services, such as CloudTrail and CloudWatch [T1526], for cloud service discovery. System logs indicated failed login attempts from unknown IPs, but these were initially dismissed as noise.\n\n**Mitigation Recommendations**: Organizations should monitor for unusual registry modifications, enforce multi-factor authentication on all accounts, and regularly audit cloud service configurations. This scenario underscores the importance of defense-in-depth strategies against sophisticated threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to insert covert functionality, which was distributed via a trusted update channel.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "001] to actively download additional payloads from a command and control server while simultaneously leveraging Component Object Model to run arbitrary code through a malicious script.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download additional payloads from a command and control server while simultaneously leveraging Component Object Model to run arbitrary code through a malicious script.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "011] and maintained command and control by injecting a beacon into DNS queries.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Additionally, they employed tools like Pacu to enumerate AWS services, such as CloudTrail and CloudWatch, for cloud service discovery.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'LuminousMoth' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group, designated 'LuminousMoth', for blue team training purposes. The scenario involves a multi-phase attack leveraging cloud reconnaissance, supply chain compromise, and sophisticated persistence mechanisms to exfiltrate sensitive data from hybrid environments.",
+        "full_report_text": "**Background**: The simulated APT group 'LuminousMoth' targeted a fictional technology firm, 'CloudSync Innovations', which operates a hybrid infrastructure with AWS cloud services and on-premises Windows servers. Initial logs showed unusual DNS queries from internal systems, but no immediate alerts were triggered.\n\n**Attack Narrative**: The actors likely conducted reconnaissance by creating multiple temporary email accounts through Guerrilla Mail for disposable communications [T1585.003] to obscure their identity. They then compromised the software supply chain by altering the compiler in development_tools.exe to insert covert functionality [T1195], which was distributed via a trusted update channel. Upon execution, the malware employed PowerShell [T1059.001] to actively download additional payloads from a command and control server [T1105] while simultaneously leveraging Component Object Model to run arbitrary code through a malicious script [T1559]. For persistence, the adversary modified HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows to load a malicious DLL via AppInit_DLLs [T1546.010] and altered the registry value at HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order to include a rogue network provider [T1556.008], ensuring covert network access. To evade detection, they injected a malicious DLL into the memory space of a legitimate browser process using Extra Window Memory Injection [T1055.011] and maintained command and control by injecting a beacon into DNS queries [T1659]. The group used unique malware for information theft and exfiltration [T1587.001], and they discovered and exploited the Guest account with weak credentials on multiple network devices [T1078.001] to move laterally. Additionally, they employed tools like Pacu to enumerate AWS services, such as CloudTrail and CloudWatch [T1526], for cloud service discovery. System logs indicated failed login attempts from unknown IPs, but these were initially dismissed as noise.\n\n**Mitigation Recommendations**: Organizations should monitor for unusual registry modifications, enforce multi-factor authentication on all accounts, and regularly audit cloud service configurations. This scenario underscores the importance of defense-in-depth strategies against sophisticated threats.",
+        "techniques_used": [
+            "T1585.003",
+            "T1587.001",
+            "T1659",
+            "T1195",
+            "T1559",
+            "T1546.010",
+            "T1078.001",
+            "T1055.011",
+            "T1556.008",
+            "T1526",
+            "T1105"
+        ]
+    }
+}

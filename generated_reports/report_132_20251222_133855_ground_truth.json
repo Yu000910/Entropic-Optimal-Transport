@@ -1,0 +1,98 @@
+{
+    "report_id": "report_132",
+    "generated_at": "20251222_133855",
+    "scenario_target_ids": [
+        "T1189",
+        "T1059.002",
+        "T1136.003",
+        "T1134.001",
+        "T1578.002",
+        "T1218.009",
+        "T1563.002",
+        "T1115",
+        "T1213.003",
+        "T1568",
+        "T1537"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1059.002",
+        "T1218.009",
+        "T1134.001",
+        "T1563.002",
+        "T1115",
+        "T1213.003",
+        "T1568",
+        "T1578.002",
+        "T1537",
+        "T1136.003"
+    ],
+    "actual_found_ids": [
+        "T1136.003",
+        "T1218.009",
+        "T1213.003",
+        "T1578.002",
+        "T1537",
+        "T1115",
+        "T1189",
+        "T1134.001",
+        "T1568",
+        "T1059.002",
+        "T1563.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in simulated environments. The actors, designated 'CloudShadow', likely operate with financial motives, targeting entities in the technology and finance sectors. Background analysis indicates the campaign began in early 2024, with initial reconnaissance focusing on employees via social media platforms, though no specific techniques were tagged for this phase.\n\nInitial Access: The campaign initiated with a drive-by compromise, where victims visited compromised websites that silently downloaded malicious payloads, such as 'Snip3', from domains like malicious-download[.]com. System logs from affected endpoints show increased network traffic to these domains, but this detail is not tagged as it represents noise for training purposes.\n\nExecution and Persistence: On macOS systems, the adversary employed AppleScript to create login items for persistence, mimicking the behavior of 'Dok' malware, while simultaneously using Regsvcs/Regasm on Windows systems to drop RegAsm.exe for executing malicious code. For instance, a compromised host at IP 192.168.1.100 recorded RegAsm.exe spawning PowerShell processes, but this log entry is irrelevant and not tagged.\n\nPrivilege Escalation and Defense Evasion: The actors escalated privileges by performing token impersonation/theft using custom tooling to acquire tokens via ImpersonateLoggedOnUser, and they conducted RDP hijacking by executing tscon.exe to take over active remote desktop sessions, allowing lateral movement within the network. During this phase, system monitoring tools flagged unusual RDP connections from non-standard hours, which is included as noise.\n\nCredential Access and Collection: To gather sensitive data, the malware captured clipboard data, specifically replacing Bitcoin wallet information on compromised hosts, and accessed code repositories to collect source code and configuration files from GitHub, such as targeting private repos at github.com/victim-org. Background company information reveals the targeted organization had recently migrated to cloud services, but this is not tagged.\n\nCommand and Control: For command and control (C2), the malware used dynamic resolution by executing 'malware.exe' to establish persistent C2 channels through encrypted HTTPS traffic to domains like c2-server[.]xyz, while also creating cloud instances in Azure under a different subscription to evade security monitoring, such as spinning up a new virtual machine in East US region.\n\nExfiltration and Impact: Data exfiltration involved transferring data to cloud accounts via automated backups using the Box API to move corporate data to adversary-controlled cloud storage, and the actors created cloud accounts by establishing a custom role in the Azure portal with subscription-level permissions for persistent access. Final logs indicate exfiltrated data included financial records, but this is noise for training purposes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in simulated environments. The actors, designated 'CloudShadow', likely operate with financial motives, targeting entities in the technology and finance sectors. Background analysis indicates the campaign began in early 2024, with initial reconnaissance focusing on employees via social media platforms, though no specific techniques were tagged for this phase.\n\nInitial Access: The campaign initiated with a drive-by compromise [T1189], where victims visited compromised websites that silently downloaded malicious payloads, such as 'Snip3', from domains like malicious-download[.]com. System logs from affected endpoints show increased network traffic to these domains, but this detail is not tagged as it represents noise for training purposes.\n\nExecution and Persistence: On macOS systems, the adversary employed AppleScript [T1059.002] to create login items for persistence, mimicking the behavior of 'Dok' malware, while simultaneously using Regsvcs/Regasm [T1218.009] on Windows systems to drop RegAsm.exe for executing malicious code. For instance, a compromised host at IP 192.168.1.100 recorded RegAsm.exe spawning PowerShell processes, but this log entry is irrelevant and not tagged.\n\nPrivilege Escalation and Defense Evasion: The actors escalated privileges by performing token impersonation/theft [T1134.001] using custom tooling to acquire tokens via ImpersonateLoggedOnUser, and they conducted RDP hijacking [T1563.002] by executing tscon.exe to take over active remote desktop sessions, allowing lateral movement within the network. During this phase, system monitoring tools flagged unusual RDP connections from non-standard hours, which is included as noise.\n\nCredential Access and Collection: To gather sensitive data, the malware captured clipboard data [T1115], specifically replacing Bitcoin wallet information on compromised hosts, and accessed code repositories [T1213.003] to collect source code and configuration files from GitHub, such as targeting private repos at github.com/victim-org. Background company information reveals the targeted organization had recently migrated to cloud services, but this is not tagged.\n\nCommand and Control: For command and control (C2), the malware used dynamic resolution [T1568] by executing 'malware.exe' to establish persistent C2 channels through encrypted HTTPS traffic to domains like c2-server[.]xyz, while also creating cloud instances [T1578.002] in Azure under a different subscription to evade security monitoring, such as spinning up a new virtual machine in East US region.\n\nExfiltration and Impact: Data exfiltration involved transferring data to cloud accounts [T1537] via automated backups using the Box API to move corporate data to adversary-controlled cloud storage, and the actors created cloud accounts [T1136.003] by establishing a custom role in the Azure portal with subscription-level permissions for persistent access. Final logs indicate exfiltrated data included financial records, but this is noise for training purposes.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The campaign initiated with a drive-by compromise, where victims visited compromised websites that silently downloaded malicious payloads, such as 'Snip3', from domains like malicious-download[.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Credential Access and Collection: To gather sensitive data, the malware captured clipboard data, specifically replacing Bitcoin wallet information on compromised hosts, and accessed code repositories [T1213.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        },
+        {
+            "sentence": "Command and Control: For command and control (C2), the malware used dynamic resolution by executing 'malware.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "Exfiltration and Impact: Data exfiltration involved transferring data to cloud accounts via automated backups using the Box API to move corporate data to adversary-controlled cloud storage, and the actors created cloud accounts [T1136.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'CloudShadow', targeting organizations with hybrid on-premises and cloud infrastructures. The campaign involves initial compromise via drive-by downloads, leveraging macOS and Windows systems, and escalating to cloud account manipulation and data exfiltration. Blue teams should use this report for training to identify and mitigate similar multi-vector attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign observed in simulated environments. The actors, designated 'CloudShadow', likely operate with financial motives, targeting entities in the technology and finance sectors. Background analysis indicates the campaign began in early 2024, with initial reconnaissance focusing on employees via social media platforms, though no specific techniques were tagged for this phase.\n\nInitial Access: The campaign initiated with a drive-by compromise [T1189], where victims visited compromised websites that silently downloaded malicious payloads, such as 'Snip3', from domains like malicious-download[.]com. System logs from affected endpoints show increased network traffic to these domains, but this detail is not tagged as it represents noise for training purposes.\n\nExecution and Persistence: On macOS systems, the adversary employed AppleScript [T1059.002] to create login items for persistence, mimicking the behavior of 'Dok' malware, while simultaneously using Regsvcs/Regasm [T1218.009] on Windows systems to drop RegAsm.exe for executing malicious code. For instance, a compromised host at IP 192.168.1.100 recorded RegAsm.exe spawning PowerShell processes, but this log entry is irrelevant and not tagged.\n\nPrivilege Escalation and Defense Evasion: The actors escalated privileges by performing token impersonation/theft [T1134.001] using custom tooling to acquire tokens via ImpersonateLoggedOnUser, and they conducted RDP hijacking [T1563.002] by executing tscon.exe to take over active remote desktop sessions, allowing lateral movement within the network. During this phase, system monitoring tools flagged unusual RDP connections from non-standard hours, which is included as noise.\n\nCredential Access and Collection: To gather sensitive data, the malware captured clipboard data [T1115], specifically replacing Bitcoin wallet information on compromised hosts, and accessed code repositories [T1213.003] to collect source code and configuration files from GitHub, such as targeting private repos at github.com/victim-org. Background company information reveals the targeted organization had recently migrated to cloud services, but this is not tagged.\n\nCommand and Control: For command and control (C2), the malware used dynamic resolution [T1568] by executing 'malware.exe' to establish persistent C2 channels through encrypted HTTPS traffic to domains like c2-server[.]xyz, while also creating cloud instances [T1578.002] in Azure under a different subscription to evade security monitoring, such as spinning up a new virtual machine in East US region.\n\nExfiltration and Impact: Data exfiltration involved transferring data to cloud accounts [T1537] via automated backups using the Box API to move corporate data to adversary-controlled cloud storage, and the actors created cloud accounts [T1136.003] by establishing a custom role in the Azure portal with subscription-level permissions for persistent access. Final logs indicate exfiltrated data included financial records, but this is noise for training purposes.",
+        "techniques_used": [
+            "T1189",
+            "T1059.002",
+            "T1218.009",
+            "T1134.001",
+            "T1563.002",
+            "T1115",
+            "T1213.003",
+            "T1568",
+            "T1578.002",
+            "T1537",
+            "T1136.003"
+        ]
+    }
+}

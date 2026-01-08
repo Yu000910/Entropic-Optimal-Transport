@@ -1,0 +1,73 @@
+{
+    "report_id": "report_136",
+    "generated_at": "20251222_134034",
+    "scenario_target_ids": [
+        "T1200",
+        "T1189",
+        "T1648",
+        "T1547.002",
+        "T1574.012",
+        "T1550.001",
+        "T1205.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1189",
+        "T1648",
+        "T1547.002",
+        "T1574.012",
+        "T1550.001",
+        "T1205.001"
+    ],
+    "actual_found_ids": [
+        "T1200",
+        "T1574.012",
+        "T1205.001",
+        "T1550.001",
+        "T1189",
+        "T1547.002",
+        "T1648"
+    ],
+    "clean_text": "APT-99, a fictional threat actor, initiated a campaign against a mid-sized financial services company, FinSecure Corp, which operates online banking platforms and uses hybrid cloud infrastructure. The company's background includes recent migration to AWS for some backend services, with legacy on-premises systems handling core transactions. Initial reconnaissance involved passive monitoring of unencrypted network traffic, where the adversary deployed a hardware network tap in a data center closet to capture credentials from administrative protocols. This was followed by a drive-by compromise, where APT-99 cloned FinSecure's legitimate customer login portal to distribute IcedID malware through malicious redirects, exploiting users who visited the spoofed site. System logs from FinSecure's web servers showed unusual spikes in traffic to the cloned domain, but initial alerts were dismissed as false positives due to high user activity during a promotional period. Upon gaining initial access, the actors exploited a vulnerable AWS Lambda function configured with excessive permissions, using serverless execution to run malicious code that exfiltrated sensitive customer data while evading traditional endpoint detection. The infection then escalated privileges by registering a malicious DLL as an LSA authentication package, allowing persistence and credential harvesting from memory without triggering antivirus scans. Additionally, APT-99 manipulated the COR_PROFILER environment variable to inject a malicious DLL into .NET processes, enabling code execution within trusted applications like financial transaction handlers. To maintain access and move laterally, the actors stole service account tokens from compromised systems, using application access tokens to impersonate valid accounts and switch between them for operations such as data exfiltration and further exploitation. Finally, the backdoor employed port knocking techniques, utilizing raw sockets to send command data directly through the network stack, establishing covert communication channels that bypassed firewall rules and remained undetected by standard network monitoring tools. FinSecure's incident response team noted anomalies in Lambda function execution logs and unusual registry modifications, but delayed investigation due to resource constraints during a system upgrade.",
+    "tagged_text": "APT-99, a fictional threat actor, initiated a campaign against a mid-sized financial services company, FinSecure Corp, which operates online banking platforms and uses hybrid cloud infrastructure. The company's background includes recent migration to AWS for some backend services, with legacy on-premises systems handling core transactions. Initial reconnaissance involved passive monitoring of unencrypted network traffic, where the adversary deployed a hardware network tap in a data center closet to capture credentials from administrative protocols [T1200]. This was followed by a drive-by compromise, where APT-99 cloned FinSecure's legitimate customer login portal to distribute IcedID malware through malicious redirects, exploiting users who visited the spoofed site [T1189]. System logs from FinSecure's web servers showed unusual spikes in traffic to the cloned domain, but initial alerts were dismissed as false positives due to high user activity during a promotional period. Upon gaining initial access, the actors exploited a vulnerable AWS Lambda function configured with excessive permissions, using serverless execution to run malicious code that exfiltrated sensitive customer data while evading traditional endpoint detection [T1648]. The infection then escalated privileges by registering a malicious DLL as an LSA authentication package, allowing persistence and credential harvesting from memory without triggering antivirus scans [T1547.002]. Additionally, APT-99 manipulated the COR_PROFILER environment variable to inject a malicious DLL into .NET processes, enabling code execution within trusted applications like financial transaction handlers [T1574.012]. To maintain access and move laterally, the actors stole service account tokens from compromised systems, using application access tokens to impersonate valid accounts and switch between them for operations such as data exfiltration and further exploitation [T1550.001]. Finally, the backdoor employed port knocking techniques, utilizing raw sockets to send command data directly through the network stack, establishing covert communication channels that bypassed firewall rules and remained undetected by standard network monitoring tools [T1205.001]. FinSecure's incident response team noted anomalies in Lambda function execution logs and unusual registry modifications, but delayed investigation due to resource constraints during a system upgrade.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial reconnaissance involved passive monitoring of unencrypted network traffic, where the adversary deployed a hardware network tap in a data center closet to capture credentials from administrative protocols.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "This was followed by a drive-by compromise, where APT-99 cloned FinSecure's legitimate customer login portal to distribute IcedID malware through malicious redirects, exploiting users who visited the spoofed site.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Upon gaining initial access, the actors exploited a vulnerable AWS Lambda function configured with excessive permissions, using serverless execution to run malicious code that exfiltrated sensitive customer data while evading traditional endpoint detection.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting financial institutions. The campaign involves hardware-based credential harvesting, drive-by compromises, cloud exploitation, and sophisticated persistence mechanisms. The information is based on fictional incident response data and is intended for blue team training to enhance detection and mitigation capabilities.",
+        "full_report_text": "APT-99, a fictional threat actor, initiated a campaign against a mid-sized financial services company, FinSecure Corp, which operates online banking platforms and uses hybrid cloud infrastructure. The company's background includes recent migration to AWS for some backend services, with legacy on-premises systems handling core transactions. Initial reconnaissance involved passive monitoring of unencrypted network traffic, where the adversary deployed a hardware network tap in a data center closet to capture credentials from administrative protocols [T1200]. This was followed by a drive-by compromise, where APT-99 cloned FinSecure's legitimate customer login portal to distribute IcedID malware through malicious redirects, exploiting users who visited the spoofed site [T1189]. System logs from FinSecure's web servers showed unusual spikes in traffic to the cloned domain, but initial alerts were dismissed as false positives due to high user activity during a promotional period. Upon gaining initial access, the actors exploited a vulnerable AWS Lambda function configured with excessive permissions, using serverless execution to run malicious code that exfiltrated sensitive customer data while evading traditional endpoint detection [T1648]. The infection then escalated privileges by registering a malicious DLL as an LSA authentication package, allowing persistence and credential harvesting from memory without triggering antivirus scans [T1547.002]. Additionally, APT-99 manipulated the COR_PROFILER environment variable to inject a malicious DLL into .NET processes, enabling code execution within trusted applications like financial transaction handlers [T1574.012]. To maintain access and move laterally, the actors stole service account tokens from compromised systems, using application access tokens to impersonate valid accounts and switch between them for operations such as data exfiltration and further exploitation [T1550.001]. Finally, the backdoor employed port knocking techniques, utilizing raw sockets to send command data directly through the network stack, establishing covert communication channels that bypassed firewall rules and remained undetected by standard network monitoring tools [T1205.001]. FinSecure's incident response team noted anomalies in Lambda function execution logs and unusual registry modifications, but delayed investigation due to resource constraints during a system upgrade.",
+        "techniques_used": [
+            "T1200",
+            "T1189",
+            "T1648",
+            "T1547.002",
+            "T1574.012",
+            "T1550.001",
+            "T1205.001"
+        ]
+    }
+}

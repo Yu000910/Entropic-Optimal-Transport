@@ -1,0 +1,68 @@
+{
+    "report_id": "report_474",
+    "generated_at": "20251222_160256",
+    "scenario_target_ids": [
+        "T1589.003",
+        "T1587.003",
+        "T1566.004",
+        "T1053.005",
+        "T1552.001",
+        "T1021.004",
+        "T1534",
+        "T1001.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589.003",
+        "T1587.003",
+        "T1566.004",
+        "T1053.005",
+        "T1552.001",
+        "T1021.004",
+        "T1534",
+        "T1001.003"
+    ],
+    "actual_found_ids": [
+        "T1001.003",
+        "T1566.004",
+        "T1534",
+        "T1021.004",
+        "T1589.003",
+        "T1552.001",
+        "T1053.005",
+        "T1587.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform about the activities of the fictional advanced persistent threat (APT) group 'SilentShade,' which has been observed targeting financial organizations in the United States. SilentShade operates with the goal of stealing sensitive financial data and intellectual property, leveraging sophisticated techniques to evade detection.\n\nInitial reconnaissance by SilentShade involved gathering employee names from public sources like LinkedIn and company websites, enabling targeted social engineering attacks. System logs from victim networks show increased scanning activity on external-facing web servers, though this was not directly linked to the initial breach.\n\nFor initial access, the actors employed spearphishing voice calls, impersonating IT support to trick employees into downloading and executing a malicious TeamViewer installer, which facilitated remote control. Concurrently, they established SSL certificates on typo-squatted domains to enhance the credibility of their phishing infrastructure, while using FakeTLS for session authentication to mimic legitimate traffic and bypass network monitoring.\n\nUpon execution, persistence was achieved by creating scheduled tasks on compromised systems, allowing the malware to run at regular intervals and maintain access. The actors then used PowerShell scripts to search for and extract unsecured credentials stored in files, such as configuration files and scripts, which were leveraged for internal spearphishing to compromise additional domain accounts and spread within the network.\n\nFor lateral movement, SilentShade utilized SSH via tools like Putty to move between systems, exploiting stolen credentials to access sensitive servers. Network traffic analysis revealed anomalous SSH connections from non-standard IP addresses, though some were false positives from legitimate administrative activities.\n\nData exfiltration was conducted over encrypted channels, with the actors using the impersonated protocols to blend in with normal traffic, aiming to avoid detection by security tools. The campaign resulted in the theft of financial records and customer data, highlighting the need for robust endpoint and network monitoring.\n\nThis fictional scenario is based on real-world TTPs and is intended for training purposes to improve defensive strategies against similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform about the activities of the fictional advanced persistent threat (APT) group 'SilentShade,' which has been observed targeting financial organizations in the United States. SilentShade operates with the goal of stealing sensitive financial data and intellectual property, leveraging sophisticated techniques to evade detection.\n\nInitial reconnaissance by SilentShade involved gathering employee names [T1589.003] from public sources like LinkedIn and company websites, enabling targeted social engineering attacks. System logs from victim networks show increased scanning activity on external-facing web servers, though this was not directly linked to the initial breach.\n\nFor initial access, the actors employed spearphishing voice calls [T1566.004], impersonating IT support to trick employees into downloading and executing a malicious TeamViewer installer, which facilitated remote control. Concurrently, they established SSL certificates on typo-squatted domains [T1587.003] to enhance the credibility of their phishing infrastructure, while using FakeTLS for session authentication [T1001.003] to mimic legitimate traffic and bypass network monitoring.\n\nUpon execution, persistence was achieved by creating scheduled tasks [T1053.005] on compromised systems, allowing the malware to run at regular intervals and maintain access. The actors then used PowerShell scripts to search for and extract unsecured credentials stored in files [T1552.001], such as configuration files and scripts, which were leveraged for internal spearphishing [T1534] to compromise additional domain accounts and spread within the network.\n\nFor lateral movement, SilentShade utilized SSH [T1021.004] via tools like Putty to move between systems, exploiting stolen credentials to access sensitive servers. Network traffic analysis revealed anomalous SSH connections from non-standard IP addresses, though some were false positives from legitimate administrative activities.\n\nData exfiltration was conducted over encrypted channels, with the actors using the impersonated protocols to blend in with normal traffic, aiming to avoid detection by security tools. The campaign resulted in the theft of financial records and customer data, highlighting the need for robust endpoint and network monitoring.\n\nThis fictional scenario is based on real-world TTPs and is intended for training purposes to improve defensive strategies against similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "001], such as configuration files and scripts, which were leveraged for internal spearphishing to compromise additional domain accounts and spread within the network.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentShade' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'SilentShade' targeting financial institutions, using a multi-stage approach involving reconnaissance, phishing, persistence, credential theft, lateral movement, and data exfiltration. The scenario is designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform about the activities of the fictional advanced persistent threat (APT) group 'SilentShade,' which has been observed targeting financial organizations in the United States. SilentShade operates with the goal of stealing sensitive financial data and intellectual property, leveraging sophisticated techniques to evade detection.\n\nInitial reconnaissance by SilentShade involved gathering employee names [T1589.003] from public sources like LinkedIn and company websites, enabling targeted social engineering attacks. System logs from victim networks show increased scanning activity on external-facing web servers, though this was not directly linked to the initial breach.\n\nFor initial access, the actors employed spearphishing voice calls [T1566.004], impersonating IT support to trick employees into downloading and executing a malicious TeamViewer installer, which facilitated remote control. Concurrently, they established SSL certificates on typo-squatted domains [T1587.003] to enhance the credibility of their phishing infrastructure, while using FakeTLS for session authentication [T1001.003] to mimic legitimate traffic and bypass network monitoring.\n\nUpon execution, persistence was achieved by creating scheduled tasks [T1053.005] on compromised systems, allowing the malware to run at regular intervals and maintain access. The actors then used PowerShell scripts to search for and extract unsecured credentials stored in files [T1552.001], such as configuration files and scripts, which were leveraged for internal spearphishing [T1534] to compromise additional domain accounts and spread within the network.\n\nFor lateral movement, SilentShade utilized SSH [T1021.004] via tools like Putty to move between systems, exploiting stolen credentials to access sensitive servers. Network traffic analysis revealed anomalous SSH connections from non-standard IP addresses, though some were false positives from legitimate administrative activities.\n\nData exfiltration was conducted over encrypted channels, with the actors using the impersonated protocols to blend in with normal traffic, aiming to avoid detection by security tools. The campaign resulted in the theft of financial records and customer data, highlighting the need for robust endpoint and network monitoring.\n\nThis fictional scenario is based on real-world TTPs and is intended for training purposes to improve defensive strategies against similar threats.",
+        "techniques_used": [
+            "T1589.003",
+            "T1587.003",
+            "T1566.004",
+            "T1053.005",
+            "T1552.001",
+            "T1021.004",
+            "T1534",
+            "T1001.003"
+        ]
+    }
+}

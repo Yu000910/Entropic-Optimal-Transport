@@ -1,0 +1,126 @@
+{
+    "report_id": "report_492",
+    "generated_at": "20251222_161128",
+    "scenario_target_ids": [
+        "T1588.002",
+        "T1588.006",
+        "T1583.003",
+        "T1199",
+        "T1053.002",
+        "T1037.001",
+        "T1055.003",
+        "T1497.002",
+        "T1134.005",
+        "T1647",
+        "T1557.001",
+        "T1550",
+        "T1210",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1588.002",
+        "T1588.006",
+        "T1583.003",
+        "T1199",
+        "T1053.002",
+        "T1037.001",
+        "T1055.003",
+        "T1497.002",
+        "T1134.005",
+        "T1647",
+        "T1557.001",
+        "T1550",
+        "T1210",
+        "T1071.004"
+    ],
+    "actual_found_ids": [
+        "T1588.006",
+        "T1199",
+        "T1053.002",
+        "T1497.002",
+        "T1550",
+        "T1589",
+        "T1037.001",
+        "T1647",
+        "T1557.001",
+        "T1588.002",
+        "T1583.003",
+        "T1055.003",
+        "T1071.004",
+        "T1105",
+        "T1134.005",
+        "T1210",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'Shadow Veil'. This campaign targets organizations in the energy and financial sectors, with initial reconnaissance indicating a focus on network segmentation weaknesses. The actors likely conduct reconnaissance to identify potential entry points, though no specific techniques are tagged here as per the scenario.\n\nIn the Initial Access phase, Shadow Veil exploited a trusted relationship by compromising a third-party vendor's Office 365 account, gaining administrative control over multiple client tenants, while simultaneously leveraging publicly available exploit code for a known vulnerability in remote services, such as CVE-2020-1472, to access Windows Active Directory servers. The attackers used stolen payment information to rent a virtual private server (VPS) from a European hosting service, obscuring their identity and hosting malicious tools like QuasarRAT and Remcos.\n\nDuring Execution, the adversary employed PowerShell to download additional payloads and schedule tasks using the 'at' command for persistence at specific times. For persistence on Windows systems, they modified registry keys to set a malicious logon script path in HKCU\\Environment\\UserInitMprLogonScript, ensuring execution upon user login. On macOS, they altered the com.apple.dock.plist file to load a custom plugin during dock initialization, enabling stealthy code execution.\n\nIn the Defense Evasion phase, Shadow Veil used thread execution hijacking by suspending security processes with SuspendThread before injecting malicious code, while performing user activity-based checks by scanning Windows event logs for 'malware.exe' process creation events to avoid detection. They also employed SID-History injection to gain unauthorized access to sensitive file shares by manipulating security identifiers.\n\nFor Lateral Movement, the actors conducted LLMNR/NBT-NS poisoning and SMB relay attacks using tools like Responder to harvest hashes and credentials from local networks, and exploited alternate authentication material by abusing compromised AD FS servers' SAML tokens with tools similar to FoggyWeb for elevated access.\n\nIn the Command and Control (C2) phase, Shadow Veil utilized DNS tunneling, mimicking TEXTMATE's use of DNS TXT records for covert communication with their infrastructure. Network logs from the targeted organization showed increased DNS query volumes to suspicious domains, though these are untagged as noise. The campaign's objectives appear focused on data exfiltration and potential disruption of operational technology systems, with no evidence of ransomware deployment in this simulation.\n\nBlue teams should monitor for anomalous registry changes, unusual scheduled tasks, and spikes in DNS traffic. Implementing network segmentation, multi-factor authentication, and regular patch management can mitigate these techniques. This report is fictional and intended for educational purposes to enhance defensive capabilities against similar real-world threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'Shadow Veil'. This campaign targets organizations in the energy and financial sectors, with initial reconnaissance indicating a focus on network segmentation weaknesses. The actors likely conduct reconnaissance [T1589] to identify potential entry points, though no specific techniques are tagged here as per the scenario.\n\nIn the Initial Access phase, Shadow Veil exploited a trusted relationship [T1199] by compromising a third-party vendor's Office 365 account, gaining administrative control over multiple client tenants, while simultaneously leveraging publicly available exploit code for a known vulnerability in remote services [T1588.006], such as CVE-2020-1472, to access Windows Active Directory servers [T1210]. The attackers used stolen payment information to rent a virtual private server (VPS) from a European hosting service [T1583.003], obscuring their identity and hosting malicious tools like QuasarRAT and Remcos [T1588.002].\n\nDuring Execution, the adversary employed PowerShell [T1059.001] to download additional payloads [T1105] and schedule tasks using the 'at' command [T1053.002] for persistence at specific times. For persistence on Windows systems, they modified registry keys to set a malicious logon script path in HKCU\\Environment\\UserInitMprLogonScript [T1037.001], ensuring execution upon user login. On macOS, they altered the com.apple.dock.plist file [T1647] to load a custom plugin during dock initialization, enabling stealthy code execution.\n\nIn the Defense Evasion phase, Shadow Veil used thread execution hijacking [T1055.003] by suspending security processes with SuspendThread before injecting malicious code, while performing user activity-based checks [T1497.002] by scanning Windows event logs for 'malware.exe' process creation events to avoid detection. They also employed SID-History injection [T1134.005] to gain unauthorized access to sensitive file shares by manipulating security identifiers.\n\nFor Lateral Movement, the actors conducted LLMNR/NBT-NS poisoning and SMB relay attacks [T1557.001] using tools like Responder to harvest hashes and credentials from local networks, and exploited alternate authentication material [T1550] by abusing compromised AD FS servers' SAML tokens with tools similar to FoggyWeb for elevated access.\n\nIn the Command and Control (C2) phase, Shadow Veil utilized DNS tunneling [T1071.004], mimicking TEXTMATE's use of DNS TXT records for covert communication with their infrastructure. Network logs from the targeted organization showed increased DNS query volumes to suspicious domains, though these are untagged as noise. The campaign's objectives appear focused on data exfiltration and potential disruption of operational technology systems, with no evidence of ransomware deployment in this simulation.\n\nBlue teams should monitor for anomalous registry changes, unusual scheduled tasks, and spikes in DNS traffic. Implementing network segmentation, multi-factor authentication, and regular patch management can mitigate these techniques. This report is fictional and intended for educational purposes to enhance defensive capabilities against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify potential entry points, though no specific techniques are tagged here as per the scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the Initial Access phase, Shadow Veil exploited a trusted relationship by compromising a third-party vendor's Office 365 account, gaining administrative control over multiple client tenants, while simultaneously leveraging publicly available exploit code for a known vulnerability in remote services [T1588.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "006], such as CVE-2020-1472, to access Windows Active Directory servers.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "001] to download additional payloads and schedule tasks using the 'at' command [T1053.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "plist file to load a custom plugin during dock initialization, enabling stealthy code execution.",
+            "technique_id": "T1647",
+            "technique_name": "Plist File Modification"
+        },
+        {
+            "sentence": "001] using tools like Responder to harvest hashes and credentials from local networks, and exploited alternate authentication material by abusing compromised AD FS servers' SAML tokens with tools similar to FoggyWeb for elevated access.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Veil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Shadow Veil', which targets critical infrastructure sectors through a multi-stage attack leveraging trusted relationships and exploitation of vulnerabilities. The campaign involves initial access via compromised third-party vendors, use of custom tools, and persistence mechanisms across Windows and macOS systems, culminating in lateral movement and data exfiltration via DNS tunneling. Blue teams are advised to review detection strategies and implement mitigations outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'Shadow Veil'. This campaign targets organizations in the energy and financial sectors, with initial reconnaissance indicating a focus on network segmentation weaknesses. The actors likely conduct reconnaissance [T1589] to identify potential entry points, though no specific techniques are tagged here as per the scenario.\n\nIn the Initial Access phase, Shadow Veil exploited a trusted relationship [T1199] by compromising a third-party vendor's Office 365 account, gaining administrative control over multiple client tenants, while simultaneously leveraging publicly available exploit code for a known vulnerability in remote services [T1588.006], such as CVE-2020-1472, to access Windows Active Directory servers [T1210]. The attackers used stolen payment information to rent a virtual private server (VPS) from a European hosting service [T1583.003], obscuring their identity and hosting malicious tools like QuasarRAT and Remcos [T1588.002].\n\nDuring Execution, the adversary employed PowerShell [T1059.001] to download additional payloads [T1105] and schedule tasks using the 'at' command [T1053.002] for persistence at specific times. For persistence on Windows systems, they modified registry keys to set a malicious logon script path in HKCU\\Environment\\UserInitMprLogonScript [T1037.001], ensuring execution upon user login. On macOS, they altered the com.apple.dock.plist file [T1647] to load a custom plugin during dock initialization, enabling stealthy code execution.\n\nIn the Defense Evasion phase, Shadow Veil used thread execution hijacking [T1055.003] by suspending security processes with SuspendThread before injecting malicious code, while performing user activity-based checks [T1497.002] by scanning Windows event logs for 'malware.exe' process creation events to avoid detection. They also employed SID-History injection [T1134.005] to gain unauthorized access to sensitive file shares by manipulating security identifiers.\n\nFor Lateral Movement, the actors conducted LLMNR/NBT-NS poisoning and SMB relay attacks [T1557.001] using tools like Responder to harvest hashes and credentials from local networks, and exploited alternate authentication material [T1550] by abusing compromised AD FS servers' SAML tokens with tools similar to FoggyWeb for elevated access.\n\nIn the Command and Control (C2) phase, Shadow Veil utilized DNS tunneling [T1071.004], mimicking TEXTMATE's use of DNS TXT records for covert communication with their infrastructure. Network logs from the targeted organization showed increased DNS query volumes to suspicious domains, though these are untagged as noise. The campaign's objectives appear focused on data exfiltration and potential disruption of operational technology systems, with no evidence of ransomware deployment in this simulation.\n\nBlue teams should monitor for anomalous registry changes, unusual scheduled tasks, and spikes in DNS traffic. Implementing network segmentation, multi-factor authentication, and regular patch management can mitigate these techniques. This report is fictional and intended for educational purposes to enhance defensive capabilities against similar real-world threats.",
+        "techniques_used": [
+            "T1588.002",
+            "T1588.006",
+            "T1583.003",
+            "T1199",
+            "T1053.002",
+            "T1037.001",
+            "T1055.003",
+            "T1497.002",
+            "T1134.005",
+            "T1647",
+            "T1557.001",
+            "T1550",
+            "T1210",
+            "T1071.004"
+        ]
+    }
+}

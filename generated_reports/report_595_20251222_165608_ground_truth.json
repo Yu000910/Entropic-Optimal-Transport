@@ -1,0 +1,108 @@
+{
+    "report_id": "report_595",
+    "generated_at": "20251222_165608",
+    "scenario_target_ids": [
+        "T1596",
+        "T1583.004",
+        "T1588.001",
+        "T1566.003",
+        "T1053.006",
+        "T1053.007",
+        "T1098.006",
+        "T1666",
+        "T1036.011",
+        "T1580",
+        "T1557.002",
+        "T1090.004",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1583.004",
+        "T1588.001",
+        "T1566.003",
+        "T1053.006",
+        "T1053.007",
+        "T1098.006",
+        "T1666",
+        "T1036.011",
+        "T1580",
+        "T1557.002",
+        "T1090.004",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1098.006",
+        "T1573",
+        "T1557.002",
+        "T1053.006",
+        "T1036.011",
+        "T1583.004",
+        "T1580",
+        "T1053.007",
+        "T1666",
+        "T1090.004",
+        "T1566.003",
+        "T1596",
+        "T1588.001"
+    ],
+    "clean_text": "On April 15, 2024, security analysts at a fictional company, 'TechGlobal Inc.', detected anomalous activity in their Azure and Kubernetes environments. TechGlobal Inc., a mid-sized software firm with 500 employees, reported unusual network traffic from external IP addresses, prompting an investigation. Initial logs showed increased DNS queries for internal domains, but no immediate alerts were triggered by the SIEM system.\n\nThe actors likely conducted reconnaissance by using a custom Python script to search WHOIS records for technical contact information of the victim's domains, identifying key personnel and infrastructure details. Following this, they leveraged DigitalOcean's free credit program to deploy attack infrastructure, including command-and-control (C2) servers, and downloaded a keylogger from a public file-sharing service to enhance their toolkit. In the execution phase, attackers sent direct messages on Instagram pretending to be friends, containing links to compromised photo albums that redirected to malicious domains, leading to initial access via user interaction.\n\nOnce inside the network, the adversary employed systemd service files to establish persistence and run malicious code on boot, while simultaneously using CronJob to automatically deploy a malicious container that establishes C2 communication every 30 minutes. To maintain elevated access, they modified the RoleBinding.yaml to add their service account to admin roles in the Kubernetes cluster and altered the Azure Global Administrator account to bypass conditional access policies. For evasion, malicious code overwrote /proc/7531/cmdline with '/usr/bin/curl' to masquerade as a legitimate network utility, and the threat actor used ListBuckets API calls to discover cloud storage resources accessible with stolen credentials. Additionally, LuminousMoth utilized ARP spoofing to redirect a compromised machine to an actor-controlled website, modified HTTP Accept headers in encrypted sessions to avoid pattern matching through domain fronting, and employed RSA encryption for C2 communications to bypass signature detection.\n\nIrrelevant system logs from TechGlobal Inc. indicated normal backup processes running at 2:00 AM UTC, with no correlation to the attack timeline. The company's background includes recent mergers, but this information is unrelated to the incident. Further analysis revealed that the actors exfiltrated approximately 50 GB of data over a week, but specific file types were not logged in the initial report.",
+    "tagged_text": "On April 15, 2024, security analysts at a fictional company, 'TechGlobal Inc.', detected anomalous activity in their Azure and Kubernetes environments. TechGlobal Inc., a mid-sized software firm with 500 employees, reported unusual network traffic from external IP addresses, prompting an investigation. Initial logs showed increased DNS queries for internal domains, but no immediate alerts were triggered by the SIEM system.\n\nThe actors likely conducted reconnaissance by using a custom Python script to search WHOIS records for technical contact information of the victim's domains [T1596], identifying key personnel and infrastructure details. Following this, they leveraged DigitalOcean's free credit program to deploy attack infrastructure, including command-and-control (C2) servers [T1583.004], and downloaded a keylogger from a public file-sharing service to enhance their toolkit [T1588.001]. In the execution phase, attackers sent direct messages on Instagram pretending to be friends, containing links to compromised photo albums that redirected to malicious domains [T1566.003], leading to initial access via user interaction.\n\nOnce inside the network, the adversary employed systemd service files to establish persistence and run malicious code on boot [T1053.006], while simultaneously using CronJob to automatically deploy a malicious container that establishes C2 communication every 30 minutes [T1053.007]. To maintain elevated access, they modified the RoleBinding.yaml to add their service account to admin roles in the Kubernetes cluster [T1098.006] and altered the Azure Global Administrator account to bypass conditional access policies [T1666]. For evasion, malicious code overwrote /proc/7531/cmdline with '/usr/bin/curl' to masquerade as a legitimate network utility [T1036.011], and the threat actor used ListBuckets API calls to discover cloud storage resources accessible with stolen credentials [T1580]. Additionally, LuminousMoth utilized ARP spoofing to redirect a compromised machine to an actor-controlled website [T1557.002], modified HTTP Accept headers in encrypted sessions to avoid pattern matching through domain fronting [T1090.004], and employed RSA encryption for C2 communications to bypass signature detection [T1573].\n\nIrrelevant system logs from TechGlobal Inc. indicated normal backup processes running at 2:00 AM UTC, with no correlation to the attack timeline. The company's background includes recent mergers, but this information is unrelated to the incident. Further analysis revealed that the actors exfiltrated approximately 50 GB of data over a week, but specific file types were not logged in the initial report.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance by using a custom Python script to search WHOIS records for technical contact information of the victim's domains, identifying key personnel and infrastructure details.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "006] and altered the Azure Global Administrator account to bypass conditional access policies.",
+            "technique_id": "T1666",
+            "technique_name": "Modify Cloud Resource Hierarchy"
+        },
+        {
+            "sentence": "011], and the threat actor used ListBuckets API calls to discover cloud storage resources accessible with stolen credentials.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "004], and employed RSA encryption for C2 communications to bypass signature detection.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'LuminousMoth' Targeting Cloud and Container Environments",
+        "summary": "This advisory details a fictional, educational campaign by threat actors designated as 'LuminousMoth', simulating an advanced persistent threat (APT) targeting cloud infrastructure and container orchestration systems. The campaign involves reconnaissance, spearphishing, malware deployment, persistence mechanisms, and evasion techniques for blue team training purposes. Actors leveraged open-source intelligence, social engineering, and cloud resource manipulation to compromise victim networks, emphasizing the need for robust detection and response strategies.",
+        "full_report_text": "On April 15, 2024, security analysts at a fictional company, 'TechGlobal Inc.', detected anomalous activity in their Azure and Kubernetes environments. TechGlobal Inc., a mid-sized software firm with 500 employees, reported unusual network traffic from external IP addresses, prompting an investigation. Initial logs showed increased DNS queries for internal domains, but no immediate alerts were triggered by the SIEM system.\n\nThe actors likely conducted reconnaissance by using a custom Python script to search WHOIS records for technical contact information of the victim's domains [T1596], identifying key personnel and infrastructure details. Following this, they leveraged DigitalOcean's free credit program to deploy attack infrastructure, including command-and-control (C2) servers [T1583.004], and downloaded a keylogger from a public file-sharing service to enhance their toolkit [T1588.001]. In the execution phase, attackers sent direct messages on Instagram pretending to be friends, containing links to compromised photo albums that redirected to malicious domains [T1566.003], leading to initial access via user interaction.\n\nOnce inside the network, the adversary employed systemd service files to establish persistence and run malicious code on boot [T1053.006], while simultaneously using CronJob to automatically deploy a malicious container that establishes C2 communication every 30 minutes [T1053.007]. To maintain elevated access, they modified the RoleBinding.yaml to add their service account to admin roles in the Kubernetes cluster [T1098.006] and altered the Azure Global Administrator account to bypass conditional access policies [T1666]. For evasion, malicious code overwrote /proc/7531/cmdline with '/usr/bin/curl' to masquerade as a legitimate network utility [T1036.011], and the threat actor used ListBuckets API calls to discover cloud storage resources accessible with stolen credentials [T1580]. Additionally, LuminousMoth utilized ARP spoofing to redirect a compromised machine to an actor-controlled website [T1557.002], modified HTTP Accept headers in encrypted sessions to avoid pattern matching through domain fronting [T1090.004], and employed RSA encryption for C2 communications to bypass signature detection [T1573].\n\nIrrelevant system logs from TechGlobal Inc. indicated normal backup processes running at 2:00 AM UTC, with no correlation to the attack timeline. The company's background includes recent mergers, but this information is unrelated to the incident. Further analysis revealed that the actors exfiltrated approximately 50 GB of data over a week, but specific file types were not logged in the initial report.",
+        "techniques_used": [
+            "T1596",
+            "T1583.004",
+            "T1588.001",
+            "T1566.003",
+            "T1053.006",
+            "T1053.007",
+            "T1098.006",
+            "T1666",
+            "T1036.011",
+            "T1580",
+            "T1557.002",
+            "T1090.004",
+            "T1573"
+        ]
+    }
+}

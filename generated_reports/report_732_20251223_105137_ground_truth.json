@@ -1,0 +1,68 @@
+{
+    "report_id": "report_732",
+    "generated_at": "20251223_105137",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1675",
+        "T1574.013",
+        "T1546.017",
+        "T1021.004",
+        "T1102",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078.003",
+        "T1675",
+        "T1574.013",
+        "T1546.017",
+        "T1021.004",
+        "T1102",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1546.017",
+        "T1021.004",
+        "T1574.013",
+        "T1102",
+        "T1675",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor, CRIMSON SHADOW, which has been observed targeting hybrid infrastructure in a simulated exercise. CRIMSON SHADOW likely conducts reconnaissance through open-source intelligence gathering, though no specific techniques are tagged here. Initial access was gained via a compromised local administrator account on a Windows server, where the adversary executed Mimikatz.exe to dump plaintext passwords from memory. System logs from the server show multiple failed login attempts prior to this event, but these are not indicative of the tagged behavior. Following credential theft, the actor used SSH to laterally move to a Linux-based VMware ESXi host, where they employed the vSphere Web Services SDK to issue arbitrary commands on guest virtual machines. On a compromised Linux guest VM, the attacker injected malicious code into a legitimate process using WriteProcessMemory to manipulate the KernelCallbackTable and added a udev rule to /etc/udev/rules.d/ that triggers execution of a binary upon keyboard detection. For command-and-control, the malware downloaded second-stage payloads hosted as RAR files on Discord servers and exfiltrated stolen financial data by posting base64-encoded information to a webhook endpoint. Network traffic analysis revealed anomalous outbound connections to Discord CDN servers, but these logs are not directly related to the tagged techniques.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor, CRIMSON SHADOW, which has been observed targeting hybrid infrastructure in a simulated exercise. CRIMSON SHADOW likely conducts reconnaissance through open-source intelligence gathering, though no specific techniques are tagged here. Initial access was gained via a compromised local administrator account on a Windows server, where the adversary executed Mimikatz.exe to dump plaintext passwords from memory [T1078.003]. System logs from the server show multiple failed login attempts prior to this event, but these are not indicative of the tagged behavior. Following credential theft, the actor used SSH [T1021.004] to laterally move to a Linux-based VMware ESXi host, where they employed the vSphere Web Services SDK to issue arbitrary commands on guest virtual machines [T1675]. On a compromised Linux guest VM, the attacker injected malicious code into a legitimate process using WriteProcessMemory to manipulate the KernelCallbackTable [T1574.013] and added a udev rule to /etc/udev/rules.d/ that triggers execution of a binary upon keyboard detection [T1546.017]. For command-and-control, the malware downloaded second-stage payloads hosted as RAR files on Discord servers [T1102] and exfiltrated stolen financial data by posting base64-encoded information to a webhook endpoint [T1567.004]. Network traffic analysis revealed anomalous outbound connections to Discord CDN servers, but these logs are not directly related to the tagged techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] to laterally move to a Linux-based VMware ESXi host, where they employed the vSphere Web Services SDK to issue arbitrary commands on guest virtual machines.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "For command-and-control, the malware downloaded second-stage payloads hosted as RAR files on Discord servers and exfiltrated stolen financial data by posting base64-encoded information to a webhook endpoint [T1567.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated as 'CRIMSON SHADOW', targeting organizations with hybrid VMware ESXi and Linux environments. The campaign involves credential theft, lateral movement, and data exfiltration, leveraging techniques such as memory dumping, kernel manipulation, and web-based command-and-control. Blue teams should review logs for suspicious SSH connections, ESXi administrative commands, and udev rule modifications to enhance detection capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor, CRIMSON SHADOW, which has been observed targeting hybrid infrastructure in a simulated exercise. CRIMSON SHADOW likely conducts reconnaissance through open-source intelligence gathering, though no specific techniques are tagged here. Initial access was gained via a compromised local administrator account on a Windows server, where the adversary executed Mimikatz.exe to dump plaintext passwords from memory [T1078.003]. System logs from the server show multiple failed login attempts prior to this event, but these are not indicative of the tagged behavior. Following credential theft, the actor used SSH [T1021.004] to laterally move to a Linux-based VMware ESXi host, where they employed the vSphere Web Services SDK to issue arbitrary commands on guest virtual machines [T1675]. On a compromised Linux guest VM, the attacker injected malicious code into a legitimate process using WriteProcessMemory to manipulate the KernelCallbackTable [T1574.013] and added a udev rule to /etc/udev/rules.d/ that triggers execution of a binary upon keyboard detection [T1546.017]. For command-and-control, the malware downloaded second-stage payloads hosted as RAR files on Discord servers [T1102] and exfiltrated stolen financial data by posting base64-encoded information to a webhook endpoint [T1567.004]. Network traffic analysis revealed anomalous outbound connections to Discord CDN servers, but these logs are not directly related to the tagged techniques.",
+        "techniques_used": [
+            "T1078.003",
+            "T1675",
+            "T1574.013",
+            "T1546.017",
+            "T1021.004",
+            "T1102",
+            "T1567.004"
+        ]
+    }
+}

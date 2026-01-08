@@ -1,0 +1,123 @@
+{
+    "report_id": "report_299",
+    "generated_at": "20251222_144812",
+    "scenario_target_ids": [
+        "T1078",
+        "T1609",
+        "T1047",
+        "T1176",
+        "T1547.010",
+        "T1547.008",
+        "T1539",
+        "T1652",
+        "T1082",
+        "T1615",
+        "T1132.002",
+        "T1498.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1609",
+        "T1047",
+        "T1176",
+        "T1547.010",
+        "T1547.008",
+        "T1539",
+        "T1652",
+        "T1082",
+        "T1615",
+        "T1132.002",
+        "T1498.002"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1047",
+        "T1176",
+        "T1539",
+        "T1547.010",
+        "T1132.002",
+        "T1078",
+        "T1615",
+        "T1547.008",
+        "T1082",
+        "T1609",
+        "T1498.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the SHADOWNET group. This report simulates an attack on a mid-sized technology firm, 'TechCorp Inc.', which specializes in cloud-based software solutions and uses Docker containers for application deployment. TechCorp's network logs from the past quarter show routine maintenance activities, including updates to their Active Directory servers and firewall configurations, with no prior indications of compromise.\n\nInitial Access: The actors likely conducted reconnaissance through social media profiling and phishing campaigns, though specific logs from TechCorp's email gateway show only standard spam filtering. They gained initial access by using stolen legitimate account credentials obtained from a previous breach at a third-party vendor, allowing them to authenticate to TechCorp's VPN as an employee. Upon entry, they executed a PowerShell script that utilized Windows Management Instrumentation to deploy a malicious Chrome extension designed for persistent command and control (C2) communication, while simultaneously running 'driverquery.exe /fo table' to discover device drivers and using 'Get-DomainGPO.ps1' to identify Group Policy Objects with weak security settings for potential privilege escalation.\n\nExecution and Persistence: After establishing a foothold, the adversary employed 'docker exec -it compromised_container /bin/bash' to gain interactive shell access within a container, where they modified registry keys to install a malicious DLL called portmon.dll in the system drivers directory and replaced a DLL in the LSASS directory to maintain persistence and credential access. They also used KOPILUWAK-derived tools to discover logical drive information and stole web session cookies from browser sessions to duplicate active sessions from other devices.\n\nCommand and Control and Exfiltration: The actors obfuscated their C2 traffic by implementing modified Base64 encoding with a rearranged alphabet to evade detection by network monitoring tools. Additionally, they conducted DNS amplification attacks by querying multiple open resolvers for large DNS records with spoofed source IPs, potentially as a diversion or to disrupt services. TechCorp's security team noted unusual spikes in DNS traffic during off-hours, but initial investigations attributed this to a misconfigured internal server. The campaign's objectives appear focused on data exfiltration and maintaining long-term access, with no evidence of ransomware deployment in this scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the SHADOWNET group. This report simulates an attack on a mid-sized technology firm, 'TechCorp Inc.', which specializes in cloud-based software solutions and uses Docker containers for application deployment. TechCorp's network logs from the past quarter show routine maintenance activities, including updates to their Active Directory servers and firewall configurations, with no prior indications of compromise.\n\nInitial Access: The actors likely conducted reconnaissance through social media profiling and phishing campaigns, though specific logs from TechCorp's email gateway show only standard spam filtering. They gained initial access by using stolen legitimate account credentials [T1078] obtained from a previous breach at a third-party vendor, allowing them to authenticate to TechCorp's VPN as an employee. Upon entry, they executed a PowerShell script that utilized Windows Management Instrumentation [T1047] to deploy a malicious Chrome extension [T1176] designed for persistent command and control (C2) communication, while simultaneously running 'driverquery.exe /fo table' [T1652] to discover device drivers and using 'Get-DomainGPO.ps1' [T1615] to identify Group Policy Objects with weak security settings for potential privilege escalation.\n\nExecution and Persistence: After establishing a foothold, the adversary employed 'docker exec -it compromised_container /bin/bash' [T1609] to gain interactive shell access within a container, where they modified registry keys to install a malicious DLL called portmon.dll in the system drivers directory [T1547.010] and replaced a DLL in the LSASS directory [T1547.008] to maintain persistence and credential access. They also used KOPILUWAK-derived tools to discover logical drive information [T1082] and stole web session cookies [T1539] from browser sessions to duplicate active sessions from other devices.\n\nCommand and Control and Exfiltration: The actors obfuscated their C2 traffic by implementing modified Base64 encoding with a rearranged alphabet [T1132.002] to evade detection by network monitoring tools. Additionally, they conducted DNS amplification attacks [T1498.002] by querying multiple open resolvers for large DNS records with spoofed source IPs, potentially as a diversion or to disrupt services. TechCorp's security team noted unusual spikes in DNS traffic during off-hours, but initial investigations attributed this to a misconfigured internal server. The campaign's objectives appear focused on data exfiltration and maintaining long-term access, with no evidence of ransomware deployment in this scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "They gained initial access by using stolen legitimate account credentials obtained from a previous breach at a third-party vendor, allowing them to authenticate to TechCorp's VPN as an employee.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Upon entry, they executed a PowerShell script that utilized Windows Management Instrumentation to deploy a malicious Chrome extension designed for persistent command and control (C2) communication, while simultaneously running 'driverquery.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "Upon entry, they executed a PowerShell script that utilized Windows Management Instrumentation to deploy a malicious Chrome extension designed for persistent command and control (C2) communication, while simultaneously running 'driverquery.",
+            "technique_id": "T1176",
+            "technique_name": "Software Extensions"
+        },
+        {
+            "sentence": "exe /fo table' to discover device drivers and using 'Get-DomainGPO.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "ps1' to identify Group Policy Objects with weak security settings for potential privilege escalation.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "Execution and Persistence: After establishing a foothold, the adversary employed 'docker exec -it compromised_container /bin/bash' to gain interactive shell access within a container, where they modified registry keys to install a malicious DLL called portmon.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "They also used KOPILUWAK-derived tools to discover logical drive information and stole web session cookies from browser sessions to duplicate active sessions from other devices.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        },
+        {
+            "sentence": "They also used KOPILUWAK-derived tools to discover logical drive information and stole web session cookies from browser sessions to duplicate active sessions from other devices.",
+            "technique_id": "T1539",
+            "technique_name": "Steal Web Session Cookie"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Containerized Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'SHADOWNET', targeting organizations with containerized infrastructure. The campaign leverages stolen credentials, container administration commands, and persistence mechanisms to compromise systems and exfiltrate data. Blue teams should review this report for training on detection and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the SHADOWNET group. This report simulates an attack on a mid-sized technology firm, 'TechCorp Inc.', which specializes in cloud-based software solutions and uses Docker containers for application deployment. TechCorp's network logs from the past quarter show routine maintenance activities, including updates to their Active Directory servers and firewall configurations, with no prior indications of compromise.\n\nInitial Access: The actors likely conducted reconnaissance through social media profiling and phishing campaigns, though specific logs from TechCorp's email gateway show only standard spam filtering. They gained initial access by using stolen legitimate account credentials [T1078] obtained from a previous breach at a third-party vendor, allowing them to authenticate to TechCorp's VPN as an employee. Upon entry, they executed a PowerShell script that utilized Windows Management Instrumentation [T1047] to deploy a malicious Chrome extension [T1176] designed for persistent command and control (C2) communication, while simultaneously running 'driverquery.exe /fo table' [T1652] to discover device drivers and using 'Get-DomainGPO.ps1' [T1615] to identify Group Policy Objects with weak security settings for potential privilege escalation.\n\nExecution and Persistence: After establishing a foothold, the adversary employed 'docker exec -it compromised_container /bin/bash' [T1609] to gain interactive shell access within a container, where they modified registry keys to install a malicious DLL called portmon.dll in the system drivers directory [T1547.010] and replaced a DLL in the LSASS directory [T1547.008] to maintain persistence and credential access. They also used KOPILUWAK-derived tools to discover logical drive information [T1082] and stole web session cookies [T1539] from browser sessions to duplicate active sessions from other devices.\n\nCommand and Control and Exfiltration: The actors obfuscated their C2 traffic by implementing modified Base64 encoding with a rearranged alphabet [T1132.002] to evade detection by network monitoring tools. Additionally, they conducted DNS amplification attacks [T1498.002] by querying multiple open resolvers for large DNS records with spoofed source IPs, potentially as a diversion or to disrupt services. TechCorp's security team noted unusual spikes in DNS traffic during off-hours, but initial investigations attributed this to a misconfigured internal server. The campaign's objectives appear focused on data exfiltration and maintaining long-term access, with no evidence of ransomware deployment in this scenario.",
+        "techniques_used": [
+            "T1078",
+            "T1609",
+            "T1047",
+            "T1176",
+            "T1547.010",
+            "T1547.008",
+            "T1539",
+            "T1652",
+            "T1082",
+            "T1615",
+            "T1132.002",
+            "T1498.002"
+        ]
+    }
+}

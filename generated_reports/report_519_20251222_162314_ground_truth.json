@@ -1,0 +1,68 @@
+{
+    "report_id": "report_519",
+    "generated_at": "20251222_162314",
+    "scenario_target_ids": [
+        "T1608.003",
+        "T1189",
+        "T1047",
+        "T1070.001",
+        "T1016.002",
+        "T1568.003",
+        "T1048.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1016.002",
+        "T1189",
+        "T1047",
+        "T1608.003",
+        "T1568.003",
+        "T1048.003",
+        "T1070.001"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1016.002",
+        "T1608.003",
+        "T1189",
+        "T1048.003",
+        "T1568.003",
+        "T1070.001"
+    ],
+    "clean_text": "On October 15, 2023, GridSecure Inc. detected anomalous network traffic originating from an employee workstation, leading to the discovery of a sophisticated intrusion. The company, a mid-sized provider of renewable energy solutions in the Midwest, reported no operational impact, but the incident served as a training case for cybersecurity teams. Initial analysis revealed that the adversary likely conducted reconnaissance by using 'netsh wlan show profiles' to discover available wireless access points as part of broader network mapping efforts. Subsequently, the actors compromised the target via a strategic web compromise (SWC) utilizing a custom exploit kit, where an employee visited a compromised industry news website, resulting in a drive-by compromise that delivered a malicious payload. Once initial access was achieved, the adversary employed Windows Management Instrumentation (WMI) to query anti-virus products while simultaneously altering the Apache httpd.conf file to load a compromised SSL certificate for man-in-the-middle attacks. To maintain persistence and evade detection, the actors used a PowerShell script that generated DNS requests with encoded command data to bypass firewall restrictions and exfiltrated stolen data in HTTP POST headers over unencrypted protocols. After completing exfiltration, the adversary cleared Windows event logs and other logs produced by tools they used, including system, security, terminal services, remote services, and audit logs, while also deleting specific Registry keys. System logs from GridSecure's SIEM showed unrelated entries for routine software updates and user login attempts during the attack window, which were not tagged as malicious. The company's background includes a recent merger with a solar energy firm, adding complexity to its network architecture, but this information is irrelevant to the attack chain. No real data loss occurred, as this was a controlled training scenario designed to simulate APT tactics.",
+    "tagged_text": "On October 15, 2023, GridSecure Inc. detected anomalous network traffic originating from an employee workstation, leading to the discovery of a sophisticated intrusion. The company, a mid-sized provider of renewable energy solutions in the Midwest, reported no operational impact, but the incident served as a training case for cybersecurity teams. Initial analysis revealed that the adversary likely conducted reconnaissance by using 'netsh wlan show profiles' to discover available wireless access points [T1016.002] as part of broader network mapping efforts. Subsequently, the actors compromised the target via a strategic web compromise (SWC) utilizing a custom exploit kit, where an employee visited a compromised industry news website, resulting in a drive-by compromise [T1189] that delivered a malicious payload. Once initial access was achieved, the adversary employed Windows Management Instrumentation (WMI) to query anti-virus products [T1047] while simultaneously altering the Apache httpd.conf file to load a compromised SSL certificate for man-in-the-middle attacks [T1608.003]. To maintain persistence and evade detection, the actors used a PowerShell script that generated DNS requests with encoded command data to bypass firewall restrictions [T1568.003] and exfiltrated stolen data in HTTP POST headers over unencrypted protocols [T1048.003]. After completing exfiltration, the adversary cleared Windows event logs and other logs produced by tools they used, including system, security, terminal services, remote services, and audit logs, while also deleting specific Registry keys [T1070.001]. System logs from GridSecure's SIEM showed unrelated entries for routine software updates and user login attempts during the attack window, which were not tagged as malicious. The company's background includes a recent merger with a solar energy firm, adding complexity to its network architecture, but this information is irrelevant to the attack chain. No real data loss occurred, as this was a controlled training scenario designed to simulate APT tactics.",
+    "sentence_annotations": [
+        {
+            "sentence": "Subsequently, the actors compromised the target via a strategic web compromise (SWC) utilizing a custom exploit kit, where an employee visited a compromised industry news website, resulting in a drive-by compromise that delivered a malicious payload.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Once initial access was achieved, the adversary employed Windows Management Instrumentation (WMI) to query anti-virus products while simultaneously altering the Apache httpd.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowStrike' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowStrike', targeting critical infrastructure sectors through a multi-stage attack leveraging web compromises, credential theft, and data exfiltration. The activity was identified during routine blue team training exercises at a fictional energy company, 'GridSecure Inc.', and is based on hypothetical threat intelligence to enhance defensive readiness.",
+        "full_report_text": "On October 15, 2023, GridSecure Inc. detected anomalous network traffic originating from an employee workstation, leading to the discovery of a sophisticated intrusion. The company, a mid-sized provider of renewable energy solutions in the Midwest, reported no operational impact, but the incident served as a training case for cybersecurity teams. Initial analysis revealed that the adversary likely conducted reconnaissance by using 'netsh wlan show profiles' to discover available wireless access points [T1016.002] as part of broader network mapping efforts. Subsequently, the actors compromised the target via a strategic web compromise (SWC) utilizing a custom exploit kit, where an employee visited a compromised industry news website, resulting in a drive-by compromise [T1189] that delivered a malicious payload. Once initial access was achieved, the adversary employed Windows Management Instrumentation (WMI) to query anti-virus products [T1047] while simultaneously altering the Apache httpd.conf file to load a compromised SSL certificate for man-in-the-middle attacks [T1608.003]. To maintain persistence and evade detection, the actors used a PowerShell script that generated DNS requests with encoded command data to bypass firewall restrictions [T1568.003] and exfiltrated stolen data in HTTP POST headers over unencrypted protocols [T1048.003]. After completing exfiltration, the adversary cleared Windows event logs and other logs produced by tools they used, including system, security, terminal services, remote services, and audit logs, while also deleting specific Registry keys [T1070.001]. System logs from GridSecure's SIEM showed unrelated entries for routine software updates and user login attempts during the attack window, which were not tagged as malicious. The company's background includes a recent merger with a solar energy firm, adding complexity to its network architecture, but this information is irrelevant to the attack chain. No real data loss occurred, as this was a controlled training scenario designed to simulate APT tactics.",
+        "techniques_used": [
+            "T1016.002",
+            "T1189",
+            "T1047",
+            "T1608.003",
+            "T1568.003",
+            "T1048.003",
+            "T1070.001"
+        ]
+    }
+}

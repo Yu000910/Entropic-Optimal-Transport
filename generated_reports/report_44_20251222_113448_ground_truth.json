@@ -1,0 +1,88 @@
+{
+    "report_id": "report_44",
+    "generated_at": "20251222_113448",
+    "scenario_target_ids": [
+        "T1583.002",
+        "T1195.003",
+        "T1559.003",
+        "T1098.001",
+        "T1601.002",
+        "T1124",
+        "T1069",
+        "T1114.002",
+        "T1001",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1583.002",
+        "T1559.003",
+        "T1098.001",
+        "T1601.002",
+        "T1124",
+        "T1069",
+        "T1114.002",
+        "T1001",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1583.002",
+        "T1195.003",
+        "T1565.002",
+        "T1114.002",
+        "T1069",
+        "T1124",
+        "T1559.003",
+        "T1001",
+        "T1601.002",
+        "T1098.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign, APT-FICT, observed in training simulations. This campaign leverages a sophisticated kill-chain to compromise target networks, emphasizing real-world tactics for educational purposes.\n\nInitial Access: APT-FICT actors initiated the attack by compromising a hardware supply chain, where malicious firmware was injected into popular USB charging stations at public locations, enabling the infection of connected devices when users charged their laptops or mobile phones. System logs from victim organizations showed unusual power surges during charging events, though these were initially dismissed as minor anomalies.\n\nExecution: Upon connection to the compromised charging station, the malicious firmware executed a payload that established a command and control (C2) channel by transmitting commands via DNS requests to a custom DNS server operated by the attackers, allowing for stealthy communication and data exfiltration. The implant, dubbed 'ShadowCharge', was designed to evade traditional antivirus detection by mimicking legitimate system processes.\n\nPersistence: To maintain access, the actors exploited an XPC service daemon's weak authentication on macOS systems, gaining unauthorized elevated system access to install backdoors and modify system configurations for long-term persistence. Additionally, they used the Azure Portal to add a new global administrator account, ensuring persistent access to cloud environments by leveraging compromised credentials. Background checks on the affected company, a mid-sized tech firm, revealed no prior security incidents, but internal audits noted lax cloud governance policies.\n\nPrivilege Escalation: The threat actors employed a script to download legacy_os_image.iso from an attacker-controlled server, facilitating a security downgrade to bypass modern defenses and gain higher privileges on compromised systems. This was coupled with discovery activities, where they collected the current time zone information from victim machines to schedule malicious activities during off-hours and used net group commands to enumerate various Windows user groups and permissions, identifying high-value targets for further exploitation.\n\nDefense Evasion: To obscure their activities, APT-FICT injected malicious.dll into a legitimate process, hiding command and control communications and evading endpoint detection by blending with normal system operations. Network traffic analysis from one victim showed encrypted DNS queries to unknown domains, but these were initially flagged as low-priority alerts due to high volume.\n\nCollection: The actors leveraged MailSniper's capabilities to systematically gather email conversations about upcoming mergers and acquisitions, targeting sensitive corporate communications for intelligence gathering. This data was stored temporarily in encrypted containers before exfiltration.\n\nExfiltration: During data transmission, the malware employed a packet editor to alter financial transaction amounts in real-time as data was sent to a banking server, manipulating transmitted data to siphon funds without immediate detection. Incident response teams noted discrepancies in transaction logs, but initial investigations attributed them to system glitches rather than malicious activity.\n\nThis campaign underscores the importance of monitoring supply chain risks, enforcing strong authentication for services, and implementing robust data integrity checks. Blue teams should use this scenario to enhance detection capabilities and response protocols.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign, APT-FICT, observed in training simulations. This campaign leverages a sophisticated kill-chain to compromise target networks, emphasizing real-world tactics for educational purposes.\n\nInitial Access: APT-FICT actors initiated the attack by compromising a hardware supply chain, where malicious firmware was injected into popular USB charging stations at public locations, enabling the infection of connected devices when users charged their laptops or mobile phones [T1195.003]. System logs from victim organizations showed unusual power surges during charging events, though these were initially dismissed as minor anomalies.\n\nExecution: Upon connection to the compromised charging station, the malicious firmware executed a payload that established a command and control (C2) channel by transmitting commands via DNS requests to a custom DNS server operated by the attackers, allowing for stealthy communication and data exfiltration [T1583.002]. The implant, dubbed 'ShadowCharge', was designed to evade traditional antivirus detection by mimicking legitimate system processes.\n\nPersistence: To maintain access, the actors exploited an XPC service daemon's weak authentication on macOS systems, gaining unauthorized elevated system access to install backdoors and modify system configurations for long-term persistence [T1559.003]. Additionally, they used the Azure Portal to add a new global administrator account, ensuring persistent access to cloud environments by leveraging compromised credentials [T1098.001]. Background checks on the affected company, a mid-sized tech firm, revealed no prior security incidents, but internal audits noted lax cloud governance policies.\n\nPrivilege Escalation: The threat actors employed a script to download legacy_os_image.iso from an attacker-controlled server, facilitating a security downgrade to bypass modern defenses and gain higher privileges on compromised systems [T1601.002]. This was coupled with discovery activities, where they collected the current time zone information from victim machines to schedule malicious activities during off-hours [T1124] and used net group commands to enumerate various Windows user groups and permissions, identifying high-value targets for further exploitation [T1069].\n\nDefense Evasion: To obscure their activities, APT-FICT injected malicious.dll into a legitimate process, hiding command and control communications and evading endpoint detection by blending with normal system operations [T1001]. Network traffic analysis from one victim showed encrypted DNS queries to unknown domains, but these were initially flagged as low-priority alerts due to high volume.\n\nCollection: The actors leveraged MailSniper's capabilities to systematically gather email conversations about upcoming mergers and acquisitions, targeting sensitive corporate communications for intelligence gathering [T1114.002]. This data was stored temporarily in encrypted containers before exfiltration.\n\nExfiltration: During data transmission, the malware employed a packet editor to alter financial transaction amounts in real-time as data was sent to a banking server, manipulating transmitted data to siphon funds without immediate detection [T1565.002]. Incident response teams noted discrepancies in transaction logs, but initial investigations attributed them to system glitches rather than malicious activity.\n\nThis campaign underscores the importance of monitoring supply chain risks, enforcing strong authentication for services, and implementing robust data integrity checks. Blue teams should use this scenario to enhance detection capabilities and response protocols.",
+    "sentence_annotations": [
+        {
+            "sentence": "This was coupled with discovery activities, where they collected the current time zone information from victim machines to schedule malicious activities during off-hours and used net group commands to enumerate various Windows user groups and permissions, identifying high-value targets for further exploitation.",
+            "technique_id": "T1124",
+            "technique_name": "System Time Discovery"
+        },
+        {
+            "sentence": "This was coupled with discovery activities, where they collected the current time zone information from victim machines to schedule malicious activities during off-hours and used net group commands to enumerate various Windows user groups and permissions, identifying high-value targets for further exploitation.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "dll into a legitimate process, hiding command and control communications and evading endpoint detection by blending with normal system operations.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Supply Chain and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting organizations through a compromised hardware supply chain and exploiting cloud services for persistent access and data exfiltration. The campaign involves multiple stages, including initial compromise via malicious firmware, privilege escalation through service exploitation, and data manipulation during transmission. Blue teams are advised to review detection strategies and mitigation steps outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign, APT-FICT, observed in training simulations. This campaign leverages a sophisticated kill-chain to compromise target networks, emphasizing real-world tactics for educational purposes.\n\nInitial Access: APT-FICT actors initiated the attack by compromising a hardware supply chain, where malicious firmware was injected into popular USB charging stations at public locations, enabling the infection of connected devices when users charged their laptops or mobile phones [T1195.003]. System logs from victim organizations showed unusual power surges during charging events, though these were initially dismissed as minor anomalies.\n\nExecution: Upon connection to the compromised charging station, the malicious firmware executed a payload that established a command and control (C2) channel by transmitting commands via DNS requests to a custom DNS server operated by the attackers, allowing for stealthy communication and data exfiltration [T1583.002]. The implant, dubbed 'ShadowCharge', was designed to evade traditional antivirus detection by mimicking legitimate system processes.\n\nPersistence: To maintain access, the actors exploited an XPC service daemon's weak authentication on macOS systems, gaining unauthorized elevated system access to install backdoors and modify system configurations for long-term persistence [T1559.003]. Additionally, they used the Azure Portal to add a new global administrator account, ensuring persistent access to cloud environments by leveraging compromised credentials [T1098.001]. Background checks on the affected company, a mid-sized tech firm, revealed no prior security incidents, but internal audits noted lax cloud governance policies.\n\nPrivilege Escalation: The threat actors employed a script to download legacy_os_image.iso from an attacker-controlled server, facilitating a security downgrade to bypass modern defenses and gain higher privileges on compromised systems [T1601.002]. This was coupled with discovery activities, where they collected the current time zone information from victim machines to schedule malicious activities during off-hours [T1124] and used net group commands to enumerate various Windows user groups and permissions, identifying high-value targets for further exploitation [T1069].\n\nDefense Evasion: To obscure their activities, APT-FICT injected malicious.dll into a legitimate process, hiding command and control communications and evading endpoint detection by blending with normal system operations [T1001]. Network traffic analysis from one victim showed encrypted DNS queries to unknown domains, but these were initially flagged as low-priority alerts due to high volume.\n\nCollection: The actors leveraged MailSniper's capabilities to systematically gather email conversations about upcoming mergers and acquisitions, targeting sensitive corporate communications for intelligence gathering [T1114.002]. This data was stored temporarily in encrypted containers before exfiltration.\n\nExfiltration: During data transmission, the malware employed a packet editor to alter financial transaction amounts in real-time as data was sent to a banking server, manipulating transmitted data to siphon funds without immediate detection [T1565.002]. Incident response teams noted discrepancies in transaction logs, but initial investigations attributed them to system glitches rather than malicious activity.\n\nThis campaign underscores the importance of monitoring supply chain risks, enforcing strong authentication for services, and implementing robust data integrity checks. Blue teams should use this scenario to enhance detection capabilities and response protocols.",
+        "techniques_used": [
+            "T1195.003",
+            "T1583.002",
+            "T1559.003",
+            "T1098.001",
+            "T1601.002",
+            "T1124",
+            "T1069",
+            "T1114.002",
+            "T1001",
+            "T1565.002"
+        ]
+    }
+}

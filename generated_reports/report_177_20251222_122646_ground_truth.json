@@ -1,0 +1,76 @@
+{
+    "report_id": "report_177",
+    "generated_at": "20251222_122646",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1204.003",
+        "T1574.014",
+        "T1547.010",
+        "T1072",
+        "T1560.003",
+        "T1114.001",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.001",
+        "T1204.003",
+        "T1574.014",
+        "T1547.010",
+        "T1072",
+        "T1071.004",
+        "T1560.003",
+        "T1114.001"
+    ],
+    "actual_found_ids": [
+        "T1071.004",
+        "T1114.001",
+        "T1078.001",
+        "T1560.003",
+        "T1547.010",
+        "T1589",
+        "T1204.003",
+        "T1072",
+        "T1574.014"
+    ],
+    "clean_text": "On October 15, 2023, security analysts at a fictional multinational corporation, 'Globex Corp', detected anomalous activity in their AWS environment and on-premises Windows servers. Globex Corp, a manufacturing firm with 5,000 employees, operates a hybrid infrastructure supporting ERP and email systems. Initial logs showed unexpected login attempts to a legacy web interface for a vendor-supplied application, which had not been updated since 2019. The threat actor, identified as Crimson Fog, likely conducted reconnaissance to identify vulnerable assets, though no specific logs were captured for this phase. The actors then exploited default credentials to gain initial access by logging into the web interface using the default 'Administrator' account with a vendor-provided password that had not been changed post-deployment. System logs from the application server recorded a successful login at 02:34 UTC, followed by the deployment of a malicious Amazon Machine Image (AMI) containing a backdoored cryptocurrency miner, which was launched on an EC2 instance to mine Monero. Concurrently, the malware modified the .config file of a .NET application to load a malicious assembly during startup and used the AddMonitor API to register a malicious DLL as a port monitor for persistence, ensuring the backdoor remained active across system reboots. To expand their foothold, the adversary leveraged AWS Systems Manager to execute a command that modified firewall rules on all EC2 instances, opening port 53 for DNS traffic. For command and control (C2), POWRUNER malware was deployed, using DNS queries to communicate with attacker-controlled domains, while FoggyWeb encoded exfiltrated data with a dynamic XOR key and custom methodology and embedded C2 command output within legitimate WebP files to evade detection. Additionally, the threat actor accessed the Outlook data folder on an on-premises Exchange server, copying multiple PST files containing sensitive corporate correspondence for later exfiltration. Incident responders noted unrelated system alerts for low disk space on backup servers, which were not linked to the attack. The campaign was contained after 72 hours, with no evidence of data loss beyond the simulated exfiltration.",
+    "tagged_text": "On October 15, 2023, security analysts at a fictional multinational corporation, 'Globex Corp', detected anomalous activity in their AWS environment and on-premises Windows servers. Globex Corp, a manufacturing firm with 5,000 employees, operates a hybrid infrastructure supporting ERP and email systems. Initial logs showed unexpected login attempts to a legacy web interface for a vendor-supplied application, which had not been updated since 2019. The threat actor, identified as Crimson Fog, likely conducted reconnaissance [T1589] to identify vulnerable assets, though no specific logs were captured for this phase. The actors then exploited default credentials [T1078.001] to gain initial access by logging into the web interface using the default 'Administrator' account with a vendor-provided password that had not been changed post-deployment. System logs from the application server recorded a successful login at 02:34 UTC, followed by the deployment of a malicious Amazon Machine Image (AMI) [T1204.003] containing a backdoored cryptocurrency miner, which was launched on an EC2 instance to mine Monero. Concurrently, the malware modified the .config file of a .NET application to load a malicious assembly during startup [T1574.014] and used the AddMonitor API to register a malicious DLL as a port monitor for persistence [T1547.010], ensuring the backdoor remained active across system reboots. To expand their foothold, the adversary leveraged AWS Systems Manager [T1072] to execute a command that modified firewall rules on all EC2 instances, opening port 53 for DNS traffic. For command and control (C2), POWRUNER malware was deployed, using DNS queries [T1071.004] to communicate with attacker-controlled domains, while FoggyWeb encoded exfiltrated data with a dynamic XOR key and custom methodology [T1560.003] and embedded C2 command output within legitimate WebP files to evade detection. Additionally, the threat actor accessed the Outlook data folder on an on-premises Exchange server, copying multiple PST files containing sensitive corporate correspondence [T1114.001] for later exfiltration. Incident responders noted unrelated system alerts for low disk space on backup servers, which were not linked to the attack. The campaign was contained after 72 hours, with no evidence of data loss beyond the simulated exfiltration.",
+    "sentence_annotations": [
+        {
+            "sentence": "The threat actor, identified as Crimson Fog, likely conducted reconnaissance to identify vulnerable assets, though no specific logs were captured for this phase.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "To expand their foothold, the adversary leveraged AWS Systems Manager to execute a command that modified firewall rules on all EC2 instances, opening port 53 for DNS traffic.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Fog', targeting hybrid cloud environments and on-premises systems. The campaign demonstrates a multi-stage attack leveraging cloud misconfigurations, persistence mechanisms, and data exfiltration techniques. This report is intended for blue team training to enhance detection and response capabilities against sophisticated adversaries.",
+        "full_report_text": "On October 15, 2023, security analysts at a fictional multinational corporation, 'Globex Corp', detected anomalous activity in their AWS environment and on-premises Windows servers. Globex Corp, a manufacturing firm with 5,000 employees, operates a hybrid infrastructure supporting ERP and email systems. Initial logs showed unexpected login attempts to a legacy web interface for a vendor-supplied application, which had not been updated since 2019. The threat actor, identified as Crimson Fog, likely conducted reconnaissance [T1589] to identify vulnerable assets, though no specific logs were captured for this phase. The actors then exploited default credentials [T1078.001] to gain initial access by logging into the web interface using the default 'Administrator' account with a vendor-provided password that had not been changed post-deployment. System logs from the application server recorded a successful login at 02:34 UTC, followed by the deployment of a malicious Amazon Machine Image (AMI) [T1204.003] containing a backdoored cryptocurrency miner, which was launched on an EC2 instance to mine Monero. Concurrently, the malware modified the .config file of a .NET application to load a malicious assembly during startup [T1574.014] and used the AddMonitor API to register a malicious DLL as a port monitor for persistence [T1547.010], ensuring the backdoor remained active across system reboots. To expand their foothold, the adversary leveraged AWS Systems Manager [T1072] to execute a command that modified firewall rules on all EC2 instances, opening port 53 for DNS traffic. For command and control (C2), POWRUNER malware was deployed, using DNS queries [T1071.004] to communicate with attacker-controlled domains, while FoggyWeb encoded exfiltrated data with a dynamic XOR key and custom methodology [T1560.003] and embedded C2 command output within legitimate WebP files to evade detection. Additionally, the threat actor accessed the Outlook data folder on an on-premises Exchange server, copying multiple PST files containing sensitive corporate correspondence [T1114.001] for later exfiltration. Incident responders noted unrelated system alerts for low disk space on backup servers, which were not linked to the attack. The campaign was contained after 72 hours, with no evidence of data loss beyond the simulated exfiltration.",
+        "techniques_used": [
+            "T1589",
+            "T1078.001",
+            "T1204.003",
+            "T1574.014",
+            "T1547.010",
+            "T1072",
+            "T1071.004",
+            "T1560.003",
+            "T1114.001"
+        ]
+    }
+}

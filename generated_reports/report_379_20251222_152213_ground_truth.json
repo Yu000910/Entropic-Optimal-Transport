@@ -1,0 +1,83 @@
+{
+    "report_id": "report_379",
+    "generated_at": "20251222_152213",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1078.003",
+        "T1106",
+        "T1204.004",
+        "T1546.010",
+        "T1555",
+        "T1550.002",
+        "T1102",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1204.004",
+        "T1106",
+        "T1102",
+        "T1078.003",
+        "T1555",
+        "T1550.002",
+        "T1546.010",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1496.001",
+        "T1566.001",
+        "T1555",
+        "T1550.002",
+        "T1106",
+        "T1546.010",
+        "T1204.004",
+        "T1102",
+        "T1078.003"
+    ],
+    "clean_text": "On 2023-10-15, CrimsonViper initiated a campaign against a mid-sized financial services firm, 'SecureBank Inc.', which reported anomalous network activity. The firm's security team detected unauthorized access and resource-intensive processes on several servers. Initial analysis revealed that the attack began with spearphishing emails containing malicious Microsoft Office attachments, which, when opened, prompted users to click a fake 'System Error: Click to Repair' message that executed a malicious PowerShell script. This script leveraged native API calls through dynamic DLL importing using LoadLibrary and GetProcAddress on obfuscated strings to download additional payloads from a command-and-control (C2) server via web services. Once established, the adversary used Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts and searched for SSH keys in the /home/.ssh directory to steal credentials from password stores. With stolen administrator hashes, the attacker authenticated to a file server using pth.exe in a pass-the-hash attack. To maintain persistence, CrimsonViper modified the Registry key SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows to set LoadAppInit_DLLs, enabling AppInit DLLs. Finally, the actor deployed xmrig to hijack computing resources for cryptocurrency mining. SecureBank's logs showed increased CPU usage on affected servers, and unrelated system alerts included false positives from routine backup processes. The firm's incident response team is conducting further analysis to identify all compromised assets.",
+    "tagged_text": "On 2023-10-15, CrimsonViper initiated a campaign against a mid-sized financial services firm, 'SecureBank Inc.', which reported anomalous network activity. The firm's security team detected unauthorized access and resource-intensive processes on several servers. Initial analysis revealed that the attack began with spearphishing emails [T1566.001] containing malicious Microsoft Office attachments, which, when opened, prompted users to click a fake 'System Error: Click to Repair' message that executed a malicious PowerShell script [T1204.004]. This script leveraged native API calls [T1106] through dynamic DLL importing using LoadLibrary and GetProcAddress on obfuscated strings to download additional payloads from a command-and-control (C2) server via web services [T1102]. Once established, the adversary used Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts [T1078.003] and searched for SSH keys in the /home/.ssh directory to steal credentials from password stores [T1555]. With stolen administrator hashes, the attacker authenticated to a file server using pth.exe in a pass-the-hash attack [T1550.002]. To maintain persistence, CrimsonViper modified the Registry key SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows to set LoadAppInit_DLLs, enabling AppInit DLLs [T1546.010]. Finally, the actor deployed xmrig to hijack computing resources for cryptocurrency mining [T1496.001]. SecureBank's logs showed increased CPU usage on affected servers, and unrelated system alerts included false positives from routine backup processes. The firm's incident response team is conducting further analysis to identify all compromised assets.",
+    "sentence_annotations": [
+        {
+            "sentence": "This script leveraged native API calls through dynamic DLL importing using LoadLibrary and GetProcAddress on obfuscated strings to download additional payloads from a command-and-control (C2) server via web services.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "This script leveraged native API calls through dynamic DLL importing using LoadLibrary and GetProcAddress on obfuscated strings to download additional payloads from a command-and-control (C2) server via web services.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "ssh directory to steal credentials from password stores.",
+            "technique_id": "T1555",
+            "technique_name": "Credentials from Password Stores"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CrimsonViper', targeting financial institutions to exfiltrate sensitive data and deploy cryptocurrency mining malware. The campaign employs sophisticated phishing, credential theft, and persistence techniques to compromise networks.",
+        "full_report_text": "On 2023-10-15, CrimsonViper initiated a campaign against a mid-sized financial services firm, 'SecureBank Inc.', which reported anomalous network activity. The firm's security team detected unauthorized access and resource-intensive processes on several servers. Initial analysis revealed that the attack began with spearphishing emails [T1566.001] containing malicious Microsoft Office attachments, which, when opened, prompted users to click a fake 'System Error: Click to Repair' message that executed a malicious PowerShell script [T1204.004]. This script leveraged native API calls [T1106] through dynamic DLL importing using LoadLibrary and GetProcAddress on obfuscated strings to download additional payloads from a command-and-control (C2) server via web services [T1102]. Once established, the adversary used Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts [T1078.003] and searched for SSH keys in the /home/.ssh directory to steal credentials from password stores [T1555]. With stolen administrator hashes, the attacker authenticated to a file server using pth.exe in a pass-the-hash attack [T1550.002]. To maintain persistence, CrimsonViper modified the Registry key SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows to set LoadAppInit_DLLs, enabling AppInit DLLs [T1546.010]. Finally, the actor deployed xmrig to hijack computing resources for cryptocurrency mining [T1496.001]. SecureBank's logs showed increased CPU usage on affected servers, and unrelated system alerts included false positives from routine backup processes. The firm's incident response team is conducting further analysis to identify all compromised assets.",
+        "techniques_used": [
+            "T1566.001",
+            "T1204.004",
+            "T1106",
+            "T1102",
+            "T1078.003",
+            "T1555",
+            "T1550.002",
+            "T1546.010",
+            "T1496.001"
+        ]
+    }
+}

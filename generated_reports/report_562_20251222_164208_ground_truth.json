@@ -1,0 +1,96 @@
+{
+    "report_id": "report_562",
+    "generated_at": "20251222_164208",
+    "scenario_target_ids": [
+        "T1608.001",
+        "T1091",
+        "T1569.001",
+        "T1136",
+        "T1546.006",
+        "T1087.004",
+        "T1580",
+        "T1102",
+        "T1573.002"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1608.001",
+        "T1091",
+        "T1569.001",
+        "T1136",
+        "T1546.006",
+        "T1087.004",
+        "T1580",
+        "T1102",
+        "T1573.002"
+    ],
+    "actual_found_ids": [
+        "T1136",
+        "T1589",
+        "T1091",
+        "T1569.001",
+        "T1580",
+        "T1573.002",
+        "T1608.001",
+        "T1087.004",
+        "T1546.006",
+        "T1102"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor group, 'SilentVector', which has been observed in simulated attacks against various sectors. This report is based on a training scenario designed to enhance defensive capabilities.\n\nBackground: The fictional victim organization, 'GlobalTech Corp', is a mid-sized technology firm with offices in North America and Europe, operating a mix of Windows, macOS, and Linux systems, along with AWS cloud services. Initial detection occurred when an employee reported unusual system slowdowns and unauthorized account creations. Logs from the past month show normal business operations, including routine software updates and user activity, but deeper analysis revealed anomalies starting two weeks prior.\n\nAttack Narrative:\n- **Initial Access and Execution**: The actors likely conducted reconnaissance to identify potential targets, though this phase was not directly observed in logs. They then uploaded trojanized legitimate software, masquerading as an Atera agent installer, to an Amazon S3 bucket, which was downloaded by a victim via a phishing email link. Once executed, the malware replicated through infected USB media to spread laterally within the network, leveraging removable drives to bypass network segmentation.\n- **Persistence and Privilege Escalation**: On compromised macOS systems, the adversary used 'launchctl submit -l com.infostealer.service -- /bin/bash -c \"malicious_command\"' to submit a job as a system service, while simultaneously editing the Mach-O binary's LC_LOAD_DYLIB command to point to a malicious library for persistent execution. On Windows systems, they created a secondary domain account using compromised admin credentials with the command 'net user support P@ssw0rd! /add /domain' to maintain access.\n- **Discovery and Command and Control**: In the cloud environment, the attacker employed tools like Pacu to enumerate IAM users, roles, and groups and used the AWS SDK to list S3 buckets with ListBuckets for cloud infrastructure discovery, identifying potential data exfiltration targets. For command and control, they downloaded additional tools from web services such as file.io, GitHub, and paste.ee and implemented custom encryption using RSA for secure communications.\n\nIrrelevant Information: GlobalTech Corp's internal network logs show routine backup processes and user login attempts from authorized IP ranges, with no direct correlation to the attack. The company's HR department reported a recent policy update on USB usage, but this was unrelated to the incident. Weather conditions in the region were normal during the attack period.\n\nMitigation Recommendations: Organizations should monitor for unauthorized S3 uploads, restrict USB device usage, audit launchctl and registry changes, review cloud IAM policies, and inspect network traffic for asymmetric encryption patterns. This advisory is for training purposes only; any resemblance to real incidents is coincidental.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor group, 'SilentVector', which has been observed in simulated attacks against various sectors. This report is based on a training scenario designed to enhance defensive capabilities.\n\nBackground: The fictional victim organization, 'GlobalTech Corp', is a mid-sized technology firm with offices in North America and Europe, operating a mix of Windows, macOS, and Linux systems, along with AWS cloud services. Initial detection occurred when an employee reported unusual system slowdowns and unauthorized account creations. Logs from the past month show normal business operations, including routine software updates and user activity, but deeper analysis revealed anomalies starting two weeks prior.\n\nAttack Narrative:\n- **Initial Access and Execution**: The actors likely conducted reconnaissance [T1589] to identify potential targets, though this phase was not directly observed in logs. They then uploaded trojanized legitimate software, masquerading as an Atera agent installer, to an Amazon S3 bucket [T1608.001], which was downloaded by a victim via a phishing email link. Once executed, the malware replicated through infected USB media [T1091] to spread laterally within the network, leveraging removable drives to bypass network segmentation.\n- **Persistence and Privilege Escalation**: On compromised macOS systems, the adversary used 'launchctl submit -l com.infostealer.service -- /bin/bash -c \"malicious_command\"' to submit a job as a system service [T1569.001], while simultaneously editing the Mach-O binary's LC_LOAD_DYLIB command to point to a malicious library [T1546.006] for persistent execution. On Windows systems, they created a secondary domain account using compromised admin credentials with the command 'net user support P@ssw0rd! /add /domain' [T1136] to maintain access.\n- **Discovery and Command and Control**: In the cloud environment, the attacker employed tools like Pacu to enumerate IAM users, roles, and groups [T1087.004] and used the AWS SDK to list S3 buckets with ListBuckets for cloud infrastructure discovery [T1580], identifying potential data exfiltration targets. For command and control, they downloaded additional tools from web services such as file.io, GitHub, and paste.ee [T1102] and implemented custom encryption using RSA for secure communications [T1573.002].\n\nIrrelevant Information: GlobalTech Corp's internal network logs show routine backup processes and user login attempts from authorized IP ranges, with no direct correlation to the attack. The company's HR department reported a recent policy update on USB usage, but this was unrelated to the incident. Weather conditions in the region were normal during the attack period.\n\nMitigation Recommendations: Organizations should monitor for unauthorized S3 uploads, restrict USB device usage, audit launchctl and registry changes, review cloud IAM policies, and inspect network traffic for asymmetric encryption patterns. This advisory is for training purposes only; any resemblance to real incidents is coincidental.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\n- **Initial Access and Execution**: The actors likely conducted reconnaissance to identify potential targets, though this phase was not directly observed in logs.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Once executed, the malware replicated through infected USB media to spread laterally within the network, leveraging removable drives to bypass network segmentation.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "On Windows systems, they created a secondary domain account using compromised admin credentials with the command 'net user support P@ssw0rd! /add /domain' to maintain access.",
+            "technique_id": "T1136",
+            "technique_name": "Create Account"
+        },
+        {
+            "sentence": "004] and used the AWS SDK to list S3 buckets with ListBuckets for cloud infrastructure discovery, identifying potential data exfiltration targets.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "ee and implemented custom encryption using RSA for secure communications [T1573.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'SilentVector' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'SilentVector', which targets organizations with hybrid on-premises and cloud infrastructures. The campaign involves initial access through trojanized software, lateral movement via removable media, persistence mechanisms on macOS and Windows systems, and reconnaissance in cloud environments to facilitate data exfiltration. Blue teams are advised to review logs for suspicious activities related to these techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor group, 'SilentVector', which has been observed in simulated attacks against various sectors. This report is based on a training scenario designed to enhance defensive capabilities.\n\nBackground: The fictional victim organization, 'GlobalTech Corp', is a mid-sized technology firm with offices in North America and Europe, operating a mix of Windows, macOS, and Linux systems, along with AWS cloud services. Initial detection occurred when an employee reported unusual system slowdowns and unauthorized account creations. Logs from the past month show normal business operations, including routine software updates and user activity, but deeper analysis revealed anomalies starting two weeks prior.\n\nAttack Narrative:\n- **Initial Access and Execution**: The actors likely conducted reconnaissance [T1589] to identify potential targets, though this phase was not directly observed in logs. They then uploaded trojanized legitimate software, masquerading as an Atera agent installer, to an Amazon S3 bucket [T1608.001], which was downloaded by a victim via a phishing email link. Once executed, the malware replicated through infected USB media [T1091] to spread laterally within the network, leveraging removable drives to bypass network segmentation.\n- **Persistence and Privilege Escalation**: On compromised macOS systems, the adversary used 'launchctl submit -l com.infostealer.service -- /bin/bash -c \"malicious_command\"' to submit a job as a system service [T1569.001], while simultaneously editing the Mach-O binary's LC_LOAD_DYLIB command to point to a malicious library [T1546.006] for persistent execution. On Windows systems, they created a secondary domain account using compromised admin credentials with the command 'net user support P@ssw0rd! /add /domain' [T1136] to maintain access.\n- **Discovery and Command and Control**: In the cloud environment, the attacker employed tools like Pacu to enumerate IAM users, roles, and groups [T1087.004] and used the AWS SDK to list S3 buckets with ListBuckets for cloud infrastructure discovery [T1580], identifying potential data exfiltration targets. For command and control, they downloaded additional tools from web services such as file.io, GitHub, and paste.ee [T1102] and implemented custom encryption using RSA for secure communications [T1573.002].\n\nIrrelevant Information: GlobalTech Corp's internal network logs show routine backup processes and user login attempts from authorized IP ranges, with no direct correlation to the attack. The company's HR department reported a recent policy update on USB usage, but this was unrelated to the incident. Weather conditions in the region were normal during the attack period.\n\nMitigation Recommendations: Organizations should monitor for unauthorized S3 uploads, restrict USB device usage, audit launchctl and registry changes, review cloud IAM policies, and inspect network traffic for asymmetric encryption patterns. This advisory is for training purposes only; any resemblance to real incidents is coincidental.",
+        "techniques_used": [
+            "T1589",
+            "T1608.001",
+            "T1091",
+            "T1569.001",
+            "T1136",
+            "T1546.006",
+            "T1087.004",
+            "T1580",
+            "T1102",
+            "T1573.002"
+        ]
+    }
+}

@@ -1,0 +1,131 @@
+{
+    "report_id": "report_95",
+    "generated_at": "20251222_132419",
+    "scenario_target_ids": [
+        "T1595.001",
+        "T1591.003",
+        "T1589.003",
+        "T1650",
+        "T1587.003",
+        "T1584.002",
+        "T1133",
+        "T1559",
+        "T1055.008",
+        "T1622",
+        "T1213.003",
+        "T1114",
+        "T1071.005",
+        "T1048.003",
+        "T1041",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.001",
+        "T1591.003",
+        "T1589.003",
+        "T1650",
+        "T1587.003",
+        "T1584.002",
+        "T1133",
+        "T1559",
+        "T1055.008",
+        "T1622",
+        "T1213.003",
+        "T1114",
+        "T1071.005",
+        "T1048.003",
+        "T1041",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1114",
+        "T1213.003",
+        "T1591.003",
+        "T1489",
+        "T1595.001",
+        "T1559",
+        "T1133",
+        "T1048.003",
+        "T1589.003",
+        "T1041",
+        "T1071.005",
+        "T1650",
+        "T1584.002",
+        "T1587.003"
+    ],
+    "clean_text": "On 2023-10-15, security analysts at 'Global Trust Bank' detected anomalous network traffic originating from external IP addresses, which initiated a ping sweep across the bank's public IP range to map active hosts. Concurrently, the actors scraped the bank's public-facing websites, querying the careers page to identify periods of increased hiring activity, indicative of potential security lapses during organizational expansion, and extracting employee names from the 'About Us' section to facilitate social engineering attacks. System logs from the web server showed unusual HTTP POST requests at 14:30 UTC, leading to the deployment of a web shell on an internet-facing server, establishing persistent access for command-and-control (C2) operations. The actors then leveraged this access to exploit external remote services, such as VPN endpoints, using compromised credentials to move laterally into internal network segments. Once inside, they employed inter-process communication mechanisms, using named pipes to transfer data between kernel and user mode components of their malware, enabling stealthy execution. To evade detection, the malware utilized Ptrace system calls to allocate memory in legitimate processes like svchost.exe, injecting shellcode while checking for debuggers with IsDebuggerPresent calls to avoid analysis [T1055.008, T1622]. The actors also created self-signed digital certificates to encrypt C2 traffic over HTTPS, masking their communications, and modified DNS settings on compromised workstations to redirect banking portal queries to phishing servers, capturing login credentials. For data collection, they ran Outlook.exe with command-line parameters to extract email attachments from executive mailboxes and used git archive commands to compress and backup code repositories containing proprietary algorithms. Exfiltration was conducted through multiple channels: stolen credentials were sent via XMPP chat messages using publish/subscribe protocols, while larger datasets, such as customer information, were posted to external web servers via HTTP POST commands over unencrypted connections, and other sensitive logs were transmitted back to C2 servers over encrypted channels. Prior to exfiltration, the actors terminated critical services, including antivirus and logging services, using the Service Control Manager API to hinder incident response efforts. Background noise includes routine firewall logs showing blocked port scans from unrelated IPs and internal system updates that occurred during the same timeframe, which are not indicative of malicious activity.",
+    "tagged_text": "On 2023-10-15, security analysts at 'Global Trust Bank' detected anomalous network traffic originating from external IP addresses, which initiated a ping sweep across the bank's public IP range to map active hosts [T1595.001]. Concurrently, the actors scraped the bank's public-facing websites, querying the careers page to identify periods of increased hiring activity, indicative of potential security lapses during organizational expansion [T1591.003], and extracting employee names from the 'About Us' section to facilitate social engineering attacks [T1589.003]. System logs from the web server showed unusual HTTP POST requests at 14:30 UTC, leading to the deployment of a web shell on an internet-facing server, establishing persistent access for command-and-control (C2) operations [T1650]. The actors then leveraged this access to exploit external remote services, such as VPN endpoints, using compromised credentials to move laterally into internal network segments [T1133]. Once inside, they employed inter-process communication mechanisms, using named pipes to transfer data between kernel and user mode components of their malware, enabling stealthy execution [T1559]. To evade detection, the malware utilized Ptrace system calls to allocate memory in legitimate processes like svchost.exe, injecting shellcode while checking for debuggers with IsDebuggerPresent calls to avoid analysis [T1055.008, T1622]. The actors also created self-signed digital certificates to encrypt C2 traffic over HTTPS, masking their communications [T1587.003], and modified DNS settings on compromised workstations to redirect banking portal queries to phishing servers, capturing login credentials [T1584.002]. For data collection, they ran Outlook.exe with command-line parameters to extract email attachments from executive mailboxes [T1114] and used git archive commands to compress and backup code repositories containing proprietary algorithms [T1213.003]. Exfiltration was conducted through multiple channels: stolen credentials were sent via XMPP chat messages using publish/subscribe protocols [T1071.005], while larger datasets, such as customer information, were posted to external web servers via HTTP POST commands over unencrypted connections [T1048.003], and other sensitive logs were transmitted back to C2 servers over encrypted channels [T1041]. Prior to exfiltration, the actors terminated critical services, including antivirus and logging services, using the Service Control Manager API to hinder incident response efforts [T1489]. Background noise includes routine firewall logs showing blocked port scans from unrelated IPs and internal system updates that occurred during the same timeframe, which are not indicative of malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "System logs from the web server showed unusual HTTP POST requests at 14:30 UTC, leading to the deployment of a web shell on an internet-facing server, establishing persistent access for command-and-control (C2) operations.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "The actors then leveraged this access to exploit external remote services, such as VPN endpoints, using compromised credentials to move laterally into internal network segments.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Once inside, they employed inter-process communication mechanisms, using named pipes to transfer data between kernel and user mode components of their malware, enabling stealthy execution.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "exe with command-line parameters to extract email attachments from executive mailboxes and used git archive commands to compress and backup code repositories containing proprietary algorithms [T1213.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "003], and other sensitive logs were transmitted back to C2 servers over encrypted channels.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        },
+        {
+            "sentence": "Prior to exfiltration, the actors terminated critical services, including antivirus and logging services, using the Service Control Manager API to hinder incident response efforts.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Harvest' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'Crimson Lotus', targeting financial institutions to exfiltrate sensitive data and disrupt operations. The campaign employs a multi-stage approach, blending reconnaissance, credential theft, and data exfiltration techniques, with observed activities spanning from initial network scanning to service disruption.",
+        "full_report_text": "On 2023-10-15, security analysts at 'Global Trust Bank' detected anomalous network traffic originating from external IP addresses, which initiated a ping sweep across the bank's public IP range to map active hosts [T1595.001]. Concurrently, the actors scraped the bank's public-facing websites, querying the careers page to identify periods of increased hiring activity, indicative of potential security lapses during organizational expansion [T1591.003], and extracting employee names from the 'About Us' section to facilitate social engineering attacks [T1589.003]. System logs from the web server showed unusual HTTP POST requests at 14:30 UTC, leading to the deployment of a web shell on an internet-facing server, establishing persistent access for command-and-control (C2) operations [T1650]. The actors then leveraged this access to exploit external remote services, such as VPN endpoints, using compromised credentials to move laterally into internal network segments [T1133]. Once inside, they employed inter-process communication mechanisms, using named pipes to transfer data between kernel and user mode components of their malware, enabling stealthy execution [T1559]. To evade detection, the malware utilized Ptrace system calls to allocate memory in legitimate processes like svchost.exe, injecting shellcode while checking for debuggers with IsDebuggerPresent calls to avoid analysis [T1055.008, T1622]. The actors also created self-signed digital certificates to encrypt C2 traffic over HTTPS, masking their communications [T1587.003], and modified DNS settings on compromised workstations to redirect banking portal queries to phishing servers, capturing login credentials [T1584.002]. For data collection, they ran Outlook.exe with command-line parameters to extract email attachments from executive mailboxes [T1114] and used git archive commands to compress and backup code repositories containing proprietary algorithms [T1213.003]. Exfiltration was conducted through multiple channels: stolen credentials were sent via XMPP chat messages using publish/subscribe protocols [T1071.005], while larger datasets, such as customer information, were posted to external web servers via HTTP POST commands over unencrypted connections [T1048.003], and other sensitive logs were transmitted back to C2 servers over encrypted channels [T1041]. Prior to exfiltration, the actors terminated critical services, including antivirus and logging services, using the Service Control Manager API to hinder incident response efforts [T1489]. Background noise includes routine firewall logs showing blocked port scans from unrelated IPs and internal system updates that occurred during the same timeframe, which are not indicative of malicious activity.",
+        "techniques_used": [
+            "T1595.001",
+            "T1591.003",
+            "T1589.003",
+            "T1650",
+            "T1587.003",
+            "T1584.002",
+            "T1133",
+            "T1559",
+            "T1055.008",
+            "T1622",
+            "T1213.003",
+            "T1114",
+            "T1071.005",
+            "T1048.003",
+            "T1041",
+            "T1489"
+        ]
+    }
+}

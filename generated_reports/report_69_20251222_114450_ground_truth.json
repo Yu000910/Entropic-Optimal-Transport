@@ -1,0 +1,83 @@
+{
+    "report_id": "report_69",
+    "generated_at": "20251222_114450",
+    "scenario_target_ids": [
+        "T1583.006",
+        "T1608.003",
+        "T1566",
+        "T1609",
+        "T1601.001",
+        "T1552.007",
+        "T1021.008",
+        "T1125",
+        "T1090.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1583.006",
+        "T1566",
+        "T1608.003",
+        "T1021.008",
+        "T1609",
+        "T1552.007",
+        "T1601.001",
+        "T1125",
+        "T1090.004"
+    ],
+    "actual_found_ids": [
+        "T1125",
+        "T1609",
+        "T1552.007",
+        "T1601.001",
+        "T1021.008",
+        "T1090.004",
+        "T1583.006",
+        "T1566",
+        "T1608.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight observed tactics, techniques, and procedures (TTPs) used by APT-FICT in a recent fictional campaign. APT-FICT, believed to operate with financial motives, has historically targeted technology firms, with this incident involving a mid-sized cloud infrastructure provider, CloudTech Solutions, based in San Francisco. Initial analysis of system logs from CloudTech's SIEM showed anomalous network connections to external IP addresses, but these were later determined to be false positives from a misconfigured firewall rule.\n\nIn the reconnaissance phase, APT-FICT actors likely conducted open-source intelligence gathering, though specific techniques are not confirmed in this scenario. The attack began with the adversary registering a GitHub account under a benign-sounding name to host malicious repositories designed to distribute trojanized software, exploiting web services for initial malware distribution. Concurrently, they launched a spear-phishing campaign targeting executives at CloudTech, delivering a trojanized PDF document that, when opened, executed malicious code to establish a foothold.\n\nUpon gaining access, the actors moved to execution and persistence by using PowerShell scripts to download additional payloads from the GitHub repositories, while also modifying the Apache httpd.conf file to load a compromised SSL certificate, enabling man-in-the-middle attacks to intercept sensitive traffic. In the cloud environment, they leveraged the Azure Serial Console to troubleshoot and manipulate a virtual machine's operating system directly, establishing a backdoor for remote access.\n\nFor lateral movement and privilege escalation, APT-FICT exploited container infrastructure by using the 'docker exec -it container_name /bin/bash' command to gain interactive shell access to a critical container running a database service, and simultaneously queried the Docker API to extract configuration data with embedded credentials for further access. They also used FTP to download a backdoored network device OS image from a compromised internal server, aiming to patch system images and maintain persistence across network segments.\n\nIn the exfiltration phase, the actors employed AsyncRAT to record screen content on targeted systems, capturing sensitive data from user sessions, and used domain fronting techniques with a fronted domain to obfuscate hard-coded command and control (C2) server domains, evading network detection while exfiltrating data over encrypted channels. Post-incident, forensic analysis revealed that CloudTech's backup systems had been tampered with, but this was unrelated to APT-FICT's activities and stemmed from an internal misconfiguration.\n\nMitigation recommendations include monitoring for unauthorized GitHub repository accesses, auditing Docker and Azure console logs, implementing multi-factor authentication, and using network traffic analysis to detect domain fronting patterns. This report is based on simulated data for training purposes only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight observed tactics, techniques, and procedures (TTPs) used by APT-FICT in a recent fictional campaign. APT-FICT, believed to operate with financial motives, has historically targeted technology firms, with this incident involving a mid-sized cloud infrastructure provider, CloudTech Solutions, based in San Francisco. Initial analysis of system logs from CloudTech's SIEM showed anomalous network connections to external IP addresses, but these were later determined to be false positives from a misconfigured firewall rule.\n\nIn the reconnaissance phase, APT-FICT actors likely conducted open-source intelligence gathering, though specific techniques are not confirmed in this scenario. The attack began with the adversary registering a GitHub account under a benign-sounding name to host malicious repositories designed to distribute trojanized software, exploiting web services for initial malware distribution [T1583.006]. Concurrently, they launched a spear-phishing campaign targeting executives at CloudTech, delivering a trojanized PDF document that, when opened, executed malicious code to establish a foothold [T1566].\n\nUpon gaining access, the actors moved to execution and persistence by using PowerShell scripts to download additional payloads from the GitHub repositories, while also modifying the Apache httpd.conf file to load a compromised SSL certificate, enabling man-in-the-middle attacks to intercept sensitive traffic [T1608.003]. In the cloud environment, they leveraged the Azure Serial Console to troubleshoot and manipulate a virtual machine's operating system directly, establishing a backdoor for remote access [T1021.008].\n\nFor lateral movement and privilege escalation, APT-FICT exploited container infrastructure by using the 'docker exec -it container_name /bin/bash' command to gain interactive shell access to a critical container running a database service, and simultaneously queried the Docker API to extract configuration data with embedded credentials for further access [T1609] [T1552.007]. They also used FTP to download a backdoored network device OS image from a compromised internal server, aiming to patch system images and maintain persistence across network segments [T1601.001].\n\nIn the exfiltration phase, the actors employed AsyncRAT to record screen content on targeted systems, capturing sensitive data from user sessions [T1125], and used domain fronting techniques with a fronted domain to obfuscate hard-coded command and control (C2) server domains, evading network detection while exfiltrating data over encrypted channels [T1090.004]. Post-incident, forensic analysis revealed that CloudTech's backup systems had been tampered with, but this was unrelated to APT-FICT's activities and stemmed from an internal misconfiguration.\n\nMitigation recommendations include monitoring for unauthorized GitHub repository accesses, auditing Docker and Azure console logs, implementing multi-factor authentication, and using network traffic analysis to detect domain fronting patterns. This report is based on simulated data for training purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, they launched a spear-phishing campaign targeting executives at CloudTech, delivering a trojanized PDF document that, when opened, executed malicious code to establish a foothold.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "For lateral movement and privilege escalation, APT-FICT exploited container infrastructure by using the 'docker exec -it container_name /bin/bash' command to gain interactive shell access to a critical container running a database service, and simultaneously queried the Docker API to extract configuration data with embedded credentials for further access [T1552.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "In the exfiltration phase, the actors employed AsyncRAT to record screen content on targeted systems, capturing sensitive data from user sessions, and used domain fronting techniques with a fronted domain to obfuscate hard-coded command and control (C2) server domains, evading network detection while exfiltrating data over encrypted channels [T1090.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Container Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting organizations in the cloud services and containerization sectors. The campaign involves a multi-stage attack leveraging web services, phishing, container exploitation, and cloud manipulation to achieve initial access, persistence, and data exfiltration. Blue teams are advised to review logs for suspicious activities related to GitHub repositories, Docker commands, Azure Serial Console usage, and network traffic patterns indicative of domain fronting.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight observed tactics, techniques, and procedures (TTPs) used by APT-FICT in a recent fictional campaign. APT-FICT, believed to operate with financial motives, has historically targeted technology firms, with this incident involving a mid-sized cloud infrastructure provider, CloudTech Solutions, based in San Francisco. Initial analysis of system logs from CloudTech's SIEM showed anomalous network connections to external IP addresses, but these were later determined to be false positives from a misconfigured firewall rule.\n\nIn the reconnaissance phase, APT-FICT actors likely conducted open-source intelligence gathering, though specific techniques are not confirmed in this scenario. The attack began with the adversary registering a GitHub account under a benign-sounding name to host malicious repositories designed to distribute trojanized software, exploiting web services for initial malware distribution [T1583.006]. Concurrently, they launched a spear-phishing campaign targeting executives at CloudTech, delivering a trojanized PDF document that, when opened, executed malicious code to establish a foothold [T1566].\n\nUpon gaining access, the actors moved to execution and persistence by using PowerShell scripts to download additional payloads from the GitHub repositories, while also modifying the Apache httpd.conf file to load a compromised SSL certificate, enabling man-in-the-middle attacks to intercept sensitive traffic [T1608.003]. In the cloud environment, they leveraged the Azure Serial Console to troubleshoot and manipulate a virtual machine's operating system directly, establishing a backdoor for remote access [T1021.008].\n\nFor lateral movement and privilege escalation, APT-FICT exploited container infrastructure by using the 'docker exec -it container_name /bin/bash' command to gain interactive shell access to a critical container running a database service, and simultaneously queried the Docker API to extract configuration data with embedded credentials for further access [T1609] [T1552.007]. They also used FTP to download a backdoored network device OS image from a compromised internal server, aiming to patch system images and maintain persistence across network segments [T1601.001].\n\nIn the exfiltration phase, the actors employed AsyncRAT to record screen content on targeted systems, capturing sensitive data from user sessions [T1125], and used domain fronting techniques with a fronted domain to obfuscate hard-coded command and control (C2) server domains, evading network detection while exfiltrating data over encrypted channels [T1090.004]. Post-incident, forensic analysis revealed that CloudTech's backup systems had been tampered with, but this was unrelated to APT-FICT's activities and stemmed from an internal misconfiguration.\n\nMitigation recommendations include monitoring for unauthorized GitHub repository accesses, auditing Docker and Azure console logs, implementing multi-factor authentication, and using network traffic analysis to detect domain fronting patterns. This report is based on simulated data for training purposes only.",
+        "techniques_used": [
+            "T1583.006",
+            "T1566",
+            "T1608.003",
+            "T1021.008",
+            "T1609",
+            "T1552.007",
+            "T1601.001",
+            "T1125",
+            "T1090.004"
+        ]
+    }
+}

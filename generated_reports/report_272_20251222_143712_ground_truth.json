@@ -1,0 +1,88 @@
+{
+    "report_id": "report_272",
+    "generated_at": "20251222_143712",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1091",
+        "T1053.005",
+        "T1082",
+        "T1074.002",
+        "T1125",
+        "T1102.003",
+        "T1011",
+        "T1491.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1091",
+        "T1053.005",
+        "T1082",
+        "T1074.002",
+        "T1125",
+        "T1102.003",
+        "T1011",
+        "T1491.002"
+    ],
+    "actual_found_ids": [
+        "T1011",
+        "T1102.003",
+        "T1091",
+        "T1125",
+        "T1592.003",
+        "T1082",
+        "T1074.002",
+        "T1491.002",
+        "T1053.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure partners about the fictional APT group 'ShadowReaper'. This group has been observed targeting energy sector organizations with a multi-phase attack designed to steal sensitive data and disrupt operations. Background analysis indicates the campaign began in early 2024, with initial access likely achieved through spear-phishing emails, though this phase is not detailed here for training focus.\n\nIn the reconnaissance phase, the actors executed 'systeminfo.exe' to gather detailed firmware version information from the compromised host, while simultaneously collecting the computer name of the victim's system during the initial infection. This data was used to tailor subsequent exploitation steps. System logs from the affected host showed normal activity during this period, including routine software updates and user logins, which helped mask the malicious behavior.\n\nFor persistence and execution, the adversary altered the Autorun.inf file to run malware.exe upon media insertion, and they used Task Scheduler to run programs at system startup or on a scheduled basis, employing living-off-the-land scripts to execute a malicious script via a scheduled task. This allowed the malware to maintain a foothold even after system reboots. Internal network traffic analysis revealed sporadic connections to unknown IP addresses, but these were initially dismissed as false positives due to high network noise.\n\nIn the data collection and exfiltration phase, the attacker used cmd.exe to copy sensitive documents to a temporary staging directory, and Crimson malware variants were deployed to capture webcam video on targeted systems. The malware then established a connection through a rogue WiFi network to transmit system configuration data, while Leviathan-like components received C2 instructions from user profiles created on legitimate websites such as Github and TechNet. This one-way communication method helped evade traditional network monitoring tools. Company background: The targeted organization, 'EnergyGrid Inc.', is a mid-sized utility provider with operations across three states, and no prior significant security incidents were reported in their annual audits.\n\nFinally, in the impact phase, the threat actor altered the main page HTML to show political propaganda instead of legitimate content, resulting in temporary service disruption and reputational damage. This external defacement was accompanied by defacement of internal systems, though those details are omitted for brevity. Recovery efforts involved isolating affected systems and restoring from backups, with no evidence of data destruction beyond the defacement.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure partners about the fictional APT group 'ShadowReaper'. This group has been observed targeting energy sector organizations with a multi-phase attack designed to steal sensitive data and disrupt operations. Background analysis indicates the campaign began in early 2024, with initial access likely achieved through spear-phishing emails, though this phase is not detailed here for training focus.\n\nIn the reconnaissance phase, the actors executed 'systeminfo.exe' to gather detailed firmware version information from the compromised host [T1592.003], while simultaneously collecting the computer name of the victim's system during the initial infection [T1082]. This data was used to tailor subsequent exploitation steps. System logs from the affected host showed normal activity during this period, including routine software updates and user logins, which helped mask the malicious behavior.\n\nFor persistence and execution, the adversary altered the Autorun.inf file to run malware.exe upon media insertion [T1091], and they used Task Scheduler to run programs at system startup or on a scheduled basis, employing living-off-the-land scripts to execute a malicious script via a scheduled task [T1053.005]. This allowed the malware to maintain a foothold even after system reboots. Internal network traffic analysis revealed sporadic connections to unknown IP addresses, but these were initially dismissed as false positives due to high network noise.\n\nIn the data collection and exfiltration phase, the attacker used cmd.exe to copy sensitive documents to a temporary staging directory [T1074.002], and Crimson malware variants were deployed to capture webcam video on targeted systems [T1125]. The malware then established a connection through a rogue WiFi network to transmit system configuration data [T1011], while Leviathan-like components received C2 instructions from user profiles created on legitimate websites such as Github and TechNet [T1102.003]. This one-way communication method helped evade traditional network monitoring tools. Company background: The targeted organization, 'EnergyGrid Inc.', is a mid-sized utility provider with operations across three states, and no prior significant security incidents were reported in their annual audits.\n\nFinally, in the impact phase, the threat actor altered the main page HTML to show political propaganda instead of legitimate content [T1491.002], resulting in temporary service disruption and reputational damage. This external defacement was accompanied by defacement of internal systems, though those details are omitted for brevity. Recovery efforts involved isolating affected systems and restoring from backups, with no evidence of data destruction beyond the defacement.",
+    "sentence_annotations": [
+        {
+            "sentence": "003], while simultaneously collecting the computer name of the victim's system during the initial infection.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        },
+        {
+            "sentence": "exe upon media insertion, and they used Task Scheduler to run programs at system startup or on a scheduled basis, employing living-off-the-land scripts to execute a malicious script via a scheduled task [T1053.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "002], and Crimson malware variants were deployed to capture webcam video on targeted systems.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        },
+        {
+            "sentence": "The malware then established a connection through a rogue WiFi network to transmit system configuration data, while Leviathan-like components received C2 instructions from user profiles created on legitimate websites such as Github and TechNet [T1102.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowReaper' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowReaper', which targeted a critical infrastructure organization in the energy sector. The campaign involved initial reconnaissance via firmware analysis, persistence through removable media and scheduled tasks, data staging and exfiltration over rogue networks, and culminated in external defacement for propaganda purposes. This report is intended for blue team training to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure partners about the fictional APT group 'ShadowReaper'. This group has been observed targeting energy sector organizations with a multi-phase attack designed to steal sensitive data and disrupt operations. Background analysis indicates the campaign began in early 2024, with initial access likely achieved through spear-phishing emails, though this phase is not detailed here for training focus.\n\nIn the reconnaissance phase, the actors executed 'systeminfo.exe' to gather detailed firmware version information from the compromised host [T1592.003], while simultaneously collecting the computer name of the victim's system during the initial infection [T1082]. This data was used to tailor subsequent exploitation steps. System logs from the affected host showed normal activity during this period, including routine software updates and user logins, which helped mask the malicious behavior.\n\nFor persistence and execution, the adversary altered the Autorun.inf file to run malware.exe upon media insertion [T1091], and they used Task Scheduler to run programs at system startup or on a scheduled basis, employing living-off-the-land scripts to execute a malicious script via a scheduled task [T1053.005]. This allowed the malware to maintain a foothold even after system reboots. Internal network traffic analysis revealed sporadic connections to unknown IP addresses, but these were initially dismissed as false positives due to high network noise.\n\nIn the data collection and exfiltration phase, the attacker used cmd.exe to copy sensitive documents to a temporary staging directory [T1074.002], and Crimson malware variants were deployed to capture webcam video on targeted systems [T1125]. The malware then established a connection through a rogue WiFi network to transmit system configuration data [T1011], while Leviathan-like components received C2 instructions from user profiles created on legitimate websites such as Github and TechNet [T1102.003]. This one-way communication method helped evade traditional network monitoring tools. Company background: The targeted organization, 'EnergyGrid Inc.', is a mid-sized utility provider with operations across three states, and no prior significant security incidents were reported in their annual audits.\n\nFinally, in the impact phase, the threat actor altered the main page HTML to show political propaganda instead of legitimate content [T1491.002], resulting in temporary service disruption and reputational damage. This external defacement was accompanied by defacement of internal systems, though those details are omitted for brevity. Recovery efforts involved isolating affected systems and restoring from backups, with no evidence of data destruction beyond the defacement.",
+        "techniques_used": [
+            "T1592.003",
+            "T1091",
+            "T1053.005",
+            "T1082",
+            "T1074.002",
+            "T1125",
+            "T1102.003",
+            "T1011",
+            "T1491.002"
+        ]
+    }
+}

@@ -1,0 +1,98 @@
+{
+    "report_id": "report_99",
+    "generated_at": "20251222_115622",
+    "scenario_target_ids": [
+        "T1669",
+        "T1078.004",
+        "T1059.009",
+        "T1055.008",
+        "T1528",
+        "T1021.002",
+        "T1560",
+        "T1572",
+        "T1030",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1669",
+        "T1078.004",
+        "T1059.009",
+        "T1055.008",
+        "T1528",
+        "T1021.002",
+        "T1560",
+        "T1572",
+        "T1030",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1528",
+        "T1496.001",
+        "T1078.004",
+        "T1059.009",
+        "T1055.008",
+        "T1021.002",
+        "T1669",
+        "T1560",
+        "T1572",
+        "T1030"
+    ],
+    "clean_text": "On October 15, 2023, multiple organizations reported anomalous activity in their Azure and on-premises environments, leading to the identification of the 'CloudShadow' campaign. The fictional APT group likely conducted initial reconnaissance by scanning for Wi-Fi networks to map wireless access points and identify potential entry vectors. Subsequently, they exploited cloud management APIs to gain persistent access to container registries, enabling them to deploy malicious containers. Within these containers, the actors utilized Azure Automation to execute CLI commands that created unauthorized virtual machines for cryptomining, while simultaneously using Ptrace system calls to allocate memory in target processes and inject shellcode. The malware running in compromised containers collected API access tokens from environment variables, which were then used to authenticate to SMB/Windows admin shares for lateral movement across the network. After exfiltrating data, the actors archived collected files, compressing entire directories with size limits, and employed protocol tunneling through web shells to obfuscate network traffic. To bypass detection, they split data into smaller parts for exfiltration, ensuring compliance with transfer size limits. System logs from affected servers showed increased CPU usage on virtual machines, unrelated to the attack, such as routine backup processes at 02:00 UTC. The targeted organizations, including a mid-sized financial services firm and a healthcare provider, had recently migrated portions of their infrastructure to Azure, but no prior incidents were reported in their security audits from Q3 2023.",
+    "tagged_text": "On October 15, 2023, multiple organizations reported anomalous activity in their Azure and on-premises environments, leading to the identification of the 'CloudShadow' campaign. The fictional APT group likely conducted initial reconnaissance by scanning for Wi-Fi networks [T1669] to map wireless access points and identify potential entry vectors. Subsequently, they exploited cloud management APIs [T1078.004] to gain persistent access to container registries, enabling them to deploy malicious containers. Within these containers, the actors utilized Azure Automation [T1059.009] to execute CLI commands that created unauthorized virtual machines for cryptomining [T1496.001], while simultaneously using Ptrace system calls [T1055.008] to allocate memory in target processes and inject shellcode. The malware running in compromised containers collected API access tokens from environment variables [T1528], which were then used to authenticate to SMB/Windows admin shares [T1021.002] for lateral movement across the network. After exfiltrating data, the actors archived collected files [T1560], compressing entire directories with size limits, and employed protocol tunneling [T1572] through web shells to obfuscate network traffic. To bypass detection, they split data into smaller parts [T1030] for exfiltration, ensuring compliance with transfer size limits. System logs from affected servers showed increased CPU usage on virtual machines, unrelated to the attack, such as routine backup processes at 02:00 UTC. The targeted organizations, including a mid-sized financial services firm and a healthcare provider, had recently migrated portions of their infrastructure to Azure, but no prior incidents were reported in their security audits from Q3 2023.",
+    "sentence_annotations": [
+        {
+            "sentence": "The fictional APT group likely conducted initial reconnaissance by scanning for Wi-Fi networks to map wireless access points and identify potential entry vectors.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "The malware running in compromised containers collected API access tokens from environment variables, which were then used to authenticate to SMB/Windows admin shares [T1021.",
+            "technique_id": "T1528",
+            "technique_name": "Steal Application Access Token"
+        },
+        {
+            "sentence": "After exfiltrating data, the actors archived collected files, compressing entire directories with size limits, and employed protocol tunneling through web shells to obfuscate network traffic.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "After exfiltrating data, the actors archived collected files, compressing entire directories with size limits, and employed protocol tunneling through web shells to obfuscate network traffic.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "To bypass detection, they split data into smaller parts for exfiltration, ensuring compliance with transfer size limits.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'CloudShadow', targeting organizations with hybrid cloud infrastructure. The campaign involves initial reconnaissance via Wi-Fi scanning, exploitation of cloud accounts and APIs, lateral movement through network shares, data collection and exfiltration via tunneling and archiving, and resource hijacking for cryptomining. Blue teams should review this report to enhance detection and response capabilities in similar scenarios.",
+        "full_report_text": "On October 15, 2023, multiple organizations reported anomalous activity in their Azure and on-premises environments, leading to the identification of the 'CloudShadow' campaign. The fictional APT group likely conducted initial reconnaissance by scanning for Wi-Fi networks [T1669] to map wireless access points and identify potential entry vectors. Subsequently, they exploited cloud management APIs [T1078.004] to gain persistent access to container registries, enabling them to deploy malicious containers. Within these containers, the actors utilized Azure Automation [T1059.009] to execute CLI commands that created unauthorized virtual machines for cryptomining [T1496.001], while simultaneously using Ptrace system calls [T1055.008] to allocate memory in target processes and inject shellcode. The malware running in compromised containers collected API access tokens from environment variables [T1528], which were then used to authenticate to SMB/Windows admin shares [T1021.002] for lateral movement across the network. After exfiltrating data, the actors archived collected files [T1560], compressing entire directories with size limits, and employed protocol tunneling [T1572] through web shells to obfuscate network traffic. To bypass detection, they split data into smaller parts [T1030] for exfiltration, ensuring compliance with transfer size limits. System logs from affected servers showed increased CPU usage on virtual machines, unrelated to the attack, such as routine backup processes at 02:00 UTC. The targeted organizations, including a mid-sized financial services firm and a healthcare provider, had recently migrated portions of their infrastructure to Azure, but no prior incidents were reported in their security audits from Q3 2023.",
+        "techniques_used": [
+            "T1669",
+            "T1078.004",
+            "T1059.009",
+            "T1055.008",
+            "T1528",
+            "T1021.002",
+            "T1560",
+            "T1572",
+            "T1030",
+            "T1496.001"
+        ]
+    }
+}

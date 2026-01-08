@@ -1,0 +1,57 @@
+{
+    "report_id": "report_289",
+    "generated_at": "20251222_144409",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1204.004",
+        "T1497.002",
+        "T1021.004",
+        "T1213.004",
+        "T1205.002",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1204.004",
+        "T1497.002",
+        "T1021.004",
+        "T1213.004",
+        "T1205.002",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1195.002",
+        "T1497.002",
+        "T1205.002",
+        "T1213.004",
+        "T1021.004",
+        "T1204.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used in a fictional APT campaign for training purposes. In this scenario, 'ShadowSupply' actors targeted a mid-sized software company, 'TechSoft Inc.', which develops productivity tools. Background checks revealed no prior incidents, but system logs from April 2024 showed unusual spikes in download traffic from their official servers, unrelated to this attack.\n\nInitial Access: The campaign began with the actors compromising the software supply chain by replacing a legitimate compiled application, 'DocHelper Pro', with a trojanized version on TechSoft's official download server. This malicious copy was distributed to unsuspecting users, who were prompted with a fabricated 'Adobe Flash Player Update' dialog box to install the trojan, exploiting user trust through deceptive interfaces.\n\nExecution and Persistence: Upon execution, the malware conducted user activity-based checks by querying Edge browser history to confirm legitimate user presence on the system before proceeding with further malicious actions. It then established persistence by using SSH and the PuTTy PSCP utility to gain access to a restricted segment of the compromised network, enabling lateral movement and data gathering. The backdoor employed libpcap to capture network packets and trigger activation based on specific packet signatures, allowing it to remain dormant until detecting targeted traffic patterns.\n\nCollection and Exfiltration: The actors accessed Microsoft Dynamics 365 to gather customer account details for subsequent phishing attacks, extracting sensitive data from the CRM software. Finally, the malicious script collected network configuration details and sent them to webhook.site, facilitating exfiltration over webhooks to evade traditional network monitoring. System logs from affected endpoints showed increased CPU usage during these phases, but this was not directly linked to the techniques used.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used in a fictional APT campaign for training purposes. In this scenario, 'ShadowSupply' actors targeted a mid-sized software company, 'TechSoft Inc.', which develops productivity tools. Background checks revealed no prior incidents, but system logs from April 2024 showed unusual spikes in download traffic from their official servers, unrelated to this attack.\n\nInitial Access: The campaign began with the actors compromising the software supply chain by replacing a legitimate compiled application, 'DocHelper Pro', with a trojanized version on TechSoft's official download server [T1195.002]. This malicious copy was distributed to unsuspecting users, who were prompted with a fabricated 'Adobe Flash Player Update' dialog box to install the trojan, exploiting user trust through deceptive interfaces [T1204.004].\n\nExecution and Persistence: Upon execution, the malware conducted user activity-based checks by querying Edge browser history to confirm legitimate user presence on the system before proceeding with further malicious actions [T1497.002]. It then established persistence by using SSH and the PuTTy PSCP utility to gain access to a restricted segment of the compromised network, enabling lateral movement and data gathering [T1021.004]. The backdoor employed libpcap to capture network packets and trigger activation based on specific packet signatures, allowing it to remain dormant until detecting targeted traffic patterns [T1205.002].\n\nCollection and Exfiltration: The actors accessed Microsoft Dynamics 365 to gather customer account details for subsequent phishing attacks, extracting sensitive data from the CRM software [T1213.004]. Finally, the malicious script collected network configuration details and sent them to webhook.site, facilitating exfiltration over webhooks to evade traditional network monitoring [T1567.004]. System logs from affected endpoints showed increased CPU usage during these phases, but this was not directly linked to the techniques used.",
+    "sentence_annotations": [],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSupply' Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowSupply', which compromised a software supply chain to distribute trojanized applications, leading to data exfiltration and lateral movement within victim networks. The campaign leverages social engineering, persistence mechanisms, and stealthy exfiltration techniques to evade detection. Blue teams are advised to review software integrity, monitor for anomalous SSH activity, and implement network segmentation.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used in a fictional APT campaign for training purposes. In this scenario, 'ShadowSupply' actors targeted a mid-sized software company, 'TechSoft Inc.', which develops productivity tools. Background checks revealed no prior incidents, but system logs from April 2024 showed unusual spikes in download traffic from their official servers, unrelated to this attack.\n\nInitial Access: The campaign began with the actors compromising the software supply chain by replacing a legitimate compiled application, 'DocHelper Pro', with a trojanized version on TechSoft's official download server [T1195.002]. This malicious copy was distributed to unsuspecting users, who were prompted with a fabricated 'Adobe Flash Player Update' dialog box to install the trojan, exploiting user trust through deceptive interfaces [T1204.004].\n\nExecution and Persistence: Upon execution, the malware conducted user activity-based checks by querying Edge browser history to confirm legitimate user presence on the system before proceeding with further malicious actions [T1497.002]. It then established persistence by using SSH and the PuTTy PSCP utility to gain access to a restricted segment of the compromised network, enabling lateral movement and data gathering [T1021.004]. The backdoor employed libpcap to capture network packets and trigger activation based on specific packet signatures, allowing it to remain dormant until detecting targeted traffic patterns [T1205.002].\n\nCollection and Exfiltration: The actors accessed Microsoft Dynamics 365 to gather customer account details for subsequent phishing attacks, extracting sensitive data from the CRM software [T1213.004]. Finally, the malicious script collected network configuration details and sent them to webhook.site, facilitating exfiltration over webhooks to evade traditional network monitoring [T1567.004]. System logs from affected endpoints showed increased CPU usage during these phases, but this was not directly linked to the techniques used.",
+        "techniques_used": [
+            "T1195.002",
+            "T1204.004",
+            "T1497.002",
+            "T1021.004",
+            "T1213.004",
+            "T1205.002",
+            "T1567.004"
+        ]
+    }
+}

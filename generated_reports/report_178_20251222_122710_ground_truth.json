@@ -1,0 +1,108 @@
+{
+    "report_id": "report_178",
+    "generated_at": "20251222_122710",
+    "scenario_target_ids": [
+        "T1597.002",
+        "T1590.006",
+        "T1587.001",
+        "T1078",
+        "T1609",
+        "T1070.009",
+        "T1599.001",
+        "T1003.008",
+        "T1602",
+        "T1557.001",
+        "T1572",
+        "T1219"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1597.002",
+        "T1590.006",
+        "T1587.001",
+        "T1078",
+        "T1609",
+        "T1599.001",
+        "T1003.008",
+        "T1602",
+        "T1557.001",
+        "T1572",
+        "T1219",
+        "T1070.009"
+    ],
+    "actual_found_ids": [
+        "T1587.001",
+        "T1590.006",
+        "T1597.002",
+        "T1003.008",
+        "T1557.001",
+        "T1219",
+        "T1078",
+        "T1602",
+        "T1572",
+        "T1070.009",
+        "T1609",
+        "T1599.001"
+    ],
+    "clean_text": "Crimson Serpent, a fictional advanced persistent threat (APT) group, initiated their campaign against SecureFin Corp., a company with offices in New York and London specializing in digital payment solutions. The actors first conducted reconnaissance by purchasing technical data from a commercial IP geolocation database to map the physical locations of the victim's servers and simultaneously used nmap to scan for network security appliances, identifying firewall configurations and open ports on the target network. SecureFin's internal logs from this period show routine system updates, but no alerts were triggered during this phase. Following reconnaissance, the adversary deployed custom-built malware, including variants similar to DCSrv and PyDCrypt, which were designed to establish initial footholds on victim machines. They leveraged harvested valid administrative credentials, obtained through previous breaches, to facilitate lateral movement across the network and executed container administration commands via the kubelet API to run malicious processes within Kubernetes environments. During lateral movement, the actors exploited network address translation traversal to bypass port-based filtering restrictions on corporate firewalls and used privilege escalation techniques to gain read access to /etc/shadow for hash extraction from Linux systems. Additionally, they queried shared folders via SMB protocol to extract data from configuration repositories containing sensitive IT infrastructure documentation and employed LLMNR/NBT-NS poisoning with SMB relay attacks using tools like ntlmrelayx to gather NetNTLM credentials for further exploitation. To maintain stealth, Crimson Serpent established an SSH tunnel for protocol tunneling to bypass firewall restrictions and exfiltrate stolen data while installing a malicious Windows Service as a remote access tool to maintain interactive control over compromised hosts. Finally, the adversary ran commands such as 'sc delete LogCollector' to clear persistence mechanisms and avoid detection. Incident responders noted anomalous network traffic spikes during off-hours, but initial investigations were inconclusive due to encrypted payloads.",
+    "tagged_text": "Crimson Serpent, a fictional advanced persistent threat (APT) group, initiated their campaign against SecureFin Corp., a company with offices in New York and London specializing in digital payment solutions. The actors first conducted reconnaissance by purchasing technical data from a commercial IP geolocation database to map the physical locations of the victim's servers [T1597.002] and simultaneously used nmap to scan for network security appliances, identifying firewall configurations and open ports on the target network [T1590.006]. SecureFin's internal logs from this period show routine system updates, but no alerts were triggered during this phase. Following reconnaissance, the adversary deployed custom-built malware, including variants similar to DCSrv and PyDCrypt, which were designed to establish initial footholds on victim machines [T1587.001]. They leveraged harvested valid administrative credentials, obtained through previous breaches, to facilitate lateral movement across the network [T1078] and executed container administration commands via the kubelet API to run malicious processes within Kubernetes environments [T1609]. During lateral movement, the actors exploited network address translation traversal to bypass port-based filtering restrictions on corporate firewalls [T1599.001] and used privilege escalation techniques to gain read access to /etc/shadow for hash extraction from Linux systems [T1003.008]. Additionally, they queried shared folders via SMB protocol to extract data from configuration repositories containing sensitive IT infrastructure documentation [T1602] and employed LLMNR/NBT-NS poisoning with SMB relay attacks using tools like ntlmrelayx to gather NetNTLM credentials for further exploitation [T1557.001]. To maintain stealth, Crimson Serpent established an SSH tunnel for protocol tunneling to bypass firewall restrictions and exfiltrate stolen data [T1572] while installing a malicious Windows Service as a remote access tool to maintain interactive control over compromised hosts [T1219]. Finally, the adversary ran commands such as 'sc delete LogCollector' to clear persistence mechanisms and avoid detection [T1070.009]. Incident responders noted anomalous network traffic spikes during off-hours, but initial investigations were inconclusive due to encrypted payloads.",
+    "sentence_annotations": [
+        {
+            "sentence": "They leveraged harvested valid administrative credentials, obtained through previous breaches, to facilitate lateral movement across the network and executed container administration commands via the kubelet API to run malicious processes within Kubernetes environments.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "They leveraged harvested valid administrative credentials, obtained through previous breaches, to facilitate lateral movement across the network and executed container administration commands via the kubelet API to run malicious processes within Kubernetes environments.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "Additionally, they queried shared folders via SMB protocol to extract data from configuration repositories containing sensitive IT infrastructure documentation and employed LLMNR/NBT-NS poisoning with SMB relay attacks using tools like ntlmrelayx to gather NetNTLM credentials for further exploitation [T1557.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "To maintain stealth, Crimson Serpent established an SSH tunnel for protocol tunneling to bypass firewall restrictions and exfiltrate stolen data while installing a malicious Windows Service as a remote access tool to maintain interactive control over compromised hosts.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "To maintain stealth, Crimson Serpent established an SSH tunnel for protocol tunneling to bypass firewall restrictions and exfiltrate stolen data while installing a malicious Windows Service as a remote access tool to maintain interactive control over compromised hosts.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'Crimson Serpent'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Serpent' targeting a mid-sized financial services firm, 'SecureFin Corp.', for data exfiltration and disruption. The campaign involved initial reconnaissance, malware deployment, lateral movement, and persistence evasion, leveraging techniques such as network scanning, credential theft, and protocol tunneling. Blue teams should use this report for training to identify and mitigate similar attack patterns in real-world scenarios.",
+        "full_report_text": "Crimson Serpent, a fictional advanced persistent threat (APT) group, initiated their campaign against SecureFin Corp., a company with offices in New York and London specializing in digital payment solutions. The actors first conducted reconnaissance by purchasing technical data from a commercial IP geolocation database to map the physical locations of the victim's servers [T1597.002] and simultaneously used nmap to scan for network security appliances, identifying firewall configurations and open ports on the target network [T1590.006]. SecureFin's internal logs from this period show routine system updates, but no alerts were triggered during this phase. Following reconnaissance, the adversary deployed custom-built malware, including variants similar to DCSrv and PyDCrypt, which were designed to establish initial footholds on victim machines [T1587.001]. They leveraged harvested valid administrative credentials, obtained through previous breaches, to facilitate lateral movement across the network [T1078] and executed container administration commands via the kubelet API to run malicious processes within Kubernetes environments [T1609]. During lateral movement, the actors exploited network address translation traversal to bypass port-based filtering restrictions on corporate firewalls [T1599.001] and used privilege escalation techniques to gain read access to /etc/shadow for hash extraction from Linux systems [T1003.008]. Additionally, they queried shared folders via SMB protocol to extract data from configuration repositories containing sensitive IT infrastructure documentation [T1602] and employed LLMNR/NBT-NS poisoning with SMB relay attacks using tools like ntlmrelayx to gather NetNTLM credentials for further exploitation [T1557.001]. To maintain stealth, Crimson Serpent established an SSH tunnel for protocol tunneling to bypass firewall restrictions and exfiltrate stolen data [T1572] while installing a malicious Windows Service as a remote access tool to maintain interactive control over compromised hosts [T1219]. Finally, the adversary ran commands such as 'sc delete LogCollector' to clear persistence mechanisms and avoid detection [T1070.009]. Incident responders noted anomalous network traffic spikes during off-hours, but initial investigations were inconclusive due to encrypted payloads.",
+        "techniques_used": [
+            "T1597.002",
+            "T1590.006",
+            "T1587.001",
+            "T1078",
+            "T1609",
+            "T1599.001",
+            "T1003.008",
+            "T1602",
+            "T1557.001",
+            "T1572",
+            "T1219",
+            "T1070.009"
+        ]
+    }
+}

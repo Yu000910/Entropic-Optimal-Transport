@@ -1,0 +1,73 @@
+{
+    "report_id": "report_507",
+    "generated_at": "20251222_161810",
+    "scenario_target_ids": [
+        "T1190",
+        "T1059.010",
+        "T1003.006",
+        "T1482",
+        "T1563.002",
+        "T1090.001",
+        "T1496"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1059.010",
+        "T1003.006",
+        "T1482",
+        "T1563.002",
+        "T1090.001",
+        "T1496"
+    ],
+    "actual_found_ids": [
+        "T1090.001",
+        "T1059.010",
+        "T1003.006",
+        "T1190",
+        "T1482",
+        "T1496",
+        "T1563.002"
+    ],
+    "clean_text": "On April 15, 2024, security teams at a fictional multinational corporation, GlobalTech Inc., detected anomalous activity originating from their external-facing Confluence server. GlobalTech, a technology firm with 5,000 employees specializing in cloud infrastructure, had recently patched several systems, but legacy servers remained vulnerable. Initial logs showed unusual HTTP requests to the Confluence instance at 10:10:23 UTC, which were later traced to an exploit targeting CVE-2021-26084, allowing the adversary to execute arbitrary code and gain a foothold in the demilitarized zone (DMZ). The server, running on Ubuntu 18.04, had been scheduled for decommissioning but was still active due to project delays, providing an entry point for the attack.\n\nUpon gaining access, the actors deployed a malicious payload via PowerShell, which wrote and executed an AutoIt script to inject code into the legitimate svchost.exe process for evasion, while simultaneously downloading additional tools from a command-and-control (C2) server over HTTPS. This activity was logged in the Windows Event Viewer under ID 4688, but initial alerts were suppressed due to high noise from routine administrative tasks. The AutoIt script facilitated lateral movement to a domain controller, where the adversary used Mimikatz to extract LSA secrets, specifically employing the DCSync technique to obtain NTLM hashes for privileged accounts like Domain Admins, and then leveraged BloodHound to map domain trusts and identify misconfigurations, such as excessive permissions in Active Directory, that could be abused for further escalation.\n\nWith stolen credentials, the actors performed RDP hijacking by executing tscon.exe to take over an existing remote desktop session of a system administrator, while also setting up an internal proxy using HTRAN to create a multi-hop tunnel that obscured the true location of their C2 server from network monitoring tools. Concurrently, they deployed a trojan that installed cryptocurrency mining software, which utilized approximately 80% of CPU resources on compromised servers, leading to performance degradation and increased power consumption, as noted in system logs showing spikes in temperature readings. The campaign culminated in data exfiltration over the proxy tunnel, with exfiltrated files including sensitive R&D documents and customer databases, though no actual data loss occurred in this training scenario. Post-incident analysis revealed that the initial exploit was possible due to unpatched software, highlighting the need for rigorous patch management and enhanced detection capabilities.",
+    "tagged_text": "On April 15, 2024, security teams at a fictional multinational corporation, GlobalTech Inc., detected anomalous activity originating from their external-facing Confluence server. GlobalTech, a technology firm with 5,000 employees specializing in cloud infrastructure, had recently patched several systems, but legacy servers remained vulnerable. Initial logs showed unusual HTTP requests to the Confluence instance at 10:10:23 UTC, which were later traced to an exploit targeting CVE-2021-26084 [T1190], allowing the adversary to execute arbitrary code and gain a foothold in the demilitarized zone (DMZ). The server, running on Ubuntu 18.04, had been scheduled for decommissioning but was still active due to project delays, providing an entry point for the attack.\n\nUpon gaining access, the actors deployed a malicious payload via PowerShell, which wrote and executed an AutoIt script [T1059.010] to inject code into the legitimate svchost.exe process for evasion, while simultaneously downloading additional tools from a command-and-control (C2) server over HTTPS. This activity was logged in the Windows Event Viewer under ID 4688, but initial alerts were suppressed due to high noise from routine administrative tasks. The AutoIt script facilitated lateral movement to a domain controller, where the adversary used Mimikatz to extract LSA secrets, specifically employing the DCSync technique [T1003.006] to obtain NTLM hashes for privileged accounts like Domain Admins, and then leveraged BloodHound [T1482] to map domain trusts and identify misconfigurations, such as excessive permissions in Active Directory, that could be abused for further escalation.\n\nWith stolen credentials, the actors performed RDP hijacking [T1563.002] by executing tscon.exe to take over an existing remote desktop session of a system administrator, while also setting up an internal proxy using HTRAN [T1090.001] to create a multi-hop tunnel that obscured the true location of their C2 server from network monitoring tools. Concurrently, they deployed a trojan that installed cryptocurrency mining software [T1496], which utilized approximately 80% of CPU resources on compromised servers, leading to performance degradation and increased power consumption, as noted in system logs showing spikes in temperature readings. The campaign culminated in data exfiltration over the proxy tunnel, with exfiltrated files including sensitive R&D documents and customer databases, though no actual data loss occurred in this training scenario. Post-incident analysis revealed that the initial exploit was possible due to unpatched software, highlighting the need for rigorous patch management and enhanced detection capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial logs showed unusual HTTP requests to the Confluence instance at 10:10:23 UTC, which were later traced to an exploit targeting CVE-2021-26084, allowing the adversary to execute arbitrary code and gain a foothold in the demilitarized zone (DMZ).",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "006] to obtain NTLM hashes for privileged accounts like Domain Admins, and then leveraged BloodHound to map domain trusts and identify misconfigurations, such as excessive permissions in Active Directory, that could be abused for further escalation.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        },
+        {
+            "sentence": "Concurrently, they deployed a trojan that installed cryptocurrency mining software, which utilized approximately 80% of CPU resources on compromised servers, leading to performance degradation and increased power consumption, as noted in system logs showing spikes in temperature readings.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Ember Bear Campaign Targeting External Services and Internal Networks",
+        "summary": "This advisory details a fictional campaign attributed to the threat actor Ember Bear, designed for blue team training. It simulates an attack exploiting public-facing applications to gain initial access, followed by lateral movement, credential theft, and resource hijacking within a corporate network. The scenario incorporates techniques such as AutoIT scripting, DCSync, domain trust discovery, RDP hijacking, proxy tunneling, and cryptocurrency mining to provide a comprehensive training exercise.",
+        "full_report_text": "On April 15, 2024, security teams at a fictional multinational corporation, GlobalTech Inc., detected anomalous activity originating from their external-facing Confluence server. GlobalTech, a technology firm with 5,000 employees specializing in cloud infrastructure, had recently patched several systems, but legacy servers remained vulnerable. Initial logs showed unusual HTTP requests to the Confluence instance at 10:10:23 UTC, which were later traced to an exploit targeting CVE-2021-26084 [T1190], allowing the adversary to execute arbitrary code and gain a foothold in the demilitarized zone (DMZ). The server, running on Ubuntu 18.04, had been scheduled for decommissioning but was still active due to project delays, providing an entry point for the attack.\n\nUpon gaining access, the actors deployed a malicious payload via PowerShell, which wrote and executed an AutoIt script [T1059.010] to inject code into the legitimate svchost.exe process for evasion, while simultaneously downloading additional tools from a command-and-control (C2) server over HTTPS. This activity was logged in the Windows Event Viewer under ID 4688, but initial alerts were suppressed due to high noise from routine administrative tasks. The AutoIt script facilitated lateral movement to a domain controller, where the adversary used Mimikatz to extract LSA secrets, specifically employing the DCSync technique [T1003.006] to obtain NTLM hashes for privileged accounts like Domain Admins, and then leveraged BloodHound [T1482] to map domain trusts and identify misconfigurations, such as excessive permissions in Active Directory, that could be abused for further escalation.\n\nWith stolen credentials, the actors performed RDP hijacking [T1563.002] by executing tscon.exe to take over an existing remote desktop session of a system administrator, while also setting up an internal proxy using HTRAN [T1090.001] to create a multi-hop tunnel that obscured the true location of their C2 server from network monitoring tools. Concurrently, they deployed a trojan that installed cryptocurrency mining software [T1496], which utilized approximately 80% of CPU resources on compromised servers, leading to performance degradation and increased power consumption, as noted in system logs showing spikes in temperature readings. The campaign culminated in data exfiltration over the proxy tunnel, with exfiltrated files including sensitive R&D documents and customer databases, though no actual data loss occurred in this training scenario. Post-incident analysis revealed that the initial exploit was possible due to unpatched software, highlighting the need for rigorous patch management and enhanced detection capabilities.",
+        "techniques_used": [
+            "T1190",
+            "T1059.010",
+            "T1003.006",
+            "T1482",
+            "T1563.002",
+            "T1090.001",
+            "T1496"
+        ]
+    }
+}

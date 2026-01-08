@@ -1,0 +1,63 @@
+{
+    "report_id": "report_417",
+    "generated_at": "20251222_153842",
+    "scenario_target_ids": [
+        "T1199",
+        "T1569.002",
+        "T1559",
+        "T1098.004",
+        "T1564.005",
+        "T1071.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1569.002",
+        "T1559",
+        "T1098.004",
+        "T1564.005",
+        "T1071.002"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1071.002",
+        "T1569.002",
+        "T1559",
+        "T1564.005",
+        "T1098.004"
+    ],
+    "clean_text": "Background: The simulated attack occurred at a fictional multinational corporation, 'GlobalTech Inc.', which partners with 'SecureCloud Solutions' for managed IT services. On 2023-10-15, routine network monitoring flagged unusual SSH connections from external IPs, leading to an investigation that uncovered a multi-stage intrusion.\n\nInitial Access: The adversary leveraged a trusted relationship with SecureCloud Solutions to gain administrative access to GlobalTech's Office 365 environment, exploiting weak authentication controls and abusing delegated permissions to deploy initial backdoors across the enterprise network.\n\nExecution: After gaining access, the actors used PsExec to execute malicious payloads on multiple Windows servers, enabling lateral movement and establishing persistence by writing output to stdout and piping it to bash for command execution.\n\nPersistence: To maintain access, the threat actor edited the authorized_keys file on Linux servers to include a backdoor SSH key, ensuring future remote access without detection.\n\nDefense Evasion: The backdoor employed hidden file system techniques by storing its configuration data in reserved disk space invisible to standard file system tools, while using SMB read operations to periodically check for new commands from the command and control (C2) infrastructure, blending in with normal network traffic.\n\nAdditional Context: Logs from GlobalTech's SIEM showed increased SMB activity on port 445, but no immediate alerts were triggered due to misconfigured thresholds. The company's incident response team was activated after anomalous SSH login attempts from unknown IP addresses in Eastern Europe were detected via a third-party threat intelligence feed.",
+    "tagged_text": "Background: The simulated attack occurred at a fictional multinational corporation, 'GlobalTech Inc.', which partners with 'SecureCloud Solutions' for managed IT services. On 2023-10-15, routine network monitoring flagged unusual SSH connections from external IPs, leading to an investigation that uncovered a multi-stage intrusion.\n\nInitial Access: The adversary leveraged a trusted relationship with SecureCloud Solutions [T1199] to gain administrative access to GlobalTech's Office 365 environment, exploiting weak authentication controls and abusing delegated permissions to deploy initial backdoors across the enterprise network.\n\nExecution: After gaining access, the actors used PsExec [T1569.002] to execute malicious payloads on multiple Windows servers, enabling lateral movement and establishing persistence by writing output to stdout and piping it to bash for command execution [T1559].\n\nPersistence: To maintain access, the threat actor edited the authorized_keys file on Linux servers [T1098.004] to include a backdoor SSH key, ensuring future remote access without detection.\n\nDefense Evasion: The backdoor employed hidden file system techniques [T1564.005] by storing its configuration data in reserved disk space invisible to standard file system tools, while using SMB read operations [T1071.002] to periodically check for new commands from the command and control (C2) infrastructure, blending in with normal network traffic.\n\nAdditional Context: Logs from GlobalTech's SIEM showed increased SMB activity on port 445, but no immediate alerts were triggered due to misconfigured thresholds. The company's incident response team was activated after anomalous SSH login attempts from unknown IP addresses in Eastern Europe were detected via a third-party threat intelligence feed.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The adversary leveraged a trusted relationship with SecureCloud Solutions to gain administrative access to GlobalTech's Office 365 environment, exploiting weak authentication controls and abusing delegated permissions to deploy initial backdoors across the enterprise network.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "002] to execute malicious payloads on multiple Windows servers, enabling lateral movement and establishing persistence by writing output to stdout and piping it to bash for command execution.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'Operation SilentPartner'",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group targeting enterprise environments through trusted partner relationships, as part of blue team training to enhance detection and response capabilities.",
+        "full_report_text": "Background: The simulated attack occurred at a fictional multinational corporation, 'GlobalTech Inc.', which partners with 'SecureCloud Solutions' for managed IT services. On 2023-10-15, routine network monitoring flagged unusual SSH connections from external IPs, leading to an investigation that uncovered a multi-stage intrusion.\n\nInitial Access: The adversary leveraged a trusted relationship with SecureCloud Solutions [T1199] to gain administrative access to GlobalTech's Office 365 environment, exploiting weak authentication controls and abusing delegated permissions to deploy initial backdoors across the enterprise network.\n\nExecution: After gaining access, the actors used PsExec [T1569.002] to execute malicious payloads on multiple Windows servers, enabling lateral movement and establishing persistence by writing output to stdout and piping it to bash for command execution [T1559].\n\nPersistence: To maintain access, the threat actor edited the authorized_keys file on Linux servers [T1098.004] to include a backdoor SSH key, ensuring future remote access without detection.\n\nDefense Evasion: The backdoor employed hidden file system techniques [T1564.005] by storing its configuration data in reserved disk space invisible to standard file system tools, while using SMB read operations [T1071.002] to periodically check for new commands from the command and control (C2) infrastructure, blending in with normal network traffic.\n\nAdditional Context: Logs from GlobalTech's SIEM showed increased SMB activity on port 445, but no immediate alerts were triggered due to misconfigured thresholds. The company's incident response team was activated after anomalous SSH login attempts from unknown IP addresses in Eastern Europe were detected via a third-party threat intelligence feed.",
+        "techniques_used": [
+            "T1199",
+            "T1569.002",
+            "T1559",
+            "T1098.004",
+            "T1564.005",
+            "T1071.002"
+        ]
+    }
+}

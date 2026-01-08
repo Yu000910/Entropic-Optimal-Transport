@@ -1,0 +1,123 @@
+{
+    "report_id": "report_221",
+    "generated_at": "20251222_141616",
+    "scenario_target_ids": [
+        "T1190",
+        "T1047",
+        "T1543.002",
+        "T1078.003",
+        "T1538",
+        "T1016.002",
+        "T1080",
+        "T1550",
+        "T1074",
+        "T1095",
+        "T1092",
+        "T1499.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1047",
+        "T1543.002",
+        "T1078.003",
+        "T1538",
+        "T1016.002",
+        "T1080",
+        "T1550",
+        "T1074",
+        "T1095",
+        "T1092",
+        "T1499.002"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1095",
+        "T1016.002",
+        "T1550",
+        "T1538",
+        "T1074",
+        "T1499.002",
+        "T1092",
+        "T1190",
+        "T1080",
+        "T1543.002",
+        "T1078.003"
+    ],
+    "clean_text": "On April 15, 2024, the fictional organization 'GlobalTech Corp' reported anomalous network activity originating from its external VPN appliance. Investigation revealed that adversaries likely conducted reconnaissance on public-facing assets, exploiting a known vulnerability in a Fortinet VPN appliance to gain initial access. Once inside, the actors used Windows Management Instrumentation (WMI) to execute PowerShell commands that downloaded additional payloads from a remote server. On Linux systems within the network, they created a malicious systemd service named 'logrotate.service' to maintain persistence and run a remote access tool. The actors then abused local accounts with identical passwords across the network to move laterally, while using the Google Cloud Platform (GCP) Command Center to discover cloud resources lacking proper security controls. To gather intelligence on wireless configurations, they employed PowerShell to invoke 'netsh wlan show profiles' and listed all configured Wi-Fi profiles. In shared directories, the threat actor modified the 'startup.bat' shortcut to execute ransomware upon user login, tainting shared content. For authentication bypass, they exploited a compromised Active Directory Federation Services (AD FS) server to abuse SAML tokens. Data collection involved staging user directory listings by executing 'cmd.exe /c dir C:\\Users > C:\\temp\\data.txt'. Command and control (C2) communications utilized a non-standard, custom protocol to evade detection, with additional exfiltration attempted through infected USB drives targeting air-gapped systems. Finally, the malware initiated repeated SSL/TLS handshake renegotiations to degrade service performance via a service exhaustion flood. System logs from GlobalTech Corp showed routine backup processes and user login attempts, with no immediate indicators of compromise beyond the described activities. The company, a mid-sized technology firm with offices in North America and Europe, reported no significant operational impact during this simulated incident.",
+    "tagged_text": "On April 15, 2024, the fictional organization 'GlobalTech Corp' reported anomalous network activity originating from its external VPN appliance. Investigation revealed that adversaries likely conducted reconnaissance on public-facing assets, exploiting a known vulnerability in a Fortinet VPN appliance [T1190] to gain initial access. Once inside, the actors used Windows Management Instrumentation (WMI) [T1047] to execute PowerShell commands that downloaded additional payloads from a remote server. On Linux systems within the network, they created a malicious systemd service named 'logrotate.service' [T1543.002] to maintain persistence and run a remote access tool. The actors then abused local accounts with identical passwords across the network [T1078.003] to move laterally, while using the Google Cloud Platform (GCP) Command Center [T1538] to discover cloud resources lacking proper security controls. To gather intelligence on wireless configurations, they employed PowerShell to invoke 'netsh wlan show profiles' [T1016.002] and listed all configured Wi-Fi profiles. In shared directories, the threat actor modified the 'startup.bat' shortcut [T1080] to execute ransomware upon user login, tainting shared content. For authentication bypass, they exploited a compromised Active Directory Federation Services (AD FS) server to abuse SAML tokens [T1550]. Data collection involved staging user directory listings by executing 'cmd.exe /c dir C:\\Users > C:\\temp\\data.txt' [T1074]. Command and control (C2) communications utilized a non-standard, custom protocol [T1095] to evade detection, with additional exfiltration attempted through infected USB drives [T1092] targeting air-gapped systems. Finally, the malware initiated repeated SSL/TLS handshake renegotiations [T1499.002] to degrade service performance via a service exhaustion flood. System logs from GlobalTech Corp showed routine backup processes and user login attempts, with no immediate indicators of compromise beyond the described activities. The company, a mid-sized technology firm with offices in North America and Europe, reported no significant operational impact during this simulated incident.",
+    "sentence_annotations": [
+        {
+            "sentence": "Investigation revealed that adversaries likely conducted reconnaissance on public-facing assets, exploiting a known vulnerability in a Fortinet VPN appliance to gain initial access.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Once inside, the actors used Windows Management Instrumentation (WMI) to execute PowerShell commands that downloaded additional payloads from a remote server.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "003] to move laterally, while using the Google Cloud Platform (GCP) Command Center to discover cloud resources lacking proper security controls.",
+            "technique_id": "T1538",
+            "technique_name": "Cloud Service Dashboard"
+        },
+        {
+            "sentence": "bat' shortcut to execute ransomware upon user login, tainting shared content.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        },
+        {
+            "sentence": "For authentication bypass, they exploited a compromised Active Directory Federation Services (AD FS) server to abuse SAML tokens.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "txt'.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "Command and control (C2) communications utilized a non-standard, custom protocol to evade detection, with additional exfiltration attempted through infected USB drives targeting air-gapped systems.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "Command and control (C2) communications utilized a non-standard, custom protocol to evade detection, with additional exfiltration attempted through infected USB drives targeting air-gapped systems.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowViper' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowViper', which exploits public-facing applications to gain initial access and employs a multi-faceted approach to compromise hybrid environments, including on-premises systems and cloud resources. The campaign leverages techniques such as WMI execution, systemd service persistence, and data staging, while using non-standard protocols for command and control. Blue teams are advised to review logs for suspicious activities related to these behaviors.",
+        "full_report_text": "On April 15, 2024, the fictional organization 'GlobalTech Corp' reported anomalous network activity originating from its external VPN appliance. Investigation revealed that adversaries likely conducted reconnaissance on public-facing assets, exploiting a known vulnerability in a Fortinet VPN appliance [T1190] to gain initial access. Once inside, the actors used Windows Management Instrumentation (WMI) [T1047] to execute PowerShell commands that downloaded additional payloads from a remote server. On Linux systems within the network, they created a malicious systemd service named 'logrotate.service' [T1543.002] to maintain persistence and run a remote access tool. The actors then abused local accounts with identical passwords across the network [T1078.003] to move laterally, while using the Google Cloud Platform (GCP) Command Center [T1538] to discover cloud resources lacking proper security controls. To gather intelligence on wireless configurations, they employed PowerShell to invoke 'netsh wlan show profiles' [T1016.002] and listed all configured Wi-Fi profiles. In shared directories, the threat actor modified the 'startup.bat' shortcut [T1080] to execute ransomware upon user login, tainting shared content. For authentication bypass, they exploited a compromised Active Directory Federation Services (AD FS) server to abuse SAML tokens [T1550]. Data collection involved staging user directory listings by executing 'cmd.exe /c dir C:\\Users > C:\\temp\\data.txt' [T1074]. Command and control (C2) communications utilized a non-standard, custom protocol [T1095] to evade detection, with additional exfiltration attempted through infected USB drives [T1092] targeting air-gapped systems. Finally, the malware initiated repeated SSL/TLS handshake renegotiations [T1499.002] to degrade service performance via a service exhaustion flood. System logs from GlobalTech Corp showed routine backup processes and user login attempts, with no immediate indicators of compromise beyond the described activities. The company, a mid-sized technology firm with offices in North America and Europe, reported no significant operational impact during this simulated incident.",
+        "techniques_used": [
+            "T1190",
+            "T1047",
+            "T1543.002",
+            "T1078.003",
+            "T1538",
+            "T1016.002",
+            "T1080",
+            "T1550",
+            "T1074",
+            "T1095",
+            "T1092",
+            "T1499.002"
+        ]
+    }
+}

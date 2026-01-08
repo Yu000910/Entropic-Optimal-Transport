@@ -1,0 +1,108 @@
+{
+    "report_id": "report_119",
+    "generated_at": "20251222_133354",
+    "scenario_target_ids": [
+        "T1596.005",
+        "T1597.002",
+        "T1592.001",
+        "T1190",
+        "T1566.001",
+        "T1204",
+        "T1218.005",
+        "T1036.005",
+        "T1558.001",
+        "T1021.005",
+        "T1219.002",
+        "T1048",
+        "T1491.002",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596.005",
+        "T1597.002",
+        "T1592.001",
+        "T1190",
+        "T1566.001",
+        "T1204",
+        "T1218.005",
+        "T1036.005",
+        "T1558.001",
+        "T1021.005",
+        "T1219.002",
+        "T1048",
+        "T1491.002",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1218.005",
+        "T1597.002",
+        "T1596.005",
+        "T1566.001",
+        "T1558.001",
+        "T1021.005",
+        "T1592.001",
+        "T1048",
+        "T1565.003",
+        "T1190",
+        "T1219.002",
+        "T1491.002",
+        "T1204",
+        "T1036.005"
+    ],
+    "clean_text": "On April 15, 2024, GlobalTech Solutions, a mid-sized technology firm with operations in North America and Europe, reported anomalous network activity to the FBI Cyber Division. The company, which provides software solutions for industrial control systems, had recently undergone a routine security audit that revealed no critical vulnerabilities. However, system logs from their web servers showed unusual scanning patterns originating from IP addresses associated with known malicious actors. The adversary likely conducted reconnaissance by scanning public databases to identify web servers disclosing version information and technology stacks, and they purchased SSL certificate data from a dark web vendor to map the organization's web services while simultaneously utilizing nmap.exe with service detection to enumerate hardware services running on remote hosts. Initial access was achieved through multiple vectors: the actors exploited public-facing applications using known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to drop the ZxShell malware, and they sent spearphishing emails with malicious Microsoft Office documents attached to key employees in the finance department. Upon execution, the attacker used a compromised website to serve a malicious JavaScript file that downloaded and executed a remote access trojan (RAT), and they employed mshta.exe to execute an HTA file hosted on a remote server while disguising droppers as legitimate software or documents, matching their original names and locations, and saving files as mpr.dll in the Windows folder. The adversary then moved laterally within the network by exploiting the KRBTGT password hash to forge a golden ticket with 10 years validity and used a compromised VNC client to remotely manipulate the victim's desktop, establishing persistent remote control using VNC to maintain interactive access to the system. Exfiltration involved packaging stolen user credentials and transferring them via FTP to a remote host. The campaign concluded with disruptive activities, including the defacement of several Ukrainian organization websites and modifying application.exe to show false system information to the user. System logs from GlobalTech's firewall indicated increased outbound traffic to unknown IP addresses during off-hours, but no immediate data loss was reported. The company's incident response team, in coordination with external cybersecurity consultants, contained the threat by isolating affected systems and resetting credentials.",
+    "tagged_text": "On April 15, 2024, GlobalTech Solutions, a mid-sized technology firm with operations in North America and Europe, reported anomalous network activity to the FBI Cyber Division. The company, which provides software solutions for industrial control systems, had recently undergone a routine security audit that revealed no critical vulnerabilities. However, system logs from their web servers showed unusual scanning patterns originating from IP addresses associated with known malicious actors. The adversary likely conducted reconnaissance by scanning public databases [T1596.005] to identify web servers disclosing version information and technology stacks, and they purchased SSL certificate data from a dark web vendor [T1597.002] to map the organization's web services while simultaneously utilizing nmap.exe with service detection to enumerate hardware services running on remote hosts [T1592.001]. Initial access was achieved through multiple vectors: the actors exploited public-facing applications using known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to drop the ZxShell malware [T1190], and they sent spearphishing emails with malicious Microsoft Office documents attached [T1566.001] to key employees in the finance department. Upon execution, the attacker used a compromised website to serve a malicious JavaScript file that downloaded and executed a remote access trojan (RAT) [T1204], and they employed mshta.exe to execute an HTA file hosted on a remote server [T1218.005] while disguising droppers as legitimate software or documents, matching their original names and locations, and saving files as mpr.dll in the Windows folder [T1036.005]. The adversary then moved laterally within the network by exploiting the KRBTGT password hash to forge a golden ticket with 10 years validity [T1558.001] and used a compromised VNC client to remotely manipulate the victim's desktop [T1021.005], establishing persistent remote control using VNC to maintain interactive access to the system [T1219.002]. Exfiltration involved packaging stolen user credentials and transferring them via FTP to a remote host [T1048]. The campaign concluded with disruptive activities, including the defacement of several Ukrainian organization websites [T1491.002] and modifying application.exe to show false system information to the user [T1565.003]. System logs from GlobalTech's firewall indicated increased outbound traffic to unknown IP addresses during off-hours, but no immediate data loss was reported. The company's incident response team, in coordination with external cybersecurity consultants, contained the threat by isolating affected systems and resetting credentials.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved through multiple vectors: the actors exploited public-facing applications using known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to drop the ZxShell malware, and they sent spearphishing emails with malicious Microsoft Office documents attached [T1566.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Upon execution, the attacker used a compromised website to serve a malicious JavaScript file that downloaded and executed a remote access trojan (RAT), and they employed mshta.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "Exfiltration involved packaging stolen user credentials and transferring them via FTP to a remote host.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeave' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowWeave,' targeting organizations in the energy and financial sectors. Based on analysis of threat intelligence feeds and incident response data from a fictional victim, 'GlobalTech Solutions,' this report outlines the adversary's tactics, techniques, and procedures (TTPs) across the cyber kill chain. The campaign involved initial reconnaissance, multiple exploitation vectors, credential theft, lateral movement, and data exfiltration, culminating in disruptive activities. This report is intended for blue team training to enhance detection and response capabilities against sophisticated threats.",
+        "full_report_text": "On April 15, 2024, GlobalTech Solutions, a mid-sized technology firm with operations in North America and Europe, reported anomalous network activity to the FBI Cyber Division. The company, which provides software solutions for industrial control systems, had recently undergone a routine security audit that revealed no critical vulnerabilities. However, system logs from their web servers showed unusual scanning patterns originating from IP addresses associated with known malicious actors. The adversary likely conducted reconnaissance by scanning public databases [T1596.005] to identify web servers disclosing version information and technology stacks, and they purchased SSL certificate data from a dark web vendor [T1597.002] to map the organization's web services while simultaneously utilizing nmap.exe with service detection to enumerate hardware services running on remote hosts [T1592.001]. Initial access was achieved through multiple vectors: the actors exploited public-facing applications using known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to drop the ZxShell malware [T1190], and they sent spearphishing emails with malicious Microsoft Office documents attached [T1566.001] to key employees in the finance department. Upon execution, the attacker used a compromised website to serve a malicious JavaScript file that downloaded and executed a remote access trojan (RAT) [T1204], and they employed mshta.exe to execute an HTA file hosted on a remote server [T1218.005] while disguising droppers as legitimate software or documents, matching their original names and locations, and saving files as mpr.dll in the Windows folder [T1036.005]. The adversary then moved laterally within the network by exploiting the KRBTGT password hash to forge a golden ticket with 10 years validity [T1558.001] and used a compromised VNC client to remotely manipulate the victim's desktop [T1021.005], establishing persistent remote control using VNC to maintain interactive access to the system [T1219.002]. Exfiltration involved packaging stolen user credentials and transferring them via FTP to a remote host [T1048]. The campaign concluded with disruptive activities, including the defacement of several Ukrainian organization websites [T1491.002] and modifying application.exe to show false system information to the user [T1565.003]. System logs from GlobalTech's firewall indicated increased outbound traffic to unknown IP addresses during off-hours, but no immediate data loss was reported. The company's incident response team, in coordination with external cybersecurity consultants, contained the threat by isolating affected systems and resetting credentials.",
+        "techniques_used": [
+            "T1596.005",
+            "T1597.002",
+            "T1592.001",
+            "T1190",
+            "T1566.001",
+            "T1204",
+            "T1218.005",
+            "T1036.005",
+            "T1558.001",
+            "T1021.005",
+            "T1219.002",
+            "T1048",
+            "T1491.002",
+            "T1565.003"
+        ]
+    }
+}

@@ -1,0 +1,121 @@
+{
+    "report_id": "report_117",
+    "generated_at": "20251222_120317",
+    "scenario_target_ids": [
+        "T1588.007",
+        "T1584.003",
+        "T1078.003",
+        "T1569.003",
+        "T1553.005",
+        "T1056.001",
+        "T1602",
+        "T1071.003",
+        "T1132",
+        "T1048.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1584.003",
+        "T1588.007",
+        "T1059.001",
+        "T1105",
+        "T1553.005",
+        "T1569.003",
+        "T1112",
+        "T1078.003",
+        "T1056.001",
+        "T1132",
+        "T1602",
+        "T1046",
+        "T1021.002",
+        "T1071.003",
+        "T1048.001"
+    ],
+    "actual_found_ids": [
+        "T1569.003",
+        "T1132",
+        "T1584.003",
+        "T1078.003",
+        "T1056.001",
+        "T1071.003",
+        "T1021.002",
+        "T1048.001",
+        "T1589",
+        "T1059.001",
+        "T1588.007",
+        "T1553.005",
+        "T1105",
+        "T1602",
+        "T1112",
+        "T1046"
+    ],
+    "clean_text": "Background: On March 15, 2024, a fictional energy utility company, 'GridSecure Inc.', reported anomalous network activity originating from an employee workstation. Initial logs showed unusual PowerShell executions and outbound connections to an unknown AWS EC2 instance. The company, which manages regional power distribution, had recently undergone a digital transformation, integrating legacy SCADA systems with cloud-based monitoring platforms, though no prior incidents were noted in their SIEM over the past six months.\n\nKill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance to identify vulnerable endpoints, though specific techniques are not confirmed in this scenario. They then leveraged a Virtual Private Server (VPS), specifically an AWS EC2 instance, to establish anonymous command and control infrastructure while using an Artificial Intelligence (AI) mechanism to automate persistence by executing malicious.ps1 scripts on the compromised host.\n- Execution: The adversary employed PowerShell to actively download malicious payloads, including a malicious ISO file designed to bypass Mark-of-the-Web detection, which contained hidden malware that was mounted and executed to initiate further actions.\n- Persistence: After gaining access, the attacker used Systemctl to run 'systemctl start malicious-service' and launch their custom service, while simultaneously modifying registry keys to ensure the malware survived reboots and maintained long-term access to the system.\n- Privilege Escalation: The infection script harvested saved credentials from Windows Credential Manager for local account takeover, enabling elevation to administrative privileges and allowing the actors to access restricted system areas without triggering standard alerts.\n- Defense Evasion: To avoid detection, the malware implemented keylogging capabilities to monitor user communications and extract sensitive data, while also using Data Encoding, such as an altered version of base64, to obfuscate C2 traffic and blend in with normal network activity.\n- Credential Access: Malicious scripts extracted configuration data from the local Group Policy repository, gathering additional credentials and system settings that could be leveraged for lateral movement across the network, as observed in unrelated log entries showing failed login attempts from internal IPs.\n- Discovery: The actors conducted internal network scanning to identify additional targets, though this was not a primary focus in the provided logs, which also included benign system updates and routine backup processes.\n- Lateral Movement: Using compromised local accounts, the attacker moved laterally to other workstations, though specific techniques like Pass-the-Hash were not observed in this instance.\n- Collection: Data was aggregated from keylogged inputs and configuration files, with the malware employing symmetric encryption for exfiltration.\n- Command and Control (C2): RDAT can use Mail Protocols, such as email attachments, for C2 communications, allowing the actors to send commands and receive data through seemingly legitimate channels without raising immediate suspicions.\n- Exfiltration: The final stage involved Exfiltration Over Symmetric Encrypted Non-C2 Protocol, where data was encrypted with the RC4 algorithm and then uploaded to a cloud storage service, ensuring stealthy data theft without direct C2 channel usage. Post-incident, GridSecure Inc. initiated containment procedures, including isolating affected systems and reviewing firewall rules, though full recovery is estimated to take several weeks due to the complexity of the attack.\n\nRecommendations: Blue teams should monitor for unusual PowerShell activity, VPS connections, and encoded network traffic, while implementing strict access controls and regular credential audits to mitigate similar threats.",
+    "tagged_text": "Background: On March 15, 2024, a fictional energy utility company, 'GridSecure Inc.', reported anomalous network activity originating from an employee workstation. Initial logs showed unusual PowerShell executions and outbound connections to an unknown AWS EC2 instance. The company, which manages regional power distribution, had recently undergone a digital transformation, integrating legacy SCADA systems with cloud-based monitoring platforms, though no prior incidents were noted in their SIEM over the past six months.\n\nKill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify vulnerable endpoints, though specific techniques are not confirmed in this scenario. They then leveraged a Virtual Private Server (VPS) [T1584.003], specifically an AWS EC2 instance, to establish anonymous command and control infrastructure while using an Artificial Intelligence (AI) mechanism [T1588.007] to automate persistence by executing malicious.ps1 scripts on the compromised host.\n- Execution: The adversary employed PowerShell [T1059.001] to actively download malicious payloads [T1105], including a malicious ISO file designed to bypass Mark-of-the-Web detection [T1553.005], which contained hidden malware that was mounted and executed to initiate further actions.\n- Persistence: After gaining access, the attacker used Systemctl [T1569.003] to run 'systemctl start malicious-service' and launch their custom service, while simultaneously modifying registry keys [T1112] to ensure the malware survived reboots and maintained long-term access to the system.\n- Privilege Escalation: The infection script harvested saved credentials from Windows Credential Manager [T1078.003] for local account takeover, enabling elevation to administrative privileges and allowing the actors to access restricted system areas without triggering standard alerts.\n- Defense Evasion: To avoid detection, the malware implemented keylogging capabilities [T1056.001] to monitor user communications and extract sensitive data, while also using Data Encoding [T1132], such as an altered version of base64, to obfuscate C2 traffic and blend in with normal network activity.\n- Credential Access: Malicious scripts extracted configuration data from the local Group Policy repository [T1602], gathering additional credentials and system settings that could be leveraged for lateral movement across the network, as observed in unrelated log entries showing failed login attempts from internal IPs.\n- Discovery: The actors conducted internal network scanning [T1046] to identify additional targets, though this was not a primary focus in the provided logs, which also included benign system updates and routine backup processes.\n- Lateral Movement: Using compromised local accounts, the attacker moved laterally to other workstations [T1021.002], though specific techniques like Pass-the-Hash were not observed in this instance.\n- Collection: Data was aggregated from keylogged inputs and configuration files, with the malware employing symmetric encryption for exfiltration.\n- Command and Control (C2): RDAT can use Mail Protocols [T1071.003], such as email attachments, for C2 communications, allowing the actors to send commands and receive data through seemingly legitimate channels without raising immediate suspicions.\n- Exfiltration: The final stage involved Exfiltration Over Symmetric Encrypted Non-C2 Protocol [T1048.001], where data was encrypted with the RC4 algorithm and then uploaded to a cloud storage service, ensuring stealthy data theft without direct C2 channel usage. Post-incident, GridSecure Inc. initiated containment procedures, including isolating affected systems and reviewing firewall rules, though full recovery is estimated to take several weeks due to the complexity of the attack.\n\nRecommendations: Blue teams should monitor for unusual PowerShell activity, VPS connections, and encoded network traffic, while implementing strict access controls and regular credential audits to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Kill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance to identify vulnerable endpoints, though specific techniques are not confirmed in this scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to actively download malicious payloads, including a malicious ISO file designed to bypass Mark-of-the-Web detection [T1553.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "003] to run 'systemctl start malicious-service' and launch their custom service, while simultaneously modifying registry keys to ensure the malware survived reboots and maintained long-term access to the system.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "001] to monitor user communications and extract sensitive data, while also using Data Encoding, such as an altered version of base64, to obfuscate C2 traffic and blend in with normal network activity.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        },
+        {
+            "sentence": "- Credential Access: Malicious scripts extracted configuration data from the local Group Policy repository, gathering additional credentials and system settings that could be leveraged for lateral movement across the network, as observed in unrelated log entries showing failed login attempts from internal IPs.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "- Discovery: The actors conducted internal network scanning to identify additional targets, though this was not a primary focus in the provided logs, which also included benign system updates and routine backup processes.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowScribe' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowScribe' against a critical infrastructure organization, involving AI-driven persistence, VPS-based C2, and multi-protocol data exfiltration for blue team training.",
+        "full_report_text": "Background: On March 15, 2024, a fictional energy utility company, 'GridSecure Inc.', reported anomalous network activity originating from an employee workstation. Initial logs showed unusual PowerShell executions and outbound connections to an unknown AWS EC2 instance. The company, which manages regional power distribution, had recently undergone a digital transformation, integrating legacy SCADA systems with cloud-based monitoring platforms, though no prior incidents were noted in their SIEM over the past six months.\n\nKill-Chain Analysis:\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify vulnerable endpoints, though specific techniques are not confirmed in this scenario. They then leveraged a Virtual Private Server (VPS) [T1584.003], specifically an AWS EC2 instance, to establish anonymous command and control infrastructure while using an Artificial Intelligence (AI) mechanism [T1588.007] to automate persistence by executing malicious.ps1 scripts on the compromised host.\n- Execution: The adversary employed PowerShell [T1059.001] to actively download malicious payloads [T1105], including a malicious ISO file designed to bypass Mark-of-the-Web detection [T1553.005], which contained hidden malware that was mounted and executed to initiate further actions.\n- Persistence: After gaining access, the attacker used Systemctl [T1569.003] to run 'systemctl start malicious-service' and launch their custom service, while simultaneously modifying registry keys [T1112] to ensure the malware survived reboots and maintained long-term access to the system.\n- Privilege Escalation: The infection script harvested saved credentials from Windows Credential Manager [T1078.003] for local account takeover, enabling elevation to administrative privileges and allowing the actors to access restricted system areas without triggering standard alerts.\n- Defense Evasion: To avoid detection, the malware implemented keylogging capabilities [T1056.001] to monitor user communications and extract sensitive data, while also using Data Encoding [T1132], such as an altered version of base64, to obfuscate C2 traffic and blend in with normal network activity.\n- Credential Access: Malicious scripts extracted configuration data from the local Group Policy repository [T1602], gathering additional credentials and system settings that could be leveraged for lateral movement across the network, as observed in unrelated log entries showing failed login attempts from internal IPs.\n- Discovery: The actors conducted internal network scanning [T1046] to identify additional targets, though this was not a primary focus in the provided logs, which also included benign system updates and routine backup processes.\n- Lateral Movement: Using compromised local accounts, the attacker moved laterally to other workstations [T1021.002], though specific techniques like Pass-the-Hash were not observed in this instance.\n- Collection: Data was aggregated from keylogged inputs and configuration files, with the malware employing symmetric encryption for exfiltration.\n- Command and Control (C2): RDAT can use Mail Protocols [T1071.003], such as email attachments, for C2 communications, allowing the actors to send commands and receive data through seemingly legitimate channels without raising immediate suspicions.\n- Exfiltration: The final stage involved Exfiltration Over Symmetric Encrypted Non-C2 Protocol [T1048.001], where data was encrypted with the RC4 algorithm and then uploaded to a cloud storage service, ensuring stealthy data theft without direct C2 channel usage. Post-incident, GridSecure Inc. initiated containment procedures, including isolating affected systems and reviewing firewall rules, though full recovery is estimated to take several weeks due to the complexity of the attack.\n\nRecommendations: Blue teams should monitor for unusual PowerShell activity, VPS connections, and encoded network traffic, while implementing strict access controls and regular credential audits to mitigate similar threats.",
+        "techniques_used": [
+            "T1589",
+            "T1584.003",
+            "T1588.007",
+            "T1059.001",
+            "T1105",
+            "T1553.005",
+            "T1569.003",
+            "T1112",
+            "T1078.003",
+            "T1056.001",
+            "T1132",
+            "T1602",
+            "T1046",
+            "T1021.002",
+            "T1071.003",
+            "T1048.001"
+        ]
+    }
+}

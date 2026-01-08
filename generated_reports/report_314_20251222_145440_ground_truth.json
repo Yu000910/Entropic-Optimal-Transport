@@ -1,0 +1,93 @@
+{
+    "report_id": "report_314",
+    "generated_at": "20251222_145440",
+    "scenario_target_ids": [
+        "T1091",
+        "T1078.002",
+        "T1059.007",
+        "T1547.006",
+        "T1056.003",
+        "T1016.002",
+        "T1497.002",
+        "T1083",
+        "T1602.002",
+        "T1132.002",
+        "T1090"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1091",
+        "T1078.002",
+        "T1059.007",
+        "T1547.006",
+        "T1056.003",
+        "T1016.002",
+        "T1497.002",
+        "T1083",
+        "T1602.002",
+        "T1132.002",
+        "T1090"
+    ],
+    "actual_found_ids": [
+        "T1547.006",
+        "T1059.007",
+        "T1016.002",
+        "T1497.002",
+        "T1091",
+        "T1056.003",
+        "T1602.002",
+        "T1083",
+        "T1090",
+        "T1078.002",
+        "T1132.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor designated as 'Grimoire', which has been observed targeting energy and manufacturing sectors in a simulated environment. This report is based on a training scenario designed to enhance blue team detection capabilities.\n\n**Initial Access:** The actors likely conducted reconnaissance through social media profiling and network scanning, though no specific techniques are tagged here. Initial compromise was achieved by planting malicious USB drives in target facilities, leveraging social engineering to trick employees into inserting them, which allowed the malware to replicate across systems. Logs from endpoint detection systems showed unusual USB activity on multiple workstations, but this was initially dismissed as user error.\n\n**Execution:** Upon insertion, the USB drives executed a JavaScript-based payload that downloaded additional components from a command-and-control (C2) server. The malware then used stolen domain credentials to move laterally within the network, accessing administrative shares and systems. System administrators reported failed login attempts on domain controllers, but these were attributed to password expiration policies.\n\n**Persistence:** To maintain access, the actors installed a custom kernel module that provided backdoor functionality, allowing them to bypass security controls and remain undetected. This module was signed with a stolen certificate, making it appear legitimate to antivirus software. Network traffic analysis revealed sporadic connections to external IPs, but these were masked as legitimate updates.\n\n**Credential Access:** The malware implemented a web portal capture mechanism by redirecting login pages to attacker-controlled sites, harvesting credentials as users attempted to change passwords. Additionally, it performed Wi-Fi discovery to gather wireless network credentials from infected machines, using commands like 'netsh wlan show profile key=clear'. Internal audits noted discrepancies in credential databases, but no immediate action was taken.\n\n**Discovery:** The actors conducted file and directory discovery to enumerate sensitive documents and configuration files, and performed network device configuration dumps via SNMP GET requests to extract router and switch settings. They also employed user activity-based checks by scanning process listings for analysis tools like 'malware.exe' to evade detection in sandbox environments. Logs from file servers showed unauthorized access to engineering diagrams, but this was logged as routine backup activity.\n\n**Exfiltration:** Data was exfiltrated using a proxy to obfuscate traffic, with communications encoded using a non-standard encoding scheme based on modified Base64 with custom character substitutions. The exfiltration occurred during off-peak hours to blend with normal network traffic. Incident response teams later identified anomalous outbound flows to unknown domains, but initial investigations focused on misconfigured firewalls.\n\n**Mitigation Recommendations:** Organizations should implement strict USB usage policies, monitor for unusual kernel module loads, and use multi-factor authentication to protect domain accounts. Regular audits of network device configurations and encryption of sensitive data in transit are also advised. This scenario highlights the importance of correlating disparate logs to detect sophisticated attack chains.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor designated as 'Grimoire', which has been observed targeting energy and manufacturing sectors in a simulated environment. This report is based on a training scenario designed to enhance blue team detection capabilities.\n\n**Initial Access:** The actors likely conducted reconnaissance through social media profiling and network scanning, though no specific techniques are tagged here. Initial compromise was achieved by planting malicious USB drives in target facilities, leveraging social engineering to trick employees into inserting them, which allowed the malware to replicate across systems [T1091]. Logs from endpoint detection systems showed unusual USB activity on multiple workstations, but this was initially dismissed as user error.\n\n**Execution:** Upon insertion, the USB drives executed a JavaScript-based payload [T1059.007] that downloaded additional components from a command-and-control (C2) server. The malware then used stolen domain credentials [T1078.002] to move laterally within the network, accessing administrative shares and systems. System administrators reported failed login attempts on domain controllers, but these were attributed to password expiration policies.\n\n**Persistence:** To maintain access, the actors installed a custom kernel module [T1547.006] that provided backdoor functionality, allowing them to bypass security controls and remain undetected. This module was signed with a stolen certificate, making it appear legitimate to antivirus software. Network traffic analysis revealed sporadic connections to external IPs, but these were masked as legitimate updates.\n\n**Credential Access:** The malware implemented a web portal capture mechanism [T1056.003] by redirecting login pages to attacker-controlled sites, harvesting credentials as users attempted to change passwords. Additionally, it performed Wi-Fi discovery [T1016.002] to gather wireless network credentials from infected machines, using commands like 'netsh wlan show profile key=clear'. Internal audits noted discrepancies in credential databases, but no immediate action was taken.\n\n**Discovery:** The actors conducted file and directory discovery [T1083] to enumerate sensitive documents and configuration files, and performed network device configuration dumps [T1602.002] via SNMP GET requests to extract router and switch settings. They also employed user activity-based checks [T1497.002] by scanning process listings for analysis tools like 'malware.exe' to evade detection in sandbox environments. Logs from file servers showed unauthorized access to engineering diagrams, but this was logged as routine backup activity.\n\n**Exfiltration:** Data was exfiltrated using a proxy [T1090] to obfuscate traffic, with communications encoded using a non-standard encoding scheme [T1132.002] based on modified Base64 with custom character substitutions. The exfiltration occurred during off-peak hours to blend with normal network traffic. Incident response teams later identified anomalous outbound flows to unknown domains, but initial investigations focused on misconfigured firewalls.\n\n**Mitigation Recommendations:** Organizations should implement strict USB usage policies, monitor for unusual kernel module loads, and use multi-factor authentication to protect domain accounts. Regular audits of network device configurations and encryption of sensitive data in transit are also advised. This scenario highlights the importance of correlating disparate logs to detect sophisticated attack chains.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial compromise was achieved by planting malicious USB drives in target facilities, leveraging social engineering to trick employees into inserting them, which allowed the malware to replicate across systems.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "**Discovery:** The actors conducted file and directory discovery to enumerate sensitive documents and configuration files, and performed network device configuration dumps [T1602.",
+            "technique_id": "T1083",
+            "technique_name": "File and Directory Discovery"
+        },
+        {
+            "sentence": "**Exfiltration:** Data was exfiltrated using a proxy to obfuscate traffic, with communications encoded using a non-standard encoding scheme [T1132.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional Threat Actor 'Grimoire'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Grimoire' targeting critical infrastructure sectors, using techniques such as removable media replication, credential theft, and custom kernel modules for persistence. The campaign involves initial access via USB drives, execution through JavaScript payloads, and exfiltration via proxies with non-standard encoding.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional threat actor designated as 'Grimoire', which has been observed targeting energy and manufacturing sectors in a simulated environment. This report is based on a training scenario designed to enhance blue team detection capabilities.\n\n**Initial Access:** The actors likely conducted reconnaissance through social media profiling and network scanning, though no specific techniques are tagged here. Initial compromise was achieved by planting malicious USB drives in target facilities, leveraging social engineering to trick employees into inserting them, which allowed the malware to replicate across systems [T1091]. Logs from endpoint detection systems showed unusual USB activity on multiple workstations, but this was initially dismissed as user error.\n\n**Execution:** Upon insertion, the USB drives executed a JavaScript-based payload [T1059.007] that downloaded additional components from a command-and-control (C2) server. The malware then used stolen domain credentials [T1078.002] to move laterally within the network, accessing administrative shares and systems. System administrators reported failed login attempts on domain controllers, but these were attributed to password expiration policies.\n\n**Persistence:** To maintain access, the actors installed a custom kernel module [T1547.006] that provided backdoor functionality, allowing them to bypass security controls and remain undetected. This module was signed with a stolen certificate, making it appear legitimate to antivirus software. Network traffic analysis revealed sporadic connections to external IPs, but these were masked as legitimate updates.\n\n**Credential Access:** The malware implemented a web portal capture mechanism [T1056.003] by redirecting login pages to attacker-controlled sites, harvesting credentials as users attempted to change passwords. Additionally, it performed Wi-Fi discovery [T1016.002] to gather wireless network credentials from infected machines, using commands like 'netsh wlan show profile key=clear'. Internal audits noted discrepancies in credential databases, but no immediate action was taken.\n\n**Discovery:** The actors conducted file and directory discovery [T1083] to enumerate sensitive documents and configuration files, and performed network device configuration dumps [T1602.002] via SNMP GET requests to extract router and switch settings. They also employed user activity-based checks [T1497.002] by scanning process listings for analysis tools like 'malware.exe' to evade detection in sandbox environments. Logs from file servers showed unauthorized access to engineering diagrams, but this was logged as routine backup activity.\n\n**Exfiltration:** Data was exfiltrated using a proxy [T1090] to obfuscate traffic, with communications encoded using a non-standard encoding scheme [T1132.002] based on modified Base64 with custom character substitutions. The exfiltration occurred during off-peak hours to blend with normal network traffic. Incident response teams later identified anomalous outbound flows to unknown domains, but initial investigations focused on misconfigured firewalls.\n\n**Mitigation Recommendations:** Organizations should implement strict USB usage policies, monitor for unusual kernel module loads, and use multi-factor authentication to protect domain accounts. Regular audits of network device configurations and encryption of sensitive data in transit are also advised. This scenario highlights the importance of correlating disparate logs to detect sophisticated attack chains.",
+        "techniques_used": [
+            "T1091",
+            "T1078.002",
+            "T1059.007",
+            "T1547.006",
+            "T1056.003",
+            "T1016.002",
+            "T1497.002",
+            "T1083",
+            "T1602.002",
+            "T1132.002",
+            "T1090"
+        ]
+    }
+}

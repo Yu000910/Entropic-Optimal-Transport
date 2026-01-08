@@ -1,0 +1,68 @@
+{
+    "report_id": "report_75",
+    "generated_at": "20251222_131651",
+    "scenario_target_ids": [
+        "T1133",
+        "T1053.006",
+        "T1569.001",
+        "T1027.013",
+        "T1027.017",
+        "T1219.002",
+        "T1011.001",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1133",
+        "T1053.006",
+        "T1569.001",
+        "T1027.013",
+        "T1027.017",
+        "T1219.002",
+        "T1011.001",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1011.001",
+        "T1053.006",
+        "T1027.017",
+        "T1565.003",
+        "T1569.001",
+        "T1027.013",
+        "T1133",
+        "T1219.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a simulated APT campaign, designated FICT-APT-2024-01, observed targeting organizations in the financial and technology sectors. This campaign leverages a combination of cloud misconfigurations and endpoint exploitation to achieve persistence, data theft, and remote access.\n\nInitial Access: The actors gained initial foothold by exploiting an unsecured kubelet service that allowed anonymous access to the victim's Kubernetes environment. This provided direct entry into the containerized infrastructure without authentication.\n\nExecution and Persistence: Upon access, the adversary established persistence by configuring a systemd timer to execute a backdoor script every hour and simultaneously used Launchctl to submit a malicious job as a system service on macOS endpoints, ensuring continuous execution across different operating systems.\n\nDefense Evasion: To evade detection, the malware employed multiple obfuscation techniques, including downloading additional files that were base64-encoded and encrypted with a custom cipher and writing a malicious SVG file with embedded VBScript to bypass file type restrictions and deliver payloads.\n\nCommand and Control: The actors utilized legitimate remote desktop software, such as TeamViewer, to maintain access to compromised machines, blending in with normal network traffic to avoid suspicion.\n\nExfiltration: Stolen intellectual property was exfiltrated by exploiting the Bluetooth service discovery protocol to transfer data over short-range wireless connections, a method often overlooked in traditional network monitoring.\n\nImpact: The trojan modified critical application executables to present fake login screens that capture user credentials, leading to credential theft and potential lateral movement.\n\nAdditional Context: The victim organization, a mid-sized tech firm, reported unusual network activity from its development servers, with logs showing multiple failed login attempts from unknown IP addresses prior to the incident. System administrators noted increased CPU usage on several containers, but initial scans did not detect the encrypted payloads. The campaign is believed to have been active for approximately two weeks before detection, during which time sensitive design documents were accessed. No real-world impact has occurred, as this is a training scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a simulated APT campaign, designated FICT-APT-2024-01, observed targeting organizations in the financial and technology sectors. This campaign leverages a combination of cloud misconfigurations and endpoint exploitation to achieve persistence, data theft, and remote access.\n\nInitial Access: The actors gained initial foothold by exploiting an unsecured kubelet service that allowed anonymous access to the victim's Kubernetes environment [T1133]. This provided direct entry into the containerized infrastructure without authentication.\n\nExecution and Persistence: Upon access, the adversary established persistence by configuring a systemd timer to execute a backdoor script every hour [T1053.006] and simultaneously used Launchctl to submit a malicious job as a system service on macOS endpoints [T1569.001], ensuring continuous execution across different operating systems.\n\nDefense Evasion: To evade detection, the malware employed multiple obfuscation techniques, including downloading additional files that were base64-encoded and encrypted with a custom cipher [T1027.013] and writing a malicious SVG file with embedded VBScript to bypass file type restrictions and deliver payloads [T1027.017].\n\nCommand and Control: The actors utilized legitimate remote desktop software, such as TeamViewer, to maintain access to compromised machines [T1219.002], blending in with normal network traffic to avoid suspicion.\n\nExfiltration: Stolen intellectual property was exfiltrated by exploiting the Bluetooth service discovery protocol to transfer data over short-range wireless connections [T1011.001], a method often overlooked in traditional network monitoring.\n\nImpact: The trojan modified critical application executables to present fake login screens that capture user credentials [T1565.003], leading to credential theft and potential lateral movement.\n\nAdditional Context: The victim organization, a mid-sized tech firm, reported unusual network activity from its development servers, with logs showing multiple failed login attempts from unknown IP addresses prior to the incident. System administrators noted increased CPU usage on several containers, but initial scans did not detect the encrypted payloads. The campaign is believed to have been active for approximately two weeks before detection, during which time sensitive design documents were accessed. No real-world impact has occurred, as this is a training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors gained initial foothold by exploiting an unsecured kubelet service that allowed anonymous access to the victim's Kubernetes environment.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Cloud and Endpoint Environments",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) actor targeting organizations with unsecured cloud services and endpoint systems. The campaign involves initial access through misconfigured external services, persistence via system mechanisms, data exfiltration using unconventional methods, and credential theft through runtime manipulation. Blue teams should use this report for training to identify and mitigate such tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a simulated APT campaign, designated FICT-APT-2024-01, observed targeting organizations in the financial and technology sectors. This campaign leverages a combination of cloud misconfigurations and endpoint exploitation to achieve persistence, data theft, and remote access.\n\nInitial Access: The actors gained initial foothold by exploiting an unsecured kubelet service that allowed anonymous access to the victim's Kubernetes environment [T1133]. This provided direct entry into the containerized infrastructure without authentication.\n\nExecution and Persistence: Upon access, the adversary established persistence by configuring a systemd timer to execute a backdoor script every hour [T1053.006] and simultaneously used Launchctl to submit a malicious job as a system service on macOS endpoints [T1569.001], ensuring continuous execution across different operating systems.\n\nDefense Evasion: To evade detection, the malware employed multiple obfuscation techniques, including downloading additional files that were base64-encoded and encrypted with a custom cipher [T1027.013] and writing a malicious SVG file with embedded VBScript to bypass file type restrictions and deliver payloads [T1027.017].\n\nCommand and Control: The actors utilized legitimate remote desktop software, such as TeamViewer, to maintain access to compromised machines [T1219.002], blending in with normal network traffic to avoid suspicion.\n\nExfiltration: Stolen intellectual property was exfiltrated by exploiting the Bluetooth service discovery protocol to transfer data over short-range wireless connections [T1011.001], a method often overlooked in traditional network monitoring.\n\nImpact: The trojan modified critical application executables to present fake login screens that capture user credentials [T1565.003], leading to credential theft and potential lateral movement.\n\nAdditional Context: The victim organization, a mid-sized tech firm, reported unusual network activity from its development servers, with logs showing multiple failed login attempts from unknown IP addresses prior to the incident. System administrators noted increased CPU usage on several containers, but initial scans did not detect the encrypted payloads. The campaign is believed to have been active for approximately two weeks before detection, during which time sensitive design documents were accessed. No real-world impact has occurred, as this is a training scenario.",
+        "techniques_used": [
+            "T1133",
+            "T1053.006",
+            "T1569.001",
+            "T1027.013",
+            "T1027.017",
+            "T1219.002",
+            "T1011.001",
+            "T1565.003"
+        ]
+    }
+}

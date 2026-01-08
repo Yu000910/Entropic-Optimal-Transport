@@ -1,0 +1,78 @@
+{
+    "report_id": "report_245",
+    "generated_at": "20251222_142606",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1059.009",
+        "T1525",
+        "T1547.013",
+        "T1558.004",
+        "T1568",
+        "T1568.003",
+        "T1561.002",
+        "T1498.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1059.009",
+        "T1525",
+        "T1547.013",
+        "T1558.004",
+        "T1568",
+        "T1568.003",
+        "T1561.002",
+        "T1498.002"
+    ],
+    "actual_found_ids": [
+        "T1525",
+        "T1547.013",
+        "T1561.002",
+        "T1558.004",
+        "T1059.009",
+        "T1568.003",
+        "T1568",
+        "T1498.002",
+        "T1078.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity targeting corporate networks with cloud and containerized infrastructure. This campaign, attributed to a fictional threat actor group designated as 'Crimson Void', demonstrates a multi-phase attack leveraging initial access through compromised default local administrator accounts to propagate ransomware across the network. Following initial compromise, the actors employed cloud API commands to disable firewall protections by executing 'netsh advfirewall set allprofiles state off' while simultaneously deploying a backdoored Docker image with embedded payloads to maintain persistence in container environments. For further persistence on Linux systems, the malware added a .desktop configuration file to the user's ~/.config/autostart directory to ensure automatic execution upon login. The actors then escalated privileges by dumping Kerberos credentials from LSASS process memory using PowerShell to facilitate lateral movement. To evade detection, the compromised system executed malware to maintain C2 communication and utilized a custom Python script for DNS query pattern calculation to bypass network egress filters. In the final stages, the ransomware overwrote the Master Boot Record with a malicious bootloader to disrupt system boot processes, and the campaign concluded with a DDoS attack using NTP monlist requests to generate amplified traffic against the victim's network. Log analysis from the fictional company 'TechGlobal Inc.' showed unusual spikes in DNS queries and failed authentication attempts from default accounts, though these were initially dismissed as routine noise. Background: TechGlobal Inc. operates a hybrid cloud environment with legacy Windows servers and modern Kubernetes clusters, making it a prime target for such attacks. The incident response team noted that default account passwords had not been rotated in over two years, highlighting common security oversights.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity targeting corporate networks with cloud and containerized infrastructure. This campaign, attributed to a fictional threat actor group designated as 'Crimson Void', demonstrates a multi-phase attack leveraging initial access through compromised default local administrator accounts [T1078.001] to propagate ransomware across the network. Following initial compromise, the actors employed cloud API commands [T1059.009] to disable firewall protections by executing 'netsh advfirewall set allprofiles state off' while simultaneously deploying a backdoored Docker image with embedded payloads [T1525] to maintain persistence in container environments. For further persistence on Linux systems, the malware added a .desktop configuration file to the user's ~/.config/autostart directory [T1547.013] to ensure automatic execution upon login. The actors then escalated privileges by dumping Kerberos credentials from LSASS process memory using PowerShell [T1558.004] to facilitate lateral movement. To evade detection, the compromised system executed malware to maintain C2 communication [T1568] and utilized a custom Python script for DNS query pattern calculation [T1568.003] to bypass network egress filters. In the final stages, the ransomware overwrote the Master Boot Record with a malicious bootloader [T1561.002] to disrupt system boot processes, and the campaign concluded with a DDoS attack using NTP monlist requests [T1498.002] to generate amplified traffic against the victim's network. Log analysis from the fictional company 'TechGlobal Inc.' showed unusual spikes in DNS queries and failed authentication attempts from default accounts, though these were initially dismissed as routine noise. Background: TechGlobal Inc. operates a hybrid cloud environment with legacy Windows servers and modern Kubernetes clusters, making it a prime target for such attacks. The incident response team noted that default account passwords had not been rotated in over two years, highlighting common security oversights.",
+    "sentence_annotations": [
+        {
+            "sentence": "009] to disable firewall protections by executing 'netsh advfirewall set allprofiles state off' while simultaneously deploying a backdoored Docker image with embedded payloads to maintain persistence in container environments.",
+            "technique_id": "T1525",
+            "technique_name": "Implant Internal Image"
+        },
+        {
+            "sentence": "To evade detection, the compromised system executed malware to maintain C2 communication and utilized a custom Python script for DNS query pattern calculation [T1568.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Ransomware Campaign Targeting Cloud and Container Environments",
+        "summary": "This advisory details a fictional ransomware campaign designed for blue team training, where threat actors exploited default accounts, disabled security controls via cloud APIs, deployed backdoored container images, and utilized advanced persistence and evasion techniques, culminating in data destruction and DDoS attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity targeting corporate networks with cloud and containerized infrastructure. This campaign, attributed to a fictional threat actor group designated as 'Crimson Void', demonstrates a multi-phase attack leveraging initial access through compromised default local administrator accounts [T1078.001] to propagate ransomware across the network. Following initial compromise, the actors employed cloud API commands [T1059.009] to disable firewall protections by executing 'netsh advfirewall set allprofiles state off' while simultaneously deploying a backdoored Docker image with embedded payloads [T1525] to maintain persistence in container environments. For further persistence on Linux systems, the malware added a .desktop configuration file to the user's ~/.config/autostart directory [T1547.013] to ensure automatic execution upon login. The actors then escalated privileges by dumping Kerberos credentials from LSASS process memory using PowerShell [T1558.004] to facilitate lateral movement. To evade detection, the compromised system executed malware to maintain C2 communication [T1568] and utilized a custom Python script for DNS query pattern calculation [T1568.003] to bypass network egress filters. In the final stages, the ransomware overwrote the Master Boot Record with a malicious bootloader [T1561.002] to disrupt system boot processes, and the campaign concluded with a DDoS attack using NTP monlist requests [T1498.002] to generate amplified traffic against the victim's network. Log analysis from the fictional company 'TechGlobal Inc.' showed unusual spikes in DNS queries and failed authentication attempts from default accounts, though these were initially dismissed as routine noise. Background: TechGlobal Inc. operates a hybrid cloud environment with legacy Windows servers and modern Kubernetes clusters, making it a prime target for such attacks. The incident response team noted that default account passwords had not been rotated in over two years, highlighting common security oversights.",
+        "techniques_used": [
+            "T1078.001",
+            "T1059.009",
+            "T1525",
+            "T1547.013",
+            "T1558.004",
+            "T1568",
+            "T1568.003",
+            "T1561.002",
+            "T1498.002"
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign, 'ShadowCrypt', observed targeting financial organizations in a training scenario. This campaign demonstrates a multi-stage attack designed to exfiltrate sensitive data and deploy ransomware.
+
+Background: The fictional victim, 'Global Finance Corp', reported anomalous network activity after employees accessed a compromised industry news website. Initial logs from their SIEM showed spikes in outbound FTP traffic and unauthorized file modifications in shared directories.
+
+Attack Narrative:
+1. Initial Access: The actors likely conducted reconnaissance [T1589] to identify targets, then compromised a legitimate financial news website, injecting malicious JavaScript to exploit browser vulnerabilities in a drive-by compromise [T1189].
+2. Execution and Persistence: Upon successful exploitation, the malware employed PowerShell [T1059.001] to download a ransomware payload [T1105] and establish persistence by writing to the HKLM\SOFTWARE\Microsoft\Netsh registry to load a malicious DLL through netsh [T1546.007].
+3. Discovery and Lateral Movement: The ransomware executed cron jobs [T1053.003] to periodically encrypt new files in specific directories while using the GetLocaleInfoW API function to identify the system's country and language settings for targeted encryption [T1614]. A compromised user account then wrote the ransomware executable to a company-wide shared storage location, tainting shared content [T1080] to spread across the network.
+4. Command and Control: The actors configured the knockd service and firewall rules to only accept C2 connections from systems using a specified sequence of knock ports, implementing port knocking [T1205.001] to evade detection.
+5. Exfiltration: Finally, the attacker used FTP to transfer stolen database files to an external server, performing exfiltration over an alternative protocol [T1048].
+
+Irrelevant Information: Global Finance Corp's internal investigation noted that the compromised website had previously passed security audits, and their firewall logs showed normal traffic patterns during off-hours, with no prior alerts for the injected JavaScript. The company's backup systems were unaffected, but restoration took 48 hours due to procedural delays.
+
+Recommendations: Organizations should implement web filtering, monitor for unusual cron job activity, audit registry changes related to netsh, and scrutinize FTP traffic for anomalies. This fictional scenario underscores the importance of layered defenses and continuous monitoring.

@@ -1,0 +1,103 @@
+{
+    "report_id": "report_773",
+    "generated_at": "20251223_110825",
+    "scenario_target_ids": [
+        "T1588.007",
+        "T1189",
+        "T1053.007",
+        "T1059.003",
+        "T1558",
+        "T1210",
+        "T1025",
+        "T1056",
+        "T1102",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1588.007",
+        "T1189",
+        "T1053.007",
+        "T1059.003",
+        "T1558",
+        "T1210",
+        "T1025",
+        "T1056",
+        "T1102",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1059.003",
+        "T1588.007",
+        "T1558",
+        "T1189",
+        "T1053.007",
+        "T1056",
+        "T1496.004",
+        "T1025",
+        "T1210",
+        "T1102"
+    ],
+    "clean_text": "Background: CRIMSON SHADOW is a fictional advanced persistent threat (APT) group assessed with moderate confidence to be state-sponsored, targeting energy and financial sectors globally. Initial detection occurred on 2023-10-15 via anomalous network traffic from a subsidiary's web server, which had been compromised three weeks prior. System logs from the affected environment show increased CPU usage on container hosts, but no immediate alerts were triggered due to misconfigured SIEM rules.\n\nAttack Narrative: The campaign began with reconnaissance, where actors likely identified vulnerable third-party websites associated with target organizations. They compromised three Japanese websites using a Flash exploit to perform watering hole attacks, redirecting visitors to malicious domains that delivered payloads via drive-by compromises. Upon initial access, the adversary employed artificial intelligence tools to automate the execution of malicious scripts, such as malicious.ps1, which was scheduled via tasks to perform data exfiltration. Concurrently, they used Windows Command Shell to run BAT files for installation and persistence, while actively searching for and encrypting files from removable media like USB drives to upload sensitive data. To escalate privileges, the actors exploited remote services by leveraging Mimikatz against a domain controller via the ZeroLogon exploit (CVE-2020-1472), allowing them to steal or forge Kerberos tickets using klist.exe to list cached tickets from the target system. In the lateral movement phase, they created a CronJob as a container orchestration job to periodically execute a container that harvested credentials from other pods, while implementing input capture techniques to collect mouse events for monitoring user activity. For command and control, EXOTIC LILY-associated tactics were mimicked, using web services such as WeTransfer and OneDrive to deliver additional payloads and exfiltrate data. Finally, in the impact stage, compromised credentials were used to make repeated SNS Publish API calls, hijacking cloud services to consume message quotas and degrade service availability, simulating a denial-of-service effect. Incident response teams noted that the attack chain was sophisticated but left forensic artifacts in container logs and registry entries, which were later analyzed for remediation.\n\nIrrelevant Information: The targeted company, 'Global Energy Solutions Inc.', is a fictional multinational with operations in 15 countries, employing over 10,000 staff. During the investigation, routine maintenance logs from 2023-10-01 showed normal patching activities, and unrelated firewall rules were updated to block legacy protocols, which did not affect the attack timeline. Additionally, a false positive alert was generated for a benign PowerShell script used in accounting software, causing minor disruption to IT operations.",
+    "tagged_text": "Background: CRIMSON SHADOW is a fictional advanced persistent threat (APT) group assessed with moderate confidence to be state-sponsored, targeting energy and financial sectors globally. Initial detection occurred on 2023-10-15 via anomalous network traffic from a subsidiary's web server, which had been compromised three weeks prior. System logs from the affected environment show increased CPU usage on container hosts, but no immediate alerts were triggered due to misconfigured SIEM rules.\n\nAttack Narrative: The campaign began with reconnaissance, where actors likely identified vulnerable third-party websites associated with target organizations. They compromised three Japanese websites using a Flash exploit to perform watering hole attacks [T1189], redirecting visitors to malicious domains that delivered payloads via drive-by compromises. Upon initial access, the adversary employed artificial intelligence tools [T1588.007] to automate the execution of malicious scripts, such as malicious.ps1, which was scheduled via tasks to perform data exfiltration. Concurrently, they used Windows Command Shell [T1059.003] to run BAT files for installation and persistence, while actively searching for and encrypting files from removable media [T1025] like USB drives to upload sensitive data. To escalate privileges, the actors exploited remote services [T1210] by leveraging Mimikatz against a domain controller via the ZeroLogon exploit (CVE-2020-1472), allowing them to steal or forge Kerberos tickets [T1558] using klist.exe to list cached tickets from the target system. In the lateral movement phase, they created a CronJob as a container orchestration job [T1053.007] to periodically execute a container that harvested credentials from other pods, while implementing input capture [T1056] techniques to collect mouse events for monitoring user activity. For command and control, EXOTIC LILY-associated tactics were mimicked, using web services [T1102] such as WeTransfer and OneDrive to deliver additional payloads and exfiltrate data. Finally, in the impact stage, compromised credentials were used to make repeated SNS Publish API calls, hijacking cloud services [T1496.004] to consume message quotas and degrade service availability, simulating a denial-of-service effect. Incident response teams noted that the attack chain was sophisticated but left forensic artifacts in container logs and registry entries, which were later analyzed for remediation.\n\nIrrelevant Information: The targeted company, 'Global Energy Solutions Inc.', is a fictional multinational with operations in 15 countries, employing over 10,000 staff. During the investigation, routine maintenance logs from 2023-10-01 showed normal patching activities, and unrelated firewall rules were updated to block legacy protocols, which did not affect the attack timeline. Additionally, a false positive alert was generated for a benign PowerShell script used in accounting software, causing minor disruption to IT operations.",
+    "sentence_annotations": [
+        {
+            "sentence": "They compromised three Japanese websites using a Flash exploit to perform watering hole attacks, redirecting visitors to malicious domains that delivered payloads via drive-by compromises.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "003] to run BAT files for installation and persistence, while actively searching for and encrypting files from removable media like USB drives to upload sensitive data.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        },
+        {
+            "sentence": "To escalate privileges, the actors exploited remote services by leveraging Mimikatz against a domain controller via the ZeroLogon exploit (CVE-2020-1472), allowing them to steal or forge Kerberos tickets using klist.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "To escalate privileges, the actors exploited remote services by leveraging Mimikatz against a domain controller via the ZeroLogon exploit (CVE-2020-1472), allowing them to steal or forge Kerberos tickets using klist.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        },
+        {
+            "sentence": "007] to periodically execute a container that harvested credentials from other pods, while implementing input capture techniques to collect mouse events for monitoring user activity.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "For command and control, EXOTIC LILY-associated tactics were mimicked, using web services such as WeTransfer and OneDrive to deliver additional payloads and exfiltrate data.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CRIMSON SHADOW' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor CRIMSON SHADOW, which targets critical infrastructure sectors through a multi-stage attack involving watering holes, container exploitation, and credential theft for blue team training. Actors likely used compromised websites to deliver payloads via drive-by compromises [T1189], leveraging artificial intelligence tools [T1588.007] to automate malicious tasks, while employing Windows Command Shell [T1059.003] to execute batch files for initial installation and data exfiltration from removable media [T1025]. The campaign further involved exploitation of remote services [T1210] to gain domain access, steal Kerberos tickets [T1558] using tools like klist.exe, and hijack cloud services [T1496.004] through compromised credentials to disrupt availability. Additionally, adversaries utilized container orchestration jobs [T1053.007] to schedule credential harvesting from pods, input capture [T1056] to monitor user interactions, and web services [T1102] like WeTransfer for payload delivery. This report is based on fictional logs and intelligence to enhance defensive readiness.",
+        "full_report_text": "Background: CRIMSON SHADOW is a fictional advanced persistent threat (APT) group assessed with moderate confidence to be state-sponsored, targeting energy and financial sectors globally. Initial detection occurred on 2023-10-15 via anomalous network traffic from a subsidiary's web server, which had been compromised three weeks prior. System logs from the affected environment show increased CPU usage on container hosts, but no immediate alerts were triggered due to misconfigured SIEM rules.\n\nAttack Narrative: The campaign began with reconnaissance, where actors likely identified vulnerable third-party websites associated with target organizations. They compromised three Japanese websites using a Flash exploit to perform watering hole attacks [T1189], redirecting visitors to malicious domains that delivered payloads via drive-by compromises. Upon initial access, the adversary employed artificial intelligence tools [T1588.007] to automate the execution of malicious scripts, such as malicious.ps1, which was scheduled via tasks to perform data exfiltration. Concurrently, they used Windows Command Shell [T1059.003] to run BAT files for installation and persistence, while actively searching for and encrypting files from removable media [T1025] like USB drives to upload sensitive data. To escalate privileges, the actors exploited remote services [T1210] by leveraging Mimikatz against a domain controller via the ZeroLogon exploit (CVE-2020-1472), allowing them to steal or forge Kerberos tickets [T1558] using klist.exe to list cached tickets from the target system. In the lateral movement phase, they created a CronJob as a container orchestration job [T1053.007] to periodically execute a container that harvested credentials from other pods, while implementing input capture [T1056] techniques to collect mouse events for monitoring user activity. For command and control, EXOTIC LILY-associated tactics were mimicked, using web services [T1102] such as WeTransfer and OneDrive to deliver additional payloads and exfiltrate data. Finally, in the impact stage, compromised credentials were used to make repeated SNS Publish API calls, hijacking cloud services [T1496.004] to consume message quotas and degrade service availability, simulating a denial-of-service effect. Incident response teams noted that the attack chain was sophisticated but left forensic artifacts in container logs and registry entries, which were later analyzed for remediation.\n\nIrrelevant Information: The targeted company, 'Global Energy Solutions Inc.', is a fictional multinational with operations in 15 countries, employing over 10,000 staff. During the investigation, routine maintenance logs from 2023-10-01 showed normal patching activities, and unrelated firewall rules were updated to block legacy protocols, which did not affect the attack timeline. Additionally, a false positive alert was generated for a benign PowerShell script used in accounting software, causing minor disruption to IT operations.",
+        "techniques_used": [
+            "T1588.007",
+            "T1189",
+            "T1053.007",
+            "T1059.003",
+            "T1558",
+            "T1210",
+            "T1025",
+            "T1056",
+            "T1102",
+            "T1496.004"
+        ]
+    }
+}

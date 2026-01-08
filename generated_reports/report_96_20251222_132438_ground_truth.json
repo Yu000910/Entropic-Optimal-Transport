@@ -1,0 +1,81 @@
+{
+    "report_id": "report_96",
+    "generated_at": "20251222_132438",
+    "scenario_target_ids": [
+        "T1566",
+        "T1566.002",
+        "T1559.003",
+        "T1547.004",
+        "T1557.001",
+        "T1665",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566",
+        "T1566.002",
+        "T1559.003",
+        "T1547.004",
+        "T1557.001",
+        "T1665",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1589",
+        "T1566.002",
+        "T1557.001",
+        "T1547.004",
+        "T1566",
+        "T1665",
+        "T1573",
+        "T1559.003"
+    ],
+    "clean_text": "Background: The fictional APT group 'ShadowHook' has been observed targeting mid-sized financial firms in North America since early 2024, with incidents reported involving unauthorized access to customer databases. Initial analysis suggests the actors likely conduct reconnaissance through social media and public financial records, though no specific techniques are confirmed in this scenario. The attack begins with a phishing campaign where adversaries send emails with attached password-protected ZIP files containing malware, specifically using spearphishing links that redirect to malicious domains hosting Emotet-like payloads. Upon execution, the malware exploits an XPC service daemon's weak authentication to gain unauthorized elevated system access, allowing the actors to establish persistence by modifying HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to trigger malicious code execution during the Windows logon process. System logs from infected hosts show unusual registry modifications at 03:45 UTC, but these were not flagged by standard antivirus software. Concurrently, the actors employ LLMNR/NBT-NS poisoning and SMB relay to sniff plaintext network credentials and facilitate lateral movement across the network, while C2 communications are masked using a Tor gateway to anonymize the traffic and receive encrypted commands from C2 servers. The company, 'SecureFin Corp', reported no prior breaches, but internal audits revealed outdated patch management processes. Additional noise includes routine firewall logs showing blocked connections from non-malicious IPs during the attack period.",
+    "tagged_text": "Background: The fictional APT group 'ShadowHook' has been observed targeting mid-sized financial firms in North America since early 2024, with incidents reported involving unauthorized access to customer databases. Initial analysis suggests the actors likely conduct reconnaissance [T1589] through social media and public financial records, though no specific techniques are confirmed in this scenario. The attack begins with a phishing campaign where adversaries send emails with attached password-protected ZIP files containing malware [T1566], specifically using spearphishing links [T1566.002] that redirect to malicious domains hosting Emotet-like payloads. Upon execution, the malware exploits an XPC service daemon's weak authentication to gain unauthorized elevated system access [T1559.003], allowing the actors to establish persistence by modifying HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to trigger malicious code execution during the Windows logon process [T1547.004]. System logs from infected hosts show unusual registry modifications at 03:45 UTC, but these were not flagged by standard antivirus software. Concurrently, the actors employ LLMNR/NBT-NS poisoning and SMB relay [T1557.001] to sniff plaintext network credentials and facilitate lateral movement across the network, while C2 communications are masked using a Tor gateway to anonymize the traffic [T1665] and receive encrypted commands from C2 servers [T1573]. The company, 'SecureFin Corp', reported no prior breaches, but internal audits revealed outdated patch management processes. Additional noise includes routine firewall logs showing blocked connections from non-malicious IPs during the attack period.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis suggests the actors likely conduct reconnaissance through social media and public financial records, though no specific techniques are confirmed in this scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The attack begins with a phishing campaign where adversaries send emails with attached password-protected ZIP files containing malware, specifically using spearphishing links [T1566.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "001] to sniff plaintext network credentials and facilitate lateral movement across the network, while C2 communications are masked using a Tor gateway to anonymize the traffic and receive encrypted commands from C2 servers.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        },
+        {
+            "sentence": "001] to sniff plaintext network credentials and facilitate lateral movement across the network, while C2 communications are masked using a Tor gateway to anonymize the traffic and receive encrypted commands from C2 servers.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowHook', targeting financial institutions to exfiltrate sensitive data. The campaign involves a multi-stage attack leveraging phishing, privilege escalation, and network exploitation, with C2 communications hidden via encryption and anonymization. Blue teams are advised to review detection and mitigation strategies.",
+        "full_report_text": "Background: The fictional APT group 'ShadowHook' has been observed targeting mid-sized financial firms in North America since early 2024, with incidents reported involving unauthorized access to customer databases. Initial analysis suggests the actors likely conduct reconnaissance [T1589] through social media and public financial records, though no specific techniques are confirmed in this scenario. The attack begins with a phishing campaign where adversaries send emails with attached password-protected ZIP files containing malware [T1566], specifically using spearphishing links [T1566.002] that redirect to malicious domains hosting Emotet-like payloads. Upon execution, the malware exploits an XPC service daemon's weak authentication to gain unauthorized elevated system access [T1559.003], allowing the actors to establish persistence by modifying HKLM\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify to trigger malicious code execution during the Windows logon process [T1547.004]. System logs from infected hosts show unusual registry modifications at 03:45 UTC, but these were not flagged by standard antivirus software. Concurrently, the actors employ LLMNR/NBT-NS poisoning and SMB relay [T1557.001] to sniff plaintext network credentials and facilitate lateral movement across the network, while C2 communications are masked using a Tor gateway to anonymize the traffic [T1665] and receive encrypted commands from C2 servers [T1573]. The company, 'SecureFin Corp', reported no prior breaches, but internal audits revealed outdated patch management processes. Additional noise includes routine firewall logs showing blocked connections from non-malicious IPs during the attack period.",
+        "techniques_used": [
+            "T1589",
+            "T1566",
+            "T1566.002",
+            "T1559.003",
+            "T1547.004",
+            "T1557.001",
+            "T1665",
+            "T1573"
+        ]
+    }
+}

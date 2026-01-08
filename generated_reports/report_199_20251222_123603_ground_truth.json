@@ -1,0 +1,111 @@
+{
+    "report_id": "report_199",
+    "generated_at": "20251222_123603",
+    "scenario_target_ids": [
+        "T1587.001",
+        "T1583.005",
+        "T1566",
+        "T1053.003",
+        "T1546.009",
+        "T1556.008",
+        "T1037.001",
+        "T1548.001",
+        "T1555.006",
+        "T1497.003",
+        "T1040",
+        "T1001",
+        "T1529"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1587.001",
+        "T1059.001",
+        "T1001",
+        "T1546.009",
+        "T1037.001",
+        "T1556.008",
+        "T1583.005",
+        "T1040",
+        "T1555.006",
+        "T1053.003",
+        "T1497.003",
+        "T1548.001",
+        "T1529"
+    ],
+    "actual_found_ids": [
+        "T1040",
+        "T1583.005",
+        "T1548.001",
+        "T1587.001",
+        "T1497.003",
+        "T1556.008",
+        "T1529",
+        "T1053.003",
+        "T1037.001",
+        "T1059.001",
+        "T1546.009",
+        "T1555.006",
+        "T1566",
+        "T1001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional threat actor campaign, designated APT41, observed targeting financial sectors and cloud infrastructure. This report is based on simulated incident response data from a fictional company, FinSecure Corp., a mid-sized financial services provider with hybrid on-premises and Azure cloud environments. Initial detection occurred on 2023-10-15 via anomalous network traffic alerts from their SIEM, but no prior indicators were flagged in routine scans.\n\nAttack Scenario:\nThe actors initiated the campaign by distributing a phishing email disguised as a legitimate software update attachment, which contained custom malware including PS1 scripts and CostaBricks variants. Upon execution, the malware employed PowerShell to decode obfuscated C2 commands using base64 -d while simultaneously modifying the AppCertDLLs registry key to establish persistence. To further maintain access, the malware executed a command to add a logon script via 'reg add HKCU\\Environment /v UserInitMprLogonScript /d C:\\malware\\script.bat' and altered the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry key to include a rogue network provider.\n\nFor lateral movement and resource exploitation, the actors systematically compromised SOHO routers with default admin passwords to create a botnet, used tools like intercepter-NG to sniff passwords in network traffic, and leveraged Azure PowerShell cmdlets such as 'Get-AzKeyVaultSecret' to extract storage account keys from Azure Key Vault. Additionally, a cryptocurrency miner was scheduled to execute through cron during off-peak hours, and the malware performed time-based anti-debug checks before downloading its third stage. To escalate privileges, the attacker identified SGID files via 'find / -perm +2000' and, as a final evasion measure, the malware included functionality to reboot or shutdown the targeted system. Logs from FinSecure Corp. showed increased CPU usage on Linux servers and unusual registry modifications on Windows endpoints, but no data exfiltration was confirmed in this simulation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional threat actor campaign, designated APT41, observed targeting financial sectors and cloud infrastructure. This report is based on simulated incident response data from a fictional company, FinSecure Corp., a mid-sized financial services provider with hybrid on-premises and Azure cloud environments. Initial detection occurred on 2023-10-15 via anomalous network traffic alerts from their SIEM, but no prior indicators were flagged in routine scans.\n\nAttack Scenario:\nThe actors initiated the campaign by distributing a phishing email [T1566] disguised as a legitimate software update attachment, which contained custom malware including PS1 scripts and CostaBricks variants [T1587.001]. Upon execution, the malware employed PowerShell [T1059.001] to decode obfuscated C2 commands using base64 -d [T1001] while simultaneously modifying the AppCertDLLs registry key to establish persistence [T1546.009]. To further maintain access, the malware executed a command to add a logon script via 'reg add HKCU\\Environment /v UserInitMprLogonScript /d C:\\malware\\script.bat' [T1037.001] and altered the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry key to include a rogue network provider [T1556.008].\n\nFor lateral movement and resource exploitation, the actors systematically compromised SOHO routers with default admin passwords to create a botnet [T1583.005], used tools like intercepter-NG to sniff passwords in network traffic [T1040], and leveraged Azure PowerShell cmdlets such as 'Get-AzKeyVaultSecret' to extract storage account keys from Azure Key Vault [T1555.006]. Additionally, a cryptocurrency miner was scheduled to execute through cron during off-peak hours [T1053.003], and the malware performed time-based anti-debug checks before downloading its third stage [T1497.003]. To escalate privileges, the attacker identified SGID files via 'find / -perm +2000' [T1548.001] and, as a final evasion measure, the malware included functionality to reboot or shutdown the targeted system [T1529]. Logs from FinSecure Corp. showed increased CPU usage on Linux servers and unusual registry modifications on Windows endpoints, but no data exfiltration was confirmed in this simulation.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Scenario:\nThe actors initiated the campaign by distributing a phishing email disguised as a legitimate software update attachment, which contained custom malware including PS1 scripts and CostaBricks variants [T1587.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "001] to decode obfuscated C2 commands using base64 -d while simultaneously modifying the AppCertDLLs registry key to establish persistence [T1546.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        },
+        {
+            "sentence": "005], used tools like intercepter-NG to sniff passwords in network traffic, and leveraged Azure PowerShell cmdlets such as 'Get-AzKeyVaultSecret' to extract storage account keys from Azure Key Vault [T1555.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "001] and, as a final evasion measure, the malware included functionality to reboot or shutdown the targeted system.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT41 Targeting Financial and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by threat actors, likely associated with APT41, targeting financial institutions and cloud environments. The campaign employs a multi-stage attack involving phishing, custom malware, persistence mechanisms, and evasion techniques to compromise systems, steal credentials, and deploy cryptocurrency miners. Blue teams should review logs and implement mitigations as outlined.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional threat actor campaign, designated APT41, observed targeting financial sectors and cloud infrastructure. This report is based on simulated incident response data from a fictional company, FinSecure Corp., a mid-sized financial services provider with hybrid on-premises and Azure cloud environments. Initial detection occurred on 2023-10-15 via anomalous network traffic alerts from their SIEM, but no prior indicators were flagged in routine scans.\n\nAttack Scenario:\nThe actors initiated the campaign by distributing a phishing email [T1566] disguised as a legitimate software update attachment, which contained custom malware including PS1 scripts and CostaBricks variants [T1587.001]. Upon execution, the malware employed PowerShell [T1059.001] to decode obfuscated C2 commands using base64 -d [T1001] while simultaneously modifying the AppCertDLLs registry key to establish persistence [T1546.009]. To further maintain access, the malware executed a command to add a logon script via 'reg add HKCU\\Environment /v UserInitMprLogonScript /d C:\\malware\\script.bat' [T1037.001] and altered the HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order registry key to include a rogue network provider [T1556.008].\n\nFor lateral movement and resource exploitation, the actors systematically compromised SOHO routers with default admin passwords to create a botnet [T1583.005], used tools like intercepter-NG to sniff passwords in network traffic [T1040], and leveraged Azure PowerShell cmdlets such as 'Get-AzKeyVaultSecret' to extract storage account keys from Azure Key Vault [T1555.006]. Additionally, a cryptocurrency miner was scheduled to execute through cron during off-peak hours [T1053.003], and the malware performed time-based anti-debug checks before downloading its third stage [T1497.003]. To escalate privileges, the attacker identified SGID files via 'find / -perm +2000' [T1548.001] and, as a final evasion measure, the malware included functionality to reboot or shutdown the targeted system [T1529]. Logs from FinSecure Corp. showed increased CPU usage on Linux servers and unusual registry modifications on Windows endpoints, but no data exfiltration was confirmed in this simulation.",
+        "techniques_used": [
+            "T1566",
+            "T1587.001",
+            "T1059.001",
+            "T1001",
+            "T1546.009",
+            "T1037.001",
+            "T1556.008",
+            "T1583.005",
+            "T1040",
+            "T1555.006",
+            "T1053.003",
+            "T1497.003",
+            "T1548.001",
+            "T1529"
+        ]
+    }
+}

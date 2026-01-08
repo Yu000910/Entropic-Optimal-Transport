@@ -1,0 +1,114 @@
+{
+    "report_id": "report_301",
+    "generated_at": "20251222_144901",
+    "scenario_target_ids": [
+        "T1593.001",
+        "T1591.003",
+        "T1566",
+        "T1078.003",
+        "T1059.008",
+        "T1027.007",
+        "T1036.007",
+        "T1480.002",
+        "T1003.006",
+        "T1556.002",
+        "T1673",
+        "T1069.002",
+        "T1090.001",
+        "T1090.002",
+        "T1499"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1593.001",
+        "T1591.003",
+        "T1566",
+        "T1078.003",
+        "T1059.008",
+        "T1027.007",
+        "T1036.007",
+        "T1480.002",
+        "T1003.006",
+        "T1556.002",
+        "T1673",
+        "T1069.002",
+        "T1090.001",
+        "T1090.002",
+        "T1499"
+    ],
+    "actual_found_ids": [
+        "T1593.001",
+        "T1090.001",
+        "T1480.002",
+        "T1499",
+        "T1591.003",
+        "T1003.006",
+        "T1566",
+        "T1027.007",
+        "T1673",
+        "T1069.002",
+        "T1090.002",
+        "T1059.008",
+        "T1036.007",
+        "T1556.002",
+        "T1078.003",
+        "T1059.001"
+    ],
+    "clean_text": "**Background**\nGlobalTech Industries, a leader in industrial automation with operations across North America and Europe, reported anomalous network activity on October 26, 2024, following a series of failed login attempts from unknown IP addresses. Initial logs from their SIEM indicated unusual outbound traffic patterns, but no immediate impact on production systems was observed.\n\n**Attack Narrative**\nCrimson Viper initiated the campaign by conducting reconnaissance on social media platforms, specifically searching YouTube for company event videos that might reveal internal processes. Concurrently, the malware queried GlobalTech's corporate blog to analyze posting frequency patterns, identifying business tempo and potential vulnerabilities. Using this intelligence, the actors crafted targeted phishing emails that masqueraded as urgent HR updates, employing double file extensions such as .pdf.lnk to evade detection. Upon execution, the malware leveraged captured local account information, including service accounts, for initial access and persistence. It then employed PowerShell to dynamically resolve APIs and encrypt its communication module, preventing network traffic inspection, while querying network connections to verify command and control channels through mutual exclusion checks. For lateral movement, the adversary used network device CLI to modify routing tables with commands like 'ip route 0.0.0.0 0.0.0.0 10.1.1.1' and executed DCSync attacks to retrieve password hashes from the local security authority. Additionally, a credential-stealing DLL was written to user profile directories to capture login information. The malware conducted discovery activities by using commands like 'esxcli network vm list' to identify running VMs and their network configurations and collected domain group information by running net group /domain commands. To obscure communications, it implemented internal proxies like HTRAN to relay traffic within normal network patterns and leveraged external proxies, including compromised university servers, to hide its origin. Finally, the campaign included endpoint denial of service attacks to disrupt services temporarily, mimicking tactics used in historical incidents.\n\n**Irrelevant Information**\nGlobalTech's IT department noted increased CPU usage on several servers during off-hours, but this was initially attributed to scheduled maintenance. The company's annual revenue in 2023 was $5.2 billion, with primary facilities located in Chicago and Frankfurt. No customer data was reported compromised in this simulated scenario.",
+    "tagged_text": "**Background**\nGlobalTech Industries, a leader in industrial automation with operations across North America and Europe, reported anomalous network activity on October 26, 2024, following a series of failed login attempts from unknown IP addresses. Initial logs from their SIEM indicated unusual outbound traffic patterns, but no immediate impact on production systems was observed.\n\n**Attack Narrative**\nCrimson Viper initiated the campaign by conducting reconnaissance on social media platforms, specifically searching YouTube for company event videos that might reveal internal processes [T1593.001]. Concurrently, the malware queried GlobalTech's corporate blog to analyze posting frequency patterns, identifying business tempo and potential vulnerabilities [T1591.003]. Using this intelligence, the actors crafted targeted phishing emails [T1566] that masqueraded as urgent HR updates, employing double file extensions such as .pdf.lnk to evade detection [T1036.007]. Upon execution, the malware leveraged captured local account information, including service accounts, for initial access and persistence [T1078.003]. It then employed PowerShell [T1059.001] to dynamically resolve APIs and encrypt its communication module, preventing network traffic inspection [T1027.007], while querying network connections to verify command and control channels through mutual exclusion checks [T1480.002]. For lateral movement, the adversary used network device CLI to modify routing tables with commands like 'ip route 0.0.0.0 0.0.0.0 10.1.1.1' [T1059.008] and executed DCSync attacks to retrieve password hashes from the local security authority [T1003.006]. Additionally, a credential-stealing DLL was written to user profile directories to capture login information [T1556.002]. The malware conducted discovery activities by using commands like 'esxcli network vm list' to identify running VMs and their network configurations [T1673] and collected domain group information by running net group /domain commands [T1069.002]. To obscure communications, it implemented internal proxies like HTRAN to relay traffic within normal network patterns [T1090.001] and leveraged external proxies, including compromised university servers, to hide its origin [T1090.002]. Finally, the campaign included endpoint denial of service attacks to disrupt services temporarily, mimicking tactics used in historical incidents [T1499].\n\n**Irrelevant Information**\nGlobalTech's IT department noted increased CPU usage on several servers during off-hours, but this was initially attributed to scheduled maintenance. The company's annual revenue in 2023 was $5.2 billion, with primary facilities located in Chicago and Frankfurt. No customer data was reported compromised in this simulated scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Using this intelligence, the actors crafted targeted phishing emails that masqueraded as urgent HR updates, employing double file extensions such as.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "The malware conducted discovery activities by using commands like 'esxcli network vm list' to identify running VMs and their network configurations and collected domain group information by running net group /domain commands [T1069.",
+            "technique_id": "T1673",
+            "technique_name": "Virtual Machine Discovery"
+        },
+        {
+            "sentence": "Finally, the campaign included endpoint denial of service attacks to disrupt services temporarily, mimicking tactics used in historical incidents.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Viper,' targeting a multinational manufacturing corporation, 'GlobalTech Industries.' The campaign leverages sophisticated reconnaissance, phishing, and lateral movement techniques to compromise network infrastructure and exfiltrate sensitive data. Blue teams should use this report for training to identify and mitigate similar attack patterns in real-world scenarios.",
+        "full_report_text": "**Background**\nGlobalTech Industries, a leader in industrial automation with operations across North America and Europe, reported anomalous network activity on October 26, 2024, following a series of failed login attempts from unknown IP addresses. Initial logs from their SIEM indicated unusual outbound traffic patterns, but no immediate impact on production systems was observed.\n\n**Attack Narrative**\nCrimson Viper initiated the campaign by conducting reconnaissance on social media platforms, specifically searching YouTube for company event videos that might reveal internal processes [T1593.001]. Concurrently, the malware queried GlobalTech's corporate blog to analyze posting frequency patterns, identifying business tempo and potential vulnerabilities [T1591.003]. Using this intelligence, the actors crafted targeted phishing emails [T1566] that masqueraded as urgent HR updates, employing double file extensions such as .pdf.lnk to evade detection [T1036.007]. Upon execution, the malware leveraged captured local account information, including service accounts, for initial access and persistence [T1078.003]. It then employed PowerShell [T1059.001] to dynamically resolve APIs and encrypt its communication module, preventing network traffic inspection [T1027.007], while querying network connections to verify command and control channels through mutual exclusion checks [T1480.002]. For lateral movement, the adversary used network device CLI to modify routing tables with commands like 'ip route 0.0.0.0 0.0.0.0 10.1.1.1' [T1059.008] and executed DCSync attacks to retrieve password hashes from the local security authority [T1003.006]. Additionally, a credential-stealing DLL was written to user profile directories to capture login information [T1556.002]. The malware conducted discovery activities by using commands like 'esxcli network vm list' to identify running VMs and their network configurations [T1673] and collected domain group information by running net group /domain commands [T1069.002]. To obscure communications, it implemented internal proxies like HTRAN to relay traffic within normal network patterns [T1090.001] and leveraged external proxies, including compromised university servers, to hide its origin [T1090.002]. Finally, the campaign included endpoint denial of service attacks to disrupt services temporarily, mimicking tactics used in historical incidents [T1499].\n\n**Irrelevant Information**\nGlobalTech's IT department noted increased CPU usage on several servers during off-hours, but this was initially attributed to scheduled maintenance. The company's annual revenue in 2023 was $5.2 billion, with primary facilities located in Chicago and Frankfurt. No customer data was reported compromised in this simulated scenario.",
+        "techniques_used": [
+            "T1593.001",
+            "T1591.003",
+            "T1566",
+            "T1078.003",
+            "T1059.008",
+            "T1027.007",
+            "T1036.007",
+            "T1480.002",
+            "T1003.006",
+            "T1556.002",
+            "T1673",
+            "T1069.002",
+            "T1090.001",
+            "T1090.002",
+            "T1499"
+        ]
+    }
+}

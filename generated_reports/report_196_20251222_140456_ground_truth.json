@@ -1,0 +1,91 @@
+{
+    "report_id": "report_196",
+    "generated_at": "20251222_140456",
+    "scenario_target_ids": [
+        "T1587.001",
+        "T1608.005",
+        "T1078.001",
+        "T1204.003",
+        "T1053.006",
+        "T1135",
+        "T1201",
+        "T1572",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1608.005",
+        "T1587.001",
+        "T1204.003",
+        "T1078.001",
+        "T1053.006",
+        "T1135",
+        "T1201",
+        "T1572",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1572",
+        "T1053.006",
+        "T1201",
+        "T1589",
+        "T1587.001",
+        "T1135",
+        "T1608.005",
+        "T1496.004",
+        "T1204.003",
+        "T1078.001"
+    ],
+    "clean_text": "On October 15, 2023, security teams at a fictional financial institution, 'SecureBank Inc.', detected anomalous activity originating from a customer-facing web portal. The actors likely conducted reconnaissance to identify vulnerabilities in the bank's online services. Initial access was achieved by injecting malicious JavaScript code into the legitimate banking website, which displayed a fake session timeout warning to capture user login credentials. This allowed the adversaries to compromise several user accounts and gain a foothold in the network. System logs from the web server showed unusual traffic spikes, but initial investigations attributed this to a routine maintenance error, delaying detection.\n\nOnce inside, the actors deployed custom-built malware, similar to DCSrv and PyDCrypt used by Moses Staff, designed to encrypt files and exfiltrate data. Execution involved using a malicious Docker image that contained instructions to install a remote access trojan during the build process, enabling covert command and control. The malware then propagated laterally across the network by exploiting default Administrator account credentials, allowing it to move undetected through shared systems. Network monitoring tools flagged multiple failed login attempts, but these were initially dismissed as part of a penetration testing exercise.\n\nTo maintain persistence, the malware established a systemd timer that executed data exfiltration scripts every six hours, ensuring continuous operation even after reboots. Concurrently, the actors conducted network share discovery using APIs like WNetOpenEnumA to map accessible resources and identify sensitive data stores. They also ran commands such as 'net accounts /domain' to gather information about domain password enforcement rules, aiding in further credential theft. Background checks revealed that SecureBank Inc. had recently migrated some services to AWS, but this was considered unrelated at the time.\n\nFor data exfiltration, the actors employed protocol tunneling by abusing DNS-over-HTTPS (DoH) protocols to conceal DNS queries from security appliances, maintaining stealthy communication channels. Additionally, they programmatically abused AWS SNS to send high-frequency notifications across multiple regions, causing regional service degradation and distracting incident response teams. The campaign culminated in significant data loss and operational disruption, with recovery efforts hampered by the actors' use of encrypted payloads and cloud-based obfuscation. Post-incident analysis highlighted gaps in monitoring for default account usage and cloud service misconfigurations.",
+    "tagged_text": "On October 15, 2023, security teams at a fictional financial institution, 'SecureBank Inc.', detected anomalous activity originating from a customer-facing web portal. The actors likely conducted reconnaissance [T1589] to identify vulnerabilities in the bank's online services. Initial access was achieved by injecting malicious JavaScript code into the legitimate banking website, which displayed a fake session timeout warning to capture user login credentials [T1608.005]. This allowed the adversaries to compromise several user accounts and gain a foothold in the network. System logs from the web server showed unusual traffic spikes, but initial investigations attributed this to a routine maintenance error, delaying detection.\n\nOnce inside, the actors deployed custom-built malware, similar to DCSrv and PyDCrypt used by Moses Staff, designed to encrypt files and exfiltrate data [T1587.001]. Execution involved using a malicious Docker image that contained instructions to install a remote access trojan during the build process, enabling covert command and control [T1204.003]. The malware then propagated laterally across the network by exploiting default Administrator account credentials, allowing it to move undetected through shared systems [T1078.001]. Network monitoring tools flagged multiple failed login attempts, but these were initially dismissed as part of a penetration testing exercise.\n\nTo maintain persistence, the malware established a systemd timer that executed data exfiltration scripts every six hours, ensuring continuous operation even after reboots [T1053.006]. Concurrently, the actors conducted network share discovery using APIs like WNetOpenEnumA to map accessible resources and identify sensitive data stores [T1135]. They also ran commands such as 'net accounts /domain' to gather information about domain password enforcement rules, aiding in further credential theft [T1201]. Background checks revealed that SecureBank Inc. had recently migrated some services to AWS, but this was considered unrelated at the time.\n\nFor data exfiltration, the actors employed protocol tunneling by abusing DNS-over-HTTPS (DoH) protocols to conceal DNS queries from security appliances, maintaining stealthy communication channels [T1572]. Additionally, they programmatically abused AWS SNS to send high-frequency notifications across multiple regions, causing regional service degradation and distracting incident response teams [T1496.004]. The campaign culminated in significant data loss and operational disruption, with recovery efforts hampered by the actors' use of encrypted payloads and cloud-based obfuscation. Post-incident analysis highlighted gaps in monitoring for default account usage and cloud service misconfigurations.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify vulnerabilities in the bank's online services.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Concurrently, the actors conducted network share discovery using APIs like WNetOpenEnumA to map accessible resources and identify sensitive data stores.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "They also ran commands such as 'net accounts /domain' to gather information about domain password enforcement rules, aiding in further credential theft.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "For data exfiltration, the actors employed protocol tunneling by abusing DNS-over-HTTPS (DoH) protocols to conceal DNS queries from security appliances, maintaining stealthy communication channels.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowCrawler' Targeting Financial and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowCrawler', which targets financial institutions and cloud services to deploy custom malware, steal credentials, and disrupt operations. The campaign involves initial access through compromised websites, lateral movement using default accounts, persistence via system timers, and data exfiltration through protocol tunneling, with techniques adapted from real-world incidents like Moses Staff and TrickBot for training purposes.",
+        "full_report_text": "On October 15, 2023, security teams at a fictional financial institution, 'SecureBank Inc.', detected anomalous activity originating from a customer-facing web portal. The actors likely conducted reconnaissance [T1589] to identify vulnerabilities in the bank's online services. Initial access was achieved by injecting malicious JavaScript code into the legitimate banking website, which displayed a fake session timeout warning to capture user login credentials [T1608.005]. This allowed the adversaries to compromise several user accounts and gain a foothold in the network. System logs from the web server showed unusual traffic spikes, but initial investigations attributed this to a routine maintenance error, delaying detection.\n\nOnce inside, the actors deployed custom-built malware, similar to DCSrv and PyDCrypt used by Moses Staff, designed to encrypt files and exfiltrate data [T1587.001]. Execution involved using a malicious Docker image that contained instructions to install a remote access trojan during the build process, enabling covert command and control [T1204.003]. The malware then propagated laterally across the network by exploiting default Administrator account credentials, allowing it to move undetected through shared systems [T1078.001]. Network monitoring tools flagged multiple failed login attempts, but these were initially dismissed as part of a penetration testing exercise.\n\nTo maintain persistence, the malware established a systemd timer that executed data exfiltration scripts every six hours, ensuring continuous operation even after reboots [T1053.006]. Concurrently, the actors conducted network share discovery using APIs like WNetOpenEnumA to map accessible resources and identify sensitive data stores [T1135]. They also ran commands such as 'net accounts /domain' to gather information about domain password enforcement rules, aiding in further credential theft [T1201]. Background checks revealed that SecureBank Inc. had recently migrated some services to AWS, but this was considered unrelated at the time.\n\nFor data exfiltration, the actors employed protocol tunneling by abusing DNS-over-HTTPS (DoH) protocols to conceal DNS queries from security appliances, maintaining stealthy communication channels [T1572]. Additionally, they programmatically abused AWS SNS to send high-frequency notifications across multiple regions, causing regional service degradation and distracting incident response teams [T1496.004]. The campaign culminated in significant data loss and operational disruption, with recovery efforts hampered by the actors' use of encrypted payloads and cloud-based obfuscation. Post-incident analysis highlighted gaps in monitoring for default account usage and cloud service misconfigurations.",
+        "techniques_used": [
+            "T1589",
+            "T1608.005",
+            "T1587.001",
+            "T1204.003",
+            "T1078.001",
+            "T1053.006",
+            "T1135",
+            "T1201",
+            "T1572",
+            "T1496.004"
+        ]
+    }
+}

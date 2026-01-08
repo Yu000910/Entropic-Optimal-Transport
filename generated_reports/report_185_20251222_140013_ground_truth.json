@@ -1,0 +1,58 @@
+{
+    "report_id": "report_185",
+    "generated_at": "20251222_140013",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1053.006",
+        "T1555.006",
+        "T1550.001",
+        "T1008",
+        "T1567.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1053.006",
+        "T1555.006",
+        "T1550.001",
+        "T1008",
+        "T1567.001"
+    ],
+    "actual_found_ids": [
+        "T1053.006",
+        "T1555.006",
+        "T1008",
+        "T1550.001",
+        "T1078.001",
+        "T1567.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional advanced persistent threat (APT) group 'CrimsonShadow'. This group has been observed targeting organizations in the financial and technology sectors, with a focus on stealing sensitive data and disrupting operations. The attack begins with reconnaissance, where actors scan for vulnerable systems and gather intelligence on network architecture, though no specific techniques are tagged here to simulate real-world noise in logs. Initial access was achieved by exploiting default local administrator credentials to gain a foothold on a compromised Windows server, as evidenced by anomalous login attempts from an external IP address recorded in the security event logs. Once inside, the actors employed PowerShell to execute malicious scripts that scheduled systemd timers for persistent data exfiltration, while simultaneously querying AWS Secrets Manager to steal TLS private keys and abusing OAuth access tokens to compromise email accounts like Gmail. The malware, dubbed 'ShadowRiser', uses fallback channels by randomly selecting from hard-coded C2 servers and retrying with alternatives upon failure, and it exfiltrates stolen data to a private GitHub repository to evade detection. Additional system logs show routine backup processes and user activity unrelated to the attack, such as failed password resets and scheduled maintenance tasks, which are included to mimic typical network noise and challenge analysts in distinguishing malicious behavior.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional advanced persistent threat (APT) group 'CrimsonShadow'. This group has been observed targeting organizations in the financial and technology sectors, with a focus on stealing sensitive data and disrupting operations. The attack begins with reconnaissance, where actors scan for vulnerable systems and gather intelligence on network architecture, though no specific techniques are tagged here to simulate real-world noise in logs. Initial access was achieved by exploiting default local administrator credentials [T1078.001] to gain a foothold on a compromised Windows server, as evidenced by anomalous login attempts from an external IP address recorded in the security event logs. Once inside, the actors employed PowerShell to execute malicious scripts that scheduled systemd timers [T1053.006] for persistent data exfiltration, while simultaneously querying AWS Secrets Manager [T1555.006] to steal TLS private keys and abusing OAuth access tokens [T1550.001] to compromise email accounts like Gmail. The malware, dubbed 'ShadowRiser', uses fallback channels [T1008] by randomly selecting from hard-coded C2 servers and retrying with alternatives upon failure, and it exfiltrates stolen data to a private GitHub repository [T1567.001] to evade detection. Additional system logs show routine backup processes and user activity unrelated to the attack, such as failed password resets and scheduled maintenance tasks, which are included to mimic typical network noise and challenge analysts in distinguishing malicious behavior.",
+    "sentence_annotations": [
+        {
+            "sentence": "The malware, dubbed 'ShadowRiser', uses fallback channels by randomly selecting from hard-coded C2 servers and retrying with alternatives upon failure, and it exfiltrates stolen data to a private GitHub repository [T1567.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CrimsonShadow' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'CrimsonShadow', which leverages a combination of default account exploitation, scheduled tasks, cloud secret theft, token abuse, resilient command and control, and exfiltration to code repositories. The scenario is designed for blue team training to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional advanced persistent threat (APT) group 'CrimsonShadow'. This group has been observed targeting organizations in the financial and technology sectors, with a focus on stealing sensitive data and disrupting operations. The attack begins with reconnaissance, where actors scan for vulnerable systems and gather intelligence on network architecture, though no specific techniques are tagged here to simulate real-world noise in logs. Initial access was achieved by exploiting default local administrator credentials [T1078.001] to gain a foothold on a compromised Windows server, as evidenced by anomalous login attempts from an external IP address recorded in the security event logs. Once inside, the actors employed PowerShell to execute malicious scripts that scheduled systemd timers [T1053.006] for persistent data exfiltration, while simultaneously querying AWS Secrets Manager [T1555.006] to steal TLS private keys and abusing OAuth access tokens [T1550.001] to compromise email accounts like Gmail. The malware, dubbed 'ShadowRiser', uses fallback channels [T1008] by randomly selecting from hard-coded C2 servers and retrying with alternatives upon failure, and it exfiltrates stolen data to a private GitHub repository [T1567.001] to evade detection. Additional system logs show routine backup processes and user activity unrelated to the attack, such as failed password resets and scheduled maintenance tasks, which are included to mimic typical network noise and challenge analysts in distinguishing malicious behavior.",
+        "techniques_used": [
+            "T1078.001",
+            "T1053.006",
+            "T1555.006",
+            "T1550.001",
+            "T1008",
+            "T1567.001"
+        ]
+    }
+}

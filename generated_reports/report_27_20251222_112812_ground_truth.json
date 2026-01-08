@@ -1,0 +1,98 @@
+{
+    "report_id": "report_27",
+    "generated_at": "20251222_112812",
+    "scenario_target_ids": [
+        "T1190",
+        "T1195.003",
+        "T1059.009",
+        "T1612",
+        "T1562.006",
+        "T1555.002",
+        "T1557.003",
+        "T1125",
+        "T1530",
+        "T1092"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1195.003",
+        "T1059.009",
+        "T1612",
+        "T1562.006",
+        "T1555.002",
+        "T1557.003",
+        "T1125",
+        "T1530",
+        "T1092"
+    ],
+    "actual_found_ids": [
+        "T1125",
+        "T1195.003",
+        "T1059.009",
+        "T1190",
+        "T1555.002",
+        "T1530",
+        "T1562.006",
+        "T1557.003",
+        "T1092",
+        "T1612"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign attributed to the threat actor SPACEHOP. This report simulates realistic attack behaviors for educational purposes, incorporating noise such as generic system logs and company background to mimic real-world scenarios. SPACEHOP is a fictional advanced persistent threat group with no known real-world affiliations, and this narrative is designed solely for blue team training.\n\nInitial Access: SPACEHOP actors likely conducted reconnaissance to identify vulnerable systems, though no specific logs were captured for this phase. They then exploited public-facing applications by leveraging vulnerabilities like CVE-2022-27518 to gain illegitimate access to target networks. Concurrently, they compromised the hardware supply chain by reprogramming a Teensy USB device to mount as a storage device containing malware for automatic execution upon insertion into air-gapped systems.\n\nExecution: Upon gaining access, the adversary employed Azure PowerShell to execute commands such as 'Get-AzVM' for enumerating virtual machines while simultaneously building malicious images on the host by writing a Dockerfile that included cryptocurrency mining software in the container image to deploy persistent payloads.\n\nPersistence: To maintain access and evade detection, SPACEHOP implemented indicator blocking by hooking system functions like `readdir` and `ps` to hide malicious files, process activity, and socket activity from standard monitoring tools. System logs from the affected servers showed unusual spikes in CPU usage, but these were not directly linked to the mining activity due to the obfuscation.\n\nCredential Access: The implant then queried securityd to extract saved application passwords from the user's keychain while the actors set up a fake DHCP service to redirect client requests and intercept network traffic for further credential harvesting.\n\nCollection: SPACEHOP utilized video capture capabilities through remote webcam monitoring to gather visual intelligence and collected data from cloud storage by accessing an exposed Amazon S3 bucket containing unencrypted financial records of customers. Background checks revealed the company had recently migrated to cloud services without proper security configurations.\n\nExfiltration: Finally, the actors used communication through removable media by employing a tool that captured information from air-gapped computers via the infected USB and transferred it to network-connected systems when the USB was reinserted, facilitating data exfiltration without direct network connectivity. Logs indicated multiple unauthorized USB insertions during off-hours, but these were initially dismissed as user error.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign attributed to the threat actor SPACEHOP. This report simulates realistic attack behaviors for educational purposes, incorporating noise such as generic system logs and company background to mimic real-world scenarios. SPACEHOP is a fictional advanced persistent threat group with no known real-world affiliations, and this narrative is designed solely for blue team training.\n\nInitial Access: SPACEHOP actors likely conducted reconnaissance to identify vulnerable systems, though no specific logs were captured for this phase. They then exploited public-facing applications [T1190] by leveraging vulnerabilities like CVE-2022-27518 to gain illegitimate access to target networks. Concurrently, they compromised the hardware supply chain [T1195.003] by reprogramming a Teensy USB device to mount as a storage device containing malware for automatic execution upon insertion into air-gapped systems.\n\nExecution: Upon gaining access, the adversary employed Azure PowerShell [T1059.009] to execute commands such as 'Get-AzVM' for enumerating virtual machines while simultaneously building malicious images on the host [T1612] by writing a Dockerfile that included cryptocurrency mining software in the container image to deploy persistent payloads.\n\nPersistence: To maintain access and evade detection, SPACEHOP implemented indicator blocking [T1562.006] by hooking system functions like `readdir` and `ps` to hide malicious files, process activity, and socket activity from standard monitoring tools. System logs from the affected servers showed unusual spikes in CPU usage, but these were not directly linked to the mining activity due to the obfuscation.\n\nCredential Access: The implant then queried securityd [T1555.002] to extract saved application passwords from the user's keychain while the actors set up a fake DHCP service [T1557.003] to redirect client requests and intercept network traffic for further credential harvesting.\n\nCollection: SPACEHOP utilized video capture capabilities [T1125] through remote webcam monitoring to gather visual intelligence and collected data from cloud storage [T1530] by accessing an exposed Amazon S3 bucket containing unencrypted financial records of customers. Background checks revealed the company had recently migrated to cloud services without proper security configurations.\n\nExfiltration: Finally, the actors used communication through removable media [T1092] by employing a tool that captured information from air-gapped computers via the infected USB and transferred it to network-connected systems when the USB was reinserted, facilitating data exfiltration without direct network connectivity. Logs indicated multiple unauthorized USB insertions during off-hours, but these were initially dismissed as user error.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then exploited public-facing applications by leveraging vulnerabilities like CVE-2022-27518 to gain illegitimate access to target networks.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "009] to execute commands such as 'Get-AzVM' for enumerating virtual machines while simultaneously building malicious images on the host by writing a Dockerfile that included cryptocurrency mining software in the container image to deploy persistent payloads.",
+            "technique_id": "T1612",
+            "technique_name": "Build Image on Host"
+        },
+        {
+            "sentence": "Collection: SPACEHOP utilized video capture capabilities through remote webcam monitoring to gather visual intelligence and collected data from cloud storage by accessing an exposed Amazon S3 bucket containing unencrypted financial records of customers.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        },
+        {
+            "sentence": "Collection: SPACEHOP utilized video capture capabilities through remote webcam monitoring to gather visual intelligence and collected data from cloud storage by accessing an exposed Amazon S3 bucket containing unencrypted financial records of customers.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "Exfiltration: Finally, the actors used communication through removable media by employing a tool that captured information from air-gapped computers via the infected USB and transferred it to network-connected systems when the USB was reinserted, facilitating data exfiltration without direct network connectivity.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional SPACEHOP Campaign Targeting Cloud and Supply Chain Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor SPACEHOP, which combines exploitation of public-facing applications, hardware supply chain compromise, and cloud-based attacks to infiltrate networks, deploy cryptocurrency miners, and exfiltrate sensitive data. The activity involves multiple techniques across the cyber kill chain, including initial access via exploited vulnerabilities and compromised USB devices, execution through cloud APIs and Docker images, persistence via indicator blocking, credential access from system memory, collection through video capture and cloud storage, and exfiltration via removable media. Blue teams are advised to review logs for anomalous PowerShell usage, unauthorized Docker builds, and DHCP spoofing attempts.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign attributed to the threat actor SPACEHOP. This report simulates realistic attack behaviors for educational purposes, incorporating noise such as generic system logs and company background to mimic real-world scenarios. SPACEHOP is a fictional advanced persistent threat group with no known real-world affiliations, and this narrative is designed solely for blue team training.\n\nInitial Access: SPACEHOP actors likely conducted reconnaissance to identify vulnerable systems, though no specific logs were captured for this phase. They then exploited public-facing applications [T1190] by leveraging vulnerabilities like CVE-2022-27518 to gain illegitimate access to target networks. Concurrently, they compromised the hardware supply chain [T1195.003] by reprogramming a Teensy USB device to mount as a storage device containing malware for automatic execution upon insertion into air-gapped systems.\n\nExecution: Upon gaining access, the adversary employed Azure PowerShell [T1059.009] to execute commands such as 'Get-AzVM' for enumerating virtual machines while simultaneously building malicious images on the host [T1612] by writing a Dockerfile that included cryptocurrency mining software in the container image to deploy persistent payloads.\n\nPersistence: To maintain access and evade detection, SPACEHOP implemented indicator blocking [T1562.006] by hooking system functions like `readdir` and `ps` to hide malicious files, process activity, and socket activity from standard monitoring tools. System logs from the affected servers showed unusual spikes in CPU usage, but these were not directly linked to the mining activity due to the obfuscation.\n\nCredential Access: The implant then queried securityd [T1555.002] to extract saved application passwords from the user's keychain while the actors set up a fake DHCP service [T1557.003] to redirect client requests and intercept network traffic for further credential harvesting.\n\nCollection: SPACEHOP utilized video capture capabilities [T1125] through remote webcam monitoring to gather visual intelligence and collected data from cloud storage [T1530] by accessing an exposed Amazon S3 bucket containing unencrypted financial records of customers. Background checks revealed the company had recently migrated to cloud services without proper security configurations.\n\nExfiltration: Finally, the actors used communication through removable media [T1092] by employing a tool that captured information from air-gapped computers via the infected USB and transferred it to network-connected systems when the USB was reinserted, facilitating data exfiltration without direct network connectivity. Logs indicated multiple unauthorized USB insertions during off-hours, but these were initially dismissed as user error.",
+        "techniques_used": [
+            "T1190",
+            "T1195.003",
+            "T1059.009",
+            "T1612",
+            "T1562.006",
+            "T1555.002",
+            "T1557.003",
+            "T1125",
+            "T1530",
+            "T1092"
+        ]
+    }
+}

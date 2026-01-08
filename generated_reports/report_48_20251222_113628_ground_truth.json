@@ -1,0 +1,92 @@
+{
+    "report_id": "report_48",
+    "generated_at": "20251222_113628",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1053.003",
+        "T1036.006",
+        "T1070",
+        "T1542.002",
+        "T1001.001",
+        "T1090.004",
+        "T1485"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1059.001",
+        "T1036.006",
+        "T1112",
+        "T1078.002",
+        "T1053.003",
+        "T1542.002",
+        "T1090.004",
+        "T1001.001",
+        "T1485",
+        "T1070"
+    ],
+    "actual_found_ids": [
+        "T1078.002",
+        "T1070",
+        "T1485",
+        "T1036.006",
+        "T1589",
+        "T1053.003",
+        "T1090.004",
+        "T1542.002",
+        "T1001.001",
+        "T1059.001",
+        "T1112"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used in a fictional APT campaign dubbed 'ShadowVeil'. This report is based on a simulated attack on PowerGrid Inc., a mid-sized energy provider, where initial access was gained via a phishing email with a malicious attachment on October 26, 2023. System logs from the compromised domain controller show unusual PowerShell activity at 02:00 UTC, but no prior alerts were triggered. PowerGrid Inc., founded in 1995, operates across three states and has 500 employees, with its IT infrastructure including Windows Server 2019 and Linux systems. The actors likely conducted reconnaissance before exploiting a vulnerable web server. In the execution phase, the adversary employed PowerShell to download a malicious script saved as 'config.ini ' while simultaneously modifying registry keys to establish persistence. They used mimikatz.exe to harvest domain administrator credentials from LSASS memory and installed a cron job that downloaded and executed additional payloads from a command-and-control (C2) server. To maintain covert access, the malware deployed a malicious firmware update on network interface cards, allowing persistent C2 communication. For obfuscation, the attackers manipulated HTTP Referer headers to hide encrypted web traffic destinations and used byte randomization to obscure malware behavior in network packets. During exfiltration, data was compressed and sent via encrypted channels, with system logs showing a spike in outbound traffic at 04:30 UTC. In the impact phase, the malware executed the cipher /w command to overwrite deleted data space with random patterns, causing data destruction on Windows systems. Finally, SDBbot, a component of the malware, cleaned up data structures to remove indicators of compromise, leaving minimal forensic evidence. Blue teams should monitor for these TTPs, including unusual cron jobs, firmware anomalies, and obfuscated network traffic, to enhance detection capabilities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used in a fictional APT campaign dubbed 'ShadowVeil'. This report is based on a simulated attack on PowerGrid Inc., a mid-sized energy provider, where initial access was gained via a phishing email with a malicious attachment on October 26, 2023. System logs from the compromised domain controller show unusual PowerShell activity at 02:00 UTC, but no prior alerts were triggered. PowerGrid Inc., founded in 1995, operates across three states and has 500 employees, with its IT infrastructure including Windows Server 2019 and Linux systems. The actors likely conducted reconnaissance [T1589] before exploiting a vulnerable web server. In the execution phase, the adversary employed PowerShell [T1059.001] to download a malicious script saved as 'config.ini ' [T1036.006] while simultaneously modifying registry keys [T1112] to establish persistence. They used mimikatz.exe to harvest domain administrator credentials from LSASS memory [T1078.002] and installed a cron job [T1053.003] that downloaded and executed additional payloads from a command-and-control (C2) server. To maintain covert access, the malware deployed a malicious firmware update on network interface cards [T1542.002], allowing persistent C2 communication. For obfuscation, the attackers manipulated HTTP Referer headers [T1090.004] to hide encrypted web traffic destinations and used byte randomization [T1001.001] to obscure malware behavior in network packets. During exfiltration, data was compressed and sent via encrypted channels, with system logs showing a spike in outbound traffic at 04:30 UTC. In the impact phase, the malware executed the cipher /w command [T1485] to overwrite deleted data space with random patterns, causing data destruction on Windows systems. Finally, SDBbot, a component of the malware, cleaned up data structures [T1070] to remove indicators of compromise, leaving minimal forensic evidence. Blue teams should monitor for these TTPs, including unusual cron jobs, firmware anomalies, and obfuscated network traffic, to enhance detection capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance before exploiting a vulnerable web server.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "006] while simultaneously modifying registry keys to establish persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "In the impact phase, the malware executed the cipher /w command to overwrite deleted data space with random patterns, causing data destruction on Windows systems.",
+            "technique_id": "T1485",
+            "technique_name": "Data Destruction"
+        },
+        {
+            "sentence": "Finally, SDBbot, a component of the malware, cleaned up data structures to remove indicators of compromise, leaving minimal forensic evidence.",
+            "technique_id": "T1070",
+            "technique_name": "Indicator Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowVeil', targeting energy sector organizations to exfiltrate sensitive data and disrupt operations. The campaign leverages credential harvesting, persistence mechanisms, and obfuscation techniques to evade detection, as observed in a fictional incident at 'PowerGrid Inc.' on October 26, 2023. Blue teams should use this report for training to identify and mitigate similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used in a fictional APT campaign dubbed 'ShadowVeil'. This report is based on a simulated attack on PowerGrid Inc., a mid-sized energy provider, where initial access was gained via a phishing email with a malicious attachment on October 26, 2023. System logs from the compromised domain controller show unusual PowerShell activity at 02:00 UTC, but no prior alerts were triggered. PowerGrid Inc., founded in 1995, operates across three states and has 500 employees, with its IT infrastructure including Windows Server 2019 and Linux systems. The actors likely conducted reconnaissance [T1589] before exploiting a vulnerable web server. In the execution phase, the adversary employed PowerShell [T1059.001] to download a malicious script saved as 'config.ini ' [T1036.006] while simultaneously modifying registry keys [T1112] to establish persistence. They used mimikatz.exe to harvest domain administrator credentials from LSASS memory [T1078.002] and installed a cron job [T1053.003] that downloaded and executed additional payloads from a command-and-control (C2) server. To maintain covert access, the malware deployed a malicious firmware update on network interface cards [T1542.002], allowing persistent C2 communication. For obfuscation, the attackers manipulated HTTP Referer headers [T1090.004] to hide encrypted web traffic destinations and used byte randomization [T1001.001] to obscure malware behavior in network packets. During exfiltration, data was compressed and sent via encrypted channels, with system logs showing a spike in outbound traffic at 04:30 UTC. In the impact phase, the malware executed the cipher /w command [T1485] to overwrite deleted data space with random patterns, causing data destruction on Windows systems. Finally, SDBbot, a component of the malware, cleaned up data structures [T1070] to remove indicators of compromise, leaving minimal forensic evidence. Blue teams should monitor for these TTPs, including unusual cron jobs, firmware anomalies, and obfuscated network traffic, to enhance detection capabilities.",
+        "techniques_used": [
+            "T1589",
+            "T1059.001",
+            "T1036.006",
+            "T1112",
+            "T1078.002",
+            "T1053.003",
+            "T1542.002",
+            "T1090.004",
+            "T1001.001",
+            "T1485",
+            "T1070"
+        ]
+    }
+}

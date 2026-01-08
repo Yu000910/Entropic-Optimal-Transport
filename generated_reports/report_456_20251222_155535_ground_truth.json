@@ -1,0 +1,78 @@
+{
+    "report_id": "report_456",
+    "generated_at": "20251222_155535",
+    "scenario_target_ids": [
+        "T1593.002",
+        "T1195",
+        "T1059.010",
+        "T1546.016",
+        "T1556",
+        "T1574.014",
+        "T1216",
+        "T1568.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1593.002",
+        "T1195",
+        "T1059.010",
+        "T1546.016",
+        "T1556",
+        "T1574.014",
+        "T1216",
+        "T1568.002"
+    ],
+    "actual_found_ids": [
+        "T1568.002",
+        "T1546.016",
+        "T1593.002",
+        "T1216",
+        "T1059.010",
+        "T1195",
+        "T1556",
+        "T1574.014"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowHydra'. This group has been observed targeting software development companies to infiltrate networks and exfiltrate intellectual property.\n\nInitial Access: The actors likely conduct reconnaissance by using search engines to identify publicly accessible documents, such as technical specifications and employee directories, on target domains. For example, they queried 'site:target.com filetype:pdf' to gather intelligence for subsequent attacks. Background: The targeted company, 'TechInnovate Inc.', is a mid-sized software firm with offices in multiple countries, and its network logs showed increased scanning activity from unknown IPs in the weeks prior to the incident.\n\nExecution: ShadowHydra compromised the software supply chain by injecting a malicious DLL into a package repository used by developers, which was then distributed through legitimate updates. Once executed, the malware employed AutoHotKey to write and run malicious scripts that simulated administrative actions to disable security software, while simultaneously modifying registry keys for persistence. System logs from affected endpoints indicated unusual process spawns and failed antivirus scans, though some alerts were dismissed as false positives.\n\nPersistence: To maintain access, the actors altered the postinstall script of a system utility using installer packages, ensuring the malware reinstalled itself during package updates. Additionally, they hijacked the AppDomainManager to execute malicious code within the application's context, evading detection by leveraging trusted processes. Background: TechInnovate's IT team noted anomalous behavior in their package management system, but initial investigations focused on user error rather than malicious activity.\n\nPrivilege Escalation and Credential Access: The attacker injected a malicious DLL into the LSASS process to modify the authentication process, extracting credential hashes for lateral movement. This was facilitated by using system script proxy execution, where a malicious file was executed by exploiting a trusted Microsoft-signed process, such as rundll32.exe. Network traffic analysis revealed unusual outbound connections to external IPs, but these were initially attributed to legitimate cloud services.\n\nCommand and Control: For resilience, ShadowHydra utilized domain generation algorithms to dynamically change their command and control (C2) servers monthly, making it difficult to block communications based on static domains. This technique was combined with the use of encrypted channels to exfiltrate data. Background: The company's firewall logs showed periodic connections to newly registered domains, but these were not flagged due to low threat scores in security tools.\n\nDefensive Recommendations: Organizations should monitor for unusual search engine queries targeting their domains, implement strict supply chain security controls, and review installer packages for unauthorized modifications. Additionally, monitoring LSASS process injections and AppDomainManager changes can help detect these TTPs early.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowHydra'. This group has been observed targeting software development companies to infiltrate networks and exfiltrate intellectual property.\n\nInitial Access: The actors likely conduct reconnaissance by using search engines [T1593.002] to identify publicly accessible documents, such as technical specifications and employee directories, on target domains. For example, they queried 'site:target.com filetype:pdf' to gather intelligence for subsequent attacks. Background: The targeted company, 'TechInnovate Inc.', is a mid-sized software firm with offices in multiple countries, and its network logs showed increased scanning activity from unknown IPs in the weeks prior to the incident.\n\nExecution: ShadowHydra compromised the software supply chain [T1195] by injecting a malicious DLL into a package repository used by developers, which was then distributed through legitimate updates. Once executed, the malware employed AutoHotKey [T1059.010] to write and run malicious scripts that simulated administrative actions to disable security software, while simultaneously modifying registry keys for persistence. System logs from affected endpoints indicated unusual process spawns and failed antivirus scans, though some alerts were dismissed as false positives.\n\nPersistence: To maintain access, the actors altered the postinstall script of a system utility using installer packages [T1546.016], ensuring the malware reinstalled itself during package updates. Additionally, they hijacked the AppDomainManager [T1574.014] to execute malicious code within the application's context, evading detection by leveraging trusted processes. Background: TechInnovate's IT team noted anomalous behavior in their package management system, but initial investigations focused on user error rather than malicious activity.\n\nPrivilege Escalation and Credential Access: The attacker injected a malicious DLL into the LSASS process to modify the authentication process [T1556], extracting credential hashes for lateral movement. This was facilitated by using system script proxy execution [T1216], where a malicious file was executed by exploiting a trusted Microsoft-signed process, such as rundll32.exe. Network traffic analysis revealed unusual outbound connections to external IPs, but these were initially attributed to legitimate cloud services.\n\nCommand and Control: For resilience, ShadowHydra utilized domain generation algorithms [T1568.002] to dynamically change their command and control (C2) servers monthly, making it difficult to block communications based on static domains. This technique was combined with the use of encrypted channels to exfiltrate data. Background: The company's firewall logs showed periodic connections to newly registered domains, but these were not flagged due to low threat scores in security tools.\n\nDefensive Recommendations: Organizations should monitor for unusual search engine queries targeting their domains, implement strict supply chain security controls, and review installer packages for unauthorized modifications. Additionally, monitoring LSASS process injections and AppDomainManager changes can help detect these TTPs early.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution: ShadowHydra compromised the software supply chain by injecting a malicious DLL into a package repository used by developers, which was then distributed through legitimate updates.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Privilege Escalation and Credential Access: The attacker injected a malicious DLL into the LSASS process to modify the authentication process, extracting credential hashes for lateral movement.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        },
+        {
+            "sentence": "This was facilitated by using system script proxy execution, where a malicious file was executed by exploiting a trusted Microsoft-signed process, such as rundll32.",
+            "technique_id": "T1216",
+            "technique_name": "System Script Proxy Execution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Software Supply Chain",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowHydra', targeting organizations in the technology sector. The campaign involves reconnaissance, supply chain compromise, and sophisticated persistence mechanisms. Blue teams are advised to review indicators and implement defensive measures.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowHydra'. This group has been observed targeting software development companies to infiltrate networks and exfiltrate intellectual property.\n\nInitial Access: The actors likely conduct reconnaissance by using search engines [T1593.002] to identify publicly accessible documents, such as technical specifications and employee directories, on target domains. For example, they queried 'site:target.com filetype:pdf' to gather intelligence for subsequent attacks. Background: The targeted company, 'TechInnovate Inc.', is a mid-sized software firm with offices in multiple countries, and its network logs showed increased scanning activity from unknown IPs in the weeks prior to the incident.\n\nExecution: ShadowHydra compromised the software supply chain [T1195] by injecting a malicious DLL into a package repository used by developers, which was then distributed through legitimate updates. Once executed, the malware employed AutoHotKey [T1059.010] to write and run malicious scripts that simulated administrative actions to disable security software, while simultaneously modifying registry keys for persistence. System logs from affected endpoints indicated unusual process spawns and failed antivirus scans, though some alerts were dismissed as false positives.\n\nPersistence: To maintain access, the actors altered the postinstall script of a system utility using installer packages [T1546.016], ensuring the malware reinstalled itself during package updates. Additionally, they hijacked the AppDomainManager [T1574.014] to execute malicious code within the application's context, evading detection by leveraging trusted processes. Background: TechInnovate's IT team noted anomalous behavior in their package management system, but initial investigations focused on user error rather than malicious activity.\n\nPrivilege Escalation and Credential Access: The attacker injected a malicious DLL into the LSASS process to modify the authentication process [T1556], extracting credential hashes for lateral movement. This was facilitated by using system script proxy execution [T1216], where a malicious file was executed by exploiting a trusted Microsoft-signed process, such as rundll32.exe. Network traffic analysis revealed unusual outbound connections to external IPs, but these were initially attributed to legitimate cloud services.\n\nCommand and Control: For resilience, ShadowHydra utilized domain generation algorithms [T1568.002] to dynamically change their command and control (C2) servers monthly, making it difficult to block communications based on static domains. This technique was combined with the use of encrypted channels to exfiltrate data. Background: The company's firewall logs showed periodic connections to newly registered domains, but these were not flagged due to low threat scores in security tools.\n\nDefensive Recommendations: Organizations should monitor for unusual search engine queries targeting their domains, implement strict supply chain security controls, and review installer packages for unauthorized modifications. Additionally, monitoring LSASS process injections and AppDomainManager changes can help detect these TTPs early.",
+        "techniques_used": [
+            "T1593.002",
+            "T1195",
+            "T1059.010",
+            "T1546.016",
+            "T1556",
+            "T1574.014",
+            "T1216",
+            "T1568.002"
+        ]
+    }
+}

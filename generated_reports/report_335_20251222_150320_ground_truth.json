@@ -1,0 +1,98 @@
+{
+    "report_id": "report_335",
+    "generated_at": "20251222_150320",
+    "scenario_target_ids": [
+        "T1200",
+        "T1569",
+        "T1053.005",
+        "T1036.003",
+        "T1557.001",
+        "T1185",
+        "T1557.004",
+        "T1530",
+        "T1071.004",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1569",
+        "T1053.005",
+        "T1036.003",
+        "T1557.001",
+        "T1185",
+        "T1557.004",
+        "T1530",
+        "T1071.004",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1567",
+        "T1530",
+        "T1200",
+        "T1557.001",
+        "T1185",
+        "T1569",
+        "T1071.004",
+        "T1557.004",
+        "T1053.005",
+        "T1036.003"
+    ],
+    "clean_text": "On October 15, 2023, a financial institution reported anomalous network activity, leading to the discovery of a sophisticated intrusion. The adversary, operating under the fictional moniker 'ShadowNet', initiated the attack by physically installing a passive network tap in an unsecured server room, allowing them to intercept unencrypted credentials from network traffic. Following this, they abused svchost.exe to run a malicious DLL that created backdoor access and established persistence by scheduling tasks via Windows Task Scheduler to execute different components of the malware. During installation, a Windows Batch script was executed that created a randomly-named directory in C:\\, copying and renaming the legitimate Windows curl command to this location to evade detection. To move laterally, the actors used Responder on a compromised host to perform LLMNR/NBT-NS poisoning and SMB relay, harvesting credentials, while simultaneously exploiting browser.exe memory corruption to hijack browser sessions and gain access to intranet resources. They deployed a fake corporate VPN portal as an evil twin to intercept authentication tokens and passwords and leveraged the Azure Resource Graph API to query for storage accounts containing sensitive data in cloud environments. For command and control, the malware utilized DNS with IPv4 A records and IPv6 AAAA records, and exfiltrated files over web services. System logs from the affected network showed routine backups and user login attempts, with no immediate alerts triggered during the initial phases. The company, a mid-sized bank with operations in North America, reported no prior incidents, but historical data indicated outdated firewall rules. This fictional scenario underscores the importance of monitoring for hardware tampering, service anomalies, and cloud API usage.",
+    "tagged_text": "On October 15, 2023, a financial institution reported anomalous network activity, leading to the discovery of a sophisticated intrusion. The adversary, operating under the fictional moniker 'ShadowNet', initiated the attack by physically installing a passive network tap in an unsecured server room, allowing them to intercept unencrypted credentials from network traffic [T1200]. Following this, they abused svchost.exe to run a malicious DLL that created backdoor access [T1569] and established persistence by scheduling tasks via Windows Task Scheduler to execute different components of the malware [T1053.005]. During installation, a Windows Batch script was executed that created a randomly-named directory in C:\\, copying and renaming the legitimate Windows curl command to this location to evade detection [T1036.003]. To move laterally, the actors used Responder on a compromised host to perform LLMNR/NBT-NS poisoning and SMB relay, harvesting credentials [T1557.001], while simultaneously exploiting browser.exe memory corruption to hijack browser sessions and gain access to intranet resources [T1185]. They deployed a fake corporate VPN portal as an evil twin to intercept authentication tokens and passwords [T1557.004] and leveraged the Azure Resource Graph API to query for storage accounts containing sensitive data in cloud environments [T1530]. For command and control, the malware utilized DNS with IPv4 A records and IPv6 AAAA records [T1071.004], and exfiltrated files over web services [T1567]. System logs from the affected network showed routine backups and user login attempts, with no immediate alerts triggered during the initial phases. The company, a mid-sized bank with operations in North America, reported no prior incidents, but historical data indicated outdated firewall rules. This fictional scenario underscores the importance of monitoring for hardware tampering, service anomalies, and cloud API usage.",
+    "sentence_annotations": [
+        {
+            "sentence": "The adversary, operating under the fictional moniker 'ShadowNet', initiated the attack by physically installing a passive network tap in an unsecured server room, allowing them to intercept unencrypted credentials from network traffic.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "exe to run a malicious DLL that created backdoor access and established persistence by scheduling tasks via Windows Task Scheduler to execute different components of the malware [T1053.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "exe memory corruption to hijack browser sessions and gain access to intranet resources.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        },
+        {
+            "sentence": "004] and leveraged the Azure Resource Graph API to query for storage accounts containing sensitive data in cloud environments.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "004], and exfiltrated files over web services.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowNet' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group 'ShadowNet' targeting financial institutions, leveraging hardware-based interception, service abuse, and cloud exploitation to exfiltrate sensitive data. The report is for blue team training to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "On October 15, 2023, a financial institution reported anomalous network activity, leading to the discovery of a sophisticated intrusion. The adversary, operating under the fictional moniker 'ShadowNet', initiated the attack by physically installing a passive network tap in an unsecured server room, allowing them to intercept unencrypted credentials from network traffic [T1200]. Following this, they abused svchost.exe to run a malicious DLL that created backdoor access [T1569] and established persistence by scheduling tasks via Windows Task Scheduler to execute different components of the malware [T1053.005]. During installation, a Windows Batch script was executed that created a randomly-named directory in C:\\, copying and renaming the legitimate Windows curl command to this location to evade detection [T1036.003]. To move laterally, the actors used Responder on a compromised host to perform LLMNR/NBT-NS poisoning and SMB relay, harvesting credentials [T1557.001], while simultaneously exploiting browser.exe memory corruption to hijack browser sessions and gain access to intranet resources [T1185]. They deployed a fake corporate VPN portal as an evil twin to intercept authentication tokens and passwords [T1557.004] and leveraged the Azure Resource Graph API to query for storage accounts containing sensitive data in cloud environments [T1530]. For command and control, the malware utilized DNS with IPv4 A records and IPv6 AAAA records [T1071.004], and exfiltrated files over web services [T1567]. System logs from the affected network showed routine backups and user login attempts, with no immediate alerts triggered during the initial phases. The company, a mid-sized bank with operations in North America, reported no prior incidents, but historical data indicated outdated firewall rules. This fictional scenario underscores the importance of monitoring for hardware tampering, service anomalies, and cloud API usage.",
+        "techniques_used": [
+            "T1200",
+            "T1569",
+            "T1053.005",
+            "T1036.003",
+            "T1557.001",
+            "T1185",
+            "T1557.004",
+            "T1530",
+            "T1071.004",
+            "T1567"
+        ]
+    }
+}

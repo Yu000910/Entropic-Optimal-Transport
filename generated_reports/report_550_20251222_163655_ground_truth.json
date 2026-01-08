@@ -1,0 +1,118 @@
+{
+    "report_id": "report_550",
+    "generated_at": "20251222_163655",
+    "scenario_target_ids": [
+        "T1596.005",
+        "T1669",
+        "T1204.002",
+        "T1053",
+        "T1546.005",
+        "T1027.001",
+        "T1070.002",
+        "T1211",
+        "T1560.002",
+        "T1560.001",
+        "T1572",
+        "T1659",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1596.005",
+        "T1669",
+        "T1204.002",
+        "T1053",
+        "T1546.005",
+        "T1027.001",
+        "T1070.002",
+        "T1211",
+        "T1560.002",
+        "T1560.001",
+        "T1572",
+        "T1659",
+        "T1020"
+    ],
+    "actual_found_ids": [
+        "T1020",
+        "T1572",
+        "T1596.005",
+        "T1070.002",
+        "T1211",
+        "T1669",
+        "T1560.002",
+        "T1659",
+        "T1560.001",
+        "T1053",
+        "T1204.002",
+        "T1546.005",
+        "T1027.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. This report simulates an attack by 'SilentSentry', a fictional advanced persistent threat (APT) group, targeting a U.S.-based energy company, 'PowerGrid Inc.', over a two-month period from March to April 2024. The campaign began with reconnaissance activities, where actors likely conducted database scans to identify SSH servers with weak encryption, while simultaneously establishing unauthorized wireless connections to enterprise Wi-Fi networks for initial access into the environment. During the execution phase, the adversary employed a spear-phishing email with a malicious PDF attachment, luring victims into opening the file, which then triggered a PowerShell script to create a scheduled task via schtasks.exe for persistent execution on system startup. For persistence, the malware implemented a trap mechanism that intercepted SIGQUIT signals to launch a credential harvesting script, while using binary padding to include time-delayed execution and avoid behavioral detection systems. To evade defenses, the attacker cleared system logs in /var/log/messages and exploited vulnerabilities to stop critical security services on endpoints. Prior to exfiltration, collected files were compressed using zLib and WinRAR, with automated routines transferring data from temporary directories. The campaign also involved protocol tunneling via SSH port forwarding to create encrypted tunnels through corporate proxies, and content injection into DNS queries to establish persistent backdoor access. Irrelevant logs from PowerGrid Inc.'s internal monitoring systems showed routine network traffic spikes unrelated to this activity, and company background notes indicate no prior significant breaches in the last fiscal year.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. This report simulates an attack by 'SilentSentry', a fictional advanced persistent threat (APT) group, targeting a U.S.-based energy company, 'PowerGrid Inc.', over a two-month period from March to April 2024. The campaign began with reconnaissance activities, where actors likely conducted database scans [T1596.005] to identify SSH servers with weak encryption, while simultaneously establishing unauthorized wireless connections to enterprise Wi-Fi networks [T1669] for initial access into the environment. During the execution phase, the adversary employed a spear-phishing email with a malicious PDF attachment, luring victims into opening the file [T1204.002], which then triggered a PowerShell script to create a scheduled task via schtasks.exe [T1053] for persistent execution on system startup. For persistence, the malware implemented a trap mechanism that intercepted SIGQUIT signals [T1546.005] to launch a credential harvesting script, while using binary padding [T1027.001] to include time-delayed execution and avoid behavioral detection systems. To evade defenses, the attacker cleared system logs in /var/log/messages [T1070.002] and exploited vulnerabilities to stop critical security services [T1211] on endpoints. Prior to exfiltration, collected files were compressed using zLib [T1560.002] and WinRAR [T1560.001], with automated routines [T1020] transferring data from temporary directories. The campaign also involved protocol tunneling via SSH port forwarding [T1572] to create encrypted tunnels through corporate proxies, and content injection into DNS queries [T1659] to establish persistent backdoor access. Irrelevant logs from PowerGrid Inc.'s internal monitoring systems showed routine network traffic spikes unrelated to this activity, and company background notes indicate no prior significant breaches in the last fiscal year.",
+    "sentence_annotations": [
+        {
+            "sentence": "005] to identify SSH servers with weak encryption, while simultaneously establishing unauthorized wireless connections to enterprise Wi-Fi networks for initial access into the environment.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "exe for persistent execution on system startup.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "002] and exploited vulnerabilities to stop critical security services on endpoints.",
+            "technique_id": "T1211",
+            "technique_name": "Exploitation for Defense Evasion"
+        },
+        {
+            "sentence": "001], with automated routines transferring data from temporary directories.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        },
+        {
+            "sentence": "The campaign also involved protocol tunneling via SSH port forwarding to create encrypted tunnels through corporate proxies, and content injection into DNS queries to establish persistent backdoor access.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "The campaign also involved protocol tunneling via SSH port forwarding to create encrypted tunnels through corporate proxies, and content injection into DNS queries to establish persistent backdoor access.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentSentry' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'SilentSentry', targeting critical infrastructure sectors. The campaign involves initial reconnaissance via database scanning and Wi-Fi network exploitation, followed by malicious file execution, persistence mechanisms, defense evasion, data exfiltration, and protocol tunneling. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. This report simulates an attack by 'SilentSentry', a fictional advanced persistent threat (APT) group, targeting a U.S.-based energy company, 'PowerGrid Inc.', over a two-month period from March to April 2024. The campaign began with reconnaissance activities, where actors likely conducted database scans [T1596.005] to identify SSH servers with weak encryption, while simultaneously establishing unauthorized wireless connections to enterprise Wi-Fi networks [T1669] for initial access into the environment. During the execution phase, the adversary employed a spear-phishing email with a malicious PDF attachment, luring victims into opening the file [T1204.002], which then triggered a PowerShell script to create a scheduled task via schtasks.exe [T1053] for persistent execution on system startup. For persistence, the malware implemented a trap mechanism that intercepted SIGQUIT signals [T1546.005] to launch a credential harvesting script, while using binary padding [T1027.001] to include time-delayed execution and avoid behavioral detection systems. To evade defenses, the attacker cleared system logs in /var/log/messages [T1070.002] and exploited vulnerabilities to stop critical security services [T1211] on endpoints. Prior to exfiltration, collected files were compressed using zLib [T1560.002] and WinRAR [T1560.001], with automated routines [T1020] transferring data from temporary directories. The campaign also involved protocol tunneling via SSH port forwarding [T1572] to create encrypted tunnels through corporate proxies, and content injection into DNS queries [T1659] to establish persistent backdoor access. Irrelevant logs from PowerGrid Inc.'s internal monitoring systems showed routine network traffic spikes unrelated to this activity, and company background notes indicate no prior significant breaches in the last fiscal year.",
+        "techniques_used": [
+            "T1596.005",
+            "T1669",
+            "T1204.002",
+            "T1053",
+            "T1546.005",
+            "T1027.001",
+            "T1070.002",
+            "T1211",
+            "T1560.002",
+            "T1560.001",
+            "T1572",
+            "T1659",
+            "T1020"
+        ]
+    }
+}

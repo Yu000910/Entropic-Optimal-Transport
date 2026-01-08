@@ -1,0 +1,63 @@
+{
+    "report_id": "report_228",
+    "generated_at": "20251222_141914",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1053.003",
+        "T1554",
+        "T1090",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078.003",
+        "T1053.003",
+        "T1554",
+        "T1090",
+        "T1020"
+    ],
+    "actual_found_ids": [
+        "T1090",
+        "T1053.003",
+        "T1554",
+        "T1078.003",
+        "T1020"
+    ],
+    "clean_text": "APT-FIN, a fictional threat actor with suspected ties to cybercriminal elements, has been observed targeting mid-sized financial institutions since early 2024. Initial analysis suggests the group conducts extensive reconnaissance through social media profiling and phishing campaigns, though this phase is not detailed in the current scenario. The attack begins with the adversary gaining initial access by exploiting weak password policies, using legitimate local administrative account credentials that were previously compromised via credential stuffing attacks. Once inside the network, the actors establish persistence by scheduling a cryptocurrency miner to execute during off-peak hours through cron jobs on Linux-based servers, while simultaneously modifying the Windows SSH client binary to implant a backdoor that allows remote command execution. To obscure their activities, the backdoor leverages a proxy server to connect to remote SFTP servers for command-and-control communications, enabling the automated exfiltration of sensitive documents, such as sensitive_docs.zip, from shared network drives. System logs from affected servers show unusual spikes in CPU usage during nighttime hours, correlating with the cron-scheduled miner execution, and network traffic analysis reveals anomalous outbound connections to IP addresses associated with known malicious proxies. The financial institution's background includes a recent merger, which may have introduced security gaps in account management, but this is not directly linked to the attack techniques. Remediation efforts involve resetting local admin passwords, auditing cron jobs, and restoring compromised binaries from trusted sources.",
+    "tagged_text": "APT-FIN, a fictional threat actor with suspected ties to cybercriminal elements, has been observed targeting mid-sized financial institutions since early 2024. Initial analysis suggests the group conducts extensive reconnaissance through social media profiling and phishing campaigns, though this phase is not detailed in the current scenario. The attack begins with the adversary gaining initial access by exploiting weak password policies, using legitimate local administrative account credentials [T1078.003] that were previously compromised via credential stuffing attacks. Once inside the network, the actors establish persistence by scheduling a cryptocurrency miner to execute during off-peak hours through cron jobs [T1053.003] on Linux-based servers, while simultaneously modifying the Windows SSH client binary to implant a backdoor [T1554] that allows remote command execution. To obscure their activities, the backdoor leverages a proxy server [T1090] to connect to remote SFTP servers for command-and-control communications, enabling the automated exfiltration of sensitive documents, such as sensitive_docs.zip, from shared network drives [T1020]. System logs from affected servers show unusual spikes in CPU usage during nighttime hours, correlating with the cron-scheduled miner execution, and network traffic analysis reveals anomalous outbound connections to IP addresses associated with known malicious proxies. The financial institution's background includes a recent merger, which may have introduced security gaps in account management, but this is not directly linked to the attack techniques. Remediation efforts involve resetting local admin passwords, auditing cron jobs, and restoring compromised binaries from trusted sources.",
+    "sentence_annotations": [
+        {
+            "sentence": "003] on Linux-based servers, while simultaneously modifying the Windows SSH client binary to implant a backdoor that allows remote command execution.",
+            "technique_id": "T1554",
+            "technique_name": "Compromise Host Software Binary"
+        },
+        {
+            "sentence": "To obscure their activities, the backdoor leverages a proxy server to connect to remote SFTP servers for command-and-control communications, enabling the automated exfiltration of sensitive documents, such as sensitive_docs.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        },
+        {
+            "sentence": "zip, from shared network drives.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), Cybersecurity and Infrastructure Security Agency (CISA), and National Security Agency (NSA) are releasing this joint Cybersecurity Advisory to detail a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FIN, targeting financial institutions in the United States. This advisory provides a realistic scenario for blue team training, focusing on techniques involving credential abuse, persistence mechanisms, and data exfiltration. The fictional campaign leverages compromised local administrative accounts to implant backdoors and automate malicious activities, aiming to exfiltrate sensitive financial data. Organizations are encouraged to use this report to enhance detection and response capabilities.",
+        "full_report_text": "APT-FIN, a fictional threat actor with suspected ties to cybercriminal elements, has been observed targeting mid-sized financial institutions since early 2024. Initial analysis suggests the group conducts extensive reconnaissance through social media profiling and phishing campaigns, though this phase is not detailed in the current scenario. The attack begins with the adversary gaining initial access by exploiting weak password policies, using legitimate local administrative account credentials [T1078.003] that were previously compromised via credential stuffing attacks. Once inside the network, the actors establish persistence by scheduling a cryptocurrency miner to execute during off-peak hours through cron jobs [T1053.003] on Linux-based servers, while simultaneously modifying the Windows SSH client binary to implant a backdoor [T1554] that allows remote command execution. To obscure their activities, the backdoor leverages a proxy server [T1090] to connect to remote SFTP servers for command-and-control communications, enabling the automated exfiltration of sensitive documents, such as sensitive_docs.zip, from shared network drives [T1020]. System logs from affected servers show unusual spikes in CPU usage during nighttime hours, correlating with the cron-scheduled miner execution, and network traffic analysis reveals anomalous outbound connections to IP addresses associated with known malicious proxies. The financial institution's background includes a recent merger, which may have introduced security gaps in account management, but this is not directly linked to the attack techniques. Remediation efforts involve resetting local admin passwords, auditing cron jobs, and restoring compromised binaries from trusted sources.",
+        "techniques_used": [
+            "T1078.003",
+            "T1053.003",
+            "T1554",
+            "T1090",
+            "T1020"
+        ]
+    }
+}

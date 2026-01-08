@@ -1,0 +1,93 @@
+{
+    "report_id": "report_538",
+    "generated_at": "20251222_163126",
+    "scenario_target_ids": [
+        "T1596",
+        "T1200",
+        "T1559",
+        "T1059.012",
+        "T1546.011",
+        "T1546.010",
+        "T1127.003",
+        "T1055.003",
+        "T1574.007",
+        "T1102.003",
+        "T1496.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1200",
+        "T1559",
+        "T1059.012",
+        "T1055.003",
+        "T1546.011",
+        "T1546.010",
+        "T1574.007",
+        "T1127.003",
+        "T1102.003",
+        "T1496.003"
+    ],
+    "actual_found_ids": [
+        "T1059.012",
+        "T1127.003",
+        "T1102.003",
+        "T1200",
+        "T1496.003",
+        "T1546.010",
+        "T1055.003",
+        "T1559",
+        "T1546.011",
+        "T1574.007",
+        "T1596"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional APT campaign designated as 'ShadowScribe'. This campaign targets enterprises with virtualized infrastructure, exploiting vulnerabilities and insider access to achieve persistent control and financial gain.\n\nBackground: The fictional victim organization, 'TechGlobal Solutions', is a mid-sized technology firm specializing in cloud services and data analytics. On 2024-10-15, anomalous network traffic was detected from an internal server, leading to the discovery of unauthorized access. Initial logs showed increased outbound connections to unknown IP addresses, but these were initially dismissed as false positives due to routine system updates.\n\nAttack Narrative:\n1. Reconnaissance: The actors likely conducted reconnaissance by searching open technical databases, including public vulnerability repositories and AI-assisted tools, to identify weaknesses in TechGlobal Solutions' virtualized systems. This phase involved scanning for unpatched hypervisor vulnerabilities and exposed management interfaces.\n2. Initial Access and Credential Theft: A malicious insider, possibly a contractor with physical access, deployed a passive network tap to intercept authentication credentials from network traffic. This hardware addition allowed the collection of plaintext credentials and session tokens, bypassing network encryption controls.\n3. Execution and Evasion: Upon gaining initial access, the adversary employed inter-process communication via COM automation to create and execute a WScript.Shell object, which then leveraged the Hypervisor CLI (esxcli) to disable security features and logging mechanisms on the host. Concurrently, they used thread execution hijacking by suspending antivirus scanning threads to allow undetected execution of malicious payloads.\n4. Persistence: To maintain access, the actors implemented application shimming by executing sdbinst.exe with a crafted Shim database and modified AppInit DLLs in the registry key HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows. Additionally, they altered the PATH environment variable to ensure their malicious version of net.exe would execute instead of the system one.\n5. Lateral Movement and Command and Control: For lateral movement, the adversary abused JamPlus.exe to run malicious .jam files across the network, while using PowerShell for one-way communication to collect system information from infected hosts. This allowed stealthy data exfiltration and coordination without bidirectional traffic.\n6. Impact: The campaign culminated in resource hijacking, where the malware leveraged AWS SNS to send premium-rate SMS messages, generating illicit revenue through SMS pumping. This activity resulted in financial losses and reputational damage for TechGlobal Solutions.\n\nMitigation Recommendations: Organizations should implement strict access controls for physical hardware, monitor for unusual hypervisor CLI usage, and apply patches for known vulnerabilities. Regular audits of persistence mechanisms and network traffic analysis are advised to detect similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional APT campaign designated as 'ShadowScribe'. This campaign targets enterprises with virtualized infrastructure, exploiting vulnerabilities and insider access to achieve persistent control and financial gain.\n\nBackground: The fictional victim organization, 'TechGlobal Solutions', is a mid-sized technology firm specializing in cloud services and data analytics. On 2024-10-15, anomalous network traffic was detected from an internal server, leading to the discovery of unauthorized access. Initial logs showed increased outbound connections to unknown IP addresses, but these were initially dismissed as false positives due to routine system updates.\n\nAttack Narrative:\n1. Reconnaissance: The actors likely conducted reconnaissance by searching open technical databases [T1596], including public vulnerability repositories and AI-assisted tools, to identify weaknesses in TechGlobal Solutions' virtualized systems. This phase involved scanning for unpatched hypervisor vulnerabilities and exposed management interfaces.\n2. Initial Access and Credential Theft: A malicious insider, possibly a contractor with physical access, deployed a passive network tap to intercept authentication credentials from network traffic [T1200]. This hardware addition allowed the collection of plaintext credentials and session tokens, bypassing network encryption controls.\n3. Execution and Evasion: Upon gaining initial access, the adversary employed inter-process communication via COM automation to create and execute a WScript.Shell object [T1559], which then leveraged the Hypervisor CLI (esxcli) to disable security features and logging mechanisms on the host [T1059.012]. Concurrently, they used thread execution hijacking by suspending antivirus scanning threads [T1055.003] to allow undetected execution of malicious payloads.\n4. Persistence: To maintain access, the actors implemented application shimming by executing sdbinst.exe with a crafted Shim database [T1546.011] and modified AppInit DLLs in the registry key HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows [T1546.010]. Additionally, they altered the PATH environment variable to ensure their malicious version of net.exe would execute instead of the system one [T1574.007].\n5. Lateral Movement and Command and Control: For lateral movement, the adversary abused JamPlus.exe to run malicious .jam files across the network [T1127.003], while using PowerShell for one-way communication to collect system information from infected hosts [T1102.003]. This allowed stealthy data exfiltration and coordination without bidirectional traffic.\n6. Impact: The campaign culminated in resource hijacking, where the malware leveraged AWS SNS to send premium-rate SMS messages, generating illicit revenue through SMS pumping [T1496.003]. This activity resulted in financial losses and reputational damage for TechGlobal Solutions.\n\nMitigation Recommendations: Organizations should implement strict access controls for physical hardware, monitor for unusual hypervisor CLI usage, and apply patches for known vulnerabilities. Regular audits of persistence mechanisms and network traffic analysis are advised to detect similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Reconnaissance: The actors likely conducted reconnaissance by searching open technical databases, including public vulnerability repositories and AI-assisted tools, to identify weaknesses in TechGlobal Solutions' virtualized systems.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "Initial Access and Credential Theft: A malicious insider, possibly a contractor with physical access, deployed a passive network tap to intercept authentication credentials from network traffic.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Shell object, which then leveraged the Hypervisor CLI (esxcli) to disable security features and logging mechanisms on the host [T1059.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowScribe' Targeting Virtualized Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowScribe', which combines insider threats, advanced persistence mechanisms, and resource hijacking to compromise virtualized environments. The campaign leverages open-source intelligence, hardware-based credential theft, and multi-stage payloads to evade detection and maintain long-term access, culminating in financial fraud through SMS pumping.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about a fictional APT campaign designated as 'ShadowScribe'. This campaign targets enterprises with virtualized infrastructure, exploiting vulnerabilities and insider access to achieve persistent control and financial gain.\n\nBackground: The fictional victim organization, 'TechGlobal Solutions', is a mid-sized technology firm specializing in cloud services and data analytics. On 2024-10-15, anomalous network traffic was detected from an internal server, leading to the discovery of unauthorized access. Initial logs showed increased outbound connections to unknown IP addresses, but these were initially dismissed as false positives due to routine system updates.\n\nAttack Narrative:\n1. Reconnaissance: The actors likely conducted reconnaissance by searching open technical databases [T1596], including public vulnerability repositories and AI-assisted tools, to identify weaknesses in TechGlobal Solutions' virtualized systems. This phase involved scanning for unpatched hypervisor vulnerabilities and exposed management interfaces.\n2. Initial Access and Credential Theft: A malicious insider, possibly a contractor with physical access, deployed a passive network tap to intercept authentication credentials from network traffic [T1200]. This hardware addition allowed the collection of plaintext credentials and session tokens, bypassing network encryption controls.\n3. Execution and Evasion: Upon gaining initial access, the adversary employed inter-process communication via COM automation to create and execute a WScript.Shell object [T1559], which then leveraged the Hypervisor CLI (esxcli) to disable security features and logging mechanisms on the host [T1059.012]. Concurrently, they used thread execution hijacking by suspending antivirus scanning threads [T1055.003] to allow undetected execution of malicious payloads.\n4. Persistence: To maintain access, the actors implemented application shimming by executing sdbinst.exe with a crafted Shim database [T1546.011] and modified AppInit DLLs in the registry key HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows [T1546.010]. Additionally, they altered the PATH environment variable to ensure their malicious version of net.exe would execute instead of the system one [T1574.007].\n5. Lateral Movement and Command and Control: For lateral movement, the adversary abused JamPlus.exe to run malicious .jam files across the network [T1127.003], while using PowerShell for one-way communication to collect system information from infected hosts [T1102.003]. This allowed stealthy data exfiltration and coordination without bidirectional traffic.\n6. Impact: The campaign culminated in resource hijacking, where the malware leveraged AWS SNS to send premium-rate SMS messages, generating illicit revenue through SMS pumping [T1496.003]. This activity resulted in financial losses and reputational damage for TechGlobal Solutions.\n\nMitigation Recommendations: Organizations should implement strict access controls for physical hardware, monitor for unusual hypervisor CLI usage, and apply patches for known vulnerabilities. Regular audits of persistence mechanisms and network traffic analysis are advised to detect similar threats.",
+        "techniques_used": [
+            "T1596",
+            "T1200",
+            "T1559",
+            "T1059.012",
+            "T1055.003",
+            "T1546.011",
+            "T1546.010",
+            "T1574.007",
+            "T1127.003",
+            "T1102.003",
+            "T1496.003"
+        ]
+    }
+}

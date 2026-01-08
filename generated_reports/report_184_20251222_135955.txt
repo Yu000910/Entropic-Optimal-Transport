@@ -1,0 +1,19 @@
+### Executive Summary
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on the fictional threat actor 'ShadowRouter', which has been observed targeting critical infrastructure organizations, including energy and telecommunications sectors, since early 2023. This campaign demonstrates sophisticated techniques to compromise network routers, execute malicious payloads, and maintain stealthy access for data exfiltration and disruption. The actors likely conduct reconnaissance [T1589] through open-source intelligence gathering on target networks and personnel. On April 15, 2023, a telecommunications company reported anomalous network traffic from its edge routers, which were later found to contain backdoored firmware. Background: The company, 'TelcoSecure Inc.', operates a nationwide network with over 10,000 routers deployed; initial logs showed no unusual activity prior to the incident, but subsequent analysis revealed firmware modifications dating back to January 2023.
+
+### Attack Details
+**Initial Access:** The adversary gained initial access by compromising the hardware supply chain [T1195.003], injecting malicious firmware into network routers during manufacturing to establish persistent backdoor access, which allowed remote command execution upon deployment in target environments. System logs from affected routers indicated firmware version mismatches, but no alerts were triggered due to lack of integrity checks.
+
+**Execution:** Upon router deployment, the malicious firmware triggered a user execution event [T1204] where an employee at TelcoSecure Inc. opened a malicious archive file disguised as containing photos, which executed the attacker's Remote Access Tool (RAT) using a command and scripting interpreter [T1059] to run Java-based payloads, while simultaneously employing odbcconf.exe [T1218.008] to load file.dll and bypass application whitelisting policies.
+
+**Persistence and Defense Evasion:** To maintain access, the actors utilized listplanting [T1055.015] by enumerating desktop windows via EnumWindows to identify processes for remote code injection, and they ignored process interrupts [T1564.011] by using 'powershell.exe -ExecutionPolicy Unrestricted -EncodedCommand' to execute encoded commands stealthily, while also downloading legacy_os_image.iso from an attacker-controlled server [T1601.002] to downgrade the system image and facilitate security bypasses. Irrelevant information: The company's IT team noted increased CPU usage on affected systems, but attributed it to routine software updates.
+
+**Discovery:** The campaign included discovery activities via the cloud service dashboard [T1538], where the script leveraged GCP Command Center to enumerate all active projects and their resource configurations, aiding in lateral movement and target identification.
+
+**Command and Control:** For command and control, the attackers routed malicious traffic through a multi-hop proxy [T1090.003] using the Tor network to conceal their true IP address, and they employed reflection amplification [T1498.002] by using DNS recursion to generate large responses from open resolvers toward the target, overwhelming network resources and obscuring data exfiltration. Background: TelcoSecure Inc. reported a 200% increase in DNS query volume during the attack period, but initial investigations focused on DDoS mitigation rather than malicious intent.
+
+### Recommendations
+Organizations should implement firmware integrity checks, restrict user execution of untrusted files, monitor for unusual scripting activity, and enhance network traffic analysis to detect proxy usage and amplification attacks. Regular audits of cloud service configurations are also advised.
+
+### References
+This report is based on fictional data for training purposes. Techniques are aligned with the MITRE ATT&CK framework.

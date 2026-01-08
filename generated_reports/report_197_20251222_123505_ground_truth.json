@@ -1,0 +1,123 @@
+{
+    "report_id": "report_197",
+    "generated_at": "20251222_123505",
+    "scenario_target_ids": [
+        "T1583.006",
+        "T1588.003",
+        "T1584.008",
+        "T1078.001",
+        "T1203",
+        "T1547.001",
+        "T1036.011",
+        "T1601.001",
+        "T1003",
+        "T1069",
+        "T1087.001",
+        "T1557.001",
+        "T1104",
+        "T1531",
+        "T1499.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.006",
+        "T1588.003",
+        "T1584.008",
+        "T1078.001",
+        "T1203",
+        "T1547.001",
+        "T1036.011",
+        "T1601.001",
+        "T1003",
+        "T1069",
+        "T1087.001",
+        "T1557.001",
+        "T1104",
+        "T1531",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1087.001",
+        "T1499.004",
+        "T1531",
+        "T1601.001",
+        "T1557.001",
+        "T1078.001",
+        "T1203",
+        "T1069",
+        "T1104",
+        "T1547.001",
+        "T1036.011",
+        "T1584.008",
+        "T1588.003",
+        "T1583.006",
+        "T1003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) of the fictional advanced persistent threat (APT) actor 'ShadowRouter.' This actor, believed to operate with state-sponsored objectives, has been observed targeting energy and telecommunications sectors in North America since early 2023. Initial analysis indicates the campaign aims to gain persistent access, exfiltrate sensitive data, and potentially disrupt critical services. Blue teams are advised to review logs for anomalous network traffic, particularly from SOHO routers and Microsoft TechNet domains, and to monitor for unusual process names and registry modifications.\n\n**Attack Narrative**\n1. **Initial Access**: The actors likely conducted reconnaissance to identify vulnerable SOHO routers in target networks, exploiting a known firmware vulnerability (CVE-2023-1234) to gain initial access. Upon compromise, they leveraged default administrator credentials (e.g., 'admin123') to authenticate and establish a foothold within the network perimeter.\n2. **Execution**: To execute malicious code on internal systems, the adversary delivered spear-phishing emails with weaponized Microsoft Office documents, exploiting CVE-2018-0802 to trigger payload execution on victim workstations.\n3. **Persistence**: After execution, the malware established persistence by creating a registry run key at HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\ShadowService and used PowerShell to download additional modules from a command and control (C2) server hosted on a compromised Microsoft TechNet profile page.\n4. **Privilege Escalation and Defense Evasion**: The actors employed OS credential dumping techniques, extracting LSASS memory to obtain user passwords and tokens, while simultaneously using code signing certificates issued to a fake company, 'SecureTech Inc.,' to bypass security controls and sign malicious binaries. On Linux systems, they overwrote process arguments in the /proc filesystem to disguise malicious processes as legitimate daemons like '/sbin/auditd -n'.\n5. **Discovery**: To map the network environment, the malware conducted permission groups discovery using the net group command and retrieved local account usernames from compromised hosts.\n6. **Lateral Movement**: For lateral movement, the actors executed LLMNR/NBT-NS poisoning and SMB relay attacks using tools like Responder on a compromised host to harvest credentials and move to other systems.\n7. **Command and Control**: The threat actor established resilient C2 channels by using remote_access_tool.exe to create multiple redundant connections, ensuring operational continuity even if some nodes were blocked.\n8. **Impact**: Prior to encryption, the malware deleted administrator accounts in victim networks to hinder recovery efforts and, in some cases, executed a fork bomb script that continuously spawned new processes until system resources were completely exhausted, causing denial-of-service conditions. Additionally, during maintenance windows, they automated a TFTP download of a modified network device OS to overwrite the existing firmware, patching the system image to maintain persistence.\n\n**Mitigation Recommendations**\nBlue teams should implement network segmentation, disable unnecessary services like LLMNR/NBT-NS, enforce strong password policies, regularly patch systems and firmware, monitor for anomalous registry changes and process names, and use endpoint detection and response (EDR) tools to identify credential dumping and lateral movement attempts. Logs from the period show increased traffic to IP 192.168.1.100, which was later identified as a compromised router, but this was initially overlooked due to normal maintenance activity. The company 'InfraCorp' reported no financial losses but experienced a 12-hour service outage during the simulated attack.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) of the fictional advanced persistent threat (APT) actor 'ShadowRouter.' This actor, believed to operate with state-sponsored objectives, has been observed targeting energy and telecommunications sectors in North America since early 2023. Initial analysis indicates the campaign aims to gain persistent access, exfiltrate sensitive data, and potentially disrupt critical services. Blue teams are advised to review logs for anomalous network traffic, particularly from SOHO routers and Microsoft TechNet domains, and to monitor for unusual process names and registry modifications.\n\n**Attack Narrative**\n1. **Initial Access**: The actors likely conducted reconnaissance to identify vulnerable SOHO routers in target networks, exploiting a known firmware vulnerability (CVE-2023-1234) to gain initial access [T1584.008]. Upon compromise, they leveraged default administrator credentials (e.g., 'admin123') to authenticate and establish a foothold within the network perimeter [T1078.001].\n2. **Execution**: To execute malicious code on internal systems, the adversary delivered spear-phishing emails with weaponized Microsoft Office documents, exploiting CVE-2018-0802 to trigger payload execution on victim workstations [T1203].\n3. **Persistence**: After execution, the malware established persistence by creating a registry run key at HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\ShadowService [T1547.001] and used PowerShell to download additional modules from a command and control (C2) server hosted on a compromised Microsoft TechNet profile page [T1583.006].\n4. **Privilege Escalation and Defense Evasion**: The actors employed OS credential dumping techniques, extracting LSASS memory to obtain user passwords and tokens [T1003], while simultaneously using code signing certificates issued to a fake company, 'SecureTech Inc.,' to bypass security controls and sign malicious binaries [T1588.003]. On Linux systems, they overwrote process arguments in the /proc filesystem to disguise malicious processes as legitimate daemons like '/sbin/auditd -n' [T1036.011].\n5. **Discovery**: To map the network environment, the malware conducted permission groups discovery using the net group command [T1069] and retrieved local account usernames from compromised hosts [T1087.001].\n6. **Lateral Movement**: For lateral movement, the actors executed LLMNR/NBT-NS poisoning and SMB relay attacks using tools like Responder on a compromised host to harvest credentials and move to other systems [T1557.001].\n7. **Command and Control**: The threat actor established resilient C2 channels by using remote_access_tool.exe to create multiple redundant connections, ensuring operational continuity even if some nodes were blocked [T1104].\n8. **Impact**: Prior to encryption, the malware deleted administrator accounts in victim networks to hinder recovery efforts [T1531] and, in some cases, executed a fork bomb script that continuously spawned new processes until system resources were completely exhausted, causing denial-of-service conditions [T1499.004]. Additionally, during maintenance windows, they automated a TFTP download of a modified network device OS to overwrite the existing firmware, patching the system image to maintain persistence [T1601.001].\n\n**Mitigation Recommendations**\nBlue teams should implement network segmentation, disable unnecessary services like LLMNR/NBT-NS, enforce strong password policies, regularly patch systems and firmware, monitor for anomalous registry changes and process names, and use endpoint detection and response (EDR) tools to identify credential dumping and lateral movement attempts. Logs from the period show increased traffic to IP 192.168.1.100, which was later identified as a compromised router, but this was initially overlooked due to normal maintenance activity. The company 'InfraCorp' reported no financial losses but experienced a 12-hour service outage during the simulated attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Execution**: To execute malicious code on internal systems, the adversary delivered spear-phishing emails with weaponized Microsoft Office documents, exploiting CVE-2018-0802 to trigger payload execution on victim workstations.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "**Privilege Escalation and Defense Evasion**: The actors employed OS credential dumping techniques, extracting LSASS memory to obtain user passwords and tokens, while simultaneously using code signing certificates issued to a fake company, 'SecureTech Inc.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "**Discovery**: To map the network environment, the malware conducted permission groups discovery using the net group command and retrieved local account usernames from compromised hosts [T1087.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "exe to create multiple redundant connections, ensuring operational continuity even if some nodes were blocked.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        },
+        {
+            "sentence": "**Impact**: Prior to encryption, the malware deleted administrator accounts in victim networks to hinder recovery efforts and, in some cases, executed a fork bomb script that continuously spawned new processes until system resources were completely exhausted, causing denial-of-service conditions [T1499.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRouter' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowRouter' targeting critical infrastructure sectors, leveraging compromised web services and network devices for initial access, exploiting vulnerabilities for execution, and employing persistence and lateral movement techniques to disrupt operations and exfiltrate data. The scenario incorporates techniques from real-world APT groups for educational blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) of the fictional advanced persistent threat (APT) actor 'ShadowRouter.' This actor, believed to operate with state-sponsored objectives, has been observed targeting energy and telecommunications sectors in North America since early 2023. Initial analysis indicates the campaign aims to gain persistent access, exfiltrate sensitive data, and potentially disrupt critical services. Blue teams are advised to review logs for anomalous network traffic, particularly from SOHO routers and Microsoft TechNet domains, and to monitor for unusual process names and registry modifications.\n\n**Attack Narrative**\n1. **Initial Access**: The actors likely conducted reconnaissance to identify vulnerable SOHO routers in target networks, exploiting a known firmware vulnerability (CVE-2023-1234) to gain initial access [T1584.008]. Upon compromise, they leveraged default administrator credentials (e.g., 'admin123') to authenticate and establish a foothold within the network perimeter [T1078.001].\n2. **Execution**: To execute malicious code on internal systems, the adversary delivered spear-phishing emails with weaponized Microsoft Office documents, exploiting CVE-2018-0802 to trigger payload execution on victim workstations [T1203].\n3. **Persistence**: After execution, the malware established persistence by creating a registry run key at HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\ShadowService [T1547.001] and used PowerShell to download additional modules from a command and control (C2) server hosted on a compromised Microsoft TechNet profile page [T1583.006].\n4. **Privilege Escalation and Defense Evasion**: The actors employed OS credential dumping techniques, extracting LSASS memory to obtain user passwords and tokens [T1003], while simultaneously using code signing certificates issued to a fake company, 'SecureTech Inc.,' to bypass security controls and sign malicious binaries [T1588.003]. On Linux systems, they overwrote process arguments in the /proc filesystem to disguise malicious processes as legitimate daemons like '/sbin/auditd -n' [T1036.011].\n5. **Discovery**: To map the network environment, the malware conducted permission groups discovery using the net group command [T1069] and retrieved local account usernames from compromised hosts [T1087.001].\n6. **Lateral Movement**: For lateral movement, the actors executed LLMNR/NBT-NS poisoning and SMB relay attacks using tools like Responder on a compromised host to harvest credentials and move to other systems [T1557.001].\n7. **Command and Control**: The threat actor established resilient C2 channels by using remote_access_tool.exe to create multiple redundant connections, ensuring operational continuity even if some nodes were blocked [T1104].\n8. **Impact**: Prior to encryption, the malware deleted administrator accounts in victim networks to hinder recovery efforts [T1531] and, in some cases, executed a fork bomb script that continuously spawned new processes until system resources were completely exhausted, causing denial-of-service conditions [T1499.004]. Additionally, during maintenance windows, they automated a TFTP download of a modified network device OS to overwrite the existing firmware, patching the system image to maintain persistence [T1601.001].\n\n**Mitigation Recommendations**\nBlue teams should implement network segmentation, disable unnecessary services like LLMNR/NBT-NS, enforce strong password policies, regularly patch systems and firmware, monitor for anomalous registry changes and process names, and use endpoint detection and response (EDR) tools to identify credential dumping and lateral movement attempts. Logs from the period show increased traffic to IP 192.168.1.100, which was later identified as a compromised router, but this was initially overlooked due to normal maintenance activity. The company 'InfraCorp' reported no financial losses but experienced a 12-hour service outage during the simulated attack.",
+        "techniques_used": [
+            "T1583.006",
+            "T1588.003",
+            "T1584.008",
+            "T1078.001",
+            "T1203",
+            "T1547.001",
+            "T1036.011",
+            "T1601.001",
+            "T1003",
+            "T1069",
+            "T1087.001",
+            "T1557.001",
+            "T1104",
+            "T1531",
+            "T1499.004"
+        ]
+    }
+}

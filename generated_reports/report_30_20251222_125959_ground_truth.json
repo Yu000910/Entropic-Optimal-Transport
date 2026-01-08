@@ -1,0 +1,113 @@
+{
+    "report_id": "report_30",
+    "generated_at": "20251222_125959",
+    "scenario_target_ids": [
+        "T1597.002",
+        "T1595.002",
+        "T1566",
+        "T1669",
+        "T1204.004",
+        "T1553.003",
+        "T1601",
+        "T1480.001",
+        "T1007",
+        "T1550.003",
+        "T1092",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.002",
+        "T1595.002",
+        "T1566",
+        "T1669",
+        "T1204.004",
+        "T1553.003",
+        "T1601",
+        "T1480.001",
+        "T1007",
+        "T1550.003",
+        "T1092",
+        "T1565"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1480.001",
+        "T1550.003",
+        "T1669",
+        "T1601",
+        "T1565",
+        "T1566",
+        "T1092",
+        "T1007",
+        "T1204.004",
+        "T1595.002",
+        "T1553.003"
+    ],
+    "clean_text": "### Background\nMagic Hound, a fictional APT group, has been observed targeting organizations in the energy and financial sectors since early 2023. The group operates with high sophistication, leveraging dark web resources and automated tools. Victim organizations reported unusual network traffic and system performance degradation, with initial alerts triggered by SIEM logs showing anomalous outbound connections to IP addresses in Eastern Europe. Company background includes a mix of legacy and modern IT systems, with some air-gapped networks for sensitive operations.\n\n### Attack Narrative\n**Reconnaissance and Initial Access:** Magic Hound likely conducted reconnaissance by purchasing technical data, including system architecture documentation, from dark web marketplaces to understand the victim's environment. Subsequently, the actors employed vulnerability scanning to identify public-facing systems vulnerable to Log4j (CVE-2021-44228), ProxyShell (CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065), and Fortinet FortiOS SSL VPN (CVE-2018-13379) vulnerabilities. In parallel, a spear-phishing campaign delivered emails with weaponized PDF attachments to targeted executives, exploiting human factors for initial access. System logs from the email gateway showed a spike in malicious attachments blocked, but some bypassed filters due to social engineering tactics.\n\n**Execution and Persistence:** Upon compromise, the malware was configured to automatically connect to any open Wi-Fi access point named 'Free_WiFi' to establish command and control channels. The actors then used malicious copy and paste techniques, where a compromised website displayed a fake 'System Scan Complete - Threats Found' alert that downloaded and executed malware when users clicked 'Remove Threats'. To evade detection, the malware employed SIP and trust provider hijacking by modifying HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\OID\\EncodingType 0\\CryptSIPDllGetSignedDataMsg\\{C689AAB8-8E78-11D0-8C47-00C04FC295EE} to bypass Windows signature checks. Additionally, the actors modified the system image by overwriting command-line utilities with malicious counterparts, ensuring persistence and hindering forensic analysis. Network traffic analysis revealed encrypted payloads using XOR encryption for obfuscation before deployment.\n\n**Discovery and Lateral Movement:** Magic Hound conducted system service discovery to enumerate active services, identifying critical processes for further exploitation. Using tools like mimikatz.exe, the attacker performed pass the ticket attacks by dumping credential material, including Kerberos tickets, from the LSASS process to move laterally across the network. Irrelevant information includes routine system updates and backup logs that showed no anomalies during this phase.\n\n**Exfiltration and Impact:** For data exfiltration, the group utilized communication through removable media, systematically transferring data from air-gapped networks via USB flash drives for command and control. Furthermore, the malware injected a malicious .dll into web browsers to manipulate session data and hijack user accounts, leading to unauthorized access and data manipulation. Endpoint detection logs indicated unusual DLL loads in browser processes, but initial alerts were suppressed due to false positives from legacy antivirus software.\n\n### Recommendations\nBlue teams should monitor for dark web data leaks, implement robust email filtering, patch known vulnerabilities, restrict USB usage, and enhance logging for service enumeration and credential dumping activities. This fictional scenario underscores the importance of layered defenses and continuous monitoring.",
+    "tagged_text": "### Background\nMagic Hound, a fictional APT group, has been observed targeting organizations in the energy and financial sectors since early 2023. The group operates with high sophistication, leveraging dark web resources and automated tools. Victim organizations reported unusual network traffic and system performance degradation, with initial alerts triggered by SIEM logs showing anomalous outbound connections to IP addresses in Eastern Europe. Company background includes a mix of legacy and modern IT systems, with some air-gapped networks for sensitive operations.\n\n### Attack Narrative\n**Reconnaissance and Initial Access:** Magic Hound likely conducted reconnaissance by purchasing technical data, including system architecture documentation, from dark web marketplaces [T1597.002] to understand the victim's environment. Subsequently, the actors employed vulnerability scanning [T1595.002] to identify public-facing systems vulnerable to Log4j (CVE-2021-44228), ProxyShell (CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065), and Fortinet FortiOS SSL VPN (CVE-2018-13379) vulnerabilities. In parallel, a spear-phishing campaign [T1566] delivered emails with weaponized PDF attachments to targeted executives, exploiting human factors for initial access. System logs from the email gateway showed a spike in malicious attachments blocked, but some bypassed filters due to social engineering tactics.\n\n**Execution and Persistence:** Upon compromise, the malware was configured to automatically connect to any open Wi-Fi access point named 'Free_WiFi' [T1669] to establish command and control channels. The actors then used malicious copy and paste techniques [T1204.004], where a compromised website displayed a fake 'System Scan Complete - Threats Found' alert that downloaded and executed malware when users clicked 'Remove Threats'. To evade detection, the malware employed SIP and trust provider hijacking [T1553.003] by modifying HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\OID\\EncodingType 0\\CryptSIPDllGetSignedDataMsg\\{C689AAB8-8E78-11D0-8C47-00C04FC295EE} to bypass Windows signature checks. Additionally, the actors modified the system image [T1601] by overwriting command-line utilities with malicious counterparts, ensuring persistence and hindering forensic analysis. Network traffic analysis revealed encrypted payloads using XOR encryption for obfuscation [T1480.001] before deployment.\n\n**Discovery and Lateral Movement:** Magic Hound conducted system service discovery [T1007] to enumerate active services, identifying critical processes for further exploitation. Using tools like mimikatz.exe, the attacker performed pass the ticket attacks [T1550.003] by dumping credential material, including Kerberos tickets, from the LSASS process to move laterally across the network. Irrelevant information includes routine system updates and backup logs that showed no anomalies during this phase.\n\n**Exfiltration and Impact:** For data exfiltration, the group utilized communication through removable media [T1092], systematically transferring data from air-gapped networks via USB flash drives for command and control. Furthermore, the malware injected a malicious .dll into web browsers [T1565] to manipulate session data and hijack user accounts, leading to unauthorized access and data manipulation. Endpoint detection logs indicated unusual DLL loads in browser processes, but initial alerts were suppressed due to false positives from legacy antivirus software.\n\n### Recommendations\nBlue teams should monitor for dark web data leaks, implement robust email filtering, patch known vulnerabilities, restrict USB usage, and enhance logging for service enumeration and credential dumping activities. This fictional scenario underscores the importance of layered defenses and continuous monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "In parallel, a spear-phishing campaign delivered emails with weaponized PDF attachments to targeted executives, exploiting human factors for initial access.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "**Execution and Persistence:** Upon compromise, the malware was configured to automatically connect to any open Wi-Fi access point named 'Free_WiFi' to establish command and control channels.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Additionally, the actors modified the system image by overwriting command-line utilities with malicious counterparts, ensuring persistence and hindering forensic analysis.",
+            "technique_id": "T1601",
+            "technique_name": "Modify System Image"
+        },
+        {
+            "sentence": "**Discovery and Lateral Movement:** Magic Hound conducted system service discovery to enumerate active services, identifying critical processes for further exploitation.",
+            "technique_id": "T1007",
+            "technique_name": "System Service Discovery"
+        },
+        {
+            "sentence": "**Exfiltration and Impact:** For data exfiltration, the group utilized communication through removable media, systematically transferring data from air-gapped networks via USB flash drives for command and control.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        },
+        {
+            "sentence": "dll into web browsers to manipulate session data and hijack user accounts, leading to unauthorized access and data manipulation.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Magic Hound' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional advanced persistent threat (APT) group 'Magic Hound', targeting critical infrastructure sectors. The campaign involves initial reconnaissance, exploitation of public-facing vulnerabilities, phishing, and persistence techniques to achieve data exfiltration and system compromise. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "### Background\nMagic Hound, a fictional APT group, has been observed targeting organizations in the energy and financial sectors since early 2023. The group operates with high sophistication, leveraging dark web resources and automated tools. Victim organizations reported unusual network traffic and system performance degradation, with initial alerts triggered by SIEM logs showing anomalous outbound connections to IP addresses in Eastern Europe. Company background includes a mix of legacy and modern IT systems, with some air-gapped networks for sensitive operations.\n\n### Attack Narrative\n**Reconnaissance and Initial Access:** Magic Hound likely conducted reconnaissance by purchasing technical data, including system architecture documentation, from dark web marketplaces [T1597.002] to understand the victim's environment. Subsequently, the actors employed vulnerability scanning [T1595.002] to identify public-facing systems vulnerable to Log4j (CVE-2021-44228), ProxyShell (CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065), and Fortinet FortiOS SSL VPN (CVE-2018-13379) vulnerabilities. In parallel, a spear-phishing campaign [T1566] delivered emails with weaponized PDF attachments to targeted executives, exploiting human factors for initial access. System logs from the email gateway showed a spike in malicious attachments blocked, but some bypassed filters due to social engineering tactics.\n\n**Execution and Persistence:** Upon compromise, the malware was configured to automatically connect to any open Wi-Fi access point named 'Free_WiFi' [T1669] to establish command and control channels. The actors then used malicious copy and paste techniques [T1204.004], where a compromised website displayed a fake 'System Scan Complete - Threats Found' alert that downloaded and executed malware when users clicked 'Remove Threats'. To evade detection, the malware employed SIP and trust provider hijacking [T1553.003] by modifying HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\OID\\EncodingType 0\\CryptSIPDllGetSignedDataMsg\\{C689AAB8-8E78-11D0-8C47-00C04FC295EE} to bypass Windows signature checks. Additionally, the actors modified the system image [T1601] by overwriting command-line utilities with malicious counterparts, ensuring persistence and hindering forensic analysis. Network traffic analysis revealed encrypted payloads using XOR encryption for obfuscation [T1480.001] before deployment.\n\n**Discovery and Lateral Movement:** Magic Hound conducted system service discovery [T1007] to enumerate active services, identifying critical processes for further exploitation. Using tools like mimikatz.exe, the attacker performed pass the ticket attacks [T1550.003] by dumping credential material, including Kerberos tickets, from the LSASS process to move laterally across the network. Irrelevant information includes routine system updates and backup logs that showed no anomalies during this phase.\n\n**Exfiltration and Impact:** For data exfiltration, the group utilized communication through removable media [T1092], systematically transferring data from air-gapped networks via USB flash drives for command and control. Furthermore, the malware injected a malicious .dll into web browsers [T1565] to manipulate session data and hijack user accounts, leading to unauthorized access and data manipulation. Endpoint detection logs indicated unusual DLL loads in browser processes, but initial alerts were suppressed due to false positives from legacy antivirus software.\n\n### Recommendations\nBlue teams should monitor for dark web data leaks, implement robust email filtering, patch known vulnerabilities, restrict USB usage, and enhance logging for service enumeration and credential dumping activities. This fictional scenario underscores the importance of layered defenses and continuous monitoring.",
+        "techniques_used": [
+            "T1597.002",
+            "T1595.002",
+            "T1566",
+            "T1669",
+            "T1204.004",
+            "T1553.003",
+            "T1601",
+            "T1480.001",
+            "T1007",
+            "T1550.003",
+            "T1092",
+            "T1565"
+        ]
+    }
+}

@@ -1,0 +1,115 @@
+{
+    "report_id": "report_30",
+    "generated_at": "20251222_112920",
+    "scenario_target_ids": [
+        "T1566",
+        "T1566.003",
+        "T1129",
+        "T1599",
+        "T1564.011",
+        "T1656",
+        "T1110",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566",
+        "T1566.003",
+        "T1059.001",
+        "T1564.011",
+        "T1105",
+        "T1112",
+        "T1129",
+        "T1599",
+        "T1071.004",
+        "T1656",
+        "T1110"
+    ],
+    "actual_found_ids": [
+        "T1566.003",
+        "T1656",
+        "T1129",
+        "T1599",
+        "T1071.004",
+        "T1564.011",
+        "T1589",
+        "T1059.001",
+        "T1105",
+        "T1110",
+        "T1566",
+        "T1112"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'SilentPhish'. This campaign targets retail organizations, focusing on e-commerce platforms and customer databases. Actors likely conduct reconnaissance to identify high-value employees, such as IT administrators and marketing personnel. Background: The targeted organization, 'RetailCorp', operates multiple online stores with a customer base of over 2 million users. System logs from the incident show anomalous DNS queries beginning on 2023-10-15, but initial access occurred earlier. The actors initiated the attack by sending spearphishing emails disguised as Pinterest notifications, which included malicious .scr files attached, and simultaneously created fake Pinterest boards with links to compromised e-commerce websites to lure victims. Upon execution, the malware employed PowerShell with the command 'powershell.exe -ExecutionPolicy Bypass -File malicious.ps1' to bypass security restrictions and actively download additional payloads while modifying registry keys for persistence. During runtime, the attacker used dlopen to load a shared object containing keylogging functionality, which was stored in a hidden directory. To facilitate lateral movement, the threat actor modified the firewall configuration to create exceptions for their malicious traffic between network segments, allowing data exfiltration via DNS queries. In credential access phases, the actor impersonated legitimate IT personnel in phone calls and text messages to direct victims to a credential harvesting site, and ran 'net user' commands to enumerate local user accounts on the target Windows machine. Additional noise: Network monitoring detected increased traffic to pinterest.com domains, but this was unrelated to the attack. The campaign's command and control infrastructure utilized DNS for communication, as observed with Cobian RAT-like behavior. Remediation steps include reviewing firewall rules and implementing multi-factor authentication.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'SilentPhish'. This campaign targets retail organizations, focusing on e-commerce platforms and customer databases. Actors likely conduct reconnaissance [T1589] to identify high-value employees, such as IT administrators and marketing personnel. Background: The targeted organization, 'RetailCorp', operates multiple online stores with a customer base of over 2 million users. System logs from the incident show anomalous DNS queries beginning on 2023-10-15, but initial access occurred earlier. The actors initiated the attack by sending spearphishing emails [T1566] disguised as Pinterest notifications, which included malicious .scr files attached, and simultaneously created fake Pinterest boards [T1566.003] with links to compromised e-commerce websites to lure victims. Upon execution, the malware employed PowerShell [T1059.001] with the command 'powershell.exe -ExecutionPolicy Bypass -File malicious.ps1' to bypass security restrictions [T1564.011] and actively download additional payloads [T1105] while modifying registry keys [T1112] for persistence. During runtime, the attacker used dlopen to load a shared object [T1129] containing keylogging functionality, which was stored in a hidden directory. To facilitate lateral movement, the threat actor modified the firewall configuration [T1599] to create exceptions for their malicious traffic between network segments, allowing data exfiltration via DNS queries [T1071.004]. In credential access phases, the actor impersonated legitimate IT personnel [T1656] in phone calls and text messages to direct victims to a credential harvesting site, and ran 'net user' commands [T1110] to enumerate local user accounts on the target Windows machine. Additional noise: Network monitoring detected increased traffic to pinterest.com domains, but this was unrelated to the attack. The campaign's command and control infrastructure utilized DNS [T1071.004] for communication, as observed with Cobian RAT-like behavior. Remediation steps include reviewing firewall rules and implementing multi-factor authentication.",
+    "sentence_annotations": [
+        {
+            "sentence": "Actors likely conduct reconnaissance to identify high-value employees, such as IT administrators and marketing personnel.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The actors initiated the attack by sending spearphishing emails disguised as Pinterest notifications, which included malicious.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "011] and actively download additional payloads while modifying registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "011] and actively download additional payloads while modifying registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "During runtime, the attacker used dlopen to load a shared object containing keylogging functionality, which was stored in a hidden directory.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "To facilitate lateral movement, the threat actor modified the firewall configuration to create exceptions for their malicious traffic between network segments, allowing data exfiltration via DNS queries [T1071.",
+            "technique_id": "T1599",
+            "technique_name": "Network Boundary Bridging"
+        },
+        {
+            "sentence": "In credential access phases, the actor impersonated legitimate IT personnel in phone calls and text messages to direct victims to a credential harvesting site, and ran 'net user' commands to enumerate local user accounts on the target Windows machine.",
+            "technique_id": "T1656",
+            "technique_name": "Impersonation"
+        },
+        {
+            "sentence": "In credential access phases, the actor impersonated legitimate IT personnel in phone calls and text messages to direct victims to a credential harvesting site, and ran 'net user' commands to enumerate local user accounts on the target Windows machine.",
+            "technique_id": "T1110",
+            "technique_name": "Brute Force"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentPhish' Targeting Retail Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, 'SilentPhish', targeting retail organizations to exfiltrate customer data and deploy keyloggers. The campaign leverages spearphishing, shared modules, and network boundary manipulation, with techniques observed across initial access, execution, persistence, defense evasion, credential access, and command and control phases.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'SilentPhish'. This campaign targets retail organizations, focusing on e-commerce platforms and customer databases. Actors likely conduct reconnaissance [T1589] to identify high-value employees, such as IT administrators and marketing personnel. Background: The targeted organization, 'RetailCorp', operates multiple online stores with a customer base of over 2 million users. System logs from the incident show anomalous DNS queries beginning on 2023-10-15, but initial access occurred earlier. The actors initiated the attack by sending spearphishing emails [T1566] disguised as Pinterest notifications, which included malicious .scr files attached, and simultaneously created fake Pinterest boards [T1566.003] with links to compromised e-commerce websites to lure victims. Upon execution, the malware employed PowerShell [T1059.001] with the command 'powershell.exe -ExecutionPolicy Bypass -File malicious.ps1' to bypass security restrictions [T1564.011] and actively download additional payloads [T1105] while modifying registry keys [T1112] for persistence. During runtime, the attacker used dlopen to load a shared object [T1129] containing keylogging functionality, which was stored in a hidden directory. To facilitate lateral movement, the threat actor modified the firewall configuration [T1599] to create exceptions for their malicious traffic between network segments, allowing data exfiltration via DNS queries [T1071.004]. In credential access phases, the actor impersonated legitimate IT personnel [T1656] in phone calls and text messages to direct victims to a credential harvesting site, and ran 'net user' commands [T1110] to enumerate local user accounts on the target Windows machine. Additional noise: Network monitoring detected increased traffic to pinterest.com domains, but this was unrelated to the attack. The campaign's command and control infrastructure utilized DNS [T1071.004] for communication, as observed with Cobian RAT-like behavior. Remediation steps include reviewing firewall rules and implementing multi-factor authentication.",
+        "techniques_used": [
+            "T1589",
+            "T1566",
+            "T1566.003",
+            "T1059.001",
+            "T1564.011",
+            "T1105",
+            "T1112",
+            "T1129",
+            "T1599",
+            "T1071.004",
+            "T1656",
+            "T1110"
+        ]
+    }
+}

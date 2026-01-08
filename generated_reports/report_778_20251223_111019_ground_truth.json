@@ -1,0 +1,103 @@
+{
+    "report_id": "report_778",
+    "generated_at": "20251223_111019",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1133",
+        "T1204.002",
+        "T1648",
+        "T1055.001",
+        "T1556.002",
+        "T1021.002",
+        "T1056.002",
+        "T1039",
+        "T1219",
+        "T1048.002",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1204.002",
+        "T1219",
+        "T1133",
+        "T1648",
+        "T1055.001",
+        "T1556.002",
+        "T1021.002",
+        "T1039",
+        "T1056.002",
+        "T1048.002",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1011.001",
+        "T1056.002",
+        "T1566.002",
+        "T1055.001",
+        "T1133",
+        "T1021.002",
+        "T1219",
+        "T1048.002",
+        "T1204.002",
+        "T1556.002",
+        "T1648"
+    ],
+    "clean_text": "Nightshade Serpent, a suspected state-sponsored group, initiated a campaign against a mid-sized financial firm, 'SecureFin Corp', by conducting reconnaissance through open-source intelligence (OSINT) gathering on employee social media profiles, though no specific MITRE tags apply to this general activity. The attack began with spearphishing emails sent to accounting department employees, containing links to a compromised website hosting malicious RTF documents. Upon user interaction, the documents executed PowerShell scripts to download a payload that established persistence via a malicious Windows Service named 'SystemHealthMonitor', which also facilitated remote access. The actors then used this access to exploit external remote services by establishing SSH connections from the compromised host to an internal server, where they deployed a serverless execution environment using AWS Lambda functions to evade detection. For privilege escalation, they injected a dynamic-link library (DLL) into a trusted process and installed a password filter DLL to capture credentials from the Windows Credential Manager. Lateral movement was achieved through SMB/Windows Admin Shares, allowing the actors to access network shared drives and search for financial records using commands like 'tree \\\\fileserver\\finance'. To harvest additional credentials, they employed GUI input capture by presenting fake system update prompts to users. Data exfiltration occurred over asymmetric encrypted non-C2 protocols, where malicious executables gathered network topology maps, and over Bluetooth, exploiting HID protocol weaknesses to exfiltrate keystroke logs from infected systems. Throughout the incident, system logs showed routine backup processes and unrelated network traffic, which were not indicative of malicious activity.",
+    "tagged_text": "Nightshade Serpent, a suspected state-sponsored group, initiated a campaign against a mid-sized financial firm, 'SecureFin Corp', by conducting reconnaissance through open-source intelligence (OSINT) gathering on employee social media profiles, though no specific MITRE tags apply to this general activity. The attack began with spearphishing emails [T1566.002] sent to accounting department employees, containing links to a compromised website hosting malicious RTF documents [T1204.002]. Upon user interaction, the documents executed PowerShell scripts to download a payload that established persistence via a malicious Windows Service named 'SystemHealthMonitor' [T1219], which also facilitated remote access. The actors then used this access to exploit external remote services [T1133] by establishing SSH connections from the compromised host to an internal server, where they deployed a serverless execution environment [T1648] using AWS Lambda functions to evade detection. For privilege escalation, they injected a dynamic-link library (DLL) [T1055.001] into a trusted process and installed a password filter DLL [T1556.002] to capture credentials from the Windows Credential Manager. Lateral movement was achieved through SMB/Windows Admin Shares [T1021.002], allowing the actors to access network shared drives [T1039] and search for financial records using commands like 'tree \\\\fileserver\\finance'. To harvest additional credentials, they employed GUI input capture [T1056.002] by presenting fake system update prompts to users. Data exfiltration occurred over asymmetric encrypted non-C2 protocols [T1048.002], where malicious executables gathered network topology maps, and over Bluetooth [T1011.001], exploiting HID protocol weaknesses to exfiltrate keystroke logs from infected systems. Throughout the incident, system logs showed routine backup processes and unrelated network traffic, which were not indicative of malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon user interaction, the documents executed PowerShell scripts to download a payload that established persistence via a malicious Windows Service named 'SystemHealthMonitor', which also facilitated remote access.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "The actors then used this access to exploit external remote services by establishing SSH connections from the compromised host to an internal server, where they deployed a serverless execution environment using AWS Lambda functions to evade detection.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "The actors then used this access to exploit external remote services by establishing SSH connections from the compromised host to an internal server, where they deployed a serverless execution environment using AWS Lambda functions to evade detection.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "002], allowing the actors to access network shared drives and search for financial records using commands like 'tree \\\\fileserver\\finance'.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'Nightshade Serpent' Targeting Financial Sector",
+        "summary": "This advisory details a fictional campaign by threat actor group 'Nightshade Serpent' targeting financial institutions, designed for blue team training. The campaign involves spearphishing, credential harvesting, lateral movement, and data exfiltration using advanced techniques.",
+        "full_report_text": "Nightshade Serpent, a suspected state-sponsored group, initiated a campaign against a mid-sized financial firm, 'SecureFin Corp', by conducting reconnaissance through open-source intelligence (OSINT) gathering on employee social media profiles, though no specific MITRE tags apply to this general activity. The attack began with spearphishing emails [T1566.002] sent to accounting department employees, containing links to a compromised website hosting malicious RTF documents [T1204.002]. Upon user interaction, the documents executed PowerShell scripts to download a payload that established persistence via a malicious Windows Service named 'SystemHealthMonitor' [T1219], which also facilitated remote access. The actors then used this access to exploit external remote services [T1133] by establishing SSH connections from the compromised host to an internal server, where they deployed a serverless execution environment [T1648] using AWS Lambda functions to evade detection. For privilege escalation, they injected a dynamic-link library (DLL) [T1055.001] into a trusted process and installed a password filter DLL [T1556.002] to capture credentials from the Windows Credential Manager. Lateral movement was achieved through SMB/Windows Admin Shares [T1021.002], allowing the actors to access network shared drives [T1039] and search for financial records using commands like 'tree \\\\fileserver\\finance'. To harvest additional credentials, they employed GUI input capture [T1056.002] by presenting fake system update prompts to users. Data exfiltration occurred over asymmetric encrypted non-C2 protocols [T1048.002], where malicious executables gathered network topology maps, and over Bluetooth [T1011.001], exploiting HID protocol weaknesses to exfiltrate keystroke logs from infected systems. Throughout the incident, system logs showed routine backup processes and unrelated network traffic, which were not indicative of malicious activity.",
+        "techniques_used": [
+            "T1566.002",
+            "T1204.002",
+            "T1219",
+            "T1133",
+            "T1648",
+            "T1055.001",
+            "T1556.002",
+            "T1021.002",
+            "T1039",
+            "T1056.002",
+            "T1048.002",
+            "T1011.001"
+        ]
+    }
+}

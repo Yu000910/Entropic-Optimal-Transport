@@ -1,0 +1,15 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a simulated APT campaign, designated FICT-APT-2024-01, observed targeting organizations in the financial and technology sectors. This campaign leverages a combination of cloud misconfigurations and endpoint exploitation to achieve persistence, data theft, and remote access.
+
+Initial Access: The actors gained initial foothold by exploiting an unsecured kubelet service that allowed anonymous access to the victim's Kubernetes environment [T1133]. This provided direct entry into the containerized infrastructure without authentication.
+
+Execution and Persistence: Upon access, the adversary established persistence by configuring a systemd timer to execute a backdoor script every hour [T1053.006] and simultaneously used Launchctl to submit a malicious job as a system service on macOS endpoints [T1569.001], ensuring continuous execution across different operating systems.
+
+Defense Evasion: To evade detection, the malware employed multiple obfuscation techniques, including downloading additional files that were base64-encoded and encrypted with a custom cipher [T1027.013] and writing a malicious SVG file with embedded VBScript to bypass file type restrictions and deliver payloads [T1027.017].
+
+Command and Control: The actors utilized legitimate remote desktop software, such as TeamViewer, to maintain access to compromised machines [T1219.002], blending in with normal network traffic to avoid suspicion.
+
+Exfiltration: Stolen intellectual property was exfiltrated by exploiting the Bluetooth service discovery protocol to transfer data over short-range wireless connections [T1011.001], a method often overlooked in traditional network monitoring.
+
+Impact: The trojan modified critical application executables to present fake login screens that capture user credentials [T1565.003], leading to credential theft and potential lateral movement.
+
+Additional Context: The victim organization, a mid-sized tech firm, reported unusual network activity from its development servers, with logs showing multiple failed login attempts from unknown IP addresses prior to the incident. System administrators noted increased CPU usage on several containers, but initial scans did not detect the encrypted payloads. The campaign is believed to have been active for approximately two weeks before detection, during which time sensitive design documents were accessed. No real-world impact has occurred, as this is a training scenario.

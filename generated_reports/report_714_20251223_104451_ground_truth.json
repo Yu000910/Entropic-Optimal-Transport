@@ -1,0 +1,73 @@
+{
+    "report_id": "report_714",
+    "generated_at": "20251223_104451",
+    "scenario_target_ids": [
+        "T1608.005",
+        "T1588",
+        "T1195.001",
+        "T1204.004",
+        "T1036.002",
+        "T1197",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1608.005",
+        "T1588",
+        "T1195.001",
+        "T1204.004",
+        "T1036.002",
+        "T1197",
+        "T1665"
+    ],
+    "actual_found_ids": [
+        "T1197",
+        "T1195.001",
+        "T1588",
+        "T1608.005",
+        "T1665",
+        "T1204.004",
+        "T1036.002"
+    ],
+    "clean_text": "Background: 'ShadowPhish' is a fictitious advanced persistent threat (APT) group believed to operate with financial motives, focusing on banks and investment firms. Initial reports indicate activity starting in early 2024, with no real-world attribution intended for this training exercise. System logs from a compromised server show unusual PowerShell executions at 03:45 UTC on March 15, 2024, but these were later determined to be part of routine maintenance scripts.\n\nAttack Narrative:\n- **Initial Access:** The actors likely conducted reconnaissance to identify a vulnerable forum used by employees for internal discussions. They injected malicious JavaScript into the forum's login page, capturing user credentials when employees attempted to access the site. This allowed them to obtain valid login capabilities for corporate networks.\n- **Execution:** After gaining access, the actors downloaded a ransomware builder from a hacker repository to enhance their attack toolkit. They then employed malicious PowerShell code injected into a legitimate maintenance script, maintenance.ps1, to harvest sensitive financial documents and exfiltrate them to a remote server. Concurrently, they used a compromised website to display a fake 'System Scan Complete' alert, which installed ransomware when users clicked 'Remove Threats', while renaming a trojan file 'regedit.exe' to 'tedi.pdf' using Right-to-Left Override characters to disguise it as a harmless document.\n- **Persistence and Defense Evasion:** To maintain persistence and evade detection, the actors leveraged BITSAdmin to download additional tools and payloads in the background, ensuring minimal network disruption. They also masked command and control (C2) communications by routing traffic through a Tor gateway to anonymize their infrastructure, making it difficult for defenders to trace the source.\n\nIrrelevant Information: The targeted company, 'Global Finance Corp,' reported no financial losses in this fictional scenario, and internal audits showed normal system performance metrics during the attack period. Employee training records indicate that 85% of staff completed cybersecurity awareness modules in Q1 2024, but this did not prevent the simulated breach.\n\nMitigation Recommendations: Blue teams should monitor for unusual JavaScript injections in web applications, scan for unauthorized PowerShell executions, and implement network segmentation to limit lateral movement. Regular updates to dependency management tools and user education on phishing alerts are also advised.",
+    "tagged_text": "Background: 'ShadowPhish' is a fictitious advanced persistent threat (APT) group believed to operate with financial motives, focusing on banks and investment firms. Initial reports indicate activity starting in early 2024, with no real-world attribution intended for this training exercise. System logs from a compromised server show unusual PowerShell executions at 03:45 UTC on March 15, 2024, but these were later determined to be part of routine maintenance scripts.\n\nAttack Narrative:\n- **Initial Access:** The actors likely conducted reconnaissance to identify a vulnerable forum used by employees for internal discussions. They injected malicious JavaScript into the forum's login page [T1608.005], capturing user credentials when employees attempted to access the site. This allowed them to obtain valid login capabilities for corporate networks.\n- **Execution:** After gaining access, the actors downloaded a ransomware builder from a hacker repository to enhance their attack toolkit [T1588]. They then employed malicious PowerShell code injected into a legitimate maintenance script, maintenance.ps1, to harvest sensitive financial documents and exfiltrate them to a remote server [T1195.001]. Concurrently, they used a compromised website to display a fake 'System Scan Complete' alert, which installed ransomware when users clicked 'Remove Threats' [T1204.004], while renaming a trojan file 'regedit.exe' to 'tedi.pdf' using Right-to-Left Override characters to disguise it as a harmless document [T1036.002].\n- **Persistence and Defense Evasion:** To maintain persistence and evade detection, the actors leveraged BITSAdmin to download additional tools and payloads in the background [T1197], ensuring minimal network disruption. They also masked command and control (C2) communications by routing traffic through a Tor gateway to anonymize their infrastructure [T1665], making it difficult for defenders to trace the source.\n\nIrrelevant Information: The targeted company, 'Global Finance Corp,' reported no financial losses in this fictional scenario, and internal audits showed normal system performance metrics during the attack period. Employee training records indicate that 85% of staff completed cybersecurity awareness modules in Q1 2024, but this did not prevent the simulated breach.\n\nMitigation Recommendations: Blue teams should monitor for unusual JavaScript injections in web applications, scan for unauthorized PowerShell executions, and implement network segmentation to limit lateral movement. Regular updates to dependency management tools and user education on phishing alerts are also advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "- **Execution:** After gaining access, the actors downloaded a ransomware builder from a hacker repository to enhance their attack toolkit.",
+            "technique_id": "T1588",
+            "technique_name": "Obtain Capabilities"
+        },
+        {
+            "sentence": "- **Persistence and Defense Evasion:** To maintain persistence and evade detection, the actors leveraged BITSAdmin to download additional tools and payloads in the background, ensuring minimal network disruption.",
+            "technique_id": "T1197",
+            "technique_name": "BITS Jobs"
+        },
+        {
+            "sentence": "They also masked command and control (C2) communications by routing traffic through a Tor gateway to anonymize their infrastructure, making it difficult for defenders to trace the source.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowPhish' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowPhish,' targeting financial institutions through a multi-stage attack involving credential theft, ransomware deployment, and covert infrastructure. The FBI, CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating these tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "Background: 'ShadowPhish' is a fictitious advanced persistent threat (APT) group believed to operate with financial motives, focusing on banks and investment firms. Initial reports indicate activity starting in early 2024, with no real-world attribution intended for this training exercise. System logs from a compromised server show unusual PowerShell executions at 03:45 UTC on March 15, 2024, but these were later determined to be part of routine maintenance scripts.\n\nAttack Narrative:\n- **Initial Access:** The actors likely conducted reconnaissance to identify a vulnerable forum used by employees for internal discussions. They injected malicious JavaScript into the forum's login page [T1608.005], capturing user credentials when employees attempted to access the site. This allowed them to obtain valid login capabilities for corporate networks.\n- **Execution:** After gaining access, the actors downloaded a ransomware builder from a hacker repository to enhance their attack toolkit [T1588]. They then employed malicious PowerShell code injected into a legitimate maintenance script, maintenance.ps1, to harvest sensitive financial documents and exfiltrate them to a remote server [T1195.001]. Concurrently, they used a compromised website to display a fake 'System Scan Complete' alert, which installed ransomware when users clicked 'Remove Threats' [T1204.004], while renaming a trojan file 'regedit.exe' to 'tedi.pdf' using Right-to-Left Override characters to disguise it as a harmless document [T1036.002].\n- **Persistence and Defense Evasion:** To maintain persistence and evade detection, the actors leveraged BITSAdmin to download additional tools and payloads in the background [T1197], ensuring minimal network disruption. They also masked command and control (C2) communications by routing traffic through a Tor gateway to anonymize their infrastructure [T1665], making it difficult for defenders to trace the source.\n\nIrrelevant Information: The targeted company, 'Global Finance Corp,' reported no financial losses in this fictional scenario, and internal audits showed normal system performance metrics during the attack period. Employee training records indicate that 85% of staff completed cybersecurity awareness modules in Q1 2024, but this did not prevent the simulated breach.\n\nMitigation Recommendations: Blue teams should monitor for unusual JavaScript injections in web applications, scan for unauthorized PowerShell executions, and implement network segmentation to limit lateral movement. Regular updates to dependency management tools and user education on phishing alerts are also advised.",
+        "techniques_used": [
+            "T1608.005",
+            "T1588",
+            "T1195.001",
+            "T1204.004",
+            "T1036.002",
+            "T1197",
+            "T1665"
+        ]
+    }
+}

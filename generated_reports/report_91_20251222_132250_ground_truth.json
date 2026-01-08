@@ -1,0 +1,78 @@
+{
+    "report_id": "report_91",
+    "generated_at": "20251222_132250",
+    "scenario_target_ids": [
+        "T1592.002",
+        "T1078",
+        "T1053.005",
+        "T1555",
+        "T1074.001",
+        "T1560.002",
+        "T1039",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.002",
+        "T1078",
+        "T1053.005",
+        "T1555",
+        "T1074.001",
+        "T1560.002",
+        "T1039",
+        "T1071.004"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1555",
+        "T1074.001",
+        "T1560.002",
+        "T1078",
+        "T1071.004",
+        "T1592.002",
+        "T1053.005"
+    ],
+    "clean_text": "On 2023-10-15, security analysts at a mid-sized bank detected anomalous network traffic from an external IP address, later traced to a compromised account. The bank's infrastructure, including legacy Windows servers and Linux-based NAS systems, was under routine maintenance at the time, with logs showing normal user activity from 09:00 to 17:00 EST. The actors likely conducted reconnaissance by executing nmap with service detection to gather information about installed software on remote hosts, then used a compromised account to access the organization's VPN infrastructure while simultaneously adding a scheduled task to establish persistence. After gaining access, the adversary searched for SSH configuration files in default locations to collect authentication credentials and employed 'findstr /s password \\\\nas\\shared\\*.config' to locate configuration files containing credentials across network shares, aggregating collected credentials in text files before exfiltrating. For efficient data exfiltration, sensitive files were compressed into RAR format using the rarfile module and communicated over DNS through queries to the server for constructed domain names with embedded information. System logs from the affected NAS indicated increased read operations during off-hours, but no alerts were triggered due to misconfigured monitoring rules.",
+    "tagged_text": "On 2023-10-15, security analysts at a mid-sized bank detected anomalous network traffic from an external IP address, later traced to a compromised account. The bank's infrastructure, including legacy Windows servers and Linux-based NAS systems, was under routine maintenance at the time, with logs showing normal user activity from 09:00 to 17:00 EST. The actors likely conducted reconnaissance by executing nmap with service detection to gather information about installed software on remote hosts [T1592.002], then used a compromised account to access the organization's VPN infrastructure [T1078] while simultaneously adding a scheduled task to establish persistence [T1053.005]. After gaining access, the adversary searched for SSH configuration files in default locations to collect authentication credentials [T1555] and employed 'findstr /s password \\\\nas\\shared\\*.config' to locate configuration files containing credentials across network shares [T1039], aggregating collected credentials in text files before exfiltrating [T1074.001]. For efficient data exfiltration, sensitive files were compressed into RAR format using the rarfile module [T1560.002] and communicated over DNS through queries to the server for constructed domain names with embedded information [T1071.004]. System logs from the affected NAS indicated increased read operations during off-hours, but no alerts were triggered due to misconfigured monitoring rules.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], then used a compromised account to access the organization's VPN infrastructure while simultaneously adding a scheduled task to establish persistence [T1053.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "After gaining access, the adversary searched for SSH configuration files in default locations to collect authentication credentials and employed 'findstr /s password \\\\nas\\shared\\*.",
+            "technique_id": "T1555",
+            "technique_name": "Credentials from Password Stores"
+        },
+        {
+            "sentence": "config' to locate configuration files containing credentials across network shares, aggregating collected credentials in text files before exfiltrating [T1074.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting financial institutions to exfiltrate sensitive data and establish persistent access. The campaign involves initial reconnaissance, credential theft, and data exfiltration via DNS tunneling.",
+        "full_report_text": "On 2023-10-15, security analysts at a mid-sized bank detected anomalous network traffic from an external IP address, later traced to a compromised account. The bank's infrastructure, including legacy Windows servers and Linux-based NAS systems, was under routine maintenance at the time, with logs showing normal user activity from 09:00 to 17:00 EST. The actors likely conducted reconnaissance by executing nmap with service detection to gather information about installed software on remote hosts [T1592.002], then used a compromised account to access the organization's VPN infrastructure [T1078] while simultaneously adding a scheduled task to establish persistence [T1053.005]. After gaining access, the adversary searched for SSH configuration files in default locations to collect authentication credentials [T1555] and employed 'findstr /s password \\\\nas\\shared\\*.config' to locate configuration files containing credentials across network shares [T1039], aggregating collected credentials in text files before exfiltrating [T1074.001]. For efficient data exfiltration, sensitive files were compressed into RAR format using the rarfile module [T1560.002] and communicated over DNS through queries to the server for constructed domain names with embedded information [T1071.004]. System logs from the affected NAS indicated increased read operations during off-hours, but no alerts were triggered due to misconfigured monitoring rules.",
+        "techniques_used": [
+            "T1592.002",
+            "T1078",
+            "T1053.005",
+            "T1555",
+            "T1074.001",
+            "T1560.002",
+            "T1039",
+            "T1071.004"
+        ]
+    }
+}

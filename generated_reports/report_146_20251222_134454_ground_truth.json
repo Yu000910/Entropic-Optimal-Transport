@@ -1,0 +1,108 @@
+{
+    "report_id": "report_146",
+    "generated_at": "20251222_134454",
+    "scenario_target_ids": [
+        "T1586.001",
+        "T1586.003",
+        "T1566.001",
+        "T1566",
+        "T1204.001",
+        "T1078",
+        "T1055.009",
+        "T1027.004",
+        "T1036",
+        "T1218.002",
+        "T1025",
+        "T1090.001",
+        "T1052.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1586.001",
+        "T1586.003",
+        "T1566.001",
+        "T1566",
+        "T1204.001",
+        "T1078",
+        "T1055.009",
+        "T1027.004",
+        "T1036",
+        "T1218.002",
+        "T1025",
+        "T1090.001",
+        "T1052.001"
+    ],
+    "actual_found_ids": [
+        "T1090.001",
+        "T1566.001",
+        "T1027.004",
+        "T1055.009",
+        "T1204.001",
+        "T1586.001",
+        "T1566",
+        "T1586.003",
+        "T1078",
+        "T1025",
+        "T1218.002",
+        "T1052.001",
+        "T1036"
+    ],
+    "clean_text": "### Background\nCrimson Sandstorm, a simulated APT actor, has been observed targeting organizations in the energy and financial sectors since early 2024. This campaign leverages social engineering and malware to compromise networks, with initial access often gained through compromised legitimate accounts. The following narrative outlines the attack lifecycle based on simulated incident response data.\n\n### Attack Narrative\n**Initial Access:** The actors conducted reconnaissance by creating fake credential capture webpages to compromise existing, legitimate social media accounts and deployed a fraudulent Office 365 login page to harvest cloud account credentials from targeted users. Using these harvested credentials, they gained initial access through valid VPN accounts, while simultaneously sending spearphishing emails with malicious attachments, such as WarzoneRAT disguised as software updates, and executing broader phishing campaigns with ransomware-laden executables to lure victims via malicious links.\n\n**Execution:** Upon access, the adversary employed PowerShell to download and execute payloads, masking malware DLLs as dat and jpg files and dropping payload.dll into the Windows directory for proxy execution via regsvr32. They then compiled malicious.cs on-the-fly to bypass signature-based detection and examined /proc/self/maps to understand memory structure before attempting injection into processes.\n\n**Persistence and Exfiltration:** To maintain access and exfiltrate data, the actors configured HTRAN on an intermediate system to proxy malicious traffic to the final C2 server, gathered information from USB thumb drives and CD-ROMs based on specific criteria, and moved data from airgapped networks to Internet-connected systems using removable USB devices.\n\n### Additional Context\nLogs from affected systems show increased network traffic to suspicious IP addresses, but no actual data breaches occurred in this training scenario. The simulated company, 'Global Energy Solutions,' reported anomalous login attempts from unrecognized locations, which were part of the exercise. Blue teams should focus on detecting credential harvesting pages, monitoring for unusual file extensions, and implementing strict USB device policies.\n\n### Mitigation Recommendations\n- Implement multi-factor authentication for all cloud and VPN accounts.\n- Train employees to recognize phishing attempts and avoid clicking on suspicious links.\n- Use endpoint detection and response (EDR) tools to monitor for memory injection and file masquerading.\n- Restrict the use of removable media and monitor for unauthorized data transfers.\n- Regularly update threat intelligence feeds to identify known APT tactics.\n\nThis report is fictional and intended solely for educational purposes to enhance cybersecurity preparedness.",
+    "tagged_text": "### Background\nCrimson Sandstorm, a simulated APT actor, has been observed targeting organizations in the energy and financial sectors since early 2024. This campaign leverages social engineering and malware to compromise networks, with initial access often gained through compromised legitimate accounts. The following narrative outlines the attack lifecycle based on simulated incident response data.\n\n### Attack Narrative\n**Initial Access:** The actors conducted reconnaissance by creating fake credential capture webpages to compromise existing, legitimate social media accounts [T1586.001] and deployed a fraudulent Office 365 login page to harvest cloud account credentials from targeted users [T1586.003]. Using these harvested credentials, they gained initial access through valid VPN accounts [T1078], while simultaneously sending spearphishing emails with malicious attachments, such as WarzoneRAT disguised as software updates [T1566.001], and executing broader phishing campaigns with ransomware-laden executables [T1566] to lure victims via malicious links [T1204.001].\n\n**Execution:** Upon access, the adversary employed PowerShell to download and execute payloads, masking malware DLLs as dat and jpg files [T1036] and dropping payload.dll into the Windows directory for proxy execution via regsvr32 [T1218.002]. They then compiled malicious.cs on-the-fly to bypass signature-based detection [T1027.004] and examined /proc/self/maps to understand memory structure before attempting injection into processes [T1055.009].\n\n**Persistence and Exfiltration:** To maintain access and exfiltrate data, the actors configured HTRAN on an intermediate system to proxy malicious traffic to the final C2 server [T1090.001], gathered information from USB thumb drives and CD-ROMs based on specific criteria [T1025], and moved data from airgapped networks to Internet-connected systems using removable USB devices [T1052.001].\n\n### Additional Context\nLogs from affected systems show increased network traffic to suspicious IP addresses, but no actual data breaches occurred in this training scenario. The simulated company, 'Global Energy Solutions,' reported anomalous login attempts from unrecognized locations, which were part of the exercise. Blue teams should focus on detecting credential harvesting pages, monitoring for unusual file extensions, and implementing strict USB device policies.\n\n### Mitigation Recommendations\n- Implement multi-factor authentication for all cloud and VPN accounts.\n- Train employees to recognize phishing attempts and avoid clicking on suspicious links.\n- Use endpoint detection and response (EDR) tools to monitor for memory injection and file masquerading.\n- Restrict the use of removable media and monitor for unauthorized data transfers.\n- Regularly update threat intelligence feeds to identify known APT tactics.\n\nThis report is fictional and intended solely for educational purposes to enhance cybersecurity preparedness.",
+    "sentence_annotations": [
+        {
+            "sentence": "Using these harvested credentials, they gained initial access through valid VPN accounts, while simultaneously sending spearphishing emails with malicious attachments, such as WarzoneRAT disguised as software updates [T1566.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "001], and executing broader phishing campaigns with ransomware-laden executables to lure victims via malicious links [T1204.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "**Execution:** Upon access, the adversary employed PowerShell to download and execute payloads, masking malware DLLs as dat and jpg files and dropping payload.",
+            "technique_id": "T1036",
+            "technique_name": "Masquerading"
+        },
+        {
+            "sentence": "001], gathered information from USB thumb drives and CD-ROMs based on specific criteria, and moved data from airgapped networks to Internet-connected systems using removable USB devices [T1052.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a fictional, educational campaign by a simulated advanced persistent threat (APT) actor, designated as 'Crimson Sandstorm,' targeting critical infrastructure sectors. The campaign involves credential harvesting, phishing, malware deployment, and data exfiltration, designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "### Background\nCrimson Sandstorm, a simulated APT actor, has been observed targeting organizations in the energy and financial sectors since early 2024. This campaign leverages social engineering and malware to compromise networks, with initial access often gained through compromised legitimate accounts. The following narrative outlines the attack lifecycle based on simulated incident response data.\n\n### Attack Narrative\n**Initial Access:** The actors conducted reconnaissance by creating fake credential capture webpages to compromise existing, legitimate social media accounts [T1586.001] and deployed a fraudulent Office 365 login page to harvest cloud account credentials from targeted users [T1586.003]. Using these harvested credentials, they gained initial access through valid VPN accounts [T1078], while simultaneously sending spearphishing emails with malicious attachments, such as WarzoneRAT disguised as software updates [T1566.001], and executing broader phishing campaigns with ransomware-laden executables [T1566] to lure victims via malicious links [T1204.001].\n\n**Execution:** Upon access, the adversary employed PowerShell to download and execute payloads, masking malware DLLs as dat and jpg files [T1036] and dropping payload.dll into the Windows directory for proxy execution via regsvr32 [T1218.002]. They then compiled malicious.cs on-the-fly to bypass signature-based detection [T1027.004] and examined /proc/self/maps to understand memory structure before attempting injection into processes [T1055.009].\n\n**Persistence and Exfiltration:** To maintain access and exfiltrate data, the actors configured HTRAN on an intermediate system to proxy malicious traffic to the final C2 server [T1090.001], gathered information from USB thumb drives and CD-ROMs based on specific criteria [T1025], and moved data from airgapped networks to Internet-connected systems using removable USB devices [T1052.001].\n\n### Additional Context\nLogs from affected systems show increased network traffic to suspicious IP addresses, but no actual data breaches occurred in this training scenario. The simulated company, 'Global Energy Solutions,' reported anomalous login attempts from unrecognized locations, which were part of the exercise. Blue teams should focus on detecting credential harvesting pages, monitoring for unusual file extensions, and implementing strict USB device policies.\n\n### Mitigation Recommendations\n- Implement multi-factor authentication for all cloud and VPN accounts.\n- Train employees to recognize phishing attempts and avoid clicking on suspicious links.\n- Use endpoint detection and response (EDR) tools to monitor for memory injection and file masquerading.\n- Restrict the use of removable media and monitor for unauthorized data transfers.\n- Regularly update threat intelligence feeds to identify known APT tactics.\n\nThis report is fictional and intended solely for educational purposes to enhance cybersecurity preparedness.",
+        "techniques_used": [
+            "T1586.001",
+            "T1586.003",
+            "T1566.001",
+            "T1566",
+            "T1204.001",
+            "T1078",
+            "T1055.009",
+            "T1027.004",
+            "T1036",
+            "T1218.002",
+            "T1025",
+            "T1090.001",
+            "T1052.001"
+        ]
+    }
+}

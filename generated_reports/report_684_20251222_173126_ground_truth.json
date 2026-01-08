@@ -1,0 +1,123 @@
+{
+    "report_id": "report_684",
+    "generated_at": "20251222_173126",
+    "scenario_target_ids": [
+        "T1592.004",
+        "T1588.001",
+        "T1078.001",
+        "T1047",
+        "T1204.002",
+        "T1556.006",
+        "T1003.007",
+        "T1021.006",
+        "T1213.003",
+        "T1557",
+        "T1039",
+        "T1104",
+        "T1105",
+        "T1030"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592.004",
+        "T1588.001",
+        "T1078.001",
+        "T1047",
+        "T1204.002",
+        "T1556.006",
+        "T1003.007",
+        "T1021.006",
+        "T1213.003",
+        "T1557",
+        "T1039",
+        "T1104",
+        "T1105",
+        "T1030"
+    ],
+    "actual_found_ids": [
+        "T1078.001",
+        "T1047",
+        "T1039",
+        "T1213.003",
+        "T1030",
+        "T1003.007",
+        "T1104",
+        "T1592.004",
+        "T1556.006",
+        "T1021.006",
+        "T1105",
+        "T1557",
+        "T1204.002",
+        "T1588.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional campaign dubbed 'SilentBreach'. This campaign targets financial organizations to exfiltrate sensitive data and disrupt operations. Analysis of network logs from a mid-sized bank, 'SecureFin Corp', revealed anomalous activity starting on 2023-10-15, with initial reconnaissance detected via unusual outbound traffic to known malicious IP addresses. The bank's IT team reported slow system performance and unauthorized access alerts from their SIEM, triggering an investigation that uncovered a multi-stage attack.\n\nInitial reconnaissance was conducted by the adversary using nmap to scan the target's external network, identifying active hosts and services such as open SMB ports and outdated web servers. Following this, the actors obtained leaked malware, including variants of EternalBlue and DoublePulsar, which were weaponized for exploitation in later stages. Initial access was gained by exploiting a default Administrator account with the password 'admin123' on an unpatched Windows Server 2012 R2 system, allowing the adversary to bypass authentication controls. Once inside, the actors used Windows Management Instrumentation (WMIC) to execute a remote XSL script that downloaded and ran additional payloads from a command-and-control (C2) server. To lure victims, a malicious Microsoft Word document was distributed via spear-phishing emails, which, when opened, executed macros to establish persistence. After compromising user accounts, the adversary registered their own multi-factor authentication (MFA) tokens to maintain access and evade detection by security systems. For credential harvesting, the tool parsed /proc/$pid/maps files on Linux systems to locate memory segments containing sensitive data like passwords and encryption keys. Lateral movement was achieved using Windows Remote Management (WinRM) to remotely access and manipulate services on other Windows machines within the network. The actors also utilized Git to access and exfiltrate confidential configuration files from internal code repositories, stealing source code and deployment scripts. To intercept credentials, the adversary set up an adversary-in-the-middle (AiTM) attack by opening a network listener for the mpnotify.exe process, redirecting RPC channels to a malicious DLL that recorded plaintext credentials entered into Winlogon. Data collection involved executing 'net use' commands to enumerate accessible network shared drives, identifying files for exfiltration. The malware employed multi-stage channels by executing 'host_info.ps1' to gather detailed system configuration data, which was used to tailor C2 communications and target specific assets. Additional tools and malware were downloaded onto compromised networks using PowerShell scripts to facilitate further exploitation. To avoid detection, the custom_exfil_script.ps1 was executed to extract database records in small chunks, staying under data transfer size limits and blending in with normal network traffic. Throughout the campaign, the actors used encrypted channels for C2 communications, and forensic analysis revealed artifacts in Windows Event Logs (ID 4688) and firewall logs showing connections to suspicious domains. The bank's incident response team contained the breach by isolating affected systems, resetting credentials, and applying patches, but data loss was estimated at 5 GB of financial records. This scenario highlights the importance of monitoring for default account usage, enforcing MFA policies, and implementing network segmentation to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional campaign dubbed 'SilentBreach'. This campaign targets financial organizations to exfiltrate sensitive data and disrupt operations. Analysis of network logs from a mid-sized bank, 'SecureFin Corp', revealed anomalous activity starting on 2023-10-15, with initial reconnaissance detected via unusual outbound traffic to known malicious IP addresses. The bank's IT team reported slow system performance and unauthorized access alerts from their SIEM, triggering an investigation that uncovered a multi-stage attack.\n\nInitial reconnaissance was conducted by the adversary using nmap to scan the target's external network, identifying active hosts and services such as open SMB ports and outdated web servers [T1592.004]. Following this, the actors obtained leaked malware, including variants of EternalBlue and DoublePulsar, which were weaponized for exploitation in later stages [T1588.001]. Initial access was gained by exploiting a default Administrator account with the password 'admin123' on an unpatched Windows Server 2012 R2 system, allowing the adversary to bypass authentication controls [T1078.001]. Once inside, the actors used Windows Management Instrumentation (WMIC) to execute a remote XSL script that downloaded and ran additional payloads from a command-and-control (C2) server [T1047]. To lure victims, a malicious Microsoft Word document was distributed via spear-phishing emails, which, when opened, executed macros to establish persistence [T1204.002]. After compromising user accounts, the adversary registered their own multi-factor authentication (MFA) tokens to maintain access and evade detection by security systems [T1556.006]. For credential harvesting, the tool parsed /proc/$pid/maps files on Linux systems to locate memory segments containing sensitive data like passwords and encryption keys [T1003.007]. Lateral movement was achieved using Windows Remote Management (WinRM) to remotely access and manipulate services on other Windows machines within the network [T1021.006]. The actors also utilized Git to access and exfiltrate confidential configuration files from internal code repositories, stealing source code and deployment scripts [T1213.003]. To intercept credentials, the adversary set up an adversary-in-the-middle (AiTM) attack by opening a network listener for the mpnotify.exe process, redirecting RPC channels to a malicious DLL that recorded plaintext credentials entered into Winlogon [T1557]. Data collection involved executing 'net use' commands to enumerate accessible network shared drives, identifying files for exfiltration [T1039]. The malware employed multi-stage channels by executing 'host_info.ps1' to gather detailed system configuration data, which was used to tailor C2 communications and target specific assets [T1104]. Additional tools and malware were downloaded onto compromised networks using PowerShell scripts to facilitate further exploitation [T1105]. To avoid detection, the custom_exfil_script.ps1 was executed to extract database records in small chunks, staying under data transfer size limits and blending in with normal network traffic [T1030]. Throughout the campaign, the actors used encrypted channels for C2 communications, and forensic analysis revealed artifacts in Windows Event Logs (ID 4688) and firewall logs showing connections to suspicious domains. The bank's incident response team contained the breach by isolating affected systems, resetting credentials, and applying patches, but data loss was estimated at 5 GB of financial records. This scenario highlights the importance of monitoring for default account usage, enforcing MFA policies, and implementing network segmentation to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, the actors used Windows Management Instrumentation (WMIC) to execute a remote XSL script that downloaded and ran additional payloads from a command-and-control (C2) server.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "exe process, redirecting RPC channels to a malicious DLL that recorded plaintext credentials entered into Winlogon.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        },
+        {
+            "sentence": "Data collection involved executing 'net use' commands to enumerate accessible network shared drives, identifying files for exfiltration.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "ps1' to gather detailed system configuration data, which was used to tailor C2 communications and target specific assets.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        },
+        {
+            "sentence": "Additional tools and malware were downloaded onto compromised networks using PowerShell scripts to facilitate further exploitation.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "ps1 was executed to extract database records in small chunks, staying under data transfer size limits and blending in with normal network traffic.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'SilentBreach' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, 'SilentBreach', targeting financial institutions. The campaign involves reconnaissance, initial access via default credentials, lateral movement using legitimate tools, and data exfiltration with evasion techniques. The report is designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional campaign dubbed 'SilentBreach'. This campaign targets financial organizations to exfiltrate sensitive data and disrupt operations. Analysis of network logs from a mid-sized bank, 'SecureFin Corp', revealed anomalous activity starting on 2023-10-15, with initial reconnaissance detected via unusual outbound traffic to known malicious IP addresses. The bank's IT team reported slow system performance and unauthorized access alerts from their SIEM, triggering an investigation that uncovered a multi-stage attack.\n\nInitial reconnaissance was conducted by the adversary using nmap to scan the target's external network, identifying active hosts and services such as open SMB ports and outdated web servers [T1592.004]. Following this, the actors obtained leaked malware, including variants of EternalBlue and DoublePulsar, which were weaponized for exploitation in later stages [T1588.001]. Initial access was gained by exploiting a default Administrator account with the password 'admin123' on an unpatched Windows Server 2012 R2 system, allowing the adversary to bypass authentication controls [T1078.001]. Once inside, the actors used Windows Management Instrumentation (WMIC) to execute a remote XSL script that downloaded and ran additional payloads from a command-and-control (C2) server [T1047]. To lure victims, a malicious Microsoft Word document was distributed via spear-phishing emails, which, when opened, executed macros to establish persistence [T1204.002]. After compromising user accounts, the adversary registered their own multi-factor authentication (MFA) tokens to maintain access and evade detection by security systems [T1556.006]. For credential harvesting, the tool parsed /proc/$pid/maps files on Linux systems to locate memory segments containing sensitive data like passwords and encryption keys [T1003.007]. Lateral movement was achieved using Windows Remote Management (WinRM) to remotely access and manipulate services on other Windows machines within the network [T1021.006]. The actors also utilized Git to access and exfiltrate confidential configuration files from internal code repositories, stealing source code and deployment scripts [T1213.003]. To intercept credentials, the adversary set up an adversary-in-the-middle (AiTM) attack by opening a network listener for the mpnotify.exe process, redirecting RPC channels to a malicious DLL that recorded plaintext credentials entered into Winlogon [T1557]. Data collection involved executing 'net use' commands to enumerate accessible network shared drives, identifying files for exfiltration [T1039]. The malware employed multi-stage channels by executing 'host_info.ps1' to gather detailed system configuration data, which was used to tailor C2 communications and target specific assets [T1104]. Additional tools and malware were downloaded onto compromised networks using PowerShell scripts to facilitate further exploitation [T1105]. To avoid detection, the custom_exfil_script.ps1 was executed to extract database records in small chunks, staying under data transfer size limits and blending in with normal network traffic [T1030]. Throughout the campaign, the actors used encrypted channels for C2 communications, and forensic analysis revealed artifacts in Windows Event Logs (ID 4688) and firewall logs showing connections to suspicious domains. The bank's incident response team contained the breach by isolating affected systems, resetting credentials, and applying patches, but data loss was estimated at 5 GB of financial records. This scenario highlights the importance of monitoring for default account usage, enforcing MFA policies, and implementing network segmentation to mitigate similar threats.",
+        "techniques_used": [
+            "T1592.004",
+            "T1588.001",
+            "T1078.001",
+            "T1047",
+            "T1204.002",
+            "T1556.006",
+            "T1003.007",
+            "T1021.006",
+            "T1213.003",
+            "T1557",
+            "T1039",
+            "T1104",
+            "T1105",
+            "T1030"
+        ]
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "report_id": "report_414",
+    "generated_at": "20251222_153737",
+    "scenario_target_ids": [
+        "T1590.004",
+        "T1583.004",
+        "T1195.003",
+        "T1203",
+        "T1556.008",
+        "T1672",
+        "T1218.007",
+        "T1555.001",
+        "T1114.001",
+        "T1005",
+        "T1205",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1590.004",
+        "T1583.004",
+        "T1195.003",
+        "T1203",
+        "T1556.008",
+        "T1672",
+        "T1218.007",
+        "T1555.001",
+        "T1114.001",
+        "T1005",
+        "T1205",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1218.007",
+        "T1114.001",
+        "T1590.004",
+        "T1205",
+        "T1583.004",
+        "T1565.003",
+        "T1005",
+        "T1195.003",
+        "T1672",
+        "T1555.001",
+        "T1556.008",
+        "T1203"
+    ],
+    "clean_text": "### Background\nOperation Wocao is a fictional APT campaign attributed to a state-sponsored group targeting U.S. energy companies. The campaign leverages a combination of reconnaissance, supply chain attacks, and credential theft to infiltrate networks and exfiltrate sensitive data. This advisory is based on simulated intelligence for educational purposes.\n\n### Attack Narrative\n**Initial Access:** The actors began by conducting reconnaissance to map the target network topology, identifying active hosts and open ports using tools like nmap. Concurrently, they purchased anonymous servers with Bitcoin to establish command-and-control infrastructure. To gain initial foothold, they compromised hardware supply chains by injecting malicious firmware into USB charging stations deployed at target facilities, which allowed malware to spread to connected devices when employees charged their phones.\n\n**Execution:** Upon device compromise, the actors exploited a known vulnerability, CVE-2018-0798, to execute malicious code on client systems. They then used msiexec to deploy .MSI files as part of the infection chain, installing backdoors that facilitated further actions.\n\n**Persistence and Defense Evasion:** To maintain access, the actors altered the registry value at HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order to include a rogue network provider, enabling stealthy network redirection. They also employed email spoofing by exploiting weak DMARC policies to send phishing emails that appeared legitimate, tricking users into executing additional payloads.\n\n**Credential Access and Collection:** The actors accessed cached credentials by directly reading the login.keychain file on compromised macOS systems. They then collected local email data from target systems using tools like Empire and gathered additional sensitive information from the local file system, including operational documents and network diagrams.\n\n**Exfiltration and Impact:** Data exfiltration was masked through traffic signaling techniques, where the malware redirected clients to legitimate pages like Gmail if no malicious parameters were detected. Finally, the actors manipulated runtime data by replacing file_association.reg to associate .pdf files with a compromised viewer, enabling further exploitation and data manipulation.\n\n### Additional Context (Noise)\nLog analysis from target systems showed routine activity, such as scheduled backups and user logins, which were unrelated to the attack. The targeted company, 'EnergyGrid Inc.', is a mid-sized utility provider with operations across three states, and their security team initially dismissed early alerts as false positives due to high network traffic during a software update cycle. Internal investigations later revealed that the USB charging stations were procured from a third-party vendor with inadequate security vetting.\n\n### Recommendations for Blue Teams\n- Monitor for unusual network scanning and server registrations.\n- Implement strict supply chain security controls and firmware validation.\n- Patch known vulnerabilities promptly and enforce strong email authentication policies.\n- Use endpoint detection to identify registry changes and credential access attempts.\n- Train staff on phishing awareness and secure device usage.\n\nThis advisory is fictional and intended solely for training purposes to improve defensive postures against similar real-world threats.",
+    "tagged_text": "### Background\nOperation Wocao is a fictional APT campaign attributed to a state-sponsored group targeting U.S. energy companies. The campaign leverages a combination of reconnaissance, supply chain attacks, and credential theft to infiltrate networks and exfiltrate sensitive data. This advisory is based on simulated intelligence for educational purposes.\n\n### Attack Narrative\n**Initial Access:** The actors began by conducting reconnaissance to map the target network topology [T1590.004], identifying active hosts and open ports using tools like nmap. Concurrently, they purchased anonymous servers with Bitcoin to establish command-and-control infrastructure [T1583.004]. To gain initial foothold, they compromised hardware supply chains by injecting malicious firmware into USB charging stations deployed at target facilities [T1195.003], which allowed malware to spread to connected devices when employees charged their phones.\n\n**Execution:** Upon device compromise, the actors exploited a known vulnerability, CVE-2018-0798, to execute malicious code on client systems [T1203]. They then used msiexec to deploy .MSI files as part of the infection chain [T1218.007], installing backdoors that facilitated further actions.\n\n**Persistence and Defense Evasion:** To maintain access, the actors altered the registry value at HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order to include a rogue network provider [T1556.008], enabling stealthy network redirection. They also employed email spoofing by exploiting weak DMARC policies to send phishing emails that appeared legitimate [T1672], tricking users into executing additional payloads.\n\n**Credential Access and Collection:** The actors accessed cached credentials by directly reading the login.keychain file on compromised macOS systems [T1555.001]. They then collected local email data from target systems using tools like Empire [T1114.001] and gathered additional sensitive information from the local file system [T1005], including operational documents and network diagrams.\n\n**Exfiltration and Impact:** Data exfiltration was masked through traffic signaling techniques, where the malware redirected clients to legitimate pages like Gmail if no malicious parameters were detected [T1205]. Finally, the actors manipulated runtime data by replacing file_association.reg to associate .pdf files with a compromised viewer [T1565.003], enabling further exploitation and data manipulation.\n\n### Additional Context (Noise)\nLog analysis from target systems showed routine activity, such as scheduled backups and user logins, which were unrelated to the attack. The targeted company, 'EnergyGrid Inc.', is a mid-sized utility provider with operations across three states, and their security team initially dismissed early alerts as false positives due to high network traffic during a software update cycle. Internal investigations later revealed that the USB charging stations were procured from a third-party vendor with inadequate security vetting.\n\n### Recommendations for Blue Teams\n- Monitor for unusual network scanning and server registrations.\n- Implement strict supply chain security controls and firmware validation.\n- Patch known vulnerabilities promptly and enforce strong email authentication policies.\n- Use endpoint detection to identify registry changes and credential access attempts.\n- Train staff on phishing awareness and secure device usage.\n\nThis advisory is fictional and intended solely for training purposes to improve defensive postures against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Execution:** Upon device compromise, the actors exploited a known vulnerability, CVE-2018-0798, to execute malicious code on client systems.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "They also employed email spoofing by exploiting weak DMARC policies to send phishing emails that appeared legitimate, tricking users into executing additional payloads.",
+            "technique_id": "T1672",
+            "technique_name": "Email Spoofing"
+        },
+        {
+            "sentence": "001] and gathered additional sensitive information from the local file system, including operational documents and network diagrams.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "**Exfiltration and Impact:** Data exfiltration was masked through traffic signaling techniques, where the malware redirected clients to legitimate pages like Gmail if no malicious parameters were detected.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Operation Wocao' Targeting Critical Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated advanced persistent threat (APT) campaign, designated 'Operation Wocao', which targets organizations in the energy sector. This report provides a fictional narrative for blue team training, illustrating a multi-stage attack involving supply chain compromise, network exploitation, and data exfiltration. The advisory includes embedded MITRE ATT&CK techniques to enhance defensive awareness and response capabilities.",
+        "full_report_text": "### Background\nOperation Wocao is a fictional APT campaign attributed to a state-sponsored group targeting U.S. energy companies. The campaign leverages a combination of reconnaissance, supply chain attacks, and credential theft to infiltrate networks and exfiltrate sensitive data. This advisory is based on simulated intelligence for educational purposes.\n\n### Attack Narrative\n**Initial Access:** The actors began by conducting reconnaissance to map the target network topology [T1590.004], identifying active hosts and open ports using tools like nmap. Concurrently, they purchased anonymous servers with Bitcoin to establish command-and-control infrastructure [T1583.004]. To gain initial foothold, they compromised hardware supply chains by injecting malicious firmware into USB charging stations deployed at target facilities [T1195.003], which allowed malware to spread to connected devices when employees charged their phones.\n\n**Execution:** Upon device compromise, the actors exploited a known vulnerability, CVE-2018-0798, to execute malicious code on client systems [T1203]. They then used msiexec to deploy .MSI files as part of the infection chain [T1218.007], installing backdoors that facilitated further actions.\n\n**Persistence and Defense Evasion:** To maintain access, the actors altered the registry value at HKLM\\SYSTEM\\CurrentControlSet\\Control\\NetworkProvider\\Order to include a rogue network provider [T1556.008], enabling stealthy network redirection. They also employed email spoofing by exploiting weak DMARC policies to send phishing emails that appeared legitimate [T1672], tricking users into executing additional payloads.\n\n**Credential Access and Collection:** The actors accessed cached credentials by directly reading the login.keychain file on compromised macOS systems [T1555.001]. They then collected local email data from target systems using tools like Empire [T1114.001] and gathered additional sensitive information from the local file system [T1005], including operational documents and network diagrams.\n\n**Exfiltration and Impact:** Data exfiltration was masked through traffic signaling techniques, where the malware redirected clients to legitimate pages like Gmail if no malicious parameters were detected [T1205]. Finally, the actors manipulated runtime data by replacing file_association.reg to associate .pdf files with a compromised viewer [T1565.003], enabling further exploitation and data manipulation.\n\n### Additional Context (Noise)\nLog analysis from target systems showed routine activity, such as scheduled backups and user logins, which were unrelated to the attack. The targeted company, 'EnergyGrid Inc.', is a mid-sized utility provider with operations across three states, and their security team initially dismissed early alerts as false positives due to high network traffic during a software update cycle. Internal investigations later revealed that the USB charging stations were procured from a third-party vendor with inadequate security vetting.\n\n### Recommendations for Blue Teams\n- Monitor for unusual network scanning and server registrations.\n- Implement strict supply chain security controls and firmware validation.\n- Patch known vulnerabilities promptly and enforce strong email authentication policies.\n- Use endpoint detection to identify registry changes and credential access attempts.\n- Train staff on phishing awareness and secure device usage.\n\nThis advisory is fictional and intended solely for training purposes to improve defensive postures against similar real-world threats.",
+        "techniques_used": [
+            "T1590.004",
+            "T1583.004",
+            "T1195.003",
+            "T1203",
+            "T1556.008",
+            "T1672",
+            "T1218.007",
+            "T1555.001",
+            "T1114.001",
+            "T1005",
+            "T1205",
+            "T1565.003"
+        ]
+    }
+}

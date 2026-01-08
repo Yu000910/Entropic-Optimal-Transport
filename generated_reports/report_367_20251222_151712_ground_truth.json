@@ -1,0 +1,88 @@
+{
+    "report_id": "report_367",
+    "generated_at": "20251222_151712",
+    "scenario_target_ids": [
+        "T1078",
+        "T1609",
+        "T1550",
+        "T1091",
+        "T1132",
+        "T1219.003",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1609",
+        "T1550",
+        "T1091",
+        "T1132",
+        "T1219.003",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1052",
+        "T1550",
+        "T1132",
+        "T1091",
+        "T1219.003",
+        "T1078",
+        "T1609"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional, educational attack scenario based on campaign C0032 attributed to TEMP.Veles. This report is for training purposes only, simulating realistic adversary behavior without actual incidents.\n\nBackground: TEMP.Veles is a fictional advanced persistent threat (APT) group known for targeting industrial control systems in the energy sector. In this scenario, the attack began with initial reconnaissance through open-source intelligence gathering, though no specific techniques are tagged here. The organization, a mid-sized utility company, reported unusual network traffic from its VPN gateway, which was later traced to unauthorized access attempts.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors gained entry by using compromised VPN credentials, which were likely obtained through previous phishing campaigns or credential stuffing attacks. Logs show multiple failed login attempts before successful authentication from an IP address in a foreign region.\n- Execution: Upon accessing the network, the adversary employed a pass-the-hash attack to bypass authentication controls and move laterally to sensitive file shares, where they executed malicious scripts to deploy backdoors. Concurrently, they used Docker commands to gain interactive shell access to a container running critical applications, enabling further execution of payloads within the containerized environment.\n- Persistence: To establish redundant remote control, the actors configured PiKVM hardware on an internal server, allowing them to maintain access even if network-based methods were blocked. Additionally, they altered Autorun.inf files on removable media to automatically run malware.exe upon insertion, ensuring persistence through physical means.\n- Command and Control: The backdoor communicated with a command-and-control server by decoding base64-encoded commands received over encrypted channels, evading network monitoring tools. This allowed for stealthy data exfiltration and further instructions.\n- Exfiltration: Data exfiltration was performed by writing proprietary source code to a USB flash drive, which was physically removed from the premises. Network logs indicated abnormal outbound traffic during this phase, but it was masked by legitimate-looking protocols.\n\nIrrelevant Information: The targeted utility company, based in the Midwest, has been operating for over 50 years with a focus on renewable energy. Their IT infrastructure includes legacy systems running Windows Server 2012, which may have contributed to vulnerabilities. During the investigation, blue teams noted several false positives in intrusion detection systems, including alerts for benign software updates and user error logs, which are not part of the attack scenario.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication for VPN access, monitor container administration activities, restrict removable media usage, and implement network segmentation to limit lateral movement. Regular audits of authentication logs and hardware configurations are advised to detect similar tactics.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional, educational attack scenario based on campaign C0032 attributed to TEMP.Veles. This report is for training purposes only, simulating realistic adversary behavior without actual incidents.\n\nBackground: TEMP.Veles is a fictional advanced persistent threat (APT) group known for targeting industrial control systems in the energy sector. In this scenario, the attack began with initial reconnaissance through open-source intelligence gathering, though no specific techniques are tagged here. The organization, a mid-sized utility company, reported unusual network traffic from its VPN gateway, which was later traced to unauthorized access attempts.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors gained entry by using compromised VPN credentials [T1078], which were likely obtained through previous phishing campaigns or credential stuffing attacks. Logs show multiple failed login attempts before successful authentication from an IP address in a foreign region.\n- Execution: Upon accessing the network, the adversary employed a pass-the-hash attack [T1550] to bypass authentication controls and move laterally to sensitive file shares, where they executed malicious scripts to deploy backdoors. Concurrently, they used Docker commands [T1609] to gain interactive shell access to a container running critical applications, enabling further execution of payloads within the containerized environment.\n- Persistence: To establish redundant remote control, the actors configured PiKVM hardware [T1219.003] on an internal server, allowing them to maintain access even if network-based methods were blocked. Additionally, they altered Autorun.inf files [T1091] on removable media to automatically run malware.exe upon insertion, ensuring persistence through physical means.\n- Command and Control: The backdoor communicated with a command-and-control server by decoding base64-encoded commands [T1132] received over encrypted channels, evading network monitoring tools. This allowed for stealthy data exfiltration and further instructions.\n- Exfiltration: Data exfiltration was performed by writing proprietary source code to a USB flash drive [T1052], which was physically removed from the premises. Network logs indicated abnormal outbound traffic during this phase, but it was masked by legitimate-looking protocols.\n\nIrrelevant Information: The targeted utility company, based in the Midwest, has been operating for over 50 years with a focus on renewable energy. Their IT infrastructure includes legacy systems running Windows Server 2012, which may have contributed to vulnerabilities. During the investigation, blue teams noted several false positives in intrusion detection systems, including alerts for benign software updates and user error logs, which are not part of the attack scenario.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication for VPN access, monitor container administration activities, restrict removable media usage, and implement network segmentation to limit lateral movement. Regular audits of authentication logs and hardware configurations are advised to detect similar tactics.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative (Kill-Chain Structure):\n- Initial Access: The actors gained entry by using compromised VPN credentials, which were likely obtained through previous phishing campaigns or credential stuffing attacks.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "- Execution: Upon accessing the network, the adversary employed a pass-the-hash attack to bypass authentication controls and move laterally to sensitive file shares, where they executed malicious scripts to deploy backdoors.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "Concurrently, they used Docker commands to gain interactive shell access to a container running critical applications, enabling further execution of payloads within the containerized environment.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "inf files on removable media to automatically run malware.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "- Command and Control: The backdoor communicated with a command-and-control server by decoding base64-encoded commands received over encrypted channels, evading network monitoring tools.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        },
+        {
+            "sentence": "- Exfiltration: Data exfiltration was performed by writing proprietary source code to a USB flash drive, which was physically removed from the premises.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign C0032 by TEMP.Veles Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the threat actor TEMP.Veles, which leverages compromised credentials, container exploitation, and physical media to infiltrate and exfiltrate data from critical infrastructure environments. The activity involves multi-stage attacks with techniques including pass-the-hash, remote hardware access, and data encoding, designed to evade detection and maintain persistence.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional, educational attack scenario based on campaign C0032 attributed to TEMP.Veles. This report is for training purposes only, simulating realistic adversary behavior without actual incidents.\n\nBackground: TEMP.Veles is a fictional advanced persistent threat (APT) group known for targeting industrial control systems in the energy sector. In this scenario, the attack began with initial reconnaissance through open-source intelligence gathering, though no specific techniques are tagged here. The organization, a mid-sized utility company, reported unusual network traffic from its VPN gateway, which was later traced to unauthorized access attempts.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors gained entry by using compromised VPN credentials [T1078], which were likely obtained through previous phishing campaigns or credential stuffing attacks. Logs show multiple failed login attempts before successful authentication from an IP address in a foreign region.\n- Execution: Upon accessing the network, the adversary employed a pass-the-hash attack [T1550] to bypass authentication controls and move laterally to sensitive file shares, where they executed malicious scripts to deploy backdoors. Concurrently, they used Docker commands [T1609] to gain interactive shell access to a container running critical applications, enabling further execution of payloads within the containerized environment.\n- Persistence: To establish redundant remote control, the actors configured PiKVM hardware [T1219.003] on an internal server, allowing them to maintain access even if network-based methods were blocked. Additionally, they altered Autorun.inf files [T1091] on removable media to automatically run malware.exe upon insertion, ensuring persistence through physical means.\n- Command and Control: The backdoor communicated with a command-and-control server by decoding base64-encoded commands [T1132] received over encrypted channels, evading network monitoring tools. This allowed for stealthy data exfiltration and further instructions.\n- Exfiltration: Data exfiltration was performed by writing proprietary source code to a USB flash drive [T1052], which was physically removed from the premises. Network logs indicated abnormal outbound traffic during this phase, but it was masked by legitimate-looking protocols.\n\nIrrelevant Information: The targeted utility company, based in the Midwest, has been operating for over 50 years with a focus on renewable energy. Their IT infrastructure includes legacy systems running Windows Server 2012, which may have contributed to vulnerabilities. During the investigation, blue teams noted several false positives in intrusion detection systems, including alerts for benign software updates and user error logs, which are not part of the attack scenario.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication for VPN access, monitor container administration activities, restrict removable media usage, and implement network segmentation to limit lateral movement. Regular audits of authentication logs and hardware configurations are advised to detect similar tactics.",
+        "techniques_used": [
+            "T1078",
+            "T1609",
+            "T1550",
+            "T1091",
+            "T1132",
+            "T1219.003",
+            "T1052"
+        ]
+    }
+}

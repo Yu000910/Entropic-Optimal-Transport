@@ -1,0 +1,73 @@
+{
+    "report_id": "report_762",
+    "generated_at": "20251223_110407",
+    "scenario_target_ids": [
+        "T1592.004",
+        "T1596.001",
+        "T1200",
+        "T1648",
+        "T1574.008",
+        "T1550.004",
+        "T1219"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.004",
+        "T1596.001",
+        "T1200",
+        "T1648",
+        "T1574.008",
+        "T1550.004",
+        "T1219"
+    ],
+    "actual_found_ids": [
+        "T1574.008",
+        "T1550.004",
+        "T1200",
+        "T1592.004",
+        "T1596.001",
+        "T1219",
+        "T1648"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. 'ShadowTap' actors likely initiated their campaign by conducting reconnaissance on the target's network, using nmap to scan for open ports and service versions while simultaneously querying DNS servers to resolve hostnames and identify potential entry points. Following this, the actors deployed a passive network tap to intercept unencrypted credentials from network traffic, which enabled them to gain initial access. Once inside, they leveraged serverless execution by deploying a malicious Lambda function that executed code to exfiltrate sensitive data and employed path interception by placing a trojanized 'ws2_32.dll' in the same directory as a legitimate application to hijack its execution flow. To maintain persistence and evade detection, the malware imported cookie files from the victim's browser profile to hijack authenticated web sessions and executed a new Windows Service named 'UpdateManager' to establish persistent remote control over the compromised system. Logs from the target's firewall showed increased outbound traffic to unknown IP addresses during off-hours, but this was initially dismissed as routine maintenance activity. The organization, a mid-sized energy provider, had recently upgraded its cloud infrastructure, which may have introduced misconfigurations exploited in this attack. Analysis of system artifacts revealed no prior indicators of compromise, suggesting the actors operated stealthily over several weeks.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. 'ShadowTap' actors likely initiated their campaign by conducting reconnaissance on the target's network, using nmap to scan for open ports and service versions [T1592.004] while simultaneously querying DNS servers to resolve hostnames and identify potential entry points [T1596.001]. Following this, the actors deployed a passive network tap to intercept unencrypted credentials from network traffic [T1200], which enabled them to gain initial access. Once inside, they leveraged serverless execution by deploying a malicious Lambda function that executed code to exfiltrate sensitive data [T1648] and employed path interception by placing a trojanized 'ws2_32.dll' in the same directory as a legitimate application to hijack its execution flow [T1574.008]. To maintain persistence and evade detection, the malware imported cookie files from the victim's browser profile to hijack authenticated web sessions [T1550.004] and executed a new Windows Service named 'UpdateManager' to establish persistent remote control over the compromised system [T1219]. Logs from the target's firewall showed increased outbound traffic to unknown IP addresses during off-hours, but this was initially dismissed as routine maintenance activity. The organization, a mid-sized energy provider, had recently upgraded its cloud infrastructure, which may have introduced misconfigurations exploited in this attack. Analysis of system artifacts revealed no prior indicators of compromise, suggesting the actors operated stealthily over several weeks.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following this, the actors deployed a passive network tap to intercept unencrypted credentials from network traffic, which enabled them to gain initial access.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Once inside, they leveraged serverless execution by deploying a malicious Lambda function that executed code to exfiltrate sensitive data and employed path interception by placing a trojanized 'ws2_32.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "004] and executed a new Windows Service named 'UpdateManager' to establish persistent remote control over the compromised system.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowTap' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowTap', targeting critical infrastructure organizations. The campaign involves reconnaissance, credential theft via hardware interception, serverless execution for data exfiltration, and persistent remote access. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. 'ShadowTap' actors likely initiated their campaign by conducting reconnaissance on the target's network, using nmap to scan for open ports and service versions [T1592.004] while simultaneously querying DNS servers to resolve hostnames and identify potential entry points [T1596.001]. Following this, the actors deployed a passive network tap to intercept unencrypted credentials from network traffic [T1200], which enabled them to gain initial access. Once inside, they leveraged serverless execution by deploying a malicious Lambda function that executed code to exfiltrate sensitive data [T1648] and employed path interception by placing a trojanized 'ws2_32.dll' in the same directory as a legitimate application to hijack its execution flow [T1574.008]. To maintain persistence and evade detection, the malware imported cookie files from the victim's browser profile to hijack authenticated web sessions [T1550.004] and executed a new Windows Service named 'UpdateManager' to establish persistent remote control over the compromised system [T1219]. Logs from the target's firewall showed increased outbound traffic to unknown IP addresses during off-hours, but this was initially dismissed as routine maintenance activity. The organization, a mid-sized energy provider, had recently upgraded its cloud infrastructure, which may have introduced misconfigurations exploited in this attack. Analysis of system artifacts revealed no prior indicators of compromise, suggesting the actors operated stealthily over several weeks.",
+        "techniques_used": [
+            "T1592.004",
+            "T1596.001",
+            "T1200",
+            "T1648",
+            "T1574.008",
+            "T1550.004",
+            "T1219"
+        ]
+    }
+}

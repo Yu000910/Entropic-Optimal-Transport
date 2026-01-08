@@ -1,0 +1,138 @@
+{
+    "report_id": "report_62",
+    "generated_at": "20251222_131146",
+    "scenario_target_ids": [
+        "T1592",
+        "T1190",
+        "T1195",
+        "T1059.006",
+        "T1547.007",
+        "T1218.012",
+        "T1619",
+        "T1217",
+        "T1213.005",
+        "T1115",
+        "T1005",
+        "T1132.001",
+        "T1048",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592",
+        "T1190",
+        "T1195",
+        "T1059.006",
+        "T1547.007",
+        "T1218.012",
+        "T1619",
+        "T1217",
+        "T1213.005",
+        "T1115",
+        "T1005",
+        "T1132.001",
+        "T1048",
+        "T1020"
+    ],
+    "actual_found_ids": [
+        "T1592",
+        "T1547.007",
+        "T1213.005",
+        "T1218.012",
+        "T1115",
+        "T1217",
+        "T1005",
+        "T1132.001",
+        "T1195",
+        "T1190",
+        "T1619",
+        "T1059.006",
+        "T1048",
+        "T1020"
+    ],
+    "clean_text": "ShadowScribe actors initiated their campaign by conducting reconnaissance to gather victim host information through a drive-by download that exploited a heap overflow in a web browser, transmitting configuration details to a command-and-control (C2) server. They then exploited a public-facing application by leveraging a known vulnerability in Roundcube Webmail servers, similar to tactics used by Winter Vivern, to gain initial access. Concurrently, the actors executed a supply chain compromise by injecting malicious code into a popular open-source library, affecting thousands of downstream applications and enabling widespread infection. Upon gaining access, the adversaries employed Python scripts to execute payloads that modified system files, such as editing com.apple.loginwindow.UUID.plist to ensure re-opened applications would trigger privilege escalation tools during user logins. To bypass security controls, they utilized verclsid.exe to execute malicious COM objects, circumventing application whitelisting. The actors then conducted discovery activities, using tools like Pacu to enumerate AWS storage services for cloud storage object discovery and querying browser directories to extract browsing history and saved credentials for browser information discovery. They also accessed messaging applications like Microsoft Teams to gather employee contact details and organizational data. Data collection involved stealing clipboard data and harvesting files from the local system using custom malware. For exfiltration, the actors encoded communications with Base64 and employed FTP to transfer stolen data over alternative protocols, while automated scripts facilitated the exfiltration of collected information. Throughout the campaign, system logs showed routine network traffic spikes, and background checks revealed the targeted company had recently migrated to cloud infrastructure, though these details are not directly related to the attack techniques.",
+    "tagged_text": "ShadowScribe actors initiated their campaign by conducting reconnaissance to gather victim host information [T1592] through a drive-by download that exploited a heap overflow in a web browser, transmitting configuration details to a command-and-control (C2) server. They then exploited a public-facing application [T1190] by leveraging a known vulnerability in Roundcube Webmail servers, similar to tactics used by Winter Vivern, to gain initial access. Concurrently, the actors executed a supply chain compromise [T1195] by injecting malicious code into a popular open-source library, affecting thousands of downstream applications and enabling widespread infection. Upon gaining access, the adversaries employed Python scripts [T1059.006] to execute payloads that modified system files, such as editing com.apple.loginwindow.UUID.plist to ensure re-opened applications [T1547.007] would trigger privilege escalation tools during user logins. To bypass security controls, they utilized verclsid.exe [T1218.012] to execute malicious COM objects, circumventing application whitelisting. The actors then conducted discovery activities, using tools like Pacu to enumerate AWS storage services for cloud storage object discovery [T1619] and querying browser directories to extract browsing history and saved credentials for browser information discovery [T1217]. They also accessed messaging applications [T1213.005] like Microsoft Teams to gather employee contact details and organizational data. Data collection involved stealing clipboard data [T1115] and harvesting files from the local system [T1005] using custom malware. For exfiltration, the actors encoded communications with Base64 [T1132.001] and employed FTP to transfer stolen data over alternative protocols [T1048], while automated scripts facilitated the exfiltration of collected information [T1020]. Throughout the campaign, system logs showed routine network traffic spikes, and background checks revealed the targeted company had recently migrated to cloud infrastructure, though these details are not directly related to the attack techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "ShadowScribe actors initiated their campaign by conducting reconnaissance to gather victim host information through a drive-by download that exploited a heap overflow in a web browser, transmitting configuration details to a command-and-control (C2) server.",
+            "technique_id": "T1592",
+            "technique_name": "Gather Victim Host Information"
+        },
+        {
+            "sentence": "They then exploited a public-facing application by leveraging a known vulnerability in Roundcube Webmail servers, similar to tactics used by Winter Vivern, to gain initial access.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Concurrently, the actors executed a supply chain compromise by injecting malicious code into a popular open-source library, affecting thousands of downstream applications and enabling widespread infection.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "The actors then conducted discovery activities, using tools like Pacu to enumerate AWS storage services for cloud storage object discovery and querying browser directories to extract browsing history and saved credentials for browser information discovery.",
+            "technique_id": "T1619",
+            "technique_name": "Cloud Storage Object Discovery"
+        },
+        {
+            "sentence": "The actors then conducted discovery activities, using tools like Pacu to enumerate AWS storage services for cloud storage object discovery and querying browser directories to extract browsing history and saved credentials for browser information discovery.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "Data collection involved stealing clipboard data and harvesting files from the local system using custom malware.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        },
+        {
+            "sentence": "Data collection involved stealing clipboard data and harvesting files from the local system using custom malware.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "001] and employed FTP to transfer stolen data over alternative protocols, while automated scripts facilitated the exfiltration of collected information.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        },
+        {
+            "sentence": "001] and employed FTP to transfer stolen data over alternative protocols, while automated scripts facilitated the exfiltration of collected information.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowScribe' Targeting Global Enterprises",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowScribe', which leverages a multi-vector approach including supply chain compromises, browser exploits, and cloud reconnaissance to infiltrate networks, escalate privileges, and exfiltrate sensitive data. The campaign demonstrates advanced techniques across the kill-chain, emphasizing the need for robust defense-in-depth strategies.",
+        "full_report_text": "ShadowScribe actors initiated their campaign by conducting reconnaissance to gather victim host information [T1592] through a drive-by download that exploited a heap overflow in a web browser, transmitting configuration details to a command-and-control (C2) server. They then exploited a public-facing application [T1190] by leveraging a known vulnerability in Roundcube Webmail servers, similar to tactics used by Winter Vivern, to gain initial access. Concurrently, the actors executed a supply chain compromise [T1195] by injecting malicious code into a popular open-source library, affecting thousands of downstream applications and enabling widespread infection. Upon gaining access, the adversaries employed Python scripts [T1059.006] to execute payloads that modified system files, such as editing com.apple.loginwindow.UUID.plist to ensure re-opened applications [T1547.007] would trigger privilege escalation tools during user logins. To bypass security controls, they utilized verclsid.exe [T1218.012] to execute malicious COM objects, circumventing application whitelisting. The actors then conducted discovery activities, using tools like Pacu to enumerate AWS storage services for cloud storage object discovery [T1619] and querying browser directories to extract browsing history and saved credentials for browser information discovery [T1217]. They also accessed messaging applications [T1213.005] like Microsoft Teams to gather employee contact details and organizational data. Data collection involved stealing clipboard data [T1115] and harvesting files from the local system [T1005] using custom malware. For exfiltration, the actors encoded communications with Base64 [T1132.001] and employed FTP to transfer stolen data over alternative protocols [T1048], while automated scripts facilitated the exfiltration of collected information [T1020]. Throughout the campaign, system logs showed routine network traffic spikes, and background checks revealed the targeted company had recently migrated to cloud infrastructure, though these details are not directly related to the attack techniques.",
+        "techniques_used": [
+            "T1592",
+            "T1190",
+            "T1195",
+            "T1059.006",
+            "T1547.007",
+            "T1218.012",
+            "T1619",
+            "T1217",
+            "T1213.005",
+            "T1115",
+            "T1005",
+            "T1132.001",
+            "T1048",
+            "T1020"
+        ]
+    }
+}

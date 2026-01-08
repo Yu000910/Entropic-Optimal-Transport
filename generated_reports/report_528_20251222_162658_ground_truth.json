@@ -1,0 +1,98 @@
+{
+    "report_id": "report_528",
+    "generated_at": "20251222_162658",
+    "scenario_target_ids": [
+        "T1608.003",
+        "T1078.004",
+        "T1610",
+        "T1543.002",
+        "T1056.004",
+        "T1557",
+        "T1205.001",
+        "T1052",
+        "T1499",
+        "T1561"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1608.003",
+        "T1078.004",
+        "T1610",
+        "T1543.002",
+        "T1056.004",
+        "T1557",
+        "T1205.001",
+        "T1052",
+        "T1499",
+        "T1561"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1499",
+        "T1052",
+        "T1608.003",
+        "T1205.001",
+        "T1056.004",
+        "T1078.004",
+        "T1561",
+        "T1543.002",
+        "T1557"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional threat actor, 'ShadowCipher', observed conducting sophisticated attacks against hybrid environments. Initial reconnaissance likely involved scanning for vulnerable cloud accounts and network endpoints, though specific logs from firewall IDS-001 show normal traffic patterns during this phase. The actors first gained initial access by exploiting compromised Office 365 service accounts with Global Administrator privileges to collect sensitive emails from user inboxes while simultaneously deploying a fraudulent SSL certificate to C:\\ProgramData\\cert.pem for man-in-the-middle operations. Execution involved using PowerShell scripts to deploy a malicious container pod that mounted its node's root file system, establishing a reverse shell for persistent access. The malware then created a systemd service named 'logrotate.service' with an ExecStart command to run a remote access tool and hooked into Windows Credential Provider APIs to harvest login credentials. For persistence and defense evasion, the adversary conducted ARP spoofing to capture unencrypted credentials over the network and employed port knocking via raw sockets to maintain stealthy communication channels. System logs from server SRV-203 indicate increased CPU usage but no immediate alerts. Exfiltration was achieved by automatically saving stolen credentials to an external hard drive connected to the infected system, with network traffic analysis showing spikes in data transfer to unknown IPs. Impact activities included exploiting an unpatched IIS vulnerability to cause service unavailability and executing a 'format C:' command to wipe the primary hard drive, rendering the system unusable. Incident responders noted that backup systems were offline due to scheduled maintenance, complicating recovery efforts.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional threat actor, 'ShadowCipher', observed conducting sophisticated attacks against hybrid environments. Initial reconnaissance likely involved scanning for vulnerable cloud accounts and network endpoints, though specific logs from firewall IDS-001 show normal traffic patterns during this phase. The actors first gained initial access by exploiting compromised Office 365 service accounts with Global Administrator privileges [T1078.004] to collect sensitive emails from user inboxes while simultaneously deploying a fraudulent SSL certificate to C:\\ProgramData\\cert.pem for man-in-the-middle operations [T1608.003]. Execution involved using PowerShell scripts to deploy a malicious container pod that mounted its node's root file system [T1610], establishing a reverse shell for persistent access. The malware then created a systemd service named 'logrotate.service' with an ExecStart command to run a remote access tool [T1543.002] and hooked into Windows Credential Provider APIs to harvest login credentials [T1056.004]. For persistence and defense evasion, the adversary conducted ARP spoofing to capture unencrypted credentials over the network [T1557] and employed port knocking via raw sockets to maintain stealthy communication channels [T1205.001]. System logs from server SRV-203 indicate increased CPU usage but no immediate alerts. Exfiltration was achieved by automatically saving stolen credentials to an external hard drive connected to the infected system [T1052], with network traffic analysis showing spikes in data transfer to unknown IPs. Impact activities included exploiting an unpatched IIS vulnerability to cause service unavailability [T1499] and executing a 'format C:' command to wipe the primary hard drive, rendering the system unusable [T1561]. Incident responders noted that backup systems were offline due to scheduled maintenance, complicating recovery efforts.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution involved using PowerShell scripts to deploy a malicious container pod that mounted its node's root file system, establishing a reverse shell for persistent access.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "For persistence and defense evasion, the adversary conducted ARP spoofing to capture unencrypted credentials over the network and employed port knocking via raw sockets to maintain stealthy communication channels [T1205.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        },
+        {
+            "sentence": "Exfiltration was achieved by automatically saving stolen credentials to an external hard drive connected to the infected system, with network traffic analysis showing spikes in data transfer to unknown IPs.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        },
+        {
+            "sentence": "Impact activities included exploiting an unpatched IIS vulnerability to cause service unavailability and executing a 'format C:' command to wipe the primary hard drive, rendering the system unusable.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        },
+        {
+            "sentence": "Impact activities included exploiting an unpatched IIS vulnerability to cause service unavailability and executing a 'format C:' command to wipe the primary hard drive, rendering the system unusable.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowCipher' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'ShadowCipher', targeting organizations with hybrid cloud and on-premises infrastructure. The campaign employs a multi-faceted approach involving credential theft, container exploitation, and destructive actions to compromise systems and exfiltrate data. Blue teams should review logs for unusual certificate installations, cloud account activities, and service modifications.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional threat actor, 'ShadowCipher', observed conducting sophisticated attacks against hybrid environments. Initial reconnaissance likely involved scanning for vulnerable cloud accounts and network endpoints, though specific logs from firewall IDS-001 show normal traffic patterns during this phase. The actors first gained initial access by exploiting compromised Office 365 service accounts with Global Administrator privileges [T1078.004] to collect sensitive emails from user inboxes while simultaneously deploying a fraudulent SSL certificate to C:\\ProgramData\\cert.pem for man-in-the-middle operations [T1608.003]. Execution involved using PowerShell scripts to deploy a malicious container pod that mounted its node's root file system [T1610], establishing a reverse shell for persistent access. The malware then created a systemd service named 'logrotate.service' with an ExecStart command to run a remote access tool [T1543.002] and hooked into Windows Credential Provider APIs to harvest login credentials [T1056.004]. For persistence and defense evasion, the adversary conducted ARP spoofing to capture unencrypted credentials over the network [T1557] and employed port knocking via raw sockets to maintain stealthy communication channels [T1205.001]. System logs from server SRV-203 indicate increased CPU usage but no immediate alerts. Exfiltration was achieved by automatically saving stolen credentials to an external hard drive connected to the infected system [T1052], with network traffic analysis showing spikes in data transfer to unknown IPs. Impact activities included exploiting an unpatched IIS vulnerability to cause service unavailability [T1499] and executing a 'format C:' command to wipe the primary hard drive, rendering the system unusable [T1561]. Incident responders noted that backup systems were offline due to scheduled maintenance, complicating recovery efforts.",
+        "techniques_used": [
+            "T1608.003",
+            "T1078.004",
+            "T1610",
+            "T1543.002",
+            "T1056.004",
+            "T1557",
+            "T1205.001",
+            "T1052",
+            "T1499",
+            "T1561"
+        ]
+    }
+}

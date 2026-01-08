@@ -1,0 +1,83 @@
+{
+    "report_id": "report_36",
+    "generated_at": "20251222_130202",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1129",
+        "T1003.002",
+        "T1087",
+        "T1021.004",
+        "T1074.001",
+        "T1219.002",
+        "T1567",
+        "T1499.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078.002",
+        "T1129",
+        "T1003.002",
+        "T1087",
+        "T1021.004",
+        "T1074.001",
+        "T1219.002",
+        "T1567",
+        "T1499.001"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1567",
+        "T1074.001",
+        "T1087",
+        "T1003.002",
+        "T1021.004",
+        "T1078.002",
+        "T1219.002",
+        "T1499.001"
+    ],
+    "clean_text": "On 2024-10-01, Acme Corp, a fictional manufacturing company with 500 employees, reported anomalous network activity to the FBI, CISA, and NSA. Initial logs from their SIEM showed failed login attempts on a Windows domain controller, which were later traced to a compromised vendor account. The actors, likely operating from IP addresses in the 203.0.113.0/24 range, conducted reconnaissance by enumerating user accounts through commands like 'cat /etc/passwd' on Linux servers, and then used hard-coded domain credentials to access network shares when initial privileges were insufficient. After gaining a foothold, they executed malicious PowerShell scripts that loaded shared modules via LoadLibrary calls to download additional tools, which were used to dump Security Account Manager (SAM) hashes from local Windows systems using pwdumpx.exe with administrative rights. For lateral movement, the adversaries activated SSH services on virtual infrastructure by running 'vim-cmd hostsvc/start_ssh' and abused TeamViewer to establish covert interactive channels, while simultaneously staging collected data from applications like Safari and Keychain to local directories such as '/var/folder'. The campaign culminated in exfiltration over web services using PowerShell scripts to upload system configuration files and an OS exhaustion flood via ACK floods against a database server to degrade its processing capacity. Acme Corp's internal investigation noted unrelated system reboots and high CPU usage on non-critical servers, which were not linked to the attack.",
+    "tagged_text": "On 2024-10-01, Acme Corp, a fictional manufacturing company with 500 employees, reported anomalous network activity to the FBI, CISA, and NSA. Initial logs from their SIEM showed failed login attempts on a Windows domain controller, which were later traced to a compromised vendor account. The actors, likely operating from IP addresses in the 203.0.113.0/24 range, conducted reconnaissance by enumerating user accounts [T1087] through commands like 'cat /etc/passwd' on Linux servers, and then used hard-coded domain credentials [T1078.002] to access network shares when initial privileges were insufficient. After gaining a foothold, they executed malicious PowerShell scripts that loaded shared modules [T1129] via LoadLibrary calls to download additional tools, which were used to dump Security Account Manager (SAM) hashes [T1003.002] from local Windows systems using pwdumpx.exe with administrative rights. For lateral movement, the adversaries activated SSH services [T1021.004] on virtual infrastructure by running 'vim-cmd hostsvc/start_ssh' and abused TeamViewer [T1219.002] to establish covert interactive channels, while simultaneously staging collected data from applications like Safari and Keychain to local directories [T1074.001] such as '/var/folder'. The campaign culminated in exfiltration over web services [T1567] using PowerShell scripts to upload system configuration files and an OS exhaustion flood [T1499.001] via ACK floods against a database server to degrade its processing capacity. Acme Corp's internal investigation noted unrelated system reboots and high CPU usage on non-critical servers, which were not linked to the attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "0/24 range, conducted reconnaissance by enumerating user accounts through commands like 'cat /etc/passwd' on Linux servers, and then used hard-coded domain credentials [T1078.",
+            "technique_id": "T1087",
+            "technique_name": "Account Discovery"
+        },
+        {
+            "sentence": "After gaining a foothold, they executed malicious PowerShell scripts that loaded shared modules via LoadLibrary calls to download additional tools, which were used to dump Security Account Manager (SAM) hashes [T1003.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "The campaign culminated in exfiltration over web services using PowerShell scripts to upload system configuration files and an OS exhaustion flood [T1499.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRift' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowRift', targeting organizations with hybrid Windows and Linux environments. The campaign involves initial access via compromised credentials, lateral movement using SSH and remote desktop software, data staging and exfiltration, and a denial-of-service attack. Blue teams can use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "On 2024-10-01, Acme Corp, a fictional manufacturing company with 500 employees, reported anomalous network activity to the FBI, CISA, and NSA. Initial logs from their SIEM showed failed login attempts on a Windows domain controller, which were later traced to a compromised vendor account. The actors, likely operating from IP addresses in the 203.0.113.0/24 range, conducted reconnaissance by enumerating user accounts [T1087] through commands like 'cat /etc/passwd' on Linux servers, and then used hard-coded domain credentials [T1078.002] to access network shares when initial privileges were insufficient. After gaining a foothold, they executed malicious PowerShell scripts that loaded shared modules [T1129] via LoadLibrary calls to download additional tools, which were used to dump Security Account Manager (SAM) hashes [T1003.002] from local Windows systems using pwdumpx.exe with administrative rights. For lateral movement, the adversaries activated SSH services [T1021.004] on virtual infrastructure by running 'vim-cmd hostsvc/start_ssh' and abused TeamViewer [T1219.002] to establish covert interactive channels, while simultaneously staging collected data from applications like Safari and Keychain to local directories [T1074.001] such as '/var/folder'. The campaign culminated in exfiltration over web services [T1567] using PowerShell scripts to upload system configuration files and an OS exhaustion flood [T1499.001] via ACK floods against a database server to degrade its processing capacity. Acme Corp's internal investigation noted unrelated system reboots and high CPU usage on non-critical servers, which were not linked to the attack.",
+        "techniques_used": [
+            "T1078.002",
+            "T1129",
+            "T1003.002",
+            "T1087",
+            "T1021.004",
+            "T1074.001",
+            "T1219.002",
+            "T1567",
+            "T1499.001"
+        ]
+    }
+}

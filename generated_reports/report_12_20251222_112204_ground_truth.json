@@ -1,0 +1,113 @@
+{
+    "report_id": "report_12",
+    "generated_at": "20251222_112204",
+    "scenario_target_ids": [
+        "T1588.002",
+        "T1586.001",
+        "T1133",
+        "T1609",
+        "T1053.005",
+        "T1014",
+        "T1007",
+        "T1550.001",
+        "T1102",
+        "T1030",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1586.001",
+        "T1133",
+        "T1588.002",
+        "T1609",
+        "T1053.005",
+        "T1014",
+        "T1007",
+        "T1550.001",
+        "T1102",
+        "T1030",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1052",
+        "T1007",
+        "T1014",
+        "T1102",
+        "T1588.002",
+        "T1053.005",
+        "T1030",
+        "T1133",
+        "T1586.001",
+        "T1609",
+        "T1550.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the fictional APT group 'SilentTemp', active since early 2024, targeting organizations in the technology and finance sectors. Initial reconnaissance involved monitoring social media platforms for employee information, though no specific techniques were tagged here. The actors first conducted phishing campaigns by sending deceptive Microsoft Teams notifications to compromise corporate credentials, which they then leveraged to gain unauthorized access via VPN services while using modified versions of publicly-available tools like Empire and PsExec to establish initial footholds. Upon entry, they executed commands through the kubelet API to manipulate running containers and created scheduled tasks for persistence, simultaneously injecting malicious DLLs into svchost.exe to deploy rootkits that maintained stealth. For discovery, they enumerated running services to identify critical systems and exploited harvested OAuth tokens to access email accounts, facilitating lateral movement. Data exfiltration was conducted by leveraging web services like iplogger.org to send collected information back to command-and-control servers, while compressing and storing data incrementally at controlled endpoints to evade network traffic alerts and configuring scripts to backup stolen data to external storage media. Logs from affected systems showed unusual network traffic spikes, but these were not tagged as they represent normal noise. The campaign highlights the need for enhanced monitoring of cloud and container environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the fictional APT group 'SilentTemp', active since early 2024, targeting organizations in the technology and finance sectors. Initial reconnaissance involved monitoring social media platforms for employee information, though no specific techniques were tagged here. The actors first conducted phishing campaigns [T1586.001] by sending deceptive Microsoft Teams notifications to compromise corporate credentials, which they then leveraged to gain unauthorized access via VPN services [T1133] while using modified versions of publicly-available tools like Empire and PsExec [T1588.002] to establish initial footholds. Upon entry, they executed commands through the kubelet API [T1609] to manipulate running containers and created scheduled tasks [T1053.005] for persistence, simultaneously injecting malicious DLLs into svchost.exe [T1014] to deploy rootkits that maintained stealth. For discovery, they enumerated running services [T1007] to identify critical systems and exploited harvested OAuth tokens [T1550.001] to access email accounts, facilitating lateral movement. Data exfiltration was conducted by leveraging web services like iplogger.org [T1102] to send collected information back to command-and-control servers, while compressing and storing data incrementally at controlled endpoints [T1030] to evade network traffic alerts and configuring scripts to backup stolen data to external storage media [T1052]. Logs from affected systems showed unusual network traffic spikes, but these were not tagged as they represent normal noise. The campaign highlights the need for enhanced monitoring of cloud and container environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] by sending deceptive Microsoft Teams notifications to compromise corporate credentials, which they then leveraged to gain unauthorized access via VPN services while using modified versions of publicly-available tools like Empire and PsExec [T1588.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Upon entry, they executed commands through the kubelet API to manipulate running containers and created scheduled tasks [T1053.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "exe to deploy rootkits that maintained stealth.",
+            "technique_id": "T1014",
+            "technique_name": "Rootkit"
+        },
+        {
+            "sentence": "For discovery, they enumerated running services to identify critical systems and exploited harvested OAuth tokens [T1550.",
+            "technique_id": "T1007",
+            "technique_name": "System Service Discovery"
+        },
+        {
+            "sentence": "org to send collected information back to command-and-control servers, while compressing and storing data incrementally at controlled endpoints to evade network traffic alerts and configuring scripts to backup stolen data to external storage media.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "org to send collected information back to command-and-control servers, while compressing and storing data incrementally at controlled endpoints to evade network traffic alerts and configuring scripts to backup stolen data to external storage media.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        },
+        {
+            "sentence": "org to send collected information back to command-and-control servers, while compressing and storing data incrementally at controlled endpoints to evade network traffic alerts and configuring scripts to backup stolen data to external storage media.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentTemp' Targeting Containerized Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'SilentTemp', which combines social engineering, cloud exploitation, and stealthy persistence techniques to compromise corporate networks and exfiltrate sensitive data. The scenario is designed for blue team training to recognize and mitigate multi-stage attacks involving modified tools, container abuse, and data exfiltration evasion.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the fictional APT group 'SilentTemp', active since early 2024, targeting organizations in the technology and finance sectors. Initial reconnaissance involved monitoring social media platforms for employee information, though no specific techniques were tagged here. The actors first conducted phishing campaigns [T1586.001] by sending deceptive Microsoft Teams notifications to compromise corporate credentials, which they then leveraged to gain unauthorized access via VPN services [T1133] while using modified versions of publicly-available tools like Empire and PsExec [T1588.002] to establish initial footholds. Upon entry, they executed commands through the kubelet API [T1609] to manipulate running containers and created scheduled tasks [T1053.005] for persistence, simultaneously injecting malicious DLLs into svchost.exe [T1014] to deploy rootkits that maintained stealth. For discovery, they enumerated running services [T1007] to identify critical systems and exploited harvested OAuth tokens [T1550.001] to access email accounts, facilitating lateral movement. Data exfiltration was conducted by leveraging web services like iplogger.org [T1102] to send collected information back to command-and-control servers, while compressing and storing data incrementally at controlled endpoints [T1030] to evade network traffic alerts and configuring scripts to backup stolen data to external storage media [T1052]. Logs from affected systems showed unusual network traffic spikes, but these were not tagged as they represent normal noise. The campaign highlights the need for enhanced monitoring of cloud and container environments.",
+        "techniques_used": [
+            "T1586.001",
+            "T1133",
+            "T1588.002",
+            "T1609",
+            "T1053.005",
+            "T1014",
+            "T1007",
+            "T1550.001",
+            "T1102",
+            "T1030",
+            "T1052"
+        ]
+    }
+}

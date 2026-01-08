@@ -1,0 +1,86 @@
+{
+    "report_id": "report_309",
+    "generated_at": "20251222_145226",
+    "scenario_target_ids": [
+        "T1584.004",
+        "T1584.005",
+        "T1566",
+        "T1072",
+        "T1203",
+        "T1110.003",
+        "T1563.002",
+        "T1105",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.004",
+        "T1566",
+        "T1203",
+        "T1072",
+        "T1584.005",
+        "T1110.003",
+        "T1563.002",
+        "T1105",
+        "T1565"
+    ],
+    "actual_found_ids": [
+        "T1110.003",
+        "T1584.004",
+        "T1565",
+        "T1566",
+        "T1105",
+        "T1203",
+        "T1563.002"
+    ],
+    "clean_text": "APT-99 likely conducted reconnaissance on exposed internet-facing servers, identifying a vulnerable Postfix email server at a mid-sized healthcare provider, which they compromised to establish a foothold for spam distribution campaigns. The actors then sent phishing emails with malicious PDF attachments disguised as invoices to employees, exploiting human error to gain initial access. Upon execution, the PDF leveraged an embedded exploit for CVE-2017-11882 in an RTF document to execute malicious code on the victim's system. Once inside, APT-99 used AWS Systems Manager Run Command to deploy a backdoor across all managed instances, injecting C2 server credentials to maintain control and form a botnet for coordinated attacks [T1072, T1584.005]. The backdoor facilitated lateral movement by employing password spraying against Telnet sessions to harvest credentials and using RDP hijacking via tscon.exe with session ID parameters to seize administrative remote desktop sessions. Throughout the campaign, the actors transferred additional tools from C2 servers using FlawedAmmyy for file ingress and manipulated system registry entries with specialized software to alter behavior and ensure persistence. Incident responders noted anomalous log entries in the compromised email server, including increased outbound traffic to unknown IP addresses, but these were initially overlooked due to routine system maintenance alerts. The healthcare provider's internal network segmentation was weak, allowing the attackers to pivot from the initial compromise to critical patient data systems, where they exfiltrated sensitive information over a period of two weeks before detection.",
+    "tagged_text": "APT-99 likely conducted reconnaissance on exposed internet-facing servers, identifying a vulnerable Postfix email server at a mid-sized healthcare provider, which they compromised to establish a foothold for spam distribution campaigns [T1584.004]. The actors then sent phishing emails with malicious PDF attachments disguised as invoices to employees, exploiting human error to gain initial access [T1566]. Upon execution, the PDF leveraged an embedded exploit for CVE-2017-11882 in an RTF document to execute malicious code on the victim's system [T1203]. Once inside, APT-99 used AWS Systems Manager Run Command to deploy a backdoor across all managed instances, injecting C2 server credentials to maintain control and form a botnet for coordinated attacks [T1072, T1584.005]. The backdoor facilitated lateral movement by employing password spraying against Telnet sessions to harvest credentials [T1110.003] and using RDP hijacking via tscon.exe with session ID parameters to seize administrative remote desktop sessions [T1563.002]. Throughout the campaign, the actors transferred additional tools from C2 servers using FlawedAmmyy for file ingress [T1105] and manipulated system registry entries with specialized software to alter behavior and ensure persistence [T1565]. Incident responders noted anomalous log entries in the compromised email server, including increased outbound traffic to unknown IP addresses, but these were initially overlooked due to routine system maintenance alerts. The healthcare provider's internal network segmentation was weak, allowing the attackers to pivot from the initial compromise to critical patient data systems, where they exfiltrated sensitive information over a period of two weeks before detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then sent phishing emails with malicious PDF attachments disguised as invoices to employees, exploiting human error to gain initial access.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Upon execution, the PDF leveraged an embedded exploit for CVE-2017-11882 in an RTF document to execute malicious code on the victim's system.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "Throughout the campaign, the actors transferred additional tools from C2 servers using FlawedAmmyy for file ingress and manipulated system registry entries with specialized software to alter behavior and ensure persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "Throughout the campaign, the actors transferred additional tools from C2 servers using FlawedAmmyy for file ingress and manipulated system registry entries with specialized software to alter behavior and ensure persistence.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure via Compromised Email Servers and RDP Hijacking",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting organizations in the financial and healthcare sectors. APT-99 leveraged a compromised Postfix email server for spam distribution and used phishing emails with malicious attachments to gain initial access, followed by exploitation of software deployment tools and RDP hijacking for lateral movement and data manipulation. The campaign highlights the need for robust email security, multi-factor authentication, and monitoring of remote access protocols.",
+        "full_report_text": "APT-99 likely conducted reconnaissance on exposed internet-facing servers, identifying a vulnerable Postfix email server at a mid-sized healthcare provider, which they compromised to establish a foothold for spam distribution campaigns [T1584.004]. The actors then sent phishing emails with malicious PDF attachments disguised as invoices to employees, exploiting human error to gain initial access [T1566]. Upon execution, the PDF leveraged an embedded exploit for CVE-2017-11882 in an RTF document to execute malicious code on the victim's system [T1203]. Once inside, APT-99 used AWS Systems Manager Run Command to deploy a backdoor across all managed instances, injecting C2 server credentials to maintain control and form a botnet for coordinated attacks [T1072, T1584.005]. The backdoor facilitated lateral movement by employing password spraying against Telnet sessions to harvest credentials [T1110.003] and using RDP hijacking via tscon.exe with session ID parameters to seize administrative remote desktop sessions [T1563.002]. Throughout the campaign, the actors transferred additional tools from C2 servers using FlawedAmmyy for file ingress [T1105] and manipulated system registry entries with specialized software to alter behavior and ensure persistence [T1565]. Incident responders noted anomalous log entries in the compromised email server, including increased outbound traffic to unknown IP addresses, but these were initially overlooked due to routine system maintenance alerts. The healthcare provider's internal network segmentation was weak, allowing the attackers to pivot from the initial compromise to critical patient data systems, where they exfiltrated sensitive information over a period of two weeks before detection.",
+        "techniques_used": [
+            "T1584.004",
+            "T1566",
+            "T1203",
+            "T1072",
+            "T1584.005",
+            "T1110.003",
+            "T1563.002",
+            "T1105",
+            "T1565"
+        ]
+    }
+}

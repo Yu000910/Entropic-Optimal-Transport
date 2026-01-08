@@ -1,0 +1,76 @@
+{
+    "report_id": "report_612",
+    "generated_at": "20251222_170249",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1053.006",
+        "T1204.004",
+        "T1218.010",
+        "T1542.002",
+        "T1090.002",
+        "T1048.002",
+        "T1490"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1195.002",
+        "T1204.004",
+        "T1053.006",
+        "T1218.010",
+        "T1542.002",
+        "T1090.002",
+        "T1048.002",
+        "T1490"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1053.006",
+        "T1490",
+        "T1589",
+        "T1542.002",
+        "T1204.004",
+        "T1090.002",
+        "T1218.010",
+        "T1048.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional APT campaign observed in simulated environments. The actors, designated as 'ShadowChain', likely conduct reconnaissance to identify vulnerable software repositories. In this scenario, the adversary compromised the software supply chain by injecting malicious code into a widely used application's source repository during the build process, which was then distributed to unsuspecting users. Upon installation, the malware exploited user interaction by presenting a fake 'System Scan Complete - Remove Threats' notification on a compromised website, where clicking 'Clean Now' triggered execution via malicious copy and paste. To establish persistence, the malware created a systemd timer to execute ransomware payloads every 24 hours, while simultaneously using regsvr32 to bypass application whitelisting by loading a COM scriptlet from a compromised server. For stealth, the actors altered component firmware to load a malicious module during system startup, and they employed an external proxy to obfuscate command and control (C2) communications. Data exfiltration was conducted over an asymmetric encrypted non-C2 protocol using OpenSSL to encrypt harvested browser cookies before transmission. Finally, to inhibit system recovery, the malware used tools like vssadmin to delete volume shadow copies and bcdedit to disable recovery features, ensuring persistence of the ransomware. System logs from affected endpoints showed unusual network traffic patterns, but no actual breaches occurred in this training scenario. The fictional company, 'InfraSecure Inc.', reported no operational impact during drills.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional APT campaign observed in simulated environments. The actors, designated as 'ShadowChain', likely conduct reconnaissance [T1589] to identify vulnerable software repositories. In this scenario, the adversary compromised the software supply chain [T1195.002] by injecting malicious code into a widely used application's source repository during the build process, which was then distributed to unsuspecting users. Upon installation, the malware exploited user interaction by presenting a fake 'System Scan Complete - Remove Threats' notification on a compromised website, where clicking 'Clean Now' triggered execution via malicious copy and paste [T1204.004]. To establish persistence, the malware created a systemd timer [T1053.006] to execute ransomware payloads every 24 hours, while simultaneously using regsvr32 [T1218.010] to bypass application whitelisting by loading a COM scriptlet from a compromised server. For stealth, the actors altered component firmware [T1542.002] to load a malicious module during system startup, and they employed an external proxy [T1090.002] to obfuscate command and control (C2) communications. Data exfiltration was conducted over an asymmetric encrypted non-C2 protocol [T1048.002] using OpenSSL to encrypt harvested browser cookies before transmission. Finally, to inhibit system recovery [T1490], the malware used tools like vssadmin to delete volume shadow copies and bcdedit to disable recovery features, ensuring persistence of the ransomware. System logs from affected endpoints showed unusual network traffic patterns, but no actual breaches occurred in this training scenario. The fictional company, 'InfraSecure Inc.', reported no operational impact during drills.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors, designated as 'ShadowChain', likely conduct reconnaissance to identify vulnerable software repositories.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Finally, to inhibit system recovery, the malware used tools like vssadmin to delete volume shadow copies and bcdedit to disable recovery features, ensuring persistence of the ransomware.",
+            "technique_id": "T1490",
+            "technique_name": "Inhibit System Recovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowChain' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowChain', targeting critical infrastructure sectors. The campaign involves a multi-stage attack leveraging software supply chain compromise, persistence mechanisms, and data exfiltration techniques to deploy ransomware and inhibit system recovery. Blue teams should review this report for training on detecting and mitigating such tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional APT campaign observed in simulated environments. The actors, designated as 'ShadowChain', likely conduct reconnaissance [T1589] to identify vulnerable software repositories. In this scenario, the adversary compromised the software supply chain [T1195.002] by injecting malicious code into a widely used application's source repository during the build process, which was then distributed to unsuspecting users. Upon installation, the malware exploited user interaction by presenting a fake 'System Scan Complete - Remove Threats' notification on a compromised website, where clicking 'Clean Now' triggered execution via malicious copy and paste [T1204.004]. To establish persistence, the malware created a systemd timer [T1053.006] to execute ransomware payloads every 24 hours, while simultaneously using regsvr32 [T1218.010] to bypass application whitelisting by loading a COM scriptlet from a compromised server. For stealth, the actors altered component firmware [T1542.002] to load a malicious module during system startup, and they employed an external proxy [T1090.002] to obfuscate command and control (C2) communications. Data exfiltration was conducted over an asymmetric encrypted non-C2 protocol [T1048.002] using OpenSSL to encrypt harvested browser cookies before transmission. Finally, to inhibit system recovery [T1490], the malware used tools like vssadmin to delete volume shadow copies and bcdedit to disable recovery features, ensuring persistence of the ransomware. System logs from affected endpoints showed unusual network traffic patterns, but no actual breaches occurred in this training scenario. The fictional company, 'InfraSecure Inc.', reported no operational impact during drills.",
+        "techniques_used": [
+            "T1589",
+            "T1195.002",
+            "T1204.004",
+            "T1053.006",
+            "T1218.010",
+            "T1542.002",
+            "T1090.002",
+            "T1048.002",
+            "T1490"
+        ]
+    }
+}

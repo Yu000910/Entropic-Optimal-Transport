@@ -1,0 +1,113 @@
+{
+    "report_id": "report_41",
+    "generated_at": "20251222_113332",
+    "scenario_target_ids": [
+        "T1588.006",
+        "T1584.005",
+        "T1195",
+        "T1072",
+        "T1556.007",
+        "T1543.002",
+        "T1036.001",
+        "T1218.011",
+        "T1036.002",
+        "T1003.007",
+        "T1021.004",
+        "T1210",
+        "T1571",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1588.006",
+        "T1584.005",
+        "T1195",
+        "T1072",
+        "T1556.007",
+        "T1543.002",
+        "T1036.001",
+        "T1218.011",
+        "T1036.002",
+        "T1003.007",
+        "T1021.004",
+        "T1210",
+        "T1571",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1195",
+        "T1021.004",
+        "T1584.005",
+        "T1210",
+        "T1036.001",
+        "T1036.002",
+        "T1543.002",
+        "T1588.006",
+        "T1571",
+        "T1496.004",
+        "T1556.007",
+        "T1072",
+        "T1003.007",
+        "T1218.011"
+    ],
+    "clean_text": "ShadowWeaver actors likely began by querying commercial vulnerability databases to identify exploitable weaknesses in target software, while simultaneously leveraging a compromised botnet for initial payload delivery without writing to disk. They then executed a supply chain attack by modifying a compiler executable to inject backdoor code into all compiled applications, which was subsequently deployed across corporate devices using Software Center Configuration Manager (SCCM) to establish persistence. For identity persistence, the actors edited the 'Microsoft.IdentityServer.Servicehost.exe.config' file to load a malicious DLL into the AD FS process, enabling access to federated services, and on Linux systems, they altered the ExecStart parameter in the network.service file to launch a backdoor on boot. During execution, they employed evasion techniques such as copying signed 'explorer.exe' to the temp folder and executing it from there, using rundll32 to run malicious code, and renaming 'regedit.exe' to 'gpedit.exe' using a Right-to-Left Override character to disguise the file. For credential access, the malware examined /proc/3456/maps to identify memory regions containing password hashes. Lateral movement was facilitated through SSH to access ESXi host servers and exploitation of remote services via crafted RPC requests targeting known vulnerabilities. Command and control was established using non-standard high-number ports for listeners, and the campaign concluded with cloud service hijacking, where actors abused AWS SNS to broadcast millions of notifications, disrupting legitimate message delivery. Throughout the incident, standard system logs showed routine administrative activity, and the targeted organization, a mid-sized financial firm with hybrid Azure and AWS deployments, reported no initial anomalies beyond increased network latency.",
+    "tagged_text": "ShadowWeaver actors likely began by querying commercial vulnerability databases to identify exploitable weaknesses in target software [T1588.006], while simultaneously leveraging a compromised botnet for initial payload delivery without writing to disk [T1584.005]. They then executed a supply chain attack by modifying a compiler executable to inject backdoor code into all compiled applications [T1195], which was subsequently deployed across corporate devices using Software Center Configuration Manager (SCCM) to establish persistence [T1072]. For identity persistence, the actors edited the 'Microsoft.IdentityServer.Servicehost.exe.config' file to load a malicious DLL into the AD FS process, enabling access to federated services [T1556.007], and on Linux systems, they altered the ExecStart parameter in the network.service file to launch a backdoor on boot [T1543.002]. During execution, they employed evasion techniques such as copying signed 'explorer.exe' to the temp folder and executing it from there [T1036.001], using rundll32 to run malicious code [T1218.011], and renaming 'regedit.exe' to 'gpedit.exe' using a Right-to-Left Override character to disguise the file [T1036.002]. For credential access, the malware examined /proc/3456/maps to identify memory regions containing password hashes [T1003.007]. Lateral movement was facilitated through SSH to access ESXi host servers [T1021.004] and exploitation of remote services via crafted RPC requests targeting known vulnerabilities [T1210]. Command and control was established using non-standard high-number ports for listeners [T1571], and the campaign concluded with cloud service hijacking, where actors abused AWS SNS to broadcast millions of notifications, disrupting legitimate message delivery [T1496.004]. Throughout the incident, standard system logs showed routine administrative activity, and the targeted organization, a mid-sized financial firm with hybrid Azure and AWS deployments, reported no initial anomalies beyond increased network latency.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then executed a supply chain attack by modifying a compiler executable to inject backdoor code into all compiled applications, which was subsequently deployed across corporate devices using Software Center Configuration Manager (SCCM) to establish persistence.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "They then executed a supply chain attack by modifying a compiler executable to inject backdoor code into all compiled applications, which was subsequently deployed across corporate devices using Software Center Configuration Manager (SCCM) to establish persistence.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "004] and exploitation of remote services via crafted RPC requests targeting known vulnerabilities.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "Command and control was established using non-standard high-number ports for listeners, and the campaign concluded with cloud service hijacking, where actors abused AWS SNS to broadcast millions of notifications, disrupting legitimate message delivery [T1496.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowWeaver', which targets organizations with hybrid cloud and on-premises environments. The campaign involves sophisticated supply chain compromises, exploitation of software deployment tools, and identity manipulation to achieve persistent access and data exfiltration. Blue teams should review this report for training on detecting and mitigating multi-stage attacks.",
+        "full_report_text": "ShadowWeaver actors likely began by querying commercial vulnerability databases to identify exploitable weaknesses in target software [T1588.006], while simultaneously leveraging a compromised botnet for initial payload delivery without writing to disk [T1584.005]. They then executed a supply chain attack by modifying a compiler executable to inject backdoor code into all compiled applications [T1195], which was subsequently deployed across corporate devices using Software Center Configuration Manager (SCCM) to establish persistence [T1072]. For identity persistence, the actors edited the 'Microsoft.IdentityServer.Servicehost.exe.config' file to load a malicious DLL into the AD FS process, enabling access to federated services [T1556.007], and on Linux systems, they altered the ExecStart parameter in the network.service file to launch a backdoor on boot [T1543.002]. During execution, they employed evasion techniques such as copying signed 'explorer.exe' to the temp folder and executing it from there [T1036.001], using rundll32 to run malicious code [T1218.011], and renaming 'regedit.exe' to 'gpedit.exe' using a Right-to-Left Override character to disguise the file [T1036.002]. For credential access, the malware examined /proc/3456/maps to identify memory regions containing password hashes [T1003.007]. Lateral movement was facilitated through SSH to access ESXi host servers [T1021.004] and exploitation of remote services via crafted RPC requests targeting known vulnerabilities [T1210]. Command and control was established using non-standard high-number ports for listeners [T1571], and the campaign concluded with cloud service hijacking, where actors abused AWS SNS to broadcast millions of notifications, disrupting legitimate message delivery [T1496.004]. Throughout the incident, standard system logs showed routine administrative activity, and the targeted organization, a mid-sized financial firm with hybrid Azure and AWS deployments, reported no initial anomalies beyond increased network latency.",
+        "techniques_used": [
+            "T1588.006",
+            "T1584.005",
+            "T1195",
+            "T1072",
+            "T1556.007",
+            "T1543.002",
+            "T1036.001",
+            "T1218.011",
+            "T1036.002",
+            "T1003.007",
+            "T1021.004",
+            "T1210",
+            "T1571",
+            "T1496.004"
+        ]
+    }
+}

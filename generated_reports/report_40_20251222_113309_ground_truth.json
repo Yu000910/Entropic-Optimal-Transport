@@ -1,0 +1,109 @@
+{
+    "report_id": "report_40",
+    "generated_at": "20251222_113309",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1053",
+        "T1055.013",
+        "T1543.004",
+        "T1497",
+        "T1542.001",
+        "T1534",
+        "T1550.004",
+        "T1001.002",
+        "T1052",
+        "T1490"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1053",
+        "T1055.013",
+        "T1543.004",
+        "T1497",
+        "T1542.001",
+        "T1534",
+        "T1550.004",
+        "T1001.002",
+        "T1052",
+        "T1490"
+    ],
+    "actual_found_ids": [
+        "T1053",
+        "T1534",
+        "T1550.004",
+        "T1497",
+        "T1542.001",
+        "T1566.001",
+        "T1001.002",
+        "T1490",
+        "T1589",
+        "T1543.004",
+        "T1052",
+        "T1055.013"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide details on the fictional APT group 'ShadowVeil,' based on a simulated attack scenario for educational purposes. The actors likely conduct reconnaissance to identify high-value targets, such as energy and financial organizations, though specific reconnaissance logs were not captured in this exercise. Initial access was achieved through spearphishing emails containing malicious attachments disguised as PDF documents, which, when opened, executed a payload that created scheduled tasks for persistence and leveraged Process Doppelgänging to hide malicious code in system processes by modifying memory allocation. On macOS systems, if the malware gained root permissions, it established persistence by creating a launch daemon in the /Library/LaunchDaemons folder. To evade detection, the code executed virtualization/sandbox evasion techniques, such as querying security logs with commands like 'wevtutil ql Security \"*[System[(EventID=4624)]]\"' to analyze logon events, and installed a custom UEFI module to run malicious firmware before OS boot. For lateral movement, the actors used internal spearphishing after stealing credentials and collected web session cookies to bypass multi-factor authentication on internal applications. Data exfiltration involved embedding command and control communications within digital images using steganography and transferring sensitive documents via physical USB devices. Finally, to inhibit recovery, the malware deleted volume shadow copies on compromised hosts. System logs from the fictional victim network showed normal traffic patterns interspersed with anomalous outbound connections to IP addresses in Eastern Europe, but these were not directly linked to the techniques above. The organization's background includes a recent merger, which may have introduced security gaps, though this is speculative and not part of the attack chain.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide details on the fictional APT group 'ShadowVeil,' based on a simulated attack scenario for educational purposes. The actors likely conduct reconnaissance [T1589] to identify high-value targets, such as energy and financial organizations, though specific reconnaissance logs were not captured in this exercise. Initial access was achieved through spearphishing emails [T1566.001] containing malicious attachments disguised as PDF documents, which, when opened, executed a payload that created scheduled tasks [T1053] for persistence and leveraged Process Doppelgänging [T1055.013] to hide malicious code in system processes by modifying memory allocation. On macOS systems, if the malware gained root permissions, it established persistence by creating a launch daemon [T1543.004] in the /Library/LaunchDaemons folder. To evade detection, the code executed virtualization/sandbox evasion techniques [T1497], such as querying security logs with commands like 'wevtutil ql Security \"*[System[(EventID=4624)]]\"' to analyze logon events, and installed a custom UEFI module [T1542.001] to run malicious firmware before OS boot. For lateral movement, the actors used internal spearphishing [T1534] after stealing credentials and collected web session cookies [T1550.004] to bypass multi-factor authentication on internal applications. Data exfiltration involved embedding command and control communications within digital images using steganography [T1001.002] and transferring sensitive documents via physical USB devices [T1052]. Finally, to inhibit recovery, the malware deleted volume shadow copies [T1490] on compromised hosts. System logs from the fictional victim network showed normal traffic patterns interspersed with anomalous outbound connections to IP addresses in Eastern Europe, but these were not directly linked to the techniques above. The organization's background includes a recent merger, which may have introduced security gaps, though this is speculative and not part of the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify high-value targets, such as energy and financial organizations, though specific reconnaissance logs were not captured in this exercise.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] containing malicious attachments disguised as PDF documents, which, when opened, executed a payload that created scheduled tasks for persistence and leveraged Process Doppelgänging [T1055.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "To evade detection, the code executed virtualization/sandbox evasion techniques, such as querying security logs with commands like 'wevtutil ql Security \"*[System[(EventID=4624)]]\"' to analyze logon events, and installed a custom UEFI module [T1542.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "For lateral movement, the actors used internal spearphishing after stealing credentials and collected web session cookies [T1550.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "002] and transferring sensitive documents via physical USB devices.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        },
+        {
+            "sentence": "Finally, to inhibit recovery, the malware deleted volume shadow copies on compromised hosts.",
+            "technique_id": "T1490",
+            "technique_name": "Inhibit System Recovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil,' targeting critical infrastructure sectors. The campaign employs sophisticated techniques for initial access, persistence, evasion, lateral movement, and data exfiltration, as observed in a fictional incident response engagement. Blue teams should use this report for training to identify and mitigate similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide details on the fictional APT group 'ShadowVeil,' based on a simulated attack scenario for educational purposes. The actors likely conduct reconnaissance [T1589] to identify high-value targets, such as energy and financial organizations, though specific reconnaissance logs were not captured in this exercise. Initial access was achieved through spearphishing emails [T1566.001] containing malicious attachments disguised as PDF documents, which, when opened, executed a payload that created scheduled tasks [T1053] for persistence and leveraged Process Doppelgänging [T1055.013] to hide malicious code in system processes by modifying memory allocation. On macOS systems, if the malware gained root permissions, it established persistence by creating a launch daemon [T1543.004] in the /Library/LaunchDaemons folder. To evade detection, the code executed virtualization/sandbox evasion techniques [T1497], such as querying security logs with commands like 'wevtutil ql Security \"*[System[(EventID=4624)]]\"' to analyze logon events, and installed a custom UEFI module [T1542.001] to run malicious firmware before OS boot. For lateral movement, the actors used internal spearphishing [T1534] after stealing credentials and collected web session cookies [T1550.004] to bypass multi-factor authentication on internal applications. Data exfiltration involved embedding command and control communications within digital images using steganography [T1001.002] and transferring sensitive documents via physical USB devices [T1052]. Finally, to inhibit recovery, the malware deleted volume shadow copies [T1490] on compromised hosts. System logs from the fictional victim network showed normal traffic patterns interspersed with anomalous outbound connections to IP addresses in Eastern Europe, but these were not directly linked to the techniques above. The organization's background includes a recent merger, which may have introduced security gaps, though this is speculative and not part of the attack chain.",
+        "techniques_used": [
+            "T1566.001",
+            "T1053",
+            "T1055.013",
+            "T1543.004",
+            "T1497",
+            "T1542.001",
+            "T1534",
+            "T1550.004",
+            "T1001.002",
+            "T1052",
+            "T1490"
+        ]
+    }
+}

@@ -1,0 +1,128 @@
+{
+    "report_id": "report_450",
+    "generated_at": "20251222_155259",
+    "scenario_target_ids": [
+        "T1595.002",
+        "T1592.001",
+        "T1583",
+        "T1195.001",
+        "T1199",
+        "T1059.009",
+        "T1569",
+        "T1176.002",
+        "T1552.008",
+        "T1552.004",
+        "T1040",
+        "T1550",
+        "T1573",
+        "T1102.003",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.002",
+        "T1592.001",
+        "T1583",
+        "T1195.001",
+        "T1199",
+        "T1059.009",
+        "T1569",
+        "T1176.002",
+        "T1552.008",
+        "T1552.004",
+        "T1040",
+        "T1550",
+        "T1573",
+        "T1102.003",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1583",
+        "T1199",
+        "T1552.008",
+        "T1195.001",
+        "T1176.002",
+        "T1550",
+        "T1552.004",
+        "T1592.001",
+        "T1102.003",
+        "T1059.009",
+        "T1040",
+        "T1569",
+        "T1595.002",
+        "T1565.002",
+        "T1573"
+    ],
+    "clean_text": "APT-99, a fictional threat actor with suspected ties to cybercriminal syndicates, has been observed conducting targeted attacks against organizations since early 2024. Initial analysis of network logs from a compromised financial firm, FinSecure Inc., revealed anomalous outbound traffic to IP addresses in Eastern Europe, though this was later determined to be misconfigured backup servers. The actors likely conduct reconnaissance by scanning for vulnerabilities in SSH implementations across external networks and gathering hardware details from Windows event logs using tools like wevtutil.exe to identify potential entry points. Concurrently, they acquire operational infrastructure by laundering stolen cryptocurrency to fund servers and domains, which was corroborated by blockchain analysis showing transactions to shell companies in offshore jurisdictions. In one instance, the actors compromised software dependencies by injecting a backdoor via a malicious PowerShell script (evil.ps1) into a widely used open-source library, establishing persistent access and exfiltrating sensitive documents. They further abused partner-level access to deploy administrative tools across the organization's Azure cloud infrastructure, exploiting trusted relationships to bypass initial security checks. Once inside, APT-99 employed cloud APIs through a malicious Azure Runbook that executed PowerShell commands to disable security controls using 'Set-MpPreference' while leveraging system services like svchost.exe to load and execute a remote access trojan DLL for lateral movement. To maintain persistence in development environments, the actors executed code.exe embedded within a compromised Visual Studio extension (VSIX) and extracted Slack Workflows from multiple channels to harvest embedded access keys from chat messages. Additionally, they gathered private keys from Azure AD services such as ADSync and Active Directory Federated Services servers using tools like AADInternals and collected unencrypted administrative credentials by sniffing network device CLI sessions. The attackers then used alternate authentication material, leveraging Pass-the-Hash techniques to authenticate to remote systems without plaintext passwords. Data exfiltration was conducted over encrypted channels using RSA public-key cryptography to maintain stealth with command-and-control servers, with commands fetched from a Twitter account (https://twitter.com/c2_instructions) for one-way communication to avoid detection. During this phase, the actors manipulated transmitted data by capturing unencrypted database queries containing customer personally identifiable information, as seen in logs from a compromised CRM system at TechGlobal Corp. Incident responders noted that the campaign's initial access vector remains unclear, but phishing emails with malicious attachments were detected in spam filters, though no direct correlation was established.",
+    "tagged_text": "APT-99, a fictional threat actor with suspected ties to cybercriminal syndicates, has been observed conducting targeted attacks against organizations since early 2024. Initial analysis of network logs from a compromised financial firm, FinSecure Inc., revealed anomalous outbound traffic to IP addresses in Eastern Europe, though this was later determined to be misconfigured backup servers. The actors likely conduct reconnaissance by scanning for vulnerabilities in SSH implementations across external networks [T1595.002] and gathering hardware details from Windows event logs using tools like wevtutil.exe [T1592.001] to identify potential entry points. Concurrently, they acquire operational infrastructure by laundering stolen cryptocurrency to fund servers and domains [T1583], which was corroborated by blockchain analysis showing transactions to shell companies in offshore jurisdictions. In one instance, the actors compromised software dependencies by injecting a backdoor via a malicious PowerShell script (evil.ps1) into a widely used open-source library, establishing persistent access and exfiltrating sensitive documents [T1195.001]. They further abused partner-level access to deploy administrative tools across the organization's Azure cloud infrastructure, exploiting trusted relationships to bypass initial security checks [T1199]. Once inside, APT-99 employed cloud APIs through a malicious Azure Runbook that executed PowerShell commands to disable security controls using 'Set-MpPreference' [T1059.009] while leveraging system services like svchost.exe to load and execute a remote access trojan DLL for lateral movement [T1569]. To maintain persistence in development environments, the actors executed code.exe embedded within a compromised Visual Studio extension (VSIX) [T1176.002] and extracted Slack Workflows from multiple channels to harvest embedded access keys from chat messages [T1552.008]. Additionally, they gathered private keys from Azure AD services such as ADSync and Active Directory Federated Services servers using tools like AADInternals [T1552.004] and collected unencrypted administrative credentials by sniffing network device CLI sessions [T1040]. The attackers then used alternate authentication material, leveraging Pass-the-Hash techniques to authenticate to remote systems without plaintext passwords [T1550]. Data exfiltration was conducted over encrypted channels using RSA public-key cryptography to maintain stealth with command-and-control servers [T1573], with commands fetched from a Twitter account (https://twitter.com/c2_instructions) for one-way communication to avoid detection [T1102.003]. During this phase, the actors manipulated transmitted data by capturing unencrypted database queries containing customer personally identifiable information [T1565.002], as seen in logs from a compromised CRM system at TechGlobal Corp. Incident responders noted that the campaign's initial access vector remains unclear, but phishing emails with malicious attachments were detected in spam filters, though no direct correlation was established.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, they acquire operational infrastructure by laundering stolen cryptocurrency to fund servers and domains, which was corroborated by blockchain analysis showing transactions to shell companies in offshore jurisdictions.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "They further abused partner-level access to deploy administrative tools across the organization's Azure cloud infrastructure, exploiting trusted relationships to bypass initial security checks.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "exe to load and execute a remote access trojan DLL for lateral movement.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "004] and collected unencrypted administrative credentials by sniffing network device CLI sessions.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "The attackers then used alternate authentication material, leveraging Pass-the-Hash techniques to authenticate to remote systems without plaintext passwords.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "Data exfiltration was conducted over encrypted channels using RSA public-key cryptography to maintain stealth with command-and-control servers, with commands fetched from a Twitter account (https://twitter.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Development Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting organizations in the technology and finance sectors. Based on fictional incident response data, APT-99 employs a multi-faceted approach combining reconnaissance, infrastructure acquisition, and exploitation of trusted relationships to compromise cloud services and development tools, leading to data exfiltration and persistent access. The campaign leverages both on-premises and cloud-based techniques, including vulnerability scanning, credential theft, and encrypted command-and-control channels. This report is intended for blue team training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "APT-99, a fictional threat actor with suspected ties to cybercriminal syndicates, has been observed conducting targeted attacks against organizations since early 2024. Initial analysis of network logs from a compromised financial firm, FinSecure Inc., revealed anomalous outbound traffic to IP addresses in Eastern Europe, though this was later determined to be misconfigured backup servers. The actors likely conduct reconnaissance by scanning for vulnerabilities in SSH implementations across external networks [T1595.002] and gathering hardware details from Windows event logs using tools like wevtutil.exe [T1592.001] to identify potential entry points. Concurrently, they acquire operational infrastructure by laundering stolen cryptocurrency to fund servers and domains [T1583], which was corroborated by blockchain analysis showing transactions to shell companies in offshore jurisdictions. In one instance, the actors compromised software dependencies by injecting a backdoor via a malicious PowerShell script (evil.ps1) into a widely used open-source library, establishing persistent access and exfiltrating sensitive documents [T1195.001]. They further abused partner-level access to deploy administrative tools across the organization's Azure cloud infrastructure, exploiting trusted relationships to bypass initial security checks [T1199]. Once inside, APT-99 employed cloud APIs through a malicious Azure Runbook that executed PowerShell commands to disable security controls using 'Set-MpPreference' [T1059.009] while leveraging system services like svchost.exe to load and execute a remote access trojan DLL for lateral movement [T1569]. To maintain persistence in development environments, the actors executed code.exe embedded within a compromised Visual Studio extension (VSIX) [T1176.002] and extracted Slack Workflows from multiple channels to harvest embedded access keys from chat messages [T1552.008]. Additionally, they gathered private keys from Azure AD services such as ADSync and Active Directory Federated Services servers using tools like AADInternals [T1552.004] and collected unencrypted administrative credentials by sniffing network device CLI sessions [T1040]. The attackers then used alternate authentication material, leveraging Pass-the-Hash techniques to authenticate to remote systems without plaintext passwords [T1550]. Data exfiltration was conducted over encrypted channels using RSA public-key cryptography to maintain stealth with command-and-control servers [T1573], with commands fetched from a Twitter account (https://twitter.com/c2_instructions) for one-way communication to avoid detection [T1102.003]. During this phase, the actors manipulated transmitted data by capturing unencrypted database queries containing customer personally identifiable information [T1565.002], as seen in logs from a compromised CRM system at TechGlobal Corp. Incident responders noted that the campaign's initial access vector remains unclear, but phishing emails with malicious attachments were detected in spam filters, though no direct correlation was established.",
+        "techniques_used": [
+            "T1595.002",
+            "T1592.001",
+            "T1583",
+            "T1195.001",
+            "T1199",
+            "T1059.009",
+            "T1569",
+            "T1176.002",
+            "T1552.008",
+            "T1552.004",
+            "T1040",
+            "T1550",
+            "T1573",
+            "T1102.003",
+            "T1565.002"
+        ]
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "report_id": "report_604",
+    "generated_at": "20251222_165956",
+    "scenario_target_ids": [
+        "T1190",
+        "T1204",
+        "T1037.003",
+        "T1574.005",
+        "T1120",
+        "T1219.003",
+        "T1048.003",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1204",
+        "T1059.001",
+        "T1037.003",
+        "T1112",
+        "T1574.005",
+        "T1059.003",
+        "T1120",
+        "T1219.003",
+        "T1053.005",
+        "T1048.003",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1567",
+        "T1037.003",
+        "T1059.003",
+        "T1120",
+        "T1574.005",
+        "T1112",
+        "T1219.003",
+        "T1048.003",
+        "T1190",
+        "T1204",
+        "T1053.005",
+        "T1059.001"
+    ],
+    "clean_text": "On October 15, 2023, SecureBank Corp, a mid-sized financial institution with headquarters in New York and operations across North America, reported anomalous network traffic originating from its external web server. Initial logs from the SIEM system showed a spike in HTTP requests to the FortiOS management interface, which was later attributed to exploitation of CVE-2022-49475. This allowed the adversary to gain initial access to the internal network. Following this, the threat actors used a social engineering tactic by embedding a fake CAPTCHA on an internal phishing page, which instructed an employee to open the Windows Run dialog and execute a Base64-encoded PowerShell command, leading to user execution. Once inside, the actors employed PowerShell to write a malicious script, logon_script.ps1, to the NETLOGON share, establishing persistence across the domain through a network logon script while simultaneously modifying registry keys to maintain access. To escalate privileges, they altered permissions on a subdirectory in %TEMP%, exploiting executable installer file permissions weakness and used command-line tools to enumerate system information. The malware then conducted peripheral device discovery by scanning for attached smart card readers, as part of reconnaissance efforts to identify sensitive hardware. For persistent remote access, the attacker installed TinyPilot on the compromised server, utilizing remote access hardware and employed scheduled tasks to ensure continuous operation. Data exfiltration occurred in two phases: first, the actors used FTP to transfer stolen files over an unencrypted non-C2 protocol, and later, they leveraged web services by uploading data to Mega.co.nz, implementing exfiltration over a web service. Throughout the campaign, network traffic logs from the firewall indicated intermittent connections to external IP addresses, though some were benign updates from software vendors. The incident was contained after 72 hours, with no customer data confirmed as compromised in this fictional scenario.",
+    "tagged_text": "On October 15, 2023, SecureBank Corp, a mid-sized financial institution with headquarters in New York and operations across North America, reported anomalous network traffic originating from its external web server. Initial logs from the SIEM system showed a spike in HTTP requests to the FortiOS management interface, which was later attributed to exploitation of CVE-2022-49475 [T1190]. This allowed the adversary to gain initial access to the internal network. Following this, the threat actors used a social engineering tactic by embedding a fake CAPTCHA on an internal phishing page, which instructed an employee to open the Windows Run dialog and execute a Base64-encoded PowerShell command, leading to user execution [T1204]. Once inside, the actors employed PowerShell [T1059.001] to write a malicious script, logon_script.ps1, to the NETLOGON share, establishing persistence across the domain through a network logon script [T1037.003] while simultaneously modifying registry keys [T1112] to maintain access. To escalate privileges, they altered permissions on a subdirectory in %TEMP%, exploiting executable installer file permissions weakness [T1574.005] and used command-line tools [T1059.003] to enumerate system information. The malware then conducted peripheral device discovery [T1120] by scanning for attached smart card readers, as part of reconnaissance efforts to identify sensitive hardware. For persistent remote access, the attacker installed TinyPilot on the compromised server, utilizing remote access hardware [T1219.003] and employed scheduled tasks [T1053.005] to ensure continuous operation. Data exfiltration occurred in two phases: first, the actors used FTP to transfer stolen files over an unencrypted non-C2 protocol [T1048.003], and later, they leveraged web services by uploading data to Mega.co.nz, implementing exfiltration over a web service [T1567]. Throughout the campaign, network traffic logs from the firewall indicated intermittent connections to external IP addresses, though some were benign updates from software vendors. The incident was contained after 72 hours, with no customer data confirmed as compromised in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial logs from the SIEM system showed a spike in HTTP requests to the FortiOS management interface, which was later attributed to exploitation of CVE-2022-49475.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Following this, the threat actors used a social engineering tactic by embedding a fake CAPTCHA on an internal phishing page, which instructed an employee to open the Windows Run dialog and execute a Base64-encoded PowerShell command, leading to user execution.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "003] while simultaneously modifying registry keys to maintain access.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "The malware then conducted peripheral device discovery by scanning for attached smart card readers, as part of reconnaissance efforts to identify sensitive hardware.",
+            "technique_id": "T1120",
+            "technique_name": "Peripheral Device Discovery"
+        },
+        {
+            "sentence": "nz, implementing exfiltration over a web service.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Network Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CRIMSON SHADOW', targeting organizations in the financial sector. Based on analysis of fictitious incident response data from a compromised entity, 'SecureBank Corp', the campaign exploits public-facing applications, leverages user interaction for execution, establishes persistence through network logon scripts, escalates privileges via file permission weaknesses, conducts device discovery, deploys remote access hardware, and exfiltrates data over unencrypted and web-based protocols. This report is intended for blue team training to enhance detection and mitigation strategies against multi-stage attacks.",
+        "full_report_text": "On October 15, 2023, SecureBank Corp, a mid-sized financial institution with headquarters in New York and operations across North America, reported anomalous network traffic originating from its external web server. Initial logs from the SIEM system showed a spike in HTTP requests to the FortiOS management interface, which was later attributed to exploitation of CVE-2022-49475 [T1190]. This allowed the adversary to gain initial access to the internal network. Following this, the threat actors used a social engineering tactic by embedding a fake CAPTCHA on an internal phishing page, which instructed an employee to open the Windows Run dialog and execute a Base64-encoded PowerShell command, leading to user execution [T1204]. Once inside, the actors employed PowerShell [T1059.001] to write a malicious script, logon_script.ps1, to the NETLOGON share, establishing persistence across the domain through a network logon script [T1037.003] while simultaneously modifying registry keys [T1112] to maintain access. To escalate privileges, they altered permissions on a subdirectory in %TEMP%, exploiting executable installer file permissions weakness [T1574.005] and used command-line tools [T1059.003] to enumerate system information. The malware then conducted peripheral device discovery [T1120] by scanning for attached smart card readers, as part of reconnaissance efforts to identify sensitive hardware. For persistent remote access, the attacker installed TinyPilot on the compromised server, utilizing remote access hardware [T1219.003] and employed scheduled tasks [T1053.005] to ensure continuous operation. Data exfiltration occurred in two phases: first, the actors used FTP to transfer stolen files over an unencrypted non-C2 protocol [T1048.003], and later, they leveraged web services by uploading data to Mega.co.nz, implementing exfiltration over a web service [T1567]. Throughout the campaign, network traffic logs from the firewall indicated intermittent connections to external IP addresses, though some were benign updates from software vendors. The incident was contained after 72 hours, with no customer data confirmed as compromised in this fictional scenario.",
+        "techniques_used": [
+            "T1190",
+            "T1204",
+            "T1059.001",
+            "T1037.003",
+            "T1112",
+            "T1574.005",
+            "T1059.003",
+            "T1120",
+            "T1219.003",
+            "T1053.005",
+            "T1048.003",
+            "T1567"
+        ]
+    }
+}

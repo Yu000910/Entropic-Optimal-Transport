@@ -1,0 +1,88 @@
+{
+    "report_id": "report_153",
+    "generated_at": "20251222_121716",
+    "scenario_target_ids": [
+        "T1587.001",
+        "T1584.001",
+        "T1078.004",
+        "T1559",
+        "T1027.001",
+        "T1558.005",
+        "T1021.004",
+        "T1563.001",
+        "T1102.002",
+        "T1020.001",
+        "T1496.002",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1587.001",
+        "T1584.001",
+        "T1078.004",
+        "T1559",
+        "T1027.001",
+        "T1558.005",
+        "T1021.004",
+        "T1563.001",
+        "T1102.002",
+        "T1020.001",
+        "T1496.002",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1021.004",
+        "T1563.001",
+        "T1587.001",
+        "T1078.004",
+        "T1020.001",
+        "T1584.001",
+        "T1559",
+        "T1496.002",
+        "T1498.001",
+        "T1027.001",
+        "T1558.005",
+        "T1102.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'ShadowSiphon', active since early 2023. This actor primarily targets financial and technology sectors in North America, with a focus on cloud-based infrastructure. Initial analysis suggests the campaign began with reconnaissance efforts, though specific techniques are not detailed in this advisory. The attack scenario unfolds as follows, based on simulated incident response data from a fictional victim, 'CloudTech Inc.', a mid-sized SaaS provider.\n\nInitial Access: The actors likely used infected removable media, such as USB drives, to deliver custom malware during a targeted phishing campaign at a corporate event. Concurrently, they altered MX records in the DNS configuration to intercept corporate email communications, enabling them to capture credentials and internal communications. System logs from CloudTech Inc. show unusual DNS queries to non-corporate domains starting on 2023-10-15, but no immediate alerts were triggered due to misconfigured monitoring tools.\n\nExecution: Upon gaining initial foothold, the adversary employed compromised O365 administrator accounts to create new Service Principals for persistent access, while leveraging Component Object Model (COM) to instantiate malicious objects and execute arbitrary code on Windows systems. The malware was obfuscated using binary padding to bypass signature-based detection, with artifacts found in temporary directories showing padded executable files named 'update.exe'.\n\nPersistence: To maintain access, the actors used Impacket tools to steal or forge Kerberos tickets via ccache files, allowing them to authenticate across the network without repeated password prompts. They also activated SSH on virtual infrastructure by running commands like 'vim-cmd hostsvc/enable_ssh', and exploited stolen SSH private keys to hijack sessions and move laterally to other systems, including Linux servers hosting customer data.\n\nCommand and Control (C2): For C2 communication, the malware established bidirectional channels using a REST-based Microsoft Graph API to access draft messages in a shared O365 Outlook account, enabling stealthy data exchange. Additionally, traffic duplication was employed via ROMMONkit to create mirroring channels for continuous exfiltration of sensitive files, with network logs indicating duplicated packets to external IP addresses.\n\nImpact: The campaign culminated in disruptive activities, including bandwidth hijacking where the malware used a botnet to exhaust bandwidth against competing services, and direct network floods via UDP packets from infected endpoints to disrupt legitimate communications. Incident responders at CloudTech Inc. noted a 40% increase in network latency during peak hours, attributed to these attacks, though full recovery was achieved after isolating affected systems. Background: CloudTech Inc. reported no prior significant breaches, but had outdated patch management policies contributing to the initial compromise.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'ShadowSiphon', active since early 2023. This actor primarily targets financial and technology sectors in North America, with a focus on cloud-based infrastructure. Initial analysis suggests the campaign began with reconnaissance efforts, though specific techniques are not detailed in this advisory. The attack scenario unfolds as follows, based on simulated incident response data from a fictional victim, 'CloudTech Inc.', a mid-sized SaaS provider.\n\nInitial Access: The actors likely used infected removable media, such as USB drives, to deliver custom malware [T1587.001] during a targeted phishing campaign at a corporate event. Concurrently, they altered MX records in the DNS configuration [T1584.001] to intercept corporate email communications, enabling them to capture credentials and internal communications. System logs from CloudTech Inc. show unusual DNS queries to non-corporate domains starting on 2023-10-15, but no immediate alerts were triggered due to misconfigured monitoring tools.\n\nExecution: Upon gaining initial foothold, the adversary employed compromised O365 administrator accounts [T1078.004] to create new Service Principals for persistent access, while leveraging Component Object Model (COM) [T1559] to instantiate malicious objects and execute arbitrary code on Windows systems. The malware was obfuscated using binary padding [T1027.001] to bypass signature-based detection, with artifacts found in temporary directories showing padded executable files named 'update.exe'.\n\nPersistence: To maintain access, the actors used Impacket tools to steal or forge Kerberos tickets via ccache files [T1558.005], allowing them to authenticate across the network without repeated password prompts. They also activated SSH on virtual infrastructure [T1021.004] by running commands like 'vim-cmd hostsvc/enable_ssh', and exploited stolen SSH private keys [T1563.001] to hijack sessions and move laterally to other systems, including Linux servers hosting customer data.\n\nCommand and Control (C2): For C2 communication, the malware established bidirectional channels [T1102.002] using a REST-based Microsoft Graph API to access draft messages in a shared O365 Outlook account, enabling stealthy data exchange. Additionally, traffic duplication [T1020.001] was employed via ROMMONkit to create mirroring channels for continuous exfiltration of sensitive files, with network logs indicating duplicated packets to external IP addresses.\n\nImpact: The campaign culminated in disruptive activities, including bandwidth hijacking [T1496.002] where the malware used a botnet to exhaust bandwidth against competing services, and direct network floods [T1498.001] via UDP packets from infected endpoints to disrupt legitimate communications. Incident responders at CloudTech Inc. noted a 40% increase in network latency during peak hours, attributed to these attacks, though full recovery was achieved after isolating affected systems. Background: CloudTech Inc. reported no prior significant breaches, but had outdated patch management policies contributing to the initial compromise.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] to create new Service Principals for persistent access, while leveraging Component Object Model (COM) to instantiate malicious objects and execute arbitrary code on Windows systems.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSiphon' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowSiphon', which leverages a multi-vector approach to compromise cloud environments, exfiltrate data, and disrupt services. The campaign involves initial access via malware-laden removable media, DNS manipulation for email interception, and exploitation of cloud accounts for lateral movement and persistence. Blue teams should review logs for SSH anomalies, Kerberos ticket misuse, and unusual network traffic patterns to detect and mitigate these techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'ShadowSiphon', active since early 2023. This actor primarily targets financial and technology sectors in North America, with a focus on cloud-based infrastructure. Initial analysis suggests the campaign began with reconnaissance efforts, though specific techniques are not detailed in this advisory. The attack scenario unfolds as follows, based on simulated incident response data from a fictional victim, 'CloudTech Inc.', a mid-sized SaaS provider.\n\nInitial Access: The actors likely used infected removable media, such as USB drives, to deliver custom malware [T1587.001] during a targeted phishing campaign at a corporate event. Concurrently, they altered MX records in the DNS configuration [T1584.001] to intercept corporate email communications, enabling them to capture credentials and internal communications. System logs from CloudTech Inc. show unusual DNS queries to non-corporate domains starting on 2023-10-15, but no immediate alerts were triggered due to misconfigured monitoring tools.\n\nExecution: Upon gaining initial foothold, the adversary employed compromised O365 administrator accounts [T1078.004] to create new Service Principals for persistent access, while leveraging Component Object Model (COM) [T1559] to instantiate malicious objects and execute arbitrary code on Windows systems. The malware was obfuscated using binary padding [T1027.001] to bypass signature-based detection, with artifacts found in temporary directories showing padded executable files named 'update.exe'.\n\nPersistence: To maintain access, the actors used Impacket tools to steal or forge Kerberos tickets via ccache files [T1558.005], allowing them to authenticate across the network without repeated password prompts. They also activated SSH on virtual infrastructure [T1021.004] by running commands like 'vim-cmd hostsvc/enable_ssh', and exploited stolen SSH private keys [T1563.001] to hijack sessions and move laterally to other systems, including Linux servers hosting customer data.\n\nCommand and Control (C2): For C2 communication, the malware established bidirectional channels [T1102.002] using a REST-based Microsoft Graph API to access draft messages in a shared O365 Outlook account, enabling stealthy data exchange. Additionally, traffic duplication [T1020.001] was employed via ROMMONkit to create mirroring channels for continuous exfiltration of sensitive files, with network logs indicating duplicated packets to external IP addresses.\n\nImpact: The campaign culminated in disruptive activities, including bandwidth hijacking [T1496.002] where the malware used a botnet to exhaust bandwidth against competing services, and direct network floods [T1498.001] via UDP packets from infected endpoints to disrupt legitimate communications. Incident responders at CloudTech Inc. noted a 40% increase in network latency during peak hours, attributed to these attacks, though full recovery was achieved after isolating affected systems. Background: CloudTech Inc. reported no prior significant breaches, but had outdated patch management policies contributing to the initial compromise.",
+        "techniques_used": [
+            "T1587.001",
+            "T1584.001",
+            "T1078.004",
+            "T1559",
+            "T1027.001",
+            "T1558.005",
+            "T1021.004",
+            "T1563.001",
+            "T1102.002",
+            "T1020.001",
+            "T1496.002",
+            "T1498.001"
+        ]
+    }
+}

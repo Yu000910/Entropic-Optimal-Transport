@@ -1,0 +1,73 @@
+{
+    "report_id": "report_558",
+    "generated_at": "20251222_164015",
+    "scenario_target_ids": [
+        "T1585.001",
+        "T1195",
+        "T1106",
+        "T1059.005",
+        "T1001",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585.001",
+        "T1195",
+        "T1106",
+        "T1059.005",
+        "T1001",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1585.001",
+        "T1059.005",
+        "T1106",
+        "T1195",
+        "T1531",
+        "T1001"
+    ],
+    "clean_text": "**Background and Initial Observations**\nGRAYSTORM, a suspected state-sponsored actor, has been active since early 2024, with initial reconnaissance activities detected in Q2 2024. The group primarily targets organizations in the U.S. and European energy sectors, leveraging social engineering and supply chain vulnerabilities. On 2024-06-15, anomalous network traffic was logged from IP 192.168.1.100 to external server 10.0.0.5, but this was unrelated to the campaign. The actors likely conduct reconnaissance by establishing fake social media accounts to gather intelligence on target employees and disseminate internal documents, as observed in previous Sandworm Team campaigns.\n\n**Attack Chain Analysis**\n**Initial Access:** GRAYSTORM compromised the software supply chain by injecting malicious code into a widely used open-source library's DLL dependency during an update process, allowing initial foothold into victim networks. System logs from 2024-06-20 show failed login attempts for user 'admin', but these were unrelated to the compromise.\n\n**Execution:** Upon execution, the malware employed Visual Basic Script (VBScript) to run malicious commands and download additional payloads, while simultaneously using native Windows API calls like ShellExecute and WriteProcessMemory to execute code in memory and evade traditional detection methods.\n\n**Persistence and Defense Evasion:** To maintain persistence and obfuscate activities, the actors injected a malicious DLL into legitimate processes to hide command and control (C2) communications and blend in with normal system operations. Registry key modifications were noted at HKEY_LOCAL_MACHINE\\Software\\GRAYSTORM, but this was part of the obfuscation effort.\n\n**Impact:** In the final stage, GRAYSTORM executed account access removal by running a PowerShell script that set 'Set-LocalUser -Name \"User1\" -UserMayChangePassword $false' to lock out administrators and prevent password changes, aiming to disrupt recovery efforts. Network alerts triggered at 2024-06-25 indicated data exfiltration to IP 203.0.113.10, though this was part of the broader campaign.\n\n**Recommendations for Blue Teams**\nMonitor for unusual social media activity linked to corporate accounts, implement software bill of materials (SBOM) to detect supply chain compromises, and enhance logging for API calls and script executions. Regular audits of user account permissions are advised to mitigate access removal attempts.",
+    "tagged_text": "**Background and Initial Observations**\nGRAYSTORM, a suspected state-sponsored actor, has been active since early 2024, with initial reconnaissance activities detected in Q2 2024. The group primarily targets organizations in the U.S. and European energy sectors, leveraging social engineering and supply chain vulnerabilities. On 2024-06-15, anomalous network traffic was logged from IP 192.168.1.100 to external server 10.0.0.5, but this was unrelated to the campaign. The actors likely conduct reconnaissance by establishing fake social media accounts [T1585.001] to gather intelligence on target employees and disseminate internal documents, as observed in previous Sandworm Team campaigns.\n\n**Attack Chain Analysis**\n**Initial Access:** GRAYSTORM compromised the software supply chain by injecting malicious code into a widely used open-source library's DLL dependency during an update process [T1195], allowing initial foothold into victim networks. System logs from 2024-06-20 show failed login attempts for user 'admin', but these were unrelated to the compromise.\n\n**Execution:** Upon execution, the malware employed Visual Basic Script (VBScript) [T1059.005] to run malicious commands and download additional payloads, while simultaneously using native Windows API calls like ShellExecute and WriteProcessMemory [T1106] to execute code in memory and evade traditional detection methods.\n\n**Persistence and Defense Evasion:** To maintain persistence and obfuscate activities, the actors injected a malicious DLL into legitimate processes [T1001] to hide command and control (C2) communications and blend in with normal system operations. Registry key modifications were noted at HKEY_LOCAL_MACHINE\\Software\\GRAYSTORM, but this was part of the obfuscation effort.\n\n**Impact:** In the final stage, GRAYSTORM executed account access removal by running a PowerShell script that set 'Set-LocalUser -Name \"User1\" -UserMayChangePassword $false' [T1531] to lock out administrators and prevent password changes, aiming to disrupt recovery efforts. Network alerts triggered at 2024-06-25 indicated data exfiltration to IP 203.0.113.10, though this was part of the broader campaign.\n\n**Recommendations for Blue Teams**\nMonitor for unusual social media activity linked to corporate accounts, implement software bill of materials (SBOM) to detect supply chain compromises, and enhance logging for API calls and script executions. Regular audits of user account permissions are advised to mitigate access removal attempts.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Attack Chain Analysis**\n**Initial Access:** GRAYSTORM compromised the software supply chain by injecting malicious code into a widely used open-source library's DLL dependency during an update process, allowing initial foothold into victim networks.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "005] to run malicious commands and download additional payloads, while simultaneously using native Windows API calls like ShellExecute and WriteProcessMemory to execute code in memory and evade traditional detection methods.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "**Persistence and Defense Evasion:** To maintain persistence and obfuscate activities, the actors injected a malicious DLL into legitimate processes to hide command and control (C2) communications and blend in with normal system operations.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        },
+        {
+            "sentence": "**Impact:** In the final stage, GRAYSTORM executed account access removal by running a PowerShell script that set 'Set-LocalUser -Name \"User1\" -UserMayChangePassword $false' to lock out administrators and prevent password changes, aiming to disrupt recovery efforts.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'GRAYSTORM' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, GRAYSTORM, targeting critical infrastructure sectors, including energy and manufacturing, to exfiltrate sensitive data and disrupt operations. Based on observed tactics, techniques, and procedures (TTPs), this report provides actionable intelligence for blue teams to enhance detection and response capabilities.",
+        "full_report_text": "**Background and Initial Observations**\nGRAYSTORM, a suspected state-sponsored actor, has been active since early 2024, with initial reconnaissance activities detected in Q2 2024. The group primarily targets organizations in the U.S. and European energy sectors, leveraging social engineering and supply chain vulnerabilities. On 2024-06-15, anomalous network traffic was logged from IP 192.168.1.100 to external server 10.0.0.5, but this was unrelated to the campaign. The actors likely conduct reconnaissance by establishing fake social media accounts [T1585.001] to gather intelligence on target employees and disseminate internal documents, as observed in previous Sandworm Team campaigns.\n\n**Attack Chain Analysis**\n**Initial Access:** GRAYSTORM compromised the software supply chain by injecting malicious code into a widely used open-source library's DLL dependency during an update process [T1195], allowing initial foothold into victim networks. System logs from 2024-06-20 show failed login attempts for user 'admin', but these were unrelated to the compromise.\n\n**Execution:** Upon execution, the malware employed Visual Basic Script (VBScript) [T1059.005] to run malicious commands and download additional payloads, while simultaneously using native Windows API calls like ShellExecute and WriteProcessMemory [T1106] to execute code in memory and evade traditional detection methods.\n\n**Persistence and Defense Evasion:** To maintain persistence and obfuscate activities, the actors injected a malicious DLL into legitimate processes [T1001] to hide command and control (C2) communications and blend in with normal system operations. Registry key modifications were noted at HKEY_LOCAL_MACHINE\\Software\\GRAYSTORM, but this was part of the obfuscation effort.\n\n**Impact:** In the final stage, GRAYSTORM executed account access removal by running a PowerShell script that set 'Set-LocalUser -Name \"User1\" -UserMayChangePassword $false' [T1531] to lock out administrators and prevent password changes, aiming to disrupt recovery efforts. Network alerts triggered at 2024-06-25 indicated data exfiltration to IP 203.0.113.10, though this was part of the broader campaign.\n\n**Recommendations for Blue Teams**\nMonitor for unusual social media activity linked to corporate accounts, implement software bill of materials (SBOM) to detect supply chain compromises, and enhance logging for API calls and script executions. Regular audits of user account permissions are advised to mitigate access removal attempts.",
+        "techniques_used": [
+            "T1585.001",
+            "T1195",
+            "T1106",
+            "T1059.005",
+            "T1001",
+            "T1531"
+        ]
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "report_id": "report_359",
+    "generated_at": "20251222_151326",
+    "scenario_target_ids": [
+        "T1590.002",
+        "T1189",
+        "T1053",
+        "T1653",
+        "T1547.015",
+        "T1021.007",
+        "T1021",
+        "T1571",
+        "T1491.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1590.002",
+        "T1189",
+        "T1053",
+        "T1653",
+        "T1547.015",
+        "T1021.007",
+        "T1021",
+        "T1571",
+        "T1491.002"
+    ],
+    "actual_found_ids": [
+        "T1547.015",
+        "T1653",
+        "T1021",
+        "T1590.002",
+        "T1021.007",
+        "T1189",
+        "T1571",
+        "T1053",
+        "T1491.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) group 'ShadowVeil' in a recent simulated campaign. This report is based on a fictional attack scenario designed for blue team training purposes.\n\nBackground: 'ShadowVeil' is a fictional actor believed to operate with motives of financial theft and data exfiltration, targeting financial institutions and technology firms globally. In this scenario, the campaign began in early 2024, with initial activity detected in network logs showing unusual DNS queries from internal systems. The organization, a mid-sized fintech company, reported no actual breaches, but this narrative serves as an educational tool.\n\nAttack Narrative:\n- **Reconnaissance**: The actors likely conducted reconnaissance by harvesting passive DNS information from cached resolver data to build a target domain profile, which included analyzing subdomains and IP addresses associated with the victim's infrastructure.\n- **Initial Access**: They compromised three fictional Japanese websites using a Flash exploit to perform watering hole attacks, redirecting employees to malicious sites that delivered payloads upon visit. System logs from the web proxy showed increased traffic to these domains during off-hours, but this was initially dismissed as benign activity.\n- **Execution and Persistence**: Upon compromise, the adversary employed PowerShell to schedule malicious.exe to run daily at 3 AM using Windows Task Scheduler while simultaneously using powercfg.exe to disable sleep mode and prevent system shutdown, ensuring continuous operation. On macOS systems, malware wrote an AppleScript that uses System Events to add itself to startup items, maintaining persistence across reboots.\n- **Lateral Movement and Command and Control**: The malware invoked 'Connect-AZAccount -Credential $cred' to access Azure cloud services as a compromised user and leveraged SSH with valid service account credentials to access the web application server, facilitating lateral movement within the network. C2 communications were conducted over non-standard ports, with some samples using HTTP over ports 447 and 8082, while newer versions employed a custom protocol sending unencrypted data over port 443 to evade detection.\n- **Impact**: As a final action, malicious code was injected that displayed fake technical support messages with fraudulent contact information, causing external defacement and disrupting user operations. The company's help desk received multiple calls from confused employees, but no data loss occurred in this fictional scenario.\n\nIrrelevant Information: The victim organization, 'FinTech Innovations Inc.', was founded in 2010 and specializes in blockchain solutions, with offices in New York and Tokyo. During the investigation, routine system maintenance logs from March 2024 showed normal patching activities, unrelated to the attack. Additionally, employee training records indicated compliance with cybersecurity protocols, though this did not prevent the simulated intrusion.\n\nRecommendations: Blue teams should monitor for unusual DNS queries, implement application allowlisting, restrict use of legacy software like Flash, and audit cloud service access logs. This advisory serves as a training exercise to enhance defensive capabilities against similar TTPs.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) group 'ShadowVeil' in a recent simulated campaign. This report is based on a fictional attack scenario designed for blue team training purposes.\n\nBackground: 'ShadowVeil' is a fictional actor believed to operate with motives of financial theft and data exfiltration, targeting financial institutions and technology firms globally. In this scenario, the campaign began in early 2024, with initial activity detected in network logs showing unusual DNS queries from internal systems. The organization, a mid-sized fintech company, reported no actual breaches, but this narrative serves as an educational tool.\n\nAttack Narrative:\n- **Reconnaissance**: The actors likely conducted reconnaissance by harvesting passive DNS information from cached resolver data to build a target domain profile [T1590.002], which included analyzing subdomains and IP addresses associated with the victim's infrastructure.\n- **Initial Access**: They compromised three fictional Japanese websites using a Flash exploit to perform watering hole attacks [T1189], redirecting employees to malicious sites that delivered payloads upon visit. System logs from the web proxy showed increased traffic to these domains during off-hours, but this was initially dismissed as benign activity.\n- **Execution and Persistence**: Upon compromise, the adversary employed PowerShell to schedule malicious.exe to run daily at 3 AM using Windows Task Scheduler [T1053] while simultaneously using powercfg.exe to disable sleep mode and prevent system shutdown [T1653], ensuring continuous operation. On macOS systems, malware wrote an AppleScript that uses System Events to add itself to startup items [T1547.015], maintaining persistence across reboots.\n- **Lateral Movement and Command and Control**: The malware invoked 'Connect-AZAccount -Credential $cred' to access Azure cloud services as a compromised user [T1021.007] and leveraged SSH with valid service account credentials to access the web application server [T1021], facilitating lateral movement within the network. C2 communications were conducted over non-standard ports, with some samples using HTTP over ports 447 and 8082 [T1571], while newer versions employed a custom protocol sending unencrypted data over port 443 to evade detection.\n- **Impact**: As a final action, malicious code was injected that displayed fake technical support messages with fraudulent contact information [T1491.002], causing external defacement and disrupting user operations. The company's help desk received multiple calls from confused employees, but no data loss occurred in this fictional scenario.\n\nIrrelevant Information: The victim organization, 'FinTech Innovations Inc.', was founded in 2010 and specializes in blockchain solutions, with offices in New York and Tokyo. During the investigation, routine system maintenance logs from March 2024 showed normal patching activities, unrelated to the attack. Additionally, employee training records indicated compliance with cybersecurity protocols, though this did not prevent the simulated intrusion.\n\nRecommendations: Blue teams should monitor for unusual DNS queries, implement application allowlisting, restrict use of legacy software like Flash, and audit cloud service access logs. This advisory serves as a training exercise to enhance defensive capabilities against similar TTPs.",
+    "sentence_annotations": [
+        {
+            "sentence": "- **Initial Access**: They compromised three fictional Japanese websites using a Flash exploit to perform watering hole attacks, redirecting employees to malicious sites that delivered payloads upon visit.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "exe to run daily at 3 AM using Windows Task Scheduler while simultaneously using powercfg.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "exe to disable sleep mode and prevent system shutdown, ensuring continuous operation.",
+            "technique_id": "T1653",
+            "technique_name": "Power Settings"
+        },
+        {
+            "sentence": "007] and leveraged SSH with valid service account credentials to access the web application server, facilitating lateral movement within the network.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "C2 communications were conducted over non-standard ports, with some samples using HTTP over ports 447 and 8082, while newer versions employed a custom protocol sending unencrypted data over port 443 to evade detection.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial and Technology Sectors",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVeil', which leverages DNS reconnaissance, drive-by compromises, and cloud services to infiltrate and disrupt organizations. Blue teams should use this report for training to identify and mitigate these techniques in real-world scenarios.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the tactics, techniques, and procedures (TTPs) used by the fictional advanced persistent threat (APT) group 'ShadowVeil' in a recent simulated campaign. This report is based on a fictional attack scenario designed for blue team training purposes.\n\nBackground: 'ShadowVeil' is a fictional actor believed to operate with motives of financial theft and data exfiltration, targeting financial institutions and technology firms globally. In this scenario, the campaign began in early 2024, with initial activity detected in network logs showing unusual DNS queries from internal systems. The organization, a mid-sized fintech company, reported no actual breaches, but this narrative serves as an educational tool.\n\nAttack Narrative:\n- **Reconnaissance**: The actors likely conducted reconnaissance by harvesting passive DNS information from cached resolver data to build a target domain profile [T1590.002], which included analyzing subdomains and IP addresses associated with the victim's infrastructure.\n- **Initial Access**: They compromised three fictional Japanese websites using a Flash exploit to perform watering hole attacks [T1189], redirecting employees to malicious sites that delivered payloads upon visit. System logs from the web proxy showed increased traffic to these domains during off-hours, but this was initially dismissed as benign activity.\n- **Execution and Persistence**: Upon compromise, the adversary employed PowerShell to schedule malicious.exe to run daily at 3 AM using Windows Task Scheduler [T1053] while simultaneously using powercfg.exe to disable sleep mode and prevent system shutdown [T1653], ensuring continuous operation. On macOS systems, malware wrote an AppleScript that uses System Events to add itself to startup items [T1547.015], maintaining persistence across reboots.\n- **Lateral Movement and Command and Control**: The malware invoked 'Connect-AZAccount -Credential $cred' to access Azure cloud services as a compromised user [T1021.007] and leveraged SSH with valid service account credentials to access the web application server [T1021], facilitating lateral movement within the network. C2 communications were conducted over non-standard ports, with some samples using HTTP over ports 447 and 8082 [T1571], while newer versions employed a custom protocol sending unencrypted data over port 443 to evade detection.\n- **Impact**: As a final action, malicious code was injected that displayed fake technical support messages with fraudulent contact information [T1491.002], causing external defacement and disrupting user operations. The company's help desk received multiple calls from confused employees, but no data loss occurred in this fictional scenario.\n\nIrrelevant Information: The victim organization, 'FinTech Innovations Inc.', was founded in 2010 and specializes in blockchain solutions, with offices in New York and Tokyo. During the investigation, routine system maintenance logs from March 2024 showed normal patching activities, unrelated to the attack. Additionally, employee training records indicated compliance with cybersecurity protocols, though this did not prevent the simulated intrusion.\n\nRecommendations: Blue teams should monitor for unusual DNS queries, implement application allowlisting, restrict use of legacy software like Flash, and audit cloud service access logs. This advisory serves as a training exercise to enhance defensive capabilities against similar TTPs.",
+        "techniques_used": [
+            "T1590.002",
+            "T1189",
+            "T1053",
+            "T1653",
+            "T1547.015",
+            "T1021.007",
+            "T1021",
+            "T1571",
+            "T1491.002"
+        ]
+    }
+}

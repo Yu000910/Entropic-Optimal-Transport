@@ -1,0 +1,118 @@
+{
+    "report_id": "report_28",
+    "generated_at": "20251222_112838",
+    "scenario_target_ids": [
+        "T1595.003",
+        "T1592.001",
+        "T1596",
+        "T1078.003",
+        "T1189",
+        "T1059.008",
+        "T1574.012",
+        "T1037.001",
+        "T1548",
+        "T1553.002",
+        "T1216",
+        "T1003.001",
+        "T1213",
+        "T1090.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1595.003",
+        "T1592.001",
+        "T1189",
+        "T1059.008",
+        "T1574.012",
+        "T1037.001",
+        "T1548",
+        "T1553.002",
+        "T1216",
+        "T1003.001",
+        "T1078.003",
+        "T1213",
+        "T1090.004"
+    ],
+    "actual_found_ids": [
+        "T1596",
+        "T1213",
+        "T1574.012",
+        "T1059.008",
+        "T1078.003",
+        "T1189",
+        "T1553.002",
+        "T1090.004",
+        "T1548",
+        "T1216",
+        "T1037.001",
+        "T1592.001",
+        "T1003.001",
+        "T1595.003"
+    ],
+    "clean_text": "Crimson Serpent, a suspected state-sponsored APT group, has been observed conducting a multi-phase campaign against organizations in the energy and telecommunications sectors. The campaign begins with reconnaissance, where actors leverage open technical databases to identify vulnerabilities in web applications, followed by wordlist scanning to brute-force directories on exposed servers. Concurrently, they use tools like nmap.exe to fingerprint remote systems and gather hardware specifications, aiding in target selection. Initial access is achieved through drive-by compromises, where victims are lured via fake browser updates to download malicious payloads. Once inside, the adversary employs network device CLI to configure port mirroring on switches, enabling traffic interception for lateral movement. To establish persistence, they modify the Session Manager Environment registry key to force .NET processes to load a malicious DLL via COR_PROFILER and use reg add commands to set Logon Scripts that execute backdoors upon user login. Privilege escalation involves abusing elevation control mechanisms, such as exploiting Windows AutoElevate backdoors to bypass UAC, while using code signing with legitimate signed binaries like 'inkform.exe' for DLL search order hijacking. Execution phases include system script proxy execution, where Microsoft-signed executables run malicious commands, and LSASS memory dumping with tools like ProcDump to harvest password hashes from compromised systems. Credential access extends to local accounts, where Windows Credential Manager databases are accessed to retrieve stored credentials. Data collection targets information repositories, such as cryptocurrency wallets and Telegram chats, for exfiltration. Communication is obfuscated using domain fronting, where TLS compression method indicators in headers are altered to hide malicious traffic. Throughout the campaign, system logs showed anomalous PowerShell activity and failed login attempts from IP addresses in Eastern Europe, though some were unrelated to the attack, such as routine backup errors and user misconfigurations. The organization's background includes a recent merger with a smaller telecom provider, which may have expanded the attack surface.",
+    "tagged_text": "Crimson Serpent, a suspected state-sponsored APT group, has been observed conducting a multi-phase campaign against organizations in the energy and telecommunications sectors. The campaign begins with reconnaissance, where actors leverage open technical databases [T1596] to identify vulnerabilities in web applications, followed by wordlist scanning [T1595.003] to brute-force directories on exposed servers. Concurrently, they use tools like nmap.exe to fingerprint remote systems and gather hardware specifications [T1592.001], aiding in target selection. Initial access is achieved through drive-by compromises [T1189], where victims are lured via fake browser updates to download malicious payloads. Once inside, the adversary employs network device CLI [T1059.008] to configure port mirroring on switches, enabling traffic interception for lateral movement. To establish persistence, they modify the Session Manager Environment registry key to force .NET processes to load a malicious DLL via COR_PROFILER [T1574.012] and use reg add commands to set Logon Scripts [T1037.001] that execute backdoors upon user login. Privilege escalation involves abusing elevation control mechanisms [T1548], such as exploiting Windows AutoElevate backdoors to bypass UAC, while using code signing [T1553.002] with legitimate signed binaries like 'inkform.exe' for DLL search order hijacking. Execution phases include system script proxy execution [T1216], where Microsoft-signed executables run malicious commands, and LSASS memory dumping [T1003.001] with tools like ProcDump to harvest password hashes from compromised systems. Credential access extends to local accounts [T1078.003], where Windows Credential Manager databases are accessed to retrieve stored credentials. Data collection targets information repositories [T1213], such as cryptocurrency wallets and Telegram chats, for exfiltration. Communication is obfuscated using domain fronting [T1090.004], where TLS compression method indicators in headers are altered to hide malicious traffic. Throughout the campaign, system logs showed anomalous PowerShell activity and failed login attempts from IP addresses in Eastern Europe, though some were unrelated to the attack, such as routine backup errors and user misconfigurations. The organization's background includes a recent merger with a smaller telecom provider, which may have expanded the attack surface.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign begins with reconnaissance, where actors leverage open technical databases to identify vulnerabilities in web applications, followed by wordlist scanning [T1595.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "Initial access is achieved through drive-by compromises, where victims are lured via fake browser updates to download malicious payloads.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Privilege escalation involves abusing elevation control mechanisms, such as exploiting Windows AutoElevate backdoors to bypass UAC, while using code signing [T1553.",
+            "technique_id": "T1548",
+            "technique_name": "Abuse Elevation Control Mechanism"
+        },
+        {
+            "sentence": "Execution phases include system script proxy execution, where Microsoft-signed executables run malicious commands, and LSASS memory dumping [T1003.",
+            "technique_id": "T1216",
+            "technique_name": "System Script Proxy Execution"
+        },
+        {
+            "sentence": "Data collection targets information repositories, such as cryptocurrency wallets and Telegram chats, for exfiltration.",
+            "technique_id": "T1213",
+            "technique_name": "Data from Information Repositories"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Serpent', targeting critical infrastructure sectors. The campaign involves initial access through drive-by compromises, reconnaissance via open-source intelligence and scanning, privilege escalation, credential harvesting, and data exfiltration using obfuscated communication channels. The report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "Crimson Serpent, a suspected state-sponsored APT group, has been observed conducting a multi-phase campaign against organizations in the energy and telecommunications sectors. The campaign begins with reconnaissance, where actors leverage open technical databases [T1596] to identify vulnerabilities in web applications, followed by wordlist scanning [T1595.003] to brute-force directories on exposed servers. Concurrently, they use tools like nmap.exe to fingerprint remote systems and gather hardware specifications [T1592.001], aiding in target selection. Initial access is achieved through drive-by compromises [T1189], where victims are lured via fake browser updates to download malicious payloads. Once inside, the adversary employs network device CLI [T1059.008] to configure port mirroring on switches, enabling traffic interception for lateral movement. To establish persistence, they modify the Session Manager Environment registry key to force .NET processes to load a malicious DLL via COR_PROFILER [T1574.012] and use reg add commands to set Logon Scripts [T1037.001] that execute backdoors upon user login. Privilege escalation involves abusing elevation control mechanisms [T1548], such as exploiting Windows AutoElevate backdoors to bypass UAC, while using code signing [T1553.002] with legitimate signed binaries like 'inkform.exe' for DLL search order hijacking. Execution phases include system script proxy execution [T1216], where Microsoft-signed executables run malicious commands, and LSASS memory dumping [T1003.001] with tools like ProcDump to harvest password hashes from compromised systems. Credential access extends to local accounts [T1078.003], where Windows Credential Manager databases are accessed to retrieve stored credentials. Data collection targets information repositories [T1213], such as cryptocurrency wallets and Telegram chats, for exfiltration. Communication is obfuscated using domain fronting [T1090.004], where TLS compression method indicators in headers are altered to hide malicious traffic. Throughout the campaign, system logs showed anomalous PowerShell activity and failed login attempts from IP addresses in Eastern Europe, though some were unrelated to the attack, such as routine backup errors and user misconfigurations. The organization's background includes a recent merger with a smaller telecom provider, which may have expanded the attack surface.",
+        "techniques_used": [
+            "T1596",
+            "T1595.003",
+            "T1592.001",
+            "T1189",
+            "T1059.008",
+            "T1574.012",
+            "T1037.001",
+            "T1548",
+            "T1553.002",
+            "T1216",
+            "T1003.001",
+            "T1078.003",
+            "T1213",
+            "T1090.004"
+        ]
+    }
+}

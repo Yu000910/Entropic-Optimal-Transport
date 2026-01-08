@@ -1,0 +1,123 @@
+{
+    "report_id": "report_455",
+    "generated_at": "20251222_155504",
+    "scenario_target_ids": [
+        "T1584.007",
+        "T1566",
+        "T1648",
+        "T1535",
+        "T1550.003",
+        "T1218.011",
+        "T1039",
+        "T1074",
+        "T1602",
+        "T1572",
+        "T1011",
+        "T1048.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1218.011",
+        "T1648",
+        "T1584.007",
+        "T1535",
+        "T1550.003",
+        "T1039",
+        "T1074",
+        "T1602",
+        "T1572",
+        "T1011",
+        "T1048.003"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1572",
+        "T1011",
+        "T1218.011",
+        "T1550.003",
+        "T1535",
+        "T1074",
+        "T1566",
+        "T1602",
+        "T1048.003",
+        "T1584.007",
+        "T1648"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario based on observed techniques. In this simulated campaign, the threat actor 'CloudShroud' targets organizations with mixed on-premises and cloud environments, exploiting misconfigurations and using advanced obfuscation methods.\n\nInitial Access: The campaign began with a phishing email containing a malicious Word document that exploited a known vulnerability when opened, leading to initial compromise. System logs from the victim's email server showed increased traffic from an IP address in a non-standard region, but this was later determined to be unrelated noise.\n\nExecution: Upon execution, the malware employed rundll32 with an export named 'init' to install a backdoor, while simultaneously using PowerShell to download additional payloads from a cloud storage service. The actors then leveraged serverless execution by compromising a Lambda function to run unauthorized shell commands in the cloud environment, evading traditional endpoint detection. Background checks revealed the organization had recently migrated to a multi-cloud setup, with some legacy systems still in use.\n\nPersistence and Defense Evasion: To maintain persistence and avoid detection, the actors utilized serverless infrastructure such as Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels, and they created scripts to automatically provision cloud instances in unused or unsupported cloud regions. Network logs indicated sporadic DNS queries to benign domains, which were not tagged as malicious.\n\nLateral Movement: For lateral movement within the on-premises network, the actors employed Pass the Ticket attacks using Kerberos tickets, while also searching for data on network shared drives with commands like 'where /r \\\\fileshare\\projects *.xlsx' to locate Excel spreadsheets containing project data. Internal security audits noted several outdated user accounts, but this was unrelated to the attack.\n\nCollection and Exfiltration: The threat actor staged data by using bash scripts to aggregate network configuration files into a staging location, and they extracted system configuration settings from the Windows Registry for exfiltration. To facilitate data transfer, they implemented protocol tunneling using tools like Iox and NPS proxy to create multiple connections through a single tunnel, and they exfiltrated data over other network mediums by connecting to an unauthorized WiFi network. Additionally, they used exfiltration over unencrypted non-C2 protocols by encoding victim data and prepending it as subdomains in DNS lookups to attacker-controlled domains. System performance metrics showed a slight increase in CPU usage during these activities, but it was within normal operational thresholds.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario based on observed techniques. In this simulated campaign, the threat actor 'CloudShroud' targets organizations with mixed on-premises and cloud environments, exploiting misconfigurations and using advanced obfuscation methods.\n\nInitial Access: The campaign began with a phishing email [T1566] containing a malicious Word document that exploited a known vulnerability when opened, leading to initial compromise. System logs from the victim's email server showed increased traffic from an IP address in a non-standard region, but this was later determined to be unrelated noise.\n\nExecution: Upon execution, the malware employed rundll32 [T1218.011] with an export named 'init' to install a backdoor, while simultaneously using PowerShell to download additional payloads from a cloud storage service. The actors then leveraged serverless execution [T1648] by compromising a Lambda function to run unauthorized shell commands in the cloud environment, evading traditional endpoint detection. Background checks revealed the organization had recently migrated to a multi-cloud setup, with some legacy systems still in use.\n\nPersistence and Defense Evasion: To maintain persistence and avoid detection, the actors utilized serverless infrastructure [T1584.007] such as Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels, and they created scripts to automatically provision cloud instances in unused or unsupported cloud regions [T1535]. Network logs indicated sporadic DNS queries to benign domains, which were not tagged as malicious.\n\nLateral Movement: For lateral movement within the on-premises network, the actors employed Pass the Ticket attacks [T1550.003] using Kerberos tickets, while also searching for data on network shared drives [T1039] with commands like 'where /r \\\\fileshare\\projects *.xlsx' to locate Excel spreadsheets containing project data. Internal security audits noted several outdated user accounts, but this was unrelated to the attack.\n\nCollection and Exfiltration: The threat actor staged data [T1074] by using bash scripts to aggregate network configuration files into a staging location, and they extracted system configuration settings from the Windows Registry [T1602] for exfiltration. To facilitate data transfer, they implemented protocol tunneling [T1572] using tools like Iox and NPS proxy to create multiple connections through a single tunnel, and they exfiltrated data over other network mediums [T1011] by connecting to an unauthorized WiFi network. Additionally, they used exfiltration over unencrypted non-C2 protocols [T1048.003] by encoding victim data and prepending it as subdomains in DNS lookups to attacker-controlled domains. System performance metrics showed a slight increase in CPU usage during these activities, but it was within normal operational thresholds.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The campaign began with a phishing email containing a malicious Word document that exploited a known vulnerability when opened, leading to initial compromise.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "The actors then leveraged serverless execution by compromising a Lambda function to run unauthorized shell commands in the cloud environment, evading traditional endpoint detection.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "007] such as Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels, and they created scripts to automatically provision cloud instances in unused or unsupported cloud regions.",
+            "technique_id": "T1535",
+            "technique_name": "Unused/Unsupported Cloud Regions"
+        },
+        {
+            "sentence": "003] using Kerberos tickets, while also searching for data on network shared drives with commands like 'where /r \\\\fileshare\\projects *.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The threat actor staged data by using bash scripts to aggregate network configuration files into a staging location, and they extracted system configuration settings from the Windows Registry for exfiltration.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The threat actor staged data by using bash scripts to aggregate network configuration files into a staging location, and they extracted system configuration settings from the Windows Registry for exfiltration.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "To facilitate data transfer, they implemented protocol tunneling using tools like Iox and NPS proxy to create multiple connections through a single tunnel, and they exfiltrated data over other network mediums by connecting to an unauthorized WiFi network.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "To facilitate data transfer, they implemented protocol tunneling using tools like Iox and NPS proxy to create multiple connections through a single tunnel, and they exfiltrated data over other network mediums by connecting to an unauthorized WiFi network.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'CloudShroud' Targeting Cloud and On-Premises Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'CloudShroud', which targets organizations with hybrid cloud infrastructures. The actors leverage serverless technologies, phishing, and cloud exploitation to gain initial access, move laterally, and exfiltrate sensitive data, using techniques such as protocol tunneling and exfiltration over non-C2 protocols. Blue teams should review logs for unusual cloud region activity, monitor for unauthorized serverless executions, and implement network segmentation to mitigate these threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario based on observed techniques. In this simulated campaign, the threat actor 'CloudShroud' targets organizations with mixed on-premises and cloud environments, exploiting misconfigurations and using advanced obfuscation methods.\n\nInitial Access: The campaign began with a phishing email [T1566] containing a malicious Word document that exploited a known vulnerability when opened, leading to initial compromise. System logs from the victim's email server showed increased traffic from an IP address in a non-standard region, but this was later determined to be unrelated noise.\n\nExecution: Upon execution, the malware employed rundll32 [T1218.011] with an export named 'init' to install a backdoor, while simultaneously using PowerShell to download additional payloads from a cloud storage service. The actors then leveraged serverless execution [T1648] by compromising a Lambda function to run unauthorized shell commands in the cloud environment, evading traditional endpoint detection. Background checks revealed the organization had recently migrated to a multi-cloud setup, with some legacy systems still in use.\n\nPersistence and Defense Evasion: To maintain persistence and avoid detection, the actors utilized serverless infrastructure [T1584.007] such as Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels, and they created scripts to automatically provision cloud instances in unused or unsupported cloud regions [T1535]. Network logs indicated sporadic DNS queries to benign domains, which were not tagged as malicious.\n\nLateral Movement: For lateral movement within the on-premises network, the actors employed Pass the Ticket attacks [T1550.003] using Kerberos tickets, while also searching for data on network shared drives [T1039] with commands like 'where /r \\\\fileshare\\projects *.xlsx' to locate Excel spreadsheets containing project data. Internal security audits noted several outdated user accounts, but this was unrelated to the attack.\n\nCollection and Exfiltration: The threat actor staged data [T1074] by using bash scripts to aggregate network configuration files into a staging location, and they extracted system configuration settings from the Windows Registry [T1602] for exfiltration. To facilitate data transfer, they implemented protocol tunneling [T1572] using tools like Iox and NPS proxy to create multiple connections through a single tunnel, and they exfiltrated data over other network mediums [T1011] by connecting to an unauthorized WiFi network. Additionally, they used exfiltration over unencrypted non-C2 protocols [T1048.003] by encoding victim data and prepending it as subdomains in DNS lookups to attacker-controlled domains. System performance metrics showed a slight increase in CPU usage during these activities, but it was within normal operational thresholds.",
+        "techniques_used": [
+            "T1566",
+            "T1218.011",
+            "T1648",
+            "T1584.007",
+            "T1535",
+            "T1550.003",
+            "T1039",
+            "T1074",
+            "T1602",
+            "T1572",
+            "T1011",
+            "T1048.003"
+        ]
+    }
+}

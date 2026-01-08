@@ -1,0 +1,88 @@
+{
+    "report_id": "report_45",
+    "generated_at": "20251222_130525",
+    "scenario_target_ids": [
+        "T1585.002",
+        "T1195.002",
+        "T1059",
+        "T1546.015",
+        "T1547.005",
+        "T1003.007",
+        "T1021.006",
+        "T1071.005",
+        "T1573.002",
+        "T1052",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585.002",
+        "T1195.002",
+        "T1059",
+        "T1546.015",
+        "T1547.005",
+        "T1003.007",
+        "T1021.006",
+        "T1071.005",
+        "T1573.002",
+        "T1052",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1547.005",
+        "T1546.015",
+        "T1052",
+        "T1585.002",
+        "T1059",
+        "T1021.006",
+        "T1499.003",
+        "T1573.002",
+        "T1071.005",
+        "T1003.007"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated activity attributed to the advanced persistent threat (APT) group 'SHADOWFALL'. This campaign targets mid-sized financial institutions in North America, leveraging a blend of social engineering and technical exploits. Initial reconnaissance indicated that the actors likely gathered target information through open-source intelligence (OSINT) prior to the attack, though no specific techniques were tagged in this phase.\n\nInitial Access: The actors gained initial foothold by exploiting a temporary email service's free tier to send spear-phishing emails with malicious links, using disposable accounts to avoid attribution. These emails appeared to originate from a trusted software vendor, referencing a critical update.\n\nExecution: Upon user interaction, the link redirected to a compromised software repository where the adversary had altered the application's source code during the build process to include credential harvesting functionality. The malicious code was embedded in a Java-based installer, which, when executed, invoked a command and scripting interpreter to run a PowerShell script that downloaded additional payloads from a remote server. System logs from the affected endpoint showed unusual process creation events around this time, but these were not flagged by antivirus software due to obfuscation.\n\nPersistence: To maintain access, the malware modified the registry using 'reg add HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF01-2345-6789-ABCD-EF0123456789}\\InprocServer32 /d C:\\malware.dll' for COM hijacking and simultaneously altered HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages to load a custom credential harvesting DLL as a Security Support Provider. These changes allowed the malware to persist across reboots and intercept authentication attempts.\n\nCredential Access: The adversary employed tools like LaZagne to access the proc filesystem, using the `/maps` and `/mem` files to identify regex patterns and dump cleartext passwords from browser process memory. This enabled extraction of stored credentials for banking portals and internal systems.\n\nLateral Movement: Using harvested credentials, the actors leveraged Windows Remote Management (WinRM) to move laterally across the network, tracking `TrustedHosts` entries to target additional systems. Network traffic analysis revealed multiple WinRM sessions originating from the initially compromised host.\n\nCommand and Control (C2): For covert communication, the malware established C2 channels using MQTT publish/subscribe protocols, encrypting the first request with a hardcoded server public RSA key to ensure secure initial handshake. This allowed for stealthy data exchange and command execution without triggering network-based alerts.\n\nExfiltration: Data exfiltration occurred through multiple methods. The malware automatically detected attached USB drives and copied system configuration files to them for physical exfiltration. Additionally, the actors conducted a denial-of-service attack by exploiting the user registration feature, automating thousands of sign-up attempts that overwhelmed the application database and caused service degradation. This diversionary tactic aimed to distract incident responders from the ongoing data theft.\n\nMitigation recommendations include implementing email filtering for disposable domains, monitoring software supply chains, and enhancing endpoint detection for registry modifications and unusual WinRM activity. This scenario is fictional and intended for training purposes only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated activity attributed to the advanced persistent threat (APT) group 'SHADOWFALL'. This campaign targets mid-sized financial institutions in North America, leveraging a blend of social engineering and technical exploits. Initial reconnaissance indicated that the actors likely gathered target information through open-source intelligence (OSINT) prior to the attack, though no specific techniques were tagged in this phase.\n\nInitial Access: The actors gained initial foothold by exploiting a temporary email service's free tier to send spear-phishing emails with malicious links, using disposable accounts to avoid attribution [T1585.002]. These emails appeared to originate from a trusted software vendor, referencing a critical update.\n\nExecution: Upon user interaction, the link redirected to a compromised software repository where the adversary had altered the application's source code during the build process to include credential harvesting functionality [T1195.002]. The malicious code was embedded in a Java-based installer, which, when executed, invoked a command and scripting interpreter to run a PowerShell script that downloaded additional payloads from a remote server [T1059]. System logs from the affected endpoint showed unusual process creation events around this time, but these were not flagged by antivirus software due to obfuscation.\n\nPersistence: To maintain access, the malware modified the registry using 'reg add HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF01-2345-6789-ABCD-EF0123456789}\\InprocServer32 /d C:\\malware.dll' for COM hijacking [T1546.015] and simultaneously altered HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages to load a custom credential harvesting DLL as a Security Support Provider [T1547.005]. These changes allowed the malware to persist across reboots and intercept authentication attempts.\n\nCredential Access: The adversary employed tools like LaZagne to access the proc filesystem, using the `/maps` and `/mem` files to identify regex patterns and dump cleartext passwords from browser process memory [T1003.007]. This enabled extraction of stored credentials for banking portals and internal systems.\n\nLateral Movement: Using harvested credentials, the actors leveraged Windows Remote Management (WinRM) to move laterally across the network, tracking `TrustedHosts` entries to target additional systems [T1021.006]. Network traffic analysis revealed multiple WinRM sessions originating from the initially compromised host.\n\nCommand and Control (C2): For covert communication, the malware established C2 channels using MQTT publish/subscribe protocols, encrypting the first request with a hardcoded server public RSA key to ensure secure initial handshake [T1071.005] [T1573.002]. This allowed for stealthy data exchange and command execution without triggering network-based alerts.\n\nExfiltration: Data exfiltration occurred through multiple methods. The malware automatically detected attached USB drives and copied system configuration files to them for physical exfiltration [T1052]. Additionally, the actors conducted a denial-of-service attack by exploiting the user registration feature, automating thousands of sign-up attempts that overwhelmed the application database and caused service degradation [T1499.003]. This diversionary tactic aimed to distract incident responders from the ongoing data theft.\n\nMitigation recommendations include implementing email filtering for disposable domains, monitoring software supply chains, and enhancing endpoint detection for registry modifications and unusual WinRM activity. This scenario is fictional and intended for training purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "The malicious code was embedded in a Java-based installer, which, when executed, invoked a command and scripting interpreter to run a PowerShell script that downloaded additional payloads from a remote server.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "The malware automatically detected attached USB drives and copied system configuration files to them for physical exfiltration.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'SHADOWFALL' Targeting Financial Sector",
+        "summary": "This advisory details a fictional campaign by threat actor group 'SHADOWFALL' against financial institutions, designed for blue team training. The campaign involves initial access via compromised email accounts, supply chain compromise, and multi-stage payload deployment leading to credential harvesting, lateral movement, and data exfiltration.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated activity attributed to the advanced persistent threat (APT) group 'SHADOWFALL'. This campaign targets mid-sized financial institutions in North America, leveraging a blend of social engineering and technical exploits. Initial reconnaissance indicated that the actors likely gathered target information through open-source intelligence (OSINT) prior to the attack, though no specific techniques were tagged in this phase.\n\nInitial Access: The actors gained initial foothold by exploiting a temporary email service's free tier to send spear-phishing emails with malicious links, using disposable accounts to avoid attribution [T1585.002]. These emails appeared to originate from a trusted software vendor, referencing a critical update.\n\nExecution: Upon user interaction, the link redirected to a compromised software repository where the adversary had altered the application's source code during the build process to include credential harvesting functionality [T1195.002]. The malicious code was embedded in a Java-based installer, which, when executed, invoked a command and scripting interpreter to run a PowerShell script that downloaded additional payloads from a remote server [T1059]. System logs from the affected endpoint showed unusual process creation events around this time, but these were not flagged by antivirus software due to obfuscation.\n\nPersistence: To maintain access, the malware modified the registry using 'reg add HKLM\\SOFTWARE\\Classes\\CLSID\\{ABCDEF01-2345-6789-ABCD-EF0123456789}\\InprocServer32 /d C:\\malware.dll' for COM hijacking [T1546.015] and simultaneously altered HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Security Packages to load a custom credential harvesting DLL as a Security Support Provider [T1547.005]. These changes allowed the malware to persist across reboots and intercept authentication attempts.\n\nCredential Access: The adversary employed tools like LaZagne to access the proc filesystem, using the `/maps` and `/mem` files to identify regex patterns and dump cleartext passwords from browser process memory [T1003.007]. This enabled extraction of stored credentials for banking portals and internal systems.\n\nLateral Movement: Using harvested credentials, the actors leveraged Windows Remote Management (WinRM) to move laterally across the network, tracking `TrustedHosts` entries to target additional systems [T1021.006]. Network traffic analysis revealed multiple WinRM sessions originating from the initially compromised host.\n\nCommand and Control (C2): For covert communication, the malware established C2 channels using MQTT publish/subscribe protocols, encrypting the first request with a hardcoded server public RSA key to ensure secure initial handshake [T1071.005] [T1573.002]. This allowed for stealthy data exchange and command execution without triggering network-based alerts.\n\nExfiltration: Data exfiltration occurred through multiple methods. The malware automatically detected attached USB drives and copied system configuration files to them for physical exfiltration [T1052]. Additionally, the actors conducted a denial-of-service attack by exploiting the user registration feature, automating thousands of sign-up attempts that overwhelmed the application database and caused service degradation [T1499.003]. This diversionary tactic aimed to distract incident responders from the ongoing data theft.\n\nMitigation recommendations include implementing email filtering for disposable domains, monitoring software supply chains, and enhancing endpoint detection for registry modifications and unusual WinRM activity. This scenario is fictional and intended for training purposes only.",
+        "techniques_used": [
+            "T1585.002",
+            "T1195.002",
+            "T1059",
+            "T1546.015",
+            "T1547.005",
+            "T1003.007",
+            "T1021.006",
+            "T1071.005",
+            "T1573.002",
+            "T1052",
+            "T1499.003"
+        ]
+    }
+}

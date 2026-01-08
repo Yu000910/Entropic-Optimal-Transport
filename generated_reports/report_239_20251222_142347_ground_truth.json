@@ -1,0 +1,53 @@
+{
+    "report_id": "report_239",
+    "generated_at": "20251222_142347",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1059.012",
+        "T1053",
+        "T1213.003",
+        "T1132.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.003",
+        "T1059.012",
+        "T1053",
+        "T1213.003",
+        "T1132.002"
+    ],
+    "actual_found_ids": [
+        "T1059.012",
+        "T1213.003",
+        "T1132.002",
+        "T1053",
+        "T1078.003"
+    ],
+    "clean_text": "On 2023-10-15, FinSecure Inc., a company specializing in secure payment processing with offices in New York and London, detected unusual outbound traffic from their internal VMware ESXi 7.0 servers, logging events such as 'ESXi host connection refused' and 'unexpected CLI activity'. The actors likely conducted initial reconnaissance by scanning for exposed .git directories on web servers, though no specific logs confirm this phase. In the initial access stage, the malware exploited weak local administrative passwords, using harvested credentials from Windows Credential Manager to gain unauthorized access to local accounts. Once inside, the adversary employed the esxcli command-line interface to enumerate all virtual machines, identifying high-value targets like database servers and development environments. For persistence, they created a scheduled task named 'Mozilla\\Firefox Default Browser Agent 409046Z0FF4A39CB' to execute malicious scripts at regular intervals, ensuring continued access even after reboots. During execution, the malware automatically searched for and exfiltrated .git folders containing sensitive project data, including source code and configuration files, from compromised web servers. To evade detection, the malicious scripts encoded their command-and-control payloads using a modified Base64 scheme with special characters replacing standard ones, such as '!' for '+' and '#' for '/', before transmitting data over non-standard ports. Additional system logs showed routine backup processes and failed login attempts from unknown IPs, which were unrelated to the attack. The campaign was contained after FinSecure's security team identified the scheduled task and blocked outbound traffic to suspicious domains, but residual artifacts may remain in virtual machine snapshots.",
+    "tagged_text": "On 2023-10-15, FinSecure Inc., a company specializing in secure payment processing with offices in New York and London, detected unusual outbound traffic from their internal VMware ESXi 7.0 servers, logging events such as 'ESXi host connection refused' and 'unexpected CLI activity'. The actors likely conducted initial reconnaissance by scanning for exposed .git directories on web servers, though no specific logs confirm this phase. In the initial access stage, the malware exploited weak local administrative passwords, using harvested credentials from Windows Credential Manager to gain unauthorized access to local accounts [T1078.003]. Once inside, the adversary employed the esxcli command-line interface to enumerate all virtual machines, identifying high-value targets like database servers and development environments [T1059.012]. For persistence, they created a scheduled task named 'Mozilla\\Firefox Default Browser Agent 409046Z0FF4A39CB' to execute malicious scripts at regular intervals, ensuring continued access even after reboots [T1053]. During execution, the malware automatically searched for and exfiltrated .git folders containing sensitive project data, including source code and configuration files, from compromised web servers [T1213.003]. To evade detection, the malicious scripts encoded their command-and-control payloads using a modified Base64 scheme with special characters replacing standard ones, such as '!' for '+' and '#' for '/', before transmitting data over non-standard ports [T1132.002]. Additional system logs showed routine backup processes and failed login attempts from unknown IPs, which were unrelated to the attack. The campaign was contained after FinSecure's security team identified the scheduled task and blocked outbound traffic to suspicious domains, but residual artifacts may remain in virtual machine snapshots.",
+    "sentence_annotations": [
+        {
+            "sentence": "For persistence, they created a scheduled task named 'Mozilla\\Firefox Default Browser Agent 409046Z0FF4A39CB' to execute malicious scripts at regular intervals, ensuring continued access even after reboots.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'StrifeWater' Targeting Virtualized Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'StrifeWater', which targeted a mid-sized financial services firm, 'FinSecure Inc.', to exfiltrate sensitive project data from virtualized infrastructure. The actors employed a multi-stage attack leveraging local account compromise, hypervisor exploitation, and encoded command-and-control communications. FinSecure Inc. reported anomalous network traffic from their VMware ESXi servers, leading to the discovery of unauthorized scheduled tasks and data exfiltration attempts. This report is for educational purposes to train blue teams on identifying and mitigating such tactics in a controlled environment.",
+        "full_report_text": "On 2023-10-15, FinSecure Inc., a company specializing in secure payment processing with offices in New York and London, detected unusual outbound traffic from their internal VMware ESXi 7.0 servers, logging events such as 'ESXi host connection refused' and 'unexpected CLI activity'. The actors likely conducted initial reconnaissance by scanning for exposed .git directories on web servers, though no specific logs confirm this phase. In the initial access stage, the malware exploited weak local administrative passwords, using harvested credentials from Windows Credential Manager to gain unauthorized access to local accounts [T1078.003]. Once inside, the adversary employed the esxcli command-line interface to enumerate all virtual machines, identifying high-value targets like database servers and development environments [T1059.012]. For persistence, they created a scheduled task named 'Mozilla\\Firefox Default Browser Agent 409046Z0FF4A39CB' to execute malicious scripts at regular intervals, ensuring continued access even after reboots [T1053]. During execution, the malware automatically searched for and exfiltrated .git folders containing sensitive project data, including source code and configuration files, from compromised web servers [T1213.003]. To evade detection, the malicious scripts encoded their command-and-control payloads using a modified Base64 scheme with special characters replacing standard ones, such as '!' for '+' and '#' for '/', before transmitting data over non-standard ports [T1132.002]. Additional system logs showed routine backup processes and failed login attempts from unknown IPs, which were unrelated to the attack. The campaign was contained after FinSecure's security team identified the scheduled task and blocked outbound traffic to suspicious domains, but residual artifacts may remain in virtual machine snapshots.",
+        "techniques_used": [
+            "T1078.003",
+            "T1059.012",
+            "T1053",
+            "T1213.003",
+            "T1132.002"
+        ]
+    }
+}

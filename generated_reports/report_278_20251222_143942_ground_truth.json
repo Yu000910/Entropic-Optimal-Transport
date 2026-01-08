@@ -1,0 +1,92 @@
+{
+    "report_id": "report_278",
+    "generated_at": "20251222_143942",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1059.001",
+        "T1053.006",
+        "T1053.002",
+        "T1546.012",
+        "T1620",
+        "T1574.007",
+        "T1573.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.002",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1053.006",
+        "T1053.002",
+        "T1546.012",
+        "T1620",
+        "T1574.007",
+        "T1573.001"
+    ],
+    "actual_found_ids": [
+        "T1053.006",
+        "T1053.002",
+        "T1112",
+        "T1620",
+        "T1589",
+        "T1574.007",
+        "T1573.001",
+        "T1078.002",
+        "T1546.012",
+        "T1105",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign. This scenario is based on simulated activities attributed to the group Cinnamon Tempest, which has historically targeted financial and critical infrastructure sectors. In this campaign, the actors likely conduct reconnaissance to identify high-value targets, though no specific indicators have been confirmed in this simulation.\n\nInitial access was achieved through the compromise of domain administrator accounts, allowing the adversary to deploy malware across the network. System logs from the affected environment show unusual login attempts from external IP addresses, but these were not flagged due to misconfigured alerting rules. Once inside, the actors employed PowerShell to actively download malicious payloads from command and control (C2) servers while simultaneously modifying registry keys to establish persistence. For example, a PowerShell script scheduled a malicious timer task called 'WindowsDefenderScan' to run daily, and ransomware abused Win32_ScheduledJob to schedule encryption routines during low-activity periods.\n\nPersistence mechanisms included the use of image file execution options injection when admin privileges were detected on Windows systems newer than Windows 7, and the threat actor allocated malicious.dll in a remote process to conceal its execution through reflective code loading. Additionally, the actors exploited path interception opportunities in the PATH environment variable to escalate privileges, as observed in tools like PowerSploit. For command and control, APT12's RIPTIDE RAT was simulated, which communicates over HTTP with payloads encrypted using symmetric cryptography such as RC4. Network traffic analysis revealed encrypted packets, but decryption keys were not recovered in this training exercise. The campaign's objectives included data exfiltration and ransomware deployment, with no real-world impact reported.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign. This scenario is based on simulated activities attributed to the group Cinnamon Tempest, which has historically targeted financial and critical infrastructure sectors. In this campaign, the actors likely conduct reconnaissance [T1589] to identify high-value targets, though no specific indicators have been confirmed in this simulation.\n\nInitial access was achieved through the compromise of domain administrator accounts [T1078.002], allowing the adversary to deploy malware across the network. System logs from the affected environment show unusual login attempts from external IP addresses, but these were not flagged due to misconfigured alerting rules. Once inside, the actors employed PowerShell [T1059.001] to actively download malicious payloads [T1105] from command and control (C2) servers while simultaneously modifying registry keys [T1112] to establish persistence. For example, a PowerShell script scheduled a malicious timer task called 'WindowsDefenderScan' to run daily [T1053.006], and ransomware abused Win32_ScheduledJob to schedule encryption routines during low-activity periods [T1053.002].\n\nPersistence mechanisms included the use of image file execution options injection [T1546.012] when admin privileges were detected on Windows systems newer than Windows 7, and the threat actor allocated malicious.dll in a remote process to conceal its execution through reflective code loading [T1620]. Additionally, the actors exploited path interception opportunities in the PATH environment variable [T1574.007] to escalate privileges, as observed in tools like PowerSploit. For command and control, APT12's RIPTIDE RAT was simulated, which communicates over HTTP with payloads encrypted using symmetric cryptography [T1573.001] such as RC4. Network traffic analysis revealed encrypted packets, but decryption keys were not recovered in this training exercise. The campaign's objectives included data exfiltration and ransomware deployment, with no real-world impact reported.",
+    "sentence_annotations": [
+        {
+            "sentence": "In this campaign, the actors likely conduct reconnaissance to identify high-value targets, though no specific indicators have been confirmed in this simulation.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to actively download malicious payloads from command and control (C2) servers while simultaneously modifying registry keys to establish persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download malicious payloads from command and control (C2) servers while simultaneously modifying registry keys to establish persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "dll in a remote process to conceal its execution through reflective code loading.",
+            "technique_id": "T1620",
+            "technique_name": "Reflective Code Loading"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by the threat actor group Cinnamon Tempest, which has been observed targeting organizations to deploy ransomware and establish persistent access. The campaign involves credential theft, PowerShell exploitation, scheduled task abuse, and reflective code loading, with encryption used for command and control communications.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign. This scenario is based on simulated activities attributed to the group Cinnamon Tempest, which has historically targeted financial and critical infrastructure sectors. In this campaign, the actors likely conduct reconnaissance [T1589] to identify high-value targets, though no specific indicators have been confirmed in this simulation.\n\nInitial access was achieved through the compromise of domain administrator accounts [T1078.002], allowing the adversary to deploy malware across the network. System logs from the affected environment show unusual login attempts from external IP addresses, but these were not flagged due to misconfigured alerting rules. Once inside, the actors employed PowerShell [T1059.001] to actively download malicious payloads [T1105] from command and control (C2) servers while simultaneously modifying registry keys [T1112] to establish persistence. For example, a PowerShell script scheduled a malicious timer task called 'WindowsDefenderScan' to run daily [T1053.006], and ransomware abused Win32_ScheduledJob to schedule encryption routines during low-activity periods [T1053.002].\n\nPersistence mechanisms included the use of image file execution options injection [T1546.012] when admin privileges were detected on Windows systems newer than Windows 7, and the threat actor allocated malicious.dll in a remote process to conceal its execution through reflective code loading [T1620]. Additionally, the actors exploited path interception opportunities in the PATH environment variable [T1574.007] to escalate privileges, as observed in tools like PowerSploit. For command and control, APT12's RIPTIDE RAT was simulated, which communicates over HTTP with payloads encrypted using symmetric cryptography [T1573.001] such as RC4. Network traffic analysis revealed encrypted packets, but decryption keys were not recovered in this training exercise. The campaign's objectives included data exfiltration and ransomware deployment, with no real-world impact reported.",
+        "techniques_used": [
+            "T1589",
+            "T1078.002",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1053.006",
+            "T1053.002",
+            "T1546.012",
+            "T1620",
+            "T1574.007",
+            "T1573.001"
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "report_id": "report_72",
+    "generated_at": "20251222_114601",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1669",
+        "T1059.003",
+        "T1569.003",
+        "T1218.009",
+        "T1222.002",
+        "T1021.005",
+        "T1205"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.002",
+        "T1669",
+        "T1059.003",
+        "T1569.003",
+        "T1218.009",
+        "T1222.002",
+        "T1021.005",
+        "T1205"
+    ],
+    "actual_found_ids": [
+        "T1569.003",
+        "T1078.002",
+        "T1059.003",
+        "T1205",
+        "T1222.002",
+        "T1669",
+        "T1021.005",
+        "T1218.009"
+    ],
+    "clean_text": "On October 15, 2023, security logs from a fictional energy company, 'GridSecure Inc.', showed anomalous activity starting at 02:00 UTC. The company, which operates power distribution networks across the Midwest, reported no immediate impact, but subsequent analysis revealed a sophisticated intrusion. The attack began with the adversary leveraging previously stolen domain credentials to gain initial access to a Windows server, where they executed mimikatz.exe to dump additional credentials from memory. Concurrently, the malicious actor employed a custom tool to perform wireless scans, identifying all available Wi-Fi access points in the vicinity, including guest networks and employee hotspots, which were logged to a file named 'wifi_scan.txt' in a temporary directory. Following this, the threat actor used a USB-based tool, 'USBferry', to execute various Windows commands via the command shell, such as 'net user' and 'ipconfig', while also leveraging Regsvcs.exe to sideload a malicious DLL, disguising it as a legitimate component to bypass security controls. On a compromised Linux server, the actor modified file permissions using 'chmod 000 /home/admin/.bash_history' to obscure command history and then ran 'systemctl start data-exfiltration.service' to initiate data theft, exfiltrating sensitive schematics over an encrypted channel. Additionally, the ransomware deployed a VNC server to enable remote manipulation of the system, allowing actors to navigate GUIs and execute further commands, while a backdoor utilized libpcap for traffic signaling, monitoring network patterns and only activating when specific packet sequences were detected, such as those mimicking normal HTTP traffic. Incident responders noted unrelated log entries, like failed login attempts from legacy systems and routine backup errors, which were not part of the attack. The campaign appears designed for training purposes, emphasizing the need for robust monitoring of domain accounts, wireless activity, and unusual service executions.",
+    "tagged_text": "On October 15, 2023, security logs from a fictional energy company, 'GridSecure Inc.', showed anomalous activity starting at 02:00 UTC. The company, which operates power distribution networks across the Midwest, reported no immediate impact, but subsequent analysis revealed a sophisticated intrusion. The attack began with the adversary leveraging previously stolen domain credentials [T1078.002] to gain initial access to a Windows server, where they executed mimikatz.exe to dump additional credentials from memory. Concurrently, the malicious actor employed a custom tool to perform wireless scans [T1669], identifying all available Wi-Fi access points in the vicinity, including guest networks and employee hotspots, which were logged to a file named 'wifi_scan.txt' in a temporary directory. Following this, the threat actor used a USB-based tool, 'USBferry', to execute various Windows commands via the command shell [T1059.003], such as 'net user' and 'ipconfig', while also leveraging Regsvcs.exe to sideload a malicious DLL [T1218.009], disguising it as a legitimate component to bypass security controls. On a compromised Linux server, the actor modified file permissions [T1222.002] using 'chmod 000 /home/admin/.bash_history' to obscure command history and then ran 'systemctl start data-exfiltration.service' [T1569.003] to initiate data theft, exfiltrating sensitive schematics over an encrypted channel. Additionally, the ransomware deployed a VNC server [T1021.005] to enable remote manipulation of the system, allowing actors to navigate GUIs and execute further commands, while a backdoor utilized libpcap for traffic signaling [T1205], monitoring network patterns and only activating when specific packet sequences were detected, such as those mimicking normal HTTP traffic. Incident responders noted unrelated log entries, like failed login attempts from legacy systems and routine backup errors, which were not part of the attack. The campaign appears designed for training purposes, emphasizing the need for robust monitoring of domain accounts, wireless activity, and unusual service executions.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, the malicious actor employed a custom tool to perform wireless scans, identifying all available Wi-Fi access points in the vicinity, including guest networks and employee hotspots, which were logged to a file named 'wifi_scan.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "005] to enable remote manipulation of the system, allowing actors to navigate GUIs and execute further commands, while a backdoor utilized libpcap for traffic signaling, monitoring network patterns and only activating when specific packet sequences were detected, such as those mimicking normal HTTP traffic.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowHook', targeting critical infrastructure sectors. This advisory provides a realistic training scenario for blue teams, focusing on techniques involving credential theft, wireless reconnaissance, command execution, and data exfiltration. Actors likely gained initial access through compromised domain accounts and used a multi-stage approach to establish persistence and evade detection.",
+        "full_report_text": "On October 15, 2023, security logs from a fictional energy company, 'GridSecure Inc.', showed anomalous activity starting at 02:00 UTC. The company, which operates power distribution networks across the Midwest, reported no immediate impact, but subsequent analysis revealed a sophisticated intrusion. The attack began with the adversary leveraging previously stolen domain credentials [T1078.002] to gain initial access to a Windows server, where they executed mimikatz.exe to dump additional credentials from memory. Concurrently, the malicious actor employed a custom tool to perform wireless scans [T1669], identifying all available Wi-Fi access points in the vicinity, including guest networks and employee hotspots, which were logged to a file named 'wifi_scan.txt' in a temporary directory. Following this, the threat actor used a USB-based tool, 'USBferry', to execute various Windows commands via the command shell [T1059.003], such as 'net user' and 'ipconfig', while also leveraging Regsvcs.exe to sideload a malicious DLL [T1218.009], disguising it as a legitimate component to bypass security controls. On a compromised Linux server, the actor modified file permissions [T1222.002] using 'chmod 000 /home/admin/.bash_history' to obscure command history and then ran 'systemctl start data-exfiltration.service' [T1569.003] to initiate data theft, exfiltrating sensitive schematics over an encrypted channel. Additionally, the ransomware deployed a VNC server [T1021.005] to enable remote manipulation of the system, allowing actors to navigate GUIs and execute further commands, while a backdoor utilized libpcap for traffic signaling [T1205], monitoring network patterns and only activating when specific packet sequences were detected, such as those mimicking normal HTTP traffic. Incident responders noted unrelated log entries, like failed login attempts from legacy systems and routine backup errors, which were not part of the attack. The campaign appears designed for training purposes, emphasizing the need for robust monitoring of domain accounts, wireless activity, and unusual service executions.",
+        "techniques_used": [
+            "T1078.002",
+            "T1669",
+            "T1059.003",
+            "T1569.003",
+            "T1218.009",
+            "T1222.002",
+            "T1021.005",
+            "T1205"
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "report_id": "report_636",
+    "generated_at": "20251222_171237",
+    "scenario_target_ids": [
+        "T1589.002",
+        "T1589.003",
+        "T1669",
+        "T1675",
+        "T1001",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589.002",
+        "T1589.003",
+        "T1669",
+        "T1675",
+        "T1001",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1669",
+        "T1589.002",
+        "T1589.003",
+        "T1675",
+        "T1001",
+        "T1048"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign designed for training purposes. APT-FICT, a simulated threat actor, has been observed targeting organizations in the energy and manufacturing sectors. Initial analysis indicates the campaign began in early 2024, with actors conducting reconnaissance to gather intelligence on target environments. The actors likely queried the Autodiscover service to harvest legitimate email addresses and scraped the company's 'About Us' webpage to collect employee names for crafting spear-phishing emails. System logs from affected networks show anomalous DNS queries to external domains, though these were unrelated to the attack. Following reconnaissance, the malware was configured to automatically connect to any open Wi-Fi access point named 'FreeWiFi' to establish a foothold in unsecured network segments. Once inside, the actors abused the vSphere Web Services SDK to execute a persistence mechanism on the guest operating system while employing base64 -d decoding to obfuscate its command and control channel from network monitoring. The backdoor then collected user documents and exfiltrated them using NetBIOS file transfers over alternative protocols. Additional logs revealed routine system updates and user login attempts, which were not part of the malicious activity. Organizations should monitor for these behaviors and apply patches to vulnerable ESXi systems.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign designed for training purposes. APT-FICT, a simulated threat actor, has been observed targeting organizations in the energy and manufacturing sectors. Initial analysis indicates the campaign began in early 2024, with actors conducting reconnaissance to gather intelligence on target environments. The actors likely queried the Autodiscover service to harvest legitimate email addresses [T1589.002] and scraped the company's 'About Us' webpage to collect employee names [T1589.003] for crafting spear-phishing emails. System logs from affected networks show anomalous DNS queries to external domains, though these were unrelated to the attack. Following reconnaissance, the malware was configured to automatically connect to any open Wi-Fi access point named 'FreeWiFi' [T1669] to establish a foothold in unsecured network segments. Once inside, the actors abused the vSphere Web Services SDK to execute a persistence mechanism on the guest operating system [T1675] while employing base64 -d decoding to obfuscate its command and control channel from network monitoring [T1001]. The backdoor then collected user documents and exfiltrated them using NetBIOS file transfers [T1048] over alternative protocols. Additional logs revealed routine system updates and user login attempts, which were not part of the malicious activity. Organizations should monitor for these behaviors and apply patches to vulnerable ESXi systems.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following reconnaissance, the malware was configured to automatically connect to any open Wi-Fi access point named 'FreeWiFi' to establish a foothold in unsecured network segments.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Once inside, the actors abused the vSphere Web Services SDK to execute a persistence mechanism on the guest operating system while employing base64 -d decoding to obfuscate its command and control channel from network monitoring.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "Once inside, the actors abused the vSphere Web Services SDK to execute a persistence mechanism on the guest operating system while employing base64 -d decoding to obfuscate its command and control channel from network monitoring.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        },
+        {
+            "sentence": "The backdoor then collected user documents and exfiltrated them using NetBIOS file transfers over alternative protocols.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting critical infrastructure sectors. The campaign involves reconnaissance, initial access via spear-phishing, lateral movement, and data exfiltration, leveraging techniques such as email address harvesting, Wi-Fi network exploitation, ESXi command abuse, and obfuscated exfiltration. Blue teams are advised to review logs for suspicious activities and implement recommended mitigations.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign designed for training purposes. APT-FICT, a simulated threat actor, has been observed targeting organizations in the energy and manufacturing sectors. Initial analysis indicates the campaign began in early 2024, with actors conducting reconnaissance to gather intelligence on target environments. The actors likely queried the Autodiscover service to harvest legitimate email addresses [T1589.002] and scraped the company's 'About Us' webpage to collect employee names [T1589.003] for crafting spear-phishing emails. System logs from affected networks show anomalous DNS queries to external domains, though these were unrelated to the attack. Following reconnaissance, the malware was configured to automatically connect to any open Wi-Fi access point named 'FreeWiFi' [T1669] to establish a foothold in unsecured network segments. Once inside, the actors abused the vSphere Web Services SDK to execute a persistence mechanism on the guest operating system [T1675] while employing base64 -d decoding to obfuscate its command and control channel from network monitoring [T1001]. The backdoor then collected user documents and exfiltrated them using NetBIOS file transfers [T1048] over alternative protocols. Additional logs revealed routine system updates and user login attempts, which were not part of the malicious activity. Organizations should monitor for these behaviors and apply patches to vulnerable ESXi systems.",
+        "techniques_used": [
+            "T1589.002",
+            "T1589.003",
+            "T1669",
+            "T1675",
+            "T1001",
+            "T1048"
+        ]
+    }
+}

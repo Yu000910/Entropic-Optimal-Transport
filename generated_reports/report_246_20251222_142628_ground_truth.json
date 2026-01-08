@@ -1,0 +1,123 @@
+{
+    "report_id": "report_246",
+    "generated_at": "20251222_142628",
+    "scenario_target_ids": [
+        "T1133",
+        "T1078.003",
+        "T1675",
+        "T1556.001",
+        "T1543",
+        "T1550.002",
+        "T1110",
+        "T1606",
+        "T1497.002",
+        "T1654",
+        "T1092",
+        "T1499"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1133",
+        "T1078.003",
+        "T1675",
+        "T1556.001",
+        "T1543",
+        "T1550.002",
+        "T1110",
+        "T1606",
+        "T1497.002",
+        "T1654",
+        "T1092",
+        "T1499"
+    ],
+    "actual_found_ids": [
+        "T1110",
+        "T1499",
+        "T1550.002",
+        "T1654",
+        "T1497.002",
+        "T1543",
+        "T1556.001",
+        "T1133",
+        "T1092",
+        "T1675",
+        "T1606",
+        "T1078.003"
+    ],
+    "clean_text": "On October 15, 2023, ShadowHawk actors likely conducted reconnaissance on a fictional manufacturing company, 'GlobalTech Inc.', which uses a mix of on-premises VMware ESXi virtualization and AWS cloud services. The company's background includes operations in critical infrastructure sectors, with network logs showing normal user activity prior to the incident. Initial access was gained through brute-force attacks targeting external remote services like VPNs and Outlook Web Access (OWA), allowing the actors to forge web credentials by invoking AssumeRole in AWS IAM to obtain cross-account access. Once inside, they used compromised local accounts to execute PowerShell scripts that downloaded Mimikatz.exe, enabling pass-the-hash techniques for lateral movement while simultaneously modifying system processes by injecting malicious code into svchost.exe for persistence. On the ESXi server, the actors abused the StartProgramInGuest command to deploy Skeleton Key malware, creating a backdoor password for all domain accounts and enumerating system logs to search for 'malware.exe' entries as part of user activity-based checks. Data exfiltration involved communication through removable media via USB flash drives from an air-gapped network, and the campaign culminated in an endpoint denial-of-service attack exploiting a vulnerability in a WordPress plugin, causing temporary service disruption. Additional system logs from GlobalTech's SIEM showed irrelevant entries for routine backups and user logins, which were not tagged as part of the attack chain.",
+    "tagged_text": "On October 15, 2023, ShadowHawk actors likely conducted reconnaissance on a fictional manufacturing company, 'GlobalTech Inc.', which uses a mix of on-premises VMware ESXi virtualization and AWS cloud services. The company's background includes operations in critical infrastructure sectors, with network logs showing normal user activity prior to the incident. Initial access was gained through brute-force attacks [T1110] targeting external remote services like VPNs and Outlook Web Access (OWA) [T1133], allowing the actors to forge web credentials [T1606] by invoking AssumeRole in AWS IAM to obtain cross-account access. Once inside, they used compromised local accounts [T1078.003] to execute PowerShell scripts that downloaded Mimikatz.exe, enabling pass-the-hash techniques [T1550.002] for lateral movement while simultaneously modifying system processes [T1543] by injecting malicious code into svchost.exe for persistence. On the ESXi server, the actors abused the StartProgramInGuest command [T1675] to deploy Skeleton Key malware, creating a backdoor password for all domain accounts [T1556.001] and enumerating system logs [T1654] to search for 'malware.exe' entries as part of user activity-based checks [T1497.002]. Data exfiltration involved communication through removable media [T1092] via USB flash drives from an air-gapped network, and the campaign culminated in an endpoint denial-of-service attack [T1499] exploiting a vulnerability in a WordPress plugin, causing temporary service disruption. Additional system logs from GlobalTech's SIEM showed irrelevant entries for routine backups and user logins, which were not tagged as part of the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was gained through brute-force attacks targeting external remote services like VPNs and Outlook Web Access (OWA), allowing the actors to forge web credentials by invoking AssumeRole in AWS IAM to obtain cross-account access.",
+            "technique_id": "T1110",
+            "technique_name": "Brute Force"
+        },
+        {
+            "sentence": "Initial access was gained through brute-force attacks targeting external remote services like VPNs and Outlook Web Access (OWA), allowing the actors to forge web credentials by invoking AssumeRole in AWS IAM to obtain cross-account access.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Initial access was gained through brute-force attacks targeting external remote services like VPNs and Outlook Web Access (OWA), allowing the actors to forge web credentials by invoking AssumeRole in AWS IAM to obtain cross-account access.",
+            "technique_id": "T1606",
+            "technique_name": "Forge Web Credentials"
+        },
+        {
+            "sentence": "002] for lateral movement while simultaneously modifying system processes by injecting malicious code into svchost.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "On the ESXi server, the actors abused the StartProgramInGuest command to deploy Skeleton Key malware, creating a backdoor password for all domain accounts [T1556.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "001] and enumerating system logs to search for 'malware.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "Data exfiltration involved communication through removable media via USB flash drives from an air-gapped network, and the campaign culminated in an endpoint denial-of-service attack exploiting a vulnerability in a WordPress plugin, causing temporary service disruption.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        },
+        {
+            "sentence": "Data exfiltration involved communication through removable media via USB flash drives from an air-gapped network, and the campaign culminated in an endpoint denial-of-service attack exploiting a vulnerability in a WordPress plugin, causing temporary service disruption.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowHawk', targeting hybrid IT environments involving on-premises VMware ESXi servers and cloud services. The campaign leverages a combination of initial access via external services, lateral movement using compromised credentials, and persistence mechanisms to deploy malware and exfiltrate data. Blue teams are advised to review logs and implement mitigations as outlined.",
+        "full_report_text": "On October 15, 2023, ShadowHawk actors likely conducted reconnaissance on a fictional manufacturing company, 'GlobalTech Inc.', which uses a mix of on-premises VMware ESXi virtualization and AWS cloud services. The company's background includes operations in critical infrastructure sectors, with network logs showing normal user activity prior to the incident. Initial access was gained through brute-force attacks [T1110] targeting external remote services like VPNs and Outlook Web Access (OWA) [T1133], allowing the actors to forge web credentials [T1606] by invoking AssumeRole in AWS IAM to obtain cross-account access. Once inside, they used compromised local accounts [T1078.003] to execute PowerShell scripts that downloaded Mimikatz.exe, enabling pass-the-hash techniques [T1550.002] for lateral movement while simultaneously modifying system processes [T1543] by injecting malicious code into svchost.exe for persistence. On the ESXi server, the actors abused the StartProgramInGuest command [T1675] to deploy Skeleton Key malware, creating a backdoor password for all domain accounts [T1556.001] and enumerating system logs [T1654] to search for 'malware.exe' entries as part of user activity-based checks [T1497.002]. Data exfiltration involved communication through removable media [T1092] via USB flash drives from an air-gapped network, and the campaign culminated in an endpoint denial-of-service attack [T1499] exploiting a vulnerability in a WordPress plugin, causing temporary service disruption. Additional system logs from GlobalTech's SIEM showed irrelevant entries for routine backups and user logins, which were not tagged as part of the attack chain.",
+        "techniques_used": [
+            "T1133",
+            "T1078.003",
+            "T1675",
+            "T1556.001",
+            "T1543",
+            "T1550.002",
+            "T1110",
+            "T1606",
+            "T1497.002",
+            "T1654",
+            "T1092",
+            "T1499"
+        ]
+    }
+}

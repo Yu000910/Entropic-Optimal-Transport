@@ -1,0 +1,100 @@
+{
+    "report_id": "report_518",
+    "generated_at": "20251222_162251",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1091",
+        "T1675",
+        "T1218.014",
+        "T1070.004",
+        "T1568.001",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.002",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1091",
+        "T1675",
+        "T1218.014",
+        "T1568.001",
+        "T1070.004",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1070.004",
+        "T1112",
+        "T1589",
+        "T1568.001",
+        "T1091",
+        "T1566.002",
+        "T1675",
+        "T1105",
+        "T1218.014",
+        "T1048",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional threat actor designated as 'Crimson Lazarus', which has been observed conducting a sophisticated campaign against organizations in the financial and technology sectors. This actor likely conducts reconnaissance to identify high-value targets, such as system administrators managing virtual infrastructure. Initial access was achieved through spearphishing emails containing malicious links that, when clicked, redirected victims to compromised websites hosting downloaders. Once initial foothold was established, the actor employed PowerShell to download additional payloads and modify registry keys for persistence. The campaign then involved lateral movement by infecting removable media to spread across air-gapped systems, while simultaneously using the vSphere Web Services SDK to execute arbitrary commands on compromised guest VMs and creating malicious .msc files to execute payloads when opened by administrators. To maintain stealth, the actor utilized fast flux DNS by registering new DNS A records for domains like 'update.example.com' to establish covert command and control channels, and employed file deletion to remove traces of malicious activities, such as log files and temporary scripts. Exfiltration was conducted over alternative protocols, with the actor using FTP to transfer stolen credentials and sensitive data from the victim's network to external servers. System logs from affected ESXi hosts showed unusual spikes in CPU usage during off-hours, and network traffic analysis revealed anomalous connections to IP addresses associated with known malicious infrastructure. The company background includes a mid-sized cloud service provider with hybrid VMware environments, where administrators routinely use removable drives for data transfers between segmented networks. This advisory is based on simulated incidents and is intended for training purposes only; any resemblance to real events is coincidental.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional threat actor designated as 'Crimson Lazarus', which has been observed conducting a sophisticated campaign against organizations in the financial and technology sectors. This actor likely conducts reconnaissance [T1589] to identify high-value targets, such as system administrators managing virtual infrastructure. Initial access was achieved through spearphishing emails containing malicious links [T1566.002] that, when clicked, redirected victims to compromised websites hosting downloaders. Once initial foothold was established, the actor employed PowerShell [T1059.001] to download additional payloads [T1105] and modify registry keys [T1112] for persistence. The campaign then involved lateral movement by infecting removable media [T1091] to spread across air-gapped systems, while simultaneously using the vSphere Web Services SDK to execute arbitrary commands on compromised guest VMs [T1675] and creating malicious .msc files [T1218.014] to execute payloads when opened by administrators. To maintain stealth, the actor utilized fast flux DNS [T1568.001] by registering new DNS A records for domains like 'update.example.com' to establish covert command and control channels, and employed file deletion [T1070.004] to remove traces of malicious activities, such as log files and temporary scripts. Exfiltration was conducted over alternative protocols, with the actor using FTP [T1048] to transfer stolen credentials and sensitive data from the victim's network to external servers. System logs from affected ESXi hosts showed unusual spikes in CPU usage during off-hours, and network traffic analysis revealed anomalous connections to IP addresses associated with known malicious infrastructure. The company background includes a mid-sized cloud service provider with hybrid VMware environments, where administrators routinely use removable drives for data transfers between segmented networks. This advisory is based on simulated incidents and is intended for training purposes only; any resemblance to real events is coincidental.",
+    "sentence_annotations": [
+        {
+            "sentence": "This actor likely conducts reconnaissance to identify high-value targets, such as system administrators managing virtual infrastructure.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to download additional payloads and modify registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to download additional payloads and modify registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "The campaign then involved lateral movement by infecting removable media to spread across air-gapped systems, while simultaneously using the vSphere Web Services SDK to execute arbitrary commands on compromised guest VMs and creating malicious.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "The campaign then involved lateral movement by infecting removable media to spread across air-gapped systems, while simultaneously using the vSphere Web Services SDK to execute arbitrary commands on compromised guest VMs and creating malicious.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "Exfiltration was conducted over alternative protocols, with the actor using FTP to transfer stolen credentials and sensitive data from the victim's network to external servers.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by 'Crimson Lazarus' Targeting Virtual Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Lazarus', which combines techniques from real-world groups like Lazarus and Crimson to target enterprise virtual environments. The campaign involves spearphishing, lateral movement via removable media, exploitation of ESXi administration tools, and data exfiltration, designed for blue team training on detecting and mitigating multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional threat actor designated as 'Crimson Lazarus', which has been observed conducting a sophisticated campaign against organizations in the financial and technology sectors. This actor likely conducts reconnaissance [T1589] to identify high-value targets, such as system administrators managing virtual infrastructure. Initial access was achieved through spearphishing emails containing malicious links [T1566.002] that, when clicked, redirected victims to compromised websites hosting downloaders. Once initial foothold was established, the actor employed PowerShell [T1059.001] to download additional payloads [T1105] and modify registry keys [T1112] for persistence. The campaign then involved lateral movement by infecting removable media [T1091] to spread across air-gapped systems, while simultaneously using the vSphere Web Services SDK to execute arbitrary commands on compromised guest VMs [T1675] and creating malicious .msc files [T1218.014] to execute payloads when opened by administrators. To maintain stealth, the actor utilized fast flux DNS [T1568.001] by registering new DNS A records for domains like 'update.example.com' to establish covert command and control channels, and employed file deletion [T1070.004] to remove traces of malicious activities, such as log files and temporary scripts. Exfiltration was conducted over alternative protocols, with the actor using FTP [T1048] to transfer stolen credentials and sensitive data from the victim's network to external servers. System logs from affected ESXi hosts showed unusual spikes in CPU usage during off-hours, and network traffic analysis revealed anomalous connections to IP addresses associated with known malicious infrastructure. The company background includes a mid-sized cloud service provider with hybrid VMware environments, where administrators routinely use removable drives for data transfers between segmented networks. This advisory is based on simulated incidents and is intended for training purposes only; any resemblance to real events is coincidental.",
+        "techniques_used": [
+            "T1589",
+            "T1566.002",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1091",
+            "T1675",
+            "T1218.014",
+            "T1568.001",
+            "T1070.004",
+            "T1048"
+        ]
+    }
+}

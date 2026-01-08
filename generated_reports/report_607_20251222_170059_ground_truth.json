@@ -1,0 +1,148 @@
+{
+    "report_id": "report_607",
+    "generated_at": "20251222_170059",
+    "scenario_target_ids": [
+        "T1595.001",
+        "T1591",
+        "T1650",
+        "T1588.004",
+        "T1584.001",
+        "T1566",
+        "T1669",
+        "T1203",
+        "T1552.005",
+        "T1622",
+        "T1005",
+        "T1568",
+        "T1537",
+        "T1565.001",
+        "T1499"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.001",
+        "T1591",
+        "T1650",
+        "T1588.004",
+        "T1584.001",
+        "T1566",
+        "T1669",
+        "T1203",
+        "T1552.005",
+        "T1622",
+        "T1005",
+        "T1568",
+        "T1537",
+        "T1565.001",
+        "T1499"
+    ],
+    "actual_found_ids": [
+        "T1622",
+        "T1499",
+        "T1669",
+        "T1568",
+        "T1552.005",
+        "T1595.001",
+        "T1005",
+        "T1566",
+        "T1565.001",
+        "T1591",
+        "T1584.001",
+        "T1588.004",
+        "T1203",
+        "T1650",
+        "T1537"
+    ],
+    "clean_text": "Crimson Serpent, a suspected state-sponsored group, has been observed targeting financial organizations in North America since early 2024. The campaign begins with actors conducting reconnaissance by scanning IP blocks to map internal network structures and gathering victim organization information through social media platforms like Facebook to identify key employees and understand organizational hierarchy. Following this, the adversary sends phishing emails with malicious attachments disguised as invoices, which exploit vulnerabilities such as CVE-2017-11882 and CVE-2018-8174 for client execution, while simultaneously acquiring access by deploying web shells on compromised web servers. To maintain persistence and evade detection, the actors use digital certificates to sign malicious payloads and hijack domains via AWS Route53 to redirect traffic to phishing pages. During lateral movement, the malware is configured to connect to open Wi-Fi networks named 'Free_WiFi' and retrieves hardcoded API keys from cloud instance metadata APIs. For data collection, the adversary extracts data from local systems and employs dynamic resolution by querying domains like 'malicious.example.com' via DNS tunneling to exfiltrate stolen information, while also transferring data to cloud accounts using Azure backup services. Additionally, stored data manipulation is conducted by altering formulas in financial documents to hide unauthorized activities, and debugger evasion techniques are implemented to avoid analysis. The campaign culminates in endpoint denial of service attacks, exploiting resource exhaustion vulnerabilities in web applications to disrupt operations. System logs from victim environments show increased network traffic and failed login attempts, but these are not directly linked to the techniques. The organization, a mid-sized bank with 500 employees, reported unusual activity in its accounting department, leading to the discovery of this campaign.",
+    "tagged_text": "Crimson Serpent, a suspected state-sponsored group, has been observed targeting financial organizations in North America since early 2024. The campaign begins with actors conducting reconnaissance by scanning IP blocks [T1595.001] to map internal network structures and gathering victim organization information [T1591] through social media platforms like Facebook to identify key employees and understand organizational hierarchy. Following this, the adversary sends phishing emails [T1566] with malicious attachments disguised as invoices, which exploit vulnerabilities such as CVE-2017-11882 and CVE-2018-8174 [T1203] for client execution, while simultaneously acquiring access [T1650] by deploying web shells on compromised web servers. To maintain persistence and evade detection, the actors use digital certificates [T1588.004] to sign malicious payloads and hijack domains [T1584.001] via AWS Route53 to redirect traffic to phishing pages. During lateral movement, the malware is configured to connect to open Wi-Fi networks named 'Free_WiFi' [T1669] and retrieves hardcoded API keys from cloud instance metadata APIs [T1552.005]. For data collection, the adversary extracts data from local systems [T1005] and employs dynamic resolution [T1568] by querying domains like 'malicious.example.com' via DNS tunneling to exfiltrate stolen information, while also transferring data to cloud accounts [T1537] using Azure backup services. Additionally, stored data manipulation [T1565.001] is conducted by altering formulas in financial documents to hide unauthorized activities, and debugger evasion [T1622] techniques are implemented to avoid analysis. The campaign culminates in endpoint denial of service [T1499] attacks, exploiting resource exhaustion vulnerabilities in web applications to disrupt operations. System logs from victim environments show increased network traffic and failed login attempts, but these are not directly linked to the techniques. The organization, a mid-sized bank with 500 employees, reported unusual activity in its accounting department, leading to the discovery of this campaign.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] to map internal network structures and gathering victim organization information through social media platforms like Facebook to identify key employees and understand organizational hierarchy.",
+            "technique_id": "T1591",
+            "technique_name": "Gather Victim Org Information"
+        },
+        {
+            "sentence": "Following this, the adversary sends phishing emails with malicious attachments disguised as invoices, which exploit vulnerabilities such as CVE-2017-11882 and CVE-2018-8174 for client execution, while simultaneously acquiring access by deploying web shells on compromised web servers.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Following this, the adversary sends phishing emails with malicious attachments disguised as invoices, which exploit vulnerabilities such as CVE-2017-11882 and CVE-2018-8174 for client execution, while simultaneously acquiring access by deploying web shells on compromised web servers.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "Following this, the adversary sends phishing emails with malicious attachments disguised as invoices, which exploit vulnerabilities such as CVE-2017-11882 and CVE-2018-8174 for client execution, while simultaneously acquiring access by deploying web shells on compromised web servers.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "During lateral movement, the malware is configured to connect to open Wi-Fi networks named 'Free_WiFi' and retrieves hardcoded API keys from cloud instance metadata APIs [T1552.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "For data collection, the adversary extracts data from local systems and employs dynamic resolution by querying domains like 'malicious.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "For data collection, the adversary extracts data from local systems and employs dynamic resolution by querying domains like 'malicious.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "com' via DNS tunneling to exfiltrate stolen information, while also transferring data to cloud accounts using Azure backup services.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        },
+        {
+            "sentence": "001] is conducted by altering formulas in financial documents to hide unauthorized activities, and debugger evasion techniques are implemented to avoid analysis.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "The campaign culminates in endpoint denial of service attacks, exploiting resource exhaustion vulnerabilities in web applications to disrupt operations.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'Crimson Serpent,' targeting financial institutions. The campaign involves initial reconnaissance, phishing, exploitation, lateral movement, data exfiltration, and denial-of-service attacks, based on provided techniques for blue team training.",
+        "full_report_text": "Crimson Serpent, a suspected state-sponsored group, has been observed targeting financial organizations in North America since early 2024. The campaign begins with actors conducting reconnaissance by scanning IP blocks [T1595.001] to map internal network structures and gathering victim organization information [T1591] through social media platforms like Facebook to identify key employees and understand organizational hierarchy. Following this, the adversary sends phishing emails [T1566] with malicious attachments disguised as invoices, which exploit vulnerabilities such as CVE-2017-11882 and CVE-2018-8174 [T1203] for client execution, while simultaneously acquiring access [T1650] by deploying web shells on compromised web servers. To maintain persistence and evade detection, the actors use digital certificates [T1588.004] to sign malicious payloads and hijack domains [T1584.001] via AWS Route53 to redirect traffic to phishing pages. During lateral movement, the malware is configured to connect to open Wi-Fi networks named 'Free_WiFi' [T1669] and retrieves hardcoded API keys from cloud instance metadata APIs [T1552.005]. For data collection, the adversary extracts data from local systems [T1005] and employs dynamic resolution [T1568] by querying domains like 'malicious.example.com' via DNS tunneling to exfiltrate stolen information, while also transferring data to cloud accounts [T1537] using Azure backup services. Additionally, stored data manipulation [T1565.001] is conducted by altering formulas in financial documents to hide unauthorized activities, and debugger evasion [T1622] techniques are implemented to avoid analysis. The campaign culminates in endpoint denial of service [T1499] attacks, exploiting resource exhaustion vulnerabilities in web applications to disrupt operations. System logs from victim environments show increased network traffic and failed login attempts, but these are not directly linked to the techniques. The organization, a mid-sized bank with 500 employees, reported unusual activity in its accounting department, leading to the discovery of this campaign.",
+        "techniques_used": [
+            "T1595.001",
+            "T1591",
+            "T1650",
+            "T1588.004",
+            "T1584.001",
+            "T1566",
+            "T1669",
+            "T1203",
+            "T1552.005",
+            "T1622",
+            "T1005",
+            "T1568",
+            "T1537",
+            "T1565.001",
+            "T1499"
+        ]
+    }
+}

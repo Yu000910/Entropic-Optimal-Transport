@@ -1,0 +1,88 @@
+{
+    "report_id": "report_133",
+    "generated_at": "20251222_120944",
+    "scenario_target_ids": [
+        "T1199",
+        "T1200",
+        "T1648",
+        "T1562.003",
+        "T1036.008",
+        "T1132.001",
+        "T1567.004",
+        "T1567.001",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1200",
+        "T1648",
+        "T1562.003",
+        "T1036.008",
+        "T1132.001",
+        "T1567.004",
+        "T1567.001",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1489",
+        "T1199",
+        "T1648",
+        "T1567.004",
+        "T1200",
+        "T1036.008",
+        "T1562.003",
+        "T1132.001",
+        "T1567.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional APT campaign designated 'ShadowMimic'. This campaign targets organizations leveraging Azure AD with delegated administrator permissions and on-premises systems. Initial analysis indicates that the actors likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though specific techniques are not detailed in this scenario. The attack began with the adversary exploiting a trusted relationship by abusing delegated admin roles in Azure AD to gain administrative access across multiple tenant resources, including virtual machines and storage accounts. Concurrently, the threat actor used a USB Rubber Ducky to deliver a malicious payload via hardware additions, establishing remote access on an on-premises workstation while bypassing network segmentation controls. System logs from the affected Azure environment show unusual activity spikes in the 'ContosoCorp' tenant, which was not directly related to the attack but provided noise for detection evasion. Following initial access, the actors created a rogue Lambda function with a backdoor to execute unauthorized commands in the cloud environment through serverless execution, enabling persistent command-and-control (C2) via encrypted channels. To impair forensic analysis, they employed 'unset HISTFILE' to remove the history file location and disable logging, effectively hiding their command-line activities on Linux-based cloud instances. The adversary then wrote a malicious script into a file called 'update.exe' to mimic legitimate software update processes as part of masquerading file types, which was deployed across both cloud and on-premises systems to maintain persistence. For C2 communication, HOPLIGHT malware utilized Zlib compression to obfuscate the communications payload through standard encoding, blending with normal network traffic to avoid detection by intrusion prevention systems. Data exfiltration was conducted in two phases: first, the malware collected sensitive documents and configured webhook.site for data exfiltration over webhooks, and second, malicious actors stored harvested financial data in a Git repository hosted on an internal Git server using API endpoints for exfiltration to code repositories. Finally, to disrupt operations, Conti ransomware components stopped up to 146 Windows services related to security, backup, database, and email solutions through the use of net stop as part of service stop, causing significant downtime in the simulated environment. Background noise includes routine Azure AD audit logs showing failed login attempts from IP addresses in non-malicious regions, which are unrelated to the attack but added for realism in training scenarios.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional APT campaign designated 'ShadowMimic'. This campaign targets organizations leveraging Azure AD with delegated administrator permissions and on-premises systems. Initial analysis indicates that the actors likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though specific techniques are not detailed in this scenario. The attack began with the adversary exploiting a trusted relationship [T1199] by abusing delegated admin roles in Azure AD to gain administrative access across multiple tenant resources, including virtual machines and storage accounts. Concurrently, the threat actor used a USB Rubber Ducky to deliver a malicious payload via hardware additions [T1200], establishing remote access on an on-premises workstation while bypassing network segmentation controls. System logs from the affected Azure environment show unusual activity spikes in the 'ContosoCorp' tenant, which was not directly related to the attack but provided noise for detection evasion. Following initial access, the actors created a rogue Lambda function with a backdoor to execute unauthorized commands in the cloud environment through serverless execution [T1648], enabling persistent command-and-control (C2) via encrypted channels. To impair forensic analysis, they employed 'unset HISTFILE' to remove the history file location and disable logging [T1562.003], effectively hiding their command-line activities on Linux-based cloud instances. The adversary then wrote a malicious script into a file called 'update.exe' to mimic legitimate software update processes as part of masquerading file types [T1036.008], which was deployed across both cloud and on-premises systems to maintain persistence. For C2 communication, HOPLIGHT malware utilized Zlib compression to obfuscate the communications payload through standard encoding [T1132.001], blending with normal network traffic to avoid detection by intrusion prevention systems. Data exfiltration was conducted in two phases: first, the malware collected sensitive documents and configured webhook.site for data exfiltration over webhooks [T1567.004], and second, malicious actors stored harvested financial data in a Git repository hosted on an internal Git server using API endpoints for exfiltration to code repositories [T1567.001]. Finally, to disrupt operations, Conti ransomware components stopped up to 146 Windows services related to security, backup, database, and email solutions through the use of net stop as part of service stop [T1489], causing significant downtime in the simulated environment. Background noise includes routine Azure AD audit logs showing failed login attempts from IP addresses in non-malicious regions, which are unrelated to the attack but added for realism in training scenarios.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with the adversary exploiting a trusted relationship by abusing delegated admin roles in Azure AD to gain administrative access across multiple tenant resources, including virtual machines and storage accounts.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "Concurrently, the threat actor used a USB Rubber Ducky to deliver a malicious payload via hardware additions, establishing remote access on an on-premises workstation while bypassing network segmentation controls.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Following initial access, the actors created a rogue Lambda function with a backdoor to execute unauthorized commands in the cloud environment through serverless execution, enabling persistent command-and-control (C2) via encrypted channels.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "Finally, to disrupt operations, Conti ransomware components stopped up to 146 Windows services related to security, backup, database, and email solutions through the use of net stop as part of service stop, causing significant downtime in the simulated environment.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowMimic' targeting organizations with hybrid Azure AD and on-premises infrastructure. The campaign exploits trusted relationships, hardware additions, and serverless execution to gain initial access, followed by defense evasion, data exfiltration, and service disruption techniques. Blue teams should use this report for training to identify and mitigate similar attack patterns in real-world scenarios.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights on a fictional APT campaign designated 'ShadowMimic'. This campaign targets organizations leveraging Azure AD with delegated administrator permissions and on-premises systems. Initial analysis indicates that the actors likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though specific techniques are not detailed in this scenario. The attack began with the adversary exploiting a trusted relationship [T1199] by abusing delegated admin roles in Azure AD to gain administrative access across multiple tenant resources, including virtual machines and storage accounts. Concurrently, the threat actor used a USB Rubber Ducky to deliver a malicious payload via hardware additions [T1200], establishing remote access on an on-premises workstation while bypassing network segmentation controls. System logs from the affected Azure environment show unusual activity spikes in the 'ContosoCorp' tenant, which was not directly related to the attack but provided noise for detection evasion. Following initial access, the actors created a rogue Lambda function with a backdoor to execute unauthorized commands in the cloud environment through serverless execution [T1648], enabling persistent command-and-control (C2) via encrypted channels. To impair forensic analysis, they employed 'unset HISTFILE' to remove the history file location and disable logging [T1562.003], effectively hiding their command-line activities on Linux-based cloud instances. The adversary then wrote a malicious script into a file called 'update.exe' to mimic legitimate software update processes as part of masquerading file types [T1036.008], which was deployed across both cloud and on-premises systems to maintain persistence. For C2 communication, HOPLIGHT malware utilized Zlib compression to obfuscate the communications payload through standard encoding [T1132.001], blending with normal network traffic to avoid detection by intrusion prevention systems. Data exfiltration was conducted in two phases: first, the malware collected sensitive documents and configured webhook.site for data exfiltration over webhooks [T1567.004], and second, malicious actors stored harvested financial data in a Git repository hosted on an internal Git server using API endpoints for exfiltration to code repositories [T1567.001]. Finally, to disrupt operations, Conti ransomware components stopped up to 146 Windows services related to security, backup, database, and email solutions through the use of net stop as part of service stop [T1489], causing significant downtime in the simulated environment. Background noise includes routine Azure AD audit logs showing failed login attempts from IP addresses in non-malicious regions, which are unrelated to the attack but added for realism in training scenarios.",
+        "techniques_used": [
+            "T1199",
+            "T1200",
+            "T1648",
+            "T1562.003",
+            "T1036.008",
+            "T1132.001",
+            "T1567.004",
+            "T1567.001",
+            "T1489"
+        ]
+    }
+}

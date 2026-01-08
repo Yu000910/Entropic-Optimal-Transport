@@ -1,0 +1,88 @@
+{
+    "report_id": "report_652",
+    "generated_at": "20251222_171900",
+    "scenario_target_ids": [
+        "T1592.002",
+        "T1596",
+        "T1598.004",
+        "T1195.001",
+        "T1199",
+        "T1059.012",
+        "T1095",
+        "T1567.003",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592.002",
+        "T1596",
+        "T1598.004",
+        "T1195.001",
+        "T1199",
+        "T1059.012",
+        "T1095",
+        "T1567.003",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1059.012",
+        "T1095",
+        "T1199",
+        "T1029",
+        "T1195.001",
+        "T1567.003",
+        "T1598.004",
+        "T1592.002",
+        "T1596"
+    ],
+    "clean_text": "### Background\nShadowPhish, a fictional APT group, has been observed targeting financial organizations in the United States since early 2024. The campaign leverages a multi-faceted approach, including reconnaissance, social engineering, and technical exploitation. Initial reports indicate that the group aims to steal sensitive financial data and credential information. The victim organization, 'SecureBank Inc.', is a mid-sized bank with operations across multiple states, using a hybrid cloud environment with Office 365 and on-premises VMware infrastructure. Logs from SecureBank's SIEM show anomalous SSH connections and unusual network traffic patterns, but these were initially dismissed as false positives due to high system noise.\n\n### Attack Narrative\n**Initial Access and Reconnaissance:** The actors began by conducting reconnaissance to gather information about SecureBank's infrastructure. They used a compromised internal system to collect SSH server banners, which revealed the SSH daemon version and configuration, while simultaneously employing automated scripts to search WHOIS records for technical contact details of SecureBank's domains. This data was used to tailor subsequent social engineering attacks.\n\n**Execution and Persistence:** ShadowPhish then executed a spearphishing voice campaign, making fraudulent customer service calls to extract voice biometric data for identity theft, which facilitated unauthorized access. Once inside, they compromised the software development pipeline by injecting 'evil.ps1' into the build process to harvest environment variables, allowing them to escalate privileges and maintain persistence. Additionally, they abused a trusted relationship by compromising an Office 365 partner account, enabling privilege escalation within SecureBank's customer environment.\n\n**Discovery and Command and Control (C2):** The threat actors leveraged compromised credentials to run hypervisor CLI commands, such as 'vim-cmd hostsvc/net/query_networkhint', to discover network configuration details. For C2 communications, they employed WellMail, which can use TCP as a non-application layer protocol, and used Shark to pause C2 communications for specified times, evading detection by blending with normal network traffic.\n\n**Exfiltration:** Finally, ShadowPhish collected credential files and exfiltrated them to a text storage site, using scheduled transfers to avoid triggering alerts during peak business hours. SecureBank's incident response team detected the exfiltration via anomalous outbound traffic to unfamiliar domains, but the data had already been transferred.\n\n### Recommendations\nBlue teams should monitor for unusual SSH banner collection, WHOIS query patterns, and voice phishing attempts. Implement strict access controls for development tools and partner accounts, and use network segmentation to limit hypervisor CLI access. Regularly audit C2 traffic and exfiltration channels, including text storage sites, to detect and respond to similar threats.",
+    "tagged_text": "### Background\nShadowPhish, a fictional APT group, has been observed targeting financial organizations in the United States since early 2024. The campaign leverages a multi-faceted approach, including reconnaissance, social engineering, and technical exploitation. Initial reports indicate that the group aims to steal sensitive financial data and credential information. The victim organization, 'SecureBank Inc.', is a mid-sized bank with operations across multiple states, using a hybrid cloud environment with Office 365 and on-premises VMware infrastructure. Logs from SecureBank's SIEM show anomalous SSH connections and unusual network traffic patterns, but these were initially dismissed as false positives due to high system noise.\n\n### Attack Narrative\n**Initial Access and Reconnaissance:** The actors began by conducting reconnaissance to gather information about SecureBank's infrastructure. They used a compromised internal system to collect SSH server banners [T1592.002], which revealed the SSH daemon version and configuration, while simultaneously employing automated scripts to search WHOIS records for technical contact details of SecureBank's domains [T1596]. This data was used to tailor subsequent social engineering attacks.\n\n**Execution and Persistence:** ShadowPhish then executed a spearphishing voice campaign, making fraudulent customer service calls to extract voice biometric data for identity theft [T1598.004], which facilitated unauthorized access. Once inside, they compromised the software development pipeline by injecting 'evil.ps1' into the build process to harvest environment variables [T1195.001], allowing them to escalate privileges and maintain persistence. Additionally, they abused a trusted relationship by compromising an Office 365 partner account, enabling privilege escalation within SecureBank's customer environment [T1199].\n\n**Discovery and Command and Control (C2):** The threat actors leveraged compromised credentials to run hypervisor CLI commands, such as 'vim-cmd hostsvc/net/query_networkhint', to discover network configuration details [T1059.012]. For C2 communications, they employed WellMail, which can use TCP as a non-application layer protocol [T1095], and used Shark to pause C2 communications for specified times [T1029], evading detection by blending with normal network traffic.\n\n**Exfiltration:** Finally, ShadowPhish collected credential files and exfiltrated them to a text storage site [T1567.003], using scheduled transfers to avoid triggering alerts during peak business hours. SecureBank's incident response team detected the exfiltration via anomalous outbound traffic to unfamiliar domains, but the data had already been transferred.\n\n### Recommendations\nBlue teams should monitor for unusual SSH banner collection, WHOIS query patterns, and voice phishing attempts. Implement strict access controls for development tools and partner accounts, and use network segmentation to limit hypervisor CLI access. Regularly audit C2 traffic and exfiltration channels, including text storage sites, to detect and respond to similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], which revealed the SSH daemon version and configuration, while simultaneously employing automated scripts to search WHOIS records for technical contact details of SecureBank's domains.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "Additionally, they abused a trusted relationship by compromising an Office 365 partner account, enabling privilege escalation within SecureBank's customer environment.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "For C2 communications, they employed WellMail, which can use TCP as a non-application layer protocol, and used Shark to pause C2 communications for specified times, evading detection by blending with normal network traffic.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "For C2 communications, they employed WellMail, which can use TCP as a non-application layer protocol, and used Shark to pause C2 communications for specified times, evading detection by blending with normal network traffic.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowPhish' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowPhish', targeting financial institutions. The campaign involves reconnaissance, supply chain compromise, trusted relationship abuse, and data exfiltration. Blue teams should use this report for training to identify and mitigate similar tactics.",
+        "full_report_text": "### Background\nShadowPhish, a fictional APT group, has been observed targeting financial organizations in the United States since early 2024. The campaign leverages a multi-faceted approach, including reconnaissance, social engineering, and technical exploitation. Initial reports indicate that the group aims to steal sensitive financial data and credential information. The victim organization, 'SecureBank Inc.', is a mid-sized bank with operations across multiple states, using a hybrid cloud environment with Office 365 and on-premises VMware infrastructure. Logs from SecureBank's SIEM show anomalous SSH connections and unusual network traffic patterns, but these were initially dismissed as false positives due to high system noise.\n\n### Attack Narrative\n**Initial Access and Reconnaissance:** The actors began by conducting reconnaissance to gather information about SecureBank's infrastructure. They used a compromised internal system to collect SSH server banners [T1592.002], which revealed the SSH daemon version and configuration, while simultaneously employing automated scripts to search WHOIS records for technical contact details of SecureBank's domains [T1596]. This data was used to tailor subsequent social engineering attacks.\n\n**Execution and Persistence:** ShadowPhish then executed a spearphishing voice campaign, making fraudulent customer service calls to extract voice biometric data for identity theft [T1598.004], which facilitated unauthorized access. Once inside, they compromised the software development pipeline by injecting 'evil.ps1' into the build process to harvest environment variables [T1195.001], allowing them to escalate privileges and maintain persistence. Additionally, they abused a trusted relationship by compromising an Office 365 partner account, enabling privilege escalation within SecureBank's customer environment [T1199].\n\n**Discovery and Command and Control (C2):** The threat actors leveraged compromised credentials to run hypervisor CLI commands, such as 'vim-cmd hostsvc/net/query_networkhint', to discover network configuration details [T1059.012]. For C2 communications, they employed WellMail, which can use TCP as a non-application layer protocol [T1095], and used Shark to pause C2 communications for specified times [T1029], evading detection by blending with normal network traffic.\n\n**Exfiltration:** Finally, ShadowPhish collected credential files and exfiltrated them to a text storage site [T1567.003], using scheduled transfers to avoid triggering alerts during peak business hours. SecureBank's incident response team detected the exfiltration via anomalous outbound traffic to unfamiliar domains, but the data had already been transferred.\n\n### Recommendations\nBlue teams should monitor for unusual SSH banner collection, WHOIS query patterns, and voice phishing attempts. Implement strict access controls for development tools and partner accounts, and use network segmentation to limit hypervisor CLI access. Regularly audit C2 traffic and exfiltration channels, including text storage sites, to detect and respond to similar threats.",
+        "techniques_used": [
+            "T1592.002",
+            "T1596",
+            "T1598.004",
+            "T1195.001",
+            "T1199",
+            "T1059.012",
+            "T1095",
+            "T1567.003",
+            "T1029"
+        ]
+    }
+}

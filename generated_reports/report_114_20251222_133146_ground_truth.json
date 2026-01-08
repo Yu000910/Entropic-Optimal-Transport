@@ -1,0 +1,88 @@
+{
+    "report_id": "report_114",
+    "generated_at": "20251222_133146",
+    "scenario_target_ids": [
+        "T1596.004",
+        "T1597",
+        "T1566.002",
+        "T1059.004",
+        "T1036.004",
+        "T1558.003",
+        "T1007",
+        "T1550.001",
+        "T1550.004",
+        "T1114.003",
+        "T1001.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596.004",
+        "T1597",
+        "T1566.002",
+        "T1059.004",
+        "T1036.004",
+        "T1558.003",
+        "T1007",
+        "T1550.001",
+        "T1550.004",
+        "T1114.003",
+        "T1001.002"
+    ],
+    "actual_found_ids": [
+        "T1558.003",
+        "T1001.002",
+        "T1550.004",
+        "T1566.002",
+        "T1550.001",
+        "T1114.003",
+        "T1036.004",
+        "T1597",
+        "T1059.004",
+        "T1007",
+        "T1596.004"
+    ],
+    "clean_text": "On October 15, 2023, SecureBank Inc. detected anomalous activity across its network, prompting an investigation that revealed a sophisticated intrusion campaign. The actors, identified as 'ShadowCrawl', likely began by conducting reconnaissance using nslookup to query CDN IP ranges associated with SecureBank and collected organizational intelligence from a paid dark web monitoring service. Initial access was achieved through a spearphishing campaign where employees received emails with malicious links disguised as financial alerts, leading to the download of GuLoader. Upon execution, the malware leveraged /bin/sh and /bin/bash to run commands on compromised Linux servers while simultaneously disguising itself as a Windows security update service named 'ZxxZ' to maintain persistence. The adversary then performed credential access by using a malicious script to query the domain controller for accounts with weak password policies in a Kerberoasting attack and conducted system service discovery to enumerate running services on victim machines. For lateral movement, the actors used stolen authentication tokens to query administrative REST APIs and imported browser profile data to restore authenticated sessions, bypassing multi-factor authentication. Collection activities involved modifying the Microsoft Messaging API to silently copy all sent emails to a controlled server, and exfiltration was achieved by injecting command and control traffic into image files to blend with legitimate network traffic. Incident response logs from SecureBank's SIEM showed increased outbound traffic on port 443, but no immediate alerts were triggered due to encrypted payloads. Background: SecureBank Inc. operates in the Pacific Northwest with 500 employees and uses a hybrid cloud environment; this incident was contained within 48 hours after isolating affected systems.",
+    "tagged_text": "On October 15, 2023, SecureBank Inc. detected anomalous activity across its network, prompting an investigation that revealed a sophisticated intrusion campaign. The actors, identified as 'ShadowCrawl', likely began by conducting reconnaissance using nslookup to query CDN IP ranges associated with SecureBank [T1596.004] and collected organizational intelligence from a paid dark web monitoring service [T1597]. Initial access was achieved through a spearphishing campaign where employees received emails with malicious links disguised as financial alerts, leading to the download of GuLoader [T1566.002]. Upon execution, the malware leveraged /bin/sh and /bin/bash to run commands on compromised Linux servers [T1059.004] while simultaneously disguising itself as a Windows security update service named 'ZxxZ' to maintain persistence [T1036.004]. The adversary then performed credential access by using a malicious script to query the domain controller for accounts with weak password policies in a Kerberoasting attack [T1558.003] and conducted system service discovery to enumerate running services on victim machines [T1007]. For lateral movement, the actors used stolen authentication tokens to query administrative REST APIs [T1550.001] and imported browser profile data to restore authenticated sessions, bypassing multi-factor authentication [T1550.004]. Collection activities involved modifying the Microsoft Messaging API to silently copy all sent emails to a controlled server [T1114.003], and exfiltration was achieved by injecting command and control traffic into image files to blend with legitimate network traffic [T1001.002]. Incident response logs from SecureBank's SIEM showed increased outbound traffic on port 443, but no immediate alerts were triggered due to encrypted payloads. Background: SecureBank Inc. operates in the Pacific Northwest with 500 employees and uses a hybrid cloud environment; this incident was contained within 48 hours after isolating affected systems.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] and collected organizational intelligence from a paid dark web monitoring service.",
+            "technique_id": "T1597",
+            "technique_name": "Search Closed Sources"
+        },
+        {
+            "sentence": "003] and conducted system service discovery to enumerate running services on victim machines.",
+            "technique_id": "T1007",
+            "technique_name": "System Service Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowCrawl' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowCrawl' against a mid-sized financial institution, 'SecureBank Inc.', designed for blue team training. The campaign demonstrates a multi-stage attack leveraging reconnaissance, initial access via phishing, execution with Unix shells, persistence through masquerading, credential access via Kerberoasting, discovery of system services, lateral movement using stolen tokens and cookies, collection via email forwarding rules, and exfiltration using steganography.",
+        "full_report_text": "On October 15, 2023, SecureBank Inc. detected anomalous activity across its network, prompting an investigation that revealed a sophisticated intrusion campaign. The actors, identified as 'ShadowCrawl', likely began by conducting reconnaissance using nslookup to query CDN IP ranges associated with SecureBank [T1596.004] and collected organizational intelligence from a paid dark web monitoring service [T1597]. Initial access was achieved through a spearphishing campaign where employees received emails with malicious links disguised as financial alerts, leading to the download of GuLoader [T1566.002]. Upon execution, the malware leveraged /bin/sh and /bin/bash to run commands on compromised Linux servers [T1059.004] while simultaneously disguising itself as a Windows security update service named 'ZxxZ' to maintain persistence [T1036.004]. The adversary then performed credential access by using a malicious script to query the domain controller for accounts with weak password policies in a Kerberoasting attack [T1558.003] and conducted system service discovery to enumerate running services on victim machines [T1007]. For lateral movement, the actors used stolen authentication tokens to query administrative REST APIs [T1550.001] and imported browser profile data to restore authenticated sessions, bypassing multi-factor authentication [T1550.004]. Collection activities involved modifying the Microsoft Messaging API to silently copy all sent emails to a controlled server [T1114.003], and exfiltration was achieved by injecting command and control traffic into image files to blend with legitimate network traffic [T1001.002]. Incident response logs from SecureBank's SIEM showed increased outbound traffic on port 443, but no immediate alerts were triggered due to encrypted payloads. Background: SecureBank Inc. operates in the Pacific Northwest with 500 employees and uses a hybrid cloud environment; this incident was contained within 48 hours after isolating affected systems.",
+        "techniques_used": [
+            "T1596.004",
+            "T1597",
+            "T1566.002",
+            "T1059.004",
+            "T1036.004",
+            "T1558.003",
+            "T1007",
+            "T1550.001",
+            "T1550.004",
+            "T1114.003",
+            "T1001.002"
+        ]
+    }
+}

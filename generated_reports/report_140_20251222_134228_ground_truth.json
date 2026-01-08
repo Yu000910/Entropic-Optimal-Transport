@@ -1,0 +1,59 @@
+{
+    "report_id": "report_140",
+    "generated_at": "20251222_134228",
+    "scenario_target_ids": [
+        "T1200",
+        "T1078.004",
+        "T1053.003",
+        "T1137.001",
+        "T1021.008",
+        "T1105"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1078.004",
+        "T1053.003",
+        "T1137.001",
+        "T1021.008",
+        "T1105",
+        "T1112"
+    ],
+    "actual_found_ids": [
+        "T1137.001",
+        "T1021.008",
+        "T1200",
+        "T1078.004",
+        "T1053.003"
+    ],
+    "clean_text": "Background: The targeted organization, 'TechGlobal Inc.', is a mid-sized technology firm with offices in New York and London, operating a hybrid infrastructure that includes on-premises Linux servers and Microsoft Azure cloud services. Initial logs from March 15, 2024, showed unusual network traffic spikes from internal IP addresses, but no immediate alerts were triggered. The company's security team later discovered anomalous Azure activity during a routine audit.\n\nAttack Narrative: The actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify employee roles and physical office layouts, though this phase is not directly observed in logs. In the Initial Access phase, the adversary planted a USB Rubber Ducky disguised as a standard flash drive in the breakroom of TechGlobal's New York office, exploiting physical proximity to gain entry into the corporate network. Once connected to an employee workstation, the device executed a script that harvested credentials from browser caches and system memory, leading to the compromise of several user accounts with access to Azure services.\n\nIn the Execution phase, the threat actor leveraged these compromised credentials to authenticate to the victim's Azure tenant, establishing a foothold in the cloud environment. They then used PowerShell to actively download additional malicious tools, including a custom backdoor, from a command-and-control (C2) server hosted on a compromised domain, while simultaneously modifying registry keys to maintain persistence on the initial host [T1105, T1112]. The actors also employed Office Template Macros by embedding malicious VBA code in an Excel spreadsheet shared via internal email, which executed upon opening to deploy a payload that collected system information and exfiltrated it to a cloud storage bucket.\n\nFor Persistence and Privilege Escalation, the adversary added a malicious entry to /var/spool/cron/crontabs/root on a critical Linux server, scheduling data exfiltration tasks to run every night at 2 AM, ensuring long-term access without continuous interaction. Additionally, through the Azure Serial Console, the attacker gained direct command-line interface access to a virtual machine using legitimate account credentials, enabling them to execute commands as if physically present on the system and bypass network-based security controls. During this phase, system logs showed increased CPU usage on the VM, but no alerts were generated due to misconfigured monitoring thresholds.\n\nIn the Exfiltration phase, the cron job facilitated the transfer of stolen data, including customer databases and internal documents, to an external server via encrypted channels. The campaign concluded with the actors covering their tracks by deleting log entries and disabling security software on compromised hosts, though residual artifacts were later recovered by forensic analysis. This simulated activity highlights the need for enhanced physical security, multi-factor authentication, and continuous monitoring of cloud and on-premises systems.",
+    "tagged_text": "Background: The targeted organization, 'TechGlobal Inc.', is a mid-sized technology firm with offices in New York and London, operating a hybrid infrastructure that includes on-premises Linux servers and Microsoft Azure cloud services. Initial logs from March 15, 2024, showed unusual network traffic spikes from internal IP addresses, but no immediate alerts were triggered. The company's security team later discovered anomalous Azure activity during a routine audit.\n\nAttack Narrative: The actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify employee roles and physical office layouts, though this phase is not directly observed in logs. In the Initial Access phase, the adversary planted a USB Rubber Ducky disguised as a standard flash drive in the breakroom of TechGlobal's New York office, exploiting physical proximity to gain entry into the corporate network [T1200]. Once connected to an employee workstation, the device executed a script that harvested credentials from browser caches and system memory, leading to the compromise of several user accounts with access to Azure services.\n\nIn the Execution phase, the threat actor leveraged these compromised credentials to authenticate to the victim's Azure tenant, establishing a foothold in the cloud environment [T1078.004]. They then used PowerShell to actively download additional malicious tools, including a custom backdoor, from a command-and-control (C2) server hosted on a compromised domain, while simultaneously modifying registry keys to maintain persistence on the initial host [T1105, T1112]. The actors also employed Office Template Macros by embedding malicious VBA code in an Excel spreadsheet shared via internal email, which executed upon opening to deploy a payload that collected system information and exfiltrated it to a cloud storage bucket [T1137.001].\n\nFor Persistence and Privilege Escalation, the adversary added a malicious entry to /var/spool/cron/crontabs/root on a critical Linux server, scheduling data exfiltration tasks to run every night at 2 AM, ensuring long-term access without continuous interaction [T1053.003]. Additionally, through the Azure Serial Console, the attacker gained direct command-line interface access to a virtual machine using legitimate account credentials, enabling them to execute commands as if physically present on the system and bypass network-based security controls [T1021.008]. During this phase, system logs showed increased CPU usage on the VM, but no alerts were generated due to misconfigured monitoring thresholds.\n\nIn the Exfiltration phase, the cron job facilitated the transfer of stolen data, including customer databases and internal documents, to an external server via encrypted channels. The campaign concluded with the actors covering their tracks by deleting log entries and disabling security software on compromised hosts, though residual artifacts were later recovered by forensic analysis. This simulated activity highlights the need for enhanced physical security, multi-factor authentication, and continuous monitoring of cloud and on-premises systems.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the Initial Access phase, the adversary planted a USB Rubber Ducky disguised as a standard flash drive in the breakroom of TechGlobal's New York office, exploiting physical proximity to gain entry into the corporate network.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'CloudSnake' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'CloudSnake', targeting organizations with hybrid on-premises and cloud environments. Based on intelligence from CISA, FBI, and NSA, the campaign involves initial physical access, credential compromise, and persistent cloud-based execution to exfiltrate sensitive data. The report is intended for blue team training to enhance detection and response capabilities against multi-vector attacks.",
+        "full_report_text": "Background: The targeted organization, 'TechGlobal Inc.', is a mid-sized technology firm with offices in New York and London, operating a hybrid infrastructure that includes on-premises Linux servers and Microsoft Azure cloud services. Initial logs from March 15, 2024, showed unusual network traffic spikes from internal IP addresses, but no immediate alerts were triggered. The company's security team later discovered anomalous Azure activity during a routine audit.\n\nAttack Narrative: The actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify employee roles and physical office layouts, though this phase is not directly observed in logs. In the Initial Access phase, the adversary planted a USB Rubber Ducky disguised as a standard flash drive in the breakroom of TechGlobal's New York office, exploiting physical proximity to gain entry into the corporate network [T1200]. Once connected to an employee workstation, the device executed a script that harvested credentials from browser caches and system memory, leading to the compromise of several user accounts with access to Azure services.\n\nIn the Execution phase, the threat actor leveraged these compromised credentials to authenticate to the victim's Azure tenant, establishing a foothold in the cloud environment [T1078.004]. They then used PowerShell to actively download additional malicious tools, including a custom backdoor, from a command-and-control (C2) server hosted on a compromised domain, while simultaneously modifying registry keys to maintain persistence on the initial host [T1105, T1112]. The actors also employed Office Template Macros by embedding malicious VBA code in an Excel spreadsheet shared via internal email, which executed upon opening to deploy a payload that collected system information and exfiltrated it to a cloud storage bucket [T1137.001].\n\nFor Persistence and Privilege Escalation, the adversary added a malicious entry to /var/spool/cron/crontabs/root on a critical Linux server, scheduling data exfiltration tasks to run every night at 2 AM, ensuring long-term access without continuous interaction [T1053.003]. Additionally, through the Azure Serial Console, the attacker gained direct command-line interface access to a virtual machine using legitimate account credentials, enabling them to execute commands as if physically present on the system and bypass network-based security controls [T1021.008]. During this phase, system logs showed increased CPU usage on the VM, but no alerts were generated due to misconfigured monitoring thresholds.\n\nIn the Exfiltration phase, the cron job facilitated the transfer of stolen data, including customer databases and internal documents, to an external server via encrypted channels. The campaign concluded with the actors covering their tracks by deleting log entries and disabling security software on compromised hosts, though residual artifacts were later recovered by forensic analysis. This simulated activity highlights the need for enhanced physical security, multi-factor authentication, and continuous monitoring of cloud and on-premises systems.",
+        "techniques_used": [
+            "T1200",
+            "T1078.004",
+            "T1053.003",
+            "T1137.001",
+            "T1021.008",
+            "T1105",
+            "T1112"
+        ]
+    }
+}

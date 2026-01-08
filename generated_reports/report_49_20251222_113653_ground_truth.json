@@ -1,0 +1,98 @@
+{
+    "report_id": "report_49",
+    "generated_at": "20251222_113653",
+    "scenario_target_ids": [
+        "T1659",
+        "T1195",
+        "T1559.001",
+        "T1539",
+        "T1021.003",
+        "T1563",
+        "T1114.002",
+        "T1071.002",
+        "T1567.001",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1659",
+        "T1195",
+        "T1559.001",
+        "T1539",
+        "T1021.003",
+        "T1563",
+        "T1114.002",
+        "T1071.002",
+        "T1567.001",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1659",
+        "T1021.003",
+        "T1195",
+        "T1539",
+        "T1559.001",
+        "T1071.002",
+        "T1114.002",
+        "T1563",
+        "T1052",
+        "T1567.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional, educational campaign attributed to the APT group 'OilRig Echo'. This group has been observed targeting energy sector organizations, particularly those involved in oil and gas operations, with the intent to steal intellectual property and disrupt critical infrastructure. Background analysis indicates the actors have a history of targeting Middle Eastern entities, but this campaign shows expanded capabilities into North American networks. Initial logs from a compromised ISP show unusual HTTP traffic spikes, though these were initially dismissed as routine maintenance activities.\n\nThe campaign begins with the actors exploiting ISP-level vulnerabilities to inject adware into HTTP responses, which serves as a delivery mechanism for malicious payloads targeting downstream organizations in the supply chain. Once initial access is achieved, the adversary employs the Internet Explorer Component Object Model (COM) interface to connect and receive commands from C2 servers while simultaneously using scripts to extract web session cookies and send them to the C2 for authentication bypass. System administrators reported intermittent RDP connection issues, but these were attributed to network latency rather than malicious activity.\n\nFor lateral movement, the threat actor leverages the Distributed Component Object Model (DCOM) protocol to remotely run scripts via Microsoft Project components, exploiting weak RDP credentials to hijack remote sessions and deploy tools for data collection. The actors then use a tool similar to MailSniper to search through Exchange server mailboxes for keywords, disguising C2 traffic as routine file sharing operations by leveraging SMB exploitation. Network logs show increased SMB traffic during off-hours, but this was not flagged due to misconfigured alert thresholds.\n\nExfiltration is conducted through multiple channels: the attackers store stolen credentials in a public GitLab repository using automated API calls and save customer database files to an external hard drive for physical removal. Post-incident analysis revealed that the organization had outdated firewall rules, but this was unrelated to the primary attack vectors. The campaign demonstrates a sophisticated blend of digital and physical exfiltration techniques, highlighting the need for enhanced monitoring of both network traffic and physical access controls.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional, educational campaign attributed to the APT group 'OilRig Echo'. This group has been observed targeting energy sector organizations, particularly those involved in oil and gas operations, with the intent to steal intellectual property and disrupt critical infrastructure. Background analysis indicates the actors have a history of targeting Middle Eastern entities, but this campaign shows expanded capabilities into North American networks. Initial logs from a compromised ISP show unusual HTTP traffic spikes, though these were initially dismissed as routine maintenance activities.\n\nThe campaign begins with the actors exploiting ISP-level vulnerabilities to inject adware into HTTP responses [T1659], which serves as a delivery mechanism for malicious payloads targeting downstream organizations in the supply chain [T1195]. Once initial access is achieved, the adversary employs the Internet Explorer Component Object Model (COM) interface [T1559.001] to connect and receive commands from C2 servers while simultaneously using scripts to extract web session cookies [T1539] and send them to the C2 for authentication bypass. System administrators reported intermittent RDP connection issues, but these were attributed to network latency rather than malicious activity.\n\nFor lateral movement, the threat actor leverages the Distributed Component Object Model (DCOM) protocol [T1021.003] to remotely run scripts via Microsoft Project components, exploiting weak RDP credentials to hijack remote sessions [T1563] and deploy tools for data collection. The actors then use a tool similar to MailSniper to search through Exchange server mailboxes for keywords [T1114.002], disguising C2 traffic as routine file sharing operations by leveraging SMB exploitation [T1071.002]. Network logs show increased SMB traffic during off-hours, but this was not flagged due to misconfigured alert thresholds.\n\nExfiltration is conducted through multiple channels: the attackers store stolen credentials in a public GitLab repository using automated API calls [T1567.001] and save customer database files to an external hard drive [T1052] for physical removal. Post-incident analysis revealed that the organization had outdated firewall rules, but this was unrelated to the primary attack vectors. The campaign demonstrates a sophisticated blend of digital and physical exfiltration techniques, highlighting the need for enhanced monitoring of both network traffic and physical access controls.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign begins with the actors exploiting ISP-level vulnerabilities to inject adware into HTTP responses, which serves as a delivery mechanism for malicious payloads targeting downstream organizations in the supply chain.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "The campaign begins with the actors exploiting ISP-level vulnerabilities to inject adware into HTTP responses, which serves as a delivery mechanism for malicious payloads targeting downstream organizations in the supply chain.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "001] to connect and receive commands from C2 servers while simultaneously using scripts to extract web session cookies and send them to the C2 for authentication bypass.",
+            "technique_id": "T1539",
+            "technique_name": "Steal Web Session Cookie"
+        },
+        {
+            "sentence": "003] to remotely run scripts via Microsoft Project components, exploiting weak RDP credentials to hijack remote sessions and deploy tools for data collection.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "001] and save customer database files to an external hard drive for physical removal.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'OilRig Echo' Targeting Energy Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'OilRig Echo', targeting energy sector organizations through ISP-level content injection and supply chain compromises. The actors leverage COM interfaces, session hijacking, and file transfer protocols to exfiltrate sensitive data via physical media and code repositories.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional, educational campaign attributed to the APT group 'OilRig Echo'. This group has been observed targeting energy sector organizations, particularly those involved in oil and gas operations, with the intent to steal intellectual property and disrupt critical infrastructure. Background analysis indicates the actors have a history of targeting Middle Eastern entities, but this campaign shows expanded capabilities into North American networks. Initial logs from a compromised ISP show unusual HTTP traffic spikes, though these were initially dismissed as routine maintenance activities.\n\nThe campaign begins with the actors exploiting ISP-level vulnerabilities to inject adware into HTTP responses [T1659], which serves as a delivery mechanism for malicious payloads targeting downstream organizations in the supply chain [T1195]. Once initial access is achieved, the adversary employs the Internet Explorer Component Object Model (COM) interface [T1559.001] to connect and receive commands from C2 servers while simultaneously using scripts to extract web session cookies [T1539] and send them to the C2 for authentication bypass. System administrators reported intermittent RDP connection issues, but these were attributed to network latency rather than malicious activity.\n\nFor lateral movement, the threat actor leverages the Distributed Component Object Model (DCOM) protocol [T1021.003] to remotely run scripts via Microsoft Project components, exploiting weak RDP credentials to hijack remote sessions [T1563] and deploy tools for data collection. The actors then use a tool similar to MailSniper to search through Exchange server mailboxes for keywords [T1114.002], disguising C2 traffic as routine file sharing operations by leveraging SMB exploitation [T1071.002]. Network logs show increased SMB traffic during off-hours, but this was not flagged due to misconfigured alert thresholds.\n\nExfiltration is conducted through multiple channels: the attackers store stolen credentials in a public GitLab repository using automated API calls [T1567.001] and save customer database files to an external hard drive [T1052] for physical removal. Post-incident analysis revealed that the organization had outdated firewall rules, but this was unrelated to the primary attack vectors. The campaign demonstrates a sophisticated blend of digital and physical exfiltration techniques, highlighting the need for enhanced monitoring of both network traffic and physical access controls.",
+        "techniques_used": [
+            "T1659",
+            "T1195",
+            "T1559.001",
+            "T1539",
+            "T1021.003",
+            "T1563",
+            "T1114.002",
+            "T1071.002",
+            "T1567.001",
+            "T1052"
+        ]
+    }
+}

@@ -1,0 +1,118 @@
+{
+    "report_id": "report_129",
+    "generated_at": "20251222_120752",
+    "scenario_target_ids": [
+        "T1189",
+        "T1059.006",
+        "T1047",
+        "T1205.002",
+        "T1578.001",
+        "T1218.012",
+        "T1558",
+        "T1606",
+        "T1201",
+        "T1016",
+        "T1074.001",
+        "T1001.001",
+        "T1499.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1059.006",
+        "T1047",
+        "T1205.002",
+        "T1578.001",
+        "T1218.012",
+        "T1558",
+        "T1606",
+        "T1201",
+        "T1016",
+        "T1074.001",
+        "T1001.001",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1499.004",
+        "T1059.006",
+        "T1205.002",
+        "T1047",
+        "T1189",
+        "T1001.001",
+        "T1558",
+        "T1578.001",
+        "T1074.001",
+        "T1016",
+        "T1606",
+        "T1218.012",
+        "T1201"
+    ],
+    "clean_text": "On 2024-08-15, a financial services organization reported anomalous network traffic from an internal server. Investigation revealed a multi-stage attack beginning with a drive-by compromise via a compromised vendor website, which redirected users to a malicious site that registered custom URL schemes. The initial payload involved a Python-based backdoor compiled with PyInstaller, which was executed to establish persistence. Subsequently, the actors leveraged Windows Management Instrumentation for remote code execution, using Impacket's WMIexec module to run VBScript queries and deploy additional tools. The backdoor configured socket parameters via setsockopt to receive trigger packets for command-and-control (C2) communication. In the cloud environment, the attacker executed 'gcloud compute disks snapshot' to create a snapshot of a compromised disk image, preserving data for later retrieval. To evade detection, verclsid.exe was used to circumvent security controls and launch a payload. Credential theft activities included stealing Kerberos tickets, where malicious code executed klist with the purge option to clear cached tickets after extraction, and forging web credentials by using compromised IAM user credentials to invoke AssumeRole for unauthorized resource access. Discovery phases involved password policy discovery through PowerShell remoting, running 'Get-ADDefaultDomainPasswordPolicy' to learn about password history policies, and system network configuration discovery to gather information on victim IP addresses. Data staging occurred locally, with collected data aggregated in a tmp file. Exfiltration utilized DNS tunneling, encoding C2 data in the labels of DNS queries to a controlled server while injecting junk data to obscure traffic. The attack culminated in application exploitation, leveraging a zero-day flaw in web server software to create an endless loop of resource allocation requests, causing denial-of-service conditions. Logs from the affected server showed increased CPU usage and failed authentication attempts, though these were unrelated to the core TTPs. The organization's background includes a recent migration to cloud services, which may have introduced misconfigurations exploited in this scenario.",
+    "tagged_text": "On 2024-08-15, a financial services organization reported anomalous network traffic from an internal server. Investigation revealed a multi-stage attack beginning with a drive-by compromise [T1189] via a compromised vendor website, which redirected users to a malicious site that registered custom URL schemes. The initial payload involved a Python-based backdoor compiled with PyInstaller [T1059.006], which was executed to establish persistence. Subsequently, the actors leveraged Windows Management Instrumentation [T1047] for remote code execution, using Impacket's WMIexec module to run VBScript queries and deploy additional tools. The backdoor configured socket parameters via setsockopt to receive trigger packets for command-and-control (C2) communication [T1205.002]. In the cloud environment, the attacker executed 'gcloud compute disks snapshot' to create a snapshot of a compromised disk image [T1578.001], preserving data for later retrieval. To evade detection, verclsid.exe was used to circumvent security controls and launch a payload [T1218.012]. Credential theft activities included stealing Kerberos tickets, where malicious code executed klist with the purge option to clear cached tickets after extraction [T1558], and forging web credentials by using compromised IAM user credentials to invoke AssumeRole for unauthorized resource access [T1606]. Discovery phases involved password policy discovery through PowerShell remoting, running 'Get-ADDefaultDomainPasswordPolicy' to learn about password history policies [T1201], and system network configuration discovery to gather information on victim IP addresses [T1016]. Data staging occurred locally, with collected data aggregated in a tmp file [T1074.001]. Exfiltration utilized DNS tunneling, encoding C2 data in the labels of DNS queries to a controlled server [T1001.001] while injecting junk data to obscure traffic. The attack culminated in application exploitation, leveraging a zero-day flaw in web server software to create an endless loop of resource allocation requests [T1499.004], causing denial-of-service conditions. Logs from the affected server showed increased CPU usage and failed authentication attempts, though these were unrelated to the core TTPs. The organization's background includes a recent migration to cloud services, which may have introduced misconfigurations exploited in this scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Investigation revealed a multi-stage attack beginning with a drive-by compromise via a compromised vendor website, which redirected users to a malicious site that registered custom URL schemes.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Subsequently, the actors leveraged Windows Management Instrumentation for remote code execution, using Impacket's WMIexec module to run VBScript queries and deploy additional tools.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "Credential theft activities included stealing Kerberos tickets, where malicious code executed klist with the purge option to clear cached tickets after extraction, and forging web credentials by using compromised IAM user credentials to invoke AssumeRole for unauthorized resource access.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        },
+        {
+            "sentence": "Credential theft activities included stealing Kerberos tickets, where malicious code executed klist with the purge option to clear cached tickets after extraction, and forging web credentials by using compromised IAM user credentials to invoke AssumeRole for unauthorized resource access.",
+            "technique_id": "T1606",
+            "technique_name": "Forge Web Credentials"
+        },
+        {
+            "sentence": "Discovery phases involved password policy discovery through PowerShell remoting, running 'Get-ADDefaultDomainPasswordPolicy' to learn about password history policies, and system network configuration discovery to gather information on victim IP addresses.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "Discovery phases involved password policy discovery through PowerShell remoting, running 'Get-ADDefaultDomainPasswordPolicy' to learn about password history policies, and system network configuration discovery to gather information on victim IP addresses.",
+            "technique_id": "T1016",
+            "technique_name": "System Network Configuration Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a fictional campaign by threat actors targeting organizations with hybrid on-premises and cloud environments, using a combination of initial web compromise, backdoor deployment, and credential theft for persistence and data exfiltration. The simulated activity is based on known TTPs for training blue teams in detection and response.",
+        "full_report_text": "On 2024-08-15, a financial services organization reported anomalous network traffic from an internal server. Investigation revealed a multi-stage attack beginning with a drive-by compromise [T1189] via a compromised vendor website, which redirected users to a malicious site that registered custom URL schemes. The initial payload involved a Python-based backdoor compiled with PyInstaller [T1059.006], which was executed to establish persistence. Subsequently, the actors leveraged Windows Management Instrumentation [T1047] for remote code execution, using Impacket's WMIexec module to run VBScript queries and deploy additional tools. The backdoor configured socket parameters via setsockopt to receive trigger packets for command-and-control (C2) communication [T1205.002]. In the cloud environment, the attacker executed 'gcloud compute disks snapshot' to create a snapshot of a compromised disk image [T1578.001], preserving data for later retrieval. To evade detection, verclsid.exe was used to circumvent security controls and launch a payload [T1218.012]. Credential theft activities included stealing Kerberos tickets, where malicious code executed klist with the purge option to clear cached tickets after extraction [T1558], and forging web credentials by using compromised IAM user credentials to invoke AssumeRole for unauthorized resource access [T1606]. Discovery phases involved password policy discovery through PowerShell remoting, running 'Get-ADDefaultDomainPasswordPolicy' to learn about password history policies [T1201], and system network configuration discovery to gather information on victim IP addresses [T1016]. Data staging occurred locally, with collected data aggregated in a tmp file [T1074.001]. Exfiltration utilized DNS tunneling, encoding C2 data in the labels of DNS queries to a controlled server [T1001.001] while injecting junk data to obscure traffic. The attack culminated in application exploitation, leveraging a zero-day flaw in web server software to create an endless loop of resource allocation requests [T1499.004], causing denial-of-service conditions. Logs from the affected server showed increased CPU usage and failed authentication attempts, though these were unrelated to the core TTPs. The organization's background includes a recent migration to cloud services, which may have introduced misconfigurations exploited in this scenario.",
+        "techniques_used": [
+            "T1189",
+            "T1059.006",
+            "T1047",
+            "T1205.002",
+            "T1578.001",
+            "T1218.012",
+            "T1558",
+            "T1606",
+            "T1201",
+            "T1016",
+            "T1074.001",
+            "T1001.001",
+            "T1499.004"
+        ]
+    }
+}

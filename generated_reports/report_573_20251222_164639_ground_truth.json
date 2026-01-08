@@ -1,0 +1,93 @@
+{
+    "report_id": "report_573",
+    "generated_at": "20251222_164639",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1559.003",
+        "T1055.002",
+        "T1574.010",
+        "T1622",
+        "T1556.002",
+        "T1578.003",
+        "T1538",
+        "T1619",
+        "T1568"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1559.003",
+        "T1055.002",
+        "T1574.010",
+        "T1622",
+        "T1556.002",
+        "T1578.003",
+        "T1538",
+        "T1619",
+        "T1568"
+    ],
+    "actual_found_ids": [
+        "T1055.002",
+        "T1195.002",
+        "T1574.010",
+        "T1568",
+        "T1578.003",
+        "T1538",
+        "T1622",
+        "T1619",
+        "T1556.002",
+        "T1559.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) based on a fictional scenario. SecureBank Corp., a mid-sized financial institution, reported anomalous network traffic originating from a recently updated internal application. Initial investigation revealed that the adversary likely conducted reconnaissance on cloud environments, using GCP Command Center to discover storage buckets with weak access controls and performing S3 ListObjects operations to inventory files within a specific bucket. During the build process of a third-party software update, the adversary altered the application's source code to include credential harvesting functionality, which was deployed across SecureBank's endpoints. Upon execution, the malware exploited an XPC service daemon's weak authentication to gain unauthorized elevated system access and injected its backdoor as a portable executable into a target process while simultaneously modifying permissions on a legitimate service executable using 'icacls' to enable replacement. To evade analysis, the malware checked for debugging tools and dropped a credential-harvesting DLL into the Windows temp folder, with the malicious script automatically deleting the cloud instance that hosted phishing pages after collecting credentials. The threat actor executed 'malware.exe' to periodically check in with the command and control infrastructure using dynamic resolution techniques. System logs from SecureBank's SIEM showed increased outbound traffic to unknown IP addresses, but no actual data exfiltration was confirmed in this training scenario. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced configuration gaps. This report is intended for educational purposes to enhance defensive capabilities against similar real-world threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) based on a fictional scenario. SecureBank Corp., a mid-sized financial institution, reported anomalous network traffic originating from a recently updated internal application. Initial investigation revealed that the adversary likely conducted reconnaissance on cloud environments, using GCP Command Center to discover storage buckets with weak access controls [T1538] and performing S3 ListObjects operations to inventory files within a specific bucket [T1619]. During the build process of a third-party software update, the adversary altered the application's source code to include credential harvesting functionality [T1195.002], which was deployed across SecureBank's endpoints. Upon execution, the malware exploited an XPC service daemon's weak authentication to gain unauthorized elevated system access [T1559.003] and injected its backdoor as a portable executable into a target process [T1055.002] while simultaneously modifying permissions on a legitimate service executable using 'icacls' to enable replacement [T1574.010]. To evade analysis, the malware checked for debugging tools [T1622] and dropped a credential-harvesting DLL into the Windows temp folder [T1556.002], with the malicious script automatically deleting the cloud instance that hosted phishing pages after collecting credentials [T1578.003]. The threat actor executed 'malware.exe' to periodically check in with the command and control infrastructure using dynamic resolution techniques [T1568]. System logs from SecureBank's SIEM showed increased outbound traffic to unknown IP addresses, but no actual data exfiltration was confirmed in this training scenario. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced configuration gaps. This report is intended for educational purposes to enhance defensive capabilities against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that the adversary likely conducted reconnaissance on cloud environments, using GCP Command Center to discover storage buckets with weak access controls and performing S3 ListObjects operations to inventory files within a specific bucket.",
+            "technique_id": "T1538",
+            "technique_name": "Cloud Service Dashboard"
+        },
+        {
+            "sentence": "Initial investigation revealed that the adversary likely conducted reconnaissance on cloud environments, using GCP Command Center to discover storage buckets with weak access controls and performing S3 ListObjects operations to inventory files within a specific bucket.",
+            "technique_id": "T1619",
+            "technique_name": "Cloud Storage Object Discovery"
+        },
+        {
+            "sentence": "To evade analysis, the malware checked for debugging tools and dropped a credential-harvesting DLL into the Windows temp folder [T1556.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "exe' to periodically check in with the command and control infrastructure using dynamic resolution techniques.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMole' Targeting Cloud and Supply Chain Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowMole', which exploited software supply chain vulnerabilities and cloud misconfigurations to deploy credential-harvesting malware and evade detection. The activity was identified through analysis of network logs and incident response data from a fictional financial services company, 'SecureBank Corp.', during a routine security audit in Q3 2024.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) based on a fictional scenario. SecureBank Corp., a mid-sized financial institution, reported anomalous network traffic originating from a recently updated internal application. Initial investigation revealed that the adversary likely conducted reconnaissance on cloud environments, using GCP Command Center to discover storage buckets with weak access controls [T1538] and performing S3 ListObjects operations to inventory files within a specific bucket [T1619]. During the build process of a third-party software update, the adversary altered the application's source code to include credential harvesting functionality [T1195.002], which was deployed across SecureBank's endpoints. Upon execution, the malware exploited an XPC service daemon's weak authentication to gain unauthorized elevated system access [T1559.003] and injected its backdoor as a portable executable into a target process [T1055.002] while simultaneously modifying permissions on a legitimate service executable using 'icacls' to enable replacement [T1574.010]. To evade analysis, the malware checked for debugging tools [T1622] and dropped a credential-harvesting DLL into the Windows temp folder [T1556.002], with the malicious script automatically deleting the cloud instance that hosted phishing pages after collecting credentials [T1578.003]. The threat actor executed 'malware.exe' to periodically check in with the command and control infrastructure using dynamic resolution techniques [T1568]. System logs from SecureBank's SIEM showed increased outbound traffic to unknown IP addresses, but no actual data exfiltration was confirmed in this training scenario. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced configuration gaps. This report is intended for educational purposes to enhance defensive capabilities against similar real-world threats.",
+        "techniques_used": [
+            "T1195.002",
+            "T1559.003",
+            "T1055.002",
+            "T1574.010",
+            "T1622",
+            "T1556.002",
+            "T1578.003",
+            "T1538",
+            "T1619",
+            "T1568"
+        ]
+    }
+}

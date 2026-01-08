@@ -1,0 +1,68 @@
+{
+    "report_id": "report_283",
+    "generated_at": "20251222_144132",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1204.003",
+        "T1542.001",
+        "T1078.004",
+        "T1562",
+        "T1071",
+        "T1001.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1204.003",
+        "T1078.003",
+        "T1078.004",
+        "T1542.001",
+        "T1562",
+        "T1071",
+        "T1001.001"
+    ],
+    "actual_found_ids": [
+        "T1542.001",
+        "T1562",
+        "T1001.001",
+        "T1071",
+        "T1078.004",
+        "T1204.003",
+        "T1078.003"
+    ],
+    "clean_text": "Crimson Shadow actors likely initiated their campaign by conducting reconnaissance on target organizations, focusing on misconfigured cloud instances and outdated firmware vulnerabilities. In one observed incident, the adversary exploited a compromised AWS account to distribute a backdoored Amazon Machine Image (AMI) with embedded credential harvesting capabilities, which was then used to establish initial access via cloud-based virtual machines. Once inside the environment, the actors employed Mimikatz.exe's sekurlsa module to dump credentials from active logon sessions, targeting both local administrator accounts and cloud service accounts to expand their foothold. To maintain persistence, they abused Azure Managed Identities to gain unauthorized access to cloud storage resources, while simultaneously using a custom tool to rewrite the BIOS firmware with a malicious payload that evades traditional detection mechanisms. The actors actively impaired defenses by using taskkill to forcefully terminate antivirus processes and prevent security scanning, allowing them to operate undetected. For command and control (C2), they utilized NETEAGLE to establish RDP connections with a controller over TCP/7519, leveraging application layer protocols for stealthy communication, and injected DNS tunneling by encoding C2 data in the labels of DNS queries to a controlled server to obscure their traffic. System logs from affected endpoints showed unusual spikes in DNS query volumes and failed authentication attempts from unknown IP addresses, though these were initially dismissed as network noise. The targeted organization, a mid-sized financial services firm with hybrid Azure and AWS deployments, reported no data loss in this simulated scenario, but the incident highlighted gaps in firmware security monitoring and cloud identity management.",
+    "tagged_text": "Crimson Shadow actors likely initiated their campaign by conducting reconnaissance on target organizations, focusing on misconfigured cloud instances and outdated firmware vulnerabilities. In one observed incident, the adversary exploited a compromised AWS account to distribute a backdoored Amazon Machine Image (AMI) with embedded credential harvesting capabilities [T1204.003], which was then used to establish initial access via cloud-based virtual machines. Once inside the environment, the actors employed Mimikatz.exe's sekurlsa module to dump credentials from active logon sessions, targeting both local administrator accounts [T1078.003] and cloud service accounts to expand their foothold. To maintain persistence, they abused Azure Managed Identities to gain unauthorized access to cloud storage resources [T1078.004], while simultaneously using a custom tool to rewrite the BIOS firmware with a malicious payload that evades traditional detection mechanisms [T1542.001]. The actors actively impaired defenses by using taskkill to forcefully terminate antivirus processes and prevent security scanning [T1562], allowing them to operate undetected. For command and control (C2), they utilized NETEAGLE to establish RDP connections with a controller over TCP/7519, leveraging application layer protocols for stealthy communication [T1071], and injected DNS tunneling by encoding C2 data in the labels of DNS queries to a controlled server to obscure their traffic [T1001.001]. System logs from affected endpoints showed unusual spikes in DNS query volumes and failed authentication attempts from unknown IP addresses, though these were initially dismissed as network noise. The targeted organization, a mid-sized financial services firm with hybrid Azure and AWS deployments, reported no data loss in this simulated scenario, but the incident highlighted gaps in firmware security monitoring and cloud identity management.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors actively impaired defenses by using taskkill to forcefully terminate antivirus processes and prevent security scanning, allowing them to operate undetected.",
+            "technique_id": "T1562",
+            "technique_name": "Impair Defenses"
+        },
+        {
+            "sentence": "For command and control (C2), they utilized NETEAGLE to establish RDP connections with a controller over TCP/7519, leveraging application layer protocols for stealthy communication, and injected DNS tunneling by encoding C2 data in the labels of DNS queries to a controlled server to obscure their traffic [T1001.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting hybrid cloud environments and local systems. The actors combine credential theft, malicious cloud resources, firmware manipulation, and defense evasion to achieve persistence and data exfiltration. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "Crimson Shadow actors likely initiated their campaign by conducting reconnaissance on target organizations, focusing on misconfigured cloud instances and outdated firmware vulnerabilities. In one observed incident, the adversary exploited a compromised AWS account to distribute a backdoored Amazon Machine Image (AMI) with embedded credential harvesting capabilities [T1204.003], which was then used to establish initial access via cloud-based virtual machines. Once inside the environment, the actors employed Mimikatz.exe's sekurlsa module to dump credentials from active logon sessions, targeting both local administrator accounts [T1078.003] and cloud service accounts to expand their foothold. To maintain persistence, they abused Azure Managed Identities to gain unauthorized access to cloud storage resources [T1078.004], while simultaneously using a custom tool to rewrite the BIOS firmware with a malicious payload that evades traditional detection mechanisms [T1542.001]. The actors actively impaired defenses by using taskkill to forcefully terminate antivirus processes and prevent security scanning [T1562], allowing them to operate undetected. For command and control (C2), they utilized NETEAGLE to establish RDP connections with a controller over TCP/7519, leveraging application layer protocols for stealthy communication [T1071], and injected DNS tunneling by encoding C2 data in the labels of DNS queries to a controlled server to obscure their traffic [T1001.001]. System logs from affected endpoints showed unusual spikes in DNS query volumes and failed authentication attempts from unknown IP addresses, though these were initially dismissed as network noise. The targeted organization, a mid-sized financial services firm with hybrid Azure and AWS deployments, reported no data loss in this simulated scenario, but the incident highlighted gaps in firmware security monitoring and cloud identity management.",
+        "techniques_used": [
+            "T1204.003",
+            "T1078.003",
+            "T1078.004",
+            "T1542.001",
+            "T1562",
+            "T1071",
+            "T1001.001"
+        ]
+    }
+}

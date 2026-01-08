@@ -1,0 +1,78 @@
+{
+    "report_id": "report_208",
+    "generated_at": "20251222_140958",
+    "scenario_target_ids": [
+        "T1200",
+        "T1674",
+        "T1546.002",
+        "T1053.005",
+        "T1110.003",
+        "T1003.002",
+        "T1090.003",
+        "T1104"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1674",
+        "T1546.002",
+        "T1053.005",
+        "T1110.003",
+        "T1003.002",
+        "T1090.003",
+        "T1104"
+    ],
+    "actual_found_ids": [
+        "T1110.003",
+        "T1104",
+        "T1200",
+        "T1003.002",
+        "T1546.002",
+        "T1674",
+        "T1090.003",
+        "T1053.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on APT activity. This report simulates a campaign by the threat actor 'BADNEWS', which targets organizations in the energy and manufacturing sectors. Background investigation reveals that the actor has historically focused on espionage and data exfiltration, with this campaign involving a multi-phase attack chain.\n\nInitial Access: The adversary gained initial access by deploying a USB Rubber Ducky configured to mimic a keyboard. Upon connection to a target workstation, the device simulated keyboard inputs to execute malicious PowerShell scripts. System logs from the compromised host show unusual activity at 14:30 UTC, including rapid command execution sequences that bypassed standard user input monitoring.\n\nExecution: Using the injected inputs, the actor executed a payload named 'remote_access_tool.exe', which established a backdoor and created multiple redundant C2 connections for resilience. The tool was designed to evade detection by mimicking legitimate system processes, with network traffic analysis indicating connections to external IP addresses over non-standard ports.\n\nPersistence: To maintain access, the actor altered the ScreenSaveActive registry value to enable screen saver execution and created a scheduled task named 'SystemUpdate' to execute the malicious payload every subsequent minute. Registry modifications were logged but not flagged by default security settings, allowing the persistence mechanisms to remain active across system reboots.\n\nCredential Access: The actor conducted network reconnaissance and identified an SSH service on port 22, which was targeted for credential collection using password spraying techniques. Following successful access, malware executed gsecdump to dump cached domain credentials from the Security Account Manager (SAM) on the compromised system. Credential theft logs show multiple failed login attempts followed by successful extraction of administrative hashes.\n\nCommand and Control: For C2 communication, the actor used Tor to obfuscate traffic, routing commands through multiple proxy nodes to avoid detection. The 'remote_access_tool.exe' facilitated these multi-hop connections, ensuring operational resilience even if some nodes were blocked. Network monitoring tools recorded encrypted traffic patterns consistent with Tor usage, but initial alerts were suppressed due to high false-positive rates in the environment.\n\nDefensive Recommendations: Blue teams should implement USB device control policies, monitor for unusual registry changes and scheduled tasks, enforce strong password policies to mitigate spraying attacks, and deploy network segmentation to limit lateral movement. Additionally, monitoring for Tor traffic and anomalous C2 patterns can aid in early detection. This scenario is purely fictional and intended for training exercises to enhance defensive capabilities against similar real-world threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on APT activity. This report simulates a campaign by the threat actor 'BADNEWS', which targets organizations in the energy and manufacturing sectors. Background investigation reveals that the actor has historically focused on espionage and data exfiltration, with this campaign involving a multi-phase attack chain.\n\nInitial Access: The adversary gained initial access by deploying a USB Rubber Ducky configured to mimic a keyboard [T1200]. Upon connection to a target workstation, the device simulated keyboard inputs to execute malicious PowerShell scripts [T1674]. System logs from the compromised host show unusual activity at 14:30 UTC, including rapid command execution sequences that bypassed standard user input monitoring.\n\nExecution: Using the injected inputs, the actor executed a payload named 'remote_access_tool.exe', which established a backdoor and created multiple redundant C2 connections for resilience [T1104]. The tool was designed to evade detection by mimicking legitimate system processes, with network traffic analysis indicating connections to external IP addresses over non-standard ports.\n\nPersistence: To maintain access, the actor altered the ScreenSaveActive registry value to enable screen saver execution [T1546.002] and created a scheduled task named 'SystemUpdate' to execute the malicious payload every subsequent minute [T1053.005]. Registry modifications were logged but not flagged by default security settings, allowing the persistence mechanisms to remain active across system reboots.\n\nCredential Access: The actor conducted network reconnaissance and identified an SSH service on port 22, which was targeted for credential collection using password spraying techniques [T1110.003]. Following successful access, malware executed gsecdump to dump cached domain credentials from the Security Account Manager (SAM) on the compromised system [T1003.002]. Credential theft logs show multiple failed login attempts followed by successful extraction of administrative hashes.\n\nCommand and Control: For C2 communication, the actor used Tor to obfuscate traffic [T1090.003], routing commands through multiple proxy nodes to avoid detection. The 'remote_access_tool.exe' facilitated these multi-hop connections, ensuring operational resilience even if some nodes were blocked. Network monitoring tools recorded encrypted traffic patterns consistent with Tor usage, but initial alerts were suppressed due to high false-positive rates in the environment.\n\nDefensive Recommendations: Blue teams should implement USB device control policies, monitor for unusual registry changes and scheduled tasks, enforce strong password policies to mitigate spraying attacks, and deploy network segmentation to limit lateral movement. Additionally, monitoring for Tor traffic and anomalous C2 patterns can aid in early detection. This scenario is purely fictional and intended for training exercises to enhance defensive capabilities against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The adversary gained initial access by deploying a USB Rubber Ducky configured to mimic a keyboard.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Upon connection to a target workstation, the device simulated keyboard inputs to execute malicious PowerShell scripts.",
+            "technique_id": "T1674",
+            "technique_name": "Input Injection"
+        },
+        {
+            "sentence": "exe', which established a backdoor and created multiple redundant C2 connections for resilience.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'BADNEWS' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'BADNEWS', targeting critical infrastructure sectors. The campaign involves initial access via hardware implants, execution through input injection, persistence via registry and task manipulation, credential theft, and resilient command and control (C2) communications. Blue teams are advised to review defensive measures and indicators of compromise (IoCs) provided in this report for training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on APT activity. This report simulates a campaign by the threat actor 'BADNEWS', which targets organizations in the energy and manufacturing sectors. Background investigation reveals that the actor has historically focused on espionage and data exfiltration, with this campaign involving a multi-phase attack chain.\n\nInitial Access: The adversary gained initial access by deploying a USB Rubber Ducky configured to mimic a keyboard [T1200]. Upon connection to a target workstation, the device simulated keyboard inputs to execute malicious PowerShell scripts [T1674]. System logs from the compromised host show unusual activity at 14:30 UTC, including rapid command execution sequences that bypassed standard user input monitoring.\n\nExecution: Using the injected inputs, the actor executed a payload named 'remote_access_tool.exe', which established a backdoor and created multiple redundant C2 connections for resilience [T1104]. The tool was designed to evade detection by mimicking legitimate system processes, with network traffic analysis indicating connections to external IP addresses over non-standard ports.\n\nPersistence: To maintain access, the actor altered the ScreenSaveActive registry value to enable screen saver execution [T1546.002] and created a scheduled task named 'SystemUpdate' to execute the malicious payload every subsequent minute [T1053.005]. Registry modifications were logged but not flagged by default security settings, allowing the persistence mechanisms to remain active across system reboots.\n\nCredential Access: The actor conducted network reconnaissance and identified an SSH service on port 22, which was targeted for credential collection using password spraying techniques [T1110.003]. Following successful access, malware executed gsecdump to dump cached domain credentials from the Security Account Manager (SAM) on the compromised system [T1003.002]. Credential theft logs show multiple failed login attempts followed by successful extraction of administrative hashes.\n\nCommand and Control: For C2 communication, the actor used Tor to obfuscate traffic [T1090.003], routing commands through multiple proxy nodes to avoid detection. The 'remote_access_tool.exe' facilitated these multi-hop connections, ensuring operational resilience even if some nodes were blocked. Network monitoring tools recorded encrypted traffic patterns consistent with Tor usage, but initial alerts were suppressed due to high false-positive rates in the environment.\n\nDefensive Recommendations: Blue teams should implement USB device control policies, monitor for unusual registry changes and scheduled tasks, enforce strong password policies to mitigate spraying attacks, and deploy network segmentation to limit lateral movement. Additionally, monitoring for Tor traffic and anomalous C2 patterns can aid in early detection. This scenario is purely fictional and intended for training exercises to enhance defensive capabilities against similar real-world threats.",
+        "techniques_used": [
+            "T1200",
+            "T1674",
+            "T1546.002",
+            "T1053.005",
+            "T1110.003",
+            "T1003.002",
+            "T1090.003",
+            "T1104"
+        ]
+    }
+}

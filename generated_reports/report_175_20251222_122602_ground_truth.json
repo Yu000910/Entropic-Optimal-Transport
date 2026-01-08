@@ -1,0 +1,113 @@
+{
+    "report_id": "report_175",
+    "generated_at": "20251222_122602",
+    "scenario_target_ids": [
+        "T1588.003",
+        "T1195.001",
+        "T1053.005",
+        "T1056.002",
+        "T1556.005",
+        "T1614.001",
+        "T1614",
+        "T1049",
+        "T1021",
+        "T1534",
+        "T1090.004",
+        "T1205.001",
+        "T1567.002",
+        "T1499.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1588.003",
+        "T1195.001",
+        "T1053.005",
+        "T1056.002",
+        "T1556.005",
+        "T1614.001",
+        "T1614",
+        "T1049",
+        "T1021",
+        "T1534",
+        "T1090.004",
+        "T1205.001",
+        "T1567.002",
+        "T1499.001"
+    ],
+    "actual_found_ids": [
+        "T1534",
+        "T1567.002",
+        "T1499.001",
+        "T1614",
+        "T1049",
+        "T1090.004",
+        "T1053.005",
+        "T1614.001",
+        "T1021",
+        "T1205.001",
+        "T1588.003",
+        "T1195.001",
+        "T1556.005",
+        "T1056.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the advanced persistent threat (APT) group 'ShadowVeil,' which has been observed targeting financial organizations in North America since early 2024. ShadowVeil operates with high sophistication, leveraging a multi-stage attack chain to infiltrate networks, maintain persistence, and exfiltrate sensitive data.\n\nInitial Access: ShadowVeil initially gained access by compromising a third-party software vendor's development tools, modifying a malicious.dll within a popular financial analytics component to enable covert data collection. The actors used code signing certificates issued to fake companies to sign this malicious payload, allowing it to bypass security controls and evade detection during installation. Once deployed, the malware executed an AppleScript that presented a deceptive authentication window, capturing user credentials through GUI input capture. Logs from affected systems show unusual PowerShell activity at 03:14 UTC on March 15, 2024, but this was initially dismissed as routine maintenance.\n\nExecution and Persistence: After credential theft, the adversary employed PowerShell to establish SSH access to internal web servers using valid service account credentials and added persistence by creating scheduled tasks that would re-execute the malware every 24 hours. The malware also used Set-ADUser to alter RADIUS configuration settings, enabling the capture of credentials through reversible encryption methods. During this phase, network traffic spiked by 15%, but IT staff attributed it to a scheduled backup process.\n\nDiscovery: ShadowVeil conducted extensive discovery activities to map the environment. The payload queried system language settings via keyboard layout mechanisms to identify the operating system locale and accessed the instance metadata service endpoint to obtain availability zone details, pinpointing the geographic location of compromised machines. Additionally, the malware retrieved a GUID associated with present LAN connections to discover system network configurations. Internal spearphishing was used to drop malicious.ps1 scripts that executed credential dumping tools, further compromising domain admin accounts and expanding access. Background checks revealed that the company, 'FinSecure Inc.,' had recently migrated to a hybrid cloud infrastructure, but this was unrelated to the attack.\n\nCommand and Control (C2): To evade detection, ShadowVeil established covert C2 channels. The backdoor manipulated TLS session ID values in headers to implement domain fronting, hiding malicious traffic within legitimate domains. Port knocking techniques were used to establish raw socket connections, bypassing firewall rules and maintaining stealthy communication. Network monitoring tools flagged anomalous outbound traffic to IP addresses in Eastern Europe, but initial investigations focused on misconfigured VPN settings.\n\nExfiltration and Impact: ShadowVeil exfiltrated stolen data by gathering system information and uploading it to a shared Dropbox folder using encrypted channels. In a disruptive move, the actors executed an ACK flood script against the organization's load balancer, causing OS exhaustion floods that disrupted its ability to handle legitimate traffic and degraded service availability. Incident response teams noted that the attack coincided with a planned system upgrade, complicating initial analysis. Recommendations include implementing stricter code signing validation, monitoring for anomalous scheduled tasks, and enhancing network segmentation to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the advanced persistent threat (APT) group 'ShadowVeil,' which has been observed targeting financial organizations in North America since early 2024. ShadowVeil operates with high sophistication, leveraging a multi-stage attack chain to infiltrate networks, maintain persistence, and exfiltrate sensitive data.\n\nInitial Access: ShadowVeil initially gained access by compromising a third-party software vendor's development tools, modifying a malicious.dll within a popular financial analytics component to enable covert data collection [T1195.001]. The actors used code signing certificates issued to fake companies to sign this malicious payload, allowing it to bypass security controls and evade detection during installation [T1588.003]. Once deployed, the malware executed an AppleScript that presented a deceptive authentication window, capturing user credentials through GUI input capture [T1056.002]. Logs from affected systems show unusual PowerShell activity at 03:14 UTC on March 15, 2024, but this was initially dismissed as routine maintenance.\n\nExecution and Persistence: After credential theft, the adversary employed PowerShell to establish SSH access to internal web servers using valid service account credentials [T1021] and added persistence by creating scheduled tasks that would re-execute the malware every 24 hours [T1053.005]. The malware also used Set-ADUser to alter RADIUS configuration settings, enabling the capture of credentials through reversible encryption methods [T1556.005]. During this phase, network traffic spiked by 15%, but IT staff attributed it to a scheduled backup process.\n\nDiscovery: ShadowVeil conducted extensive discovery activities to map the environment. The payload queried system language settings via keyboard layout mechanisms to identify the operating system locale [T1614.001] and accessed the instance metadata service endpoint to obtain availability zone details, pinpointing the geographic location of compromised machines [T1614]. Additionally, the malware retrieved a GUID associated with present LAN connections to discover system network configurations [T1049]. Internal spearphishing was used to drop malicious.ps1 scripts that executed credential dumping tools, further compromising domain admin accounts and expanding access [T1534]. Background checks revealed that the company, 'FinSecure Inc.,' had recently migrated to a hybrid cloud infrastructure, but this was unrelated to the attack.\n\nCommand and Control (C2): To evade detection, ShadowVeil established covert C2 channels. The backdoor manipulated TLS session ID values in headers to implement domain fronting, hiding malicious traffic within legitimate domains [T1090.004]. Port knocking techniques were used to establish raw socket connections, bypassing firewall rules and maintaining stealthy communication [T1205.001]. Network monitoring tools flagged anomalous outbound traffic to IP addresses in Eastern Europe, but initial investigations focused on misconfigured VPN settings.\n\nExfiltration and Impact: ShadowVeil exfiltrated stolen data by gathering system information and uploading it to a shared Dropbox folder using encrypted channels [T1567.002]. In a disruptive move, the actors executed an ACK flood script against the organization's load balancer, causing OS exhaustion floods that disrupted its ability to handle legitimate traffic and degraded service availability [T1499.001]. Incident response teams noted that the attack coincided with a planned system upgrade, complicating initial analysis. Recommendations include implementing stricter code signing validation, monitoring for anomalous scheduled tasks, and enhancing network segmentation to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution and Persistence: After credential theft, the adversary employed PowerShell to establish SSH access to internal web servers using valid service account credentials and added persistence by creating scheduled tasks that would re-execute the malware every 24 hours [T1053.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "001] and accessed the instance metadata service endpoint to obtain availability zone details, pinpointing the geographic location of compromised machines.",
+            "technique_id": "T1614",
+            "technique_name": "System Location Discovery"
+        },
+        {
+            "sentence": "Additionally, the malware retrieved a GUID associated with present LAN connections to discover system network configurations.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "ps1 scripts that executed credential dumping tools, further compromising domain admin accounts and expanding access.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVeil' targeting financial institutions, involving supply chain compromise, credential theft, and data exfiltration, based on provided techniques for blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the advanced persistent threat (APT) group 'ShadowVeil,' which has been observed targeting financial organizations in North America since early 2024. ShadowVeil operates with high sophistication, leveraging a multi-stage attack chain to infiltrate networks, maintain persistence, and exfiltrate sensitive data.\n\nInitial Access: ShadowVeil initially gained access by compromising a third-party software vendor's development tools, modifying a malicious.dll within a popular financial analytics component to enable covert data collection [T1195.001]. The actors used code signing certificates issued to fake companies to sign this malicious payload, allowing it to bypass security controls and evade detection during installation [T1588.003]. Once deployed, the malware executed an AppleScript that presented a deceptive authentication window, capturing user credentials through GUI input capture [T1056.002]. Logs from affected systems show unusual PowerShell activity at 03:14 UTC on March 15, 2024, but this was initially dismissed as routine maintenance.\n\nExecution and Persistence: After credential theft, the adversary employed PowerShell to establish SSH access to internal web servers using valid service account credentials [T1021] and added persistence by creating scheduled tasks that would re-execute the malware every 24 hours [T1053.005]. The malware also used Set-ADUser to alter RADIUS configuration settings, enabling the capture of credentials through reversible encryption methods [T1556.005]. During this phase, network traffic spiked by 15%, but IT staff attributed it to a scheduled backup process.\n\nDiscovery: ShadowVeil conducted extensive discovery activities to map the environment. The payload queried system language settings via keyboard layout mechanisms to identify the operating system locale [T1614.001] and accessed the instance metadata service endpoint to obtain availability zone details, pinpointing the geographic location of compromised machines [T1614]. Additionally, the malware retrieved a GUID associated with present LAN connections to discover system network configurations [T1049]. Internal spearphishing was used to drop malicious.ps1 scripts that executed credential dumping tools, further compromising domain admin accounts and expanding access [T1534]. Background checks revealed that the company, 'FinSecure Inc.,' had recently migrated to a hybrid cloud infrastructure, but this was unrelated to the attack.\n\nCommand and Control (C2): To evade detection, ShadowVeil established covert C2 channels. The backdoor manipulated TLS session ID values in headers to implement domain fronting, hiding malicious traffic within legitimate domains [T1090.004]. Port knocking techniques were used to establish raw socket connections, bypassing firewall rules and maintaining stealthy communication [T1205.001]. Network monitoring tools flagged anomalous outbound traffic to IP addresses in Eastern Europe, but initial investigations focused on misconfigured VPN settings.\n\nExfiltration and Impact: ShadowVeil exfiltrated stolen data by gathering system information and uploading it to a shared Dropbox folder using encrypted channels [T1567.002]. In a disruptive move, the actors executed an ACK flood script against the organization's load balancer, causing OS exhaustion floods that disrupted its ability to handle legitimate traffic and degraded service availability [T1499.001]. Incident response teams noted that the attack coincided with a planned system upgrade, complicating initial analysis. Recommendations include implementing stricter code signing validation, monitoring for anomalous scheduled tasks, and enhancing network segmentation to mitigate similar threats.",
+        "techniques_used": [
+            "T1588.003",
+            "T1195.001",
+            "T1053.005",
+            "T1056.002",
+            "T1556.005",
+            "T1614.001",
+            "T1614",
+            "T1049",
+            "T1021",
+            "T1534",
+            "T1090.004",
+            "T1205.001",
+            "T1567.002",
+            "T1499.001"
+        ]
+    }
+}

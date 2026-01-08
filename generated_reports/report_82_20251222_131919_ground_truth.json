@@ -1,0 +1,68 @@
+{
+    "report_id": "report_82",
+    "generated_at": "20251222_131919",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1566",
+        "T1059.001",
+        "T1546.002",
+        "T1070.001",
+        "T1090.002",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1059.001",
+        "T1078.004",
+        "T1090.002",
+        "T1070.001",
+        "T1546.002",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1491",
+        "T1546.002",
+        "T1566",
+        "T1090.002",
+        "T1078.004",
+        "T1070.001",
+        "T1059.001"
+    ],
+    "clean_text": "CrimsonVortex, a fictional APT group, initiated their campaign by conducting reconnaissance to identify employees in logistics roles at target organizations, though no specific techniques were tagged for this phase as it involved open-source intelligence gathering. The actors then distributed phishing emails with malicious attachments disguised as shipping notifications, which, when opened, executed PowerShell scripts to download additional payloads from external servers while simultaneously modifying registry keys to establish persistence. Upon execution, the malware abused system-assigned managed identities to gain unauthorized access to Azure Key Vault resources, allowing the actors to maintain persistent footholds in cloud environments. To evade detection, CrimsonVortex deployed HTRAN on intermediate servers to tunnel command and control (C2) traffic through external proxies, making it difficult to trace the actual controllers, and used wevtutil to clear Windows event logs after malicious activities. For further persistence, the threat actor altered SCRNSAVE.exe settings to launch a backdoor when systems remained idle for five minutes. In the final stage, the exploit kit injected 'evil.ps1' to render fake update notifications that covered active application windows, resulting in defacement to disrupt user operations and create confusion. Throughout the campaign, system logs recorded normal authentication events and network traffic spikes, but these were unrelated to the tagged techniques and served as noise for training purposes. The targeted organizations, primarily in the retail and manufacturing sectors, reported minor disruptions in cloud services, but no real data loss occurred as this was a simulated exercise.",
+    "tagged_text": "CrimsonVortex, a fictional APT group, initiated their campaign by conducting reconnaissance to identify employees in logistics roles at target organizations, though no specific techniques were tagged for this phase as it involved open-source intelligence gathering. The actors then distributed phishing emails [T1566] with malicious attachments disguised as shipping notifications, which, when opened, executed PowerShell scripts [T1059.001] to download additional payloads from external servers while simultaneously modifying registry keys to establish persistence. Upon execution, the malware abused system-assigned managed identities to gain unauthorized access to Azure Key Vault resources [T1078.004], allowing the actors to maintain persistent footholds in cloud environments. To evade detection, CrimsonVortex deployed HTRAN on intermediate servers to tunnel command and control (C2) traffic through external proxies [T1090.002], making it difficult to trace the actual controllers, and used wevtutil to clear Windows event logs [T1070.001] after malicious activities. For further persistence, the threat actor altered SCRNSAVE.exe settings to launch a backdoor when systems remained idle for five minutes [T1546.002]. In the final stage, the exploit kit injected 'evil.ps1' to render fake update notifications that covered active application windows, resulting in defacement [T1491] to disrupt user operations and create confusion. Throughout the campaign, system logs recorded normal authentication events and network traffic spikes, but these were unrelated to the tagged techniques and served as noise for training purposes. The targeted organizations, primarily in the retail and manufacturing sectors, reported minor disruptions in cloud services, but no real data loss occurred as this was a simulated exercise.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then distributed phishing emails with malicious attachments disguised as shipping notifications, which, when opened, executed PowerShell scripts [T1059.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "ps1' to render fake update notifications that covered active application windows, resulting in defacement to disrupt user operations and create confusion.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud Infrastructure via Phishing and Persistence Mechanisms",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, referred to as 'CrimsonVortex,' targeting organizations with cloud-based operations. The actors leveraged phishing emails to gain initial access, abused cloud accounts for persistence, and employed various evasion and impact techniques, including defacement and log clearing, to disrupt operations and obscure their activities. This report is intended for blue team training to enhance detection and response capabilities in similar scenarios.",
+        "full_report_text": "CrimsonVortex, a fictional APT group, initiated their campaign by conducting reconnaissance to identify employees in logistics roles at target organizations, though no specific techniques were tagged for this phase as it involved open-source intelligence gathering. The actors then distributed phishing emails [T1566] with malicious attachments disguised as shipping notifications, which, when opened, executed PowerShell scripts [T1059.001] to download additional payloads from external servers while simultaneously modifying registry keys to establish persistence. Upon execution, the malware abused system-assigned managed identities to gain unauthorized access to Azure Key Vault resources [T1078.004], allowing the actors to maintain persistent footholds in cloud environments. To evade detection, CrimsonVortex deployed HTRAN on intermediate servers to tunnel command and control (C2) traffic through external proxies [T1090.002], making it difficult to trace the actual controllers, and used wevtutil to clear Windows event logs [T1070.001] after malicious activities. For further persistence, the threat actor altered SCRNSAVE.exe settings to launch a backdoor when systems remained idle for five minutes [T1546.002]. In the final stage, the exploit kit injected 'evil.ps1' to render fake update notifications that covered active application windows, resulting in defacement [T1491] to disrupt user operations and create confusion. Throughout the campaign, system logs recorded normal authentication events and network traffic spikes, but these were unrelated to the tagged techniques and served as noise for training purposes. The targeted organizations, primarily in the retail and manufacturing sectors, reported minor disruptions in cloud services, but no real data loss occurred as this was a simulated exercise.",
+        "techniques_used": [
+            "T1566",
+            "T1059.001",
+            "T1078.004",
+            "T1090.002",
+            "T1070.001",
+            "T1546.002",
+            "T1491"
+        ]
+    }
+}

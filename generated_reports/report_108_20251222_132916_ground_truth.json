@@ -1,0 +1,83 @@
+{
+    "report_id": "report_108",
+    "generated_at": "20251222_132916",
+    "scenario_target_ids": [
+        "T1597.002",
+        "T1566.001",
+        "T1566.002",
+        "T1569.003",
+        "T1134.003",
+        "T1580",
+        "T1071",
+        "T1020",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.002",
+        "T1566.001",
+        "T1566.002",
+        "T1569.003",
+        "T1134.003",
+        "T1580",
+        "T1071",
+        "T1020",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1566.001",
+        "T1580",
+        "T1566.002",
+        "T1134.003",
+        "T1499.003",
+        "T1569.003",
+        "T1071",
+        "T1020"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training material for blue teams based on a simulated attack scenario involving the threat actor Crimson Serpent. This report is intended for educational purposes only and does not describe real-world events. Crimson Serpent, a financially motivated group, has been observed targeting mid-sized enterprises with hybrid cloud environments, particularly those using AWS and Azure services. Initial analysis of fictional logs from a compromised organization, 'TechGlobal Inc.,' shows unusual login attempts from IP addresses in Eastern Europe, though these were later determined to be proxies. The company's SIEM system flagged multiple failed authentication events for user accounts that had not been accessed in over 90 days, but these were initially dismissed as routine noise.\n\nIn the Initial Access phase, Crimson Serpent likely conducted reconnaissance by purchasing technical data such as employee credentials and session tokens from underground criminal forums, which they then used to craft targeted spearphishing campaigns. The actors sent malicious Office documents via email attachments and embedded links in emails that redirected to credential-harvesting sites, exploiting known vulnerabilities in outdated software versions. TechGlobal's email gateway logs show a spike in phishing attempts over a two-week period, with several employees reporting suspicious messages, though no immediate compromises were detected at this stage.\n\nDuring Execution, after a user interacted with a malicious link, the adversary employed PowerShell scripts to download additional payloads, though this activity is not part of the specified techniques. Subsequently, they used systemctl commands to start a backdoor service on compromised Linux servers, establishing persistent access and enabling remote command execution. Network traffic analysis revealed anomalous outbound connections to command-and-control (C2) servers hosted on bulletproof hosting providers, with data exfiltration occurring over encrypted HTTPS channels.\n\nFor Persistence and Privilege Escalation, Crimson Serpent leveraged token manipulation techniques by making and impersonating domain admin user tokens, allowing them to move laterally across the network with elevated permissions. They conducted cloud infrastructure discovery using APIs like ListBuckets to identify and enumerate cloud storage resources across multiple regions, mapping out sensitive data locations in AWS S3 buckets. Internal firewall logs showed repeated SMB protocol usage for lateral movement, copying tools between systems to evade network-based detection, while domain controller events indicated unusual group policy modifications that were later traced to malicious activity.\n\nIn the Impact phase, the actors performed automated exfiltration of sensitive documents from network shares before initiating encryption routines, and they launched an application exhaustion flood by repeatedly calling data export functionalities with maximum parameters to exhaust processing capabilities, causing significant service disruption. Post-incident review of TechGlobal's backup systems revealed incomplete data recovery due to misconfigured retention policies, highlighting the need for improved disaster recovery planning. This fictional scenario underscores the importance of multi-layered defense strategies, including employee training, endpoint detection, and cloud security monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training material for blue teams based on a simulated attack scenario involving the threat actor Crimson Serpent. This report is intended for educational purposes only and does not describe real-world events. Crimson Serpent, a financially motivated group, has been observed targeting mid-sized enterprises with hybrid cloud environments, particularly those using AWS and Azure services. Initial analysis of fictional logs from a compromised organization, 'TechGlobal Inc.,' shows unusual login attempts from IP addresses in Eastern Europe, though these were later determined to be proxies. The company's SIEM system flagged multiple failed authentication events for user accounts that had not been accessed in over 90 days, but these were initially dismissed as routine noise.\n\nIn the Initial Access phase, Crimson Serpent likely conducted reconnaissance by purchasing technical data such as employee credentials and session tokens from underground criminal forums [T1597.002], which they then used to craft targeted spearphishing campaigns. The actors sent malicious Office documents via email attachments [T1566.001] and embedded links in emails that redirected to credential-harvesting sites [T1566.002], exploiting known vulnerabilities in outdated software versions. TechGlobal's email gateway logs show a spike in phishing attempts over a two-week period, with several employees reporting suspicious messages, though no immediate compromises were detected at this stage.\n\nDuring Execution, after a user interacted with a malicious link, the adversary employed PowerShell scripts to download additional payloads, though this activity is not part of the specified techniques. Subsequently, they used systemctl commands to start a backdoor service on compromised Linux servers [T1569.003], establishing persistent access and enabling remote command execution. Network traffic analysis revealed anomalous outbound connections to command-and-control (C2) servers hosted on bulletproof hosting providers, with data exfiltration occurring over encrypted HTTPS channels.\n\nFor Persistence and Privilege Escalation, Crimson Serpent leveraged token manipulation techniques by making and impersonating domain admin user tokens [T1134.003], allowing them to move laterally across the network with elevated permissions. They conducted cloud infrastructure discovery using APIs like ListBuckets to identify and enumerate cloud storage resources across multiple regions [T1580], mapping out sensitive data locations in AWS S3 buckets. Internal firewall logs showed repeated SMB protocol usage for lateral movement, copying tools between systems to evade network-based detection [T1071], while domain controller events indicated unusual group policy modifications that were later traced to malicious activity.\n\nIn the Impact phase, the actors performed automated exfiltration of sensitive documents from network shares [T1020] before initiating encryption routines, and they launched an application exhaustion flood by repeatedly calling data export functionalities with maximum parameters to exhaust processing capabilities [T1499.003], causing significant service disruption. Post-incident review of TechGlobal's backup systems revealed incomplete data recovery due to misconfigured retention policies, highlighting the need for improved disaster recovery planning. This fictional scenario underscores the importance of multi-layered defense strategies, including employee training, endpoint detection, and cloud security monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "They conducted cloud infrastructure discovery using APIs like ListBuckets to identify and enumerate cloud storage resources across multiple regions, mapping out sensitive data locations in AWS S3 buckets.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "Internal firewall logs showed repeated SMB protocol usage for lateral movement, copying tools between systems to evade network-based detection, while domain controller events indicated unusual group policy modifications that were later traced to malicious activity.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        },
+        {
+            "sentence": "In the Impact phase, the actors performed automated exfiltration of sensitive documents from network shares before initiating encryption routines, and they launched an application exhaustion flood by repeatedly calling data export functionalities with maximum parameters to exhaust processing capabilities [T1499.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'Crimson Serpent,' targeting organizations in the technology and finance sectors. Based on analysis of fictional incident response data, Crimson Serpent employs a multi-faceted approach combining purchased credentials, sophisticated spearphishing, and cloud reconnaissance to compromise networks, escalate privileges, and disrupt operations. The campaign leverages known tactics, techniques, and procedures (TTPs) to evade detection and maximize impact, including data exfiltration and application-layer denial-of-service attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training material for blue teams based on a simulated attack scenario involving the threat actor Crimson Serpent. This report is intended for educational purposes only and does not describe real-world events. Crimson Serpent, a financially motivated group, has been observed targeting mid-sized enterprises with hybrid cloud environments, particularly those using AWS and Azure services. Initial analysis of fictional logs from a compromised organization, 'TechGlobal Inc.,' shows unusual login attempts from IP addresses in Eastern Europe, though these were later determined to be proxies. The company's SIEM system flagged multiple failed authentication events for user accounts that had not been accessed in over 90 days, but these were initially dismissed as routine noise.\n\nIn the Initial Access phase, Crimson Serpent likely conducted reconnaissance by purchasing technical data such as employee credentials and session tokens from underground criminal forums [T1597.002], which they then used to craft targeted spearphishing campaigns. The actors sent malicious Office documents via email attachments [T1566.001] and embedded links in emails that redirected to credential-harvesting sites [T1566.002], exploiting known vulnerabilities in outdated software versions. TechGlobal's email gateway logs show a spike in phishing attempts over a two-week period, with several employees reporting suspicious messages, though no immediate compromises were detected at this stage.\n\nDuring Execution, after a user interacted with a malicious link, the adversary employed PowerShell scripts to download additional payloads, though this activity is not part of the specified techniques. Subsequently, they used systemctl commands to start a backdoor service on compromised Linux servers [T1569.003], establishing persistent access and enabling remote command execution. Network traffic analysis revealed anomalous outbound connections to command-and-control (C2) servers hosted on bulletproof hosting providers, with data exfiltration occurring over encrypted HTTPS channels.\n\nFor Persistence and Privilege Escalation, Crimson Serpent leveraged token manipulation techniques by making and impersonating domain admin user tokens [T1134.003], allowing them to move laterally across the network with elevated permissions. They conducted cloud infrastructure discovery using APIs like ListBuckets to identify and enumerate cloud storage resources across multiple regions [T1580], mapping out sensitive data locations in AWS S3 buckets. Internal firewall logs showed repeated SMB protocol usage for lateral movement, copying tools between systems to evade network-based detection [T1071], while domain controller events indicated unusual group policy modifications that were later traced to malicious activity.\n\nIn the Impact phase, the actors performed automated exfiltration of sensitive documents from network shares [T1020] before initiating encryption routines, and they launched an application exhaustion flood by repeatedly calling data export functionalities with maximum parameters to exhaust processing capabilities [T1499.003], causing significant service disruption. Post-incident review of TechGlobal's backup systems revealed incomplete data recovery due to misconfigured retention policies, highlighting the need for improved disaster recovery planning. This fictional scenario underscores the importance of multi-layered defense strategies, including employee training, endpoint detection, and cloud security monitoring.",
+        "techniques_used": [
+            "T1597.002",
+            "T1566.001",
+            "T1566.002",
+            "T1569.003",
+            "T1134.003",
+            "T1580",
+            "T1071",
+            "T1020",
+            "T1499.003"
+        ]
+    }
+}

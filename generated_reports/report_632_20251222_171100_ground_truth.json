@@ -1,0 +1,83 @@
+{
+    "report_id": "report_632",
+    "generated_at": "20251222_171100",
+    "scenario_target_ids": [
+        "T1091",
+        "T1203",
+        "T1609",
+        "T1563.001",
+        "T1074",
+        "T1056.004",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1091",
+        "T1203",
+        "T1609",
+        "T1563.001",
+        "T1074",
+        "T1056.004",
+        "T1665"
+    ],
+    "actual_found_ids": [
+        "T1091",
+        "T1074",
+        "T1563.001",
+        "T1056.004",
+        "T1665",
+        "T1609",
+        "T1203"
+    ],
+    "clean_text": "On 2023-10-15, security teams at a fictional media production company, 'StreamFlix Inc.', detected anomalous activity originating from a compromised USB drive inserted into a workstation in the editing department. The company, which specializes in video streaming services and uses containerized applications for content management, reported unusual network traffic patterns and unauthorized access to sensitive credential databases. Initial logs showed multiple failed login attempts from unknown IP addresses, but these were later determined to be noise unrelated to the primary attack vector.\n\nThe actors likely conducted reconnaissance to identify vulnerable systems, though no specific techniques were tagged in this phase. The attack began with the adversary using a malicious USB drive that replicated through removable media by modifying the Autorun.inf file to automatically execute a script upon insertion. Once executed, the malware exploited a stack overflow vulnerability in the Total Video Player software, which had been installed on the host, to achieve code execution. This allowed the actors to gain initial foothold and deploy additional payloads.\n\nSubsequently, the actors leveraged their access to execute container administration commands, such as 'docker exec -it content_container /bin/bash', to gain interactive shell access to a sensitive container housing proprietary video files. From within the container, they performed SSH hijacking by hijacking SSH agent sockets to authenticate to multiple systems in the DMZ, enabling lateral movement across the network. During this phase, the malware employed bash commands to stage harvested credentials into a single compressed archive while simultaneously hooking the GetClipboardData function via credential API hooking to capture clipboard contents containing authentication tokens. To evade detection, the actors established an encrypted VPN tunnel to hide command and control (C2) traffic from network monitoring tools, facilitating data exfiltration of the staged credentials. Post-incident analysis revealed that some system logs indicated routine software updates, which were irrelevant noise and not part of the attack chain.",
+    "tagged_text": "On 2023-10-15, security teams at a fictional media production company, 'StreamFlix Inc.', detected anomalous activity originating from a compromised USB drive inserted into a workstation in the editing department. The company, which specializes in video streaming services and uses containerized applications for content management, reported unusual network traffic patterns and unauthorized access to sensitive credential databases. Initial logs showed multiple failed login attempts from unknown IP addresses, but these were later determined to be noise unrelated to the primary attack vector.\n\nThe actors likely conducted reconnaissance to identify vulnerable systems, though no specific techniques were tagged in this phase. The attack began with the adversary using a malicious USB drive that replicated through removable media [T1091] by modifying the Autorun.inf file to automatically execute a script upon insertion. Once executed, the malware exploited a stack overflow vulnerability in the Total Video Player software, which had been installed on the host, to achieve code execution [T1203]. This allowed the actors to gain initial foothold and deploy additional payloads.\n\nSubsequently, the actors leveraged their access to execute container administration commands [T1609], such as 'docker exec -it content_container /bin/bash', to gain interactive shell access to a sensitive container housing proprietary video files. From within the container, they performed SSH hijacking [T1563.001] by hijacking SSH agent sockets to authenticate to multiple systems in the DMZ, enabling lateral movement across the network. During this phase, the malware employed bash commands to stage harvested credentials into a single compressed archive [T1074] while simultaneously hooking the GetClipboardData function via credential API hooking [T1056.004] to capture clipboard contents containing authentication tokens. To evade detection, the actors established an encrypted VPN tunnel [T1665] to hide command and control (C2) traffic from network monitoring tools, facilitating data exfiltration of the staged credentials. Post-incident analysis revealed that some system logs indicated routine software updates, which were irrelevant noise and not part of the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with the adversary using a malicious USB drive that replicated through removable media by modifying the Autorun.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Once executed, the malware exploited a stack overflow vulnerability in the Total Video Player software, which had been installed on the host, to achieve code execution.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "Subsequently, the actors leveraged their access to execute container administration commands, such as 'docker exec -it content_container /bin/bash', to gain interactive shell access to a sensitive container housing proprietary video files.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "During this phase, the malware employed bash commands to stage harvested credentials into a single compressed archive while simultaneously hooking the GetClipboardData function via credential API hooking [T1056.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "To evade detection, the actors established an encrypted VPN tunnel to hide command and control (C2) traffic from network monitoring tools, facilitating data exfiltration of the staged credentials.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowVeil' Targeting Media and Container Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowVeil', which targets organizations through removable media exploitation and container hijacking. The campaign involves initial access via infected USB drives, exploitation of vulnerable software, lateral movement through SSH hijacking, and data exfiltration via encrypted tunnels. This report is intended for blue team training to recognize and mitigate such multi-vector attacks.",
+        "full_report_text": "On 2023-10-15, security teams at a fictional media production company, 'StreamFlix Inc.', detected anomalous activity originating from a compromised USB drive inserted into a workstation in the editing department. The company, which specializes in video streaming services and uses containerized applications for content management, reported unusual network traffic patterns and unauthorized access to sensitive credential databases. Initial logs showed multiple failed login attempts from unknown IP addresses, but these were later determined to be noise unrelated to the primary attack vector.\n\nThe actors likely conducted reconnaissance to identify vulnerable systems, though no specific techniques were tagged in this phase. The attack began with the adversary using a malicious USB drive that replicated through removable media [T1091] by modifying the Autorun.inf file to automatically execute a script upon insertion. Once executed, the malware exploited a stack overflow vulnerability in the Total Video Player software, which had been installed on the host, to achieve code execution [T1203]. This allowed the actors to gain initial foothold and deploy additional payloads.\n\nSubsequently, the actors leveraged their access to execute container administration commands [T1609], such as 'docker exec -it content_container /bin/bash', to gain interactive shell access to a sensitive container housing proprietary video files. From within the container, they performed SSH hijacking [T1563.001] by hijacking SSH agent sockets to authenticate to multiple systems in the DMZ, enabling lateral movement across the network. During this phase, the malware employed bash commands to stage harvested credentials into a single compressed archive [T1074] while simultaneously hooking the GetClipboardData function via credential API hooking [T1056.004] to capture clipboard contents containing authentication tokens. To evade detection, the actors established an encrypted VPN tunnel [T1665] to hide command and control (C2) traffic from network monitoring tools, facilitating data exfiltration of the staged credentials. Post-incident analysis revealed that some system logs indicated routine software updates, which were irrelevant noise and not part of the attack chain.",
+        "techniques_used": [
+            "T1091",
+            "T1203",
+            "T1609",
+            "T1563.001",
+            "T1074",
+            "T1056.004",
+            "T1665"
+        ]
+    }
+}

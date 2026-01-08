@@ -1,0 +1,93 @@
+{
+    "report_id": "report_449",
+    "generated_at": "20251222_155226",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1195.001",
+        "T1059.006",
+        "T1556.005",
+        "T1564.010",
+        "T1069.003",
+        "T1123",
+        "T1056.001",
+        "T1132.002",
+        "T1567.002",
+        "T1489",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1195.001",
+        "T1059.006",
+        "T1556.005",
+        "T1564.010",
+        "T1069.003",
+        "T1123",
+        "T1056.001",
+        "T1132.002",
+        "T1567.002",
+        "T1489",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1496.001",
+        "T1564.010",
+        "T1056.001",
+        "T1195.001",
+        "T1059.006",
+        "T1069.003",
+        "T1489",
+        "T1132.002",
+        "T1556.005",
+        "T1567.002",
+        "T1123",
+        "T1078.001"
+    ],
+    "clean_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed conducting a sophisticated campaign against organizations in the financial and technology sectors. The attack begins with reconnaissance, where actors scan for vulnerable systems using tools like Nmap and Shodan, though no specific technique IDs apply to this initial phase. In the Initial Access stage, the adversary exploits default administrative accounts to remotely connect to IPC$ shares on Windows servers, leveraging weak or unchanged credentials in HyperStack environments. Once access is gained, they move to Execution by using a compromised software dependency; the attacker modified the legitimate library 'security.dll' to include malicious credential harvesting functionality, which is then executed via a customized Python script based on the Impacket wmiexec.py module to create renamed output files for stealth. During Persistence, the actors employ PowerShell to alter Active Directory attributes, specifically using Set-ADUser to modify the msRADIUSServiceType to enable reversible encryption for stored passwords, while simultaneously patching the process environment block to hide command-line arguments from security monitoring tools. In Privilege Escalation, they leverage cloud reconnaissance by using Get-MsolRole to identify administrative roles assigned across the organization's Azure AD environment, allowing them to escalate privileges within cloud services. For Defense Evasion, the spyware component includes audio capture capabilities, utilizing the built-in microphone to record sensitive office conversations, and incorporates a keylogger from the Regin malware family to capture keystrokes, with C2 communications encoded using a custom non-standard system to avoid detection. In the Exfiltration phase, data is transferred to cloud storage services such as Dropbox and Amazon S3 using tools like Rclone, after which the actors execute Impact actions by terminating specified services to disrupt operations and deploying XMRig Docker images to hijack compute resources for cryptocurrency mining. Throughout the campaign, system logs from affected servers show increased network traffic and unusual process spawns, but these are not tagged as specific techniques. The organization's background includes a recent migration to cloud services, which may have introduced misconfigurations exploited in this attack.",
+    "tagged_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed conducting a sophisticated campaign against organizations in the financial and technology sectors. The attack begins with reconnaissance, where actors scan for vulnerable systems using tools like Nmap and Shodan, though no specific technique IDs apply to this initial phase. In the Initial Access stage, the adversary exploits default administrative accounts [T1078.001] to remotely connect to IPC$ shares on Windows servers, leveraging weak or unchanged credentials in HyperStack environments. Once access is gained, they move to Execution by using a compromised software dependency; the attacker modified the legitimate library 'security.dll' to include malicious credential harvesting functionality [T1195.001], which is then executed via a customized Python script based on the Impacket wmiexec.py module to create renamed output files for stealth [T1059.006]. During Persistence, the actors employ PowerShell to alter Active Directory attributes, specifically using Set-ADUser to modify the msRADIUSServiceType to enable reversible encryption for stored passwords [T1556.005], while simultaneously patching the process environment block to hide command-line arguments from security monitoring tools [T1564.010]. In Privilege Escalation, they leverage cloud reconnaissance by using Get-MsolRole to identify administrative roles assigned across the organization's Azure AD environment [T1069.003], allowing them to escalate privileges within cloud services. For Defense Evasion, the spyware component includes audio capture capabilities, utilizing the built-in microphone to record sensitive office conversations [T1123], and incorporates a keylogger from the Regin malware family to capture keystrokes [T1056.001], with C2 communications encoded using a custom non-standard system to avoid detection [T1132.002]. In the Exfiltration phase, data is transferred to cloud storage services such as Dropbox and Amazon S3 using tools like Rclone [T1567.002], after which the actors execute Impact actions by terminating specified services to disrupt operations [T1489] and deploying XMRig Docker images to hijack compute resources for cryptocurrency mining [T1496.001]. Throughout the campaign, system logs from affected servers show increased network traffic and unusual process spawns, but these are not tagged as specific techniques. The organization's background includes a recent migration to cloud services, which may have introduced misconfigurations exploited in this attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "For Defense Evasion, the spyware component includes audio capture capabilities, utilizing the built-in microphone to record sensitive office conversations, and incorporates a keylogger from the Regin malware family to capture keystrokes [T1056.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        },
+        {
+            "sentence": "002], after which the actors execute Impact actions by terminating specified services to disrupt operations and deploying XMRig Docker images to hijack compute resources for cryptocurrency mining [T1496.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Tempest' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Tempest', targeting organizations with hybrid on-premises and cloud infrastructure. The campaign involves initial access via default credentials, supply chain compromise, and multi-stage execution leading to data exfiltration, credential harvesting, and resource hijacking for cryptomining. Blue teams should use this report for training to identify and mitigate similar attack patterns in real-world scenarios.",
+        "full_report_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed conducting a sophisticated campaign against organizations in the financial and technology sectors. The attack begins with reconnaissance, where actors scan for vulnerable systems using tools like Nmap and Shodan, though no specific technique IDs apply to this initial phase. In the Initial Access stage, the adversary exploits default administrative accounts [T1078.001] to remotely connect to IPC$ shares on Windows servers, leveraging weak or unchanged credentials in HyperStack environments. Once access is gained, they move to Execution by using a compromised software dependency; the attacker modified the legitimate library 'security.dll' to include malicious credential harvesting functionality [T1195.001], which is then executed via a customized Python script based on the Impacket wmiexec.py module to create renamed output files for stealth [T1059.006]. During Persistence, the actors employ PowerShell to alter Active Directory attributes, specifically using Set-ADUser to modify the msRADIUSServiceType to enable reversible encryption for stored passwords [T1556.005], while simultaneously patching the process environment block to hide command-line arguments from security monitoring tools [T1564.010]. In Privilege Escalation, they leverage cloud reconnaissance by using Get-MsolRole to identify administrative roles assigned across the organization's Azure AD environment [T1069.003], allowing them to escalate privileges within cloud services. For Defense Evasion, the spyware component includes audio capture capabilities, utilizing the built-in microphone to record sensitive office conversations [T1123], and incorporates a keylogger from the Regin malware family to capture keystrokes [T1056.001], with C2 communications encoded using a custom non-standard system to avoid detection [T1132.002]. In the Exfiltration phase, data is transferred to cloud storage services such as Dropbox and Amazon S3 using tools like Rclone [T1567.002], after which the actors execute Impact actions by terminating specified services to disrupt operations [T1489] and deploying XMRig Docker images to hijack compute resources for cryptocurrency mining [T1496.001]. Throughout the campaign, system logs from affected servers show increased network traffic and unusual process spawns, but these are not tagged as specific techniques. The organization's background includes a recent migration to cloud services, which may have introduced misconfigurations exploited in this attack.",
+        "techniques_used": [
+            "T1078.001",
+            "T1195.001",
+            "T1059.006",
+            "T1556.005",
+            "T1564.010",
+            "T1069.003",
+            "T1123",
+            "T1056.001",
+            "T1132.002",
+            "T1567.002",
+            "T1489",
+            "T1496.001"
+        ]
+    }
+}

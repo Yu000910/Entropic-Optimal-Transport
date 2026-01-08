@@ -1,0 +1,112 @@
+{
+    "report_id": "report_487",
+    "generated_at": "20251222_160916",
+    "scenario_target_ids": [
+        "T1588.006",
+        "T1566.003",
+        "T1610",
+        "T1574.014",
+        "T1134.004",
+        "T1087.004",
+        "T1614.001",
+        "T1021.003",
+        "T1021",
+        "T1213.004",
+        "T1568.001",
+        "T1102.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1588.006",
+        "T1566.003",
+        "T1059.001",
+        "T1105",
+        "T1610",
+        "T1574.014",
+        "T1134.004",
+        "T1087.004",
+        "T1614.001",
+        "T1021.003",
+        "T1021",
+        "T1213.004",
+        "T1568.001",
+        "T1102.003"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1588.006",
+        "T1021",
+        "T1105",
+        "T1213.004",
+        "T1589",
+        "T1568.001",
+        "T1574.014",
+        "T1102.003",
+        "T1134.004",
+        "T1614.001",
+        "T1566.003",
+        "T1087.004",
+        "T1021.003",
+        "T1059.001"
+    ],
+    "clean_text": "SilentTide, a suspected state-sponsored group, has been observed targeting energy companies in North America and Europe since early 2024. The campaign begins with reconnaissance, where actors gather intelligence on employees through social media platforms. In one incident, a mid-sized utility provider, 'PowerGrid Inc.', reported anomalous network traffic from their development servers, which host legacy applications for grid management. The attackers likely conduct reconnaissance to identify potential targets and vulnerabilities. Initial access was achieved by exploiting a known vulnerability in an outdated web application framework, using publicly available exploit code, while simultaneously sending spearphishing messages via compromised Instagram accounts, where malicious links disguised as photo previews were distributed to employees. Upon execution, the adversary employed PowerShell to download additional payloads and deployed a container using 'docker create' to isolate data exfiltration tools, evading endpoint detection. Persistence was established by modifying .config files to load a malicious DLL through AppDomainManager injection, and the malware used CreateProcess API to spawn svchost.exe processes with parent PID spoofing, bypassing security monitoring. Discovery activities included running a PowerShell script to enumerate cloud administrative roles in Microsoft 365 and checking system language settings with GetUserDefaultUILanguage to avoid execution in specific regions. Lateral movement involved using DCOM to execute code remotely via Microsoft PowerPoint COM objects and leveraging SSH with stolen credentials to access remote database servers. Collection efforts targeted customer data by querying Salesforce with compromised credentials, while command and control utilized fast flux DNS to dynamically register temporary domains and one-way communication by parsing encoded commands from error logs after attempting to resolve non-existing webpages. System logs from PowerGrid Inc. showed increased CPU usage on database servers during off-hours, but no immediate alerts were triggered. The company's background includes a recent merger with a smaller regional provider, which may have introduced integration vulnerabilities. Defenders should monitor for unusual container activity and review cloud role assignments regularly.",
+    "tagged_text": "SilentTide, a suspected state-sponsored group, has been observed targeting energy companies in North America and Europe since early 2024. The campaign begins with reconnaissance, where actors gather intelligence on employees through social media platforms. In one incident, a mid-sized utility provider, 'PowerGrid Inc.', reported anomalous network traffic from their development servers, which host legacy applications for grid management. The attackers likely conduct reconnaissance [T1589] to identify potential targets and vulnerabilities. Initial access was achieved by exploiting a known vulnerability in an outdated web application framework [T1588.006], using publicly available exploit code, while simultaneously sending spearphishing messages via compromised Instagram accounts, where malicious links disguised as photo previews were distributed to employees [T1566.003]. Upon execution, the adversary employed PowerShell [T1059.001] to download additional payloads [T1105] and deployed a container using 'docker create' to isolate data exfiltration tools, evading endpoint detection [T1610]. Persistence was established by modifying .config files to load a malicious DLL through AppDomainManager injection [T1574.014], and the malware used CreateProcess API to spawn svchost.exe processes with parent PID spoofing [T1134.004], bypassing security monitoring. Discovery activities included running a PowerShell script to enumerate cloud administrative roles in Microsoft 365 [T1087.004] and checking system language settings with GetUserDefaultUILanguage to avoid execution in specific regions [T1614.001]. Lateral movement involved using DCOM to execute code remotely via Microsoft PowerPoint COM objects [T1021.003] and leveraging SSH with stolen credentials to access remote database servers [T1021]. Collection efforts targeted customer data by querying Salesforce with compromised credentials [T1213.004], while command and control utilized fast flux DNS to dynamically register temporary domains [T1568.001] and one-way communication by parsing encoded commands from error logs after attempting to resolve non-existing webpages [T1102.003]. System logs from PowerGrid Inc. showed increased CPU usage on database servers during off-hours, but no immediate alerts were triggered. The company's background includes a recent merger with a smaller regional provider, which may have introduced integration vulnerabilities. Defenders should monitor for unusual container activity and review cloud role assignments regularly.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attackers likely conduct reconnaissance to identify potential targets and vulnerabilities.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to download additional payloads and deployed a container using 'docker create' to isolate data exfiltration tools, evading endpoint detection.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to download additional payloads and deployed a container using 'docker create' to isolate data exfiltration tools, evading endpoint detection.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "003] and leveraging SSH with stolen credentials to access remote database servers.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentTide' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'SilentTide', targeting organizations in the energy sector. The campaign leverages a multi-vector approach including spearphishing, exploitation of known vulnerabilities, and containerization for stealthy operations. Blue teams are advised to review defensive measures against these techniques.",
+        "full_report_text": "SilentTide, a suspected state-sponsored group, has been observed targeting energy companies in North America and Europe since early 2024. The campaign begins with reconnaissance, where actors gather intelligence on employees through social media platforms. In one incident, a mid-sized utility provider, 'PowerGrid Inc.', reported anomalous network traffic from their development servers, which host legacy applications for grid management. The attackers likely conduct reconnaissance [T1589] to identify potential targets and vulnerabilities. Initial access was achieved by exploiting a known vulnerability in an outdated web application framework [T1588.006], using publicly available exploit code, while simultaneously sending spearphishing messages via compromised Instagram accounts, where malicious links disguised as photo previews were distributed to employees [T1566.003]. Upon execution, the adversary employed PowerShell [T1059.001] to download additional payloads [T1105] and deployed a container using 'docker create' to isolate data exfiltration tools, evading endpoint detection [T1610]. Persistence was established by modifying .config files to load a malicious DLL through AppDomainManager injection [T1574.014], and the malware used CreateProcess API to spawn svchost.exe processes with parent PID spoofing [T1134.004], bypassing security monitoring. Discovery activities included running a PowerShell script to enumerate cloud administrative roles in Microsoft 365 [T1087.004] and checking system language settings with GetUserDefaultUILanguage to avoid execution in specific regions [T1614.001]. Lateral movement involved using DCOM to execute code remotely via Microsoft PowerPoint COM objects [T1021.003] and leveraging SSH with stolen credentials to access remote database servers [T1021]. Collection efforts targeted customer data by querying Salesforce with compromised credentials [T1213.004], while command and control utilized fast flux DNS to dynamically register temporary domains [T1568.001] and one-way communication by parsing encoded commands from error logs after attempting to resolve non-existing webpages [T1102.003]. System logs from PowerGrid Inc. showed increased CPU usage on database servers during off-hours, but no immediate alerts were triggered. The company's background includes a recent merger with a smaller regional provider, which may have introduced integration vulnerabilities. Defenders should monitor for unusual container activity and review cloud role assignments regularly.",
+        "techniques_used": [
+            "T1589",
+            "T1588.006",
+            "T1566.003",
+            "T1059.001",
+            "T1105",
+            "T1610",
+            "T1574.014",
+            "T1134.004",
+            "T1087.004",
+            "T1614.001",
+            "T1021.003",
+            "T1021",
+            "T1213.004",
+            "T1568.001",
+            "T1102.003"
+        ]
+    }
+}

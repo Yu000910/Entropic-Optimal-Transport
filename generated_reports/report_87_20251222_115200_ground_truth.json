@@ -1,0 +1,133 @@
+{
+    "report_id": "report_87",
+    "generated_at": "20251222_115200",
+    "scenario_target_ids": [
+        "T1588.003",
+        "T1608.001",
+        "T1566",
+        "T1200",
+        "T1047",
+        "T1134",
+        "T1055.005",
+        "T1553",
+        "T1222.001",
+        "T1518.001",
+        "T1210",
+        "T1056.002",
+        "T1213.003",
+        "T1205",
+        "T1496.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1588.003",
+        "T1608.001",
+        "T1047",
+        "T1553",
+        "T1222.001",
+        "T1210",
+        "T1200",
+        "T1134",
+        "T1055.005",
+        "T1518.001",
+        "T1205",
+        "T1056.002",
+        "T1213.003",
+        "T1496.003"
+    ],
+    "actual_found_ids": [
+        "T1210",
+        "T1213.003",
+        "T1553",
+        "T1222.001",
+        "T1205",
+        "T1496.003",
+        "T1047",
+        "T1608.001",
+        "T1134",
+        "T1200",
+        "T1588.003",
+        "T1518.001",
+        "T1055.005",
+        "T1566",
+        "T1056.002"
+    ],
+    "clean_text": "SilentTide, a fictional APT group, likely conducted reconnaissance on financial targets, though specific indicators were not captured in this scenario. The attack began with a phishing campaign, where a malicious Word document with enabled content was distributed to employees, executing a PowerShell script to establish persistence. To enhance legitimacy, the actors purchased code signing certificates through a front organization and used them to sign the malicious payloads, which were then uploaded to a compromised GitHub account's repository for staging. During execution, the adversary employed Windows Management Instrumentation (WMI) to enable lateral movement across the network while simultaneously modifying registry keys to disable the Windows Defender service and using cacls to grant write access to backup folders for data exfiltration. The attackers exploited vulnerable SMB services running on port 445 identified via an nmap scan, and in one instance, leveraged a passive network tap to capture unencrypted credentials. For privilege escalation, they used an obfuscated exploit to abuse named-pipe impersonation for local SYSTEM access, and modified the portable executable's resource section to hide additional malicious code using Thread Local Storage. Security software discovery was conducted by comparing running processes against an encrypted list of security programs and terminating them. The actors also used raw sockets to craft custom packets for traffic signaling, opening hidden backdoor ports, and prompted users for credentials via GUI input capture. Data exfiltration involved leveraging Git to access and extract financial records from a version-controlled database, and in a separate incident, attackers used AWS SNS to send premium-rate SMS messages to multiple phone numbers. System logs from the targeted environment showed routine backup activities and network traffic spikes unrelated to the attack, with no prior alerts from the compromised GitHub account. The company, a mid-sized regional bank, had recently updated its firewall policies, but legacy systems remained vulnerable.",
+    "tagged_text": "SilentTide, a fictional APT group, likely conducted reconnaissance on financial targets, though specific indicators were not captured in this scenario. The attack began with a phishing campaign [T1566], where a malicious Word document with enabled content was distributed to employees, executing a PowerShell script to establish persistence. To enhance legitimacy, the actors purchased code signing certificates through a front organization [T1588.003] and used them to sign the malicious payloads, which were then uploaded to a compromised GitHub account's repository for staging [T1608.001]. During execution, the adversary employed Windows Management Instrumentation (WMI) [T1047] to enable lateral movement across the network while simultaneously modifying registry keys to disable the Windows Defender service [T1553] and using cacls to grant write access to backup folders for data exfiltration [T1222.001]. The attackers exploited vulnerable SMB services running on port 445 [T1210] identified via an nmap scan, and in one instance, leveraged a passive network tap to capture unencrypted credentials [T1200]. For privilege escalation, they used an obfuscated exploit to abuse named-pipe impersonation for local SYSTEM access [T1134], and modified the portable executable's resource section to hide additional malicious code using Thread Local Storage [T1055.005]. Security software discovery was conducted by comparing running processes against an encrypted list of security programs and terminating them [T1518.001]. The actors also used raw sockets to craft custom packets for traffic signaling, opening hidden backdoor ports [T1205], and prompted users for credentials via GUI input capture [T1056.002]. Data exfiltration involved leveraging Git to access and extract financial records from a version-controlled database [T1213.003], and in a separate incident, attackers used AWS SNS to send premium-rate SMS messages to multiple phone numbers [T1496.003]. System logs from the targeted environment showed routine backup activities and network traffic spikes unrelated to the attack, with no prior alerts from the compromised GitHub account. The company, a mid-sized regional bank, had recently updated its firewall policies, but legacy systems remained vulnerable.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with a phishing campaign, where a malicious Word document with enabled content was distributed to employees, executing a PowerShell script to establish persistence.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "During execution, the adversary employed Windows Management Instrumentation (WMI) to enable lateral movement across the network while simultaneously modifying registry keys to disable the Windows Defender service and using cacls to grant write access to backup folders for data exfiltration [T1222.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "During execution, the adversary employed Windows Management Instrumentation (WMI) to enable lateral movement across the network while simultaneously modifying registry keys to disable the Windows Defender service and using cacls to grant write access to backup folders for data exfiltration [T1222.",
+            "technique_id": "T1553",
+            "technique_name": "Subvert Trust Controls"
+        },
+        {
+            "sentence": "The attackers exploited vulnerable SMB services running on port 445 identified via an nmap scan, and in one instance, leveraged a passive network tap to capture unencrypted credentials.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "The attackers exploited vulnerable SMB services running on port 445 identified via an nmap scan, and in one instance, leveraged a passive network tap to capture unencrypted credentials.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "For privilege escalation, they used an obfuscated exploit to abuse named-pipe impersonation for local SYSTEM access, and modified the portable executable's resource section to hide additional malicious code using Thread Local Storage [T1055.",
+            "technique_id": "T1134",
+            "technique_name": "Access Token Manipulation"
+        },
+        {
+            "sentence": "The actors also used raw sockets to craft custom packets for traffic signaling, opening hidden backdoor ports, and prompted users for credentials via GUI input capture [T1056.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentTide' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'SilentTide,' targeting financial institutions. The campaign involves sophisticated initial access via phishing, use of compromised infrastructure for malware staging, lateral movement through exploitation, and data exfiltration with financial motives. Techniques include code signing abuse, remote service exploitation, and trust control subversion. Blue teams should review logs for suspicious WMI activity, unauthorized GitHub access, and disabled security services.",
+        "full_report_text": "SilentTide, a fictional APT group, likely conducted reconnaissance on financial targets, though specific indicators were not captured in this scenario. The attack began with a phishing campaign [T1566], where a malicious Word document with enabled content was distributed to employees, executing a PowerShell script to establish persistence. To enhance legitimacy, the actors purchased code signing certificates through a front organization [T1588.003] and used them to sign the malicious payloads, which were then uploaded to a compromised GitHub account's repository for staging [T1608.001]. During execution, the adversary employed Windows Management Instrumentation (WMI) [T1047] to enable lateral movement across the network while simultaneously modifying registry keys to disable the Windows Defender service [T1553] and using cacls to grant write access to backup folders for data exfiltration [T1222.001]. The attackers exploited vulnerable SMB services running on port 445 [T1210] identified via an nmap scan, and in one instance, leveraged a passive network tap to capture unencrypted credentials [T1200]. For privilege escalation, they used an obfuscated exploit to abuse named-pipe impersonation for local SYSTEM access [T1134], and modified the portable executable's resource section to hide additional malicious code using Thread Local Storage [T1055.005]. Security software discovery was conducted by comparing running processes against an encrypted list of security programs and terminating them [T1518.001]. The actors also used raw sockets to craft custom packets for traffic signaling, opening hidden backdoor ports [T1205], and prompted users for credentials via GUI input capture [T1056.002]. Data exfiltration involved leveraging Git to access and extract financial records from a version-controlled database [T1213.003], and in a separate incident, attackers used AWS SNS to send premium-rate SMS messages to multiple phone numbers [T1496.003]. System logs from the targeted environment showed routine backup activities and network traffic spikes unrelated to the attack, with no prior alerts from the compromised GitHub account. The company, a mid-sized regional bank, had recently updated its firewall policies, but legacy systems remained vulnerable.",
+        "techniques_used": [
+            "T1566",
+            "T1588.003",
+            "T1608.001",
+            "T1047",
+            "T1553",
+            "T1222.001",
+            "T1210",
+            "T1200",
+            "T1134",
+            "T1055.005",
+            "T1518.001",
+            "T1205",
+            "T1056.002",
+            "T1213.003",
+            "T1496.003"
+        ]
+    }
+}

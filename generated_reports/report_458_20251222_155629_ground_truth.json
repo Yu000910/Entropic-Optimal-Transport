@@ -1,0 +1,93 @@
+{
+    "report_id": "report_458",
+    "generated_at": "20251222_155629",
+    "scenario_target_ids": [
+        "T1597.001",
+        "T1592.003",
+        "T1596",
+        "T1584.005",
+        "T1583.004",
+        "T1566.002",
+        "T1651",
+        "T1021.001",
+        "T1091",
+        "T1219.001",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.001",
+        "T1592.003",
+        "T1596",
+        "T1584.005",
+        "T1583.004",
+        "T1566.002",
+        "T1651",
+        "T1021.001",
+        "T1091",
+        "T1219.001",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1584.005",
+        "T1597.001",
+        "T1566.002",
+        "T1583.004",
+        "T1091",
+        "T1592.003",
+        "T1565.003",
+        "T1021.001",
+        "T1596",
+        "T1219.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional APT group Crimson Viper, observed in Operation Honeybee. This campaign targets financial organizations with a focus on executive-level compromise and data exfiltration.\n\nInitial reconnaissance involved the adversary querying a paid threat intelligence feed to gather targeting information about the organization's executives while simultaneously searching WHOIS records to identify domain registration details of the target company. System logs from early-stage probes show unusual DNS queries to external IPs, though these were not flagged by initial security scans.\n\nFor initial access, during Operation Dream Job, Crimson Viper sent malicious OneDrive links with fictitious job offer advertisements via email to key personnel. Upon execution, the threat actor used systeminfo.exe to obtain BIOS version and system boot time as part of host firmware enumeration and employed PowerShell to actively download malicious payloads while modifying registry keys for persistence. The backdoor injected C2 server credentials to maintain control over compromised devices, and for Operation Honeybee, at least one identified persona was used to register for a free account for a control server.\n\nPersistence and lateral movement were achieved through multiple vectors: attackers utilized Azure RunCommand to install persistence mechanisms on compromised virtual machines, and njRAT was deployed with a module for performing remote desktop access. Additionally, Ramsay spread itself by infecting other portable executable files on removable drives, and attackers used Visual Studio Code's remote development features to maintain persistent access to compromised systems.\n\nImpact activities included the attacker modifying application.exe to display fake error messages instead of legitimate program output, disrupting normal operations and masking malicious activities. Network traffic analysis revealed encrypted C2 communications over standard HTTPS ports, blending with legitimate traffic to evade detection. Company background: The targeted organization, a mid-sized bank, had recently migrated to hybrid cloud infrastructure, which may have introduced vulnerabilities exploited in this campaign.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional APT group Crimson Viper, observed in Operation Honeybee. This campaign targets financial organizations with a focus on executive-level compromise and data exfiltration.\n\nInitial reconnaissance involved the adversary querying a paid threat intelligence feed to gather targeting information about the organization's executives [T1597.001] while simultaneously searching WHOIS records to identify domain registration details of the target company [T1596]. System logs from early-stage probes show unusual DNS queries to external IPs, though these were not flagged by initial security scans.\n\nFor initial access, during Operation Dream Job, Crimson Viper sent malicious OneDrive links with fictitious job offer advertisements via email to key personnel [T1566.002]. Upon execution, the threat actor used systeminfo.exe to obtain BIOS version and system boot time as part of host firmware enumeration [T1592.003] and employed PowerShell to actively download malicious payloads while modifying registry keys for persistence. The backdoor injected C2 server credentials to maintain control over compromised devices [T1584.005], and for Operation Honeybee, at least one identified persona was used to register for a free account for a control server [T1583.004].\n\nPersistence and lateral movement were achieved through multiple vectors: attackers utilized Azure RunCommand to install persistence mechanisms on compromised virtual machines [T1651], and njRAT was deployed with a module for performing remote desktop access [T1021.001]. Additionally, Ramsay spread itself by infecting other portable executable files on removable drives [T1091], and attackers used Visual Studio Code's remote development features to maintain persistent access to compromised systems [T1219.001].\n\nImpact activities included the attacker modifying application.exe to display fake error messages instead of legitimate program output [T1565.003], disrupting normal operations and masking malicious activities. Network traffic analysis revealed encrypted C2 communications over standard HTTPS ports, blending with legitimate traffic to evade detection. Company background: The targeted organization, a mid-sized bank, had recently migrated to hybrid cloud infrastructure, which may have introduced vulnerabilities exploited in this campaign.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] while simultaneously searching WHOIS records to identify domain registration details of the target company.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "Persistence and lateral movement were achieved through multiple vectors: attackers utilized Azure RunCommand to install persistence mechanisms on compromised virtual machines, and njRAT was deployed with a module for performing remote desktop access [T1021.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "Additionally, Ramsay spread itself by infecting other portable executable files on removable drives, and attackers used Visual Studio Code's remote development features to maintain persistent access to compromised systems [T1219.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Operation Honeybee' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Crimson Viper', targeting financial institutions. The campaign involves sophisticated reconnaissance, spearphishing, and persistence techniques, leveraging cloud services and removable media for lateral movement and data manipulation. Blue teams should use this report for training to identify and mitigate similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight the activities of the fictional APT group Crimson Viper, observed in Operation Honeybee. This campaign targets financial organizations with a focus on executive-level compromise and data exfiltration.\n\nInitial reconnaissance involved the adversary querying a paid threat intelligence feed to gather targeting information about the organization's executives [T1597.001] while simultaneously searching WHOIS records to identify domain registration details of the target company [T1596]. System logs from early-stage probes show unusual DNS queries to external IPs, though these were not flagged by initial security scans.\n\nFor initial access, during Operation Dream Job, Crimson Viper sent malicious OneDrive links with fictitious job offer advertisements via email to key personnel [T1566.002]. Upon execution, the threat actor used systeminfo.exe to obtain BIOS version and system boot time as part of host firmware enumeration [T1592.003] and employed PowerShell to actively download malicious payloads while modifying registry keys for persistence. The backdoor injected C2 server credentials to maintain control over compromised devices [T1584.005], and for Operation Honeybee, at least one identified persona was used to register for a free account for a control server [T1583.004].\n\nPersistence and lateral movement were achieved through multiple vectors: attackers utilized Azure RunCommand to install persistence mechanisms on compromised virtual machines [T1651], and njRAT was deployed with a module for performing remote desktop access [T1021.001]. Additionally, Ramsay spread itself by infecting other portable executable files on removable drives [T1091], and attackers used Visual Studio Code's remote development features to maintain persistent access to compromised systems [T1219.001].\n\nImpact activities included the attacker modifying application.exe to display fake error messages instead of legitimate program output [T1565.003], disrupting normal operations and masking malicious activities. Network traffic analysis revealed encrypted C2 communications over standard HTTPS ports, blending with legitimate traffic to evade detection. Company background: The targeted organization, a mid-sized bank, had recently migrated to hybrid cloud infrastructure, which may have introduced vulnerabilities exploited in this campaign.",
+        "techniques_used": [
+            "T1597.001",
+            "T1592.003",
+            "T1596",
+            "T1584.005",
+            "T1583.004",
+            "T1566.002",
+            "T1651",
+            "T1021.001",
+            "T1091",
+            "T1219.001",
+            "T1565.003"
+        ]
+    }
+}

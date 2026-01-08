@@ -1,0 +1,93 @@
+{
+    "report_id": "report_238",
+    "generated_at": "20251222_142324",
+    "scenario_target_ids": [
+        "T1595",
+        "T1596.003",
+        "T1566.001",
+        "T1559",
+        "T1137",
+        "T1080",
+        "T1602.001",
+        "T1114.003",
+        "T1095"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1595",
+        "T1596.003",
+        "T1566.001",
+        "T1559",
+        "T1137",
+        "T1080",
+        "T1602.001",
+        "T1114.003",
+        "T1095"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1602.001",
+        "T1566.001",
+        "T1137",
+        "T1596.003",
+        "T1559",
+        "T1114.003",
+        "T1080",
+        "T1595"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) used by the fictional APT group Crimson Shadow in a recent simulated campaign. This report is for educational purposes to enhance defensive capabilities.\n\nBackground: Crimson Shadow is a state-sponsored actor with a history of targeting critical infrastructure globally. In this scenario, they focused on a fictional U.S.-based energy company, 'GridSecure Inc.', which operates power grids and communication networks. Initial logs from GridSecure's perimeter firewall showed unusual spikes in network traffic on March 15, 2024, but no immediate alerts were triggered.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The actors began by conducting active scanning using ICMP echo requests to map GridSecure's network topology and identify live hosts, particularly targeting web servers and email gateways. Concurrently, they queried Certificate Transparency (CT) log aggregators to discover newly issued digital certificates for the company's web applications, aiding in credential harvesting and SSL/TLS decryption attempts.\n2. Delivery and Execution: Following reconnaissance, Crimson Shadow launched a spearphishing campaign, sending tailored emails with malicious attachments to key personnel at GridSecure, including system administrators and executives. Upon opening the attachment, the malware abused Windows Dynamic Data Exchange (DDE) to execute malicious scripts through inter-process communication, bypassing traditional security controls. System logs from infected endpoints showed anomalous PowerShell processes spawning from Office applications.\n3. Persistence and Lateral Movement: To maintain access, the actors embedded a PowerShell script in PowerPoint's default template, ensuring execution upon application startup. They also tainted shared content by modifying directory.lnk files on a network shared folder, redirecting users to malicious payloads when accessed. Additionally, they established persistence by creating email forwarding rules on compromised accounts, enabling continuous monitoring and data theft even after credential resets.\n4. Collection and Exfiltration: Once established, the malware performed SNMP MIB dumps to collect device configuration details from network switches and routers. For command and control (C2) communication, Crimson Shadow utilized non-application layer protocols, employing TCP and KCP over UDP to evade detection by network monitoring tools. Data exfiltration occurred in small, encrypted packets during off-peak hours, as noted in GridSecure's intrusion detection system logs from April 2024.\n\nIrrelevant Information: GridSecure Inc. was founded in 1998 and has headquarters in Houston, Texas, with over 5,000 employees. The company recently upgraded its firewall to a next-generation model, but legacy systems remain in use. During the investigation, unrelated log entries showed routine backup failures and user login attempts from outdated browsers, which were not linked to the attack.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual scanning activity, enforce multi-factor authentication, and conduct regular security awareness training. This advisory serves as a training tool to recognize and respond to similar TTPs in real-world scenarios.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) used by the fictional APT group Crimson Shadow in a recent simulated campaign. This report is for educational purposes to enhance defensive capabilities.\n\nBackground: Crimson Shadow is a state-sponsored actor with a history of targeting critical infrastructure globally. In this scenario, they focused on a fictional U.S.-based energy company, 'GridSecure Inc.', which operates power grids and communication networks. Initial logs from GridSecure's perimeter firewall showed unusual spikes in network traffic on March 15, 2024, but no immediate alerts were triggered.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The actors began by conducting active scanning [T1595] using ICMP echo requests to map GridSecure's network topology and identify live hosts, particularly targeting web servers and email gateways. Concurrently, they queried Certificate Transparency (CT) log aggregators [T1596.003] to discover newly issued digital certificates for the company's web applications, aiding in credential harvesting and SSL/TLS decryption attempts.\n2. Delivery and Execution: Following reconnaissance, Crimson Shadow launched a spearphishing campaign [T1566.001], sending tailored emails with malicious attachments to key personnel at GridSecure, including system administrators and executives. Upon opening the attachment, the malware abused Windows Dynamic Data Exchange (DDE) [T1559] to execute malicious scripts through inter-process communication, bypassing traditional security controls. System logs from infected endpoints showed anomalous PowerShell processes spawning from Office applications.\n3. Persistence and Lateral Movement: To maintain access, the actors embedded a PowerShell script in PowerPoint's default template [T1137], ensuring execution upon application startup. They also tainted shared content [T1080] by modifying directory.lnk files on a network shared folder, redirecting users to malicious payloads when accessed. Additionally, they established persistence by creating email forwarding rules [T1114.003] on compromised accounts, enabling continuous monitoring and data theft even after credential resets.\n4. Collection and Exfiltration: Once established, the malware performed SNMP MIB dumps [T1602.001] to collect device configuration details from network switches and routers. For command and control (C2) communication, Crimson Shadow utilized non-application layer protocols [T1095], employing TCP and KCP over UDP to evade detection by network monitoring tools. Data exfiltration occurred in small, encrypted packets during off-peak hours, as noted in GridSecure's intrusion detection system logs from April 2024.\n\nIrrelevant Information: GridSecure Inc. was founded in 1998 and has headquarters in Houston, Texas, with over 5,000 employees. The company recently upgraded its firewall to a next-generation model, but legacy systems remain in use. During the investigation, unrelated log entries showed routine backup failures and user login attempts from outdated browsers, which were not linked to the attack.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual scanning activity, enforce multi-factor authentication, and conduct regular security awareness training. This advisory serves as a training tool to recognize and respond to similar TTPs in real-world scenarios.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access and Reconnaissance: The actors began by conducting active scanning using ICMP echo requests to map GridSecure's network topology and identify live hosts, particularly targeting web servers and email gateways.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "Upon opening the attachment, the malware abused Windows Dynamic Data Exchange (DDE) to execute malicious scripts through inter-process communication, bypassing traditional security controls.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "Persistence and Lateral Movement: To maintain access, the actors embedded a PowerShell script in PowerPoint's default template, ensuring execution upon application startup.",
+            "technique_id": "T1137",
+            "technique_name": "Office Application Startup"
+        },
+        {
+            "sentence": "They also tainted shared content by modifying directory.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        },
+        {
+            "sentence": "For command and control (C2) communication, Crimson Shadow utilized non-application layer protocols, employing TCP and KCP over UDP to evade detection by network monitoring tools.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting organizations in the energy and telecommunications sectors. The campaign involves initial reconnaissance, spearphishing, persistence mechanisms, and data exfiltration using non-standard protocols, based on provided techniques for blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) used by the fictional APT group Crimson Shadow in a recent simulated campaign. This report is for educational purposes to enhance defensive capabilities.\n\nBackground: Crimson Shadow is a state-sponsored actor with a history of targeting critical infrastructure globally. In this scenario, they focused on a fictional U.S.-based energy company, 'GridSecure Inc.', which operates power grids and communication networks. Initial logs from GridSecure's perimeter firewall showed unusual spikes in network traffic on March 15, 2024, but no immediate alerts were triggered.\n\nAttack Narrative:\n1. Initial Access and Reconnaissance: The actors began by conducting active scanning [T1595] using ICMP echo requests to map GridSecure's network topology and identify live hosts, particularly targeting web servers and email gateways. Concurrently, they queried Certificate Transparency (CT) log aggregators [T1596.003] to discover newly issued digital certificates for the company's web applications, aiding in credential harvesting and SSL/TLS decryption attempts.\n2. Delivery and Execution: Following reconnaissance, Crimson Shadow launched a spearphishing campaign [T1566.001], sending tailored emails with malicious attachments to key personnel at GridSecure, including system administrators and executives. Upon opening the attachment, the malware abused Windows Dynamic Data Exchange (DDE) [T1559] to execute malicious scripts through inter-process communication, bypassing traditional security controls. System logs from infected endpoints showed anomalous PowerShell processes spawning from Office applications.\n3. Persistence and Lateral Movement: To maintain access, the actors embedded a PowerShell script in PowerPoint's default template [T1137], ensuring execution upon application startup. They also tainted shared content [T1080] by modifying directory.lnk files on a network shared folder, redirecting users to malicious payloads when accessed. Additionally, they established persistence by creating email forwarding rules [T1114.003] on compromised accounts, enabling continuous monitoring and data theft even after credential resets.\n4. Collection and Exfiltration: Once established, the malware performed SNMP MIB dumps [T1602.001] to collect device configuration details from network switches and routers. For command and control (C2) communication, Crimson Shadow utilized non-application layer protocols [T1095], employing TCP and KCP over UDP to evade detection by network monitoring tools. Data exfiltration occurred in small, encrypted packets during off-peak hours, as noted in GridSecure's intrusion detection system logs from April 2024.\n\nIrrelevant Information: GridSecure Inc. was founded in 1998 and has headquarters in Houston, Texas, with over 5,000 employees. The company recently upgraded its firewall to a next-generation model, but legacy systems remain in use. During the investigation, unrelated log entries showed routine backup failures and user login attempts from outdated browsers, which were not linked to the attack.\n\nMitigation Recommendations: Organizations should implement network segmentation, monitor for unusual scanning activity, enforce multi-factor authentication, and conduct regular security awareness training. This advisory serves as a training tool to recognize and respond to similar TTPs in real-world scenarios.",
+        "techniques_used": [
+            "T1595",
+            "T1596.003",
+            "T1566.001",
+            "T1559",
+            "T1137",
+            "T1080",
+            "T1602.001",
+            "T1114.003",
+            "T1095"
+        ]
+    }
+}

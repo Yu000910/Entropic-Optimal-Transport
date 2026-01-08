@@ -1,0 +1,113 @@
+{
+    "report_id": "report_754",
+    "generated_at": "20251223_110047",
+    "scenario_target_ids": [
+        "T1597.001",
+        "T1566.004",
+        "T1610",
+        "T1098",
+        "T1615",
+        "T1046",
+        "T1526",
+        "T1213.002",
+        "T1568.002",
+        "T1030",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.001",
+        "T1566.004",
+        "T1610",
+        "T1098",
+        "T1615",
+        "T1046",
+        "T1526",
+        "T1213.002",
+        "T1568.002",
+        "T1030",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1046",
+        "T1566.004",
+        "T1568.002",
+        "T1030",
+        "T1526",
+        "T1098",
+        "T1597.001",
+        "T1489",
+        "T1615",
+        "T1213.002"
+    ],
+    "clean_text": "On 2024-09-15, security analysts at a fictional financial firm, 'SecureBank Inc.', detected anomalous activity following a series of targeted attacks. The campaign, attributed to the fictional APT group 'SilentAnchor', began with reconnaissance where the actor queried a paid threat intelligence feed to gather employee email addresses. Subsequently, the attacker initiated a spearphishing voice call posing as IT support, tricking a user into revealing their system credentials. Upon gaining access, the adversary used PowerShell to deploy a malicious container via 'docker start', which operated network reconnaissance tools while blending in with legitimate Docker activity. To maintain persistence, the threat actors dumped credentials from Credential Manager using Mimikatz and modified user account permissions. Discovery activities included using tools like LunarWeb to capture group policy settings while conducting scanning for exposed TCP port 7001, SSH, and Redis servers. In cloud environments, ROADTools was employed to enumerate Azure AD applications and service principals, and a SharePoint enumeration tool, spwebmember, was used to dump sensitive data from SharePoint repositories. For command and control, the malware utilized a Domain Generation Algorithm (DGA) with a user-specific key that changes daily to hide C2 addresses. Data exfiltration involved breaking sensitive files into fragments using custom_exfil_script.ps1 to avoid network monitoring alerts. Finally, as part of disruption, ransomware employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically. Logs from SecureBank's SIEM showed increased network traffic on port 443, but no immediate alerts were triggered due to the stealthy nature of the container deployment. The company's background includes a recent migration to hybrid cloud infrastructure, which may have expanded the attack surface. Analysis of firewall logs indicated normal Docker API calls during business hours, masking the malicious activity.",
+    "tagged_text": "On 2024-09-15, security analysts at a fictional financial firm, 'SecureBank Inc.', detected anomalous activity following a series of targeted attacks. The campaign, attributed to the fictional APT group 'SilentAnchor', began with reconnaissance where the actor queried a paid threat intelligence feed to gather employee email addresses [T1597.001]. Subsequently, the attacker initiated a spearphishing voice call posing as IT support, tricking a user into revealing their system credentials [T1566.004]. Upon gaining access, the adversary used PowerShell to deploy a malicious container via 'docker start', which operated network reconnaissance tools while blending in with legitimate Docker activity [T1610]. To maintain persistence, the threat actors dumped credentials from Credential Manager using Mimikatz and modified user account permissions [T1098]. Discovery activities included using tools like LunarWeb to capture group policy settings [T1615] while conducting scanning for exposed TCP port 7001, SSH, and Redis servers [T1046]. In cloud environments, ROADTools was employed to enumerate Azure AD applications and service principals [T1526], and a SharePoint enumeration tool, spwebmember, was used to dump sensitive data from SharePoint repositories [T1213.002]. For command and control, the malware utilized a Domain Generation Algorithm (DGA) with a user-specific key that changes daily to hide C2 addresses [T1568.002]. Data exfiltration involved breaking sensitive files into fragments using custom_exfil_script.ps1 to avoid network monitoring alerts [T1030]. Finally, as part of disruption, ransomware employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically [T1489]. Logs from SecureBank's SIEM showed increased network traffic on port 443, but no immediate alerts were triggered due to the stealthy nature of the container deployment. The company's background includes a recent migration to hybrid cloud infrastructure, which may have expanded the attack surface. Analysis of firewall logs indicated normal Docker API calls during business hours, masking the malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon gaining access, the adversary used PowerShell to deploy a malicious container via 'docker start', which operated network reconnaissance tools while blending in with legitimate Docker activity.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "To maintain persistence, the threat actors dumped credentials from Credential Manager using Mimikatz and modified user account permissions.",
+            "technique_id": "T1098",
+            "technique_name": "Account Manipulation"
+        },
+        {
+            "sentence": "Discovery activities included using tools like LunarWeb to capture group policy settings while conducting scanning for exposed TCP port 7001, SSH, and Redis servers.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "Discovery activities included using tools like LunarWeb to capture group policy settings while conducting scanning for exposed TCP port 7001, SSH, and Redis servers.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "In cloud environments, ROADTools was employed to enumerate Azure AD applications and service principals, and a SharePoint enumeration tool, spwebmember, was used to dump sensitive data from SharePoint repositories [T1213.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        },
+        {
+            "sentence": "ps1 to avoid network monitoring alerts.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        },
+        {
+            "sentence": "Finally, as part of disruption, ransomware employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'SilentAnchor' Targeting Financial Sector",
+        "summary": "This advisory details a fictional campaign by threat actors designated as 'SilentAnchor' targeting financial institutions, based on a simulated scenario for blue team training. The campaign involves reconnaissance, initial access via social engineering, deployment of malicious containers, credential harvesting, discovery activities, data exfiltration, and service disruption. Techniques are mapped to the MITRE ATT&CK framework to aid in detection and response.",
+        "full_report_text": "On 2024-09-15, security analysts at a fictional financial firm, 'SecureBank Inc.', detected anomalous activity following a series of targeted attacks. The campaign, attributed to the fictional APT group 'SilentAnchor', began with reconnaissance where the actor queried a paid threat intelligence feed to gather employee email addresses [T1597.001]. Subsequently, the attacker initiated a spearphishing voice call posing as IT support, tricking a user into revealing their system credentials [T1566.004]. Upon gaining access, the adversary used PowerShell to deploy a malicious container via 'docker start', which operated network reconnaissance tools while blending in with legitimate Docker activity [T1610]. To maintain persistence, the threat actors dumped credentials from Credential Manager using Mimikatz and modified user account permissions [T1098]. Discovery activities included using tools like LunarWeb to capture group policy settings [T1615] while conducting scanning for exposed TCP port 7001, SSH, and Redis servers [T1046]. In cloud environments, ROADTools was employed to enumerate Azure AD applications and service principals [T1526], and a SharePoint enumeration tool, spwebmember, was used to dump sensitive data from SharePoint repositories [T1213.002]. For command and control, the malware utilized a Domain Generation Algorithm (DGA) with a user-specific key that changes daily to hide C2 addresses [T1568.002]. Data exfiltration involved breaking sensitive files into fragments using custom_exfil_script.ps1 to avoid network monitoring alerts [T1030]. Finally, as part of disruption, ransomware employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically [T1489]. Logs from SecureBank's SIEM showed increased network traffic on port 443, but no immediate alerts were triggered due to the stealthy nature of the container deployment. The company's background includes a recent migration to hybrid cloud infrastructure, which may have expanded the attack surface. Analysis of firewall logs indicated normal Docker API calls during business hours, masking the malicious activity.",
+        "techniques_used": [
+            "T1597.001",
+            "T1566.004",
+            "T1610",
+            "T1098",
+            "T1615",
+            "T1046",
+            "T1526",
+            "T1213.002",
+            "T1568.002",
+            "T1030",
+            "T1489"
+        ]
+    }
+}

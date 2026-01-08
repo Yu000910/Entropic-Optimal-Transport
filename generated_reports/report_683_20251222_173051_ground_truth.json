@@ -1,0 +1,105 @@
+{
+    "report_id": "report_683",
+    "generated_at": "20251222_173051",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1199",
+        "T1053.006",
+        "T1037.001",
+        "T1016",
+        "T1087.004",
+        "T1673",
+        "T1568.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1199",
+        "T1078.001",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1037.001",
+        "T1053.006",
+        "T1016",
+        "T1673",
+        "T1087.004",
+        "T1568.003"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1053.006",
+        "T1087.004",
+        "T1112",
+        "T1589",
+        "T1037.001",
+        "T1673",
+        "T1568.003",
+        "T1105",
+        "T1016",
+        "T1078.001",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of APT activity under the codename 'HomeLand Justice'. This report is based on a simulated attack scenario intended for training purposes, focusing on techniques observed in a hybrid infrastructure environment involving on-premises systems and cloud services.\n\nBackground: The fictional victim organization, 'GlobalTech Solutions', is a mid-sized manufacturing company with offices in North America and Europe, utilizing a mix of Windows servers, Linux systems, and Microsoft 365 for operations. Initial detection occurred via anomalous network traffic logs from a perimeter firewall, though no actual breach has occurred; this narrative is constructed for educational analysis.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance to identify trusted relationships, then exploited a managed service provider's delegated permissions to gain administrative access through a trusted relationship, subsequently using default administrator accounts to move laterally via RDP and Impacket tools. System logs from Active Directory showed multiple failed login attempts prior to successful access, but these were not tagged as malicious at the time.\n- Execution: Upon gaining access, the adversary employed PowerShell to actively download and execute malicious payloads while simultaneously modifying registry keys to configure a UserInitMprLogonScript that would execute a backdoor upon each user login, ensuring persistence across reboots.\n- Persistence: In addition to logon scripts, the threat actor installed a rogue systemd timer service on Linux systems to execute data exfiltration scripts upon boot, leveraging cron jobs for scheduling that were not initially flagged in audit logs.\n- Discovery: The malware conducted system network configuration discovery using tools like OSInfo to gather current domain information, and performed virtual machine discovery by executing 'vim-cmd vmsvc/power.getstate' across multiple VM IDs to identify powered-on virtual machines in the environment. Furthermore, the actors used PowerShell scripts to enumerate cloud accounts, specifically running 'Get-MsolRoleMember.ps1' to list members of administrative roles in Microsoft 365, though this activity blended with normal administrative tasks.\n- Command and Control: To evade detection, the attacker utilized encoded DNS queries for DNS calculation to tunnel command and control traffic through allowed DNS ports, mimicking legitimate DNS requests to bypass network security controls. Network traffic analysis revealed spikes in DNS query volumes, but these were initially attributed to routine domain lookups.\n- Impact: No data exfiltration or disruption occurred in this fictional scenario; the focus is on training defenders to recognize these techniques. The company's incident response team simulated containment by disabling default accounts and reviewing trusted relationships.\n\nRecommendations for Training: Blue teams should monitor for unusual use of default accounts, audit logon scripts and systemd timers, enhance DNS traffic analysis, and review cloud administrative role memberships regularly. This advisory serves as a resource for tabletop exercises and security awareness.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of APT activity under the codename 'HomeLand Justice'. This report is based on a simulated attack scenario intended for training purposes, focusing on techniques observed in a hybrid infrastructure environment involving on-premises systems and cloud services.\n\nBackground: The fictional victim organization, 'GlobalTech Solutions', is a mid-sized manufacturing company with offices in North America and Europe, utilizing a mix of Windows servers, Linux systems, and Microsoft 365 for operations. Initial detection occurred via anomalous network traffic logs from a perimeter firewall, though no actual breach has occurred; this narrative is constructed for educational analysis.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify trusted relationships, then exploited a managed service provider's delegated permissions to gain administrative access through a trusted relationship [T1199], subsequently using default administrator accounts [T1078.001] to move laterally via RDP and Impacket tools. System logs from Active Directory showed multiple failed login attempts prior to successful access, but these were not tagged as malicious at the time.\n- Execution: Upon gaining access, the adversary employed PowerShell [T1059.001] to actively download and execute malicious payloads [T1105] while simultaneously modifying registry keys [T1112] to configure a UserInitMprLogonScript [T1037.001] that would execute a backdoor upon each user login, ensuring persistence across reboots.\n- Persistence: In addition to logon scripts, the threat actor installed a rogue systemd timer service [T1053.006] on Linux systems to execute data exfiltration scripts upon boot, leveraging cron jobs for scheduling that were not initially flagged in audit logs.\n- Discovery: The malware conducted system network configuration discovery [T1016] using tools like OSInfo to gather current domain information, and performed virtual machine discovery [T1673] by executing 'vim-cmd vmsvc/power.getstate' across multiple VM IDs to identify powered-on virtual machines in the environment. Furthermore, the actors used PowerShell scripts to enumerate cloud accounts [T1087.004], specifically running 'Get-MsolRoleMember.ps1' to list members of administrative roles in Microsoft 365, though this activity blended with normal administrative tasks.\n- Command and Control: To evade detection, the attacker utilized encoded DNS queries for DNS calculation [T1568.003] to tunnel command and control traffic through allowed DNS ports, mimicking legitimate DNS requests to bypass network security controls. Network traffic analysis revealed spikes in DNS query volumes, but these were initially attributed to routine domain lookups.\n- Impact: No data exfiltration or disruption occurred in this fictional scenario; the focus is on training defenders to recognize these techniques. The company's incident response team simulated containment by disabling default accounts and reviewing trusted relationships.\n\nRecommendations for Training: Blue teams should monitor for unusual use of default accounts, audit logon scripts and systemd timers, enhance DNS traffic analysis, and review cloud administrative role memberships regularly. This advisory serves as a resource for tabletop exercises and security awareness.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance to identify trusted relationships, then exploited a managed service provider's delegated permissions to gain administrative access through a trusted relationship, subsequently using default administrator accounts [T1078.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Attack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance to identify trusted relationships, then exploited a managed service provider's delegated permissions to gain administrative access through a trusted relationship, subsequently using default administrator accounts [T1078.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "001] to actively download and execute malicious payloads while simultaneously modifying registry keys to configure a UserInitMprLogonScript [T1037.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download and execute malicious payloads while simultaneously modifying registry keys to configure a UserInitMprLogonScript [T1037.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "- Discovery: The malware conducted system network configuration discovery using tools like OSInfo to gather current domain information, and performed virtual machine discovery by executing 'vim-cmd vmsvc/power.",
+            "technique_id": "T1016",
+            "technique_name": "System Network Configuration Discovery"
+        },
+        {
+            "sentence": "- Discovery: The malware conducted system network configuration discovery using tools like OSInfo to gather current domain information, and performed virtual machine discovery by executing 'vim-cmd vmsvc/power.",
+            "technique_id": "T1673",
+            "technique_name": "Virtual Machine Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL APT Campaign 'HomeLand Justice' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group exploiting trusted relationships and default configurations to gain initial access, establish persistence, and conduct reconnaissance across hybrid environments. The scenario is designed for blue team training to identify and mitigate techniques involving default accounts, logon scripts, and DNS-based command and control.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of APT activity under the codename 'HomeLand Justice'. This report is based on a simulated attack scenario intended for training purposes, focusing on techniques observed in a hybrid infrastructure environment involving on-premises systems and cloud services.\n\nBackground: The fictional victim organization, 'GlobalTech Solutions', is a mid-sized manufacturing company with offices in North America and Europe, utilizing a mix of Windows servers, Linux systems, and Microsoft 365 for operations. Initial detection occurred via anomalous network traffic logs from a perimeter firewall, though no actual breach has occurred; this narrative is constructed for educational analysis.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify trusted relationships, then exploited a managed service provider's delegated permissions to gain administrative access through a trusted relationship [T1199], subsequently using default administrator accounts [T1078.001] to move laterally via RDP and Impacket tools. System logs from Active Directory showed multiple failed login attempts prior to successful access, but these were not tagged as malicious at the time.\n- Execution: Upon gaining access, the adversary employed PowerShell [T1059.001] to actively download and execute malicious payloads [T1105] while simultaneously modifying registry keys [T1112] to configure a UserInitMprLogonScript [T1037.001] that would execute a backdoor upon each user login, ensuring persistence across reboots.\n- Persistence: In addition to logon scripts, the threat actor installed a rogue systemd timer service [T1053.006] on Linux systems to execute data exfiltration scripts upon boot, leveraging cron jobs for scheduling that were not initially flagged in audit logs.\n- Discovery: The malware conducted system network configuration discovery [T1016] using tools like OSInfo to gather current domain information, and performed virtual machine discovery [T1673] by executing 'vim-cmd vmsvc/power.getstate' across multiple VM IDs to identify powered-on virtual machines in the environment. Furthermore, the actors used PowerShell scripts to enumerate cloud accounts [T1087.004], specifically running 'Get-MsolRoleMember.ps1' to list members of administrative roles in Microsoft 365, though this activity blended with normal administrative tasks.\n- Command and Control: To evade detection, the attacker utilized encoded DNS queries for DNS calculation [T1568.003] to tunnel command and control traffic through allowed DNS ports, mimicking legitimate DNS requests to bypass network security controls. Network traffic analysis revealed spikes in DNS query volumes, but these were initially attributed to routine domain lookups.\n- Impact: No data exfiltration or disruption occurred in this fictional scenario; the focus is on training defenders to recognize these techniques. The company's incident response team simulated containment by disabling default accounts and reviewing trusted relationships.\n\nRecommendations for Training: Blue teams should monitor for unusual use of default accounts, audit logon scripts and systemd timers, enhance DNS traffic analysis, and review cloud administrative role memberships regularly. This advisory serves as a resource for tabletop exercises and security awareness.",
+        "techniques_used": [
+            "T1589",
+            "T1199",
+            "T1078.001",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1037.001",
+            "T1053.006",
+            "T1016",
+            "T1673",
+            "T1087.004",
+            "T1568.003"
+        ]
+    }
+}

@@ -1,0 +1,108 @@
+{
+    "report_id": "report_292",
+    "generated_at": "20251222_144520",
+    "scenario_target_ids": [
+        "T1583.007",
+        "T1189",
+        "T1190",
+        "T1204.002",
+        "T1562.006",
+        "T1021.001",
+        "T1005",
+        "T1557.001",
+        "T1602.002",
+        "T1659",
+        "T1572",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.007",
+        "T1189",
+        "T1190",
+        "T1204.002",
+        "T1562.006",
+        "T1021.001",
+        "T1005",
+        "T1557.001",
+        "T1602.002",
+        "T1659",
+        "T1572",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1572",
+        "T1562.006",
+        "T1659",
+        "T1005",
+        "T1557.001",
+        "T1602.002",
+        "T1189",
+        "T1583.007",
+        "T1190",
+        "T1021.001",
+        "T1496.004",
+        "T1204.002"
+    ],
+    "clean_text": "On March 15, 2024, SHADOW CLOUD initiated a campaign against a fictional financial services company, 'SecureFin Corp', which utilizes AWS cloud services and maintains legacy on-premises Microsoft Exchange servers. The company's security team observed anomalous network traffic from IP addresses associated with Cloudflare Workers, indicating the use of serverless infrastructure for command and control. Initial access was achieved through a drive-by compromise, where actors created a malicious webpage mimicking SecureFin's employee portal to deliver a fake anti-virus installer, and concurrently exploited a known vulnerability (CVE-2024-1234) in a public-facing web application to gain unauthorized access to an edge device. Once inside, the actors employed a malicious Excel document delivered via phishing to trick users into executing macros, which downloaded additional payloads while modifying registry keys to reduce Security event logging levels and block indicators of compromise. Lateral movement involved using Remote Desktop Protocol to connect to internal servers, where tools like OutSteel were deployed to collect sensitive data from local systems and execute Responder commands for LLMNR/NBT-NS poisoning to harvest credentials and relay SMB traffic. The actors further conducted network reconnaissance by executing SNMP queries to dump configuration data from network devices and injected malicious payloads into DNS queries to establish persistent backdoor access. To obscure their activities, SHADOW CLOUD utilized SSH tunneling to encapsulate traffic within legitimate protocols and programmatically created numerous AWS SNS topics and subscriptions, hijacking cloud services to degrade performance and evade detection. System logs from SecureFin's SIEM showed increased CPU usage on Exchange servers and anomalous DNS requests, though some entries were suppressed due to the registry modifications. The company's background includes a recent migration to hybrid cloud, which may have introduced misconfigurations exploited in this attack.",
+    "tagged_text": "On March 15, 2024, SHADOW CLOUD initiated a campaign against a fictional financial services company, 'SecureFin Corp', which utilizes AWS cloud services and maintains legacy on-premises Microsoft Exchange servers. The company's security team observed anomalous network traffic from IP addresses associated with Cloudflare Workers, indicating the use of serverless infrastructure for command and control [T1583.007]. Initial access was achieved through a drive-by compromise, where actors created a malicious webpage mimicking SecureFin's employee portal to deliver a fake anti-virus installer [T1189], and concurrently exploited a known vulnerability (CVE-2024-1234) in a public-facing web application to gain unauthorized access to an edge device [T1190]. Once inside, the actors employed a malicious Excel document delivered via phishing to trick users into executing macros, which downloaded additional payloads [T1204.002] while modifying registry keys to reduce Security event logging levels and block indicators of compromise [T1562.006]. Lateral movement involved using Remote Desktop Protocol to connect to internal servers [T1021.001], where tools like OutSteel were deployed to collect sensitive data from local systems [T1005] and execute Responder commands for LLMNR/NBT-NS poisoning to harvest credentials and relay SMB traffic [T1557.001]. The actors further conducted network reconnaissance by executing SNMP queries to dump configuration data from network devices [T1602.002] and injected malicious payloads into DNS queries to establish persistent backdoor access [T1659]. To obscure their activities, SHADOW CLOUD utilized SSH tunneling to encapsulate traffic within legitimate protocols [T1572] and programmatically created numerous AWS SNS topics and subscriptions, hijacking cloud services to degrade performance and evade detection [T1496.004]. System logs from SecureFin's SIEM showed increased CPU usage on Exchange servers and anomalous DNS requests, though some entries were suppressed due to the registry modifications. The company's background includes a recent migration to hybrid cloud, which may have introduced misconfigurations exploited in this attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved through a drive-by compromise, where actors created a malicious webpage mimicking SecureFin's employee portal to deliver a fake anti-virus installer, and concurrently exploited a known vulnerability (CVE-2024-1234) in a public-facing web application to gain unauthorized access to an edge device.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Initial access was achieved through a drive-by compromise, where actors created a malicious webpage mimicking SecureFin's employee portal to deliver a fake anti-virus installer, and concurrently exploited a known vulnerability (CVE-2024-1234) in a public-facing web application to gain unauthorized access to an edge device.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "001], where tools like OutSteel were deployed to collect sensitive data from local systems and execute Responder commands for LLMNR/NBT-NS poisoning to harvest credentials and relay SMB traffic [T1557.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "002] and injected malicious payloads into DNS queries to establish persistent backdoor access.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "To obscure their activities, SHADOW CLOUD utilized SSH tunneling to encapsulate traffic within legitimate protocols and programmatically created numerous AWS SNS topics and subscriptions, hijacking cloud services to degrade performance and evade detection [T1496.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'SHADOW CLOUD', targeting organizations with hybrid cloud and on-premises environments. The campaign leverages a combination of cloud-based infrastructure, web exploitation, and lateral movement techniques to compromise systems, exfiltrate data, and establish persistence. Blue teams should review this report to enhance detection and response capabilities against similar multi-vector attacks.",
+        "full_report_text": "On March 15, 2024, SHADOW CLOUD initiated a campaign against a fictional financial services company, 'SecureFin Corp', which utilizes AWS cloud services and maintains legacy on-premises Microsoft Exchange servers. The company's security team observed anomalous network traffic from IP addresses associated with Cloudflare Workers, indicating the use of serverless infrastructure for command and control [T1583.007]. Initial access was achieved through a drive-by compromise, where actors created a malicious webpage mimicking SecureFin's employee portal to deliver a fake anti-virus installer [T1189], and concurrently exploited a known vulnerability (CVE-2024-1234) in a public-facing web application to gain unauthorized access to an edge device [T1190]. Once inside, the actors employed a malicious Excel document delivered via phishing to trick users into executing macros, which downloaded additional payloads [T1204.002] while modifying registry keys to reduce Security event logging levels and block indicators of compromise [T1562.006]. Lateral movement involved using Remote Desktop Protocol to connect to internal servers [T1021.001], where tools like OutSteel were deployed to collect sensitive data from local systems [T1005] and execute Responder commands for LLMNR/NBT-NS poisoning to harvest credentials and relay SMB traffic [T1557.001]. The actors further conducted network reconnaissance by executing SNMP queries to dump configuration data from network devices [T1602.002] and injected malicious payloads into DNS queries to establish persistent backdoor access [T1659]. To obscure their activities, SHADOW CLOUD utilized SSH tunneling to encapsulate traffic within legitimate protocols [T1572] and programmatically created numerous AWS SNS topics and subscriptions, hijacking cloud services to degrade performance and evade detection [T1496.004]. System logs from SecureFin's SIEM showed increased CPU usage on Exchange servers and anomalous DNS requests, though some entries were suppressed due to the registry modifications. The company's background includes a recent migration to hybrid cloud, which may have introduced misconfigurations exploited in this attack.",
+        "techniques_used": [
+            "T1583.007",
+            "T1189",
+            "T1190",
+            "T1204.002",
+            "T1562.006",
+            "T1021.001",
+            "T1005",
+            "T1557.001",
+            "T1602.002",
+            "T1659",
+            "T1572",
+            "T1496.004"
+        ]
+    }
+}

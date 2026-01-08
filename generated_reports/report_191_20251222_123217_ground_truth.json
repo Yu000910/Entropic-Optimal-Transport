@@ -1,0 +1,63 @@
+{
+    "report_id": "report_191",
+    "generated_at": "20251222_123217",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1053",
+        "T1137.005",
+        "T1570",
+        "T1001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1053",
+        "T1137.005",
+        "T1570",
+        "T1001"
+    ],
+    "actual_found_ids": [
+        "T1053",
+        "T1566.002",
+        "T1137.005",
+        "T1001",
+        "T1570"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional advanced persistent threat (APT) campaign attributed to the actor 'Crimson Serpent.' This campaign targets financial organizations in the U.S., leveraging sophisticated techniques to deploy ransomware and exfiltrate sensitive data. Initial analysis indicates the campaign began in early 2024, with actors conducting reconnaissance on employee roles and email addresses, though no specific techniques were observed in this phase. The attack commenced with spearphishing emails sent to targeted employees, containing malicious links disguised as urgent financial updates. Upon clicking, the link redirected to a compromised server that downloaded a payload, which then executed via PowerShell to create a scheduled task using schtasks.exe for persistence on system startup. Concurrently, the malware modified Outlook rules to load a malicious DLL upon Outlook.exe startup, enabling further email-based propagation and data collection. After establishing persistence, the actors used lateral movement tools, such as psexec, to transfer the ransomware executable across connected servers within the network. During this phase, system logs from Server-02 showed unusual process creation events at 03:45 UTC, though these were not directly linked to the techniques. To evade detection, network traffic was obfuscated through base64 encoding and decoding, masking command-and-control communications and data exfiltration. The campaign resulted in encrypted files on multiple systems, with ransom demands issued via email. No real-world impact has occurred, as this is a training scenario. Blue teams are advised to monitor for anomalous scheduled tasks, Outlook rule modifications, and obfuscated network patterns.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional advanced persistent threat (APT) campaign attributed to the actor 'Crimson Serpent.' This campaign targets financial organizations in the U.S., leveraging sophisticated techniques to deploy ransomware and exfiltrate sensitive data. Initial analysis indicates the campaign began in early 2024, with actors conducting reconnaissance on employee roles and email addresses, though no specific techniques were observed in this phase. The attack commenced with spearphishing emails sent to targeted employees, containing malicious links disguised as urgent financial updates [T1566.002]. Upon clicking, the link redirected to a compromised server that downloaded a payload, which then executed via PowerShell to create a scheduled task using schtasks.exe for persistence on system startup [T1053]. Concurrently, the malware modified Outlook rules to load a malicious DLL upon Outlook.exe startup, enabling further email-based propagation and data collection [T1137.005]. After establishing persistence, the actors used lateral movement tools, such as psexec, to transfer the ransomware executable across connected servers within the network [T1570]. During this phase, system logs from Server-02 showed unusual process creation events at 03:45 UTC, though these were not directly linked to the techniques. To evade detection, network traffic was obfuscated through base64 encoding and decoding, masking command-and-control communications and data exfiltration [T1001]. The campaign resulted in encrypted files on multiple systems, with ransom demands issued via email. No real-world impact has occurred, as this is a training scenario. Blue teams are advised to monitor for anomalous scheduled tasks, Outlook rule modifications, and obfuscated network patterns.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe for persistence on system startup.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "After establishing persistence, the actors used lateral movement tools, such as psexec, to transfer the ransomware executable across connected servers within the network.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "To evade detection, network traffic was obfuscated through base64 encoding and decoding, masking command-and-control communications and data exfiltration.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Serpent' targeting financial institutions, using spearphishing, persistence mechanisms, lateral movement, and data obfuscation for ransomware deployment. The report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional advanced persistent threat (APT) campaign attributed to the actor 'Crimson Serpent.' This campaign targets financial organizations in the U.S., leveraging sophisticated techniques to deploy ransomware and exfiltrate sensitive data. Initial analysis indicates the campaign began in early 2024, with actors conducting reconnaissance on employee roles and email addresses, though no specific techniques were observed in this phase. The attack commenced with spearphishing emails sent to targeted employees, containing malicious links disguised as urgent financial updates [T1566.002]. Upon clicking, the link redirected to a compromised server that downloaded a payload, which then executed via PowerShell to create a scheduled task using schtasks.exe for persistence on system startup [T1053]. Concurrently, the malware modified Outlook rules to load a malicious DLL upon Outlook.exe startup, enabling further email-based propagation and data collection [T1137.005]. After establishing persistence, the actors used lateral movement tools, such as psexec, to transfer the ransomware executable across connected servers within the network [T1570]. During this phase, system logs from Server-02 showed unusual process creation events at 03:45 UTC, though these were not directly linked to the techniques. To evade detection, network traffic was obfuscated through base64 encoding and decoding, masking command-and-control communications and data exfiltration [T1001]. The campaign resulted in encrypted files on multiple systems, with ransom demands issued via email. No real-world impact has occurred, as this is a training scenario. Blue teams are advised to monitor for anomalous scheduled tasks, Outlook rule modifications, and obfuscated network patterns.",
+        "techniques_used": [
+            "T1566.002",
+            "T1053",
+            "T1137.005",
+            "T1570",
+            "T1001"
+        ]
+    }
+}

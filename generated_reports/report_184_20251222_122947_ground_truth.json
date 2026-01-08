@@ -1,0 +1,78 @@
+{
+    "report_id": "report_184",
+    "generated_at": "20251222_122947",
+    "scenario_target_ids": [
+        "T1587.003",
+        "T1195.002",
+        "T1569.002",
+        "T1087.002",
+        "T1201",
+        "T1205.001",
+        "T1568",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1587.003",
+        "T1569.002",
+        "T1568",
+        "T1205.001",
+        "T1087.002",
+        "T1201",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1205.001",
+        "T1048",
+        "T1568",
+        "T1087.002",
+        "T1195.002",
+        "T1569.002",
+        "T1587.003",
+        "T1201"
+    ],
+    "clean_text": "Background: CRIMSON SHADOW is a fictional threat actor believed to operate with state-sponsored objectives, focusing on espionage and data theft. In this simulated scenario, the group targets a mid-sized technology firm, 'InnovateCorp', which develops proprietary software used in critical infrastructure sectors. Initial analysis of system logs from InnovateCorp's internal network revealed anomalous certificate installations and unauthorized service modifications starting in early 2024, though no actual breach occurred as this is a training exercise.\n\nKill-Chain Analysis:\n- Initial Access: The actors compromised the software supply chain by replacing a legitimate compiled binary of a software update with a trojanized version containing additional payloads, which was distributed to InnovateCorp via a trusted vendor channel.\n- Execution: Upon installation, the malicious binary executed to establish persistence, where the adversary employed PowerShell scripts to install a forged digital certificate using certmgr.msc, adding it to the trusted root store while simultaneously starting the COMSysApp service via sc start as part of service hijacking.\n- Persistence: The trojanized process maintained communication with command and control servers by executing 'malware.exe' to dynamically resolve domain names and used raw socket communication to hide traffic within normal network packets through port knocking.\n- Discovery: To gather intelligence, the actors ran BloodHound to collect information about domain users, including identification of domain admin accounts, and queried 'net accounts /domain' to determine the minimum password length for domain accounts.\n- Exfiltration: Data was exfiltrated over the network via UDP using Kobalos-like techniques to stealthily transfer credentials.\n\nIrrelevant Information: InnovateCorp's internal audit logs from Q1 2024 show routine system updates with no prior security incidents, and the company's background includes a recent merger with a smaller startup, leading to integration challenges in IT systems. Network traffic analysis indicated increased UDP packets on port 53, but this was later attributed to a misconfigured DNS server unrelated to the attack.",
+    "tagged_text": "Background: CRIMSON SHADOW is a fictional threat actor believed to operate with state-sponsored objectives, focusing on espionage and data theft. In this simulated scenario, the group targets a mid-sized technology firm, 'InnovateCorp', which develops proprietary software used in critical infrastructure sectors. Initial analysis of system logs from InnovateCorp's internal network revealed anomalous certificate installations and unauthorized service modifications starting in early 2024, though no actual breach occurred as this is a training exercise.\n\nKill-Chain Analysis:\n- Initial Access: The actors compromised the software supply chain by replacing a legitimate compiled binary of a software update with a trojanized version containing additional payloads [T1195.002], which was distributed to InnovateCorp via a trusted vendor channel.\n- Execution: Upon installation, the malicious binary executed to establish persistence, where the adversary employed PowerShell scripts to install a forged digital certificate using certmgr.msc, adding it to the trusted root store [T1587.003] while simultaneously starting the COMSysApp service via sc start as part of service hijacking [T1569.002].\n- Persistence: The trojanized process maintained communication with command and control servers by executing 'malware.exe' to dynamically resolve domain names [T1568] and used raw socket communication to hide traffic within normal network packets through port knocking [T1205.001].\n- Discovery: To gather intelligence, the actors ran BloodHound to collect information about domain users, including identification of domain admin accounts [T1087.002], and queried 'net accounts /domain' to determine the minimum password length for domain accounts [T1201].\n- Exfiltration: Data was exfiltrated over the network via UDP using Kobalos-like techniques to stealthily transfer credentials [T1048].\n\nIrrelevant Information: InnovateCorp's internal audit logs from Q1 2024 show routine system updates with no prior security incidents, and the company's background includes a recent merger with a smaller startup, leading to integration challenges in IT systems. Network traffic analysis indicated increased UDP packets on port 53, but this was later attributed to a misconfigured DNS server unrelated to the attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe' to dynamically resolve domain names and used raw socket communication to hide traffic within normal network packets through port knocking [T1205.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "002], and queried 'net accounts /domain' to determine the minimum password length for domain accounts.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "- Exfiltration: Data was exfiltrated over the network via UDP using Kobalos-like techniques to stealthily transfer credentials.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL APT Campaign Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CRIMSON SHADOW', targeting organizations through software supply chain compromise and stealthy persistence mechanisms. The campaign involves the use of trojanized software updates, certificate manipulation, and covert exfiltration techniques. This report is intended for blue team training to enhance detection and response capabilities against sophisticated attack vectors.",
+        "full_report_text": "Background: CRIMSON SHADOW is a fictional threat actor believed to operate with state-sponsored objectives, focusing on espionage and data theft. In this simulated scenario, the group targets a mid-sized technology firm, 'InnovateCorp', which develops proprietary software used in critical infrastructure sectors. Initial analysis of system logs from InnovateCorp's internal network revealed anomalous certificate installations and unauthorized service modifications starting in early 2024, though no actual breach occurred as this is a training exercise.\n\nKill-Chain Analysis:\n- Initial Access: The actors compromised the software supply chain by replacing a legitimate compiled binary of a software update with a trojanized version containing additional payloads [T1195.002], which was distributed to InnovateCorp via a trusted vendor channel.\n- Execution: Upon installation, the malicious binary executed to establish persistence, where the adversary employed PowerShell scripts to install a forged digital certificate using certmgr.msc, adding it to the trusted root store [T1587.003] while simultaneously starting the COMSysApp service via sc start as part of service hijacking [T1569.002].\n- Persistence: The trojanized process maintained communication with command and control servers by executing 'malware.exe' to dynamically resolve domain names [T1568] and used raw socket communication to hide traffic within normal network packets through port knocking [T1205.001].\n- Discovery: To gather intelligence, the actors ran BloodHound to collect information about domain users, including identification of domain admin accounts [T1087.002], and queried 'net accounts /domain' to determine the minimum password length for domain accounts [T1201].\n- Exfiltration: Data was exfiltrated over the network via UDP using Kobalos-like techniques to stealthily transfer credentials [T1048].\n\nIrrelevant Information: InnovateCorp's internal audit logs from Q1 2024 show routine system updates with no prior security incidents, and the company's background includes a recent merger with a smaller startup, leading to integration challenges in IT systems. Network traffic analysis indicated increased UDP packets on port 53, but this was later attributed to a misconfigured DNS server unrelated to the attack.",
+        "techniques_used": [
+            "T1195.002",
+            "T1587.003",
+            "T1569.002",
+            "T1568",
+            "T1205.001",
+            "T1087.002",
+            "T1201",
+            "T1048"
+        ]
+    }
+}

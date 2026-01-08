@@ -1,0 +1,73 @@
+{
+    "report_id": "report_202",
+    "generated_at": "20251222_140726",
+    "scenario_target_ids": [
+        "T1659",
+        "T1204.003",
+        "T1649",
+        "T1213.001",
+        "T1102",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1659",
+        "T1204.003",
+        "T1649",
+        "T1213.001",
+        "T1102",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1649",
+        "T1659",
+        "T1213.001",
+        "T1204.003",
+        "T1048",
+        "T1102"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign. The actors, known as Disco, have been observed targeting organizations in the financial and technology sectors, with initial access traced to a phishing campaign that led to credential compromise in an AWS environment. System logs from the affected network show unusual DNS queries and HTTP redirects occurring over a 72-hour period prior to detection.\n\nInitial Access & Execution: Disco achieved initial access by conducting content injection into DNS, HTTP, and SMB replies to redirect targeted hosts to download malicious payloads, which executed upon user interaction to deploy backdoors. The actors then leveraged a compromised AWS account to distribute a backdoored Amazon Machine Image (AMI) with embedded credential harvesting capabilities, allowing for persistent access to cloud resources.\n\nPersistence & Credential Access: To maintain access, the malware employed PowerShell scripts to extract private keys from the Windows certificate store and create forged authentication certificates, enabling lateral movement and privilege escalation. Additionally, the malware queried Confluence instances for deployment procedures and infrastructure configuration details, aiding in reconnaissance and targeting critical assets.\n\nCommand and Control (C2) & Exfiltration: For C2 communications, Nightdoor, a component of the malware, utilized web services such as Microsoft OneDrive or Google Drive to receive commands and exfiltrate data. Data exfiltration was conducted over alternative protocols using the curl -s -L -o command to transfer archived sensitive information to attacker-controlled URLs, bypassing traditional network monitoring tools. Network traffic analysis revealed encrypted connections to external domains, though further investigation is ongoing to identify all compromised endpoints.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign. The actors, known as Disco, have been observed targeting organizations in the financial and technology sectors, with initial access traced to a phishing campaign that led to credential compromise in an AWS environment. System logs from the affected network show unusual DNS queries and HTTP redirects occurring over a 72-hour period prior to detection.\n\nInitial Access & Execution: Disco achieved initial access by conducting content injection into DNS, HTTP, and SMB replies to redirect targeted hosts to download malicious payloads [T1659], which executed upon user interaction to deploy backdoors. The actors then leveraged a compromised AWS account to distribute a backdoored Amazon Machine Image (AMI) with embedded credential harvesting capabilities [T1204.003], allowing for persistent access to cloud resources.\n\nPersistence & Credential Access: To maintain access, the malware employed PowerShell scripts to extract private keys from the Windows certificate store and create forged authentication certificates [T1649], enabling lateral movement and privilege escalation. Additionally, the malware queried Confluence instances for deployment procedures and infrastructure configuration details [T1213.001], aiding in reconnaissance and targeting critical assets.\n\nCommand and Control (C2) & Exfiltration: For C2 communications, Nightdoor, a component of the malware, utilized web services such as Microsoft OneDrive or Google Drive to receive commands and exfiltrate data [T1102]. Data exfiltration was conducted over alternative protocols using the curl -s -L -o command to transfer archived sensitive information to attacker-controlled URLs [T1048], bypassing traditional network monitoring tools. Network traffic analysis revealed encrypted connections to external domains, though further investigation is ongoing to identify all compromised endpoints.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access & Execution: Disco achieved initial access by conducting content injection into DNS, HTTP, and SMB replies to redirect targeted hosts to download malicious payloads, which executed upon user interaction to deploy backdoors.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Persistence & Credential Access: To maintain access, the malware employed PowerShell scripts to extract private keys from the Windows certificate store and create forged authentication certificates, enabling lateral movement and privilege escalation.",
+            "technique_id": "T1649",
+            "technique_name": "Steal or Forge Authentication Certificates"
+        },
+        {
+            "sentence": "Command and Control (C2) & Exfiltration: For C2 communications, Nightdoor, a component of the malware, utilized web services such as Microsoft OneDrive or Google Drive to receive commands and exfiltrate data.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "Data exfiltration was conducted over alternative protocols using the curl -s -L -o command to transfer archived sensitive information to attacker-controlled URLs, bypassing traditional network monitoring tools.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Enterprise Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'Disco,' targeting organizations through content injection, malicious cloud images, and certificate forgery to facilitate data exfiltration and command and control operations.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign. The actors, known as Disco, have been observed targeting organizations in the financial and technology sectors, with initial access traced to a phishing campaign that led to credential compromise in an AWS environment. System logs from the affected network show unusual DNS queries and HTTP redirects occurring over a 72-hour period prior to detection.\n\nInitial Access & Execution: Disco achieved initial access by conducting content injection into DNS, HTTP, and SMB replies to redirect targeted hosts to download malicious payloads [T1659], which executed upon user interaction to deploy backdoors. The actors then leveraged a compromised AWS account to distribute a backdoored Amazon Machine Image (AMI) with embedded credential harvesting capabilities [T1204.003], allowing for persistent access to cloud resources.\n\nPersistence & Credential Access: To maintain access, the malware employed PowerShell scripts to extract private keys from the Windows certificate store and create forged authentication certificates [T1649], enabling lateral movement and privilege escalation. Additionally, the malware queried Confluence instances for deployment procedures and infrastructure configuration details [T1213.001], aiding in reconnaissance and targeting critical assets.\n\nCommand and Control (C2) & Exfiltration: For C2 communications, Nightdoor, a component of the malware, utilized web services such as Microsoft OneDrive or Google Drive to receive commands and exfiltrate data [T1102]. Data exfiltration was conducted over alternative protocols using the curl -s -L -o command to transfer archived sensitive information to attacker-controlled URLs [T1048], bypassing traditional network monitoring tools. Network traffic analysis revealed encrypted connections to external domains, though further investigation is ongoing to identify all compromised endpoints.",
+        "techniques_used": [
+            "T1659",
+            "T1204.003",
+            "T1649",
+            "T1213.001",
+            "T1102",
+            "T1048"
+        ]
+    }
+}

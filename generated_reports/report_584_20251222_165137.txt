@@ -1,0 +1,14 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign designated 'ShadowGale'. This scenario is designed for educational purposes to enhance detection and response capabilities in financial sector environments.
+
+Background: The fictional company 'FinSecure Corp', a mid-sized financial services provider, reported anomalous network activity starting on October 15, 2023. Initial logs showed increased e-mail traffic from unknown senders, but no immediate alerts were triggered by their legacy security systems. The company's infrastructure includes a mix of on-premises servers running Linux and Windows, with some cloud-based storage solutions.
+
+Attack Narrative:
+- Initial Access: The actors initiated the campaign by sending spearphishing e-mails to FinSecure employees, embedding malicious links [T1566.002] that redirected to compromised websites hosting downloaders.
+- Execution and Persistence: Upon user interaction, the malicious script executed systemctl commands to enable a daemon for persistence across reboots [T1569.003] while simultaneously hijacking the DLL search order to load malicious libraries [T1574.001], ensuring continued access even after system restarts.
+- Discovery: The adversary conducted network reconnaissance using net view and net share commands to identify shared drives [T1135] and employed tools like masscan to scan for open ports and vulnerable services in cloud environments [T1046], mapping the network topology for lateral movement.
+- Collection and Exfiltration: The actors used built-in utilities such as zip on macOS systems to archive sensitive financial data [T1560.001] and leveraged libpcap to monitor network traffic for specific trigger patterns, activating hidden listening ports [T1205] to facilitate data transfer.
+- Exfiltration and Impact: Archived data was exfiltrated to cloud storage services like Dropbox, uploading to per-victim folders [T1567.002], and the attackers used API calls such as PutBucketLifecycle to set immediate deletion rules for objects in S3 buckets [T1485.001], attempting to cover their tracks by destroying evidence post-exfiltration.
+
+Irrelevant Information: FinSecure Corp was founded in 1995 and has 500 employees across three offices. During the incident, system logs showed routine backup jobs running at 2:00 AM daily, with no correlation to the malicious activity. The company's coffee machine in the break room malfunctioned on the same day, causing minor disruptions but unrelated to cybersecurity events.
+
+Recommendations: Blue teams should monitor for unusual e-mail links, systemctl modifications, DLL hijacking attempts, network discovery commands, data archiving activities, traffic pattern anomalies, cloud storage uploads, and lifecycle API usage. Implement network segmentation, user training, and enhanced logging to detect similar tactics in real-world scenarios.

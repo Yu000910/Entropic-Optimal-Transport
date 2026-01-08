@@ -1,0 +1,98 @@
+{
+    "report_id": "report_257",
+    "generated_at": "20251222_143113",
+    "scenario_target_ids": [
+        "T1591",
+        "T1195",
+        "T1059.012",
+        "T1218.015",
+        "T1003.001",
+        "T1482",
+        "T1021.003",
+        "T1074.001",
+        "T1001.002",
+        "T1567",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1591",
+        "T1195",
+        "T1059.012",
+        "T1218.015",
+        "T1003.001",
+        "T1482",
+        "T1021.003",
+        "T1074.001",
+        "T1001.002",
+        "T1567",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1059.012",
+        "T1567",
+        "T1011.001",
+        "T1218.015",
+        "T1074.001",
+        "T1001.002",
+        "T1021.003",
+        "T1195",
+        "T1591",
+        "T1482",
+        "T1003.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the APT group 'SilentShade'. This group has historically targeted energy companies, as seen in a recent incident at 'GreenGrid Energy', a mid-sized utility provider with operations across the southwestern United States. GreenGrid reported anomalous network activity starting in early 2024, including unusual logins from external IP addresses and spikes in outbound traffic during off-hours, which were initially flagged by their SIEM but not investigated due to high false positive rates.\n\nInitial Access and Reconnaissance: The actors likely conducted reconnaissance by searching Facebook for groups related to GreenGrid Energy to understand employee culture and identify potential targets. This information was used to craft spear-phishing emails, which were not directly observed but inferred from subsequent compromise. The campaign began with a supply chain compromise, where SilentShade leveraged a compromised third-party vendor that provided software updates to GreenGrid, injecting malicious code into a legitimate update package to gain initial foothold. Upon execution, the malware employed Hypervisor CLI commands, such as 'esxcli system settings advanced set -o /UserVars/SuppressShellWarning -i 1', to suppress shell warnings on virtualized environments.\n\nExecution and Persistence: The adversary then abused Electron applications, specifically teams.exe, to execute malicious JavaScript code through Electron's nodeIntegration, allowing for stealthy execution without triggering traditional antivirus alerts. System logs from GreenGrid showed increased CPU usage on several workstations during this phase, but these were attributed to routine software updates. To escalate privileges, the actors targeted LSASS memory using tools like Mimikatz, dumping NTLM password hashes and clear-text passwords from memory to facilitate lateral movement. This was combined with domain trust discovery, where the malware executed nltest /domain_trusts to enumerate trust relationships between domains, identifying high-value targets within the network.\n\nLateral Movement and Data Collection: For lateral movement, SilentShade exploited the Distributed Component Object Model (DCOM) interface to remotely execute payloads via Microsoft Office inter-process communication, enabling the spread to additional systems. Once established, the actors staged collected data locally, storing sensitive information such as credentials and documents in a file named Hostname_UserName.txt prior to exfiltration. Network monitoring at GreenGrid detected unusual file creation events, but these were logged as low-priority alerts due to bandwidth constraints.\n\nExfiltration: To evade detection, the group used steganography, injecting command and control communications into image files like file.jpg to blend with normal web traffic. Data was then exfiltrated over web services using malicious PowerShell scripts, such as malicious.ps1, to collect and transmit sensitive documents from user desktops to external servers. Additionally, in a novel twist, attackers attempted exfiltration over Bluetooth by using Bluetooth pairing spoofing to establish unauthorized connections and transfer stolen data from compromised mobile devices, though this was less successful due to range limitations. GreenGrid's incident response team later discovered these activities during a post-breach analysis, noting that the initial compromise went undetected for approximately two weeks due to inadequate endpoint monitoring and lack of threat intelligence integration.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the APT group 'SilentShade'. This group has historically targeted energy companies, as seen in a recent incident at 'GreenGrid Energy', a mid-sized utility provider with operations across the southwestern United States. GreenGrid reported anomalous network activity starting in early 2024, including unusual logins from external IP addresses and spikes in outbound traffic during off-hours, which were initially flagged by their SIEM but not investigated due to high false positive rates.\n\nInitial Access and Reconnaissance: The actors likely conducted reconnaissance by searching Facebook for groups related to GreenGrid Energy to understand employee culture and identify potential targets [T1591]. This information was used to craft spear-phishing emails, which were not directly observed but inferred from subsequent compromise. The campaign began with a supply chain compromise, where SilentShade leveraged a compromised third-party vendor that provided software updates to GreenGrid, injecting malicious code into a legitimate update package to gain initial foothold [T1195]. Upon execution, the malware employed Hypervisor CLI commands, such as 'esxcli system settings advanced set -o /UserVars/SuppressShellWarning -i 1', to suppress shell warnings on virtualized environments [T1059.012].\n\nExecution and Persistence: The adversary then abused Electron applications, specifically teams.exe, to execute malicious JavaScript code through Electron's nodeIntegration, allowing for stealthy execution without triggering traditional antivirus alerts [T1218.015]. System logs from GreenGrid showed increased CPU usage on several workstations during this phase, but these were attributed to routine software updates. To escalate privileges, the actors targeted LSASS memory using tools like Mimikatz, dumping NTLM password hashes and clear-text passwords from memory to facilitate lateral movement [T1003.001]. This was combined with domain trust discovery, where the malware executed nltest /domain_trusts to enumerate trust relationships between domains, identifying high-value targets within the network [T1482].\n\nLateral Movement and Data Collection: For lateral movement, SilentShade exploited the Distributed Component Object Model (DCOM) interface to remotely execute payloads via Microsoft Office inter-process communication, enabling the spread to additional systems [T1021.003]. Once established, the actors staged collected data locally, storing sensitive information such as credentials and documents in a file named Hostname_UserName.txt prior to exfiltration [T1074.001]. Network monitoring at GreenGrid detected unusual file creation events, but these were logged as low-priority alerts due to bandwidth constraints.\n\nExfiltration: To evade detection, the group used steganography, injecting command and control communications into image files like file.jpg to blend with normal web traffic [T1001.002]. Data was then exfiltrated over web services using malicious PowerShell scripts, such as malicious.ps1, to collect and transmit sensitive documents from user desktops to external servers [T1567]. Additionally, in a novel twist, attackers attempted exfiltration over Bluetooth by using Bluetooth pairing spoofing to establish unauthorized connections and transfer stolen data from compromised mobile devices, though this was less successful due to range limitations [T1011.001]. GreenGrid's incident response team later discovered these activities during a post-breach analysis, noting that the initial compromise went undetected for approximately two weeks due to inadequate endpoint monitoring and lack of threat intelligence integration.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access and Reconnaissance: The actors likely conducted reconnaissance by searching Facebook for groups related to GreenGrid Energy to understand employee culture and identify potential targets.",
+            "technique_id": "T1591",
+            "technique_name": "Gather Victim Org Information"
+        },
+        {
+            "sentence": "The campaign began with a supply chain compromise, where SilentShade leveraged a compromised third-party vendor that provided software updates to GreenGrid, injecting malicious code into a legitimate update package to gain initial foothold.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "This was combined with domain trust discovery, where the malware executed nltest /domain_trusts to enumerate trust relationships between domains, identifying high-value targets within the network.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        },
+        {
+            "sentence": "ps1, to collect and transmit sensitive documents from user desktops to external servers.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentShade' Targeting Energy Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'SilentShade', targeting energy sector organizations. The campaign involves reconnaissance, supply chain compromise, and sophisticated exploitation techniques to steal credentials and exfiltrate sensitive data. Blue teams should review this report for training on detection and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the APT group 'SilentShade'. This group has historically targeted energy companies, as seen in a recent incident at 'GreenGrid Energy', a mid-sized utility provider with operations across the southwestern United States. GreenGrid reported anomalous network activity starting in early 2024, including unusual logins from external IP addresses and spikes in outbound traffic during off-hours, which were initially flagged by their SIEM but not investigated due to high false positive rates.\n\nInitial Access and Reconnaissance: The actors likely conducted reconnaissance by searching Facebook for groups related to GreenGrid Energy to understand employee culture and identify potential targets [T1591]. This information was used to craft spear-phishing emails, which were not directly observed but inferred from subsequent compromise. The campaign began with a supply chain compromise, where SilentShade leveraged a compromised third-party vendor that provided software updates to GreenGrid, injecting malicious code into a legitimate update package to gain initial foothold [T1195]. Upon execution, the malware employed Hypervisor CLI commands, such as 'esxcli system settings advanced set -o /UserVars/SuppressShellWarning -i 1', to suppress shell warnings on virtualized environments [T1059.012].\n\nExecution and Persistence: The adversary then abused Electron applications, specifically teams.exe, to execute malicious JavaScript code through Electron's nodeIntegration, allowing for stealthy execution without triggering traditional antivirus alerts [T1218.015]. System logs from GreenGrid showed increased CPU usage on several workstations during this phase, but these were attributed to routine software updates. To escalate privileges, the actors targeted LSASS memory using tools like Mimikatz, dumping NTLM password hashes and clear-text passwords from memory to facilitate lateral movement [T1003.001]. This was combined with domain trust discovery, where the malware executed nltest /domain_trusts to enumerate trust relationships between domains, identifying high-value targets within the network [T1482].\n\nLateral Movement and Data Collection: For lateral movement, SilentShade exploited the Distributed Component Object Model (DCOM) interface to remotely execute payloads via Microsoft Office inter-process communication, enabling the spread to additional systems [T1021.003]. Once established, the actors staged collected data locally, storing sensitive information such as credentials and documents in a file named Hostname_UserName.txt prior to exfiltration [T1074.001]. Network monitoring at GreenGrid detected unusual file creation events, but these were logged as low-priority alerts due to bandwidth constraints.\n\nExfiltration: To evade detection, the group used steganography, injecting command and control communications into image files like file.jpg to blend with normal web traffic [T1001.002]. Data was then exfiltrated over web services using malicious PowerShell scripts, such as malicious.ps1, to collect and transmit sensitive documents from user desktops to external servers [T1567]. Additionally, in a novel twist, attackers attempted exfiltration over Bluetooth by using Bluetooth pairing spoofing to establish unauthorized connections and transfer stolen data from compromised mobile devices, though this was less successful due to range limitations [T1011.001]. GreenGrid's incident response team later discovered these activities during a post-breach analysis, noting that the initial compromise went undetected for approximately two weeks due to inadequate endpoint monitoring and lack of threat intelligence integration.",
+        "techniques_used": [
+            "T1591",
+            "T1195",
+            "T1059.012",
+            "T1218.015",
+            "T1003.001",
+            "T1482",
+            "T1021.003",
+            "T1074.001",
+            "T1001.002",
+            "T1567",
+            "T1011.001"
+        ]
+    }
+}

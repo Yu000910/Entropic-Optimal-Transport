@@ -1,0 +1,133 @@
+{
+    "report_id": "report_734",
+    "generated_at": "20251223_105251",
+    "scenario_target_ids": [
+        "T1597.001",
+        "T1078.004",
+        "T1609",
+        "T1137",
+        "T1564.010",
+        "T1036",
+        "T1216",
+        "T1555.002",
+        "T1217",
+        "T1069.003",
+        "T1557.003",
+        "T1213.002",
+        "T1115",
+        "T1071.002",
+        "T1568.002",
+        "T1567.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1597.001",
+        "T1078.004",
+        "T1609",
+        "T1137",
+        "T1564.010",
+        "T1036",
+        "T1216",
+        "T1555.002",
+        "T1217",
+        "T1069.003",
+        "T1557.003",
+        "T1213.002",
+        "T1115",
+        "T1071.002",
+        "T1568.002",
+        "T1567.003"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1564.010",
+        "T1568.002",
+        "T1069.003",
+        "T1597.001",
+        "T1216",
+        "T1217",
+        "T1137",
+        "T1213.002",
+        "T1115",
+        "T1567.003",
+        "T1078.004",
+        "T1609",
+        "T1557.003",
+        "T1555.002",
+        "T1036"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the tactics, techniques, and procedures (TTPs) used by the fictional threat actor SHADOW_ORCHID. This report is based on a simulated attack scenario designed for educational purposes to train defensive teams in identifying and mitigating advanced threats.\n\n**Attack Narrative**\nSHADOW_ORCHID initiated the campaign by conducting reconnaissance to gather intelligence on the target's email security configurations, querying paid threat intelligence feeds. The actor then exploited cloud management APIs to gain initial access using compromised cloud accounts, establishing a persistent foothold in the infrastructure. System logs from the target's Azure environment showed unusual API calls at 03:45 UTC, but these were initially dismissed as routine maintenance activities.\n\nUpon gaining access, the adversary executed malicious activities by using container administration commands, such as 'docker exec -it container_name /bin/bash', to gain interactive shell access to running containers while simultaneously creating a VBScript in the Outlook VBA project to trigger infections when emails are received. This allowed for stealthy execution within the environment. The company, a mid-sized financial services firm with offices in New York and London, reported no immediate disruptions, but internal monitoring tools flagged anomalous container behavior.\n\nTo maintain persistence and evade defenses, SHADOW_ORCHID employed process argument spoofing by executing 'encryptor.exe' with obfuscated command-line arguments using environment variable substitution and masqueraded malicious installers as Windows update packages to entice users and bypass security controls. Additionally, the attacker used a signed JavaScript file to proxy execution, downloading and executing malware while evading detection. Network traffic analysis revealed spikes in outbound connections to unknown domains, correlating with these activities.\n\nFor credential access, the adversary dumped securityd memory to obtain plaintext authentication tokens from the keychain, enabling further lateral movement. Discovery efforts included retrieving browser histories via infostealer malware and running commands like 'az ad user get-member-groups' to identify security groups associated with compromised accounts. These actions were logged in the cloud audit trails but went unnoticed during routine reviews.\n\nLateral movement was facilitated through DHCP spoofing, where the malware abused the DHCP protocol to overwrite legitimate network settings on client machines, redirecting traffic and expanding the attack surface. Collection activities involved accessing and downloading information from SharePoint instances and stealing clipboard data using specialized tools, gathering sensitive financial and operational data. The target's IT department noted intermittent SharePoint access issues but attributed them to network latency.\n\nCommand and control (C2) was established using file transfer protocols, such as FTP, to conceal C2 traffic as standard file uploads, and domain generation algorithms were employed to reestablish C2 connections after network disruptions. Exfiltration was carried out by saving stolen financial data to text storage sites like pastebin.com through scheduled PowerShell commands. The company's data loss prevention systems generated alerts for large data transfers, but these were initially classified as false positives due to the use of legitimate-looking protocols.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual cloud API usage, container command executions, and Office application modifications. Implement network segmentation, enhance logging for DHCP and SharePoint activities, and use threat intelligence to detect masquerading and spoofing techniques. Regular audits of cloud groups and browser data can aid in early discovery of compromises.\n\nThis advisory serves as a training tool to improve defensive postures against similar fictional threats. All information is simulated and not based on real incidents.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the tactics, techniques, and procedures (TTPs) used by the fictional threat actor SHADOW_ORCHID. This report is based on a simulated attack scenario designed for educational purposes to train defensive teams in identifying and mitigating advanced threats.\n\n**Attack Narrative**\nSHADOW_ORCHID initiated the campaign by conducting reconnaissance to gather intelligence on the target's email security configurations, querying paid threat intelligence feeds [T1597.001]. The actor then exploited cloud management APIs to gain initial access using compromised cloud accounts [T1078.004], establishing a persistent foothold in the infrastructure. System logs from the target's Azure environment showed unusual API calls at 03:45 UTC, but these were initially dismissed as routine maintenance activities.\n\nUpon gaining access, the adversary executed malicious activities by using container administration commands, such as 'docker exec -it container_name /bin/bash' [T1609], to gain interactive shell access to running containers while simultaneously creating a VBScript in the Outlook VBA project to trigger infections when emails are received [T1137]. This allowed for stealthy execution within the environment. The company, a mid-sized financial services firm with offices in New York and London, reported no immediate disruptions, but internal monitoring tools flagged anomalous container behavior.\n\nTo maintain persistence and evade defenses, SHADOW_ORCHID employed process argument spoofing by executing 'encryptor.exe' with obfuscated command-line arguments using environment variable substitution [T1564.010] and masqueraded malicious installers as Windows update packages to entice users and bypass security controls [T1036]. Additionally, the attacker used a signed JavaScript file to proxy execution, downloading and executing malware while evading detection [T1216]. Network traffic analysis revealed spikes in outbound connections to unknown domains, correlating with these activities.\n\nFor credential access, the adversary dumped securityd memory to obtain plaintext authentication tokens from the keychain [T1555.002], enabling further lateral movement. Discovery efforts included retrieving browser histories via infostealer malware [T1217] and running commands like 'az ad user get-member-groups' to identify security groups associated with compromised accounts [T1069.003]. These actions were logged in the cloud audit trails but went unnoticed during routine reviews.\n\nLateral movement was facilitated through DHCP spoofing, where the malware abused the DHCP protocol to overwrite legitimate network settings on client machines [T1557.003], redirecting traffic and expanding the attack surface. Collection activities involved accessing and downloading information from SharePoint instances [T1213.002] and stealing clipboard data using specialized tools [T1115], gathering sensitive financial and operational data. The target's IT department noted intermittent SharePoint access issues but attributed them to network latency.\n\nCommand and control (C2) was established using file transfer protocols, such as FTP, to conceal C2 traffic as standard file uploads [T1071.002], and domain generation algorithms were employed to reestablish C2 connections after network disruptions [T1568.002]. Exfiltration was carried out by saving stolen financial data to text storage sites like pastebin.com through scheduled PowerShell commands [T1567.003]. The company's data loss prevention systems generated alerts for large data transfers, but these were initially classified as false positives due to the use of legitimate-looking protocols.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual cloud API usage, container command executions, and Office application modifications. Implement network segmentation, enhance logging for DHCP and SharePoint activities, and use threat intelligence to detect masquerading and spoofing techniques. Regular audits of cloud groups and browser data can aid in early discovery of compromises.\n\nThis advisory serves as a training tool to improve defensive postures against similar fictional threats. All information is simulated and not based on real incidents.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon gaining access, the adversary executed malicious activities by using container administration commands, such as 'docker exec -it container_name /bin/bash', to gain interactive shell access to running containers while simultaneously creating a VBScript in the Outlook VBA project to trigger infections when emails are received.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "Upon gaining access, the adversary executed malicious activities by using container administration commands, such as 'docker exec -it container_name /bin/bash', to gain interactive shell access to running containers while simultaneously creating a VBScript in the Outlook VBA project to trigger infections when emails are received.",
+            "technique_id": "T1137",
+            "technique_name": "Office Application Startup"
+        },
+        {
+            "sentence": "010] and masqueraded malicious installers as Windows update packages to entice users and bypass security controls.",
+            "technique_id": "T1036",
+            "technique_name": "Masquerading"
+        },
+        {
+            "sentence": "Additionally, the attacker used a signed JavaScript file to proxy execution, downloading and executing malware while evading detection.",
+            "technique_id": "T1216",
+            "technique_name": "System Script Proxy Execution"
+        },
+        {
+            "sentence": "Discovery efforts included retrieving browser histories via infostealer malware and running commands like 'az ad user get-member-groups' to identify security groups associated with compromised accounts [T1069.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "002] and stealing clipboard data using specialized tools, gathering sensitive financial and operational data.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Container Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'SHADOW_ORCHID', targeting organizations with hybrid cloud and containerized infrastructure. The campaign involves reconnaissance, initial access via cloud accounts, execution through container commands and Office applications, persistence via startup scripts, defense evasion through masquerading and argument spoofing, credential access via memory dumping, discovery of cloud groups and browser data, lateral movement via DHCP spoofing, collection from SharePoint and clipboard, command and control using file transfer protocols and domain generation algorithms, and exfiltration to text storage sites. The advisory is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the tactics, techniques, and procedures (TTPs) used by the fictional threat actor SHADOW_ORCHID. This report is based on a simulated attack scenario designed for educational purposes to train defensive teams in identifying and mitigating advanced threats.\n\n**Attack Narrative**\nSHADOW_ORCHID initiated the campaign by conducting reconnaissance to gather intelligence on the target's email security configurations, querying paid threat intelligence feeds [T1597.001]. The actor then exploited cloud management APIs to gain initial access using compromised cloud accounts [T1078.004], establishing a persistent foothold in the infrastructure. System logs from the target's Azure environment showed unusual API calls at 03:45 UTC, but these were initially dismissed as routine maintenance activities.\n\nUpon gaining access, the adversary executed malicious activities by using container administration commands, such as 'docker exec -it container_name /bin/bash' [T1609], to gain interactive shell access to running containers while simultaneously creating a VBScript in the Outlook VBA project to trigger infections when emails are received [T1137]. This allowed for stealthy execution within the environment. The company, a mid-sized financial services firm with offices in New York and London, reported no immediate disruptions, but internal monitoring tools flagged anomalous container behavior.\n\nTo maintain persistence and evade defenses, SHADOW_ORCHID employed process argument spoofing by executing 'encryptor.exe' with obfuscated command-line arguments using environment variable substitution [T1564.010] and masqueraded malicious installers as Windows update packages to entice users and bypass security controls [T1036]. Additionally, the attacker used a signed JavaScript file to proxy execution, downloading and executing malware while evading detection [T1216]. Network traffic analysis revealed spikes in outbound connections to unknown domains, correlating with these activities.\n\nFor credential access, the adversary dumped securityd memory to obtain plaintext authentication tokens from the keychain [T1555.002], enabling further lateral movement. Discovery efforts included retrieving browser histories via infostealer malware [T1217] and running commands like 'az ad user get-member-groups' to identify security groups associated with compromised accounts [T1069.003]. These actions were logged in the cloud audit trails but went unnoticed during routine reviews.\n\nLateral movement was facilitated through DHCP spoofing, where the malware abused the DHCP protocol to overwrite legitimate network settings on client machines [T1557.003], redirecting traffic and expanding the attack surface. Collection activities involved accessing and downloading information from SharePoint instances [T1213.002] and stealing clipboard data using specialized tools [T1115], gathering sensitive financial and operational data. The target's IT department noted intermittent SharePoint access issues but attributed them to network latency.\n\nCommand and control (C2) was established using file transfer protocols, such as FTP, to conceal C2 traffic as standard file uploads [T1071.002], and domain generation algorithms were employed to reestablish C2 connections after network disruptions [T1568.002]. Exfiltration was carried out by saving stolen financial data to text storage sites like pastebin.com through scheduled PowerShell commands [T1567.003]. The company's data loss prevention systems generated alerts for large data transfers, but these were initially classified as false positives due to the use of legitimate-looking protocols.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual cloud API usage, container command executions, and Office application modifications. Implement network segmentation, enhance logging for DHCP and SharePoint activities, and use threat intelligence to detect masquerading and spoofing techniques. Regular audits of cloud groups and browser data can aid in early discovery of compromises.\n\nThis advisory serves as a training tool to improve defensive postures against similar fictional threats. All information is simulated and not based on real incidents.",
+        "techniques_used": [
+            "T1597.001",
+            "T1078.004",
+            "T1609",
+            "T1137",
+            "T1564.010",
+            "T1036",
+            "T1216",
+            "T1555.002",
+            "T1217",
+            "T1069.003",
+            "T1557.003",
+            "T1213.002",
+            "T1115",
+            "T1071.002",
+            "T1568.002",
+            "T1567.003"
+        ]
+    }
+}

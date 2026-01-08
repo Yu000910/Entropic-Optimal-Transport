@@ -1,0 +1,78 @@
+{
+    "report_id": "report_293",
+    "generated_at": "20251222_144540",
+    "scenario_target_ids": [
+        "T1195",
+        "T1053.006",
+        "T1176",
+        "T1078",
+        "T1555.004",
+        "T1563.002",
+        "T1102"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1053.006",
+        "T1176",
+        "T1078",
+        "T1555.004",
+        "T1563.002",
+        "T1102"
+    ],
+    "actual_found_ids": [
+        "T1176",
+        "T1053.006",
+        "T1078",
+        "T1195",
+        "T1555.004",
+        "T1102",
+        "T1563.002"
+    ],
+    "clean_text": "On March 15, 2024, a critical infrastructure organization in the energy sector reported anomalous network traffic originating from a compromised third-party software update server. Analysis revealed that ShadowHook actors had injected a backdoor into the malicious_dependency.dll component, distributed via legitimate update channels, affecting multiple applications across the victim's network. Following initial compromise, the malware installed a malicious service disguised as 'Windows Audio Enhancement' using systemd timers to ensure persistence and execute payloads at scheduled intervals, while simultaneously deploying a rogue Chrome extension to establish covert communication with the attacker's command-and-control (C2) server. The actors then utilized valid accounts obtained through spearphishing campaigns, which employed web services like typo-squatted domains and fake Google sites to deliver malicious links, to authenticate and move laterally within the network. During lateral movement, they accessed and exported saved credentials from Windows Credential Manager using vaultcmd.exe and exploited tscon.exe by passing compromised session IDs to hijack Remote Desktop Protocol (RDP) sessions. System logs from the affected servers showed increased CPU usage and failed login attempts from unknown IP addresses, though these were unrelated to the core attack chain. The organization's background includes a recent merger with a smaller utility company, which may have introduced integration vulnerabilities, but this was not directly exploited in this scenario.",
+    "tagged_text": "On March 15, 2024, a critical infrastructure organization in the energy sector reported anomalous network traffic originating from a compromised third-party software update server. Analysis revealed that ShadowHook actors had injected a backdoor into the malicious_dependency.dll component, distributed via legitimate update channels, affecting multiple applications across the victim's network [T1195]. Following initial compromise, the malware installed a malicious service disguised as 'Windows Audio Enhancement' using systemd timers to ensure persistence and execute payloads at scheduled intervals [T1053.006], while simultaneously deploying a rogue Chrome extension to establish covert communication with the attacker's command-and-control (C2) server [T1176]. The actors then utilized valid accounts obtained through spearphishing campaigns, which employed web services like typo-squatted domains and fake Google sites to deliver malicious links [T1102], to authenticate and move laterally within the network [T1078]. During lateral movement, they accessed and exported saved credentials from Windows Credential Manager using vaultcmd.exe [T1555.004] and exploited tscon.exe by passing compromised session IDs to hijack Remote Desktop Protocol (RDP) sessions [T1563.002]. System logs from the affected servers showed increased CPU usage and failed login attempts from unknown IP addresses, though these were unrelated to the core attack chain. The organization's background includes a recent merger with a smaller utility company, which may have introduced integration vulnerabilities, but this was not directly exploited in this scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "dll component, distributed via legitimate update channels, affecting multiple applications across the victim's network.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "006], while simultaneously deploying a rogue Chrome extension to establish covert communication with the attacker's command-and-control (C2) server.",
+            "technique_id": "T1176",
+            "technique_name": "Software Extensions"
+        },
+        {
+            "sentence": "The actors then utilized valid accounts obtained through spearphishing campaigns, which employed web services like typo-squatted domains and fake Google sites to deliver malicious links, to authenticate and move laterally within the network.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "The actors then utilized valid accounts obtained through spearphishing campaigns, which employed web services like typo-squatted domains and fake Google sites to deliver malicious links, to authenticate and move laterally within the network.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowHook' targeting critical infrastructure sectors, including energy and finance, through supply chain compromise and multi-stage exploitation. The campaign leverages third-party software vulnerabilities, system persistence mechanisms, and credential theft to achieve lateral movement and data exfiltration, as observed in training environments between January and March 2024.",
+        "full_report_text": "On March 15, 2024, a critical infrastructure organization in the energy sector reported anomalous network traffic originating from a compromised third-party software update server. Analysis revealed that ShadowHook actors had injected a backdoor into the malicious_dependency.dll component, distributed via legitimate update channels, affecting multiple applications across the victim's network [T1195]. Following initial compromise, the malware installed a malicious service disguised as 'Windows Audio Enhancement' using systemd timers to ensure persistence and execute payloads at scheduled intervals [T1053.006], while simultaneously deploying a rogue Chrome extension to establish covert communication with the attacker's command-and-control (C2) server [T1176]. The actors then utilized valid accounts obtained through spearphishing campaigns, which employed web services like typo-squatted domains and fake Google sites to deliver malicious links [T1102], to authenticate and move laterally within the network [T1078]. During lateral movement, they accessed and exported saved credentials from Windows Credential Manager using vaultcmd.exe [T1555.004] and exploited tscon.exe by passing compromised session IDs to hijack Remote Desktop Protocol (RDP) sessions [T1563.002]. System logs from the affected servers showed increased CPU usage and failed login attempts from unknown IP addresses, though these were unrelated to the core attack chain. The organization's background includes a recent merger with a smaller utility company, which may have introduced integration vulnerabilities, but this was not directly exploited in this scenario.",
+        "techniques_used": [
+            "T1195",
+            "T1053.006",
+            "T1176",
+            "T1078",
+            "T1555.004",
+            "T1563.002",
+            "T1102"
+        ]
+    }
+}

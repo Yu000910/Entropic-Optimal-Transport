@@ -1,0 +1,97 @@
+{
+    "report_id": "report_143",
+    "generated_at": "20251222_134343",
+    "scenario_target_ids": [
+        "T1133",
+        "T1053.002",
+        "T1505",
+        "T1580",
+        "T1102.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1133",
+        "T1053.002",
+        "T1105",
+        "T1082",
+        "T1505",
+        "TA0010",
+        "T1580",
+        "T1069",
+        "T1102.002"
+    ],
+    "actual_found_ids": [
+        "T1053.002",
+        "T1069",
+        "T1589",
+        "T1580",
+        "T1133",
+        "T1082",
+        "T1105",
+        "T1505",
+        "T1102.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating advanced persistent threat (APT) tactics in a controlled, fictional scenario. This report describes simulated activity attributed to APT99, a threat actor focused on espionage and data exfiltration from sectors including finance and technology.\n\nAPT99 likely began by conducting reconnaissance to identify potential targets, though specific indicators for this phase are not included in this scenario. The attack commenced when APT99 used stolen employee credentials to gain initial access to the target network via a compromised VPN connection. System logs from the VPN server show multiple failed login attempts prior to the successful entry, but these are considered normal noise and not tagged as malicious behavior.\n\nUpon access, the adversary employed the Windows at.exe utility to schedule the execution of a malicious PowerShell script for 3:00 AM local time, which downloaded additional payloads from a remote server while simultaneously enumerating local system information. The script executed as planned, and routine system maintenance logs from that night show no anomalies unrelated to this activity.\n\nFor persistence, APT99 wrote a custom backdoor DLL to the Apache modules directory on a web server, allowing continuous remote access and data exfiltration [TA0010] through modified HTTP requests. Server performance metrics indicated a slight increase in memory usage, but this was within expected operational parameters and not directly linked to the attack.\n\nTo expand their foothold, the threat actor used stolen cloud credentials to perform discovery activities, including making ListBuckets API calls to identify accessible cloud storage resources and querying IAM roles for privilege escalation opportunities. Background company information notes that the organization uses a multi-cloud strategy with AWS and Azure, but only AWS logs showed suspicious API activity during this period.\n\nFinally, APT99 established command and control by leveraging cloud services like OneDrive for bidirectional communication, enabling data uploads and downloads [TA0010] while evading traditional network-based detection. Network traffic analysis revealed encrypted connections to Microsoft servers, but these were initially dismissed as legitimate user activity due to the organization's reliance on Office 365.\n\nThis fictional scenario underscores the importance of monitoring for unusual credential use, scheduled task creations, unauthorized server modifications, cloud API anomalies, and unexpected cloud service communications in hybrid environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating advanced persistent threat (APT) tactics in a controlled, fictional scenario. This report describes simulated activity attributed to APT99, a threat actor focused on espionage and data exfiltration from sectors including finance and technology.\n\nAPT99 likely began by conducting reconnaissance [T1589] to identify potential targets, though specific indicators for this phase are not included in this scenario. The attack commenced when APT99 used stolen employee credentials to gain initial access to the target network via a compromised VPN connection [T1133]. System logs from the VPN server show multiple failed login attempts prior to the successful entry, but these are considered normal noise and not tagged as malicious behavior.\n\nUpon access, the adversary employed the Windows at.exe utility [T1053.002] to schedule the execution of a malicious PowerShell script for 3:00 AM local time, which downloaded additional payloads [T1105] from a remote server while simultaneously enumerating local system information [T1082]. The script executed as planned, and routine system maintenance logs from that night show no anomalies unrelated to this activity.\n\nFor persistence, APT99 wrote a custom backdoor DLL to the Apache modules directory on a web server [T1505], allowing continuous remote access and data exfiltration [TA0010] through modified HTTP requests. Server performance metrics indicated a slight increase in memory usage, but this was within expected operational parameters and not directly linked to the attack.\n\nTo expand their foothold, the threat actor used stolen cloud credentials to perform discovery activities, including making ListBuckets API calls to identify accessible cloud storage resources [T1580] and querying IAM roles [T1069] for privilege escalation opportunities. Background company information notes that the organization uses a multi-cloud strategy with AWS and Azure, but only AWS logs showed suspicious API activity during this period.\n\nFinally, APT99 established command and control by leveraging cloud services like OneDrive for bidirectional communication [T1102.002], enabling data uploads and downloads [TA0010] while evading traditional network-based detection. Network traffic analysis revealed encrypted connections to Microsoft servers, but these were initially dismissed as legitimate user activity due to the organization's reliance on Office 365.\n\nThis fictional scenario underscores the importance of monitoring for unusual credential use, scheduled task creations, unauthorized server modifications, cloud API anomalies, and unexpected cloud service communications in hybrid environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT99 likely began by conducting reconnaissance to identify potential targets, though specific indicators for this phase are not included in this scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The attack commenced when APT99 used stolen employee credentials to gain initial access to the target network via a compromised VPN connection.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "002] to schedule the execution of a malicious PowerShell script for 3:00 AM local time, which downloaded additional payloads from a remote server while simultaneously enumerating local system information.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "002] to schedule the execution of a malicious PowerShell script for 3:00 AM local time, which downloaded additional payloads from a remote server while simultaneously enumerating local system information.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        },
+        {
+            "sentence": "For persistence, APT99 wrote a custom backdoor DLL to the Apache modules directory on a web server, allowing continuous remote access and data exfiltration [TA0010] through modified HTTP requests.",
+            "technique_id": "T1505",
+            "technique_name": "Server Software Component"
+        },
+        {
+            "sentence": "To expand their foothold, the threat actor used stolen cloud credentials to perform discovery activities, including making ListBuckets API calls to identify accessible cloud storage resources and querying IAM roles for privilege escalation opportunities.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "To expand their foothold, the threat actor used stolen cloud credentials to perform discovery activities, including making ListBuckets API calls to identify accessible cloud storage resources and querying IAM roles for privilege escalation opportunities.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT99, targeting organizations with hybrid on-premises and cloud environments. Based on observed tactics, APT99 leverages compromised credentials for initial access, uses scheduled tasks for execution, deploys server-side backdoors for persistence, conducts cloud discovery for lateral movement, and employs cloud services for command and control.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating advanced persistent threat (APT) tactics in a controlled, fictional scenario. This report describes simulated activity attributed to APT99, a threat actor focused on espionage and data exfiltration from sectors including finance and technology.\n\nAPT99 likely began by conducting reconnaissance [T1589] to identify potential targets, though specific indicators for this phase are not included in this scenario. The attack commenced when APT99 used stolen employee credentials to gain initial access to the target network via a compromised VPN connection [T1133]. System logs from the VPN server show multiple failed login attempts prior to the successful entry, but these are considered normal noise and not tagged as malicious behavior.\n\nUpon access, the adversary employed the Windows at.exe utility [T1053.002] to schedule the execution of a malicious PowerShell script for 3:00 AM local time, which downloaded additional payloads [T1105] from a remote server while simultaneously enumerating local system information [T1082]. The script executed as planned, and routine system maintenance logs from that night show no anomalies unrelated to this activity.\n\nFor persistence, APT99 wrote a custom backdoor DLL to the Apache modules directory on a web server [T1505], allowing continuous remote access and data exfiltration [TA0010] through modified HTTP requests. Server performance metrics indicated a slight increase in memory usage, but this was within expected operational parameters and not directly linked to the attack.\n\nTo expand their foothold, the threat actor used stolen cloud credentials to perform discovery activities, including making ListBuckets API calls to identify accessible cloud storage resources [T1580] and querying IAM roles [T1069] for privilege escalation opportunities. Background company information notes that the organization uses a multi-cloud strategy with AWS and Azure, but only AWS logs showed suspicious API activity during this period.\n\nFinally, APT99 established command and control by leveraging cloud services like OneDrive for bidirectional communication [T1102.002], enabling data uploads and downloads [TA0010] while evading traditional network-based detection. Network traffic analysis revealed encrypted connections to Microsoft servers, but these were initially dismissed as legitimate user activity due to the organization's reliance on Office 365.\n\nThis fictional scenario underscores the importance of monitoring for unusual credential use, scheduled task creations, unauthorized server modifications, cloud API anomalies, and unexpected cloud service communications in hybrid environments.",
+        "techniques_used": [
+            "T1589",
+            "T1133",
+            "T1053.002",
+            "T1105",
+            "T1082",
+            "T1505",
+            "TA0010",
+            "T1580",
+            "T1069",
+            "T1102.002"
+        ]
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "report_id": "report_161",
+    "generated_at": "20251222_135054",
+    "scenario_target_ids": [
+        "T1091",
+        "T1675",
+        "T1059.009",
+        "T1553.001",
+        "T1557",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1091",
+        "T1675",
+        "T1059.009",
+        "T1553.001",
+        "T1557",
+        "T1071.004"
+    ],
+    "actual_found_ids": [
+        "T1589",
+        "T1553.001",
+        "T1091",
+        "T1059.009",
+        "T1071.004",
+        "T1675",
+        "T1557"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. Crimson Shadow actors likely conduct reconnaissance by scanning public-facing assets and gathering employee information from social media. The attack began with initial access via a compromised USB drive inserted into an employee workstation at a manufacturing company, exploiting the Windows AUTORUN feature to replicate malware across removable media. System logs from the workstation show unusual process creation events around 09:15 UTC on 2023-10-05, but no immediate alerts were triggered. Following execution, the actors employed vSphere Web Services SDK commands to remotely execute arbitrary PowerShell scripts on guest virtual machines (VMs) in the ESXi environment, enabling lateral movement within the on-premises network. Concurrently, they used Azure Runbooks via cloud APIs to deploy backdoors in the Azure tenant, establishing persistence in the cloud environment while bypassing macOS Gatekeeper protections by writing malicious executables to the Downloads folder without user warnings on compromised Mac endpoints. Network traffic analysis revealed adversary-in-the-middle (AiTM) attacks where proxies were set up to monitor and alter HTTP(S) traffic between internal servers and external services, facilitating credential theft. Additionally, the backdoor communicated with command-and-control (C2) servers over DNS protocols to exfiltrate stolen data, blending with normal network activity. The company, a mid-sized firm with operations in North America and Europe, reported no significant downtime, but incident response teams identified anomalies during a routine audit. Defensive recommendations include disabling AUTORUN, monitoring virtualization admin tools, restricting cloud API permissions, enabling Gatekeeper, inspecting network traffic for proxies, and analyzing DNS logs for unusual patterns.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. Crimson Shadow actors likely conduct reconnaissance [T1589] by scanning public-facing assets and gathering employee information from social media. The attack began with initial access via a compromised USB drive inserted into an employee workstation at a manufacturing company, exploiting the Windows AUTORUN feature to replicate malware across removable media [T1091]. System logs from the workstation show unusual process creation events around 09:15 UTC on 2023-10-05, but no immediate alerts were triggered. Following execution, the actors employed vSphere Web Services SDK commands [T1675] to remotely execute arbitrary PowerShell scripts on guest virtual machines (VMs) in the ESXi environment, enabling lateral movement within the on-premises network. Concurrently, they used Azure Runbooks via cloud APIs [T1059.009] to deploy backdoors in the Azure tenant, establishing persistence in the cloud environment while bypassing macOS Gatekeeper protections [T1553.001] by writing malicious executables to the Downloads folder without user warnings on compromised Mac endpoints. Network traffic analysis revealed adversary-in-the-middle (AiTM) attacks [T1557] where proxies were set up to monitor and alter HTTP(S) traffic between internal servers and external services, facilitating credential theft. Additionally, the backdoor communicated with command-and-control (C2) servers over DNS protocols [T1071.004] to exfiltrate stolen data, blending with normal network activity. The company, a mid-sized firm with operations in North America and Europe, reported no significant downtime, but incident response teams identified anomalies during a routine audit. Defensive recommendations include disabling AUTORUN, monitoring virtualization admin tools, restricting cloud API permissions, enabling Gatekeeper, inspecting network traffic for proxies, and analyzing DNS logs for unusual patterns.",
+    "sentence_annotations": [
+        {
+            "sentence": "Crimson Shadow actors likely conduct reconnaissance by scanning public-facing assets and gathering employee information from social media.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The attack began with initial access via a compromised USB drive inserted into an employee workstation at a manufacturing company, exploiting the Windows AUTORUN feature to replicate malware across removable media.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Following execution, the actors employed vSphere Web Services SDK commands to remotely execute arbitrary PowerShell scripts on guest virtual machines (VMs) in the ESXi environment, enabling lateral movement within the on-premises network.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "Network traffic analysis revealed adversary-in-the-middle (AiTM) attacks where proxies were set up to monitor and alter HTTP(S) traffic between internal servers and external services, facilitating credential theft.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting organizations with hybrid on-premises and cloud environments. The campaign leverages removable media, virtualization administration tools, cloud APIs, and network manipulation to achieve initial access, lateral movement, persistence, and data exfiltration. Blue teams are advised to review logs and implement defensive measures as outlined.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. Crimson Shadow actors likely conduct reconnaissance [T1589] by scanning public-facing assets and gathering employee information from social media. The attack began with initial access via a compromised USB drive inserted into an employee workstation at a manufacturing company, exploiting the Windows AUTORUN feature to replicate malware across removable media [T1091]. System logs from the workstation show unusual process creation events around 09:15 UTC on 2023-10-05, but no immediate alerts were triggered. Following execution, the actors employed vSphere Web Services SDK commands [T1675] to remotely execute arbitrary PowerShell scripts on guest virtual machines (VMs) in the ESXi environment, enabling lateral movement within the on-premises network. Concurrently, they used Azure Runbooks via cloud APIs [T1059.009] to deploy backdoors in the Azure tenant, establishing persistence in the cloud environment while bypassing macOS Gatekeeper protections [T1553.001] by writing malicious executables to the Downloads folder without user warnings on compromised Mac endpoints. Network traffic analysis revealed adversary-in-the-middle (AiTM) attacks [T1557] where proxies were set up to monitor and alter HTTP(S) traffic between internal servers and external services, facilitating credential theft. Additionally, the backdoor communicated with command-and-control (C2) servers over DNS protocols [T1071.004] to exfiltrate stolen data, blending with normal network activity. The company, a mid-sized firm with operations in North America and Europe, reported no significant downtime, but incident response teams identified anomalies during a routine audit. Defensive recommendations include disabling AUTORUN, monitoring virtualization admin tools, restricting cloud API permissions, enabling Gatekeeper, inspecting network traffic for proxies, and analyzing DNS logs for unusual patterns.",
+        "techniques_used": [
+            "T1589",
+            "T1091",
+            "T1675",
+            "T1059.009",
+            "T1553.001",
+            "T1557",
+            "T1071.004"
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+Background: The fictional organization 'FinSecure Bank' reported anomalous network traffic and unauthorized access attempts over a two-week period in March 2024. Initial logs showed increased DNS queries for internal subdomains, but no immediate alerts were triggered.
+
+Kill-Chain Analysis:
+- **Initial Access**: The actors likely conducted reconnaissance by querying SSL certificate transparency logs [T1596] to discover subdomains associated with FinSecure Bank, then used a drive-by compromise [T1189] via a fake browser update lure to infect employee workstations.
+- **Execution**: Upon infection, the malware employed AppleScript [T1059.002] to inject malicious JavaScript into browsers while simultaneously establishing reverse TCP shells [T1095] through HTTP-based negotiation.
+- **Persistence**: The adversary created a CronJob [T1053.007] to run a container that established reverse shell connections every 15 minutes and configured power settings [T1653] to prevent lock screen activation, ensuring uninterrupted access.
+- **Privilege Escalation**: The malware ran commands to discover permission groups [T1069], such as 'net group "Domain Admins" /domain', and used forced authentication [T1187] via a file://remote_address/Normal.dotm exploit to extract NTLM hashes from lsass.exe.
+- **Defense Evasion**: The actors acquired temporary cloud infrastructure [T1583] during free trial windows to host command-and-control servers and developed custom capabilities [T1587], including a credential dumping tool [T1587.001] for extracting password hashes from Windows domain controllers.
+- **Command and Control**: The malware established SSH tunnels [T1071] to exfiltrate data through encrypted channels that appeared as normal administrative connections.
+
+Irrelevant Information: FinSecure Bank operates in 15 countries with over 10,000 employees, and system logs from the affected period show routine backup processes completing without errors. The company's cybersecurity team initially attributed the anomalies to a misconfigured firewall rule.
+
+Mitigation Recommendations: Organizations should monitor for unusual subdomain queries, restrict drive-by download vectors, and audit container orchestration jobs and power settings for unauthorized changes.

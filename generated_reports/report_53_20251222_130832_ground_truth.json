@@ -1,0 +1,120 @@
+{
+    "report_id": "report_53",
+    "generated_at": "20251222_130832",
+    "scenario_target_ids": [
+        "T1608.002",
+        "T1659",
+        "T1059.008",
+        "T1546.012",
+        "T1666",
+        "T1622",
+        "T1534",
+        "T1056.001",
+        "T1568"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1659",
+        "T1608.002",
+        "T1622",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1534",
+        "T1056.001",
+        "T1546.012",
+        "T1666",
+        "T1568",
+        "T1059.008"
+    ],
+    "actual_found_ids": [
+        "T1059.008",
+        "T1608.002",
+        "T1056.001",
+        "T1112",
+        "T1105",
+        "T1568",
+        "T1589",
+        "T1659",
+        "T1534",
+        "T1546.012",
+        "T1666",
+        "T1622",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowVeil'. This report is based on a training scenario designed to enhance blue team readiness and does not reflect real-world events. Victim organizations reported anomalous network traffic and unauthorized access alerts, prompting investigation. Background: 'ShadowVeil' is assessed to operate with financial espionage objectives, focusing on proprietary data theft. Initial analysis revealed compromised user credentials via phishing campaigns unrelated to this incident. The actors likely conducted reconnaissance prior to the attack. In the Initial Access phase, the adversary exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic, redirecting users to compromised sites. Upon user interaction, the malware saved a remote access tool from https://c2.com/tools to the system's temp directory. System logs from Victim A showed increased outbound connections on port 443, but no prior alerts were triggered. In the Execution phase, the malicious process invoked NtQueryInformationProcess() with ProcessDebugPort flag to detect active debugging sessions while employing PowerShell to actively download additional payloads and modify registry keys. The malware dropped malicious.ps1 to execute commands that would compromise additional domain accounts, leveraging internal spearphishing tactics. DarkGate will spawn a thread on execution to capture all keyboard events and write them to a predefined log file, enabling credential theft. In the Persistence phase, SDBbot has the ability to use image file execution options for persistence if it detects it is running with admin privileges on a Windows version newer than Windows 7, and the attacker modified the Azure Global Administrator account permissions to bypass security controls. Network logs indicated unusual DNS queries but were initially dismissed as false positives. In the Command and Control phase, the malware queried DNS records using base64-encoded data to create a covert tunnel for C2 communications, and a script executed 'access-list 101 permit ip any any' to bypass firewall restrictions. The actors maintained access for approximately two weeks before detection, exfiltrating financial records and intellectual property. Mitigations include implementing network segmentation, monitoring for anomalous DNS activity, and restricting administrative privileges in cloud environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowVeil'. This report is based on a training scenario designed to enhance blue team readiness and does not reflect real-world events. Victim organizations reported anomalous network traffic and unauthorized access alerts, prompting investigation. Background: 'ShadowVeil' is assessed to operate with financial espionage objectives, focusing on proprietary data theft. Initial analysis revealed compromised user credentials via phishing campaigns unrelated to this incident. The actors likely conducted reconnaissance [T1589] prior to the attack. In the Initial Access phase, the adversary exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic [T1659], redirecting users to compromised sites. Upon user interaction, the malware saved a remote access tool from https://c2.com/tools to the system's temp directory [T1608.002]. System logs from Victim A showed increased outbound connections on port 443, but no prior alerts were triggered. In the Execution phase, the malicious process invoked NtQueryInformationProcess() with ProcessDebugPort flag to detect active debugging sessions [T1622] while employing PowerShell [T1059.001] to actively download additional payloads [T1105] and modify registry keys [T1112]. The malware dropped malicious.ps1 to execute commands that would compromise additional domain accounts [T1534], leveraging internal spearphishing tactics. DarkGate will spawn a thread on execution to capture all keyboard events and write them to a predefined log file [T1056.001], enabling credential theft. In the Persistence phase, SDBbot has the ability to use image file execution options for persistence if it detects it is running with admin privileges on a Windows version newer than Windows 7 [T1546.012], and the attacker modified the Azure Global Administrator account permissions to bypass security controls [T1666]. Network logs indicated unusual DNS queries but were initially dismissed as false positives. In the Command and Control phase, the malware queried DNS records using base64-encoded data to create a covert tunnel for C2 communications [T1568], and a script executed 'access-list 101 permit ip any any' to bypass firewall restrictions [T1059.008]. The actors maintained access for approximately two weeks before detection, exfiltrating financial records and intellectual property. Mitigations include implementing network segmentation, monitoring for anomalous DNS activity, and restricting administrative privileges in cloud environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance prior to the attack.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the Initial Access phase, the adversary exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic, redirecting users to compromised sites.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "In the Execution phase, the malicious process invoked NtQueryInformationProcess() with ProcessDebugPort flag to detect active debugging sessions while employing PowerShell [T1059.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "001] to actively download additional payloads and modify registry keys.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download additional payloads and modify registry keys.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "ps1 to execute commands that would compromise additional domain accounts, leveraging internal spearphishing tactics.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "012], and the attacker modified the Azure Global Administrator account permissions to bypass security controls.",
+            "technique_id": "T1666",
+            "technique_name": "Modify Cloud Resource Hierarchy"
+        },
+        {
+            "sentence": "In the Command and Control phase, the malware queried DNS records using base64-encoded data to create a covert tunnel for C2 communications, and a script executed 'access-list 101 permit ip any any' to bypass firewall restrictions [T1059.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Global Enterprises",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowVeil', targeting global enterprises in the finance and technology sectors. Based on analysis of incident response data from multiple victim organizations between January and March 2024, the actors employed sophisticated techniques to gain initial access, establish persistence, and exfiltrate sensitive data. The campaign leveraged a combination of network exploitation, malware deployment, and cloud resource manipulation, with indicators suggesting ties to previously unreported tools and infrastructure. Organizations are urged to review the provided tactics, techniques, and procedures (TTPs) and implement defensive measures outlined in the Mitigations section.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowVeil'. This report is based on a training scenario designed to enhance blue team readiness and does not reflect real-world events. Victim organizations reported anomalous network traffic and unauthorized access alerts, prompting investigation. Background: 'ShadowVeil' is assessed to operate with financial espionage objectives, focusing on proprietary data theft. Initial analysis revealed compromised user credentials via phishing campaigns unrelated to this incident. The actors likely conducted reconnaissance [T1589] prior to the attack. In the Initial Access phase, the adversary exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic [T1659], redirecting users to compromised sites. Upon user interaction, the malware saved a remote access tool from https://c2.com/tools to the system's temp directory [T1608.002]. System logs from Victim A showed increased outbound connections on port 443, but no prior alerts were triggered. In the Execution phase, the malicious process invoked NtQueryInformationProcess() with ProcessDebugPort flag to detect active debugging sessions [T1622] while employing PowerShell [T1059.001] to actively download additional payloads [T1105] and modify registry keys [T1112]. The malware dropped malicious.ps1 to execute commands that would compromise additional domain accounts [T1534], leveraging internal spearphishing tactics. DarkGate will spawn a thread on execution to capture all keyboard events and write them to a predefined log file [T1056.001], enabling credential theft. In the Persistence phase, SDBbot has the ability to use image file execution options for persistence if it detects it is running with admin privileges on a Windows version newer than Windows 7 [T1546.012], and the attacker modified the Azure Global Administrator account permissions to bypass security controls [T1666]. Network logs indicated unusual DNS queries but were initially dismissed as false positives. In the Command and Control phase, the malware queried DNS records using base64-encoded data to create a covert tunnel for C2 communications [T1568], and a script executed 'access-list 101 permit ip any any' to bypass firewall restrictions [T1059.008]. The actors maintained access for approximately two weeks before detection, exfiltrating financial records and intellectual property. Mitigations include implementing network segmentation, monitoring for anomalous DNS activity, and restricting administrative privileges in cloud environments.",
+        "techniques_used": [
+            "T1589",
+            "T1659",
+            "T1608.002",
+            "T1622",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1534",
+            "T1056.001",
+            "T1546.012",
+            "T1666",
+            "T1568",
+            "T1059.008"
+        ]
+    }
+}

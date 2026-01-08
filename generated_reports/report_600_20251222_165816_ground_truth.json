@@ -1,0 +1,118 @@
+{
+    "report_id": "report_600",
+    "generated_at": "20251222_165816",
+    "scenario_target_ids": [
+        "T1199",
+        "T1053.002",
+        "T1484.002",
+        "T1222",
+        "T1574.011",
+        "T1027.001",
+        "T1557",
+        "T1021.005",
+        "T1005",
+        "T1213.001",
+        "T1602.002",
+        "T1090",
+        "T1529"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1053.002",
+        "T1484.002",
+        "T1222",
+        "T1574.011",
+        "T1027.001",
+        "T1557",
+        "T1021.005",
+        "T1005",
+        "T1213.001",
+        "T1602.002",
+        "T1090",
+        "T1529"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1053.002",
+        "T1021.005",
+        "T1090",
+        "T1005",
+        "T1484.002",
+        "T1213.001",
+        "T1602.002",
+        "T1574.011",
+        "T1557",
+        "T1529",
+        "T1222",
+        "T1027.001"
+    ],
+    "clean_text": "On October 15, 2023, the fictional organization 'InfraCorp' reported suspicious activity in its network, leading to an investigation by the Federal Bureau of Investigation (FBI), CISA, and NSA. InfraCorp, a provider of energy grid management systems, had previously delegated administrative privileges to a third-party vendor for maintenance purposes. The malicious actor, identified as 'ShadowLink', abused this trusted relationship to create new administrative accounts, gaining initial access to the network. System logs from the domain controller showed unusual account creation events at 02:00 UTC, but initial alerts were dismissed as routine maintenance. Following access, the adversary employed the native Windows 'at' scheduler to execute malicious scripts during off-peak hours while simultaneously altering domain trust relationships by modifying federation service settings to extend their control across multiple domains. To maintain persistence, the attacker modified file permissions using 'chmod 777' on critical configuration files and exploited services registry permissions weaknesses via sc.exe to reconfigure the ClipBook service, embedding a cryptocurrency miner that utilized binary padding to evade automated scanners. Network traffic analysis revealed that ShadowLink established an adversary-in-the-middle (AiTM) proxy to monitor and alter HTTP(S) traffic, routing command and control (C2) communications through VNC connections while using Cloudflare CDN as a proxy to obscure their infrastructure. During the exfiltration phase, the actor collected user files from local systems based on predefined extensions and queried Confluence repositories for API documentation to identify integration endpoints. Additionally, they leveraged Smart Install protocol queries to dump network device configurations, mapping the infrastructure for lateral movement. The campaign culminated in a system shutdown command triggered to disrupt operations during a critical maintenance window, causing temporary service outages. InfraCorp's incident response team noted that the attack spanned multiple weeks, with initial indicators including increased CPU usage from the modified ClipBook service and anomalous outbound traffic to Cloudflare IPs.",
+    "tagged_text": "On October 15, 2023, the fictional organization 'InfraCorp' reported suspicious activity in its network, leading to an investigation by the Federal Bureau of Investigation (FBI), CISA, and NSA. InfraCorp, a provider of energy grid management systems, had previously delegated administrative privileges to a third-party vendor for maintenance purposes. The malicious actor, identified as 'ShadowLink', abused this trusted relationship [T1199] to create new administrative accounts, gaining initial access to the network. System logs from the domain controller showed unusual account creation events at 02:00 UTC, but initial alerts were dismissed as routine maintenance. Following access, the adversary employed the native Windows 'at' scheduler [T1053.002] to execute malicious scripts during off-peak hours while simultaneously altering domain trust relationships by modifying federation service settings [T1484.002] to extend their control across multiple domains. To maintain persistence, the attacker modified file permissions using 'chmod 777' on critical configuration files [T1222] and exploited services registry permissions weaknesses via sc.exe to reconfigure the ClipBook service [T1574.011], embedding a cryptocurrency miner that utilized binary padding [T1027.001] to evade automated scanners. Network traffic analysis revealed that ShadowLink established an adversary-in-the-middle (AiTM) proxy [T1557] to monitor and alter HTTP(S) traffic, routing command and control (C2) communications through VNC connections [T1021.005] while using Cloudflare CDN as a proxy [T1090] to obscure their infrastructure. During the exfiltration phase, the actor collected user files from local systems based on predefined extensions [T1005] and queried Confluence repositories for API documentation [T1213.001] to identify integration endpoints. Additionally, they leveraged Smart Install protocol queries to dump network device configurations [T1602.002], mapping the infrastructure for lateral movement. The campaign culminated in a system shutdown command [T1529] triggered to disrupt operations during a critical maintenance window, causing temporary service outages. InfraCorp's incident response team noted that the attack spanned multiple weeks, with initial indicators including increased CPU usage from the modified ClipBook service and anomalous outbound traffic to Cloudflare IPs.",
+    "sentence_annotations": [
+        {
+            "sentence": "The malicious actor, identified as 'ShadowLink', abused this trusted relationship to create new administrative accounts, gaining initial access to the network.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "To maintain persistence, the attacker modified file permissions using 'chmod 777' on critical configuration files and exploited services registry permissions weaknesses via sc.",
+            "technique_id": "T1222",
+            "technique_name": "File and Directory Permissions Modification"
+        },
+        {
+            "sentence": "Network traffic analysis revealed that ShadowLink established an adversary-in-the-middle (AiTM) proxy to monitor and alter HTTP(S) traffic, routing command and control (C2) communications through VNC connections [T1021.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        },
+        {
+            "sentence": "005] while using Cloudflare CDN as a proxy to obscure their infrastructure.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        },
+        {
+            "sentence": "During the exfiltration phase, the actor collected user files from local systems based on predefined extensions and queried Confluence repositories for API documentation [T1213.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "The campaign culminated in a system shutdown command triggered to disrupt operations during a critical maintenance window, causing temporary service outages.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowLink' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowLink', which targeted a critical infrastructure organization by exploiting trusted relationships and modifying system configurations to establish persistence, exfiltrate data, and disrupt operations. The campaign involved a multi-stage attack leveraging scheduled tasks, trust modifications, and proxy techniques to evade detection.",
+        "full_report_text": "On October 15, 2023, the fictional organization 'InfraCorp' reported suspicious activity in its network, leading to an investigation by the Federal Bureau of Investigation (FBI), CISA, and NSA. InfraCorp, a provider of energy grid management systems, had previously delegated administrative privileges to a third-party vendor for maintenance purposes. The malicious actor, identified as 'ShadowLink', abused this trusted relationship [T1199] to create new administrative accounts, gaining initial access to the network. System logs from the domain controller showed unusual account creation events at 02:00 UTC, but initial alerts were dismissed as routine maintenance. Following access, the adversary employed the native Windows 'at' scheduler [T1053.002] to execute malicious scripts during off-peak hours while simultaneously altering domain trust relationships by modifying federation service settings [T1484.002] to extend their control across multiple domains. To maintain persistence, the attacker modified file permissions using 'chmod 777' on critical configuration files [T1222] and exploited services registry permissions weaknesses via sc.exe to reconfigure the ClipBook service [T1574.011], embedding a cryptocurrency miner that utilized binary padding [T1027.001] to evade automated scanners. Network traffic analysis revealed that ShadowLink established an adversary-in-the-middle (AiTM) proxy [T1557] to monitor and alter HTTP(S) traffic, routing command and control (C2) communications through VNC connections [T1021.005] while using Cloudflare CDN as a proxy [T1090] to obscure their infrastructure. During the exfiltration phase, the actor collected user files from local systems based on predefined extensions [T1005] and queried Confluence repositories for API documentation [T1213.001] to identify integration endpoints. Additionally, they leveraged Smart Install protocol queries to dump network device configurations [T1602.002], mapping the infrastructure for lateral movement. The campaign culminated in a system shutdown command [T1529] triggered to disrupt operations during a critical maintenance window, causing temporary service outages. InfraCorp's incident response team noted that the attack spanned multiple weeks, with initial indicators including increased CPU usage from the modified ClipBook service and anomalous outbound traffic to Cloudflare IPs.",
+        "techniques_used": [
+            "T1199",
+            "T1053.002",
+            "T1484.002",
+            "T1222",
+            "T1574.011",
+            "T1027.001",
+            "T1557",
+            "T1021.005",
+            "T1005",
+            "T1213.001",
+            "T1602.002",
+            "T1090",
+            "T1529"
+        ]
+    }
+}

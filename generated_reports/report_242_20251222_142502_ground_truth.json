@@ -1,0 +1,108 @@
+{
+    "report_id": "report_242",
+    "generated_at": "20251222_142502",
+    "scenario_target_ids": [
+        "T1593.002",
+        "T1588.003",
+        "T1189",
+        "T1053.005",
+        "T1543.005",
+        "T1037",
+        "T1003.005",
+        "T1580",
+        "T1087.003",
+        "T1518.001",
+        "T1008",
+        "T1567.002",
+        "T1048.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.002",
+        "T1588.003",
+        "T1189",
+        "T1053.005",
+        "T1543.005",
+        "T1037",
+        "T1003.005",
+        "T1580",
+        "T1087.003",
+        "T1518.001",
+        "T1008",
+        "T1567.002",
+        "T1048.002"
+    ],
+    "actual_found_ids": [
+        "T1543.005",
+        "T1008",
+        "T1048.002",
+        "T1003.005",
+        "T1593.002",
+        "T1580",
+        "T1518.001",
+        "T1189",
+        "T1588.003",
+        "T1087.003",
+        "T1567.002",
+        "T1037",
+        "T1053.005"
+    ],
+    "clean_text": "On March 15, 2024, security analysts at a fictional financial services company, FinSecure Inc., detected anomalous activity in their AWS and on-premises systems. FinSecure, with operations in New York and London, reported unusual network traffic spikes during a routine audit. Investigation revealed that SHADOWFALL actors likely conducted reconnaissance using search engines to identify exposed servers and cloud storage buckets, followed by cloud infrastructure discovery via API calls to map accessible resources. Initial access was achieved through a drive-by compromise, where a cloned version of a legitimate internal application was used to deliver a malicious payload signed with stolen code signing certificates. Upon execution, the actors employed PowerShell scripts to establish persistence by creating scheduled tasks and modifying boot or logon initialization scripts, while simultaneously disabling security features in Docker containers to maintain elevated privileges. For credential access, they extracted cached domain credentials using tools like cachedump, and conducted discovery via email account enumeration and security software discovery to identify anti-virus products. Data exfiltration involved exfiltration to cloud storage using services like MEGA, with fallback channels established for redundant C2 communication, and exfiltration over asymmetric encrypted non-C2 protocols to encrypt network topology maps before transmission. System logs from FinSecure's SIEM showed multiple failed login attempts from IP addresses in Eastern Europe, but these were unrelated to the core attack chain and likely part of background noise.",
+    "tagged_text": "On March 15, 2024, security analysts at a fictional financial services company, FinSecure Inc., detected anomalous activity in their AWS and on-premises systems. FinSecure, with operations in New York and London, reported unusual network traffic spikes during a routine audit. Investigation revealed that SHADOWFALL actors likely conducted reconnaissance using search engines [T1593.002] to identify exposed servers and cloud storage buckets, followed by cloud infrastructure discovery [T1580] via API calls to map accessible resources. Initial access was achieved through a drive-by compromise [T1189], where a cloned version of a legitimate internal application was used to deliver a malicious payload signed with stolen code signing certificates [T1588.003]. Upon execution, the actors employed PowerShell scripts to establish persistence by creating scheduled tasks [T1053.005] and modifying boot or logon initialization scripts [T1037], while simultaneously disabling security features in Docker containers [T1543.005] to maintain elevated privileges. For credential access, they extracted cached domain credentials [T1003.005] using tools like cachedump, and conducted discovery via email account enumeration [T1087.003] and security software discovery [T1518.001] to identify anti-virus products. Data exfiltration involved exfiltration to cloud storage [T1567.002] using services like MEGA, with fallback channels [T1008] established for redundant C2 communication, and exfiltration over asymmetric encrypted non-C2 protocols [T1048.002] to encrypt network topology maps before transmission. System logs from FinSecure's SIEM showed multiple failed login attempts from IP addresses in Eastern Europe, but these were unrelated to the core attack chain and likely part of background noise.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] to identify exposed servers and cloud storage buckets, followed by cloud infrastructure discovery via API calls to map accessible resources.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "Initial access was achieved through a drive-by compromise, where a cloned version of a legitimate internal application was used to deliver a malicious payload signed with stolen code signing certificates [T1588.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "005] and modifying boot or logon initialization scripts, while simultaneously disabling security features in Docker containers [T1543.",
+            "technique_id": "T1037",
+            "technique_name": "Boot or Logon Initialization Scripts"
+        },
+        {
+            "sentence": "002] using services like MEGA, with fallback channels established for redundant C2 communication, and exfiltration over asymmetric encrypted non-C2 protocols [T1048.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SHADOWFALL' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated SHADOWFALL, targeting organizations with hybrid cloud environments. Based on intelligence from CISA, the FBI, and industry partners, SHADOWFALL employs sophisticated techniques to gain initial access, establish persistence, and exfiltrate sensitive data, leveraging cloud services and evasion tactics. The scenario is designed for blue team training to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "On March 15, 2024, security analysts at a fictional financial services company, FinSecure Inc., detected anomalous activity in their AWS and on-premises systems. FinSecure, with operations in New York and London, reported unusual network traffic spikes during a routine audit. Investigation revealed that SHADOWFALL actors likely conducted reconnaissance using search engines [T1593.002] to identify exposed servers and cloud storage buckets, followed by cloud infrastructure discovery [T1580] via API calls to map accessible resources. Initial access was achieved through a drive-by compromise [T1189], where a cloned version of a legitimate internal application was used to deliver a malicious payload signed with stolen code signing certificates [T1588.003]. Upon execution, the actors employed PowerShell scripts to establish persistence by creating scheduled tasks [T1053.005] and modifying boot or logon initialization scripts [T1037], while simultaneously disabling security features in Docker containers [T1543.005] to maintain elevated privileges. For credential access, they extracted cached domain credentials [T1003.005] using tools like cachedump, and conducted discovery via email account enumeration [T1087.003] and security software discovery [T1518.001] to identify anti-virus products. Data exfiltration involved exfiltration to cloud storage [T1567.002] using services like MEGA, with fallback channels [T1008] established for redundant C2 communication, and exfiltration over asymmetric encrypted non-C2 protocols [T1048.002] to encrypt network topology maps before transmission. System logs from FinSecure's SIEM showed multiple failed login attempts from IP addresses in Eastern Europe, but these were unrelated to the core attack chain and likely part of background noise.",
+        "techniques_used": [
+            "T1593.002",
+            "T1588.003",
+            "T1189",
+            "T1053.005",
+            "T1543.005",
+            "T1037",
+            "T1003.005",
+            "T1580",
+            "T1087.003",
+            "T1518.001",
+            "T1008",
+            "T1567.002",
+            "T1048.002"
+        ]
+    }
+}

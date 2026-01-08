@@ -1,0 +1,101 @@
+{
+    "report_id": "report_739",
+    "generated_at": "20251223_105505",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1059",
+        "T1053.003",
+        "T1546.016",
+        "T1197",
+        "T1069.002",
+        "T1087.002",
+        "T1010",
+        "T1008",
+        "T1561.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.004",
+        "T1059",
+        "T1053.003",
+        "T1546.016",
+        "T1197",
+        "T1069.002",
+        "T1087.002",
+        "T1010",
+        "T1008",
+        "T1561.001"
+    ],
+    "actual_found_ids": [
+        "T1087.002",
+        "T1008",
+        "T1197",
+        "T1566.004",
+        "T1546.016",
+        "T1589",
+        "T1059",
+        "T1069.002",
+        "T1053.003",
+        "T1561.001",
+        "T1010"
+    ],
+    "clean_text": "On October 15, 2023, SecureBank Inc., a financial services company with 500 employees and operations in North America, reported a security incident involving unauthorized access to its internal network. Initial investigation revealed that the adversary conducted reconnaissance by gathering publicly available information on employees through social media and company websites. The attack began with the adversary using spearphishing voice calls, where they impersonated Microsoft support personnel to convince a user to install AnyDesk for remote assistance, thereby gaining initial access to the system. Once inside, the actor employed a highly obfuscated Windows Script File (WSF) delivered via a command and scripting interpreter to execute the Raspberry Robin malware variant, which then configured a cron job in /var/spool/cron/crontabs/root to maintain persistence by running a backdoor script daily while simultaneously altering the postinstall script of a system utility using installer packages to ensure the malware reactivated after system updates. For data exfiltration, the malware leveraged BITS jobs to transfer stolen files over the network in a stealthy manner, and the actor enumerated domain groups by executing net.exe group /domain to identify high-privilege accounts, followed by using csvde.exe to export Active Directory data for domain account discovery. During lateral movement, the malware performed application window discovery via EnumWindows to identify running applications and avoid detection, and it implemented fallback channels by changing its command-and-control (C2) domain every 360 loops, retrieving new domains from an actor-controlled S3 bucket to maintain communication resilience. Finally, after exfiltrating sensitive data, the attacker executed a disk content wipe by filling the storage device with pseudorandom bytes to render files irrecoverable and obscure forensic traces. System logs from SecureBank showed normal authentication events and routine backup processes, but deeper analysis revealed anomalous network connections and unauthorized cron entries, highlighting the need for enhanced monitoring of scripting activities and persistence mechanisms.",
+    "tagged_text": "On October 15, 2023, SecureBank Inc., a financial services company with 500 employees and operations in North America, reported a security incident involving unauthorized access to its internal network. Initial investigation revealed that the adversary conducted reconnaissance [T1589] by gathering publicly available information on employees through social media and company websites. The attack began with the adversary using spearphishing voice calls [T1566.004], where they impersonated Microsoft support personnel to convince a user to install AnyDesk for remote assistance, thereby gaining initial access to the system. Once inside, the actor employed a highly obfuscated Windows Script File (WSF) delivered via a command and scripting interpreter [T1059] to execute the Raspberry Robin malware variant, which then configured a cron job [T1053.003] in /var/spool/cron/crontabs/root to maintain persistence by running a backdoor script daily while simultaneously altering the postinstall script of a system utility using installer packages [T1546.016] to ensure the malware reactivated after system updates. For data exfiltration, the malware leveraged BITS jobs [T1197] to transfer stolen files over the network in a stealthy manner, and the actor enumerated domain groups [T1069.002] by executing net.exe group /domain to identify high-privilege accounts, followed by using csvde.exe to export Active Directory data for domain account discovery [T1087.002]. During lateral movement, the malware performed application window discovery [T1010] via EnumWindows to identify running applications and avoid detection, and it implemented fallback channels [T1008] by changing its command-and-control (C2) domain every 360 loops, retrieving new domains from an actor-controlled S3 bucket to maintain communication resilience. Finally, after exfiltrating sensitive data, the attacker executed a disk content wipe [T1561.001] by filling the storage device with pseudorandom bytes to render files irrecoverable and obscure forensic traces. System logs from SecureBank showed normal authentication events and routine backup processes, but deeper analysis revealed anomalous network connections and unauthorized cron entries, highlighting the need for enhanced monitoring of scripting activities and persistence mechanisms.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that the adversary conducted reconnaissance by gathering publicly available information on employees through social media and company websites.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Once inside, the actor employed a highly obfuscated Windows Script File (WSF) delivered via a command and scripting interpreter to execute the Raspberry Robin malware variant, which then configured a cron job [T1053.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "For data exfiltration, the malware leveraged BITS jobs to transfer stolen files over the network in a stealthy manner, and the actor enumerated domain groups [T1069.",
+            "technique_id": "T1197",
+            "technique_name": "BITS Jobs"
+        },
+        {
+            "sentence": "During lateral movement, the malware performed application window discovery via EnumWindows to identify running applications and avoid detection, and it implemented fallback channels by changing its command-and-control (C2) domain every 360 loops, retrieving new domains from an actor-controlled S3 bucket to maintain communication resilience.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        },
+        {
+            "sentence": "During lateral movement, the malware performed application window discovery via EnumWindows to identify running applications and avoid detection, and it implemented fallback channels by changing its command-and-control (C2) domain every 360 loops, retrieving new domains from an actor-controlled S3 bucket to maintain communication resilience.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentWiper' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'SilentWiper', which targeted a mid-sized financial institution, 'SecureBank Inc.', to exfiltrate sensitive data and deploy destructive wiper malware. The attack leveraged social engineering, persistence mechanisms, and data exfiltration techniques, culminating in disk wiping to obscure forensic evidence. Blue teams should review logs for suspicious activities, such as unauthorized software installations and abnormal network traffic, to enhance detection and response capabilities.",
+        "full_report_text": "On October 15, 2023, SecureBank Inc., a financial services company with 500 employees and operations in North America, reported a security incident involving unauthorized access to its internal network. Initial investigation revealed that the adversary conducted reconnaissance [T1589] by gathering publicly available information on employees through social media and company websites. The attack began with the adversary using spearphishing voice calls [T1566.004], where they impersonated Microsoft support personnel to convince a user to install AnyDesk for remote assistance, thereby gaining initial access to the system. Once inside, the actor employed a highly obfuscated Windows Script File (WSF) delivered via a command and scripting interpreter [T1059] to execute the Raspberry Robin malware variant, which then configured a cron job [T1053.003] in /var/spool/cron/crontabs/root to maintain persistence by running a backdoor script daily while simultaneously altering the postinstall script of a system utility using installer packages [T1546.016] to ensure the malware reactivated after system updates. For data exfiltration, the malware leveraged BITS jobs [T1197] to transfer stolen files over the network in a stealthy manner, and the actor enumerated domain groups [T1069.002] by executing net.exe group /domain to identify high-privilege accounts, followed by using csvde.exe to export Active Directory data for domain account discovery [T1087.002]. During lateral movement, the malware performed application window discovery [T1010] via EnumWindows to identify running applications and avoid detection, and it implemented fallback channels [T1008] by changing its command-and-control (C2) domain every 360 loops, retrieving new domains from an actor-controlled S3 bucket to maintain communication resilience. Finally, after exfiltrating sensitive data, the attacker executed a disk content wipe [T1561.001] by filling the storage device with pseudorandom bytes to render files irrecoverable and obscure forensic traces. System logs from SecureBank showed normal authentication events and routine backup processes, but deeper analysis revealed anomalous network connections and unauthorized cron entries, highlighting the need for enhanced monitoring of scripting activities and persistence mechanisms.",
+        "techniques_used": [
+            "T1589",
+            "T1566.004",
+            "T1059",
+            "T1053.003",
+            "T1546.016",
+            "T1197",
+            "T1069.002",
+            "T1087.002",
+            "T1010",
+            "T1008",
+            "T1561.001"
+        ]
+    }
+}

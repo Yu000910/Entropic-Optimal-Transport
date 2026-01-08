@@ -1,0 +1,98 @@
+{
+    "report_id": "report_650",
+    "generated_at": "20251222_171812",
+    "scenario_target_ids": [
+        "T1590.006",
+        "T1133",
+        "T1651",
+        "T1098",
+        "T1546.012",
+        "T1497",
+        "T1071",
+        "T1567.004",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1590.006",
+        "T1133",
+        "T1651",
+        "T1098",
+        "T1546.012",
+        "T1497",
+        "T1071",
+        "T1567.004",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1651",
+        "T1497",
+        "T1098",
+        "T1133",
+        "T1546.012",
+        "T1590.006",
+        "T1531",
+        "T1071"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with APT-FICT, a fictional threat actor targeting organizations with hybrid IT infrastructures. This report is based on a simulated incident for training purposes and includes realistic but fictional details to enhance defensive readiness.\n\nAPT-FICT likely began by conducting reconnaissance to map the target's network perimeter, using tools like dig to query MX records and identify mail server security configurations, which helped them assess network security appliances. Following this, they gained initial access by exploiting an unsecure kubelet instance that allowed anonymous access, enabling remote execution of malicious code into the victim environment. Once inside, the actors established persistence by employing AWS Systems Manager to create scheduled tasks for maintaining long-term access, while simultaneously manipulating accounts by exploiting Windows Credential Manager to extract saved passwords from credential vaults. To further solidify their foothold, they modified registry keys in HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options to inject malicious code into legitimate processes. The actors also employed evasion techniques, using commands like 'wevtutil ql System /c:1 /rd:true /f:text' to quickly query system logs for sandbox artifacts and avoid detection. For data exfiltration, they leveraged SMB file shares to blend in with legitimate network traffic and configured webhook.site to exfiltrate sensitive documents over webhooks. Prior to encryption, they executed destructive actions by deleting administrator accounts in victim networks to hinder recovery efforts.\n\nIrrelevant background: The targeted organization, a fictional mid-sized tech company named 'CloudSync Solutions', reported unusual network activity during routine audits. System logs from their on-premises servers showed increased SMB traffic to external IPs, while AWS CloudTrail logs indicated unauthorized API calls from unrecognized IAM roles. The company's incident response team noted that the kubelet instance had been misconfigured during a recent Kubernetes upgrade, leaving it exposed to the internet without authentication. Additionally, internal monitoring tools flagged several failed login attempts from legacy admin accounts that were later deleted, but these were initially dismissed as routine cleanup activities. No actual data loss occurred in this simulation, but the scenario highlights common misconfigurations and attack vectors in modern IT environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with APT-FICT, a fictional threat actor targeting organizations with hybrid IT infrastructures. This report is based on a simulated incident for training purposes and includes realistic but fictional details to enhance defensive readiness.\n\nAPT-FICT likely began by conducting reconnaissance to map the target's network perimeter, using tools like dig to query MX records and identify mail server security configurations, which helped them assess network security appliances [T1590.006]. Following this, they gained initial access by exploiting an unsecure kubelet instance that allowed anonymous access, enabling remote execution of malicious code into the victim environment [T1133]. Once inside, the actors established persistence by employing AWS Systems Manager to create scheduled tasks for maintaining long-term access [T1651], while simultaneously manipulating accounts by exploiting Windows Credential Manager to extract saved passwords from credential vaults [T1098]. To further solidify their foothold, they modified registry keys in HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options to inject malicious code into legitimate processes [T1546.012]. The actors also employed evasion techniques, using commands like 'wevtutil ql System /c:1 /rd:true /f:text' to quickly query system logs for sandbox artifacts and avoid detection [T1497]. For data exfiltration, they leveraged SMB file shares to blend in with legitimate network traffic [T1071] and configured webhook.site to exfiltrate sensitive documents over webhooks [T1567.004]. Prior to encryption, they executed destructive actions by deleting administrator accounts in victim networks to hinder recovery efforts [T1531].\n\nIrrelevant background: The targeted organization, a fictional mid-sized tech company named 'CloudSync Solutions', reported unusual network activity during routine audits. System logs from their on-premises servers showed increased SMB traffic to external IPs, while AWS CloudTrail logs indicated unauthorized API calls from unrecognized IAM roles. The company's incident response team noted that the kubelet instance had been misconfigured during a recent Kubernetes upgrade, leaving it exposed to the internet without authentication. Additionally, internal monitoring tools flagged several failed login attempts from legacy admin accounts that were later deleted, but these were initially dismissed as routine cleanup activities. No actual data loss occurred in this simulation, but the scenario highlights common misconfigurations and attack vectors in modern IT environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following this, they gained initial access by exploiting an unsecure kubelet instance that allowed anonymous access, enabling remote execution of malicious code into the victim environment.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Once inside, the actors established persistence by employing AWS Systems Manager to create scheduled tasks for maintaining long-term access, while simultaneously manipulating accounts by exploiting Windows Credential Manager to extract saved passwords from credential vaults.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "Once inside, the actors established persistence by employing AWS Systems Manager to create scheduled tasks for maintaining long-term access, while simultaneously manipulating accounts by exploiting Windows Credential Manager to extract saved passwords from credential vaults.",
+            "technique_id": "T1098",
+            "technique_name": "Account Manipulation"
+        },
+        {
+            "sentence": "The actors also employed evasion techniques, using commands like 'wevtutil ql System /c:1 /rd:true /f:text' to quickly query system logs for sandbox artifacts and avoid detection.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "For data exfiltration, they leveraged SMB file shares to blend in with legitimate network traffic and configured webhook.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        },
+        {
+            "sentence": "Prior to encryption, they executed destructive actions by deleting administrator accounts in victim networks to hinder recovery efforts.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting hybrid cloud and on-premises environments. The campaign involves reconnaissance, initial access via misconfigured services, persistence mechanisms, credential theft, evasion techniques, data exfiltration, and destructive actions. Blue teams are advised to review logs and configurations for indicators of compromise.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with APT-FICT, a fictional threat actor targeting organizations with hybrid IT infrastructures. This report is based on a simulated incident for training purposes and includes realistic but fictional details to enhance defensive readiness.\n\nAPT-FICT likely began by conducting reconnaissance to map the target's network perimeter, using tools like dig to query MX records and identify mail server security configurations, which helped them assess network security appliances [T1590.006]. Following this, they gained initial access by exploiting an unsecure kubelet instance that allowed anonymous access, enabling remote execution of malicious code into the victim environment [T1133]. Once inside, the actors established persistence by employing AWS Systems Manager to create scheduled tasks for maintaining long-term access [T1651], while simultaneously manipulating accounts by exploiting Windows Credential Manager to extract saved passwords from credential vaults [T1098]. To further solidify their foothold, they modified registry keys in HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options to inject malicious code into legitimate processes [T1546.012]. The actors also employed evasion techniques, using commands like 'wevtutil ql System /c:1 /rd:true /f:text' to quickly query system logs for sandbox artifacts and avoid detection [T1497]. For data exfiltration, they leveraged SMB file shares to blend in with legitimate network traffic [T1071] and configured webhook.site to exfiltrate sensitive documents over webhooks [T1567.004]. Prior to encryption, they executed destructive actions by deleting administrator accounts in victim networks to hinder recovery efforts [T1531].\n\nIrrelevant background: The targeted organization, a fictional mid-sized tech company named 'CloudSync Solutions', reported unusual network activity during routine audits. System logs from their on-premises servers showed increased SMB traffic to external IPs, while AWS CloudTrail logs indicated unauthorized API calls from unrecognized IAM roles. The company's incident response team noted that the kubelet instance had been misconfigured during a recent Kubernetes upgrade, leaving it exposed to the internet without authentication. Additionally, internal monitoring tools flagged several failed login attempts from legacy admin accounts that were later deleted, but these were initially dismissed as routine cleanup activities. No actual data loss occurred in this simulation, but the scenario highlights common misconfigurations and attack vectors in modern IT environments.",
+        "techniques_used": [
+            "T1590.006",
+            "T1133",
+            "T1651",
+            "T1098",
+            "T1546.012",
+            "T1497",
+            "T1071",
+            "T1567.004",
+            "T1531"
+        ]
+    }
+}

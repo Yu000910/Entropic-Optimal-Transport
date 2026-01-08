@@ -1,0 +1,118 @@
+{
+    "report_id": "report_37",
+    "generated_at": "20251222_130226",
+    "scenario_target_ids": [
+        "T1598",
+        "T1596.002",
+        "T1583.007",
+        "T1588.003",
+        "T1078",
+        "T1053.005",
+        "T1562.002",
+        "T1021.007",
+        "T1071.005",
+        "T1537",
+        "T1030",
+        "T1495",
+        "T1657"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1598",
+        "T1596.002",
+        "T1583.007",
+        "T1588.003",
+        "T1078",
+        "T1053.005",
+        "T1562.002",
+        "T1021.007",
+        "T1071.005",
+        "T1537",
+        "T1030",
+        "T1495",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1598",
+        "T1030",
+        "T1495",
+        "T1657",
+        "T1562.002",
+        "T1021.007",
+        "T1078",
+        "T1583.007",
+        "T1596.002",
+        "T1588.003",
+        "T1071.005",
+        "T1053.005",
+        "T1537"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'ShadowVeil'. This group has been observed targeting organizations in the financial and technology sectors since early 2024, with the primary objectives of financial theft and intellectual property exfiltration. Initial analysis indicates that the actors likely conduct reconnaissance by sending tailored spearphishing emails to gather victim information, including contact lists, and they search various online WHOIS lookup tools to identify domain registration patterns and technical contacts. In the initial access phase, the campaign purchased Cloudflare Workers through third-party resellers to host malicious payloads while avoiding direct attribution, and the malware used stolen code signing certificates to bypass security controls and appear legitimate. During execution, the adversary employed valid accounts extracted from compromised networks to move laterally and created a scheduled task named 'RecoveryExTask' to gain persistence. For defense evasion, they modified HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\WMI\\Autologger\\EventLog-Security to disable Windows event logging while simultaneously using Connect-MgGraph to access Microsoft 365 services and data. In command and control, the backdoor utilized MQTT topics to receive commands, blending with legitimate IoT device traffic. For exfiltration, the actors created automated backups using Azure Backup to transfer data to their storage account and divided post-exploitation files into fixed-size chunks to evade detection based on data transfer size limits. Impact activities included overwriting the system management mode firmware update mechanism to create permanent denial of service and using business email compromise to impersonate a vendor and redirect invoice payments for financial theft. Logs from affected systems show increased network traffic to cloud services, but no unusual user activity was reported in the initial monitoring phase. The targeted organizations, including a fictional bank 'SecureFin Corp' and tech firm 'Innovatech Solutions', have implemented enhanced security measures, but ongoing vigilance is recommended. This scenario underscores the importance of monitoring for multi-technique attacks in hybrid environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'ShadowVeil'. This group has been observed targeting organizations in the financial and technology sectors since early 2024, with the primary objectives of financial theft and intellectual property exfiltration. Initial analysis indicates that the actors likely conduct reconnaissance by sending tailored spearphishing emails to gather victim information, including contact lists [T1598], and they search various online WHOIS lookup tools to identify domain registration patterns and technical contacts [T1596.002]. In the initial access phase, the campaign purchased Cloudflare Workers through third-party resellers to host malicious payloads while avoiding direct attribution [T1583.007], and the malware used stolen code signing certificates to bypass security controls and appear legitimate [T1588.003]. During execution, the adversary employed valid accounts extracted from compromised networks to move laterally [T1078] and created a scheduled task named 'RecoveryExTask' to gain persistence [T1053.005]. For defense evasion, they modified HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\WMI\\Autologger\\EventLog-Security to disable Windows event logging [T1562.002] while simultaneously using Connect-MgGraph to access Microsoft 365 services and data [T1021.007]. In command and control, the backdoor utilized MQTT topics to receive commands, blending with legitimate IoT device traffic [T1071.005]. For exfiltration, the actors created automated backups using Azure Backup to transfer data to their storage account [T1537] and divided post-exploitation files into fixed-size chunks to evade detection based on data transfer size limits [T1030]. Impact activities included overwriting the system management mode firmware update mechanism to create permanent denial of service [T1495] and using business email compromise to impersonate a vendor and redirect invoice payments for financial theft [T1657]. Logs from affected systems show increased network traffic to cloud services, but no unusual user activity was reported in the initial monitoring phase. The targeted organizations, including a fictional bank 'SecureFin Corp' and tech firm 'Innovatech Solutions', have implemented enhanced security measures, but ongoing vigilance is recommended. This scenario underscores the importance of monitoring for multi-technique attacks in hybrid environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis indicates that the actors likely conduct reconnaissance by sending tailored spearphishing emails to gather victim information, including contact lists, and they search various online WHOIS lookup tools to identify domain registration patterns and technical contacts [T1596.",
+            "technique_id": "T1598",
+            "technique_name": "Phishing for Information"
+        },
+        {
+            "sentence": "During execution, the adversary employed valid accounts extracted from compromised networks to move laterally and created a scheduled task named 'RecoveryExTask' to gain persistence [T1053.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "For exfiltration, the actors created automated backups using Azure Backup to transfer data to their storage account and divided post-exploitation files into fixed-size chunks to evade detection based on data transfer size limits.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        },
+        {
+            "sentence": "For exfiltration, the actors created automated backups using Azure Backup to transfer data to their storage account and divided post-exploitation files into fixed-size chunks to evade detection based on data transfer size limits.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        },
+        {
+            "sentence": "Impact activities included overwriting the system management mode firmware update mechanism to create permanent denial of service and using business email compromise to impersonate a vendor and redirect invoice payments for financial theft.",
+            "technique_id": "T1495",
+            "technique_name": "Firmware Corruption"
+        },
+        {
+            "sentence": "Impact activities included overwriting the system management mode firmware update mechanism to create permanent denial of service and using business email compromise to impersonate a vendor and redirect invoice payments for financial theft.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial and Technology Sectors",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil', targeting financial institutions and technology firms to conduct financial theft and data exfiltration. The campaign employs sophisticated techniques including spearphishing, cloud infrastructure abuse, and evasion tactics. This report is intended for blue team training to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'ShadowVeil'. This group has been observed targeting organizations in the financial and technology sectors since early 2024, with the primary objectives of financial theft and intellectual property exfiltration. Initial analysis indicates that the actors likely conduct reconnaissance by sending tailored spearphishing emails to gather victim information, including contact lists [T1598], and they search various online WHOIS lookup tools to identify domain registration patterns and technical contacts [T1596.002]. In the initial access phase, the campaign purchased Cloudflare Workers through third-party resellers to host malicious payloads while avoiding direct attribution [T1583.007], and the malware used stolen code signing certificates to bypass security controls and appear legitimate [T1588.003]. During execution, the adversary employed valid accounts extracted from compromised networks to move laterally [T1078] and created a scheduled task named 'RecoveryExTask' to gain persistence [T1053.005]. For defense evasion, they modified HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\WMI\\Autologger\\EventLog-Security to disable Windows event logging [T1562.002] while simultaneously using Connect-MgGraph to access Microsoft 365 services and data [T1021.007]. In command and control, the backdoor utilized MQTT topics to receive commands, blending with legitimate IoT device traffic [T1071.005]. For exfiltration, the actors created automated backups using Azure Backup to transfer data to their storage account [T1537] and divided post-exploitation files into fixed-size chunks to evade detection based on data transfer size limits [T1030]. Impact activities included overwriting the system management mode firmware update mechanism to create permanent denial of service [T1495] and using business email compromise to impersonate a vendor and redirect invoice payments for financial theft [T1657]. Logs from affected systems show increased network traffic to cloud services, but no unusual user activity was reported in the initial monitoring phase. The targeted organizations, including a fictional bank 'SecureFin Corp' and tech firm 'Innovatech Solutions', have implemented enhanced security measures, but ongoing vigilance is recommended. This scenario underscores the importance of monitoring for multi-technique attacks in hybrid environments.",
+        "techniques_used": [
+            "T1598",
+            "T1596.002",
+            "T1583.007",
+            "T1588.003",
+            "T1078",
+            "T1053.005",
+            "T1562.002",
+            "T1021.007",
+            "T1071.005",
+            "T1537",
+            "T1030",
+            "T1495",
+            "T1657"
+        ]
+    }
+}

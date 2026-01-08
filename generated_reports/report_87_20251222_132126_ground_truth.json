@@ -1,0 +1,83 @@
+{
+    "report_id": "report_87",
+    "generated_at": "20251222_132126",
+    "scenario_target_ids": [
+        "T1596.001",
+        "T1078.003",
+        "T1047",
+        "T1059",
+        "T1546.010",
+        "T1070.003",
+        "T1090.003",
+        "T1048.003",
+        "T1561"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596.001",
+        "T1078.003",
+        "T1047",
+        "T1059",
+        "T1546.010",
+        "T1070.003",
+        "T1090.003",
+        "T1048.003",
+        "T1561"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1070.003",
+        "T1546.010",
+        "T1059",
+        "T1048.003",
+        "T1596.001",
+        "T1090.003",
+        "T1561",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory in response to recent activity attributed to the advanced persistent threat (APT) group 'ShadowWeaver'. This group has historically targeted critical infrastructure, with a focus on energy providers in North America. Initial analysis suggests the campaign began in early 2024, leveraging publicly available tools and custom malware. System logs from affected organizations show anomalous DNS queries originating from internal workstations, though no immediate alerts were triggered.\n\nDuring the reconnaissance phase, the actors conducted passive DNS analysis to map the target's infrastructure, querying Google's public DNS resolver (8.8.8.8) for subdomains and associated IP addresses. This allowed them to identify vulnerable endpoints without direct interaction. Following this, they exploited weak password policies to gain initial access using compromised local accounts, which were then used to execute commands via Windows Management Instrumentation (WMI) for remote code execution on networked systems.\n\nFor persistence and execution, the adversary employed a command and scripting interpreter, specifically leveraging 'bash -c' to run a one-liner that injected a malicious library into AppInit_DLLs through registry modifications, ensuring the backdoor loaded with every system startup. Concurrently, they used multi-hop proxies to obfuscate their command and control (C2) traffic, routing it through multiple intermediary servers to evade network-based detection. After establishing a foothold, they exfiltrated data over an unencrypted non-C2 protocol, using FTP to transfer stolen files to external servers, while also clearing command history with 'history -c' to remove traces of their activities from compromised sessions.\n\nIn the final stages, the actors performed a disk wipe by leveraging the C$ administrative share to overwrite critical system binaries with corrupted versions, rendering targeted systems inoperable and hindering recovery efforts. This destructive action was timed to coincide with peak operational hours, maximizing disruption. Background checks on the affected organization revealed no prior significant security incidents, but internal audits had flagged outdated software patches on several servers, which may have facilitated the initial compromise.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory in response to recent activity attributed to the advanced persistent threat (APT) group 'ShadowWeaver'. This group has historically targeted critical infrastructure, with a focus on energy providers in North America. Initial analysis suggests the campaign began in early 2024, leveraging publicly available tools and custom malware. System logs from affected organizations show anomalous DNS queries originating from internal workstations, though no immediate alerts were triggered.\n\nDuring the reconnaissance phase, the actors conducted passive DNS analysis [T1596.001] to map the target's infrastructure, querying Google's public DNS resolver (8.8.8.8) for subdomains and associated IP addresses. This allowed them to identify vulnerable endpoints without direct interaction. Following this, they exploited weak password policies to gain initial access using compromised local accounts [T1078.003], which were then used to execute commands via Windows Management Instrumentation (WMI) [T1047] for remote code execution on networked systems.\n\nFor persistence and execution, the adversary employed a command and scripting interpreter [T1059], specifically leveraging 'bash -c' to run a one-liner that injected a malicious library into AppInit_DLLs [T1546.010] through registry modifications, ensuring the backdoor loaded with every system startup. Concurrently, they used multi-hop proxies [T1090.003] to obfuscate their command and control (C2) traffic, routing it through multiple intermediary servers to evade network-based detection. After establishing a foothold, they exfiltrated data over an unencrypted non-C2 protocol [T1048.003], using FTP to transfer stolen files to external servers, while also clearing command history [T1070.003] with 'history -c' to remove traces of their activities from compromised sessions.\n\nIn the final stages, the actors performed a disk wipe [T1561] by leveraging the C$ administrative share to overwrite critical system binaries with corrupted versions, rendering targeted systems inoperable and hindering recovery efforts. This destructive action was timed to coincide with peak operational hours, maximizing disruption. Background checks on the affected organization revealed no prior significant security incidents, but internal audits had flagged outdated software patches on several servers, which may have facilitated the initial compromise.",
+    "sentence_annotations": [
+        {
+            "sentence": "003], which were then used to execute commands via Windows Management Instrumentation (WMI) for remote code execution on networked systems.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "For persistence and execution, the adversary employed a command and scripting interpreter, specifically leveraging 'bash -c' to run a one-liner that injected a malicious library into AppInit_DLLs [T1546.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "In the final stages, the actors performed a disk wipe by leveraging the C$ administrative share to overwrite critical system binaries with corrupted versions, rendering targeted systems inoperable and hindering recovery efforts.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowWeaver', targeting energy sector organizations to exfiltrate sensitive data and deploy destructive payloads. Based on observed tactics, techniques, and procedures (TTPs), this report provides actionable intelligence for blue teams to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory in response to recent activity attributed to the advanced persistent threat (APT) group 'ShadowWeaver'. This group has historically targeted critical infrastructure, with a focus on energy providers in North America. Initial analysis suggests the campaign began in early 2024, leveraging publicly available tools and custom malware. System logs from affected organizations show anomalous DNS queries originating from internal workstations, though no immediate alerts were triggered.\n\nDuring the reconnaissance phase, the actors conducted passive DNS analysis [T1596.001] to map the target's infrastructure, querying Google's public DNS resolver (8.8.8.8) for subdomains and associated IP addresses. This allowed them to identify vulnerable endpoints without direct interaction. Following this, they exploited weak password policies to gain initial access using compromised local accounts [T1078.003], which were then used to execute commands via Windows Management Instrumentation (WMI) [T1047] for remote code execution on networked systems.\n\nFor persistence and execution, the adversary employed a command and scripting interpreter [T1059], specifically leveraging 'bash -c' to run a one-liner that injected a malicious library into AppInit_DLLs [T1546.010] through registry modifications, ensuring the backdoor loaded with every system startup. Concurrently, they used multi-hop proxies [T1090.003] to obfuscate their command and control (C2) traffic, routing it through multiple intermediary servers to evade network-based detection. After establishing a foothold, they exfiltrated data over an unencrypted non-C2 protocol [T1048.003], using FTP to transfer stolen files to external servers, while also clearing command history [T1070.003] with 'history -c' to remove traces of their activities from compromised sessions.\n\nIn the final stages, the actors performed a disk wipe [T1561] by leveraging the C$ administrative share to overwrite critical system binaries with corrupted versions, rendering targeted systems inoperable and hindering recovery efforts. This destructive action was timed to coincide with peak operational hours, maximizing disruption. Background checks on the affected organization revealed no prior significant security incidents, but internal audits had flagged outdated software patches on several servers, which may have facilitated the initial compromise.",
+        "techniques_used": [
+            "T1596.001",
+            "T1078.003",
+            "T1047",
+            "T1059",
+            "T1546.010",
+            "T1070.003",
+            "T1090.003",
+            "T1048.003",
+            "T1561"
+        ]
+    }
+}

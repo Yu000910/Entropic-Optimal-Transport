@@ -1,0 +1,93 @@
+{
+    "report_id": "report_400",
+    "generated_at": "20251222_153135",
+    "scenario_target_ids": [
+        "T1595.003",
+        "T1189",
+        "T1190",
+        "T1059.003",
+        "T1574.009",
+        "T1037.002",
+        "T1055.009",
+        "T1557.002",
+        "T1021.005",
+        "T1550.001",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1595.003",
+        "T1189",
+        "T1190",
+        "T1059.003",
+        "T1574.009",
+        "T1037.002",
+        "T1055.009",
+        "T1557.002",
+        "T1021.005",
+        "T1550.001",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1557.002",
+        "T1059.003",
+        "T1595.003",
+        "T1021.005",
+        "T1574.009",
+        "T1055.009",
+        "T1037.002",
+        "T1550.001",
+        "T1189",
+        "T1190",
+        "T1573"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report outlines the tactics, techniques, and procedures (TTPs) used by 'ShadowWeaver', a simulated threat actor, in a campaign against financial organizations. The attack began with reconnaissance, where the actors employed Dirb to conduct wordlist scanning against external web servers, probing for directories like /admin and /backup to identify potential entry points. System logs from the targeted organization show increased HTTP requests to non-standard paths, though some were benign traffic from automated scanners. Following reconnaissance, the actors established initial access by setting up a watering hole site that delivered malicious files through drive-by compromises, exploiting unpatched browsers in employee systems. The company, 'FinSecure Corp', reported unusual network activity during this phase, but initial investigations flagged it as false positives from legacy monitoring tools. Once initial access was gained, the actors exploited a public-facing Apache Struts vulnerability (CVE-2017-5638) to execute arbitrary code, bypassing web application firewalls and delivering a backdoor payload. Internal security teams noted anomalous log entries in the web server logs, but these were initially attributed to misconfigured load balancers. For execution, the backdoor utilized the Windows Command Shell to run commands such as 'net user' and 'ipconfig', while simultaneously modifying registry keys to enable path interception by unquoted paths, allowing the loading of 'C:\\program.exe' instead of legitimate system binaries. During this stage, FinSecure Corp's IT department reported sporadic system slowdowns, though no immediate threats were identified. To achieve persistence, the adversary configured login hooks to execute a data exfiltration script upon user authentication, while also setting up a VNC server on startup for remote graphical access, ensuring continuous control over compromised systems. Network logs indicated unusual ARP traffic patterns, but these were dismissed as network misconfigurations. For privilege escalation and defense evasion, the backdoor parsed /proc/9012/maps to locate shared library addresses for API hooking, and abused application access tokens with administrative permissions to facilitate data exfiltrations, leveraging service principals in cloud environments. The actors further employed ARP cache poisoning using custom tools to intercept network traffic and redirect it through malicious proxies. Throughout the campaign, command and control communications were secured via encrypted channels, using an HTTP proxy to obfuscate traffic and evade detection by network security appliances. FinSecure Corp's background includes a recent merger with a smaller firm, which introduced integration challenges and delayed patch management cycles, contributing to the attack's success. This scenario underscores the importance of comprehensive threat intelligence and proactive defense strategies.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report outlines the tactics, techniques, and procedures (TTPs) used by 'ShadowWeaver', a simulated threat actor, in a campaign against financial organizations. The attack began with reconnaissance, where the actors employed Dirb to conduct wordlist scanning [T1595.003] against external web servers, probing for directories like /admin and /backup to identify potential entry points. System logs from the targeted organization show increased HTTP requests to non-standard paths, though some were benign traffic from automated scanners. Following reconnaissance, the actors established initial access by setting up a watering hole site that delivered malicious files through drive-by compromises [T1189], exploiting unpatched browsers in employee systems. The company, 'FinSecure Corp', reported unusual network activity during this phase, but initial investigations flagged it as false positives from legacy monitoring tools. Once initial access was gained, the actors exploited a public-facing Apache Struts vulnerability (CVE-2017-5638) to execute arbitrary code [T1190], bypassing web application firewalls and delivering a backdoor payload. Internal security teams noted anomalous log entries in the web server logs, but these were initially attributed to misconfigured load balancers. For execution, the backdoor utilized the Windows Command Shell [T1059.003] to run commands such as 'net user' and 'ipconfig', while simultaneously modifying registry keys to enable path interception by unquoted paths [T1574.009], allowing the loading of 'C:\\program.exe' instead of legitimate system binaries. During this stage, FinSecure Corp's IT department reported sporadic system slowdowns, though no immediate threats were identified. To achieve persistence, the adversary configured login hooks [T1037.002] to execute a data exfiltration script upon user authentication, while also setting up a VNC server [T1021.005] on startup for remote graphical access, ensuring continuous control over compromised systems. Network logs indicated unusual ARP traffic patterns, but these were dismissed as network misconfigurations. For privilege escalation and defense evasion, the backdoor parsed /proc/9012/maps to locate shared library addresses for API hooking [T1055.009], and abused application access tokens [T1550.001] with administrative permissions to facilitate data exfiltrations, leveraging service principals in cloud environments. The actors further employed ARP cache poisoning [T1557.002] using custom tools to intercept network traffic and redirect it through malicious proxies. Throughout the campaign, command and control communications were secured via encrypted channels [T1573], using an HTTP proxy to obfuscate traffic and evade detection by network security appliances. FinSecure Corp's background includes a recent merger with a smaller firm, which introduced integration challenges and delayed patch management cycles, contributing to the attack's success. This scenario underscores the importance of comprehensive threat intelligence and proactive defense strategies.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following reconnaissance, the actors established initial access by setting up a watering hole site that delivered malicious files through drive-by compromises, exploiting unpatched browsers in employee systems.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Once initial access was gained, the actors exploited a public-facing Apache Struts vulnerability (CVE-2017-5638) to execute arbitrary code, bypassing web application firewalls and delivering a backdoor payload.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Throughout the campaign, command and control communications were secured via encrypted channels, using an HTTP proxy to obfuscate traffic and evade detection by network security appliances.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowWeaver', targeting financial institutions through a multi-stage attack involving web exploitation, persistence mechanisms, and network manipulation. The campaign leverages known vulnerabilities and custom tools to compromise systems, establish footholds, and exfiltrate sensitive data, highlighting the need for robust defensive measures and continuous monitoring.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. This report outlines the tactics, techniques, and procedures (TTPs) used by 'ShadowWeaver', a simulated threat actor, in a campaign against financial organizations. The attack began with reconnaissance, where the actors employed Dirb to conduct wordlist scanning [T1595.003] against external web servers, probing for directories like /admin and /backup to identify potential entry points. System logs from the targeted organization show increased HTTP requests to non-standard paths, though some were benign traffic from automated scanners. Following reconnaissance, the actors established initial access by setting up a watering hole site that delivered malicious files through drive-by compromises [T1189], exploiting unpatched browsers in employee systems. The company, 'FinSecure Corp', reported unusual network activity during this phase, but initial investigations flagged it as false positives from legacy monitoring tools. Once initial access was gained, the actors exploited a public-facing Apache Struts vulnerability (CVE-2017-5638) to execute arbitrary code [T1190], bypassing web application firewalls and delivering a backdoor payload. Internal security teams noted anomalous log entries in the web server logs, but these were initially attributed to misconfigured load balancers. For execution, the backdoor utilized the Windows Command Shell [T1059.003] to run commands such as 'net user' and 'ipconfig', while simultaneously modifying registry keys to enable path interception by unquoted paths [T1574.009], allowing the loading of 'C:\\program.exe' instead of legitimate system binaries. During this stage, FinSecure Corp's IT department reported sporadic system slowdowns, though no immediate threats were identified. To achieve persistence, the adversary configured login hooks [T1037.002] to execute a data exfiltration script upon user authentication, while also setting up a VNC server [T1021.005] on startup for remote graphical access, ensuring continuous control over compromised systems. Network logs indicated unusual ARP traffic patterns, but these were dismissed as network misconfigurations. For privilege escalation and defense evasion, the backdoor parsed /proc/9012/maps to locate shared library addresses for API hooking [T1055.009], and abused application access tokens [T1550.001] with administrative permissions to facilitate data exfiltrations, leveraging service principals in cloud environments. The actors further employed ARP cache poisoning [T1557.002] using custom tools to intercept network traffic and redirect it through malicious proxies. Throughout the campaign, command and control communications were secured via encrypted channels [T1573], using an HTTP proxy to obfuscate traffic and evade detection by network security appliances. FinSecure Corp's background includes a recent merger with a smaller firm, which introduced integration challenges and delayed patch management cycles, contributing to the attack's success. This scenario underscores the importance of comprehensive threat intelligence and proactive defense strategies.",
+        "techniques_used": [
+            "T1595.003",
+            "T1189",
+            "T1190",
+            "T1059.003",
+            "T1574.009",
+            "T1037.002",
+            "T1055.009",
+            "T1557.002",
+            "T1021.005",
+            "T1550.001",
+            "T1573"
+        ]
+    }
+}

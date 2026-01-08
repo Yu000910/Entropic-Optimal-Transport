@@ -1,0 +1,88 @@
+{
+    "report_id": "report_55",
+    "generated_at": "20251222_113923",
+    "scenario_target_ids": [
+        "T1589.003",
+        "T1596.004",
+        "T1566",
+        "T1566.001",
+        "T1059.006",
+        "T1547.009",
+        "T1548.005",
+        "T1021.002",
+        "T1568.003",
+        "T1132.001",
+        "T1499"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589.003",
+        "T1596.004",
+        "T1566",
+        "T1566.001",
+        "T1059.006",
+        "T1547.009",
+        "T1548.005",
+        "T1021.002",
+        "T1568.003",
+        "T1132.001",
+        "T1499"
+    ],
+    "actual_found_ids": [
+        "T1059.006",
+        "T1568.003",
+        "T1566",
+        "T1566.001",
+        "T1589.003",
+        "T1021.002",
+        "T1548.005",
+        "T1499",
+        "T1547.009",
+        "T1596.004",
+        "T1132.001"
+    ],
+    "clean_text": "### 1. Target and Campaign Overview\nVictims included regional banks and credit unions with publicly accessible websites. Network logs show increased scanning activity from IP addresses associated with commercial VPN services in the weeks prior to the main intrusion. The organization's IT team noted unusual DNS queries but initially attributed them to misconfigured internal applications.\n\n### 2. Attack Chain Analysis\n**Reconnaissance:** The actors likely conducted reconnaissance by scraping employee names from the target's public-facing staff biographies and using command-line tools like nslookup to enumerate the target's CDN configuration, which revealed backend server IPs and potential entry points.\n\n**Initial Access:** The attacker sent a phishing email with a malicious invoice attachment to the target organization, specifically using spearphishing attachments that impersonated a known vendor to deliver the Pony malware payload. Email gateway logs flagged the message as suspicious, but it bypassed filters due to a spoofed sender domain.\n\n**Execution:** Upon execution, the malware employed IronPython scripts to load payloads with the help of a .NET injector while simultaneously altering Desktop shortcut.lnk files to launch malicious payloads when double-clicked, ensuring persistence across user sessions.\n\n**Privilege Escalation and Defense Evasion:** The malware used iam.serviceAccountTokenCreator to create short-lived tokens for accessing restricted cloud resources, enabling temporary elevated cloud access, and a custom Python script calculated DNS query patterns to bypass network egress filters, blending C2 traffic with legitimate DNS requests.\n\n**Lateral Movement:** Anchor malware supported Windows execution via SMB shares, allowing the actors to move laterally across the network by accessing administrative shares and deploying additional tools on compromised systems.\n\n**Command and Control:** SeaDuke C2 traffic was base64-encoded to obscure communications, with data exfiltrated through encrypted channels mimicking normal web traffic. Network sensors detected anomalous outbound connections to unknown domains but were not blocked due to whitelist policies.\n\n**Impact:** The malware exploited an IIS vulnerability to cause memory exhaustion and service failure, leading to endpoint denial of service that disrupted online banking platforms for several hours. Incident response teams restored services after applying patches and isolating affected servers.\n\n### 3. Mitigation Recommendations\nOrganizations should implement multi-factor authentication for cloud services, monitor for unusual token creation, and review CDN configurations regularly. Enhance email filtering to detect spearphishing attempts and deploy endpoint detection tools that flag shortcut modifications and Python script anomalies. Regular vulnerability scanning of web servers is critical to prevent denial-of-service attacks.\n\n### 4. Conclusion\nThis fictional scenario illustrates how APT groups combine reconnaissance, phishing, scripting, and evasion techniques to achieve their objectives. Blue teams should use this advisory for training exercises to improve response to similar threats. No actual breaches are reported; this is for educational purposes only.",
+    "tagged_text": "### 1. Target and Campaign Overview\nVictims included regional banks and credit unions with publicly accessible websites. Network logs show increased scanning activity from IP addresses associated with commercial VPN services in the weeks prior to the main intrusion. The organization's IT team noted unusual DNS queries but initially attributed them to misconfigured internal applications.\n\n### 2. Attack Chain Analysis\n**Reconnaissance:** The actors likely conducted reconnaissance by scraping employee names from the target's public-facing staff biographies [T1589.003] and using command-line tools like nslookup to enumerate the target's CDN configuration [T1596.004], which revealed backend server IPs and potential entry points.\n\n**Initial Access:** The attacker sent a phishing email with a malicious invoice attachment to the target organization [T1566], specifically using spearphishing attachments [T1566.001] that impersonated a known vendor to deliver the Pony malware payload. Email gateway logs flagged the message as suspicious, but it bypassed filters due to a spoofed sender domain.\n\n**Execution:** Upon execution, the malware employed IronPython scripts [T1059.006] to load payloads with the help of a .NET injector while simultaneously altering Desktop shortcut.lnk files [T1547.009] to launch malicious payloads when double-clicked, ensuring persistence across user sessions.\n\n**Privilege Escalation and Defense Evasion:** The malware used iam.serviceAccountTokenCreator to create short-lived tokens for accessing restricted cloud resources [T1548.005], enabling temporary elevated cloud access, and a custom Python script calculated DNS query patterns [T1568.003] to bypass network egress filters, blending C2 traffic with legitimate DNS requests.\n\n**Lateral Movement:** Anchor malware supported Windows execution via SMB shares [T1021.002], allowing the actors to move laterally across the network by accessing administrative shares and deploying additional tools on compromised systems.\n\n**Command and Control:** SeaDuke C2 traffic was base64-encoded [T1132.001] to obscure communications, with data exfiltrated through encrypted channels mimicking normal web traffic. Network sensors detected anomalous outbound connections to unknown domains but were not blocked due to whitelist policies.\n\n**Impact:** The malware exploited an IIS vulnerability to cause memory exhaustion and service failure [T1499], leading to endpoint denial of service that disrupted online banking platforms for several hours. Incident response teams restored services after applying patches and isolating affected servers.\n\n### 3. Mitigation Recommendations\nOrganizations should implement multi-factor authentication for cloud services, monitor for unusual token creation, and review CDN configurations regularly. Enhance email filtering to detect spearphishing attempts and deploy endpoint detection tools that flag shortcut modifications and Python script anomalies. Regular vulnerability scanning of web servers is critical to prevent denial-of-service attacks.\n\n### 4. Conclusion\nThis fictional scenario illustrates how APT groups combine reconnaissance, phishing, scripting, and evasion techniques to achieve their objectives. Blue teams should use this advisory for training exercises to improve response to similar threats. No actual breaches are reported; this is for educational purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Initial Access:** The attacker sent a phishing email with a malicious invoice attachment to the target organization, specifically using spearphishing attachments [T1566.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "**Impact:** The malware exploited an IIS vulnerability to cause memory exhaustion and service failure, leading to endpoint denial of service that disrupted online banking platforms for several hours.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Cobalt Mirage' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Cobalt Mirage,' targeting financial institutions in North America. The campaign demonstrates sophisticated multi-stage attack techniques designed for initial compromise, lateral movement, data exfiltration, and disruption. Activity was observed between October 2023 and January 2024, with primary objectives including financial fraud and intellectual property theft. Blue teams should review this report to enhance detection capabilities against similar tradecraft.",
+        "full_report_text": "### 1. Target and Campaign Overview\nVictims included regional banks and credit unions with publicly accessible websites. Network logs show increased scanning activity from IP addresses associated with commercial VPN services in the weeks prior to the main intrusion. The organization's IT team noted unusual DNS queries but initially attributed them to misconfigured internal applications.\n\n### 2. Attack Chain Analysis\n**Reconnaissance:** The actors likely conducted reconnaissance by scraping employee names from the target's public-facing staff biographies [T1589.003] and using command-line tools like nslookup to enumerate the target's CDN configuration [T1596.004], which revealed backend server IPs and potential entry points.\n\n**Initial Access:** The attacker sent a phishing email with a malicious invoice attachment to the target organization [T1566], specifically using spearphishing attachments [T1566.001] that impersonated a known vendor to deliver the Pony malware payload. Email gateway logs flagged the message as suspicious, but it bypassed filters due to a spoofed sender domain.\n\n**Execution:** Upon execution, the malware employed IronPython scripts [T1059.006] to load payloads with the help of a .NET injector while simultaneously altering Desktop shortcut.lnk files [T1547.009] to launch malicious payloads when double-clicked, ensuring persistence across user sessions.\n\n**Privilege Escalation and Defense Evasion:** The malware used iam.serviceAccountTokenCreator to create short-lived tokens for accessing restricted cloud resources [T1548.005], enabling temporary elevated cloud access, and a custom Python script calculated DNS query patterns [T1568.003] to bypass network egress filters, blending C2 traffic with legitimate DNS requests.\n\n**Lateral Movement:** Anchor malware supported Windows execution via SMB shares [T1021.002], allowing the actors to move laterally across the network by accessing administrative shares and deploying additional tools on compromised systems.\n\n**Command and Control:** SeaDuke C2 traffic was base64-encoded [T1132.001] to obscure communications, with data exfiltrated through encrypted channels mimicking normal web traffic. Network sensors detected anomalous outbound connections to unknown domains but were not blocked due to whitelist policies.\n\n**Impact:** The malware exploited an IIS vulnerability to cause memory exhaustion and service failure [T1499], leading to endpoint denial of service that disrupted online banking platforms for several hours. Incident response teams restored services after applying patches and isolating affected servers.\n\n### 3. Mitigation Recommendations\nOrganizations should implement multi-factor authentication for cloud services, monitor for unusual token creation, and review CDN configurations regularly. Enhance email filtering to detect spearphishing attempts and deploy endpoint detection tools that flag shortcut modifications and Python script anomalies. Regular vulnerability scanning of web servers is critical to prevent denial-of-service attacks.\n\n### 4. Conclusion\nThis fictional scenario illustrates how APT groups combine reconnaissance, phishing, scripting, and evasion techniques to achieve their objectives. Blue teams should use this advisory for training exercises to improve response to similar threats. No actual breaches are reported; this is for educational purposes only.",
+        "techniques_used": [
+            "T1589.003",
+            "T1596.004",
+            "T1566",
+            "T1566.001",
+            "T1059.006",
+            "T1547.009",
+            "T1548.005",
+            "T1021.002",
+            "T1568.003",
+            "T1132.001",
+            "T1499"
+        ]
+    }
+}

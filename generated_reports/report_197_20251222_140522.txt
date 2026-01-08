@@ -1,0 +1,13 @@
+On October 15, 2023, the Federal Bureau of Investigation (FBI), Cybersecurity and Infrastructure Security Agency (CISA), and National Security Agency (NSA) identified suspicious activity linked to the APT group 'ShadowWeaver', which has been active since early 2022. The group primarily targets organizations in the United States and Europe, with a focus on industrial control systems (ICS). Initial analysis suggests the campaign began with reconnaissance via social engineering, though specific details are omitted for training purposes.
+
+Initial Access: The actors gained initial access by exploiting a known vulnerability in a public-facing web server (CVE-2023-12345, patched in August 2023). System logs from the compromised server show unusual outbound traffic to IP addresses in Eastern Europe, but this was not flagged by existing security tools due to misconfigured alerts.
+
+Execution: After compromising the web server, the adversary employed PowerShell scripts to download and execute PsExec.exe from a remote location, uploading it to the server's temporary directory for remote execution capabilities [T1608.002]. Concurrently, they copied a malicious payload, malware.exe, to a connected USB drive to facilitate replication through removable media for later use on air-gapped networks [T1091], while using launchctl to load QEMU services from the /Library/LaunchDaemons/ folder and unload older Launch Daemons during updates [T1569.001].
+
+Persistence: To maintain access, the threat actor called AddMonitor to register a malicious print processor DLL, establishing persistence via port monitors [T1547.010], and modified registry keys to ensure automatic execution upon system reboot.
+
+Command and Control (C2): The C2 infrastructure was hidden by filtering traffic through multiple rotating proxies to avoid IP-based blocking [T1665], and communication occurred over raw sockets using non-application layer protocols like Mis-Type to evade network detection [T1095]. Network logs indicate sporadic spikes in traffic during off-hours, but no alerts were triggered due to threshold misconfigurations.
+
+Impact: The campaign resulted in data exfiltration of sensitive ICS schematics, though no operational disruptions were reported. The actors demonstrated sophisticated evasion, leveraging a mix of legitimate tools and custom malware. Recommendations include monitoring for unusual launchctl activity, restricting removable media usage, and implementing network segmentation.
+
+This report is fictional and intended for blue team training to enhance detection of multi-technique attacks in realistic scenarios.

@@ -1,0 +1,98 @@
+{
+    "report_id": "report_506",
+    "generated_at": "20251222_161741",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1674",
+        "T1053.007",
+        "T1543.003",
+        "T1220",
+        "T1550.002",
+        "T1570",
+        "T1530",
+        "T1090.004",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1674",
+        "T1053.007",
+        "T1543.003",
+        "T1220",
+        "T1550.002",
+        "T1570",
+        "T1530",
+        "T1090.004",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1567",
+        "T1570",
+        "T1530",
+        "T1566.004",
+        "T1550.002",
+        "T1220",
+        "T1543.003",
+        "T1053.007",
+        "T1674",
+        "T1090.004"
+    ],
+    "clean_text": "During the simulated incident C0027, the fictional threat actor 'Silent Echo' impersonated legitimate IT support personnel in phone calls to direct victims to download a remote monitoring and management (RMM) tool, facilitating initial access. Concurrently, the adversary deployed rogue USB devices emulating keyboards to simulate keystrokes that opened command prompts and executed malicious scripts. Once established, the actors scheduled a malicious container deployment using CronJob to run during system maintenance windows, leveraging container orchestration for execution. To maintain persistence, they installed a service mimicking RawPOS, ensuring continued access after reboots. For evasion, the attackers dropped msxsl.exe to the temp directory to process XSL scripts and bypass application whitelisting. They then executed Mimikatz.exe to extract Kerberos tickets from memory, enabling pass-the-hash attacks for lateral movement. Using an RPC server similar to Stuxnet, they transferred tools peer-to-peer within the network, facilitating lateral movement. The actors collected sensitive configuration files from an Amazon S3 bucket, stealing data from cloud storage. To obfuscate command and control, they employed domain fronting to mask hard-coded C2 server domains. Finally, the malware used openssl to encrypt stolen files and uploaded them to a trusted web service for exfiltration. System logs from the affected environment show routine maintenance activities at 02:00 UTC, with no immediate alerts triggered. The company, a mid-sized financial services firm, reported unusual network spikes during off-hours, but initial investigations attributed this to backup processes. Further analysis revealed unauthorized access to cloud storage buckets, though no data loss was confirmed in this training scenario.",
+    "tagged_text": "During the simulated incident C0027, the fictional threat actor 'Silent Echo' impersonated legitimate IT support personnel in phone calls to direct victims to download a remote monitoring and management (RMM) tool, facilitating initial access [T1566.004]. Concurrently, the adversary deployed rogue USB devices emulating keyboards to simulate keystrokes that opened command prompts and executed malicious scripts [T1674]. Once established, the actors scheduled a malicious container deployment using CronJob to run during system maintenance windows, leveraging container orchestration for execution [T1053.007]. To maintain persistence, they installed a service mimicking RawPOS, ensuring continued access after reboots [T1543.003]. For evasion, the attackers dropped msxsl.exe to the temp directory to process XSL scripts and bypass application whitelisting [T1220]. They then executed Mimikatz.exe to extract Kerberos tickets from memory, enabling pass-the-hash attacks for lateral movement [T1550.002]. Using an RPC server similar to Stuxnet, they transferred tools peer-to-peer within the network, facilitating lateral movement [T1570]. The actors collected sensitive configuration files from an Amazon S3 bucket, stealing data from cloud storage [T1530]. To obfuscate command and control, they employed domain fronting to mask hard-coded C2 server domains [T1090.004]. Finally, the malware used openssl to encrypt stolen files and uploaded them to a trusted web service for exfiltration [T1567]. System logs from the affected environment show routine maintenance activities at 02:00 UTC, with no immediate alerts triggered. The company, a mid-sized financial services firm, reported unusual network spikes during off-hours, but initial investigations attributed this to backup processes. Further analysis revealed unauthorized access to cloud storage buckets, though no data loss was confirmed in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, the adversary deployed rogue USB devices emulating keyboards to simulate keystrokes that opened command prompts and executed malicious scripts.",
+            "technique_id": "T1674",
+            "technique_name": "Input Injection"
+        },
+        {
+            "sentence": "exe to the temp directory to process XSL scripts and bypass application whitelisting.",
+            "technique_id": "T1220",
+            "technique_name": "XSL Script Processing"
+        },
+        {
+            "sentence": "Using an RPC server similar to Stuxnet, they transferred tools peer-to-peer within the network, facilitating lateral movement.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "The actors collected sensitive configuration files from an Amazon S3 bucket, stealing data from cloud storage.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "Finally, the malware used openssl to encrypt stolen files and uploaded them to a trusted web service for exfiltration.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Echo' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Silent Echo,' which targets organizations using sophisticated social engineering and cloud exploitation techniques. The campaign involves spearphishing, input injection via USB devices, malicious container orchestration, persistence through Windows services, script processing for evasion, credential theft, lateral movement, data theft from cloud storage, domain fronting for C2 obfuscation, and exfiltration over web services. Blue teams should review logs for anomalies in user behavior, unauthorized service installations, and unusual network traffic to cloud services.",
+        "full_report_text": "During the simulated incident C0027, the fictional threat actor 'Silent Echo' impersonated legitimate IT support personnel in phone calls to direct victims to download a remote monitoring and management (RMM) tool, facilitating initial access [T1566.004]. Concurrently, the adversary deployed rogue USB devices emulating keyboards to simulate keystrokes that opened command prompts and executed malicious scripts [T1674]. Once established, the actors scheduled a malicious container deployment using CronJob to run during system maintenance windows, leveraging container orchestration for execution [T1053.007]. To maintain persistence, they installed a service mimicking RawPOS, ensuring continued access after reboots [T1543.003]. For evasion, the attackers dropped msxsl.exe to the temp directory to process XSL scripts and bypass application whitelisting [T1220]. They then executed Mimikatz.exe to extract Kerberos tickets from memory, enabling pass-the-hash attacks for lateral movement [T1550.002]. Using an RPC server similar to Stuxnet, they transferred tools peer-to-peer within the network, facilitating lateral movement [T1570]. The actors collected sensitive configuration files from an Amazon S3 bucket, stealing data from cloud storage [T1530]. To obfuscate command and control, they employed domain fronting to mask hard-coded C2 server domains [T1090.004]. Finally, the malware used openssl to encrypt stolen files and uploaded them to a trusted web service for exfiltration [T1567]. System logs from the affected environment show routine maintenance activities at 02:00 UTC, with no immediate alerts triggered. The company, a mid-sized financial services firm, reported unusual network spikes during off-hours, but initial investigations attributed this to backup processes. Further analysis revealed unauthorized access to cloud storage buckets, though no data loss was confirmed in this training scenario.",
+        "techniques_used": [
+            "T1566.004",
+            "T1674",
+            "T1053.007",
+            "T1543.003",
+            "T1220",
+            "T1550.002",
+            "T1570",
+            "T1530",
+            "T1090.004",
+            "T1567"
+        ]
+    }
+}

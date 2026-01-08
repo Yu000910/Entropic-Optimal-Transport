@@ -1,0 +1,115 @@
+{
+    "report_id": "report_703",
+    "generated_at": "20251223_104000",
+    "scenario_target_ids": [
+        "T1195.003",
+        "T1059.003",
+        "T1574.005",
+        "T1176",
+        "T1552.002",
+        "T1538",
+        "T1010",
+        "T1563.002",
+        "T1071.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1586",
+        "T1195.003",
+        "T1059.003",
+        "T1105",
+        "T1574.005",
+        "T1176",
+        "T1112",
+        "T1552.002",
+        "T1538",
+        "T1010",
+        "T1563.002",
+        "T1071.002"
+    ],
+    "actual_found_ids": [
+        "T1176",
+        "T1059.003",
+        "T1071.002",
+        "T1574.005",
+        "T1112",
+        "T1589",
+        "T1538",
+        "T1552.002",
+        "T1195.003",
+        "T1586",
+        "T1105",
+        "T1010",
+        "T1563.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign attributed to SEASHARPEE. This actor likely conducts reconnaissance through open-source intelligence gathering and social engineering to identify high-value targets. In the initial access phase, SEASHARPEE compromised hardware supply chains by modifying USB firmware to bypass security controls and deploy malware directly onto victim systems, as observed in logs from a manufacturing firm showing anomalous USB device connections on February 15, 2024. Once established, the actor employed the Windows Command Shell to execute commands that downloaded additional payloads from a remote server while simultaneously abusing executable installer file permissions by locating 'installer.exe' in the Windows directory to run with elevated privileges. For persistence, the malware leveraged browser extension permissions to establish a backdoor connection and modified registry keys to maintain access. In the credential access phase, a compromised system ran 'reg query HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' to collect default domain credentials stored in the registry, and the actor used the GCP Command Center to enumerate compute engines lacking encryption for potential exploitation. During discovery, PowerDuke, a tool associated with SEASHARPEE, executed commands to get the text of the current foreground window, aiding in user activity monitoring. In the lateral movement phase, the adversary exploited tscon.exe to hijack a disconnected but still active remote desktop session, allowing unauthorized access to internal systems. For command and control, attackers used FTP exploitation to conceal communications within normal file transfer operations, blending malicious traffic with legitimate data transfers. Throughout the campaign, SEASHARPEE demonstrated sophistication by combining these techniques in multi-stage attacks, as evidenced by network logs showing unusual RDP sessions and FTP transfers from compromised IP addresses. Organizations are advised to review their supply chain security, enforce least privilege principles, and monitor for anomalous registry changes and cloud service usage.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign attributed to SEASHARPEE. This actor likely conducts reconnaissance through open-source intelligence gathering [T1589] and social engineering [T1586] to identify high-value targets. In the initial access phase, SEASHARPEE compromised hardware supply chains by modifying USB firmware to bypass security controls and deploy malware directly onto victim systems [T1195.003], as observed in logs from a manufacturing firm showing anomalous USB device connections on February 15, 2024. Once established, the actor employed the Windows Command Shell [T1059.003] to execute commands that downloaded additional payloads from a remote server [T1105] while simultaneously abusing executable installer file permissions by locating 'installer.exe' in the Windows directory to run with elevated privileges [T1574.005]. For persistence, the malware leveraged browser extension permissions to establish a backdoor connection [T1176] and modified registry keys to maintain access [T1112]. In the credential access phase, a compromised system ran 'reg query HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' to collect default domain credentials stored in the registry [T1552.002], and the actor used the GCP Command Center to enumerate compute engines lacking encryption for potential exploitation [T1538]. During discovery, PowerDuke, a tool associated with SEASHARPEE, executed commands to get the text of the current foreground window [T1010], aiding in user activity monitoring. In the lateral movement phase, the adversary exploited tscon.exe to hijack a disconnected but still active remote desktop session [T1563.002], allowing unauthorized access to internal systems. For command and control, attackers used FTP exploitation to conceal communications within normal file transfer operations [T1071.002], blending malicious traffic with legitimate data transfers. Throughout the campaign, SEASHARPEE demonstrated sophistication by combining these techniques in multi-stage attacks, as evidenced by network logs showing unusual RDP sessions and FTP transfers from compromised IP addresses. Organizations are advised to review their supply chain security, enforce least privilege principles, and monitor for anomalous registry changes and cloud service usage.",
+    "sentence_annotations": [
+        {
+            "sentence": "This actor likely conducts reconnaissance through open-source intelligence gathering and social engineering to identify high-value targets.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "This actor likely conducts reconnaissance through open-source intelligence gathering and social engineering to identify high-value targets.",
+            "technique_id": "T1586",
+            "technique_name": "Compromise Accounts"
+        },
+        {
+            "sentence": "003] to execute commands that downloaded additional payloads from a remote server while simultaneously abusing executable installer file permissions by locating 'installer.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "For persistence, the malware leveraged browser extension permissions to establish a backdoor connection and modified registry keys to maintain access.",
+            "technique_id": "T1176",
+            "technique_name": "Software Extensions"
+        },
+        {
+            "sentence": "For persistence, the malware leveraged browser extension permissions to establish a backdoor connection and modified registry keys to maintain access.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "002], and the actor used the GCP Command Center to enumerate compute engines lacking encryption for potential exploitation.",
+            "technique_id": "T1538",
+            "technique_name": "Cloud Service Dashboard"
+        },
+        {
+            "sentence": "During discovery, PowerDuke, a tool associated with SEASHARPEE, executed commands to get the text of the current foreground window, aiding in user activity monitoring.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SEASHARPEE' Targeting Supply Chain and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor SEASHARPEE, which compromised hardware supply chains to deploy malware via USB firmware modifications, exploited system weaknesses for persistence and credential theft, and leveraged cloud services for reconnaissance and data exfiltration. The campaign targeted organizations in the manufacturing and technology sectors, with observed activity between January and March 2024, leading to unauthorized access and potential data breaches.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign attributed to SEASHARPEE. This actor likely conducts reconnaissance through open-source intelligence gathering [T1589] and social engineering [T1586] to identify high-value targets. In the initial access phase, SEASHARPEE compromised hardware supply chains by modifying USB firmware to bypass security controls and deploy malware directly onto victim systems [T1195.003], as observed in logs from a manufacturing firm showing anomalous USB device connections on February 15, 2024. Once established, the actor employed the Windows Command Shell [T1059.003] to execute commands that downloaded additional payloads from a remote server [T1105] while simultaneously abusing executable installer file permissions by locating 'installer.exe' in the Windows directory to run with elevated privileges [T1574.005]. For persistence, the malware leveraged browser extension permissions to establish a backdoor connection [T1176] and modified registry keys to maintain access [T1112]. In the credential access phase, a compromised system ran 'reg query HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' to collect default domain credentials stored in the registry [T1552.002], and the actor used the GCP Command Center to enumerate compute engines lacking encryption for potential exploitation [T1538]. During discovery, PowerDuke, a tool associated with SEASHARPEE, executed commands to get the text of the current foreground window [T1010], aiding in user activity monitoring. In the lateral movement phase, the adversary exploited tscon.exe to hijack a disconnected but still active remote desktop session [T1563.002], allowing unauthorized access to internal systems. For command and control, attackers used FTP exploitation to conceal communications within normal file transfer operations [T1071.002], blending malicious traffic with legitimate data transfers. Throughout the campaign, SEASHARPEE demonstrated sophistication by combining these techniques in multi-stage attacks, as evidenced by network logs showing unusual RDP sessions and FTP transfers from compromised IP addresses. Organizations are advised to review their supply chain security, enforce least privilege principles, and monitor for anomalous registry changes and cloud service usage.",
+        "techniques_used": [
+            "T1589",
+            "T1586",
+            "T1195.003",
+            "T1059.003",
+            "T1105",
+            "T1574.005",
+            "T1176",
+            "T1112",
+            "T1552.002",
+            "T1538",
+            "T1010",
+            "T1563.002",
+            "T1071.002"
+        ]
+    }
+}

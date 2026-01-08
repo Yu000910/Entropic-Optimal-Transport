@@ -1,0 +1,113 @@
+{
+    "report_id": "report_261",
+    "generated_at": "20251222_143258",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1651",
+        "T1546.013",
+        "T1548.001",
+        "T1027.011",
+        "T1218.011",
+        "T1055.005",
+        "T1518.001",
+        "T1217",
+        "T1021.002",
+        "T1530",
+        "T1039",
+        "T1071.003",
+        "T1565.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1651",
+        "T1546.013",
+        "T1548.001",
+        "T1027.011",
+        "T1218.011",
+        "T1055.005",
+        "T1518.001",
+        "T1217",
+        "T1021.002",
+        "T1530",
+        "T1039",
+        "T1071.003",
+        "T1565.001"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1651",
+        "T1027.011",
+        "T1546.013",
+        "T1218.011",
+        "T1530",
+        "T1217",
+        "T1565.001",
+        "T1518.001",
+        "T1071.003",
+        "T1548.001",
+        "T1055.005",
+        "T1021.002",
+        "T1078.001"
+    ],
+    "clean_text": "On March 15, 2024, a fictional financial services company, 'SecureFin Corp', reported anomalous activity in its hybrid Azure and on-premises environment. The company, which handles sensitive customer data and uses Azure VMs for critical applications, observed unauthorized access starting from an on-premises server. Initial investigation revealed that the threat actor, dubbed 'ShadowReaver', likely conducted reconnaissance to identify weak points, though no specific logs were captured during this phase. The attack began with the actor scanning the network for systems with enabled Guest accounts to gain initial access, exploiting a misconfigured Windows server that had default settings unchanged since deployment. System logs from the server showed failed login attempts prior to successful entry, but these were not flagged due to low-priority alerting thresholds.\n\nOnce inside, the actor executed malicious code that abused Azure RunCommand to disable security controls on Azure VMs, specifically targeting antivirus software and firewall rules to facilitate further movement. Concurrently, a script was inserted into profile.ps1 that establishes a reverse shell connection when PowerShell starts, ensuring persistence across sessions. The actor then used 'find / -perm +4000' to discover setuid executables with elevated privileges on Linux-based VMs, leveraging these for privilege escalation. To maintain stealth, PolyglotDuke was deployed, storing encrypted JSON configuration files in the Registry to evade file-based detection. Aquatic Panda components were observed using rundll32.exe to proxy execution of a malicious DLL file identified as a keylogging binary, while the threat actor injected a malicious DLL into explorer.exe to maintain persistence on the system via thread local storage.\n\nFor discovery, MuddyWater-inspired malware checked running processes against a hard-coded list of security tools often used by malware researchers, and the malware searched for Google Chrome installation paths to locate browser data directories to harvest credentials and browsing history. Lateral movement involved reGeorg tunneling SMB sessions to access internal shares, and the attacker used 'dir \\\\fileserver\\shared\\*.docx /s' to search for sensitive documents across network shares. Data collection extended to the cloud, with malicious scripts collecting sensitive configuration files from an Amazon S3 bucket containing backup data. Exfiltration was configured through the backdoor to communicate via POP3 for data transfer, and as a final act, the adversary changed recipient addresses in stored Outlook emails to redirect confidential communications, aiming to disrupt business operations. Incident responders noted that routine system maintenance logs from the previous week showed no anomalies, indicating the actor's ability to blend in with normal activity.",
+    "tagged_text": "On March 15, 2024, a fictional financial services company, 'SecureFin Corp', reported anomalous activity in its hybrid Azure and on-premises environment. The company, which handles sensitive customer data and uses Azure VMs for critical applications, observed unauthorized access starting from an on-premises server. Initial investigation revealed that the threat actor, dubbed 'ShadowReaver', likely conducted reconnaissance to identify weak points, though no specific logs were captured during this phase. The attack began with the actor scanning the network for systems with enabled Guest accounts to gain initial access [T1078.001], exploiting a misconfigured Windows server that had default settings unchanged since deployment. System logs from the server showed failed login attempts prior to successful entry, but these were not flagged due to low-priority alerting thresholds.\n\nOnce inside, the actor executed malicious code that abused Azure RunCommand to disable security controls on Azure VMs [T1651], specifically targeting antivirus software and firewall rules to facilitate further movement. Concurrently, a script was inserted into profile.ps1 that establishes a reverse shell connection when PowerShell starts [T1546.013], ensuring persistence across sessions. The actor then used 'find / -perm +4000' to discover setuid executables with elevated privileges [T1548.001] on Linux-based VMs, leveraging these for privilege escalation. To maintain stealth, PolyglotDuke was deployed, storing encrypted JSON configuration files in the Registry [T1027.011] to evade file-based detection. Aquatic Panda components were observed using rundll32.exe to proxy execution of a malicious DLL file identified as a keylogging binary [T1218.011], while the threat actor injected a malicious DLL into explorer.exe to maintain persistence on the system via thread local storage [T1055.005].\n\nFor discovery, MuddyWater-inspired malware checked running processes against a hard-coded list of security tools often used by malware researchers [T1518.001], and the malware searched for Google Chrome installation paths to locate browser data directories [T1217] to harvest credentials and browsing history. Lateral movement involved reGeorg tunneling SMB sessions [T1021.002] to access internal shares, and the attacker used 'dir \\\\fileserver\\shared\\*.docx /s' to search for sensitive documents across network shares [T1039]. Data collection extended to the cloud, with malicious scripts collecting sensitive configuration files from an Amazon S3 bucket containing backup data [T1530]. Exfiltration was configured through the backdoor to communicate via POP3 for data transfer [T1071.003], and as a final act, the adversary changed recipient addresses in stored Outlook emails to redirect confidential communications [T1565.001], aiming to disrupt business operations. Incident responders noted that routine system maintenance logs from the previous week showed no anomalies, indicating the actor's ability to blend in with normal activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, the actor executed malicious code that abused Azure RunCommand to disable security controls on Azure VMs, specifically targeting antivirus software and firewall rules to facilitate further movement.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "001], and the malware searched for Google Chrome installation paths to locate browser data directories to harvest credentials and browsing history.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "docx /s' to search for sensitive documents across network shares.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "Data collection extended to the cloud, with malicious scripts collecting sensitive configuration files from an Amazon S3 bucket containing backup data.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowReaver' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowReaver', targeting organizations with hybrid cloud infrastructures. The campaign exploits default accounts for initial access, abuses cloud administration tools for lateral movement, and employs sophisticated persistence and data exfiltration techniques. Blue teams are advised to review security configurations, monitor for anomalous cloud command usage, and implement robust logging and detection mechanisms.",
+        "full_report_text": "On March 15, 2024, a fictional financial services company, 'SecureFin Corp', reported anomalous activity in its hybrid Azure and on-premises environment. The company, which handles sensitive customer data and uses Azure VMs for critical applications, observed unauthorized access starting from an on-premises server. Initial investigation revealed that the threat actor, dubbed 'ShadowReaver', likely conducted reconnaissance to identify weak points, though no specific logs were captured during this phase. The attack began with the actor scanning the network for systems with enabled Guest accounts to gain initial access [T1078.001], exploiting a misconfigured Windows server that had default settings unchanged since deployment. System logs from the server showed failed login attempts prior to successful entry, but these were not flagged due to low-priority alerting thresholds.\n\nOnce inside, the actor executed malicious code that abused Azure RunCommand to disable security controls on Azure VMs [T1651], specifically targeting antivirus software and firewall rules to facilitate further movement. Concurrently, a script was inserted into profile.ps1 that establishes a reverse shell connection when PowerShell starts [T1546.013], ensuring persistence across sessions. The actor then used 'find / -perm +4000' to discover setuid executables with elevated privileges [T1548.001] on Linux-based VMs, leveraging these for privilege escalation. To maintain stealth, PolyglotDuke was deployed, storing encrypted JSON configuration files in the Registry [T1027.011] to evade file-based detection. Aquatic Panda components were observed using rundll32.exe to proxy execution of a malicious DLL file identified as a keylogging binary [T1218.011], while the threat actor injected a malicious DLL into explorer.exe to maintain persistence on the system via thread local storage [T1055.005].\n\nFor discovery, MuddyWater-inspired malware checked running processes against a hard-coded list of security tools often used by malware researchers [T1518.001], and the malware searched for Google Chrome installation paths to locate browser data directories [T1217] to harvest credentials and browsing history. Lateral movement involved reGeorg tunneling SMB sessions [T1021.002] to access internal shares, and the attacker used 'dir \\\\fileserver\\shared\\*.docx /s' to search for sensitive documents across network shares [T1039]. Data collection extended to the cloud, with malicious scripts collecting sensitive configuration files from an Amazon S3 bucket containing backup data [T1530]. Exfiltration was configured through the backdoor to communicate via POP3 for data transfer [T1071.003], and as a final act, the adversary changed recipient addresses in stored Outlook emails to redirect confidential communications [T1565.001], aiming to disrupt business operations. Incident responders noted that routine system maintenance logs from the previous week showed no anomalies, indicating the actor's ability to blend in with normal activity.",
+        "techniques_used": [
+            "T1078.001",
+            "T1651",
+            "T1546.013",
+            "T1548.001",
+            "T1027.011",
+            "T1218.011",
+            "T1055.005",
+            "T1518.001",
+            "T1217",
+            "T1021.002",
+            "T1530",
+            "T1039",
+            "T1071.003",
+            "T1565.001"
+        ]
+    }
+}

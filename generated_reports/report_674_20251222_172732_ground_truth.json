@@ -1,0 +1,113 @@
+{
+    "report_id": "report_674",
+    "generated_at": "20251222_172732",
+    "scenario_target_ids": [
+        "T1587",
+        "T1133",
+        "T1059.003",
+        "T1072",
+        "T1546.008",
+        "T1543.003",
+        "T1562.010",
+        "T1553",
+        "T1556",
+        "T1021.001",
+        "T1071.002",
+        "T1568.003",
+        "T1565.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1587",
+        "T1133",
+        "T1059.003",
+        "T1072",
+        "T1546.008",
+        "T1543.003",
+        "T1562.010",
+        "T1553",
+        "T1556",
+        "T1021.001",
+        "T1071.002",
+        "T1568.003",
+        "T1565.001"
+    ],
+    "actual_found_ids": [
+        "T1587",
+        "T1059.003",
+        "T1562.010",
+        "T1071.002",
+        "T1546.008",
+        "T1565.001",
+        "T1543.003",
+        "T1133",
+        "T1021.001",
+        "T1568.003",
+        "T1556",
+        "T1072",
+        "T1553"
+    ],
+    "clean_text": "On October 15, 2023, GreenGrid Energy Solutions, a company specializing in renewable energy infrastructure with offices in Houston and Dallas, detected anomalous network activity originating from their corporate VPN gateway. Initial analysis revealed that CrimsonTide actors likely conducted reconnaissance on employee social media profiles to identify domain administrator accounts, though no specific indicators were found in system logs at this stage. The actors then developed a specialized credential harvesting tool named 'PassSniff.exe' designed to target domain administrator credentials. They gained initial access by exploiting misconfigured external remote services, specifically a vulnerable Citrix server, which allowed them to deploy PassSniff.exe onto a critical server. Once inside, the actors employed the Windows Command Shell to execute commands that downloaded additional payloads while simultaneously leveraging Software Deployment Tools like SCCM to run PowerShell scripts across connected workstations, collecting system information and disabling security features. To escalate privileges, they modified Accessibility Features by replacing utilman.exe with cmd.exe, achieving unauthenticated SYSTEM access, and then created a new Windows Service for persistence, ensuring the malware would restart after system reboots. The actors further evaded defenses by executing a Downgrade Attack using PowerShell version 2 compatibility and Subverted Trust Controls by modifying registry keys to disable User Account Control. They also Modified the Authentication Process by trojanizing legitimate KeePass binaries to harvest passwords from various applications. For lateral movement, they utilized Remote Desktop Protocol to access additional systems and employed File Transfer Protocols such as FTP for Command & Control communications. To bypass network egress filtering, they tunneled data through DNS SRV record queries using DNS Calculation techniques. Finally, they manipulated Stored Data by editing Excel macros to execute malicious code while maintaining the appearance of legitimate spreadsheets, facilitating further data exfiltration. Incident responders noted that routine system backups were unaffected, but several user accounts showed unusual login times outside business hours.",
+    "tagged_text": "On October 15, 2023, GreenGrid Energy Solutions, a company specializing in renewable energy infrastructure with offices in Houston and Dallas, detected anomalous network activity originating from their corporate VPN gateway. Initial analysis revealed that CrimsonTide actors likely conducted reconnaissance on employee social media profiles to identify domain administrator accounts, though no specific indicators were found in system logs at this stage. The actors then developed a specialized credential harvesting tool named 'PassSniff.exe' designed to target domain administrator credentials [T1587]. They gained initial access by exploiting misconfigured external remote services, specifically a vulnerable Citrix server [T1133], which allowed them to deploy PassSniff.exe onto a critical server. Once inside, the actors employed the Windows Command Shell [T1059.003] to execute commands that downloaded additional payloads while simultaneously leveraging Software Deployment Tools like SCCM [T1072] to run PowerShell scripts across connected workstations, collecting system information and disabling security features. To escalate privileges, they modified Accessibility Features by replacing utilman.exe with cmd.exe [T1546.008], achieving unauthenticated SYSTEM access, and then created a new Windows Service [T1543.003] for persistence, ensuring the malware would restart after system reboots. The actors further evaded defenses by executing a Downgrade Attack using PowerShell version 2 compatibility [T1562.010] and Subverted Trust Controls by modifying registry keys to disable User Account Control [T1553]. They also Modified the Authentication Process by trojanizing legitimate KeePass binaries [T1556] to harvest passwords from various applications. For lateral movement, they utilized Remote Desktop Protocol [T1021.001] to access additional systems and employed File Transfer Protocols such as FTP [T1071.002] for Command & Control communications. To bypass network egress filtering, they tunneled data through DNS SRV record queries using DNS Calculation techniques [T1568.003]. Finally, they manipulated Stored Data by editing Excel macros [T1565.001] to execute malicious code while maintaining the appearance of legitimate spreadsheets, facilitating further data exfiltration. Incident responders noted that routine system backups were unaffected, but several user accounts showed unusual login times outside business hours.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe' designed to target domain administrator credentials.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "They gained initial access by exploiting misconfigured external remote services, specifically a vulnerable Citrix server, which allowed them to deploy PassSniff.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "003] to execute commands that downloaded additional payloads while simultaneously leveraging Software Deployment Tools like SCCM to run PowerShell scripts across connected workstations, collecting system information and disabling security features.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "010] and Subverted Trust Controls by modifying registry keys to disable User Account Control.",
+            "technique_id": "T1553",
+            "technique_name": "Subvert Trust Controls"
+        },
+        {
+            "sentence": "They also Modified the Authentication Process by trojanizing legitimate KeePass binaries to harvest passwords from various applications.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Energy Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'CrimsonTide', targeting a mid-sized energy company, 'GreenGrid Energy Solutions', to exfiltrate sensitive operational data and establish persistent remote access. The campaign involved the development of custom tools, exploitation of external services, and multi-stage execution techniques to evade detection and maintain control over compromised systems.",
+        "full_report_text": "On October 15, 2023, GreenGrid Energy Solutions, a company specializing in renewable energy infrastructure with offices in Houston and Dallas, detected anomalous network activity originating from their corporate VPN gateway. Initial analysis revealed that CrimsonTide actors likely conducted reconnaissance on employee social media profiles to identify domain administrator accounts, though no specific indicators were found in system logs at this stage. The actors then developed a specialized credential harvesting tool named 'PassSniff.exe' designed to target domain administrator credentials [T1587]. They gained initial access by exploiting misconfigured external remote services, specifically a vulnerable Citrix server [T1133], which allowed them to deploy PassSniff.exe onto a critical server. Once inside, the actors employed the Windows Command Shell [T1059.003] to execute commands that downloaded additional payloads while simultaneously leveraging Software Deployment Tools like SCCM [T1072] to run PowerShell scripts across connected workstations, collecting system information and disabling security features. To escalate privileges, they modified Accessibility Features by replacing utilman.exe with cmd.exe [T1546.008], achieving unauthenticated SYSTEM access, and then created a new Windows Service [T1543.003] for persistence, ensuring the malware would restart after system reboots. The actors further evaded defenses by executing a Downgrade Attack using PowerShell version 2 compatibility [T1562.010] and Subverted Trust Controls by modifying registry keys to disable User Account Control [T1553]. They also Modified the Authentication Process by trojanizing legitimate KeePass binaries [T1556] to harvest passwords from various applications. For lateral movement, they utilized Remote Desktop Protocol [T1021.001] to access additional systems and employed File Transfer Protocols such as FTP [T1071.002] for Command & Control communications. To bypass network egress filtering, they tunneled data through DNS SRV record queries using DNS Calculation techniques [T1568.003]. Finally, they manipulated Stored Data by editing Excel macros [T1565.001] to execute malicious code while maintaining the appearance of legitimate spreadsheets, facilitating further data exfiltration. Incident responders noted that routine system backups were unaffected, but several user accounts showed unusual login times outside business hours.",
+        "techniques_used": [
+            "T1587",
+            "T1133",
+            "T1059.003",
+            "T1072",
+            "T1546.008",
+            "T1543.003",
+            "T1562.010",
+            "T1553",
+            "T1556",
+            "T1021.001",
+            "T1071.002",
+            "T1568.003",
+            "T1565.001"
+        ]
+    }
+}

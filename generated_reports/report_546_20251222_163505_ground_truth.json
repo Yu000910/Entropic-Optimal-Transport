@@ -1,0 +1,103 @@
+{
+    "report_id": "report_546",
+    "generated_at": "20251222_163505",
+    "scenario_target_ids": [
+        "T1598.001",
+        "T1195.002",
+        "T1195.001",
+        "T1559.001",
+        "T1053.003",
+        "T1546",
+        "T1613",
+        "T1550",
+        "T1021.006",
+        "T1132.002",
+        "T1001.003",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1598.001",
+        "T1195.002",
+        "T1195.001",
+        "T1559.001",
+        "T1053.003",
+        "T1546",
+        "T1613",
+        "T1550",
+        "T1021.006",
+        "T1132.002",
+        "T1001.003",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1001.003",
+        "T1567",
+        "T1613",
+        "T1195.001",
+        "T1546",
+        "T1550",
+        "T1559.001",
+        "T1132.002",
+        "T1021.006",
+        "T1053.003",
+        "T1598.001"
+    ],
+    "clean_text": "On March 15, 2024, a financial institution reported suspicious emails from a Gmail account posing as HR, which were used to collect employee login credentials through spearphishing. Analysis of network logs showed increased traffic to external domains, but no immediate alerts were triggered. The actors then compromised a developer account to upload a trojanized version of a widely used financial application to the official download server, while simultaneously injecting a malicious PowerShell script into the software's dependencies to enumerate and steal database connection strings. System administrators noted unusual PowerShell activity but attributed it to routine maintenance. Following initial compromise, the adversaries exploited a malicious Excel document that leveraged the Excel COM interface to download and execute additional payloads, and they installed a cron job to periodically download and execute files from the command-and-control (C2) server. Event logs from Linux servers indicated cron job executions at irregular intervals, though these were not flagged by standard monitoring tools. To establish persistence, a backdoor was deployed by executing a malicious DLL via the scheduled task mechanism, and the actors used masscan to discover kubelets and the kubelet API for identifying additional running containers. Network scans revealed port 10250 access attempts, but these were logged as benign reconnaissance. For lateral movement, Pass-the-Hash was employed to authenticate to the Windows domain controller using compromised credential hashes, and PowerShell.exe was leveraged through WinRM to deploy payloads across the network. Security teams observed WinRM sessions from unusual IP addresses but did not correlate them with earlier phishing events. To evade detection, malicious scripts utilized modified Base64 encoding with URL-safe characters to conceal C2 data, and fake Transport Layer Security (TLS) was used to communicate with the C2 server. Finally, exfiltrated data, including customer records and financial data, was transferred to online file hosting sites such as Mega.co.nz. The institution's data loss prevention system flagged large uploads but only after significant data had been exfiltrated.",
+    "tagged_text": "On March 15, 2024, a financial institution reported suspicious emails from a Gmail account posing as HR, which were used to collect employee login credentials through spearphishing [T1598.001]. Analysis of network logs showed increased traffic to external domains, but no immediate alerts were triggered. The actors then compromised a developer account to upload a trojanized version of a widely used financial application to the official download server [T1195.002], while simultaneously injecting a malicious PowerShell script into the software's dependencies to enumerate and steal database connection strings [T1195.001]. System administrators noted unusual PowerShell activity but attributed it to routine maintenance. Following initial compromise, the adversaries exploited a malicious Excel document that leveraged the Excel COM interface to download and execute additional payloads [T1559.001], and they installed a cron job to periodically download and execute files from the command-and-control (C2) server [T1053.003]. Event logs from Linux servers indicated cron job executions at irregular intervals, though these were not flagged by standard monitoring tools. To establish persistence, a backdoor was deployed by executing a malicious DLL via the scheduled task mechanism [T1546], and the actors used masscan to discover kubelets and the kubelet API for identifying additional running containers [T1613]. Network scans revealed port 10250 access attempts, but these were logged as benign reconnaissance. For lateral movement, Pass-the-Hash was employed to authenticate to the Windows domain controller using compromised credential hashes [T1550], and PowerShell.exe was leveraged through WinRM to deploy payloads across the network [T1021.006]. Security teams observed WinRM sessions from unusual IP addresses but did not correlate them with earlier phishing events. To evade detection, malicious scripts utilized modified Base64 encoding with URL-safe characters to conceal C2 data [T1132.002], and fake Transport Layer Security (TLS) was used to communicate with the C2 server [T1001.003]. Finally, exfiltrated data, including customer records and financial data, was transferred to online file hosting sites such as Mega.co.nz [T1567]. The institution's data loss prevention system flagged large uploads but only after significant data had been exfiltrated.",
+    "sentence_annotations": [
+        {
+            "sentence": "To establish persistence, a backdoor was deployed by executing a malicious DLL via the scheduled task mechanism, and the actors used masscan to discover kubelets and the kubelet API for identifying additional running containers.",
+            "technique_id": "T1546",
+            "technique_name": "Event Triggered Execution"
+        },
+        {
+            "sentence": "To establish persistence, a backdoor was deployed by executing a malicious DLL via the scheduled task mechanism, and the actors used masscan to discover kubelets and the kubelet API for identifying additional running containers.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "For lateral movement, Pass-the-Hash was employed to authenticate to the Windows domain controller using compromised credential hashes, and PowerShell.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "nz.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowLink' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowLink' targeting financial institutions, leveraging spearphishing, software supply chain compromises, and lateral movement techniques for credential theft, data exfiltration, and persistence. The attack chain includes initial access via phishing, execution through trojanized software, and exfiltration over web services, with observed activity from March to April 2024.",
+        "full_report_text": "On March 15, 2024, a financial institution reported suspicious emails from a Gmail account posing as HR, which were used to collect employee login credentials through spearphishing [T1598.001]. Analysis of network logs showed increased traffic to external domains, but no immediate alerts were triggered. The actors then compromised a developer account to upload a trojanized version of a widely used financial application to the official download server [T1195.002], while simultaneously injecting a malicious PowerShell script into the software's dependencies to enumerate and steal database connection strings [T1195.001]. System administrators noted unusual PowerShell activity but attributed it to routine maintenance. Following initial compromise, the adversaries exploited a malicious Excel document that leveraged the Excel COM interface to download and execute additional payloads [T1559.001], and they installed a cron job to periodically download and execute files from the command-and-control (C2) server [T1053.003]. Event logs from Linux servers indicated cron job executions at irregular intervals, though these were not flagged by standard monitoring tools. To establish persistence, a backdoor was deployed by executing a malicious DLL via the scheduled task mechanism [T1546], and the actors used masscan to discover kubelets and the kubelet API for identifying additional running containers [T1613]. Network scans revealed port 10250 access attempts, but these were logged as benign reconnaissance. For lateral movement, Pass-the-Hash was employed to authenticate to the Windows domain controller using compromised credential hashes [T1550], and PowerShell.exe was leveraged through WinRM to deploy payloads across the network [T1021.006]. Security teams observed WinRM sessions from unusual IP addresses but did not correlate them with earlier phishing events. To evade detection, malicious scripts utilized modified Base64 encoding with URL-safe characters to conceal C2 data [T1132.002], and fake Transport Layer Security (TLS) was used to communicate with the C2 server [T1001.003]. Finally, exfiltrated data, including customer records and financial data, was transferred to online file hosting sites such as Mega.co.nz [T1567]. The institution's data loss prevention system flagged large uploads but only after significant data had been exfiltrated.",
+        "techniques_used": [
+            "T1598.001",
+            "T1195.002",
+            "T1195.001",
+            "T1559.001",
+            "T1053.003",
+            "T1546",
+            "T1613",
+            "T1550",
+            "T1021.006",
+            "T1132.002",
+            "T1001.003",
+            "T1567"
+        ]
+    }
+}

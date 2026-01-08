@@ -1,0 +1,78 @@
+{
+    "report_id": "report_775",
+    "generated_at": "20251223_110912",
+    "scenario_target_ids": [
+        "T1585",
+        "T1585.002",
+        "T1566.002",
+        "T1047",
+        "T1204.002",
+        "T1036.008",
+        "T1564.005",
+        "T1021.002",
+        "T1219.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1585",
+        "T1585.002",
+        "T1566.002",
+        "T1047",
+        "T1204.002",
+        "T1036.008",
+        "T1564.005",
+        "T1021.002",
+        "T1219.001"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1036.008",
+        "T1585.002",
+        "T1585",
+        "T1566.002",
+        "T1564.005",
+        "T1021.002",
+        "T1204.002",
+        "T1219.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign. This report is based on a simulated scenario designed to educate defenders on identifying and mitigating sophisticated cyber threats.\n\nBackground: The fictional company 'TechInnovate Inc.,' a mid-sized software development firm, reported anomalous network activity after an employee received a suspicious email. Initial logs from their SIEM showed multiple failed login attempts from unknown IP addresses, but these were later determined to be unrelated noise from a misconfigured firewall rule. The company's security team, during a routine audit, discovered unusual file modifications in a development server, prompting further investigation.\n\nAttack Narrative: The adversary, 'ShadowRecruit,' likely conducted initial reconnaissance by establishing a fake Facebook account posing as a recruiter to gather intelligence on employees and created disposable email accounts through Tutanota's registration page for anonymous command and control operations. Subsequently, they distributed malicious links in spearphishing emails that led to HTML files, which, based on User Agent fingerprinting, directed victims to malicious MSC files if running Windows. Upon execution, the actors employed Windows Management Instrumentation (WMI) to run commands like `cmd /c wmic computersystem get domain` for discovery while relying on users clicking on embedded images in documents to execute scripts. To evade detection, they wrote a malicious payload into 'malicious.php' and saved it with an innocuous name like 'system_logs.php' and used a hidden file system to store components. For lateral movement, they attempted to map to C$ on enumerated hosts using SMB/Windows Admin Shares to test credential scope and abused Visual Studio Code's remote SSH extension to establish persistent remote control over developer systems. Additional system logs from TechInnovate showed routine backup processes and unrelated network scans, which were filtered out during analysis. The campaign aimed to exfiltrate proprietary source code, but no actual data loss occurred in this training scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign. This report is based on a simulated scenario designed to educate defenders on identifying and mitigating sophisticated cyber threats.\n\nBackground: The fictional company 'TechInnovate Inc.,' a mid-sized software development firm, reported anomalous network activity after an employee received a suspicious email. Initial logs from their SIEM showed multiple failed login attempts from unknown IP addresses, but these were later determined to be unrelated noise from a misconfigured firewall rule. The company's security team, during a routine audit, discovered unusual file modifications in a development server, prompting further investigation.\n\nAttack Narrative: The adversary, 'ShadowRecruit,' likely conducted initial reconnaissance by establishing a fake Facebook account posing as a recruiter to gather intelligence on employees [T1585] and created disposable email accounts through Tutanota's registration page for anonymous command and control operations [T1585.002]. Subsequently, they distributed malicious links in spearphishing emails that led to HTML files, which, based on User Agent fingerprinting, directed victims to malicious MSC files if running Windows [T1566.002]. Upon execution, the actors employed Windows Management Instrumentation (WMI) to run commands like `cmd /c wmic computersystem get domain` for discovery [T1047] while relying on users clicking on embedded images in documents to execute scripts [T1204.002]. To evade detection, they wrote a malicious payload into 'malicious.php' and saved it with an innocuous name like 'system_logs.php' [T1036.008] and used a hidden file system to store components [T1564.005]. For lateral movement, they attempted to map to C$ on enumerated hosts using SMB/Windows Admin Shares to test credential scope [T1021.002] and abused Visual Studio Code's remote SSH extension to establish persistent remote control over developer systems [T1219.001]. Additional system logs from TechInnovate showed routine backup processes and unrelated network scans, which were filtered out during analysis. The campaign aimed to exfiltrate proprietary source code, but no actual data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative: The adversary, 'ShadowRecruit,' likely conducted initial reconnaissance by establishing a fake Facebook account posing as a recruiter to gather intelligence on employees and created disposable email accounts through Tutanota's registration page for anonymous command and control operations [T1585.",
+            "technique_id": "T1585",
+            "technique_name": "Establish Accounts"
+        },
+        {
+            "sentence": "Upon execution, the actors employed Windows Management Instrumentation (WMI) to run commands like `cmd /c wmic computersystem get domain` for discovery while relying on users clicking on embedded images in documents to execute scripts [T1204.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRecruit' Targeting Technology Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'ShadowRecruit,' targeting technology companies through social engineering, spearphishing, and lateral movement techniques. The activity involves the establishment of fake accounts, deployment of malicious files via phishing links, and abuse of legitimate tools for persistence and data exfiltration, based on observed tactics, techniques, and procedures (TTPs) in real-world incidents.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign. This report is based on a simulated scenario designed to educate defenders on identifying and mitigating sophisticated cyber threats.\n\nBackground: The fictional company 'TechInnovate Inc.,' a mid-sized software development firm, reported anomalous network activity after an employee received a suspicious email. Initial logs from their SIEM showed multiple failed login attempts from unknown IP addresses, but these were later determined to be unrelated noise from a misconfigured firewall rule. The company's security team, during a routine audit, discovered unusual file modifications in a development server, prompting further investigation.\n\nAttack Narrative: The adversary, 'ShadowRecruit,' likely conducted initial reconnaissance by establishing a fake Facebook account posing as a recruiter to gather intelligence on employees [T1585] and created disposable email accounts through Tutanota's registration page for anonymous command and control operations [T1585.002]. Subsequently, they distributed malicious links in spearphishing emails that led to HTML files, which, based on User Agent fingerprinting, directed victims to malicious MSC files if running Windows [T1566.002]. Upon execution, the actors employed Windows Management Instrumentation (WMI) to run commands like `cmd /c wmic computersystem get domain` for discovery [T1047] while relying on users clicking on embedded images in documents to execute scripts [T1204.002]. To evade detection, they wrote a malicious payload into 'malicious.php' and saved it with an innocuous name like 'system_logs.php' [T1036.008] and used a hidden file system to store components [T1564.005]. For lateral movement, they attempted to map to C$ on enumerated hosts using SMB/Windows Admin Shares to test credential scope [T1021.002] and abused Visual Studio Code's remote SSH extension to establish persistent remote control over developer systems [T1219.001]. Additional system logs from TechInnovate showed routine backup processes and unrelated network scans, which were filtered out during analysis. The campaign aimed to exfiltrate proprietary source code, but no actual data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1585",
+            "T1585.002",
+            "T1566.002",
+            "T1047",
+            "T1204.002",
+            "T1036.008",
+            "T1564.005",
+            "T1021.002",
+            "T1219.001"
+        ]
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "report_id": "report_145",
+    "generated_at": "20251222_134427",
+    "scenario_target_ids": [
+        "T1195",
+        "T1059.001",
+        "T1008",
+        "T1029",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1059.001",
+        "T1008",
+        "T1029",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1029",
+        "T1008",
+        "T1589",
+        "T1195",
+        "T1496.004",
+        "T1059.001"
+    ],
+    "clean_text": "ShadowChain, a fictional advanced persistent threat (APT) group, has been observed conducting a multi-stage campaign against energy and manufacturing sectors since early 2023. The actors likely conduct reconnaissance to identify vulnerable software vendors, though this phase is not directly observed in the current scenario. The campaign begins with a supply chain compromise, where attackers modified a widely used industrial control system (ICS) software installer to include additional malicious payloads that execute silently during installation on victim systems. For instance, system logs from a compromised utility company show normal installation processes but with anomalous network traffic spikes post-installation, unrelated to the tagged techniques. Upon execution, the malware employs PowerShell to actively download secondary payloads from a command-and-control (C2) server while simultaneously establishing fallback channels by first attempting to use a Base64-encoded network protocol over a raw TCP socket for C2, and if that method fails due to network restrictions, falling back to a secondary HTTP-based protocol to communicate to an alternate C2 server. The company background includes routine maintenance schedules that were unaffected, but internal monitoring detected unusual scheduled transfers where ShadowPad, a component of the malware, sent encrypted data back to C2 every 8 hours, as noted in firewall logs showing consistent outbound connections at these intervals. Additionally, the actors leveraged cloud service hijacking by abusing AWS SNS to broadcast millions of notifications, consuming the service's capacity and causing availability issues for legitimate cloud-based operations, which was flagged in cloud audit logs showing abnormal API call volumes. Throughout the campaign, irrelevant information such as employee login times and standard software updates were logged but did not correlate with malicious activity. The attack chain demonstrates a sophisticated blend of initial access, execution, persistence, and exfiltration techniques designed to evade detection.",
+    "tagged_text": "ShadowChain, a fictional advanced persistent threat (APT) group, has been observed conducting a multi-stage campaign against energy and manufacturing sectors since early 2023. The actors likely conduct reconnaissance [T1589] to identify vulnerable software vendors, though this phase is not directly observed in the current scenario. The campaign begins with a supply chain compromise [T1195], where attackers modified a widely used industrial control system (ICS) software installer to include additional malicious payloads that execute silently during installation on victim systems. For instance, system logs from a compromised utility company show normal installation processes but with anomalous network traffic spikes post-installation, unrelated to the tagged techniques. Upon execution, the malware employs PowerShell [T1059.001] to actively download secondary payloads from a command-and-control (C2) server while simultaneously establishing fallback channels [T1008] by first attempting to use a Base64-encoded network protocol over a raw TCP socket for C2, and if that method fails due to network restrictions, falling back to a secondary HTTP-based protocol to communicate to an alternate C2 server. The company background includes routine maintenance schedules that were unaffected, but internal monitoring detected unusual scheduled transfers [T1029] where ShadowPad, a component of the malware, sent encrypted data back to C2 every 8 hours, as noted in firewall logs showing consistent outbound connections at these intervals. Additionally, the actors leveraged cloud service hijacking [T1496.004] by abusing AWS SNS to broadcast millions of notifications, consuming the service's capacity and causing availability issues for legitimate cloud-based operations, which was flagged in cloud audit logs showing abnormal API call volumes. Throughout the campaign, irrelevant information such as employee login times and standard software updates were logged but did not correlate with malicious activity. The attack chain demonstrates a sophisticated blend of initial access, execution, persistence, and exfiltration techniques designed to evade detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify vulnerable software vendors, though this phase is not directly observed in the current scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The campaign begins with a supply chain compromise, where attackers modified a widely used industrial control system (ICS) software installer to include additional malicious payloads that execute silently during installation on victim systems.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "001] to actively download secondary payloads from a command-and-control (C2) server while simultaneously establishing fallback channels by first attempting to use a Base64-encoded network protocol over a raw TCP socket for C2, and if that method fails due to network restrictions, falling back to a secondary HTTP-based protocol to communicate to an alternate C2 server.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        },
+        {
+            "sentence": "The company background includes routine maintenance schedules that were unaffected, but internal monitoring detected unusual scheduled transfers where ShadowPad, a component of the malware, sent encrypted data back to C2 every 8 hours, as noted in firewall logs showing consistent outbound connections at these intervals.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowChain' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowChain' targeting critical infrastructure sectors through supply chain compromise and cloud service hijacking. The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating these advanced techniques in a controlled environment.",
+        "full_report_text": "ShadowChain, a fictional advanced persistent threat (APT) group, has been observed conducting a multi-stage campaign against energy and manufacturing sectors since early 2023. The actors likely conduct reconnaissance [T1589] to identify vulnerable software vendors, though this phase is not directly observed in the current scenario. The campaign begins with a supply chain compromise [T1195], where attackers modified a widely used industrial control system (ICS) software installer to include additional malicious payloads that execute silently during installation on victim systems. For instance, system logs from a compromised utility company show normal installation processes but with anomalous network traffic spikes post-installation, unrelated to the tagged techniques. Upon execution, the malware employs PowerShell [T1059.001] to actively download secondary payloads from a command-and-control (C2) server while simultaneously establishing fallback channels [T1008] by first attempting to use a Base64-encoded network protocol over a raw TCP socket for C2, and if that method fails due to network restrictions, falling back to a secondary HTTP-based protocol to communicate to an alternate C2 server. The company background includes routine maintenance schedules that were unaffected, but internal monitoring detected unusual scheduled transfers [T1029] where ShadowPad, a component of the malware, sent encrypted data back to C2 every 8 hours, as noted in firewall logs showing consistent outbound connections at these intervals. Additionally, the actors leveraged cloud service hijacking [T1496.004] by abusing AWS SNS to broadcast millions of notifications, consuming the service's capacity and causing availability issues for legitimate cloud-based operations, which was flagged in cloud audit logs showing abnormal API call volumes. Throughout the campaign, irrelevant information such as employee login times and standard software updates were logged but did not correlate with malicious activity. The attack chain demonstrates a sophisticated blend of initial access, execution, persistence, and exfiltration techniques designed to evade detection.",
+        "techniques_used": [
+            "T1195",
+            "T1059.001",
+            "T1008",
+            "T1029",
+            "T1496.004"
+        ]
+    }
+}

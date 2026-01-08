@@ -1,0 +1,75 @@
+{
+    "report_id": "report_207",
+    "generated_at": "20251222_140928",
+    "scenario_target_ids": [
+        "T1200",
+        "T1195.001",
+        "T1047",
+        "T1542.005",
+        "T1546.015",
+        "T1555.006",
+        "T1556.003",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1200",
+        "T1195.001",
+        "T1047",
+        "T1542.005",
+        "T1546.015",
+        "T1555.006",
+        "T1556.003",
+        "T1665"
+    ],
+    "actual_found_ids": [
+        "T1589",
+        "T1665",
+        "T1200"
+    ],
+    "clean_text": "On October 15, 2023, multiple reports emerged of suspicious USB devices found across university campuses, with themes mimicking official IT support or student event promotions, indicating potential reconnaissance and social engineering efforts. Analysis revealed that these devices, identified as USB Rubber Ducky variants, were strategically dropped in high-traffic areas like libraries and cafeterias to exploit human curiosity and gain initial access. Upon insertion into a victim system, the USB devices executed a malicious PowerShell script, 'setup.ps1', which had been compromised in a software repository to inject Agent Tesla malware while simultaneously querying system information via Windows Management Instrumentation (WMI) to profile the environment [T1195.001, T1047]. The malware then modified network device configurations to boot from a rogue TFTP server, enabling unauthorized software deployment and establishing persistence through Component Object Model (COM) hijacking by altering registry keys in HKLM\\SOFTWARE\\Classes\\CLSID\\{12345678-1234-1234-1234-123456789012}\\InprocServer32 [T1542.005, T1546.015]. In cloud environments, the script leveraged Azure PowerShell cmdlets, such as 'Get-AzKeyVaultSecret', to extract storage account keys from Azure Key Vault, while on Linux systems, attackers patched Pluggable Authentication Modules (PAM) like pam_unix.so to accept a master password for universal authentication [T1555.006, T1556.003]. To evade detection, the threat actors configured their command-and-control (C2) traffic to route through HTTP proxies, blending with legitimate web services and hiding their infrastructure. System logs from affected entities showed increased network traffic to unknown IP addresses, but no direct correlation to the initial USB drops was immediately apparent, complicating incident response efforts. The university's IT department reported no prior incidents of this scale, though minor phishing attempts had been noted in quarterly reviews.",
+    "tagged_text": "On October 15, 2023, multiple reports emerged of suspicious USB devices found across university campuses, with themes mimicking official IT support or student event promotions, indicating potential reconnaissance and social engineering efforts [T1589]. Analysis revealed that these devices, identified as USB Rubber Ducky variants, were strategically dropped in high-traffic areas like libraries and cafeterias to exploit human curiosity and gain initial access [T1200]. Upon insertion into a victim system, the USB devices executed a malicious PowerShell script, 'setup.ps1', which had been compromised in a software repository to inject Agent Tesla malware while simultaneously querying system information via Windows Management Instrumentation (WMI) to profile the environment [T1195.001, T1047]. The malware then modified network device configurations to boot from a rogue TFTP server, enabling unauthorized software deployment and establishing persistence through Component Object Model (COM) hijacking by altering registry keys in HKLM\\SOFTWARE\\Classes\\CLSID\\{12345678-1234-1234-1234-123456789012}\\InprocServer32 [T1542.005, T1546.015]. In cloud environments, the script leveraged Azure PowerShell cmdlets, such as 'Get-AzKeyVaultSecret', to extract storage account keys from Azure Key Vault, while on Linux systems, attackers patched Pluggable Authentication Modules (PAM) like pam_unix.so to accept a master password for universal authentication [T1555.006, T1556.003]. To evade detection, the threat actors configured their command-and-control (C2) traffic to route through HTTP proxies, blending with legitimate web services and hiding their infrastructure [T1665]. System logs from affected entities showed increased network traffic to unknown IP addresses, but no direct correlation to the initial USB drops was immediately apparent, complicating incident response efforts. The university's IT department reported no prior incidents of this scale, though minor phishing attempts had been noted in quarterly reviews.",
+    "sentence_annotations": [
+        {
+            "sentence": "On October 15, 2023, multiple reports emerged of suspicious USB devices found across university campuses, with themes mimicking official IT support or student event promotions, indicating potential reconnaissance and social engineering efforts.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Analysis revealed that these devices, identified as USB Rubber Ducky variants, were strategically dropped in high-traffic areas like libraries and cafeterias to exploit human curiosity and gain initial access.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "To evade detection, the threat actors configured their command-and-control (C2) traffic to route through HTTP proxies, blending with legitimate web services and hiding their infrastructure.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowDrop' Targeting Educational and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowDrop', targeting educational institutions and cloud environments. The campaign involves hardware-based initial access, supply chain compromise, and multi-platform persistence techniques to exfiltrate sensitive data and maintain covert infrastructure. Blue teams are advised to review detection and mitigation strategies.",
+        "full_report_text": "On October 15, 2023, multiple reports emerged of suspicious USB devices found across university campuses, with themes mimicking official IT support or student event promotions, indicating potential reconnaissance and social engineering efforts [T1589]. Analysis revealed that these devices, identified as USB Rubber Ducky variants, were strategically dropped in high-traffic areas like libraries and cafeterias to exploit human curiosity and gain initial access [T1200]. Upon insertion into a victim system, the USB devices executed a malicious PowerShell script, 'setup.ps1', which had been compromised in a software repository to inject Agent Tesla malware while simultaneously querying system information via Windows Management Instrumentation (WMI) to profile the environment [T1195.001, T1047]. The malware then modified network device configurations to boot from a rogue TFTP server, enabling unauthorized software deployment and establishing persistence through Component Object Model (COM) hijacking by altering registry keys in HKLM\\SOFTWARE\\Classes\\CLSID\\{12345678-1234-1234-1234-123456789012}\\InprocServer32 [T1542.005, T1546.015]. In cloud environments, the script leveraged Azure PowerShell cmdlets, such as 'Get-AzKeyVaultSecret', to extract storage account keys from Azure Key Vault, while on Linux systems, attackers patched Pluggable Authentication Modules (PAM) like pam_unix.so to accept a master password for universal authentication [T1555.006, T1556.003]. To evade detection, the threat actors configured their command-and-control (C2) traffic to route through HTTP proxies, blending with legitimate web services and hiding their infrastructure [T1665]. System logs from affected entities showed increased network traffic to unknown IP addresses, but no direct correlation to the initial USB drops was immediately apparent, complicating incident response efforts. The university's IT department reported no prior incidents of this scale, though minor phishing attempts had been noted in quarterly reviews.",
+        "techniques_used": [
+            "T1589",
+            "T1200",
+            "T1195.001",
+            "T1047",
+            "T1542.005",
+            "T1546.015",
+            "T1555.006",
+            "T1556.003",
+            "T1665"
+        ]
+    }
+}

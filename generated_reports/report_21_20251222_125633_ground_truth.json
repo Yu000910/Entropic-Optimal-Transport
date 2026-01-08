@@ -1,0 +1,78 @@
+{
+    "report_id": "report_21",
+    "generated_at": "20251222_125633",
+    "scenario_target_ids": [
+        "T1596",
+        "T1586.003",
+        "T1669",
+        "T1203",
+        "T1055.001",
+        "T1219.001",
+        "T1561"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1586.003",
+        "T1203",
+        "T1055.001",
+        "T1219.001",
+        "T1669",
+        "T1561"
+    ],
+    "actual_found_ids": [
+        "T1669",
+        "T1586.003",
+        "T1561",
+        "T1596",
+        "T1203",
+        "T1219.001",
+        "T1055.001"
+    ],
+    "clean_text": "On October 15, 2023, security analysts at a fictional mid-sized technology firm, 'TechGlobal Inc.', detected anomalous network activity originating from an external IP address. TechGlobal Inc., headquartered in San Francisco with 500 employees, specializes in cloud-based software solutions and maintains an Office 365 environment for corporate communications. Initial logs showed increased DNS queries to unknown domains, but this was later determined to be unrelated to the attack. The adversary, 'ShadowWipe', initiated the campaign by conducting reconnaissance to gather target information, specifically searching WHOIS databases to identify domain registration details of TechGlobal Inc., enabling them to craft tailored phishing lures. Subsequently, they deployed a fake Office 365 login page on a compromised server to harvest cloud account credentials from targeted employees, which led to the compromise of several user accounts with administrative privileges. After gaining initial access, the actors exploited a known vulnerability in Microsoft Word, CVE-2012-0158, to execute malicious code on client systems, allowing them to bypass security controls and establish a foothold. Once inside, they employed PowerShell scripts to inject malicious dynamic-link libraries (DLLs) into memory with read, write, and execute permissions, facilitating stealthy payload execution and data manipulation. To maintain persistence, the malware modified Visual Studio Code's user settings to load a malicious script at launch, creating a backdoor through IDE tunneling, which enabled continuous access even after system reboots. During exfiltration, the malware connected to an unprotected wireless network to transmit collected data, leveraging weak security protocols to avoid detection by corporate firewalls. Finally, in a destructive phase, the attacker exploited the C$ administrative share to delete critical system configuration files, causing service disruptions and data loss. Additional logs from TechGlobal's SIEM showed routine backup failures, but these were unrelated to the attack and stemmed from misconfigured scheduling tasks.",
+    "tagged_text": "On October 15, 2023, security analysts at a fictional mid-sized technology firm, 'TechGlobal Inc.', detected anomalous network activity originating from an external IP address. TechGlobal Inc., headquartered in San Francisco with 500 employees, specializes in cloud-based software solutions and maintains an Office 365 environment for corporate communications. Initial logs showed increased DNS queries to unknown domains, but this was later determined to be unrelated to the attack. The adversary, 'ShadowWipe', initiated the campaign by conducting reconnaissance to gather target information [T1596], specifically searching WHOIS databases to identify domain registration details of TechGlobal Inc., enabling them to craft tailored phishing lures. Subsequently, they deployed a fake Office 365 login page on a compromised server to harvest cloud account credentials from targeted employees [T1586.003], which led to the compromise of several user accounts with administrative privileges. After gaining initial access, the actors exploited a known vulnerability in Microsoft Word, CVE-2012-0158, to execute malicious code on client systems [T1203], allowing them to bypass security controls and establish a foothold. Once inside, they employed PowerShell scripts to inject malicious dynamic-link libraries (DLLs) into memory with read, write, and execute permissions [T1055.001], facilitating stealthy payload execution and data manipulation. To maintain persistence, the malware modified Visual Studio Code's user settings to load a malicious script at launch, creating a backdoor through IDE tunneling [T1219.001], which enabled continuous access even after system reboots. During exfiltration, the malware connected to an unprotected wireless network to transmit collected data [T1669], leveraging weak security protocols to avoid detection by corporate firewalls. Finally, in a destructive phase, the attacker exploited the C$ administrative share to delete critical system configuration files [T1561], causing service disruptions and data loss. Additional logs from TechGlobal's SIEM showed routine backup failures, but these were unrelated to the attack and stemmed from misconfigured scheduling tasks.",
+    "sentence_annotations": [
+        {
+            "sentence": "The adversary, 'ShadowWipe', initiated the campaign by conducting reconnaissance to gather target information, specifically searching WHOIS databases to identify domain registration details of TechGlobal Inc.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "After gaining initial access, the actors exploited a known vulnerability in Microsoft Word, CVE-2012-0158, to execute malicious code on client systems, allowing them to bypass security controls and establish a foothold.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "During exfiltration, the malware connected to an unprotected wireless network to transmit collected data, leveraging weak security protocols to avoid detection by corporate firewalls.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Finally, in a destructive phase, the attacker exploited the C$ administrative share to delete critical system configuration files, causing service disruptions and data loss.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWipe' Targeting Corporate Networks",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowWipe', targeting corporate entities to exfiltrate sensitive data and disrupt operations. The campaign involves reconnaissance, credential theft, exploitation, persistence, and destructive actions, leveraging techniques such as open-source intelligence gathering, phishing, client exploitation, DLL injection, IDE tunneling, and disk wiping. Organizations are urged to review defensive measures and indicators of compromise.",
+        "full_report_text": "On October 15, 2023, security analysts at a fictional mid-sized technology firm, 'TechGlobal Inc.', detected anomalous network activity originating from an external IP address. TechGlobal Inc., headquartered in San Francisco with 500 employees, specializes in cloud-based software solutions and maintains an Office 365 environment for corporate communications. Initial logs showed increased DNS queries to unknown domains, but this was later determined to be unrelated to the attack. The adversary, 'ShadowWipe', initiated the campaign by conducting reconnaissance to gather target information [T1596], specifically searching WHOIS databases to identify domain registration details of TechGlobal Inc., enabling them to craft tailored phishing lures. Subsequently, they deployed a fake Office 365 login page on a compromised server to harvest cloud account credentials from targeted employees [T1586.003], which led to the compromise of several user accounts with administrative privileges. After gaining initial access, the actors exploited a known vulnerability in Microsoft Word, CVE-2012-0158, to execute malicious code on client systems [T1203], allowing them to bypass security controls and establish a foothold. Once inside, they employed PowerShell scripts to inject malicious dynamic-link libraries (DLLs) into memory with read, write, and execute permissions [T1055.001], facilitating stealthy payload execution and data manipulation. To maintain persistence, the malware modified Visual Studio Code's user settings to load a malicious script at launch, creating a backdoor through IDE tunneling [T1219.001], which enabled continuous access even after system reboots. During exfiltration, the malware connected to an unprotected wireless network to transmit collected data [T1669], leveraging weak security protocols to avoid detection by corporate firewalls. Finally, in a destructive phase, the attacker exploited the C$ administrative share to delete critical system configuration files [T1561], causing service disruptions and data loss. Additional logs from TechGlobal's SIEM showed routine backup failures, but these were unrelated to the attack and stemmed from misconfigured scheduling tasks.",
+        "techniques_used": [
+            "T1596",
+            "T1586.003",
+            "T1203",
+            "T1055.001",
+            "T1219.001",
+            "T1669",
+            "T1561"
+        ]
+    }
+}

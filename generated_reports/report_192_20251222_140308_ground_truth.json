@@ -1,0 +1,91 @@
+{
+    "report_id": "report_192",
+    "generated_at": "20251222_140308",
+    "scenario_target_ids": [
+        "T1091",
+        "T1200",
+        "T1059.003",
+        "T1072",
+        "T1098.001",
+        "T1071.004",
+        "T1561",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1091",
+        "T1059.003",
+        "T1200",
+        "T1072",
+        "T1098.001",
+        "T1071.004",
+        "T1561",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1059.003",
+        "T1589",
+        "T1200",
+        "T1091",
+        "T1499.003",
+        "T1071.004",
+        "T1072",
+        "T1561",
+        "T1098.001"
+    ],
+    "clean_text": "On October 15, 2023, a critical infrastructure organization reported anomalous activity in its air-gapped production network, leading to an investigation by the FBI, CISA, and NSA. The organization, a fictional energy provider with operations across North America, maintains segmented networks for industrial control systems (ICS). Initial logs from a workstation in the ICS segment showed unexpected process executions originating from a USB drive inserted by an employee during a routine maintenance check. The adversary likely conducted reconnaissance to identify physical access points and employee routines, though no specific indicators were tagged in this phase.\n\nThe attack began with the adversary planting a Trojan horse disguised as 'documents.exe' on a USB drive, which was used to replicate malware into the air-gapped network when an employee inadvertently inserted it. Once executed, the malware employed the Windows Command Shell to run commands that disabled local security controls and initiated data exfiltration. Concurrently, the adversary deployed a passive network tap on an internal switch within the compromised segment, capturing unencrypted credentials from network communications such as SNMP and HTTP traffic, which were later used to escalate privileges.\n\nTo expand the attack, the adversary leveraged AWS Systems Manager to run commands across all connected cloud instances, disabling security groups and logging mechanisms while using Azure CLI commands to create a new custom role with extensive permissions in the organization's Azure tenant, ensuring persistence in the cloud environment. Command and control (C2) communications were established using DNS queries to blend with legitimate traffic, with malware beaconing to domains like 'update.securehost[.]net' at regular intervals.\n\nIn the final stages, the adversary executed destructive actions to hinder forensic analysis. On compromised systems, the malware used the 'cipher /w' command to securely wipe free disk space, preventing data recovery, while simultaneously launching an application exhaustion flood by sending sustained requests with oversized files to the organization's image processing service, degrading performance and causing service disruptions. System logs from affected servers showed increased CPU usage and failed login attempts, though these were not tagged as specific techniques. The campaign highlights the need for enhanced monitoring of physical media, network hardware, and cloud management tools in segmented environments.",
+    "tagged_text": "On October 15, 2023, a critical infrastructure organization reported anomalous activity in its air-gapped production network, leading to an investigation by the FBI, CISA, and NSA. The organization, a fictional energy provider with operations across North America, maintains segmented networks for industrial control systems (ICS). Initial logs from a workstation in the ICS segment showed unexpected process executions originating from a USB drive inserted by an employee during a routine maintenance check. The adversary likely conducted reconnaissance [T1589] to identify physical access points and employee routines, though no specific indicators were tagged in this phase.\n\nThe attack began with the adversary planting a Trojan horse disguised as 'documents.exe' on a USB drive, which was used to replicate malware into the air-gapped network when an employee inadvertently inserted it [T1091]. Once executed, the malware employed the Windows Command Shell [T1059.003] to run commands that disabled local security controls and initiated data exfiltration. Concurrently, the adversary deployed a passive network tap on an internal switch within the compromised segment [T1200], capturing unencrypted credentials from network communications such as SNMP and HTTP traffic, which were later used to escalate privileges.\n\nTo expand the attack, the adversary leveraged AWS Systems Manager [T1072] to run commands across all connected cloud instances, disabling security groups and logging mechanisms while using Azure CLI commands [T1098.001] to create a new custom role with extensive permissions in the organization's Azure tenant, ensuring persistence in the cloud environment. Command and control (C2) communications were established using DNS queries [T1071.004] to blend with legitimate traffic, with malware beaconing to domains like 'update.securehost[.]net' at regular intervals.\n\nIn the final stages, the adversary executed destructive actions to hinder forensic analysis. On compromised systems, the malware used the 'cipher /w' command [T1561] to securely wipe free disk space, preventing data recovery, while simultaneously launching an application exhaustion flood [T1499.003] by sending sustained requests with oversized files to the organization's image processing service, degrading performance and causing service disruptions. System logs from affected servers showed increased CPU usage and failed login attempts, though these were not tagged as specific techniques. The campaign highlights the need for enhanced monitoring of physical media, network hardware, and cloud management tools in segmented environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "The adversary likely conducted reconnaissance to identify physical access points and employee routines, though no specific indicators were tagged in this phase.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "exe' on a USB drive, which was used to replicate malware into the air-gapped network when an employee inadvertently inserted it.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "Concurrently, the adversary deployed a passive network tap on an internal switch within the compromised segment, capturing unencrypted credentials from network communications such as SNMP and HTTP traffic, which were later used to escalate privileges.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "To expand the attack, the adversary leveraged AWS Systems Manager to run commands across all connected cloud instances, disabling security groups and logging mechanisms while using Azure CLI commands [T1098.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "On compromised systems, the malware used the 'cipher /w' command to securely wipe free disk space, preventing data recovery, while simultaneously launching an application exhaustion flood [T1499.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign Targeting Critical Infrastructure via Physical and Cloud Vectors",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group, designated as 'CRIMSON_SAND', targeting critical infrastructure organizations. The campaign leverages removable media for initial access into air-gapped networks, combines hardware-based network eavesdropping with cloud exploitation, and employs destructive techniques to obscure activities. This report is intended for blue team training to enhance detection and response capabilities against multi-vector attacks.",
+        "full_report_text": "On October 15, 2023, a critical infrastructure organization reported anomalous activity in its air-gapped production network, leading to an investigation by the FBI, CISA, and NSA. The organization, a fictional energy provider with operations across North America, maintains segmented networks for industrial control systems (ICS). Initial logs from a workstation in the ICS segment showed unexpected process executions originating from a USB drive inserted by an employee during a routine maintenance check. The adversary likely conducted reconnaissance [T1589] to identify physical access points and employee routines, though no specific indicators were tagged in this phase.\n\nThe attack began with the adversary planting a Trojan horse disguised as 'documents.exe' on a USB drive, which was used to replicate malware into the air-gapped network when an employee inadvertently inserted it [T1091]. Once executed, the malware employed the Windows Command Shell [T1059.003] to run commands that disabled local security controls and initiated data exfiltration. Concurrently, the adversary deployed a passive network tap on an internal switch within the compromised segment [T1200], capturing unencrypted credentials from network communications such as SNMP and HTTP traffic, which were later used to escalate privileges.\n\nTo expand the attack, the adversary leveraged AWS Systems Manager [T1072] to run commands across all connected cloud instances, disabling security groups and logging mechanisms while using Azure CLI commands [T1098.001] to create a new custom role with extensive permissions in the organization's Azure tenant, ensuring persistence in the cloud environment. Command and control (C2) communications were established using DNS queries [T1071.004] to blend with legitimate traffic, with malware beaconing to domains like 'update.securehost[.]net' at regular intervals.\n\nIn the final stages, the adversary executed destructive actions to hinder forensic analysis. On compromised systems, the malware used the 'cipher /w' command [T1561] to securely wipe free disk space, preventing data recovery, while simultaneously launching an application exhaustion flood [T1499.003] by sending sustained requests with oversized files to the organization's image processing service, degrading performance and causing service disruptions. System logs from affected servers showed increased CPU usage and failed login attempts, though these were not tagged as specific techniques. The campaign highlights the need for enhanced monitoring of physical media, network hardware, and cloud management tools in segmented environments.",
+        "techniques_used": [
+            "T1589",
+            "T1091",
+            "T1059.003",
+            "T1200",
+            "T1072",
+            "T1098.001",
+            "T1071.004",
+            "T1561",
+            "T1499.003"
+        ]
+    }
+}

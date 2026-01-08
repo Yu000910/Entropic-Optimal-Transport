@@ -1,0 +1,78 @@
+{
+    "report_id": "report_549",
+    "generated_at": "20251222_163631",
+    "scenario_target_ids": [
+        "T1091",
+        "T1059.006",
+        "T1059.004",
+        "T1601",
+        "T1556.009",
+        "T1556.004",
+        "T1092",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1091",
+        "T1059.006",
+        "T1059.004",
+        "T1601",
+        "T1556.009",
+        "T1556.004",
+        "T1092",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1091",
+        "T1601",
+        "T1092",
+        "T1556.009",
+        "T1059.004",
+        "T1059.006",
+        "T1556.004"
+    ],
+    "clean_text": "On October 15, 2023, a fictional manufacturing company, 'TechGlobal Inc.', reported anomalous activity in its network, initially detected through increased USB drive usage logs on Windows endpoints. The company, which operates a mix of Windows servers, Linux-based IoT controllers, and cloud services via Entra ID, had no prior significant security incidents. Background investigation revealed that an employee inadvertently inserted an infected USB drive into a workstation, triggering the attack sequence.\n\nThe actors likely conducted initial reconnaissance by scanning for removable media paths, then employed Python scripts to enumerate system details and network configurations while simultaneously using Unix shell commands to establish persistence on Linux servers via SSH. System logs from a Linux router showed unauthorized modifications to the /bin/busybox binary, which disabled security logging features. Concurrently, the malware altered Entra ID conditional access policies to bypass device compliance checks, and injected malicious DLLs with hardcoded credentials to authenticate to network devices. The adversary utilized the same infected USB drive to write operational commands for manual execution on air-gapped systems, and exfiltrated stolen credentials by posting them to a webhook endpoint using automated scripts. Irrelevant logs included routine backup failures on a separate server unrelated to the incident.",
+    "tagged_text": "On October 15, 2023, a fictional manufacturing company, 'TechGlobal Inc.', reported anomalous activity in its network, initially detected through increased USB drive usage logs on Windows endpoints. The company, which operates a mix of Windows servers, Linux-based IoT controllers, and cloud services via Entra ID, had no prior significant security incidents. Background investigation revealed that an employee inadvertently inserted an infected USB drive into a workstation, triggering the attack sequence.\n\nThe actors likely conducted initial reconnaissance by scanning for removable media paths [T1091], then employed Python scripts [T1059.006] to enumerate system details and network configurations while simultaneously using Unix shell commands [T1059.004] to establish persistence on Linux servers via SSH. System logs from a Linux router showed unauthorized modifications to the /bin/busybox binary [T1601], which disabled security logging features. Concurrently, the malware altered Entra ID conditional access policies [T1556.009] to bypass device compliance checks, and injected malicious DLLs with hardcoded credentials [T1556.004] to authenticate to network devices. The adversary utilized the same infected USB drive [T1092] to write operational commands for manual execution on air-gapped systems, and exfiltrated stolen credentials by posting them to a webhook endpoint [T1567.004] using automated scripts. Irrelevant logs included routine backup failures on a separate server unrelated to the incident.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted initial reconnaissance by scanning for removable media paths, then employed Python scripts [T1059.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "System logs from a Linux router showed unauthorized modifications to the /bin/busybox binary, which disabled security logging features.",
+            "technique_id": "T1601",
+            "technique_name": "Modify System Image"
+        },
+        {
+            "sentence": "The adversary utilized the same infected USB drive to write operational commands for manual execution on air-gapped systems, and exfiltrated stolen credentials by posting them to a webhook endpoint [T1567.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowDrive' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowDrive', which leverages removable media and scripting to compromise hybrid environments, including Linux systems and network devices, while exfiltrating data via webhooks. The scenario is designed for blue team training to enhance detection and response capabilities against multi-vector attacks.",
+        "full_report_text": "On October 15, 2023, a fictional manufacturing company, 'TechGlobal Inc.', reported anomalous activity in its network, initially detected through increased USB drive usage logs on Windows endpoints. The company, which operates a mix of Windows servers, Linux-based IoT controllers, and cloud services via Entra ID, had no prior significant security incidents. Background investigation revealed that an employee inadvertently inserted an infected USB drive into a workstation, triggering the attack sequence.\n\nThe actors likely conducted initial reconnaissance by scanning for removable media paths [T1091], then employed Python scripts [T1059.006] to enumerate system details and network configurations while simultaneously using Unix shell commands [T1059.004] to establish persistence on Linux servers via SSH. System logs from a Linux router showed unauthorized modifications to the /bin/busybox binary [T1601], which disabled security logging features. Concurrently, the malware altered Entra ID conditional access policies [T1556.009] to bypass device compliance checks, and injected malicious DLLs with hardcoded credentials [T1556.004] to authenticate to network devices. The adversary utilized the same infected USB drive [T1092] to write operational commands for manual execution on air-gapped systems, and exfiltrated stolen credentials by posting them to a webhook endpoint [T1567.004] using automated scripts. Irrelevant logs included routine backup failures on a separate server unrelated to the incident.",
+        "techniques_used": [
+            "T1091",
+            "T1059.006",
+            "T1059.004",
+            "T1601",
+            "T1556.009",
+            "T1556.004",
+            "T1092",
+            "T1567.004"
+        ]
+    }
+}

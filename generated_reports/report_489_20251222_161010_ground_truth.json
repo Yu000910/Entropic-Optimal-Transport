@@ -1,0 +1,100 @@
+{
+    "report_id": "report_489",
+    "generated_at": "20251222_161010",
+    "scenario_target_ids": [
+        "T1566",
+        "T1133",
+        "T1559.001",
+        "T1543",
+        "T1543.005",
+        "T1543.003",
+        "T1087.001",
+        "T1021.005",
+        "T1114",
+        "T1102.002",
+        "T1048.003",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1133",
+        "T1559.001",
+        "T1543.003",
+        "T1543.005",
+        "T1087.001",
+        "T1021.005",
+        "T1114",
+        "T1102.002",
+        "T1048.003",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1543.005",
+        "T1491",
+        "T1114",
+        "T1021.005",
+        "T1559.001",
+        "T1543.003",
+        "T1566",
+        "T1133",
+        "T1048.003",
+        "T1087.001",
+        "T1102.002"
+    ],
+    "clean_text": "On October 26, 2023, PowerGrid Dynamics, a fictional energy provider based in Chicago with 500 employees, reported anomalous network activity. Initial investigation revealed that CrimsonWave actors likely conducted reconnaissance through open-source intelligence, though no specific techniques were tagged here. The attack began with a phishing email masquerading as a software update from a trusted vendor, which contained a malicious executable attachment. Upon execution, the malware exploited the Internet Explorer COM object to run arbitrary commands, including downloading additional payloads and modifying system processes. The actors then used compromised credentials to access the network via Remote Desktop Protocol (RDP), establishing initial foothold. System logs from server 'SRV-APP-01' showed unusual svchost.exe modifications at 14:30 UTC, where the malicious DLL was executed to create a new Windows service for persistence, while simultaneously altering Docker container runtime options to disable security features and maintain elevated privileges. During lateral movement, the actors employed VNC to access other systems and used net user commands to enumerate local accounts, as observed in event logs on workstation 'WS-ENG-05'. For data collection, the malware executed Outlook.exe to harvest email messages from local PST files, and exfiltrated this data through HTTP GET requests containing base64-encoded files, while obfuscating C2 traffic as normal traffic to sites like GitHub for bidirectional communication. Finally, the actors injected a PowerShell script to render fake update notifications that covered active application windows, causing defacement and disrupting operations. PowerGrid Dynamics' firewall logs indicated increased outbound traffic to unknown IPs, but this was not tagged as a specific technique. The company's incident response team contained the attack within 48 hours, but data loss was estimated at 2 TB.",
+    "tagged_text": "On October 26, 2023, PowerGrid Dynamics, a fictional energy provider based in Chicago with 500 employees, reported anomalous network activity. Initial investigation revealed that CrimsonWave actors likely conducted reconnaissance through open-source intelligence, though no specific techniques were tagged here. The attack began with a phishing email [T1566] masquerading as a software update from a trusted vendor, which contained a malicious executable attachment. Upon execution, the malware exploited the Internet Explorer COM object [T1559.001] to run arbitrary commands, including downloading additional payloads and modifying system processes. The actors then used compromised credentials to access the network via Remote Desktop Protocol (RDP) [T1133], establishing initial foothold. System logs from server 'SRV-APP-01' showed unusual svchost.exe modifications at 14:30 UTC, where the malicious DLL was executed to create a new Windows service [T1543.003] for persistence, while simultaneously altering Docker container runtime options [T1543.005] to disable security features and maintain elevated privileges. During lateral movement, the actors employed VNC [T1021.005] to access other systems and used net user commands [T1087.001] to enumerate local accounts, as observed in event logs on workstation 'WS-ENG-05'. For data collection, the malware executed Outlook.exe to harvest email messages from local PST files [T1114], and exfiltrated this data through HTTP GET requests containing base64-encoded files [T1048.003], while obfuscating C2 traffic as normal traffic to sites like GitHub [T1102.002] for bidirectional communication. Finally, the actors injected a PowerShell script to render fake update notifications that covered active application windows [T1491], causing defacement and disrupting operations. PowerGrid Dynamics' firewall logs indicated increased outbound traffic to unknown IPs, but this was not tagged as a specific technique. The company's incident response team contained the attack within 48 hours, but data loss was estimated at 2 TB.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with a phishing email masquerading as a software update from a trusted vendor, which contained a malicious executable attachment.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "The actors then used compromised credentials to access the network via Remote Desktop Protocol (RDP), establishing initial foothold.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "exe to harvest email messages from local PST files, and exfiltrated this data through HTTP GET requests containing base64-encoded files [T1048.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "Finally, the actors injected a PowerShell script to render fake update notifications that covered active application windows, causing defacement and disrupting operations.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CrimsonWave' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'CrimsonWave', which targeted a mid-sized energy company, 'PowerGrid Dynamics', to deploy ransomware and exfiltrate sensitive data. The attack leveraged phishing, external remote services, and multiple persistence mechanisms, culminating in data theft and defacement. Blue teams are advised to review logs and implement mitigations as outlined.",
+        "full_report_text": "On October 26, 2023, PowerGrid Dynamics, a fictional energy provider based in Chicago with 500 employees, reported anomalous network activity. Initial investigation revealed that CrimsonWave actors likely conducted reconnaissance through open-source intelligence, though no specific techniques were tagged here. The attack began with a phishing email [T1566] masquerading as a software update from a trusted vendor, which contained a malicious executable attachment. Upon execution, the malware exploited the Internet Explorer COM object [T1559.001] to run arbitrary commands, including downloading additional payloads and modifying system processes. The actors then used compromised credentials to access the network via Remote Desktop Protocol (RDP) [T1133], establishing initial foothold. System logs from server 'SRV-APP-01' showed unusual svchost.exe modifications at 14:30 UTC, where the malicious DLL was executed to create a new Windows service [T1543.003] for persistence, while simultaneously altering Docker container runtime options [T1543.005] to disable security features and maintain elevated privileges. During lateral movement, the actors employed VNC [T1021.005] to access other systems and used net user commands [T1087.001] to enumerate local accounts, as observed in event logs on workstation 'WS-ENG-05'. For data collection, the malware executed Outlook.exe to harvest email messages from local PST files [T1114], and exfiltrated this data through HTTP GET requests containing base64-encoded files [T1048.003], while obfuscating C2 traffic as normal traffic to sites like GitHub [T1102.002] for bidirectional communication. Finally, the actors injected a PowerShell script to render fake update notifications that covered active application windows [T1491], causing defacement and disrupting operations. PowerGrid Dynamics' firewall logs indicated increased outbound traffic to unknown IPs, but this was not tagged as a specific technique. The company's incident response team contained the attack within 48 hours, but data loss was estimated at 2 TB.",
+        "techniques_used": [
+            "T1566",
+            "T1133",
+            "T1559.001",
+            "T1543.003",
+            "T1543.005",
+            "T1087.001",
+            "T1021.005",
+            "T1114",
+            "T1102.002",
+            "T1048.003",
+            "T1491"
+        ]
+    }
+}

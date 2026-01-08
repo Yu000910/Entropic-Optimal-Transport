@@ -1,0 +1,113 @@
+{
+    "report_id": "report_49",
+    "generated_at": "20251222_130658",
+    "scenario_target_ids": [
+        "T1588.002",
+        "T1583.003",
+        "T1584",
+        "T1078.004",
+        "T1059.006",
+        "T1547.002",
+        "T1556",
+        "T1210",
+        "T1005",
+        "T1213.005",
+        "T1115",
+        "T1132.002",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1210",
+        "T1583.003",
+        "T1588.002",
+        "T1584",
+        "T1059.006",
+        "T1547.002",
+        "T1556",
+        "T1078.004",
+        "T1005",
+        "T1115",
+        "T1213.005",
+        "T1132.002",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1213.005",
+        "T1556",
+        "T1115",
+        "T1005",
+        "T1588.002",
+        "T1583.003",
+        "T1132.002",
+        "T1584",
+        "T1547.002",
+        "T1078.004",
+        "T1020.001",
+        "T1059.006",
+        "T1210"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about the fictional APT campaign 'ShadowVeil'. This campaign targets organizations in the financial and technology sectors, with a focus on data theft and persistence. Initial reconnaissance involved scanning for open ports, such as port 445, using tools like nmap to identify vulnerable systems. The adversary then rented multiple Virtual Private Server (VPS) instances from different providers using stolen payment credentials to establish command-and-control (C2) infrastructure. They obtained and utilized tools including Nirsoft WebBrowserPassView, Mimikatz, and PsExec for credential harvesting and lateral movement. Execution began with a malicious.exe file deployed from a compromised third-party server to gain initial foothold and maintain persistence in the target environment. The adversary employed Python scripts to execute post-exploitation tools like PoetRAT, which worked in conjunction with additional Python-based utilities for data collection. To ensure persistent access, they modified the HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Authentication Packages registry key to load a malicious DLL, altering the authentication package, and injected malicious code into the LSASS process memory to extract credentials, thereby modifying the authentication process. In cloud environments, the attacker exploited Azure Managed Identities to maintain persistent access to cloud storage resources, leveraging compromised cloud accounts. Data collection involved tools like IceApple to gather files, passwords, and other sensitive information from local systems, while the malware executed 'clip.exe' to capture data from the Windows clipboard. The adversary also searched the victim's Slack and Microsoft Teams for conversations about the intrusion and incident response, targeting messaging applications. For exfiltration, C2 traffic was concealed through modified Base64 encoding that used alternative symbols for the standard alphabet to evade detection, and the malicious script leveraged ROMMONkit to set up traffic duplication for stealthy data exfiltration. Logs from affected systems showed unusual PowerShell activities and network connections to unknown IP addresses, but these were not directly linked to the techniques. The campaign's infrastructure included domains registered recently with WHOIS privacy protections, though this detail is not technique-related. Organizations are advised to monitor for these behaviors and implement strict access controls.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about the fictional APT campaign 'ShadowVeil'. This campaign targets organizations in the financial and technology sectors, with a focus on data theft and persistence. Initial reconnaissance involved scanning for open ports, such as port 445, using tools like nmap to identify vulnerable systems [T1210]. The adversary then rented multiple Virtual Private Server (VPS) instances from different providers using stolen payment credentials to establish command-and-control (C2) infrastructure [T1583.003]. They obtained and utilized tools including Nirsoft WebBrowserPassView, Mimikatz, and PsExec for credential harvesting and lateral movement [T1588.002]. Execution began with a malicious.exe file deployed from a compromised third-party server to gain initial foothold and maintain persistence in the target environment [T1584]. The adversary employed Python scripts [T1059.006] to execute post-exploitation tools like PoetRAT, which worked in conjunction with additional Python-based utilities for data collection. To ensure persistent access, they modified the HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Authentication Packages registry key to load a malicious DLL, altering the authentication package [T1547.002], and injected malicious code into the LSASS process memory to extract credentials, thereby modifying the authentication process [T1556]. In cloud environments, the attacker exploited Azure Managed Identities to maintain persistent access to cloud storage resources, leveraging compromised cloud accounts [T1078.004]. Data collection involved tools like IceApple to gather files, passwords, and other sensitive information from local systems [T1005], while the malware executed 'clip.exe' to capture data from the Windows clipboard [T1115]. The adversary also searched the victim's Slack and Microsoft Teams for conversations about the intrusion and incident response, targeting messaging applications [T1213.005]. For exfiltration, C2 traffic was concealed through modified Base64 encoding that used alternative symbols for the standard alphabet to evade detection [T1132.002], and the malicious script leveraged ROMMONkit to set up traffic duplication for stealthy data exfiltration [T1020.001]. Logs from affected systems showed unusual PowerShell activities and network connections to unknown IP addresses, but these were not directly linked to the techniques. The campaign's infrastructure included domains registered recently with WHOIS privacy protections, though this detail is not technique-related. Organizations are advised to monitor for these behaviors and implement strict access controls.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial reconnaissance involved scanning for open ports, such as port 445, using tools like nmap to identify vulnerable systems.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "exe file deployed from a compromised third-party server to gain initial foothold and maintain persistence in the target environment.",
+            "technique_id": "T1584",
+            "technique_name": "Compromise Infrastructure"
+        },
+        {
+            "sentence": "002], and injected malicious code into the LSASS process memory to extract credentials, thereby modifying the authentication process.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        },
+        {
+            "sentence": "Data collection involved tools like IceApple to gather files, passwords, and other sensitive information from local systems, while the malware executed 'clip.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        },
+        {
+            "sentence": "exe' to capture data from the Windows clipboard.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial and Technology Sectors",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVeil' targeting financial and technology organizations to exfiltrate sensitive data and maintain persistent access. The campaign involves reconnaissance, initial access via compromised infrastructure, execution with custom tools, credential theft, and data exfiltration using stealthy techniques. Blue teams should review logs for anomalous activities, particularly in cloud environments and authentication processes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about the fictional APT campaign 'ShadowVeil'. This campaign targets organizations in the financial and technology sectors, with a focus on data theft and persistence. Initial reconnaissance involved scanning for open ports, such as port 445, using tools like nmap to identify vulnerable systems [T1210]. The adversary then rented multiple Virtual Private Server (VPS) instances from different providers using stolen payment credentials to establish command-and-control (C2) infrastructure [T1583.003]. They obtained and utilized tools including Nirsoft WebBrowserPassView, Mimikatz, and PsExec for credential harvesting and lateral movement [T1588.002]. Execution began with a malicious.exe file deployed from a compromised third-party server to gain initial foothold and maintain persistence in the target environment [T1584]. The adversary employed Python scripts [T1059.006] to execute post-exploitation tools like PoetRAT, which worked in conjunction with additional Python-based utilities for data collection. To ensure persistent access, they modified the HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\Authentication Packages registry key to load a malicious DLL, altering the authentication package [T1547.002], and injected malicious code into the LSASS process memory to extract credentials, thereby modifying the authentication process [T1556]. In cloud environments, the attacker exploited Azure Managed Identities to maintain persistent access to cloud storage resources, leveraging compromised cloud accounts [T1078.004]. Data collection involved tools like IceApple to gather files, passwords, and other sensitive information from local systems [T1005], while the malware executed 'clip.exe' to capture data from the Windows clipboard [T1115]. The adversary also searched the victim's Slack and Microsoft Teams for conversations about the intrusion and incident response, targeting messaging applications [T1213.005]. For exfiltration, C2 traffic was concealed through modified Base64 encoding that used alternative symbols for the standard alphabet to evade detection [T1132.002], and the malicious script leveraged ROMMONkit to set up traffic duplication for stealthy data exfiltration [T1020.001]. Logs from affected systems showed unusual PowerShell activities and network connections to unknown IP addresses, but these were not directly linked to the techniques. The campaign's infrastructure included domains registered recently with WHOIS privacy protections, though this detail is not technique-related. Organizations are advised to monitor for these behaviors and implement strict access controls.",
+        "techniques_used": [
+            "T1210",
+            "T1583.003",
+            "T1588.002",
+            "T1584",
+            "T1059.006",
+            "T1547.002",
+            "T1556",
+            "T1078.004",
+            "T1005",
+            "T1115",
+            "T1213.005",
+            "T1132.002",
+            "T1020.001"
+        ]
+    }
+}

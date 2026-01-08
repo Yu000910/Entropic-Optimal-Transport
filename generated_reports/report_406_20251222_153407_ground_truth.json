@@ -1,0 +1,81 @@
+{
+    "report_id": "report_406",
+    "generated_at": "20251222_153407",
+    "scenario_target_ids": [
+        "T1195.003",
+        "T1569.002",
+        "T1221",
+        "T1003.004",
+        "T1056.003",
+        "T1210",
+        "T1008",
+        "T1573.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1221",
+        "T1059.001",
+        "T1569.002",
+        "T1003.004",
+        "T1210",
+        "T1056.003",
+        "T1573.001",
+        "T1008"
+    ],
+    "actual_found_ids": [
+        "T1008",
+        "T1056.003",
+        "T1569.002",
+        "T1221",
+        "T1195.003",
+        "T1573.001",
+        "T1003.004",
+        "T1210",
+        "T1059.001"
+    ],
+    "clean_text": "On October 15, 2023, a critical infrastructure organization in the energy sector reported suspicious activity on its corporate network, traced back to a malicious Teensy USB device delivered via a compromised hardware supply chain. The device was programmed to mount as a storage device containing a malicious docx file, which, when opened by an employee, executed a macro through template injection to download and run PowerShell scripts. These scripts created a Windows service to persistently execute encoded commands, enabling the adversary to dump LSA secrets using Mimikatz for credential harvesting. Subsequently, the actors exploited a Windows SMB vulnerability to move laterally to a server hosting a web portal, where they deployed a phishing site mimicking legitimate government email logon pages to capture additional credentials. Throughout the campaign, ShadowHook employed symmetric cryptography with AES in CBC mode to encrypt C2 communications, while maintaining fallback channels that dynamically switched between TCP and HTTP protocols to evade detection. System logs from the affected server showed unusual network traffic spikes at 02:00 UTC, but no alerts were triggered due to misconfigured monitoring tools. The organization, which operates power grids across multiple states, has since initiated an incident response, though no operational disruptions were reported.",
+    "tagged_text": "On October 15, 2023, a critical infrastructure organization in the energy sector reported suspicious activity on its corporate network, traced back to a malicious Teensy USB device delivered via a compromised hardware supply chain [T1195.003]. The device was programmed to mount as a storage device containing a malicious docx file, which, when opened by an employee, executed a macro through template injection [T1221] to download and run PowerShell scripts [T1059.001]. These scripts created a Windows service [T1569.002] to persistently execute encoded commands, enabling the adversary to dump LSA secrets [T1003.004] using Mimikatz for credential harvesting. Subsequently, the actors exploited a Windows SMB vulnerability [T1210] to move laterally to a server hosting a web portal, where they deployed a phishing site mimicking legitimate government email logon pages [T1056.003] to capture additional credentials. Throughout the campaign, ShadowHook employed symmetric cryptography with AES in CBC mode [T1573.001] to encrypt C2 communications, while maintaining fallback channels [T1008] that dynamically switched between TCP and HTTP protocols to evade detection. System logs from the affected server showed unusual network traffic spikes at 02:00 UTC, but no alerts were triggered due to misconfigured monitoring tools. The organization, which operates power grids across multiple states, has since initiated an incident response, though no operational disruptions were reported.",
+    "sentence_annotations": [
+        {
+            "sentence": "The device was programmed to mount as a storage device containing a malicious docx file, which, when opened by an employee, executed a macro through template injection to download and run PowerShell scripts [T1059.",
+            "technique_id": "T1221",
+            "technique_name": "Template Injection"
+        },
+        {
+            "sentence": "Subsequently, the actors exploited a Windows SMB vulnerability to move laterally to a server hosting a web portal, where they deployed a phishing site mimicking legitimate government email logon pages [T1056.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "001] to encrypt C2 communications, while maintaining fallback channels that dynamically switched between TCP and HTTP protocols to evade detection.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowHook', which targets critical infrastructure sectors through a compromised hardware supply chain, leveraging techniques such as template injection and exploitation of remote services for lateral movement, with encrypted fallback channels for command and control. The report is intended for blue team training to enhance detection and response capabilities against advanced persistent threats.",
+        "full_report_text": "On October 15, 2023, a critical infrastructure organization in the energy sector reported suspicious activity on its corporate network, traced back to a malicious Teensy USB device delivered via a compromised hardware supply chain [T1195.003]. The device was programmed to mount as a storage device containing a malicious docx file, which, when opened by an employee, executed a macro through template injection [T1221] to download and run PowerShell scripts [T1059.001]. These scripts created a Windows service [T1569.002] to persistently execute encoded commands, enabling the adversary to dump LSA secrets [T1003.004] using Mimikatz for credential harvesting. Subsequently, the actors exploited a Windows SMB vulnerability [T1210] to move laterally to a server hosting a web portal, where they deployed a phishing site mimicking legitimate government email logon pages [T1056.003] to capture additional credentials. Throughout the campaign, ShadowHook employed symmetric cryptography with AES in CBC mode [T1573.001] to encrypt C2 communications, while maintaining fallback channels [T1008] that dynamically switched between TCP and HTTP protocols to evade detection. System logs from the affected server showed unusual network traffic spikes at 02:00 UTC, but no alerts were triggered due to misconfigured monitoring tools. The organization, which operates power grids across multiple states, has since initiated an incident response, though no operational disruptions were reported.",
+        "techniques_used": [
+            "T1195.003",
+            "T1221",
+            "T1059.001",
+            "T1569.002",
+            "T1003.004",
+            "T1210",
+            "T1056.003",
+            "T1573.001",
+            "T1008"
+        ]
+    }
+}

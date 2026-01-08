@@ -1,0 +1,109 @@
+{
+    "report_id": "report_385",
+    "generated_at": "20251222_152451",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1190",
+        "T1059",
+        "T1599",
+        "T1622",
+        "T1219",
+        "T1052",
+        "T1567.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1190",
+        "T1059",
+        "T1105",
+        "T1078.003",
+        "T1599",
+        "T1622",
+        "T1219",
+        "T1052",
+        "T1567.003"
+    ],
+    "actual_found_ids": [
+        "T1622",
+        "T1052",
+        "T1589",
+        "T1599",
+        "T1567.003",
+        "T1059",
+        "T1190",
+        "T1105",
+        "T1219",
+        "T1078.003"
+    ],
+    "clean_text": "Background: The fictional company 'InfraSecure Corp,' a mid-sized energy provider, reported anomalous network activity starting on October 15, 2023. Initial logs showed increased failed login attempts on their Microsoft Exchange Server, which was running an outdated version with known vulnerabilities. The company's security team noted unusual firewall rule changes but attributed them to a recent system update. Further investigation revealed that the actors likely conducted reconnaissance to identify weak points in the infrastructure.\n\nAttack Narrative:\n- Initial Access: The actors exploited a known vulnerability in InfraSecure Corp's public-facing Microsoft Exchange Server, leveraging it to deploy a web shell and gain a foothold in the network. This occurred during off-hours, with minimal alerting from existing security tools.\n- Execution and Persistence: Upon compromise, the actors used PowerShell to execute malicious scripts that downloaded additional payloads while simultaneously extracting local account credentials from the compromised host using Mimikatz's lsadump::sam command. They then employed these credentials to move laterally across subnets by modifying the perimeter firewall configuration, allowing unrestricted access between previously isolated segments.\n- Evasion and Control: To avoid detection, the malicious code invoked IsDebuggerPresent() to detect debugging environments before executing its payload, and the actors used Google Chrome Remote Desktop to remotely control systems and exfiltrate files without triggering network-based alerts. Logs from InfraSecure Corp's SIEM showed sporadic connections to external IP addresses, but these were initially dismissed as benign user activity.\n- Exfiltration: The actors collected sensitive documents and credential files, exfiltrating them via multiple methods: they automatically copied data to a connected USB drive and uploaded files to a text storage site. This dual approach allowed for redundancy in data theft, with exfiltration occurring over several days to blend in with normal network traffic.\n\nNoise and Irrelevant Information: InfraSecure Corp's background includes a recent merger with a smaller utility company, leading to network integration issues that may have contributed to visibility gaps. System logs from the affected Exchange Server showed routine maintenance alerts unrelated to the attack, such as disk space warnings and scheduled backup failures. The company's IT staff reported no unusual user complaints during the incident period, and initial internal reviews focused on performance degradation rather than security breaches.",
+    "tagged_text": "Background: The fictional company 'InfraSecure Corp,' a mid-sized energy provider, reported anomalous network activity starting on October 15, 2023. Initial logs showed increased failed login attempts on their Microsoft Exchange Server, which was running an outdated version with known vulnerabilities. The company's security team noted unusual firewall rule changes but attributed them to a recent system update. Further investigation revealed that the actors likely conducted reconnaissance [T1589] to identify weak points in the infrastructure.\n\nAttack Narrative:\n- Initial Access: The actors exploited a known vulnerability in InfraSecure Corp's public-facing Microsoft Exchange Server [T1190], leveraging it to deploy a web shell and gain a foothold in the network. This occurred during off-hours, with minimal alerting from existing security tools.\n- Execution and Persistence: Upon compromise, the actors used PowerShell [T1059] to execute malicious scripts that downloaded additional payloads [T1105] while simultaneously extracting local account credentials from the compromised host using Mimikatz's lsadump::sam command [T1078.003]. They then employed these credentials to move laterally across subnets by modifying the perimeter firewall configuration [T1599], allowing unrestricted access between previously isolated segments.\n- Evasion and Control: To avoid detection, the malicious code invoked IsDebuggerPresent() to detect debugging environments [T1622] before executing its payload, and the actors used Google Chrome Remote Desktop [T1219] to remotely control systems and exfiltrate files without triggering network-based alerts. Logs from InfraSecure Corp's SIEM showed sporadic connections to external IP addresses, but these were initially dismissed as benign user activity.\n- Exfiltration: The actors collected sensitive documents and credential files, exfiltrating them via multiple methods: they automatically copied data to a connected USB drive [T1052] and uploaded files to a text storage site [T1567.003]. This dual approach allowed for redundancy in data theft, with exfiltration occurring over several days to blend in with normal network traffic.\n\nNoise and Irrelevant Information: InfraSecure Corp's background includes a recent merger with a smaller utility company, leading to network integration issues that may have contributed to visibility gaps. System logs from the affected Exchange Server showed routine maintenance alerts unrelated to the attack, such as disk space warnings and scheduled backup failures. The company's IT staff reported no unusual user complaints during the incident period, and initial internal reviews focused on performance degradation rather than security breaches.",
+    "sentence_annotations": [
+        {
+            "sentence": "Further investigation revealed that the actors likely conducted reconnaissance to identify weak points in the infrastructure.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Attack Narrative:\n- Initial Access: The actors exploited a known vulnerability in InfraSecure Corp's public-facing Microsoft Exchange Server, leveraging it to deploy a web shell and gain a foothold in the network.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "- Execution and Persistence: Upon compromise, the actors used PowerShell to execute malicious scripts that downloaded additional payloads while simultaneously extracting local account credentials from the compromised host using Mimikatz's lsadump::sam command [T1078.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "- Execution and Persistence: Upon compromise, the actors used PowerShell to execute malicious scripts that downloaded additional payloads while simultaneously extracting local account credentials from the compromised host using Mimikatz's lsadump::sam command [T1078.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "They then employed these credentials to move laterally across subnets by modifying the perimeter firewall configuration, allowing unrestricted access between previously isolated segments.",
+            "technique_id": "T1599",
+            "technique_name": "Network Boundary Bridging"
+        },
+        {
+            "sentence": "- Evasion and Control: To avoid detection, the malicious code invoked IsDebuggerPresent() to detect debugging environments before executing its payload, and the actors used Google Chrome Remote Desktop to remotely control systems and exfiltrate files without triggering network-based alerts.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "- Evasion and Control: To avoid detection, the malicious code invoked IsDebuggerPresent() to detect debugging environments before executing its payload, and the actors used Google Chrome Remote Desktop to remotely control systems and exfiltrate files without triggering network-based alerts.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "- Exfiltration: The actors collected sensitive documents and credential files, exfiltrating them via multiple methods: they automatically copied data to a connected USB drive and uploaded files to a text storage site [T1567.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowMimic,' targeting critical infrastructure sectors. Based on intelligence from the Federal Bureau of Investigation (FBI), CISA, and NSA, the actors exploited vulnerabilities in public-facing applications to gain initial access, used command-line tools for execution and lateral movement, and employed various evasion and exfiltration techniques. The report includes fictional logs and background noise for training purposes, with embedded MITRE ATT&CK technique IDs to aid blue teams in detection and response.",
+        "full_report_text": "Background: The fictional company 'InfraSecure Corp,' a mid-sized energy provider, reported anomalous network activity starting on October 15, 2023. Initial logs showed increased failed login attempts on their Microsoft Exchange Server, which was running an outdated version with known vulnerabilities. The company's security team noted unusual firewall rule changes but attributed them to a recent system update. Further investigation revealed that the actors likely conducted reconnaissance [T1589] to identify weak points in the infrastructure.\n\nAttack Narrative:\n- Initial Access: The actors exploited a known vulnerability in InfraSecure Corp's public-facing Microsoft Exchange Server [T1190], leveraging it to deploy a web shell and gain a foothold in the network. This occurred during off-hours, with minimal alerting from existing security tools.\n- Execution and Persistence: Upon compromise, the actors used PowerShell [T1059] to execute malicious scripts that downloaded additional payloads [T1105] while simultaneously extracting local account credentials from the compromised host using Mimikatz's lsadump::sam command [T1078.003]. They then employed these credentials to move laterally across subnets by modifying the perimeter firewall configuration [T1599], allowing unrestricted access between previously isolated segments.\n- Evasion and Control: To avoid detection, the malicious code invoked IsDebuggerPresent() to detect debugging environments [T1622] before executing its payload, and the actors used Google Chrome Remote Desktop [T1219] to remotely control systems and exfiltrate files without triggering network-based alerts. Logs from InfraSecure Corp's SIEM showed sporadic connections to external IP addresses, but these were initially dismissed as benign user activity.\n- Exfiltration: The actors collected sensitive documents and credential files, exfiltrating them via multiple methods: they automatically copied data to a connected USB drive [T1052] and uploaded files to a text storage site [T1567.003]. This dual approach allowed for redundancy in data theft, with exfiltration occurring over several days to blend in with normal network traffic.\n\nNoise and Irrelevant Information: InfraSecure Corp's background includes a recent merger with a smaller utility company, leading to network integration issues that may have contributed to visibility gaps. System logs from the affected Exchange Server showed routine maintenance alerts unrelated to the attack, such as disk space warnings and scheduled backup failures. The company's IT staff reported no unusual user complaints during the incident period, and initial internal reviews focused on performance degradation rather than security breaches.",
+        "techniques_used": [
+            "T1589",
+            "T1190",
+            "T1059",
+            "T1105",
+            "T1078.003",
+            "T1599",
+            "T1622",
+            "T1219",
+            "T1052",
+            "T1567.003"
+        ]
+    }
+}

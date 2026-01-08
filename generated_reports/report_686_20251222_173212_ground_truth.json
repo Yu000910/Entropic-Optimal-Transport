@@ -1,0 +1,128 @@
+{
+    "report_id": "report_686",
+    "generated_at": "20251222_173212",
+    "scenario_target_ids": [
+        "T1190",
+        "T1610",
+        "T1559",
+        "T1556.009",
+        "T1555.003",
+        "T1124",
+        "T1518",
+        "T1654",
+        "T1091",
+        "T1119",
+        "T1102.002",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1610",
+        "T1559",
+        "T1556.009",
+        "T1555.003",
+        "T1124",
+        "T1518",
+        "T1654",
+        "T1091",
+        "T1119",
+        "T1102.002",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1567",
+        "T1610",
+        "T1654",
+        "T1091",
+        "T1518",
+        "T1119",
+        "T1559",
+        "T1190",
+        "T1556.009",
+        "T1124",
+        "T1102.002",
+        "T1555.003"
+    ],
+    "clean_text": "CrimsonTide, a fictional advanced persistent threat (APT) group, initiated its campaign by exploiting a known vulnerability, CVE-2023-3519, in a Citrix NetScaler application, which served as the primary entry point into the victim's network. Following initial access, the actors executed 'docker create' to deploy a malicious container image designed to bypass host-based security controls and establish a persistent foothold. Within the container, they leveraged Component Object Model (COM) to instantiate a malicious script object, enabling inter-process communication to run arbitrary code locally and evade traditional process monitoring. Concurrently, the compromised environment included irrelevant system logs showing routine backup processes and network traffic from non-malicious sources, such as automated software updates and employee VPN connections, which were not indicative of malicious activity. To facilitate lateral movement, CrimsonTide used a compromised administrator account to modify Okta conditional access settings, disabling location-based restrictions and allowing unauthorized access from external IP addresses. The actors then employed tools like CDumper and EDumper to extract credentials from Chrome and Edge browsers, while using the 'net time' command to gather system time and time zone information for timing their operations. As part of reconnaissance, they conducted software discovery to identify installed programs on compromised hosts and enumerated Windows logs using 'wevtutil.exe' and PowerShell commands like 'Get-EventLog security' to search for successful logons and audit trails. CrimsonTide also replicated through removable media by infecting USB drives to spread across air-gapped networks and automated the collection of harvested credential data by downloading a module that built detailed reports. For command and control (C2), they established bidirectional communication by retrieving instructions from a Google Doc and exfiltrated sensitive documents over web services using a malicious PowerShell script. Throughout the campaign, additional noise was present, including benign network scans from internal IT teams and false-positive alerts from legacy antivirus software, which did not correlate with the malicious activities described.",
+    "tagged_text": "CrimsonTide, a fictional advanced persistent threat (APT) group, initiated its campaign by exploiting a known vulnerability, CVE-2023-3519, in a Citrix NetScaler application [T1190], which served as the primary entry point into the victim's network. Following initial access, the actors executed 'docker create' to deploy a malicious container image designed to bypass host-based security controls and establish a persistent foothold [T1610]. Within the container, they leveraged Component Object Model (COM) to instantiate a malicious script object, enabling inter-process communication to run arbitrary code locally and evade traditional process monitoring [T1559]. Concurrently, the compromised environment included irrelevant system logs showing routine backup processes and network traffic from non-malicious sources, such as automated software updates and employee VPN connections, which were not indicative of malicious activity. To facilitate lateral movement, CrimsonTide used a compromised administrator account to modify Okta conditional access settings, disabling location-based restrictions and allowing unauthorized access from external IP addresses [T1556.009]. The actors then employed tools like CDumper and EDumper to extract credentials from Chrome and Edge browsers [T1555.003], while using the 'net time' command to gather system time and time zone information for timing their operations [T1124]. As part of reconnaissance, they conducted software discovery to identify installed programs on compromised hosts [T1518] and enumerated Windows logs using 'wevtutil.exe' and PowerShell commands like 'Get-EventLog security' to search for successful logons and audit trails [T1654]. CrimsonTide also replicated through removable media by infecting USB drives to spread across air-gapped networks [T1091] and automated the collection of harvested credential data by downloading a module that built detailed reports [T1119]. For command and control (C2), they established bidirectional communication by retrieving instructions from a Google Doc [T1102.002] and exfiltrated sensitive documents over web services using a malicious PowerShell script [T1567]. Throughout the campaign, additional noise was present, including benign network scans from internal IT teams and false-positive alerts from legacy antivirus software, which did not correlate with the malicious activities described.",
+    "sentence_annotations": [
+        {
+            "sentence": "CrimsonTide, a fictional advanced persistent threat (APT) group, initiated its campaign by exploiting a known vulnerability, CVE-2023-3519, in a Citrix NetScaler application, which served as the primary entry point into the victim's network.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Following initial access, the actors executed 'docker create' to deploy a malicious container image designed to bypass host-based security controls and establish a persistent foothold.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "Within the container, they leveraged Component Object Model (COM) to instantiate a malicious script object, enabling inter-process communication to run arbitrary code locally and evade traditional process monitoring.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "003], while using the 'net time' command to gather system time and time zone information for timing their operations.",
+            "technique_id": "T1124",
+            "technique_name": "System Time Discovery"
+        },
+        {
+            "sentence": "As part of reconnaissance, they conducted software discovery to identify installed programs on compromised hosts and enumerated Windows logs using 'wevtutil.",
+            "technique_id": "T1518",
+            "technique_name": "Software Discovery"
+        },
+        {
+            "sentence": "exe' and PowerShell commands like 'Get-EventLog security' to search for successful logons and audit trails.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "CrimsonTide also replicated through removable media by infecting USB drives to spread across air-gapped networks and automated the collection of harvested credential data by downloading a module that built detailed reports.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "CrimsonTide also replicated through removable media by infecting USB drives to spread across air-gapped networks and automated the collection of harvested credential data by downloading a module that built detailed reports.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        },
+        {
+            "sentence": "002] and exfiltrated sensitive documents over web services using a malicious PowerShell script.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL Campaign by Threat Actor 'CrimsonTide' Targeting Financial Sector",
+        "summary": "This advisory details a simulated, educational campaign by the fictional threat actor 'CrimsonTide', designed for blue team training. Based on intelligence from CISA, FBI, and NSA, CrimsonTide has been observed targeting financial institutions by exploiting public-facing applications, deploying containers, and manipulating conditional access policies to facilitate credential theft and data exfiltration. The campaign leverages a multi-stage approach, including reconnaissance, lateral movement, and automated collection, to compromise sensitive systems and evade detection. This report provides a fictional narrative to help defenders identify and mitigate similar tactics, techniques, and procedures (TTPs) in training environments.",
+        "full_report_text": "CrimsonTide, a fictional advanced persistent threat (APT) group, initiated its campaign by exploiting a known vulnerability, CVE-2023-3519, in a Citrix NetScaler application [T1190], which served as the primary entry point into the victim's network. Following initial access, the actors executed 'docker create' to deploy a malicious container image designed to bypass host-based security controls and establish a persistent foothold [T1610]. Within the container, they leveraged Component Object Model (COM) to instantiate a malicious script object, enabling inter-process communication to run arbitrary code locally and evade traditional process monitoring [T1559]. Concurrently, the compromised environment included irrelevant system logs showing routine backup processes and network traffic from non-malicious sources, such as automated software updates and employee VPN connections, which were not indicative of malicious activity. To facilitate lateral movement, CrimsonTide used a compromised administrator account to modify Okta conditional access settings, disabling location-based restrictions and allowing unauthorized access from external IP addresses [T1556.009]. The actors then employed tools like CDumper and EDumper to extract credentials from Chrome and Edge browsers [T1555.003], while using the 'net time' command to gather system time and time zone information for timing their operations [T1124]. As part of reconnaissance, they conducted software discovery to identify installed programs on compromised hosts [T1518] and enumerated Windows logs using 'wevtutil.exe' and PowerShell commands like 'Get-EventLog security' to search for successful logons and audit trails [T1654]. CrimsonTide also replicated through removable media by infecting USB drives to spread across air-gapped networks [T1091] and automated the collection of harvested credential data by downloading a module that built detailed reports [T1119]. For command and control (C2), they established bidirectional communication by retrieving instructions from a Google Doc [T1102.002] and exfiltrated sensitive documents over web services using a malicious PowerShell script [T1567]. Throughout the campaign, additional noise was present, including benign network scans from internal IT teams and false-positive alerts from legacy antivirus software, which did not correlate with the malicious activities described.",
+        "techniques_used": [
+            "T1190",
+            "T1610",
+            "T1559",
+            "T1556.009",
+            "T1555.003",
+            "T1124",
+            "T1518",
+            "T1654",
+            "T1091",
+            "T1119",
+            "T1102.002",
+            "T1567"
+        ]
+    }
+}

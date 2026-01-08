@@ -1,0 +1,103 @@
+{
+    "report_id": "report_271",
+    "generated_at": "20251222_143644",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1059.004",
+        "T1542.003",
+        "T1216",
+        "T1216.001",
+        "T1557.001",
+        "T1652",
+        "T1021.008",
+        "T1102.001",
+        "T1020.001",
+        "T1048.003",
+        "T1667",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.001",
+        "T1652",
+        "T1667",
+        "T1059.004",
+        "T1216",
+        "T1216.001",
+        "T1557.001",
+        "T1542.003",
+        "T1021.008",
+        "T1102.001",
+        "T1048.003",
+        "T1020.001",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1102.001",
+        "T1195.001",
+        "T1021.008",
+        "T1216",
+        "T1216.001",
+        "T1557.001",
+        "T1048.003",
+        "T1499.003",
+        "T1542.003",
+        "T1059.004",
+        "T1020.001",
+        "T1667"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'SilentChain,' which has been observed conducting sophisticated attacks against various sectors, including technology and finance, over the past six months. The group's operations are characterized by a blend of supply chain compromise, cloud exploitation, and network-based attacks, designed to evade traditional security measures and cause significant disruption.\n\nInitial Access: The campaign began with a supply chain attack, where adversaries compromised a popular open-source software library by injecting malicious code into a critical dependency, enabling covert data collection upon installation. Concurrently, the actors conducted reconnaissance using driverquery.exe to list device drivers and identify potentially vulnerable third-party drivers, while also leveraging a spam bot to dispatch phishing emails from various spoofed sender addresses as part of an email bombing campaign.\n\nExecution: Upon initial access, the adversary employed a Unix shell script to install and execute the NKAbuse malware, which then used Microsoft-signed binaries to proxy execution of malicious code while appearing as legitimate system activity. This included utilizing pubprn.vbs with a remote SMB share to download and execute a backdoor, and the attackers sent crafted responses to UDP 5355 queries to redirect clients to malicious services through LLMNR/NBT-NS poisoning and SMB relay.\n\nPersistence: To establish persistence, the malware deployed a bootkit that overwrote the Master Boot Record (MBR) with a bootloader component, performing destructive wiping operations on hard drives and displaying a fake ransom note upon host boot. Additionally, the actors used compromised credentials to gain command-line access to a virtual machine via the Azure Serial Console, and stored command and control (C2) information on cloud hosting services such as AWS and CloudFlare, as well as websites like YouTube and Facebook, using dead drop resolvers.\n\nExfiltration: For data exfiltration, the malware employed HTTP to send collected data to the C2 server over unencrypted non-C2 protocols, while also deploying ROMMONkit to intercept and copy network communications for automated data collection through traffic duplication.\n\nImpact: The campaign culminated in an application exhaustion flood, where the malware repeatedly called the data export functionality with maximum parameters, exhausting the application's processing capabilities and causing service degradation. System logs from affected organizations showed anomalous network traffic spikes and increased CPU usage, though some entries were unrelated to the attack, such as routine backup failures and user login attempts from legitimate IP addresses. The fictional company 'TechGlobal Inc.,' a mid-sized software developer, reported significant data loss and operational downtime as a result of this campaign, highlighting the need for enhanced supply chain security and cloud monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'SilentChain,' which has been observed conducting sophisticated attacks against various sectors, including technology and finance, over the past six months. The group's operations are characterized by a blend of supply chain compromise, cloud exploitation, and network-based attacks, designed to evade traditional security measures and cause significant disruption.\n\nInitial Access: The campaign began with a supply chain attack, where adversaries compromised a popular open-source software library by injecting malicious code into a critical dependency, enabling covert data collection upon installation [T1195.001]. Concurrently, the actors conducted reconnaissance using driverquery.exe to list device drivers and identify potentially vulnerable third-party drivers [T1652], while also leveraging a spam bot to dispatch phishing emails from various spoofed sender addresses as part of an email bombing campaign [T1667].\n\nExecution: Upon initial access, the adversary employed a Unix shell script to install and execute the NKAbuse malware [T1059.004], which then used Microsoft-signed binaries to proxy execution of malicious code while appearing as legitimate system activity [T1216]. This included utilizing pubprn.vbs with a remote SMB share to download and execute a backdoor [T1216.001], and the attackers sent crafted responses to UDP 5355 queries to redirect clients to malicious services through LLMNR/NBT-NS poisoning and SMB relay [T1557.001].\n\nPersistence: To establish persistence, the malware deployed a bootkit that overwrote the Master Boot Record (MBR) with a bootloader component, performing destructive wiping operations on hard drives and displaying a fake ransom note upon host boot [T1542.003]. Additionally, the actors used compromised credentials to gain command-line access to a virtual machine via the Azure Serial Console [T1021.008], and stored command and control (C2) information on cloud hosting services such as AWS and CloudFlare, as well as websites like YouTube and Facebook, using dead drop resolvers [T1102.001].\n\nExfiltration: For data exfiltration, the malware employed HTTP to send collected data to the C2 server over unencrypted non-C2 protocols [T1048.003], while also deploying ROMMONkit to intercept and copy network communications for automated data collection through traffic duplication [T1020.001].\n\nImpact: The campaign culminated in an application exhaustion flood, where the malware repeatedly called the data export functionality with maximum parameters, exhausting the application's processing capabilities and causing service degradation [T1499.003]. System logs from affected organizations showed anomalous network traffic spikes and increased CPU usage, though some entries were unrelated to the attack, such as routine backup failures and user login attempts from legitimate IP addresses. The fictional company 'TechGlobal Inc.,' a mid-sized software developer, reported significant data loss and operational downtime as a result of this campaign, highlighting the need for enhanced supply chain security and cloud monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to list device drivers and identify potentially vulnerable third-party drivers, while also leveraging a spam bot to dispatch phishing emails from various spoofed sender addresses as part of an email bombing campaign.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "exe to list device drivers and identify potentially vulnerable third-party drivers, while also leveraging a spam bot to dispatch phishing emails from various spoofed sender addresses as part of an email bombing campaign.",
+            "technique_id": "T1667",
+            "technique_name": "Email Bombing"
+        },
+        {
+            "sentence": "004], which then used Microsoft-signed binaries to proxy execution of malicious code while appearing as legitimate system activity.",
+            "technique_id": "T1216",
+            "technique_name": "System Script Proxy Execution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentChain' Targeting Supply Chains and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'SilentChain,' which targets software supply chains and cloud environments to deploy destructive malware and exfiltrate sensitive data. The campaign involves a multi-stage attack leveraging compromised dependencies, cloud VM access, and network poisoning techniques, culminating in data exfiltration and application exhaustion floods. Blue teams should review this report for training on detection and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'SilentChain,' which has been observed conducting sophisticated attacks against various sectors, including technology and finance, over the past six months. The group's operations are characterized by a blend of supply chain compromise, cloud exploitation, and network-based attacks, designed to evade traditional security measures and cause significant disruption.\n\nInitial Access: The campaign began with a supply chain attack, where adversaries compromised a popular open-source software library by injecting malicious code into a critical dependency, enabling covert data collection upon installation [T1195.001]. Concurrently, the actors conducted reconnaissance using driverquery.exe to list device drivers and identify potentially vulnerable third-party drivers [T1652], while also leveraging a spam bot to dispatch phishing emails from various spoofed sender addresses as part of an email bombing campaign [T1667].\n\nExecution: Upon initial access, the adversary employed a Unix shell script to install and execute the NKAbuse malware [T1059.004], which then used Microsoft-signed binaries to proxy execution of malicious code while appearing as legitimate system activity [T1216]. This included utilizing pubprn.vbs with a remote SMB share to download and execute a backdoor [T1216.001], and the attackers sent crafted responses to UDP 5355 queries to redirect clients to malicious services through LLMNR/NBT-NS poisoning and SMB relay [T1557.001].\n\nPersistence: To establish persistence, the malware deployed a bootkit that overwrote the Master Boot Record (MBR) with a bootloader component, performing destructive wiping operations on hard drives and displaying a fake ransom note upon host boot [T1542.003]. Additionally, the actors used compromised credentials to gain command-line access to a virtual machine via the Azure Serial Console [T1021.008], and stored command and control (C2) information on cloud hosting services such as AWS and CloudFlare, as well as websites like YouTube and Facebook, using dead drop resolvers [T1102.001].\n\nExfiltration: For data exfiltration, the malware employed HTTP to send collected data to the C2 server over unencrypted non-C2 protocols [T1048.003], while also deploying ROMMONkit to intercept and copy network communications for automated data collection through traffic duplication [T1020.001].\n\nImpact: The campaign culminated in an application exhaustion flood, where the malware repeatedly called the data export functionality with maximum parameters, exhausting the application's processing capabilities and causing service degradation [T1499.003]. System logs from affected organizations showed anomalous network traffic spikes and increased CPU usage, though some entries were unrelated to the attack, such as routine backup failures and user login attempts from legitimate IP addresses. The fictional company 'TechGlobal Inc.,' a mid-sized software developer, reported significant data loss and operational downtime as a result of this campaign, highlighting the need for enhanced supply chain security and cloud monitoring.",
+        "techniques_used": [
+            "T1195.001",
+            "T1652",
+            "T1667",
+            "T1059.004",
+            "T1216",
+            "T1216.001",
+            "T1557.001",
+            "T1542.003",
+            "T1021.008",
+            "T1102.001",
+            "T1048.003",
+            "T1020.001",
+            "T1499.003"
+        ]
+    }
+}

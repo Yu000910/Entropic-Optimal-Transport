@@ -1,0 +1,68 @@
+{
+    "report_id": "report_178",
+    "generated_at": "20251222_135728",
+    "scenario_target_ids": [
+        "T1133",
+        "T1091",
+        "T1569.002",
+        "T1574.001",
+        "T1546.006",
+        "T1573.002",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1133",
+        "T1091",
+        "T1569.002",
+        "T1574.001",
+        "T1546.006",
+        "T1573.002",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1496.001",
+        "T1091",
+        "T1569.002",
+        "T1133",
+        "T1573.002",
+        "T1546.006",
+        "T1574.001"
+    ],
+    "clean_text": "On October 15, 2023, multiple financial institutions reported anomalous network activity, prompting an investigation by the Federal Bureau of Investigation (FBI), CISA, and NSA. The actors, identified as 'Crimson Serpent,' likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were observed in this phase. Initial Access: The attack began when adversaries used stolen legitimate credentials to log into an external VPN service, bypassing perimeter defenses. System logs from the VPN server showed login attempts from unusual geographic locations, but these were initially dismissed as false positives due to legitimate user travel patterns. Execution: Upon gaining access, the actors deployed malware via a USB drive inserted into an internal workstation, where they altered the Autorun.inf file to automatically launch a malicious payload upon media connection. This payload, identified as a variant of 'Winnti,' was designed to run as a service using svchost.exe, ensuring persistence and stealth. Persistence: To maintain access, the malware employed DLL search order hijacking to load a malicious DLL, while on macOS systems, it modified Mach-O binary load commands to reference a malicious dylib, demonstrating cross-platform capabilities. Command and Control (C2): C2 communications were encrypted using asymmetric cryptography with SSL, making network traffic analysis challenging. Impact: The final stage involved compute hijacking, where the malware used system resources to mine Monero cryptocurrency by dropping XMRig, causing significant performance degradation and increased energy costs. Incident responders noted elevated CPU usage across multiple servers, initially attributed to routine maintenance tasks. The campaign highlights the need for robust credential management, removable media policies, and monitoring for unauthorized cryptographic activity.",
+    "tagged_text": "On October 15, 2023, multiple financial institutions reported anomalous network activity, prompting an investigation by the Federal Bureau of Investigation (FBI), CISA, and NSA. The actors, identified as 'Crimson Serpent,' likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were observed in this phase. Initial Access: The attack began when adversaries used stolen legitimate credentials to log into an external VPN service [T1133], bypassing perimeter defenses. System logs from the VPN server showed login attempts from unusual geographic locations, but these were initially dismissed as false positives due to legitimate user travel patterns. Execution: Upon gaining access, the actors deployed malware via a USB drive inserted into an internal workstation, where they altered the Autorun.inf file to automatically launch a malicious payload upon media connection [T1091]. This payload, identified as a variant of 'Winnti,' was designed to run as a service using svchost.exe [T1569.002], ensuring persistence and stealth. Persistence: To maintain access, the malware employed DLL search order hijacking to load a malicious DLL [T1574.001], while on macOS systems, it modified Mach-O binary load commands to reference a malicious dylib [T1546.006], demonstrating cross-platform capabilities. Command and Control (C2): C2 communications were encrypted using asymmetric cryptography with SSL [T1573.002], making network traffic analysis challenging. Impact: The final stage involved compute hijacking, where the malware used system resources to mine Monero cryptocurrency by dropping XMRig [T1496.001], causing significant performance degradation and increased energy costs. Incident responders noted elevated CPU usage across multiple servers, initially attributed to routine maintenance tasks. The campaign highlights the need for robust credential management, removable media policies, and monitoring for unauthorized cryptographic activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The attack began when adversaries used stolen legitimate credentials to log into an external VPN service, bypassing perimeter defenses.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "inf file to automatically launch a malicious payload upon media connection.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor Group 'Crimson Serpent'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Crimson Serpent,' targeting financial institutions through a multi-stage attack involving initial access via compromised credentials, persistence through service manipulation, and resource hijacking for cryptocurrency mining. The scenario is designed for blue team training to enhance detection and response capabilities against sophisticated threats.",
+        "full_report_text": "On October 15, 2023, multiple financial institutions reported anomalous network activity, prompting an investigation by the Federal Bureau of Investigation (FBI), CISA, and NSA. The actors, identified as 'Crimson Serpent,' likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were observed in this phase. Initial Access: The attack began when adversaries used stolen legitimate credentials to log into an external VPN service [T1133], bypassing perimeter defenses. System logs from the VPN server showed login attempts from unusual geographic locations, but these were initially dismissed as false positives due to legitimate user travel patterns. Execution: Upon gaining access, the actors deployed malware via a USB drive inserted into an internal workstation, where they altered the Autorun.inf file to automatically launch a malicious payload upon media connection [T1091]. This payload, identified as a variant of 'Winnti,' was designed to run as a service using svchost.exe [T1569.002], ensuring persistence and stealth. Persistence: To maintain access, the malware employed DLL search order hijacking to load a malicious DLL [T1574.001], while on macOS systems, it modified Mach-O binary load commands to reference a malicious dylib [T1546.006], demonstrating cross-platform capabilities. Command and Control (C2): C2 communications were encrypted using asymmetric cryptography with SSL [T1573.002], making network traffic analysis challenging. Impact: The final stage involved compute hijacking, where the malware used system resources to mine Monero cryptocurrency by dropping XMRig [T1496.001], causing significant performance degradation and increased energy costs. Incident responders noted elevated CPU usage across multiple servers, initially attributed to routine maintenance tasks. The campaign highlights the need for robust credential management, removable media policies, and monitoring for unauthorized cryptographic activity.",
+        "techniques_used": [
+            "T1133",
+            "T1091",
+            "T1569.002",
+            "T1574.001",
+            "T1546.006",
+            "T1573.002",
+            "T1496.001"
+        ]
+    }
+}

@@ -1,0 +1,74 @@
+{
+    "report_id": "report_204",
+    "generated_at": "20251222_140820",
+    "scenario_target_ids": [
+        "T1199",
+        "T1204.004",
+        "T1546.006",
+        "T1556.005",
+        "T1550.001",
+        "T1090.002",
+        "T1104"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1204.004",
+        "T1546.006",
+        "T1556.005",
+        "T1550.001",
+        "T1090.002",
+        "T1104"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1104",
+        "T1556.005",
+        "T1550.001",
+        "T1204.004",
+        "T1090.002",
+        "T1105",
+        "T1546.006"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign observed in simulated environments. Crimson Serpent actors likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though specific logs from target networks show no anomalous external scans during the initial phase. The campaign begins with the exploitation of a trusted Office 365 partner relationship, where actors used stolen administrative credentials to gain initial access to the target's cloud environment. Upon access, they deployed a trojan disguised as a document conversion tool, which displayed a deceptive 'Document Conversion Failed - Click to Retry' dialog that, when interacted with by a user, executed encoded PowerShell commands to download additional payloads from a command-and-control (C2) server. System logs from the affected endpoint indicated unusual PowerShell activity at 14:32 UTC, but no immediate alerts were triggered due to misconfigured monitoring tools. For persistence on macOS systems within the network, the actors edited Mach-O binaries to force the loading of a compromised dynamic library (dylib) upon execution, while simultaneously using PowerShell scripts to modify Active Directory attributes, such as setting the msRADIUSServiceType with reversible encryption enabled, to weaken authentication security. The malware then leveraged stolen application access tokens to query REST endpoints, mapping the organization's digital infrastructure and exfiltrating sensitive data through external proxies that obfuscated network traffic. To maintain resilient C2 channels, the backdoor executed 'remote_access_tool.exe' to establish and manage multiple simultaneous connections, ensuring continuous access even if some proxies were blocked. Incident responders noted that the company's background in financial services made it a high-value target, but internal network logs showed normal user activity during non-business hours, which was unrelated to the attack. The actors' use of multi-stage channels allowed them to adapt to network defenses, with C2 traffic blending into legitimate web services, as seen in firewall logs from the proxy servers. This campaign underscores the importance of monitoring trusted relationships and user interactions for blue team training purposes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign observed in simulated environments. Crimson Serpent actors likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though specific logs from target networks show no anomalous external scans during the initial phase. The campaign begins with the exploitation of a trusted Office 365 partner relationship, where actors used stolen administrative credentials [T1199] to gain initial access to the target's cloud environment. Upon access, they deployed a trojan disguised as a document conversion tool, which displayed a deceptive 'Document Conversion Failed - Click to Retry' dialog that, when interacted with by a user, executed encoded PowerShell commands [T1204.004] to download additional payloads [T1105] from a command-and-control (C2) server. System logs from the affected endpoint indicated unusual PowerShell activity at 14:32 UTC, but no immediate alerts were triggered due to misconfigured monitoring tools. For persistence on macOS systems within the network, the actors edited Mach-O binaries to force the loading of a compromised dynamic library (dylib) upon execution [T1546.006], while simultaneously using PowerShell scripts to modify Active Directory attributes, such as setting the msRADIUSServiceType with reversible encryption enabled [T1556.005], to weaken authentication security. The malware then leveraged stolen application access tokens to query REST endpoints [T1550.001], mapping the organization's digital infrastructure and exfiltrating sensitive data through external proxies [T1090.002] that obfuscated network traffic. To maintain resilient C2 channels, the backdoor executed 'remote_access_tool.exe' to establish and manage multiple simultaneous connections [T1104], ensuring continuous access even if some proxies were blocked. Incident responders noted that the company's background in financial services made it a high-value target, but internal network logs showed normal user activity during non-business hours, which was unrelated to the attack. The actors' use of multi-stage channels allowed them to adapt to network defenses, with C2 traffic blending into legitimate web services, as seen in firewall logs from the proxy servers. This campaign underscores the importance of monitoring trusted relationships and user interactions for blue team training purposes.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign begins with the exploitation of a trusted Office 365 partner relationship, where actors used stolen administrative credentials to gain initial access to the target's cloud environment.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "004] to download additional payloads from a command-and-control (C2) server.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "exe' to establish and manage multiple simultaneous connections, ensuring continuous access even if some proxies were blocked.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: FICTIONAL APT Campaign Targeting Enterprise Networks via Trusted Relationships",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Serpent,' targeting organizations through compromised partner credentials and multi-stage malware deployment. The campaign leverages trusted relationships to gain initial access, employs deceptive user interactions for execution, and uses advanced persistence and defense evasion techniques to maintain long-term access and exfiltrate data. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs) in real-world scenarios.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign observed in simulated environments. Crimson Serpent actors likely conducted reconnaissance through open-source intelligence (OSINT) gathering, though specific logs from target networks show no anomalous external scans during the initial phase. The campaign begins with the exploitation of a trusted Office 365 partner relationship, where actors used stolen administrative credentials [T1199] to gain initial access to the target's cloud environment. Upon access, they deployed a trojan disguised as a document conversion tool, which displayed a deceptive 'Document Conversion Failed - Click to Retry' dialog that, when interacted with by a user, executed encoded PowerShell commands [T1204.004] to download additional payloads [T1105] from a command-and-control (C2) server. System logs from the affected endpoint indicated unusual PowerShell activity at 14:32 UTC, but no immediate alerts were triggered due to misconfigured monitoring tools. For persistence on macOS systems within the network, the actors edited Mach-O binaries to force the loading of a compromised dynamic library (dylib) upon execution [T1546.006], while simultaneously using PowerShell scripts to modify Active Directory attributes, such as setting the msRADIUSServiceType with reversible encryption enabled [T1556.005], to weaken authentication security. The malware then leveraged stolen application access tokens to query REST endpoints [T1550.001], mapping the organization's digital infrastructure and exfiltrating sensitive data through external proxies [T1090.002] that obfuscated network traffic. To maintain resilient C2 channels, the backdoor executed 'remote_access_tool.exe' to establish and manage multiple simultaneous connections [T1104], ensuring continuous access even if some proxies were blocked. Incident responders noted that the company's background in financial services made it a high-value target, but internal network logs showed normal user activity during non-business hours, which was unrelated to the attack. The actors' use of multi-stage channels allowed them to adapt to network defenses, with C2 traffic blending into legitimate web services, as seen in firewall logs from the proxy servers. This campaign underscores the importance of monitoring trusted relationships and user interactions for blue team training purposes.",
+        "techniques_used": [
+            "T1199",
+            "T1204.004",
+            "T1546.006",
+            "T1556.005",
+            "T1550.001",
+            "T1090.002",
+            "T1104"
+        ]
+    }
+}

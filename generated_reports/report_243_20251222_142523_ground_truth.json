@@ -1,0 +1,78 @@
+{
+    "report_id": "report_243",
+    "generated_at": "20251222_142523",
+    "scenario_target_ids": [
+        "T1597.001",
+        "T1078",
+        "T1053.003",
+        "T1548.002",
+        "T1552",
+        "T1185",
+        "T1090.004",
+        "T1561.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.001",
+        "T1078",
+        "T1053.003",
+        "T1548.002",
+        "T1552",
+        "T1185",
+        "T1090.004",
+        "T1561.001"
+    ],
+    "actual_found_ids": [
+        "T1552",
+        "T1597.001",
+        "T1548.002",
+        "T1078",
+        "T1185",
+        "T1561.001",
+        "T1053.003",
+        "T1090.004"
+    ],
+    "clean_text": "Crimson Shadow actors initiated their campaign by querying paid threat intelligence feeds to gather detailed intelligence on target employee email patterns, enabling them to craft convincing phishing lures. After compromising an employee account via a spear-phishing email, the actors used stolen administrator credentials to gain initial access to the corporate network, specifically targeting restricted segments housing financial databases. Once inside, they employed PowerShell to modify the /var/spool/cron/crontabs/root file, establishing persistence with a reverse shell that executed at regular intervals, while simultaneously using the legitimate application ieinstal.exe to bypass User Account Control on Windows systems, elevating privileges without triggering alerts. The actors then scanned the Windows registry for unsecured FTP client credentials, which they leveraged to exfiltrate data through encrypted channels, and injected a malicious DLL into web browsers to hijack active sessions and pivot laterally through the internal network, accessing additional servers. To evade detection during exfiltration, they utilized custom request headers in Mythic command-and-control frameworks to implement domain fronting, masking their traffic as legitimate cloud service requests. Finally, after completing data exfiltration, the actors used the RawDisk tool to directly access hard disks and overwrite arbitrarily sized portions of disk content, destroying evidence and disrupting system recovery efforts. Throughout the incident, system logs from the target's SIEM showed normal authentication events from 10.0.0.5, but these were unrelated to the attack; the company, a mid-sized bank with operations in North America, had recently upgraded its firewall, which did not prevent the initial credential-based access.",
+    "tagged_text": "Crimson Shadow actors initiated their campaign by querying paid threat intelligence feeds [T1597.001] to gather detailed intelligence on target employee email patterns, enabling them to craft convincing phishing lures. After compromising an employee account via a spear-phishing email, the actors used stolen administrator credentials [T1078] to gain initial access to the corporate network, specifically targeting restricted segments housing financial databases. Once inside, they employed PowerShell to modify the /var/spool/cron/crontabs/root file [T1053.003], establishing persistence with a reverse shell that executed at regular intervals, while simultaneously using the legitimate application ieinstal.exe [T1548.002] to bypass User Account Control on Windows systems, elevating privileges without triggering alerts. The actors then scanned the Windows registry [T1552] for unsecured FTP client credentials, which they leveraged to exfiltrate data through encrypted channels, and injected a malicious DLL into web browsers [T1185] to hijack active sessions and pivot laterally through the internal network, accessing additional servers. To evade detection during exfiltration, they utilized custom request headers in Mythic command-and-control frameworks [T1090.004] to implement domain fronting, masking their traffic as legitimate cloud service requests. Finally, after completing data exfiltration, the actors used the RawDisk tool [T1561.001] to directly access hard disks and overwrite arbitrarily sized portions of disk content, destroying evidence and disrupting system recovery efforts. Throughout the incident, system logs from the target's SIEM showed normal authentication events from 10.0.0.5, but these were unrelated to the attack; the company, a mid-sized bank with operations in North America, had recently upgraded its firewall, which did not prevent the initial credential-based access.",
+    "sentence_annotations": [
+        {
+            "sentence": "After compromising an employee account via a spear-phishing email, the actors used stolen administrator credentials to gain initial access to the corporate network, specifically targeting restricted segments housing financial databases.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "The actors then scanned the Windows registry for unsecured FTP client credentials, which they leveraged to exfiltrate data through encrypted channels, and injected a malicious DLL into web browsers to hijack active sessions and pivot laterally through the internal network, accessing additional servers.",
+            "technique_id": "T1552",
+            "technique_name": "Unsecured Credentials"
+        },
+        {
+            "sentence": "The actors then scanned the Windows registry for unsecured FTP client credentials, which they leveraged to exfiltrate data through encrypted channels, and injected a malicious DLL into web browsers to hijack active sessions and pivot laterally through the internal network, accessing additional servers.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting financial institutions to exfiltrate sensitive data and disrupt operations. The campaign leverages reconnaissance, credential abuse, persistence mechanisms, and data destruction techniques. Blue teams are advised to review logs for suspicious cron job modifications, UAC bypass attempts, and anomalous network traffic using domain fronting.",
+        "full_report_text": "Crimson Shadow actors initiated their campaign by querying paid threat intelligence feeds [T1597.001] to gather detailed intelligence on target employee email patterns, enabling them to craft convincing phishing lures. After compromising an employee account via a spear-phishing email, the actors used stolen administrator credentials [T1078] to gain initial access to the corporate network, specifically targeting restricted segments housing financial databases. Once inside, they employed PowerShell to modify the /var/spool/cron/crontabs/root file [T1053.003], establishing persistence with a reverse shell that executed at regular intervals, while simultaneously using the legitimate application ieinstal.exe [T1548.002] to bypass User Account Control on Windows systems, elevating privileges without triggering alerts. The actors then scanned the Windows registry [T1552] for unsecured FTP client credentials, which they leveraged to exfiltrate data through encrypted channels, and injected a malicious DLL into web browsers [T1185] to hijack active sessions and pivot laterally through the internal network, accessing additional servers. To evade detection during exfiltration, they utilized custom request headers in Mythic command-and-control frameworks [T1090.004] to implement domain fronting, masking their traffic as legitimate cloud service requests. Finally, after completing data exfiltration, the actors used the RawDisk tool [T1561.001] to directly access hard disks and overwrite arbitrarily sized portions of disk content, destroying evidence and disrupting system recovery efforts. Throughout the incident, system logs from the target's SIEM showed normal authentication events from 10.0.0.5, but these were unrelated to the attack; the company, a mid-sized bank with operations in North America, had recently upgraded its firewall, which did not prevent the initial credential-based access.",
+        "techniques_used": [
+            "T1597.001",
+            "T1078",
+            "T1053.003",
+            "T1548.002",
+            "T1552",
+            "T1185",
+            "T1090.004",
+            "T1561.001"
+        ]
+    }
+}

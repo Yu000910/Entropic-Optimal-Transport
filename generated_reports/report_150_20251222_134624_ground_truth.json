@@ -1,0 +1,129 @@
+{
+    "report_id": "report_150",
+    "generated_at": "20251222_134624",
+    "scenario_target_ids": [
+        "T1588.004",
+        "T1587.001",
+        "T1199",
+        "T1609",
+        "T1553.005",
+        "T1672",
+        "T1056",
+        "T1083",
+        "T1021.004",
+        "T1072",
+        "T1132.001",
+        "T1529"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1672",
+        "T1553.005",
+        "T1059.001",
+        "T1587.001",
+        "T1056",
+        "T1199",
+        "T1072",
+        "T1021.004",
+        "T1609",
+        "T1083",
+        "T1132.001",
+        "T1529",
+        "T1588.004"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1609",
+        "T1553.005",
+        "T1589",
+        "T1587.001",
+        "T1132.001",
+        "T1021.004",
+        "T1083",
+        "T1056",
+        "T1672",
+        "T1072",
+        "T1588.004",
+        "T1529",
+        "T1059.001"
+    ],
+    "clean_text": "Crimson Shadow actors likely conduct reconnaissance to identify targets, including Indian critical infrastructure organizations. The campaign begins with email spoofing exploiting weak DMARC policies, sending phishing emails with malicious ISO attachments that bypass Mark-of-the-Web protections to deliver initial payloads. Upon execution, the actors use PowerShell to download and deploy malware, specifically dropper.ps1, which installs a malicious browser extension for input capture to steal credentials from web portals. Leveraging trusted relationships, the attackers exploit delegated administrator permissions in cloud environments to escalate privileges and use software deployment tools like AWS Systems Manager Run Command to execute reconnaissance scripts across multiple accounts. For lateral movement, the group employs SSH to access internal systems and uses container administration commands with compromised Docker credentials to execute 'docker exec database_container cat /etc/passwd' for data extraction. During file and directory discovery, a malicious DLL is utilized to search for files with specific keywords, while data exfiltration involves standard encoding in hexadecimal format over command-and-control channels. In some instances, the actors trigger system shutdowns or reboots using ShellExecuteA to disrupt operations. Background noise includes routine system logs showing failed login attempts from IP 192.168.1.100 and company details such as 'InfraSecure Corp' operating in the energy sector with 500 employees, though these are not directly related to the attack chain. Digital certificates are spoofed to mimic Microsoft entities, aiding in evasion during initial stages.",
+    "tagged_text": "Crimson Shadow actors likely conduct reconnaissance [T1589] to identify targets, including Indian critical infrastructure organizations. The campaign begins with email spoofing [T1672] exploiting weak DMARC policies, sending phishing emails with malicious ISO attachments that bypass Mark-of-the-Web protections [T1553.005] to deliver initial payloads. Upon execution, the actors use PowerShell [T1059.001] to download and deploy malware [T1587.001], specifically dropper.ps1, which installs a malicious browser extension for input capture [T1056] to steal credentials from web portals. Leveraging trusted relationships [T1199], the attackers exploit delegated administrator permissions in cloud environments to escalate privileges and use software deployment tools [T1072] like AWS Systems Manager Run Command to execute reconnaissance scripts across multiple accounts. For lateral movement, the group employs SSH [T1021.004] to access internal systems and uses container administration commands [T1609] with compromised Docker credentials to execute 'docker exec database_container cat /etc/passwd' for data extraction. During file and directory discovery [T1083], a malicious DLL is utilized to search for files with specific keywords, while data exfiltration involves standard encoding [T1132.001] in hexadecimal format over command-and-control channels. In some instances, the actors trigger system shutdowns or reboots [T1529] using ShellExecuteA to disrupt operations. Background noise includes routine system logs showing failed login attempts from IP 192.168.1.100 and company details such as 'InfraSecure Corp' operating in the energy sector with 500 employees, though these are not directly related to the attack chain. Digital certificates [T1588.004] are spoofed to mimic Microsoft entities, aiding in evasion during initial stages.",
+    "sentence_annotations": [
+        {
+            "sentence": "Crimson Shadow actors likely conduct reconnaissance to identify targets, including Indian critical infrastructure organizations.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The campaign begins with email spoofing exploiting weak DMARC policies, sending phishing emails with malicious ISO attachments that bypass Mark-of-the-Web protections [T1553.",
+            "technique_id": "T1672",
+            "technique_name": "Email Spoofing"
+        },
+        {
+            "sentence": "ps1, which installs a malicious browser extension for input capture to steal credentials from web portals.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "Leveraging trusted relationships, the attackers exploit delegated administrator permissions in cloud environments to escalate privileges and use software deployment tools like AWS Systems Manager Run Command to execute reconnaissance scripts across multiple accounts.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "Leveraging trusted relationships, the attackers exploit delegated administrator permissions in cloud environments to escalate privileges and use software deployment tools like AWS Systems Manager Run Command to execute reconnaissance scripts across multiple accounts.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "004] to access internal systems and uses container administration commands with compromised Docker credentials to execute 'docker exec database_container cat /etc/passwd' for data extraction.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "During file and directory discovery, a malicious DLL is utilized to search for files with specific keywords, while data exfiltration involves standard encoding [T1132.",
+            "technique_id": "T1083",
+            "technique_name": "File and Directory Discovery"
+        },
+        {
+            "sentence": "In some instances, the actors trigger system shutdowns or reboots using ShellExecuteA to disrupt operations.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting critical infrastructure sectors. The campaign leverages sophisticated techniques including digital certificate spoofing, cloud trust exploitation, and container manipulation to achieve initial access, lateral movement, and data exfiltration. Blue teams are advised to review defensive measures and indicators of compromise (IoCs) provided in this report.",
+        "full_report_text": "Crimson Shadow actors likely conduct reconnaissance [T1589] to identify targets, including Indian critical infrastructure organizations. The campaign begins with email spoofing [T1672] exploiting weak DMARC policies, sending phishing emails with malicious ISO attachments that bypass Mark-of-the-Web protections [T1553.005] to deliver initial payloads. Upon execution, the actors use PowerShell [T1059.001] to download and deploy malware [T1587.001], specifically dropper.ps1, which installs a malicious browser extension for input capture [T1056] to steal credentials from web portals. Leveraging trusted relationships [T1199], the attackers exploit delegated administrator permissions in cloud environments to escalate privileges and use software deployment tools [T1072] like AWS Systems Manager Run Command to execute reconnaissance scripts across multiple accounts. For lateral movement, the group employs SSH [T1021.004] to access internal systems and uses container administration commands [T1609] with compromised Docker credentials to execute 'docker exec database_container cat /etc/passwd' for data extraction. During file and directory discovery [T1083], a malicious DLL is utilized to search for files with specific keywords, while data exfiltration involves standard encoding [T1132.001] in hexadecimal format over command-and-control channels. In some instances, the actors trigger system shutdowns or reboots [T1529] using ShellExecuteA to disrupt operations. Background noise includes routine system logs showing failed login attempts from IP 192.168.1.100 and company details such as 'InfraSecure Corp' operating in the energy sector with 500 employees, though these are not directly related to the attack chain. Digital certificates [T1588.004] are spoofed to mimic Microsoft entities, aiding in evasion during initial stages.",
+        "techniques_used": [
+            "T1589",
+            "T1672",
+            "T1553.005",
+            "T1059.001",
+            "T1587.001",
+            "T1056",
+            "T1199",
+            "T1072",
+            "T1021.004",
+            "T1609",
+            "T1083",
+            "T1132.001",
+            "T1529",
+            "T1588.004"
+        ]
+    }
+}

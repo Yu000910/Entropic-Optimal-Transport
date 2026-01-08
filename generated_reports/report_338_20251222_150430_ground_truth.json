@@ -1,0 +1,68 @@
+{
+    "report_id": "report_338",
+    "generated_at": "20251222_150430",
+    "scenario_target_ids": [
+        "T1200",
+        "T1059.005",
+        "T1546.017",
+        "T1123",
+        "T1213.003",
+        "T1219"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1059.005",
+        "T1546.017",
+        "T1123",
+        "T1213.003",
+        "T1219"
+    ],
+    "actual_found_ids": [
+        "T1546.017",
+        "T1213.003",
+        "T1059.005",
+        "T1200",
+        "T1123",
+        "T1219"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about the fictional threat actor group 'Silent Echo,' which has been observed targeting technology firms in a simulated campaign designed for training. 'Silent Echo' is believed to operate with the intent of stealing intellectual property and sensitive data. Background investigation reveals that the targeted company, 'TechInnovate Inc.,' a mid-sized software developer, reported unusual system behavior after an employee plugged in a USB device during a conference, though initial logs showed no malware detections from standard antivirus scans.\n\nInitial Access: The actors gained initial access by using a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a victim's machine. This hardware addition allowed for automated keystroke injection to bypass traditional security measures.\n\nExecution: Upon connection, the USB device triggered a Visual Basic script that executed on the victim's system to deploy additional payloads. The script was designed to evade detection by leveraging built-in Windows components.\n\nPersistence: To maintain persistence, the adversary modified udev rules on Linux-based systems within the network to execute a reconnaissance PowerShell script (recon.ps1) automatically whenever any storage device was plugged in. This technique ensured continued access even after initial cleanup efforts.\n\nCollection: The campaign involved multiple data collection methods. First, the actors used a malicious module to capture audio from the victim's environment by leveraging the LAME encoder and mciSendStringW function for audio control and recording. Simultaneously, they employed scripts to exfiltrate API keys and credentials from various GitHub repositories accessed by the victim, targeting code repositories for sensitive development data.\n\nCommand and Control: For remote management, 'Silent Echo' utilized the cloud-based tool 'ConnectWise Control' to deploy additional malware, such as a simulated variant of REvil, enabling persistent remote access and control over compromised systems. This allowed the actors to execute commands, exfiltrate data, and maintain a foothold in the network.\n\nAdditional noise: System logs from 'TechInnovate Inc.' showed sporadic network traffic spikes unrelated to the attack, attributed to routine backup processes. The company's incident response team initially misattributed the audio capture activity to a faulty microphone driver update, delaying detection. Forensic analysis later revealed that the USB device was left unattended in a public area, highlighting physical security lapses.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about the fictional threat actor group 'Silent Echo,' which has been observed targeting technology firms in a simulated campaign designed for training. 'Silent Echo' is believed to operate with the intent of stealing intellectual property and sensitive data. Background investigation reveals that the targeted company, 'TechInnovate Inc.,' a mid-sized software developer, reported unusual system behavior after an employee plugged in a USB device during a conference, though initial logs showed no malware detections from standard antivirus scans.\n\nInitial Access: The actors gained initial access by using a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a victim's machine [T1200]. This hardware addition allowed for automated keystroke injection to bypass traditional security measures.\n\nExecution: Upon connection, the USB device triggered a Visual Basic script that executed on the victim's system to deploy additional payloads [T1059.005]. The script was designed to evade detection by leveraging built-in Windows components.\n\nPersistence: To maintain persistence, the adversary modified udev rules on Linux-based systems within the network to execute a reconnaissance PowerShell script (recon.ps1) automatically whenever any storage device was plugged in [T1546.017]. This technique ensured continued access even after initial cleanup efforts.\n\nCollection: The campaign involved multiple data collection methods. First, the actors used a malicious module to capture audio from the victim's environment by leveraging the LAME encoder and mciSendStringW function for audio control and recording [T1123]. Simultaneously, they employed scripts to exfiltrate API keys and credentials from various GitHub repositories accessed by the victim [T1213.003], targeting code repositories for sensitive development data.\n\nCommand and Control: For remote management, 'Silent Echo' utilized the cloud-based tool 'ConnectWise Control' to deploy additional malware, such as a simulated variant of REvil, enabling persistent remote access and control over compromised systems [T1219]. This allowed the actors to execute commands, exfiltrate data, and maintain a foothold in the network.\n\nAdditional noise: System logs from 'TechInnovate Inc.' showed sporadic network traffic spikes unrelated to the attack, attributed to routine backup processes. The company's incident response team initially misattributed the audio capture activity to a faulty microphone driver update, delaying detection. Forensic analysis later revealed that the USB device was left unattended in a public area, highlighting physical security lapses.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors gained initial access by using a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a victim's machine.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "First, the actors used a malicious module to capture audio from the victim's environment by leveraging the LAME encoder and mciSendStringW function for audio control and recording.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        },
+        {
+            "sentence": "Command and Control: For remote management, 'Silent Echo' utilized the cloud-based tool 'ConnectWise Control' to deploy additional malware, such as a simulated variant of REvil, enabling persistent remote access and control over compromised systems.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Echo' Targeting Technology Firms",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Silent Echo' targeting technology firms through hardware-based initial access, script execution, and data exfiltration. The campaign leverages USB devices, Visual Basic scripts, and remote access tools to compromise systems and steal sensitive information, including audio recordings and code repository credentials, for educational blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations about the fictional threat actor group 'Silent Echo,' which has been observed targeting technology firms in a simulated campaign designed for training. 'Silent Echo' is believed to operate with the intent of stealing intellectual property and sensitive data. Background investigation reveals that the targeted company, 'TechInnovate Inc.,' a mid-sized software developer, reported unusual system behavior after an employee plugged in a USB device during a conference, though initial logs showed no malware detections from standard antivirus scans.\n\nInitial Access: The actors gained initial access by using a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a victim's machine [T1200]. This hardware addition allowed for automated keystroke injection to bypass traditional security measures.\n\nExecution: Upon connection, the USB device triggered a Visual Basic script that executed on the victim's system to deploy additional payloads [T1059.005]. The script was designed to evade detection by leveraging built-in Windows components.\n\nPersistence: To maintain persistence, the adversary modified udev rules on Linux-based systems within the network to execute a reconnaissance PowerShell script (recon.ps1) automatically whenever any storage device was plugged in [T1546.017]. This technique ensured continued access even after initial cleanup efforts.\n\nCollection: The campaign involved multiple data collection methods. First, the actors used a malicious module to capture audio from the victim's environment by leveraging the LAME encoder and mciSendStringW function for audio control and recording [T1123]. Simultaneously, they employed scripts to exfiltrate API keys and credentials from various GitHub repositories accessed by the victim [T1213.003], targeting code repositories for sensitive development data.\n\nCommand and Control: For remote management, 'Silent Echo' utilized the cloud-based tool 'ConnectWise Control' to deploy additional malware, such as a simulated variant of REvil, enabling persistent remote access and control over compromised systems [T1219]. This allowed the actors to execute commands, exfiltrate data, and maintain a foothold in the network.\n\nAdditional noise: System logs from 'TechInnovate Inc.' showed sporadic network traffic spikes unrelated to the attack, attributed to routine backup processes. The company's incident response team initially misattributed the audio capture activity to a faulty microphone driver update, delaying detection. Forensic analysis later revealed that the USB device was left unattended in a public area, highlighting physical security lapses.",
+        "techniques_used": [
+            "T1200",
+            "T1059.005",
+            "T1546.017",
+            "T1123",
+            "T1213.003",
+            "T1219"
+        ]
+    }
+}

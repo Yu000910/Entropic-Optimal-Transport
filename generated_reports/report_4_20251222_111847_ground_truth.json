@@ -1,0 +1,108 @@
+{
+    "report_id": "report_4",
+    "generated_at": "20251222_111847",
+    "scenario_target_ids": [
+        "T1597.001",
+        "T1608.005",
+        "T1566.001",
+        "T1674",
+        "T1547.004",
+        "T1543.005",
+        "T1613",
+        "T1217",
+        "T1072",
+        "T1205.002",
+        "T1048.003",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1597.001",
+        "T1608.005",
+        "T1566.001",
+        "T1674",
+        "T1547.004",
+        "T1543.005",
+        "T1613",
+        "T1217",
+        "T1072",
+        "T1205.002",
+        "T1048.003",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1613",
+        "T1048.003",
+        "T1547.004",
+        "T1566.001",
+        "T1674",
+        "T1205.002",
+        "T1543.005",
+        "T1217",
+        "T1608.005",
+        "T1072",
+        "T1597.001",
+        "T1491"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor LuminousMoth, which has been observed targeting a U.S.-based energy company, 'PowerGrid Dynamics'. The company, founded in 1998, operates several hydroelectric plants across the Midwest, with its IT infrastructure including a mix of on-premises servers and cloud-based Kubernetes clusters for operational data processing. Initial logs from their SIEM showed unusual outbound traffic to Dropbox domains, but this was initially dismissed as benign user activity.\n\n**Initial Access and Execution:**\nThe actors likely conducted reconnaissance by querying paid threat intelligence feeds to gather targeting information about the organization's executives, including email addresses and project roles. Using this data, they crafted a spearphishing email with a malicious attachment disguised as a project update document, which was delivered to a senior engineer. The attachment contained a link to a Dropbox file hosting a payload, which the victim accessed, leading to the download and execution of a script. Upon execution, the script simulated a HID USB device to inject malicious keystrokes, bypassing traditional endpoint detection by mimicking user input.\n\n**Persistence and Privilege Escalation:**\nTo maintain access, the adversary established persistence by adding a Shell value under the Registry key HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon, ensuring the malicious payload executed at user logon. Concurrently, they exploited Software Deployment Tools, specifically SCCM, to deploy a malicious script across all domain-joined systems, spreading the infection laterally within the network. In the cloud environment, malicious code altered the Docker container runtime options to disable security features and maintain elevated privileges, allowing unauthorized access to containerized applications.\n\n**Discovery and Collection:**\nThe attacker then conducted discovery activities, running 'kubectl describe node' commands to gather detailed information about cluster resources, including node statuses and pod configurations. They also queried %APPDATA%/Google/Chrome to locate browser history files, extracting sensitive login credentials and browsing data. Network monitoring tools captured anomalous packets, but these were logged as low-priority alerts due to high network traffic volumes.\n\n**Exfiltration and Impact:**\nFor data exfiltration, sensitive documents were collected and sent via unencrypted HTTP requests to a remote server, bypassing encrypted channels to evade detection. Additionally, the backdoor employed libpcap in promiscuous mode to sniff network packets and detect activation patterns, filtering for specific data types before transmission. As a final impact, the adversary injected a payload through 'evil.ps1' to tamper with image integrity during runtime, defacing internal web portals and causing operational disruptions. Incident response teams noted that the attack leveraged multiple entry points, emphasizing the need for enhanced monitoring of container services and deployment tools.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor LuminousMoth, which has been observed targeting a U.S.-based energy company, 'PowerGrid Dynamics'. The company, founded in 1998, operates several hydroelectric plants across the Midwest, with its IT infrastructure including a mix of on-premises servers and cloud-based Kubernetes clusters for operational data processing. Initial logs from their SIEM showed unusual outbound traffic to Dropbox domains, but this was initially dismissed as benign user activity.\n\n**Initial Access and Execution:**\nThe actors likely conducted reconnaissance by querying paid threat intelligence feeds to gather targeting information about the organization's executives, including email addresses and project roles [T1597.001]. Using this data, they crafted a spearphishing email with a malicious attachment disguised as a project update document, which was delivered to a senior engineer [T1566.001]. The attachment contained a link to a Dropbox file hosting a payload, which the victim accessed, leading to the download and execution of a script [T1608.005]. Upon execution, the script simulated a HID USB device to inject malicious keystrokes, bypassing traditional endpoint detection by mimicking user input [T1674].\n\n**Persistence and Privilege Escalation:**\nTo maintain access, the adversary established persistence by adding a Shell value under the Registry key HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon, ensuring the malicious payload executed at user logon [T1547.004]. Concurrently, they exploited Software Deployment Tools, specifically SCCM, to deploy a malicious script across all domain-joined systems, spreading the infection laterally within the network [T1072]. In the cloud environment, malicious code altered the Docker container runtime options to disable security features and maintain elevated privileges, allowing unauthorized access to containerized applications [T1543.005].\n\n**Discovery and Collection:**\nThe attacker then conducted discovery activities, running 'kubectl describe node' commands to gather detailed information about cluster resources, including node statuses and pod configurations [T1613]. They also queried %APPDATA%/Google/Chrome to locate browser history files, extracting sensitive login credentials and browsing data [T1217]. Network monitoring tools captured anomalous packets, but these were logged as low-priority alerts due to high network traffic volumes.\n\n**Exfiltration and Impact:**\nFor data exfiltration, sensitive documents were collected and sent via unencrypted HTTP requests to a remote server, bypassing encrypted channels to evade detection [T1048.003]. Additionally, the backdoor employed libpcap in promiscuous mode to sniff network packets and detect activation patterns, filtering for specific data types before transmission [T1205.002]. As a final impact, the adversary injected a payload through 'evil.ps1' to tamper with image integrity during runtime, defacing internal web portals and causing operational disruptions [T1491]. Incident response teams noted that the attack leveraged multiple entry points, emphasizing the need for enhanced monitoring of container services and deployment tools.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon execution, the script simulated a HID USB device to inject malicious keystrokes, bypassing traditional endpoint detection by mimicking user input.",
+            "technique_id": "T1674",
+            "technique_name": "Input Injection"
+        },
+        {
+            "sentence": "Concurrently, they exploited Software Deployment Tools, specifically SCCM, to deploy a malicious script across all domain-joined systems, spreading the infection laterally within the network.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "**Discovery and Collection:**\nThe attacker then conducted discovery activities, running 'kubectl describe node' commands to gather detailed information about cluster resources, including node statuses and pod configurations.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "They also queried %APPDATA%/Google/Chrome to locate browser history files, extracting sensitive login credentials and browsing data.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "ps1' to tamper with image integrity during runtime, defacing internal web portals and causing operational disruptions.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'LuminousMoth' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, LuminousMoth, targeting a critical infrastructure organization in the energy sector. The campaign involves sophisticated initial access, persistence mechanisms, and data exfiltration techniques, designed to educate blue teams on multi-vector attacks and containerized environments.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor LuminousMoth, which has been observed targeting a U.S.-based energy company, 'PowerGrid Dynamics'. The company, founded in 1998, operates several hydroelectric plants across the Midwest, with its IT infrastructure including a mix of on-premises servers and cloud-based Kubernetes clusters for operational data processing. Initial logs from their SIEM showed unusual outbound traffic to Dropbox domains, but this was initially dismissed as benign user activity.\n\n**Initial Access and Execution:**\nThe actors likely conducted reconnaissance by querying paid threat intelligence feeds to gather targeting information about the organization's executives, including email addresses and project roles [T1597.001]. Using this data, they crafted a spearphishing email with a malicious attachment disguised as a project update document, which was delivered to a senior engineer [T1566.001]. The attachment contained a link to a Dropbox file hosting a payload, which the victim accessed, leading to the download and execution of a script [T1608.005]. Upon execution, the script simulated a HID USB device to inject malicious keystrokes, bypassing traditional endpoint detection by mimicking user input [T1674].\n\n**Persistence and Privilege Escalation:**\nTo maintain access, the adversary established persistence by adding a Shell value under the Registry key HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon, ensuring the malicious payload executed at user logon [T1547.004]. Concurrently, they exploited Software Deployment Tools, specifically SCCM, to deploy a malicious script across all domain-joined systems, spreading the infection laterally within the network [T1072]. In the cloud environment, malicious code altered the Docker container runtime options to disable security features and maintain elevated privileges, allowing unauthorized access to containerized applications [T1543.005].\n\n**Discovery and Collection:**\nThe attacker then conducted discovery activities, running 'kubectl describe node' commands to gather detailed information about cluster resources, including node statuses and pod configurations [T1613]. They also queried %APPDATA%/Google/Chrome to locate browser history files, extracting sensitive login credentials and browsing data [T1217]. Network monitoring tools captured anomalous packets, but these were logged as low-priority alerts due to high network traffic volumes.\n\n**Exfiltration and Impact:**\nFor data exfiltration, sensitive documents were collected and sent via unencrypted HTTP requests to a remote server, bypassing encrypted channels to evade detection [T1048.003]. Additionally, the backdoor employed libpcap in promiscuous mode to sniff network packets and detect activation patterns, filtering for specific data types before transmission [T1205.002]. As a final impact, the adversary injected a payload through 'evil.ps1' to tamper with image integrity during runtime, defacing internal web portals and causing operational disruptions [T1491]. Incident response teams noted that the attack leveraged multiple entry points, emphasizing the need for enhanced monitoring of container services and deployment tools.",
+        "techniques_used": [
+            "T1597.001",
+            "T1608.005",
+            "T1566.001",
+            "T1674",
+            "T1547.004",
+            "T1543.005",
+            "T1613",
+            "T1217",
+            "T1072",
+            "T1205.002",
+            "T1048.003",
+            "T1491"
+        ]
+    }
+}

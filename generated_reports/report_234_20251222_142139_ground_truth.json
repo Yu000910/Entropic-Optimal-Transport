@@ -1,0 +1,98 @@
+{
+    "report_id": "report_234",
+    "generated_at": "20251222_142139",
+    "scenario_target_ids": [
+        "T1200",
+        "T1566.004",
+        "T1559.003",
+        "T1543.001",
+        "T1134.001",
+        "T1055.012",
+        "T1564.001",
+        "T1552.002",
+        "T1606.002",
+        "T1021.007",
+        "T1102.003",
+        "T1567.004",
+        "T1490"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1566.004",
+        "T1559.003",
+        "T1543.001",
+        "T1134.001",
+        "T1055.012",
+        "T1564.001",
+        "T1552.002",
+        "T1606.002",
+        "T1021.007",
+        "T1102.003",
+        "T1567.004",
+        "T1490"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1055.012",
+        "T1566.004",
+        "T1564.001",
+        "T1490",
+        "T1606.002",
+        "T1102.003",
+        "T1200",
+        "T1552.002",
+        "T1021.007",
+        "T1134.001",
+        "T1543.001",
+        "T1559.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowHook.' This campaign targets organizations with hybrid IT infrastructures, leveraging a blend of tactics to achieve initial access, maintain persistence, and facilitate data exfiltration.\n\nAttack Narrative:\nInitial Access: The actors initiated the attack by deploying a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a target system. Concurrently, they conducted spearphishing voice calls, impersonating Microsoft support to deceive a user into installing AnyDesk remote access software, which provided an alternative entry point. System logs from the compromised endpoint show anomalous USB device connections at 14:32 UTC, followed by network traffic spikes correlating with the AnyDesk installation.\n\nExecution and Privilege Escalation: Once access was established, the adversary exploited an XPC Service daemon vulnerability on macOS systems to escalate from user to administrative privileges. On Windows environments, they employed process hollowing, using ZwUnmapViewOfSection to unmap legitimate process memory sections before injecting malicious payloads, while also utilizing token impersonation/theft to steal SIDs and impersonate process tokens for elevated access. Background checks on the exploited XPC service revealed it was patched in recent updates, but the target system was running an outdated version.\n\nPersistence and Defense Evasion: To maintain persistence, the actors placed a stripped payload with a plist extension in the Launch Agent's folder on macOS and used attrib commands to hide files and directories on Windows systems. They also inhibited system recovery by deleting backup catalogs and volume shadow copies using commands like 'wbadmin.exe delete catalog -quiet' and 'vssadmin.exe delete shadows /all /quiet'. The company, a mid-sized tech firm with offices in New York and London, reported unusual system slowdowns and failed backup attempts during this phase.\n\nCredential Access and Lateral Movement: The malware extracted credentials from the Windows Registry and modified SAML token expiration settings by manipulating AccessTokenLifetime for extended access. This enabled lateral movement to cloud services, where the actors invoked Connect-AZAccount to authenticate and access Azure virtual machines as the compromised user. Network monitoring logs indicated multiple authentication attempts to Azure endpoints from the compromised system.\n\nCommand and Control (C2) and Exfiltration: C2 communication was established using one-way HTTP traffic, where commands were intercepted from HTTP traffic, parsed for identifiers, and executed. Data exfiltration occurred over webhooks, with malicious PowerShell scripts collecting system information and sending it to a webhook.site address. The actors' infrastructure, traced to fictional domains, showed high volumes of outbound traffic during exfiltration periods.\n\nMitigation Recommendations: Organizations should implement strict USB device policies, conduct regular security awareness training to combat social engineering, apply patches for known vulnerabilities, monitor for unusual process and token activity, enforce multi-factor authentication, and review cloud service access logs. This fictional scenario underscores the importance of a layered defense strategy in hybrid environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowHook.' This campaign targets organizations with hybrid IT infrastructures, leveraging a blend of tactics to achieve initial access, maintain persistence, and facilitate data exfiltration.\n\nAttack Narrative:\nInitial Access: The actors initiated the attack by deploying a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a target system [T1200]. Concurrently, they conducted spearphishing voice calls [T1566.004], impersonating Microsoft support to deceive a user into installing AnyDesk remote access software, which provided an alternative entry point. System logs from the compromised endpoint show anomalous USB device connections at 14:32 UTC, followed by network traffic spikes correlating with the AnyDesk installation.\n\nExecution and Privilege Escalation: Once access was established, the adversary exploited an XPC Service daemon vulnerability on macOS systems to escalate from user to administrative privileges [T1559.003]. On Windows environments, they employed process hollowing [T1055.012], using ZwUnmapViewOfSection to unmap legitimate process memory sections before injecting malicious payloads, while also utilizing token impersonation/theft [T1134.001] to steal SIDs and impersonate process tokens for elevated access. Background checks on the exploited XPC service revealed it was patched in recent updates, but the target system was running an outdated version.\n\nPersistence and Defense Evasion: To maintain persistence, the actors placed a stripped payload with a plist extension in the Launch Agent's folder on macOS [T1543.001] and used attrib commands to hide files and directories on Windows systems [T1564.001]. They also inhibited system recovery [T1490] by deleting backup catalogs and volume shadow copies using commands like 'wbadmin.exe delete catalog -quiet' and 'vssadmin.exe delete shadows /all /quiet'. The company, a mid-sized tech firm with offices in New York and London, reported unusual system slowdowns and failed backup attempts during this phase.\n\nCredential Access and Lateral Movement: The malware extracted credentials from the Windows Registry [T1552.002] and modified SAML token expiration settings by manipulating AccessTokenLifetime for extended access [T1606.002]. This enabled lateral movement to cloud services, where the actors invoked Connect-AZAccount to authenticate and access Azure virtual machines as the compromised user [T1021.007]. Network monitoring logs indicated multiple authentication attempts to Azure endpoints from the compromised system.\n\nCommand and Control (C2) and Exfiltration: C2 communication was established using one-way HTTP traffic [T1102.003], where commands were intercepted from HTTP traffic, parsed for identifiers, and executed. Data exfiltration occurred over webhooks [T1567.004], with malicious PowerShell scripts collecting system information and sending it to a webhook.site address. The actors' infrastructure, traced to fictional domains, showed high volumes of outbound traffic during exfiltration periods.\n\nMitigation Recommendations: Organizations should implement strict USB device policies, conduct regular security awareness training to combat social engineering, apply patches for known vulnerabilities, monitor for unusual process and token activity, enforce multi-factor authentication, and review cloud service access logs. This fictional scenario underscores the importance of a layered defense strategy in hybrid environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\nInitial Access: The actors initiated the attack by deploying a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a target system.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "They also inhibited system recovery by deleting backup catalogs and volume shadow copies using commands like 'wbadmin.",
+            "technique_id": "T1490",
+            "technique_name": "Inhibit System Recovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowHook,' which employs a multi-vector attack strategy combining physical, social engineering, and technical exploits to compromise systems, escalate privileges, and exfiltrate data across macOS and Windows environments, including cloud services. The campaign highlights the use of hardware implants, voice phishing, and sophisticated persistence mechanisms for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional APT group 'ShadowHook.' This campaign targets organizations with hybrid IT infrastructures, leveraging a blend of tactics to achieve initial access, maintain persistence, and facilitate data exfiltration.\n\nAttack Narrative:\nInitial Access: The actors initiated the attack by deploying a USB Rubber Ducky configured to mimic a keyboard and execute malicious scripts upon connection to a target system [T1200]. Concurrently, they conducted spearphishing voice calls [T1566.004], impersonating Microsoft support to deceive a user into installing AnyDesk remote access software, which provided an alternative entry point. System logs from the compromised endpoint show anomalous USB device connections at 14:32 UTC, followed by network traffic spikes correlating with the AnyDesk installation.\n\nExecution and Privilege Escalation: Once access was established, the adversary exploited an XPC Service daemon vulnerability on macOS systems to escalate from user to administrative privileges [T1559.003]. On Windows environments, they employed process hollowing [T1055.012], using ZwUnmapViewOfSection to unmap legitimate process memory sections before injecting malicious payloads, while also utilizing token impersonation/theft [T1134.001] to steal SIDs and impersonate process tokens for elevated access. Background checks on the exploited XPC service revealed it was patched in recent updates, but the target system was running an outdated version.\n\nPersistence and Defense Evasion: To maintain persistence, the actors placed a stripped payload with a plist extension in the Launch Agent's folder on macOS [T1543.001] and used attrib commands to hide files and directories on Windows systems [T1564.001]. They also inhibited system recovery [T1490] by deleting backup catalogs and volume shadow copies using commands like 'wbadmin.exe delete catalog -quiet' and 'vssadmin.exe delete shadows /all /quiet'. The company, a mid-sized tech firm with offices in New York and London, reported unusual system slowdowns and failed backup attempts during this phase.\n\nCredential Access and Lateral Movement: The malware extracted credentials from the Windows Registry [T1552.002] and modified SAML token expiration settings by manipulating AccessTokenLifetime for extended access [T1606.002]. This enabled lateral movement to cloud services, where the actors invoked Connect-AZAccount to authenticate and access Azure virtual machines as the compromised user [T1021.007]. Network monitoring logs indicated multiple authentication attempts to Azure endpoints from the compromised system.\n\nCommand and Control (C2) and Exfiltration: C2 communication was established using one-way HTTP traffic [T1102.003], where commands were intercepted from HTTP traffic, parsed for identifiers, and executed. Data exfiltration occurred over webhooks [T1567.004], with malicious PowerShell scripts collecting system information and sending it to a webhook.site address. The actors' infrastructure, traced to fictional domains, showed high volumes of outbound traffic during exfiltration periods.\n\nMitigation Recommendations: Organizations should implement strict USB device policies, conduct regular security awareness training to combat social engineering, apply patches for known vulnerabilities, monitor for unusual process and token activity, enforce multi-factor authentication, and review cloud service access logs. This fictional scenario underscores the importance of a layered defense strategy in hybrid environments.",
+        "techniques_used": [
+            "T1200",
+            "T1566.004",
+            "T1559.003",
+            "T1543.001",
+            "T1134.001",
+            "T1055.012",
+            "T1564.001",
+            "T1552.002",
+            "T1606.002",
+            "T1021.007",
+            "T1102.003",
+            "T1567.004",
+            "T1490"
+        ]
+    }
+}

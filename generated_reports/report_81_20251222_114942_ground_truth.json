@@ -1,0 +1,78 @@
+{
+    "report_id": "report_81",
+    "generated_at": "20251222_114942",
+    "scenario_target_ids": [
+        "T1593.003",
+        "T1596.003",
+        "T1588.004",
+        "T1133",
+        "T1047",
+        "T1505.006",
+        "T1090",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1593.003",
+        "T1596.003",
+        "T1588.004",
+        "T1133",
+        "T1047",
+        "T1505.006",
+        "T1090",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1505.006",
+        "T1596.003",
+        "T1588.004",
+        "T1565.003",
+        "T1047",
+        "T1593.003",
+        "T1090",
+        "T1133"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations to a fictional APT campaign designated 'ShadowHawk'. This group has been observed targeting technology and financial sectors globally, with a focus on cloud infrastructure and virtualized systems.\n\nInitial Access: The actors likely conduct reconnaissance by using GitHub's search API to identify repositories containing exposed AWS access keys and querying Certificate Transparency logs to discover subdomains associated with victim companies. They then acquired Cloudflare Origin CA TLS certificates to impersonate legitimate services and leveraged publicly-accessible RDP and remote management and monitoring (RMM) servers to gain initial footholds into victim networks. System logs from a compromised server show unusual login attempts from IP addresses in Eastern Europe, though these may be unrelated to the campaign.\n\nExecution and Persistence: Upon access, the adversary employed Windows Management Instrumentation (WMIC) for execution and remote system discovery while simultaneously creating temporary directories to stage payloads. They altered the XML descriptor of vSphere Installation Bundles to deploy a persistent web shell on the ESXi management interface, enabling long-term access. Background: The victim organization, a mid-sized cloud service provider, reported increased latency in their VMware environment, which initially was attributed to routine maintenance.\n\nCommand and Control and Defense Evasion: To obscure their activities, the actors used the ExpressVPN service to proxy their traffic and hide their geographical location. Additionally, they modified application.exe to display fake login prompts that capture user credentials, manipulating runtime data to deceive users and maintain access. Network traffic analysis revealed encrypted connections to unknown domains, but further investigation is needed to confirm if these are part of the campaign.\n\nRecommendations: Organizations should review their code repositories for exposed credentials, monitor Certificate Transparency logs for suspicious subdomains, secure external remote services, and implement strict access controls on management interfaces. Regular audits of virtualization configurations and user awareness training on phishing tactics are also advised.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations to a fictional APT campaign designated 'ShadowHawk'. This group has been observed targeting technology and financial sectors globally, with a focus on cloud infrastructure and virtualized systems.\n\nInitial Access: The actors likely conduct reconnaissance by using GitHub's search API to identify repositories containing exposed AWS access keys [T1593.003] and querying Certificate Transparency logs to discover subdomains associated with victim companies [T1596.003]. They then acquired Cloudflare Origin CA TLS certificates to impersonate legitimate services [T1588.004] and leveraged publicly-accessible RDP and remote management and monitoring (RMM) servers to gain initial footholds into victim networks [T1133]. System logs from a compromised server show unusual login attempts from IP addresses in Eastern Europe, though these may be unrelated to the campaign.\n\nExecution and Persistence: Upon access, the adversary employed Windows Management Instrumentation (WMIC) for execution and remote system discovery while simultaneously creating temporary directories to stage payloads [T1047]. They altered the XML descriptor of vSphere Installation Bundles to deploy a persistent web shell on the ESXi management interface, enabling long-term access [T1505.006]. Background: The victim organization, a mid-sized cloud service provider, reported increased latency in their VMware environment, which initially was attributed to routine maintenance.\n\nCommand and Control and Defense Evasion: To obscure their activities, the actors used the ExpressVPN service to proxy their traffic and hide their geographical location [T1090]. Additionally, they modified application.exe to display fake login prompts that capture user credentials, manipulating runtime data to deceive users and maintain access [T1565.003]. Network traffic analysis revealed encrypted connections to unknown domains, but further investigation is needed to confirm if these are part of the campaign.\n\nRecommendations: Organizations should review their code repositories for exposed credentials, monitor Certificate Transparency logs for suspicious subdomains, secure external remote services, and implement strict access controls on management interfaces. Regular audits of virtualization configurations and user awareness training on phishing tactics are also advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] and leveraged publicly-accessible RDP and remote management and monitoring (RMM) servers to gain initial footholds into victim networks.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Execution and Persistence: Upon access, the adversary employed Windows Management Instrumentation (WMIC) for execution and remote system discovery while simultaneously creating temporary directories to stage payloads.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "Command and Control and Defense Evasion: To obscure their activities, the actors used the ExpressVPN service to proxy their traffic and hide their geographical location.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHawk' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowHawk', which targets cloud and virtualization environments to establish persistence and exfiltrate sensitive data. The campaign leverages open-source intelligence, compromised credentials, and manipulation of management tools to evade detection.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to alert organizations to a fictional APT campaign designated 'ShadowHawk'. This group has been observed targeting technology and financial sectors globally, with a focus on cloud infrastructure and virtualized systems.\n\nInitial Access: The actors likely conduct reconnaissance by using GitHub's search API to identify repositories containing exposed AWS access keys [T1593.003] and querying Certificate Transparency logs to discover subdomains associated with victim companies [T1596.003]. They then acquired Cloudflare Origin CA TLS certificates to impersonate legitimate services [T1588.004] and leveraged publicly-accessible RDP and remote management and monitoring (RMM) servers to gain initial footholds into victim networks [T1133]. System logs from a compromised server show unusual login attempts from IP addresses in Eastern Europe, though these may be unrelated to the campaign.\n\nExecution and Persistence: Upon access, the adversary employed Windows Management Instrumentation (WMIC) for execution and remote system discovery while simultaneously creating temporary directories to stage payloads [T1047]. They altered the XML descriptor of vSphere Installation Bundles to deploy a persistent web shell on the ESXi management interface, enabling long-term access [T1505.006]. Background: The victim organization, a mid-sized cloud service provider, reported increased latency in their VMware environment, which initially was attributed to routine maintenance.\n\nCommand and Control and Defense Evasion: To obscure their activities, the actors used the ExpressVPN service to proxy their traffic and hide their geographical location [T1090]. Additionally, they modified application.exe to display fake login prompts that capture user credentials, manipulating runtime data to deceive users and maintain access [T1565.003]. Network traffic analysis revealed encrypted connections to unknown domains, but further investigation is needed to confirm if these are part of the campaign.\n\nRecommendations: Organizations should review their code repositories for exposed credentials, monitor Certificate Transparency logs for suspicious subdomains, secure external remote services, and implement strict access controls on management interfaces. Regular audits of virtualization configurations and user awareness training on phishing tactics are also advised.",
+        "techniques_used": [
+            "T1593.003",
+            "T1596.003",
+            "T1588.004",
+            "T1133",
+            "T1047",
+            "T1505.006",
+            "T1090",
+            "T1565.003"
+        ]
+    }
+}

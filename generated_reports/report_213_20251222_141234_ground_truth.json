@@ -1,0 +1,64 @@
+{
+    "report_id": "report_213",
+    "generated_at": "20251222_141234",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1053.005",
+        "T1213.004",
+        "T1219.002",
+        "T1537"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.003",
+        "T1059.001",
+        "T1053.005",
+        "T1213.004",
+        "T1219.002",
+        "T1537"
+    ],
+    "actual_found_ids": [
+        "T1537",
+        "T1213.004",
+        "T1589",
+        "T1219.002",
+        "T1053.005",
+        "T1078.003",
+        "T1059.001"
+    ],
+    "clean_text": "APT-FICT, a fictional threat actor, conducted a multi-stage attack against a mid-sized manufacturing company, 'TechCorp Inc.', which specializes in industrial automation systems. Initial analysis of network logs from the Windows Active Directory server showed unusual login attempts from an external IP address in a non-business region, though these were initially dismissed as false positives due to legacy firewall configurations.\n\nThe actors likely conducted reconnaissance to identify TechCorp's use of Microsoft Dynamics 365 for customer management. They then exploited weak password policies to compromise a local administrator account, accessing Windows Credential Manager to harvest saved RDP credentials and using PowerShell to create a scheduled task for persistence by executing 'schtasks /create /tn \"mysc\" /tr C:\\Users\\Public\\test.exe /sc ONLOGON /ru \"System\"'. This allowed the downloader to maintain access across system reboots. Concurrently, the adversary employed the compromised credentials to access Microsoft Dynamics 365, downloading customer account details for phishing purposes while installing the AnyDesk remote desktop application onto the compromised network to facilitate lateral movement. System logs from the finance department's workstations indicated increased CPU usage during off-hours, but no alerts were triggered as monitoring tools were not configured for anomaly detection on those endpoints.\n\nIn the final stage, APT-FICT used a malicious script that leveraged the Dropbox API to sync confidential files, including proprietary design schematics and customer data, from the victim's system to the attacker's Dropbox folder, evading data loss prevention systems by encrypting the files in transit. Background: TechCorp had recently migrated some services to a hybrid cloud environment, but security audits revealed gaps in endpoint protection and user training programs, which may have contributed to the breach. The company's incident response team, upon fictional discovery, isolated affected systems and initiated password resets, though full recovery required several days due to backup inconsistencies.",
+    "tagged_text": "APT-FICT, a fictional threat actor, conducted a multi-stage attack against a mid-sized manufacturing company, 'TechCorp Inc.', which specializes in industrial automation systems. Initial analysis of network logs from the Windows Active Directory server showed unusual login attempts from an external IP address in a non-business region, though these were initially dismissed as false positives due to legacy firewall configurations.\n\nThe actors likely conducted reconnaissance [T1589] to identify TechCorp's use of Microsoft Dynamics 365 for customer management. They then exploited weak password policies to compromise a local administrator account, accessing Windows Credential Manager to harvest saved RDP credentials [T1078.003] and using PowerShell [T1059.001] to create a scheduled task for persistence by executing 'schtasks /create /tn \"mysc\" /tr C:\\Users\\Public\\test.exe /sc ONLOGON /ru \"System\"' [T1053.005]. This allowed the downloader to maintain access across system reboots. Concurrently, the adversary employed the compromised credentials to access Microsoft Dynamics 365, downloading customer account details for phishing purposes [T1213.004] while installing the AnyDesk remote desktop application onto the compromised network [T1219.002] to facilitate lateral movement. System logs from the finance department's workstations indicated increased CPU usage during off-hours, but no alerts were triggered as monitoring tools were not configured for anomaly detection on those endpoints.\n\nIn the final stage, APT-FICT used a malicious script that leveraged the Dropbox API to sync confidential files, including proprietary design schematics and customer data, from the victim's system to the attacker's Dropbox folder [T1537], evading data loss prevention systems by encrypting the files in transit. Background: TechCorp had recently migrated some services to a hybrid cloud environment, but security audits revealed gaps in endpoint protection and user training programs, which may have contributed to the breach. The company's incident response team, upon fictional discovery, isolated affected systems and initiated password resets, though full recovery required several days due to backup inconsistencies.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify TechCorp's use of Microsoft Dynamics 365 for customer management.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the final stage, APT-FICT used a malicious script that leveraged the Dropbox API to sync confidential files, including proprietary design schematics and customer data, from the victim's system to the attacker's Dropbox folder, evading data loss prevention systems by encrypting the files in transit.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated APT-FICT, targeting enterprise environments. The campaign involves credential harvesting, persistence mechanisms, data exfiltration via cloud services, and lateral movement using remote access tools. The information is based on fictional incident response data and is intended for blue team training to enhance detection and mitigation strategies.",
+        "full_report_text": "APT-FICT, a fictional threat actor, conducted a multi-stage attack against a mid-sized manufacturing company, 'TechCorp Inc.', which specializes in industrial automation systems. Initial analysis of network logs from the Windows Active Directory server showed unusual login attempts from an external IP address in a non-business region, though these were initially dismissed as false positives due to legacy firewall configurations.\n\nThe actors likely conducted reconnaissance [T1589] to identify TechCorp's use of Microsoft Dynamics 365 for customer management. They then exploited weak password policies to compromise a local administrator account, accessing Windows Credential Manager to harvest saved RDP credentials [T1078.003] and using PowerShell [T1059.001] to create a scheduled task for persistence by executing 'schtasks /create /tn \"mysc\" /tr C:\\Users\\Public\\test.exe /sc ONLOGON /ru \"System\"' [T1053.005]. This allowed the downloader to maintain access across system reboots. Concurrently, the adversary employed the compromised credentials to access Microsoft Dynamics 365, downloading customer account details for phishing purposes [T1213.004] while installing the AnyDesk remote desktop application onto the compromised network [T1219.002] to facilitate lateral movement. System logs from the finance department's workstations indicated increased CPU usage during off-hours, but no alerts were triggered as monitoring tools were not configured for anomaly detection on those endpoints.\n\nIn the final stage, APT-FICT used a malicious script that leveraged the Dropbox API to sync confidential files, including proprietary design schematics and customer data, from the victim's system to the attacker's Dropbox folder [T1537], evading data loss prevention systems by encrypting the files in transit. Background: TechCorp had recently migrated some services to a hybrid cloud environment, but security audits revealed gaps in endpoint protection and user training programs, which may have contributed to the breach. The company's incident response team, upon fictional discovery, isolated affected systems and initiated password resets, though full recovery required several days due to backup inconsistencies.",
+        "techniques_used": [
+            "T1589",
+            "T1078.003",
+            "T1059.001",
+            "T1053.005",
+            "T1213.004",
+            "T1219.002",
+            "T1537"
+        ]
+    }
+}

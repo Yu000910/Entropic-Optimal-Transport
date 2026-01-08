@@ -1,0 +1,113 @@
+{
+    "report_id": "report_74",
+    "generated_at": "20251222_114654",
+    "scenario_target_ids": [
+        "T1669",
+        "T1569.003",
+        "T1203",
+        "T1653",
+        "T1542.003",
+        "T1547.003",
+        "T1036.011",
+        "T1218.005",
+        "T1555.001",
+        "T1550.002",
+        "T1213.003",
+        "T1102",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1669",
+        "T1203",
+        "T1218.005",
+        "T1102",
+        "T1542.003",
+        "T1547.003",
+        "T1653",
+        "T1569.003",
+        "T1550.002",
+        "T1555.001",
+        "T1213.003",
+        "T1036.011",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1569.003",
+        "T1550.002",
+        "T1218.005",
+        "T1653",
+        "T1213.003",
+        "T1102",
+        "T1203",
+        "T1555.001",
+        "T1669",
+        "T1036.011",
+        "T1496.004",
+        "T1542.003",
+        "T1547.003"
+    ],
+    "clean_text": "APT-F47 likely conducts initial reconnaissance through scanning public Wi-Fi networks to identify potential entry points. In one incident, the actors exploited Adobe Flash Player vulnerability CVE-2015-3113 and Internet Explorer vulnerability CVE-2014-1776 to gain initial access on a target workstation. System logs from the compromised machine show that the malware automatically connected to an open Wi-Fi network to establish external command and control (C2) communication. Following exploitation, the adversary employed mshta.exe to execute a malicious HTA file, which ran PowerShell commands to download additional payloads from a web service, specifically leveraging Microsoft's OneDrive for stealthy retrieval. For persistence, the backdoor replaced the Master Boot Record to ensure execution prior to OS initialization and added a registry subkey to HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ to achieve boot execution, while also modifying the system's lock screen timeout settings to prevent automatic logout and maintain access. The attacker executed 'systemctl start network-sniffer.service' to begin monitoring network traffic on the target machine and used Mimikatz.exe to extract NTLM hashes from the LSASS process memory for lateral movement via pass-the-hash attacks. Calisto malware collected Keychain storage data and copied passwords/tokens to a file, and malicious automation was configured to collect all accessible GitHub gists containing code snippets and credentials. To evade detection, the exploit kit wrote misleading information to /proc/5179/cmdline to bypass process-based defenses. In cloud environments, the malware programmatically created numerous SNS topics and subscriptions, consuming AWS resources and degrading service performance through cloud service hijacking. Incident responders noted anomalous network traffic spikes correlating with these activities, but no data exfiltration was confirmed in this simulation. The company background involves a mid-sized fintech firm with hybrid infrastructure, and routine system audits revealed no prior compromises.",
+    "tagged_text": "APT-F47 likely conducts initial reconnaissance through scanning public Wi-Fi networks [T1669] to identify potential entry points. In one incident, the actors exploited Adobe Flash Player vulnerability CVE-2015-3113 and Internet Explorer vulnerability CVE-2014-1776 [T1203] to gain initial access on a target workstation. System logs from the compromised machine show that the malware automatically connected to an open Wi-Fi network to establish external command and control (C2) communication [T1669]. Following exploitation, the adversary employed mshta.exe to execute a malicious HTA file [T1218.005], which ran PowerShell commands to download additional payloads from a web service [T1102], specifically leveraging Microsoft's OneDrive for stealthy retrieval. For persistence, the backdoor replaced the Master Boot Record to ensure execution prior to OS initialization [T1542.003] and added a registry subkey to HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ to achieve boot execution [T1547.003], while also modifying the system's lock screen timeout settings to prevent automatic logout and maintain access [T1653]. The attacker executed 'systemctl start network-sniffer.service' to begin monitoring network traffic on the target machine [T1569.003] and used Mimikatz.exe to extract NTLM hashes from the LSASS process memory for lateral movement via pass-the-hash attacks [T1550.002]. Calisto malware collected Keychain storage data and copied passwords/tokens to a file [T1555.001], and malicious automation was configured to collect all accessible GitHub gists containing code snippets and credentials [T1213.003]. To evade detection, the exploit kit wrote misleading information to /proc/5179/cmdline to bypass process-based defenses [T1036.011]. In cloud environments, the malware programmatically created numerous SNS topics and subscriptions, consuming AWS resources and degrading service performance through cloud service hijacking [T1496.004]. Incident responders noted anomalous network traffic spikes correlating with these activities, but no data exfiltration was confirmed in this simulation. The company background involves a mid-sized fintech firm with hybrid infrastructure, and routine system audits revealed no prior compromises.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT-F47 likely conducts initial reconnaissance through scanning public Wi-Fi networks to identify potential entry points.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "In one incident, the actors exploited Adobe Flash Player vulnerability CVE-2015-3113 and Internet Explorer vulnerability CVE-2014-1776 to gain initial access on a target workstation.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "System logs from the compromised machine show that the malware automatically connected to an open Wi-Fi network to establish external command and control (C2) communication.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "005], which ran PowerShell commands to download additional payloads from a web service, specifically leveraging Microsoft's OneDrive for stealthy retrieval.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "003], while also modifying the system's lock screen timeout settings to prevent automatic logout and maintain access.",
+            "technique_id": "T1653",
+            "technique_name": "Power Settings"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-F47, targeting organizations in the technology and financial sectors. The actors exploit client-side vulnerabilities, use living-off-the-land techniques for persistence and lateral movement, and hijack cloud services to degrade performance and exfiltrate data. Blue teams should review logs for unusual Wi-Fi connections, systemctl executions, and registry modifications to mitigate these threats.",
+        "full_report_text": "APT-F47 likely conducts initial reconnaissance through scanning public Wi-Fi networks [T1669] to identify potential entry points. In one incident, the actors exploited Adobe Flash Player vulnerability CVE-2015-3113 and Internet Explorer vulnerability CVE-2014-1776 [T1203] to gain initial access on a target workstation. System logs from the compromised machine show that the malware automatically connected to an open Wi-Fi network to establish external command and control (C2) communication [T1669]. Following exploitation, the adversary employed mshta.exe to execute a malicious HTA file [T1218.005], which ran PowerShell commands to download additional payloads from a web service [T1102], specifically leveraging Microsoft's OneDrive for stealthy retrieval. For persistence, the backdoor replaced the Master Boot Record to ensure execution prior to OS initialization [T1542.003] and added a registry subkey to HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ to achieve boot execution [T1547.003], while also modifying the system's lock screen timeout settings to prevent automatic logout and maintain access [T1653]. The attacker executed 'systemctl start network-sniffer.service' to begin monitoring network traffic on the target machine [T1569.003] and used Mimikatz.exe to extract NTLM hashes from the LSASS process memory for lateral movement via pass-the-hash attacks [T1550.002]. Calisto malware collected Keychain storage data and copied passwords/tokens to a file [T1555.001], and malicious automation was configured to collect all accessible GitHub gists containing code snippets and credentials [T1213.003]. To evade detection, the exploit kit wrote misleading information to /proc/5179/cmdline to bypass process-based defenses [T1036.011]. In cloud environments, the malware programmatically created numerous SNS topics and subscriptions, consuming AWS resources and degrading service performance through cloud service hijacking [T1496.004]. Incident responders noted anomalous network traffic spikes correlating with these activities, but no data exfiltration was confirmed in this simulation. The company background involves a mid-sized fintech firm with hybrid infrastructure, and routine system audits revealed no prior compromises.",
+        "techniques_used": [
+            "T1669",
+            "T1203",
+            "T1218.005",
+            "T1102",
+            "T1542.003",
+            "T1547.003",
+            "T1653",
+            "T1569.003",
+            "T1550.002",
+            "T1555.001",
+            "T1213.003",
+            "T1036.011",
+            "T1496.004"
+        ]
+    }
+}

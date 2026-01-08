@@ -1,0 +1,63 @@
+{
+    "report_id": "report_331",
+    "generated_at": "20251222_150136",
+    "scenario_target_ids": [
+        "T1584.005",
+        "T1091",
+        "T1059.009",
+        "T1106",
+        "T1552.005",
+        "T1568.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1584.005",
+        "T1091",
+        "T1059.009",
+        "T1106",
+        "T1552.005",
+        "T1568.003"
+    ],
+    "actual_found_ids": [
+        "T1552.005",
+        "T1106",
+        "T1584.005",
+        "T1091",
+        "T1059.009",
+        "T1568.003"
+    ],
+    "clean_text": "On October 15, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA observed a sophisticated campaign by the threat actor 'ShadowMist' against organizations in the financial and healthcare sectors. The actor likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were identified in this phase. Initial access was achieved via a botnet that injected malicious payloads into memory to avoid disk-based detection, while simultaneously using removable drives to replicate across air-gapped networks, as evidenced by anomalous USB activity logs from endpoint security systems at Victim Corp, a mid-sized insurance provider with offices in New York and London. The actor then employed PowerShell to remotely execute commands via Azure Runbooks, establishing persistence in the cloud environment by modifying automation workflows, and used native Windows APIs such as GetProcAddress and CreateProcess to execute additional processes without triggering traditional antivirus alerts, as detailed in forensic analysis from a compromised virtual machine (VM) hostname 'FIN-SRV-02' with IP 192.168.1.105. Subsequently, the actor collected cloud access keys by retrieving and parsing the UserData script from the instance metadata service, enabling lateral movement to other cloud resources, and employed DNS calculation through a custom script that adjusted query payload sizes to bypass egress filtering thresholds, as observed in network traffic logs showing irregular DNS requests to domains like 'update.shadowmist[.]com'. Additional noise includes routine system updates and failed login attempts from legacy accounts, which were unrelated to the campaign. The campaign culminated in data exfiltration over encrypted channels, though specific exfiltration techniques are beyond the scope of this advisory.",
+    "tagged_text": "On October 15, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA observed a sophisticated campaign by the threat actor 'ShadowMist' against organizations in the financial and healthcare sectors. The actor likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were identified in this phase. Initial access was achieved via a botnet [T1584.005] that injected malicious payloads into memory to avoid disk-based detection, while simultaneously using removable drives [T1091] to replicate across air-gapped networks, as evidenced by anomalous USB activity logs from endpoint security systems at Victim Corp, a mid-sized insurance provider with offices in New York and London. The actor then employed PowerShell [T1059.009] to remotely execute commands via Azure Runbooks, establishing persistence in the cloud environment by modifying automation workflows, and used native Windows APIs [T1106] such as GetProcAddress and CreateProcess to execute additional processes without triggering traditional antivirus alerts, as detailed in forensic analysis from a compromised virtual machine (VM) hostname 'FIN-SRV-02' with IP 192.168.1.105. Subsequently, the actor collected cloud access keys [T1552.005] by retrieving and parsing the UserData script from the instance metadata service, enabling lateral movement to other cloud resources, and employed DNS calculation [T1568.003] through a custom script that adjusted query payload sizes to bypass egress filtering thresholds, as observed in network traffic logs showing irregular DNS requests to domains like 'update.shadowmist[.]com'. Additional noise includes routine system updates and failed login attempts from legacy accounts, which were unrelated to the campaign. The campaign culminated in data exfiltration over encrypted channels, though specific exfiltration techniques are beyond the scope of this advisory.",
+    "sentence_annotations": [
+        {
+            "sentence": "005] that injected malicious payloads into memory to avoid disk-based detection, while simultaneously using removable drives to replicate across air-gapped networks, as evidenced by anomalous USB activity logs from endpoint security systems at Victim Corp, a mid-sized insurance provider with offices in New York and London.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "009] to remotely execute commands via Azure Runbooks, establishing persistence in the cloud environment by modifying automation workflows, and used native Windows APIs such as GetProcAddress and CreateProcess to execute additional processes without triggering traditional antivirus alerts, as detailed in forensic analysis from a compromised virtual machine (VM) hostname 'FIN-SRV-02' with IP 192.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMist' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowMist' targeting hybrid cloud environments, leveraging botnets, removable media, cloud APIs, and DNS evasion techniques for initial access, execution, persistence, and data exfiltration.",
+        "full_report_text": "On October 15, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA observed a sophisticated campaign by the threat actor 'ShadowMist' against organizations in the financial and healthcare sectors. The actor likely conducted reconnaissance through open-source intelligence gathering, though no specific techniques were identified in this phase. Initial access was achieved via a botnet [T1584.005] that injected malicious payloads into memory to avoid disk-based detection, while simultaneously using removable drives [T1091] to replicate across air-gapped networks, as evidenced by anomalous USB activity logs from endpoint security systems at Victim Corp, a mid-sized insurance provider with offices in New York and London. The actor then employed PowerShell [T1059.009] to remotely execute commands via Azure Runbooks, establishing persistence in the cloud environment by modifying automation workflows, and used native Windows APIs [T1106] such as GetProcAddress and CreateProcess to execute additional processes without triggering traditional antivirus alerts, as detailed in forensic analysis from a compromised virtual machine (VM) hostname 'FIN-SRV-02' with IP 192.168.1.105. Subsequently, the actor collected cloud access keys [T1552.005] by retrieving and parsing the UserData script from the instance metadata service, enabling lateral movement to other cloud resources, and employed DNS calculation [T1568.003] through a custom script that adjusted query payload sizes to bypass egress filtering thresholds, as observed in network traffic logs showing irregular DNS requests to domains like 'update.shadowmist[.]com'. Additional noise includes routine system updates and failed login attempts from legacy accounts, which were unrelated to the campaign. The campaign culminated in data exfiltration over encrypted channels, though specific exfiltration techniques are beyond the scope of this advisory.",
+        "techniques_used": [
+            "T1584.005",
+            "T1091",
+            "T1059.009",
+            "T1106",
+            "T1552.005",
+            "T1568.003"
+        ]
+    }
+}

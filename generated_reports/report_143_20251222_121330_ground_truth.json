@@ -1,0 +1,80 @@
+{
+    "report_id": "report_143",
+    "generated_at": "20251222_121330",
+    "scenario_target_ids": [
+        "T1566.003",
+        "T1675",
+        "T1547.009",
+        "T1110.004",
+        "T1071.005"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.003",
+        "T1059.001",
+        "T1675",
+        "T1041",
+        "T1547.009",
+        "T1112",
+        "T1110.004",
+        "T1071.005"
+    ],
+    "actual_found_ids": [
+        "T1110.004",
+        "T1566.003",
+        "T1589",
+        "T1041",
+        "T1675",
+        "T1059.001",
+        "T1071.005",
+        "T1547.009",
+        "T1112"
+    ],
+    "clean_text": "On October 26, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional campaign by APT-99, a state-sponsored actor, targeting technology firms with VMware ESXi deployments. APT-99 likely conducted reconnaissance to identify employees active on social media platforms. The actors then created a fake customer support account on Twitter, posing as a legitimate software vendor, and sent malicious links disguised as solution updates to users complaining about ESXi performance issues. One target, an IT administrator at a mid-sized cloud provider, clicked the link, which downloaded a malicious JavaScript file that executed PowerShell scripts to deploy a backdoor. System logs from the compromised host showed unusual network connections to external IP addresses, but these were initially dismissed as false positives. The backdoor leveraged the VMware VIX API to issue ESXi administration commands, specifically using StartProgramInGuest to launch a reverse shell on a target virtual machine while simultaneously exfiltrating configuration files. APT-99 established persistence by modifying a .lnk shortcut in the Windows Startup folder to point to the malicious executable and added registry entries to maintain access across reboots. The actors then performed credential stuffing attacks, querying SSH services across the internal network using credentials harvested from a previous breach dump file, 'breach_dump.txt', which they had obtained through earlier infiltration. Network traffic analysis revealed that APT-99 blended their command and control traffic with legitimate communications by leveraging XMPP's federated architecture, allowing them to evade detection by mimicking standard instant messaging patterns. Additional logs indicated failed login attempts on non-critical servers, but these were not correlated with the main campaign. Mitigation includes implementing multi-factor authentication, monitoring for unusual ESXi command usage, and blocking known malicious IP addresses associated with this activity.",
+    "tagged_text": "On October 26, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional campaign by APT-99, a state-sponsored actor, targeting technology firms with VMware ESXi deployments. APT-99 likely conducted reconnaissance [T1589] to identify employees active on social media platforms. The actors then created a fake customer support account on Twitter, posing as a legitimate software vendor, and sent malicious links disguised as solution updates to users complaining about ESXi performance issues [T1566.003]. One target, an IT administrator at a mid-sized cloud provider, clicked the link, which downloaded a malicious JavaScript file that executed PowerShell scripts [T1059.001] to deploy a backdoor. System logs from the compromised host showed unusual network connections to external IP addresses, but these were initially dismissed as false positives. The backdoor leveraged the VMware VIX API to issue ESXi administration commands, specifically using StartProgramInGuest to launch a reverse shell on a target virtual machine [T1675] while simultaneously exfiltrating configuration files [T1041]. APT-99 established persistence by modifying a .lnk shortcut in the Windows Startup folder to point to the malicious executable [T1547.009] and added registry entries [T1112] to maintain access across reboots. The actors then performed credential stuffing attacks [T1110.004], querying SSH services across the internal network using credentials harvested from a previous breach dump file, 'breach_dump.txt', which they had obtained through earlier infiltration. Network traffic analysis revealed that APT-99 blended their command and control traffic with legitimate communications by leveraging XMPP's federated architecture [T1071.005], allowing them to evade detection by mimicking standard instant messaging patterns. Additional logs indicated failed login attempts on non-critical servers, but these were not correlated with the main campaign. Mitigation includes implementing multi-factor authentication, monitoring for unusual ESXi command usage, and blocking known malicious IP addresses associated with this activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "APT-99 likely conducted reconnaissance to identify employees active on social media platforms.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The backdoor leveraged the VMware VIX API to issue ESXi administration commands, specifically using StartProgramInGuest to launch a reverse shell on a target virtual machine while simultaneously exfiltrating configuration files.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "The backdoor leveraged the VMware VIX API to issue ESXi administration commands, specifically using StartProgramInGuest to launch a reverse shell on a target virtual machine while simultaneously exfiltrating configuration files.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        },
+        {
+            "sentence": "009] and added registry entries to maintain access across reboots.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Virtualized Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated APT-99, targeting organizations using VMware ESXi environments. APT-99 employs spearphishing via social media to gain initial access, leverages ESXi administration commands for execution, establishes persistence through shortcut modifications, conducts credential stuffing across SSH services, and uses XMPP protocols for command and control. The advisory provides indicators of compromise and mitigation strategies for blue team training.",
+        "full_report_text": "On October 26, 2023, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a fictional campaign by APT-99, a state-sponsored actor, targeting technology firms with VMware ESXi deployments. APT-99 likely conducted reconnaissance [T1589] to identify employees active on social media platforms. The actors then created a fake customer support account on Twitter, posing as a legitimate software vendor, and sent malicious links disguised as solution updates to users complaining about ESXi performance issues [T1566.003]. One target, an IT administrator at a mid-sized cloud provider, clicked the link, which downloaded a malicious JavaScript file that executed PowerShell scripts [T1059.001] to deploy a backdoor. System logs from the compromised host showed unusual network connections to external IP addresses, but these were initially dismissed as false positives. The backdoor leveraged the VMware VIX API to issue ESXi administration commands, specifically using StartProgramInGuest to launch a reverse shell on a target virtual machine [T1675] while simultaneously exfiltrating configuration files [T1041]. APT-99 established persistence by modifying a .lnk shortcut in the Windows Startup folder to point to the malicious executable [T1547.009] and added registry entries [T1112] to maintain access across reboots. The actors then performed credential stuffing attacks [T1110.004], querying SSH services across the internal network using credentials harvested from a previous breach dump file, 'breach_dump.txt', which they had obtained through earlier infiltration. Network traffic analysis revealed that APT-99 blended their command and control traffic with legitimate communications by leveraging XMPP's federated architecture [T1071.005], allowing them to evade detection by mimicking standard instant messaging patterns. Additional logs indicated failed login attempts on non-critical servers, but these were not correlated with the main campaign. Mitigation includes implementing multi-factor authentication, monitoring for unusual ESXi command usage, and blocking known malicious IP addresses associated with this activity.",
+        "techniques_used": [
+            "T1589",
+            "T1566.003",
+            "T1059.001",
+            "T1675",
+            "T1041",
+            "T1547.009",
+            "T1112",
+            "T1110.004",
+            "T1071.005"
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "report_id": "report_559",
+    "generated_at": "20251222_164044",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1566.004",
+        "T1059.003",
+        "T1555",
+        "T1135",
+        "T1550.001",
+        "T1219.003",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1078.004",
+        "T1059.003",
+        "T1135",
+        "T1555",
+        "T1550.001",
+        "T1219.003",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1011.001",
+        "T1059.003",
+        "T1555",
+        "T1566.004",
+        "T1135",
+        "T1550.001",
+        "T1219.003",
+        "T1078.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional threat actor designated as Storm-1811, which has been observed targeting financial and technology sectors in a simulated training scenario. Background analysis indicates the actor operates with moderate sophistication, focusing on cloud-based assets to exfiltrate sensitive data. The campaign began with reconnaissance activities, where Storm-1811 likely gathered information on target organizations through open-source intelligence (OSINT) and social media profiling, though no specific techniques were tagged in this phase.\n\nIn the Initial Access phase, Storm-1811 initiated voice calls posing as IT support to prompt users into downloading malicious scripts, employing spearphishing voice tactics to gain entry into victim systems. Upon user interaction, the actor leveraged valid cloud accounts to authenticate and deploy tools like Pacu for further operations. System logs from a compromised endpoint show unusual network traffic spikes at 14:30 UTC on 2023-10-05, correlating with the initial access event.\n\nDuring the Execution phase, the adversary used the Windows Command Shell to execute scripts that downloaded additional payloads while simultaneously querying network shares to identify connected drives and sensitive data locations. For instance, a command prompt session was observed running 'net share' commands to enumerate available resources on the local network. In parallel, the actor accessed credentials from password stores by extracting authentication data from the Chrome Login Data file, which was then used to escalate privileges and move laterally within the environment.\n\nFor Persistence and Lateral Movement, Storm-1811 employed application access tokens to query REST endpoints and map the organization's digital infrastructure, while also deploying remote access hardware such as TinyPilot as a secondary control mechanism to maintain access even if primary channels were disrupted. Network monitoring detected anomalous API calls to cloud services using stolen tokens, indicating active reconnaissance of internal assets.\n\nIn the Exfiltration phase, the actor leveraged Bluetooth protocol flaws to covertly transmit financial records to an external receiver, bypassing traditional network monitoring. This was combined with data staging on compromised shares before transmission. Incident response teams noted that the exfiltration occurred during off-hours to avoid detection, with logs showing Bluetooth pairing attempts from the infected host to an unknown device at 03:00 UTC. The campaign concluded with the actor covering tracks by deleting temporary files and clearing event logs, though no specific techniques were tagged for this action.\n\nThis advisory serves as a training tool for blue teams to recognize and mitigate such multi-vector attacks in cloud environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional threat actor designated as Storm-1811, which has been observed targeting financial and technology sectors in a simulated training scenario. Background analysis indicates the actor operates with moderate sophistication, focusing on cloud-based assets to exfiltrate sensitive data. The campaign began with reconnaissance activities, where Storm-1811 likely gathered information on target organizations through open-source intelligence (OSINT) and social media profiling, though no specific techniques were tagged in this phase.\n\nIn the Initial Access phase, Storm-1811 initiated voice calls posing as IT support to prompt users into downloading malicious scripts, employing spearphishing voice tactics [T1566.004] to gain entry into victim systems. Upon user interaction, the actor leveraged valid cloud accounts [T1078.004] to authenticate and deploy tools like Pacu for further operations. System logs from a compromised endpoint show unusual network traffic spikes at 14:30 UTC on 2023-10-05, correlating with the initial access event.\n\nDuring the Execution phase, the adversary used the Windows Command Shell [T1059.003] to execute scripts that downloaded additional payloads while simultaneously querying network shares [T1135] to identify connected drives and sensitive data locations. For instance, a command prompt session was observed running 'net share' commands to enumerate available resources on the local network. In parallel, the actor accessed credentials from password stores [T1555] by extracting authentication data from the Chrome Login Data file, which was then used to escalate privileges and move laterally within the environment.\n\nFor Persistence and Lateral Movement, Storm-1811 employed application access tokens [T1550.001] to query REST endpoints and map the organization's digital infrastructure, while also deploying remote access hardware [T1219.003] such as TinyPilot as a secondary control mechanism to maintain access even if primary channels were disrupted. Network monitoring detected anomalous API calls to cloud services using stolen tokens, indicating active reconnaissance of internal assets.\n\nIn the Exfiltration phase, the actor leveraged Bluetooth protocol flaws [T1011.001] to covertly transmit financial records to an external receiver, bypassing traditional network monitoring. This was combined with data staging on compromised shares before transmission. Incident response teams noted that the exfiltration occurred during off-hours to avoid detection, with logs showing Bluetooth pairing attempts from the infected host to an unknown device at 03:00 UTC. The campaign concluded with the actor covering tracks by deleting temporary files and clearing event logs, though no specific techniques were tagged for this action.\n\nThis advisory serves as a training tool for blue teams to recognize and mitigate such multi-vector attacks in cloud environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "003] to execute scripts that downloaded additional payloads while simultaneously querying network shares to identify connected drives and sensitive data locations.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "In parallel, the actor accessed credentials from password stores by extracting authentication data from the Chrome Login Data file, which was then used to escalate privileges and move laterally within the environment.",
+            "technique_id": "T1555",
+            "technique_name": "Credentials from Password Stores"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'Storm-1811' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by threat actor Storm-1811, involving spearphishing, credential theft, and data exfiltration to compromise cloud environments. The activity leverages tools like Pacu and QUADAGENT for initial access and lateral movement, with techniques observed across the kill-chain from reconnaissance to exfiltration.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional threat actor designated as Storm-1811, which has been observed targeting financial and technology sectors in a simulated training scenario. Background analysis indicates the actor operates with moderate sophistication, focusing on cloud-based assets to exfiltrate sensitive data. The campaign began with reconnaissance activities, where Storm-1811 likely gathered information on target organizations through open-source intelligence (OSINT) and social media profiling, though no specific techniques were tagged in this phase.\n\nIn the Initial Access phase, Storm-1811 initiated voice calls posing as IT support to prompt users into downloading malicious scripts, employing spearphishing voice tactics [T1566.004] to gain entry into victim systems. Upon user interaction, the actor leveraged valid cloud accounts [T1078.004] to authenticate and deploy tools like Pacu for further operations. System logs from a compromised endpoint show unusual network traffic spikes at 14:30 UTC on 2023-10-05, correlating with the initial access event.\n\nDuring the Execution phase, the adversary used the Windows Command Shell [T1059.003] to execute scripts that downloaded additional payloads while simultaneously querying network shares [T1135] to identify connected drives and sensitive data locations. For instance, a command prompt session was observed running 'net share' commands to enumerate available resources on the local network. In parallel, the actor accessed credentials from password stores [T1555] by extracting authentication data from the Chrome Login Data file, which was then used to escalate privileges and move laterally within the environment.\n\nFor Persistence and Lateral Movement, Storm-1811 employed application access tokens [T1550.001] to query REST endpoints and map the organization's digital infrastructure, while also deploying remote access hardware [T1219.003] such as TinyPilot as a secondary control mechanism to maintain access even if primary channels were disrupted. Network monitoring detected anomalous API calls to cloud services using stolen tokens, indicating active reconnaissance of internal assets.\n\nIn the Exfiltration phase, the actor leveraged Bluetooth protocol flaws [T1011.001] to covertly transmit financial records to an external receiver, bypassing traditional network monitoring. This was combined with data staging on compromised shares before transmission. Incident response teams noted that the exfiltration occurred during off-hours to avoid detection, with logs showing Bluetooth pairing attempts from the infected host to an unknown device at 03:00 UTC. The campaign concluded with the actor covering tracks by deleting temporary files and clearing event logs, though no specific techniques were tagged for this action.\n\nThis advisory serves as a training tool for blue teams to recognize and mitigate such multi-vector attacks in cloud environments.",
+        "techniques_used": [
+            "T1566.004",
+            "T1078.004",
+            "T1059.003",
+            "T1135",
+            "T1555",
+            "T1550.001",
+            "T1219.003",
+            "T1011.001"
+        ]
+    }
+}

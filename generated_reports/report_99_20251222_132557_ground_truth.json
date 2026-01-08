@@ -1,0 +1,113 @@
+{
+    "report_id": "report_99",
+    "generated_at": "20251222_132557",
+    "scenario_target_ids": [
+        "T1590.006",
+        "T1608.005",
+        "T1585.001",
+        "T1189",
+        "T1559.003",
+        "T1204",
+        "T1668",
+        "T1505.006",
+        "T1003.003",
+        "T1482",
+        "T1613",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.006",
+        "T1608.005",
+        "T1585.001",
+        "T1189",
+        "T1559.003",
+        "T1204",
+        "T1668",
+        "T1505.006",
+        "T1003.003",
+        "T1482",
+        "T1613",
+        "T1665"
+    ],
+    "actual_found_ids": [
+        "T1613",
+        "T1585.001",
+        "T1482",
+        "T1668",
+        "T1189",
+        "T1608.005",
+        "T1665",
+        "T1590.006",
+        "T1003.003",
+        "T1505.006",
+        "T1204",
+        "T1559.003"
+    ],
+    "clean_text": "### Summary\n\nThe Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail the tactics, techniques, and procedures (TTPs) of the fictional APT group Crimson Shadow. This campaign, observed in a simulated environment, targets organizations in the energy and manufacturing sectors, leveraging social engineering, drive-by compromises, and privilege escalation to achieve objectives. The advisory is intended for blue team training to improve defensive postures against similar real-world threats.\n\n### Attack Narrative\n\n**Initial Access:** Crimson Shadow actors initiated the campaign by conducting reconnaissance to gather information on target networks. They performed DNS lookups using tools like dig to identify internal domain controllers and network security appliances. Concurrently, the actors established fake social media accounts on platforms like Facebook, copying details from real individuals to create convincing personas for social engineering. These personas were used to lure victims to a compromised website, where malicious JavaScript code was injected to capture user credentials. Additionally, the actors delivered malware via drive-by compromises, hosting malicious downloads on domains that victims accessed through phishing links.\n\n**Execution:** Once initial access was achieved, the actors relied on user execution to deploy payloads. A fake job offer attachment containing a malicious document was sent to targets, which executed Empire malware when users enabled content. This allowed the actors to gain a foothold in the environment and move laterally.\n\n**Persistence and Privilege Escalation:** To maintain control, Crimson Shadow exploited insecure inter-process communication in XPC service daemons to escalate privileges. They also used malicious scripts to modify registry keys, such as service_config.reg, ensuring exclusive control over compromised systems. In virtualized environments, the actors tampered with vSphere Installation Bundles by editing XML descriptors to point to malicious VIBs hosted on remote servers, facilitating persistent access.\n\n**Defense Evasion and Discovery:** The actors employed techniques to hide their infrastructure, masking command and control (C2) communications using a Tor gateway to anonymize traffic and evade detection. They conducted extensive discovery activities, including running secretsdump.py against domain controllers to extract password hashes from NTDS.dit files, executing nltest /domain_trusts to enumerate trust relationships between domains, and using docker ps to identify running containers and their configurations in containerized environments. These actions allowed for lateral movement and data collection.\n\n**Impact and Exfiltration:** The campaign resulted in unauthorized access to sensitive data, including credential hashes and domain trust information. System logs from affected organizations showed anomalous DNS queries and registry modifications, though some entries were benign updates unrelated to the attack. The actors' use of Tor for C2 communications complicated attribution and tracking efforts.\n\n### Recommendations for Blue Teams\n\n- Monitor for unusual DNS lookups and social media impersonation attempts.\n- Implement application whitelisting to prevent execution of unauthorized scripts.\n- Regularly audit XPC services and registry configurations for unauthorized changes.\n- Use network segmentation and container security tools to limit lateral movement.\n- Analyze traffic patterns for signs of Tor usage or other anonymization techniques.\n\nThis report is fictional and designed for educational purposes to simulate real-world threat scenarios.",
+    "tagged_text": "### Summary\n\nThe Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail the tactics, techniques, and procedures (TTPs) of the fictional APT group Crimson Shadow. This campaign, observed in a simulated environment, targets organizations in the energy and manufacturing sectors, leveraging social engineering, drive-by compromises, and privilege escalation to achieve objectives. The advisory is intended for blue team training to improve defensive postures against similar real-world threats.\n\n### Attack Narrative\n\n**Initial Access:** Crimson Shadow actors initiated the campaign by conducting reconnaissance to gather information on target networks. They performed DNS lookups using tools like dig to identify internal domain controllers and network security appliances [T1590.006]. Concurrently, the actors established fake social media accounts on platforms like Facebook, copying details from real individuals to create convincing personas for social engineering [T1585.001]. These personas were used to lure victims to a compromised website, where malicious JavaScript code was injected to capture user credentials [T1608.005]. Additionally, the actors delivered malware via drive-by compromises, hosting malicious downloads on domains that victims accessed through phishing links [T1189].\n\n**Execution:** Once initial access was achieved, the actors relied on user execution to deploy payloads. A fake job offer attachment containing a malicious document was sent to targets, which executed Empire malware when users enabled content [T1204]. This allowed the actors to gain a foothold in the environment and move laterally.\n\n**Persistence and Privilege Escalation:** To maintain control, Crimson Shadow exploited insecure inter-process communication in XPC service daemons to escalate privileges [T1559.003]. They also used malicious scripts to modify registry keys, such as service_config.reg, ensuring exclusive control over compromised systems [T1668]. In virtualized environments, the actors tampered with vSphere Installation Bundles by editing XML descriptors to point to malicious VIBs hosted on remote servers, facilitating persistent access [T1505.006].\n\n**Defense Evasion and Discovery:** The actors employed techniques to hide their infrastructure, masking command and control (C2) communications using a Tor gateway to anonymize traffic and evade detection [T1665]. They conducted extensive discovery activities, including running secretsdump.py against domain controllers to extract password hashes from NTDS.dit files [T1003.003], executing nltest /domain_trusts to enumerate trust relationships between domains [T1482], and using docker ps to identify running containers and their configurations in containerized environments [T1613]. These actions allowed for lateral movement and data collection.\n\n**Impact and Exfiltration:** The campaign resulted in unauthorized access to sensitive data, including credential hashes and domain trust information. System logs from affected organizations showed anomalous DNS queries and registry modifications, though some entries were benign updates unrelated to the attack. The actors' use of Tor for C2 communications complicated attribution and tracking efforts.\n\n### Recommendations for Blue Teams\n\n- Monitor for unusual DNS lookups and social media impersonation attempts.\n- Implement application whitelisting to prevent execution of unauthorized scripts.\n- Regularly audit XPC services and registry configurations for unauthorized changes.\n- Use network segmentation and container security tools to limit lateral movement.\n- Analyze traffic patterns for signs of Tor usage or other anonymization techniques.\n\nThis report is fictional and designed for educational purposes to simulate real-world threat scenarios.",
+    "sentence_annotations": [
+        {
+            "sentence": "Additionally, the actors delivered malware via drive-by compromises, hosting malicious downloads on domains that victims accessed through phishing links.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "A fake job offer attachment containing a malicious document was sent to targets, which executed Empire malware when users enabled content.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "reg, ensuring exclusive control over compromised systems.",
+            "technique_id": "T1668",
+            "technique_name": "Exclusive Control"
+        },
+        {
+            "sentence": "**Defense Evasion and Discovery:** The actors employed techniques to hide their infrastructure, masking command and control (C2) communications using a Tor gateway to anonymize traffic and evade detection.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        },
+        {
+            "sentence": "003], executing nltest /domain_trusts to enumerate trust relationships between domains, and using docker ps to identify running containers and their configurations in containerized environments.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        },
+        {
+            "sentence": "003], executing nltest /domain_trusts to enumerate trust relationships between domains, and using docker ps to identify running containers and their configurations in containerized environments.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow,' targeting critical infrastructure sectors. The campaign employs sophisticated techniques across the cyber kill chain, from reconnaissance to data exfiltration, to compromise systems and maintain persistence. Blue teams are advised to review this report for training purposes to enhance detection and response capabilities.",
+        "full_report_text": "### Summary\n\nThe Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail the tactics, techniques, and procedures (TTPs) of the fictional APT group Crimson Shadow. This campaign, observed in a simulated environment, targets organizations in the energy and manufacturing sectors, leveraging social engineering, drive-by compromises, and privilege escalation to achieve objectives. The advisory is intended for blue team training to improve defensive postures against similar real-world threats.\n\n### Attack Narrative\n\n**Initial Access:** Crimson Shadow actors initiated the campaign by conducting reconnaissance to gather information on target networks. They performed DNS lookups using tools like dig to identify internal domain controllers and network security appliances [T1590.006]. Concurrently, the actors established fake social media accounts on platforms like Facebook, copying details from real individuals to create convincing personas for social engineering [T1585.001]. These personas were used to lure victims to a compromised website, where malicious JavaScript code was injected to capture user credentials [T1608.005]. Additionally, the actors delivered malware via drive-by compromises, hosting malicious downloads on domains that victims accessed through phishing links [T1189].\n\n**Execution:** Once initial access was achieved, the actors relied on user execution to deploy payloads. A fake job offer attachment containing a malicious document was sent to targets, which executed Empire malware when users enabled content [T1204]. This allowed the actors to gain a foothold in the environment and move laterally.\n\n**Persistence and Privilege Escalation:** To maintain control, Crimson Shadow exploited insecure inter-process communication in XPC service daemons to escalate privileges [T1559.003]. They also used malicious scripts to modify registry keys, such as service_config.reg, ensuring exclusive control over compromised systems [T1668]. In virtualized environments, the actors tampered with vSphere Installation Bundles by editing XML descriptors to point to malicious VIBs hosted on remote servers, facilitating persistent access [T1505.006].\n\n**Defense Evasion and Discovery:** The actors employed techniques to hide their infrastructure, masking command and control (C2) communications using a Tor gateway to anonymize traffic and evade detection [T1665]. They conducted extensive discovery activities, including running secretsdump.py against domain controllers to extract password hashes from NTDS.dit files [T1003.003], executing nltest /domain_trusts to enumerate trust relationships between domains [T1482], and using docker ps to identify running containers and their configurations in containerized environments [T1613]. These actions allowed for lateral movement and data collection.\n\n**Impact and Exfiltration:** The campaign resulted in unauthorized access to sensitive data, including credential hashes and domain trust information. System logs from affected organizations showed anomalous DNS queries and registry modifications, though some entries were benign updates unrelated to the attack. The actors' use of Tor for C2 communications complicated attribution and tracking efforts.\n\n### Recommendations for Blue Teams\n\n- Monitor for unusual DNS lookups and social media impersonation attempts.\n- Implement application whitelisting to prevent execution of unauthorized scripts.\n- Regularly audit XPC services and registry configurations for unauthorized changes.\n- Use network segmentation and container security tools to limit lateral movement.\n- Analyze traffic patterns for signs of Tor usage or other anonymization techniques.\n\nThis report is fictional and designed for educational purposes to simulate real-world threat scenarios.",
+        "techniques_used": [
+            "T1590.006",
+            "T1608.005",
+            "T1585.001",
+            "T1189",
+            "T1559.003",
+            "T1204",
+            "T1668",
+            "T1505.006",
+            "T1003.003",
+            "T1482",
+            "T1613",
+            "T1665"
+        ]
+    }
+}

@@ -1,0 +1,123 @@
+{
+    "report_id": "report_446",
+    "generated_at": "20251222_155115",
+    "scenario_target_ids": [
+        "T1587.001",
+        "T1587",
+        "T1585.002",
+        "T1190",
+        "T1659",
+        "T1059.011",
+        "T1137.005",
+        "T1027.014",
+        "T1036",
+        "T1562.001",
+        "T1110.002",
+        "T1563.001",
+        "T1213.001",
+        "T1001.001",
+        "T1486"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1587.001",
+        "T1587",
+        "T1585.002",
+        "T1059.011",
+        "T1659",
+        "T1137.005",
+        "T1027.014",
+        "T1036",
+        "T1562.001",
+        "T1110.002",
+        "T1563.001",
+        "T1213.001",
+        "T1001.001",
+        "T1486"
+    ],
+    "actual_found_ids": [
+        "T1587",
+        "T1137.005",
+        "T1585.002",
+        "T1059.011",
+        "T1587.001",
+        "T1659",
+        "T1001.001",
+        "T1563.001",
+        "T1562.001",
+        "T1213.001",
+        "T1027.014",
+        "T1190",
+        "T1486",
+        "T1110.002",
+        "T1036"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil.' This campaign, attributed to the actor group 'ShadowVeil,' has been observed targeting financial institutions and technology firms globally, with a focus on credential theft and data encryption for impact. The attack scenario is based on simulated activities designed for educational blue team training, incorporating realistic but fictionalized techniques and artifacts.\n\nInitial analysis indicates that the threat actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify potential targets, though specific techniques are not detailed in this scenario. For initial access, the actors exploited a known vulnerability, CVE-2021-31207, in Microsoft Exchange servers, which allowed them to gain a foothold in the target network. System logs from the compromised Exchange server showed unusual authentication attempts from IP addresses associated with known malicious infrastructure, but these logs were not tagged as they represent background noise.\n\nUpon gaining access, the actors deployed a dropper script, 'dropper.ps1,' onto the target system to facilitate the execution of additional malicious payloads. This dropper was part of a broader capability development effort, where the adversary created a specialized keylogger, 'kb_capture.dll,' designed to harvest credentials from workstation keystrokes. The actors also established identified email accounts, such as 'funny.dream@example.com,' to register multiple domains used throughout the campaign for command and control (C2) and phishing activities.\n\nFor execution and persistence, the threat actors employed a Lua script to create scheduled tasks that ensured the malware remained active after system reboots, while simultaneously injecting a C2 beacon into DNS queries to maintain stealthy communication channels. Additionally, they abused Outlook rules to automate persistence mechanisms, leveraging tools like Ruler to manipulate email client configurations. To evade detection, the malware utilized polymorphic code through 'mutation_engine.dll,' generating unique file hashes for each infection instance to bypass signature-based defenses, and masqueraded as legitimate applications, such as mimicking native macOS Safari apps with customized metadata in 'Info.plist' files.\n\nIn the defense evasion phase, the actors disabled security monitoring tools by using the service control manager to stop services associated with antivirus and endpoint detection products on remote systems, a tactic observed in historical compromises like SolarWinds. For credential access, they executed mimikatz.exe to dump password hashes from the LSASS process memory and exploited stolen SSH private keys to authenticate to other systems within the network, enabling lateral movement.\n\nDuring collection activities, unauthorized access was gained to Confluence repositories, where the actors exfiltrated team collaboration notes and meeting minutes. For exfiltration, a custom C2 client was implemented to split data across multiple ICMP packets, embedding junk data to obscure the communication and avoid network-based detection. Finally, for impact, the actors deployed ransomware similar to BlackByte, which encrypted critical data using a shared key across victims, rendering systems inoperable.\n\nBackground information on the targeted organizations includes routine system maintenance logs and unrelated network traffic, which are not indicative of malicious activity and serve as noise in this training scenario. For instance, internal audits showed normal user login patterns and scheduled backups, but these details are omitted from technique tagging. Mitigation recommendations include patching vulnerable applications, monitoring for unusual PowerShell and Lua script usage, implementing multi-factor authentication, and conducting regular security awareness training. This advisory is intended for educational purposes to enhance blue team readiness against similar tactics, techniques, and procedures (TTPs).",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil.' This campaign, attributed to the actor group 'ShadowVeil,' has been observed targeting financial institutions and technology firms globally, with a focus on credential theft and data encryption for impact. The attack scenario is based on simulated activities designed for educational blue team training, incorporating realistic but fictionalized techniques and artifacts.\n\nInitial analysis indicates that the threat actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify potential targets, though specific techniques are not detailed in this scenario. For initial access, the actors exploited a known vulnerability, CVE-2021-31207, in Microsoft Exchange servers [T1190], which allowed them to gain a foothold in the target network. System logs from the compromised Exchange server showed unusual authentication attempts from IP addresses associated with known malicious infrastructure, but these logs were not tagged as they represent background noise.\n\nUpon gaining access, the actors deployed a dropper script, 'dropper.ps1,' onto the target system to facilitate the execution of additional malicious payloads [T1587.001]. This dropper was part of a broader capability development effort, where the adversary created a specialized keylogger, 'kb_capture.dll,' designed to harvest credentials from workstation keystrokes [T1587]. The actors also established identified email accounts, such as 'funny.dream@example.com,' to register multiple domains used throughout the campaign for command and control (C2) and phishing activities [T1585.002].\n\nFor execution and persistence, the threat actors employed a Lua script to create scheduled tasks that ensured the malware remained active after system reboots [T1059.011], while simultaneously injecting a C2 beacon into DNS queries to maintain stealthy communication channels [T1659]. Additionally, they abused Outlook rules to automate persistence mechanisms, leveraging tools like Ruler to manipulate email client configurations [T1137.005]. To evade detection, the malware utilized polymorphic code through 'mutation_engine.dll,' generating unique file hashes for each infection instance to bypass signature-based defenses [T1027.014], and masqueraded as legitimate applications, such as mimicking native macOS Safari apps with customized metadata in 'Info.plist' files [T1036].\n\nIn the defense evasion phase, the actors disabled security monitoring tools by using the service control manager to stop services associated with antivirus and endpoint detection products on remote systems [T1562.001], a tactic observed in historical compromises like SolarWinds. For credential access, they executed mimikatz.exe to dump password hashes from the LSASS process memory [T1110.002] and exploited stolen SSH private keys to authenticate to other systems within the network, enabling lateral movement [T1563.001].\n\nDuring collection activities, unauthorized access was gained to Confluence repositories, where the actors exfiltrated team collaboration notes and meeting minutes [T1213.001]. For exfiltration, a custom C2 client was implemented to split data across multiple ICMP packets, embedding junk data to obscure the communication and avoid network-based detection [T1001.001]. Finally, for impact, the actors deployed ransomware similar to BlackByte, which encrypted critical data using a shared key across victims, rendering systems inoperable [T1486].\n\nBackground information on the targeted organizations includes routine system maintenance logs and unrelated network traffic, which are not indicative of malicious activity and serve as noise in this training scenario. For instance, internal audits showed normal user login patterns and scheduled backups, but these details are omitted from technique tagging. Mitigation recommendations include patching vulnerable applications, monitoring for unusual PowerShell and Lua script usage, implementing multi-factor authentication, and conducting regular security awareness training. This advisory is intended for educational purposes to enhance blue team readiness against similar tactics, techniques, and procedures (TTPs).",
+    "sentence_annotations": [
+        {
+            "sentence": "For initial access, the actors exploited a known vulnerability, CVE-2021-31207, in Microsoft Exchange servers, which allowed them to gain a foothold in the target network.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "dll,' designed to harvest credentials from workstation keystrokes.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "011], while simultaneously injecting a C2 beacon into DNS queries to maintain stealthy communication channels.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "plist' files.",
+            "technique_id": "T1036",
+            "technique_name": "Masquerading"
+        },
+        {
+            "sentence": "Finally, for impact, the actors deployed ransomware similar to BlackByte, which encrypted critical data using a shared key across victims, rendering systems inoperable.",
+            "technique_id": "T1486",
+            "technique_name": "Data Encrypted for Impact"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial and Technology Sectors",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowVeil,' which has targeted multiple organizations in the financial and technology sectors since early 2024. The actors exploited vulnerabilities in public-facing applications to gain initial access, deployed custom malware with evasion capabilities, and used sophisticated persistence and data exfiltration techniques. This report provides an analysis of the attack chain, including observed behaviors and recommended mitigations for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil.' This campaign, attributed to the actor group 'ShadowVeil,' has been observed targeting financial institutions and technology firms globally, with a focus on credential theft and data encryption for impact. The attack scenario is based on simulated activities designed for educational blue team training, incorporating realistic but fictionalized techniques and artifacts.\n\nInitial analysis indicates that the threat actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify potential targets, though specific techniques are not detailed in this scenario. For initial access, the actors exploited a known vulnerability, CVE-2021-31207, in Microsoft Exchange servers [T1190], which allowed them to gain a foothold in the target network. System logs from the compromised Exchange server showed unusual authentication attempts from IP addresses associated with known malicious infrastructure, but these logs were not tagged as they represent background noise.\n\nUpon gaining access, the actors deployed a dropper script, 'dropper.ps1,' onto the target system to facilitate the execution of additional malicious payloads [T1587.001]. This dropper was part of a broader capability development effort, where the adversary created a specialized keylogger, 'kb_capture.dll,' designed to harvest credentials from workstation keystrokes [T1587]. The actors also established identified email accounts, such as 'funny.dream@example.com,' to register multiple domains used throughout the campaign for command and control (C2) and phishing activities [T1585.002].\n\nFor execution and persistence, the threat actors employed a Lua script to create scheduled tasks that ensured the malware remained active after system reboots [T1059.011], while simultaneously injecting a C2 beacon into DNS queries to maintain stealthy communication channels [T1659]. Additionally, they abused Outlook rules to automate persistence mechanisms, leveraging tools like Ruler to manipulate email client configurations [T1137.005]. To evade detection, the malware utilized polymorphic code through 'mutation_engine.dll,' generating unique file hashes for each infection instance to bypass signature-based defenses [T1027.014], and masqueraded as legitimate applications, such as mimicking native macOS Safari apps with customized metadata in 'Info.plist' files [T1036].\n\nIn the defense evasion phase, the actors disabled security monitoring tools by using the service control manager to stop services associated with antivirus and endpoint detection products on remote systems [T1562.001], a tactic observed in historical compromises like SolarWinds. For credential access, they executed mimikatz.exe to dump password hashes from the LSASS process memory [T1110.002] and exploited stolen SSH private keys to authenticate to other systems within the network, enabling lateral movement [T1563.001].\n\nDuring collection activities, unauthorized access was gained to Confluence repositories, where the actors exfiltrated team collaboration notes and meeting minutes [T1213.001]. For exfiltration, a custom C2 client was implemented to split data across multiple ICMP packets, embedding junk data to obscure the communication and avoid network-based detection [T1001.001]. Finally, for impact, the actors deployed ransomware similar to BlackByte, which encrypted critical data using a shared key across victims, rendering systems inoperable [T1486].\n\nBackground information on the targeted organizations includes routine system maintenance logs and unrelated network traffic, which are not indicative of malicious activity and serve as noise in this training scenario. For instance, internal audits showed normal user login patterns and scheduled backups, but these details are omitted from technique tagging. Mitigation recommendations include patching vulnerable applications, monitoring for unusual PowerShell and Lua script usage, implementing multi-factor authentication, and conducting regular security awareness training. This advisory is intended for educational purposes to enhance blue team readiness against similar tactics, techniques, and procedures (TTPs).",
+        "techniques_used": [
+            "T1190",
+            "T1587.001",
+            "T1587",
+            "T1585.002",
+            "T1059.011",
+            "T1659",
+            "T1137.005",
+            "T1027.014",
+            "T1036",
+            "T1562.001",
+            "T1110.002",
+            "T1563.001",
+            "T1213.001",
+            "T1001.001",
+            "T1486"
+        ]
+    }
+}

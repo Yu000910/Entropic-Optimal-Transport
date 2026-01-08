@@ -1,0 +1,98 @@
+{
+    "report_id": "report_50",
+    "generated_at": "20251222_113716",
+    "scenario_target_ids": [
+        "T1584",
+        "T1587.002",
+        "T1588.001",
+        "T1566.001",
+        "T1059.006",
+        "T1546.001",
+        "T1574.014",
+        "T1027.010",
+        "T1574.011",
+        "T1205",
+        "T1020",
+        "T1052.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1584",
+        "T1587.002",
+        "T1588.001",
+        "T1566.001",
+        "T1059.006",
+        "T1546.001",
+        "T1574.014",
+        "T1027.010",
+        "T1574.011",
+        "T1205",
+        "T1020",
+        "T1052.001"
+    ],
+    "actual_found_ids": [
+        "T1059.006",
+        "T1588.001",
+        "T1566.001",
+        "T1546.001",
+        "T1205",
+        "T1020",
+        "T1052.001",
+        "T1584",
+        "T1027.010",
+        "T1574.014",
+        "T1574.011",
+        "T1587.002"
+    ],
+    "clean_text": "### Background\nOn October 15, 2024, a financial services company, 'SecureBank Inc.', reported anomalous network activity, leading to the discovery of a sophisticated intrusion. SecureBank, headquartered in New York with 5,000 employees, operates online banking platforms and investment services. Initial logs showed unusual outbound traffic from an internal server, prompting an investigation that uncovered a coordinated attack spanning several weeks.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify third-party vendors, compromising a web server used by a SecureBank partner to host marketing materials. They then sent spearphishing emails with malicious Microsoft Word attachments to SecureBank employees, leveraging social engineering to gain initial footholds.\n\n**Execution and Persistence:** Upon execution, the malware employed Python scripts to download a keylogger from a public file-sharing service, while using digitally signed certificates to evade detection. To maintain persistence, the adversary modified registry keys with assoc.exe to change default file associations for .ini files and hijacked the AppDomainManager in application configurations, exploiting services registry permissions weaknesses by targeting HKLM\\SYSTEM\\CurrentControlSet\\Services\\RemoteRegistry.\n\n**Defense Evasion and Command & Control:** The actors used Base64 encoding to obfuscate commands and employed traffic signaling techniques, exploiting libpcap libraries to capture network packets and identify open ports for covert communication.\n\n**Exfiltration:** Data was automatically exfiltrated to C2 servers using file uploader plugins, and when removable drives were inserted, staged data was copied over USB.\n\n### Recommendations\nOrganizations should implement email filtering, monitor for unusual registry changes, and restrict USB device usage. Regular audits of third-party infrastructure and code signing practices are advised to mitigate similar threats.",
+    "tagged_text": "### Background\nOn October 15, 2024, a financial services company, 'SecureBank Inc.', reported anomalous network activity, leading to the discovery of a sophisticated intrusion. SecureBank, headquartered in New York with 5,000 employees, operates online banking platforms and investment services. Initial logs showed unusual outbound traffic from an internal server, prompting an investigation that uncovered a coordinated attack spanning several weeks.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify third-party vendors, compromising a web server used by a SecureBank partner to host marketing materials [T1584]. They then sent spearphishing emails with malicious Microsoft Word attachments to SecureBank employees, leveraging social engineering to gain initial footholds [T1566.001].\n\n**Execution and Persistence:** Upon execution, the malware employed Python scripts [T1059.006] to download a keylogger from a public file-sharing service [T1588.001], while using digitally signed certificates to evade detection [T1587.002]. To maintain persistence, the adversary modified registry keys with assoc.exe to change default file associations for .ini files [T1546.001] and hijacked the AppDomainManager in application configurations [T1574.014], exploiting services registry permissions weaknesses by targeting HKLM\\SYSTEM\\CurrentControlSet\\Services\\RemoteRegistry [T1574.011].\n\n**Defense Evasion and Command & Control:** The actors used Base64 encoding to obfuscate commands [T1027.010] and employed traffic signaling techniques, exploiting libpcap libraries to capture network packets and identify open ports for covert communication [T1205].\n\n**Exfiltration:** Data was automatically exfiltrated to C2 servers using file uploader plugins [T1020], and when removable drives were inserted, staged data was copied over USB [T1052.001].\n\n### Recommendations\nOrganizations should implement email filtering, monitor for unusual registry changes, and restrict USB device usage. Regular audits of third-party infrastructure and code signing practices are advised to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify third-party vendors, compromising a web server used by a SecureBank partner to host marketing materials.",
+            "technique_id": "T1584",
+            "technique_name": "Compromise Infrastructure"
+        },
+        {
+            "sentence": "010] and employed traffic signaling techniques, exploiting libpcap libraries to capture network packets and identify open ports for covert communication.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "**Exfiltration:** Data was automatically exfiltrated to C2 servers using file uploader plugins, and when removable drives were inserted, staged data was copied over USB [T1052.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT 'ShadowWeaver' Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowWeaver' targeting financial institutions, using a multi-stage attack involving compromised infrastructure, spearphishing, and advanced persistence techniques for data exfiltration.",
+        "full_report_text": "### Background\nOn October 15, 2024, a financial services company, 'SecureBank Inc.', reported anomalous network activity, leading to the discovery of a sophisticated intrusion. SecureBank, headquartered in New York with 5,000 employees, operates online banking platforms and investment services. Initial logs showed unusual outbound traffic from an internal server, prompting an investigation that uncovered a coordinated attack spanning several weeks.\n\n### Attack Narrative\n**Initial Access:** The actors likely conducted reconnaissance to identify third-party vendors, compromising a web server used by a SecureBank partner to host marketing materials [T1584]. They then sent spearphishing emails with malicious Microsoft Word attachments to SecureBank employees, leveraging social engineering to gain initial footholds [T1566.001].\n\n**Execution and Persistence:** Upon execution, the malware employed Python scripts [T1059.006] to download a keylogger from a public file-sharing service [T1588.001], while using digitally signed certificates to evade detection [T1587.002]. To maintain persistence, the adversary modified registry keys with assoc.exe to change default file associations for .ini files [T1546.001] and hijacked the AppDomainManager in application configurations [T1574.014], exploiting services registry permissions weaknesses by targeting HKLM\\SYSTEM\\CurrentControlSet\\Services\\RemoteRegistry [T1574.011].\n\n**Defense Evasion and Command & Control:** The actors used Base64 encoding to obfuscate commands [T1027.010] and employed traffic signaling techniques, exploiting libpcap libraries to capture network packets and identify open ports for covert communication [T1205].\n\n**Exfiltration:** Data was automatically exfiltrated to C2 servers using file uploader plugins [T1020], and when removable drives were inserted, staged data was copied over USB [T1052.001].\n\n### Recommendations\nOrganizations should implement email filtering, monitor for unusual registry changes, and restrict USB device usage. Regular audits of third-party infrastructure and code signing practices are advised to mitigate similar threats.",
+        "techniques_used": [
+            "T1584",
+            "T1587.002",
+            "T1588.001",
+            "T1566.001",
+            "T1059.006",
+            "T1546.001",
+            "T1574.014",
+            "T1027.010",
+            "T1574.011",
+            "T1205",
+            "T1020",
+            "T1052.001"
+        ]
+    }
+}

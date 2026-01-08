@@ -1,0 +1,108 @@
+{
+    "report_id": "report_422",
+    "generated_at": "20251222_154045",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1610",
+        "T1542",
+        "T1668",
+        "T1547.007",
+        "T1556.003",
+        "T1484",
+        "T1027.014",
+        "T1110.002",
+        "T1563",
+        "T1219"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1610",
+        "T1542",
+        "T1668",
+        "T1547.007",
+        "T1556.003",
+        "T1484",
+        "T1027.014",
+        "T1110.002",
+        "T1563",
+        "T1219"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1610",
+        "T1556.003",
+        "T1484",
+        "T1547.007",
+        "T1542",
+        "T1668",
+        "T1027.014",
+        "T1563",
+        "T1110.002",
+        "T1219"
+    ],
+    "clean_text": "On October 15, 2023, the fictional organization 'InfraSecure Corp,' a mid-sized energy provider, reported anomalous network activity originating from a compromised development server. Initial investigation revealed that the adversary likely conducted reconnaissance on public software repositories, identifying a widely used Python package for data analytics. The actors altered the source code of this package to include data exfiltration capabilities before it was published to the public repository. Once downloaded by InfraSecure developers, the malicious package executed a script that, by issuing 'docker create', configured a container with rootkit functionality to maintain persistent access on the target system. Concurrently, the malware altered the BIOS to include a hidden partition that loads malicious code during system startup, ensuring persistence even after OS reinstallation. The threat actor injected code into vulnerable_service.exe to create a hidden persistence mechanism, granting exclusive control over critical processes. On macOS systems within the network, the actor edited com.apple.loginwindow.UUID.plist to launch a cryptocurrency miner at login, exploiting re-opened applications for unauthorized resource usage. To bypass authentication, the attacker patched pam_unix.so to accept a master password that would authenticate any user, compromising Linux-based servers. The malware then modified the Default Domain Policy GPO to weaken password complexity requirements across the Windows domain, facilitating further access. The trojan utilized 'mutation_engine.dll' to generate unique file hashes for each infection instance, evading signature-based detection through polymorphic code. The attacker executed mimikatz.exe to dump password hashes from the LSASS process memory, enabling password cracking attacks on compromised credentials. Through RDP session hijacking, the threat actor gained unauthorized access to the domain controller, leveraging stolen credentials. A backdoor executed a custom Windows Service to enable remote desktop functionality for the attacker, providing persistent remote access tools for ongoing control. System logs from InfraSecure Corp showed increased CPU usage on multiple servers, but initial alerts were dismissed as routine maintenance. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced additional attack surfaces. No evidence of data loss was confirmed in this fictional scenario, but the campaign highlights the need for robust supply chain security and endpoint monitoring.",
+    "tagged_text": "On October 15, 2023, the fictional organization 'InfraSecure Corp,' a mid-sized energy provider, reported anomalous network activity originating from a compromised development server. Initial investigation revealed that the adversary likely conducted reconnaissance on public software repositories, identifying a widely used Python package for data analytics. The actors altered the source code of this package to include data exfiltration capabilities before it was published to the public repository [T1195.002]. Once downloaded by InfraSecure developers, the malicious package executed a script that, by issuing 'docker create', configured a container with rootkit functionality to maintain persistent access on the target system [T1610]. Concurrently, the malware altered the BIOS to include a hidden partition that loads malicious code during system startup, ensuring persistence even after OS reinstallation [T1542]. The threat actor injected code into vulnerable_service.exe to create a hidden persistence mechanism, granting exclusive control over critical processes [T1668]. On macOS systems within the network, the actor edited com.apple.loginwindow.UUID.plist to launch a cryptocurrency miner at login, exploiting re-opened applications for unauthorized resource usage [T1547.007]. To bypass authentication, the attacker patched pam_unix.so to accept a master password that would authenticate any user, compromising Linux-based servers [T1556.003]. The malware then modified the Default Domain Policy GPO to weaken password complexity requirements across the Windows domain, facilitating further access [T1484]. The trojan utilized 'mutation_engine.dll' to generate unique file hashes for each infection instance, evading signature-based detection through polymorphic code [T1027.014]. The attacker executed mimikatz.exe to dump password hashes from the LSASS process memory, enabling password cracking attacks on compromised credentials [T1110.002]. Through RDP session hijacking, the threat actor gained unauthorized access to the domain controller, leveraging stolen credentials [T1563]. A backdoor executed a custom Windows Service to enable remote desktop functionality for the attacker, providing persistent remote access tools for ongoing control [T1219]. System logs from InfraSecure Corp showed increased CPU usage on multiple servers, but initial alerts were dismissed as routine maintenance. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced additional attack surfaces. No evidence of data loss was confirmed in this fictional scenario, but the campaign highlights the need for robust supply chain security and endpoint monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once downloaded by InfraSecure developers, the malicious package executed a script that, by issuing 'docker create', configured a container with rootkit functionality to maintain persistent access on the target system.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "Concurrently, the malware altered the BIOS to include a hidden partition that loads malicious code during system startup, ensuring persistence even after OS reinstallation.",
+            "technique_id": "T1542",
+            "technique_name": "Pre-OS Boot"
+        },
+        {
+            "sentence": "exe to create a hidden persistence mechanism, granting exclusive control over critical processes.",
+            "technique_id": "T1668",
+            "technique_name": "Exclusive Control"
+        },
+        {
+            "sentence": "The malware then modified the Default Domain Policy GPO to weaken password complexity requirements across the Windows domain, facilitating further access.",
+            "technique_id": "T1484",
+            "technique_name": "Domain or Tenant Policy Modification"
+        },
+        {
+            "sentence": "Through RDP session hijacking, the threat actor gained unauthorized access to the domain controller, leveraging stolen credentials.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "A backdoor executed a custom Windows Service to enable remote desktop functionality for the attacker, providing persistent remote access tools for ongoing control.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRoot' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowRoot,' which targeted a critical infrastructure organization through a multi-stage supply chain compromise and persistent access mechanisms. The campaign involved altering a Python package in a public repository to deploy malicious containers, modify system boot processes, and hijack remote services, ultimately leading to domain policy changes and data exfiltration. Blue teams should use this report for training to identify and mitigate similar attack patterns in controlled environments.",
+        "full_report_text": "On October 15, 2023, the fictional organization 'InfraSecure Corp,' a mid-sized energy provider, reported anomalous network activity originating from a compromised development server. Initial investigation revealed that the adversary likely conducted reconnaissance on public software repositories, identifying a widely used Python package for data analytics. The actors altered the source code of this package to include data exfiltration capabilities before it was published to the public repository [T1195.002]. Once downloaded by InfraSecure developers, the malicious package executed a script that, by issuing 'docker create', configured a container with rootkit functionality to maintain persistent access on the target system [T1610]. Concurrently, the malware altered the BIOS to include a hidden partition that loads malicious code during system startup, ensuring persistence even after OS reinstallation [T1542]. The threat actor injected code into vulnerable_service.exe to create a hidden persistence mechanism, granting exclusive control over critical processes [T1668]. On macOS systems within the network, the actor edited com.apple.loginwindow.UUID.plist to launch a cryptocurrency miner at login, exploiting re-opened applications for unauthorized resource usage [T1547.007]. To bypass authentication, the attacker patched pam_unix.so to accept a master password that would authenticate any user, compromising Linux-based servers [T1556.003]. The malware then modified the Default Domain Policy GPO to weaken password complexity requirements across the Windows domain, facilitating further access [T1484]. The trojan utilized 'mutation_engine.dll' to generate unique file hashes for each infection instance, evading signature-based detection through polymorphic code [T1027.014]. The attacker executed mimikatz.exe to dump password hashes from the LSASS process memory, enabling password cracking attacks on compromised credentials [T1110.002]. Through RDP session hijacking, the threat actor gained unauthorized access to the domain controller, leveraging stolen credentials [T1563]. A backdoor executed a custom Windows Service to enable remote desktop functionality for the attacker, providing persistent remote access tools for ongoing control [T1219]. System logs from InfraSecure Corp showed increased CPU usage on multiple servers, but initial alerts were dismissed as routine maintenance. The company's background includes a recent migration to hybrid cloud infrastructure, which may have introduced additional attack surfaces. No evidence of data loss was confirmed in this fictional scenario, but the campaign highlights the need for robust supply chain security and endpoint monitoring.",
+        "techniques_used": [
+            "T1195.002",
+            "T1610",
+            "T1542",
+            "T1668",
+            "T1547.007",
+            "T1556.003",
+            "T1484",
+            "T1027.014",
+            "T1110.002",
+            "T1563",
+            "T1219"
+        ]
+    }
+}

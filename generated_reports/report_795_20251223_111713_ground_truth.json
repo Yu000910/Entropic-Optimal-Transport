@@ -1,0 +1,63 @@
+{
+    "report_id": "report_795",
+    "generated_at": "20251223_111713",
+    "scenario_target_ids": [
+        "T1591",
+        "T1190",
+        "T1559.002",
+        "T1213.002",
+        "T1557.003",
+        "T1001.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1591",
+        "T1190",
+        "T1559.002",
+        "T1213.002",
+        "T1557.003",
+        "T1001.001"
+    ],
+    "actual_found_ids": [
+        "T1001.001",
+        "T1591",
+        "T1190",
+        "T1559.002",
+        "T1557.003",
+        "T1213.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of APT-99, a fictional advanced persistent threat group. This report is based on simulated incidents observed in a controlled training environment and is intended for educational purposes only.\n\nBackground: APT-99 is believed to operate with financial motives, targeting organizations in the banking and investment sectors. In this scenario, the group focused on a mid-sized financial firm, FinCorp Inc., which reported unusual network activity after a recent software update. Logs from FinCorp's perimeter firewall showed increased traffic from IP addresses associated with known malicious actors, but initial scans flagged these as false positives due to spoofed headers. The company's IT team noted slow DHCP server responses during peak hours, but attributed this to routine maintenance.\n\nAttack Narrative:\n1. Initial Access: The actors initiated their campaign by conducting reconnaissance to gather victim organization information, querying FinCorp's investor relations website for financial intelligence such as quarterly earnings reports and executive profiles. This data was used to tailor subsequent phishing emails and identify potential vulnerabilities in external-facing systems.\n2. Execution: APT-99 exploited public-facing applications by leveraging known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to deploy the ZxShell malware on FinCorp's web servers. Once inside, the malware employed Dynamic Data Exchange (DDE) through a malicious .docx file delivered via spear-phishing, which executed remote commands to establish persistence and move laterally within the network.\n3. Persistence and Lateral Movement: After gaining initial foothold, the actors conducted DHCP spoofing to exhaust the legitimate DHCP pool and introduce a rogue server, redirecting internal traffic to malicious endpoints for man-in-the-middle attacks. This allowed them to intercept credentials and access sensitive resources, including SharePoint instances where they accessed and downloaded confidential documents as part of data gathering activities.\n4. Exfiltration: To evade network monitoring, APT-99 used junk data by injecting DNS queries with base64-encoded command and control (C2) traffic, blending malicious communications with legitimate DNS requests to bypass security tools. This technique facilitated the exfiltration of stolen data from SharePoint and other repositories without triggering alerts.\n\nAdditional Context: FinCorp's security team later discovered anomalous log entries in their SIEM system, showing repeated failed login attempts to administrative accounts from internal IP addresses, but these were initially dismissed as user error. The company's backup systems were unaffected, and no ransom demands were made, indicating the campaign focused on espionage rather than disruption. This scenario highlights the importance of monitoring for subtle indicators and integrating threat intelligence into defensive strategies.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of APT-99, a fictional advanced persistent threat group. This report is based on simulated incidents observed in a controlled training environment and is intended for educational purposes only.\n\nBackground: APT-99 is believed to operate with financial motives, targeting organizations in the banking and investment sectors. In this scenario, the group focused on a mid-sized financial firm, FinCorp Inc., which reported unusual network activity after a recent software update. Logs from FinCorp's perimeter firewall showed increased traffic from IP addresses associated with known malicious actors, but initial scans flagged these as false positives due to spoofed headers. The company's IT team noted slow DHCP server responses during peak hours, but attributed this to routine maintenance.\n\nAttack Narrative:\n1. Initial Access: The actors initiated their campaign by conducting reconnaissance to gather victim organization information [T1591], querying FinCorp's investor relations website for financial intelligence such as quarterly earnings reports and executive profiles. This data was used to tailor subsequent phishing emails and identify potential vulnerabilities in external-facing systems.\n2. Execution: APT-99 exploited public-facing applications [T1190] by leveraging known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to deploy the ZxShell malware on FinCorp's web servers. Once inside, the malware employed Dynamic Data Exchange (DDE) [T1559.002] through a malicious .docx file delivered via spear-phishing, which executed remote commands to establish persistence and move laterally within the network.\n3. Persistence and Lateral Movement: After gaining initial foothold, the actors conducted DHCP spoofing [T1557.003] to exhaust the legitimate DHCP pool and introduce a rogue server, redirecting internal traffic to malicious endpoints for man-in-the-middle attacks. This allowed them to intercept credentials and access sensitive resources, including SharePoint instances where they accessed and downloaded confidential documents [T1213.002] as part of data gathering activities.\n4. Exfiltration: To evade network monitoring, APT-99 used junk data [T1001.001] by injecting DNS queries with base64-encoded command and control (C2) traffic, blending malicious communications with legitimate DNS requests to bypass security tools. This technique facilitated the exfiltration of stolen data from SharePoint and other repositories without triggering alerts.\n\nAdditional Context: FinCorp's security team later discovered anomalous log entries in their SIEM system, showing repeated failed login attempts to administrative accounts from internal IP addresses, but these were initially dismissed as user error. The company's backup systems were unaffected, and no ransom demands were made, indicating the campaign focused on espionage rather than disruption. This scenario highlights the importance of monitoring for subtle indicators and integrating threat intelligence into defensive strategies.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors initiated their campaign by conducting reconnaissance to gather victim organization information, querying FinCorp's investor relations website for financial intelligence such as quarterly earnings reports and executive profiles.",
+            "technique_id": "T1591",
+            "technique_name": "Gather Victim Org Information"
+        },
+        {
+            "sentence": "Execution: APT-99 exploited public-facing applications by leveraging known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to deploy the ZxShell malware on FinCorp's web servers.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated APT-99, targeting financial institutions. The campaign involves sophisticated reconnaissance, exploitation of public-facing applications, and data exfiltration techniques designed to evade detection. The information is provided for blue team training to enhance defensive capabilities against similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of APT-99, a fictional advanced persistent threat group. This report is based on simulated incidents observed in a controlled training environment and is intended for educational purposes only.\n\nBackground: APT-99 is believed to operate with financial motives, targeting organizations in the banking and investment sectors. In this scenario, the group focused on a mid-sized financial firm, FinCorp Inc., which reported unusual network activity after a recent software update. Logs from FinCorp's perimeter firewall showed increased traffic from IP addresses associated with known malicious actors, but initial scans flagged these as false positives due to spoofed headers. The company's IT team noted slow DHCP server responses during peak hours, but attributed this to routine maintenance.\n\nAttack Narrative:\n1. Initial Access: The actors initiated their campaign by conducting reconnaissance to gather victim organization information [T1591], querying FinCorp's investor relations website for financial intelligence such as quarterly earnings reports and executive profiles. This data was used to tailor subsequent phishing emails and identify potential vulnerabilities in external-facing systems.\n2. Execution: APT-99 exploited public-facing applications [T1190] by leveraging known vulnerabilities, including CVE-2011-2462, CVE-2013-3163, and CVE-2014-0322, to deploy the ZxShell malware on FinCorp's web servers. Once inside, the malware employed Dynamic Data Exchange (DDE) [T1559.002] through a malicious .docx file delivered via spear-phishing, which executed remote commands to establish persistence and move laterally within the network.\n3. Persistence and Lateral Movement: After gaining initial foothold, the actors conducted DHCP spoofing [T1557.003] to exhaust the legitimate DHCP pool and introduce a rogue server, redirecting internal traffic to malicious endpoints for man-in-the-middle attacks. This allowed them to intercept credentials and access sensitive resources, including SharePoint instances where they accessed and downloaded confidential documents [T1213.002] as part of data gathering activities.\n4. Exfiltration: To evade network monitoring, APT-99 used junk data [T1001.001] by injecting DNS queries with base64-encoded command and control (C2) traffic, blending malicious communications with legitimate DNS requests to bypass security tools. This technique facilitated the exfiltration of stolen data from SharePoint and other repositories without triggering alerts.\n\nAdditional Context: FinCorp's security team later discovered anomalous log entries in their SIEM system, showing repeated failed login attempts to administrative accounts from internal IP addresses, but these were initially dismissed as user error. The company's backup systems were unaffected, and no ransom demands were made, indicating the campaign focused on espionage rather than disruption. This scenario highlights the importance of monitoring for subtle indicators and integrating threat intelligence into defensive strategies.",
+        "techniques_used": [
+            "T1591",
+            "T1190",
+            "T1559.002",
+            "T1213.002",
+            "T1557.003",
+            "T1001.001"
+        ]
+    }
+}

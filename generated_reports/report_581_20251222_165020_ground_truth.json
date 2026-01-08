@@ -1,0 +1,107 @@
+{
+    "report_id": "report_581",
+    "generated_at": "20251222_165020",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1203",
+        "T1007",
+        "T1021",
+        "T1115",
+        "T1102.001",
+        "T1011.001",
+        "T1011"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078.002",
+        "T1203",
+        "T1007",
+        "T1021",
+        "T1115",
+        "T1102.001",
+        "T1011.001",
+        "T1011"
+    ],
+    "actual_found_ids": [
+        "T1011.001",
+        "T1011",
+        "T1102.001",
+        "T1112",
+        "T1021",
+        "T1589",
+        "T1115",
+        "T1078.002",
+        "T1007",
+        "T1105",
+        "T1203",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional attack scenario for training purposes. In this simulated campaign, the threat actor 'ShadowByte' targeted a manufacturing company, 'GlobalTech Industries', which reported unusual network activity starting on October 15, 2023. Initial analysis of firewall logs showed multiple failed login attempts from IP addresses associated with known malicious infrastructure, though these were not directly linked to the main intrusion. The actors likely conducted reconnaissance to identify high-value targets, but specific details are omitted for brevity.\n\nIn the Initial Access phase, the adversary exploited a known Microsoft Office vulnerability, CVE-2017-11882, to deliver a malicious payload via a phishing email, which was opened by a domain administrator user. This allowed them to capture credentials and impersonate the domain admin, gaining unauthorized access to the corporate network. During Execution, they employed PowerShell to actively download additional tools while simultaneously modifying registry keys to establish persistence. System Service Discovery was performed by running the command 'net start' to identify running services and potential vulnerabilities.\n\nFor Persistence and Lateral Movement, the attackers leveraged SSH with valid service account credentials to remotely access a web application server, enabling further exploitation. They also used a dead drop resolver by querying a Twitter account to dynamically obtain C2 server addresses, ensuring communication resilience. In the Collection phase, clipboard data was stolen to capture sensitive information such as passwords and intellectual property snippets.\n\nExfiltration was conducted over multiple network mediums: the adversary exploited Bluetooth service discovery protocol to transfer stolen intellectual property files to a nearby device, and simultaneously used a malicious script to connect to an open WiFi access point for bulk data transfer. Post-incident, system logs from the web server showed unusual outbound traffic patterns, but no definitive evidence of data loss was confirmed in this fictional scenario. Blue teams should monitor for these techniques and implement network segmentation and multi-factor authentication as mitigations.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional attack scenario for training purposes. In this simulated campaign, the threat actor 'ShadowByte' targeted a manufacturing company, 'GlobalTech Industries', which reported unusual network activity starting on October 15, 2023. Initial analysis of firewall logs showed multiple failed login attempts from IP addresses associated with known malicious infrastructure, though these were not directly linked to the main intrusion. The actors likely conducted reconnaissance [T1589] to identify high-value targets, but specific details are omitted for brevity.\n\nIn the Initial Access phase, the adversary exploited a known Microsoft Office vulnerability, CVE-2017-11882 [T1203], to deliver a malicious payload via a phishing email, which was opened by a domain administrator user. This allowed them to capture credentials [T1078.002] and impersonate the domain admin, gaining unauthorized access to the corporate network. During Execution, they employed PowerShell [T1059.001] to actively download additional tools [T1105] while simultaneously modifying registry keys [T1112] to establish persistence. System Service Discovery was performed by running the command 'net start' [T1007] to identify running services and potential vulnerabilities.\n\nFor Persistence and Lateral Movement, the attackers leveraged SSH with valid service account credentials [T1021] to remotely access a web application server, enabling further exploitation. They also used a dead drop resolver by querying a Twitter account [T1102.001] to dynamically obtain C2 server addresses, ensuring communication resilience. In the Collection phase, clipboard data was stolen [T1115] to capture sensitive information such as passwords and intellectual property snippets.\n\nExfiltration was conducted over multiple network mediums: the adversary exploited Bluetooth service discovery protocol [T1011.001] to transfer stolen intellectual property files to a nearby device, and simultaneously used a malicious script to connect to an open WiFi access point [T1011] for bulk data transfer. Post-incident, system logs from the web server showed unusual outbound traffic patterns, but no definitive evidence of data loss was confirmed in this fictional scenario. Blue teams should monitor for these techniques and implement network segmentation and multi-factor authentication as mitigations.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify high-value targets, but specific details are omitted for brevity.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the Initial Access phase, the adversary exploited a known Microsoft Office vulnerability, CVE-2017-11882, to deliver a malicious payload via a phishing email, which was opened by a domain administrator user.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "001] to actively download additional tools while simultaneously modifying registry keys to establish persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download additional tools while simultaneously modifying registry keys to establish persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "System Service Discovery was performed by running the command 'net start' to identify running services and potential vulnerabilities.",
+            "technique_id": "T1007",
+            "technique_name": "System Service Discovery"
+        },
+        {
+            "sentence": "For Persistence and Lateral Movement, the attackers leveraged SSH with valid service account credentials to remotely access a web application server, enabling further exploitation.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "In the Collection phase, clipboard data was stolen to capture sensitive information such as passwords and intellectual property snippets.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        },
+        {
+            "sentence": "001] to transfer stolen intellectual property files to a nearby device, and simultaneously used a malicious script to connect to an open WiFi access point for bulk data transfer.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowByte' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowByte', targeting critical infrastructure sectors through a multi-stage attack involving credential theft, exploitation, and exfiltration. Blue teams are advised to review logs and implement mitigations.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional attack scenario for training purposes. In this simulated campaign, the threat actor 'ShadowByte' targeted a manufacturing company, 'GlobalTech Industries', which reported unusual network activity starting on October 15, 2023. Initial analysis of firewall logs showed multiple failed login attempts from IP addresses associated with known malicious infrastructure, though these were not directly linked to the main intrusion. The actors likely conducted reconnaissance [T1589] to identify high-value targets, but specific details are omitted for brevity.\n\nIn the Initial Access phase, the adversary exploited a known Microsoft Office vulnerability, CVE-2017-11882 [T1203], to deliver a malicious payload via a phishing email, which was opened by a domain administrator user. This allowed them to capture credentials [T1078.002] and impersonate the domain admin, gaining unauthorized access to the corporate network. During Execution, they employed PowerShell [T1059.001] to actively download additional tools [T1105] while simultaneously modifying registry keys [T1112] to establish persistence. System Service Discovery was performed by running the command 'net start' [T1007] to identify running services and potential vulnerabilities.\n\nFor Persistence and Lateral Movement, the attackers leveraged SSH with valid service account credentials [T1021] to remotely access a web application server, enabling further exploitation. They also used a dead drop resolver by querying a Twitter account [T1102.001] to dynamically obtain C2 server addresses, ensuring communication resilience. In the Collection phase, clipboard data was stolen [T1115] to capture sensitive information such as passwords and intellectual property snippets.\n\nExfiltration was conducted over multiple network mediums: the adversary exploited Bluetooth service discovery protocol [T1011.001] to transfer stolen intellectual property files to a nearby device, and simultaneously used a malicious script to connect to an open WiFi access point [T1011] for bulk data transfer. Post-incident, system logs from the web server showed unusual outbound traffic patterns, but no definitive evidence of data loss was confirmed in this fictional scenario. Blue teams should monitor for these techniques and implement network segmentation and multi-factor authentication as mitigations.",
+        "techniques_used": [
+            "T1078.002",
+            "T1203",
+            "T1007",
+            "T1021",
+            "T1115",
+            "T1102.001",
+            "T1011.001",
+            "T1011"
+        ]
+    }
+}

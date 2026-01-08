@@ -1,0 +1,16 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign designed for blue team training. APT-FICT, a simulated advanced persistent threat group, has been observed targeting organizations in the technology and finance sectors, with a focus on software development teams. Initial analysis suggests the campaign began in early 2024, exploiting vulnerabilities in third-party libraries to gain initial access.
+
+Attack Narrative:
+Initial Access: The actors compromised a widely used open-source library by injecting malicious code into its dependencies [T1195.001], which was then distributed through legitimate package managers to unsuspecting developers. System logs from affected organizations show anomalous downloads of the tainted library version 2.1.3, but no immediate alerts were triggered due to its trusted source.
+
+Execution: Upon installation, the malicious dependency executed a Visual Basic script [T1059.005] that leveraged IDE extensions [T1176.002] to run hidden code within development environments, such as Visual Studio Code, while simultaneously downloading additional payloads from a remote server. This allowed the script to create a persistent backdoor by modifying project configurations and registry keys.
+
+Persistence: The backdoor established persistence through scheduled tasks and startup items, with network traffic analysis revealing intermittent connections to external IP addresses, though these were initially dismissed as benign update checks.
+
+Credential Access: The malware then performed OS credential dumping [T1003] by extracting LSASS memory to harvest user credentials, including domain admin accounts, which were stored in a temporary file before exfiltration.
+
+Command and Control (C2): For C2 communications, the actors used DNS queries [T1071.004] to encode data in subdomains, blending with normal network traffic to evade detection. Routine DNS logs showed increased query volumes to suspicious domains, but these were not flagged by standard security tools.
+
+Exfiltration: Finally, the malware employed transmitted data manipulation [T1565.002] to intercept HTTP POST requests using a network sniffer, capturing form submission data such as login credentials and financial information, which was then exfiltrated via encrypted channels. Incident responders noted that the company's background in fintech made it a high-value target, with internal audits revealing gaps in dependency management policies.
+
+Mitigation recommendations include implementing strict software supply chain controls, monitoring for unusual IDE activity, and enhancing network segmentation to limit lateral movement.

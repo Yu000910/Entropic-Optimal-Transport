@@ -1,0 +1,104 @@
+{
+    "report_id": "report_108",
+    "generated_at": "20251222_115942",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1053.006",
+        "T1559.001",
+        "T1574.004",
+        "T1078.003",
+        "T1564.004",
+        "T1036.010",
+        "T1003.008",
+        "T1213.001",
+        "T1123",
+        "T1205.001",
+        "T1132",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1053.006",
+        "T1559.001",
+        "T1574.004",
+        "T1078.003",
+        "T1564.004",
+        "T1036.010",
+        "T1003.008",
+        "T1213.001",
+        "T1123",
+        "T1205.001",
+        "T1132",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1205.001",
+        "T1036.010",
+        "T1132",
+        "T1003.008",
+        "T1559.001",
+        "T1078.003",
+        "T1564.004",
+        "T1123",
+        "T1213.001",
+        "T1053.006",
+        "T1589",
+        "T1498.001",
+        "T1195.002",
+        "T1574.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowSupply'. This group has been observed targeting organizations in the energy and telecommunications sectors, with a focus on compromising software supply chains to deploy backdoors and maintain persistent access.\n\nInitial Access: The actors likely conducted reconnaissance to identify vulnerable software update mechanisms. They then compromised the software supply chain by replacing a legitimate compiled binary with a trojanized version that contained additional payloads, which were delivered via a malicious update server. System logs from the target network show increased outbound traffic to unknown IP addresses during the update process, though this was initially dismissed as routine maintenance.\n\nExecution: Upon installation, the trojanized binary executed a malicious DLL in memory by leveraging the Internet Explorer COM object, which allowed it to bypass traditional antivirus scans. The malware then wrote a systemd service file to disk to establish persistence and run payloads on boot, while simultaneously loading a hijacked 'libcrypto.dylib' library to execute the malicious payload. Background checks on the software vendor revealed no prior security incidents, but internal audits later flagged the binary's digital signature as invalid.\n\nPersistence: To maintain access, the actors used known administrator account credentials to execute the backdoor directly, and they re-activated the built-in Administrator account while disabling security controls by executing 'net user Administrator /active:yes'. Additionally, the malware stored its configuration data in an Alternate Data Stream to avoid detection by standard file scanning, and it created raw sockets to send custom protocol packets for stealthy persistence through port knocking. Network monitoring tools recorded unusual spikes in UDP traffic on non-standard ports, but these were not investigated immediately.\n\nPrivilege Escalation: The malware extracted password hashes from the /etc/shadow file on compromised Linux systems to escalate privileges and move laterally across the network. This was facilitated by the actors querying the Confluence repository for API documentation and integration endpoints to identify vulnerable services. Internal security teams noted unauthorized access attempts to Confluence pages, but attributed them to misconfigured user permissions.\n\nExfiltration: The actors used Apple's built-in AVFoundation Framework library to capture and manage audio recordings, transforming them into JSON blobs for exfiltration. They encoded and randomized C2 data using various transform functions to evade network detection, while also sending a UDP flood to the target's web server on port 80 to consume all available bandwidth and distract from the exfiltration activities. Logs from the web server showed a significant increase in failed connection attempts during this period, but were initially treated as a minor DDoS attack.\n\nMitigation recommendations include implementing strict software supply chain controls, monitoring for unusual systemd timer creations, and enhancing network segmentation to limit lateral movement. Blue teams should practice detecting these techniques in simulated environments to improve response capabilities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowSupply'. This group has been observed targeting organizations in the energy and telecommunications sectors, with a focus on compromising software supply chains to deploy backdoors and maintain persistent access.\n\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify vulnerable software update mechanisms. They then compromised the software supply chain [T1195.002] by replacing a legitimate compiled binary with a trojanized version that contained additional payloads, which were delivered via a malicious update server. System logs from the target network show increased outbound traffic to unknown IP addresses during the update process, though this was initially dismissed as routine maintenance.\n\nExecution: Upon installation, the trojanized binary executed a malicious DLL in memory by leveraging the Internet Explorer COM object [T1559.001], which allowed it to bypass traditional antivirus scans. The malware then wrote a systemd service file to disk [T1053.006] to establish persistence and run payloads on boot, while simultaneously loading a hijacked 'libcrypto.dylib' library [T1574.004] to execute the malicious payload. Background checks on the software vendor revealed no prior security incidents, but internal audits later flagged the binary's digital signature as invalid.\n\nPersistence: To maintain access, the actors used known administrator account credentials [T1078.003] to execute the backdoor directly, and they re-activated the built-in Administrator account while disabling security controls by executing 'net user Administrator /active:yes' [T1036.010]. Additionally, the malware stored its configuration data in an Alternate Data Stream [T1564.004] to avoid detection by standard file scanning, and it created raw sockets to send custom protocol packets for stealthy persistence through port knocking [T1205.001]. Network monitoring tools recorded unusual spikes in UDP traffic on non-standard ports, but these were not investigated immediately.\n\nPrivilege Escalation: The malware extracted password hashes from the /etc/shadow file on compromised Linux systems [T1003.008] to escalate privileges and move laterally across the network. This was facilitated by the actors querying the Confluence repository [T1213.001] for API documentation and integration endpoints to identify vulnerable services. Internal security teams noted unauthorized access attempts to Confluence pages, but attributed them to misconfigured user permissions.\n\nExfiltration: The actors used Apple's built-in AVFoundation Framework library to capture and manage audio recordings [T1123], transforming them into JSON blobs for exfiltration. They encoded and randomized C2 data [T1132] using various transform functions to evade network detection, while also sending a UDP flood to the target's web server on port 80 [T1498.001] to consume all available bandwidth and distract from the exfiltration activities. Logs from the web server showed a significant increase in failed connection attempts during this period, but were initially treated as a minor DDoS attack.\n\nMitigation recommendations include implementing strict software supply chain controls, monitoring for unusual systemd timer creations, and enhancing network segmentation to limit lateral movement. Blue teams should practice detecting these techniques in simulated environments to improve response capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conducted reconnaissance to identify vulnerable software update mechanisms.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Exfiltration: The actors used Apple's built-in AVFoundation Framework library to capture and manage audio recordings, transforming them into JSON blobs for exfiltration.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        },
+        {
+            "sentence": "They encoded and randomized C2 data using various transform functions to evade network detection, while also sending a UDP flood to the target's web server on port 80 [T1498.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSupply' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowSupply' targeting software supply chains and critical infrastructure systems. The campaign involves trojanized software updates, persistence mechanisms, credential theft, and data exfiltration, designed to train blue teams in detection and response.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowSupply'. This group has been observed targeting organizations in the energy and telecommunications sectors, with a focus on compromising software supply chains to deploy backdoors and maintain persistent access.\n\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify vulnerable software update mechanisms. They then compromised the software supply chain [T1195.002] by replacing a legitimate compiled binary with a trojanized version that contained additional payloads, which were delivered via a malicious update server. System logs from the target network show increased outbound traffic to unknown IP addresses during the update process, though this was initially dismissed as routine maintenance.\n\nExecution: Upon installation, the trojanized binary executed a malicious DLL in memory by leveraging the Internet Explorer COM object [T1559.001], which allowed it to bypass traditional antivirus scans. The malware then wrote a systemd service file to disk [T1053.006] to establish persistence and run payloads on boot, while simultaneously loading a hijacked 'libcrypto.dylib' library [T1574.004] to execute the malicious payload. Background checks on the software vendor revealed no prior security incidents, but internal audits later flagged the binary's digital signature as invalid.\n\nPersistence: To maintain access, the actors used known administrator account credentials [T1078.003] to execute the backdoor directly, and they re-activated the built-in Administrator account while disabling security controls by executing 'net user Administrator /active:yes' [T1036.010]. Additionally, the malware stored its configuration data in an Alternate Data Stream [T1564.004] to avoid detection by standard file scanning, and it created raw sockets to send custom protocol packets for stealthy persistence through port knocking [T1205.001]. Network monitoring tools recorded unusual spikes in UDP traffic on non-standard ports, but these were not investigated immediately.\n\nPrivilege Escalation: The malware extracted password hashes from the /etc/shadow file on compromised Linux systems [T1003.008] to escalate privileges and move laterally across the network. This was facilitated by the actors querying the Confluence repository [T1213.001] for API documentation and integration endpoints to identify vulnerable services. Internal security teams noted unauthorized access attempts to Confluence pages, but attributed them to misconfigured user permissions.\n\nExfiltration: The actors used Apple's built-in AVFoundation Framework library to capture and manage audio recordings [T1123], transforming them into JSON blobs for exfiltration. They encoded and randomized C2 data [T1132] using various transform functions to evade network detection, while also sending a UDP flood to the target's web server on port 80 [T1498.001] to consume all available bandwidth and distract from the exfiltration activities. Logs from the web server showed a significant increase in failed connection attempts during this period, but were initially treated as a minor DDoS attack.\n\nMitigation recommendations include implementing strict software supply chain controls, monitoring for unusual systemd timer creations, and enhancing network segmentation to limit lateral movement. Blue teams should practice detecting these techniques in simulated environments to improve response capabilities.",
+        "techniques_used": [
+            "T1195.002",
+            "T1053.006",
+            "T1559.001",
+            "T1574.004",
+            "T1078.003",
+            "T1564.004",
+            "T1036.010",
+            "T1003.008",
+            "T1213.001",
+            "T1123",
+            "T1205.001",
+            "T1132",
+            "T1498.001"
+        ]
+    }
+}

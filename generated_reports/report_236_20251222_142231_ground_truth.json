@@ -1,0 +1,91 @@
+{
+    "report_id": "report_236",
+    "generated_at": "20251222_142231",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1569",
+        "T1203",
+        "T1083",
+        "T1622",
+        "T1021.001",
+        "T1001.002",
+        "T1048.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.002",
+        "T1203",
+        "T1569",
+        "T1083",
+        "T1622",
+        "T1001.002",
+        "T1021.001",
+        "T1048.003"
+    ],
+    "actual_found_ids": [
+        "T1001.002",
+        "T1589",
+        "T1566.002",
+        "T1083",
+        "T1048.003",
+        "T1569",
+        "T1021.001",
+        "T1622",
+        "T1203"
+    ],
+    "clean_text": "On 2023-10-15, Crimson Serpent initiated a campaign against a fictional energy company, 'PowerGrid Inc.', which operates across North America with 5,000 employees and critical infrastructure assets. The actors likely conducted reconnaissance to identify key personnel, including system administrators and engineers, through social media and corporate websites. Initial access was achieved via spearphishing emails that contained malicious hyperlinks mimicking legitimate software updates, leading recipients to a compromised website. Upon clicking the link, the adversary exploited known vulnerabilities, specifically CVE-2012-0158 and CVE-2010-3333, to execute a malicious payload that downloaded and ran a DLL through svchost.exe, disabling antivirus software and firewall rules. System logs from PowerGrid Inc. showed unusual process creation events at 14:30 UTC, with svchost.exe spawning from non-standard paths, though initial alerts were suppressed due to misconfigured SIEM rules. Following execution, the malware performed file and directory discovery using a tool named 'ff.exe' to search for sensitive documents, such as engineering schematics and operational data, across network shares and local drives. To evade detection, the process invoked NtQueryInformationProcess() with the ProcessDebugPort flag to check for active debugging sessions and terminate if monitored, while also employing steganography by embedding command and control traffic into legitimate image files like 'logo.jpg' to blend with normal web traffic. The actors then established persistence via Remote Desktop Protocol, creating hidden user accounts to maintain access to compromised systems, and exfiltrated stolen data over unencrypted HTTP protocols, encoding credentials using base64 before transmission to external servers. Incident responders noted that network traffic spikes coincided with scheduled maintenance windows, delaying investigation. This campaign highlights the need for enhanced email filtering, patch management, and network monitoring to defend against similar threats.",
+    "tagged_text": "On 2023-10-15, Crimson Serpent initiated a campaign against a fictional energy company, 'PowerGrid Inc.', which operates across North America with 5,000 employees and critical infrastructure assets. The actors likely conducted reconnaissance [T1589] to identify key personnel, including system administrators and engineers, through social media and corporate websites. Initial access was achieved via spearphishing emails [T1566.002] that contained malicious hyperlinks mimicking legitimate software updates, leading recipients to a compromised website. Upon clicking the link, the adversary exploited known vulnerabilities, specifically CVE-2012-0158 and CVE-2010-3333 [T1203], to execute a malicious payload that downloaded and ran a DLL through svchost.exe [T1569], disabling antivirus software and firewall rules. System logs from PowerGrid Inc. showed unusual process creation events at 14:30 UTC, with svchost.exe spawning from non-standard paths, though initial alerts were suppressed due to misconfigured SIEM rules. Following execution, the malware performed file and directory discovery [T1083] using a tool named 'ff.exe' to search for sensitive documents, such as engineering schematics and operational data, across network shares and local drives. To evade detection, the process invoked NtQueryInformationProcess() with the ProcessDebugPort flag [T1622] to check for active debugging sessions and terminate if monitored, while also employing steganography [T1001.002] by embedding command and control traffic into legitimate image files like 'logo.jpg' to blend with normal web traffic. The actors then established persistence via Remote Desktop Protocol [T1021.001], creating hidden user accounts to maintain access to compromised systems, and exfiltrated stolen data over unencrypted HTTP protocols [T1048.003], encoding credentials using base64 before transmission to external servers. Incident responders noted that network traffic spikes coincided with scheduled maintenance windows, delaying investigation. This campaign highlights the need for enhanced email filtering, patch management, and network monitoring to defend against similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify key personnel, including system administrators and engineers, through social media and corporate websites.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Upon clicking the link, the adversary exploited known vulnerabilities, specifically CVE-2012-0158 and CVE-2010-3333, to execute a malicious payload that downloaded and ran a DLL through svchost.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "exe, disabling antivirus software and firewall rules.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "Following execution, the malware performed file and directory discovery using a tool named 'ff.",
+            "technique_id": "T1083",
+            "technique_name": "File and Directory Discovery"
+        },
+        {
+            "sentence": "To evade detection, the process invoked NtQueryInformationProcess() with the ProcessDebugPort flag to check for active debugging sessions and terminate if monitored, while also employing steganography [T1001.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'Crimson Serpent', targeting energy sector organizations. The campaign employs sophisticated phishing, exploitation, and evasion techniques to compromise systems, exfiltrate data, and establish persistent access. Blue teams are advised to review logs, update defenses, and implement mitigations as outlined.",
+        "full_report_text": "On 2023-10-15, Crimson Serpent initiated a campaign against a fictional energy company, 'PowerGrid Inc.', which operates across North America with 5,000 employees and critical infrastructure assets. The actors likely conducted reconnaissance [T1589] to identify key personnel, including system administrators and engineers, through social media and corporate websites. Initial access was achieved via spearphishing emails [T1566.002] that contained malicious hyperlinks mimicking legitimate software updates, leading recipients to a compromised website. Upon clicking the link, the adversary exploited known vulnerabilities, specifically CVE-2012-0158 and CVE-2010-3333 [T1203], to execute a malicious payload that downloaded and ran a DLL through svchost.exe [T1569], disabling antivirus software and firewall rules. System logs from PowerGrid Inc. showed unusual process creation events at 14:30 UTC, with svchost.exe spawning from non-standard paths, though initial alerts were suppressed due to misconfigured SIEM rules. Following execution, the malware performed file and directory discovery [T1083] using a tool named 'ff.exe' to search for sensitive documents, such as engineering schematics and operational data, across network shares and local drives. To evade detection, the process invoked NtQueryInformationProcess() with the ProcessDebugPort flag [T1622] to check for active debugging sessions and terminate if monitored, while also employing steganography [T1001.002] by embedding command and control traffic into legitimate image files like 'logo.jpg' to blend with normal web traffic. The actors then established persistence via Remote Desktop Protocol [T1021.001], creating hidden user accounts to maintain access to compromised systems, and exfiltrated stolen data over unencrypted HTTP protocols [T1048.003], encoding credentials using base64 before transmission to external servers. Incident responders noted that network traffic spikes coincided with scheduled maintenance windows, delaying investigation. This campaign highlights the need for enhanced email filtering, patch management, and network monitoring to defend against similar threats.",
+        "techniques_used": [
+            "T1589",
+            "T1566.002",
+            "T1203",
+            "T1569",
+            "T1083",
+            "T1622",
+            "T1001.002",
+            "T1021.001",
+            "T1048.003"
+        ]
+    }
+}

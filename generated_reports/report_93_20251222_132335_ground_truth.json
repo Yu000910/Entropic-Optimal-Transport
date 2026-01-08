@@ -1,0 +1,123 @@
+{
+    "report_id": "report_93",
+    "generated_at": "20251222_132335",
+    "scenario_target_ids": [
+        "T1608.005",
+        "T1584.008",
+        "T1195.001",
+        "T1053",
+        "T1562.012",
+        "T1027.016",
+        "T1003",
+        "T1613",
+        "T1654",
+        "T1049",
+        "T1563",
+        "T1205",
+        "T1561.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1608.005",
+        "T1584.008",
+        "T1195.001",
+        "T1053",
+        "T1027.016",
+        "T1562.012",
+        "T1003",
+        "T1049",
+        "T1613",
+        "T1654",
+        "T1563",
+        "T1205",
+        "T1561.001"
+    ],
+    "actual_found_ids": [
+        "T1562.012",
+        "T1584.008",
+        "T1613",
+        "T1195.001",
+        "T1654",
+        "T1205",
+        "T1003",
+        "T1608.005",
+        "T1563",
+        "T1027.016",
+        "T1561.001",
+        "T1053",
+        "T1049"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. Crimson Serpent likely conducted reconnaissance by injecting JavaScript code into a popular news website to display fake security alerts that prompted users to install malware, exploiting this as a link target. Initial access was gained through the exploitation of a known vulnerability in SOHO router firmware, compromising network devices to establish a foothold in the target environment. Upon entry, the actors modified the legitimate dependency 'security.dll' to include credential harvesting functionality, compromising software dependencies to facilitate further malicious activities. For persistence, they configured schtasks.exe to run malicious.exe weekly, establishing a scheduled task to ensure continued execution. To evade detection, the adversary modified malicious.exe by adding junk code, employing this technique to bypass signature-based security tools. On Linux systems, malicious code executed 'service auditd stop' to disable the Linux audit system, hindering logging and monitoring efforts. The threat actor then employed PowerShell to actively dump credentials from the LSASS process memory while simultaneously using netstat -an and GetTcpTable2 API calls to discover active network connections. In containerized environments, they used 'kubectl get services' to discover exposed services in Kubernetes clusters and leveraged wevtutil.exe with PowerShell commands to enumerate Windows logs for successful logons. For lateral movement, attackers exploited weak RDP credentials to hijack remote sessions and deploy ransomware, while the malware exploited libpcap libraries to capture network packets and identify open ports for covert communication through traffic signaling. Finally, the campaign culminated in data destruction, where malware overwrote the first 64MB of every drive with a mix of static and random buffers to wipe disk content. System logs from the affected routers showed unusual traffic patterns, but no alerts were triggered due to disabled auditing. The company, a mid-sized energy provider, reported minor disruptions in operational technology systems, though no real data loss occurred in this training scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. Crimson Serpent likely conducted reconnaissance by injecting JavaScript code into a popular news website to display fake security alerts that prompted users to install malware, exploiting this as a link target [T1608.005]. Initial access was gained through the exploitation of a known vulnerability in SOHO router firmware, compromising network devices to establish a foothold in the target environment [T1584.008]. Upon entry, the actors modified the legitimate dependency 'security.dll' to include credential harvesting functionality, compromising software dependencies to facilitate further malicious activities [T1195.001]. For persistence, they configured schtasks.exe to run malicious.exe weekly, establishing a scheduled task to ensure continued execution [T1053]. To evade detection, the adversary modified malicious.exe by adding junk code, employing this technique to bypass signature-based security tools [T1027.016]. On Linux systems, malicious code executed 'service auditd stop' to disable the Linux audit system, hindering logging and monitoring efforts [T1562.012]. The threat actor then employed PowerShell to actively dump credentials from the LSASS process memory [T1003] while simultaneously using netstat -an and GetTcpTable2 API calls to discover active network connections [T1049]. In containerized environments, they used 'kubectl get services' to discover exposed services in Kubernetes clusters [T1613] and leveraged wevtutil.exe with PowerShell commands to enumerate Windows logs for successful logons [T1654]. For lateral movement, attackers exploited weak RDP credentials to hijack remote sessions and deploy ransomware [T1563], while the malware exploited libpcap libraries to capture network packets and identify open ports for covert communication through traffic signaling [T1205]. Finally, the campaign culminated in data destruction, where malware overwrote the first 64MB of every drive with a mix of static and random buffers to wipe disk content [T1561.001]. System logs from the affected routers showed unusual traffic patterns, but no alerts were triggered due to disabled auditing. The company, a mid-sized energy provider, reported minor disruptions in operational technology systems, though no real data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe weekly, establishing a scheduled task to ensure continued execution.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "The threat actor then employed PowerShell to actively dump credentials from the LSASS process memory while simultaneously using netstat -an and GetTcpTable2 API calls to discover active network connections.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "The threat actor then employed PowerShell to actively dump credentials from the LSASS process memory while simultaneously using netstat -an and GetTcpTable2 API calls to discover active network connections.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "In containerized environments, they used 'kubectl get services' to discover exposed services in Kubernetes clusters and leveraged wevtutil.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "exe with PowerShell commands to enumerate Windows logs for successful logons.",
+            "technique_id": "T1654",
+            "technique_name": "Log Enumeration"
+        },
+        {
+            "sentence": "For lateral movement, attackers exploited weak RDP credentials to hijack remote sessions and deploy ransomware, while the malware exploited libpcap libraries to capture network packets and identify open ports for covert communication through traffic signaling.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "For lateral movement, attackers exploited weak RDP credentials to hijack remote sessions and deploy ransomware, while the malware exploited libpcap libraries to capture network packets and identify open ports for covert communication through traffic signaling.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Serpent,' targeting critical infrastructure sectors. The campaign involves a multi-stage attack leveraging compromised network devices, malicious software dependencies, and evasion techniques to achieve persistence, credential theft, and data destruction. Blue teams are advised to review detection strategies and implement mitigations outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. Crimson Serpent likely conducted reconnaissance by injecting JavaScript code into a popular news website to display fake security alerts that prompted users to install malware, exploiting this as a link target [T1608.005]. Initial access was gained through the exploitation of a known vulnerability in SOHO router firmware, compromising network devices to establish a foothold in the target environment [T1584.008]. Upon entry, the actors modified the legitimate dependency 'security.dll' to include credential harvesting functionality, compromising software dependencies to facilitate further malicious activities [T1195.001]. For persistence, they configured schtasks.exe to run malicious.exe weekly, establishing a scheduled task to ensure continued execution [T1053]. To evade detection, the adversary modified malicious.exe by adding junk code, employing this technique to bypass signature-based security tools [T1027.016]. On Linux systems, malicious code executed 'service auditd stop' to disable the Linux audit system, hindering logging and monitoring efforts [T1562.012]. The threat actor then employed PowerShell to actively dump credentials from the LSASS process memory [T1003] while simultaneously using netstat -an and GetTcpTable2 API calls to discover active network connections [T1049]. In containerized environments, they used 'kubectl get services' to discover exposed services in Kubernetes clusters [T1613] and leveraged wevtutil.exe with PowerShell commands to enumerate Windows logs for successful logons [T1654]. For lateral movement, attackers exploited weak RDP credentials to hijack remote sessions and deploy ransomware [T1563], while the malware exploited libpcap libraries to capture network packets and identify open ports for covert communication through traffic signaling [T1205]. Finally, the campaign culminated in data destruction, where malware overwrote the first 64MB of every drive with a mix of static and random buffers to wipe disk content [T1561.001]. System logs from the affected routers showed unusual traffic patterns, but no alerts were triggered due to disabled auditing. The company, a mid-sized energy provider, reported minor disruptions in operational technology systems, though no real data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1608.005",
+            "T1584.008",
+            "T1195.001",
+            "T1053",
+            "T1027.016",
+            "T1562.012",
+            "T1003",
+            "T1049",
+            "T1613",
+            "T1654",
+            "T1563",
+            "T1205",
+            "T1561.001"
+        ]
+    }
+}

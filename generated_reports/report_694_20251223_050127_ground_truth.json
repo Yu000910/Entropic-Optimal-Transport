@@ -1,0 +1,80 @@
+{
+    "report_id": "report_694",
+    "generated_at": "20251223_050127",
+    "scenario_target_ids": [
+        "T1590.003",
+        "T1596.004",
+        "T1583",
+        "T1584.006",
+        "T1583.004",
+        "T1195",
+        "T1053.005",
+        "T1069.001",
+        "T1056.004",
+        "T1219.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.003",
+        "T1596.004",
+        "T1583",
+        "T1584.006",
+        "T1195",
+        "T1053.005",
+        "T1069.001",
+        "T1056.004",
+        "T1219.003"
+    ],
+    "actual_found_ids": [
+        "T1590.003",
+        "T1583",
+        "T1056.004",
+        "T1069.001",
+        "T1195",
+        "T1584.006",
+        "T1219.003",
+        "T1596.004",
+        "T1053.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign for training purposes. Crimson Hydra, a financially motivated threat actor, likely initiated operations by conducting reconnaissance on target organizations, querying public WHOIS databases to identify network trust dependencies such as registered domains and associated name servers while simultaneously analyzing CDN configurations via cdn-lookup.com to map out content delivery networks and potential entry points. To establish operational infrastructure, the actors acquired servers using funds from illicit cryptocurrency transactions and compromised a GitHub organization account to push malicious commits into popular open-source projects, exploiting web services for initial access. In one instance, during a simulated operation dubbed 'Operation Silent Ledger', Crimson Hydra injected malicious code into a third-party library dependency used by a financial application, leading to a supply chain compromise that affected multiple downstream users. Upon execution, the adversary employed scheduled tasks to run batch scripts for lateral movement across the network, using commands similar to `SCHTASKS /Create /S /U /p /SC ONCE /TN test /TR /ST /RU SYSTEM` to maintain persistence and evade detection. During internal reconnaissance, the actors used net group and net localgroup commands to gather information about and manipulate local groups, identifying privileged accounts for further exploitation. To steal credentials, Crimson Hydra installed an application-defined Windows hook to monitor network drive attachments, leveraging credential API hooking to call its RecordToFile method and exfiltrate sensitive data. For continuous remote control, the campaign involved installing TinyPilot hardware on compromised systems, ensuring persistent access through remote access hardware despite security monitoring efforts. System logs from affected organizations show routine authentication events and network traffic, but no anomalies were flagged initially. The target company, a mid-sized bank with operations in New York and Chicago, reported unusual GitHub activity and scheduled task creations starting in early 2024, though these were initially dismissed as false positives. Analysis of server acquisitions revealed IP addresses linked to previously flagged malicious infrastructure, but correlation with CDN queries was not performed until after data exfiltration was detected.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign for training purposes. Crimson Hydra, a financially motivated threat actor, likely initiated operations by conducting reconnaissance on target organizations, querying public WHOIS databases to identify network trust dependencies such as registered domains and associated name servers [T1590.003] while simultaneously analyzing CDN configurations via cdn-lookup.com to map out content delivery networks and potential entry points [T1596.004]. To establish operational infrastructure, the actors acquired servers using funds from illicit cryptocurrency transactions [T1583] and compromised a GitHub organization account to push malicious commits into popular open-source projects, exploiting web services for initial access [T1584.006]. In one instance, during a simulated operation dubbed 'Operation Silent Ledger', Crimson Hydra injected malicious code into a third-party library dependency used by a financial application, leading to a supply chain compromise that affected multiple downstream users [T1195]. Upon execution, the adversary employed scheduled tasks to run batch scripts for lateral movement across the network, using commands similar to `SCHTASKS /Create /S /U /p /SC ONCE /TN test /TR /ST /RU SYSTEM` to maintain persistence and evade detection [T1053.005]. During internal reconnaissance, the actors used net group and net localgroup commands to gather information about and manipulate local groups, identifying privileged accounts for further exploitation [T1069.001]. To steal credentials, Crimson Hydra installed an application-defined Windows hook to monitor network drive attachments, leveraging credential API hooking to call its RecordToFile method and exfiltrate sensitive data [T1056.004]. For continuous remote control, the campaign involved installing TinyPilot hardware on compromised systems, ensuring persistent access through remote access hardware despite security monitoring efforts [T1219.003]. System logs from affected organizations show routine authentication events and network traffic, but no anomalies were flagged initially. The target company, a mid-sized bank with operations in New York and Chicago, reported unusual GitHub activity and scheduled task creations starting in early 2024, though these were initially dismissed as false positives. Analysis of server acquisitions revealed IP addresses linked to previously flagged malicious infrastructure, but correlation with CDN queries was not performed until after data exfiltration was detected.",
+    "sentence_annotations": [
+        {
+            "sentence": "To establish operational infrastructure, the actors acquired servers using funds from illicit cryptocurrency transactions and compromised a GitHub organization account to push malicious commits into popular open-source projects, exploiting web services for initial access [T1584.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "In one instance, during a simulated operation dubbed 'Operation Silent Ledger', Crimson Hydra injected malicious code into a third-party library dependency used by a financial application, leading to a supply chain compromise that affected multiple downstream users.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Hydra', targeting financial institutions in the United States. The campaign leverages reconnaissance, infrastructure acquisition, supply chain compromise, and persistence mechanisms to exfiltrate sensitive data and maintain remote access. Blue teams are advised to review logs for suspicious WHOIS queries, CDN lookups, GitHub commits, scheduled tasks, and credential API hooking activities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign for training purposes. Crimson Hydra, a financially motivated threat actor, likely initiated operations by conducting reconnaissance on target organizations, querying public WHOIS databases to identify network trust dependencies such as registered domains and associated name servers [T1590.003] while simultaneously analyzing CDN configurations via cdn-lookup.com to map out content delivery networks and potential entry points [T1596.004]. To establish operational infrastructure, the actors acquired servers using funds from illicit cryptocurrency transactions [T1583] and compromised a GitHub organization account to push malicious commits into popular open-source projects, exploiting web services for initial access [T1584.006]. In one instance, during a simulated operation dubbed 'Operation Silent Ledger', Crimson Hydra injected malicious code into a third-party library dependency used by a financial application, leading to a supply chain compromise that affected multiple downstream users [T1195]. Upon execution, the adversary employed scheduled tasks to run batch scripts for lateral movement across the network, using commands similar to `SCHTASKS /Create /S /U /p /SC ONCE /TN test /TR /ST /RU SYSTEM` to maintain persistence and evade detection [T1053.005]. During internal reconnaissance, the actors used net group and net localgroup commands to gather information about and manipulate local groups, identifying privileged accounts for further exploitation [T1069.001]. To steal credentials, Crimson Hydra installed an application-defined Windows hook to monitor network drive attachments, leveraging credential API hooking to call its RecordToFile method and exfiltrate sensitive data [T1056.004]. For continuous remote control, the campaign involved installing TinyPilot hardware on compromised systems, ensuring persistent access through remote access hardware despite security monitoring efforts [T1219.003]. System logs from affected organizations show routine authentication events and network traffic, but no anomalies were flagged initially. The target company, a mid-sized bank with operations in New York and Chicago, reported unusual GitHub activity and scheduled task creations starting in early 2024, though these were initially dismissed as false positives. Analysis of server acquisitions revealed IP addresses linked to previously flagged malicious infrastructure, but correlation with CDN queries was not performed until after data exfiltration was detected.",
+        "techniques_used": [
+            "T1590.003",
+            "T1596.004",
+            "T1583",
+            "T1584.006",
+            "T1195",
+            "T1053.005",
+            "T1069.001",
+            "T1056.004",
+            "T1219.003"
+        ]
+    }
+}

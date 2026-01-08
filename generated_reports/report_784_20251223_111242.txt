@@ -1,0 +1,15 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional APT campaign, APT-FICT, observed targeting organizations with hybrid IT infrastructure. This report is based on simulated incident response data from a fictional victim, TechGlobal Inc., a mid-sized software company with operations in cloud services and traditional data centers.
+
+Initial reconnaissance involved the adversary using dirb to conduct wordlist scanning [T1595.003] against TechGlobal's web servers, probing for directories like /admin and /backup, which generated normal-looking HTTP 404 logs in Apache access logs but indicated targeted enumeration.
+
+For initial access, APT-FICT compromised the software supply chain [T1195.002] by embedding CCBkdr malware into a legitimate, signed version 5.33 of CCleaner software, which was distributed via CCleaner's official site; this led to widespread infections, with TechGlobal reporting several endpoints running the tampered version based on asset management logs.
+
+Upon execution, the malware employed PowerShell [T1059.001] to download additional payloads [T1105] from command-and-control servers while using esxcli via Hypervisor CLI [T1059.012] to enumerate all running virtual machines in the on-premises VMware environment, targeting specific VMs for lateral movement.
+
+For persistence, the adversary injected malicious code into svchost.exe to create a modified system process [T1543], ensuring the harmful DLL executed on reboot, which was detected through anomalous process memory dumps in Windows Event Logs.
+
+Lateral movement involved leveraging cloud services [T1021.007] by running Connect-AZAccount to gain access to Azure virtual machines and storage, followed by using the Azure Serial Console for direct cloud VM connections [T1021.008] to bypass network security controls and access a critical VM directly, as logged in Azure Activity Logs with unusual admin sessions.
+
+Exfiltration techniques included querying the AWS CloudTrail API to collect sensitive logging data from cloud storage [T1530], while a PowerShell script generated randomized DNS subdomain queries for DNS calculation [T1568.003] to evade egress filtering detection, observed in network traffic logs with high volumes of non-resolving DNS requests.
+
+Irrelevant background: TechGlobal Inc. was founded in 2010 and specializes in IoT solutions, with offices in three countries; their IT team noted increased CPU usage on several servers during the incident, but this was initially attributed to routine maintenance. System logs from the affected period show typical backup jobs and user login activities, unrelated to the attack.

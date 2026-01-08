@@ -1,0 +1,128 @@
+{
+    "report_id": "report_497",
+    "generated_at": "20251222_161348",
+    "scenario_target_ids": [
+        "T1598.003",
+        "T1589.001",
+        "T1598.001",
+        "T1195.001",
+        "T1133",
+        "T1569.003",
+        "T1055.014",
+        "T1546.010",
+        "T1574.005",
+        "T1518.001",
+        "T1530",
+        "T1568.003",
+        "T1090",
+        "T1048",
+        "T1011",
+        "T1499.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1598.001",
+        "T1598.003",
+        "T1589.001",
+        "T1195.001",
+        "T1133",
+        "T1568.003",
+        "T1569.003",
+        "T1055.014",
+        "T1546.010",
+        "T1574.005",
+        "T1518.001",
+        "T1530",
+        "T1048",
+        "T1011",
+        "T1090",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1055.014",
+        "T1589.001",
+        "T1530",
+        "T1011",
+        "T1574.005",
+        "T1195.001",
+        "T1546.010",
+        "T1518.001",
+        "T1090",
+        "T1133",
+        "T1568.003",
+        "T1569.003",
+        "T1598.003",
+        "T1598.001",
+        "T1048",
+        "T1499.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'CrimsonTide'. This group has been observed targeting financial organizations in North America and Europe since early 2024, with a focus on stealing customer credentials and proprietary data. Background analysis indicates that CrimsonTide operates from a mix of compromised infrastructure and uses advanced evasion techniques to avoid detection. Initial logs from victim networks show unusual login attempts from IP addresses associated with previous campaigns, though these were initially dismissed as false positives by automated monitoring systems.\n\n**Initial Access:** The campaign begins with spearphishing attacks, where actors send malicious emails impersonating financial institutions to targeted employees, containing links that redirect to credential harvesting sites to actively collect banking credentials. Concurrently, the threat actor compromised a software dependency by replacing a legitimate DLL with a trojanized version in a widely used financial application, and leveraged compromised VPN accounts to gain initial access to victim networks while using DNS calculation methods to obfuscate command and control communications.\n\n**Execution and Persistence:** Upon access, the adversary employed systemctl commands to start a network-sniffer service for monitoring traffic, while using ptrace to attach to a legitimate browser process and inject code via VDSO hijacking. For persistence, they utilized AppInit DLLs functionality by modifying registry keys to ensure malicious DLL loading, and altered access control lists in %TEMP% folders to bypass user account control restrictions.\n\n**Discovery and Exfiltration:** The malware conducts security software discovery to identify and evade detection tools, then queries Azure Resource Graph API to locate cloud storage accounts with sensitive data. Exfiltration involves transmitting collected files using NetBIOS over TCP/IP and connecting to public WiFi hotspots to send encryption keys, while creating proxy servers on compromised hosts to route traffic and obscure origins.\n\n**Impact:** The campaign culminates in application or system exploitation, where the attacker exploits a zero-day vulnerability in database services to create persistent connection floods that overwhelm servers, leading to service disruption. Post-incident analysis revealed that the actors maintained access for several weeks, exfiltrating over 500 GB of data before detection. Recommendations include implementing multi-factor authentication, monitoring for unusual registry changes, and conducting regular software supply chain audits.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'CrimsonTide'. This group has been observed targeting financial organizations in North America and Europe since early 2024, with a focus on stealing customer credentials and proprietary data. Background analysis indicates that CrimsonTide operates from a mix of compromised infrastructure and uses advanced evasion techniques to avoid detection. Initial logs from victim networks show unusual login attempts from IP addresses associated with previous campaigns, though these were initially dismissed as false positives by automated monitoring systems.\n\n**Initial Access:** The campaign begins with spearphishing attacks, where actors send malicious emails impersonating financial institutions to targeted employees [T1598.001], containing links that redirect to credential harvesting sites [T1598.003] to actively collect banking credentials [T1589.001]. Concurrently, the threat actor compromised a software dependency by replacing a legitimate DLL with a trojanized version in a widely used financial application [T1195.001], and leveraged compromised VPN accounts [T1133] to gain initial access to victim networks while using DNS calculation methods [T1568.003] to obfuscate command and control communications.\n\n**Execution and Persistence:** Upon access, the adversary employed systemctl commands [T1569.003] to start a network-sniffer service for monitoring traffic, while using ptrace to attach to a legitimate browser process and inject code via VDSO hijacking [T1055.014]. For persistence, they utilized AppInit DLLs functionality [T1546.010] by modifying registry keys to ensure malicious DLL loading, and altered access control lists in %TEMP% folders [T1574.005] to bypass user account control restrictions.\n\n**Discovery and Exfiltration:** The malware conducts security software discovery [T1518.001] to identify and evade detection tools, then queries Azure Resource Graph API [T1530] to locate cloud storage accounts with sensitive data. Exfiltration involves transmitting collected files using NetBIOS over TCP/IP [T1048] and connecting to public WiFi hotspots [T1011] to send encryption keys, while creating proxy servers on compromised hosts [T1090] to route traffic and obscure origins.\n\n**Impact:** The campaign culminates in application or system exploitation [T1499.004], where the attacker exploits a zero-day vulnerability in database services to create persistent connection floods that overwhelm servers, leading to service disruption. Post-incident analysis revealed that the actors maintained access for several weeks, exfiltrating over 500 GB of data before detection. Recommendations include implementing multi-factor authentication, monitoring for unusual registry changes, and conducting regular software supply chain audits.",
+    "sentence_annotations": [
+        {
+            "sentence": "001], and leveraged compromised VPN accounts to gain initial access to victim networks while using DNS calculation methods [T1568.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "001] to identify and evade detection tools, then queries Azure Resource Graph API to locate cloud storage accounts with sensitive data.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "Exfiltration involves transmitting collected files using NetBIOS over TCP/IP and connecting to public WiFi hotspots to send encryption keys, while creating proxy servers on compromised hosts to route traffic and obscure origins.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        },
+        {
+            "sentence": "Exfiltration involves transmitting collected files using NetBIOS over TCP/IP and connecting to public WiFi hotspots to send encryption keys, while creating proxy servers on compromised hosts to route traffic and obscure origins.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        },
+        {
+            "sentence": "Exfiltration involves transmitting collected files using NetBIOS over TCP/IP and connecting to public WiFi hotspots to send encryption keys, while creating proxy servers on compromised hosts to route traffic and obscure origins.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CrimsonTide' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CrimsonTide', targeting financial institutions. The campaign involves a multi-stage attack leveraging spearphishing, software supply chain compromise, and sophisticated persistence mechanisms to exfiltrate sensitive data and disrupt services. The information is provided for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'CrimsonTide'. This group has been observed targeting financial organizations in North America and Europe since early 2024, with a focus on stealing customer credentials and proprietary data. Background analysis indicates that CrimsonTide operates from a mix of compromised infrastructure and uses advanced evasion techniques to avoid detection. Initial logs from victim networks show unusual login attempts from IP addresses associated with previous campaigns, though these were initially dismissed as false positives by automated monitoring systems.\n\n**Initial Access:** The campaign begins with spearphishing attacks, where actors send malicious emails impersonating financial institutions to targeted employees [T1598.001], containing links that redirect to credential harvesting sites [T1598.003] to actively collect banking credentials [T1589.001]. Concurrently, the threat actor compromised a software dependency by replacing a legitimate DLL with a trojanized version in a widely used financial application [T1195.001], and leveraged compromised VPN accounts [T1133] to gain initial access to victim networks while using DNS calculation methods [T1568.003] to obfuscate command and control communications.\n\n**Execution and Persistence:** Upon access, the adversary employed systemctl commands [T1569.003] to start a network-sniffer service for monitoring traffic, while using ptrace to attach to a legitimate browser process and inject code via VDSO hijacking [T1055.014]. For persistence, they utilized AppInit DLLs functionality [T1546.010] by modifying registry keys to ensure malicious DLL loading, and altered access control lists in %TEMP% folders [T1574.005] to bypass user account control restrictions.\n\n**Discovery and Exfiltration:** The malware conducts security software discovery [T1518.001] to identify and evade detection tools, then queries Azure Resource Graph API [T1530] to locate cloud storage accounts with sensitive data. Exfiltration involves transmitting collected files using NetBIOS over TCP/IP [T1048] and connecting to public WiFi hotspots [T1011] to send encryption keys, while creating proxy servers on compromised hosts [T1090] to route traffic and obscure origins.\n\n**Impact:** The campaign culminates in application or system exploitation [T1499.004], where the attacker exploits a zero-day vulnerability in database services to create persistent connection floods that overwhelm servers, leading to service disruption. Post-incident analysis revealed that the actors maintained access for several weeks, exfiltrating over 500 GB of data before detection. Recommendations include implementing multi-factor authentication, monitoring for unusual registry changes, and conducting regular software supply chain audits.",
+        "techniques_used": [
+            "T1598.001",
+            "T1598.003",
+            "T1589.001",
+            "T1195.001",
+            "T1133",
+            "T1568.003",
+            "T1569.003",
+            "T1055.014",
+            "T1546.010",
+            "T1574.005",
+            "T1518.001",
+            "T1530",
+            "T1048",
+            "T1011",
+            "T1090",
+            "T1499.004"
+        ]
+    }
+}

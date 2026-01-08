@@ -1,0 +1,14 @@
+### 1. Initial Access
+SilentWorm actors likely conduct reconnaissance [T1589] to identify target organizations with high-security networks, such as those in the financial sector. On 2023-10-15, a malicious USB device was inserted into a workstation at 'SecureCorp Inc.', a fictional financial services company with over 500 employees, leading to the execution of a dropper that employs a worm infection strategy using removable media to breach the environment [T1091]. System logs from the workstation showed unusual USB activity at 14:30 UTC, but no immediate alerts were triggered.
+
+### 2. Execution and Persistence
+The dropper leveraged PowerShell [T1059.001] to download a polymorphic payload [T1027.014] from a command-and-control server while simultaneously creating a scheduled task via schtasks.exe to execute cryptominer.exe daily during off-peak hours [T1053]. Additionally, the adversary used PowerShell to establish persistence by creating a BITS job [T1197] that periodically retrieves updates, and they manipulated the TCC database to authorize microphone access for covert data collection [T1548.006]. Background noise: SecureCorp's IT team noted increased CPU usage in nightly reports but attributed it to routine maintenance.
+
+### 3. Defense Evasion and Discovery
+To evade detection, the malware employed Wscript.exe to run a VBScript that called SyncAppvPublishingServer.vbs, effectively bypassing PowerShell security controls [T1216.002], and it used the mktemp utility to create unique file and directory names for payloads, hiding artifacts [T1564]. The actors then conducted discovery by using the netstat -naop tcp command to display TCP connections on the victim's machine [T1049], identifying potential lateral movement targets. Logs from the network firewall showed sporadic outbound connections to unknown IPs, but these were flagged as low priority.
+
+### 4. Lateral Movement and Command and Control
+Using the discovered connections, the threat actors employed Windows Remote Management (WinRM) to move laterally within the targeted network [T1021.006], accessing additional servers. For command and control, the backdoor utilized libpcap in promiscuous mode to sniff network packets and detect activation patterns via socket filters [T1205.002], and it obfuscated communications by applying Zlib compression to the payload [T1132.001]. Company background: SecureCorp had recently upgraded its Wi-Fi infrastructure, which may have introduced vulnerabilities in network segmentation.
+
+### 5. Exfiltration
+The campaign concluded with automated exfiltration, where the backdoor collected malicious.exe from the temp directory for later transmission [T1020], using encoded channels to avoid detection. Incident response teams at SecureCorp later found residual files in temporary folders during a routine audit, highlighting the need for enhanced monitoring of removable media and scheduled tasks.

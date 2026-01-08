@@ -1,0 +1,98 @@
+{
+    "report_id": "report_340",
+    "generated_at": "20251222_150526",
+    "scenario_target_ids": [
+        "T1589",
+        "T1583.008",
+        "T1587.001",
+        "T1566.002",
+        "T1195",
+        "T1059.001",
+        "T1053.007",
+        "T1055.005",
+        "T1574.008",
+        "T1069.003",
+        "T1071.001",
+        "T1052.001",
+        "T1561.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1583.008",
+        "T1587.001",
+        "T1566.002",
+        "T1195",
+        "T1059.001",
+        "T1053.007",
+        "T1055.005",
+        "T1574.008",
+        "T1069.003",
+        "T1071.001",
+        "T1052.001",
+        "T1561.002"
+    ],
+    "actual_found_ids": [
+        "T1071.001",
+        "T1574.008",
+        "T1069.003",
+        "T1589",
+        "T1587.001",
+        "T1583.008",
+        "T1566.002",
+        "T1561.002",
+        "T1195",
+        "T1053.007",
+        "T1055.005",
+        "T1052.001",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to warn of a fictional advanced persistent threat (APT) campaign, designated 'Crimson Shadow,' which has been observed targeting financial organizations in North America since early 2024. This report is based on simulated incident response data for training purposes, highlighting realistic attack vectors and defender challenges.\n\nBackground: Crimson Shadow is a fictitious state-sponsored group with suspected ties to cybercriminal elements, known for blending sophisticated techniques with opportunistic tactics. In this scenario, the campaign began with reconnaissance activities, where actors likely gathered victim identity information from public sources like LinkedIn and corporate websites to tailor their attacks. Initial access was achieved through a multi-pronged approach: malvertising was used to distribute fake Adobe Flash Player updates, while spearphishing links in emails impersonating trusted vendors directed users to malicious sites hosting the Mango backdoor malware. Concurrently, the actors compromised a software development pipeline by injecting a malicious dependency into a widely used financial library, enabling further distribution.\n\nExecution and Persistence: Upon infection, the Mango backdoor employed PowerShell to download additional payloads and modify registry keys for persistence, while also using thread local storage to inject malicious code into trusted processes like 'explorer.exe' to evade antivirus detection. The actors escalated their operations by scheduling a malicious container deployment using Kubernetes CronJob with elevated privileges, allowing for lateral movement within cloud environments. To maintain stealth, they implemented path interception by search order hijacking, placing a malicious DLL in the same directory as 'notepad.exe' to hijack its execution when launched by administrators.\n\nDiscovery and Exfiltration: In the discovery phase, a suspicious PowerShell script executed 'az ad user get-member-groups' to enumerate the user's group affiliations in Azure Active Directory, mapping cloud permissions for privilege escalation. Data exfiltration was conducted over web protocols using encrypted HTTPS channels to blend with normal traffic, and exfiltration over USB was observed where a compromised device was used to collect system information and network configurations from isolated machines.\n\nImpact and Destruction: The campaign culminated in destructive actions, with malware overwriting the Master Boot Record (MBR) on victim systems with a malicious 16-bit bootloader, rendering systems unbootable and causing operational disruption. Logs from affected systems show anomalous container job executions and PowerShell commands, but no actual data loss occurred in this training scenario.\n\nMitigation Recommendations: Blue teams should monitor for unusual PowerShell activities, review container orchestration logs for unauthorized jobs, implement application allowlisting to prevent DLL hijacking, and restrict USB usage in sensitive environments. Regular supply chain audits and user awareness training on phishing are also advised.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to warn of a fictional advanced persistent threat (APT) campaign, designated 'Crimson Shadow,' which has been observed targeting financial organizations in North America since early 2024. This report is based on simulated incident response data for training purposes, highlighting realistic attack vectors and defender challenges.\n\nBackground: Crimson Shadow is a fictitious state-sponsored group with suspected ties to cybercriminal elements, known for blending sophisticated techniques with opportunistic tactics. In this scenario, the campaign began with reconnaissance activities, where actors likely gathered victim identity information [T1589] from public sources like LinkedIn and corporate websites to tailor their attacks. Initial access was achieved through a multi-pronged approach: malvertising [T1583.008] was used to distribute fake Adobe Flash Player updates, while spearphishing links [T1566.002] in emails impersonating trusted vendors directed users to malicious sites hosting the Mango backdoor malware [T1587.001]. Concurrently, the actors compromised a software development pipeline by injecting a malicious dependency into a widely used financial library [T1195], enabling further distribution.\n\nExecution and Persistence: Upon infection, the Mango backdoor employed PowerShell [T1059.001] to download additional payloads and modify registry keys for persistence, while also using thread local storage [T1055.005] to inject malicious code into trusted processes like 'explorer.exe' to evade antivirus detection. The actors escalated their operations by scheduling a malicious container deployment using Kubernetes CronJob with elevated privileges [T1053.007], allowing for lateral movement within cloud environments. To maintain stealth, they implemented path interception by search order hijacking [T1574.008], placing a malicious DLL in the same directory as 'notepad.exe' to hijack its execution when launched by administrators.\n\nDiscovery and Exfiltration: In the discovery phase, a suspicious PowerShell script executed 'az ad user get-member-groups' to enumerate the user's group affiliations in Azure Active Directory [T1069.003], mapping cloud permissions for privilege escalation. Data exfiltration was conducted over web protocols [T1071.001] using encrypted HTTPS channels to blend with normal traffic, and exfiltration over USB [T1052.001] was observed where a compromised device was used to collect system information and network configurations from isolated machines.\n\nImpact and Destruction: The campaign culminated in destructive actions, with malware overwriting the Master Boot Record (MBR) on victim systems with a malicious 16-bit bootloader [T1561.002], rendering systems unbootable and causing operational disruption. Logs from affected systems show anomalous container job executions and PowerShell commands, but no actual data loss occurred in this training scenario.\n\nMitigation Recommendations: Blue teams should monitor for unusual PowerShell activities, review container orchestration logs for unauthorized jobs, implement application allowlisting to prevent DLL hijacking, and restrict USB usage in sensitive environments. Regular supply chain audits and user awareness training on phishing are also advised.",
+    "sentence_annotations": [
+        {
+            "sentence": "In this scenario, the campaign began with reconnaissance activities, where actors likely gathered victim identity information from public sources like LinkedIn and corporate websites to tailor their attacks.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Concurrently, the actors compromised a software development pipeline by injecting a malicious dependency into a widely used financial library, enabling further distribution.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Shadow' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Shadow' targeting financial institutions, leveraging reconnaissance, supply chain compromise, and multi-stage malware deployment for data exfiltration and destructive actions. The campaign employs techniques such as malvertising, spearphishing, PowerShell exploitation, container orchestration, and disk wiping, designed to evade detection and disrupt operations. Blue teams should review logs for suspicious container jobs, PowerShell activities, and unauthorized USB usage.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to warn of a fictional advanced persistent threat (APT) campaign, designated 'Crimson Shadow,' which has been observed targeting financial organizations in North America since early 2024. This report is based on simulated incident response data for training purposes, highlighting realistic attack vectors and defender challenges.\n\nBackground: Crimson Shadow is a fictitious state-sponsored group with suspected ties to cybercriminal elements, known for blending sophisticated techniques with opportunistic tactics. In this scenario, the campaign began with reconnaissance activities, where actors likely gathered victim identity information [T1589] from public sources like LinkedIn and corporate websites to tailor their attacks. Initial access was achieved through a multi-pronged approach: malvertising [T1583.008] was used to distribute fake Adobe Flash Player updates, while spearphishing links [T1566.002] in emails impersonating trusted vendors directed users to malicious sites hosting the Mango backdoor malware [T1587.001]. Concurrently, the actors compromised a software development pipeline by injecting a malicious dependency into a widely used financial library [T1195], enabling further distribution.\n\nExecution and Persistence: Upon infection, the Mango backdoor employed PowerShell [T1059.001] to download additional payloads and modify registry keys for persistence, while also using thread local storage [T1055.005] to inject malicious code into trusted processes like 'explorer.exe' to evade antivirus detection. The actors escalated their operations by scheduling a malicious container deployment using Kubernetes CronJob with elevated privileges [T1053.007], allowing for lateral movement within cloud environments. To maintain stealth, they implemented path interception by search order hijacking [T1574.008], placing a malicious DLL in the same directory as 'notepad.exe' to hijack its execution when launched by administrators.\n\nDiscovery and Exfiltration: In the discovery phase, a suspicious PowerShell script executed 'az ad user get-member-groups' to enumerate the user's group affiliations in Azure Active Directory [T1069.003], mapping cloud permissions for privilege escalation. Data exfiltration was conducted over web protocols [T1071.001] using encrypted HTTPS channels to blend with normal traffic, and exfiltration over USB [T1052.001] was observed where a compromised device was used to collect system information and network configurations from isolated machines.\n\nImpact and Destruction: The campaign culminated in destructive actions, with malware overwriting the Master Boot Record (MBR) on victim systems with a malicious 16-bit bootloader [T1561.002], rendering systems unbootable and causing operational disruption. Logs from affected systems show anomalous container job executions and PowerShell commands, but no actual data loss occurred in this training scenario.\n\nMitigation Recommendations: Blue teams should monitor for unusual PowerShell activities, review container orchestration logs for unauthorized jobs, implement application allowlisting to prevent DLL hijacking, and restrict USB usage in sensitive environments. Regular supply chain audits and user awareness training on phishing are also advised.",
+        "techniques_used": [
+            "T1589",
+            "T1583.008",
+            "T1587.001",
+            "T1566.002",
+            "T1195",
+            "T1059.001",
+            "T1053.007",
+            "T1055.005",
+            "T1574.008",
+            "T1069.003",
+            "T1071.001",
+            "T1052.001",
+            "T1561.002"
+        ]
+    }
+}

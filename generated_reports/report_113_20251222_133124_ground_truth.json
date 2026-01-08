@@ -1,0 +1,108 @@
+{
+    "report_id": "report_113",
+    "generated_at": "20251222_133124",
+    "scenario_target_ids": [
+        "T1585",
+        "T1608.004",
+        "T1078.002",
+        "T1200",
+        "T1569.001",
+        "T1137.006",
+        "T1055.003",
+        "T1546.005",
+        "T1552.005",
+        "T1083",
+        "T1573.002",
+        "T1102.001",
+        "T1048.001",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585",
+        "T1608.004",
+        "T1078.002",
+        "T1200",
+        "T1569.001",
+        "T1137.006",
+        "T1055.003",
+        "T1546.005",
+        "T1552.005",
+        "T1083",
+        "T1573.002",
+        "T1102.001",
+        "T1048.001",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1585",
+        "T1552.005",
+        "T1200",
+        "T1569.001",
+        "T1055.003",
+        "T1083",
+        "T1078.002",
+        "T1546.005",
+        "T1137.006",
+        "T1573.002",
+        "T1565.002",
+        "T1048.001",
+        "T1608.004"
+    ],
+    "clean_text": "### Background\nSilentScribe, a fictional APT group with suspected ties to cybercriminal elements, has been active since early 2023, focusing on technology firms in North America and Europe. The group leverages a blend of open-source intelligence (OSINT) and custom malware to achieve its objectives, which include data exfiltration and credential harvesting. Initial reports from a fictional incident response firm, CyberDefense Inc., indicate that the campaign began with reconnaissance activities targeting employees via professional networking sites.\n\n### Attack Narrative\n**Initial Access:** The actors established a fake LinkedIn profile posing as a recruiter from a legitimate tech company to build trust with potential targets. Subsequently, they compromised a digital product website, modifying download links to point to trojanized versions of software, which victims unwittingly installed during routine updates.\n\n**Execution and Persistence:** Upon execution, the malware exploited domain accounts by harvesting credentials from compromised systems, leveraging techniques similar to those observed in historical Leviathan intrusions. To ensure persistence, the adversary used hardware additions, such as passive network taps, to capture unencrypted credentials transmitted over local networks, while simultaneously employing Launchctl on macOS systems to load a malicious service at boot and configuring a VBA add-in in Excel to execute automatically upon application launch.\n\n**Privilege Escalation and Defense Evasion:** The malware employed thread execution hijacking by manipulating OpenThread in browser processes to run keylogging code covertly and used the trap command on Unix-like systems to maintain persistence by executing a backdoor script upon receiving SIGTERM signals. Additionally, the actors accessed cloud instance metadata APIs to extract service account credentials from virtual machines.\n\n**Discovery and Collection:** SilentScribe conducted file and directory discovery across local and network drives to identify valuable intellectual property, using asymmetric cryptography via HTTPS for secure command and control communications and leveraging dead drop resolvers, such as Twitter, to dynamically obtain C2 server addresses as fallbacks.\n\n**Exfiltration and Impact:** Data exfiltration was achieved by encrypting harvested files with RC4 before transmitting them over FTP, while transmitted data manipulation involved modifying API request packets to alter user authentication tokens during transmission. Logs from affected systems show increased network traffic to unknown IP addresses, though some entries may be benign or unrelated to the campaign.\n\n### Defensive Recommendations\nOrganizations should implement multi-factor authentication, monitor for unusual network activity, and restrict access to cloud metadata services. Regular software updates and employee training on social engineering are also critical. IoCs include specific file hashes and domain names, which are available upon request from fictional sources like CISA.",
+    "tagged_text": "### Background\nSilentScribe, a fictional APT group with suspected ties to cybercriminal elements, has been active since early 2023, focusing on technology firms in North America and Europe. The group leverages a blend of open-source intelligence (OSINT) and custom malware to achieve its objectives, which include data exfiltration and credential harvesting. Initial reports from a fictional incident response firm, CyberDefense Inc., indicate that the campaign began with reconnaissance activities targeting employees via professional networking sites.\n\n### Attack Narrative\n**Initial Access:** The actors established a fake LinkedIn profile posing as a recruiter from a legitimate tech company to build trust with potential targets [T1585]. Subsequently, they compromised a digital product website, modifying download links to point to trojanized versions of software, which victims unwittingly installed during routine updates [T1608.004].\n\n**Execution and Persistence:** Upon execution, the malware exploited domain accounts by harvesting credentials from compromised systems, leveraging techniques similar to those observed in historical Leviathan intrusions [T1078.002]. To ensure persistence, the adversary used hardware additions, such as passive network taps, to capture unencrypted credentials transmitted over local networks [T1200], while simultaneously employing Launchctl on macOS systems to load a malicious service at boot [T1569.001] and configuring a VBA add-in in Excel to execute automatically upon application launch [T1137.006].\n\n**Privilege Escalation and Defense Evasion:** The malware employed thread execution hijacking by manipulating OpenThread in browser processes to run keylogging code covertly [T1055.003] and used the trap command on Unix-like systems to maintain persistence by executing a backdoor script upon receiving SIGTERM signals [T1546.005]. Additionally, the actors accessed cloud instance metadata APIs to extract service account credentials from virtual machines [T1552.005].\n\n**Discovery and Collection:** SilentScribe conducted file and directory discovery across local and network drives to identify valuable intellectual property [T1083], using asymmetric cryptography via HTTPS for secure command and control communications [T1573.002] and leveraging dead drop resolvers, such as Twitter, to dynamically obtain C2 server addresses as fallbacks [T1102.001].\n\n**Exfiltration and Impact:** Data exfiltration was achieved by encrypting harvested files with RC4 before transmitting them over FTP [T1048.001], while transmitted data manipulation involved modifying API request packets to alter user authentication tokens during transmission [T1565.002]. Logs from affected systems show increased network traffic to unknown IP addresses, though some entries may be benign or unrelated to the campaign.\n\n### Defensive Recommendations\nOrganizations should implement multi-factor authentication, monitor for unusual network activity, and restrict access to cloud metadata services. Regular software updates and employee training on social engineering are also critical. IoCs include specific file hashes and domain names, which are available upon request from fictional sources like CISA.",
+    "sentence_annotations": [
+        {
+            "sentence": "### Attack Narrative\n**Initial Access:** The actors established a fake LinkedIn profile posing as a recruiter from a legitimate tech company to build trust with potential targets.",
+            "technique_id": "T1585",
+            "technique_name": "Establish Accounts"
+        },
+        {
+            "sentence": "To ensure persistence, the adversary used hardware additions, such as passive network taps, to capture unencrypted credentials transmitted over local networks, while simultaneously employing Launchctl on macOS systems to load a malicious service at boot [T1569.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "**Discovery and Collection:** SilentScribe conducted file and directory discovery across local and network drives to identify valuable intellectual property, using asymmetric cryptography via HTTPS for secure command and control communications [T1573.",
+            "technique_id": "T1083",
+            "technique_name": "File and Directory Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentScribe' Targeting Technology and Cloud Sectors",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'SilentScribe,' targeting technology companies and cloud service providers. The campaign employs a multi-faceted approach involving social engineering, supply chain compromise, and sophisticated persistence mechanisms to steal intellectual property and credentials. Organizations are urged to review defensive measures and indicators of compromise (IoCs) provided in this report.",
+        "full_report_text": "### Background\nSilentScribe, a fictional APT group with suspected ties to cybercriminal elements, has been active since early 2023, focusing on technology firms in North America and Europe. The group leverages a blend of open-source intelligence (OSINT) and custom malware to achieve its objectives, which include data exfiltration and credential harvesting. Initial reports from a fictional incident response firm, CyberDefense Inc., indicate that the campaign began with reconnaissance activities targeting employees via professional networking sites.\n\n### Attack Narrative\n**Initial Access:** The actors established a fake LinkedIn profile posing as a recruiter from a legitimate tech company to build trust with potential targets [T1585]. Subsequently, they compromised a digital product website, modifying download links to point to trojanized versions of software, which victims unwittingly installed during routine updates [T1608.004].\n\n**Execution and Persistence:** Upon execution, the malware exploited domain accounts by harvesting credentials from compromised systems, leveraging techniques similar to those observed in historical Leviathan intrusions [T1078.002]. To ensure persistence, the adversary used hardware additions, such as passive network taps, to capture unencrypted credentials transmitted over local networks [T1200], while simultaneously employing Launchctl on macOS systems to load a malicious service at boot [T1569.001] and configuring a VBA add-in in Excel to execute automatically upon application launch [T1137.006].\n\n**Privilege Escalation and Defense Evasion:** The malware employed thread execution hijacking by manipulating OpenThread in browser processes to run keylogging code covertly [T1055.003] and used the trap command on Unix-like systems to maintain persistence by executing a backdoor script upon receiving SIGTERM signals [T1546.005]. Additionally, the actors accessed cloud instance metadata APIs to extract service account credentials from virtual machines [T1552.005].\n\n**Discovery and Collection:** SilentScribe conducted file and directory discovery across local and network drives to identify valuable intellectual property [T1083], using asymmetric cryptography via HTTPS for secure command and control communications [T1573.002] and leveraging dead drop resolvers, such as Twitter, to dynamically obtain C2 server addresses as fallbacks [T1102.001].\n\n**Exfiltration and Impact:** Data exfiltration was achieved by encrypting harvested files with RC4 before transmitting them over FTP [T1048.001], while transmitted data manipulation involved modifying API request packets to alter user authentication tokens during transmission [T1565.002]. Logs from affected systems show increased network traffic to unknown IP addresses, though some entries may be benign or unrelated to the campaign.\n\n### Defensive Recommendations\nOrganizations should implement multi-factor authentication, monitor for unusual network activity, and restrict access to cloud metadata services. Regular software updates and employee training on social engineering are also critical. IoCs include specific file hashes and domain names, which are available upon request from fictional sources like CISA.",
+        "techniques_used": [
+            "T1585",
+            "T1608.004",
+            "T1078.002",
+            "T1200",
+            "T1569.001",
+            "T1137.006",
+            "T1055.003",
+            "T1546.005",
+            "T1552.005",
+            "T1083",
+            "T1573.002",
+            "T1102.001",
+            "T1048.001",
+            "T1565.002"
+        ]
+    }
+}

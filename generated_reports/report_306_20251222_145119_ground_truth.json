@@ -1,0 +1,99 @@
+{
+    "report_id": "report_306",
+    "generated_at": "20251222_145119",
+    "scenario_target_ids": [
+        "T1133",
+        "T1204.001",
+        "T1053.002",
+        "T1547",
+        "T1558.005",
+        "T1550.004",
+        "T1056.002",
+        "T1560.001",
+        "T1560.003",
+        "T1090"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1133",
+        "T1204.001",
+        "T1059.001",
+        "T1053.002",
+        "T1547",
+        "T1558.005",
+        "T1550.004",
+        "T1056.002",
+        "T1560.001",
+        "T1560.003",
+        "T1090"
+    ],
+    "actual_found_ids": [
+        "T1053.002",
+        "T1547",
+        "T1589",
+        "T1558.005",
+        "T1550.004",
+        "T1204.001",
+        "T1090",
+        "T1133",
+        "T1560.001",
+        "T1560.003",
+        "T1056.002",
+        "T1059.001"
+    ],
+    "clean_text": "Crimson Lotus actors likely conduct reconnaissance to identify high-value targets within financial networks. During Operation Shadow Veil, the threat actors used stolen credentials obtained from previous breaches to connect to the victim's corporate VPN, gaining initial access to the internal network. Subsequently, they sent spearphishing emails containing malicious links to employees, luring them to click and deploy initial payloads. Upon execution, the adversary employed PowerShell to schedule a credential harvesting script every hour using the At utility while simultaneously modifying the Run registry key to ensure persistence by executing a backdoor on system boot. The actors then used PowerShell to run klist commands to identify cached Kerberos tickets for lateral movement and imported browser profile data to restore authenticated web sessions, bypassing multi-factor authentication (MFA). Additionally, they generated a fake corporate login dialog via GUI input capture to harvest further credentials from unsuspecting users. For data exfiltration, Crimson Lotus compressed sensitive files using zip utilities and encrypted the archives with a custom XOR-based method before routing the traffic through Fast Reverse Proxy (FRP) to obfuscate RDP communications. System logs from the victim's environment showed routine network activity, including normal user logins and scheduled backups, which were unrelated to the attack but provided cover for malicious operations. The company, a mid-sized regional bank, had recently upgraded its firewall, but misconfigured VPN policies allowed the initial breach.",
+    "tagged_text": "Crimson Lotus actors likely conduct reconnaissance [T1589] to identify high-value targets within financial networks. During Operation Shadow Veil, the threat actors used stolen credentials obtained from previous breaches to connect to the victim's corporate VPN [T1133], gaining initial access to the internal network. Subsequently, they sent spearphishing emails containing malicious links [T1204.001] to employees, luring them to click and deploy initial payloads. Upon execution, the adversary employed PowerShell [T1059.001] to schedule a credential harvesting script every hour using the At utility [T1053.002] while simultaneously modifying the Run registry key [T1547] to ensure persistence by executing a backdoor on system boot. The actors then used PowerShell to run klist commands [T1558.005] to identify cached Kerberos tickets for lateral movement and imported browser profile data [T1550.004] to restore authenticated web sessions, bypassing multi-factor authentication (MFA). Additionally, they generated a fake corporate login dialog via GUI input capture [T1056.002] to harvest further credentials from unsuspecting users. For data exfiltration, Crimson Lotus compressed sensitive files using zip utilities [T1560.001] and encrypted the archives with a custom XOR-based method [T1560.003] before routing the traffic through Fast Reverse Proxy (FRP) [T1090] to obfuscate RDP communications. System logs from the victim's environment showed routine network activity, including normal user logins and scheduled backups, which were unrelated to the attack but provided cover for malicious operations. The company, a mid-sized regional bank, had recently upgraded its firewall, but misconfigured VPN policies allowed the initial breach.",
+    "sentence_annotations": [
+        {
+            "sentence": "Crimson Lotus actors likely conduct reconnaissance to identify high-value targets within financial networks.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "During Operation Shadow Veil, the threat actors used stolen credentials obtained from previous breaches to connect to the victim's corporate VPN, gaining initial access to the internal network.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "002] while simultaneously modifying the Run registry key to ensure persistence by executing a backdoor on system boot.",
+            "technique_id": "T1547",
+            "technique_name": "Boot or Logon Autostart Execution"
+        },
+        {
+            "sentence": "003] before routing the traffic through Fast Reverse Proxy (FRP) to obfuscate RDP communications.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Operation Shadow Veil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Lotus', targeting financial institutions. Based on intelligence from CISA, FBI, and NSA, the actors employ sophisticated techniques for initial access, persistence, credential harvesting, and data exfiltration, leveraging stolen credentials, phishing, and custom tools to evade detection.",
+        "full_report_text": "Crimson Lotus actors likely conduct reconnaissance [T1589] to identify high-value targets within financial networks. During Operation Shadow Veil, the threat actors used stolen credentials obtained from previous breaches to connect to the victim's corporate VPN [T1133], gaining initial access to the internal network. Subsequently, they sent spearphishing emails containing malicious links [T1204.001] to employees, luring them to click and deploy initial payloads. Upon execution, the adversary employed PowerShell [T1059.001] to schedule a credential harvesting script every hour using the At utility [T1053.002] while simultaneously modifying the Run registry key [T1547] to ensure persistence by executing a backdoor on system boot. The actors then used PowerShell to run klist commands [T1558.005] to identify cached Kerberos tickets for lateral movement and imported browser profile data [T1550.004] to restore authenticated web sessions, bypassing multi-factor authentication (MFA). Additionally, they generated a fake corporate login dialog via GUI input capture [T1056.002] to harvest further credentials from unsuspecting users. For data exfiltration, Crimson Lotus compressed sensitive files using zip utilities [T1560.001] and encrypted the archives with a custom XOR-based method [T1560.003] before routing the traffic through Fast Reverse Proxy (FRP) [T1090] to obfuscate RDP communications. System logs from the victim's environment showed routine network activity, including normal user logins and scheduled backups, which were unrelated to the attack but provided cover for malicious operations. The company, a mid-sized regional bank, had recently upgraded its firewall, but misconfigured VPN policies allowed the initial breach.",
+        "techniques_used": [
+            "T1589",
+            "T1133",
+            "T1204.001",
+            "T1059.001",
+            "T1053.002",
+            "T1547",
+            "T1558.005",
+            "T1550.004",
+            "T1056.002",
+            "T1560.001",
+            "T1560.003",
+            "T1090"
+        ]
+    }
+}

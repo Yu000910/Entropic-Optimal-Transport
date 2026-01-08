@@ -1,0 +1,73 @@
+{
+    "report_id": "report_448",
+    "generated_at": "20251222_155157",
+    "scenario_target_ids": [
+        "T1596.002",
+        "T1585.003",
+        "T1586.003",
+        "T1669",
+        "T1053.003",
+        "T1203",
+        "T1055.002",
+        "T1132.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596.002",
+        "T1585.003",
+        "T1586.003",
+        "T1669",
+        "T1053.003",
+        "T1203",
+        "T1055.002",
+        "T1132.001"
+    ],
+    "actual_found_ids": [
+        "T1055.002",
+        "T1669",
+        "T1132.001",
+        "T1586.003",
+        "T1596.002",
+        "T1053.003",
+        "T1585.003",
+        "T1203"
+    ],
+    "clean_text": "On March 15, 2024, PowerGrid Inc., a mid-sized energy provider with operations across the Midwest, reported anomalous network activity during a routine audit. Initial logs from their SIEM showed increased outbound traffic to Dropbox servers, unrelated to normal business hours. The company's IT team noted that employee workstations were running slower than usual, with high CPU usage patterns consistent with cryptocurrency mining, though no official mining software was installed. Background checks revealed that PowerGrid Inc. had recently migrated some services to AWS, but this incident was isolated to on-premises systems. The actors likely conducted reconnaissance by searching various online WHOIS lookup tools to identify the victim's domain registration patterns and technical contacts. In the execution phase, they used phishing emails with fake security alerts that prompted users to enter their cloud credentials on a malicious site, and an attacker established a Dropbox account using fabricated credentials for data exfiltration. During lateral movement, the malicious tool performed a wireless scan to find and list all available access points, and HAWKBALL exploited Microsoft Office vulnerabilities CVE-2017-11882 and CVE-2018-0802 to deliver the payload. For persistence, by editing /var/spool/cron/crontabs/root, the threat actor configured a cryptocurrency miner to run daily at midnight. In defense evasion, DUSTPAN injected its decrypted payload into another process, and a Lazarus Group malware sample encoded data with base64. Additional system logs from March 10 indicated failed login attempts from IP addresses in Eastern Europe, but these were unrelated to the main campaign. PowerGrid Inc.'s firewall rules were updated post-incident, though no data loss was confirmed beyond test files.",
+    "tagged_text": "On March 15, 2024, PowerGrid Inc., a mid-sized energy provider with operations across the Midwest, reported anomalous network activity during a routine audit. Initial logs from their SIEM showed increased outbound traffic to Dropbox servers, unrelated to normal business hours. The company's IT team noted that employee workstations were running slower than usual, with high CPU usage patterns consistent with cryptocurrency mining, though no official mining software was installed. Background checks revealed that PowerGrid Inc. had recently migrated some services to AWS, but this incident was isolated to on-premises systems. The actors likely conducted reconnaissance by searching various online WHOIS lookup tools to identify the victim's domain registration patterns and technical contacts [T1596.002]. In the execution phase, they used phishing emails with fake security alerts that prompted users to enter their cloud credentials on a malicious site [T1586.003], and an attacker established a Dropbox account using fabricated credentials for data exfiltration [T1585.003]. During lateral movement, the malicious tool performed a wireless scan to find and list all available access points [T1669], and HAWKBALL exploited Microsoft Office vulnerabilities CVE-2017-11882 and CVE-2018-0802 to deliver the payload [T1203]. For persistence, by editing /var/spool/cron/crontabs/root, the threat actor configured a cryptocurrency miner to run daily at midnight [T1053.003]. In defense evasion, DUSTPAN injected its decrypted payload into another process [T1055.002], and a Lazarus Group malware sample encoded data with base64 [T1132.001]. Additional system logs from March 10 indicated failed login attempts from IP addresses in Eastern Europe, but these were unrelated to the main campaign. PowerGrid Inc.'s firewall rules were updated post-incident, though no data loss was confirmed beyond test files.",
+    "sentence_annotations": [
+        {
+            "sentence": "During lateral movement, the malicious tool performed a wireless scan to find and list all available access points, and HAWKBALL exploited Microsoft Office vulnerabilities CVE-2017-11882 and CVE-2018-0802 to deliver the payload.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "During lateral movement, the malicious tool performed a wireless scan to find and list all available access points, and HAWKBALL exploited Microsoft Office vulnerabilities CVE-2017-11882 and CVE-2018-0802 to deliver the payload.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SHADOWCLOUD' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor SHADOWCLOUD, which targeted a U.S.-based energy company, 'PowerGrid Inc.', from January to March 2024. The actors employed reconnaissance, credential theft, and exploitation to deploy cryptocurrency miners and exfiltrate data via cloud services. Blue teams should review logs for unusual cron jobs, wireless scans, and encoded network traffic.",
+        "full_report_text": "On March 15, 2024, PowerGrid Inc., a mid-sized energy provider with operations across the Midwest, reported anomalous network activity during a routine audit. Initial logs from their SIEM showed increased outbound traffic to Dropbox servers, unrelated to normal business hours. The company's IT team noted that employee workstations were running slower than usual, with high CPU usage patterns consistent with cryptocurrency mining, though no official mining software was installed. Background checks revealed that PowerGrid Inc. had recently migrated some services to AWS, but this incident was isolated to on-premises systems. The actors likely conducted reconnaissance by searching various online WHOIS lookup tools to identify the victim's domain registration patterns and technical contacts [T1596.002]. In the execution phase, they used phishing emails with fake security alerts that prompted users to enter their cloud credentials on a malicious site [T1586.003], and an attacker established a Dropbox account using fabricated credentials for data exfiltration [T1585.003]. During lateral movement, the malicious tool performed a wireless scan to find and list all available access points [T1669], and HAWKBALL exploited Microsoft Office vulnerabilities CVE-2017-11882 and CVE-2018-0802 to deliver the payload [T1203]. For persistence, by editing /var/spool/cron/crontabs/root, the threat actor configured a cryptocurrency miner to run daily at midnight [T1053.003]. In defense evasion, DUSTPAN injected its decrypted payload into another process [T1055.002], and a Lazarus Group malware sample encoded data with base64 [T1132.001]. Additional system logs from March 10 indicated failed login attempts from IP addresses in Eastern Europe, but these were unrelated to the main campaign. PowerGrid Inc.'s firewall rules were updated post-incident, though no data loss was confirmed beyond test files.",
+        "techniques_used": [
+            "T1596.002",
+            "T1585.003",
+            "T1586.003",
+            "T1669",
+            "T1053.003",
+            "T1203",
+            "T1055.002",
+            "T1132.001"
+        ]
+    }
+}

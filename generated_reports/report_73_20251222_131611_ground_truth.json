@@ -1,0 +1,68 @@
+{
+    "report_id": "report_73",
+    "generated_at": "20251222_131611",
+    "scenario_target_ids": [
+        "T1608.001",
+        "T1200",
+        "T1559.002",
+        "T1556.004",
+        "T1555.003",
+        "T1568",
+        "T1491.002"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1559.002",
+        "T1608.001",
+        "T1555.003",
+        "T1556.004",
+        "T1568",
+        "T1491.002"
+    ],
+    "actual_found_ids": [
+        "T1568",
+        "T1200",
+        "T1608.001",
+        "T1559.002",
+        "T1491.002",
+        "T1555.003",
+        "T1556.004"
+    ],
+    "clean_text": "On October 15, 2023, TechNova Solutions, a company specializing in cloud infrastructure with 500 employees based in Austin, Texas, reported anomalous network activity following an employee finding a USB device labeled 'Confidential Payroll Data' in the breakroom. System logs from that day show multiple failed login attempts from unknown IPs, but no immediate alerts were triggered. The actors likely conducted reconnaissance on TechNova's public-facing websites and employee social media profiles to tailor their approach. The campaign began with hardware additions, as the USB Rubber Ducky was left to lure curious employees, who plugged it into their workstations, executing a script that initiated Dynamic Data Exchange through a malicious Office document to run arbitrary commands while simultaneously downloading malware from IPFS using a content-addressed hash for persistence. Once inside, the malware, identified as a variant of Azorult, extracted credentials from web browsers and used network device authentication by injecting implanted_code.dll with predefined credentials to gain broader system access. For command and control, the actors employed dynamic resolution, leveraging a dynamic DNS service to obscure their infrastructure, and ultimately conducted external defacement by modifying approximately 50 of TechNova's customer-facing websites with protest messages. Internal firewall logs indicated sporadic outbound traffic to unusual domains over a two-week period, but no data exfiltration was confirmed due to encryption.",
+    "tagged_text": "On October 15, 2023, TechNova Solutions, a company specializing in cloud infrastructure with 500 employees based in Austin, Texas, reported anomalous network activity following an employee finding a USB device labeled 'Confidential Payroll Data' in the breakroom. System logs from that day show multiple failed login attempts from unknown IPs, but no immediate alerts were triggered. The actors likely conducted reconnaissance on TechNova's public-facing websites and employee social media profiles to tailor their approach. The campaign began with hardware additions [T1200], as the USB Rubber Ducky was left to lure curious employees, who plugged it into their workstations, executing a script that initiated Dynamic Data Exchange [T1559.002] through a malicious Office document to run arbitrary commands while simultaneously downloading malware from IPFS using a content-addressed hash for persistence [T1608.001]. Once inside, the malware, identified as a variant of Azorult, extracted credentials from web browsers [T1555.003] and used network device authentication [T1556.004] by injecting implanted_code.dll with predefined credentials to gain broader system access. For command and control, the actors employed dynamic resolution [T1568], leveraging a dynamic DNS service to obscure their infrastructure, and ultimately conducted external defacement [T1491.002] by modifying approximately 50 of TechNova's customer-facing websites with protest messages. Internal firewall logs indicated sporadic outbound traffic to unusual domains over a two-week period, but no data exfiltration was confirmed due to encryption.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign began with hardware additions, as the USB Rubber Ducky was left to lure curious employees, who plugged it into their workstations, executing a script that initiated Dynamic Data Exchange [T1559.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "For command and control, the actors employed dynamic resolution, leveraging a dynamic DNS service to obscure their infrastructure, and ultimately conducted external defacement [T1491.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'SilentDuck' Targeting Corporate Networks",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated 'SilentDuck', which targeted a mid-sized technology firm, 'TechNova Solutions', to exfiltrate sensitive data and deface external web assets. The campaign involved hardware-based initial access, malware distribution via decentralized storage, and dynamic command-and-control mechanisms. Blue teams are advised to review USB device policies, monitor for unusual DDE activity, and enhance network authentication controls.",
+        "full_report_text": "On October 15, 2023, TechNova Solutions, a company specializing in cloud infrastructure with 500 employees based in Austin, Texas, reported anomalous network activity following an employee finding a USB device labeled 'Confidential Payroll Data' in the breakroom. System logs from that day show multiple failed login attempts from unknown IPs, but no immediate alerts were triggered. The actors likely conducted reconnaissance on TechNova's public-facing websites and employee social media profiles to tailor their approach. The campaign began with hardware additions [T1200], as the USB Rubber Ducky was left to lure curious employees, who plugged it into their workstations, executing a script that initiated Dynamic Data Exchange [T1559.002] through a malicious Office document to run arbitrary commands while simultaneously downloading malware from IPFS using a content-addressed hash for persistence [T1608.001]. Once inside, the malware, identified as a variant of Azorult, extracted credentials from web browsers [T1555.003] and used network device authentication [T1556.004] by injecting implanted_code.dll with predefined credentials to gain broader system access. For command and control, the actors employed dynamic resolution [T1568], leveraging a dynamic DNS service to obscure their infrastructure, and ultimately conducted external defacement [T1491.002] by modifying approximately 50 of TechNova's customer-facing websites with protest messages. Internal firewall logs indicated sporadic outbound traffic to unusual domains over a two-week period, but no data exfiltration was confirmed due to encryption.",
+        "techniques_used": [
+            "T1200",
+            "T1559.002",
+            "T1608.001",
+            "T1555.003",
+            "T1556.004",
+            "T1568",
+            "T1491.002"
+        ]
+    }
+}

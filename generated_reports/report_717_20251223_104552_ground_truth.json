@@ -1,0 +1,63 @@
+{
+    "report_id": "report_717",
+    "generated_at": "20251223_104552",
+    "scenario_target_ids": [
+        "T1587.004",
+        "T1078.002",
+        "T1059.009",
+        "T1114",
+        "T1573.001",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1587.004",
+        "T1078.002",
+        "T1059.009",
+        "T1114",
+        "T1573.001",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1114",
+        "T1587.004",
+        "T1489",
+        "T1059.009",
+        "T1078.002",
+        "T1573.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actors Indrik Spider and RainyDay. This campaign targets entities in the financial and healthcare sectors, leveraging a combination of on-premises and cloud infrastructure. Initial analysis suggests the actors gained access through a phishing campaign, though specific initial vectors remain under investigation.\n\nUpon compromise, the actors deployed a custom exploit, 'shellcode_loader.exe', to execute arbitrary commands on compromised systems. They then harvested credentials from infected machines, including domain accounts, and used these to pivot within the network. System logs from the victim's Active Directory server show unusual login attempts from non-standard workstations, but these were not flagged due to misconfigured alerting thresholds.\n\nIn the execution phase, the adversary employed Azure PowerShell to actively enumerate virtual machines by running 'Get-AzVM' commands while simultaneously collecting email data by executing Outlook.exe with command-line parameters to extract contact lists. Background network traffic analysis indicated increased outbound connections to cloud IPs, though this was initially attributed to legitimate business operations. The company, a mid-sized healthcare provider with 500 employees, reported no prior incidents in the last quarter.\n\nFor command and control (C2), RainyDay utilized RC4 encryption to obfuscate communications with its servers, making detection more challenging. During the impact stage, the ransomware component employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically, as part of a broader effort to disrupt system recovery and increase pressure on the victim. Incident responders noted that backup systems were offline for maintenance during the attack, complicating restoration efforts.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actors Indrik Spider and RainyDay. This campaign targets entities in the financial and healthcare sectors, leveraging a combination of on-premises and cloud infrastructure. Initial analysis suggests the actors gained access through a phishing campaign, though specific initial vectors remain under investigation.\n\nUpon compromise, the actors deployed a custom exploit, 'shellcode_loader.exe', to execute arbitrary commands on compromised systems [T1587.004]. They then harvested credentials from infected machines, including domain accounts [T1078.002], and used these to pivot within the network. System logs from the victim's Active Directory server show unusual login attempts from non-standard workstations, but these were not flagged due to misconfigured alerting thresholds.\n\nIn the execution phase, the adversary employed Azure PowerShell [T1059.009] to actively enumerate virtual machines by running 'Get-AzVM' commands [T1059.009] while simultaneously collecting email data by executing Outlook.exe with command-line parameters to extract contact lists [T1114]. Background network traffic analysis indicated increased outbound connections to cloud IPs, though this was initially attributed to legitimate business operations. The company, a mid-sized healthcare provider with 500 employees, reported no prior incidents in the last quarter.\n\nFor command and control (C2), RainyDay utilized RC4 encryption [T1573.001] to obfuscate communications with its servers, making detection more challenging. During the impact stage, the ransomware component employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically [T1489], as part of a broader effort to disrupt system recovery and increase pressure on the victim. Incident responders noted that backup systems were offline for maintenance during the attack, complicating restoration efforts.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe with command-line parameters to extract contact lists.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "During the impact stage, the ransomware component employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically, as part of a broader effort to disrupt system recovery and increase pressure on the victim.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Indrik Spider' and 'RainyDay' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by fictional threat actors Indrik Spider and RainyDay, targeting organizations with hybrid on-premises and cloud environments. The actors employ a multi-stage attack involving custom exploits, credential theft, cloud enumeration, email collection, encrypted command and control, and service disruption for ransomware deployment.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actors Indrik Spider and RainyDay. This campaign targets entities in the financial and healthcare sectors, leveraging a combination of on-premises and cloud infrastructure. Initial analysis suggests the actors gained access through a phishing campaign, though specific initial vectors remain under investigation.\n\nUpon compromise, the actors deployed a custom exploit, 'shellcode_loader.exe', to execute arbitrary commands on compromised systems [T1587.004]. They then harvested credentials from infected machines, including domain accounts [T1078.002], and used these to pivot within the network. System logs from the victim's Active Directory server show unusual login attempts from non-standard workstations, but these were not flagged due to misconfigured alerting thresholds.\n\nIn the execution phase, the adversary employed Azure PowerShell [T1059.009] to actively enumerate virtual machines by running 'Get-AzVM' commands [T1059.009] while simultaneously collecting email data by executing Outlook.exe with command-line parameters to extract contact lists [T1114]. Background network traffic analysis indicated increased outbound connections to cloud IPs, though this was initially attributed to legitimate business operations. The company, a mid-sized healthcare provider with 500 employees, reported no prior incidents in the last quarter.\n\nFor command and control (C2), RainyDay utilized RC4 encryption [T1573.001] to obfuscate communications with its servers, making detection more challenging. During the impact stage, the ransomware component employed 'sc config Themes start= disabled' to stop the desktop themes service from starting automatically [T1489], as part of a broader effort to disrupt system recovery and increase pressure on the victim. Incident responders noted that backup systems were offline for maintenance during the attack, complicating restoration efforts.",
+        "techniques_used": [
+            "T1587.004",
+            "T1078.002",
+            "T1059.009",
+            "T1114",
+            "T1573.001",
+            "T1489"
+        ]
+    }
+}

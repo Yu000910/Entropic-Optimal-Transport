@@ -1,0 +1,74 @@
+{
+    "report_id": "report_729",
+    "generated_at": "20251223_105035",
+    "scenario_target_ids": [
+        "T1189",
+        "T1204.002",
+        "T1574.001",
+        "T1040",
+        "T1008",
+        "T1102.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1204.002",
+        "T1574.001",
+        "T1040",
+        "T1008",
+        "T1102.002"
+    ],
+    "actual_found_ids": [
+        "T1008",
+        "T1102.002",
+        "T1589",
+        "T1040",
+        "T1189",
+        "T1574.001",
+        "T1204.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity attributed to the fictional threat actor group GhostNet, which has been observed targeting financial institutions in the United States. This campaign leverages a multi-stage attack chain designed to evade detection and establish persistent access. On 2024-10-01, anomalous network traffic was detected at a major bank's perimeter firewall, originating from IP 192.168.1.100, but this was later determined to be a false positive related to a misconfigured internal server. GhostNet likely conducts initial reconnaissance to identify high-value targets, though no specific evidence was found in this simulation. The actors employed a drive-by compromise by distributing malicious torrent files disguised as financial software updates on peer-to-peer networks, similar to historical KARAE campaigns, while simultaneously using a malicious file delivered via spear-phishing emails with weaponized PDF attachments to execute initial payloads, akin to Ramsay tactics. Once executed, the malware abuses DLL side-loading by leveraging a legitimate antivirus binary, VPDN_LU.exe, to load a malicious DLL that mimics navlu.dll, as seen in HTTPBrowser, to maintain persistence and evade antivirus detection. The malware then deploys network sniffing capabilities using a pcap listener function to monitor designated interfaces and ports for sensitive data, inspired by J-magic, and establishes fallback channels by detecting proxy configurations and switching between HTTP POST requests and UDP/6000 for beaconing, similar to NETEAGLE, to ensure reliable C2 communication. Finally, bidirectional communication is achieved through the Dropbox cloud storage service for command and control, as observed in LOWBALL, allowing data exfiltration and remote command execution. During the investigation, system logs from the bank's SIEM showed routine backup activities at 02:00 UTC, which were unrelated to the attack. The bank, founded in 1985, has no prior history of significant breaches, but this simulation highlights the need for enhanced monitoring and response protocols.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity attributed to the fictional threat actor group GhostNet, which has been observed targeting financial institutions in the United States. This campaign leverages a multi-stage attack chain designed to evade detection and establish persistent access. On 2024-10-01, anomalous network traffic was detected at a major bank's perimeter firewall, originating from IP 192.168.1.100, but this was later determined to be a false positive related to a misconfigured internal server. GhostNet likely conducts initial reconnaissance [T1589] to identify high-value targets, though no specific evidence was found in this simulation. The actors employed a drive-by compromise [T1189] by distributing malicious torrent files disguised as financial software updates on peer-to-peer networks, similar to historical KARAE campaigns, while simultaneously using a malicious file [T1204.002] delivered via spear-phishing emails with weaponized PDF attachments to execute initial payloads, akin to Ramsay tactics. Once executed, the malware abuses DLL side-loading [T1574.001] by leveraging a legitimate antivirus binary, VPDN_LU.exe, to load a malicious DLL that mimics navlu.dll, as seen in HTTPBrowser, to maintain persistence and evade antivirus detection. The malware then deploys network sniffing capabilities [T1040] using a pcap listener function to monitor designated interfaces and ports for sensitive data, inspired by J-magic, and establishes fallback channels [T1008] by detecting proxy configurations and switching between HTTP POST requests and UDP/6000 for beaconing, similar to NETEAGLE, to ensure reliable C2 communication. Finally, bidirectional communication [T1102.002] is achieved through the Dropbox cloud storage service for command and control, as observed in LOWBALL, allowing data exfiltration and remote command execution. During the investigation, system logs from the bank's SIEM showed routine backup activities at 02:00 UTC, which were unrelated to the attack. The bank, founded in 1985, has no prior history of significant breaches, but this simulation highlights the need for enhanced monitoring and response protocols.",
+    "sentence_annotations": [
+        {
+            "sentence": "GhostNet likely conducts initial reconnaissance to identify high-value targets, though no specific evidence was found in this simulation.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The actors employed a drive-by compromise by distributing malicious torrent files disguised as financial software updates on peer-to-peer networks, similar to historical KARAE campaigns, while simultaneously using a malicious file [T1204.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "The malware then deploys network sniffing capabilities using a pcap listener function to monitor designated interfaces and ports for sensitive data, inspired by J-magic, and establishes fallback channels by detecting proxy configurations and switching between HTTP POST requests and UDP/6000 for beaconing, similar to NETEAGLE, to ensure reliable C2 communication.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "The malware then deploys network sniffing capabilities using a pcap listener function to monitor designated interfaces and ports for sensitive data, inspired by J-magic, and establishes fallback channels by detecting proxy configurations and switching between HTTP POST requests and UDP/6000 for beaconing, similar to NETEAGLE, to ensure reliable C2 communication.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'GhostNet' Targeting Financial Sector",
+        "summary": "This advisory details a fictional campaign by threat actor group 'GhostNet' targeting financial institutions, using drive-by compromises, malicious files, DLL side-loading, network sniffing, fallback channels, and bidirectional cloud-based C2 for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity attributed to the fictional threat actor group GhostNet, which has been observed targeting financial institutions in the United States. This campaign leverages a multi-stage attack chain designed to evade detection and establish persistent access. On 2024-10-01, anomalous network traffic was detected at a major bank's perimeter firewall, originating from IP 192.168.1.100, but this was later determined to be a false positive related to a misconfigured internal server. GhostNet likely conducts initial reconnaissance [T1589] to identify high-value targets, though no specific evidence was found in this simulation. The actors employed a drive-by compromise [T1189] by distributing malicious torrent files disguised as financial software updates on peer-to-peer networks, similar to historical KARAE campaigns, while simultaneously using a malicious file [T1204.002] delivered via spear-phishing emails with weaponized PDF attachments to execute initial payloads, akin to Ramsay tactics. Once executed, the malware abuses DLL side-loading [T1574.001] by leveraging a legitimate antivirus binary, VPDN_LU.exe, to load a malicious DLL that mimics navlu.dll, as seen in HTTPBrowser, to maintain persistence and evade antivirus detection. The malware then deploys network sniffing capabilities [T1040] using a pcap listener function to monitor designated interfaces and ports for sensitive data, inspired by J-magic, and establishes fallback channels [T1008] by detecting proxy configurations and switching between HTTP POST requests and UDP/6000 for beaconing, similar to NETEAGLE, to ensure reliable C2 communication. Finally, bidirectional communication [T1102.002] is achieved through the Dropbox cloud storage service for command and control, as observed in LOWBALL, allowing data exfiltration and remote command execution. During the investigation, system logs from the bank's SIEM showed routine backup activities at 02:00 UTC, which were unrelated to the attack. The bank, founded in 1985, has no prior history of significant breaches, but this simulation highlights the need for enhanced monitoring and response protocols.",
+        "techniques_used": [
+            "T1189",
+            "T1204.002",
+            "T1574.001",
+            "T1040",
+            "T1008",
+            "T1102.002"
+        ]
+    }
+}

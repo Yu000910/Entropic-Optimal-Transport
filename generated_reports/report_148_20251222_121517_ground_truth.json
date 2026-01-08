@@ -1,0 +1,108 @@
+{
+    "report_id": "report_148",
+    "generated_at": "20251222_121517",
+    "scenario_target_ids": [
+        "T1566",
+        "T1053.006",
+        "T1614",
+        "T1614.001",
+        "T1018",
+        "T1550.002",
+        "T1113",
+        "T1039",
+        "T1090.002",
+        "T1205",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1053.006",
+        "T1614",
+        "T1614.001",
+        "T1018",
+        "T1550.002",
+        "T1113",
+        "T1039",
+        "T1090.002",
+        "T1205",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1090.002",
+        "T1550.002",
+        "T1205",
+        "T1018",
+        "T1614",
+        "T1053.006",
+        "T1614.001",
+        "T1039",
+        "T1499.003",
+        "T1566",
+        "T1113"
+    ],
+    "clean_text": "On April 15, 2024, a mid-sized bank, 'SecureTrust Financial', reported anomalous network activity traced back to a phishing campaign. The actors sent emails impersonating IT support, containing links to a compromised website that downloaded a trojan, which executed upon user interaction. Once inside, the malware established persistence by deploying a malicious systemd timer that triggered keylogging functionality upon each user login, capturing credentials in the background. The malware then conducted reconnaissance to gather system information, using API calls to discover the system's location and specifically checking the language settings; it terminated execution if the language was not Spanish or Portuguese, indicating targeted evasion. Following this, the actors performed lateral movement by employing remote system discovery tools, such as dsquery and nltest.exe, to enumerate hosts and domain controllers across the network. They leveraged stolen NTLM hashes to authenticate via pass-the-hash techniques, using tools like pth.exe to access a critical file server without needing plaintext passwords. On compromised systems, the malware captured screenshots of user activities and uploaded them to a command-and-control (C2) server, while simultaneously searching network shared drives for financial documents using PowerShell commands like 'Get-ChildItem -Path \\\\fileserver\\data\\ -Filter *.xlsx'. To obfuscate their network traffic, the actors routed communications through external proxies, mimicking tactics used by groups like Lazarus, and employed traffic signaling methods by exploiting libpcap libraries to capture packets and identify unused ports for covert C2 channels. In the final stage, the malware launched an application exhaustion flood by exploiting report generation features to request complex reports that maxed out CPU usage, causing service disruptions. SecureTrust's security team noted increased log entries in their SIEM, including failed login attempts from unknown IPs and unusual PowerShell executions, though these were initially dismissed as false positives. The bank's background includes recent mergers, which may have introduced integration vulnerabilities, but no direct correlation was confirmed in this simulated scenario.",
+    "tagged_text": "On April 15, 2024, a mid-sized bank, 'SecureTrust Financial', reported anomalous network activity traced back to a phishing campaign [T1566]. The actors sent emails impersonating IT support, containing links to a compromised website that downloaded a trojan, which executed upon user interaction. Once inside, the malware established persistence by deploying a malicious systemd timer [T1053.006] that triggered keylogging functionality upon each user login, capturing credentials in the background. The malware then conducted reconnaissance to gather system information, using API calls to discover the system's location [T1614] and specifically checking the language settings [T1614.001]; it terminated execution if the language was not Spanish or Portuguese, indicating targeted evasion. Following this, the actors performed lateral movement by employing remote system discovery tools [T1018], such as dsquery and nltest.exe, to enumerate hosts and domain controllers across the network. They leveraged stolen NTLM hashes to authenticate via pass-the-hash techniques [T1550.002], using tools like pth.exe to access a critical file server without needing plaintext passwords. On compromised systems, the malware captured screenshots [T1113] of user activities and uploaded them to a command-and-control (C2) server, while simultaneously searching network shared drives [T1039] for financial documents using PowerShell commands like 'Get-ChildItem -Path \\\\fileserver\\data\\ -Filter *.xlsx'. To obfuscate their network traffic, the actors routed communications through external proxies [T1090.002], mimicking tactics used by groups like Lazarus, and employed traffic signaling methods [T1205] by exploiting libpcap libraries to capture packets and identify unused ports for covert C2 channels. In the final stage, the malware launched an application exhaustion flood [T1499.003] by exploiting report generation features to request complex reports that maxed out CPU usage, causing service disruptions. SecureTrust's security team noted increased log entries in their SIEM, including failed login attempts from unknown IPs and unusual PowerShell executions, though these were initially dismissed as false positives. The bank's background includes recent mergers, which may have introduced integration vulnerabilities, but no direct correlation was confirmed in this simulated scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "On April 15, 2024, a mid-sized bank, 'SecureTrust Financial', reported anomalous network activity traced back to a phishing campaign.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "The malware then conducted reconnaissance to gather system information, using API calls to discover the system's location and specifically checking the language settings [T1614.",
+            "technique_id": "T1614",
+            "technique_name": "System Location Discovery"
+        },
+        {
+            "sentence": "Following this, the actors performed lateral movement by employing remote system discovery tools, such as dsquery and nltest.",
+            "technique_id": "T1018",
+            "technique_name": "Remote System Discovery"
+        },
+        {
+            "sentence": "On compromised systems, the malware captured screenshots of user activities and uploaded them to a command-and-control (C2) server, while simultaneously searching network shared drives for financial documents using PowerShell commands like 'Get-ChildItem -Path \\\\fileserver\\data\\ -Filter *.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        },
+        {
+            "sentence": "On compromised systems, the malware captured screenshots of user activities and uploaded them to a command-and-control (C2) server, while simultaneously searching network shared drives for financial documents using PowerShell commands like 'Get-ChildItem -Path \\\\fileserver\\data\\ -Filter *.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "002], mimicking tactics used by groups like Lazarus, and employed traffic signaling methods by exploiting libpcap libraries to capture packets and identify unused ports for covert C2 channels.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a fictional advanced persistent threat (APT) campaign, designated as 'Crimson Viper', targeting financial institutions to exfiltrate sensitive data and disrupt operations. The campaign employs sophisticated techniques, including phishing, lateral movement, and denial-of-service attacks, for training blue teams in detection and response.",
+        "full_report_text": "On April 15, 2024, a mid-sized bank, 'SecureTrust Financial', reported anomalous network activity traced back to a phishing campaign [T1566]. The actors sent emails impersonating IT support, containing links to a compromised website that downloaded a trojan, which executed upon user interaction. Once inside, the malware established persistence by deploying a malicious systemd timer [T1053.006] that triggered keylogging functionality upon each user login, capturing credentials in the background. The malware then conducted reconnaissance to gather system information, using API calls to discover the system's location [T1614] and specifically checking the language settings [T1614.001]; it terminated execution if the language was not Spanish or Portuguese, indicating targeted evasion. Following this, the actors performed lateral movement by employing remote system discovery tools [T1018], such as dsquery and nltest.exe, to enumerate hosts and domain controllers across the network. They leveraged stolen NTLM hashes to authenticate via pass-the-hash techniques [T1550.002], using tools like pth.exe to access a critical file server without needing plaintext passwords. On compromised systems, the malware captured screenshots [T1113] of user activities and uploaded them to a command-and-control (C2) server, while simultaneously searching network shared drives [T1039] for financial documents using PowerShell commands like 'Get-ChildItem -Path \\\\fileserver\\data\\ -Filter *.xlsx'. To obfuscate their network traffic, the actors routed communications through external proxies [T1090.002], mimicking tactics used by groups like Lazarus, and employed traffic signaling methods [T1205] by exploiting libpcap libraries to capture packets and identify unused ports for covert C2 channels. In the final stage, the malware launched an application exhaustion flood [T1499.003] by exploiting report generation features to request complex reports that maxed out CPU usage, causing service disruptions. SecureTrust's security team noted increased log entries in their SIEM, including failed login attempts from unknown IPs and unusual PowerShell executions, though these were initially dismissed as false positives. The bank's background includes recent mergers, which may have introduced integration vulnerabilities, but no direct correlation was confirmed in this simulated scenario.",
+        "techniques_used": [
+            "T1566",
+            "T1053.006",
+            "T1614",
+            "T1614.001",
+            "T1018",
+            "T1550.002",
+            "T1113",
+            "T1039",
+            "T1090.002",
+            "T1205",
+            "T1499.003"
+        ]
+    }
+}

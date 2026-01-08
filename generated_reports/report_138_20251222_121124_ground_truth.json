@@ -1,0 +1,103 @@
+{
+    "report_id": "report_138",
+    "generated_at": "20251222_121124",
+    "scenario_target_ids": [
+        "T1583.003",
+        "T1608.001",
+        "T1566.002",
+        "T1569.003",
+        "T1120",
+        "T1018",
+        "T1021.004",
+        "T1074",
+        "T1665",
+        "T1001",
+        "T1485.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.003",
+        "T1608.001",
+        "T1566.002",
+        "T1569.003",
+        "T1120",
+        "T1018",
+        "T1021.004",
+        "T1074",
+        "T1001",
+        "T1665",
+        "T1485.001"
+    ],
+    "actual_found_ids": [
+        "T1021.004",
+        "T1566.002",
+        "T1569.003",
+        "T1583.003",
+        "T1018",
+        "T1001",
+        "T1485.001",
+        "T1120",
+        "T1608.001",
+        "T1665",
+        "T1074"
+    ],
+    "clean_text": "On October 15, 2023, EnerGrid Solutions, a fictional energy provider based in Texas with 500 employees, reported anomalous network activity to authorities. Initial analysis revealed that the adversary, likely operating as 'ShadowGale', conducted reconnaissance through open-source intelligence gathering, though no specific techniques were tagged in this phase. The actors then established operational infrastructure by renting a Virtual Private Server (VPS) from a European hosting provider using fake credentials, which they utilized to host malicious payloads on the Discord content delivery network. Subsequently, they delivered spearphishing emails to EnerGrid employees, containing malicious links that redirected to the hosted malware. Upon execution, the malware employed PowerShell scripts to download additional tools while simultaneously creating system services via systemctl to maintain persistence and execute cryptocurrency mining software. The actors then performed discovery activities, using commands to check for peripheral devices plugged into infected hosts and identify remote systems through net view to map the network. For lateral movement and data exfiltration, they established encrypted SSH-based tunnels to transfer tools and execute remote commands, while staging collected file metadata in C:\\Windows\\Temp before encryption. To evade detection, they employed obfuscation techniques by encrypting HTTP POST communications with XOR keys and hid command-and-control infrastructure by retrieving non-existent webpages to send hidden commands via error messages. Finally, after data exfiltration, they triggered immediate deletion of objects across multiple storage buckets using modified lifecycle policies. Logs from EnerGrid's SIEM showed increased outbound traffic to unknown IPs, but no further action was taken as this is a training scenario.",
+    "tagged_text": "On October 15, 2023, EnerGrid Solutions, a fictional energy provider based in Texas with 500 employees, reported anomalous network activity to authorities. Initial analysis revealed that the adversary, likely operating as 'ShadowGale', conducted reconnaissance through open-source intelligence gathering, though no specific techniques were tagged in this phase. The actors then established operational infrastructure by renting a Virtual Private Server (VPS) from a European hosting provider using fake credentials [T1583.003], which they utilized to host malicious payloads on the Discord content delivery network [T1608.001]. Subsequently, they delivered spearphishing emails to EnerGrid employees, containing malicious links that redirected to the hosted malware [T1566.002]. Upon execution, the malware employed PowerShell scripts to download additional tools while simultaneously creating system services via systemctl to maintain persistence and execute cryptocurrency mining software [T1569.003]. The actors then performed discovery activities, using commands to check for peripheral devices plugged into infected hosts [T1120] and identify remote systems through net view to map the network [T1018]. For lateral movement and data exfiltration, they established encrypted SSH-based tunnels to transfer tools and execute remote commands [T1021.004], while staging collected file metadata in C:\\Windows\\Temp before encryption [T1074]. To evade detection, they employed obfuscation techniques by encrypting HTTP POST communications with XOR keys [T1001] and hid command-and-control infrastructure by retrieving non-existent webpages to send hidden commands via error messages [T1665]. Finally, after data exfiltration, they triggered immediate deletion of objects across multiple storage buckets using modified lifecycle policies [T1485.001]. Logs from EnerGrid's SIEM showed increased outbound traffic to unknown IPs, but no further action was taken as this is a training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then performed discovery activities, using commands to check for peripheral devices plugged into infected hosts and identify remote systems through net view to map the network.",
+            "technique_id": "T1120",
+            "technique_name": "Peripheral Device Discovery"
+        },
+        {
+            "sentence": "The actors then performed discovery activities, using commands to check for peripheral devices plugged into infected hosts and identify remote systems through net view to map the network.",
+            "technique_id": "T1018",
+            "technique_name": "Remote System Discovery"
+        },
+        {
+            "sentence": "004], while staging collected file metadata in C:\\Windows\\Temp before encryption.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "To evade detection, they employed obfuscation techniques by encrypting HTTP POST communications with XOR keys and hid command-and-control infrastructure by retrieving non-existent webpages to send hidden commands via error messages.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        },
+        {
+            "sentence": "To evade detection, they employed obfuscation techniques by encrypting HTTP POST communications with XOR keys and hid command-and-control infrastructure by retrieving non-existent webpages to send hidden commands via error messages.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowGale', which targeted a mid-sized energy company, 'EnerGrid Solutions', to exfiltrate sensitive operational data and deploy ransomware. The campaign leveraged spearphishing, VPS infrastructure, and encrypted tunneling for stealthy operations, with techniques observed across the entire cyber kill-chain for blue team training purposes.",
+        "full_report_text": "On October 15, 2023, EnerGrid Solutions, a fictional energy provider based in Texas with 500 employees, reported anomalous network activity to authorities. Initial analysis revealed that the adversary, likely operating as 'ShadowGale', conducted reconnaissance through open-source intelligence gathering, though no specific techniques were tagged in this phase. The actors then established operational infrastructure by renting a Virtual Private Server (VPS) from a European hosting provider using fake credentials [T1583.003], which they utilized to host malicious payloads on the Discord content delivery network [T1608.001]. Subsequently, they delivered spearphishing emails to EnerGrid employees, containing malicious links that redirected to the hosted malware [T1566.002]. Upon execution, the malware employed PowerShell scripts to download additional tools while simultaneously creating system services via systemctl to maintain persistence and execute cryptocurrency mining software [T1569.003]. The actors then performed discovery activities, using commands to check for peripheral devices plugged into infected hosts [T1120] and identify remote systems through net view to map the network [T1018]. For lateral movement and data exfiltration, they established encrypted SSH-based tunnels to transfer tools and execute remote commands [T1021.004], while staging collected file metadata in C:\\Windows\\Temp before encryption [T1074]. To evade detection, they employed obfuscation techniques by encrypting HTTP POST communications with XOR keys [T1001] and hid command-and-control infrastructure by retrieving non-existent webpages to send hidden commands via error messages [T1665]. Finally, after data exfiltration, they triggered immediate deletion of objects across multiple storage buckets using modified lifecycle policies [T1485.001]. Logs from EnerGrid's SIEM showed increased outbound traffic to unknown IPs, but no further action was taken as this is a training scenario.",
+        "techniques_used": [
+            "T1583.003",
+            "T1608.001",
+            "T1566.002",
+            "T1569.003",
+            "T1120",
+            "T1018",
+            "T1021.004",
+            "T1074",
+            "T1001",
+            "T1665",
+            "T1485.001"
+        ]
+    }
+}

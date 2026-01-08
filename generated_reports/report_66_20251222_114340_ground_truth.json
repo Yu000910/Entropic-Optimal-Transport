@@ -1,0 +1,53 @@
+{
+    "report_id": "report_66",
+    "generated_at": "20251222_114340",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1610",
+        "T1546.012",
+        "T1550.003",
+        "T1132.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1610",
+        "T1546.012",
+        "T1550.003",
+        "T1132.002"
+    ],
+    "actual_found_ids": [
+        "T1546.012",
+        "T1550.003",
+        "T1610",
+        "T1195.002",
+        "T1132.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated as 'ShadowUpdate'. This scenario is based on simulated activity observed in a controlled environment and is intended for educational purposes only. TEMP.Shadow, a fictional actor, has been observed targeting multiple sectors, including technology and finance, by exploiting software supply chains to gain initial access.\n\nInitial Access: The actors compromised the software update mechanism of a popular open-source tool, replacing the authentic compiled release with a malicious version on the official download portal. This allowed them to distribute trojanized software to unsuspecting users, leading to initial infection. System logs from victim organizations show routine update checks, but forensic analysis revealed hash mismatches indicating tampering.\n\nExecution and Persistence: Upon execution, the malicious payload employed PowerShell to download additional components while simultaneously creating a Docker container with rootkit functionality using the 'docker create' command to maintain persistent access on the target system. The actors then modified registry entries within HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options to hijack legitimate processes and ensure persistence across reboots. Network traffic analysis showed anomalous outbound connections to command-and-control servers, but initial alerts were dismissed as false positives due to encrypted traffic patterns.\n\nLateral Movement: After establishing a foothold, TEMP.Shadow used stolen Kerberos tickets to move laterally within the network, injecting a silver ticket to access database servers and exfiltrate sensitive data. This activity was masked by normal administrative traffic, making detection challenging. The company background includes a recent merger, which complicated security monitoring efforts.\n\nCommand and Control: For communication, the actors utilized a custom binary encoding scheme to encode messages with specific commands and parameters, evading standard detection mechanisms by blending with legitimate network traffic. Incident responders noted unusual payload sizes in packet captures, but initial investigations focused on system performance issues unrelated to the attack.\n\nMitigation recommendations include verifying software integrity through digital signatures, monitoring container deployments for unauthorized activity, auditing registry changes, implementing strict Kerberos ticket policies, and analyzing network traffic for non-standard encoding patterns. This report is fictional and designed for training purposes to enhance defensive capabilities against similar real-world threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated as 'ShadowUpdate'. This scenario is based on simulated activity observed in a controlled environment and is intended for educational purposes only. TEMP.Shadow, a fictional actor, has been observed targeting multiple sectors, including technology and finance, by exploiting software supply chains to gain initial access.\n\nInitial Access: The actors compromised the software update mechanism of a popular open-source tool, replacing the authentic compiled release with a malicious version on the official download portal [T1195.002]. This allowed them to distribute trojanized software to unsuspecting users, leading to initial infection. System logs from victim organizations show routine update checks, but forensic analysis revealed hash mismatches indicating tampering.\n\nExecution and Persistence: Upon execution, the malicious payload employed PowerShell to download additional components while simultaneously creating a Docker container with rootkit functionality using the 'docker create' command to maintain persistent access on the target system [T1610]. The actors then modified registry entries within HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options to hijack legitimate processes and ensure persistence across reboots [T1546.012]. Network traffic analysis showed anomalous outbound connections to command-and-control servers, but initial alerts were dismissed as false positives due to encrypted traffic patterns.\n\nLateral Movement: After establishing a foothold, TEMP.Shadow used stolen Kerberos tickets to move laterally within the network, injecting a silver ticket to access database servers and exfiltrate sensitive data [T1550.003]. This activity was masked by normal administrative traffic, making detection challenging. The company background includes a recent merger, which complicated security monitoring efforts.\n\nCommand and Control: For communication, the actors utilized a custom binary encoding scheme to encode messages with specific commands and parameters, evading standard detection mechanisms by blending with legitimate network traffic [T1132.002]. Incident responders noted unusual payload sizes in packet captures, but initial investigations focused on system performance issues unrelated to the attack.\n\nMitigation recommendations include verifying software integrity through digital signatures, monitoring container deployments for unauthorized activity, auditing registry changes, implementing strict Kerberos ticket policies, and analyzing network traffic for non-standard encoding patterns. This report is fictional and designed for training purposes to enhance defensive capabilities against similar real-world threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution and Persistence: Upon execution, the malicious payload employed PowerShell to download additional components while simultaneously creating a Docker container with rootkit functionality using the 'docker create' command to maintain persistent access on the target system.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowUpdate' Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'TEMP.Shadow' targeting organizations through a compromised software update mechanism. The campaign involves deploying malicious containers, establishing persistence via registry modifications, performing lateral movement using stolen credentials, and employing custom encoding for command-and-control communications.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated as 'ShadowUpdate'. This scenario is based on simulated activity observed in a controlled environment and is intended for educational purposes only. TEMP.Shadow, a fictional actor, has been observed targeting multiple sectors, including technology and finance, by exploiting software supply chains to gain initial access.\n\nInitial Access: The actors compromised the software update mechanism of a popular open-source tool, replacing the authentic compiled release with a malicious version on the official download portal [T1195.002]. This allowed them to distribute trojanized software to unsuspecting users, leading to initial infection. System logs from victim organizations show routine update checks, but forensic analysis revealed hash mismatches indicating tampering.\n\nExecution and Persistence: Upon execution, the malicious payload employed PowerShell to download additional components while simultaneously creating a Docker container with rootkit functionality using the 'docker create' command to maintain persistent access on the target system [T1610]. The actors then modified registry entries within HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options to hijack legitimate processes and ensure persistence across reboots [T1546.012]. Network traffic analysis showed anomalous outbound connections to command-and-control servers, but initial alerts were dismissed as false positives due to encrypted traffic patterns.\n\nLateral Movement: After establishing a foothold, TEMP.Shadow used stolen Kerberos tickets to move laterally within the network, injecting a silver ticket to access database servers and exfiltrate sensitive data [T1550.003]. This activity was masked by normal administrative traffic, making detection challenging. The company background includes a recent merger, which complicated security monitoring efforts.\n\nCommand and Control: For communication, the actors utilized a custom binary encoding scheme to encode messages with specific commands and parameters, evading standard detection mechanisms by blending with legitimate network traffic [T1132.002]. Incident responders noted unusual payload sizes in packet captures, but initial investigations focused on system performance issues unrelated to the attack.\n\nMitigation recommendations include verifying software integrity through digital signatures, monitoring container deployments for unauthorized activity, auditing registry changes, implementing strict Kerberos ticket policies, and analyzing network traffic for non-standard encoding patterns. This report is fictional and designed for training purposes to enhance defensive capabilities against similar real-world threats.",
+        "techniques_used": [
+            "T1195.002",
+            "T1610",
+            "T1546.012",
+            "T1550.003",
+            "T1132.002"
+        ]
+    }
+}

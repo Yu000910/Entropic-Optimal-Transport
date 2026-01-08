@@ -1,0 +1,113 @@
+{
+    "report_id": "report_98",
+    "generated_at": "20251222_132526",
+    "scenario_target_ids": [
+        "T1593.001",
+        "T1592.001",
+        "T1598.003",
+        "T1566",
+        "T1133",
+        "T1106",
+        "T1137.005",
+        "T1543.005",
+        "T1497.002",
+        "T1021.001",
+        "T1550.004",
+        "T1557.003",
+        "T1114",
+        "T1001.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1593.001",
+        "T1592.001",
+        "T1598.003",
+        "T1566",
+        "T1133",
+        "T1106",
+        "T1137.005",
+        "T1543.005",
+        "T1497.002",
+        "T1021.001",
+        "T1550.004",
+        "T1557.003",
+        "T1114",
+        "T1001.003"
+    ],
+    "actual_found_ids": [
+        "T1593.001",
+        "T1543.005",
+        "T1001.003",
+        "T1137.005",
+        "T1114",
+        "T1497.002",
+        "T1550.004",
+        "T1106",
+        "T1592.001",
+        "T1566",
+        "T1133",
+        "T1021.001",
+        "T1557.003",
+        "T1598.003"
+    ],
+    "clean_text": "On October 15, 2023, SecureBank Inc. reported a security incident involving unauthorized access to internal systems. The company, which provides online banking services and has approximately 500 employees, noted anomalous network traffic and suspicious login attempts from external IP addresses. Initial logs showed increased activity on the corporate VPN server, but no immediate alerts were triggered by the existing intrusion detection system.\n\nThe actors likely conducted reconnaissance by monitoring SecureBank employees on Twitter and using tools like 'wevtutil.exe el' to gather hardware-related information from event logs to profile potential targets. They then sent a spearphishing email with a malicious link disguised as a security update notification, which exploited EvilProxy to intercept authentication tokens when clicked by an employee in the IT department. This allowed the adversary to harvest credentials and initiate a connection to the company's remote access VPN, bypassing multi-factor authentication by importing browser profile data to restore authenticated web sessions.\n\nOnce inside the network, the malware employed Native API to execute malicious code and retrieve active services while simultaneously modifying Outlook registry entries to load a malicious component for email collection. The attackers then moved laterally using Remote Desktop Protocol to access additional systems and executed dhcpspoof.exe to poison the network with fraudulent DHCP responses, disrupting legitimate traffic. To maintain persistence, they altered Podman's systemd service file to run a script on container startup and conducted user activity-based checks by searching for process names like 'malware.exe' to evade sandbox detection. Finally, they exfiltrated data by mimicking legitimate services with customized HTTP URL paths and headers to hide malicious traffic, as observed in logs showing unusual outbound connections to cloud storage domains.",
+    "tagged_text": "On October 15, 2023, SecureBank Inc. reported a security incident involving unauthorized access to internal systems. The company, which provides online banking services and has approximately 500 employees, noted anomalous network traffic and suspicious login attempts from external IP addresses. Initial logs showed increased activity on the corporate VPN server, but no immediate alerts were triggered by the existing intrusion detection system.\n\nThe actors likely conducted reconnaissance by monitoring SecureBank employees on Twitter [T1593.001] and using tools like 'wevtutil.exe el' to gather hardware-related information from event logs [T1592.001] to profile potential targets. They then sent a spearphishing email [T1566] with a malicious link [T1598.003] disguised as a security update notification, which exploited EvilProxy to intercept authentication tokens when clicked by an employee in the IT department. This allowed the adversary to harvest credentials and initiate a connection to the company's remote access VPN [T1133], bypassing multi-factor authentication by importing browser profile data to restore authenticated web sessions [T1550.004].\n\nOnce inside the network, the malware employed Native API [T1106] to execute malicious code and retrieve active services while simultaneously modifying Outlook registry entries [T1137.005] to load a malicious component for email collection [T1114]. The attackers then moved laterally using Remote Desktop Protocol [T1021.001] to access additional systems and executed dhcpspoof.exe to poison the network with fraudulent DHCP responses [T1557.003], disrupting legitimate traffic. To maintain persistence, they altered Podman's systemd service file [T1543.005] to run a script on container startup and conducted user activity-based checks [T1497.002] by searching for process names like 'malware.exe' to evade sandbox detection. Finally, they exfiltrated data by mimicking legitimate services with customized HTTP URL paths and headers [T1001.003] to hide malicious traffic, as observed in logs showing unusual outbound connections to cloud storage domains.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then sent a spearphishing email with a malicious link [T1598.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "This allowed the adversary to harvest credentials and initiate a connection to the company's remote access VPN, bypassing multi-factor authentication by importing browser profile data to restore authenticated web sessions [T1550.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Once inside the network, the malware employed Native API to execute malicious code and retrieve active services while simultaneously modifying Outlook registry entries [T1137.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "005] to load a malicious component for email collection.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowVeil' against a mid-sized financial institution, 'SecureBank Inc.', for blue team training. The attack leveraged social engineering, credential theft, and lateral movement to exfiltrate sensitive data, emphasizing the need for robust detection and response protocols.",
+        "full_report_text": "On October 15, 2023, SecureBank Inc. reported a security incident involving unauthorized access to internal systems. The company, which provides online banking services and has approximately 500 employees, noted anomalous network traffic and suspicious login attempts from external IP addresses. Initial logs showed increased activity on the corporate VPN server, but no immediate alerts were triggered by the existing intrusion detection system.\n\nThe actors likely conducted reconnaissance by monitoring SecureBank employees on Twitter [T1593.001] and using tools like 'wevtutil.exe el' to gather hardware-related information from event logs [T1592.001] to profile potential targets. They then sent a spearphishing email [T1566] with a malicious link [T1598.003] disguised as a security update notification, which exploited EvilProxy to intercept authentication tokens when clicked by an employee in the IT department. This allowed the adversary to harvest credentials and initiate a connection to the company's remote access VPN [T1133], bypassing multi-factor authentication by importing browser profile data to restore authenticated web sessions [T1550.004].\n\nOnce inside the network, the malware employed Native API [T1106] to execute malicious code and retrieve active services while simultaneously modifying Outlook registry entries [T1137.005] to load a malicious component for email collection [T1114]. The attackers then moved laterally using Remote Desktop Protocol [T1021.001] to access additional systems and executed dhcpspoof.exe to poison the network with fraudulent DHCP responses [T1557.003], disrupting legitimate traffic. To maintain persistence, they altered Podman's systemd service file [T1543.005] to run a script on container startup and conducted user activity-based checks [T1497.002] by searching for process names like 'malware.exe' to evade sandbox detection. Finally, they exfiltrated data by mimicking legitimate services with customized HTTP URL paths and headers [T1001.003] to hide malicious traffic, as observed in logs showing unusual outbound connections to cloud storage domains.",
+        "techniques_used": [
+            "T1593.001",
+            "T1592.001",
+            "T1598.003",
+            "T1566",
+            "T1133",
+            "T1106",
+            "T1137.005",
+            "T1543.005",
+            "T1497.002",
+            "T1021.001",
+            "T1550.004",
+            "T1557.003",
+            "T1114",
+            "T1001.003"
+        ]
+    }
+}

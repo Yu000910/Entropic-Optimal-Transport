@@ -1,0 +1,143 @@
+{
+    "report_id": "report_84",
+    "generated_at": "20251222_115050",
+    "scenario_target_ids": [
+        "T1584.008",
+        "T1189",
+        "T1059",
+        "T1610",
+        "T1137.001",
+        "T1055",
+        "T1546.002",
+        "T1070.003",
+        "T1556.002",
+        "T1069.003",
+        "T1673",
+        "T1072",
+        "T1021.004",
+        "T1056.002",
+        "T1213.005",
+        "T1119",
+        "T1071.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1584.008",
+        "T1189",
+        "T1059",
+        "T1610",
+        "T1137.001",
+        "T1546.002",
+        "T1055",
+        "T1070.003",
+        "T1556.002",
+        "T1069.003",
+        "T1673",
+        "T1072",
+        "T1021.004",
+        "T1056.002",
+        "T1213.005",
+        "T1119",
+        "T1071.001"
+    ],
+    "actual_found_ids": [
+        "T1021.004",
+        "T1071.001",
+        "T1213.005",
+        "T1070.003",
+        "T1119",
+        "T1189",
+        "T1610",
+        "T1546.002",
+        "T1556.002",
+        "T1055",
+        "T1137.001",
+        "T1069.003",
+        "T1584.008",
+        "T1673",
+        "T1072",
+        "T1059",
+        "T1056.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowRouter'. This campaign simulates realistic attack techniques against critical infrastructure, incorporating noise such as irrelevant system logs and background on a fictional manufacturing company, 'GlobalTech Industries', to enhance training realism. Initial Access: The actors likely exploited default credentials on a SOHO router to gain persistent backdoor access into the network perimeter, while simultaneously conducting a drive-by compromise by injecting malicious JavaScript into an ad network, causing browser.exe to execute unwanted processes. Execution: Upon gaining access, the adversary employed a command-line interpreter to execute malicious scripts and deployed a container using 'docker create' to initialize a persistent, embedded backdoor. Persistence: To maintain access, the actors modified PERSONAL.XLSB with a macro that runs automatically and altered HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that activates with the screensaver. Privilege Escalation: The threat actor injected malicious code into running processes to gain higher privileges and evade detection. Defense Evasion: After executing reconnaissance commands, the adversary ran 'history -c' to clear command history and obscure their activities. Credential Access: A password filter DLL was registered on domain controllers as a Windows LSA password filter to capture credentials during logins or password changes. Discovery: The malware ran 'az ad user get-member-groups' to enumerate cloud security groups and utilized 'esxcli software vib list' to discover virtual machine components. Lateral Movement: The actors used RAdmin, a remote software deployment tool, to control workstations and established SSH connections to remote services for further access. Collection: A malicious PowerShell command generated a fake credential prompt mimicking corporate VPN software to capture GUI input, while the threat actor queried Google Chat APIs to extract shared documents with sensitive information and automated the search for stored credentials associated with cryptocurrency wallets, notifying the C2 server upon identification. Command and Control: EvilBunny executed C2 commands directly via HTTP for communication. Additional noise: System logs from GlobalTech Industries showed routine network traffic unrelated to the attack, and background information indicated the company specializes in industrial automation with no prior major security incidents.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowRouter'. This campaign simulates realistic attack techniques against critical infrastructure, incorporating noise such as irrelevant system logs and background on a fictional manufacturing company, 'GlobalTech Industries', to enhance training realism. Initial Access: The actors likely exploited default credentials on a SOHO router [T1584.008] to gain persistent backdoor access into the network perimeter, while simultaneously conducting a drive-by compromise by injecting malicious JavaScript into an ad network, causing browser.exe to execute unwanted processes [T1189]. Execution: Upon gaining access, the adversary employed a command-line interpreter [T1059] to execute malicious scripts and deployed a container using 'docker create' to initialize a persistent, embedded backdoor [T1610]. Persistence: To maintain access, the actors modified PERSONAL.XLSB with a macro that runs automatically [T1137.001] and altered HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that activates with the screensaver [T1546.002]. Privilege Escalation: The threat actor injected malicious code into running processes to gain higher privileges and evade detection [T1055]. Defense Evasion: After executing reconnaissance commands, the adversary ran 'history -c' to clear command history and obscure their activities [T1070.003]. Credential Access: A password filter DLL was registered on domain controllers as a Windows LSA password filter to capture credentials during logins or password changes [T1556.002]. Discovery: The malware ran 'az ad user get-member-groups' to enumerate cloud security groups [T1069.003] and utilized 'esxcli software vib list' to discover virtual machine components [T1673]. Lateral Movement: The actors used RAdmin, a remote software deployment tool, to control workstations [T1072] and established SSH connections to remote services for further access [T1021.004]. Collection: A malicious PowerShell command generated a fake credential prompt mimicking corporate VPN software to capture GUI input [T1056.002], while the threat actor queried Google Chat APIs to extract shared documents with sensitive information [T1213.005] and automated the search for stored credentials associated with cryptocurrency wallets, notifying the C2 server upon identification [T1119]. Command and Control: EvilBunny executed C2 commands directly via HTTP for communication [T1071.001]. Additional noise: System logs from GlobalTech Industries showed routine network traffic unrelated to the attack, and background information indicated the company specializes in industrial automation with no prior major security incidents.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe to execute unwanted processes.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Execution: Upon gaining access, the adversary employed a command-line interpreter to execute malicious scripts and deployed a container using 'docker create' to initialize a persistent, embedded backdoor.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "Execution: Upon gaining access, the adversary employed a command-line interpreter to execute malicious scripts and deployed a container using 'docker create' to initialize a persistent, embedded backdoor.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "Privilege Escalation: The threat actor injected malicious code into running processes to gain higher privileges and evade detection.",
+            "technique_id": "T1055",
+            "technique_name": "Process Injection"
+        },
+        {
+            "sentence": "003] and utilized 'esxcli software vib list' to discover virtual machine components.",
+            "technique_id": "T1673",
+            "technique_name": "Virtual Machine Discovery"
+        },
+        {
+            "sentence": "Lateral Movement: The actors used RAdmin, a remote software deployment tool, to control workstations and established SSH connections to remote services for further access [T1021.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "005] and automated the search for stored credentials associated with cryptocurrency wallets, notifying the C2 server upon identification.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRouter' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowRouter' targeting critical infrastructure sectors. The campaign involves initial access through compromised network devices and drive-by compromises, followed by execution via command-line tools, deployment of malicious containers, and establishment of persistence through Office macros and screensaver modifications. The actors employed process injection for privilege escalation, cleared command history to evade detection, and used password filter DLLs for credential theft. Discovery activities included cloud group enumeration and virtual machine identification, while lateral movement utilized software deployment tools and SSH. Collection efforts involved GUI input capture, automated credential harvesting from messaging applications, and cryptocurrency wallet searches, with command and control conducted over web protocols.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowRouter'. This campaign simulates realistic attack techniques against critical infrastructure, incorporating noise such as irrelevant system logs and background on a fictional manufacturing company, 'GlobalTech Industries', to enhance training realism. Initial Access: The actors likely exploited default credentials on a SOHO router [T1584.008] to gain persistent backdoor access into the network perimeter, while simultaneously conducting a drive-by compromise by injecting malicious JavaScript into an ad network, causing browser.exe to execute unwanted processes [T1189]. Execution: Upon gaining access, the adversary employed a command-line interpreter [T1059] to execute malicious scripts and deployed a container using 'docker create' to initialize a persistent, embedded backdoor [T1610]. Persistence: To maintain access, the actors modified PERSONAL.XLSB with a macro that runs automatically [T1137.001] and altered HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that activates with the screensaver [T1546.002]. Privilege Escalation: The threat actor injected malicious code into running processes to gain higher privileges and evade detection [T1055]. Defense Evasion: After executing reconnaissance commands, the adversary ran 'history -c' to clear command history and obscure their activities [T1070.003]. Credential Access: A password filter DLL was registered on domain controllers as a Windows LSA password filter to capture credentials during logins or password changes [T1556.002]. Discovery: The malware ran 'az ad user get-member-groups' to enumerate cloud security groups [T1069.003] and utilized 'esxcli software vib list' to discover virtual machine components [T1673]. Lateral Movement: The actors used RAdmin, a remote software deployment tool, to control workstations [T1072] and established SSH connections to remote services for further access [T1021.004]. Collection: A malicious PowerShell command generated a fake credential prompt mimicking corporate VPN software to capture GUI input [T1056.002], while the threat actor queried Google Chat APIs to extract shared documents with sensitive information [T1213.005] and automated the search for stored credentials associated with cryptocurrency wallets, notifying the C2 server upon identification [T1119]. Command and Control: EvilBunny executed C2 commands directly via HTTP for communication [T1071.001]. Additional noise: System logs from GlobalTech Industries showed routine network traffic unrelated to the attack, and background information indicated the company specializes in industrial automation with no prior major security incidents.",
+        "techniques_used": [
+            "T1584.008",
+            "T1189",
+            "T1059",
+            "T1610",
+            "T1137.001",
+            "T1546.002",
+            "T1055",
+            "T1070.003",
+            "T1556.002",
+            "T1069.003",
+            "T1673",
+            "T1072",
+            "T1021.004",
+            "T1056.002",
+            "T1213.005",
+            "T1119",
+            "T1071.001"
+        ]
+    }
+}

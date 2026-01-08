@@ -1,0 +1,105 @@
+{
+    "report_id": "report_60",
+    "generated_at": "20251222_114115",
+    "scenario_target_ids": [
+        "T1608.004",
+        "T1584.002",
+        "T1583.008",
+        "T1078.001",
+        "T1053.006",
+        "T1563",
+        "T1123",
+        "T1213.001",
+        "T1071.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1583.008",
+        "T1608.004",
+        "T1584.002",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1078.001",
+        "T1053.006",
+        "T1563",
+        "T1123",
+        "T1213.001",
+        "T1071.001"
+    ],
+    "actual_found_ids": [
+        "T1583.008",
+        "T1071.001",
+        "T1123",
+        "T1105",
+        "T1078.001",
+        "T1584.002",
+        "T1589",
+        "T1053.006",
+        "T1213.001",
+        "T1059.001",
+        "T1608.004",
+        "T1563",
+        "T1112"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional, educational attack scenario involving Mustard Tempest. This campaign demonstrates advanced techniques for reconnaissance, initial access, and lateral movement. System logs from the fictional company FinCorp indicate unusual network activity starting on October 15, 2023, with multiple alerts from web proxies and endpoint detection systems. FinCorp, a mid-sized financial services firm, reported no actual breaches, but this simulation is based on hypothetical data to train defenders.\n\nIn the initial phase, Mustard Tempest likely conducted reconnaissance to identify potential targets. The actors then used malvertising by posting false advertisements for software updates, which redirected victims to compromised websites where malicious JavaScript was injected to facilitate drive-by downloads. Upon infection, the malware altered local DNS settings to redirect traffic from banking websites to phishing servers, while simultaneously employing PowerShell to download additional payloads and modify registry keys for persistence. The actors exploited default accounts to connect to IPC$ shares on remote machines, enabling lateral movement within the network.\n\nFor persistence and execution, the script wrote a systemd service file to schedule tasks via systemd timers, ensuring the data exfiltration tool would execute when the network was available. The compromised system was then used to hijack RDP sessions to other domain-joined workstations, allowing the actors to escalate privileges and access sensitive areas. During this phase, the spyware silently activated the laptop's built-in microphone to capture audio from confidential meetings, while querying Confluence for database schema documentation and connection strings to facilitate data theft.\n\nExfiltration was conducted using web protocols, with RainyDay malware employing HTTP for command and control communications. Network traffic analysis showed encrypted packets sent to external IP addresses, though no actual data loss occurred in this simulation. Blue teams should monitor for anomalies in DNS queries, unexpected systemd timer creations, and unauthorized RDP session activities. Regular audits of default accounts and Confluence access logs are recommended to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional, educational attack scenario involving Mustard Tempest. This campaign demonstrates advanced techniques for reconnaissance, initial access, and lateral movement. System logs from the fictional company FinCorp indicate unusual network activity starting on October 15, 2023, with multiple alerts from web proxies and endpoint detection systems. FinCorp, a mid-sized financial services firm, reported no actual breaches, but this simulation is based on hypothetical data to train defenders.\n\nIn the initial phase, Mustard Tempest likely conducted reconnaissance [T1589] to identify potential targets. The actors then used malvertising [T1583.008] by posting false advertisements for software updates, which redirected victims to compromised websites where malicious JavaScript was injected to facilitate drive-by downloads [T1608.004]. Upon infection, the malware altered local DNS settings [T1584.002] to redirect traffic from banking websites to phishing servers, while simultaneously employing PowerShell [T1059.001] to download additional payloads [T1105] and modify registry keys [T1112] for persistence. The actors exploited default accounts [T1078.001] to connect to IPC$ shares on remote machines, enabling lateral movement within the network.\n\nFor persistence and execution, the script wrote a systemd service file to schedule tasks via systemd timers [T1053.006], ensuring the data exfiltration tool would execute when the network was available. The compromised system was then used to hijack RDP sessions [T1563] to other domain-joined workstations, allowing the actors to escalate privileges and access sensitive areas. During this phase, the spyware silently activated the laptop's built-in microphone to capture audio [T1123] from confidential meetings, while querying Confluence [T1213.001] for database schema documentation and connection strings to facilitate data theft.\n\nExfiltration was conducted using web protocols [T1071.001], with RainyDay malware employing HTTP for command and control communications. Network traffic analysis showed encrypted packets sent to external IP addresses, though no actual data loss occurred in this simulation. Blue teams should monitor for anomalies in DNS queries, unexpected systemd timer creations, and unauthorized RDP session activities. Regular audits of default accounts and Confluence access logs are recommended to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the initial phase, Mustard Tempest likely conducted reconnaissance to identify potential targets.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to download additional payloads and modify registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to download additional payloads and modify registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "The compromised system was then used to hijack RDP sessions to other domain-joined workstations, allowing the actors to escalate privileges and access sensitive areas.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "During this phase, the spyware silently activated the laptop's built-in microphone to capture audio from confidential meetings, while querying Confluence [T1213.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional Threat Actor Mustard Tempest",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor Mustard Tempest, targeting financial and corporate sectors through drive-by compromises, malvertising, and credential abuse. Actors employed techniques such as DNS manipulation, remote service hijacking, and audio capture to exfiltrate sensitive data and maintain persistence. The report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a fictional, educational attack scenario involving Mustard Tempest. This campaign demonstrates advanced techniques for reconnaissance, initial access, and lateral movement. System logs from the fictional company FinCorp indicate unusual network activity starting on October 15, 2023, with multiple alerts from web proxies and endpoint detection systems. FinCorp, a mid-sized financial services firm, reported no actual breaches, but this simulation is based on hypothetical data to train defenders.\n\nIn the initial phase, Mustard Tempest likely conducted reconnaissance [T1589] to identify potential targets. The actors then used malvertising [T1583.008] by posting false advertisements for software updates, which redirected victims to compromised websites where malicious JavaScript was injected to facilitate drive-by downloads [T1608.004]. Upon infection, the malware altered local DNS settings [T1584.002] to redirect traffic from banking websites to phishing servers, while simultaneously employing PowerShell [T1059.001] to download additional payloads [T1105] and modify registry keys [T1112] for persistence. The actors exploited default accounts [T1078.001] to connect to IPC$ shares on remote machines, enabling lateral movement within the network.\n\nFor persistence and execution, the script wrote a systemd service file to schedule tasks via systemd timers [T1053.006], ensuring the data exfiltration tool would execute when the network was available. The compromised system was then used to hijack RDP sessions [T1563] to other domain-joined workstations, allowing the actors to escalate privileges and access sensitive areas. During this phase, the spyware silently activated the laptop's built-in microphone to capture audio [T1123] from confidential meetings, while querying Confluence [T1213.001] for database schema documentation and connection strings to facilitate data theft.\n\nExfiltration was conducted using web protocols [T1071.001], with RainyDay malware employing HTTP for command and control communications. Network traffic analysis showed encrypted packets sent to external IP addresses, though no actual data loss occurred in this simulation. Blue teams should monitor for anomalies in DNS queries, unexpected systemd timer creations, and unauthorized RDP session activities. Regular audits of default accounts and Confluence access logs are recommended to mitigate similar threats.",
+        "techniques_used": [
+            "T1589",
+            "T1583.008",
+            "T1608.004",
+            "T1584.002",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1078.001",
+            "T1053.006",
+            "T1563",
+            "T1123",
+            "T1213.001",
+            "T1071.001"
+        ]
+    }
+}

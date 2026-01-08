@@ -1,0 +1,78 @@
+{
+    "report_id": "report_362",
+    "generated_at": "20251222_151452",
+    "scenario_target_ids": [
+        "T1189",
+        "T1059.007",
+        "T1212",
+        "T1557.002",
+        "T1205",
+        "T1567.003",
+        "T1491.001",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1059.007",
+        "T1212",
+        "T1557.002",
+        "T1205",
+        "T1567.003",
+        "T1491.001",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1557.002",
+        "T1212",
+        "T1059.007",
+        "T1205",
+        "T1567.003",
+        "T1189",
+        "T1565.002",
+        "T1491.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a simulated attack by the fictional threat actor 'ShadowWeaver', designed for educational purposes. This campaign targets financial organizations to exfiltrate sensitive data and disrupt operations. Initial Access: The actors likely conducted reconnaissance on target employees via social media platforms, though this phase is not tagged in the scenario. They then established initial access by compromising a legitimate financial news blog, redirecting visitors to a malicious site that delivered exploit kits through drive-by compromises, which executed JavaScript payloads to download additional malware onto victim systems. Execution and Persistence: Upon infection, the malware employed PowerShell scripts to maintain persistence by creating scheduled tasks, with system logs showing unusual process creations at 03:00 UTC, though these logs are not tagged. The actors exploited a known vulnerability in Kerberos (simulating MS14-068) to forge tickets and gain elevated credentials, enabling lateral movement across the network. Credential Access and Lateral Movement: Using the compromised credentials, the actors moved laterally to critical servers, including a database server hosting customer financial records. They conducted ARP cache poisoning to intercept network traffic and redirect it to a rogue gateway, while simultaneously establishing hidden command channels using raw sockets to avoid port detection, facilitating stealthy communication with command-and-control (C2) servers. Exfiltration and Impact: The exfiltration phase involved scheduled PowerShell commands that encrypted stolen data and uploaded it to text storage sites like pastebin.com. Additionally, the actors manipulated transmitted data by monitoring the clipboard for cryptocurrency addresses and altering them to adversary-controlled ones, potentially causing financial losses. For internal defacement, they changed desktop wallpapers and lock screen images to custom messages, disrupting user operations and signaling compromise. Throughout the campaign, network traffic analysis revealed anomalous DNS queries to suspicious domains, but these indicators are not tagged as they are part of the noise for training. This scenario emphasizes the importance of monitoring for combined techniques in real-world attacks.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a simulated attack by the fictional threat actor 'ShadowWeaver', designed for educational purposes. This campaign targets financial organizations to exfiltrate sensitive data and disrupt operations. Initial Access: The actors likely conducted reconnaissance on target employees via social media platforms, though this phase is not tagged in the scenario. They then established initial access by compromising a legitimate financial news blog, redirecting visitors to a malicious site that delivered exploit kits through drive-by compromises [T1189], which executed JavaScript payloads [T1059.007] to download additional malware onto victim systems. Execution and Persistence: Upon infection, the malware employed PowerShell scripts to maintain persistence by creating scheduled tasks, with system logs showing unusual process creations at 03:00 UTC, though these logs are not tagged. The actors exploited a known vulnerability in Kerberos (simulating MS14-068) to forge tickets and gain elevated credentials [T1212], enabling lateral movement across the network. Credential Access and Lateral Movement: Using the compromised credentials, the actors moved laterally to critical servers, including a database server hosting customer financial records. They conducted ARP cache poisoning [T1557.002] to intercept network traffic and redirect it to a rogue gateway, while simultaneously establishing hidden command channels using raw sockets to avoid port detection [T1205], facilitating stealthy communication with command-and-control (C2) servers. Exfiltration and Impact: The exfiltration phase involved scheduled PowerShell commands that encrypted stolen data and uploaded it to text storage sites like pastebin.com [T1567.003]. Additionally, the actors manipulated transmitted data by monitoring the clipboard for cryptocurrency addresses and altering them to adversary-controlled ones [T1565.002], potentially causing financial losses. For internal defacement, they changed desktop wallpapers and lock screen images to custom messages [T1491.001], disrupting user operations and signaling compromise. Throughout the campaign, network traffic analysis revealed anomalous DNS queries to suspicious domains, but these indicators are not tagged as they are part of the noise for training. This scenario emphasizes the importance of monitoring for combined techniques in real-world attacks.",
+    "sentence_annotations": [
+        {
+            "sentence": "They then established initial access by compromising a legitimate financial news blog, redirecting visitors to a malicious site that delivered exploit kits through drive-by compromises, which executed JavaScript payloads [T1059.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "The actors exploited a known vulnerability in Kerberos (simulating MS14-068) to forge tickets and gain elevated credentials, enabling lateral movement across the network.",
+            "technique_id": "T1212",
+            "technique_name": "Exploitation for Credential Access"
+        },
+        {
+            "sentence": "002] to intercept network traffic and redirect it to a rogue gateway, while simultaneously establishing hidden command channels using raw sockets to avoid port detection, facilitating stealthy communication with command-and-control (C2) servers.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor 'ShadowWeaver'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowWeaver' targeting financial institutions. The campaign involves drive-by compromises, JavaScript-based execution, credential exploitation, network manipulation, hidden communication, data exfiltration, internal defacement, and transmitted data manipulation for training blue teams in detection and response.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a simulated attack by the fictional threat actor 'ShadowWeaver', designed for educational purposes. This campaign targets financial organizations to exfiltrate sensitive data and disrupt operations. Initial Access: The actors likely conducted reconnaissance on target employees via social media platforms, though this phase is not tagged in the scenario. They then established initial access by compromising a legitimate financial news blog, redirecting visitors to a malicious site that delivered exploit kits through drive-by compromises [T1189], which executed JavaScript payloads [T1059.007] to download additional malware onto victim systems. Execution and Persistence: Upon infection, the malware employed PowerShell scripts to maintain persistence by creating scheduled tasks, with system logs showing unusual process creations at 03:00 UTC, though these logs are not tagged. The actors exploited a known vulnerability in Kerberos (simulating MS14-068) to forge tickets and gain elevated credentials [T1212], enabling lateral movement across the network. Credential Access and Lateral Movement: Using the compromised credentials, the actors moved laterally to critical servers, including a database server hosting customer financial records. They conducted ARP cache poisoning [T1557.002] to intercept network traffic and redirect it to a rogue gateway, while simultaneously establishing hidden command channels using raw sockets to avoid port detection [T1205], facilitating stealthy communication with command-and-control (C2) servers. Exfiltration and Impact: The exfiltration phase involved scheduled PowerShell commands that encrypted stolen data and uploaded it to text storage sites like pastebin.com [T1567.003]. Additionally, the actors manipulated transmitted data by monitoring the clipboard for cryptocurrency addresses and altering them to adversary-controlled ones [T1565.002], potentially causing financial losses. For internal defacement, they changed desktop wallpapers and lock screen images to custom messages [T1491.001], disrupting user operations and signaling compromise. Throughout the campaign, network traffic analysis revealed anomalous DNS queries to suspicious domains, but these indicators are not tagged as they are part of the noise for training. This scenario emphasizes the importance of monitoring for combined techniques in real-world attacks.",
+        "techniques_used": [
+            "T1189",
+            "T1059.007",
+            "T1212",
+            "T1557.002",
+            "T1205",
+            "T1567.003",
+            "T1491.001",
+            "T1565.002"
+        ]
+    }
+}

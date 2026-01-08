@@ -1,0 +1,138 @@
+{
+    "report_id": "report_109",
+    "generated_at": "20251222_132940",
+    "scenario_target_ids": [
+        "T1596.003",
+        "T1590.002",
+        "T1591.001",
+        "T1659",
+        "T1609",
+        "T1574.004",
+        "T1547.003",
+        "T1656",
+        "T1055.014",
+        "T1036.008",
+        "T1033",
+        "T1049",
+        "T1016.001",
+        "T1021.001",
+        "T1008",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596.003",
+        "T1590.002",
+        "T1591.001",
+        "T1659",
+        "T1609",
+        "T1574.004",
+        "T1547.003",
+        "T1656",
+        "T1055.014",
+        "T1036.008",
+        "T1033",
+        "T1049",
+        "T1016.001",
+        "T1021.001",
+        "T1008",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1055.014",
+        "T1036.008",
+        "T1016.001",
+        "T1656",
+        "T1591.001",
+        "T1008",
+        "T1574.004",
+        "T1659",
+        "T1590.002",
+        "T1596.003",
+        "T1547.003",
+        "T1021.001",
+        "T1531",
+        "T1609",
+        "T1033",
+        "T1049"
+    ],
+    "clean_text": "Crimson Shadow actors initiated reconnaissance by searching domain analysis websites to gather information on the victim's web infrastructure and querying DNS AXFR to discover all registered hosts and services in the zone, while malware scraped the victim organization's 'Contact Us' page for physical addresses. The malware then exploited a compromised ISP channel to redirect user traffic through a malicious proxy, and social engineering reconnaissance searched LinkedIn.com for employees who recently joined the company. In the execution phase, the attacker used docker exec -it container_name /bin/bash to interactively control a container and executed malicious.dylib by exploiting a vulnerable application's library search path. For persistence, the threat actor wrote a registry entry at HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\CustomProvider to execute their payload and exploited ptrace system calls to attach to a running process and execute malicious code. Malicious code was written into a file named 'malicious.php' that was disguised as a routine system update script. In discovery, Epic collected the user name from the victim’s machine, Torisma used WTSEnumerateSessionsW to monitor remote desktop connections, and Volt Typhoon employed Ping to check network connectivity. During lateral movement, APT29 used RDP sessions from public-facing systems to internal servers, with SideTwist primarily using port 443 for C2 but able to use port 80 as a fallback. For impact, malware used 'Set-LocalUser -Name 'ServiceAccount' -Password (ConvertTo-SecureString 'WeakPass123' -AsPlainText -Force)' to set a weak password on a service account. System logs from the victim's network showed routine HTTP requests to benign domains like update.example.com, and the organization, a fictional energy provider 'GridPower Inc.', had recently migrated to cloud-based services, with no evidence of data exfiltration in this scenario.",
+    "tagged_text": "Crimson Shadow actors initiated reconnaissance by searching domain analysis websites to gather information on the victim's web infrastructure [T1596.003] and querying DNS AXFR to discover all registered hosts and services in the zone [T1590.002], while malware scraped the victim organization's 'Contact Us' page for physical addresses [T1591.001]. The malware then exploited a compromised ISP channel to redirect user traffic through a malicious proxy [T1659], and social engineering reconnaissance searched LinkedIn.com for employees who recently joined the company [T1656]. In the execution phase, the attacker used docker exec -it container_name /bin/bash to interactively control a container [T1609] and executed malicious.dylib by exploiting a vulnerable application's library search path [T1574.004]. For persistence, the threat actor wrote a registry entry at HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\CustomProvider to execute their payload [T1547.003] and exploited ptrace system calls to attach to a running process and execute malicious code [T1055.014]. Malicious code was written into a file named 'malicious.php' that was disguised as a routine system update script [T1036.008]. In discovery, Epic collected the user name from the victim’s machine [T1033], Torisma used WTSEnumerateSessionsW to monitor remote desktop connections [T1049], and Volt Typhoon employed Ping to check network connectivity [T1016.001]. During lateral movement, APT29 used RDP sessions from public-facing systems to internal servers [T1021.001], with SideTwist primarily using port 443 for C2 but able to use port 80 as a fallback [T1008]. For impact, malware used 'Set-LocalUser -Name 'ServiceAccount' -Password (ConvertTo-SecureString 'WeakPass123' -AsPlainText -Force)' to set a weak password on a service account [T1531]. System logs from the victim's network showed routine HTTP requests to benign domains like update.example.com, and the organization, a fictional energy provider 'GridPower Inc.', had recently migrated to cloud-based services, with no evidence of data exfiltration in this scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The malware then exploited a compromised ISP channel to redirect user traffic through a malicious proxy, and social engineering reconnaissance searched LinkedIn.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "com for employees who recently joined the company.",
+            "technique_id": "T1656",
+            "technique_name": "Impersonation"
+        },
+        {
+            "sentence": "In the execution phase, the attacker used docker exec -it container_name /bin/bash to interactively control a container and executed malicious.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "In discovery, Epic collected the user name from the victim’s machine, Torisma used WTSEnumerateSessionsW to monitor remote desktop connections, and Volt Typhoon employed Ping to check network connectivity [T1016.",
+            "technique_id": "T1033",
+            "technique_name": "System Owner/User Discovery"
+        },
+        {
+            "sentence": "In discovery, Epic collected the user name from the victim’s machine, Torisma used WTSEnumerateSessionsW to monitor remote desktop connections, and Volt Typhoon employed Ping to check network connectivity [T1016.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "001], with SideTwist primarily using port 443 for C2 but able to use port 80 as a fallback.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        },
+        {
+            "sentence": "For impact, malware used 'Set-LocalUser -Name 'ServiceAccount' -Password (ConvertTo-SecureString 'WeakPass123' -AsPlainText -Force)' to set a weak password on a service account.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting critical infrastructure sectors. The campaign involves sophisticated reconnaissance, exploitation of web and containerized environments, and persistence mechanisms to maintain access and disrupt operations. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "Crimson Shadow actors initiated reconnaissance by searching domain analysis websites to gather information on the victim's web infrastructure [T1596.003] and querying DNS AXFR to discover all registered hosts and services in the zone [T1590.002], while malware scraped the victim organization's 'Contact Us' page for physical addresses [T1591.001]. The malware then exploited a compromised ISP channel to redirect user traffic through a malicious proxy [T1659], and social engineering reconnaissance searched LinkedIn.com for employees who recently joined the company [T1656]. In the execution phase, the attacker used docker exec -it container_name /bin/bash to interactively control a container [T1609] and executed malicious.dylib by exploiting a vulnerable application's library search path [T1574.004]. For persistence, the threat actor wrote a registry entry at HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\CustomProvider to execute their payload [T1547.003] and exploited ptrace system calls to attach to a running process and execute malicious code [T1055.014]. Malicious code was written into a file named 'malicious.php' that was disguised as a routine system update script [T1036.008]. In discovery, Epic collected the user name from the victim’s machine [T1033], Torisma used WTSEnumerateSessionsW to monitor remote desktop connections [T1049], and Volt Typhoon employed Ping to check network connectivity [T1016.001]. During lateral movement, APT29 used RDP sessions from public-facing systems to internal servers [T1021.001], with SideTwist primarily using port 443 for C2 but able to use port 80 as a fallback [T1008]. For impact, malware used 'Set-LocalUser -Name 'ServiceAccount' -Password (ConvertTo-SecureString 'WeakPass123' -AsPlainText -Force)' to set a weak password on a service account [T1531]. System logs from the victim's network showed routine HTTP requests to benign domains like update.example.com, and the organization, a fictional energy provider 'GridPower Inc.', had recently migrated to cloud-based services, with no evidence of data exfiltration in this scenario.",
+        "techniques_used": [
+            "T1596.003",
+            "T1590.002",
+            "T1591.001",
+            "T1659",
+            "T1609",
+            "T1574.004",
+            "T1547.003",
+            "T1656",
+            "T1055.014",
+            "T1036.008",
+            "T1033",
+            "T1049",
+            "T1016.001",
+            "T1021.001",
+            "T1008",
+            "T1531"
+        ]
+    }
+}

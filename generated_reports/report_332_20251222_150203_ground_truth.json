@@ -1,0 +1,81 @@
+{
+    "report_id": "report_332",
+    "generated_at": "20251222_150203",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1059.006",
+        "T1547.008",
+        "T1087.003",
+        "T1114.003",
+        "T1074.001",
+        "T1056.003",
+        "T1572",
+        "T1565.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.001",
+        "T1059.006",
+        "T1547.008",
+        "T1087.003",
+        "T1114.003",
+        "T1056.003",
+        "T1074.001",
+        "T1572",
+        "T1565.002"
+    ],
+    "actual_found_ids": [
+        "T1078.001",
+        "T1572",
+        "T1074.001",
+        "T1589",
+        "T1056.003",
+        "T1547.008",
+        "T1087.003",
+        "T1114.003",
+        "T1565.002",
+        "T1059.006"
+    ],
+    "clean_text": "FinSecure Corp., a financial services company with 500 employees and operations in North America, reported anomalous network activity starting on October 15, 2023. Initial logs showed multiple failed login attempts from external IPs, but no immediate alerts were triggered due to misconfigured monitoring systems. The company's IT infrastructure includes a mix of Windows 10/11 workstations, Linux servers for backend operations, and cloud-based Google Workspace for email and collaboration.\n\nAttack Scenario: Crimson Siege actors likely conducted reconnaissance to identify weak points in FinSecure's network. They gained initial access by exploiting default Guest accounts on several unprotected workstations, which had not been disabled or secured post-deployment. Once inside, the actors employed Python scripts to execute commands and download additional tools, while simultaneously replacing a legitimate DLL with a malicious one to maintain persistence through LSASS. To expand their foothold, they used malicious scripts to dump the Google Workspace Directory and collect user account information, and modified Exchange transport agent settings to intercept and forward all emails from the finance department. For credential harvesting, malware injected a script into the VPN authentication page to capture login details. The tool Sagerunex gathered host information and staged it locally as an encrypted RAR file at %TEMP%/TS_FB56.tmp prior to exfiltration. Exfiltration was achieved using the Heyoka Backdoor, which created a bidirectional tunnel between compromised hosts and C2 servers via spoofed DNS requests. Additionally, the malware Melcoz monitored the clipboard for cryptocurrency addresses and altered them to adversary-controlled addresses during transactions. Incident response teams noted unusual spikes in DNS traffic and temporary file creation, but initial investigations were delayed due to high network noise from routine backups.\n\nMitigation recommendations include disabling default accounts, implementing application whitelisting, monitoring for LSASS anomalies, securing email configurations, and using network segmentation to limit lateral movement. This report is based on fictional data for training purposes only.",
+    "tagged_text": "FinSecure Corp., a financial services company with 500 employees and operations in North America, reported anomalous network activity starting on October 15, 2023. Initial logs showed multiple failed login attempts from external IPs, but no immediate alerts were triggered due to misconfigured monitoring systems. The company's IT infrastructure includes a mix of Windows 10/11 workstations, Linux servers for backend operations, and cloud-based Google Workspace for email and collaboration.\n\nAttack Scenario: Crimson Siege actors likely conducted reconnaissance [T1589] to identify weak points in FinSecure's network. They gained initial access by exploiting default Guest accounts [T1078.001] on several unprotected workstations, which had not been disabled or secured post-deployment. Once inside, the actors employed Python scripts [T1059.006] to execute commands and download additional tools, while simultaneously replacing a legitimate DLL with a malicious one to maintain persistence through LSASS [T1547.008]. To expand their foothold, they used malicious scripts to dump the Google Workspace Directory and collect user account information [T1087.003], and modified Exchange transport agent settings to intercept and forward all emails from the finance department [T1114.003]. For credential harvesting, malware injected a script into the VPN authentication page to capture login details [T1056.003]. The tool Sagerunex gathered host information and staged it locally as an encrypted RAR file at %TEMP%/TS_FB56.tmp prior to exfiltration [T1074.001]. Exfiltration was achieved using the Heyoka Backdoor, which created a bidirectional tunnel between compromised hosts and C2 servers via spoofed DNS requests [T1572]. Additionally, the malware Melcoz monitored the clipboard for cryptocurrency addresses and altered them to adversary-controlled addresses during transactions [T1565.002]. Incident response teams noted unusual spikes in DNS traffic and temporary file creation, but initial investigations were delayed due to high network noise from routine backups.\n\nMitigation recommendations include disabling default accounts, implementing application whitelisting, monitoring for LSASS anomalies, securing email configurations, and using network segmentation to limit lateral movement. This report is based on fictional data for training purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Scenario: Crimson Siege actors likely conducted reconnaissance to identify weak points in FinSecure's network.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Exfiltration was achieved using the Heyoka Backdoor, which created a bidirectional tunnel between compromised hosts and C2 servers via spoofed DNS requests.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Siege' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Siege' targeting a mid-sized financial institution, 'FinSecure Corp.', to train blue teams on detecting and mitigating advanced persistent threats. The campaign involves initial access through default accounts, execution via Python scripts, persistence through LSASS manipulation, credential harvesting from email and web portals, data staging, exfiltration via protocol tunneling, and data manipulation for financial gain.",
+        "full_report_text": "FinSecure Corp., a financial services company with 500 employees and operations in North America, reported anomalous network activity starting on October 15, 2023. Initial logs showed multiple failed login attempts from external IPs, but no immediate alerts were triggered due to misconfigured monitoring systems. The company's IT infrastructure includes a mix of Windows 10/11 workstations, Linux servers for backend operations, and cloud-based Google Workspace for email and collaboration.\n\nAttack Scenario: Crimson Siege actors likely conducted reconnaissance [T1589] to identify weak points in FinSecure's network. They gained initial access by exploiting default Guest accounts [T1078.001] on several unprotected workstations, which had not been disabled or secured post-deployment. Once inside, the actors employed Python scripts [T1059.006] to execute commands and download additional tools, while simultaneously replacing a legitimate DLL with a malicious one to maintain persistence through LSASS [T1547.008]. To expand their foothold, they used malicious scripts to dump the Google Workspace Directory and collect user account information [T1087.003], and modified Exchange transport agent settings to intercept and forward all emails from the finance department [T1114.003]. For credential harvesting, malware injected a script into the VPN authentication page to capture login details [T1056.003]. The tool Sagerunex gathered host information and staged it locally as an encrypted RAR file at %TEMP%/TS_FB56.tmp prior to exfiltration [T1074.001]. Exfiltration was achieved using the Heyoka Backdoor, which created a bidirectional tunnel between compromised hosts and C2 servers via spoofed DNS requests [T1572]. Additionally, the malware Melcoz monitored the clipboard for cryptocurrency addresses and altered them to adversary-controlled addresses during transactions [T1565.002]. Incident response teams noted unusual spikes in DNS traffic and temporary file creation, but initial investigations were delayed due to high network noise from routine backups.\n\nMitigation recommendations include disabling default accounts, implementing application whitelisting, monitoring for LSASS anomalies, securing email configurations, and using network segmentation to limit lateral movement. This report is based on fictional data for training purposes only.",
+        "techniques_used": [
+            "T1589",
+            "T1078.001",
+            "T1059.006",
+            "T1547.008",
+            "T1087.003",
+            "T1114.003",
+            "T1056.003",
+            "T1074.001",
+            "T1572",
+            "T1565.002"
+        ]
+    }
+}

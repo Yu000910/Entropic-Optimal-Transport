@@ -1,0 +1,113 @@
+{
+    "report_id": "report_290",
+    "generated_at": "20251222_144434",
+    "scenario_target_ids": [
+        "T1586.003",
+        "T1566",
+        "T1204.003",
+        "T1129",
+        "T1133",
+        "T1552.008",
+        "T1552.004",
+        "T1033",
+        "T1568.001",
+        "T1030",
+        "T1020.001",
+        "T1657"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1552.008",
+        "T1586.003",
+        "T1566",
+        "T1204.003",
+        "T1129",
+        "T1133",
+        "T1552.004",
+        "T1033",
+        "T1020.001",
+        "T1568.001",
+        "T1030",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1552.008",
+        "T1030",
+        "T1568.001",
+        "T1552.004",
+        "T1657",
+        "T1020.001",
+        "T1566",
+        "T1586.003",
+        "T1133",
+        "T1204.003",
+        "T1033"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign dubbed 'CloudShadow'. This scenario simulates activity by the actor TEMP.Veles, targeting financial organizations to steal sensitive data and commit financial theft. Initial reconnaissance involved the adversary searching organizational Slack workflows for hardcoded SSH private keys while simultaneously conducting password spraying attacks on cloud accounts during off-hours to avoid triggering lockout policies. System logs from the victim environment show routine authentication attempts from IP 192.168.1.100, which were later attributed to malicious activity. For initial access, the actors sent phishing emails containing malicious Excel files with embedded PowerShell scripts for execution, leading to the compromise of several user workstations. A compromised Amazon Machine Image (AMI) with a pre-installed keylogger was uploaded to the cloud repository to establish persistence, and the attacker used dlopen to load a shared object module containing backdoor functionality on Linux systems. During the C0032 campaign, TEMP.Veles used VPN access to persist in the victim environment, and the compromised system ran a command to search for and collect all files with '.pfx' extensions containing private keys. Discovery activities included SslMM sending the logged-on username to its hard-coded C2, and the malware employed ROMMONkit's traffic mirroring capabilities to automatically exfiltrate sensitive data. For command and control, TA505 has used fast flux to mask botnets by distributing payloads across multiple IPs, and during C0015, the threat actors limited Rclone's bandwidth setting during exfiltration. The campaign culminated in cybercriminals using business email compromise to trick accounting staff into changing vendor payment details, resulting in significant financial losses. Blue teams should monitor for these techniques in training exercises to enhance detection and response capabilities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign dubbed 'CloudShadow'. This scenario simulates activity by the actor TEMP.Veles, targeting financial organizations to steal sensitive data and commit financial theft. Initial reconnaissance involved the adversary searching organizational Slack workflows for hardcoded SSH private keys [T1552.008] while simultaneously conducting password spraying attacks on cloud accounts during off-hours to avoid triggering lockout policies [T1586.003]. System logs from the victim environment show routine authentication attempts from IP 192.168.1.100, which were later attributed to malicious activity. For initial access, the actors sent phishing emails containing malicious Excel files with embedded PowerShell scripts for execution [T1566], leading to the compromise of several user workstations. A compromised Amazon Machine Image (AMI) with a pre-installed keylogger was uploaded to the cloud repository [T1204.003] to establish persistence, and the attacker used dlopen to load a shared object module containing backdoor functionality [T1129] on Linux systems. During the C0032 campaign, TEMP.Veles used VPN access to persist in the victim environment [T1133], and the compromised system ran a command to search for and collect all files with '.pfx' extensions containing private keys [T1552.004]. Discovery activities included SslMM sending the logged-on username to its hard-coded C2 [T1033], and the malware employed ROMMONkit's traffic mirroring capabilities to automatically exfiltrate sensitive data [T1020.001]. For command and control, TA505 has used fast flux to mask botnets by distributing payloads across multiple IPs [T1568.001], and during C0015, the threat actors limited Rclone's bandwidth setting during exfiltration [T1030]. The campaign culminated in cybercriminals using business email compromise to trick accounting staff into changing vendor payment details [T1657], resulting in significant financial losses. Blue teams should monitor for these techniques in training exercises to enhance detection and response capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "For initial access, the actors sent phishing emails containing malicious Excel files with embedded PowerShell scripts for execution, leading to the compromise of several user workstations.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "003] to establish persistence, and the attacker used dlopen to load a shared object module containing backdoor functionality on Linux systems.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "Veles used VPN access to persist in the victim environment, and the compromised system ran a command to search for and collect all files with '.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Discovery activities included SslMM sending the logged-on username to its hard-coded C2, and the malware employed ROMMONkit's traffic mirroring capabilities to automatically exfiltrate sensitive data [T1020.",
+            "technique_id": "T1033",
+            "technique_name": "System Owner/User Discovery"
+        },
+        {
+            "sentence": "001], and during C0015, the threat actors limited Rclone's bandwidth setting during exfiltration.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        },
+        {
+            "sentence": "The campaign culminated in cybercriminals using business email compromise to trick accounting staff into changing vendor payment details, resulting in significant financial losses.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'TEMP.Veles' targeting financial institutions through cloud compromise and data exfiltration. Actors likely conducted reconnaissance via chat messages to gather credentials, followed by phishing and cloud account attacks for initial access, with persistence through external services and malicious images, culminating in data theft and financial fraud.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign dubbed 'CloudShadow'. This scenario simulates activity by the actor TEMP.Veles, targeting financial organizations to steal sensitive data and commit financial theft. Initial reconnaissance involved the adversary searching organizational Slack workflows for hardcoded SSH private keys [T1552.008] while simultaneously conducting password spraying attacks on cloud accounts during off-hours to avoid triggering lockout policies [T1586.003]. System logs from the victim environment show routine authentication attempts from IP 192.168.1.100, which were later attributed to malicious activity. For initial access, the actors sent phishing emails containing malicious Excel files with embedded PowerShell scripts for execution [T1566], leading to the compromise of several user workstations. A compromised Amazon Machine Image (AMI) with a pre-installed keylogger was uploaded to the cloud repository [T1204.003] to establish persistence, and the attacker used dlopen to load a shared object module containing backdoor functionality [T1129] on Linux systems. During the C0032 campaign, TEMP.Veles used VPN access to persist in the victim environment [T1133], and the compromised system ran a command to search for and collect all files with '.pfx' extensions containing private keys [T1552.004]. Discovery activities included SslMM sending the logged-on username to its hard-coded C2 [T1033], and the malware employed ROMMONkit's traffic mirroring capabilities to automatically exfiltrate sensitive data [T1020.001]. For command and control, TA505 has used fast flux to mask botnets by distributing payloads across multiple IPs [T1568.001], and during C0015, the threat actors limited Rclone's bandwidth setting during exfiltration [T1030]. The campaign culminated in cybercriminals using business email compromise to trick accounting staff into changing vendor payment details [T1657], resulting in significant financial losses. Blue teams should monitor for these techniques in training exercises to enhance detection and response capabilities.",
+        "techniques_used": [
+            "T1552.008",
+            "T1586.003",
+            "T1566",
+            "T1204.003",
+            "T1129",
+            "T1133",
+            "T1552.004",
+            "T1033",
+            "T1020.001",
+            "T1568.001",
+            "T1030",
+            "T1657"
+        ]
+    }
+}

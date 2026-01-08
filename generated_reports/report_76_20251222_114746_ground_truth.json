@@ -1,0 +1,102 @@
+{
+    "report_id": "report_76",
+    "generated_at": "20251222_114746",
+    "scenario_target_ids": [
+        "T1591.003",
+        "T1195.003",
+        "T1053.003",
+        "T1556",
+        "T1671",
+        "T1134.001",
+        "T1574.006",
+        "T1564.012",
+        "T1550.002",
+        "T1219.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1591.003",
+        "T1195.003",
+        "T1053.003",
+        "T1556",
+        "T1671",
+        "T1134.001",
+        "T1574.006",
+        "T1564.012",
+        "T1550.002",
+        "T1219.003",
+        "T1059.001",
+        "T1105",
+        "T1112"
+    ],
+    "actual_found_ids": [
+        "T1574.006",
+        "T1564.012",
+        "T1550.002",
+        "T1195.003",
+        "T1591.003",
+        "T1053.003",
+        "T1671",
+        "T1219.003",
+        "T1059.001",
+        "T1105",
+        "T1134.001",
+        "T1556",
+        "T1112"
+    ],
+    "clean_text": "APT-FICT, a fictional threat actor, targeted a mid-sized energy company, 'EnergyCorp Inc.', based in the United States. EnergyCorp operates multiple power plants and uses a hybrid IT infrastructure with Linux servers for operational technology and Windows systems for corporate functions. Initial logs from their security information and event management (SIEM) system showed anomalous network traffic from unknown IP addresses, but no immediate alerts were triggered. The company's background includes recent expansion into renewable energy projects, which increased their public online presence.\n\nIn the reconnaissance phase, APT-FICT actors likely conducted open-source intelligence (OSINT) by searching EnergyCorp's official social media accounts, such as LinkedIn and Twitter, to identify patterns in business operations and peak activity periods. This allowed them to time attacks during off-hours when security monitoring might be reduced. For instance, they noted posts about maintenance schedules and employee events.\n\nFor initial access, the adversary compromised the hardware supply chain by intercepting a shipment of USB devices intended for EnergyCorp's IT department, inserting a modified Teensy USB configured to establish reverse shell connections upon system detection. An employee plugged the USB into a corporate Windows workstation, triggering the payload. System logs from that workstation showed a brief spike in CPU usage but no antivirus alerts due to the device's stealthy nature.\n\nOnce inside, APT-FICT employed PowerShell to actively download additional malicious payloads while simultaneously modifying registry keys to maintain persistence. On a Linux server, they edited /var/spool/cron/crontabs/root to add a command that would exfiltrate data every night at 2 AM, leveraging cron jobs for scheduled tasks. Credentials were extracted by creating a memory dump of the LSASS process using procdump, and the attacker used Pass-The-Hash Toolkit to perform pass the hash attacks to move laterally across the network.\n\nTo escalate privileges, the malware invoked DuplicateToken to create a copy of the SYSTEM token for privilege escalation and executed malicious code by injecting a compromised shared library via library hijacking. For persistence in cloud environments, the attacker registered a malicious OAuth application to maintain persistent access to the victim's cloud resources, and ransomware placed malware.exe in the Recycle Bin directory, disguising it as deleted content. The intrusion campaign involved installing TinyPilot to ensure continuous remote control despite security monitoring, allowing APT-FICT to maintain access even after initial detection attempts. EnergyCorp's incident response team later found evidence of data exfiltration to external IP addresses, but no financial loss was reported in this fictional scenario.",
+    "tagged_text": "APT-FICT, a fictional threat actor, targeted a mid-sized energy company, 'EnergyCorp Inc.', based in the United States. EnergyCorp operates multiple power plants and uses a hybrid IT infrastructure with Linux servers for operational technology and Windows systems for corporate functions. Initial logs from their security information and event management (SIEM) system showed anomalous network traffic from unknown IP addresses, but no immediate alerts were triggered. The company's background includes recent expansion into renewable energy projects, which increased their public online presence.\n\nIn the reconnaissance phase, APT-FICT actors likely conducted open-source intelligence (OSINT) by searching EnergyCorp's official social media accounts, such as LinkedIn and Twitter, to identify patterns in business operations and peak activity periods [T1591.003]. This allowed them to time attacks during off-hours when security monitoring might be reduced. For instance, they noted posts about maintenance schedules and employee events.\n\nFor initial access, the adversary compromised the hardware supply chain by intercepting a shipment of USB devices intended for EnergyCorp's IT department, inserting a modified Teensy USB configured to establish reverse shell connections upon system detection [T1195.003]. An employee plugged the USB into a corporate Windows workstation, triggering the payload. System logs from that workstation showed a brief spike in CPU usage but no antivirus alerts due to the device's stealthy nature.\n\nOnce inside, APT-FICT employed PowerShell [T1059.001] to actively download additional malicious payloads [T1105] while simultaneously modifying registry keys [T1112] to maintain persistence. On a Linux server, they edited /var/spool/cron/crontabs/root to add a command that would exfiltrate data every night at 2 AM [T1053.003], leveraging cron jobs for scheduled tasks. Credentials were extracted by creating a memory dump of the LSASS process using procdump [T1556], and the attacker used Pass-The-Hash Toolkit to perform pass the hash attacks [T1550.002] to move laterally across the network.\n\nTo escalate privileges, the malware invoked DuplicateToken to create a copy of the SYSTEM token for privilege escalation [T1134.001] and executed malicious code by injecting a compromised shared library via library hijacking [T1574.006]. For persistence in cloud environments, the attacker registered a malicious OAuth application to maintain persistent access to the victim's cloud resources [T1671], and ransomware placed malware.exe in the Recycle Bin directory, disguising it as deleted content [T1564.012]. The intrusion campaign involved installing TinyPilot to ensure continuous remote control despite security monitoring [T1219.003], allowing APT-FICT to maintain access even after initial detection attempts. EnergyCorp's incident response team later found evidence of data exfiltration to external IP addresses, but no financial loss was reported in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] to actively download additional malicious payloads while simultaneously modifying registry keys to maintain persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download additional malicious payloads while simultaneously modifying registry keys to maintain persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "Credentials were extracted by creating a memory dump of the LSASS process using procdump, and the attacker used Pass-The-Hash Toolkit to perform pass the hash attacks [T1550.",
+            "technique_id": "T1556",
+            "technique_name": "Modify Authentication Process"
+        },
+        {
+            "sentence": "For persistence in cloud environments, the attacker registered a malicious OAuth application to maintain persistent access to the victim's cloud resources, and ransomware placed malware.",
+            "technique_id": "T1671",
+            "technique_name": "Cloud Application Integration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure via Supply Chain Compromise",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-FICT, targeting a critical infrastructure organization. The campaign involved reconnaissance of business operations, hardware supply chain compromise, and persistence mechanisms across on-premises and cloud environments. Techniques include social media analysis, USB-based initial access, cron jobs for data exfiltration, credential theft, OAuth application abuse, privilege escalation, library hijacking, file hiding, pass-the-hash attacks, and remote hardware access. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "APT-FICT, a fictional threat actor, targeted a mid-sized energy company, 'EnergyCorp Inc.', based in the United States. EnergyCorp operates multiple power plants and uses a hybrid IT infrastructure with Linux servers for operational technology and Windows systems for corporate functions. Initial logs from their security information and event management (SIEM) system showed anomalous network traffic from unknown IP addresses, but no immediate alerts were triggered. The company's background includes recent expansion into renewable energy projects, which increased their public online presence.\n\nIn the reconnaissance phase, APT-FICT actors likely conducted open-source intelligence (OSINT) by searching EnergyCorp's official social media accounts, such as LinkedIn and Twitter, to identify patterns in business operations and peak activity periods [T1591.003]. This allowed them to time attacks during off-hours when security monitoring might be reduced. For instance, they noted posts about maintenance schedules and employee events.\n\nFor initial access, the adversary compromised the hardware supply chain by intercepting a shipment of USB devices intended for EnergyCorp's IT department, inserting a modified Teensy USB configured to establish reverse shell connections upon system detection [T1195.003]. An employee plugged the USB into a corporate Windows workstation, triggering the payload. System logs from that workstation showed a brief spike in CPU usage but no antivirus alerts due to the device's stealthy nature.\n\nOnce inside, APT-FICT employed PowerShell [T1059.001] to actively download additional malicious payloads [T1105] while simultaneously modifying registry keys [T1112] to maintain persistence. On a Linux server, they edited /var/spool/cron/crontabs/root to add a command that would exfiltrate data every night at 2 AM [T1053.003], leveraging cron jobs for scheduled tasks. Credentials were extracted by creating a memory dump of the LSASS process using procdump [T1556], and the attacker used Pass-The-Hash Toolkit to perform pass the hash attacks [T1550.002] to move laterally across the network.\n\nTo escalate privileges, the malware invoked DuplicateToken to create a copy of the SYSTEM token for privilege escalation [T1134.001] and executed malicious code by injecting a compromised shared library via library hijacking [T1574.006]. For persistence in cloud environments, the attacker registered a malicious OAuth application to maintain persistent access to the victim's cloud resources [T1671], and ransomware placed malware.exe in the Recycle Bin directory, disguising it as deleted content [T1564.012]. The intrusion campaign involved installing TinyPilot to ensure continuous remote control despite security monitoring [T1219.003], allowing APT-FICT to maintain access even after initial detection attempts. EnergyCorp's incident response team later found evidence of data exfiltration to external IP addresses, but no financial loss was reported in this fictional scenario.",
+        "techniques_used": [
+            "T1591.003",
+            "T1195.003",
+            "T1053.003",
+            "T1556",
+            "T1671",
+            "T1134.001",
+            "T1574.006",
+            "T1564.012",
+            "T1550.002",
+            "T1219.003",
+            "T1059.001",
+            "T1105",
+            "T1112"
+        ]
+    }
+}

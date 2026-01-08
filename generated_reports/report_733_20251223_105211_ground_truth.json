@@ -1,0 +1,113 @@
+{
+    "report_id": "report_733",
+    "generated_at": "20251223_105211",
+    "scenario_target_ids": [
+        "T1199",
+        "T1659",
+        "T1204.002",
+        "T1098",
+        "T1553.005",
+        "T1218.012",
+        "T1087",
+        "T1614",
+        "T1005",
+        "T1205.001",
+        "T1048.001",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1659",
+        "T1204.002",
+        "T1098",
+        "T1553.005",
+        "T1218.012",
+        "T1087",
+        "T1614",
+        "T1005",
+        "T1205.001",
+        "T1048.001",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1498.001",
+        "T1199",
+        "T1553.005",
+        "T1087",
+        "T1098",
+        "T1659",
+        "T1218.012",
+        "T1005",
+        "T1205.001",
+        "T1614",
+        "T1048.001",
+        "T1204.002"
+    ],
+    "clean_text": "### Background\nCrimsonHaze, a fictional advanced persistent threat (APT) group, is assessed to have conducted a campaign against a multinational technology firm, 'TechGlobal Inc.', between January and March 2024. TechGlobal Inc. operates in over 50 countries with a focus on cloud services and IoT devices, and its internal logs show increased anomalous activity starting in late February, though initial access may have occurred earlier. The attack exploited a third-party service provider relationship to gain initial foothold.\n\n### Attack Narrative\n**Initial Access:** The actors exploited a trusted relationship with a delegated administrator account from a third-party IT service provider, 'SecureManage Solutions', to gain administrative access to TechGlobal's Microsoft 365 tenant. This allowed them to bypass standard authentication controls and establish a persistent presence in the environment.\n\n**Execution:** CrimsonHaze then employed content injection techniques by manipulating DNS and HTTP replies to redirect specifically-targeted employees within TechGlobal to a fake Windows Update page, where they downloaded a malicious ISO file. The ISO contained a remote access trojan (RAT) disguised as a legitimate document, leveraging a phishing campaign that distributed these files via email to lure victims into executing the payload. Once executed, the malware abused verclsid.exe to run a malicious component, evading application whitelisting defenses.\n\n**Persistence and Privilege Escalation:** After execution, the actors harvested credentials from Windows Credential Manager on compromised hosts, manipulating account settings to maintain elevated access and move laterally. They also bypassed Mark-of-the-Web security warnings by packaging the malware in ISO files, which avoided standard file-blocking mechanisms.\n\n**Discovery:** To map the environment, CrimsonHaze used PowerShell.exe to query Active Directory for all enabled user accounts, identifying high-value targets and service accounts. Simultaneously, the malware queried system locale information via GetSystemDefaultLCID to determine if execution occurred in Russian-speaking countries, potentially avoiding detection in those regions.\n\n**Collection and Exfiltration:** The actors collected sensitive data from local systems, including intellectual property and financial records, using tools like StrifeWater. They then employed RC4 encryption on the harvested data and exfiltrated it via FTP over a symmetric encrypted non-C2 protocol, masking the traffic as legitimate file transfers. Additionally, the backdoor utilized raw sockets for port knocking to establish covert communication channels, sending command data directly through the network stack.\n\n**Impact:** In the final stage, CrimsonHaze launched a direct network flood by mobilizing a botnet from thousands of compromised devices, including IoT endpoints within TechGlobal's network, to overwhelm critical servers and disrupt operations. This caused significant downtime and data loss, with internal monitoring systems logging a 500% increase in network traffic during the incident.\n\n### Recommendations\nBlue teams should monitor for anomalous administrator account activity from third-party providers, inspect DNS and HTTP redirects, and implement application whitelisting with behavioral analysis. Regular credential audits and network traffic encryption checks are advised to detect and mitigate such campaigns.",
+    "tagged_text": "### Background\nCrimsonHaze, a fictional advanced persistent threat (APT) group, is assessed to have conducted a campaign against a multinational technology firm, 'TechGlobal Inc.', between January and March 2024. TechGlobal Inc. operates in over 50 countries with a focus on cloud services and IoT devices, and its internal logs show increased anomalous activity starting in late February, though initial access may have occurred earlier. The attack exploited a third-party service provider relationship to gain initial foothold.\n\n### Attack Narrative\n**Initial Access:** The actors exploited a trusted relationship with a delegated administrator account from a third-party IT service provider, 'SecureManage Solutions', to gain administrative access to TechGlobal's Microsoft 365 tenant [T1199]. This allowed them to bypass standard authentication controls and establish a persistent presence in the environment.\n\n**Execution:** CrimsonHaze then employed content injection techniques by manipulating DNS and HTTP replies to redirect specifically-targeted employees within TechGlobal to a fake Windows Update page, where they downloaded a malicious ISO file [T1659]. The ISO contained a remote access trojan (RAT) disguised as a legitimate document, leveraging a phishing campaign that distributed these files via email to lure victims into executing the payload [T1204.002]. Once executed, the malware abused verclsid.exe to run a malicious component, evading application whitelisting defenses [T1218.012].\n\n**Persistence and Privilege Escalation:** After execution, the actors harvested credentials from Windows Credential Manager on compromised hosts, manipulating account settings to maintain elevated access and move laterally [T1098]. They also bypassed Mark-of-the-Web security warnings by packaging the malware in ISO files, which avoided standard file-blocking mechanisms [T1553.005].\n\n**Discovery:** To map the environment, CrimsonHaze used PowerShell.exe to query Active Directory for all enabled user accounts, identifying high-value targets and service accounts [T1087]. Simultaneously, the malware queried system locale information via GetSystemDefaultLCID to determine if execution occurred in Russian-speaking countries, potentially avoiding detection in those regions [T1614].\n\n**Collection and Exfiltration:** The actors collected sensitive data from local systems, including intellectual property and financial records, using tools like StrifeWater [T1005]. They then employed RC4 encryption on the harvested data and exfiltrated it via FTP over a symmetric encrypted non-C2 protocol, masking the traffic as legitimate file transfers [T1048.001]. Additionally, the backdoor utilized raw sockets for port knocking to establish covert communication channels, sending command data directly through the network stack [T1205.001].\n\n**Impact:** In the final stage, CrimsonHaze launched a direct network flood by mobilizing a botnet from thousands of compromised devices, including IoT endpoints within TechGlobal's network, to overwhelm critical servers and disrupt operations [T1498.001]. This caused significant downtime and data loss, with internal monitoring systems logging a 500% increase in network traffic during the incident.\n\n### Recommendations\nBlue teams should monitor for anomalous administrator account activity from third-party providers, inspect DNS and HTTP redirects, and implement application whitelisting with behavioral analysis. Regular credential audits and network traffic encryption checks are advised to detect and mitigate such campaigns.",
+    "sentence_annotations": [
+        {
+            "sentence": "### Attack Narrative\n**Initial Access:** The actors exploited a trusted relationship with a delegated administrator account from a third-party IT service provider, 'SecureManage Solutions', to gain administrative access to TechGlobal's Microsoft 365 tenant.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "**Execution:** CrimsonHaze then employed content injection techniques by manipulating DNS and HTTP replies to redirect specifically-targeted employees within TechGlobal to a fake Windows Update page, where they downloaded a malicious ISO file.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "**Persistence and Privilege Escalation:** After execution, the actors harvested credentials from Windows Credential Manager on compromised hosts, manipulating account settings to maintain elevated access and move laterally.",
+            "technique_id": "T1098",
+            "technique_name": "Account Manipulation"
+        },
+        {
+            "sentence": "exe to query Active Directory for all enabled user accounts, identifying high-value targets and service accounts.",
+            "technique_id": "T1087",
+            "technique_name": "Account Discovery"
+        },
+        {
+            "sentence": "Simultaneously, the malware queried system locale information via GetSystemDefaultLCID to determine if execution occurred in Russian-speaking countries, potentially avoiding detection in those regions.",
+            "technique_id": "T1614",
+            "technique_name": "System Location Discovery"
+        },
+        {
+            "sentence": "**Collection and Exfiltration:** The actors collected sensitive data from local systems, including intellectual property and financial records, using tools like StrifeWater.",
+            "technique_id": "T1005",
+            "technique_name": "Data from Local System"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor 'CrimsonHaze'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor CrimsonHaze, targeting a multinational corporation through a supply chain compromise and multi-stage attack. The campaign leverages trusted relationships, content injection, and evasion techniques to deploy malware, harvest credentials, and exfiltrate data, culminating in a disruptive network flood. This report is for educational purposes to train blue teams on detecting and mitigating such tactics.",
+        "full_report_text": "### Background\nCrimsonHaze, a fictional advanced persistent threat (APT) group, is assessed to have conducted a campaign against a multinational technology firm, 'TechGlobal Inc.', between January and March 2024. TechGlobal Inc. operates in over 50 countries with a focus on cloud services and IoT devices, and its internal logs show increased anomalous activity starting in late February, though initial access may have occurred earlier. The attack exploited a third-party service provider relationship to gain initial foothold.\n\n### Attack Narrative\n**Initial Access:** The actors exploited a trusted relationship with a delegated administrator account from a third-party IT service provider, 'SecureManage Solutions', to gain administrative access to TechGlobal's Microsoft 365 tenant [T1199]. This allowed them to bypass standard authentication controls and establish a persistent presence in the environment.\n\n**Execution:** CrimsonHaze then employed content injection techniques by manipulating DNS and HTTP replies to redirect specifically-targeted employees within TechGlobal to a fake Windows Update page, where they downloaded a malicious ISO file [T1659]. The ISO contained a remote access trojan (RAT) disguised as a legitimate document, leveraging a phishing campaign that distributed these files via email to lure victims into executing the payload [T1204.002]. Once executed, the malware abused verclsid.exe to run a malicious component, evading application whitelisting defenses [T1218.012].\n\n**Persistence and Privilege Escalation:** After execution, the actors harvested credentials from Windows Credential Manager on compromised hosts, manipulating account settings to maintain elevated access and move laterally [T1098]. They also bypassed Mark-of-the-Web security warnings by packaging the malware in ISO files, which avoided standard file-blocking mechanisms [T1553.005].\n\n**Discovery:** To map the environment, CrimsonHaze used PowerShell.exe to query Active Directory for all enabled user accounts, identifying high-value targets and service accounts [T1087]. Simultaneously, the malware queried system locale information via GetSystemDefaultLCID to determine if execution occurred in Russian-speaking countries, potentially avoiding detection in those regions [T1614].\n\n**Collection and Exfiltration:** The actors collected sensitive data from local systems, including intellectual property and financial records, using tools like StrifeWater [T1005]. They then employed RC4 encryption on the harvested data and exfiltrated it via FTP over a symmetric encrypted non-C2 protocol, masking the traffic as legitimate file transfers [T1048.001]. Additionally, the backdoor utilized raw sockets for port knocking to establish covert communication channels, sending command data directly through the network stack [T1205.001].\n\n**Impact:** In the final stage, CrimsonHaze launched a direct network flood by mobilizing a botnet from thousands of compromised devices, including IoT endpoints within TechGlobal's network, to overwhelm critical servers and disrupt operations [T1498.001]. This caused significant downtime and data loss, with internal monitoring systems logging a 500% increase in network traffic during the incident.\n\n### Recommendations\nBlue teams should monitor for anomalous administrator account activity from third-party providers, inspect DNS and HTTP redirects, and implement application whitelisting with behavioral analysis. Regular credential audits and network traffic encryption checks are advised to detect and mitigate such campaigns.",
+        "techniques_used": [
+            "T1199",
+            "T1659",
+            "T1204.002",
+            "T1098",
+            "T1553.005",
+            "T1218.012",
+            "T1087",
+            "T1614",
+            "T1005",
+            "T1205.001",
+            "T1048.001",
+            "T1498.001"
+        ]
+    }
+}

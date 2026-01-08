@@ -1,0 +1,78 @@
+{
+    "report_id": "report_617",
+    "generated_at": "20251222_170448",
+    "scenario_target_ids": [
+        "T1595.002",
+        "T1608.002",
+        "T1195.001",
+        "T1059.012",
+        "T1037.004",
+        "T1218.005",
+        "T1518.001",
+        "T1568",
+        "T1567.004",
+        "T1491.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.002",
+        "T1608.002",
+        "T1195.001",
+        "T1059.012",
+        "T1037.004",
+        "T1218.005",
+        "T1518.001",
+        "T1568",
+        "T1567.004",
+        "T1491.002"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1059.012",
+        "T1218.005",
+        "T1608.002",
+        "T1195.001",
+        "T1518.001",
+        "T1595.002",
+        "T1568",
+        "T1491.002",
+        "T1037.004"
+    ],
+    "clean_text": "On 2023-10-15, security logs from 'InfraCorp', a fictional energy company, detected anomalous network traffic originating from IP 192.0.2.100, which was later traced to a compromised third-party vendor. The company's SIEM system, Splunk, recorded multiple failed login attempts from this IP over the past week, though these were initially dismissed as noise. The actors likely conducted reconnaissance by scanning web servers for vulnerabilities, extracting HTTP headers to identify exploitable applications like outdated Apache versions, while simultaneously using dynamic DNS services for command and control to evade static IP blocking. Following initial access via a phishing email that exploited a known vulnerability in a software dependency, the malware employed PowerShell to execute a hypervisor CLI command, using vim-cmd to snapshot a virtual machine for data exfiltration, and downloaded a remote access tool from https://c2.com/tools to establish persistence. Additionally, the attackers injected evil.ps1 into development tools to dump LSASS memory and extract authentication tokens, while altering rc.common to execute a keylogger script during system initialization. For execution, they used mshta.exe to run malicious files, and the information-stealing tool Grixba was deployed to scan for anti-virus software. In the exfiltration phase, sensitive documents were collected and prepared for transmission to webhook.site, and the threat actor replaced the legitimate index.html with a defaced version containing political propaganda. System logs from InfraCorp's web servers showed increased CPU usage during these activities, but no immediate alerts were triggered due to misconfigured thresholds.",
+    "tagged_text": "On 2023-10-15, security logs from 'InfraCorp', a fictional energy company, detected anomalous network traffic originating from IP 192.0.2.100, which was later traced to a compromised third-party vendor. The company's SIEM system, Splunk, recorded multiple failed login attempts from this IP over the past week, though these were initially dismissed as noise. The actors likely conducted reconnaissance [T1595.002] by scanning web servers for vulnerabilities, extracting HTTP headers to identify exploitable applications like outdated Apache versions, while simultaneously using dynamic DNS services [T1568] for command and control to evade static IP blocking. Following initial access via a phishing email that exploited a known vulnerability in a software dependency, the malware employed PowerShell [T1059.012] to execute a hypervisor CLI command, using vim-cmd to snapshot a virtual machine for data exfiltration, and downloaded a remote access tool from https://c2.com/tools [T1608.002] to establish persistence. Additionally, the attackers injected evil.ps1 into development tools [T1195.001] to dump LSASS memory and extract authentication tokens, while altering rc.common [T1037.004] to execute a keylogger script during system initialization. For execution, they used mshta.exe [T1218.005] to run malicious files, and the information-stealing tool Grixba was deployed to scan for anti-virus software [T1518.001]. In the exfiltration phase, sensitive documents were collected and prepared for transmission to webhook.site [T1567.004], and the threat actor replaced the legitimate index.html with a defaced version containing political propaganda [T1491.002]. System logs from InfraCorp's web servers showed increased CPU usage during these activities, but no immediate alerts were triggered due to misconfigured thresholds.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] by scanning web servers for vulnerabilities, extracting HTTP headers to identify exploitable applications like outdated Apache versions, while simultaneously using dynamic DNS services for command and control to evade static IP blocking.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowVeil', targeting critical infrastructure sectors. The actors employed a multi-stage attack involving reconnaissance, tool deployment, and data exfiltration, leveraging techniques such as vulnerability scanning and dynamic resolution for command and control. Blue teams should use this report for training to enhance detection and response capabilities.",
+        "full_report_text": "On 2023-10-15, security logs from 'InfraCorp', a fictional energy company, detected anomalous network traffic originating from IP 192.0.2.100, which was later traced to a compromised third-party vendor. The company's SIEM system, Splunk, recorded multiple failed login attempts from this IP over the past week, though these were initially dismissed as noise. The actors likely conducted reconnaissance [T1595.002] by scanning web servers for vulnerabilities, extracting HTTP headers to identify exploitable applications like outdated Apache versions, while simultaneously using dynamic DNS services [T1568] for command and control to evade static IP blocking. Following initial access via a phishing email that exploited a known vulnerability in a software dependency, the malware employed PowerShell [T1059.012] to execute a hypervisor CLI command, using vim-cmd to snapshot a virtual machine for data exfiltration, and downloaded a remote access tool from https://c2.com/tools [T1608.002] to establish persistence. Additionally, the attackers injected evil.ps1 into development tools [T1195.001] to dump LSASS memory and extract authentication tokens, while altering rc.common [T1037.004] to execute a keylogger script during system initialization. For execution, they used mshta.exe [T1218.005] to run malicious files, and the information-stealing tool Grixba was deployed to scan for anti-virus software [T1518.001]. In the exfiltration phase, sensitive documents were collected and prepared for transmission to webhook.site [T1567.004], and the threat actor replaced the legitimate index.html with a defaced version containing political propaganda [T1491.002]. System logs from InfraCorp's web servers showed increased CPU usage during these activities, but no immediate alerts were triggered due to misconfigured thresholds.",
+        "techniques_used": [
+            "T1595.002",
+            "T1608.002",
+            "T1195.001",
+            "T1059.012",
+            "T1037.004",
+            "T1218.005",
+            "T1518.001",
+            "T1568",
+            "T1567.004",
+            "T1491.002"
+        ]
+    }
+}

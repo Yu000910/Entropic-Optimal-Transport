@@ -1,0 +1,103 @@
+{
+    "report_id": "report_629",
+    "generated_at": "20251222_170951",
+    "scenario_target_ids": [
+        "T1584.002",
+        "T1608",
+        "T1587",
+        "T1190",
+        "T1669",
+        "T1059.010",
+        "T1546.003",
+        "T1556.004",
+        "T1104",
+        "T1132.002",
+        "T1499.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1059.010",
+        "T1669",
+        "T1546.003",
+        "T1556.004",
+        "T1104",
+        "T1132.002",
+        "T1584.002",
+        "T1587",
+        "T1608",
+        "T1499.003"
+    ],
+    "actual_found_ids": [
+        "T1587",
+        "T1669",
+        "T1104",
+        "T1608",
+        "T1059.010",
+        "T1132.002",
+        "T1499.003",
+        "T1190",
+        "T1546.003",
+        "T1584.002",
+        "T1556.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a simulated APT campaign designated as BOLDMOVE, targeting financial organizations. This report is based on fictional intelligence for educational purposes.\n\nAttack Narrative:\nInitial Access: The actors conducted reconnaissance to identify vulnerable infrastructure, then exploited CVE-2022-49475 in FortiOS to gain initial access to a target network. System logs from the affected firewall show unusual traffic patterns at 03:45 UTC on 2024-07-15, but no immediate alerts were triggered.\n\nExecution: Upon entry, the adversary employed AutoIt scripts embedded in malicious documents to execute initial payloads while simultaneously scanning for and automatically connecting to open Wi-Fi networks to establish additional footholds. The target organization, a mid-sized bank with operations in North America, reported no prior incidents of this nature.\n\nPersistence: To maintain access, the malware used Windows Management Instrumentation (WMI) event subscriptions for persistence and modified network device authentication mechanisms by embedding hardcoded passwords into the operating system image. Routine network scans conducted by IT staff did not detect these modifications initially.\n\nCommand and Control (C2): The backdoor established multi-stage channels by running 'remote_access_tool.exe' to manage multiple C2 connections, with C2 payloads encoded using non-standard encoding such as modified Base64 with special characters. DNS server modifications were observed, where CNAME records were altered to redirect subdomain traffic to malicious infrastructure, causing intermittent service disruptions reported by users.\n\nCapabilities Development and Staging: The threat actor developed custom capabilities, including a trojan named 'BankStealer.exe' designed to target financial applications, and staged these capabilities by uploading malicious PowerShell scripts to a private GitHub repository for later deployment. Internal code reviews at the bank found no evidence of similar custom malware in past audits.\n\nImpact: The script performed application exhaustion floods through continuous API calls to data export functions, leading to database connection pool exhaustion and service degradation. Incident response teams noted increased latency in transaction processing systems during peak hours, though no data loss was confirmed in this simulation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a simulated APT campaign designated as BOLDMOVE, targeting financial organizations. This report is based on fictional intelligence for educational purposes.\n\nAttack Narrative:\nInitial Access: The actors conducted reconnaissance to identify vulnerable infrastructure, then exploited CVE-2022-49475 in FortiOS [T1190] to gain initial access to a target network. System logs from the affected firewall show unusual traffic patterns at 03:45 UTC on 2024-07-15, but no immediate alerts were triggered.\n\nExecution: Upon entry, the adversary employed AutoIt scripts [T1059.010] embedded in malicious documents to execute initial payloads while simultaneously scanning for and automatically connecting to open Wi-Fi networks [T1669] to establish additional footholds. The target organization, a mid-sized bank with operations in North America, reported no prior incidents of this nature.\n\nPersistence: To maintain access, the malware used Windows Management Instrumentation (WMI) event subscriptions [T1546.003] for persistence and modified network device authentication mechanisms [T1556.004] by embedding hardcoded passwords into the operating system image. Routine network scans conducted by IT staff did not detect these modifications initially.\n\nCommand and Control (C2): The backdoor established multi-stage channels [T1104] by running 'remote_access_tool.exe' to manage multiple C2 connections, with C2 payloads encoded using non-standard encoding [T1132.002] such as modified Base64 with special characters. DNS server modifications [T1584.002] were observed, where CNAME records were altered to redirect subdomain traffic to malicious infrastructure, causing intermittent service disruptions reported by users.\n\nCapabilities Development and Staging: The threat actor developed custom capabilities [T1587], including a trojan named 'BankStealer.exe' designed to target financial applications, and staged these capabilities [T1608] by uploading malicious PowerShell scripts to a private GitHub repository for later deployment. Internal code reviews at the bank found no evidence of similar custom malware in past audits.\n\nImpact: The script performed application exhaustion floods [T1499.003] through continuous API calls to data export functions, leading to database connection pool exhaustion and service degradation. Incident response teams noted increased latency in transaction processing systems during peak hours, though no data loss was confirmed in this simulation.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\nInitial Access: The actors conducted reconnaissance to identify vulnerable infrastructure, then exploited CVE-2022-49475 in FortiOS to gain initial access to a target network.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "010] embedded in malicious documents to execute initial payloads while simultaneously scanning for and automatically connecting to open Wi-Fi networks to establish additional footholds.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Command and Control (C2): The backdoor established multi-stage channels by running 'remote_access_tool.",
+            "technique_id": "T1104",
+            "technique_name": "Multi-Stage Channels"
+        },
+        {
+            "sentence": "Capabilities Development and Staging: The threat actor developed custom capabilities, including a trojan named 'BankStealer.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "exe' designed to target financial applications, and staged these capabilities by uploading malicious PowerShell scripts to a private GitHub repository for later deployment.",
+            "technique_id": "T1608",
+            "technique_name": "Stage Capabilities"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'BOLDMOVE' Targeting Financial Sector",
+        "summary": "This advisory details a fictional campaign by threat actor BOLDMOVE, simulating an advanced persistent threat (APT) targeting financial institutions. The campaign involves DNS manipulation, exploitation of public-facing applications, and multi-stage malware deployment for data exfiltration and persistence. Blue teams can use this report for training to identify and mitigate similar attack patterns.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams of a simulated APT campaign designated as BOLDMOVE, targeting financial organizations. This report is based on fictional intelligence for educational purposes.\n\nAttack Narrative:\nInitial Access: The actors conducted reconnaissance to identify vulnerable infrastructure, then exploited CVE-2022-49475 in FortiOS [T1190] to gain initial access to a target network. System logs from the affected firewall show unusual traffic patterns at 03:45 UTC on 2024-07-15, but no immediate alerts were triggered.\n\nExecution: Upon entry, the adversary employed AutoIt scripts [T1059.010] embedded in malicious documents to execute initial payloads while simultaneously scanning for and automatically connecting to open Wi-Fi networks [T1669] to establish additional footholds. The target organization, a mid-sized bank with operations in North America, reported no prior incidents of this nature.\n\nPersistence: To maintain access, the malware used Windows Management Instrumentation (WMI) event subscriptions [T1546.003] for persistence and modified network device authentication mechanisms [T1556.004] by embedding hardcoded passwords into the operating system image. Routine network scans conducted by IT staff did not detect these modifications initially.\n\nCommand and Control (C2): The backdoor established multi-stage channels [T1104] by running 'remote_access_tool.exe' to manage multiple C2 connections, with C2 payloads encoded using non-standard encoding [T1132.002] such as modified Base64 with special characters. DNS server modifications [T1584.002] were observed, where CNAME records were altered to redirect subdomain traffic to malicious infrastructure, causing intermittent service disruptions reported by users.\n\nCapabilities Development and Staging: The threat actor developed custom capabilities [T1587], including a trojan named 'BankStealer.exe' designed to target financial applications, and staged these capabilities [T1608] by uploading malicious PowerShell scripts to a private GitHub repository for later deployment. Internal code reviews at the bank found no evidence of similar custom malware in past audits.\n\nImpact: The script performed application exhaustion floods [T1499.003] through continuous API calls to data export functions, leading to database connection pool exhaustion and service degradation. Incident response teams noted increased latency in transaction processing systems during peak hours, though no data loss was confirmed in this simulation.",
+        "techniques_used": [
+            "T1190",
+            "T1059.010",
+            "T1669",
+            "T1546.003",
+            "T1556.004",
+            "T1104",
+            "T1132.002",
+            "T1584.002",
+            "T1587",
+            "T1608",
+            "T1499.003"
+        ]
+    }
+}

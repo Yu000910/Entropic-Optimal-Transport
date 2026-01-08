@@ -1,0 +1,58 @@
+{
+    "report_id": "report_615",
+    "generated_at": "20251222_170404",
+    "scenario_target_ids": [
+        "T1597.002",
+        "T1566.002",
+        "T1569.001",
+        "T1615",
+        "T1105"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1597.002",
+        "T1566.002",
+        "T1569.001",
+        "T1615",
+        "T1105"
+    ],
+    "actual_found_ids": [
+        "T1597.002",
+        "T1569.001",
+        "T1566.002",
+        "T1615",
+        "T1105"
+    ],
+    "clean_text": "On October 15, 2023, SecureBank Inc. experienced a cybersecurity incident involving the fictional APT group 'SHADOW VEIL'. The actors likely conducted reconnaissance by purchasing technical data, including system architecture documentation and network diagrams, from a dark web marketplace to understand the victim's technical environment. SecureBank's IT team noted increased scanning activity from unknown IPs in the weeks prior, but this was initially attributed to routine maintenance logs. The attackers then employed spearphishing links in tailored emails to key employees, mimicking internal IT communications to lure victims into opening malicious links for execution. One employee reported the email as suspicious after noticing a slight typo in the sender address, but the attack proceeded undetected initially. Upon compromise, the adversary used 'launchctl load /Library/LaunchDaemons/com.malware.plist' to execute malicious code as a system service on macOS endpoints, establishing persistence and enabling remote access. System logs showed unusual daemon activity at 02:00 UTC, coinciding with a scheduled backup job that typically runs without issues. The actors then conducted discovery by surveying the system to uncover Group Policy details using the gpresult command, gathering information about domain policies and user permissions for lateral movement planning. Network monitoring tools flagged this as abnormal for a non-administrative account, but the alert was buried in routine audit logs. Subsequently, SHADOW VEIL transferred additional tools to and from compromised hosts using encrypted channels, facilitating data exfiltration and command-and-control operations. The incident was contained after 48 hours when anomalous outbound traffic to a foreign IP triggered a firewall rule, leading to a full investigation and system restoration from backups.",
+    "tagged_text": "On October 15, 2023, SecureBank Inc. experienced a cybersecurity incident involving the fictional APT group 'SHADOW VEIL'. The actors likely conducted reconnaissance by purchasing technical data, including system architecture documentation and network diagrams, from a dark web marketplace to understand the victim's technical environment [T1597.002]. SecureBank's IT team noted increased scanning activity from unknown IPs in the weeks prior, but this was initially attributed to routine maintenance logs. The attackers then employed spearphishing links in tailored emails to key employees, mimicking internal IT communications to lure victims into opening malicious links for execution [T1566.002]. One employee reported the email as suspicious after noticing a slight typo in the sender address, but the attack proceeded undetected initially. Upon compromise, the adversary used 'launchctl load /Library/LaunchDaemons/com.malware.plist' to execute malicious code as a system service on macOS endpoints, establishing persistence and enabling remote access [T1569.001]. System logs showed unusual daemon activity at 02:00 UTC, coinciding with a scheduled backup job that typically runs without issues. The actors then conducted discovery by surveying the system to uncover Group Policy details using the gpresult command, gathering information about domain policies and user permissions for lateral movement planning [T1615]. Network monitoring tools flagged this as abnormal for a non-administrative account, but the alert was buried in routine audit logs. Subsequently, SHADOW VEIL transferred additional tools to and from compromised hosts using encrypted channels, facilitating data exfiltration and command-and-control operations [T1105]. The incident was contained after 48 hours when anomalous outbound traffic to a foreign IP triggered a firewall rule, leading to a full investigation and system restoration from backups.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then conducted discovery by surveying the system to uncover Group Policy details using the gpresult command, gathering information about domain policies and user permissions for lateral movement planning.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "Subsequently, SHADOW VEIL transferred additional tools to and from compromised hosts using encrypted channels, facilitating data exfiltration and command-and-control operations.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SHADOW VEIL' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'SHADOW VEIL', which targeted a mid-sized financial institution, 'SecureBank Inc.', to exfiltrate sensitive customer data. The campaign involved reconnaissance via purchased technical data, spearphishing for initial access, execution through macOS persistence mechanisms, discovery of Group Policy settings, and tool transfer for lateral movement. The attack was detected through anomalous network traffic and endpoint alerts, with no actual data loss reported in this training scenario.",
+        "full_report_text": "On October 15, 2023, SecureBank Inc. experienced a cybersecurity incident involving the fictional APT group 'SHADOW VEIL'. The actors likely conducted reconnaissance by purchasing technical data, including system architecture documentation and network diagrams, from a dark web marketplace to understand the victim's technical environment [T1597.002]. SecureBank's IT team noted increased scanning activity from unknown IPs in the weeks prior, but this was initially attributed to routine maintenance logs. The attackers then employed spearphishing links in tailored emails to key employees, mimicking internal IT communications to lure victims into opening malicious links for execution [T1566.002]. One employee reported the email as suspicious after noticing a slight typo in the sender address, but the attack proceeded undetected initially. Upon compromise, the adversary used 'launchctl load /Library/LaunchDaemons/com.malware.plist' to execute malicious code as a system service on macOS endpoints, establishing persistence and enabling remote access [T1569.001]. System logs showed unusual daemon activity at 02:00 UTC, coinciding with a scheduled backup job that typically runs without issues. The actors then conducted discovery by surveying the system to uncover Group Policy details using the gpresult command, gathering information about domain policies and user permissions for lateral movement planning [T1615]. Network monitoring tools flagged this as abnormal for a non-administrative account, but the alert was buried in routine audit logs. Subsequently, SHADOW VEIL transferred additional tools to and from compromised hosts using encrypted channels, facilitating data exfiltration and command-and-control operations [T1105]. The incident was contained after 48 hours when anomalous outbound traffic to a foreign IP triggered a firewall rule, leading to a full investigation and system restoration from backups.",
+        "techniques_used": [
+            "T1597.002",
+            "T1566.002",
+            "T1569.001",
+            "T1615",
+            "T1105"
+        ]
+    }
+}

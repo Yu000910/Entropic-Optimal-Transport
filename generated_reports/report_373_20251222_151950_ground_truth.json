@@ -1,0 +1,113 @@
+{
+    "report_id": "report_373",
+    "generated_at": "20251222_151950",
+    "scenario_target_ids": [
+        "T1190",
+        "T1559.001",
+        "T1547.014",
+        "T1556.009",
+        "T1614",
+        "T1580",
+        "T1550.003",
+        "T1602.001",
+        "T1213.001",
+        "T1560",
+        "T1568.002",
+        "T1048.002",
+        "T1499"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1190",
+        "T1559.001",
+        "T1547.014",
+        "T1556.009",
+        "T1614",
+        "T1580",
+        "T1602.001",
+        "T1213.001",
+        "T1550.003",
+        "T1560",
+        "T1568.002",
+        "T1048.002",
+        "T1499"
+    ],
+    "actual_found_ids": [
+        "T1602.001",
+        "T1550.003",
+        "T1499",
+        "T1568.002",
+        "T1559.001",
+        "T1580",
+        "T1213.001",
+        "T1190",
+        "T1556.009",
+        "T1560",
+        "T1547.014",
+        "T1614",
+        "T1048.002"
+    ],
+    "clean_text": "PhantomHive, a fictional APT group, has been observed targeting organizations with hybrid IT infrastructures. The campaign begins with the exploitation of a vulnerable Microsoft Exchange Server using CVE-2021-26855, allowing initial access. Upon compromise, the actors employ Component Object Model (COM) interfaces to schedule malicious tasks via ITaskService, while simultaneously establishing persistence through Active Setup by modifying registry keys in the StubPath. To evade security controls, they use compromised credentials to alter Okta conditional access policies, removing device compliance requirements. For discovery, PhantomHive executes PowerShell scripts to gather locale-specific data for geolocation and uses tools like ListBuckets to identify cloud storage locations, while performing SNMP walks to map network topology and querying Confluence for infrastructure details. To move laterally, they inject forged Kerberos tickets into sessions to access domain controllers. Before exfiltration, the group archives collected data using encryption and employs domain generation algorithms for command and control communications. Data is exfiltrated over asymmetric encrypted non-C2 protocols, such as OpenSSL-encrypted network maps. The campaign concludes with endpoint denial-of-service attacks, exploiting a buffer overflow in Apache web servers to crash services. System logs from affected servers show increased CPU usage and failed login attempts, though these are unrelated to the core techniques. Company background: The targeted organization, a mid-sized financial firm, had recently migrated some operations to AWS, but legacy systems remained on-premises, creating a complex attack surface.",
+    "tagged_text": "PhantomHive, a fictional APT group, has been observed targeting organizations with hybrid IT infrastructures. The campaign begins with the exploitation of a vulnerable Microsoft Exchange Server using CVE-2021-26855 [T1190], allowing initial access. Upon compromise, the actors employ Component Object Model (COM) interfaces [T1559.001] to schedule malicious tasks via ITaskService, while simultaneously establishing persistence through Active Setup by modifying registry keys in the StubPath [T1547.014]. To evade security controls, they use compromised credentials to alter Okta conditional access policies, removing device compliance requirements [T1556.009]. For discovery, PhantomHive executes PowerShell scripts to gather locale-specific data for geolocation [T1614] and uses tools like ListBuckets to identify cloud storage locations [T1580], while performing SNMP walks to map network topology [T1602.001] and querying Confluence for infrastructure details [T1213.001]. To move laterally, they inject forged Kerberos tickets into sessions to access domain controllers [T1550.003]. Before exfiltration, the group archives collected data using encryption [T1560] and employs domain generation algorithms for command and control communications [T1568.002]. Data is exfiltrated over asymmetric encrypted non-C2 protocols, such as OpenSSL-encrypted network maps [T1048.002]. The campaign concludes with endpoint denial-of-service attacks, exploiting a buffer overflow in Apache web servers to crash services [T1499]. System logs from affected servers show increased CPU usage and failed login attempts, though these are unrelated to the core techniques. Company background: The targeted organization, a mid-sized financial firm, had recently migrated some operations to AWS, but legacy systems remained on-premises, creating a complex attack surface.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign begins with the exploitation of a vulnerable Microsoft Exchange Server using CVE-2021-26855, allowing initial access.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "For discovery, PhantomHive executes PowerShell scripts to gather locale-specific data for geolocation and uses tools like ListBuckets to identify cloud storage locations, while performing SNMP walks to map network topology [T1602.",
+            "technique_id": "T1614",
+            "technique_name": "System Location Discovery"
+        },
+        {
+            "sentence": "For discovery, PhantomHive executes PowerShell scripts to gather locale-specific data for geolocation and uses tools like ListBuckets to identify cloud storage locations, while performing SNMP walks to map network topology [T1602.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "Before exfiltration, the group archives collected data using encryption and employs domain generation algorithms for command and control communications [T1568.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "The campaign concludes with endpoint denial-of-service attacks, exploiting a buffer overflow in Apache web servers to crash services.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'PhantomHive', targeting hybrid cloud and on-premises environments. Based on intelligence from CISA, FBI, and NSA, PhantomHive exploits public-facing applications to gain initial access, leverages persistence mechanisms, and conducts extensive discovery and exfiltration activities, culminating in denial-of-service attacks. The report is designed for blue team training to enhance detection and response capabilities against multi-stage intrusions.",
+        "full_report_text": "PhantomHive, a fictional APT group, has been observed targeting organizations with hybrid IT infrastructures. The campaign begins with the exploitation of a vulnerable Microsoft Exchange Server using CVE-2021-26855 [T1190], allowing initial access. Upon compromise, the actors employ Component Object Model (COM) interfaces [T1559.001] to schedule malicious tasks via ITaskService, while simultaneously establishing persistence through Active Setup by modifying registry keys in the StubPath [T1547.014]. To evade security controls, they use compromised credentials to alter Okta conditional access policies, removing device compliance requirements [T1556.009]. For discovery, PhantomHive executes PowerShell scripts to gather locale-specific data for geolocation [T1614] and uses tools like ListBuckets to identify cloud storage locations [T1580], while performing SNMP walks to map network topology [T1602.001] and querying Confluence for infrastructure details [T1213.001]. To move laterally, they inject forged Kerberos tickets into sessions to access domain controllers [T1550.003]. Before exfiltration, the group archives collected data using encryption [T1560] and employs domain generation algorithms for command and control communications [T1568.002]. Data is exfiltrated over asymmetric encrypted non-C2 protocols, such as OpenSSL-encrypted network maps [T1048.002]. The campaign concludes with endpoint denial-of-service attacks, exploiting a buffer overflow in Apache web servers to crash services [T1499]. System logs from affected servers show increased CPU usage and failed login attempts, though these are unrelated to the core techniques. Company background: The targeted organization, a mid-sized financial firm, had recently migrated some operations to AWS, but legacy systems remained on-premises, creating a complex attack surface.",
+        "techniques_used": [
+            "T1190",
+            "T1559.001",
+            "T1547.014",
+            "T1556.009",
+            "T1614",
+            "T1580",
+            "T1602.001",
+            "T1213.001",
+            "T1550.003",
+            "T1560",
+            "T1568.002",
+            "T1048.002",
+            "T1499"
+        ]
+    }
+}

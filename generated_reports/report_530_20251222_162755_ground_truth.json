@@ -1,0 +1,90 @@
+{
+    "report_id": "report_530",
+    "generated_at": "20251222_162755",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1204",
+        "T1098",
+        "T1003.005",
+        "T1135",
+        "T1046",
+        "T1132.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.004",
+        "T1204",
+        "T1098",
+        "T1003.005",
+        "T1135",
+        "T1046",
+        "T1132.002"
+    ],
+    "actual_found_ids": [
+        "T1046",
+        "T1112",
+        "T1003.005",
+        "T1589",
+        "T1098",
+        "T1135",
+        "T1132.002",
+        "T1078.004",
+        "T1204"
+    ],
+    "clean_text": "CrimsonTempest, a fictional advanced persistent threat (APT) group, conducted a simulated attack against a financial services organization, 'FinSecure Inc.', which operates a hybrid environment with Azure cloud services and on-premises Active Directory. The organization's security logs indicated unusual activity starting on October 15, 2023, with multiple failed login attempts from IP addresses associated with known malicious infrastructure in Eastern Europe. Initial reconnaissance likely involved scanning public-facing assets, but no specific techniques were tagged as this was part of the broader noise.\n\nIn the Initial Access phase, the adversary exploited compromised Azure Managed Identities to gain unauthorized access to virtual machines in the cloud environment. This allowed them to bypass multi-factor authentication and establish a foothold without triggering immediate alerts. System logs from Azure Monitor showed anomalous identity usage patterns, but these were initially overlooked due to high volume of legitimate traffic.\n\nDuring Execution, the threat actor delivered a malicious Excel file, masquerading as a quarterly financial report, via a phishing email to a finance department employee. The user executed the file, which contained hidden macros that triggered PowerShell scripts to download additional payloads. This action was logged in Windows Event Viewer under ID 4688, but the macros used obfuscation to evade basic antivirus scans.\n\nFor Persistence, the adversary manipulated a service account by executing the command 'net user svc_account /passwordchg:no' to prevent password changes, ensuring continued access even after initial compromises were addressed. This was combined with modifying registry keys to maintain persistence across reboots, though the registry modification is not tagged as it was part of the multi-label approach. Additionally, they used Mimikatz sekurlsa module to extract cached domain credentials from memory on compromised systems, enabling lateral movement and privilege escalation.\n\nIn the Discovery phase, CrimsonTempest conducted internal reconnaissance by enumerating network shares on victim devices to identify sensitive data repositories and using tools like NETSCAN.EXE for network service discovery to map internal infrastructure. This was part of a coordinated effort to plan further attacks, with logs showing increased SMB traffic and port scanning activities across subnets.\n\nFor Command and Control (C2), the threat actor employed non-standard encoding, using a Base64 variant that substituted standard characters with '$' and '!' to obfuscate their communications and evade network-based detection. This was observed in outbound traffic to a command server hosted on a compromised cloud instance, with payloads being exfiltrated in small, encoded chunks to avoid data loss prevention systems. Noise in the network logs included routine backup traffic and DNS queries to legitimate services, which complicated initial analysis.\n\nThroughout the campaign, CrimsonTempest demonstrated a focus on stealth and persistence, leveraging cloud vulnerabilities and internal reconnaissance to maintain access. Blue teams should monitor for anomalies in cloud identity usage, macro-enabled document executions, and unusual network scanning patterns to detect similar threats.",
+    "tagged_text": "CrimsonTempest, a fictional advanced persistent threat (APT) group, conducted a simulated attack against a financial services organization, 'FinSecure Inc.', which operates a hybrid environment with Azure cloud services and on-premises Active Directory. The organization's security logs indicated unusual activity starting on October 15, 2023, with multiple failed login attempts from IP addresses associated with known malicious infrastructure in Eastern Europe. Initial reconnaissance likely involved scanning public-facing assets [T1589], but no specific techniques were tagged as this was part of the broader noise.\n\nIn the Initial Access phase, the adversary exploited compromised Azure Managed Identities to gain unauthorized access to virtual machines in the cloud environment [T1078.004]. This allowed them to bypass multi-factor authentication and establish a foothold without triggering immediate alerts. System logs from Azure Monitor showed anomalous identity usage patterns, but these were initially overlooked due to high volume of legitimate traffic.\n\nDuring Execution, the threat actor delivered a malicious Excel file, masquerading as a quarterly financial report, via a phishing email to a finance department employee. The user executed the file, which contained hidden macros that triggered PowerShell scripts to download additional payloads [T1204]. This action was logged in Windows Event Viewer under ID 4688, but the macros used obfuscation to evade basic antivirus scans.\n\nFor Persistence, the adversary manipulated a service account by executing the command 'net user svc_account /passwordchg:no' to prevent password changes, ensuring continued access even after initial compromises were addressed [T1098]. This was combined with modifying registry keys to maintain persistence across reboots [T1112], though the registry modification is not tagged as it was part of the multi-label approach. Additionally, they used Mimikatz sekurlsa module to extract cached domain credentials from memory on compromised systems [T1003.005], enabling lateral movement and privilege escalation.\n\nIn the Discovery phase, CrimsonTempest conducted internal reconnaissance by enumerating network shares on victim devices to identify sensitive data repositories [T1135] and using tools like NETSCAN.EXE for network service discovery to map internal infrastructure [T1046]. This was part of a coordinated effort to plan further attacks, with logs showing increased SMB traffic and port scanning activities across subnets.\n\nFor Command and Control (C2), the threat actor employed non-standard encoding, using a Base64 variant that substituted standard characters with '$' and '!' to obfuscate their communications and evade network-based detection [T1132.002]. This was observed in outbound traffic to a command server hosted on a compromised cloud instance, with payloads being exfiltrated in small, encoded chunks to avoid data loss prevention systems. Noise in the network logs included routine backup traffic and DNS queries to legitimate services, which complicated initial analysis.\n\nThroughout the campaign, CrimsonTempest demonstrated a focus on stealth and persistence, leveraging cloud vulnerabilities and internal reconnaissance to maintain access. Blue teams should monitor for anomalies in cloud identity usage, macro-enabled document executions, and unusual network scanning patterns to detect similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial reconnaissance likely involved scanning public-facing assets, but no specific techniques were tagged as this was part of the broader noise.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The user executed the file, which contained hidden macros that triggered PowerShell scripts to download additional payloads.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "For Persistence, the adversary manipulated a service account by executing the command 'net user svc_account /passwordchg:no' to prevent password changes, ensuring continued access even after initial compromises were addressed.",
+            "technique_id": "T1098",
+            "technique_name": "Account Manipulation"
+        },
+        {
+            "sentence": "This was combined with modifying registry keys to maintain persistence across reboots, though the registry modification is not tagged as it was part of the multi-label approach.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "In the Discovery phase, CrimsonTempest conducted internal reconnaissance by enumerating network shares on victim devices to identify sensitive data repositories and using tools like NETSCAN.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "EXE for network service discovery to map internal infrastructure.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Cloud Compromise and Lateral Movement Campaign",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'CrimsonTempest', targeting cloud environments and internal networks. The scenario involves initial access via compromised cloud accounts, user execution through malicious documents, account manipulation for persistence, credential theft, and internal reconnaissance using non-standard encoding for command and control. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "CrimsonTempest, a fictional advanced persistent threat (APT) group, conducted a simulated attack against a financial services organization, 'FinSecure Inc.', which operates a hybrid environment with Azure cloud services and on-premises Active Directory. The organization's security logs indicated unusual activity starting on October 15, 2023, with multiple failed login attempts from IP addresses associated with known malicious infrastructure in Eastern Europe. Initial reconnaissance likely involved scanning public-facing assets [T1589], but no specific techniques were tagged as this was part of the broader noise.\n\nIn the Initial Access phase, the adversary exploited compromised Azure Managed Identities to gain unauthorized access to virtual machines in the cloud environment [T1078.004]. This allowed them to bypass multi-factor authentication and establish a foothold without triggering immediate alerts. System logs from Azure Monitor showed anomalous identity usage patterns, but these were initially overlooked due to high volume of legitimate traffic.\n\nDuring Execution, the threat actor delivered a malicious Excel file, masquerading as a quarterly financial report, via a phishing email to a finance department employee. The user executed the file, which contained hidden macros that triggered PowerShell scripts to download additional payloads [T1204]. This action was logged in Windows Event Viewer under ID 4688, but the macros used obfuscation to evade basic antivirus scans.\n\nFor Persistence, the adversary manipulated a service account by executing the command 'net user svc_account /passwordchg:no' to prevent password changes, ensuring continued access even after initial compromises were addressed [T1098]. This was combined with modifying registry keys to maintain persistence across reboots [T1112], though the registry modification is not tagged as it was part of the multi-label approach. Additionally, they used Mimikatz sekurlsa module to extract cached domain credentials from memory on compromised systems [T1003.005], enabling lateral movement and privilege escalation.\n\nIn the Discovery phase, CrimsonTempest conducted internal reconnaissance by enumerating network shares on victim devices to identify sensitive data repositories [T1135] and using tools like NETSCAN.EXE for network service discovery to map internal infrastructure [T1046]. This was part of a coordinated effort to plan further attacks, with logs showing increased SMB traffic and port scanning activities across subnets.\n\nFor Command and Control (C2), the threat actor employed non-standard encoding, using a Base64 variant that substituted standard characters with '$' and '!' to obfuscate their communications and evade network-based detection [T1132.002]. This was observed in outbound traffic to a command server hosted on a compromised cloud instance, with payloads being exfiltrated in small, encoded chunks to avoid data loss prevention systems. Noise in the network logs included routine backup traffic and DNS queries to legitimate services, which complicated initial analysis.\n\nThroughout the campaign, CrimsonTempest demonstrated a focus on stealth and persistence, leveraging cloud vulnerabilities and internal reconnaissance to maintain access. Blue teams should monitor for anomalies in cloud identity usage, macro-enabled document executions, and unusual network scanning patterns to detect similar threats.",
+        "techniques_used": [
+            "T1078.004",
+            "T1204",
+            "T1098",
+            "T1003.005",
+            "T1135",
+            "T1046",
+            "T1132.002"
+        ]
+    }
+}

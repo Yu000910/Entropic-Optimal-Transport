@@ -1,0 +1,98 @@
+{
+    "report_id": "report_269",
+    "generated_at": "20251222_143550",
+    "scenario_target_ids": [
+        "T1596.003",
+        "T1190",
+        "T1059.002",
+        "T1505.001",
+        "T1547.010",
+        "T1037.003",
+        "T1542.001",
+        "T1552.007",
+        "T1497",
+        "T1016.002",
+        "T1049",
+        "T1573.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596.003",
+        "T1190",
+        "T1059.002",
+        "T1505.001",
+        "T1547.010",
+        "T1037.003",
+        "T1542.001",
+        "T1552.007",
+        "T1497",
+        "T1016.002",
+        "T1049",
+        "T1573.001"
+    ],
+    "actual_found_ids": [
+        "T1497",
+        "T1037.003",
+        "T1016.002",
+        "T1542.001",
+        "T1049",
+        "T1547.010",
+        "T1596.003",
+        "T1573.001",
+        "T1190",
+        "T1552.007",
+        "T1505.001",
+        "T1059.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'ShadowGale', which has been observed conducting sophisticated cyber operations against critical infrastructure entities. Initial analysis indicates that the actors likely conduct reconnaissance by querying public certificate databases to identify digital certificates associated with the target's email servers. Following this, the actors exploited a vulnerable FortiGate device to gain initial access, installing the COATHANGER malware. System logs from the compromised device show unusual network traffic patterns, but no immediate alerts were triggered due to misconfigured firewall rules. The malware then employed AppleScript to modify system firewall settings and utilized SQL stored procedures via xp_cmdshell to download and execute additional payloads from a remote server. For persistence, the actors dropped a rogue DLL named 'ps5ui.dll' into the appropriate drivers folder to hijack port monitors and altered Group Policy Object settings to run a backdoor script at system startup. A rootkit was embedded in the UEFI firmware to evade detection by security software, while the malware accessed the container runtime interface to retrieve logs containing hardcoded credentials from application containers. To avoid analysis, the malware executed PowerShell commands to check for virtual machine indicators and collected information on wireless interfaces within range of the compromised system. Additionally, the actors enumerated current network connections and used symmetric cryptography with a stream cipher to encrypt command and control communications. Background checks on the target organization revealed no prior incidents, but internal audits noted outdated software patches. The campaign's impact includes potential data exfiltration and system disruption, with ongoing investigations focusing on lateral movement indicators.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'ShadowGale', which has been observed conducting sophisticated cyber operations against critical infrastructure entities. Initial analysis indicates that the actors likely conduct reconnaissance by querying public certificate databases to identify digital certificates associated with the target's email servers [T1596.003]. Following this, the actors exploited a vulnerable FortiGate device to gain initial access [T1190], installing the COATHANGER malware. System logs from the compromised device show unusual network traffic patterns, but no immediate alerts were triggered due to misconfigured firewall rules. The malware then employed AppleScript [T1059.002] to modify system firewall settings and utilized SQL stored procedures via xp_cmdshell [T1505.001] to download and execute additional payloads from a remote server. For persistence, the actors dropped a rogue DLL named 'ps5ui.dll' into the appropriate drivers folder to hijack port monitors [T1547.010] and altered Group Policy Object settings to run a backdoor script at system startup [T1037.003]. A rootkit was embedded in the UEFI firmware to evade detection by security software [T1542.001], while the malware accessed the container runtime interface to retrieve logs containing hardcoded credentials from application containers [T1552.007]. To avoid analysis, the malware executed PowerShell commands to check for virtual machine indicators [T1497] and collected information on wireless interfaces within range of the compromised system [T1016.002]. Additionally, the actors enumerated current network connections [T1049] and used symmetric cryptography with a stream cipher to encrypt command and control communications [T1573.001]. Background checks on the target organization revealed no prior incidents, but internal audits noted outdated software patches. The campaign's impact includes potential data exfiltration and system disruption, with ongoing investigations focusing on lateral movement indicators.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following this, the actors exploited a vulnerable FortiGate device to gain initial access, installing the COATHANGER malware.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "To avoid analysis, the malware executed PowerShell commands to check for virtual machine indicators and collected information on wireless interfaces within range of the compromised system [T1016.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "Additionally, the actors enumerated current network connections and used symmetric cryptography with a stream cipher to encrypt command and control communications [T1573.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowGale', targeting critical infrastructure sectors. The campaign involves multi-stage attacks leveraging reconnaissance, exploitation, persistence mechanisms, and evasion techniques to compromise systems and exfiltrate data. Blue teams are advised to review logs, update defenses, and implement mitigations outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the fictional APT group 'ShadowGale', which has been observed conducting sophisticated cyber operations against critical infrastructure entities. Initial analysis indicates that the actors likely conduct reconnaissance by querying public certificate databases to identify digital certificates associated with the target's email servers [T1596.003]. Following this, the actors exploited a vulnerable FortiGate device to gain initial access [T1190], installing the COATHANGER malware. System logs from the compromised device show unusual network traffic patterns, but no immediate alerts were triggered due to misconfigured firewall rules. The malware then employed AppleScript [T1059.002] to modify system firewall settings and utilized SQL stored procedures via xp_cmdshell [T1505.001] to download and execute additional payloads from a remote server. For persistence, the actors dropped a rogue DLL named 'ps5ui.dll' into the appropriate drivers folder to hijack port monitors [T1547.010] and altered Group Policy Object settings to run a backdoor script at system startup [T1037.003]. A rootkit was embedded in the UEFI firmware to evade detection by security software [T1542.001], while the malware accessed the container runtime interface to retrieve logs containing hardcoded credentials from application containers [T1552.007]. To avoid analysis, the malware executed PowerShell commands to check for virtual machine indicators [T1497] and collected information on wireless interfaces within range of the compromised system [T1016.002]. Additionally, the actors enumerated current network connections [T1049] and used symmetric cryptography with a stream cipher to encrypt command and control communications [T1573.001]. Background checks on the target organization revealed no prior incidents, but internal audits noted outdated software patches. The campaign's impact includes potential data exfiltration and system disruption, with ongoing investigations focusing on lateral movement indicators.",
+        "techniques_used": [
+            "T1596.003",
+            "T1190",
+            "T1059.002",
+            "T1505.001",
+            "T1547.010",
+            "T1037.003",
+            "T1542.001",
+            "T1552.007",
+            "T1497",
+            "T1016.002",
+            "T1049",
+            "T1573.001"
+        ]
+    }
+}

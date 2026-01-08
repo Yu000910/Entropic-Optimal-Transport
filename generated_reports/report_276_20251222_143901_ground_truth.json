@@ -1,0 +1,98 @@
+{
+    "report_id": "report_276",
+    "generated_at": "20251222_143901",
+    "scenario_target_ids": [
+        "T1200",
+        "T1675",
+        "T1546.003",
+        "T1546.008",
+        "T1550.003",
+        "T1056.002",
+        "T1021",
+        "T1557.004",
+        "T1219",
+        "T1102.001",
+        "T1498.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1675",
+        "T1546.003",
+        "T1546.008",
+        "T1550.003",
+        "T1056.002",
+        "T1021",
+        "T1557.004",
+        "T1219",
+        "T1102.001",
+        "T1498.002"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1550.003",
+        "T1219",
+        "T1546.008",
+        "T1021",
+        "T1200",
+        "T1675",
+        "T1557.004",
+        "T1498.002",
+        "T1546.003",
+        "T1056.002"
+    ],
+    "clean_text": "On October 15, 2023, at approximately 14:30 UTC, security personnel at 'Global Finance Corp' detected anomalous network traffic originating from an unauthorized Raspberry Pi device physically connected to an internal switch in the corporate headquarters lobby. The device, disguised as a charging station, had been installed two days prior during a scheduled maintenance window, exploiting weak physical security controls. Initial investigation revealed that the actor used this foothold to deploy a malicious script via the vSphere Web Services SDK, executing system commands across multiple guest VMs in the ESXi environment to disable logging and exfiltrate configuration files. Concurrently, the adversary wrote a malicious MOF file to the system32 directory, establishing persistence through WMI event subscriptions that triggered upon system startup, and swapped utilman.exe with cmd.exe to gain highest privileges via accessibility features during login screens. To move laterally, the actor employed pass-the-ticket techniques using stolen Kerberos tickets for authentication to domain controllers, while also deploying a keylogger that captured GUI input during user login sessions to harvest additional credentials. Using these stolen SSH keys, the attacker remotely accessed production servers via SSH, establishing a persistent backdoor. As part of a credential harvesting phase, the malware deployed a fake captive portal mimicking the corporate login page through an evil twin attack on the internal Wi-Fi network, tricking employees into entering their credentials. For command and control (C2), the actor utilized a remote access tool disguised as a Windows Service named 'UpdateManager' to maintain persistent control over compromised systems, and employed dead drop resolvers by querying a hard-coded Twitter account to dynamically obtain C2 server addresses as a fallback mechanism. In the final stage, the attacker launched a distributed denial-of-service (DDoS) attack by exploiting DNS open resolvers to generate reflection amplification traffic, overwhelming the target's web servers and masking exfiltration activities. Logs from the ESXi host showed increased CPU usage at 15:00 UTC, coinciding with the execution of the vSphere commands, but no alerts were triggered due to disabled monitoring. The company's incident response team, upon reviewing firewall rules, noted unauthorized outbound connections to IP addresses in Eastern Europe, which were later attributed to C2 communications. Background: Global Finance Corp, a mid-sized bank with operations in North America and Europe, had recently migrated its infrastructure to a hybrid cloud model, introducing potential vulnerabilities in network segmentation. The attack was discovered during a routine audit of physical assets, highlighting the need for enhanced surveillance and access controls in public areas.",
+    "tagged_text": "On October 15, 2023, at approximately 14:30 UTC, security personnel at 'Global Finance Corp' detected anomalous network traffic originating from an unauthorized Raspberry Pi device physically connected to an internal switch in the corporate headquarters lobby [T1200]. The device, disguised as a charging station, had been installed two days prior during a scheduled maintenance window, exploiting weak physical security controls. Initial investigation revealed that the actor used this foothold to deploy a malicious script via the vSphere Web Services SDK, executing system commands across multiple guest VMs in the ESXi environment to disable logging and exfiltrate configuration files [T1675]. Concurrently, the adversary wrote a malicious MOF file to the system32 directory, establishing persistence through WMI event subscriptions that triggered upon system startup [T1546.003], and swapped utilman.exe with cmd.exe to gain highest privileges via accessibility features during login screens [T1546.008]. To move laterally, the actor employed pass-the-ticket techniques using stolen Kerberos tickets for authentication to domain controllers [T1550.003], while also deploying a keylogger that captured GUI input during user login sessions to harvest additional credentials [T1056.002]. Using these stolen SSH keys, the attacker remotely accessed production servers via SSH, establishing a persistent backdoor [T1021]. As part of a credential harvesting phase, the malware deployed a fake captive portal mimicking the corporate login page through an evil twin attack on the internal Wi-Fi network, tricking employees into entering their credentials [T1557.004]. For command and control (C2), the actor utilized a remote access tool disguised as a Windows Service named 'UpdateManager' to maintain persistent control over compromised systems [T1219], and employed dead drop resolvers by querying a hard-coded Twitter account to dynamically obtain C2 server addresses as a fallback mechanism [T1102.001]. In the final stage, the attacker launched a distributed denial-of-service (DDoS) attack by exploiting DNS open resolvers to generate reflection amplification traffic, overwhelming the target's web servers and masking exfiltration activities [T1498.002]. Logs from the ESXi host showed increased CPU usage at 15:00 UTC, coinciding with the execution of the vSphere commands, but no alerts were triggered due to disabled monitoring. The company's incident response team, upon reviewing firewall rules, noted unauthorized outbound connections to IP addresses in Eastern Europe, which were later attributed to C2 communications. Background: Global Finance Corp, a mid-sized bank with operations in North America and Europe, had recently migrated its infrastructure to a hybrid cloud model, introducing potential vulnerabilities in network segmentation. The attack was discovered during a routine audit of physical assets, highlighting the need for enhanced surveillance and access controls in public areas.",
+    "sentence_annotations": [
+        {
+            "sentence": "On October 15, 2023, at approximately 14:30 UTC, security personnel at 'Global Finance Corp' detected anomalous network traffic originating from an unauthorized Raspberry Pi device physically connected to an internal switch in the corporate headquarters lobby.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Initial investigation revealed that the actor used this foothold to deploy a malicious script via the vSphere Web Services SDK, executing system commands across multiple guest VMs in the ESXi environment to disable logging and exfiltrate configuration files.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "Using these stolen SSH keys, the attacker remotely accessed production servers via SSH, establishing a persistent backdoor.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "For command and control (C2), the actor utilized a remote access tool disguised as a Windows Service named 'UpdateManager' to maintain persistent control over compromised systems, and employed dead drop resolvers by querying a hard-coded Twitter account to dynamically obtain C2 server addresses as a fallback mechanism [T1102.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'DarkVishnya' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, 'DarkVishnya', targeting financial institutions through a multi-stage attack involving physical access, credential theft, and remote exploitation. The campaign leverages hardware implants, social engineering, and sophisticated persistence mechanisms to compromise virtualized environments and exfiltrate sensitive data. Blue teams are advised to review network segmentation, monitor for unauthorized hardware, and enforce strict authentication protocols.",
+        "full_report_text": "On October 15, 2023, at approximately 14:30 UTC, security personnel at 'Global Finance Corp' detected anomalous network traffic originating from an unauthorized Raspberry Pi device physically connected to an internal switch in the corporate headquarters lobby [T1200]. The device, disguised as a charging station, had been installed two days prior during a scheduled maintenance window, exploiting weak physical security controls. Initial investigation revealed that the actor used this foothold to deploy a malicious script via the vSphere Web Services SDK, executing system commands across multiple guest VMs in the ESXi environment to disable logging and exfiltrate configuration files [T1675]. Concurrently, the adversary wrote a malicious MOF file to the system32 directory, establishing persistence through WMI event subscriptions that triggered upon system startup [T1546.003], and swapped utilman.exe with cmd.exe to gain highest privileges via accessibility features during login screens [T1546.008]. To move laterally, the actor employed pass-the-ticket techniques using stolen Kerberos tickets for authentication to domain controllers [T1550.003], while also deploying a keylogger that captured GUI input during user login sessions to harvest additional credentials [T1056.002]. Using these stolen SSH keys, the attacker remotely accessed production servers via SSH, establishing a persistent backdoor [T1021]. As part of a credential harvesting phase, the malware deployed a fake captive portal mimicking the corporate login page through an evil twin attack on the internal Wi-Fi network, tricking employees into entering their credentials [T1557.004]. For command and control (C2), the actor utilized a remote access tool disguised as a Windows Service named 'UpdateManager' to maintain persistent control over compromised systems [T1219], and employed dead drop resolvers by querying a hard-coded Twitter account to dynamically obtain C2 server addresses as a fallback mechanism [T1102.001]. In the final stage, the attacker launched a distributed denial-of-service (DDoS) attack by exploiting DNS open resolvers to generate reflection amplification traffic, overwhelming the target's web servers and masking exfiltration activities [T1498.002]. Logs from the ESXi host showed increased CPU usage at 15:00 UTC, coinciding with the execution of the vSphere commands, but no alerts were triggered due to disabled monitoring. The company's incident response team, upon reviewing firewall rules, noted unauthorized outbound connections to IP addresses in Eastern Europe, which were later attributed to C2 communications. Background: Global Finance Corp, a mid-sized bank with operations in North America and Europe, had recently migrated its infrastructure to a hybrid cloud model, introducing potential vulnerabilities in network segmentation. The attack was discovered during a routine audit of physical assets, highlighting the need for enhanced surveillance and access controls in public areas.",
+        "techniques_used": [
+            "T1200",
+            "T1675",
+            "T1546.003",
+            "T1546.008",
+            "T1550.003",
+            "T1056.002",
+            "T1021",
+            "T1557.004",
+            "T1219",
+            "T1102.001",
+            "T1498.002"
+        ]
+    }
+}

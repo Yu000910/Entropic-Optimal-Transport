@@ -1,0 +1,128 @@
+{
+    "report_id": "report_634",
+    "generated_at": "20251222_171148",
+    "scenario_target_ids": [
+        "T1592.002",
+        "T1595",
+        "T1566.001",
+        "T1078.001",
+        "T1059.001",
+        "T1543.004",
+        "T1484.001",
+        "T1546.001",
+        "T1018",
+        "T1560",
+        "T1557.004",
+        "T1602",
+        "T1102.002",
+        "T1537",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.002",
+        "T1595",
+        "T1566.001",
+        "T1078.001",
+        "T1059.001",
+        "T1543.004",
+        "T1484.001",
+        "T1546.001",
+        "T1018",
+        "T1560",
+        "T1557.004",
+        "T1602",
+        "T1102.002",
+        "T1537",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1595",
+        "T1566.001",
+        "T1484.001",
+        "T1560",
+        "T1537",
+        "T1018",
+        "T1602",
+        "T1546.001",
+        "T1531",
+        "T1543.004",
+        "T1592.002",
+        "T1557.004",
+        "T1102.002",
+        "T1078.001",
+        "T1059.001"
+    ],
+    "clean_text": "On 2023-10-15, security analysts at 'InfraSecure Corp', a fictional energy company, detected anomalous network traffic originating from an external IP address. The company, which operates SCADA systems across multiple regions, reported no immediate impact but initiated an investigation that revealed a sophisticated intrusion campaign. The actors likely conducted reconnaissance by actively scanning network segments to identify vulnerable web servers, where malicious software collected HTTP server banners to determine software versions and potential exploits. Initial access was achieved when a targeted employee received a spearphishing email with a malicious Word document attachment, which, upon execution, dropped a payload that exploited the default Administrator password 'admin' on a compromised Windows server. Once inside, the adversary employed PowerShell to execute commands for lateral movement, dump credentials, and modify registry keys while simultaneously using net view to discover remote systems and establish persistence via a Launch Daemon. To maintain control, they modified Group Policy Objects to schedule malicious tasks and changed default file associations to trigger malware execution upon file access. Data collection involved extracting security policy configurations from local repositories and deploying an Evil Twin access point to intercept unencrypted HTTP traffic from connected devices. Before exfiltration, the actors archived collected data using encryption and established bidirectional communication with command-and-control servers through files uploaded to and downloaded from DropBox. Finally, they transferred sensitive documents to a controlled AWS account via Amazon S3 cross-account replication and removed global admin accounts to lock the organization out of access, as observed in system logs showing account deletion events at 03:00 UTC. The investigation is ongoing, with no evidence of data destruction beyond the simulated scenario.",
+    "tagged_text": "On 2023-10-15, security analysts at 'InfraSecure Corp', a fictional energy company, detected anomalous network traffic originating from an external IP address. The company, which operates SCADA systems across multiple regions, reported no immediate impact but initiated an investigation that revealed a sophisticated intrusion campaign. The actors likely conducted reconnaissance by actively scanning network segments [T1595] to identify vulnerable web servers, where malicious software collected HTTP server banners [T1592.002] to determine software versions and potential exploits. Initial access was achieved when a targeted employee received a spearphishing email with a malicious Word document attachment [T1566.001], which, upon execution, dropped a payload that exploited the default Administrator password 'admin' on a compromised Windows server [T1078.001]. Once inside, the adversary employed PowerShell [T1059.001] to execute commands for lateral movement, dump credentials, and modify registry keys while simultaneously using net view [T1018] to discover remote systems and establish persistence via a Launch Daemon [T1543.004]. To maintain control, they modified Group Policy Objects [T1484.001] to schedule malicious tasks and changed default file associations [T1546.001] to trigger malware execution upon file access. Data collection involved extracting security policy configurations from local repositories [T1602] and deploying an Evil Twin access point [T1557.004] to intercept unencrypted HTTP traffic from connected devices. Before exfiltration, the actors archived collected data using encryption [T1560] and established bidirectional communication with command-and-control servers through files uploaded to and downloaded from DropBox [T1102.002]. Finally, they transferred sensitive documents to a controlled AWS account via Amazon S3 cross-account replication [T1537] and removed global admin accounts [T1531] to lock the organization out of access, as observed in system logs showing account deletion events at 03:00 UTC. The investigation is ongoing, with no evidence of data destruction beyond the simulated scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance by actively scanning network segments to identify vulnerable web servers, where malicious software collected HTTP server banners [T1592.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "001] to execute commands for lateral movement, dump credentials, and modify registry keys while simultaneously using net view to discover remote systems and establish persistence via a Launch Daemon [T1543.",
+            "technique_id": "T1018",
+            "technique_name": "Remote System Discovery"
+        },
+        {
+            "sentence": "Data collection involved extracting security policy configurations from local repositories and deploying an Evil Twin access point [T1557.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "Before exfiltration, the actors archived collected data using encryption and established bidirectional communication with command-and-control servers through files uploaded to and downloaded from DropBox [T1102.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "Finally, they transferred sensitive documents to a controlled AWS account via Amazon S3 cross-account replication and removed global admin accounts to lock the organization out of access, as observed in system logs showing account deletion events at 03:00 UTC.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        },
+        {
+            "sentence": "Finally, they transferred sensitive documents to a controlled AWS account via Amazon S3 cross-account replication and removed global admin accounts to lock the organization out of access, as observed in system logs showing account deletion events at 03:00 UTC.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowViper' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowViper', which targets critical infrastructure sectors through a multi-phase attack involving reconnaissance, initial access via spearphishing, exploitation of default credentials, and data exfiltration to cloud accounts. The campaign leverages techniques such as active scanning, PowerShell execution, and group policy modification to maintain persistence and disrupt operations. Blue teams are advised to review logs for signs of these activities and implement mitigations like disabling default accounts and monitoring for unauthorized cloud transfers.",
+        "full_report_text": "On 2023-10-15, security analysts at 'InfraSecure Corp', a fictional energy company, detected anomalous network traffic originating from an external IP address. The company, which operates SCADA systems across multiple regions, reported no immediate impact but initiated an investigation that revealed a sophisticated intrusion campaign. The actors likely conducted reconnaissance by actively scanning network segments [T1595] to identify vulnerable web servers, where malicious software collected HTTP server banners [T1592.002] to determine software versions and potential exploits. Initial access was achieved when a targeted employee received a spearphishing email with a malicious Word document attachment [T1566.001], which, upon execution, dropped a payload that exploited the default Administrator password 'admin' on a compromised Windows server [T1078.001]. Once inside, the adversary employed PowerShell [T1059.001] to execute commands for lateral movement, dump credentials, and modify registry keys while simultaneously using net view [T1018] to discover remote systems and establish persistence via a Launch Daemon [T1543.004]. To maintain control, they modified Group Policy Objects [T1484.001] to schedule malicious tasks and changed default file associations [T1546.001] to trigger malware execution upon file access. Data collection involved extracting security policy configurations from local repositories [T1602] and deploying an Evil Twin access point [T1557.004] to intercept unencrypted HTTP traffic from connected devices. Before exfiltration, the actors archived collected data using encryption [T1560] and established bidirectional communication with command-and-control servers through files uploaded to and downloaded from DropBox [T1102.002]. Finally, they transferred sensitive documents to a controlled AWS account via Amazon S3 cross-account replication [T1537] and removed global admin accounts [T1531] to lock the organization out of access, as observed in system logs showing account deletion events at 03:00 UTC. The investigation is ongoing, with no evidence of data destruction beyond the simulated scenario.",
+        "techniques_used": [
+            "T1592.002",
+            "T1595",
+            "T1566.001",
+            "T1078.001",
+            "T1059.001",
+            "T1543.004",
+            "T1484.001",
+            "T1546.001",
+            "T1018",
+            "T1560",
+            "T1557.004",
+            "T1602",
+            "T1102.002",
+            "T1537",
+            "T1531"
+        ]
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "report_id": "report_622",
+    "generated_at": "20251222_170651",
+    "scenario_target_ids": [
+        "T1598.001",
+        "T1596",
+        "T1592.004",
+        "T1583.008",
+        "T1189",
+        "T1053.006",
+        "T1033",
+        "T1021.006",
+        "T1114",
+        "T1074.001",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1598.001",
+        "T1592.004",
+        "T1583.008",
+        "T1189",
+        "T1053.006",
+        "T1033",
+        "T1021.006",
+        "T1114",
+        "T1074.001",
+        "T1665"
+    ],
+    "actual_found_ids": [
+        "T1053.006",
+        "T1114",
+        "T1074.001",
+        "T1583.008",
+        "T1592.004",
+        "T1021.006",
+        "T1189",
+        "T1665",
+        "T1033",
+        "T1598.001",
+        "T1596"
+    ],
+    "clean_text": "Crimson Viper, a suspected state-sponsored actor, initiated this campaign by conducting reconnaissance on Acme Corp, a mid-sized software company with 500 employees. The actors searched WHOIS records to identify domain registration details, including administrative contacts and IP ranges. Based on this intelligence, they crafted spearphishing emails sent through Gmail, targeting specific IT administrators with requests for VPN client configuration details to appear legitimate. Concurrently, the attacker purchased ad inventory on a popular gaming platform to distribute trojanized software disguised as game mods, leveraging malvertising to reach a broader audience. Upon user interaction, the campaign utilized drive-by compromises via reflected cross-site scripting (XSS) on compromised government websites, redirecting victims to phishing webpages that delivered exploit kits. Once initial access was achieved, the adversary employed PowerShell to download additional payloads while modifying registry keys for persistence. They installed a custom systemd timer service to launch a keylogger upon system startup, ensuring long-term access. The malware then performed system owner/user discovery to obtain victim usernames and permissions, using this information to escalate privileges. The actor utilized Windows Remote Management (WinRM) to remotely access and command the compromised Windows systems, executing commands to maintain control. For data collection, a malicious script launched Outlook.exe to export sensitive email content to local files, staging the data in subdirectories under %Temp%\\reports\\% and copying files to those locations, while also creating a folder at C:\\Users\\AppData\\Roaming\\Microsoft\\store to store screenshot JPEG files. To evade detection, the malware employed a commercial VPN to hide command and control (C2) infrastructure from network monitoring tools. Throughout the campaign, system logs showed increased network traffic from unknown IP addresses, and Acme Corp's firewall flagged multiple failed login attempts from external sources, though these were initially dismissed as noise. The company's background includes recent mergers, which may have expanded their attack surface, but no direct correlation to the attack was confirmed.",
+    "tagged_text": "Crimson Viper, a suspected state-sponsored actor, initiated this campaign by conducting reconnaissance on Acme Corp, a mid-sized software company with 500 employees. The actors searched WHOIS records to identify domain registration details, including administrative contacts and IP ranges [T1596]. Based on this intelligence, they crafted spearphishing emails sent through Gmail, targeting specific IT administrators with requests for VPN client configuration details to appear legitimate [T1598.001][T1592.004]. Concurrently, the attacker purchased ad inventory on a popular gaming platform to distribute trojanized software disguised as game mods, leveraging malvertising to reach a broader audience [T1583.008]. Upon user interaction, the campaign utilized drive-by compromises via reflected cross-site scripting (XSS) on compromised government websites, redirecting victims to phishing webpages that delivered exploit kits [T1189]. Once initial access was achieved, the adversary employed PowerShell to download additional payloads while modifying registry keys for persistence. They installed a custom systemd timer service to launch a keylogger upon system startup, ensuring long-term access [T1053.006]. The malware then performed system owner/user discovery to obtain victim usernames and permissions, using this information to escalate privileges [T1033]. The actor utilized Windows Remote Management (WinRM) to remotely access and command the compromised Windows systems, executing commands to maintain control [T1021.006]. For data collection, a malicious script launched Outlook.exe to export sensitive email content to local files, staging the data in subdirectories under %Temp%\\reports\\% and copying files to those locations, while also creating a folder at C:\\Users\\AppData\\Roaming\\Microsoft\\store to store screenshot JPEG files [T1114][T1074.001]. To evade detection, the malware employed a commercial VPN to hide command and control (C2) infrastructure from network monitoring tools [T1665]. Throughout the campaign, system logs showed increased network traffic from unknown IP addresses, and Acme Corp's firewall flagged multiple failed login attempts from external sources, though these were initially dismissed as noise. The company's background includes recent mergers, which may have expanded their attack surface, but no direct correlation to the attack was confirmed.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors searched WHOIS records to identify domain registration details, including administrative contacts and IP ranges.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "Upon user interaction, the campaign utilized drive-by compromises via reflected cross-site scripting (XSS) on compromised government websites, redirecting victims to phishing webpages that delivered exploit kits.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "The malware then performed system owner/user discovery to obtain victim usernames and permissions, using this information to escalate privileges.",
+            "technique_id": "T1033",
+            "technique_name": "System Owner/User Discovery"
+        },
+        {
+            "sentence": "exe to export sensitive email content to local files, staging the data in subdirectories under %Temp%\\reports\\% and copying files to those locations, while also creating a folder at C:\\Users\\AppData\\Roaming\\Microsoft\\store to store screenshot JPEG files[T1074.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "To evade detection, the malware employed a commercial VPN to hide command and control (C2) infrastructure from network monitoring tools.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Viper,' targeting organizations in the technology sector. The campaign employs a multi-faceted approach involving spearphishing, malvertising, and exploitation to gain initial access, followed by persistence mechanisms and data exfiltration. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "Crimson Viper, a suspected state-sponsored actor, initiated this campaign by conducting reconnaissance on Acme Corp, a mid-sized software company with 500 employees. The actors searched WHOIS records to identify domain registration details, including administrative contacts and IP ranges [T1596]. Based on this intelligence, they crafted spearphishing emails sent through Gmail, targeting specific IT administrators with requests for VPN client configuration details to appear legitimate [T1598.001][T1592.004]. Concurrently, the attacker purchased ad inventory on a popular gaming platform to distribute trojanized software disguised as game mods, leveraging malvertising to reach a broader audience [T1583.008]. Upon user interaction, the campaign utilized drive-by compromises via reflected cross-site scripting (XSS) on compromised government websites, redirecting victims to phishing webpages that delivered exploit kits [T1189]. Once initial access was achieved, the adversary employed PowerShell to download additional payloads while modifying registry keys for persistence. They installed a custom systemd timer service to launch a keylogger upon system startup, ensuring long-term access [T1053.006]. The malware then performed system owner/user discovery to obtain victim usernames and permissions, using this information to escalate privileges [T1033]. The actor utilized Windows Remote Management (WinRM) to remotely access and command the compromised Windows systems, executing commands to maintain control [T1021.006]. For data collection, a malicious script launched Outlook.exe to export sensitive email content to local files, staging the data in subdirectories under %Temp%\\reports\\% and copying files to those locations, while also creating a folder at C:\\Users\\AppData\\Roaming\\Microsoft\\store to store screenshot JPEG files [T1114][T1074.001]. To evade detection, the malware employed a commercial VPN to hide command and control (C2) infrastructure from network monitoring tools [T1665]. Throughout the campaign, system logs showed increased network traffic from unknown IP addresses, and Acme Corp's firewall flagged multiple failed login attempts from external sources, though these were initially dismissed as noise. The company's background includes recent mergers, which may have expanded their attack surface, but no direct correlation to the attack was confirmed.",
+        "techniques_used": [
+            "T1596",
+            "T1598.001",
+            "T1592.004",
+            "T1583.008",
+            "T1189",
+            "T1053.006",
+            "T1033",
+            "T1021.006",
+            "T1114",
+            "T1074.001",
+            "T1665"
+        ]
+    }
+}

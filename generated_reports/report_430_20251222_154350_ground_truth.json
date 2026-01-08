@@ -1,0 +1,118 @@
+{
+    "report_id": "report_430",
+    "generated_at": "20251222_154350",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1204.003",
+        "T1556.009",
+        "T1137.002",
+        "T1484",
+        "T1555.002",
+        "T1580",
+        "T1021.008",
+        "T1213.003",
+        "T1056.001",
+        "T1557.003",
+        "T1219.002",
+        "T1572",
+        "T1657",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1213.003",
+        "T1580",
+        "T1204.003",
+        "T1496.001",
+        "T1137.002",
+        "T1556.009",
+        "T1078.002",
+        "T1484",
+        "T1555.002",
+        "T1557.003",
+        "T1021.008",
+        "T1219.002",
+        "T1572",
+        "T1056.001",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1496.001",
+        "T1572",
+        "T1484",
+        "T1213.003",
+        "T1056.001",
+        "T1021.008",
+        "T1580",
+        "T1657",
+        "T1078.002",
+        "T1557.003",
+        "T1137.002",
+        "T1556.009",
+        "T1219.002",
+        "T1204.003",
+        "T1555.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. This report simulates an attack by the APT group 'ShadowDocker', active since early 2024, focusing on financial services and technology sectors. Initial reconnaissance likely involved scanning for exposed Docker APIs and cloud storage endpoints, though specific logs from firewall IDS-001 show increased traffic on port 2375, which is unrelated to the initial access vector. The actors first gained initial access by exploiting weak credentials in a developer's GitHub account, allowing them to steal sensitive environment variables stored in organization secrets. Once inside, they used these credentials to authenticate to the corporate Azure tenant, where they conducted cloud infrastructure discovery via the ListBuckets API to map all accessible storage resources. For execution, the adversary created a malicious Docker image that silently installed credential harvesting tools during container initialization and deployed it on compromised systems by exploiting exposed Docker API endpoints, leading to compute hijacking for cryptocurrency mining. To establish persistence, they modified Office registry settings to execute malicious code through the Office Test mechanism and manipulated Entra ID conditional access policies to remove session timeout limitations. For privilege escalation, they used compromised domain administrator accounts to modify Group Policy objects, deploying scripts across the domain. Defense evasion involved dumping securityd's memory space to recover unencrypted Safari autofill data and employing DHCP spoofing to redirect DNS queries to a malicious server. For lateral movement, the actors used the Azure Serial Console to gain command-line access to virtual machines and abused Remote Desktop Software like TeamViewer for interactive control, while also setting up protocol tunneling with Plink to tunnel RDP over SSH. Collection activities included keylogging to capture user credentials and exfiltrate data via cloud storage mapped earlier. The campaign culminated in financial theft, where the attacker used business email compromise to request gift card purchases from employees. Incident response logs from server SRV-005 indicate unusual PowerShell activity, but this was a false positive related to a scheduled backup script. Organizations should review conditional access policies, monitor for unauthorized container deployments, and enforce multi-factor authentication to mitigate these risks.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. This report simulates an attack by the APT group 'ShadowDocker', active since early 2024, focusing on financial services and technology sectors. Initial reconnaissance likely involved scanning for exposed Docker APIs and cloud storage endpoints, though specific logs from firewall IDS-001 show increased traffic on port 2375, which is unrelated to the initial access vector. The actors first gained initial access by exploiting weak credentials in a developer's GitHub account, allowing them to steal sensitive environment variables stored in organization secrets [T1213.003]. Once inside, they used these credentials to authenticate to the corporate Azure tenant, where they conducted cloud infrastructure discovery [T1580] via the ListBuckets API to map all accessible storage resources. For execution, the adversary created a malicious Docker image that silently installed credential harvesting tools during container initialization [T1204.003] and deployed it on compromised systems by exploiting exposed Docker API endpoints, leading to compute hijacking [T1496.001] for cryptocurrency mining. To establish persistence, they modified Office registry settings to execute malicious code through the Office Test mechanism [T1137.002] and manipulated Entra ID conditional access policies to remove session timeout limitations [T1556.009]. For privilege escalation, they used compromised domain administrator accounts [T1078.002] to modify Group Policy objects, deploying scripts across the domain [T1484]. Defense evasion involved dumping securityd's memory space to recover unencrypted Safari autofill data [T1555.002] and employing DHCP spoofing [T1557.003] to redirect DNS queries to a malicious server. For lateral movement, the actors used the Azure Serial Console to gain command-line access to virtual machines [T1021.008] and abused Remote Desktop Software like TeamViewer for interactive control [T1219.002], while also setting up protocol tunneling with Plink to tunnel RDP over SSH [T1572]. Collection activities included keylogging [T1056.001] to capture user credentials and exfiltrate data via cloud storage mapped earlier. The campaign culminated in financial theft [T1657], where the attacker used business email compromise to request gift card purchases from employees. Incident response logs from server SRV-005 indicate unusual PowerShell activity, but this was a false positive related to a scheduled backup script. Organizations should review conditional access policies, monitor for unauthorized container deployments, and enforce multi-factor authentication to mitigate these risks.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, they used these credentials to authenticate to the corporate Azure tenant, where they conducted cloud infrastructure discovery via the ListBuckets API to map all accessible storage resources.",
+            "technique_id": "T1580",
+            "technique_name": "Cloud Infrastructure Discovery"
+        },
+        {
+            "sentence": "002] to modify Group Policy objects, deploying scripts across the domain.",
+            "technique_id": "T1484",
+            "technique_name": "Domain or Tenant Policy Modification"
+        },
+        {
+            "sentence": "002], while also setting up protocol tunneling with Plink to tunnel RDP over SSH.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "The campaign culminated in financial theft, where the attacker used business email compromise to request gift card purchases from employees.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowDocker' Targeting Cloud and Containerized Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowDocker', targeting organizations with hybrid cloud and on-premises infrastructure. The campaign leverages compromised domain accounts, container manipulation, and cloud service abuse to achieve persistence, lateral movement, data exfiltration, and financial theft. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed TTPs. This report simulates an attack by the APT group 'ShadowDocker', active since early 2024, focusing on financial services and technology sectors. Initial reconnaissance likely involved scanning for exposed Docker APIs and cloud storage endpoints, though specific logs from firewall IDS-001 show increased traffic on port 2375, which is unrelated to the initial access vector. The actors first gained initial access by exploiting weak credentials in a developer's GitHub account, allowing them to steal sensitive environment variables stored in organization secrets [T1213.003]. Once inside, they used these credentials to authenticate to the corporate Azure tenant, where they conducted cloud infrastructure discovery [T1580] via the ListBuckets API to map all accessible storage resources. For execution, the adversary created a malicious Docker image that silently installed credential harvesting tools during container initialization [T1204.003] and deployed it on compromised systems by exploiting exposed Docker API endpoints, leading to compute hijacking [T1496.001] for cryptocurrency mining. To establish persistence, they modified Office registry settings to execute malicious code through the Office Test mechanism [T1137.002] and manipulated Entra ID conditional access policies to remove session timeout limitations [T1556.009]. For privilege escalation, they used compromised domain administrator accounts [T1078.002] to modify Group Policy objects, deploying scripts across the domain [T1484]. Defense evasion involved dumping securityd's memory space to recover unencrypted Safari autofill data [T1555.002] and employing DHCP spoofing [T1557.003] to redirect DNS queries to a malicious server. For lateral movement, the actors used the Azure Serial Console to gain command-line access to virtual machines [T1021.008] and abused Remote Desktop Software like TeamViewer for interactive control [T1219.002], while also setting up protocol tunneling with Plink to tunnel RDP over SSH [T1572]. Collection activities included keylogging [T1056.001] to capture user credentials and exfiltrate data via cloud storage mapped earlier. The campaign culminated in financial theft [T1657], where the attacker used business email compromise to request gift card purchases from employees. Incident response logs from server SRV-005 indicate unusual PowerShell activity, but this was a false positive related to a scheduled backup script. Organizations should review conditional access policies, monitor for unauthorized container deployments, and enforce multi-factor authentication to mitigate these risks.",
+        "techniques_used": [
+            "T1213.003",
+            "T1580",
+            "T1204.003",
+            "T1496.001",
+            "T1137.002",
+            "T1556.009",
+            "T1078.002",
+            "T1484",
+            "T1555.002",
+            "T1557.003",
+            "T1021.008",
+            "T1219.002",
+            "T1572",
+            "T1056.001",
+            "T1657"
+        ]
+    }
+}

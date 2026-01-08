@@ -1,0 +1,138 @@
+{
+    "report_id": "report_364",
+    "generated_at": "20251222_151548",
+    "scenario_target_ids": [
+        "T1598",
+        "T1596.002",
+        "T1566.004",
+        "T1566.001",
+        "T1204.004",
+        "T1612",
+        "T1599",
+        "T1578",
+        "T1556.006",
+        "T1012",
+        "T1497.002",
+        "T1046",
+        "T1550.003",
+        "T1213.001",
+        "T1090.002",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1598",
+        "T1596.002",
+        "T1566.004",
+        "T1566.001",
+        "T1204.004",
+        "T1612",
+        "T1599",
+        "T1578",
+        "T1556.006",
+        "T1012",
+        "T1497.002",
+        "T1046",
+        "T1550.003",
+        "T1213.001",
+        "T1090.002",
+        "T1020"
+    ],
+    "actual_found_ids": [
+        "T1598",
+        "T1566.001",
+        "T1012",
+        "T1566.004",
+        "T1497.002",
+        "T1046",
+        "T1550.003",
+        "T1599",
+        "T1556.006",
+        "T1578",
+        "T1213.001",
+        "T1596.002",
+        "T1204.004",
+        "T1612",
+        "T1090.002",
+        "T1020"
+    ],
+    "clean_text": "### Background\nOn October 15, 2023, a mid-sized financial institution, 'SecureBank Inc.', reported anomalous network activity. SecureBank, headquartered in New York with 500 employees, specializes in digital payment solutions. Initial logs from their SIEM showed unusual outbound traffic to unknown IP addresses, but no alerts were triggered for common malware signatures. The incident response team was activated after a user reported suspicious emails.\n\n### Attack Narrative\n**Reconnaissance:** The actors likely conducted reconnaissance by searching various online WHOIS lookup tools to identify SecureBank's domain registration patterns and technical contacts, while simultaneously targeting employees with credential phishing e-mails to gather initial intelligence.\n\n**Initial Access:** The adversary gained initial access through a multi-vector approach, using a phone call to persuade a user to download and run a TeamViewer executable and delivering malicious email attachments that mimicked legitimate invoices.\n\n**Execution:** Upon execution, the attacker used social engineering to trick the user into pasting and executing a malicious command in the terminal, which exploited the Docker engine API to launch a container that concealed fileless malware execution while reading data from the Registry including from `HKLM\\Software\\NFC\\IPA` and `HKLM\\Software\\NFC\\`.\n\n**Persistence and Defense Evasion:** To maintain access, the malware removed backup snapshots to ensure persistence and hinder forensic investigation efforts, and the trojan searched system logs for 'malware.exe' entries to assess detection status. Additionally, the AADInternals `Set-AADIntUserMFA` command was used to disable MFA for a specified user.\n\n**Lateral Movement and Privilege Escalation:** The actors moved laterally by using masscan to look for kubelets in the internal Kubernetes network and injected a forged Kerberos ticket into the current session to bypass access controls on the target server. They also modified the firewall's access control lists to permit cross-segment communication for data exfiltration.\n\n**Collection and Exfiltration:** Sensitive deployment procedures were collected from the company's Confluence repository, and the malware collected malicious.exe from the compromised system before exfiltration, using a modified version of HTRAN to redirect connections between networks.\n\n### Mitigation Recommendations\nImplement multi-factor authentication, restrict Docker API access, monitor for unusual registry queries, and conduct regular security awareness training. No further details on actor attribution are available in this fictional scenario.",
+    "tagged_text": "### Background\nOn October 15, 2023, a mid-sized financial institution, 'SecureBank Inc.', reported anomalous network activity. SecureBank, headquartered in New York with 500 employees, specializes in digital payment solutions. Initial logs from their SIEM showed unusual outbound traffic to unknown IP addresses, but no alerts were triggered for common malware signatures. The incident response team was activated after a user reported suspicious emails.\n\n### Attack Narrative\n**Reconnaissance:** The actors likely conducted reconnaissance by searching various online WHOIS lookup tools [T1596.002] to identify SecureBank's domain registration patterns and technical contacts, while simultaneously targeting employees with credential phishing e-mails [T1598] to gather initial intelligence.\n\n**Initial Access:** The adversary gained initial access through a multi-vector approach, using a phone call to persuade a user to download and run a TeamViewer executable [T1566.004] and delivering malicious email attachments [T1566.001] that mimicked legitimate invoices.\n\n**Execution:** Upon execution, the attacker used social engineering to trick the user into pasting and executing a malicious command in the terminal [T1204.004], which exploited the Docker engine API to launch a container that concealed fileless malware execution [T1612] while reading data from the Registry including from `HKLM\\Software\\NFC\\IPA` and `HKLM\\Software\\NFC\\` [T1012].\n\n**Persistence and Defense Evasion:** To maintain access, the malware removed backup snapshots to ensure persistence and hinder forensic investigation efforts [T1578], and the trojan searched system logs for 'malware.exe' entries to assess detection status [T1497.002]. Additionally, the AADInternals `Set-AADIntUserMFA` command was used to disable MFA for a specified user [T1556.006].\n\n**Lateral Movement and Privilege Escalation:** The actors moved laterally by using masscan to look for kubelets in the internal Kubernetes network [T1046] and injected a forged Kerberos ticket into the current session to bypass access controls on the target server [T1550.003]. They also modified the firewall's access control lists to permit cross-segment communication for data exfiltration [T1599].\n\n**Collection and Exfiltration:** Sensitive deployment procedures were collected from the company's Confluence repository [T1213.001], and the malware collected malicious.exe from the compromised system before exfiltration [T1020], using a modified version of HTRAN to redirect connections between networks [T1090.002].\n\n### Mitigation Recommendations\nImplement multi-factor authentication, restrict Docker API access, monitor for unusual registry queries, and conduct regular security awareness training. No further details on actor attribution are available in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] to identify SecureBank's domain registration patterns and technical contacts, while simultaneously targeting employees with credential phishing e-mails to gather initial intelligence.",
+            "technique_id": "T1598",
+            "technique_name": "Phishing for Information"
+        },
+        {
+            "sentence": "004], which exploited the Docker engine API to launch a container that concealed fileless malware execution while reading data from the Registry including from `HKLM\\Software\\NFC\\IPA` and `HKLM\\Software\\NFC\\`.",
+            "technique_id": "T1612",
+            "technique_name": "Build Image on Host"
+        },
+        {
+            "sentence": "004], which exploited the Docker engine API to launch a container that concealed fileless malware execution while reading data from the Registry including from `HKLM\\Software\\NFC\\IPA` and `HKLM\\Software\\NFC\\`.",
+            "technique_id": "T1012",
+            "technique_name": "Query Registry"
+        },
+        {
+            "sentence": "**Persistence and Defense Evasion:** To maintain access, the malware removed backup snapshots to ensure persistence and hinder forensic investigation efforts, and the trojan searched system logs for 'malware.",
+            "technique_id": "T1578",
+            "technique_name": "Modify Cloud Compute Infrastructure"
+        },
+        {
+            "sentence": "**Lateral Movement and Privilege Escalation:** The actors moved laterally by using masscan to look for kubelets in the internal Kubernetes network and injected a forged Kerberos ticket into the current session to bypass access controls on the target server [T1550.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "They also modified the firewall's access control lists to permit cross-segment communication for data exfiltration.",
+            "technique_id": "T1599",
+            "technique_name": "Network Boundary Bridging"
+        },
+        {
+            "sentence": "exe from the compromised system before exfiltration, using a modified version of HTRAN to redirect connections between networks [T1090.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeave' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowWeave' against a financial institution, leveraging sophisticated techniques across the kill-chain for initial access, execution, persistence, and exfiltration, based on provided scenario techniques for blue team training.",
+        "full_report_text": "### Background\nOn October 15, 2023, a mid-sized financial institution, 'SecureBank Inc.', reported anomalous network activity. SecureBank, headquartered in New York with 500 employees, specializes in digital payment solutions. Initial logs from their SIEM showed unusual outbound traffic to unknown IP addresses, but no alerts were triggered for common malware signatures. The incident response team was activated after a user reported suspicious emails.\n\n### Attack Narrative\n**Reconnaissance:** The actors likely conducted reconnaissance by searching various online WHOIS lookup tools [T1596.002] to identify SecureBank's domain registration patterns and technical contacts, while simultaneously targeting employees with credential phishing e-mails [T1598] to gather initial intelligence.\n\n**Initial Access:** The adversary gained initial access through a multi-vector approach, using a phone call to persuade a user to download and run a TeamViewer executable [T1566.004] and delivering malicious email attachments [T1566.001] that mimicked legitimate invoices.\n\n**Execution:** Upon execution, the attacker used social engineering to trick the user into pasting and executing a malicious command in the terminal [T1204.004], which exploited the Docker engine API to launch a container that concealed fileless malware execution [T1612] while reading data from the Registry including from `HKLM\\Software\\NFC\\IPA` and `HKLM\\Software\\NFC\\` [T1012].\n\n**Persistence and Defense Evasion:** To maintain access, the malware removed backup snapshots to ensure persistence and hinder forensic investigation efforts [T1578], and the trojan searched system logs for 'malware.exe' entries to assess detection status [T1497.002]. Additionally, the AADInternals `Set-AADIntUserMFA` command was used to disable MFA for a specified user [T1556.006].\n\n**Lateral Movement and Privilege Escalation:** The actors moved laterally by using masscan to look for kubelets in the internal Kubernetes network [T1046] and injected a forged Kerberos ticket into the current session to bypass access controls on the target server [T1550.003]. They also modified the firewall's access control lists to permit cross-segment communication for data exfiltration [T1599].\n\n**Collection and Exfiltration:** Sensitive deployment procedures were collected from the company's Confluence repository [T1213.001], and the malware collected malicious.exe from the compromised system before exfiltration [T1020], using a modified version of HTRAN to redirect connections between networks [T1090.002].\n\n### Mitigation Recommendations\nImplement multi-factor authentication, restrict Docker API access, monitor for unusual registry queries, and conduct regular security awareness training. No further details on actor attribution are available in this fictional scenario.",
+        "techniques_used": [
+            "T1598",
+            "T1596.002",
+            "T1566.004",
+            "T1566.001",
+            "T1204.004",
+            "T1612",
+            "T1599",
+            "T1578",
+            "T1556.006",
+            "T1012",
+            "T1497.002",
+            "T1046",
+            "T1550.003",
+            "T1213.001",
+            "T1090.002",
+            "T1020"
+        ]
+    }
+}

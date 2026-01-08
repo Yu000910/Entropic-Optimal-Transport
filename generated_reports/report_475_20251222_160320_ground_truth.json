@@ -1,0 +1,108 @@
+{
+    "report_id": "report_475",
+    "generated_at": "20251222_160320",
+    "scenario_target_ids": [
+        "T1595.001",
+        "T1598.004",
+        "T1590.004",
+        "T1584.008",
+        "T1608.005",
+        "T1078.003",
+        "T1078",
+        "T1648",
+        "T1556.003",
+        "T1574.013",
+        "T1619",
+        "T1497.003",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1595.001",
+        "T1590.004",
+        "T1584.008",
+        "T1598.004",
+        "T1608.005",
+        "T1078.003",
+        "T1078",
+        "T1648",
+        "T1619",
+        "T1556.003",
+        "T1574.013",
+        "T1497.003",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1584.008",
+        "T1556.003",
+        "T1590.004",
+        "T1497.003",
+        "T1595.001",
+        "T1598.004",
+        "T1608.005",
+        "T1078",
+        "T1574.013",
+        "T1619",
+        "T1573",
+        "T1078.003",
+        "T1648"
+    ],
+    "clean_text": "Silent Echo likely initiated the campaign by conducting reconnaissance to map the victim's internal network structure, using ICMP echo requests to scan IP blocks and employing tools like nmap to identify open ports and gather network topology information. During this phase, the actors also leveraged compromised and out-of-support Cyberoam VPN appliances for command and control (C2) communications, as noted in system logs from a mid-sized bank's perimeter firewall. Following reconnaissance, the group used spearphishing voice calls to instruct victims to navigate to credential-harvesting websites, where they crafted HTML pages that appeared as software update prompts to execute malware when clicked. Upon execution, the malware collected stored credentials from Windows Credential Manager to access local administrative accounts and used stolen credentials to compromise Outlook Web Access (OWA) for lateral movement. In the cloud environment, the actors exploited a vulnerable Lambda function to deploy backdoor access through serverless execution and leveraged boto3's list_objects_v2 function to systematically enumerate S3 bucket contents for cloud storage object discovery. To maintain persistence, they modified the pam_unix.so module to log all authentication attempts to a hidden file and employed WriteProcessMemory to inject malicious code into a legitimate browser process via the KernelCallbackTable. For evasion, the ransomware invoked 'systeminfo.exe' to check for virtualization artifacts before proceeding with encryption in a time-based evasion tactic, while using an encrypted HTTP proxy for C2 communications to establish an encrypted channel. Additional logs from the victim's SIEM showed unrelated failed login attempts and routine backup processes, which were not part of the attack chain.",
+    "tagged_text": "Silent Echo likely initiated the campaign by conducting reconnaissance to map the victim's internal network structure, using ICMP echo requests to scan IP blocks [T1595.001] and employing tools like nmap to identify open ports and gather network topology information [T1590.004]. During this phase, the actors also leveraged compromised and out-of-support Cyberoam VPN appliances for command and control (C2) communications [T1584.008], as noted in system logs from a mid-sized bank's perimeter firewall. Following reconnaissance, the group used spearphishing voice calls to instruct victims to navigate to credential-harvesting websites [T1598.004], where they crafted HTML pages that appeared as software update prompts to execute malware when clicked [T1608.005]. Upon execution, the malware collected stored credentials from Windows Credential Manager to access local administrative accounts [T1078.003] and used stolen credentials to compromise Outlook Web Access (OWA) for lateral movement [T1078]. In the cloud environment, the actors exploited a vulnerable Lambda function to deploy backdoor access through serverless execution [T1648] and leveraged boto3's list_objects_v2 function to systematically enumerate S3 bucket contents for cloud storage object discovery [T1619]. To maintain persistence, they modified the pam_unix.so module to log all authentication attempts to a hidden file [T1556.003] and employed WriteProcessMemory to inject malicious code into a legitimate browser process via the KernelCallbackTable [T1574.013]. For evasion, the ransomware invoked 'systeminfo.exe' to check for virtualization artifacts before proceeding with encryption in a time-based evasion tactic [T1497.003], while using an encrypted HTTP proxy for C2 communications to establish an encrypted channel [T1573]. Additional logs from the victim's SIEM showed unrelated failed login attempts and routine backup processes, which were not part of the attack chain.",
+    "sentence_annotations": [
+        {
+            "sentence": "003] and used stolen credentials to compromise Outlook Web Access (OWA) for lateral movement.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "In the cloud environment, the actors exploited a vulnerable Lambda function to deploy backdoor access through serverless execution and leveraged boto3's list_objects_v2 function to systematically enumerate S3 bucket contents for cloud storage object discovery.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "In the cloud environment, the actors exploited a vulnerable Lambda function to deploy backdoor access through serverless execution and leveraged boto3's list_objects_v2 function to systematically enumerate S3 bucket contents for cloud storage object discovery.",
+            "technique_id": "T1619",
+            "technique_name": "Cloud Storage Object Discovery"
+        },
+        {
+            "sentence": "003], while using an encrypted HTTP proxy for C2 communications to establish an encrypted channel.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Echo' Targeting Financial Sector",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated campaign by a fictional APT group, designated 'Silent Echo,' targeting financial institutions. This advisory provides insights into observed tactics, techniques, and procedures (TTPs) for blue team training, including initial reconnaissance, credential harvesting, lateral movement, and evasion in hybrid environments. The scenario is based on hypothetical intelligence and does not reflect real-world events.",
+        "full_report_text": "Silent Echo likely initiated the campaign by conducting reconnaissance to map the victim's internal network structure, using ICMP echo requests to scan IP blocks [T1595.001] and employing tools like nmap to identify open ports and gather network topology information [T1590.004]. During this phase, the actors also leveraged compromised and out-of-support Cyberoam VPN appliances for command and control (C2) communications [T1584.008], as noted in system logs from a mid-sized bank's perimeter firewall. Following reconnaissance, the group used spearphishing voice calls to instruct victims to navigate to credential-harvesting websites [T1598.004], where they crafted HTML pages that appeared as software update prompts to execute malware when clicked [T1608.005]. Upon execution, the malware collected stored credentials from Windows Credential Manager to access local administrative accounts [T1078.003] and used stolen credentials to compromise Outlook Web Access (OWA) for lateral movement [T1078]. In the cloud environment, the actors exploited a vulnerable Lambda function to deploy backdoor access through serverless execution [T1648] and leveraged boto3's list_objects_v2 function to systematically enumerate S3 bucket contents for cloud storage object discovery [T1619]. To maintain persistence, they modified the pam_unix.so module to log all authentication attempts to a hidden file [T1556.003] and employed WriteProcessMemory to inject malicious code into a legitimate browser process via the KernelCallbackTable [T1574.013]. For evasion, the ransomware invoked 'systeminfo.exe' to check for virtualization artifacts before proceeding with encryption in a time-based evasion tactic [T1497.003], while using an encrypted HTTP proxy for C2 communications to establish an encrypted channel [T1573]. Additional logs from the victim's SIEM showed unrelated failed login attempts and routine backup processes, which were not part of the attack chain.",
+        "techniques_used": [
+            "T1595.001",
+            "T1590.004",
+            "T1584.008",
+            "T1598.004",
+            "T1608.005",
+            "T1078.003",
+            "T1078",
+            "T1648",
+            "T1619",
+            "T1556.003",
+            "T1574.013",
+            "T1497.003",
+            "T1573"
+        ]
+    }
+}

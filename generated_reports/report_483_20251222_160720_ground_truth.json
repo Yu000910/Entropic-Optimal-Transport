@@ -1,0 +1,156 @@
+{
+    "report_id": "report_483",
+    "generated_at": "20251222_160720",
+    "scenario_target_ids": [
+        "T1588.006",
+        "T1588.001",
+        "T1566.001",
+        "T1199",
+        "T1204",
+        "T1547.008",
+        "T1070.004",
+        "T1542.001",
+        "T1016.001",
+        "T1614.001",
+        "T1518",
+        "T1550.002",
+        "T1091",
+        "T1557.004",
+        "T1113",
+        "T1071.002",
+        "T1561.002",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1588.006",
+        "T1588.001",
+        "T1566.001",
+        "T1199",
+        "T1204",
+        "T1547.008",
+        "T1542.001",
+        "T1016.001",
+        "T1614.001",
+        "T1518",
+        "T1550.002",
+        "T1091",
+        "T1557.004",
+        "T1113",
+        "T1071.002",
+        "T1070.004",
+        "T1561.002",
+        "T1565"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1091",
+        "T1518",
+        "T1565",
+        "T1557.004",
+        "T1204",
+        "T1016.001",
+        "T1566.001",
+        "T1542.001",
+        "T1550.002",
+        "T1589",
+        "T1561.002",
+        "T1070.004",
+        "T1199",
+        "T1113",
+        "T1059.001",
+        "T1588.006",
+        "T1112",
+        "T1547.008",
+        "T1614.001",
+        "T1588.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign dubbed 'ShadowCascade'. This actor, believed to operate with financial motives, has been observed targeting mid-sized banks in the U.S. over the past six months. Initial analysis suggests the campaign began in early 2024, with logs from compromised systems showing anomalous network traffic patterns starting around March. The company 'SecureBank Corp.', a fictional entity with 500 employees, reported unusual activity on its internal file server, prompting this investigation.\n\nAttack Narrative:\n- **Reconnaissance and Initial Access**: ShadowCascade likely conducted reconnaissance to identify targets, though specific details are omitted for training purposes. The actors exploited a publicly known vulnerability in a legacy web application, using exploit code available on underground forums. Concurrently, they delivered a spearphishing email with a malicious attachment disguised as an invoice, which, when opened by an employee, executed a banking trojan downloaded from a compromised file-sharing service. System logs from SecureBank Corp. show multiple failed login attempts from IP addresses linked to previous campaigns, though these were unrelated to the main attack.\n- **Execution and Persistence**: Upon user execution of the malicious LNK file, PowerShell was invoked to download a remote access trojan (RAT) while simultaneously modifying registry keys for persistence. The actors then exploited a trusted relationship with a managed service provider (MSP), leveraging delegated permissions to gain administrative access to critical systems. To ensure long-term presence, they replaced the legitimate LSASS driver with a malicious version and installed a custom UEFI module in the system firmware, executing code before the OS loads. Background processes on affected machines showed increased CPU usage, but this was initially attributed to routine software updates.\n- **Discovery and Lateral Movement**: After establishing persistence, the actors performed discovery activities, using tracert.exe to map network routes and confirm connectivity to their command-and-control (C2) server, while identifying system language settings to tailor follow-on execution. They listed installed software on compromised systems to identify potential vulnerabilities and employed pth.exe to perform pass-the-hash authentication, accessing the file server to exfiltrate data. Additionally, they replicated through removable media by altering the Autorun.inf configuration to run hidden scripts upon insertion. Network monitoring at SecureBank Corp. detected unusual SMB traffic, but it was initially dismissed as internal file transfers.\n- **Collection and Exfiltration**: The actors collected sensitive data by taking screenshots of victim desktops and manipulating data processing by injecting a malicious DLL into a legitimate application. They used a Wi-Fi Pineapple to set up an evil twin access point, redirecting HTTPS traffic through an interception proxy to capture credentials. For exfiltration, they leveraged file transfer protocols such as SMB for peer-to-peer C2 communication, while using scripts to delete files and folders from compromised machines to cover tracks. Incident responders noted that some logs were corrupted, though this was due to a separate system error unrelated to the attack.\n- **Impact**: In the final stage, the actors executed a disk structure wipe, formatting the system drive to make recovery impossible, as part of a destructive payload. This caused significant downtime for SecureBank Corp., with recovery efforts estimated to take weeks. The company's backup systems were partially affected, highlighting gaps in disaster recovery plans.\n\nMitigation recommendations include patching vulnerabilities, implementing multi-factor authentication, and monitoring for anomalous network behavior. This report is fictional and intended for training purposes only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign dubbed 'ShadowCascade'. This actor, believed to operate with financial motives, has been observed targeting mid-sized banks in the U.S. over the past six months. Initial analysis suggests the campaign began in early 2024, with logs from compromised systems showing anomalous network traffic patterns starting around March. The company 'SecureBank Corp.', a fictional entity with 500 employees, reported unusual activity on its internal file server, prompting this investigation.\n\nAttack Narrative:\n- **Reconnaissance and Initial Access**: ShadowCascade likely conducted reconnaissance [T1589] to identify targets, though specific details are omitted for training purposes. The actors exploited a publicly known vulnerability in a legacy web application [T1588.006], using exploit code available on underground forums. Concurrently, they delivered a spearphishing email with a malicious attachment disguised as an invoice [T1566.001], which, when opened by an employee, executed a banking trojan downloaded from a compromised file-sharing service [T1588.001]. System logs from SecureBank Corp. show multiple failed login attempts from IP addresses linked to previous campaigns, though these were unrelated to the main attack.\n- **Execution and Persistence**: Upon user execution of the malicious LNK file [T1204], PowerShell was invoked to download a remote access trojan (RAT) [T1059.001] while simultaneously modifying registry keys for persistence [T1112]. The actors then exploited a trusted relationship with a managed service provider (MSP) [T1199], leveraging delegated permissions to gain administrative access to critical systems. To ensure long-term presence, they replaced the legitimate LSASS driver with a malicious version [T1547.008] and installed a custom UEFI module in the system firmware [T1542.001], executing code before the OS loads. Background processes on affected machines showed increased CPU usage, but this was initially attributed to routine software updates.\n- **Discovery and Lateral Movement**: After establishing persistence, the actors performed discovery activities, using tracert.exe to map network routes and confirm connectivity to their command-and-control (C2) server [T1016.001], while identifying system language settings [T1614.001] to tailor follow-on execution. They listed installed software on compromised systems [T1518] to identify potential vulnerabilities and employed pth.exe to perform pass-the-hash authentication [T1550.002], accessing the file server to exfiltrate data. Additionally, they replicated through removable media by altering the Autorun.inf configuration [T1091] to run hidden scripts upon insertion. Network monitoring at SecureBank Corp. detected unusual SMB traffic, but it was initially dismissed as internal file transfers.\n- **Collection and Exfiltration**: The actors collected sensitive data by taking screenshots of victim desktops [T1113] and manipulating data processing by injecting a malicious DLL into a legitimate application [T1565]. They used a Wi-Fi Pineapple to set up an evil twin access point [T1557.004], redirecting HTTPS traffic through an interception proxy to capture credentials. For exfiltration, they leveraged file transfer protocols such as SMB for peer-to-peer C2 communication [T1071.002], while using scripts to delete files and folders from compromised machines [T1070.004] to cover tracks. Incident responders noted that some logs were corrupted, though this was due to a separate system error unrelated to the attack.\n- **Impact**: In the final stage, the actors executed a disk structure wipe [T1561.002], formatting the system drive to make recovery impossible, as part of a destructive payload. This caused significant downtime for SecureBank Corp., with recovery efforts estimated to take weeks. The company's backup systems were partially affected, highlighting gaps in disaster recovery plans.\n\nMitigation recommendations include patching vulnerabilities, implementing multi-factor authentication, and monitoring for anomalous network behavior. This report is fictional and intended for training purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\n- **Reconnaissance and Initial Access**: ShadowCascade likely conducted reconnaissance to identify targets, though specific details are omitted for training purposes.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "- **Execution and Persistence**: Upon user execution of the malicious LNK file, PowerShell was invoked to download a remote access trojan (RAT) [T1059.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "001] while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "The actors then exploited a trusted relationship with a managed service provider (MSP), leveraging delegated permissions to gain administrative access to critical systems.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "They listed installed software on compromised systems to identify potential vulnerabilities and employed pth.",
+            "technique_id": "T1518",
+            "technique_name": "Software Discovery"
+        },
+        {
+            "sentence": "inf configuration to run hidden scripts upon insertion.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "- **Collection and Exfiltration**: The actors collected sensitive data by taking screenshots of victim desktops and manipulating data processing by injecting a malicious DLL into a legitimate application.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        },
+        {
+            "sentence": "- **Collection and Exfiltration**: The actors collected sensitive data by taking screenshots of victim desktops and manipulating data processing by injecting a malicious DLL into a legitimate application.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowCascade' Targeting Financial Sector",
+        "summary": "This advisory details a simulated cyber campaign by a fictional threat actor, designated as 'ShadowCascade', targeting financial institutions. The campaign leverages a blend of initial access vectors, persistence mechanisms, and data exfiltration techniques to compromise networks. Blue teams are advised to review detection and mitigation strategies outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional campaign dubbed 'ShadowCascade'. This actor, believed to operate with financial motives, has been observed targeting mid-sized banks in the U.S. over the past six months. Initial analysis suggests the campaign began in early 2024, with logs from compromised systems showing anomalous network traffic patterns starting around March. The company 'SecureBank Corp.', a fictional entity with 500 employees, reported unusual activity on its internal file server, prompting this investigation.\n\nAttack Narrative:\n- **Reconnaissance and Initial Access**: ShadowCascade likely conducted reconnaissance [T1589] to identify targets, though specific details are omitted for training purposes. The actors exploited a publicly known vulnerability in a legacy web application [T1588.006], using exploit code available on underground forums. Concurrently, they delivered a spearphishing email with a malicious attachment disguised as an invoice [T1566.001], which, when opened by an employee, executed a banking trojan downloaded from a compromised file-sharing service [T1588.001]. System logs from SecureBank Corp. show multiple failed login attempts from IP addresses linked to previous campaigns, though these were unrelated to the main attack.\n- **Execution and Persistence**: Upon user execution of the malicious LNK file [T1204], PowerShell was invoked to download a remote access trojan (RAT) [T1059.001] while simultaneously modifying registry keys for persistence [T1112]. The actors then exploited a trusted relationship with a managed service provider (MSP) [T1199], leveraging delegated permissions to gain administrative access to critical systems. To ensure long-term presence, they replaced the legitimate LSASS driver with a malicious version [T1547.008] and installed a custom UEFI module in the system firmware [T1542.001], executing code before the OS loads. Background processes on affected machines showed increased CPU usage, but this was initially attributed to routine software updates.\n- **Discovery and Lateral Movement**: After establishing persistence, the actors performed discovery activities, using tracert.exe to map network routes and confirm connectivity to their command-and-control (C2) server [T1016.001], while identifying system language settings [T1614.001] to tailor follow-on execution. They listed installed software on compromised systems [T1518] to identify potential vulnerabilities and employed pth.exe to perform pass-the-hash authentication [T1550.002], accessing the file server to exfiltrate data. Additionally, they replicated through removable media by altering the Autorun.inf configuration [T1091] to run hidden scripts upon insertion. Network monitoring at SecureBank Corp. detected unusual SMB traffic, but it was initially dismissed as internal file transfers.\n- **Collection and Exfiltration**: The actors collected sensitive data by taking screenshots of victim desktops [T1113] and manipulating data processing by injecting a malicious DLL into a legitimate application [T1565]. They used a Wi-Fi Pineapple to set up an evil twin access point [T1557.004], redirecting HTTPS traffic through an interception proxy to capture credentials. For exfiltration, they leveraged file transfer protocols such as SMB for peer-to-peer C2 communication [T1071.002], while using scripts to delete files and folders from compromised machines [T1070.004] to cover tracks. Incident responders noted that some logs were corrupted, though this was due to a separate system error unrelated to the attack.\n- **Impact**: In the final stage, the actors executed a disk structure wipe [T1561.002], formatting the system drive to make recovery impossible, as part of a destructive payload. This caused significant downtime for SecureBank Corp., with recovery efforts estimated to take weeks. The company's backup systems were partially affected, highlighting gaps in disaster recovery plans.\n\nMitigation recommendations include patching vulnerabilities, implementing multi-factor authentication, and monitoring for anomalous network behavior. This report is fictional and intended for training purposes only.",
+        "techniques_used": [
+            "T1588.006",
+            "T1588.001",
+            "T1566.001",
+            "T1199",
+            "T1204",
+            "T1547.008",
+            "T1542.001",
+            "T1016.001",
+            "T1614.001",
+            "T1518",
+            "T1550.002",
+            "T1091",
+            "T1557.004",
+            "T1113",
+            "T1071.002",
+            "T1070.004",
+            "T1561.002",
+            "T1565"
+        ]
+    }
+}

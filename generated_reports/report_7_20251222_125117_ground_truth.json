@@ -1,0 +1,93 @@
+{
+    "report_id": "report_7",
+    "generated_at": "20251222_125117",
+    "scenario_target_ids": [
+        "T1594",
+        "T1593.002",
+        "T1591.004",
+        "T1583.005",
+        "T1608.001",
+        "T1587.004",
+        "T1078.001",
+        "T1059.007",
+        "T1546.007",
+        "T1213.003",
+        "T1090.002",
+        "T1567.001",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1594",
+        "T1593.002",
+        "T1591.004",
+        "T1583.005",
+        "T1608.001",
+        "T1587.004",
+        "T1078.001",
+        "T1059.007",
+        "T1546.007",
+        "T1213.003",
+        "T1090.002",
+        "T1567.001",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1498.001",
+        "T1059.007",
+        "T1213.003",
+        "T1591.004",
+        "T1593.002",
+        "T1546.007",
+        "T1587.004",
+        "T1594",
+        "T1608.001",
+        "T1090.002",
+        "T1583.005",
+        "T1078.001",
+        "T1567.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowSweep'. This group has been observed targeting energy and telecommunications sectors in a coordinated campaign. Background analysis indicates the actors operate from unknown regions, with activity peaking during off-hours in UTC time zones. Initial investigation revealed anomalous network traffic from external IP addresses, but no prior alerts were triggered in SIEM systems.\n\nThe campaign begins with reconnaissance, where the actors conduct automated searches using Google to identify vulnerabilities and tools, while simultaneously scanning victim-owned websites for sitemap.xml files to map organizational structures. This allows them to identify specific roles within target organizations, such as system administrators and developers, for tailored social engineering. For instance, logs show repeated access to public LinkedIn profiles from IPs associated with known malicious infrastructure.\n\nFor initial access, the actors exploit a botnet of compromised IoT devices, including IP cameras with exposed administrative interfaces, and abuse default accounts on these devices to gain footholds in network perimeters. Once access is established, they deploy custom exploits, such as 'shadow_exploit.exe' designed for buffer overflow vulnerabilities, to escalate privileges and execute malicious payloads. The malware components are uploaded to a private GitHub repository using stolen credentials, where they are retrieved via obfuscated JavaScript files that download and execute the payloads on compromised systems.\n\nPersistence is achieved through the use of netsh helper DLLs, which are configured to execute malicious code whenever netsh.exe is run, ensuring the malware remains active across system reboots. The actors then leverage git hooks in code repositories to automatically collect and exfiltrate proprietary source code, which is committed to a Bitbucket repository via the Bitbucket REST API. To obscure their activities, they route command and control (C2) traffic through external proxies like ZXProxy, making detection more challenging. Network logs indicate sporadic UDP flood packets sent to cause service degradation, though this appears secondary to data exfiltration goals. Analysis of firewall rules showed no prior blocks for these proxy IPs, highlighting potential gaps in network monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowSweep'. This group has been observed targeting energy and telecommunications sectors in a coordinated campaign. Background analysis indicates the actors operate from unknown regions, with activity peaking during off-hours in UTC time zones. Initial investigation revealed anomalous network traffic from external IP addresses, but no prior alerts were triggered in SIEM systems.\n\nThe campaign begins with reconnaissance, where the actors conduct automated searches using Google [T1593.002] to identify vulnerabilities and tools, while simultaneously scanning victim-owned websites for sitemap.xml files [T1594] to map organizational structures. This allows them to identify specific roles within target organizations [T1591.004], such as system administrators and developers, for tailored social engineering. For instance, logs show repeated access to public LinkedIn profiles from IPs associated with known malicious infrastructure.\n\nFor initial access, the actors exploit a botnet of compromised IoT devices, including IP cameras with exposed administrative interfaces [T1583.005], and abuse default accounts on these devices [T1078.001] to gain footholds in network perimeters. Once access is established, they deploy custom exploits, such as 'shadow_exploit.exe' designed for buffer overflow vulnerabilities [T1587.004], to escalate privileges and execute malicious payloads. The malware components are uploaded to a private GitHub repository using stolen credentials [T1608.001], where they are retrieved via obfuscated JavaScript files [T1059.007] that download and execute the payloads on compromised systems.\n\nPersistence is achieved through the use of netsh helper DLLs [T1546.007], which are configured to execute malicious code whenever netsh.exe is run, ensuring the malware remains active across system reboots. The actors then leverage git hooks in code repositories [T1213.003] to automatically collect and exfiltrate proprietary source code, which is committed to a Bitbucket repository via the Bitbucket REST API [T1567.001]. To obscure their activities, they route command and control (C2) traffic through external proxies like ZXProxy [T1090.002], making detection more challenging. Network logs indicate sporadic UDP flood packets [T1498.001] sent to cause service degradation, though this appears secondary to data exfiltration goals. Analysis of firewall rules showed no prior blocks for these proxy IPs, highlighting potential gaps in network monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "xml files to map organizational structures.",
+            "technique_id": "T1594",
+            "technique_name": "Search Victim-Owned Websites"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSweep' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowSweep', targeting critical infrastructure sectors. The campaign leverages a combination of reconnaissance, initial access via compromised IoT devices, and sophisticated malware deployment to exfiltrate sensitive data and disrupt services. Blue teams are advised to review logs for indicators and implement mitigations.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowSweep'. This group has been observed targeting energy and telecommunications sectors in a coordinated campaign. Background analysis indicates the actors operate from unknown regions, with activity peaking during off-hours in UTC time zones. Initial investigation revealed anomalous network traffic from external IP addresses, but no prior alerts were triggered in SIEM systems.\n\nThe campaign begins with reconnaissance, where the actors conduct automated searches using Google [T1593.002] to identify vulnerabilities and tools, while simultaneously scanning victim-owned websites for sitemap.xml files [T1594] to map organizational structures. This allows them to identify specific roles within target organizations [T1591.004], such as system administrators and developers, for tailored social engineering. For instance, logs show repeated access to public LinkedIn profiles from IPs associated with known malicious infrastructure.\n\nFor initial access, the actors exploit a botnet of compromised IoT devices, including IP cameras with exposed administrative interfaces [T1583.005], and abuse default accounts on these devices [T1078.001] to gain footholds in network perimeters. Once access is established, they deploy custom exploits, such as 'shadow_exploit.exe' designed for buffer overflow vulnerabilities [T1587.004], to escalate privileges and execute malicious payloads. The malware components are uploaded to a private GitHub repository using stolen credentials [T1608.001], where they are retrieved via obfuscated JavaScript files [T1059.007] that download and execute the payloads on compromised systems.\n\nPersistence is achieved through the use of netsh helper DLLs [T1546.007], which are configured to execute malicious code whenever netsh.exe is run, ensuring the malware remains active across system reboots. The actors then leverage git hooks in code repositories [T1213.003] to automatically collect and exfiltrate proprietary source code, which is committed to a Bitbucket repository via the Bitbucket REST API [T1567.001]. To obscure their activities, they route command and control (C2) traffic through external proxies like ZXProxy [T1090.002], making detection more challenging. Network logs indicate sporadic UDP flood packets [T1498.001] sent to cause service degradation, though this appears secondary to data exfiltration goals. Analysis of firewall rules showed no prior blocks for these proxy IPs, highlighting potential gaps in network monitoring.",
+        "techniques_used": [
+            "T1594",
+            "T1593.002",
+            "T1591.004",
+            "T1583.005",
+            "T1608.001",
+            "T1587.004",
+            "T1078.001",
+            "T1059.007",
+            "T1546.007",
+            "T1213.003",
+            "T1090.002",
+            "T1567.001",
+            "T1498.001"
+        ]
+    }
+}

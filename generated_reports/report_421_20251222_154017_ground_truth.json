@@ -1,0 +1,162 @@
+{
+    "report_id": "report_421",
+    "generated_at": "20251222_154017",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1651",
+        "T1574.009",
+        "T1098.001",
+        "T1546.011",
+        "T1055.012",
+        "T1539",
+        "T1082",
+        "T1613",
+        "T1201",
+        "T1534",
+        "T1602",
+        "T1185",
+        "T1056.003",
+        "T1105"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.004",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1651",
+        "T1098.001",
+        "T1574.009",
+        "T1546.011",
+        "T1055.012",
+        "T1539",
+        "T1082",
+        "T1613",
+        "T1201",
+        "T1534",
+        "T1602",
+        "T1185",
+        "T1056.003"
+    ],
+    "actual_found_ids": [
+        "T1098.001",
+        "T1651",
+        "T1613",
+        "T1055.012",
+        "T1566.004",
+        "T1112",
+        "T1539",
+        "T1589",
+        "T1574.009",
+        "T1056.003",
+        "T1534",
+        "T1602",
+        "T1546.011",
+        "T1185",
+        "T1082",
+        "T1105",
+        "T1201",
+        "T1059.001"
+    ],
+    "clean_text": "On March 15, 2024, a fictional organization 'CloudTech Corp' reported suspicious activity in its Azure and on-premises environments. Initial investigation revealed that the adversary likely conducted reconnaissance to identify targets. The attack began with a spearphishing voice call where an employee was tricked into opening a malicious attachment, which installed a remote access tool granting full system control. Once initial access was achieved, the actors used PowerShell to actively download additional tools like PsExec while simultaneously modifying registry keys for persistence. They exploited Azure RunCommand to exfiltrate data from virtual machines and executed Azure CLI commands to create a new service principal with contributor access. For persistence on compromised endpoints, the malware placed a malicious file at C:\\program.exe to exploit path search order and wrote a custom.sdb file containing application compatibility shims to disk. The actors employed CreateProcess to spawn legitimate processes for injecting malicious code via process hollowing and used EvilGinx to steal session cookies from phishing domains. Discovery activities included enumerating logical drives, running 'docker ps' to identify container configurations, and executing 'Get-ADDefaultDomainPasswordPolicy' to assess password policies. The attacker compromised Microsoft Teams to send internal spearphishing messages, extracted Windows registry hives for credentials, injected malicious.dll into browser memory to hijack sessions, and added keylogging to VPN login interfaces. System logs from CloudTech Corp's SIEM showed routine Azure activity, including normal VM startups and user logins, with no immediate alerts. The company, a mid-sized tech firm with 500 employees, had recently migrated to hybrid cloud, but legacy systems remained unpatched. Incident responders noted that the attack leveraged both cloud administration tools and traditional malware techniques, highlighting the need for integrated defense strategies. Blue teams should monitor for unusual Azure CLI usage, unexpected service principals, and anomalous process injections.",
+    "tagged_text": "On March 15, 2024, a fictional organization 'CloudTech Corp' reported suspicious activity in its Azure and on-premises environments. Initial investigation revealed that the adversary likely conducted reconnaissance [T1589] to identify targets. The attack began with a spearphishing voice call [T1566.004] where an employee was tricked into opening a malicious attachment, which installed a remote access tool granting full system control. Once initial access was achieved, the actors used PowerShell [T1059.001] to actively download additional tools like PsExec [T1105] while simultaneously modifying registry keys [T1112] for persistence. They exploited Azure RunCommand [T1651] to exfiltrate data from virtual machines and executed Azure CLI commands to create a new service principal with contributor access [T1098.001]. For persistence on compromised endpoints, the malware placed a malicious file at C:\\program.exe to exploit path search order [T1574.009] and wrote a custom.sdb file containing application compatibility shims to disk [T1546.011]. The actors employed CreateProcess to spawn legitimate processes for injecting malicious code via process hollowing [T1055.012] and used EvilGinx to steal session cookies from phishing domains [T1539]. Discovery activities included enumerating logical drives [T1082], running 'docker ps' to identify container configurations [T1613], and executing 'Get-ADDefaultDomainPasswordPolicy' to assess password policies [T1201]. The attacker compromised Microsoft Teams to send internal spearphishing messages [T1534], extracted Windows registry hives for credentials [T1602], injected malicious.dll into browser memory to hijack sessions [T1185], and added keylogging to VPN login interfaces [T1056.003]. System logs from CloudTech Corp's SIEM showed routine Azure activity, including normal VM startups and user logins, with no immediate alerts. The company, a mid-sized tech firm with 500 employees, had recently migrated to hybrid cloud, but legacy systems remained unpatched. Incident responders noted that the attack leveraged both cloud administration tools and traditional malware techniques, highlighting the need for integrated defense strategies. Blue teams should monitor for unusual Azure CLI usage, unexpected service principals, and anomalous process injections.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that the adversary likely conducted reconnaissance to identify targets.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "001] to actively download additional tools like PsExec while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to actively download additional tools like PsExec while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "They exploited Azure RunCommand to exfiltrate data from virtual machines and executed Azure CLI commands to create a new service principal with contributor access [T1098.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "012] and used EvilGinx to steal session cookies from phishing domains.",
+            "technique_id": "T1539",
+            "technique_name": "Steal Web Session Cookie"
+        },
+        {
+            "sentence": "Discovery activities included enumerating logical drives, running 'docker ps' to identify container configurations, and executing 'Get-ADDefaultDomainPasswordPolicy' to assess password policies.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        },
+        {
+            "sentence": "Discovery activities included enumerating logical drives, running 'docker ps' to identify container configurations, and executing 'Get-ADDefaultDomainPasswordPolicy' to assess password policies.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "Discovery activities included enumerating logical drives, running 'docker ps' to identify container configurations, and executing 'Get-ADDefaultDomainPasswordPolicy' to assess password policies.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "The attacker compromised Microsoft Teams to send internal spearphishing messages, extracted Windows registry hives for credentials, injected malicious.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "The attacker compromised Microsoft Teams to send internal spearphishing messages, extracted Windows registry hives for credentials, injected malicious.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "dll into browser memory to hijack sessions, and added keylogging to VPN login interfaces [T1056.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'AzureShadow' Targeting Cloud and On-Premises Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'AzureShadow' targeting hybrid cloud environments. The actors employed a multi-stage attack combining social engineering, cloud exploitation, and persistence techniques to compromise systems and exfiltrate sensitive data. Blue teams are advised to review logs for indicators of compromise and implement defensive measures outlined in this report.",
+        "full_report_text": "On March 15, 2024, a fictional organization 'CloudTech Corp' reported suspicious activity in its Azure and on-premises environments. Initial investigation revealed that the adversary likely conducted reconnaissance [T1589] to identify targets. The attack began with a spearphishing voice call [T1566.004] where an employee was tricked into opening a malicious attachment, which installed a remote access tool granting full system control. Once initial access was achieved, the actors used PowerShell [T1059.001] to actively download additional tools like PsExec [T1105] while simultaneously modifying registry keys [T1112] for persistence. They exploited Azure RunCommand [T1651] to exfiltrate data from virtual machines and executed Azure CLI commands to create a new service principal with contributor access [T1098.001]. For persistence on compromised endpoints, the malware placed a malicious file at C:\\program.exe to exploit path search order [T1574.009] and wrote a custom.sdb file containing application compatibility shims to disk [T1546.011]. The actors employed CreateProcess to spawn legitimate processes for injecting malicious code via process hollowing [T1055.012] and used EvilGinx to steal session cookies from phishing domains [T1539]. Discovery activities included enumerating logical drives [T1082], running 'docker ps' to identify container configurations [T1613], and executing 'Get-ADDefaultDomainPasswordPolicy' to assess password policies [T1201]. The attacker compromised Microsoft Teams to send internal spearphishing messages [T1534], extracted Windows registry hives for credentials [T1602], injected malicious.dll into browser memory to hijack sessions [T1185], and added keylogging to VPN login interfaces [T1056.003]. System logs from CloudTech Corp's SIEM showed routine Azure activity, including normal VM startups and user logins, with no immediate alerts. The company, a mid-sized tech firm with 500 employees, had recently migrated to hybrid cloud, but legacy systems remained unpatched. Incident responders noted that the attack leveraged both cloud administration tools and traditional malware techniques, highlighting the need for integrated defense strategies. Blue teams should monitor for unusual Azure CLI usage, unexpected service principals, and anomalous process injections.",
+        "techniques_used": [
+            "T1589",
+            "T1566.004",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1651",
+            "T1098.001",
+            "T1574.009",
+            "T1546.011",
+            "T1055.012",
+            "T1539",
+            "T1082",
+            "T1613",
+            "T1201",
+            "T1534",
+            "T1602",
+            "T1185",
+            "T1056.003"
+        ]
+    }
+}

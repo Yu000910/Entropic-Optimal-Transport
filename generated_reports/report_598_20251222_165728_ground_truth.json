@@ -1,0 +1,58 @@
+{
+    "report_id": "report_598",
+    "generated_at": "20251222_165728",
+    "scenario_target_ids": [
+        "T1200",
+        "T1059.009",
+        "T1550.004",
+        "T1572",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1059.009",
+        "T1550.004",
+        "T1572",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1572",
+        "T1550.004",
+        "T1200",
+        "T1059.009"
+    ],
+    "clean_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed targeting financial organizations in a simulated campaign designed for blue team training. The group operates with high sophistication, leveraging both physical and digital tactics to compromise networks. In this scenario, the actors first conducted open-source intelligence (OSINT) gathering on the target, analyzing public employee profiles and network architecture diagrams, though no specific technique IDs are assigned to this initial reconnaissance phase.\n\nInitial Access: The actors gained initial access by physically connecting a Raspberry Pi device to an unattended network port in the target's office lobby. This device was pre-configured with malicious scripts and used to establish a foothold on the local network. System logs from the day of the incident show unusual network traffic from an unknown MAC address, but this was initially dismissed as benign by automated monitoring tools.\n\nExecution: Once connected, the Raspberry Pi executed commands via a cloud API interface to disable endpoint security controls on the compromised system, allowing further malicious activity without detection. The actors then used PowerShell to download additional payloads while simultaneously modifying registry keys to maintain persistence, though these actions are not tagged as they fall outside the specified techniques.\n\nPersistence and Privilege Escalation: To maintain access, the actors collected a web session cookie from an authenticated user's browser, enabling them to bypass multi-factor authentication (MFA) and impersonate the user within the network. This allowed unauthorized access to sensitive financial databases. Background checks revealed the organization had recently updated its firewall policies, but this did not prevent the cookie theft due to misconfigured session timeouts.\n\nDefense Evasion and Command and Control: The actors employed protocol tunneling to obscure their communications, using tools like Iox to create multiple encrypted connections through a single tunnel, thereby evading network-based detection systems. Network logs indicated a spike in encrypted traffic to external IP addresses, but this was attributed to routine backup processes at the time.\n\nExfiltration: Finally, the actors exfiltrated stolen data, including file metadata and customer records, by transmitting it to a webhook service for external analysis, mimicking data theft patterns seen in real ransomware incidents. The exfiltration occurred over several hours, with data volumes averaging 2 GB per transmission, though internal alerts were delayed due to high network load during business hours.\n\nThis simulated campaign highlights the need for robust physical security, API monitoring, session management, and anomaly detection in financial sectors. Blue teams should use this advisory to enhance their defensive strategies against similar multi-vector attacks.",
+    "tagged_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed targeting financial organizations in a simulated campaign designed for blue team training. The group operates with high sophistication, leveraging both physical and digital tactics to compromise networks. In this scenario, the actors first conducted open-source intelligence (OSINT) gathering on the target, analyzing public employee profiles and network architecture diagrams, though no specific technique IDs are assigned to this initial reconnaissance phase.\n\nInitial Access: The actors gained initial access by physically connecting a Raspberry Pi device to an unattended network port in the target's office lobby [T1200]. This device was pre-configured with malicious scripts and used to establish a foothold on the local network. System logs from the day of the incident show unusual network traffic from an unknown MAC address, but this was initially dismissed as benign by automated monitoring tools.\n\nExecution: Once connected, the Raspberry Pi executed commands via a cloud API interface [T1059.009] to disable endpoint security controls on the compromised system, allowing further malicious activity without detection. The actors then used PowerShell to download additional payloads while simultaneously modifying registry keys to maintain persistence, though these actions are not tagged as they fall outside the specified techniques.\n\nPersistence and Privilege Escalation: To maintain access, the actors collected a web session cookie from an authenticated user's browser [T1550.004], enabling them to bypass multi-factor authentication (MFA) and impersonate the user within the network. This allowed unauthorized access to sensitive financial databases. Background checks revealed the organization had recently updated its firewall policies, but this did not prevent the cookie theft due to misconfigured session timeouts.\n\nDefense Evasion and Command and Control: The actors employed protocol tunneling [T1572] to obscure their communications, using tools like Iox to create multiple encrypted connections through a single tunnel, thereby evading network-based detection systems. Network logs indicated a spike in encrypted traffic to external IP addresses, but this was attributed to routine backup processes at the time.\n\nExfiltration: Finally, the actors exfiltrated stolen data, including file metadata and customer records, by transmitting it to a webhook service [T1567.004] for external analysis, mimicking data theft patterns seen in real ransomware incidents. The exfiltration occurred over several hours, with data volumes averaging 2 GB per transmission, though internal alerts were delayed due to high network load during business hours.\n\nThis simulated campaign highlights the need for robust physical security, API monitoring, session management, and anomaly detection in financial sectors. Blue teams should use this advisory to enhance their defensive strategies against similar multi-vector attacks.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors gained initial access by physically connecting a Raspberry Pi device to an unattended network port in the target's office lobby.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Defense Evasion and Command and Control: The actors employed protocol tunneling to obscure their communications, using tools like Iox to create multiple encrypted connections through a single tunnel, thereby evading network-based detection systems.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor \"Crimson Tempest\"",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor \"Crimson Tempest\" targeting financial institutions for training purposes. The campaign involves physical hardware insertion, cloud API exploitation, session hijacking, protocol tunneling, and data exfiltration via webhooks to mimic real-world attack chains.",
+        "full_report_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed targeting financial organizations in a simulated campaign designed for blue team training. The group operates with high sophistication, leveraging both physical and digital tactics to compromise networks. In this scenario, the actors first conducted open-source intelligence (OSINT) gathering on the target, analyzing public employee profiles and network architecture diagrams, though no specific technique IDs are assigned to this initial reconnaissance phase.\n\nInitial Access: The actors gained initial access by physically connecting a Raspberry Pi device to an unattended network port in the target's office lobby [T1200]. This device was pre-configured with malicious scripts and used to establish a foothold on the local network. System logs from the day of the incident show unusual network traffic from an unknown MAC address, but this was initially dismissed as benign by automated monitoring tools.\n\nExecution: Once connected, the Raspberry Pi executed commands via a cloud API interface [T1059.009] to disable endpoint security controls on the compromised system, allowing further malicious activity without detection. The actors then used PowerShell to download additional payloads while simultaneously modifying registry keys to maintain persistence, though these actions are not tagged as they fall outside the specified techniques.\n\nPersistence and Privilege Escalation: To maintain access, the actors collected a web session cookie from an authenticated user's browser [T1550.004], enabling them to bypass multi-factor authentication (MFA) and impersonate the user within the network. This allowed unauthorized access to sensitive financial databases. Background checks revealed the organization had recently updated its firewall policies, but this did not prevent the cookie theft due to misconfigured session timeouts.\n\nDefense Evasion and Command and Control: The actors employed protocol tunneling [T1572] to obscure their communications, using tools like Iox to create multiple encrypted connections through a single tunnel, thereby evading network-based detection systems. Network logs indicated a spike in encrypted traffic to external IP addresses, but this was attributed to routine backup processes at the time.\n\nExfiltration: Finally, the actors exfiltrated stolen data, including file metadata and customer records, by transmitting it to a webhook service [T1567.004] for external analysis, mimicking data theft patterns seen in real ransomware incidents. The exfiltration occurred over several hours, with data volumes averaging 2 GB per transmission, though internal alerts were delayed due to high network load during business hours.\n\nThis simulated campaign highlights the need for robust physical security, API monitoring, session management, and anomaly detection in financial sectors. Blue teams should use this advisory to enhance their defensive strategies against similar multi-vector attacks.",
+        "techniques_used": [
+            "T1200",
+            "T1059.009",
+            "T1550.004",
+            "T1572",
+            "T1567.004"
+        ]
+    }
+}

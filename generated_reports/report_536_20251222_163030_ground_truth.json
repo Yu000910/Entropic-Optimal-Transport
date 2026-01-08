@@ -1,0 +1,116 @@
+{
+    "report_id": "report_536",
+    "generated_at": "20251222_163030",
+    "scenario_target_ids": [
+        "T1659",
+        "T1203",
+        "T1078.003",
+        "T1055.004",
+        "T1574.004",
+        "T1040",
+        "T1087",
+        "T1185",
+        "T1090.004",
+        "T1041"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1659",
+        "T1203",
+        "T1078.003",
+        "T1055.004",
+        "T1574.004",
+        "T1040",
+        "T1087",
+        "T1185",
+        "T1090.004",
+        "T1041"
+    ],
+    "actual_found_ids": [
+        "T1574.004",
+        "T1087",
+        "T1589",
+        "T1659",
+        "T1040",
+        "T1185",
+        "T1055.004",
+        "T1090.004",
+        "T1041",
+        "T1203",
+        "T1078.003"
+    ],
+    "clean_text": "On October 15, 2023, a fictional energy company, 'VoltGrid Inc.', reported anomalous network traffic from its corporate headquarters in Chicago, Illinois. VoltGrid, a mid-sized provider with 500 employees, operates SCADA systems for regional power distribution. Initial logs showed increased DNS queries to suspicious domains, but routine firewall scans at 03:00 UTC detected no immediate threats. The actors likely conducted reconnaissance prior to the attack, though specific indicators were obscured in normal web traffic.\n\nInitial Access and Execution: The adversary achieved initial access by injecting malicious content into DNS and HTTP replies, redirecting targeted hosts to download a malicious PowerPoint file named 'Q4_Report.ppt'. Upon opening, the file exploited a vulnerability in Microsoft PowerPoint via OLE objects (CVE-2014-4114) to execute a backdoor payload. Simultaneously, they used a crafted Word document with a TIFF image (CVE-2013-3906) to deploy additional malware on secondary systems, while modifying registry keys to maintain persistence.\n\nPersistence and Privilege Escalation: After execution, the malware employed Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts and used bash to run 'cat /etc/passwd' for account discovery. The backdoor then called OpenThread to find threads in svchost.exe before performing Asynchronous Procedure Call (APC) injection to evade detection, while exploiting a vulnerable application's library search path to execute malicious.dylib via Dylib Hijacking.\n\nDefense Evasion and Collection: To intercept data, the actors used AWS Traffic Mirroring to monitor VPC traffic for plaintext authentication and performed browser session hijacking via web injects to steal credentials and cookies. They manipulated TLS session ID values in headers for Domain Fronting to bypass security tools, while continuously sniffing network packets to gather additional intelligence.\n\nExfiltration: Finally, the malware exfiltrated stolen files and information over a command and control (C2) channel to a remote server, completing the data theft phase. Incident responders at VoltGrid noted unusual outbound traffic peaks at 14:00 UTC, but full containment was delayed due to legacy system dependencies.\n\nMitigation Recommendations: Organizations should apply patches for CVE-2014-4114 and CVE-2013-3906, implement network segmentation, and monitor for anomalous DNS and HTTP activity. Regular credential audits and multi-factor authentication are advised to counter local account exploitation.",
+    "tagged_text": "On October 15, 2023, a fictional energy company, 'VoltGrid Inc.', reported anomalous network traffic from its corporate headquarters in Chicago, Illinois. VoltGrid, a mid-sized provider with 500 employees, operates SCADA systems for regional power distribution. Initial logs showed increased DNS queries to suspicious domains, but routine firewall scans at 03:00 UTC detected no immediate threats. The actors likely conducted reconnaissance [T1589] prior to the attack, though specific indicators were obscured in normal web traffic.\n\nInitial Access and Execution: The adversary achieved initial access by injecting malicious content into DNS and HTTP replies [T1659], redirecting targeted hosts to download a malicious PowerPoint file named 'Q4_Report.ppt'. Upon opening, the file exploited a vulnerability in Microsoft PowerPoint via OLE objects (CVE-2014-4114) [T1203] to execute a backdoor payload. Simultaneously, they used a crafted Word document with a TIFF image (CVE-2013-3906) [T1203] to deploy additional malware on secondary systems, while modifying registry keys to maintain persistence.\n\nPersistence and Privilege Escalation: After execution, the malware employed Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts [T1078.003] and used bash to run 'cat /etc/passwd' for account discovery [T1087]. The backdoor then called OpenThread to find threads in svchost.exe before performing Asynchronous Procedure Call (APC) injection [T1055.004] to evade detection, while exploiting a vulnerable application's library search path to execute malicious.dylib via Dylib Hijacking [T1574.004].\n\nDefense Evasion and Collection: To intercept data, the actors used AWS Traffic Mirroring to monitor VPC traffic for plaintext authentication [T1040] and performed browser session hijacking via web injects to steal credentials and cookies [T1185]. They manipulated TLS session ID values in headers for Domain Fronting [T1090.004] to bypass security tools, while continuously sniffing network packets to gather additional intelligence.\n\nExfiltration: Finally, the malware exfiltrated stolen files and information over a command and control (C2) channel [T1041] to a remote server, completing the data theft phase. Incident responders at VoltGrid noted unusual outbound traffic peaks at 14:00 UTC, but full containment was delayed due to legacy system dependencies.\n\nMitigation Recommendations: Organizations should apply patches for CVE-2014-4114 and CVE-2013-3906, implement network segmentation, and monitor for anomalous DNS and HTTP activity. Regular credential audits and multi-factor authentication are advised to counter local account exploitation.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance prior to the attack, though specific indicators were obscured in normal web traffic.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Initial Access and Execution: The adversary achieved initial access by injecting malicious content into DNS and HTTP replies, redirecting targeted hosts to download a malicious PowerPoint file named 'Q4_Report.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Upon opening, the file exploited a vulnerability in Microsoft PowerPoint via OLE objects (CVE-2014-4114) to execute a backdoor payload.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "Simultaneously, they used a crafted Word document with a TIFF image (CVE-2013-3906) to deploy additional malware on secondary systems, while modifying registry keys to maintain persistence.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "003] and used bash to run 'cat /etc/passwd' for account discovery.",
+            "technique_id": "T1087",
+            "technique_name": "Account Discovery"
+        },
+        {
+            "sentence": "Defense Evasion and Collection: To intercept data, the actors used AWS Traffic Mirroring to monitor VPC traffic for plaintext authentication and performed browser session hijacking via web injects to steal credentials and cookies.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "Defense Evasion and Collection: To intercept data, the actors used AWS Traffic Mirroring to monitor VPC traffic for plaintext authentication and performed browser session hijacking via web injects to steal credentials and cookies.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        },
+        {
+            "sentence": "Exfiltration: Finally, the malware exfiltrated stolen files and information over a command and control (C2) channel to a remote server, completing the data theft phase.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Sandstorm Serpent', targeting organizations in the energy and financial sectors. Based on analysis of fictitious incident response data from Q4 2023, the actors employ a multi-stage attack leveraging content injection, client-side exploitation, and credential theft to establish persistence and exfiltrate sensitive data. The campaign highlights the need for robust network monitoring, patch management, and user awareness training.",
+        "full_report_text": "On October 15, 2023, a fictional energy company, 'VoltGrid Inc.', reported anomalous network traffic from its corporate headquarters in Chicago, Illinois. VoltGrid, a mid-sized provider with 500 employees, operates SCADA systems for regional power distribution. Initial logs showed increased DNS queries to suspicious domains, but routine firewall scans at 03:00 UTC detected no immediate threats. The actors likely conducted reconnaissance [T1589] prior to the attack, though specific indicators were obscured in normal web traffic.\n\nInitial Access and Execution: The adversary achieved initial access by injecting malicious content into DNS and HTTP replies [T1659], redirecting targeted hosts to download a malicious PowerPoint file named 'Q4_Report.ppt'. Upon opening, the file exploited a vulnerability in Microsoft PowerPoint via OLE objects (CVE-2014-4114) [T1203] to execute a backdoor payload. Simultaneously, they used a crafted Word document with a TIFF image (CVE-2013-3906) [T1203] to deploy additional malware on secondary systems, while modifying registry keys to maintain persistence.\n\nPersistence and Privilege Escalation: After execution, the malware employed Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts [T1078.003] and used bash to run 'cat /etc/passwd' for account discovery [T1087]. The backdoor then called OpenThread to find threads in svchost.exe before performing Asynchronous Procedure Call (APC) injection [T1055.004] to evade detection, while exploiting a vulnerable application's library search path to execute malicious.dylib via Dylib Hijacking [T1574.004].\n\nDefense Evasion and Collection: To intercept data, the actors used AWS Traffic Mirroring to monitor VPC traffic for plaintext authentication [T1040] and performed browser session hijacking via web injects to steal credentials and cookies [T1185]. They manipulated TLS session ID values in headers for Domain Fronting [T1090.004] to bypass security tools, while continuously sniffing network packets to gather additional intelligence.\n\nExfiltration: Finally, the malware exfiltrated stolen files and information over a command and control (C2) channel [T1041] to a remote server, completing the data theft phase. Incident responders at VoltGrid noted unusual outbound traffic peaks at 14:00 UTC, but full containment was delayed due to legacy system dependencies.\n\nMitigation Recommendations: Organizations should apply patches for CVE-2014-4114 and CVE-2013-3906, implement network segmentation, and monitor for anomalous DNS and HTTP activity. Regular credential audits and multi-factor authentication are advised to counter local account exploitation.",
+        "techniques_used": [
+            "T1589",
+            "T1659",
+            "T1203",
+            "T1078.003",
+            "T1055.004",
+            "T1574.004",
+            "T1040",
+            "T1087",
+            "T1185",
+            "T1090.004",
+            "T1041"
+        ]
+    }
+}

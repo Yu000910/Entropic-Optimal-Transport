@@ -1,0 +1,115 @@
+{
+    "report_id": "report_222",
+    "generated_at": "20251222_141641",
+    "scenario_target_ids": [
+        "T1608.005",
+        "T1199",
+        "T1204",
+        "T1070.002",
+        "T1006",
+        "T1134.003",
+        "T1558.002",
+        "T1021",
+        "T1072",
+        "T1560.001",
+        "T1573.002",
+        "T1567.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1608.005",
+        "T1199",
+        "T1204",
+        "T1070.002",
+        "T1006",
+        "T1134.003",
+        "T1558.002",
+        "T1021",
+        "T1072",
+        "T1560.001",
+        "T1573.002",
+        "T1567.001"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1070.002",
+        "T1558.002",
+        "T1021",
+        "T1589",
+        "T1006",
+        "T1134.003",
+        "T1608.005",
+        "T1560.001",
+        "T1573.002",
+        "T1072",
+        "T1204",
+        "T1567.001",
+        "T1059.001"
+    ],
+    "clean_text": "SecureBank Corp., a regional bank with 500 employees, reported unusual login attempts from external IP addresses last week, prompting an internal investigation. The actors likely conducted reconnaissance to identify targets, though initial logs showed normal user activity from 9 AM to 5 PM daily. The campaign began with the adversary injecting malicious JavaScript into SecureBank's legitimate online banking portal to steal customer credentials, which was discovered during a routine web security scan. Concurrently, they abused a trusted relationship with a third-party IT vendor to gain delegated administrative privileges and create new unauthorized admin accounts in Active Directory, leveraging these to impersonate IT staff and instruct employees via phishing emails to execute commercial remote access tools, leading to initial access. Upon execution, the actors used PowerShell scripts to deploy malware that automatically truncated system logs in /var/log/messages to obscure their presence, while also creating volume shadow copies of virtual domain controller disks to extract the NTDS.dit file for credential harvesting. They then employed token manipulation techniques to impersonate high-privilege users and forged Kerberos silver tickets using tools like Kerberoast.ps1 to authenticate laterally across the network. For lateral movement, they utilized remote scheduled tasks to install additional payloads on workstations and leveraged SCCM's software distribution features to run malicious scripts enterprise-wide, with network monitoring showing spikes in RDP traffic to internal servers. Prior to exfiltration, the actors compressed stolen data into ZIP archives and encrypted C2 communications using SSL to evade detection, finally exfiltrating the archives to a private GitHub gist via the API endpoint https://api.github.com. Incident responders noted that system performance remained stable throughout, with no customer data breaches confirmed in this fictional scenario.",
+    "tagged_text": "SecureBank Corp., a regional bank with 500 employees, reported unusual login attempts from external IP addresses last week, prompting an internal investigation. The actors likely conducted reconnaissance [T1589] to identify targets, though initial logs showed normal user activity from 9 AM to 5 PM daily. The campaign began with the adversary injecting malicious JavaScript [T1608.005] into SecureBank's legitimate online banking portal to steal customer credentials, which was discovered during a routine web security scan. Concurrently, they abused a trusted relationship with a third-party IT vendor [T1199] to gain delegated administrative privileges and create new unauthorized admin accounts in Active Directory, leveraging these to impersonate IT staff [T1204] and instruct employees via phishing emails to execute commercial remote access tools, leading to initial access. Upon execution, the actors used PowerShell scripts [T1059.001] to deploy malware that automatically truncated system logs in /var/log/messages [T1070.002] to obscure their presence, while also creating volume shadow copies of virtual domain controller disks [T1006] to extract the NTDS.dit file for credential harvesting. They then employed token manipulation techniques [T1134.003] to impersonate high-privilege users and forged Kerberos silver tickets [T1558.002] using tools like Kerberoast.ps1 to authenticate laterally across the network. For lateral movement, they utilized remote scheduled tasks [T1021] to install additional payloads on workstations and leveraged SCCM's software distribution features [T1072] to run malicious scripts enterprise-wide, with network monitoring showing spikes in RDP traffic to internal servers. Prior to exfiltration, the actors compressed stolen data into ZIP archives [T1560.001] and encrypted C2 communications using SSL [T1573.002] to evade detection, finally exfiltrating the archives to a private GitHub gist via the API endpoint https://api.github.com [T1567.001]. Incident responders noted that system performance remained stable throughout, with no customer data breaches confirmed in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify targets, though initial logs showed normal user activity from 9 AM to 5 PM daily.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Concurrently, they abused a trusted relationship with a third-party IT vendor to gain delegated administrative privileges and create new unauthorized admin accounts in Active Directory, leveraging these to impersonate IT staff and instruct employees via phishing emails to execute commercial remote access tools, leading to initial access.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "Concurrently, they abused a trusted relationship with a third-party IT vendor to gain delegated administrative privileges and create new unauthorized admin accounts in Active Directory, leveraging these to impersonate IT staff and instruct employees via phishing emails to execute commercial remote access tools, leading to initial access.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "002] to obscure their presence, while also creating volume shadow copies of virtual domain controller disks to extract the NTDS.",
+            "technique_id": "T1006",
+            "technique_name": "Direct Volume Access"
+        },
+        {
+            "sentence": "For lateral movement, they utilized remote scheduled tasks to install additional payloads on workstations and leveraged SCCM's software distribution features to run malicious scripts enterprise-wide, with network monitoring showing spikes in RDP traffic to internal servers.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "For lateral movement, they utilized remote scheduled tasks to install additional payloads on workstations and leveraged SCCM's software distribution features to run malicious scripts enterprise-wide, with network monitoring showing spikes in RDP traffic to internal servers.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'Crimson Serpent' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Serpent' against a mid-sized financial institution, 'SecureBank Corp.', involving website compromise, privilege abuse, lateral movement, and data exfiltration. The activity was detected through anomalous network traffic and system logs, with no real-world impact intended for training purposes.",
+        "full_report_text": "SecureBank Corp., a regional bank with 500 employees, reported unusual login attempts from external IP addresses last week, prompting an internal investigation. The actors likely conducted reconnaissance [T1589] to identify targets, though initial logs showed normal user activity from 9 AM to 5 PM daily. The campaign began with the adversary injecting malicious JavaScript [T1608.005] into SecureBank's legitimate online banking portal to steal customer credentials, which was discovered during a routine web security scan. Concurrently, they abused a trusted relationship with a third-party IT vendor [T1199] to gain delegated administrative privileges and create new unauthorized admin accounts in Active Directory, leveraging these to impersonate IT staff [T1204] and instruct employees via phishing emails to execute commercial remote access tools, leading to initial access. Upon execution, the actors used PowerShell scripts [T1059.001] to deploy malware that automatically truncated system logs in /var/log/messages [T1070.002] to obscure their presence, while also creating volume shadow copies of virtual domain controller disks [T1006] to extract the NTDS.dit file for credential harvesting. They then employed token manipulation techniques [T1134.003] to impersonate high-privilege users and forged Kerberos silver tickets [T1558.002] using tools like Kerberoast.ps1 to authenticate laterally across the network. For lateral movement, they utilized remote scheduled tasks [T1021] to install additional payloads on workstations and leveraged SCCM's software distribution features [T1072] to run malicious scripts enterprise-wide, with network monitoring showing spikes in RDP traffic to internal servers. Prior to exfiltration, the actors compressed stolen data into ZIP archives [T1560.001] and encrypted C2 communications using SSL [T1573.002] to evade detection, finally exfiltrating the archives to a private GitHub gist via the API endpoint https://api.github.com [T1567.001]. Incident responders noted that system performance remained stable throughout, with no customer data breaches confirmed in this fictional scenario.",
+        "techniques_used": [
+            "T1608.005",
+            "T1199",
+            "T1204",
+            "T1070.002",
+            "T1006",
+            "T1134.003",
+            "T1558.002",
+            "T1021",
+            "T1072",
+            "T1560.001",
+            "T1573.002",
+            "T1567.001"
+        ]
+    }
+}

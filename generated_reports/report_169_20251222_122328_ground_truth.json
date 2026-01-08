@@ -1,0 +1,88 @@
+{
+    "report_id": "report_169",
+    "generated_at": "20251222_122328",
+    "scenario_target_ids": [
+        "T1133",
+        "T1204",
+        "T1106",
+        "T1127.001",
+        "T1600.001",
+        "T1562.007",
+        "T1558",
+        "T1568.001",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1133",
+        "T1204",
+        "T1106",
+        "T1127.001",
+        "T1600.001",
+        "T1562.007",
+        "T1558",
+        "T1568.001",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1204",
+        "T1600.001",
+        "T1106",
+        "T1562.007",
+        "T1498.001",
+        "T1558",
+        "T1133",
+        "T1127.001",
+        "T1568.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional threat actor group, CRIMSON TIDE, which has been observed targeting organizations with cloud infrastructure. This report is based on a training scenario designed to enhance defensive capabilities.\n\nBackground: CRIMSON TIDE is a fictional advanced persistent threat (APT) group believed to operate with motives of espionage and disruption. In this scenario, they targeted a mid-sized technology firm, 'CloudTech Solutions', which uses hybrid cloud environments and has an external-facing SSH server for remote administration. Initial logs from CloudTech's SIEM showed unusual SSH login attempts from IP addresses in Eastern Europe, but these were initially dismissed as noise due to high volumes of routine scanning activity.\n\nAttack Narrative (Kill-Chain Analysis):\n- Initial Access: The actors exploited an external-facing SSH server with weak credentials, gaining initial access to CloudTech's IT environment.\n- Execution: They sent a phishing email to an IT administrator, containing a malicious Excel document that, when opened with macros enabled, executed a remote access trojan (RAT).\n- Persistence and Defense Evasion: Upon execution, the malware employed Windows API calls, such as ShellExecute and WriteProcessMemory, to inject code into legitimate processes and used msbuild.exe to load shellcode within a .NET Framework project, bypassing application controls.\n- Credential Access and Lateral Movement: The adversary used klist.exe to view Kerberos ticket expiration times and session keys, attempting to steal or forge tickets for lateral movement.\n- Impact and Command and Control: To facilitate command and control (C2), the backdoor registered multiple DNS A records with short TTL values, implementing fast flux DNS to obscure C2 infrastructure. Additionally, the malware modified the network device's system image to downgrade SSH encryption from AES-256 to DES, reducing the key space and weakening security, and altered cloud firewall configurations to permit unauthorized access to the management console.\n- Impact: Finally, the malware executed botnet.exe to activate a botnet for coordinated direct network flooding attacks, aiming to disrupt services.\n\nIrrelevant Information: CloudTech Solutions reported no actual data loss in this fictional scenario, but their incident response team noted increased CPU usage on several servers during the attack simulation. The company's background includes a recent migration to a multi-cloud strategy, which may have introduced configuration complexities. Logs from the cloud provider showed routine maintenance events coinciding with the attack timeline, but these were unrelated to malicious activity.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional threat actor group, CRIMSON TIDE, which has been observed targeting organizations with cloud infrastructure. This report is based on a training scenario designed to enhance defensive capabilities.\n\nBackground: CRIMSON TIDE is a fictional advanced persistent threat (APT) group believed to operate with motives of espionage and disruption. In this scenario, they targeted a mid-sized technology firm, 'CloudTech Solutions', which uses hybrid cloud environments and has an external-facing SSH server for remote administration. Initial logs from CloudTech's SIEM showed unusual SSH login attempts from IP addresses in Eastern Europe, but these were initially dismissed as noise due to high volumes of routine scanning activity.\n\nAttack Narrative (Kill-Chain Analysis):\n- Initial Access: The actors exploited an external-facing SSH server with weak credentials, gaining initial access to CloudTech's IT environment [T1133].\n- Execution: They sent a phishing email to an IT administrator, containing a malicious Excel document that, when opened with macros enabled, executed a remote access trojan (RAT) [T1204].\n- Persistence and Defense Evasion: Upon execution, the malware employed Windows API calls, such as ShellExecute and WriteProcessMemory, to inject code into legitimate processes [T1106] and used msbuild.exe to load shellcode within a .NET Framework project, bypassing application controls [T1127.001].\n- Credential Access and Lateral Movement: The adversary used klist.exe to view Kerberos ticket expiration times and session keys, attempting to steal or forge tickets for lateral movement [T1558].\n- Impact and Command and Control: To facilitate command and control (C2), the backdoor registered multiple DNS A records with short TTL values, implementing fast flux DNS to obscure C2 infrastructure [T1568.001]. Additionally, the malware modified the network device's system image to downgrade SSH encryption from AES-256 to DES, reducing the key space and weakening security [T1600.001], and altered cloud firewall configurations to permit unauthorized access to the management console [T1562.007].\n- Impact: Finally, the malware executed botnet.exe to activate a botnet for coordinated direct network flooding attacks, aiming to disrupt services [T1498.001].\n\nIrrelevant Information: CloudTech Solutions reported no actual data loss in this fictional scenario, but their incident response team noted increased CPU usage on several servers during the attack simulation. The company's background includes a recent migration to a multi-cloud strategy, which may have introduced configuration complexities. Logs from the cloud provider showed routine maintenance events coinciding with the attack timeline, but these were unrelated to malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative (Kill-Chain Analysis):\n- Initial Access: The actors exploited an external-facing SSH server with weak credentials, gaining initial access to CloudTech's IT environment.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "- Execution: They sent a phishing email to an IT administrator, containing a malicious Excel document that, when opened with macros enabled, executed a remote access trojan (RAT).",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "- Persistence and Defense Evasion: Upon execution, the malware employed Windows API calls, such as ShellExecute and WriteProcessMemory, to inject code into legitimate processes and used msbuild.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "exe to view Kerberos ticket expiration times and session keys, attempting to steal or forge tickets for lateral movement.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'CRIMSON TIDE', targeting cloud-based IT environments. The campaign exploits external services and user actions to deploy malware, evade defenses, and conduct disruptive activities. Blue teams should use this report for training to identify and mitigate similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight a fictional threat actor group, CRIMSON TIDE, which has been observed targeting organizations with cloud infrastructure. This report is based on a training scenario designed to enhance defensive capabilities.\n\nBackground: CRIMSON TIDE is a fictional advanced persistent threat (APT) group believed to operate with motives of espionage and disruption. In this scenario, they targeted a mid-sized technology firm, 'CloudTech Solutions', which uses hybrid cloud environments and has an external-facing SSH server for remote administration. Initial logs from CloudTech's SIEM showed unusual SSH login attempts from IP addresses in Eastern Europe, but these were initially dismissed as noise due to high volumes of routine scanning activity.\n\nAttack Narrative (Kill-Chain Analysis):\n- Initial Access: The actors exploited an external-facing SSH server with weak credentials, gaining initial access to CloudTech's IT environment [T1133].\n- Execution: They sent a phishing email to an IT administrator, containing a malicious Excel document that, when opened with macros enabled, executed a remote access trojan (RAT) [T1204].\n- Persistence and Defense Evasion: Upon execution, the malware employed Windows API calls, such as ShellExecute and WriteProcessMemory, to inject code into legitimate processes [T1106] and used msbuild.exe to load shellcode within a .NET Framework project, bypassing application controls [T1127.001].\n- Credential Access and Lateral Movement: The adversary used klist.exe to view Kerberos ticket expiration times and session keys, attempting to steal or forge tickets for lateral movement [T1558].\n- Impact and Command and Control: To facilitate command and control (C2), the backdoor registered multiple DNS A records with short TTL values, implementing fast flux DNS to obscure C2 infrastructure [T1568.001]. Additionally, the malware modified the network device's system image to downgrade SSH encryption from AES-256 to DES, reducing the key space and weakening security [T1600.001], and altered cloud firewall configurations to permit unauthorized access to the management console [T1562.007].\n- Impact: Finally, the malware executed botnet.exe to activate a botnet for coordinated direct network flooding attacks, aiming to disrupt services [T1498.001].\n\nIrrelevant Information: CloudTech Solutions reported no actual data loss in this fictional scenario, but their incident response team noted increased CPU usage on several servers during the attack simulation. The company's background includes a recent migration to a multi-cloud strategy, which may have introduced configuration complexities. Logs from the cloud provider showed routine maintenance events coinciding with the attack timeline, but these were unrelated to malicious activity.",
+        "techniques_used": [
+            "T1133",
+            "T1204",
+            "T1106",
+            "T1127.001",
+            "T1600.001",
+            "T1562.007",
+            "T1558",
+            "T1568.001",
+            "T1498.001"
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+### Background
+APT-FICT is a fictional advanced persistent threat group assessed to target organizations in the financial and technology sectors. This campaign was observed in a simulated environment during a training exercise at a mid-sized company, TechCorp Inc., which reported unusual network activity after an employee connected to an unsecured public Wi-Fi at a coffee shop. System logs from TechCorp's internal monitoring tools showed anomalous RDP sessions and Outlook registry modifications, though initial scans flagged no malware.
+
+### Attack Narrative
+**Initial Access:** The actors likely conducted reconnaissance [T1589] to identify vulnerable targets, then exploited an open Wi-Fi access point at a public location to gain initial network access [T1669], compromising an employee's device when it automatically connected to the network.
+
+**Execution:** Upon access, the adversary employed PowerShell [T1059.001] to execute malicious scripts that leveraged the Internet Explorer Component Object Model (COM) [T1559.001] to run arbitrary commands on the system, while simultaneously downloading additional payloads [T1105] from a command-and-control (C2) server.
+
+**Persistence:** To maintain access, the malware modified registry keys [T1112] to update Outlook settings, forcing it to load and execute a malicious HTML file [T1137.004] each time the application launched, ensuring persistent execution across reboots.
+
+**Lateral Movement:** The threat actor used hijacked Remote Desktop Protocol (RDP) sessions [T1563] to move laterally across the network, deploying ransomware [T1486] to multiple workstations while evading detection by mimicking legitimate user activity.
+
+**Command and Control:** For stealth, APT-FICT implemented FakeTLS [T1001.003] to impersonate legitimate TLS sessions for authentication and data transmission, blending malicious traffic with normal network flows to avoid network-based alerts.
+
+**Exfiltration:** The automated process collected sensitive files, including a malicious executable [T1020], and prepared them for transmission to the C2 server using encrypted channels [T1048], while also clearing event logs [T1070.001] to obscure traces of the activity.
+
+### Detection and Mitigation
+Blue teams should monitor for unusual Wi-Fi connections, anomalous COM object usage, Outlook registry changes, unauthorized RDP sessions, and unexpected TLS handshakes. Implement network segmentation, enforce multi-factor authentication, and conduct regular security training.
+
+### References
+This report is for educational purposes only, based on fictional scenarios and MITRE ATT&CK techniques.

@@ -1,0 +1,123 @@
+{
+    "report_id": "report_540",
+    "generated_at": "20251222_163234",
+    "scenario_target_ids": [
+        "T1589",
+        "T1591.001",
+        "T1590.006",
+        "T1588.001",
+        "T1583.001",
+        "T1091",
+        "T1059.003",
+        "T1547.007",
+        "T1110.003",
+        "T1069.002",
+        "T1087.001",
+        "T1056.001",
+        "T1114.003",
+        "T1114.002",
+        "T1102.001",
+        "T1491",
+        "T1496.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1591.001",
+        "T1590.006",
+        "T1588.001",
+        "T1583.001",
+        "T1091",
+        "T1059.003",
+        "T1547.007",
+        "T1110.003",
+        "T1069.002",
+        "T1087.001",
+        "T1056.001",
+        "T1114.003",
+        "T1114.002",
+        "T1102.001",
+        "T1491",
+        "T1496.002"
+    ],
+    "actual_found_ids": [
+        "T1114.002",
+        "T1491",
+        "T1591.001",
+        "T1059.003",
+        "T1547.007",
+        "T1110.003",
+        "T1056.001",
+        "T1102.001",
+        "T1589",
+        "T1091",
+        "T1496.002",
+        "T1114.003",
+        "T1069.002",
+        "T1590.006",
+        "T1087.001",
+        "T1583.001",
+        "T1588.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity, designated as 'Operation Wocao'. This campaign targets financial organizations, leveraging sophisticated techniques to compromise networks and exfiltrate data.\n\n**Initial Access and Reconnaissance**\nDuring Operation Wocao, threat actors likely conducted reconnaissance by gathering victim identity information to target individuals based on organizational roles and privileges, such as system administrators and financial officers. System logs from the victim's HR portal showed unusual access patterns, though these were not directly linked to the attack. Concurrently, the actors determined physical locations by searching the victim organization's public careers page for office addresses in cities like New York and London, while also probing network security appliances through DNS queries to identify critical infrastructure like DNS servers, using tools like 'dig' from a compromised host.\n\n**Execution and Persistence**\nThe adversary employed malware, downloading a banking trojan from a compromised web server at malware-distribution.net, and established command and control through domains such as 'v0.cx', which were newly registered with minimal characters for stealth. To spread laterally, they replicated through removable media, using USB drives to propagate across segmented networks, as observed in QakBot-like behavior. For execution, they utilized the Windows Command Shell via cmd.exe to issue commands and maintain persistence by configuring scripts to re-open applications, modifying files like com.apple.loginwindow.UUID.plist to trigger payload execution upon user login.\n\n**Credential Access and Discovery**\nThe attacker deployed password spraying against SSH ports to capture administrator credentials, while using keylogging modules, similar to FakeM, to monitor keystrokes for additional access. For discovery, they enumerated domain groups using .NET namespaces to retrieve group membership and local accounts to list active user sessions on infected hosts, aiding in privilege escalation and lateral movement.\n\n**Collection and Exfiltration**\nTo collect sensitive data, the adversary set up email forwarding rules on Exchange servers to automatically forward internal communications to an external account and conducted remote email collection using tools like MailSniper to search for emails containing financial details. For command and control, they implemented a dead drop resolver, storing encoded commands in specific social media posts, such as tweets, to evade detection.\n\n**Impact**\nThe campaign culminated in defacement, with adware injecting unwanted pop-ups into legitimate applications, and bandwidth hijacking, where proxyware services established VPN tunnels that consumed most system bandwidth, degrading network performance and hindering response efforts. Incident responders noted increased latency in internal systems, but this was initially attributed to routine maintenance.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual DNS queries, restrict removable media usage, implement multi-factor authentication, and review email forwarding rules. Regular audits of domain groups and local accounts are advised to detect unauthorized changes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity, designated as 'Operation Wocao'. This campaign targets financial organizations, leveraging sophisticated techniques to compromise networks and exfiltrate data.\n\n**Initial Access and Reconnaissance**\nDuring Operation Wocao, threat actors likely conducted reconnaissance by gathering victim identity information [T1589] to target individuals based on organizational roles and privileges, such as system administrators and financial officers. System logs from the victim's HR portal showed unusual access patterns, though these were not directly linked to the attack. Concurrently, the actors determined physical locations [T1591.001] by searching the victim organization's public careers page for office addresses in cities like New York and London, while also probing network security appliances [T1590.006] through DNS queries to identify critical infrastructure like DNS servers, using tools like 'dig' from a compromised host.\n\n**Execution and Persistence**\nThe adversary employed malware [T1588.001], downloading a banking trojan from a compromised web server at malware-distribution.net, and established command and control through domains [T1583.001] such as 'v0.cx', which were newly registered with minimal characters for stealth. To spread laterally, they replicated through removable media [T1091], using USB drives to propagate across segmented networks, as observed in QakBot-like behavior. For execution, they utilized the Windows Command Shell [T1059.003] via cmd.exe to issue commands and maintain persistence by configuring scripts to re-open applications [T1547.007], modifying files like com.apple.loginwindow.UUID.plist to trigger payload execution upon user login.\n\n**Credential Access and Discovery**\nThe attacker deployed password spraying [T1110.003] against SSH ports to capture administrator credentials, while using keylogging [T1056.001] modules, similar to FakeM, to monitor keystrokes for additional access. For discovery, they enumerated domain groups [T1069.002] using .NET namespaces to retrieve group membership and local accounts [T1087.001] to list active user sessions on infected hosts, aiding in privilege escalation and lateral movement.\n\n**Collection and Exfiltration**\nTo collect sensitive data, the adversary set up email forwarding rules [T1114.003] on Exchange servers to automatically forward internal communications to an external account and conducted remote email collection [T1114.002] using tools like MailSniper to search for emails containing financial details. For command and control, they implemented a dead drop resolver [T1102.001], storing encoded commands in specific social media posts, such as tweets, to evade detection.\n\n**Impact**\nThe campaign culminated in defacement [T1491], with adware injecting unwanted pop-ups into legitimate applications, and bandwidth hijacking [T1496.002], where proxyware services established VPN tunnels that consumed most system bandwidth, degrading network performance and hindering response efforts. Incident responders noted increased latency in internal systems, but this was initially attributed to routine maintenance.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual DNS queries, restrict removable media usage, implement multi-factor authentication, and review email forwarding rules. Regular audits of domain groups and local accounts are advised to detect unauthorized changes.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Initial Access and Reconnaissance**\nDuring Operation Wocao, threat actors likely conducted reconnaissance by gathering victim identity information to target individuals based on organizational roles and privileges, such as system administrators and financial officers.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "To spread laterally, they replicated through removable media, using USB drives to propagate across segmented networks, as observed in QakBot-like behavior.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "**Impact**\nThe campaign culminated in defacement, with adware injecting unwanted pop-ups into legitimate applications, and bandwidth hijacking [T1496.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Operation Wocao' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Viper', targeting financial institutions to exfiltrate sensitive data and disrupt operations. The campaign employs a multi-faceted approach, combining reconnaissance, malware deployment, credential theft, and data exfiltration techniques. Blue teams are advised to review detection and mitigation strategies outlined in the full report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity, designated as 'Operation Wocao'. This campaign targets financial organizations, leveraging sophisticated techniques to compromise networks and exfiltrate data.\n\n**Initial Access and Reconnaissance**\nDuring Operation Wocao, threat actors likely conducted reconnaissance by gathering victim identity information [T1589] to target individuals based on organizational roles and privileges, such as system administrators and financial officers. System logs from the victim's HR portal showed unusual access patterns, though these were not directly linked to the attack. Concurrently, the actors determined physical locations [T1591.001] by searching the victim organization's public careers page for office addresses in cities like New York and London, while also probing network security appliances [T1590.006] through DNS queries to identify critical infrastructure like DNS servers, using tools like 'dig' from a compromised host.\n\n**Execution and Persistence**\nThe adversary employed malware [T1588.001], downloading a banking trojan from a compromised web server at malware-distribution.net, and established command and control through domains [T1583.001] such as 'v0.cx', which were newly registered with minimal characters for stealth. To spread laterally, they replicated through removable media [T1091], using USB drives to propagate across segmented networks, as observed in QakBot-like behavior. For execution, they utilized the Windows Command Shell [T1059.003] via cmd.exe to issue commands and maintain persistence by configuring scripts to re-open applications [T1547.007], modifying files like com.apple.loginwindow.UUID.plist to trigger payload execution upon user login.\n\n**Credential Access and Discovery**\nThe attacker deployed password spraying [T1110.003] against SSH ports to capture administrator credentials, while using keylogging [T1056.001] modules, similar to FakeM, to monitor keystrokes for additional access. For discovery, they enumerated domain groups [T1069.002] using .NET namespaces to retrieve group membership and local accounts [T1087.001] to list active user sessions on infected hosts, aiding in privilege escalation and lateral movement.\n\n**Collection and Exfiltration**\nTo collect sensitive data, the adversary set up email forwarding rules [T1114.003] on Exchange servers to automatically forward internal communications to an external account and conducted remote email collection [T1114.002] using tools like MailSniper to search for emails containing financial details. For command and control, they implemented a dead drop resolver [T1102.001], storing encoded commands in specific social media posts, such as tweets, to evade detection.\n\n**Impact**\nThe campaign culminated in defacement [T1491], with adware injecting unwanted pop-ups into legitimate applications, and bandwidth hijacking [T1496.002], where proxyware services established VPN tunnels that consumed most system bandwidth, degrading network performance and hindering response efforts. Incident responders noted increased latency in internal systems, but this was initially attributed to routine maintenance.\n\n**Mitigation Recommendations**\nBlue teams should monitor for unusual DNS queries, restrict removable media usage, implement multi-factor authentication, and review email forwarding rules. Regular audits of domain groups and local accounts are advised to detect unauthorized changes.",
+        "techniques_used": [
+            "T1589",
+            "T1591.001",
+            "T1590.006",
+            "T1588.001",
+            "T1583.001",
+            "T1091",
+            "T1059.003",
+            "T1547.007",
+            "T1110.003",
+            "T1069.002",
+            "T1087.001",
+            "T1056.001",
+            "T1114.003",
+            "T1114.002",
+            "T1102.001",
+            "T1491",
+            "T1496.002"
+        ]
+    }
+}

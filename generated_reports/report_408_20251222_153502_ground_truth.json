@@ -1,0 +1,108 @@
+{
+    "report_id": "report_408",
+    "generated_at": "20251222_153502",
+    "scenario_target_ids": [
+        "T1592.001",
+        "T1591.001",
+        "T1597.001",
+        "T1199",
+        "T1204.003",
+        "T1610",
+        "T1505.005",
+        "T1003",
+        "T1557.003",
+        "T1056.003",
+        "T1665",
+        "T1095"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.001",
+        "T1591.001",
+        "T1597.001",
+        "T1199",
+        "T1204.003",
+        "T1610",
+        "T1505.005",
+        "T1003",
+        "T1557.003",
+        "T1056.003",
+        "T1665",
+        "T1095"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1610",
+        "T1199",
+        "T1591.001",
+        "T1592.001",
+        "T1597.001",
+        "T1505.005",
+        "T1003",
+        "T1056.003",
+        "T1557.003",
+        "T1665",
+        "T1204.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowGale'. This campaign, observed in a training environment, demonstrates a multi-stage attack against a simulated energy sector organization.\n\nInitial reconnaissance activities involved the adversary querying a paid threat intelligence feed to gather details about the target organization's security tools while simultaneously searching the victim's careers page for office addresses in different cities to determine physical locations. System logs from the compromised environment show that the script ran wevtutil.exe to extract hardware inventory information from Windows event logs, though these logs also contained routine backup entries unrelated to the attack.\n\nInitial access was achieved through a trusted relationship, where the threat actor utilized delegated administrative rights to bypass security controls and access sensitive data. Once inside, execution involved deploying a container to run the Doki malware and dropping a malicious Amazon Machine Image with pre-installed keylogging software to the cloud repository. Persistence was established by altering termsrv.dll to create a persistent RDP backdoor, while credential access techniques included OS credential dumping to obtain Windows logon password details and web portal capture by redirecting text-based login codes to attacker-controlled websites during credential changes.\n\nLateral movement and impact were facilitated through DHCP spoofing, where the adversary executed dhcpspoof.exe to poison the network with fraudulent DHCP responses. Command and control (C2) communications were masked using a Tor gateway to anonymize the traffic and employed non-application layer protocols, with StealBit using the Windows Socket networking library to communicate with attacker-controlled endpoints. Additional network scans revealed unrelated port 445 traffic, which was not part of the malicious activity.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowGale'. This campaign, observed in a training environment, demonstrates a multi-stage attack against a simulated energy sector organization.\n\nInitial reconnaissance activities involved the adversary querying a paid threat intelligence feed to gather details about the target organization's security tools [T1597.001] while simultaneously searching the victim's careers page for office addresses in different cities to determine physical locations [T1591.001]. System logs from the compromised environment show that the script ran wevtutil.exe to extract hardware inventory information from Windows event logs [T1592.001], though these logs also contained routine backup entries unrelated to the attack.\n\nInitial access was achieved through a trusted relationship, where the threat actor utilized delegated administrative rights to bypass security controls and access sensitive data [T1199]. Once inside, execution involved deploying a container to run the Doki malware [T1610] and dropping a malicious Amazon Machine Image with pre-installed keylogging software to the cloud repository [T1204.003]. Persistence was established by altering termsrv.dll to create a persistent RDP backdoor [T1505.005], while credential access techniques included OS credential dumping to obtain Windows logon password details [T1003] and web portal capture by redirecting text-based login codes to attacker-controlled websites during credential changes [T1056.003].\n\nLateral movement and impact were facilitated through DHCP spoofing, where the adversary executed dhcpspoof.exe to poison the network with fraudulent DHCP responses [T1557.003]. Command and control (C2) communications were masked using a Tor gateway to anonymize the traffic [T1665] and employed non-application layer protocols, with StealBit using the Windows Socket networking library to communicate with attacker-controlled endpoints [T1095]. Additional network scans revealed unrelated port 445 traffic, which was not part of the malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved through a trusted relationship, where the threat actor utilized delegated administrative rights to bypass security controls and access sensitive data.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "Once inside, execution involved deploying a container to run the Doki malware and dropping a malicious Amazon Machine Image with pre-installed keylogging software to the cloud repository [T1204.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "005], while credential access techniques included OS credential dumping to obtain Windows logon password details and web portal capture by redirecting text-based login codes to attacker-controlled websites during credential changes [T1056.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "Command and control (C2) communications were masked using a Tor gateway to anonymize the traffic and employed non-application layer protocols, with StealBit using the Windows Socket networking library to communicate with attacker-controlled endpoints.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        },
+        {
+            "sentence": "Command and control (C2) communications were masked using a Tor gateway to anonymize the traffic and employed non-application layer protocols, with StealBit using the Windows Socket networking library to communicate with attacker-controlled endpoints.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowGale', targeting critical infrastructure organizations to exfiltrate sensitive data and establish persistent access. The campaign involves reconnaissance, exploitation of trusted relationships, deployment of malicious cloud resources, credential theft, network manipulation, and covert command-and-control (C2) communications. Blue teams should review logs for related indicators and implement defensive measures outlined in the mitigation section.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'ShadowGale'. This campaign, observed in a training environment, demonstrates a multi-stage attack against a simulated energy sector organization.\n\nInitial reconnaissance activities involved the adversary querying a paid threat intelligence feed to gather details about the target organization's security tools [T1597.001] while simultaneously searching the victim's careers page for office addresses in different cities to determine physical locations [T1591.001]. System logs from the compromised environment show that the script ran wevtutil.exe to extract hardware inventory information from Windows event logs [T1592.001], though these logs also contained routine backup entries unrelated to the attack.\n\nInitial access was achieved through a trusted relationship, where the threat actor utilized delegated administrative rights to bypass security controls and access sensitive data [T1199]. Once inside, execution involved deploying a container to run the Doki malware [T1610] and dropping a malicious Amazon Machine Image with pre-installed keylogging software to the cloud repository [T1204.003]. Persistence was established by altering termsrv.dll to create a persistent RDP backdoor [T1505.005], while credential access techniques included OS credential dumping to obtain Windows logon password details [T1003] and web portal capture by redirecting text-based login codes to attacker-controlled websites during credential changes [T1056.003].\n\nLateral movement and impact were facilitated through DHCP spoofing, where the adversary executed dhcpspoof.exe to poison the network with fraudulent DHCP responses [T1557.003]. Command and control (C2) communications were masked using a Tor gateway to anonymize the traffic [T1665] and employed non-application layer protocols, with StealBit using the Windows Socket networking library to communicate with attacker-controlled endpoints [T1095]. Additional network scans revealed unrelated port 445 traffic, which was not part of the malicious activity.",
+        "techniques_used": [
+            "T1592.001",
+            "T1591.001",
+            "T1597.001",
+            "T1199",
+            "T1204.003",
+            "T1610",
+            "T1505.005",
+            "T1003",
+            "T1557.003",
+            "T1056.003",
+            "T1665",
+            "T1095"
+        ]
+    }
+}

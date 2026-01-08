@@ -1,0 +1,98 @@
+{
+    "report_id": "report_313",
+    "generated_at": "20251222_145405",
+    "scenario_target_ids": [
+        "T1133",
+        "T1129",
+        "T1059.009",
+        "T1574.011",
+        "T1070.007",
+        "T1074",
+        "T1602.002",
+        "T1573.002",
+        "T1041",
+        "T1529"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1133",
+        "T1129",
+        "T1059.009",
+        "T1574.011",
+        "T1070.007",
+        "T1074",
+        "T1602.002",
+        "T1573.002",
+        "T1041",
+        "T1529"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1070.007",
+        "T1074",
+        "T1602.002",
+        "T1059.009",
+        "T1133",
+        "T1573.002",
+        "T1041",
+        "T1574.011",
+        "T1529"
+    ],
+    "clean_text": "APT-SIM actors likely conduct initial reconnaissance by scanning for exposed RDP services, though this activity was not directly observed in logs. The campaign began with the actors using Tor and commercial VPN services to route brute force authentication attempts against external remote services, gaining unauthorized access to a victim's network. Upon access, they executed malicious scripts via PowerShell, which employed LoadLibraryEx to load a rogue DLL that established persistence on the system while simultaneously using CLI commands to remotely install cryptocurrency mining software on compromised cloud instances. The actors then exploited services registry permissions weakness by modifying the ClipBook service with sc.exe to run the cryptocurrency miner and used a PowerShell script to remove HKEY_CURRENT_USER\\Software\\Microsoft\\Terminal Server Client\\Servers, clearing network connection history and configurations. Data staging occurred as the malicious script used bash commands to aggregate collected browser data into a hidden directory, and malware performed SNMP queries to collect router interface information from network devices. For command and control, Cyclops Blink malware encrypted messages with AES-256-CBC under TLS, using OpenSSL functions with randomly generated keys and IVs encrypted via a hard-coded RSA public key, enabling exfiltration of host environment information to an external C2 domain over port 9006. Finally, the actors triggered a system reload command to disrupt service availability and cover tracks. System logs showed routine updates and user login attempts, but no anomalies were flagged by initial monitoring tools.",
+    "tagged_text": "APT-SIM actors likely conduct initial reconnaissance by scanning for exposed RDP services, though this activity was not directly observed in logs. The campaign began with the actors using Tor and commercial VPN services to route brute force authentication attempts against external remote services [T1133], gaining unauthorized access to a victim's network. Upon access, they executed malicious scripts via PowerShell, which employed LoadLibraryEx to load a rogue DLL that established persistence on the system [T1129] while simultaneously using CLI commands to remotely install cryptocurrency mining software on compromised cloud instances [T1059.009]. The actors then exploited services registry permissions weakness by modifying the ClipBook service with sc.exe to run the cryptocurrency miner [T1574.011] and used a PowerShell script to remove HKEY_CURRENT_USER\\Software\\Microsoft\\Terminal Server Client\\Servers, clearing network connection history and configurations [T1070.007]. Data staging occurred as the malicious script used bash commands to aggregate collected browser data into a hidden directory [T1074], and malware performed SNMP queries to collect router interface information from network devices [T1602.002]. For command and control, Cyclops Blink malware encrypted messages with AES-256-CBC under TLS, using OpenSSL functions with randomly generated keys and IVs encrypted via a hard-coded RSA public key [T1573.002], enabling exfiltration of host environment information to an external C2 domain over port 9006 [T1041]. Finally, the actors triggered a system reload command to disrupt service availability and cover tracks [T1529]. System logs showed routine updates and user login attempts, but no anomalies were flagged by initial monitoring tools.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign began with the actors using Tor and commercial VPN services to route brute force authentication attempts against external remote services, gaining unauthorized access to a victim's network.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "Upon access, they executed malicious scripts via PowerShell, which employed LoadLibraryEx to load a rogue DLL that established persistence on the system while simultaneously using CLI commands to remotely install cryptocurrency mining software on compromised cloud instances [T1059.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "Data staging occurred as the malicious script used bash commands to aggregate collected browser data into a hidden directory, and malware performed SNMP queries to collect router interface information from network devices [T1602.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "002], enabling exfiltration of host environment information to an external C2 domain over port 9006.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        },
+        {
+            "sentence": "Finally, the actors triggered a system reload command to disrupt service availability and cover tracks.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Cloud and Network Infrastructure",
+        "summary": "This advisory details a fictional campaign by threat actors, designated as APT-SIM, targeting organizations to exfiltrate sensitive data and deploy cryptocurrency miners. The campaign leverages external remote services, cloud APIs, and asymmetric cryptography for stealthy operations.",
+        "full_report_text": "APT-SIM actors likely conduct initial reconnaissance by scanning for exposed RDP services, though this activity was not directly observed in logs. The campaign began with the actors using Tor and commercial VPN services to route brute force authentication attempts against external remote services [T1133], gaining unauthorized access to a victim's network. Upon access, they executed malicious scripts via PowerShell, which employed LoadLibraryEx to load a rogue DLL that established persistence on the system [T1129] while simultaneously using CLI commands to remotely install cryptocurrency mining software on compromised cloud instances [T1059.009]. The actors then exploited services registry permissions weakness by modifying the ClipBook service with sc.exe to run the cryptocurrency miner [T1574.011] and used a PowerShell script to remove HKEY_CURRENT_USER\\Software\\Microsoft\\Terminal Server Client\\Servers, clearing network connection history and configurations [T1070.007]. Data staging occurred as the malicious script used bash commands to aggregate collected browser data into a hidden directory [T1074], and malware performed SNMP queries to collect router interface information from network devices [T1602.002]. For command and control, Cyclops Blink malware encrypted messages with AES-256-CBC under TLS, using OpenSSL functions with randomly generated keys and IVs encrypted via a hard-coded RSA public key [T1573.002], enabling exfiltration of host environment information to an external C2 domain over port 9006 [T1041]. Finally, the actors triggered a system reload command to disrupt service availability and cover tracks [T1529]. System logs showed routine updates and user login attempts, but no anomalies were flagged by initial monitoring tools.",
+        "techniques_used": [
+            "T1133",
+            "T1129",
+            "T1059.009",
+            "T1574.011",
+            "T1070.007",
+            "T1074",
+            "T1602.002",
+            "T1573.002",
+            "T1041",
+            "T1529"
+        ]
+    }
+}

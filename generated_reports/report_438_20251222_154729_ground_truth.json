@@ -1,0 +1,89 @@
+{
+    "report_id": "report_438",
+    "generated_at": "20251222_154729",
+    "scenario_target_ids": [
+        "T1583.003",
+        "T1583.001",
+        "T1583.008",
+        "T1659",
+        "T1569.002",
+        "T1574.009",
+        "T1036.004",
+        "T1056.001",
+        "T1552.002",
+        "T1105"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1583.003",
+        "T1583.001",
+        "T1583.008",
+        "T1659",
+        "T1569.002",
+        "T1574.009",
+        "T1036.004",
+        "T1056.001",
+        "T1552.002",
+        "T1105"
+    ],
+    "actual_found_ids": [
+        "T1056.001",
+        "T1589",
+        "T1583.008",
+        "T1659",
+        "T1574.009",
+        "T1552.002",
+        "T1569.002",
+        "T1583.003",
+        "T1036.004",
+        "T1105",
+        "T1583.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'Crimson Veil.' This campaign is designed to simulate real-world tactics, techniques, and procedures (TTPs) for educational purposes, focusing on financial sector entities. Background analysis indicates that Crimson Veil actors have historically operated from Eastern Europe, with infrastructure logs showing increased activity in Q3 2024, though no actual breaches are reported. The actors likely conduct reconnaissance to identify targets, but this phase is not detailed in the provided scenario. In the initial access phase, Crimson Veil employs malvertising by injecting malicious code into online ads that exploit a vulnerability in Adobe Flash Player, while simultaneously using content injection to insert malicious JavaScript into HTTP responses, facilitating cross-site scripting attacks to compromise user browsers. These techniques are supported by infrastructure acquired through virtual private servers (VPS) and domains registered for use with remote monitoring and management (RMM) tools, with domain registration logs showing patterns mimicking legitimate financial services. Upon execution, the adversary leverages service execution to elevate privileges to SYSTEM using tools like PsExec, and combines this with path interception by unquoted path by writing payloads to directories such as C:\\Users\\[username]\\AppData\\Local\\Temp\\program.exe to hijack execution paths. For persistence, they masquerade tasks or services by renaming malicious services to 'Windows Video Service' to evade detection, as observed in system service logs with unusual startup parameters. During post-exploitation, Crimson Veil implements keylogging to capture user input and extracts credentials in the registry by enumerating keys like HKCU\\SOFTWARE\\Microsoft\\Office\\16.0\\Outlook\\Profiles\\Outlook\\9375CFF0413111d3B88A00104B2A6676\\ for IMAP data, while using ingress tool transfer to download and execute additional files from command-and-control servers. Network traffic analysis reveals connections to IP addresses associated with known VPS providers, though some logs indicate benign background processes unrelated to the attack. Blue teams should monitor for registry modifications, unusual service creations, and anomalous domain resolutions to mitigate these simulated threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'Crimson Veil.' This campaign is designed to simulate real-world tactics, techniques, and procedures (TTPs) for educational purposes, focusing on financial sector entities. Background analysis indicates that Crimson Veil actors have historically operated from Eastern Europe, with infrastructure logs showing increased activity in Q3 2024, though no actual breaches are reported. The actors likely conduct reconnaissance [T1589] to identify targets, but this phase is not detailed in the provided scenario. In the initial access phase, Crimson Veil employs malvertising [T1583.008] by injecting malicious code into online ads that exploit a vulnerability in Adobe Flash Player, while simultaneously using content injection [T1659] to insert malicious JavaScript into HTTP responses, facilitating cross-site scripting attacks to compromise user browsers. These techniques are supported by infrastructure acquired through virtual private servers (VPS) [T1583.003] and domains [T1583.001] registered for use with remote monitoring and management (RMM) tools, with domain registration logs showing patterns mimicking legitimate financial services. Upon execution, the adversary leverages service execution [T1569.002] to elevate privileges to SYSTEM using tools like PsExec, and combines this with path interception by unquoted path [T1574.009] by writing payloads to directories such as C:\\Users\\[username]\\AppData\\Local\\Temp\\program.exe to hijack execution paths. For persistence, they masquerade tasks or services [T1036.004] by renaming malicious services to 'Windows Video Service' to evade detection, as observed in system service logs with unusual startup parameters. During post-exploitation, Crimson Veil implements keylogging [T1056.001] to capture user input and extracts credentials in the registry [T1552.002] by enumerating keys like HKCU\\SOFTWARE\\Microsoft\\Office\\16.0\\Outlook\\Profiles\\Outlook\\9375CFF0413111d3B88A00104B2A6676\\ for IMAP data, while using ingress tool transfer [T1105] to download and execute additional files from command-and-control servers. Network traffic analysis reveals connections to IP addresses associated with known VPS providers, though some logs indicate benign background processes unrelated to the attack. Blue teams should monitor for registry modifications, unusual service creations, and anomalous domain resolutions to mitigate these simulated threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify targets, but this phase is not detailed in the provided scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "008] by injecting malicious code into online ads that exploit a vulnerability in Adobe Flash Player, while simultaneously using content injection to insert malicious JavaScript into HTTP responses, facilitating cross-site scripting attacks to compromise user browsers.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "0\\Outlook\\Profiles\\Outlook\\9375CFF0413111d3B88A00104B2A6676\\ for IMAP data, while using ingress tool transfer to download and execute additional files from command-and-control servers.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Veil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'Crimson Veil,' targeting financial institutions. The campaign leverages malvertising and content injection for initial access, followed by service execution and path interception for persistence, and includes keylogging and credential harvesting for data exfiltration. Blue teams should review logs for suspicious VPS connections, domain registrations, and registry modifications.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'Crimson Veil.' This campaign is designed to simulate real-world tactics, techniques, and procedures (TTPs) for educational purposes, focusing on financial sector entities. Background analysis indicates that Crimson Veil actors have historically operated from Eastern Europe, with infrastructure logs showing increased activity in Q3 2024, though no actual breaches are reported. The actors likely conduct reconnaissance [T1589] to identify targets, but this phase is not detailed in the provided scenario. In the initial access phase, Crimson Veil employs malvertising [T1583.008] by injecting malicious code into online ads that exploit a vulnerability in Adobe Flash Player, while simultaneously using content injection [T1659] to insert malicious JavaScript into HTTP responses, facilitating cross-site scripting attacks to compromise user browsers. These techniques are supported by infrastructure acquired through virtual private servers (VPS) [T1583.003] and domains [T1583.001] registered for use with remote monitoring and management (RMM) tools, with domain registration logs showing patterns mimicking legitimate financial services. Upon execution, the adversary leverages service execution [T1569.002] to elevate privileges to SYSTEM using tools like PsExec, and combines this with path interception by unquoted path [T1574.009] by writing payloads to directories such as C:\\Users\\[username]\\AppData\\Local\\Temp\\program.exe to hijack execution paths. For persistence, they masquerade tasks or services [T1036.004] by renaming malicious services to 'Windows Video Service' to evade detection, as observed in system service logs with unusual startup parameters. During post-exploitation, Crimson Veil implements keylogging [T1056.001] to capture user input and extracts credentials in the registry [T1552.002] by enumerating keys like HKCU\\SOFTWARE\\Microsoft\\Office\\16.0\\Outlook\\Profiles\\Outlook\\9375CFF0413111d3B88A00104B2A6676\\ for IMAP data, while using ingress tool transfer [T1105] to download and execute additional files from command-and-control servers. Network traffic analysis reveals connections to IP addresses associated with known VPS providers, though some logs indicate benign background processes unrelated to the attack. Blue teams should monitor for registry modifications, unusual service creations, and anomalous domain resolutions to mitigate these simulated threats.",
+        "techniques_used": [
+            "T1583.003",
+            "T1583.001",
+            "T1583.008",
+            "T1659",
+            "T1569.002",
+            "T1574.009",
+            "T1036.004",
+            "T1056.001",
+            "T1552.002",
+            "T1105"
+        ]
+    }
+}

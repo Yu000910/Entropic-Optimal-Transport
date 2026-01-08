@@ -1,0 +1,83 @@
+{
+    "report_id": "report_303",
+    "generated_at": "20251222_145007",
+    "scenario_target_ids": [
+        "T1595",
+        "T1078",
+        "T1078.002",
+        "T1569.003",
+        "T1053.007",
+        "T1484.001",
+        "T1056.001",
+        "T1665",
+        "T1499.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595",
+        "T1078",
+        "T1078.002",
+        "T1569.003",
+        "T1053.007",
+        "T1484.001",
+        "T1056.001",
+        "T1665",
+        "T1499.001"
+    ],
+    "actual_found_ids": [
+        "T1484.001",
+        "T1056.001",
+        "T1078.002",
+        "T1078",
+        "T1053.007",
+        "T1665",
+        "T1569.003",
+        "T1499.001",
+        "T1595"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide awareness of simulated malicious cyber activity attributed to the fictional threat actor CRIMSON_SAND. This report is based on a training scenario designed to enhance defensive capabilities in critical infrastructure environments.\n\nBackground: CRIMSON_SAND is a simulated advanced persistent threat (APT) group with suspected ties to fictional nation-state interests. The group has historically targeted energy and manufacturing sectors, leveraging compromised credentials and custom tools. In this scenario, the victim is a mid-sized utility company, 'PowerGrid Innovations', operating in the United States with a hybrid cloud and on-premises infrastructure. Initial detection occurred through anomalous network traffic logs from perimeter firewalls, which showed unusual scanning patterns against internal servers.\n\nAttack Narrative:\n1. Reconnaissance: The actors initiated the campaign by conducting active scanning using automated tools like nmap.exe to enumerate running services and identify vulnerabilities in PowerGrid Innovations' external-facing systems, such as web servers and VPN endpoints. This phase lasted approximately 48 hours, with scans originating from IP addresses geolocated to regions associated with previous CRIMSON_SAND activity.\n2. Initial Access and Execution: Leveraging previously acquired legitimate credentials, including domain accounts obtained from a prior phishing campaign, the actors gained unauthorized access to the victim's network. They used these accounts to authenticate via Remote Desktop Protocol (RDP) to a critical server hosting operational technology (OT) systems, where they executed malicious commands to establish persistence.\n3. Persistence and Lateral Movement: To maintain long-term control, the actors employed systemctl to enable a custom service that automatically restarts on boot, while simultaneously deploying a CronJob to schedule the execution of a malicious container every 30 minutes for command and control (C2) communication. Additionally, they modified Group Policy objects to push scheduled tasks across the domain, ensuring widespread deployment of backdoors.\n4. Collection and Exfiltration: The actors installed keylogging software on compromised workstations to capture user credentials and sensitive data, which was exfiltrated through encrypted channels to external servers. To evade detection, they hid their infrastructure by configuring C2 hostnames to mimic legitimate internal servers and using VPN IP addresses from the same country as the victim, reducing suspicion in network logs.\n5. Impact: In the final phase, the actors executed an OS exhaustion flood by running an ACK flood script on the victim's mail server, overwhelming its processing capacity and causing service disruption. This attack was timed to coincide with peak business hours, maximizing impact on PowerGrid Innovations' operations.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication, regularly audit domain accounts, monitor for anomalous scanning activity, and segment networks to limit lateral movement. This report serves as a training tool to improve incident response and threat hunting capabilities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide awareness of simulated malicious cyber activity attributed to the fictional threat actor CRIMSON_SAND. This report is based on a training scenario designed to enhance defensive capabilities in critical infrastructure environments.\n\nBackground: CRIMSON_SAND is a simulated advanced persistent threat (APT) group with suspected ties to fictional nation-state interests. The group has historically targeted energy and manufacturing sectors, leveraging compromised credentials and custom tools. In this scenario, the victim is a mid-sized utility company, 'PowerGrid Innovations', operating in the United States with a hybrid cloud and on-premises infrastructure. Initial detection occurred through anomalous network traffic logs from perimeter firewalls, which showed unusual scanning patterns against internal servers.\n\nAttack Narrative:\n1. Reconnaissance: The actors initiated the campaign by conducting active scanning [T1595] using automated tools like nmap.exe to enumerate running services and identify vulnerabilities in PowerGrid Innovations' external-facing systems, such as web servers and VPN endpoints. This phase lasted approximately 48 hours, with scans originating from IP addresses geolocated to regions associated with previous CRIMSON_SAND activity.\n2. Initial Access and Execution: Leveraging previously acquired legitimate credentials [T1078], including domain accounts [T1078.002] obtained from a prior phishing campaign, the actors gained unauthorized access to the victim's network. They used these accounts to authenticate via Remote Desktop Protocol (RDP) to a critical server hosting operational technology (OT) systems, where they executed malicious commands to establish persistence.\n3. Persistence and Lateral Movement: To maintain long-term control, the actors employed systemctl [T1569.003] to enable a custom service that automatically restarts on boot, while simultaneously deploying a CronJob [T1053.007] to schedule the execution of a malicious container every 30 minutes for command and control (C2) communication. Additionally, they modified Group Policy objects [T1484.001] to push scheduled tasks across the domain, ensuring widespread deployment of backdoors.\n4. Collection and Exfiltration: The actors installed keylogging software [T1056.001] on compromised workstations to capture user credentials and sensitive data, which was exfiltrated through encrypted channels to external servers. To evade detection, they hid their infrastructure [T1665] by configuring C2 hostnames to mimic legitimate internal servers and using VPN IP addresses from the same country as the victim, reducing suspicion in network logs.\n5. Impact: In the final phase, the actors executed an OS exhaustion flood [T1499.001] by running an ACK flood script on the victim's mail server, overwhelming its processing capacity and causing service disruption. This attack was timed to coincide with peak business hours, maximizing impact on PowerGrid Innovations' operations.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication, regularly audit domain accounts, monitor for anomalous scanning activity, and segment networks to limit lateral movement. This report serves as a training tool to improve incident response and threat hunting capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "Reconnaissance: The actors initiated the campaign by conducting active scanning using automated tools like nmap.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "Initial Access and Execution: Leveraging previously acquired legitimate credentials, including domain accounts [T1078.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "To evade detection, they hid their infrastructure by configuring C2 hostnames to mimic legitimate internal servers and using VPN IP addresses from the same country as the victim, reducing suspicion in network logs.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a fictional campaign by a simulated threat actor, designated 'CRIMSON_SAND', targeting critical infrastructure sectors. The activity involves reconnaissance, credential abuse, persistence mechanisms, and disruptive attacks, based on real-world techniques for blue team training.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide awareness of simulated malicious cyber activity attributed to the fictional threat actor CRIMSON_SAND. This report is based on a training scenario designed to enhance defensive capabilities in critical infrastructure environments.\n\nBackground: CRIMSON_SAND is a simulated advanced persistent threat (APT) group with suspected ties to fictional nation-state interests. The group has historically targeted energy and manufacturing sectors, leveraging compromised credentials and custom tools. In this scenario, the victim is a mid-sized utility company, 'PowerGrid Innovations', operating in the United States with a hybrid cloud and on-premises infrastructure. Initial detection occurred through anomalous network traffic logs from perimeter firewalls, which showed unusual scanning patterns against internal servers.\n\nAttack Narrative:\n1. Reconnaissance: The actors initiated the campaign by conducting active scanning [T1595] using automated tools like nmap.exe to enumerate running services and identify vulnerabilities in PowerGrid Innovations' external-facing systems, such as web servers and VPN endpoints. This phase lasted approximately 48 hours, with scans originating from IP addresses geolocated to regions associated with previous CRIMSON_SAND activity.\n2. Initial Access and Execution: Leveraging previously acquired legitimate credentials [T1078], including domain accounts [T1078.002] obtained from a prior phishing campaign, the actors gained unauthorized access to the victim's network. They used these accounts to authenticate via Remote Desktop Protocol (RDP) to a critical server hosting operational technology (OT) systems, where they executed malicious commands to establish persistence.\n3. Persistence and Lateral Movement: To maintain long-term control, the actors employed systemctl [T1569.003] to enable a custom service that automatically restarts on boot, while simultaneously deploying a CronJob [T1053.007] to schedule the execution of a malicious container every 30 minutes for command and control (C2) communication. Additionally, they modified Group Policy objects [T1484.001] to push scheduled tasks across the domain, ensuring widespread deployment of backdoors.\n4. Collection and Exfiltration: The actors installed keylogging software [T1056.001] on compromised workstations to capture user credentials and sensitive data, which was exfiltrated through encrypted channels to external servers. To evade detection, they hid their infrastructure [T1665] by configuring C2 hostnames to mimic legitimate internal servers and using VPN IP addresses from the same country as the victim, reducing suspicion in network logs.\n5. Impact: In the final phase, the actors executed an OS exhaustion flood [T1499.001] by running an ACK flood script on the victim's mail server, overwhelming its processing capacity and causing service disruption. This attack was timed to coincide with peak business hours, maximizing impact on PowerGrid Innovations' operations.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication, regularly audit domain accounts, monitor for anomalous scanning activity, and segment networks to limit lateral movement. This report serves as a training tool to improve incident response and threat hunting capabilities.",
+        "techniques_used": [
+            "T1595",
+            "T1078",
+            "T1078.002",
+            "T1569.003",
+            "T1053.007",
+            "T1484.001",
+            "T1056.001",
+            "T1665",
+            "T1499.001"
+        ]
+    }
+}

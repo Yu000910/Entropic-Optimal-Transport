@@ -1,0 +1,73 @@
+{
+    "report_id": "report_396",
+    "generated_at": "20251222_152940",
+    "scenario_target_ids": [
+        "T1199",
+        "T1569.002",
+        "T1056",
+        "T1056.001",
+        "T1071.002",
+        "T1052",
+        "T1567.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1199",
+        "T1569.002",
+        "T1056",
+        "T1056.001",
+        "T1071.002",
+        "T1052",
+        "T1567.002"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1071.002",
+        "T1056.001",
+        "T1052",
+        "T1569.002",
+        "T1056",
+        "T1567.002"
+    ],
+    "clean_text": "On March 15, 2024, APT-FICT initiated a campaign against a fictional MSP, CloudSecure Solutions, which provides Office 365 management services to multiple small and medium-sized businesses. The actors first exploited a trusted relationship by compromising a partner account at CloudSecure Solutions through phishing, allowing them to escalate privileges across customer environments without direct authentication. System logs from the MSP's Azure AD show unusual login patterns from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to legitimate partner activity. Once access was established, the adversary deployed a variant of gh0st RAT, which executed as a service by checking for an existing Service key and creating one if absent to ensure persistence. This RAT then facilitated input capture by intercepting credentials from user logins on compromised devices, specifically using keylogging modules to log keystrokes and harvest sensitive data. To maintain stealth, APT-FICT concealed command and control (C2) communications by using FTP for data transfers, mimicking legitimate file exchange operations within the network. Additionally, the backdoor wrote stolen credentials to an inserted USB flash drive for physical exfiltration, while simultaneously uploading files to Dropbox using a tool similar to LUNCHMONEY for cloud-based data theft. Incident responders noted anomalous FTP traffic to external servers and USB activity logs, but initial triage focused on network outages unrelated to the attack. The campaign highlights the need for enhanced monitoring of partner accounts and multi-vector exfiltration detection.",
+    "tagged_text": "On March 15, 2024, APT-FICT initiated a campaign against a fictional MSP, CloudSecure Solutions, which provides Office 365 management services to multiple small and medium-sized businesses. The actors first exploited a trusted relationship by compromising a partner account at CloudSecure Solutions through phishing, allowing them to escalate privileges across customer environments without direct authentication [T1199]. System logs from the MSP's Azure AD show unusual login patterns from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to legitimate partner activity. Once access was established, the adversary deployed a variant of gh0st RAT, which executed as a service by checking for an existing Service key and creating one if absent to ensure persistence [T1569.002]. This RAT then facilitated input capture by intercepting credentials from user logins on compromised devices [T1056], specifically using keylogging modules to log keystrokes and harvest sensitive data [T1056.001]. To maintain stealth, APT-FICT concealed command and control (C2) communications by using FTP for data transfers, mimicking legitimate file exchange operations within the network [T1071.002]. Additionally, the backdoor wrote stolen credentials to an inserted USB flash drive for physical exfiltration [T1052], while simultaneously uploading files to Dropbox using a tool similar to LUNCHMONEY for cloud-based data theft [T1567.002]. Incident responders noted anomalous FTP traffic to external servers and USB activity logs, but initial triage focused on network outages unrelated to the attack. The campaign highlights the need for enhanced monitoring of partner accounts and multi-vector exfiltration detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors first exploited a trusted relationship by compromising a partner account at CloudSecure Solutions through phishing, allowing them to escalate privileges across customer environments without direct authentication.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "This RAT then facilitated input capture by intercepting credentials from user logins on compromised devices, specifically using keylogging modules to log keystrokes and harvest sensitive data [T1056.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "Additionally, the backdoor wrote stolen credentials to an inserted USB flash drive for physical exfiltration, while simultaneously uploading files to Dropbox using a tool similar to LUNCHMONEY for cloud-based data theft [T1567.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Managed Service Providers",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group, designated as APT-FICT, targeting managed service providers (MSPs) and their clients. The campaign leverages trusted relationships to gain initial access, deploys remote access trojans (RATs) for execution and persistence, captures user input via keylogging, and exfiltrates data through multiple covert channels including file transfer protocols, physical media, and cloud storage. This report is for blue team training purposes to enhance detection and response capabilities against similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "On March 15, 2024, APT-FICT initiated a campaign against a fictional MSP, CloudSecure Solutions, which provides Office 365 management services to multiple small and medium-sized businesses. The actors first exploited a trusted relationship by compromising a partner account at CloudSecure Solutions through phishing, allowing them to escalate privileges across customer environments without direct authentication [T1199]. System logs from the MSP's Azure AD show unusual login patterns from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to legitimate partner activity. Once access was established, the adversary deployed a variant of gh0st RAT, which executed as a service by checking for an existing Service key and creating one if absent to ensure persistence [T1569.002]. This RAT then facilitated input capture by intercepting credentials from user logins on compromised devices [T1056], specifically using keylogging modules to log keystrokes and harvest sensitive data [T1056.001]. To maintain stealth, APT-FICT concealed command and control (C2) communications by using FTP for data transfers, mimicking legitimate file exchange operations within the network [T1071.002]. Additionally, the backdoor wrote stolen credentials to an inserted USB flash drive for physical exfiltration [T1052], while simultaneously uploading files to Dropbox using a tool similar to LUNCHMONEY for cloud-based data theft [T1567.002]. Incident responders noted anomalous FTP traffic to external servers and USB activity logs, but initial triage focused on network outages unrelated to the attack. The campaign highlights the need for enhanced monitoring of partner accounts and multi-vector exfiltration detection.",
+        "techniques_used": [
+            "T1199",
+            "T1569.002",
+            "T1056",
+            "T1056.001",
+            "T1071.002",
+            "T1052",
+            "T1567.002"
+        ]
+    }
+}

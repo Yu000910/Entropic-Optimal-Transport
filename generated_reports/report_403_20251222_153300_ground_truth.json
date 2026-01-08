@@ -1,0 +1,73 @@
+{
+    "report_id": "report_403",
+    "generated_at": "20251222_153300",
+    "scenario_target_ids": [
+        "T1608.001",
+        "T1078.003",
+        "T1204.004",
+        "T1563.001",
+        "T1039",
+        "T1602",
+        "T1659"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1608.001",
+        "T1204.004",
+        "T1078.003",
+        "T1563.001",
+        "T1039",
+        "T1602",
+        "T1659"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1659",
+        "T1563.001",
+        "T1602",
+        "T1204.004",
+        "T1608.001",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario designed to enhance blue team readiness. This report outlines the tactics, techniques, and procedures (TTPs) used in the 'GISTSHADOW' campaign, based on simulated activities targeting a mid-sized financial services firm, 'SecureFin Corp.', which reported unusual network traffic and credential alerts last week. Initial reconnaissance involved passive scanning of public GitHub repositories, though no specific techniques were tagged in this phase. In the Initial Access phase, the actors uploaded backdoor malware disguised as legitimate configuration files to a public GitHub gist, which was then distributed via phishing emails. Upon user interaction, a spoofed 'Microsoft Office Activation Wizard' prompted victims to click 'Activate Now', leading to malicious copy and paste actions that injected and executed a script. During Execution, the malware employed PowerShell to modify registry keys and establish persistence, with system logs showing increased CPU usage on affected endpoints. For Persistence, the ransomware accessed Windows Credential Manager to harvest saved web and application credentials from local accounts, while also creating scheduled tasks for recurring execution. In the Lateral Movement phase, the adversary exploited weak SSH key passphrases to decrypt private keys and hijack SSH sessions, enabling movement to additional servers within the network. For Collection, the malware executed commands like 'dir \\\\fileserver\\shared\\*.docx' to search for and exfiltrate sensitive documents from network shared drives, and simultaneously extracted SSH keys and configuration data from the system's configuration management repository. In the Exfiltration phase, data was compressed and transmitted over encrypted channels, with network monitoring detecting unusual outbound traffic to external IP addresses. Additionally, malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses, though this was primarily observed in external communication channels. Throughout the campaign, the actors used obfuscated commands and avoided detection by mimicking normal user activity, with incident responders noting encrypted files and ransom notes on compromised systems post-exploitation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario designed to enhance blue team readiness. This report outlines the tactics, techniques, and procedures (TTPs) used in the 'GISTSHADOW' campaign, based on simulated activities targeting a mid-sized financial services firm, 'SecureFin Corp.', which reported unusual network traffic and credential alerts last week. Initial reconnaissance involved passive scanning of public GitHub repositories, though no specific techniques were tagged in this phase. In the Initial Access phase, the actors uploaded backdoor malware disguised as legitimate configuration files to a public GitHub gist [T1608.001], which was then distributed via phishing emails. Upon user interaction, a spoofed 'Microsoft Office Activation Wizard' prompted victims to click 'Activate Now', leading to malicious copy and paste actions that injected and executed a script [T1204.004]. During Execution, the malware employed PowerShell to modify registry keys and establish persistence, with system logs showing increased CPU usage on affected endpoints. For Persistence, the ransomware accessed Windows Credential Manager to harvest saved web and application credentials from local accounts [T1078.003], while also creating scheduled tasks for recurring execution. In the Lateral Movement phase, the adversary exploited weak SSH key passphrases to decrypt private keys and hijack SSH sessions [T1563.001], enabling movement to additional servers within the network. For Collection, the malware executed commands like 'dir \\\\fileserver\\shared\\*.docx' to search for and exfiltrate sensitive documents from network shared drives [T1039], and simultaneously extracted SSH keys and configuration data from the system's configuration management repository [T1602]. In the Exfiltration phase, data was compressed and transmitted over encrypted channels, with network monitoring detecting unusual outbound traffic to external IP addresses. Additionally, malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses [T1659], though this was primarily observed in external communication channels. Throughout the campaign, the actors used obfuscated commands and avoided detection by mimicking normal user activity, with incident responders noting encrypted files and ransom notes on compromised systems post-exploitation.",
+    "sentence_annotations": [
+        {
+            "sentence": "docx' to search for and exfiltrate sensitive documents from network shared drives, and simultaneously extracted SSH keys and configuration data from the system's configuration management repository.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "docx' to search for and exfiltrate sensitive documents from network shared drives, and simultaneously extracted SSH keys and configuration data from the system's configuration management repository.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "Additionally, malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses, though this was primarily observed in external communication channels.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'GISTSHADOW' Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'GISTSHADOW', which leverages social engineering and credential theft to deploy ransomware across enterprise environments. The campaign involves malware uploads to public repositories, exploitation of local accounts, and lateral movement via SSH hijacking, culminating in data exfiltration from network shares and configuration repositories. Blue teams are advised to review detection and mitigation strategies outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario designed to enhance blue team readiness. This report outlines the tactics, techniques, and procedures (TTPs) used in the 'GISTSHADOW' campaign, based on simulated activities targeting a mid-sized financial services firm, 'SecureFin Corp.', which reported unusual network traffic and credential alerts last week. Initial reconnaissance involved passive scanning of public GitHub repositories, though no specific techniques were tagged in this phase. In the Initial Access phase, the actors uploaded backdoor malware disguised as legitimate configuration files to a public GitHub gist [T1608.001], which was then distributed via phishing emails. Upon user interaction, a spoofed 'Microsoft Office Activation Wizard' prompted victims to click 'Activate Now', leading to malicious copy and paste actions that injected and executed a script [T1204.004]. During Execution, the malware employed PowerShell to modify registry keys and establish persistence, with system logs showing increased CPU usage on affected endpoints. For Persistence, the ransomware accessed Windows Credential Manager to harvest saved web and application credentials from local accounts [T1078.003], while also creating scheduled tasks for recurring execution. In the Lateral Movement phase, the adversary exploited weak SSH key passphrases to decrypt private keys and hijack SSH sessions [T1563.001], enabling movement to additional servers within the network. For Collection, the malware executed commands like 'dir \\\\fileserver\\shared\\*.docx' to search for and exfiltrate sensitive documents from network shared drives [T1039], and simultaneously extracted SSH keys and configuration data from the system's configuration management repository [T1602]. In the Exfiltration phase, data was compressed and transmitted over encrypted channels, with network monitoring detecting unusual outbound traffic to external IP addresses. Additionally, malicious actors exploited ISP-level vulnerabilities to inject adware into HTTP responses [T1659], though this was primarily observed in external communication channels. Throughout the campaign, the actors used obfuscated commands and avoided detection by mimicking normal user activity, with incident responders noting encrypted files and ransom notes on compromised systems post-exploitation.",
+        "techniques_used": [
+            "T1608.001",
+            "T1204.004",
+            "T1078.003",
+            "T1563.001",
+            "T1039",
+            "T1602",
+            "T1659"
+        ]
+    }
+}

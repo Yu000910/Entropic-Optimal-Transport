@@ -1,0 +1,83 @@
+{
+    "report_id": "report_183",
+    "generated_at": "20251222_122922",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1059.002",
+        "T1053",
+        "T1550.003",
+        "T1071",
+        "T1132.002",
+        "T1496",
+        "T1657"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.004",
+        "T1059.002",
+        "T1053",
+        "T1550.003",
+        "T1071",
+        "T1132.002",
+        "T1496",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1053",
+        "T1566.004",
+        "T1550.003",
+        "T1059.002",
+        "T1071",
+        "T1657",
+        "T1132.002",
+        "T1496"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign dubbed 'SilentMiner'. This report is based on a simulated attack scenario designed for educational purposes, incorporating realistic but fictitious elements to enhance defensive readiness.\n\nBackground: The fictional company 'FinCloud Corp', a mid-sized financial services provider using hybrid cloud infrastructure, was targeted in this scenario. Initial logs from their SIEM showed anomalous outbound traffic on port 10001, but routine system maintenance had been scheduled, causing some noise in alerting systems.\n\nAttack Narrative:\n1. Initial Access: The adversary initiated contact by calling a FinCloud Corp employee, impersonating Microsoft support staff to gain trust and instruct the victim to download and run a TeamViewer installer, exploiting human vulnerability for initial access.\n2. Execution and Persistence: Upon execution, the malware employed AppleScript to write a persistent script to the user's LaunchAgents folder, ensuring it runs on every login, while simultaneously configuring schtasks.exe to schedule malicious.exe for weekly execution, establishing robust persistence mechanisms. System logs from the affected macOS endpoint showed increased CPU usage, but this was initially attributed to a recent software update.\n3. Lateral Movement: After gaining a foothold, the actor utilized pass the ticket techniques with Kerberos authentication to move laterally across the network, accessing sensitive financial databases. Network traffic analysis revealed unusual Kerberos ticket requests during off-hours, though some were dismissed as false positives due to legacy system interactions.\n4. Command and Control (C2): The malware communicated with C2 servers using the Stratum protocol on port 10001, with traffic obfuscated through modified Base64 encoding using URL-safe characters to evade detection. Firewall logs showed sporadic connections to external IPs, but these were not flagged initially due to whitelisted cloud service ranges.\n5. Impact: The campaign culminated in resource hijacking, where compromised cloud instances were repurposed to run Ethereum mining operations without authorization, and financial theft, with the actor demanding ransom payments to decrypt filesystems and prevent publication of exfiltrated sensitive data. FinCloud Corp's cloud monitoring tools detected abnormal compute resource consumption, leading to the investigation, but initial reports confused this with legitimate workload spikes.\n\nThis advisory serves as a training tool to highlight the importance of monitoring for social engineering, persistence techniques, and obfuscated C2 traffic in defensive operations.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign dubbed 'SilentMiner'. This report is based on a simulated attack scenario designed for educational purposes, incorporating realistic but fictitious elements to enhance defensive readiness.\n\nBackground: The fictional company 'FinCloud Corp', a mid-sized financial services provider using hybrid cloud infrastructure, was targeted in this scenario. Initial logs from their SIEM showed anomalous outbound traffic on port 10001, but routine system maintenance had been scheduled, causing some noise in alerting systems.\n\nAttack Narrative:\n1. Initial Access: The adversary initiated contact by calling a FinCloud Corp employee, impersonating Microsoft support staff to gain trust and instruct the victim to download and run a TeamViewer installer, exploiting human vulnerability for initial access [T1566.004].\n2. Execution and Persistence: Upon execution, the malware employed AppleScript [T1059.002] to write a persistent script to the user's LaunchAgents folder, ensuring it runs on every login, while simultaneously configuring schtasks.exe to schedule malicious.exe for weekly execution [T1053], establishing robust persistence mechanisms. System logs from the affected macOS endpoint showed increased CPU usage, but this was initially attributed to a recent software update.\n3. Lateral Movement: After gaining a foothold, the actor utilized pass the ticket techniques with Kerberos authentication [T1550.003] to move laterally across the network, accessing sensitive financial databases. Network traffic analysis revealed unusual Kerberos ticket requests during off-hours, though some were dismissed as false positives due to legacy system interactions.\n4. Command and Control (C2): The malware communicated with C2 servers using the Stratum protocol on port 10001 [T1071], with traffic obfuscated through modified Base64 encoding using URL-safe characters [T1132.002] to evade detection. Firewall logs showed sporadic connections to external IPs, but these were not flagged initially due to whitelisted cloud service ranges.\n5. Impact: The campaign culminated in resource hijacking [T1496], where compromised cloud instances were repurposed to run Ethereum mining operations without authorization, and financial theft [T1657], with the actor demanding ransom payments to decrypt filesystems and prevent publication of exfiltrated sensitive data. FinCloud Corp's cloud monitoring tools detected abnormal compute resource consumption, leading to the investigation, but initial reports confused this with legitimate workload spikes.\n\nThis advisory serves as a training tool to highlight the importance of monitoring for social engineering, persistence techniques, and obfuscated C2 traffic in defensive operations.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe for weekly execution, establishing robust persistence mechanisms.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "Command and Control (C2): The malware communicated with C2 servers using the Stratum protocol on port 10001, with traffic obfuscated through modified Base64 encoding using URL-safe characters [T1132.",
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol"
+        },
+        {
+            "sentence": "Impact: The campaign culminated in resource hijacking, where compromised cloud instances were repurposed to run Ethereum mining operations without authorization, and financial theft, with the actor demanding ransom payments to decrypt filesystems and prevent publication of exfiltrated sensitive data.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        },
+        {
+            "sentence": "Impact: The campaign culminated in resource hijacking, where compromised cloud instances were repurposed to run Ethereum mining operations without authorization, and financial theft, with the actor demanding ransom payments to decrypt filesystems and prevent publication of exfiltrated sensitive data.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentMiner' Targeting Financial and Cloud Sectors",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'SilentMiner', which targets financial institutions and cloud service providers to deploy cryptojacking malware and extort ransom payments. The campaign involves social engineering, persistence mechanisms, lateral movement, and obfuscated command and control, culminating in financial theft and resource hijacking.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign dubbed 'SilentMiner'. This report is based on a simulated attack scenario designed for educational purposes, incorporating realistic but fictitious elements to enhance defensive readiness.\n\nBackground: The fictional company 'FinCloud Corp', a mid-sized financial services provider using hybrid cloud infrastructure, was targeted in this scenario. Initial logs from their SIEM showed anomalous outbound traffic on port 10001, but routine system maintenance had been scheduled, causing some noise in alerting systems.\n\nAttack Narrative:\n1. Initial Access: The adversary initiated contact by calling a FinCloud Corp employee, impersonating Microsoft support staff to gain trust and instruct the victim to download and run a TeamViewer installer, exploiting human vulnerability for initial access [T1566.004].\n2. Execution and Persistence: Upon execution, the malware employed AppleScript [T1059.002] to write a persistent script to the user's LaunchAgents folder, ensuring it runs on every login, while simultaneously configuring schtasks.exe to schedule malicious.exe for weekly execution [T1053], establishing robust persistence mechanisms. System logs from the affected macOS endpoint showed increased CPU usage, but this was initially attributed to a recent software update.\n3. Lateral Movement: After gaining a foothold, the actor utilized pass the ticket techniques with Kerberos authentication [T1550.003] to move laterally across the network, accessing sensitive financial databases. Network traffic analysis revealed unusual Kerberos ticket requests during off-hours, though some were dismissed as false positives due to legacy system interactions.\n4. Command and Control (C2): The malware communicated with C2 servers using the Stratum protocol on port 10001 [T1071], with traffic obfuscated through modified Base64 encoding using URL-safe characters [T1132.002] to evade detection. Firewall logs showed sporadic connections to external IPs, but these were not flagged initially due to whitelisted cloud service ranges.\n5. Impact: The campaign culminated in resource hijacking [T1496], where compromised cloud instances were repurposed to run Ethereum mining operations without authorization, and financial theft [T1657], with the actor demanding ransom payments to decrypt filesystems and prevent publication of exfiltrated sensitive data. FinCloud Corp's cloud monitoring tools detected abnormal compute resource consumption, leading to the investigation, but initial reports confused this with legitimate workload spikes.\n\nThis advisory serves as a training tool to highlight the importance of monitoring for social engineering, persistence techniques, and obfuscated C2 traffic in defensive operations.",
+        "techniques_used": [
+            "T1566.004",
+            "T1059.002",
+            "T1053",
+            "T1550.003",
+            "T1071",
+            "T1132.002",
+            "T1496",
+            "T1657"
+        ]
+    }
+}

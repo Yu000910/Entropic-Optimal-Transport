@@ -1,0 +1,83 @@
+{
+    "report_id": "report_3",
+    "generated_at": "20251222_111816",
+    "scenario_target_ids": [
+        "T1584.001",
+        "T1566.003",
+        "T1059.006",
+        "T1078.003",
+        "T1560.003",
+        "T1039",
+        "T1115",
+        "T1001.002",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1584.001",
+        "T1566.003",
+        "T1059.006",
+        "T1078.003",
+        "T1560.003",
+        "T1039",
+        "T1115",
+        "T1001.002",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1566.003",
+        "T1059.006",
+        "T1115",
+        "T1078.003",
+        "T1001.002",
+        "T1029",
+        "T1560.003",
+        "T1584.001",
+        "T1039"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign targeting corporate environments for educational purposes. This report is based on simulated attack scenarios to train defensive teams in identifying and mitigating sophisticated threats.\n\nBackground: The fictional APT group, designated as 'ShadowHawk' for training, has been observed targeting technology and financial sectors over the past six months. Initial analysis indicates the group operates with moderate sophistication, using a mix of publicly available tools and custom scripts. Logs from a simulated victim organization, 'TechGlobal Inc.', show unusual DNS queries and increased network traffic to external IPs in early 2024, though no actual breaches occurred in this fictional scenario.\n\nAttack Narrative:\n- Initial Access: The actors likely conducted reconnaissance by modifying DNS A records to point corporate domains to IP addresses under their control, facilitating redirection of legitimate traffic. Concurrently, they created fake LinkedIn profiles to send spearphishing links via direct messages to employees, exploiting trust in professional networks.\n- Execution: Upon successful phishing, the adversary employed Python scripts to execute malicious payloads, often delivered through the compromised domains, while using Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts for lateral movement.\n- Persistence and Discovery: The actors searched for sensitive documents across network shares using commands like 'dir \\\\fileserver\\shared\\*.docx /s' and logged clipboard contents via a Helminth executable module to capture user data in real-time.\n- Exfiltration: Data was encrypted with XOR before transmission and embedded within PNG files using steganography tools to hide C2 instructions, with scheduled transfers that included sleep intervals to evade detection.\n\nAdditional Context: System logs from TechGlobal Inc. showed increased CPU usage on several servers during the simulated attack, but no actual data loss occurred. The company's incident response team, in this training exercise, successfully identified the phishing attempts and blocked malicious domains, highlighting the importance of employee awareness and DNS monitoring.\n\nRecommendations: Blue teams should monitor for DNS anomalies, train employees on spearphishing recognition, and implement endpoint detection for unusual Python script executions and credential dumping activities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign targeting corporate environments for educational purposes. This report is based on simulated attack scenarios to train defensive teams in identifying and mitigating sophisticated threats.\n\nBackground: The fictional APT group, designated as 'ShadowHawk' for training, has been observed targeting technology and financial sectors over the past six months. Initial analysis indicates the group operates with moderate sophistication, using a mix of publicly available tools and custom scripts. Logs from a simulated victim organization, 'TechGlobal Inc.', show unusual DNS queries and increased network traffic to external IPs in early 2024, though no actual breaches occurred in this fictional scenario.\n\nAttack Narrative:\n- Initial Access: The actors likely conducted reconnaissance by modifying DNS A records to point corporate domains to IP addresses under their control [T1584.001], facilitating redirection of legitimate traffic. Concurrently, they created fake LinkedIn profiles to send spearphishing links via direct messages to employees [T1566.003], exploiting trust in professional networks.\n- Execution: Upon successful phishing, the adversary employed Python scripts [T1059.006] to execute malicious payloads, often delivered through the compromised domains, while using Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts [T1078.003] for lateral movement.\n- Persistence and Discovery: The actors searched for sensitive documents across network shares using commands like 'dir \\\\fileserver\\shared\\*.docx /s' [T1039] and logged clipboard contents via a Helminth executable module [T1115] to capture user data in real-time.\n- Exfiltration: Data was encrypted with XOR before transmission [T1560.003] and embedded within PNG files using steganography tools to hide C2 instructions [T1001.002], with scheduled transfers that included sleep intervals to evade detection [T1029].\n\nAdditional Context: System logs from TechGlobal Inc. showed increased CPU usage on several servers during the simulated attack, but no actual data loss occurred. The company's incident response team, in this training exercise, successfully identified the phishing attempts and blocked malicious domains, highlighting the importance of employee awareness and DNS monitoring.\n\nRecommendations: Blue teams should monitor for DNS anomalies, train employees on spearphishing recognition, and implement endpoint detection for unusual Python script executions and credential dumping activities.",
+    "sentence_annotations": [
+        {
+            "sentence": "docx /s' and logged clipboard contents via a Helminth executable module to capture user data in real-time.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "docx /s' and logged clipboard contents via a Helminth executable module to capture user data in real-time.",
+            "technique_id": "T1115",
+            "technique_name": "Clipboard Data"
+        },
+        {
+            "sentence": "002], with scheduled transfers that included sleep intervals to evade detection.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designed for blue team training to enhance detection and response capabilities. The campaign involves domain hijacking, spearphishing, credential theft, data exfiltration, and covert communication methods, leveraging techniques such as DNS manipulation, Python-based execution, and steganography.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional APT campaign targeting corporate environments for educational purposes. This report is based on simulated attack scenarios to train defensive teams in identifying and mitigating sophisticated threats.\n\nBackground: The fictional APT group, designated as 'ShadowHawk' for training, has been observed targeting technology and financial sectors over the past six months. Initial analysis indicates the group operates with moderate sophistication, using a mix of publicly available tools and custom scripts. Logs from a simulated victim organization, 'TechGlobal Inc.', show unusual DNS queries and increased network traffic to external IPs in early 2024, though no actual breaches occurred in this fictional scenario.\n\nAttack Narrative:\n- Initial Access: The actors likely conducted reconnaissance by modifying DNS A records to point corporate domains to IP addresses under their control [T1584.001], facilitating redirection of legitimate traffic. Concurrently, they created fake LinkedIn profiles to send spearphishing links via direct messages to employees [T1566.003], exploiting trust in professional networks.\n- Execution: Upon successful phishing, the adversary employed Python scripts [T1059.006] to execute malicious payloads, often delivered through the compromised domains, while using Mimikatz.exe's sekurlsa::logonpasswords module to dump credential material from local accounts [T1078.003] for lateral movement.\n- Persistence and Discovery: The actors searched for sensitive documents across network shares using commands like 'dir \\\\fileserver\\shared\\*.docx /s' [T1039] and logged clipboard contents via a Helminth executable module [T1115] to capture user data in real-time.\n- Exfiltration: Data was encrypted with XOR before transmission [T1560.003] and embedded within PNG files using steganography tools to hide C2 instructions [T1001.002], with scheduled transfers that included sleep intervals to evade detection [T1029].\n\nAdditional Context: System logs from TechGlobal Inc. showed increased CPU usage on several servers during the simulated attack, but no actual data loss occurred. The company's incident response team, in this training exercise, successfully identified the phishing attempts and blocked malicious domains, highlighting the importance of employee awareness and DNS monitoring.\n\nRecommendations: Blue teams should monitor for DNS anomalies, train employees on spearphishing recognition, and implement endpoint detection for unusual Python script executions and credential dumping activities.",
+        "techniques_used": [
+            "T1584.001",
+            "T1566.003",
+            "T1059.006",
+            "T1078.003",
+            "T1560.003",
+            "T1039",
+            "T1115",
+            "T1001.002",
+            "T1029"
+        ]
+    }
+}

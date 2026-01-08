@@ -1,0 +1,128 @@
+{
+    "report_id": "report_712",
+    "generated_at": "20251223_104351",
+    "scenario_target_ids": [
+        "T1589.002",
+        "T1588",
+        "T1583",
+        "T1566.003",
+        "T1053",
+        "T1059.011",
+        "T1558.005",
+        "T1003.002",
+        "T1563.001",
+        "T1025",
+        "T1001.001",
+        "T1205",
+        "T1491",
+        "T1496"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589.002",
+        "T1588",
+        "T1583",
+        "T1566.003",
+        "T1053",
+        "T1059.011",
+        "T1558.005",
+        "T1003.002",
+        "T1563.001",
+        "T1025",
+        "T1001.001",
+        "T1205",
+        "T1491",
+        "T1496"
+    ],
+    "actual_found_ids": [
+        "T1583",
+        "T1491",
+        "T1059.011",
+        "T1205",
+        "T1558.005",
+        "T1588",
+        "T1001.001",
+        "T1053",
+        "T1003.002",
+        "T1563.001",
+        "T1589.002",
+        "T1566.003",
+        "T1025",
+        "T1496"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional threat activity. CrimsonViper, a cybercriminal group, likely conducted reconnaissance by collecting email addresses of targeted employees at a social media firm, while simultaneously purchasing a custom ransomware builder from an underground forum and signing up for multiple Azure free accounts to create redundant infrastructure for their operations. In the initial access phase, the actors created fake Instagram profiles to send malicious links disguised as photo album invitations via spearphishing, which led to the execution of a malicious script that used schtasks.exe to schedule recurring tasks for credential harvesting. Upon execution, the adversary employed Lua code to establish a reverse shell connection, while using klist queries to analyze Ccache files for silver ticket forgery opportunities. For persistence and credential access, they utilized pwdumpx.exe to dump password hashes from the Security Account Manager and hijacked SSH agent sockets to reuse existing connections for lateral movement across the network. During collection, the malware included a module that gathered documents from removable media, and for defense evasion, WellMess-like obfuscation was applied by inserting junk data into Base64 strings. Command and control was maintained through traffic signaling, where custom TCP packets were crafted to open hidden backdoor ports. In the impact phase, the backdoor injected 'evil.ps1' to modify operating system color schemes as a form of defacement, and XMRig mining software was installed to hijack GPU resources for cryptocurrency generation. System logs from the victim environment showed normal user activity during off-hours, with no immediate alerts triggered, highlighting the need for enhanced monitoring. The company, a mid-sized social media platform, reported no actual data loss, but this scenario underscores the importance of training against multi-vector attacks.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional threat activity. CrimsonViper, a cybercriminal group, likely conducted reconnaissance by collecting email addresses [T1589.002] of targeted employees at a social media firm, while simultaneously purchasing a custom ransomware builder from an underground forum [T1588] and signing up for multiple Azure free accounts to create redundant infrastructure [T1583] for their operations. In the initial access phase, the actors created fake Instagram profiles to send malicious links disguised as photo album invitations via spearphishing [T1566.003], which led to the execution of a malicious script that used schtasks.exe to schedule recurring tasks [T1053] for credential harvesting. Upon execution, the adversary employed Lua code [T1059.011] to establish a reverse shell connection, while using klist queries to analyze Ccache files [T1558.005] for silver ticket forgery opportunities. For persistence and credential access, they utilized pwdumpx.exe to dump password hashes from the Security Account Manager [T1003.002] and hijacked SSH agent sockets [T1563.001] to reuse existing connections for lateral movement across the network. During collection, the malware included a module that gathered documents from removable media [T1025], and for defense evasion, WellMess-like obfuscation was applied by inserting junk data into Base64 strings [T1001.001]. Command and control was maintained through traffic signaling [T1205], where custom TCP packets were crafted to open hidden backdoor ports. In the impact phase, the backdoor injected 'evil.ps1' to modify operating system color schemes as a form of defacement [T1491], and XMRig mining software was installed to hijack GPU resources for cryptocurrency generation [T1496]. System logs from the victim environment showed normal user activity during off-hours, with no immediate alerts triggered, highlighting the need for enhanced monitoring. The company, a mid-sized social media platform, reported no actual data loss, but this scenario underscores the importance of training against multi-vector attacks.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] of targeted employees at a social media firm, while simultaneously purchasing a custom ransomware builder from an underground forum and signing up for multiple Azure free accounts to create redundant infrastructure for their operations.",
+            "technique_id": "T1588",
+            "technique_name": "Obtain Capabilities"
+        },
+        {
+            "sentence": "002] of targeted employees at a social media firm, while simultaneously purchasing a custom ransomware builder from an underground forum and signing up for multiple Azure free accounts to create redundant infrastructure for their operations.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "exe to schedule recurring tasks for credential harvesting.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "During collection, the malware included a module that gathered documents from removable media, and for defense evasion, WellMess-like obfuscation was applied by inserting junk data into Base64 strings [T1001.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        },
+        {
+            "sentence": "Command and control was maintained through traffic signaling, where custom TCP packets were crafted to open hidden backdoor ports.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "ps1' to modify operating system color schemes as a form of defacement, and XMRig mining software was installed to hijack GPU resources for cryptocurrency generation.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        },
+        {
+            "sentence": "ps1' to modify operating system color schemes as a form of defacement, and XMRig mining software was installed to hijack GPU resources for cryptocurrency generation.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Ransomware Campaign Targeting Social Media Platforms",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'CrimsonViper,' targeting social media companies to deploy ransomware and conduct resource hijacking. The campaign involves spearphishing, infrastructure acquisition, and lateral movement techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional threat activity. CrimsonViper, a cybercriminal group, likely conducted reconnaissance by collecting email addresses [T1589.002] of targeted employees at a social media firm, while simultaneously purchasing a custom ransomware builder from an underground forum [T1588] and signing up for multiple Azure free accounts to create redundant infrastructure [T1583] for their operations. In the initial access phase, the actors created fake Instagram profiles to send malicious links disguised as photo album invitations via spearphishing [T1566.003], which led to the execution of a malicious script that used schtasks.exe to schedule recurring tasks [T1053] for credential harvesting. Upon execution, the adversary employed Lua code [T1059.011] to establish a reverse shell connection, while using klist queries to analyze Ccache files [T1558.005] for silver ticket forgery opportunities. For persistence and credential access, they utilized pwdumpx.exe to dump password hashes from the Security Account Manager [T1003.002] and hijacked SSH agent sockets [T1563.001] to reuse existing connections for lateral movement across the network. During collection, the malware included a module that gathered documents from removable media [T1025], and for defense evasion, WellMess-like obfuscation was applied by inserting junk data into Base64 strings [T1001.001]. Command and control was maintained through traffic signaling [T1205], where custom TCP packets were crafted to open hidden backdoor ports. In the impact phase, the backdoor injected 'evil.ps1' to modify operating system color schemes as a form of defacement [T1491], and XMRig mining software was installed to hijack GPU resources for cryptocurrency generation [T1496]. System logs from the victim environment showed normal user activity during off-hours, with no immediate alerts triggered, highlighting the need for enhanced monitoring. The company, a mid-sized social media platform, reported no actual data loss, but this scenario underscores the importance of training against multi-vector attacks.",
+        "techniques_used": [
+            "T1589.002",
+            "T1588",
+            "T1583",
+            "T1566.003",
+            "T1053",
+            "T1059.011",
+            "T1558.005",
+            "T1003.002",
+            "T1563.001",
+            "T1025",
+            "T1001.001",
+            "T1205",
+            "T1491",
+            "T1496"
+        ]
+    }
+}

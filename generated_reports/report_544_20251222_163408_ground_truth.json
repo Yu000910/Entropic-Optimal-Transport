@@ -1,0 +1,86 @@
+{
+    "report_id": "report_544",
+    "generated_at": "20251222_163408",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1204.004",
+        "T1547.004",
+        "T1218.011",
+        "T1497.001",
+        "T1613",
+        "T1095",
+        "T1567"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.002",
+        "T1204.004",
+        "T1547.004",
+        "T1218.011",
+        "T1497.001",
+        "T1613",
+        "T1095",
+        "T1567"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1567",
+        "T1218.011",
+        "T1613",
+        "T1589",
+        "T1497.001",
+        "T1547.004",
+        "T1078.002",
+        "T1204.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'ShadowHarbor'. This group targets financial organizations, with initial access often gained through phishing campaigns. Background: 'ShadowHarbor' is believed to operate from Eastern Europe, focusing on data theft for financial gain. System logs from a simulated victim, 'FinSecure Bank', show unusual login attempts from IP addresses in non-business hours, though these were not tagged as malicious. The actors likely conduct reconnaissance to identify domain accounts. In the execution phase, they used Mimikatz.exe to extract Kerberos tickets from domain user sessions and displayed a deceptive 'Document Conversion Failed - Click to Retry' dialog that executed encoded commands when the user retried the operation. For persistence, Wizard Spider has established persistence using Userinit by adding the Registry key HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon. In defense evasion, Sakula calls cmd.exe to run various DLL files via rundll32 while simultaneously conducting system checks to detect sandboxes or VMware services. During lateral movement, Hildegard has used masscan to search for kubelets and the kubelet API for additional running containers. For command and control, OSX_OCEANLOTUS.D has used a custom binary protocol over port 443 for C2 traffic. Finally, Exbyte exfiltrates collected data to online file hosting sites such as 'Mega.co.nz'. Additional logs show routine backup processes that were unrelated to the attack. Mitigation includes monitoring for unusual domain account activity and implementing application whitelisting.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'ShadowHarbor'. This group targets financial organizations, with initial access often gained through phishing campaigns. Background: 'ShadowHarbor' is believed to operate from Eastern Europe, focusing on data theft for financial gain. System logs from a simulated victim, 'FinSecure Bank', show unusual login attempts from IP addresses in non-business hours, though these were not tagged as malicious. The actors likely conduct reconnaissance [T1589] to identify domain accounts. In the execution phase, they used Mimikatz.exe to extract Kerberos tickets from domain user sessions [T1078.002] and displayed a deceptive 'Document Conversion Failed - Click to Retry' dialog that executed encoded commands when the user retried the operation [T1204.004]. For persistence, Wizard Spider has established persistence using Userinit by adding the Registry key HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon [T1547.004]. In defense evasion, Sakula calls cmd.exe to run various DLL files via rundll32 [T1218.011] while simultaneously conducting system checks to detect sandboxes or VMware services [T1497.001]. During lateral movement, Hildegard has used masscan to search for kubelets and the kubelet API for additional running containers [T1613]. For command and control, OSX_OCEANLOTUS.D has used a custom binary protocol over port 443 for C2 traffic [T1095]. Finally, Exbyte exfiltrates collected data to online file hosting sites such as 'Mega.co.nz' [T1567]. Additional logs show routine backup processes that were unrelated to the attack. Mitigation includes monitoring for unusual domain account activity and implementing application whitelisting.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify domain accounts.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "During lateral movement, Hildegard has used masscan to search for kubelets and the kubelet API for additional running containers.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "D has used a custom binary protocol over port 443 for C2 traffic.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "nz'.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHarbor' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowHarbor', targeting financial institutions to exfiltrate sensitive data. The actors employed a multi-stage attack leveraging domain account compromise, deceptive user interactions, and container discovery in hybrid environments.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign designated 'ShadowHarbor'. This group targets financial organizations, with initial access often gained through phishing campaigns. Background: 'ShadowHarbor' is believed to operate from Eastern Europe, focusing on data theft for financial gain. System logs from a simulated victim, 'FinSecure Bank', show unusual login attempts from IP addresses in non-business hours, though these were not tagged as malicious. The actors likely conduct reconnaissance [T1589] to identify domain accounts. In the execution phase, they used Mimikatz.exe to extract Kerberos tickets from domain user sessions [T1078.002] and displayed a deceptive 'Document Conversion Failed - Click to Retry' dialog that executed encoded commands when the user retried the operation [T1204.004]. For persistence, Wizard Spider has established persistence using Userinit by adding the Registry key HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon [T1547.004]. In defense evasion, Sakula calls cmd.exe to run various DLL files via rundll32 [T1218.011] while simultaneously conducting system checks to detect sandboxes or VMware services [T1497.001]. During lateral movement, Hildegard has used masscan to search for kubelets and the kubelet API for additional running containers [T1613]. For command and control, OSX_OCEANLOTUS.D has used a custom binary protocol over port 443 for C2 traffic [T1095]. Finally, Exbyte exfiltrates collected data to online file hosting sites such as 'Mega.co.nz' [T1567]. Additional logs show routine backup processes that were unrelated to the attack. Mitigation includes monitoring for unusual domain account activity and implementing application whitelisting.",
+        "techniques_used": [
+            "T1589",
+            "T1078.002",
+            "T1204.004",
+            "T1547.004",
+            "T1218.011",
+            "T1497.001",
+            "T1613",
+            "T1095",
+            "T1567"
+        ]
+    }
+}

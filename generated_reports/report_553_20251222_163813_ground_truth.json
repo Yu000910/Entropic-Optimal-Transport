@@ -1,0 +1,109 @@
+{
+    "report_id": "report_553",
+    "generated_at": "20251222_163813",
+    "scenario_target_ids": [
+        "T1608.001",
+        "T1584.008",
+        "T1091",
+        "T1053",
+        "T1037.001",
+        "T1546.002",
+        "T1546.006",
+        "T1656",
+        "T1134",
+        "T1552.002",
+        "T1069.001",
+        "T1071.004",
+        "T1485.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1656",
+        "T1091",
+        "T1608.001",
+        "T1059.001",
+        "T1037.001",
+        "T1546.002",
+        "T1546.006",
+        "T1584.008",
+        "T1053",
+        "T1134",
+        "T1552.002",
+        "T1069.001",
+        "T1071.004",
+        "T1485.001"
+    ],
+    "actual_found_ids": [
+        "T1584.008",
+        "T1656",
+        "T1134",
+        "T1091",
+        "T1552.002",
+        "T1069.001",
+        "T1608.001",
+        "T1071.004",
+        "T1053",
+        "T1485.001",
+        "T1546.006",
+        "T1059.001"
+    ],
+    "clean_text": "On June 15, 2024, a financial services firm, 'SecureBank Inc.', headquartered in New York with 500 employees, reported anomalous network activity originating from an internal workstation. Initial logs showed unusual PowerShell executions and failed login attempts from unknown IP addresses, though these were initially dismissed as false positives. The actors likely conducted reconnaissance by impersonating legitimate employees on LinkedIn to identify phishing targets in the finance department, using this information to tailor their approach.\n\nIn the Initial Access phase, the adversary mailed USB drives containing malware-laden files to key personnel, exploiting human curiosity to gain a foothold when the media was inserted into corporate systems. Once executed, the malware connected to a Dropbox account to download additional payloads, including a backdoor designed for lateral movement. System administrators noted increased network traffic to external cloud storage, but it was attributed to routine backups.\n\nDuring Execution, the malware employed PowerShell to actively download malicious libraries while simultaneously modifying registry keys to enable persistence through logon scripts and screensaver activation [T1037.001, T1546.002]. For instance, the UserInitMprLogonScript value was set to point to a malicious batch file, and the ScreenSaveActive registry value was altered to run a payload after inactivity. Additionally, on macOS systems within the network, the actors edited Mach-O binaries by adding LC_LOAD_DYLIB commands to load malicious libraries during execution. A vulnerable SOHO router in a remote office was compromised and used as a pivot point to launch attacks against internal servers, allowing the actors to bypass perimeter defenses. Network logs showed irregular traffic patterns from the router, but these were not flagged due to misconfigured alerts.\n\nFor Persistence, the actors configured schtasks.exe to run a backdoor payload daily at 3 AM, ensuring continuous access even after reboots. They also manipulated access tokens using SetThreadToken to assign stolen tokens to current threads, elevating privileges and evading detection. Credential harvesting was performed via a PowerShell script that queried the registry for default domain credentials stored in HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon, while local group enumeration was conducted using tools like Get-LocAdm to identify administrative accounts. Internal security scans missed these registry modifications due to outdated baselines.\n\nIn the Command and Control phase, the actors utilized DNS tunneling to exfiltrate data and receive commands, mimicking legitimate DNS queries to blend with normal traffic. Analysis revealed anomalous DNS requests to suspicious domains, but they were initially overlooked as part of routine network maintenance. For Impact, the actors executed PutLifecycleConfiguration to configure automatic deletion of all objects in an Azure storage container, triggering data destruction after a set period. This action was detected only after financial records were irrecoverably lost, highlighting gaps in cloud monitoring.\n\nSecureBank Inc. has since implemented enhanced endpoint detection and regular audits of scheduled tasks. This fictional scenario underscores the importance of multi-layered defenses and proactive threat hunting in financial environments.",
+    "tagged_text": "On June 15, 2024, a financial services firm, 'SecureBank Inc.', headquartered in New York with 500 employees, reported anomalous network activity originating from an internal workstation. Initial logs showed unusual PowerShell executions and failed login attempts from unknown IP addresses, though these were initially dismissed as false positives. The actors likely conducted reconnaissance by impersonating legitimate employees on LinkedIn to identify phishing targets in the finance department [T1656], using this information to tailor their approach.\n\nIn the Initial Access phase, the adversary mailed USB drives containing malware-laden files to key personnel, exploiting human curiosity to gain a foothold when the media was inserted into corporate systems [T1091]. Once executed, the malware connected to a Dropbox account to download additional payloads, including a backdoor designed for lateral movement [T1608.001]. System administrators noted increased network traffic to external cloud storage, but it was attributed to routine backups.\n\nDuring Execution, the malware employed PowerShell to actively download malicious libraries [T1059.001] while simultaneously modifying registry keys to enable persistence through logon scripts and screensaver activation [T1037.001, T1546.002]. For instance, the UserInitMprLogonScript value was set to point to a malicious batch file, and the ScreenSaveActive registry value was altered to run a payload after inactivity. Additionally, on macOS systems within the network, the actors edited Mach-O binaries by adding LC_LOAD_DYLIB commands to load malicious libraries during execution [T1546.006]. A vulnerable SOHO router in a remote office was compromised and used as a pivot point to launch attacks against internal servers, allowing the actors to bypass perimeter defenses [T1584.008]. Network logs showed irregular traffic patterns from the router, but these were not flagged due to misconfigured alerts.\n\nFor Persistence, the actors configured schtasks.exe to run a backdoor payload daily at 3 AM, ensuring continuous access even after reboots [T1053]. They also manipulated access tokens using SetThreadToken to assign stolen tokens to current threads, elevating privileges and evading detection [T1134]. Credential harvesting was performed via a PowerShell script that queried the registry for default domain credentials stored in HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon [T1552.002], while local group enumeration was conducted using tools like Get-LocAdm to identify administrative accounts [T1069.001]. Internal security scans missed these registry modifications due to outdated baselines.\n\nIn the Command and Control phase, the actors utilized DNS tunneling to exfiltrate data and receive commands, mimicking legitimate DNS queries to blend with normal traffic [T1071.004]. Analysis revealed anomalous DNS requests to suspicious domains, but they were initially overlooked as part of routine network maintenance. For Impact, the actors executed PutLifecycleConfiguration to configure automatic deletion of all objects in an Azure storage container, triggering data destruction after a set period [T1485.001]. This action was detected only after financial records were irrecoverably lost, highlighting gaps in cloud monitoring.\n\nSecureBank Inc. has since implemented enhanced endpoint detection and regular audits of scheduled tasks. This fictional scenario underscores the importance of multi-layered defenses and proactive threat hunting in financial environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance by impersonating legitimate employees on LinkedIn to identify phishing targets in the finance department, using this information to tailor their approach.",
+            "technique_id": "T1656",
+            "technique_name": "Impersonation"
+        },
+        {
+            "sentence": "In the Initial Access phase, the adversary mailed USB drives containing malware-laden files to key personnel, exploiting human curiosity to gain a foothold when the media was inserted into corporate systems.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "exe to run a backdoor payload daily at 3 AM, ensuring continuous access even after reboots.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "They also manipulated access tokens using SetThreadToken to assign stolen tokens to current threads, elevating privileges and evading detection.",
+            "technique_id": "T1134",
+            "technique_name": "Access Token Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowWeaver', which targets financial institutions through a multi-stage attack involving social engineering, malware deployment, and persistence mechanisms. The campaign leverages techniques such as removable media, scheduled tasks, and DNS tunneling for command and control, with observed activities including credential harvesting and data destruction. Blue teams are advised to review logs, implement network segmentation, and monitor for suspicious registry changes and DNS queries.",
+        "full_report_text": "On June 15, 2024, a financial services firm, 'SecureBank Inc.', headquartered in New York with 500 employees, reported anomalous network activity originating from an internal workstation. Initial logs showed unusual PowerShell executions and failed login attempts from unknown IP addresses, though these were initially dismissed as false positives. The actors likely conducted reconnaissance by impersonating legitimate employees on LinkedIn to identify phishing targets in the finance department [T1656], using this information to tailor their approach.\n\nIn the Initial Access phase, the adversary mailed USB drives containing malware-laden files to key personnel, exploiting human curiosity to gain a foothold when the media was inserted into corporate systems [T1091]. Once executed, the malware connected to a Dropbox account to download additional payloads, including a backdoor designed for lateral movement [T1608.001]. System administrators noted increased network traffic to external cloud storage, but it was attributed to routine backups.\n\nDuring Execution, the malware employed PowerShell to actively download malicious libraries [T1059.001] while simultaneously modifying registry keys to enable persistence through logon scripts and screensaver activation [T1037.001, T1546.002]. For instance, the UserInitMprLogonScript value was set to point to a malicious batch file, and the ScreenSaveActive registry value was altered to run a payload after inactivity. Additionally, on macOS systems within the network, the actors edited Mach-O binaries by adding LC_LOAD_DYLIB commands to load malicious libraries during execution [T1546.006]. A vulnerable SOHO router in a remote office was compromised and used as a pivot point to launch attacks against internal servers, allowing the actors to bypass perimeter defenses [T1584.008]. Network logs showed irregular traffic patterns from the router, but these were not flagged due to misconfigured alerts.\n\nFor Persistence, the actors configured schtasks.exe to run a backdoor payload daily at 3 AM, ensuring continuous access even after reboots [T1053]. They also manipulated access tokens using SetThreadToken to assign stolen tokens to current threads, elevating privileges and evading detection [T1134]. Credential harvesting was performed via a PowerShell script that queried the registry for default domain credentials stored in HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon [T1552.002], while local group enumeration was conducted using tools like Get-LocAdm to identify administrative accounts [T1069.001]. Internal security scans missed these registry modifications due to outdated baselines.\n\nIn the Command and Control phase, the actors utilized DNS tunneling to exfiltrate data and receive commands, mimicking legitimate DNS queries to blend with normal traffic [T1071.004]. Analysis revealed anomalous DNS requests to suspicious domains, but they were initially overlooked as part of routine network maintenance. For Impact, the actors executed PutLifecycleConfiguration to configure automatic deletion of all objects in an Azure storage container, triggering data destruction after a set period [T1485.001]. This action was detected only after financial records were irrecoverably lost, highlighting gaps in cloud monitoring.\n\nSecureBank Inc. has since implemented enhanced endpoint detection and regular audits of scheduled tasks. This fictional scenario underscores the importance of multi-layered defenses and proactive threat hunting in financial environments.",
+        "techniques_used": [
+            "T1656",
+            "T1091",
+            "T1608.001",
+            "T1059.001",
+            "T1037.001",
+            "T1546.002",
+            "T1546.006",
+            "T1584.008",
+            "T1053",
+            "T1134",
+            "T1552.002",
+            "T1069.001",
+            "T1071.004",
+            "T1485.001"
+        ]
+    }
+}

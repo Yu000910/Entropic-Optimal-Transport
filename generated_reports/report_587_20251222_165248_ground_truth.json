@@ -1,0 +1,113 @@
+{
+    "report_id": "report_587",
+    "generated_at": "20251222_165248",
+    "scenario_target_ids": [
+        "T1596.002",
+        "T1598.004",
+        "T1659",
+        "T1053.005",
+        "T1078.001",
+        "T1601.002",
+        "T1003",
+        "T1069",
+        "T1087.004",
+        "T1039",
+        "T1056.004",
+        "T1071.003",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596.002",
+        "T1598.004",
+        "T1659",
+        "T1053.005",
+        "T1078.001",
+        "T1601.002",
+        "T1003",
+        "T1069",
+        "T1087.004",
+        "T1039",
+        "T1056.004",
+        "T1071.003",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1078.001",
+        "T1039",
+        "T1069",
+        "T1659",
+        "T1003",
+        "T1056.004",
+        "T1071.003",
+        "T1598.004",
+        "T1596.002",
+        "T1531",
+        "T1087.004",
+        "T1601.002",
+        "T1053.005"
+    ],
+    "clean_text": "### 1. Initial Access and Reconnaissance\nMoustachedBouncer actors likely conducted reconnaissance by querying WHOIS records to identify domain expiration dates and potential takeover opportunities, while simultaneously using compromised smart speakers to record private conversations and household activities through spearphishing voice techniques. During this phase, the actors also injected malicious content into DNS, HTTP, and SMB replies to redirect specifically-targeted victims to a fake Windows Update page, facilitating initial malware downloads. System logs from the target network show increased DNS queries to unknown domains, but no immediate alerts were triggered.\n\n### 2. Execution and Persistence\nUpon gaining access, the actors employed PowerShell to create scheduled tasks named `MicrosoftInternetExplorerCrashRepoeterTaskMachineUA` and `MicrosoftEdgeCrashRepoeterTaskMachineUA`, configured to execute `CrashReporter.exe` during user logon, while also exploiting default accounts like the Guest account with weak credentials to maintain foothold. Additionally, the malware downloaded an obsolete operating system image from https://compromised-server.org/downgrade_os.iso to downgrade system images and reduce security protections, as observed in isolated test environments.\n\n### 3. Credential Access and Discovery\nThe actors used OS credential dumping tools to extract passwords and save them into \\ProgramData\\Mail\\MailAg\\pwds.txt, while conducting permission groups discovery via WMIC queries to identify administrative privileges and cloud account enumeration through PowerShell scripts like 'Get-MsolRoleMember.ps1' to list members of specific administrative roles in Microsoft 365. Background checks revealed that the target organization had recently migrated to cloud services, but this activity was not flagged initially.\n\n### 4. Collection and Exfiltration\nData was collected from network shared drives by enumerating drivers and sending files to C2 channels, with credential API hooking implemented to install Windows hooks that notify when network drives are attached, enabling the RecordToFile method for file stealing. Exfiltration occurred over mail protocols using SMTP to send emails, as detected in outbound traffic logs showing unusual spikes during off-hours.\n\n### 5. Impact\nFinally, the actors executed account access removal via PowerShell scripts running 'Set-LocalUser -Name 'serviceaccount' -PasswordNeverExpires $false' to disrupt automated services, causing service interruptions in the target's IT infrastructure. Incident response teams noted that recovery required manual account resets and system restores.",
+    "tagged_text": "### 1. Initial Access and Reconnaissance\nMoustachedBouncer actors likely conducted reconnaissance by querying WHOIS records [T1596.002] to identify domain expiration dates and potential takeover opportunities, while simultaneously using compromised smart speakers to record private conversations and household activities through spearphishing voice techniques [T1598.004]. During this phase, the actors also injected malicious content into DNS, HTTP, and SMB replies [T1659] to redirect specifically-targeted victims to a fake Windows Update page, facilitating initial malware downloads. System logs from the target network show increased DNS queries to unknown domains, but no immediate alerts were triggered.\n\n### 2. Execution and Persistence\nUpon gaining access, the actors employed PowerShell to create scheduled tasks named `MicrosoftInternetExplorerCrashRepoeterTaskMachineUA` and `MicrosoftEdgeCrashRepoeterTaskMachineUA` [T1053.005], configured to execute `CrashReporter.exe` during user logon, while also exploiting default accounts like the Guest account with weak credentials [T1078.001] to maintain foothold. Additionally, the malware downloaded an obsolete operating system image from https://compromised-server.org/downgrade_os.iso [T1601.002] to downgrade system images and reduce security protections, as observed in isolated test environments.\n\n### 3. Credential Access and Discovery\nThe actors used OS credential dumping tools [T1003] to extract passwords and save them into \\ProgramData\\Mail\\MailAg\\pwds.txt, while conducting permission groups discovery [T1069] via WMIC queries to identify administrative privileges and cloud account enumeration [T1087.004] through PowerShell scripts like 'Get-MsolRoleMember.ps1' to list members of specific administrative roles in Microsoft 365. Background checks revealed that the target organization had recently migrated to cloud services, but this activity was not flagged initially.\n\n### 4. Collection and Exfiltration\nData was collected from network shared drives [T1039] by enumerating drivers and sending files to C2 channels, with credential API hooking [T1056.004] implemented to install Windows hooks that notify when network drives are attached, enabling the RecordToFile method for file stealing. Exfiltration occurred over mail protocols [T1071.003] using SMTP to send emails, as detected in outbound traffic logs showing unusual spikes during off-hours.\n\n### 5. Impact\nFinally, the actors executed account access removal [T1531] via PowerShell scripts running 'Set-LocalUser -Name 'serviceaccount' -PasswordNeverExpires $false' to disrupt automated services, causing service interruptions in the target's IT infrastructure. Incident response teams noted that recovery required manual account resets and system restores.",
+    "sentence_annotations": [
+        {
+            "sentence": "During this phase, the actors also injected malicious content into DNS, HTTP, and SMB replies to redirect specifically-targeted victims to a fake Windows Update page, facilitating initial malware downloads.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Credential Access and Discovery\nThe actors used OS credential dumping tools to extract passwords and save them into \\ProgramData\\Mail\\MailAg\\pwds.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "txt, while conducting permission groups discovery via WMIC queries to identify administrative privileges and cloud account enumeration [T1087.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "Collection and Exfiltration\nData was collected from network shared drives by enumerating drivers and sending files to C2 channels, with credential API hooking [T1056.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "Impact\nFinally, the actors executed account access removal via PowerShell scripts running 'Set-LocalUser -Name 'serviceaccount' -PasswordNeverExpires $false' to disrupt automated services, causing service interruptions in the target's IT infrastructure.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'MoustachedBouncer'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'MoustachedBouncer', targeting corporate networks through a multi-stage attack involving reconnaissance, initial access via smart devices, credential theft, and data exfiltration. The campaign leverages techniques such as WHOIS queries, spearphishing voice, content injection, and scheduled tasks to compromise systems and maintain persistence. Blue teams should review this report for training on detecting and mitigating similar tactics.",
+        "full_report_text": "### 1. Initial Access and Reconnaissance\nMoustachedBouncer actors likely conducted reconnaissance by querying WHOIS records [T1596.002] to identify domain expiration dates and potential takeover opportunities, while simultaneously using compromised smart speakers to record private conversations and household activities through spearphishing voice techniques [T1598.004]. During this phase, the actors also injected malicious content into DNS, HTTP, and SMB replies [T1659] to redirect specifically-targeted victims to a fake Windows Update page, facilitating initial malware downloads. System logs from the target network show increased DNS queries to unknown domains, but no immediate alerts were triggered.\n\n### 2. Execution and Persistence\nUpon gaining access, the actors employed PowerShell to create scheduled tasks named `MicrosoftInternetExplorerCrashRepoeterTaskMachineUA` and `MicrosoftEdgeCrashRepoeterTaskMachineUA` [T1053.005], configured to execute `CrashReporter.exe` during user logon, while also exploiting default accounts like the Guest account with weak credentials [T1078.001] to maintain foothold. Additionally, the malware downloaded an obsolete operating system image from https://compromised-server.org/downgrade_os.iso [T1601.002] to downgrade system images and reduce security protections, as observed in isolated test environments.\n\n### 3. Credential Access and Discovery\nThe actors used OS credential dumping tools [T1003] to extract passwords and save them into \\ProgramData\\Mail\\MailAg\\pwds.txt, while conducting permission groups discovery [T1069] via WMIC queries to identify administrative privileges and cloud account enumeration [T1087.004] through PowerShell scripts like 'Get-MsolRoleMember.ps1' to list members of specific administrative roles in Microsoft 365. Background checks revealed that the target organization had recently migrated to cloud services, but this activity was not flagged initially.\n\n### 4. Collection and Exfiltration\nData was collected from network shared drives [T1039] by enumerating drivers and sending files to C2 channels, with credential API hooking [T1056.004] implemented to install Windows hooks that notify when network drives are attached, enabling the RecordToFile method for file stealing. Exfiltration occurred over mail protocols [T1071.003] using SMTP to send emails, as detected in outbound traffic logs showing unusual spikes during off-hours.\n\n### 5. Impact\nFinally, the actors executed account access removal [T1531] via PowerShell scripts running 'Set-LocalUser -Name 'serviceaccount' -PasswordNeverExpires $false' to disrupt automated services, causing service interruptions in the target's IT infrastructure. Incident response teams noted that recovery required manual account resets and system restores.",
+        "techniques_used": [
+            "T1596.002",
+            "T1598.004",
+            "T1659",
+            "T1053.005",
+            "T1078.001",
+            "T1601.002",
+            "T1003",
+            "T1069",
+            "T1087.004",
+            "T1039",
+            "T1056.004",
+            "T1071.003",
+            "T1531"
+        ]
+    }
+}

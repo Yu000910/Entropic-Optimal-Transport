@@ -1,0 +1,60 @@
+{
+    "report_id": "report_51",
+    "generated_at": "20251222_130739",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1053.006",
+        "T1559.001",
+        "T1547.001",
+        "T1555.005",
+        "T1573.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.003",
+        "T1053.006",
+        "T1559.001",
+        "T1547.001",
+        "T1555.005",
+        "T1573.001"
+    ],
+    "actual_found_ids": [
+        "T1053.006",
+        "T1589",
+        "T1559.001",
+        "T1573.001",
+        "T1547.001",
+        "T1555.005",
+        "T1078.003",
+        "T1059.001"
+    ],
+    "clean_text": "On 2023-10-15, Acme Financial Corp. reported anomalous activity in its internal network, prompting an investigation. Acme, a mid-sized bank with 500 employees, operates primarily on Windows and Linux systems across three regional offices. Initial logs from the SIEM showed unusual login attempts from a known IP range, but no immediate alerts were triggered due to misconfigured thresholds. The actors likely conducted reconnaissance prior to the attack, though specific indicators were obscured in normal traffic patterns.\n\n**Initial Access:** The adversary gained initial access by exploiting a vulnerable web server, though this technique is not tagged as per the scenario. Once inside, they used known credentials harvested from a previous breach to authenticate as a local user account, allowing them to bypass initial security controls and move laterally within the network.\n\n**Execution and Persistence:** The actors employed PowerShell to download additional tools, including a custom malware variant. On Linux systems, they created a malicious systemd timer to execute persistence scripts every hour, ensuring continued access even after reboots. Simultaneously, on Windows systems, they utilized Component Object Model (COM) objects to execute the full malware payload and modified registry run keys in both HKEY_CURRENT_USER and HKEY_LOCAL_MACHINE hives to establish persistence across user sessions and system startups.\n\n**Credential Access and Exfiltration:** The malware then targeted password managers, accessing their memory space to harvest login credentials before encryption processes began. This allowed the actors to escalate privileges and access sensitive financial databases. Exfiltration was conducted over encrypted channels, with the malware using symmetric cryptography, specifically RC4, to encrypt its C2 traffic, making detection more difficult for network monitoring tools.\n\n**Additional Context:** Network logs from Acme's firewall showed increased outbound traffic to suspicious domains, but these were initially dismissed as false positives due to high volume during peak business hours. The company's incident response team was activated after unusual file modifications were detected in the accounting department's shared drive, which is unrelated to the tagged techniques. No customer data was confirmed compromised in this fictional scenario, but the simulation highlights the need for robust credential management and persistence detection.",
+    "tagged_text": "On 2023-10-15, Acme Financial Corp. reported anomalous activity in its internal network, prompting an investigation. Acme, a mid-sized bank with 500 employees, operates primarily on Windows and Linux systems across three regional offices. Initial logs from the SIEM showed unusual login attempts from a known IP range, but no immediate alerts were triggered due to misconfigured thresholds. The actors likely conducted reconnaissance [T1589] prior to the attack, though specific indicators were obscured in normal traffic patterns.\n\n**Initial Access:** The adversary gained initial access by exploiting a vulnerable web server, though this technique is not tagged as per the scenario. Once inside, they used known credentials harvested from a previous breach to authenticate as a local user account [T1078.003], allowing them to bypass initial security controls and move laterally within the network.\n\n**Execution and Persistence:** The actors employed PowerShell [T1059.001] to download additional tools, including a custom malware variant. On Linux systems, they created a malicious systemd timer [T1053.006] to execute persistence scripts every hour, ensuring continued access even after reboots. Simultaneously, on Windows systems, they utilized Component Object Model (COM) objects [T1559.001] to execute the full malware payload and modified registry run keys [T1547.001] in both HKEY_CURRENT_USER and HKEY_LOCAL_MACHINE hives to establish persistence across user sessions and system startups.\n\n**Credential Access and Exfiltration:** The malware then targeted password managers [T1555.005], accessing their memory space to harvest login credentials before encryption processes began. This allowed the actors to escalate privileges and access sensitive financial databases. Exfiltration was conducted over encrypted channels, with the malware using symmetric cryptography [T1573.001], specifically RC4, to encrypt its C2 traffic, making detection more difficult for network monitoring tools.\n\n**Additional Context:** Network logs from Acme's firewall showed increased outbound traffic to suspicious domains, but these were initially dismissed as false positives due to high volume during peak business hours. The company's incident response team was activated after unusual file modifications were detected in the accounting department's shared drive, which is unrelated to the tagged techniques. No customer data was confirmed compromised in this fictional scenario, but the simulation highlights the need for robust credential management and persistence detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance prior to the attack, though specific indicators were obscured in normal traffic patterns.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowStrike' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowStrike,' targeting financial institutions. The campaign leverages credential theft, persistence mechanisms, and encrypted command-and-control (C2) to exfiltrate sensitive data. This report is for blue team training purposes to enhance detection and response capabilities.",
+        "full_report_text": "On 2023-10-15, Acme Financial Corp. reported anomalous activity in its internal network, prompting an investigation. Acme, a mid-sized bank with 500 employees, operates primarily on Windows and Linux systems across three regional offices. Initial logs from the SIEM showed unusual login attempts from a known IP range, but no immediate alerts were triggered due to misconfigured thresholds. The actors likely conducted reconnaissance [T1589] prior to the attack, though specific indicators were obscured in normal traffic patterns.\n\n**Initial Access:** The adversary gained initial access by exploiting a vulnerable web server, though this technique is not tagged as per the scenario. Once inside, they used known credentials harvested from a previous breach to authenticate as a local user account [T1078.003], allowing them to bypass initial security controls and move laterally within the network.\n\n**Execution and Persistence:** The actors employed PowerShell [T1059.001] to download additional tools, including a custom malware variant. On Linux systems, they created a malicious systemd timer [T1053.006] to execute persistence scripts every hour, ensuring continued access even after reboots. Simultaneously, on Windows systems, they utilized Component Object Model (COM) objects [T1559.001] to execute the full malware payload and modified registry run keys [T1547.001] in both HKEY_CURRENT_USER and HKEY_LOCAL_MACHINE hives to establish persistence across user sessions and system startups.\n\n**Credential Access and Exfiltration:** The malware then targeted password managers [T1555.005], accessing their memory space to harvest login credentials before encryption processes began. This allowed the actors to escalate privileges and access sensitive financial databases. Exfiltration was conducted over encrypted channels, with the malware using symmetric cryptography [T1573.001], specifically RC4, to encrypt its C2 traffic, making detection more difficult for network monitoring tools.\n\n**Additional Context:** Network logs from Acme's firewall showed increased outbound traffic to suspicious domains, but these were initially dismissed as false positives due to high volume during peak business hours. The company's incident response team was activated after unusual file modifications were detected in the accounting department's shared drive, which is unrelated to the tagged techniques. No customer data was confirmed compromised in this fictional scenario, but the simulation highlights the need for robust credential management and persistence detection.",
+        "techniques_used": [
+            "T1078.003",
+            "T1053.006",
+            "T1559.001",
+            "T1547.001",
+            "T1555.005",
+            "T1573.001"
+        ]
+    }
+}

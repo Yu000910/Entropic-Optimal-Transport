@@ -1,0 +1,101 @@
+{
+    "report_id": "report_220",
+    "generated_at": "20251222_141551",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1053.002",
+        "T1547",
+        "T1542.005",
+        "T1578.002",
+        "T1497",
+        "T1550.001",
+        "T1185",
+        "T1102.002",
+        "T1667"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.001",
+        "T1053.002",
+        "T1547",
+        "T1542.005",
+        "T1578.002",
+        "T1497",
+        "T1550.001",
+        "T1185",
+        "T1102.002",
+        "T1667"
+    ],
+    "actual_found_ids": [
+        "T1497",
+        "T1566.001",
+        "T1053.002",
+        "T1547",
+        "T1589",
+        "T1550.001",
+        "T1185",
+        "T1578.002",
+        "T1542.005",
+        "T1102.002",
+        "T1667"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowPhish'. This campaign is based on a simulated attack scenario designed to educate defenders on recognizing and mitigating complex intrusion chains. The actors likely conduct reconnaissance to identify targets in energy and financial sectors, though specific indicators are omitted for training purposes. In the initial access phase, the adversary sent spearphishing emails with malicious PDF attachments that, when opened, executed embedded scripts to download additional payloads. Upon execution, the malware used the Windows 'at' command to schedule a task for persistence and simultaneously modified the Windows Run registry key to ensure automatic launch on system startup. To expand their foothold, the attackers modified the network router's boot configuration to load an unauthorized operating system from a remote TFTP server, enabling lateral movement within the environment. In a cloud escalation, the malware leveraged stolen service account credentials to create a new Google Compute Engine instance, establishing a command-and-control (C2) infrastructure. For evasion, the payload employed decoy C2 domains within its configuration to bypass sandbox analysis and avoid detection by security tools. The actors then used legitimate OAuth refresh tokens to authenticate with OneDrive for data exfiltration and injected a malicious DLL into the browser process to hijack active sessions and steal credentials. For C2 communication, the malware utilized the Gmail web UI to receive commands and exfiltrate sensitive information in a bidirectional manner. In a final phase, the compromise involved a spam bot to dispatch phishing emails from various spoofed sender addresses, aiming to overwhelm targets and obscure the attack origin. System logs from affected endpoints showed anomalous network traffic to external IPs, but no actual data breaches occurred in this training scenario. Background: The fictional company 'InfraSecure Corp.', a mid-sized utility provider, was used as the target in this exercise, with simulated employee activities including routine email checks and system updates that provided entry points for the attack.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowPhish'. This campaign is based on a simulated attack scenario designed to educate defenders on recognizing and mitigating complex intrusion chains. The actors likely conduct reconnaissance [T1589] to identify targets in energy and financial sectors, though specific indicators are omitted for training purposes. In the initial access phase, the adversary sent spearphishing emails with malicious PDF attachments [T1566.001] that, when opened, executed embedded scripts to download additional payloads. Upon execution, the malware used the Windows 'at' command [T1053.002] to schedule a task for persistence and simultaneously modified the Windows Run registry key [T1547] to ensure automatic launch on system startup. To expand their foothold, the attackers modified the network router's boot configuration to load an unauthorized operating system from a remote TFTP server [T1542.005], enabling lateral movement within the environment. In a cloud escalation, the malware leveraged stolen service account credentials to create a new Google Compute Engine instance [T1578.002], establishing a command-and-control (C2) infrastructure. For evasion, the payload employed decoy C2 domains within its configuration [T1497] to bypass sandbox analysis and avoid detection by security tools. The actors then used legitimate OAuth refresh tokens [T1550.001] to authenticate with OneDrive for data exfiltration and injected a malicious DLL into the browser process [T1185] to hijack active sessions and steal credentials. For C2 communication, the malware utilized the Gmail web UI [T1102.002] to receive commands and exfiltrate sensitive information in a bidirectional manner. In a final phase, the compromise involved a spam bot to dispatch phishing emails from various spoofed sender addresses [T1667], aiming to overwhelm targets and obscure the attack origin. System logs from affected endpoints showed anomalous network traffic to external IPs, but no actual data breaches occurred in this training scenario. Background: The fictional company 'InfraSecure Corp.', a mid-sized utility provider, was used as the target in this exercise, with simulated employee activities including routine email checks and system updates that provided entry points for the attack.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify targets in energy and financial sectors, though specific indicators are omitted for training purposes.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "002] to schedule a task for persistence and simultaneously modified the Windows Run registry key to ensure automatic launch on system startup.",
+            "technique_id": "T1547",
+            "technique_name": "Boot or Logon Autostart Execution"
+        },
+        {
+            "sentence": "For evasion, the payload employed decoy C2 domains within its configuration to bypass sandbox analysis and avoid detection by security tools.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "001] to authenticate with OneDrive for data exfiltration and injected a malicious DLL into the browser process to hijack active sessions and steal credentials.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        },
+        {
+            "sentence": "In a final phase, the compromise involved a spam bot to dispatch phishing emails from various spoofed sender addresses, aiming to overwhelm targets and obscure the attack origin.",
+            "technique_id": "T1667",
+            "technique_name": "Email Bombing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowPhish' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowPhish', which targets critical infrastructure sectors through sophisticated email-based attacks and multi-stage persistence mechanisms. The campaign leverages spearphishing, scheduled tasks, and cloud infrastructure to establish long-term access and evade detection, while incorporating techniques for session hijacking and bidirectional communication via email services.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional advanced persistent threat (APT) campaign designated 'ShadowPhish'. This campaign is based on a simulated attack scenario designed to educate defenders on recognizing and mitigating complex intrusion chains. The actors likely conduct reconnaissance [T1589] to identify targets in energy and financial sectors, though specific indicators are omitted for training purposes. In the initial access phase, the adversary sent spearphishing emails with malicious PDF attachments [T1566.001] that, when opened, executed embedded scripts to download additional payloads. Upon execution, the malware used the Windows 'at' command [T1053.002] to schedule a task for persistence and simultaneously modified the Windows Run registry key [T1547] to ensure automatic launch on system startup. To expand their foothold, the attackers modified the network router's boot configuration to load an unauthorized operating system from a remote TFTP server [T1542.005], enabling lateral movement within the environment. In a cloud escalation, the malware leveraged stolen service account credentials to create a new Google Compute Engine instance [T1578.002], establishing a command-and-control (C2) infrastructure. For evasion, the payload employed decoy C2 domains within its configuration [T1497] to bypass sandbox analysis and avoid detection by security tools. The actors then used legitimate OAuth refresh tokens [T1550.001] to authenticate with OneDrive for data exfiltration and injected a malicious DLL into the browser process [T1185] to hijack active sessions and steal credentials. For C2 communication, the malware utilized the Gmail web UI [T1102.002] to receive commands and exfiltrate sensitive information in a bidirectional manner. In a final phase, the compromise involved a spam bot to dispatch phishing emails from various spoofed sender addresses [T1667], aiming to overwhelm targets and obscure the attack origin. System logs from affected endpoints showed anomalous network traffic to external IPs, but no actual data breaches occurred in this training scenario. Background: The fictional company 'InfraSecure Corp.', a mid-sized utility provider, was used as the target in this exercise, with simulated employee activities including routine email checks and system updates that provided entry points for the attack.",
+        "techniques_used": [
+            "T1589",
+            "T1566.001",
+            "T1053.002",
+            "T1547",
+            "T1542.005",
+            "T1578.002",
+            "T1497",
+            "T1550.001",
+            "T1185",
+            "T1102.002",
+            "T1667"
+        ]
+    }
+}

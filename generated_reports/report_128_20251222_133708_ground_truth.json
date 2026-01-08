@@ -1,0 +1,125 @@
+{
+    "report_id": "report_128",
+    "generated_at": "20251222_133708",
+    "scenario_target_ids": [
+        "T1596",
+        "T1590.002",
+        "T1195.001",
+        "T1190",
+        "T1609",
+        "T1137.003",
+        "T1069.003",
+        "T1534",
+        "T1039",
+        "T1557",
+        "T1219.002",
+        "T1565.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1590.002",
+        "T1195.001",
+        "T1190",
+        "T1609",
+        "T1137.003",
+        "T1069.003",
+        "T1534",
+        "T1039",
+        "T1557",
+        "T1219.002",
+        "T1565.001"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1112",
+        "T1195.001",
+        "T1069.003",
+        "T1557",
+        "T1590.002",
+        "T1534",
+        "T1137.003",
+        "T1565.001",
+        "T1190",
+        "T1219.002",
+        "T1609",
+        "T1596",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'ShadowWeave'. This actor has been observed targeting technology and financial sectors since early 2024, with a focus on exploiting cloud misconfigurations and container orchestration platforms. Background checks on the actor suggest ties to previous campaigns involving data theft, but no attribution is confirmed in this training scenario.\n\nInitial Access: The actors likely conduct reconnaissance by searching open technical databases, such as GitHub and public DNS records, to identify target infrastructure. They then exploit a public-facing application, specifically a vulnerable web server (e.g., Apache Tomcat), to gain initial foothold. System logs from the affected server show multiple failed login attempts prior to the exploit, but these were not flagged at the time.\n\nExecution and Persistence: Upon access, the adversary employs PowerShell to execute a malicious script, 'malicious.ps1', which harvests domain credentials and modifies registry keys for persistence. They also inject a payload into a software dependency, 'setup.ps1', to steal configuration files and establish a backdoor. Additionally, the actor creates a custom Outlook form that exfiltrates data when specific emails are received, leveraging internal spearphishing tactics to trigger the form.\n\nPrivilege Escalation and Discovery: The actor escalates privileges by using container administration commands, such as executing 'kubectl exec' on running pods to gain root access. They then conduct discovery by querying DNS data to map network topology and using cloud group enumeration tools, like Get-MsolRole, to identify administrative roles across the organization. Network traffic analysis revealed unusual DNS queries to external domains, but these were initially dismissed as benign.\n\nCollection and Exfiltration: The actor collects data from network shared drives, accessing sensitive files prior to encryption. They employ adversary-in-the-middle techniques, such as ARP spoofing, to intercept credentials transmitted over the network. For exfiltration, they abuse remote desktop software, like TeamViewer, to create a persistent command and control channel and manipulate stored data by backing up original files with .bk extensions and replacing them with malicious .tmp files for compilation.\n\nMitigation recommendations include monitoring for unusual container commands, reviewing Outlook form settings, and implementing network segmentation. This report is fictional and intended for training purposes only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'ShadowWeave'. This actor has been observed targeting technology and financial sectors since early 2024, with a focus on exploiting cloud misconfigurations and container orchestration platforms. Background checks on the actor suggest ties to previous campaigns involving data theft, but no attribution is confirmed in this training scenario.\n\nInitial Access: The actors likely conduct reconnaissance by searching open technical databases [T1596], such as GitHub and public DNS records, to identify target infrastructure. They then exploit a public-facing application [T1190], specifically a vulnerable web server (e.g., Apache Tomcat), to gain initial foothold. System logs from the affected server show multiple failed login attempts prior to the exploit, but these were not flagged at the time.\n\nExecution and Persistence: Upon access, the adversary employs PowerShell [T1059.001] to execute a malicious script, 'malicious.ps1', which harvests domain credentials [T1534] and modifies registry keys [T1112] for persistence. They also inject a payload into a software dependency, 'setup.ps1' [T1195.001], to steal configuration files and establish a backdoor. Additionally, the actor creates a custom Outlook form [T1137.003] that exfiltrates data when specific emails are received, leveraging internal spearphishing tactics [T1534] to trigger the form.\n\nPrivilege Escalation and Discovery: The actor escalates privileges by using container administration commands [T1609], such as executing 'kubectl exec' on running pods to gain root access. They then conduct discovery by querying DNS data [T1590.002] to map network topology and using cloud group enumeration tools [T1069.003], like Get-MsolRole, to identify administrative roles across the organization. Network traffic analysis revealed unusual DNS queries to external domains, but these were initially dismissed as benign.\n\nCollection and Exfiltration: The actor collects data from network shared drives [T1039], accessing sensitive files prior to encryption. They employ adversary-in-the-middle techniques [T1557], such as ARP spoofing, to intercept credentials transmitted over the network. For exfiltration, they abuse remote desktop software [T1219.002], like TeamViewer, to create a persistent command and control channel and manipulate stored data [T1565.001] by backing up original files with .bk extensions and replacing them with malicious .tmp files for compilation.\n\nMitigation recommendations include monitoring for unusual container commands, reviewing Outlook form settings, and implementing network segmentation. This report is fictional and intended for training purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conduct reconnaissance by searching open technical databases, such as GitHub and public DNS records, to identify target infrastructure.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "They then exploit a public-facing application, specifically a vulnerable web server (e.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "ps1', which harvests domain credentials and modifies registry keys for persistence.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "ps1', which harvests domain credentials and modifies registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "003] that exfiltrates data when specific emails are received, leveraging internal spearphishing tactics to trigger the form.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "Privilege Escalation and Discovery: The actor escalates privileges by using container administration commands, such as executing 'kubectl exec' on running pods to gain root access.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The actor collects data from network shared drives, accessing sensitive files prior to encryption.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "They employ adversary-in-the-middle techniques, such as ARP spoofing, to intercept credentials transmitted over the network.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeave' Targeting Cloud and Container Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'ShadowWeave', targeting organizations with cloud and containerized infrastructure. The campaign leverages open-source intelligence, software supply chain compromises, and internal phishing to achieve persistence and data exfiltration. Blue teams should review logs for unusual container commands, Outlook form modifications, and network traffic anomalies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional threat actor 'ShadowWeave'. This actor has been observed targeting technology and financial sectors since early 2024, with a focus on exploiting cloud misconfigurations and container orchestration platforms. Background checks on the actor suggest ties to previous campaigns involving data theft, but no attribution is confirmed in this training scenario.\n\nInitial Access: The actors likely conduct reconnaissance by searching open technical databases [T1596], such as GitHub and public DNS records, to identify target infrastructure. They then exploit a public-facing application [T1190], specifically a vulnerable web server (e.g., Apache Tomcat), to gain initial foothold. System logs from the affected server show multiple failed login attempts prior to the exploit, but these were not flagged at the time.\n\nExecution and Persistence: Upon access, the adversary employs PowerShell [T1059.001] to execute a malicious script, 'malicious.ps1', which harvests domain credentials [T1534] and modifies registry keys [T1112] for persistence. They also inject a payload into a software dependency, 'setup.ps1' [T1195.001], to steal configuration files and establish a backdoor. Additionally, the actor creates a custom Outlook form [T1137.003] that exfiltrates data when specific emails are received, leveraging internal spearphishing tactics [T1534] to trigger the form.\n\nPrivilege Escalation and Discovery: The actor escalates privileges by using container administration commands [T1609], such as executing 'kubectl exec' on running pods to gain root access. They then conduct discovery by querying DNS data [T1590.002] to map network topology and using cloud group enumeration tools [T1069.003], like Get-MsolRole, to identify administrative roles across the organization. Network traffic analysis revealed unusual DNS queries to external domains, but these were initially dismissed as benign.\n\nCollection and Exfiltration: The actor collects data from network shared drives [T1039], accessing sensitive files prior to encryption. They employ adversary-in-the-middle techniques [T1557], such as ARP spoofing, to intercept credentials transmitted over the network. For exfiltration, they abuse remote desktop software [T1219.002], like TeamViewer, to create a persistent command and control channel and manipulate stored data [T1565.001] by backing up original files with .bk extensions and replacing them with malicious .tmp files for compilation.\n\nMitigation recommendations include monitoring for unusual container commands, reviewing Outlook form settings, and implementing network segmentation. This report is fictional and intended for training purposes only.",
+        "techniques_used": [
+            "T1596",
+            "T1590.002",
+            "T1195.001",
+            "T1190",
+            "T1609",
+            "T1137.003",
+            "T1069.003",
+            "T1534",
+            "T1039",
+            "T1557",
+            "T1219.002",
+            "T1565.001"
+        ]
+    }
+}

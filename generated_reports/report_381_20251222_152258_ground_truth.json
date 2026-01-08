@@ -1,0 +1,88 @@
+{
+    "report_id": "report_381",
+    "generated_at": "20251222_152258",
+    "scenario_target_ids": [
+        "T1091",
+        "T1059.011",
+        "T1556.006",
+        "T1134",
+        "T1553.004",
+        "T1539",
+        "T1071.002",
+        "T1048",
+        "T1496.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1091",
+        "T1059.011",
+        "T1556.006",
+        "T1134",
+        "T1553.004",
+        "T1539",
+        "T1071.002",
+        "T1048",
+        "T1496.002"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1539",
+        "T1059.011",
+        "T1134",
+        "T1091",
+        "T1553.004",
+        "T1496.002",
+        "T1556.006",
+        "T1048"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) from real-world malware families. This report simulates an APT campaign named 'ShadowSpreader' to enhance defensive readiness.\n\nBackground: 'ShadowSpreader' is a fictional threat actor believed to operate with state-sponsored objectives, focusing on energy and manufacturing sectors. In this scenario, the campaign begins with initial access through infected USB drives, where the malware, dubbed 'RaspberryRobinSim,' replicates across networks via removable media. Upon execution, the adversary employs Lua scripts to download additional payloads while simultaneously modifying the hosts file to intercept packets destined for multi-factor authentication servers, thereby bypassing security controls. System logs from victim machines show anomalous process creation events, but these are not directly linked to the attack.\n\nThe malware then escalates privileges by exploiting the OpenProcessToken Windows API function to manipulate access tokens and installs untrusted root certificates system-wide using commands like /usr/bin/security add-certificates to facilitate man-in-the-middle attacks. Concurrently, it steals web session cookies from browsers to maintain persistence in compromised accounts. For command and control (C2), the backdoor communicates by embedding commands within SMB file operations and exfiltrates collected network configuration data via FTP. Additionally, the proxyware service creates a persistent SOCKS5 proxy that consumes significant upload bandwidth, indicating potential bandwidth hijacking for covert operations. Irrelevant information: The targeted organization, 'GlobalEnergy Corp,' reported increased network latency but attributed it to routine maintenance. Analysis of firewall logs revealed no immediate threats, highlighting the need for deeper inspection.\n\nMitigation recommendations include disabling autorun for removable media, monitoring for unusual Lua script execution, and implementing network segmentation to limit lateral movement. This fictional scenario is designed for training purposes only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) from real-world malware families. This report simulates an APT campaign named 'ShadowSpreader' to enhance defensive readiness.\n\nBackground: 'ShadowSpreader' is a fictional threat actor believed to operate with state-sponsored objectives, focusing on energy and manufacturing sectors. In this scenario, the campaign begins with initial access through infected USB drives [T1091], where the malware, dubbed 'RaspberryRobinSim,' replicates across networks via removable media. Upon execution, the adversary employs Lua scripts [T1059.011] to download additional payloads while simultaneously modifying the hosts file to intercept packets destined for multi-factor authentication servers [T1556.006], thereby bypassing security controls. System logs from victim machines show anomalous process creation events, but these are not directly linked to the attack.\n\nThe malware then escalates privileges by exploiting the OpenProcessToken Windows API function to manipulate access tokens [T1134] and installs untrusted root certificates system-wide using commands like /usr/bin/security add-certificates [T1553.004] to facilitate man-in-the-middle attacks. Concurrently, it steals web session cookies [T1539] from browsers to maintain persistence in compromised accounts. For command and control (C2), the backdoor communicates by embedding commands within SMB file operations [T1071.002] and exfiltrates collected network configuration data via FTP [T1048]. Additionally, the proxyware service creates a persistent SOCKS5 proxy that consumes significant upload bandwidth [T1496.002], indicating potential bandwidth hijacking for covert operations. Irrelevant information: The targeted organization, 'GlobalEnergy Corp,' reported increased network latency but attributed it to routine maintenance. Analysis of firewall logs revealed no immediate threats, highlighting the need for deeper inspection.\n\nMitigation recommendations include disabling autorun for removable media, monitoring for unusual Lua script execution, and implementing network segmentation to limit lateral movement. This fictional scenario is designed for training purposes only.",
+    "sentence_annotations": [
+        {
+            "sentence": "In this scenario, the campaign begins with initial access through infected USB drives, where the malware, dubbed 'RaspberryRobinSim,' replicates across networks via removable media.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "The malware then escalates privileges by exploiting the OpenProcessToken Windows API function to manipulate access tokens and installs untrusted root certificates system-wide using commands like /usr/bin/security add-certificates [T1553.",
+            "technique_id": "T1134",
+            "technique_name": "Access Token Manipulation"
+        },
+        {
+            "sentence": "Concurrently, it steals web session cookies from browsers to maintain persistence in compromised accounts.",
+            "technique_id": "T1539",
+            "technique_name": "Steal Web Session Cookie"
+        },
+        {
+            "sentence": "002] and exfiltrates collected network configuration data via FTP.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowSpreader' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowSpreader,' which targets critical infrastructure sectors through removable media and multi-stage payloads. The campaign involves initial access via infected USB drives, execution of Lua scripts, manipulation of authentication mechanisms, and exfiltration over alternative protocols. Blue teams should review this report for training on detecting and mitigating such tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) from real-world malware families. This report simulates an APT campaign named 'ShadowSpreader' to enhance defensive readiness.\n\nBackground: 'ShadowSpreader' is a fictional threat actor believed to operate with state-sponsored objectives, focusing on energy and manufacturing sectors. In this scenario, the campaign begins with initial access through infected USB drives [T1091], where the malware, dubbed 'RaspberryRobinSim,' replicates across networks via removable media. Upon execution, the adversary employs Lua scripts [T1059.011] to download additional payloads while simultaneously modifying the hosts file to intercept packets destined for multi-factor authentication servers [T1556.006], thereby bypassing security controls. System logs from victim machines show anomalous process creation events, but these are not directly linked to the attack.\n\nThe malware then escalates privileges by exploiting the OpenProcessToken Windows API function to manipulate access tokens [T1134] and installs untrusted root certificates system-wide using commands like /usr/bin/security add-certificates [T1553.004] to facilitate man-in-the-middle attacks. Concurrently, it steals web session cookies [T1539] from browsers to maintain persistence in compromised accounts. For command and control (C2), the backdoor communicates by embedding commands within SMB file operations [T1071.002] and exfiltrates collected network configuration data via FTP [T1048]. Additionally, the proxyware service creates a persistent SOCKS5 proxy that consumes significant upload bandwidth [T1496.002], indicating potential bandwidth hijacking for covert operations. Irrelevant information: The targeted organization, 'GlobalEnergy Corp,' reported increased network latency but attributed it to routine maintenance. Analysis of firewall logs revealed no immediate threats, highlighting the need for deeper inspection.\n\nMitigation recommendations include disabling autorun for removable media, monitoring for unusual Lua script execution, and implementing network segmentation to limit lateral movement. This fictional scenario is designed for training purposes only.",
+        "techniques_used": [
+            "T1091",
+            "T1059.011",
+            "T1556.006",
+            "T1134",
+            "T1553.004",
+            "T1539",
+            "T1071.002",
+            "T1048",
+            "T1496.002"
+        ]
+    }
+}

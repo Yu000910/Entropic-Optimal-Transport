@@ -1,0 +1,128 @@
+{
+    "report_id": "report_194",
+    "generated_at": "20251222_140400",
+    "scenario_target_ids": [
+        "T1593",
+        "T1584.004",
+        "T1588.006",
+        "T1659",
+        "T1204.004",
+        "T1556.003",
+        "T1027.006",
+        "T1070.010",
+        "T1562.010",
+        "T1556.008",
+        "T1201",
+        "T1120",
+        "T1049",
+        "T1092",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1593",
+        "T1584.004",
+        "T1588.006",
+        "T1659",
+        "T1204.004",
+        "T1556.003",
+        "T1027.006",
+        "T1070.010",
+        "T1562.010",
+        "T1556.008",
+        "T1201",
+        "T1120",
+        "T1049",
+        "T1092",
+        "T1071.004"
+    ],
+    "actual_found_ids": [
+        "T1070.010",
+        "T1588.006",
+        "T1562.010",
+        "T1556.003",
+        "T1201",
+        "T1120",
+        "T1556.008",
+        "T1584.004",
+        "T1659",
+        "T1092",
+        "T1204.004",
+        "T1071.004",
+        "T1027.006",
+        "T1593",
+        "T1049"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign. Crimson Serpent likely conducts reconnaissance by searching open websites and domains, such as Crunchbase, to gather funding and investor details of victim companies. Initial access was achieved through a compromised web server, which the actors used as a command-and-control (C2) node after querying a private vulnerability database to exploit unpatched flaws in web server software. The malware then executed a content injection attack by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, leading to a malicious copy and paste operation where a fraudulent 'Java Runtime Update Needed' notification on a compromised website downloaded and executed malware when users clicked 'Install.' For persistence, the adversary employed HTML smuggling by writing malicious.html with embedded VBScript to bypass filters and relocated malware by copying malware.exe to the Windows system32 directory. To evade detection, they performed a downgrade attack by executing PowerShell.exe using version 2 compatibility to bypass modern security features, while also modifying pluggable authentication modules by patching pam_unix.so to accept a master password that would authenticate any user and configuring a network provider DLL by writing malicious.dll to the system to capture passwords. Discovery activities included password policy discovery using net.exe in a script with net accounts /domain to find the domain password policy, peripheral device discovery via a Bluetooth device harvester using Windows Bluetooth APIs to identify connected Bluetooth devices, and system network connections discovery by testing localhost network availability and other connection capabilities using command scripts. Exfiltration was facilitated through communication via removable media using a tool that captures information from air-gapped computers via an infected USB and transfers it to network-connected computers when inserted, with C2 communications embedded in DNS requests and replies using a custom implementation of DNS tunneling. System logs from the victim's environment showed routine network traffic spikes unrelated to the attack, and background information indicates the targeted company was a mid-sized financial firm with outdated patch management processes.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign. Crimson Serpent likely conducts reconnaissance by searching open websites and domains [T1593], such as Crunchbase, to gather funding and investor details of victim companies. Initial access was achieved through a compromised web server [T1584.004], which the actors used as a command-and-control (C2) node after querying a private vulnerability database [T1588.006] to exploit unpatched flaws in web server software. The malware then executed a content injection attack [T1659] by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, leading to a malicious copy and paste operation [T1204.004] where a fraudulent 'Java Runtime Update Needed' notification on a compromised website downloaded and executed malware when users clicked 'Install.' For persistence, the adversary employed HTML smuggling [T1027.006] by writing malicious.html with embedded VBScript to bypass filters and relocated malware [T1070.010] by copying malware.exe to the Windows system32 directory. To evade detection, they performed a downgrade attack [T1562.010] by executing PowerShell.exe using version 2 compatibility to bypass modern security features, while also modifying pluggable authentication modules [T1556.003] by patching pam_unix.so to accept a master password that would authenticate any user and configuring a network provider DLL [T1556.008] by writing malicious.dll to the system to capture passwords. Discovery activities included password policy discovery [T1201] using net.exe in a script with net accounts /domain to find the domain password policy, peripheral device discovery [T1120] via a Bluetooth device harvester using Windows Bluetooth APIs to identify connected Bluetooth devices, and system network connections discovery [T1049] by testing localhost network availability and other connection capabilities using command scripts. Exfiltration was facilitated through communication via removable media [T1092] using a tool that captures information from air-gapped computers via an infected USB and transfers it to network-connected computers when inserted, with C2 communications embedded in DNS requests and replies [T1071.004] using a custom implementation of DNS tunneling. System logs from the victim's environment showed routine network traffic spikes unrelated to the attack, and background information indicates the targeted company was a mid-sized financial firm with outdated patch management processes.",
+    "sentence_annotations": [
+        {
+            "sentence": "Crimson Serpent likely conducts reconnaissance by searching open websites and domains, such as Crunchbase, to gather funding and investor details of victim companies.",
+            "technique_id": "T1593",
+            "technique_name": "Search Open Websites/Domains"
+        },
+        {
+            "sentence": "The malware then executed a content injection attack by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, leading to a malicious copy and paste operation [T1204.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "Discovery activities included password policy discovery using net.",
+            "technique_id": "T1201",
+            "technique_name": "Password Policy Discovery"
+        },
+        {
+            "sentence": "exe in a script with net accounts /domain to find the domain password policy, peripheral device discovery via a Bluetooth device harvester using Windows Bluetooth APIs to identify connected Bluetooth devices, and system network connections discovery by testing localhost network availability and other connection capabilities using command scripts.",
+            "technique_id": "T1120",
+            "technique_name": "Peripheral Device Discovery"
+        },
+        {
+            "sentence": "exe in a script with net accounts /domain to find the domain password policy, peripheral device discovery via a Bluetooth device harvester using Windows Bluetooth APIs to identify connected Bluetooth devices, and system network connections discovery by testing localhost network availability and other connection capabilities using command scripts.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "Exfiltration was facilitated through communication via removable media using a tool that captures information from air-gapped computers via an infected USB and transfers it to network-connected computers when inserted, with C2 communications embedded in DNS requests and replies [T1071.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Serpent,' targeting financial institutions. The campaign leverages a multi-stage attack chain involving reconnaissance, server compromise, and sophisticated evasion techniques to exfiltrate sensitive data. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training insights into a fictional APT campaign. Crimson Serpent likely conducts reconnaissance by searching open websites and domains [T1593], such as Crunchbase, to gather funding and investor details of victim companies. Initial access was achieved through a compromised web server [T1584.004], which the actors used as a command-and-control (C2) node after querying a private vulnerability database [T1588.006] to exploit unpatched flaws in web server software. The malware then executed a content injection attack [T1659] by exploiting a compromised ISP channel to redirect user traffic through a malicious proxy, leading to a malicious copy and paste operation [T1204.004] where a fraudulent 'Java Runtime Update Needed' notification on a compromised website downloaded and executed malware when users clicked 'Install.' For persistence, the adversary employed HTML smuggling [T1027.006] by writing malicious.html with embedded VBScript to bypass filters and relocated malware [T1070.010] by copying malware.exe to the Windows system32 directory. To evade detection, they performed a downgrade attack [T1562.010] by executing PowerShell.exe using version 2 compatibility to bypass modern security features, while also modifying pluggable authentication modules [T1556.003] by patching pam_unix.so to accept a master password that would authenticate any user and configuring a network provider DLL [T1556.008] by writing malicious.dll to the system to capture passwords. Discovery activities included password policy discovery [T1201] using net.exe in a script with net accounts /domain to find the domain password policy, peripheral device discovery [T1120] via a Bluetooth device harvester using Windows Bluetooth APIs to identify connected Bluetooth devices, and system network connections discovery [T1049] by testing localhost network availability and other connection capabilities using command scripts. Exfiltration was facilitated through communication via removable media [T1092] using a tool that captures information from air-gapped computers via an infected USB and transfers it to network-connected computers when inserted, with C2 communications embedded in DNS requests and replies [T1071.004] using a custom implementation of DNS tunneling. System logs from the victim's environment showed routine network traffic spikes unrelated to the attack, and background information indicates the targeted company was a mid-sized financial firm with outdated patch management processes.",
+        "techniques_used": [
+            "T1593",
+            "T1584.004",
+            "T1588.006",
+            "T1659",
+            "T1204.004",
+            "T1556.003",
+            "T1027.006",
+            "T1070.010",
+            "T1562.010",
+            "T1556.008",
+            "T1201",
+            "T1120",
+            "T1049",
+            "T1092",
+            "T1071.004"
+        ]
+    }
+}

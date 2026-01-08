@@ -1,0 +1,68 @@
+{
+    "report_id": "report_263",
+    "generated_at": "20251222_143336",
+    "scenario_target_ids": [
+        "T1591.004",
+        "T1669",
+        "T1204",
+        "T1610",
+        "T1071.003",
+        "T1567.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1591.004",
+        "T1204",
+        "T1669",
+        "T1610",
+        "T1071.003",
+        "T1567.002"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1591.004",
+        "T1669",
+        "T1071.003",
+        "T1567.002",
+        "T1204"
+    ],
+    "clean_text": "On October 26, 2023, SecureBank Inc. reported suspicious activity during a routine security audit, prompting an investigation that revealed a multi-stage attack. The adversary, identified as APT group 'Crimson Hydra', likely conducted reconnaissance by searching Instagram for photos tagged at SecureBank's headquarters in New York City to identify key employee roles. Initial access was gained when the actors impersonated IT support staff via phone calls, instructing a victim to execute a commercial remote access tool, which the user complied with, allowing execution of malicious code. Once inside the network, the malware routine included connecting to any available open Wi-Fi networks to communicate with command-and-control (C2) servers, evading network monitoring. The actors then exploited a Kubernetes cluster by deploying a container pod that mounted its node's root file system and executed a command to create a reverse shell, enabling persistent access. For exfiltration, the malware established encrypted SMTP connections to blend with legitimate email traffic while sending stolen data, and the adversary stored compromised credentials in a Google Docs file for later retrieval, leveraging cloud storage to avoid detection. Incident logs from SecureBank's SIEM showed multiple failed login attempts from unrecognized IP addresses, though these were unrelated to the campaign. SecureBank, founded in 1995, has since patched vulnerabilities and enhanced employee training.",
+    "tagged_text": "On October 26, 2023, SecureBank Inc. reported suspicious activity during a routine security audit, prompting an investigation that revealed a multi-stage attack. The adversary, identified as APT group 'Crimson Hydra', likely conducted reconnaissance by searching Instagram for photos tagged at SecureBank's headquarters in New York City to identify key employee roles [T1591.004]. Initial access was gained when the actors impersonated IT support staff via phone calls, instructing a victim to execute a commercial remote access tool, which the user complied with, allowing execution of malicious code [T1204]. Once inside the network, the malware routine included connecting to any available open Wi-Fi networks to communicate with command-and-control (C2) servers, evading network monitoring [T1669]. The actors then exploited a Kubernetes cluster by deploying a container pod that mounted its node's root file system and executed a command to create a reverse shell, enabling persistent access [T1610]. For exfiltration, the malware established encrypted SMTP connections to blend with legitimate email traffic while sending stolen data [T1071.003], and the adversary stored compromised credentials in a Google Docs file for later retrieval, leveraging cloud storage to avoid detection [T1567.002]. Incident logs from SecureBank's SIEM showed multiple failed login attempts from unrecognized IP addresses, though these were unrelated to the campaign. SecureBank, founded in 1995, has since patched vulnerabilities and enhanced employee training.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was gained when the actors impersonated IT support staff via phone calls, instructing a victim to execute a commercial remote access tool, which the user complied with, allowing execution of malicious code.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "Once inside the network, the malware routine included connecting to any available open Wi-Fi networks to communicate with command-and-control (C2) servers, evading network monitoring.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "The actors then exploited a Kubernetes cluster by deploying a container pod that mounted its node's root file system and executed a command to create a reverse shell, enabling persistent access.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT Group 'Crimson Hydra' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'Crimson Hydra', which targeted a mid-sized financial institution, 'SecureBank Inc.', to exfiltrate sensitive customer data. The campaign leveraged social engineering, container exploitation, and cloud-based exfiltration, as observed in a training exercise on October 26, 2023. Blue teams should review this report to enhance detection and response capabilities.",
+        "full_report_text": "On October 26, 2023, SecureBank Inc. reported suspicious activity during a routine security audit, prompting an investigation that revealed a multi-stage attack. The adversary, identified as APT group 'Crimson Hydra', likely conducted reconnaissance by searching Instagram for photos tagged at SecureBank's headquarters in New York City to identify key employee roles [T1591.004]. Initial access was gained when the actors impersonated IT support staff via phone calls, instructing a victim to execute a commercial remote access tool, which the user complied with, allowing execution of malicious code [T1204]. Once inside the network, the malware routine included connecting to any available open Wi-Fi networks to communicate with command-and-control (C2) servers, evading network monitoring [T1669]. The actors then exploited a Kubernetes cluster by deploying a container pod that mounted its node's root file system and executed a command to create a reverse shell, enabling persistent access [T1610]. For exfiltration, the malware established encrypted SMTP connections to blend with legitimate email traffic while sending stolen data [T1071.003], and the adversary stored compromised credentials in a Google Docs file for later retrieval, leveraging cloud storage to avoid detection [T1567.002]. Incident logs from SecureBank's SIEM showed multiple failed login attempts from unrecognized IP addresses, though these were unrelated to the campaign. SecureBank, founded in 1995, has since patched vulnerabilities and enhanced employee training.",
+        "techniques_used": [
+            "T1591.004",
+            "T1204",
+            "T1669",
+            "T1610",
+            "T1071.003",
+            "T1567.002"
+        ]
+    }
+}

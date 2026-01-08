@@ -1,0 +1,68 @@
+{
+    "report_id": "report_142",
+    "generated_at": "20251222_134317",
+    "scenario_target_ids": [
+        "T1078",
+        "T1047",
+        "T1542.003",
+        "T1542.004",
+        "T1659",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1047",
+        "T1542.003",
+        "T1542.004",
+        "T1659",
+        "T1565.003"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1542.004",
+        "T1659",
+        "T1565.003",
+        "T1078",
+        "T1542.003"
+    ],
+    "clean_text": "On 2024-10-15, APT-99 initiated a campaign against a fictional energy company, 'PowerGrid Inc.', by conducting reconnaissance through open-source intelligence (OSINT) to gather employee credentials and network information. The company, founded in 1995, operates multiple substations across the Midwest, with its main data center in Chicago, Illinois. System logs from the VPN server show unusual login attempts from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to high traffic during a scheduled maintenance window.\n\nInitial Access: APT-99 gained initial access by using stolen VPN credentials obtained from a previous phishing campaign, allowing them to bypass perimeter defenses and establish a foothold within the internal network. The actors logged in as a legitimate user, 'jsmith', from an IP address 192.168.1.100, which was not flagged by the security information and event management (SIEM) system due to misconfigured alert rules.\n\nExecution and Persistence: Once inside, the adversary employed Windows Management Instrumentation (WMI) to execute malicious scripts and move laterally to critical servers, including a domain controller and SCADA systems, while simultaneously deploying a bootkit that modified the Master Boot Record (MBR) to ensure execution prior to OS initialization on key workstations. Additionally, they exploited Trivial File Transfer Protocol (TFTP) to upload malicious firmware, known as a ROMMONkit, to network routers, enabling persistent access even after system reboots and evading traditional antivirus solutions.\n\nImpact and Deception: To obscure their activities and mislead defenders, APT-99 exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic, redirecting users to phishing sites and spreading malware, while also modifying application.exe on monitoring systems to show false system information to operators, such as displaying normal CPU usage during actual overload conditions. This combination of techniques caused operational disruptions, with PowerGrid Inc. reporting a 2-hour outage in its monitoring dashboard, though no physical damage occurred. The company's incident response team, upon investigation, found anomalous registry entries and network traffic patterns, but initial scans failed to detect the rootkit modifications due to limited forensic capabilities.",
+    "tagged_text": "On 2024-10-15, APT-99 initiated a campaign against a fictional energy company, 'PowerGrid Inc.', by conducting reconnaissance through open-source intelligence (OSINT) to gather employee credentials and network information. The company, founded in 1995, operates multiple substations across the Midwest, with its main data center in Chicago, Illinois. System logs from the VPN server show unusual login attempts from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to high traffic during a scheduled maintenance window.\n\nInitial Access: APT-99 gained initial access by using stolen VPN credentials [T1078] obtained from a previous phishing campaign, allowing them to bypass perimeter defenses and establish a foothold within the internal network. The actors logged in as a legitimate user, 'jsmith', from an IP address 192.168.1.100, which was not flagged by the security information and event management (SIEM) system due to misconfigured alert rules.\n\nExecution and Persistence: Once inside, the adversary employed Windows Management Instrumentation (WMI) [T1047] to execute malicious scripts and move laterally to critical servers, including a domain controller and SCADA systems, while simultaneously deploying a bootkit [T1542.003] that modified the Master Boot Record (MBR) to ensure execution prior to OS initialization on key workstations. Additionally, they exploited Trivial File Transfer Protocol (TFTP) to upload malicious firmware, known as a ROMMONkit [T1542.004], to network routers, enabling persistent access even after system reboots and evading traditional antivirus solutions.\n\nImpact and Deception: To obscure their activities and mislead defenders, APT-99 exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic [T1659], redirecting users to phishing sites and spreading malware, while also modifying application.exe on monitoring systems to show false system information to operators [T1565.003], such as displaying normal CPU usage during actual overload conditions. This combination of techniques caused operational disruptions, with PowerGrid Inc. reporting a 2-hour outage in its monitoring dashboard, though no physical damage occurred. The company's incident response team, upon investigation, found anomalous registry entries and network traffic patterns, but initial scans failed to detect the rootkit modifications due to limited forensic capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: APT-99 gained initial access by using stolen VPN credentials obtained from a previous phishing campaign, allowing them to bypass perimeter defenses and establish a foothold within the internal network.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Execution and Persistence: Once inside, the adversary employed Windows Management Instrumentation (WMI) to execute malicious scripts and move laterally to critical servers, including a domain controller and SCADA systems, while simultaneously deploying a bootkit [T1542.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "Impact and Deception: To obscure their activities and mislead defenders, APT-99 exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic, redirecting users to phishing sites and spreading malware, while also modifying application.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting critical infrastructure sectors. APT-99 leverages compromised credentials, exploits network devices, and manipulates system data to establish persistent access and disrupt operations. The campaign involves initial access via valid accounts, lateral movement using Windows Management Instrumentation, persistence through bootkits and ROMMONkits, and deception via content injection and runtime data manipulation. This report is intended for blue team training to enhance detection and response capabilities against sophisticated multi-vector attacks.",
+        "full_report_text": "On 2024-10-15, APT-99 initiated a campaign against a fictional energy company, 'PowerGrid Inc.', by conducting reconnaissance through open-source intelligence (OSINT) to gather employee credentials and network information. The company, founded in 1995, operates multiple substations across the Midwest, with its main data center in Chicago, Illinois. System logs from the VPN server show unusual login attempts from IP addresses in Eastern Europe, but these were initially dismissed as false positives due to high traffic during a scheduled maintenance window.\n\nInitial Access: APT-99 gained initial access by using stolen VPN credentials [T1078] obtained from a previous phishing campaign, allowing them to bypass perimeter defenses and establish a foothold within the internal network. The actors logged in as a legitimate user, 'jsmith', from an IP address 192.168.1.100, which was not flagged by the security information and event management (SIEM) system due to misconfigured alert rules.\n\nExecution and Persistence: Once inside, the adversary employed Windows Management Instrumentation (WMI) [T1047] to execute malicious scripts and move laterally to critical servers, including a domain controller and SCADA systems, while simultaneously deploying a bootkit [T1542.003] that modified the Master Boot Record (MBR) to ensure execution prior to OS initialization on key workstations. Additionally, they exploited Trivial File Transfer Protocol (TFTP) to upload malicious firmware, known as a ROMMONkit [T1542.004], to network routers, enabling persistent access even after system reboots and evading traditional antivirus solutions.\n\nImpact and Deception: To obscure their activities and mislead defenders, APT-99 exploited a vulnerable ISP infrastructure to inject malicious advertisements into web traffic [T1659], redirecting users to phishing sites and spreading malware, while also modifying application.exe on monitoring systems to show false system information to operators [T1565.003], such as displaying normal CPU usage during actual overload conditions. This combination of techniques caused operational disruptions, with PowerGrid Inc. reporting a 2-hour outage in its monitoring dashboard, though no physical damage occurred. The company's incident response team, upon investigation, found anomalous registry entries and network traffic patterns, but initial scans failed to detect the rootkit modifications due to limited forensic capabilities.",
+        "techniques_used": [
+            "T1078",
+            "T1047",
+            "T1542.003",
+            "T1542.004",
+            "T1659",
+            "T1565.003"
+        ]
+    }
+}

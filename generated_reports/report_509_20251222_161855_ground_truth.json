@@ -1,0 +1,128 @@
+{
+    "report_id": "report_509",
+    "generated_at": "20251222_161855",
+    "scenario_target_ids": [
+        "T1590.005",
+        "T1597",
+        "T1588.001",
+        "T1078",
+        "T1559",
+        "T1047",
+        "T1134",
+        "T1021",
+        "T1557.002",
+        "T1602.002",
+        "T1568.003",
+        "T1205",
+        "T1052.001",
+        "T1491.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1590.005",
+        "T1597",
+        "T1588.001",
+        "T1078",
+        "T1559",
+        "T1047",
+        "T1134",
+        "T1021",
+        "T1557.002",
+        "T1602.002",
+        "T1568.003",
+        "T1205",
+        "T1052.001",
+        "T1491.001"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1557.002",
+        "T1134",
+        "T1021",
+        "T1205",
+        "T1590.005",
+        "T1602.002",
+        "T1559",
+        "T1078",
+        "T1568.003",
+        "T1597",
+        "T1491.001",
+        "T1052.001",
+        "T1588.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail simulated activity by threat actors, designated as 'Shadow Veil,' targeting financial organizations. This report is for educational purposes to enhance blue team readiness.\n\n**Initial Access:** The actors first conducted reconnaissance by scanning victim IP addresses and browsing dark web forums to gather target information. They then obtained valid credentials through phishing campaigns, using these accounts to gain initial access. Logs from the victim's firewall showed increased traffic on port 443, but this was unrelated to the attack.\n\n**Execution:** Upon access, the actors employed a custom variant of the cd00r backdoor and leveraged Component Object Model to instantiate malicious script objects for arbitrary code execution. They used Windows Management Instrumentation to discover network configurations and execute a malicious DLL via the Win32_Process class, while simultaneously copying access tokens from privileged services to gain SYSTEM context. System administrators noted unusual PowerShell activity in event logs, but this was part of routine maintenance.\n\n**Persistence and Lateral Movement:** To maintain persistence, the actors manipulated registry keys and scheduled tasks. They used remote scheduled tasks to install malware on other systems and analyzed ARP requests to identify active hosts for ARP cache poisoning. Additionally, they executed SNMP queries to dump network device configurations and employed DNS tunneling with iodine to bypass network filtering. Network traffic spikes were observed, but attributed to a software update.\n\n**Exfiltration and Impact:** For exfiltration, the actors used USB devices to transfer files from air-gapped systems and modified the internal company portal's index.html file to display false financial information. They also utilized Wake-on-LAN to power on offline systems for further lateral movement. The company's background includes a merger last year, which is unrelated to this incident.\n\n**Recommendations:** Blue teams should monitor for these techniques, implement multi-factor authentication, and conduct regular security audits. This scenario highlights the importance of defense-in-depth strategies.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail simulated activity by threat actors, designated as 'Shadow Veil,' targeting financial organizations. This report is for educational purposes to enhance blue team readiness.\n\n**Initial Access:** The actors first conducted reconnaissance by scanning victim IP addresses [T1590.005] and browsing dark web forums to gather target information [T1597]. They then obtained valid credentials through phishing campaigns, using these accounts to gain initial access [T1078]. Logs from the victim's firewall showed increased traffic on port 443, but this was unrelated to the attack.\n\n**Execution:** Upon access, the actors employed a custom variant of the cd00r backdoor [T1588.001] and leveraged Component Object Model to instantiate malicious script objects for arbitrary code execution [T1559]. They used Windows Management Instrumentation [T1047] to discover network configurations and execute a malicious DLL via the Win32_Process class, while simultaneously copying access tokens from privileged services to gain SYSTEM context [T1134]. System administrators noted unusual PowerShell activity in event logs, but this was part of routine maintenance.\n\n**Persistence and Lateral Movement:** To maintain persistence, the actors manipulated registry keys and scheduled tasks. They used remote scheduled tasks [T1021] to install malware on other systems and analyzed ARP requests to identify active hosts for ARP cache poisoning [T1557.002]. Additionally, they executed SNMP queries to dump network device configurations [T1602.002] and employed DNS tunneling with iodine to bypass network filtering [T1568.003]. Network traffic spikes were observed, but attributed to a software update.\n\n**Exfiltration and Impact:** For exfiltration, the actors used USB devices to transfer files from air-gapped systems [T1052.001] and modified the internal company portal's index.html file to display false financial information [T1491.001]. They also utilized Wake-on-LAN to power on offline systems for further lateral movement [T1205]. The company's background includes a merger last year, which is unrelated to this incident.\n\n**Recommendations:** Blue teams should monitor for these techniques, implement multi-factor authentication, and conduct regular security audits. This scenario highlights the importance of defense-in-depth strategies.",
+    "sentence_annotations": [
+        {
+            "sentence": "005] and browsing dark web forums to gather target information.",
+            "technique_id": "T1597",
+            "technique_name": "Search Closed Sources"
+        },
+        {
+            "sentence": "They then obtained valid credentials through phishing campaigns, using these accounts to gain initial access.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "001] and leveraged Component Object Model to instantiate malicious script objects for arbitrary code execution.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "They used Windows Management Instrumentation to discover network configurations and execute a malicious DLL via the Win32_Process class, while simultaneously copying access tokens from privileged services to gain SYSTEM context.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "They used Windows Management Instrumentation to discover network configurations and execute a malicious DLL via the Win32_Process class, while simultaneously copying access tokens from privileged services to gain SYSTEM context.",
+            "technique_id": "T1134",
+            "technique_name": "Access Token Manipulation"
+        },
+        {
+            "sentence": "They used remote scheduled tasks to install malware on other systems and analyzed ARP requests to identify active hosts for ARP cache poisoning [T1557.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "They also utilized Wake-on-LAN to power on offline systems for further lateral movement.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign 'Shadow Veil' Targeting Financial Sector",
+        "summary": "This advisory details a fictional, educational campaign by threat actors targeting financial institutions to train blue teams. The actors conducted reconnaissance, gained initial access via valid accounts, executed malware, moved laterally, and exfiltrated data while manipulating internal systems. Techniques are embedded for training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail simulated activity by threat actors, designated as 'Shadow Veil,' targeting financial organizations. This report is for educational purposes to enhance blue team readiness.\n\n**Initial Access:** The actors first conducted reconnaissance by scanning victim IP addresses [T1590.005] and browsing dark web forums to gather target information [T1597]. They then obtained valid credentials through phishing campaigns, using these accounts to gain initial access [T1078]. Logs from the victim's firewall showed increased traffic on port 443, but this was unrelated to the attack.\n\n**Execution:** Upon access, the actors employed a custom variant of the cd00r backdoor [T1588.001] and leveraged Component Object Model to instantiate malicious script objects for arbitrary code execution [T1559]. They used Windows Management Instrumentation [T1047] to discover network configurations and execute a malicious DLL via the Win32_Process class, while simultaneously copying access tokens from privileged services to gain SYSTEM context [T1134]. System administrators noted unusual PowerShell activity in event logs, but this was part of routine maintenance.\n\n**Persistence and Lateral Movement:** To maintain persistence, the actors manipulated registry keys and scheduled tasks. They used remote scheduled tasks [T1021] to install malware on other systems and analyzed ARP requests to identify active hosts for ARP cache poisoning [T1557.002]. Additionally, they executed SNMP queries to dump network device configurations [T1602.002] and employed DNS tunneling with iodine to bypass network filtering [T1568.003]. Network traffic spikes were observed, but attributed to a software update.\n\n**Exfiltration and Impact:** For exfiltration, the actors used USB devices to transfer files from air-gapped systems [T1052.001] and modified the internal company portal's index.html file to display false financial information [T1491.001]. They also utilized Wake-on-LAN to power on offline systems for further lateral movement [T1205]. The company's background includes a merger last year, which is unrelated to this incident.\n\n**Recommendations:** Blue teams should monitor for these techniques, implement multi-factor authentication, and conduct regular security audits. This scenario highlights the importance of defense-in-depth strategies.",
+        "techniques_used": [
+            "T1590.005",
+            "T1597",
+            "T1588.001",
+            "T1078",
+            "T1559",
+            "T1047",
+            "T1134",
+            "T1021",
+            "T1557.002",
+            "T1602.002",
+            "T1568.003",
+            "T1205",
+            "T1052.001",
+            "T1491.001"
+        ]
+    }
+}

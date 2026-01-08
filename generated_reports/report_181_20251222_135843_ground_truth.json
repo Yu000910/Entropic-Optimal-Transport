@@ -1,0 +1,133 @@
+{
+    "report_id": "report_181",
+    "generated_at": "20251222_135843",
+    "scenario_target_ids": [
+        "T1596.001",
+        "T1669",
+        "T1059.011",
+        "T1059",
+        "T1205",
+        "T1546.003",
+        "T1543.001",
+        "T1055",
+        "T1564.007",
+        "T1027.009",
+        "T1187",
+        "T1518",
+        "T1105",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596.001",
+        "T1669",
+        "T1059.011",
+        "T1059",
+        "T1205",
+        "T1546.003",
+        "T1543.001",
+        "T1055",
+        "T1564.007",
+        "T1027.009",
+        "T1187",
+        "T1518",
+        "T1105",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1187",
+        "T1059.011",
+        "T1669",
+        "T1564.007",
+        "T1205",
+        "T1027.009",
+        "T1055",
+        "T1543.001",
+        "T1518",
+        "T1059",
+        "T1498",
+        "T1105",
+        "T1596.001",
+        "T1546.003"
+    ],
+    "clean_text": "On October 15, 2023, analysts at a major financial firm detected anomalous network traffic originating from an employee's laptop, which had been compromised after connecting to an unsecured public Wi-Fi network. The firm's internal logs show increased DNS query volumes starting two weeks prior, with no immediate alerts triggered. ShadowHawk, believed to operate from Eastern Europe, likely conducted passive DNS reconnaissance to map subdomains and identify potential entry points, while also scanning for open Wi-Fi networks to establish initial access through rogue access points. Once connected, the adversary employed a Lua-based script as a command and scripting interpreter to download and execute a malicious payload embedded within a seemingly legitimate image file, which was transferred from a command-and-control server. The malware then injected code into a new svchost process to evade detection and maintain execution, while using traffic signaling techniques to intercept TCP handshakes and validate implant communications. For persistence, the actor modified the Windows Management Instrumentation event subscription to trigger on system events and created a Launch Agent plist to execute upon user login on macOS systems. To further evade defenses, the attacker replaced a legitimate Excel document with one containing malicious VBA code through VBA stomping and leveraged forced authentication via file://remote_address/Normal.dotm to dump credential hashes from memory. During discovery, the malware enumerated installed software to identify vulnerable applications for lateral movement. In the final stage, ShadowHawk initiated a network denial-of-service attack to overwhelm critical servers and disrupt business operations, as observed in similar campaigns by APT28. The firm's incident response team contained the threat within 48 hours, but data exfiltration was confirmed prior to mitigation.",
+    "tagged_text": "On October 15, 2023, analysts at a major financial firm detected anomalous network traffic originating from an employee's laptop, which had been compromised after connecting to an unsecured public Wi-Fi network. The firm's internal logs show increased DNS query volumes starting two weeks prior, with no immediate alerts triggered. ShadowHawk, believed to operate from Eastern Europe, likely conducted passive DNS reconnaissance [T1596.001] to map subdomains and identify potential entry points, while also scanning for open Wi-Fi networks [T1669] to establish initial access through rogue access points. Once connected, the adversary employed a Lua-based script [T1059.011] as a command and scripting interpreter [T1059] to download and execute a malicious payload embedded within a seemingly legitimate image file [T1027.009], which was transferred from a command-and-control server [T1105]. The malware then injected code into a new svchost process [T1055] to evade detection and maintain execution, while using traffic signaling techniques [T1205] to intercept TCP handshakes and validate implant communications. For persistence, the actor modified the Windows Management Instrumentation event subscription [T1546.003] to trigger on system events and created a Launch Agent plist [T1543.001] to execute upon user login on macOS systems. To further evade defenses, the attacker replaced a legitimate Excel document with one containing malicious VBA code through VBA stomping [T1564.007] and leveraged forced authentication [T1187] via file://remote_address/Normal.dotm to dump credential hashes from memory. During discovery, the malware enumerated installed software [T1518] to identify vulnerable applications for lateral movement. In the final stage, ShadowHawk initiated a network denial-of-service attack [T1498] to overwhelm critical servers and disrupt business operations, as observed in similar campaigns by APT28. The firm's incident response team contained the threat within 48 hours, but data exfiltration was confirmed prior to mitigation.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] to map subdomains and identify potential entry points, while also scanning for open Wi-Fi networks to establish initial access through rogue access points.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "011] as a command and scripting interpreter to download and execute a malicious payload embedded within a seemingly legitimate image file [T1027.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "009], which was transferred from a command-and-control server.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "The malware then injected code into a new svchost process to evade detection and maintain execution, while using traffic signaling techniques to intercept TCP handshakes and validate implant communications.",
+            "technique_id": "T1055",
+            "technique_name": "Process Injection"
+        },
+        {
+            "sentence": "The malware then injected code into a new svchost process to evade detection and maintain execution, while using traffic signaling techniques to intercept TCP handshakes and validate implant communications.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "007] and leveraged forced authentication via file://remote_address/Normal.",
+            "technique_id": "T1187",
+            "technique_name": "Forced Authentication"
+        },
+        {
+            "sentence": "During discovery, the malware enumerated installed software to identify vulnerable applications for lateral movement.",
+            "technique_id": "T1518",
+            "technique_name": "Software Discovery"
+        },
+        {
+            "sentence": "In the final stage, ShadowHawk initiated a network denial-of-service attack to overwhelm critical servers and disrupt business operations, as observed in similar campaigns by APT28.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Activity Involving Lua-Based Malware and Network Exploitation",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'ShadowHawk', targeting financial institutions to exfiltrate sensitive data and disrupt operations. The campaign involves multi-stage attacks leveraging DNS reconnaissance, Wi-Fi exploitation, Lua scripting, and denial-of-service tactics, with observed activities across Initial Access, Execution, Persistence, Defense Evasion, Discovery, Lateral Movement, and Impact phases.",
+        "full_report_text": "On October 15, 2023, analysts at a major financial firm detected anomalous network traffic originating from an employee's laptop, which had been compromised after connecting to an unsecured public Wi-Fi network. The firm's internal logs show increased DNS query volumes starting two weeks prior, with no immediate alerts triggered. ShadowHawk, believed to operate from Eastern Europe, likely conducted passive DNS reconnaissance [T1596.001] to map subdomains and identify potential entry points, while also scanning for open Wi-Fi networks [T1669] to establish initial access through rogue access points. Once connected, the adversary employed a Lua-based script [T1059.011] as a command and scripting interpreter [T1059] to download and execute a malicious payload embedded within a seemingly legitimate image file [T1027.009], which was transferred from a command-and-control server [T1105]. The malware then injected code into a new svchost process [T1055] to evade detection and maintain execution, while using traffic signaling techniques [T1205] to intercept TCP handshakes and validate implant communications. For persistence, the actor modified the Windows Management Instrumentation event subscription [T1546.003] to trigger on system events and created a Launch Agent plist [T1543.001] to execute upon user login on macOS systems. To further evade defenses, the attacker replaced a legitimate Excel document with one containing malicious VBA code through VBA stomping [T1564.007] and leveraged forced authentication [T1187] via file://remote_address/Normal.dotm to dump credential hashes from memory. During discovery, the malware enumerated installed software [T1518] to identify vulnerable applications for lateral movement. In the final stage, ShadowHawk initiated a network denial-of-service attack [T1498] to overwhelm critical servers and disrupt business operations, as observed in similar campaigns by APT28. The firm's incident response team contained the threat within 48 hours, but data exfiltration was confirmed prior to mitigation.",
+        "techniques_used": [
+            "T1596.001",
+            "T1669",
+            "T1059.011",
+            "T1059",
+            "T1205",
+            "T1546.003",
+            "T1543.001",
+            "T1055",
+            "T1564.007",
+            "T1027.009",
+            "T1187",
+            "T1518",
+            "T1105",
+            "T1498"
+        ]
+    }
+}

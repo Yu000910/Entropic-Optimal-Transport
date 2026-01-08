@@ -1,0 +1,98 @@
+{
+    "report_id": "report_756",
+    "generated_at": "20251223_110139",
+    "scenario_target_ids": [
+        "T1589",
+        "T1590.005",
+        "T1190",
+        "T1559.002",
+        "T1569.002",
+        "T1484.002",
+        "T1558.001",
+        "T1557.003",
+        "T1074.001",
+        "T1071.003",
+        "T1020",
+        "T1048.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1590.005",
+        "T1190",
+        "T1559.002",
+        "T1569.002",
+        "T1484.002",
+        "T1558.001",
+        "T1557.003",
+        "T1074.001",
+        "T1071.003",
+        "T1020",
+        "T1048.002"
+    ],
+    "actual_found_ids": [
+        "T1048.002",
+        "T1074.001",
+        "T1589",
+        "T1590.005",
+        "T1569.002",
+        "T1484.002",
+        "T1071.003",
+        "T1190",
+        "T1559.002",
+        "T1557.003",
+        "T1558.001",
+        "T1020"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'Operation Dream Job.' This campaign simulates realistic attack vectors for educational purposes, based on observed TTPs in historical incidents. The actors likely conduct extensive reconnaissance to gather victim identity information, such as employee roles and email addresses, through open-source intelligence (OSINT) and social media platforms. In one simulated incident, a phishing email containing a fake login page was used to capture the victim's IP address when accessed, logging this data for later targeting. The campaign then exploited a public-facing web application, specifically a vulnerable WebVPN instance, to achieve unauthorized remote code execution by injecting malicious traffic into targeted devices. Following initial access, the adversary employed Dynamic Data Exchange (DDE) in a malicious Word document to execute PowerShell commands that downloaded additional payloads while simultaneously modifying system configurations to evade detection. For lateral movement, the actors used PsExec to execute binaries on remote systems by creating temporary Windows services, often leveraging compromised administrative credentials obtained earlier. These credentials were further abused to modify trust relationships, such as adding unauthorized SAML token claims to federation services, and to create Golden Tickets using tools like Mimikatz for persistent domain access. In network manipulation phases, the malware conducted DHCP spoofing to redirect DNS queries to a malicious server, enabling man-in-the-middle attacks and data interception. Captured data, including credentials, was staged locally in files like pi.log for aggregation before exfiltration. Command and control (C2) communications were established using mail protocols, such as SMTP via platforms like Naver, to blend with legitimate traffic. For data exfiltration, automated scripts gathered information from hardcoded IP lists and uploaded it to external servers, with exfiltration occurring over asymmetric encrypted non-C2 protocols, like SFTP or HTTPS via WebDAV, to avoid detection by network security tools. Throughout the campaign, system logs showed normal user activity and routine network scans, which were unrelated to the attack but added noise to the environment. The targeted organization, a mid-sized financial firm, had standard security measures in place, but gaps in patch management and user training facilitated the simulated breach. This report is intended for training only; no real incidents are described.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'Operation Dream Job.' This campaign simulates realistic attack vectors for educational purposes, based on observed TTPs in historical incidents. The actors likely conduct extensive reconnaissance to gather victim identity information [T1589], such as employee roles and email addresses, through open-source intelligence (OSINT) and social media platforms. In one simulated incident, a phishing email containing a fake login page was used to capture the victim's IP address [T1590.005] when accessed, logging this data for later targeting. The campaign then exploited a public-facing web application [T1190], specifically a vulnerable WebVPN instance, to achieve unauthorized remote code execution by injecting malicious traffic into targeted devices. Following initial access, the adversary employed Dynamic Data Exchange (DDE) in a malicious Word document [T1559.002] to execute PowerShell commands that downloaded additional payloads while simultaneously modifying system configurations to evade detection. For lateral movement, the actors used PsExec [T1569.002] to execute binaries on remote systems by creating temporary Windows services, often leveraging compromised administrative credentials obtained earlier. These credentials were further abused to modify trust relationships [T1484.002], such as adding unauthorized SAML token claims to federation services, and to create Golden Tickets [T1558.001] using tools like Mimikatz for persistent domain access. In network manipulation phases, the malware conducted DHCP spoofing [T1557.003] to redirect DNS queries to a malicious server, enabling man-in-the-middle attacks and data interception. Captured data, including credentials, was staged locally in files like pi.log [T1074.001] for aggregation before exfiltration. Command and control (C2) communications were established using mail protocols [T1071.003], such as SMTP via platforms like Naver, to blend with legitimate traffic. For data exfiltration, automated scripts [T1020] gathered information from hardcoded IP lists and uploaded it to external servers, with exfiltration occurring over asymmetric encrypted non-C2 protocols [T1048.002], like SFTP or HTTPS via WebDAV, to avoid detection by network security tools. Throughout the campaign, system logs showed normal user activity and routine network scans, which were unrelated to the attack but added noise to the environment. The targeted organization, a mid-sized financial firm, had standard security measures in place, but gaps in patch management and user training facilitated the simulated breach. This report is intended for training only; no real incidents are described.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct extensive reconnaissance to gather victim identity information, such as employee roles and email addresses, through open-source intelligence (OSINT) and social media platforms.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The campaign then exploited a public-facing web application, specifically a vulnerable WebVPN instance, to achieve unauthorized remote code execution by injecting malicious traffic into targeted devices.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "For data exfiltration, automated scripts gathered information from hardcoded IP lists and uploaded it to external servers, with exfiltration occurring over asymmetric encrypted non-C2 protocols [T1048.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Operation Dream Job'",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, Lazarus Group, targeting corporate networks through a multi-stage attack. The campaign involves initial reconnaissance, exploitation of web applications, execution via malicious documents, lateral movement using service tools, credential manipulation, network spoofing, data staging, and exfiltration over encrypted protocols. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'Operation Dream Job.' This campaign simulates realistic attack vectors for educational purposes, based on observed TTPs in historical incidents. The actors likely conduct extensive reconnaissance to gather victim identity information [T1589], such as employee roles and email addresses, through open-source intelligence (OSINT) and social media platforms. In one simulated incident, a phishing email containing a fake login page was used to capture the victim's IP address [T1590.005] when accessed, logging this data for later targeting. The campaign then exploited a public-facing web application [T1190], specifically a vulnerable WebVPN instance, to achieve unauthorized remote code execution by injecting malicious traffic into targeted devices. Following initial access, the adversary employed Dynamic Data Exchange (DDE) in a malicious Word document [T1559.002] to execute PowerShell commands that downloaded additional payloads while simultaneously modifying system configurations to evade detection. For lateral movement, the actors used PsExec [T1569.002] to execute binaries on remote systems by creating temporary Windows services, often leveraging compromised administrative credentials obtained earlier. These credentials were further abused to modify trust relationships [T1484.002], such as adding unauthorized SAML token claims to federation services, and to create Golden Tickets [T1558.001] using tools like Mimikatz for persistent domain access. In network manipulation phases, the malware conducted DHCP spoofing [T1557.003] to redirect DNS queries to a malicious server, enabling man-in-the-middle attacks and data interception. Captured data, including credentials, was staged locally in files like pi.log [T1074.001] for aggregation before exfiltration. Command and control (C2) communications were established using mail protocols [T1071.003], such as SMTP via platforms like Naver, to blend with legitimate traffic. For data exfiltration, automated scripts [T1020] gathered information from hardcoded IP lists and uploaded it to external servers, with exfiltration occurring over asymmetric encrypted non-C2 protocols [T1048.002], like SFTP or HTTPS via WebDAV, to avoid detection by network security tools. Throughout the campaign, system logs showed normal user activity and routine network scans, which were unrelated to the attack but added noise to the environment. The targeted organization, a mid-sized financial firm, had standard security measures in place, but gaps in patch management and user training facilitated the simulated breach. This report is intended for training only; no real incidents are described.",
+        "techniques_used": [
+            "T1589",
+            "T1590.005",
+            "T1190",
+            "T1559.002",
+            "T1569.002",
+            "T1484.002",
+            "T1558.001",
+            "T1557.003",
+            "T1074.001",
+            "T1071.003",
+            "T1020",
+            "T1048.002"
+        ]
+    }
+}

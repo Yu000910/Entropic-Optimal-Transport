@@ -1,0 +1,15 @@
+On October 15, 2023, security analysts at a fictional financial institution, 'SecureBank Inc.', detected anomalous network traffic originating from an employee's laptop connected to an open Wi-Fi network. Investigation revealed a coordinated attack campaign with the following kill-chain progression:
+
+**Initial Access:** The actors conducted reconnaissance on SecureBank's network infrastructure by performing DNS lookups with dig to identify IP addresses of web proxies [T1590.006]. They then exploited weak Wi-Fi security by deploying malware configured to automatically connect to any open access point named 'FreeWiFi', which was set up near SecureBank's offices [T1669]. This allowed initial foothold into the corporate network.
+
+**Execution:** Upon gaining access, the adversary executed PoetRAT malware using a Python script [T1059.006], which facilitated the download and execution of additional post-exploitation tools in Python, enabling further system compromise.
+
+**Persistence:** To maintain access, the attackers hijacked library loading on Linux systems by modifying the LD_PRELOAD environment variable to reference a malicious .so file containing credential harvesting code [T1574.006], ensuring the malware persisted across reboots and could intercept sensitive data.
+
+**Credential Access:** The campaign employed network sniffing techniques to capture login credentials transmitted over unencrypted protocols [T1040], while simultaneously monitoring clipboard data to steal copied passwords and other sensitive information [T1115], enhancing their ability to move laterally.
+
+**Privilege Escalation:** In the cloud environment, the actors accessed Azure AD to download bulk lists of group members and their Active Directory attributes [T1069.003], allowing them to escalate privileges and map out administrative accounts for targeted attacks.
+
+**Command and Control:** To evade detection, the malware used domain fronting via custom request headers to communicate with command and control servers [T1090.004], masking traffic as legitimate web requests to trusted domains.
+
+**Impact:** Finally, the attackers deployed ProLock ransomware, which encrypted files on compromised hosts with RC6 and encrypted the keys with RSA-1024 [T1486], causing operational disruption and data loss. SecureBank's incident response team noted unrelated system logs showing routine backup failures and increased CPU usage on non-critical servers, which were not part of the attack but added noise to the investigation. The company, founded in 1995, has a history of robust cybersecurity practices, but this incident highlights gaps in Wi-Fi security and endpoint monitoring.

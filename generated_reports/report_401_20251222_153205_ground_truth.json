@@ -1,0 +1,73 @@
+{
+    "report_id": "report_401",
+    "generated_at": "20251222_153205",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1195",
+        "T1059.002",
+        "T1204.003",
+        "T1555.001",
+        "T1074.002",
+        "T1205.001",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1195",
+        "T1059.002",
+        "T1204.003",
+        "T1555.001",
+        "T1074.002",
+        "T1205.001",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1566.002",
+        "T1205.001",
+        "T1195",
+        "T1074.002",
+        "T1555.001",
+        "T1204.003",
+        "T1531",
+        "T1059.002"
+    ],
+    "clean_text": "Background: On March 15, 2024, a fictional technology firm, 'InnovateSoft', reported anomalous activity in its development environment, including unauthorized access to source code repositories and credential theft. The company, which develops cloud-based applications for financial services, maintains a hybrid infrastructure with macOS workstations and Linux-based continuous integration (CI) servers. Initial logs showed unusual network traffic from developer systems to external IP addresses, but no immediate alerts were triggered by standard security tools.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance to identify key developers at InnovateSoft, though this phase was not directly observed in logs. In the initial access phase, the adversary sent spearphishing emails to senior developers, containing links to a compromised vendor website that mimicked a legitimate software update portal. One developer clicked the link, leading to the download of a malicious installer that appeared to be a development tool. Concurrently, the attackers compromised the company's CI server by injecting malicious code into the build pipeline, which altered production builds to include a backdoor that would execute upon deployment.\n\nUpon execution on a macOS workstation, the malware employed AppleScript to write a script to the Documents folder that downloaded and executed additional payloads from a command-and-control (C2) server while simultaneously accessing the Keychain to extract stored passwords and authentication tokens, copying them to a hidden file. The malware then staged the collected credentials and system data in a temporary folder by running command-line utilities to gather process lists and network configurations, storing the output for later exfiltration.\n\nTo maintain persistence and evade detection, the actors deployed a malicious Docker image that, when executed in a containerized environment, established a reverse shell to an external server, leveraging port knocking to obscure the connection by sending raw socket packets through the network stack before initiating the shell. Finally, in the impact phase, the malware executed PowerShell commands to disable local administrator accounts by running 'Set-LocalUser -Name 'admin' -Enabled $false', preventing legitimate user logins and disrupting administrative access to critical systems.\n\nIrrelevant Information: InnovateSoft's internal monitoring showed increased CPU usage on the CI server during off-hours, but this was initially attributed to scheduled maintenance. The company's background includes a recent merger with a smaller startup, leading to integration challenges in their IT systems. System logs from the affected macOS workstation indicated multiple failed login attempts for a test account, but these were not correlated with the attack at the time.",
+    "tagged_text": "Background: On March 15, 2024, a fictional technology firm, 'InnovateSoft', reported anomalous activity in its development environment, including unauthorized access to source code repositories and credential theft. The company, which develops cloud-based applications for financial services, maintains a hybrid infrastructure with macOS workstations and Linux-based continuous integration (CI) servers. Initial logs showed unusual network traffic from developer systems to external IP addresses, but no immediate alerts were triggered by standard security tools.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance to identify key developers at InnovateSoft, though this phase was not directly observed in logs. In the initial access phase, the adversary sent spearphishing emails [T1566.002] to senior developers, containing links to a compromised vendor website that mimicked a legitimate software update portal. One developer clicked the link, leading to the download of a malicious installer that appeared to be a development tool. Concurrently, the attackers compromised the company's CI server by injecting malicious code into the build pipeline [T1195], which altered production builds to include a backdoor that would execute upon deployment.\n\nUpon execution on a macOS workstation, the malware employed AppleScript [T1059.002] to write a script to the Documents folder that downloaded and executed additional payloads from a command-and-control (C2) server while simultaneously accessing the Keychain [T1555.001] to extract stored passwords and authentication tokens, copying them to a hidden file. The malware then staged the collected credentials and system data in a temporary folder [T1074.002] by running command-line utilities to gather process lists and network configurations, storing the output for later exfiltration.\n\nTo maintain persistence and evade detection, the actors deployed a malicious Docker image [T1204.003] that, when executed in a containerized environment, established a reverse shell to an external server, leveraging port knocking [T1205.001] to obscure the connection by sending raw socket packets through the network stack before initiating the shell. Finally, in the impact phase, the malware executed PowerShell commands to disable local administrator accounts [T1531] by running 'Set-LocalUser -Name 'admin' -Enabled $false', preventing legitimate user logins and disrupting administrative access to critical systems.\n\nIrrelevant Information: InnovateSoft's internal monitoring showed increased CPU usage on the CI server during off-hours, but this was initially attributed to scheduled maintenance. The company's background includes a recent merger with a smaller startup, leading to integration challenges in their IT systems. System logs from the affected macOS workstation indicated multiple failed login attempts for a test account, but these were not correlated with the attack at the time.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, the attackers compromised the company's CI server by injecting malicious code into the build pipeline, which altered production builds to include a backdoor that would execute upon deployment.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Finally, in the impact phase, the malware executed PowerShell commands to disable local administrator accounts by running 'Set-LocalUser -Name 'admin' -Enabled $false', preventing legitimate user logins and disrupting administrative access to critical systems.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'Night Serpent' Targeting Software Development Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Night Serpent', targeting software development pipelines through a multi-stage attack combining spearphishing, supply chain compromise, and credential theft. The campaign leverages macOS and containerized environments to deploy backdoors and exfiltrate data, culminating in account lockouts to disrupt operations. This report is for blue team training to enhance detection and response capabilities against sophisticated intrusion chains.",
+        "full_report_text": "Background: On March 15, 2024, a fictional technology firm, 'InnovateSoft', reported anomalous activity in its development environment, including unauthorized access to source code repositories and credential theft. The company, which develops cloud-based applications for financial services, maintains a hybrid infrastructure with macOS workstations and Linux-based continuous integration (CI) servers. Initial logs showed unusual network traffic from developer systems to external IP addresses, but no immediate alerts were triggered by standard security tools.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance to identify key developers at InnovateSoft, though this phase was not directly observed in logs. In the initial access phase, the adversary sent spearphishing emails [T1566.002] to senior developers, containing links to a compromised vendor website that mimicked a legitimate software update portal. One developer clicked the link, leading to the download of a malicious installer that appeared to be a development tool. Concurrently, the attackers compromised the company's CI server by injecting malicious code into the build pipeline [T1195], which altered production builds to include a backdoor that would execute upon deployment.\n\nUpon execution on a macOS workstation, the malware employed AppleScript [T1059.002] to write a script to the Documents folder that downloaded and executed additional payloads from a command-and-control (C2) server while simultaneously accessing the Keychain [T1555.001] to extract stored passwords and authentication tokens, copying them to a hidden file. The malware then staged the collected credentials and system data in a temporary folder [T1074.002] by running command-line utilities to gather process lists and network configurations, storing the output for later exfiltration.\n\nTo maintain persistence and evade detection, the actors deployed a malicious Docker image [T1204.003] that, when executed in a containerized environment, established a reverse shell to an external server, leveraging port knocking [T1205.001] to obscure the connection by sending raw socket packets through the network stack before initiating the shell. Finally, in the impact phase, the malware executed PowerShell commands to disable local administrator accounts [T1531] by running 'Set-LocalUser -Name 'admin' -Enabled $false', preventing legitimate user logins and disrupting administrative access to critical systems.\n\nIrrelevant Information: InnovateSoft's internal monitoring showed increased CPU usage on the CI server during off-hours, but this was initially attributed to scheduled maintenance. The company's background includes a recent merger with a smaller startup, leading to integration challenges in their IT systems. System logs from the affected macOS workstation indicated multiple failed login attempts for a test account, but these were not correlated with the attack at the time.",
+        "techniques_used": [
+            "T1566.002",
+            "T1195",
+            "T1059.002",
+            "T1204.003",
+            "T1555.001",
+            "T1074.002",
+            "T1205.001",
+            "T1531"
+        ]
+    }
+}

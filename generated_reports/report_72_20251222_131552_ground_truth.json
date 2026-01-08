@@ -1,0 +1,103 @@
+{
+    "report_id": "report_72",
+    "generated_at": "20251222_131552",
+    "scenario_target_ids": [
+        "T1593.002",
+        "T1592.004",
+        "T1592.002",
+        "T1585.003",
+        "T1588",
+        "T1078",
+        "T1203",
+        "T1098.007",
+        "T1135",
+        "T1071.005",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.002",
+        "T1592.004",
+        "T1592.002",
+        "T1585.003",
+        "T1588",
+        "T1078",
+        "T1203",
+        "T1098.007",
+        "T1135",
+        "T1071.005",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1098.007",
+        "T1593.002",
+        "T1071.005",
+        "T1588",
+        "T1135",
+        "T1592.004",
+        "T1078",
+        "T1585.003",
+        "T1592.002",
+        "T1203",
+        "T1048"
+    ],
+    "clean_text": "### Background\nTarget Corporation, a fictional multinational retail company, reported anomalous network activity in early 2024, including increased CPU usage on several servers and unauthorized data transfers. Initial logs showed VPN connections from unusual geographic locations, but system administrators initially dismissed these as false positives due to routine maintenance schedules. The company's IT infrastructure includes a mix of on-premises servers and cloud-based services, with standard firewall configurations and endpoint protection deployed.\n\n### Attack Narrative\n**Reconnaissance (Initial Access Phase):** SHADOWMESH likely conducted extensive reconnaissance by using search engines to identify authentication portals and employing nmap to scan the target's network for active hosts while simultaneously querying services with the nmap scripting engine to gather detailed software information. This phase generated minimal noise in system logs, with only a few failed login attempts noted in the authentication server logs, which were attributed to automated bots during routine security audits.\n\n**Resource Development (Pre-Attack Preparation):** Prior to execution, the adversary set up a shared Dropbox folder accessible through burner accounts for staging and exfiltration, and purchased a cryptojacking script from a darknet vendor to facilitate monetization. These activities were not directly observable by the target's security systems, as they occurred externally, but later analysis of network traffic revealed connections to known malicious IP addresses associated with darknet forums.\n\n**Initial Access and Execution:** SHADOWMESH gained initial access by using valid VPN accounts to bypass perimeter defenses and then exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 to execute malicious payloads locally. System logs from the affected workstations showed unusual PowerShell activity and memory spikes, but initial alerts were suppressed due to a recent software update that caused similar behavior in test environments.\n\n**Persistence and Privilege Escalation:** After execution, the attacker executed commands to add a malicious user to local administrator groups and used network share discovery tools to identify and map accessible resources for lateral movement. During this phase, routine backup processes on the file servers generated large log files, obscuring some of the adversary's activities, and IT staff reported intermittent network latency issues that were later traced to the cryptojacking script consuming resources.\n\n**Exfiltration:** SHADOWMESH exfiltrated stolen financial records by abusing XMPP's multi-user chat feature to encrypt and transmit data through group communications while simultaneously using FTP to upload additional files to an attacker-controlled server. Network monitoring tools detected unusual outbound traffic patterns, but these were initially flagged as false positives due to a misconfigured rule that excluded certain protocols from deep packet inspection.\n\n### Mitigation Recommendations\n- Implement multi-factor authentication for all VPN and cloud accounts.\n- Regularly patch software and conduct vulnerability assessments.\n- Monitor for unusual network traffic, especially involving publish/subscribe protocols and alternative exfiltration methods.\n- Train staff on recognizing social engineering tactics that may lead to credential theft.\n\n### Conclusion\nThis fictional scenario illustrates a sophisticated attack chain blending reconnaissance, exploitation, and covert exfiltration. Blue teams should use this advisory to enhance detection capabilities and response strategies in training exercises.",
+    "tagged_text": "### Background\nTarget Corporation, a fictional multinational retail company, reported anomalous network activity in early 2024, including increased CPU usage on several servers and unauthorized data transfers. Initial logs showed VPN connections from unusual geographic locations, but system administrators initially dismissed these as false positives due to routine maintenance schedules. The company's IT infrastructure includes a mix of on-premises servers and cloud-based services, with standard firewall configurations and endpoint protection deployed.\n\n### Attack Narrative\n**Reconnaissance (Initial Access Phase):** SHADOWMESH likely conducted extensive reconnaissance by using search engines [T1593.002] to identify authentication portals and employing nmap [T1592.004] to scan the target's network for active hosts while simultaneously querying services with the nmap scripting engine [T1592.002] to gather detailed software information. This phase generated minimal noise in system logs, with only a few failed login attempts noted in the authentication server logs, which were attributed to automated bots during routine security audits.\n\n**Resource Development (Pre-Attack Preparation):** Prior to execution, the adversary set up a shared Dropbox folder accessible through burner accounts [T1585.003] for staging and exfiltration, and purchased a cryptojacking script from a darknet vendor [T1588] to facilitate monetization. These activities were not directly observable by the target's security systems, as they occurred externally, but later analysis of network traffic revealed connections to known malicious IP addresses associated with darknet forums.\n\n**Initial Access and Execution:** SHADOWMESH gained initial access by using valid VPN accounts [T1078] to bypass perimeter defenses and then exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 [T1203] to execute malicious payloads locally. System logs from the affected workstations showed unusual PowerShell activity and memory spikes, but initial alerts were suppressed due to a recent software update that caused similar behavior in test environments.\n\n**Persistence and Privilege Escalation:** After execution, the attacker executed commands to add a malicious user to local administrator groups [T1098.007] and used network share discovery tools [T1135] to identify and map accessible resources for lateral movement. During this phase, routine backup processes on the file servers generated large log files, obscuring some of the adversary's activities, and IT staff reported intermittent network latency issues that were later traced to the cryptojacking script consuming resources.\n\n**Exfiltration:** SHADOWMESH exfiltrated stolen financial records by abusing XMPP's multi-user chat feature [T1071.005] to encrypt and transmit data through group communications while simultaneously using FTP [T1048] to upload additional files to an attacker-controlled server. Network monitoring tools detected unusual outbound traffic patterns, but these were initially flagged as false positives due to a misconfigured rule that excluded certain protocols from deep packet inspection.\n\n### Mitigation Recommendations\n- Implement multi-factor authentication for all VPN and cloud accounts.\n- Regularly patch software and conduct vulnerability assessments.\n- Monitor for unusual network traffic, especially involving publish/subscribe protocols and alternative exfiltration methods.\n- Train staff on recognizing social engineering tactics that may lead to credential theft.\n\n### Conclusion\nThis fictional scenario illustrates a sophisticated attack chain blending reconnaissance, exploitation, and covert exfiltration. Blue teams should use this advisory to enhance detection capabilities and response strategies in training exercises.",
+    "sentence_annotations": [
+        {
+            "sentence": "003] for staging and exfiltration, and purchased a cryptojacking script from a darknet vendor to facilitate monetization.",
+            "technique_id": "T1588",
+            "technique_name": "Obtain Capabilities"
+        },
+        {
+            "sentence": "**Initial Access and Execution:** SHADOWMESH gained initial access by using valid VPN accounts to bypass perimeter defenses and then exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 to execute malicious payloads locally.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "**Initial Access and Execution:** SHADOWMESH gained initial access by using valid VPN accounts to bypass perimeter defenses and then exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 to execute malicious payloads locally.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "007] and used network share discovery tools to identify and map accessible resources for lateral movement.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "005] to encrypt and transmit data through group communications while simultaneously using FTP to upload additional files to an attacker-controlled server.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Networks",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'SHADOWMESH', targeting corporate networks for cryptojacking and data theft. Based on analysis of simulated incidents, SHADOWMESH employs a multi-stage approach involving reconnaissance, initial access via valid accounts, privilege escalation, and data exfiltration over alternative protocols. The report includes fictional indicators of compromise (IOCs) and mitigation strategies for blue team training.",
+        "full_report_text": "### Background\nTarget Corporation, a fictional multinational retail company, reported anomalous network activity in early 2024, including increased CPU usage on several servers and unauthorized data transfers. Initial logs showed VPN connections from unusual geographic locations, but system administrators initially dismissed these as false positives due to routine maintenance schedules. The company's IT infrastructure includes a mix of on-premises servers and cloud-based services, with standard firewall configurations and endpoint protection deployed.\n\n### Attack Narrative\n**Reconnaissance (Initial Access Phase):** SHADOWMESH likely conducted extensive reconnaissance by using search engines [T1593.002] to identify authentication portals and employing nmap [T1592.004] to scan the target's network for active hosts while simultaneously querying services with the nmap scripting engine [T1592.002] to gather detailed software information. This phase generated minimal noise in system logs, with only a few failed login attempts noted in the authentication server logs, which were attributed to automated bots during routine security audits.\n\n**Resource Development (Pre-Attack Preparation):** Prior to execution, the adversary set up a shared Dropbox folder accessible through burner accounts [T1585.003] for staging and exfiltration, and purchased a cryptojacking script from a darknet vendor [T1588] to facilitate monetization. These activities were not directly observable by the target's security systems, as they occurred externally, but later analysis of network traffic revealed connections to known malicious IP addresses associated with darknet forums.\n\n**Initial Access and Execution:** SHADOWMESH gained initial access by using valid VPN accounts [T1078] to bypass perimeter defenses and then exploited Office vulnerabilities such as CVE-2017-11882 and CVE-2018-0798 [T1203] to execute malicious payloads locally. System logs from the affected workstations showed unusual PowerShell activity and memory spikes, but initial alerts were suppressed due to a recent software update that caused similar behavior in test environments.\n\n**Persistence and Privilege Escalation:** After execution, the attacker executed commands to add a malicious user to local administrator groups [T1098.007] and used network share discovery tools [T1135] to identify and map accessible resources for lateral movement. During this phase, routine backup processes on the file servers generated large log files, obscuring some of the adversary's activities, and IT staff reported intermittent network latency issues that were later traced to the cryptojacking script consuming resources.\n\n**Exfiltration:** SHADOWMESH exfiltrated stolen financial records by abusing XMPP's multi-user chat feature [T1071.005] to encrypt and transmit data through group communications while simultaneously using FTP [T1048] to upload additional files to an attacker-controlled server. Network monitoring tools detected unusual outbound traffic patterns, but these were initially flagged as false positives due to a misconfigured rule that excluded certain protocols from deep packet inspection.\n\n### Mitigation Recommendations\n- Implement multi-factor authentication for all VPN and cloud accounts.\n- Regularly patch software and conduct vulnerability assessments.\n- Monitor for unusual network traffic, especially involving publish/subscribe protocols and alternative exfiltration methods.\n- Train staff on recognizing social engineering tactics that may lead to credential theft.\n\n### Conclusion\nThis fictional scenario illustrates a sophisticated attack chain blending reconnaissance, exploitation, and covert exfiltration. Blue teams should use this advisory to enhance detection capabilities and response strategies in training exercises.",
+        "techniques_used": [
+            "T1593.002",
+            "T1592.004",
+            "T1592.002",
+            "T1585.003",
+            "T1588",
+            "T1078",
+            "T1203",
+            "T1098.007",
+            "T1135",
+            "T1071.005",
+            "T1048"
+        ]
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "report_id": "report_8",
+    "generated_at": "20251222_112029",
+    "scenario_target_ids": [
+        "T1091",
+        "T1059.001",
+        "T1652",
+        "T1069.002",
+        "T1557.004",
+        "T1560",
+        "T1185",
+        "T1568.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1091",
+        "T1059.001",
+        "T1652",
+        "T1069.002",
+        "T1557.004",
+        "T1560",
+        "T1185",
+        "T1568.002"
+    ],
+    "actual_found_ids": [
+        "T1185",
+        "T1568.002",
+        "T1652",
+        "T1069.002",
+        "T1560",
+        "T1059.001",
+        "T1091",
+        "T1557.004"
+    ],
+    "clean_text": "Background: The fictional company 'InfraSecure Inc.', a mid-sized energy provider, reported anomalous network activity starting on October 15, 2024, with initial alerts from endpoint detection systems flagging unauthorized PowerShell executions and unusual outbound traffic. InfraSecure's IT team noted intermittent connectivity issues in their corporate Wi-Fi network, coinciding with reports of employees experiencing redirected web sessions during routine browsing tasks. The company operates a hybrid environment with Windows-based workstations, domain controllers, and legacy industrial control systems, though no critical systems were compromised in this training scenario. Logs from the security information and event management (SIEM) system showed multiple failed login attempts from unknown IP addresses, but these were unrelated to the core attack chain and likely attributed to automated scanning bots.\n\nAttack Narrative: The adversary, identified as the fictional APT group 'ShadowProp', initiated the campaign by infiltrating the network through removable USB drives, where they planted malware that replicated itself to propagate across systems. Once established, they employed PowerShell to execute malicious scripts that facilitated remote system discovery and data exfiltration, while simultaneously using driverquery.exe with the /FO CSV parameter to export device driver information in a structured format for reconnaissance purposes. The actors then leveraged WellMess-inspired tools to identify domain group membership for the current user, enabling lateral movement and privilege escalation within the Active Directory environment. Concurrently, they deployed a Wi-Fi Pineapple to create an Evil Twin access point, redirecting HTTPS traffic through their interception proxy to capture sensitive credentials and session data. After collecting data, the adversary encrypted it using AES and encoded it with base64 before transmitting it over the C2 channel, and they used a malicious browser extension to inject payloads into active browser sessions, hijacking user interactions for further exploitation. To maintain persistence and evade detection, ShadowProp utilized a Domain Generation Algorithm (DGA) to dynamically generate domain names for C2 communications, blending malicious traffic with legitimate network activity. Additional noise in the logs included routine system updates and false positives from antivirus scans, which did not correlate with the attack timeline but were noted by the blue team during analysis.",
+    "tagged_text": "Background: The fictional company 'InfraSecure Inc.', a mid-sized energy provider, reported anomalous network activity starting on October 15, 2024, with initial alerts from endpoint detection systems flagging unauthorized PowerShell executions and unusual outbound traffic. InfraSecure's IT team noted intermittent connectivity issues in their corporate Wi-Fi network, coinciding with reports of employees experiencing redirected web sessions during routine browsing tasks. The company operates a hybrid environment with Windows-based workstations, domain controllers, and legacy industrial control systems, though no critical systems were compromised in this training scenario. Logs from the security information and event management (SIEM) system showed multiple failed login attempts from unknown IP addresses, but these were unrelated to the core attack chain and likely attributed to automated scanning bots.\n\nAttack Narrative: The adversary, identified as the fictional APT group 'ShadowProp', initiated the campaign by infiltrating the network through removable USB drives, where they planted malware that replicated itself to propagate across systems [T1091]. Once established, they employed PowerShell [T1059.001] to execute malicious scripts that facilitated remote system discovery and data exfiltration, while simultaneously using driverquery.exe with the /FO CSV parameter to export device driver information in a structured format for reconnaissance purposes [T1652]. The actors then leveraged WellMess-inspired tools to identify domain group membership for the current user [T1069.002], enabling lateral movement and privilege escalation within the Active Directory environment. Concurrently, they deployed a Wi-Fi Pineapple to create an Evil Twin access point, redirecting HTTPS traffic through their interception proxy to capture sensitive credentials and session data [T1557.004]. After collecting data, the adversary encrypted it using AES and encoded it with base64 before transmitting it over the C2 channel [T1560], and they used a malicious browser extension to inject payloads into active browser sessions, hijacking user interactions for further exploitation [T1185]. To maintain persistence and evade detection, ShadowProp utilized a Domain Generation Algorithm (DGA) to dynamically generate domain names for C2 communications [T1568.002], blending malicious traffic with legitimate network activity. Additional noise in the logs included routine system updates and false positives from antivirus scans, which did not correlate with the attack timeline but were noted by the blue team during analysis.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative: The adversary, identified as the fictional APT group 'ShadowProp', initiated the campaign by infiltrating the network through removable USB drives, where they planted malware that replicated itself to propagate across systems.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "exe with the /FO CSV parameter to export device driver information in a structured format for reconnaissance purposes.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "After collecting data, the adversary encrypted it using AES and encoded it with base64 before transmitting it over the C2 channel, and they used a malicious browser extension to inject payloads into active browser sessions, hijacking user interactions for further exploitation.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "After collecting data, the adversary encrypted it using AES and encoded it with base64 before transmitting it over the C2 channel, and they used a malicious browser extension to inject payloads into active browser sessions, hijacking user interactions for further exploitation.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowProp' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowProp', which targets critical infrastructure sectors through a multi-vector attack involving removable media, network interception, and browser exploitation. The campaign leverages techniques such as replication through removable media, PowerShell for execution, device driver discovery, domain group enumeration, Evil Twin attacks, data archiving, browser session hijacking, and domain generation algorithms for command and control (C2). This report is intended for blue team training to enhance detection and response capabilities against sophisticated threats.",
+        "full_report_text": "Background: The fictional company 'InfraSecure Inc.', a mid-sized energy provider, reported anomalous network activity starting on October 15, 2024, with initial alerts from endpoint detection systems flagging unauthorized PowerShell executions and unusual outbound traffic. InfraSecure's IT team noted intermittent connectivity issues in their corporate Wi-Fi network, coinciding with reports of employees experiencing redirected web sessions during routine browsing tasks. The company operates a hybrid environment with Windows-based workstations, domain controllers, and legacy industrial control systems, though no critical systems were compromised in this training scenario. Logs from the security information and event management (SIEM) system showed multiple failed login attempts from unknown IP addresses, but these were unrelated to the core attack chain and likely attributed to automated scanning bots.\n\nAttack Narrative: The adversary, identified as the fictional APT group 'ShadowProp', initiated the campaign by infiltrating the network through removable USB drives, where they planted malware that replicated itself to propagate across systems [T1091]. Once established, they employed PowerShell [T1059.001] to execute malicious scripts that facilitated remote system discovery and data exfiltration, while simultaneously using driverquery.exe with the /FO CSV parameter to export device driver information in a structured format for reconnaissance purposes [T1652]. The actors then leveraged WellMess-inspired tools to identify domain group membership for the current user [T1069.002], enabling lateral movement and privilege escalation within the Active Directory environment. Concurrently, they deployed a Wi-Fi Pineapple to create an Evil Twin access point, redirecting HTTPS traffic through their interception proxy to capture sensitive credentials and session data [T1557.004]. After collecting data, the adversary encrypted it using AES and encoded it with base64 before transmitting it over the C2 channel [T1560], and they used a malicious browser extension to inject payloads into active browser sessions, hijacking user interactions for further exploitation [T1185]. To maintain persistence and evade detection, ShadowProp utilized a Domain Generation Algorithm (DGA) to dynamically generate domain names for C2 communications [T1568.002], blending malicious traffic with legitimate network activity. Additional noise in the logs included routine system updates and false positives from antivirus scans, which did not correlate with the attack timeline but were noted by the blue team during analysis.",
+        "techniques_used": [
+            "T1091",
+            "T1059.001",
+            "T1652",
+            "T1069.002",
+            "T1557.004",
+            "T1560",
+            "T1185",
+            "T1568.002"
+        ]
+    }
+}

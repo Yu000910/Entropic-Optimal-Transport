@@ -1,0 +1,128 @@
+{
+    "report_id": "report_713",
+    "generated_at": "20251223_104425",
+    "scenario_target_ids": [
+        "T1593.003",
+        "T1584",
+        "T1588.004",
+        "T1091",
+        "T1059.006",
+        "T1059.012",
+        "T1053.006",
+        "T1003",
+        "T1563",
+        "T1021.007",
+        "T1008",
+        "T1001.002",
+        "T1048",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.003",
+        "T1584",
+        "T1588.004",
+        "T1091",
+        "T1059.006",
+        "T1059.012",
+        "T1053.006",
+        "T1003",
+        "T1563",
+        "T1021.007",
+        "T1008",
+        "T1001.002",
+        "T1048",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1059.012",
+        "T1053.006",
+        "T1029",
+        "T1008",
+        "T1001.002",
+        "T1091",
+        "T1003",
+        "T1021.007",
+        "T1563",
+        "T1584",
+        "T1593.003",
+        "T1588.004",
+        "T1059.006",
+        "T1048"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of simulated malicious activity for training purposes. This report describes a campaign against 'TechCorp Solutions', a mid-sized software development company, with no real-world impact intended.\n\nInitial Access: The actors likely conducted reconnaissance by querying public GitLab repositories to identify source code containing hardcoded database credentials, which were then exploited to gain initial foothold into the corporate network. Concurrently, they leveraged a compromised DNS server to redirect victim traffic through their controlled infrastructure, enhancing stealth and persistence.\n\nExecution: Upon access, the adversary employed Python-based tools to execute malicious scripts that downloaded additional payloads while modifying system configurations. They also used a Hypervisor CLI via vim-cmd to snapshot a virtual machine for data exfiltration, demonstrating cross-platform capabilities. System logs from TechCorp's internal monitoring showed unusual Python processes running on multiple Linux servers, though these were initially flagged as benign development activity.\n\nPersistence: To maintain access, the threat actor installed a custom systemd service that launches a keylogger on boot, ensuring continuous credential harvesting. Additionally, they modified Autorun.inf files on removable media to execute malware automatically when USB drives were inserted, facilitating lateral movement within air-gapped segments of the network.\n\nPrivilege Escalation and Credential Access: The actors ran Mimikatz.exe with the 'sekurlsa::logonpasswords' command to dump OS credentials from memory, harvesting administrator passwords. Using stolen session tokens, they hijacked an RDP connection to access confidential documents, while also executing Connect-MgGraph to gain unauthorized access to Microsoft 365 resources for further cloud-based exploitation.\n\nExfiltration: For data exfiltration, the attacker used FTP to transfer stolen database files to an external host, embedding command and control data within digital photographs using steganography tools to evade detection. They scheduled transfers via PowerShell to exfiltrate data in small, stealthy batches, minimizing network anomalies. Fallback channels were established to switch C2 communication if primary routes were disrupted, ensuring operational resilience.\n\nDefense Evasion: Throughout the campaign, Silent Librarian utilized free Let's Encrypt SSL certificates on phishing pages to appear legitimate, reducing suspicion during initial interactions. Network traffic analysis revealed encrypted connections to domains associated with the compromised infrastructure, but routine firewall logs showed no immediate alerts due to the use of standard protocols.\n\nImpact: This simulated activity resulted in the exfiltration of sensitive intellectual property and credential compromise, highlighting the need for robust monitoring and response procedures. TechCorp's incident response team, upon review, identified gaps in their security posture, such as inadequate code review practices and weak endpoint protection on virtualized environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of simulated malicious activity for training purposes. This report describes a campaign against 'TechCorp Solutions', a mid-sized software development company, with no real-world impact intended.\n\nInitial Access: The actors likely conducted reconnaissance by querying public GitLab repositories [T1593.003] to identify source code containing hardcoded database credentials, which were then exploited to gain initial foothold into the corporate network. Concurrently, they leveraged a compromised DNS server [T1584] to redirect victim traffic through their controlled infrastructure, enhancing stealth and persistence.\n\nExecution: Upon access, the adversary employed Python-based tools [T1059.006] to execute malicious scripts that downloaded additional payloads while modifying system configurations. They also used a Hypervisor CLI [T1059.012] via vim-cmd to snapshot a virtual machine for data exfiltration, demonstrating cross-platform capabilities. System logs from TechCorp's internal monitoring showed unusual Python processes running on multiple Linux servers, though these were initially flagged as benign development activity.\n\nPersistence: To maintain access, the threat actor installed a custom systemd service [T1053.006] that launches a keylogger on boot, ensuring continuous credential harvesting. Additionally, they modified Autorun.inf files on removable media [T1091] to execute malware automatically when USB drives were inserted, facilitating lateral movement within air-gapped segments of the network.\n\nPrivilege Escalation and Credential Access: The actors ran Mimikatz.exe with the 'sekurlsa::logonpasswords' command [T1003] to dump OS credentials from memory, harvesting administrator passwords. Using stolen session tokens, they hijacked an RDP connection [T1563] to access confidential documents, while also executing Connect-MgGraph [T1021.007] to gain unauthorized access to Microsoft 365 resources for further cloud-based exploitation.\n\nExfiltration: For data exfiltration, the attacker used FTP [T1048] to transfer stolen database files to an external host, embedding command and control data within digital photographs using steganography tools [T1001.002] to evade detection. They scheduled transfers via PowerShell [T1029] to exfiltrate data in small, stealthy batches, minimizing network anomalies. Fallback channels [T1008] were established to switch C2 communication if primary routes were disrupted, ensuring operational resilience.\n\nDefense Evasion: Throughout the campaign, Silent Librarian utilized free Let's Encrypt SSL certificates [T1588.004] on phishing pages to appear legitimate, reducing suspicion during initial interactions. Network traffic analysis revealed encrypted connections to domains associated with the compromised infrastructure, but routine firewall logs showed no immediate alerts due to the use of standard protocols.\n\nImpact: This simulated activity resulted in the exfiltration of sensitive intellectual property and credential compromise, highlighting the need for robust monitoring and response procedures. TechCorp's incident response team, upon review, identified gaps in their security posture, such as inadequate code review practices and weak endpoint protection on virtualized environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, they leveraged a compromised DNS server to redirect victim traffic through their controlled infrastructure, enhancing stealth and persistence.",
+            "technique_id": "T1584",
+            "technique_name": "Compromise Infrastructure"
+        },
+        {
+            "sentence": "inf files on removable media to execute malware automatically when USB drives were inserted, facilitating lateral movement within air-gapped segments of the network.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "exe with the 'sekurlsa::logonpasswords' command to dump OS credentials from memory, harvesting administrator passwords.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "Using stolen session tokens, they hijacked an RDP connection to access confidential documents, while also executing Connect-MgGraph [T1021.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "Exfiltration: For data exfiltration, the attacker used FTP to transfer stolen database files to an external host, embedding command and control data within digital photographs using steganography tools [T1001.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        },
+        {
+            "sentence": "They scheduled transfers via PowerShell to exfiltrate data in small, stealthy batches, minimizing network anomalies.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        },
+        {
+            "sentence": "Fallback channels were established to switch C2 communication if primary routes were disrupted, ensuring operational resilience.",
+            "technique_id": "T1008",
+            "technique_name": "Fallback Channels"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional Threat Actor 'Silent Librarian'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Silent Librarian' targeting a technology firm, designed for blue team training. The campaign involves reconnaissance, infrastructure compromise, credential theft, and data exfiltration using multiple techniques across the attack lifecycle.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of simulated malicious activity for training purposes. This report describes a campaign against 'TechCorp Solutions', a mid-sized software development company, with no real-world impact intended.\n\nInitial Access: The actors likely conducted reconnaissance by querying public GitLab repositories [T1593.003] to identify source code containing hardcoded database credentials, which were then exploited to gain initial foothold into the corporate network. Concurrently, they leveraged a compromised DNS server [T1584] to redirect victim traffic through their controlled infrastructure, enhancing stealth and persistence.\n\nExecution: Upon access, the adversary employed Python-based tools [T1059.006] to execute malicious scripts that downloaded additional payloads while modifying system configurations. They also used a Hypervisor CLI [T1059.012] via vim-cmd to snapshot a virtual machine for data exfiltration, demonstrating cross-platform capabilities. System logs from TechCorp's internal monitoring showed unusual Python processes running on multiple Linux servers, though these were initially flagged as benign development activity.\n\nPersistence: To maintain access, the threat actor installed a custom systemd service [T1053.006] that launches a keylogger on boot, ensuring continuous credential harvesting. Additionally, they modified Autorun.inf files on removable media [T1091] to execute malware automatically when USB drives were inserted, facilitating lateral movement within air-gapped segments of the network.\n\nPrivilege Escalation and Credential Access: The actors ran Mimikatz.exe with the 'sekurlsa::logonpasswords' command [T1003] to dump OS credentials from memory, harvesting administrator passwords. Using stolen session tokens, they hijacked an RDP connection [T1563] to access confidential documents, while also executing Connect-MgGraph [T1021.007] to gain unauthorized access to Microsoft 365 resources for further cloud-based exploitation.\n\nExfiltration: For data exfiltration, the attacker used FTP [T1048] to transfer stolen database files to an external host, embedding command and control data within digital photographs using steganography tools [T1001.002] to evade detection. They scheduled transfers via PowerShell [T1029] to exfiltrate data in small, stealthy batches, minimizing network anomalies. Fallback channels [T1008] were established to switch C2 communication if primary routes were disrupted, ensuring operational resilience.\n\nDefense Evasion: Throughout the campaign, Silent Librarian utilized free Let's Encrypt SSL certificates [T1588.004] on phishing pages to appear legitimate, reducing suspicion during initial interactions. Network traffic analysis revealed encrypted connections to domains associated with the compromised infrastructure, but routine firewall logs showed no immediate alerts due to the use of standard protocols.\n\nImpact: This simulated activity resulted in the exfiltration of sensitive intellectual property and credential compromise, highlighting the need for robust monitoring and response procedures. TechCorp's incident response team, upon review, identified gaps in their security posture, such as inadequate code review practices and weak endpoint protection on virtualized environments.",
+        "techniques_used": [
+            "T1593.003",
+            "T1584",
+            "T1588.004",
+            "T1091",
+            "T1059.006",
+            "T1059.012",
+            "T1053.006",
+            "T1003",
+            "T1563",
+            "T1021.007",
+            "T1008",
+            "T1001.002",
+            "T1048",
+            "T1029"
+        ]
+    }
+}

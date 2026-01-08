@@ -1,0 +1,73 @@
+{
+    "report_id": "report_81",
+    "generated_at": "20251222_131900",
+    "scenario_target_ids": [
+        "T1598.001",
+        "T1091",
+        "T1566.004",
+        "T1648",
+        "T1055.015",
+        "T1560.003",
+        "T1102"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1598.001",
+        "T1566.004",
+        "T1091",
+        "T1648",
+        "T1055.015",
+        "T1560.003",
+        "T1102"
+    ],
+    "actual_found_ids": [
+        "T1055.015",
+        "T1566.004",
+        "T1091",
+        "T1560.003",
+        "T1102",
+        "T1598.001",
+        "T1648"
+    ],
+    "clean_text": "Background: ShadowHook, a suspected state-sponsored actor, has been active since early 2024, focusing on organizations with air-gapped networks for industrial control systems. In a recent incident, a U.S.-based energy company reported anomalous network traffic originating from an internal server, prompting investigation. Logs from the corporate firewall showed unusual outbound connections to Dropbox domains at 03:00 UTC, coinciding with a scheduled maintenance window where external USB drives were authorized for data transfer.\n\nAttack Narrative: The actors likely conducted reconnaissance by creating a counterfeit Instagram profile to gather customer information, which was then used to craft targeted spear-phishing voice calls directing employees to download a malicious document viewer. Upon execution, the malware deployed a Trojan horse via USB drives labeled 'documents.exe' to compromise air-gapped networks while simultaneously initiating a serverless execution through a malicious Lambda function that exfiltrated data. The adversary employed PowerShell to actively scan for vulnerable application windows using EnumWindows and inject code, then archived the collected data with a custom implementation of Blowfish and RSA ciphers while using Dropbox URLs to deliver variants of PlugX for command and control. System administrators noted increased CPU usage on an internal server, but initial scans flagged it as benign due to encrypted traffic patterns mimicking legitimate backup processes.",
+    "tagged_text": "Background: ShadowHook, a suspected state-sponsored actor, has been active since early 2024, focusing on organizations with air-gapped networks for industrial control systems. In a recent incident, a U.S.-based energy company reported anomalous network traffic originating from an internal server, prompting investigation. Logs from the corporate firewall showed unusual outbound connections to Dropbox domains at 03:00 UTC, coinciding with a scheduled maintenance window where external USB drives were authorized for data transfer.\n\nAttack Narrative: The actors likely conducted reconnaissance by creating a counterfeit Instagram profile [T1598.001] to gather customer information, which was then used to craft targeted spear-phishing voice calls [T1566.004] directing employees to download a malicious document viewer. Upon execution, the malware deployed a Trojan horse via USB drives labeled 'documents.exe' [T1091] to compromise air-gapped networks while simultaneously initiating a serverless execution [T1648] through a malicious Lambda function that exfiltrated data. The adversary employed PowerShell to actively scan for vulnerable application windows using EnumWindows [T1055.015] and inject code, then archived the collected data with a custom implementation of Blowfish and RSA ciphers [T1560.003] while using Dropbox URLs [T1102] to deliver variants of PlugX for command and control. System administrators noted increased CPU usage on an internal server, but initial scans flagged it as benign due to encrypted traffic patterns mimicking legitimate backup processes.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe' to compromise air-gapped networks while simultaneously initiating a serverless execution through a malicious Lambda function that exfiltrated data.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "exe' to compromise air-gapped networks while simultaneously initiating a serverless execution through a malicious Lambda function that exfiltrated data.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "003] while using Dropbox URLs to deliver variants of PlugX for command and control.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowHook', targeting critical infrastructure sectors, including energy and finance, to exfiltrate sensitive data and establish persistent access. The campaign employs sophisticated multi-vector initial access techniques and leverages cloud-based evasion methods.",
+        "full_report_text": "Background: ShadowHook, a suspected state-sponsored actor, has been active since early 2024, focusing on organizations with air-gapped networks for industrial control systems. In a recent incident, a U.S.-based energy company reported anomalous network traffic originating from an internal server, prompting investigation. Logs from the corporate firewall showed unusual outbound connections to Dropbox domains at 03:00 UTC, coinciding with a scheduled maintenance window where external USB drives were authorized for data transfer.\n\nAttack Narrative: The actors likely conducted reconnaissance by creating a counterfeit Instagram profile [T1598.001] to gather customer information, which was then used to craft targeted spear-phishing voice calls [T1566.004] directing employees to download a malicious document viewer. Upon execution, the malware deployed a Trojan horse via USB drives labeled 'documents.exe' [T1091] to compromise air-gapped networks while simultaneously initiating a serverless execution [T1648] through a malicious Lambda function that exfiltrated data. The adversary employed PowerShell to actively scan for vulnerable application windows using EnumWindows [T1055.015] and inject code, then archived the collected data with a custom implementation of Blowfish and RSA ciphers [T1560.003] while using Dropbox URLs [T1102] to deliver variants of PlugX for command and control. System administrators noted increased CPU usage on an internal server, but initial scans flagged it as benign due to encrypted traffic patterns mimicking legitimate backup processes.",
+        "techniques_used": [
+            "T1598.001",
+            "T1566.004",
+            "T1091",
+            "T1648",
+            "T1055.015",
+            "T1560.003",
+            "T1102"
+        ]
+    }
+}

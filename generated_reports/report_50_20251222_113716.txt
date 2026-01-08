@@ -1,0 +1,14 @@
+### Background
+On October 15, 2024, a financial services company, 'SecureBank Inc.', reported anomalous network activity, leading to the discovery of a sophisticated intrusion. SecureBank, headquartered in New York with 5,000 employees, operates online banking platforms and investment services. Initial logs showed unusual outbound traffic from an internal server, prompting an investigation that uncovered a coordinated attack spanning several weeks.
+
+### Attack Narrative
+**Initial Access:** The actors likely conducted reconnaissance to identify third-party vendors, compromising a web server used by a SecureBank partner to host marketing materials [T1584]. They then sent spearphishing emails with malicious Microsoft Word attachments to SecureBank employees, leveraging social engineering to gain initial footholds [T1566.001].
+
+**Execution and Persistence:** Upon execution, the malware employed Python scripts [T1059.006] to download a keylogger from a public file-sharing service [T1588.001], while using digitally signed certificates to evade detection [T1587.002]. To maintain persistence, the adversary modified registry keys with assoc.exe to change default file associations for .ini files [T1546.001] and hijacked the AppDomainManager in application configurations [T1574.014], exploiting services registry permissions weaknesses by targeting HKLM\SYSTEM\CurrentControlSet\Services\RemoteRegistry [T1574.011].
+
+**Defense Evasion and Command & Control:** The actors used Base64 encoding to obfuscate commands [T1027.010] and employed traffic signaling techniques, exploiting libpcap libraries to capture network packets and identify open ports for covert communication [T1205].
+
+**Exfiltration:** Data was automatically exfiltrated to C2 servers using file uploader plugins [T1020], and when removable drives were inserted, staged data was copied over USB [T1052.001].
+
+### Recommendations
+Organizations should implement email filtering, monitor for unusual registry changes, and restrict USB device usage. Regular audits of third-party infrastructure and code signing practices are advised to mitigate similar threats.

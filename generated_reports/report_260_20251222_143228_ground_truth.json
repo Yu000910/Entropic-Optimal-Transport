@@ -1,0 +1,91 @@
+{
+    "report_id": "report_260",
+    "generated_at": "20251222_143228",
+    "scenario_target_ids": [
+        "T1190",
+        "T1559.003",
+        "T1574.009",
+        "T1053.006",
+        "T1078",
+        "T1055.002",
+        "T1197",
+        "T1572"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1190",
+        "T1559.003",
+        "T1574.009",
+        "T1053.006",
+        "T1078",
+        "T1055.002",
+        "T1197",
+        "T1572"
+    ],
+    "actual_found_ids": [
+        "T1055.002",
+        "T1572",
+        "T1053.006",
+        "T1197",
+        "T1589",
+        "T1574.009",
+        "T1078",
+        "T1190",
+        "T1559.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional advanced persistent threat (APT) campaign for educational purposes. This report is based on a simulated attack scenario and includes realistic but non-attributable details to aid in defensive training.\n\nBackground: Volatile Cedar, a fictional APT group, has been observed targeting organizations in the energy and healthcare sectors. The actors likely conduct reconnaissance to identify vulnerabilities in public-facing applications. In this scenario, the initial compromise occurred when the adversary exploited a known vulnerability in a web server application, gaining unauthorized access to the victim's network. Following this, they leveraged an XPC Services vulnerability to escalate privileges from a standard user account to administrative levels, allowing deeper system control.\n\nOnce elevated, the actors established persistence by placing a malicious executable at C:\\program.exe to exploit path interception through unquoted paths, ensuring execution during system startup. Additionally, they wrote a systemd service file to disk, configuring it to run payloads on boot and maintain long-term access. To move laterally, the adversary used valid accounts, employing credentials stolen from compromised systems to access other network segments and deploy further malware.\n\nFor evasion and execution, the malicious payload was injected into svchost.exe using portable executable injection techniques, hiding malicious activity within legitimate processes. Data exfiltration was conducted using BITS jobs to transfer stolen information off the network while minimizing detection. Finally, the actors employed protocol tunneling, configuring DNS over HTTPS to communicate with command and control servers and evade network monitoring tools.\n\nSystem logs from the victim environment show routine network traffic and user logins, but no anomalies were flagged initially. The organization, a mid-sized utility provider, had standard security measures in place, including firewalls and antivirus software, but lacked advanced threat detection capabilities. This scenario highlights the importance of multi-layered defense strategies and continuous monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional advanced persistent threat (APT) campaign for educational purposes. This report is based on a simulated attack scenario and includes realistic but non-attributable details to aid in defensive training.\n\nBackground: Volatile Cedar, a fictional APT group, has been observed targeting organizations in the energy and healthcare sectors. The actors likely conduct reconnaissance [T1589] to identify vulnerabilities in public-facing applications. In this scenario, the initial compromise occurred when the adversary exploited a known vulnerability in a web server application [T1190], gaining unauthorized access to the victim's network. Following this, they leveraged an XPC Services vulnerability [T1559.003] to escalate privileges from a standard user account to administrative levels, allowing deeper system control.\n\nOnce elevated, the actors established persistence by placing a malicious executable at C:\\program.exe to exploit path interception through unquoted paths [T1574.009], ensuring execution during system startup. Additionally, they wrote a systemd service file to disk [T1053.006], configuring it to run payloads on boot and maintain long-term access. To move laterally, the adversary used valid accounts [T1078], employing credentials stolen from compromised systems to access other network segments and deploy further malware.\n\nFor evasion and execution, the malicious payload was injected into svchost.exe using portable executable injection techniques [T1055.002], hiding malicious activity within legitimate processes. Data exfiltration was conducted using BITS jobs [T1197] to transfer stolen information off the network while minimizing detection. Finally, the actors employed protocol tunneling [T1572], configuring DNS over HTTPS to communicate with command and control servers and evade network monitoring tools.\n\nSystem logs from the victim environment show routine network traffic and user logins, but no anomalies were flagged initially. The organization, a mid-sized utility provider, had standard security measures in place, including firewalls and antivirus software, but lacked advanced threat detection capabilities. This scenario highlights the importance of multi-layered defense strategies and continuous monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify vulnerabilities in public-facing applications.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In this scenario, the initial compromise occurred when the adversary exploited a known vulnerability in a web server application, gaining unauthorized access to the victim's network.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "To move laterally, the adversary used valid accounts, employing credentials stolen from compromised systems to access other network segments and deploy further malware.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Data exfiltration was conducted using BITS jobs to transfer stolen information off the network while minimizing detection.",
+            "technique_id": "T1197",
+            "technique_name": "BITS Jobs"
+        },
+        {
+            "sentence": "Finally, the actors employed protocol tunneling, configuring DNS over HTTPS to communicate with command and control servers and evade network monitoring tools.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'Volatile Cedar,' targeting publicly facing web servers in critical infrastructure sectors. The campaign involves initial exploitation, privilege escalation, persistence mechanisms, lateral movement, and data exfiltration using advanced techniques. Blue teams should use this report for training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional advanced persistent threat (APT) campaign for educational purposes. This report is based on a simulated attack scenario and includes realistic but non-attributable details to aid in defensive training.\n\nBackground: Volatile Cedar, a fictional APT group, has been observed targeting organizations in the energy and healthcare sectors. The actors likely conduct reconnaissance [T1589] to identify vulnerabilities in public-facing applications. In this scenario, the initial compromise occurred when the adversary exploited a known vulnerability in a web server application [T1190], gaining unauthorized access to the victim's network. Following this, they leveraged an XPC Services vulnerability [T1559.003] to escalate privileges from a standard user account to administrative levels, allowing deeper system control.\n\nOnce elevated, the actors established persistence by placing a malicious executable at C:\\program.exe to exploit path interception through unquoted paths [T1574.009], ensuring execution during system startup. Additionally, they wrote a systemd service file to disk [T1053.006], configuring it to run payloads on boot and maintain long-term access. To move laterally, the adversary used valid accounts [T1078], employing credentials stolen from compromised systems to access other network segments and deploy further malware.\n\nFor evasion and execution, the malicious payload was injected into svchost.exe using portable executable injection techniques [T1055.002], hiding malicious activity within legitimate processes. Data exfiltration was conducted using BITS jobs [T1197] to transfer stolen information off the network while minimizing detection. Finally, the actors employed protocol tunneling [T1572], configuring DNS over HTTPS to communicate with command and control servers and evade network monitoring tools.\n\nSystem logs from the victim environment show routine network traffic and user logins, but no anomalies were flagged initially. The organization, a mid-sized utility provider, had standard security measures in place, including firewalls and antivirus software, but lacked advanced threat detection capabilities. This scenario highlights the importance of multi-layered defense strategies and continuous monitoring.",
+        "techniques_used": [
+            "T1589",
+            "T1190",
+            "T1559.003",
+            "T1574.009",
+            "T1053.006",
+            "T1078",
+            "T1055.002",
+            "T1197",
+            "T1572"
+        ]
+    }
+}

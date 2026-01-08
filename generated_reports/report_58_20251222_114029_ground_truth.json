@@ -1,0 +1,73 @@
+{
+    "report_id": "report_58",
+    "generated_at": "20251222_114029",
+    "scenario_target_ids": [
+        "T1589.002",
+        "T1078.004",
+        "T1059.008",
+        "T1547.007",
+        "T1547.014",
+        "T1021.002",
+        "T1550.003",
+        "T1125",
+        "T1071.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589.002",
+        "T1078.004",
+        "T1059.008",
+        "T1547.007",
+        "T1547.014",
+        "T1021.002",
+        "T1550.003",
+        "T1125",
+        "T1071.001"
+    ],
+    "actual_found_ids": [
+        "T1550.003",
+        "T1071.001",
+        "T1547.007",
+        "T1078.004",
+        "T1125",
+        "T1589.002",
+        "T1021.002",
+        "T1547.014",
+        "T1059.008"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'Shadow Serpent'. This report is based on simulated incident response data from a fictional multinational corporation, 'GlobalTech Inc.', which operates in the technology sector with offices in North America, Europe, and Asia. Initial analysis of network logs from the corporate firewall showed anomalous outbound traffic to IP addresses in Eastern Europe, but this was later determined to be unrelated to the campaign and attributed to a misconfigured SaaS application. The actors likely conducted reconnaissance by gathering victim email addresses from publicly available sources like LinkedIn and company websites to prepare for targeted phishing operations. Following a successful phishing email that mimicked an internal IT update, the adversary used compromised user credentials to authenticate to the victim's Azure tenant, where they accessed sensitive cloud storage and deployed a malicious script. Once inside the network, the actors employed PowerShell to execute commands on a network switch's command-line interface, deleting VLAN configuration files to disrupt network segmentation. For persistence, they modified a plist file on macOS systems to run network reconnaissance scripts upon user login and wrote to the Active Setup registry key on Windows systems to ensure the backdoor executed during system startup. Lateral movement was achieved by using compromised credentials to connect to internal Windows systems via SMB shares and leveraging Mimikatz to dump Kerberos encryption keys for pass-the-ticket attacks. During exfiltration, the actors used HTTP to establish command and control communications and activated a video capture module to spy on compromised devices. Additional logs from the SIEM indicated multiple failed login attempts from IP addresses in Asia, but these were unrelated and part of a separate brute-force attack blocked by the intrusion prevention system.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'Shadow Serpent'. This report is based on simulated incident response data from a fictional multinational corporation, 'GlobalTech Inc.', which operates in the technology sector with offices in North America, Europe, and Asia. Initial analysis of network logs from the corporate firewall showed anomalous outbound traffic to IP addresses in Eastern Europe, but this was later determined to be unrelated to the campaign and attributed to a misconfigured SaaS application. The actors likely conducted reconnaissance by gathering victim email addresses from publicly available sources like LinkedIn and company websites [T1589.002] to prepare for targeted phishing operations. Following a successful phishing email that mimicked an internal IT update, the adversary used compromised user credentials to authenticate to the victim's Azure tenant [T1078.004], where they accessed sensitive cloud storage and deployed a malicious script. Once inside the network, the actors employed PowerShell to execute commands on a network switch's command-line interface, deleting VLAN configuration files to disrupt network segmentation [T1059.008]. For persistence, they modified a plist file on macOS systems to run network reconnaissance scripts upon user login [T1547.007] and wrote to the Active Setup registry key on Windows systems to ensure the backdoor executed during system startup [T1547.014]. Lateral movement was achieved by using compromised credentials to connect to internal Windows systems via SMB shares [T1021.002] and leveraging Mimikatz to dump Kerberos encryption keys for pass-the-ticket attacks [T1550.003]. During exfiltration, the actors used HTTP to establish command and control communications [T1071.001] and activated a video capture module to spy on compromised devices [T1125]. Additional logs from the SIEM indicated multiple failed login attempts from IP addresses in Asia, but these were unrelated and part of a separate brute-force attack blocked by the intrusion prevention system.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] and activated a video capture module to spy on compromised devices.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Serpent' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Shadow Serpent', which targeted a multinational corporation's hybrid cloud and on-premises environment. The campaign involved initial reconnaissance via email harvesting, credential compromise in Azure, lateral movement using SMB and Kerberos tickets, persistence mechanisms on macOS and Windows, network device manipulation, and data exfiltration via web protocols, with video capture capabilities observed.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'Shadow Serpent'. This report is based on simulated incident response data from a fictional multinational corporation, 'GlobalTech Inc.', which operates in the technology sector with offices in North America, Europe, and Asia. Initial analysis of network logs from the corporate firewall showed anomalous outbound traffic to IP addresses in Eastern Europe, but this was later determined to be unrelated to the campaign and attributed to a misconfigured SaaS application. The actors likely conducted reconnaissance by gathering victim email addresses from publicly available sources like LinkedIn and company websites [T1589.002] to prepare for targeted phishing operations. Following a successful phishing email that mimicked an internal IT update, the adversary used compromised user credentials to authenticate to the victim's Azure tenant [T1078.004], where they accessed sensitive cloud storage and deployed a malicious script. Once inside the network, the actors employed PowerShell to execute commands on a network switch's command-line interface, deleting VLAN configuration files to disrupt network segmentation [T1059.008]. For persistence, they modified a plist file on macOS systems to run network reconnaissance scripts upon user login [T1547.007] and wrote to the Active Setup registry key on Windows systems to ensure the backdoor executed during system startup [T1547.014]. Lateral movement was achieved by using compromised credentials to connect to internal Windows systems via SMB shares [T1021.002] and leveraging Mimikatz to dump Kerberos encryption keys for pass-the-ticket attacks [T1550.003]. During exfiltration, the actors used HTTP to establish command and control communications [T1071.001] and activated a video capture module to spy on compromised devices [T1125]. Additional logs from the SIEM indicated multiple failed login attempts from IP addresses in Asia, but these were unrelated and part of a separate brute-force attack blocked by the intrusion prevention system.",
+        "techniques_used": [
+            "T1589.002",
+            "T1078.004",
+            "T1059.008",
+            "T1547.007",
+            "T1547.014",
+            "T1021.002",
+            "T1550.003",
+            "T1125",
+            "T1071.001"
+        ]
+    }
+}

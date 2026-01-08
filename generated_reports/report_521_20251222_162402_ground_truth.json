@@ -1,0 +1,68 @@
+{
+    "report_id": "report_521",
+    "generated_at": "20251222_162402",
+    "scenario_target_ids": [
+        "T1584.006",
+        "T1189",
+        "T1059.011",
+        "T1037.001",
+        "T1218.011",
+        "T1578.004",
+        "T1055.002",
+        "T1102.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1584.006",
+        "T1189",
+        "T1059.011",
+        "T1037.001",
+        "T1218.011",
+        "T1578.004",
+        "T1055.002",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1055.002",
+        "T1218.011",
+        "T1102.001",
+        "T1059.011",
+        "T1037.001",
+        "T1189",
+        "T1584.006",
+        "T1578.004"
+    ],
+    "clean_text": "Background: 'ShadowScript' is a fictional APT group believed to operate with motivations aligned with espionage and data exfiltration, focusing on technology firms in North America and Europe. The group leverages social engineering and credential theft to infiltrate development pipelines. In this scenario, the attack began with the compromise of a legitimate GitHub account belonging to a software vendor, where the actors modified open-source libraries to include backdoor code, exploiting web services to distribute tainted software updates. Concurrently, they injected malicious JavaScript into the vendor's compromised website, facilitating drive-by compromises that automatically exploited visitors' browsers upon access, leading to initial infection. Once on a target system, the malware employed the Lua interpreter to execute commands that deleted system logs and obfuscated traces, while using reg add HKCU\\Environment\\UserInitMprLogonScript /d \"C:\\malware.exe\" /f to establish persistence through Windows logon scripts, ensuring malware execution at user login. For execution and evasion, the threat actor utilized rundll32 to load malicious DLLs, and in cloud environments, they used compromised credentials to revert cloud instances, restoring dashboard states to eliminate logs of malicious activities. Additionally, the ransomware component injected its encryption module into lsass.exe using portable executable injection to bypass security controls and maintain stealth. For command and control, the malware implemented a dead drop resolver, querying public websites like Twitter and Reddit to dynamically retrieve C2 URLs, enabling resilient communication. System logs from affected endpoints showed anomalous network traffic to GitHub and social media domains, with no direct correlation to the malware's core functions, highlighting the need for enhanced monitoring of outbound connections. The company involved, a mid-sized tech firm, reported no financial loss but experienced operational disruptions during incident response, underscoring the importance of supply chain security and user awareness training.",
+    "tagged_text": "Background: 'ShadowScript' is a fictional APT group believed to operate with motivations aligned with espionage and data exfiltration, focusing on technology firms in North America and Europe. The group leverages social engineering and credential theft to infiltrate development pipelines. In this scenario, the attack began with the compromise of a legitimate GitHub account belonging to a software vendor, where the actors modified open-source libraries to include backdoor code, exploiting web services [T1584.006] to distribute tainted software updates. Concurrently, they injected malicious JavaScript into the vendor's compromised website, facilitating drive-by compromises [T1189] that automatically exploited visitors' browsers upon access, leading to initial infection. Once on a target system, the malware employed the Lua interpreter [T1059.011] to execute commands that deleted system logs and obfuscated traces, while using reg add HKCU\\Environment\\UserInitMprLogonScript /d \"C:\\malware.exe\" /f to establish persistence through Windows logon scripts [T1037.001], ensuring malware execution at user login. For execution and evasion, the threat actor utilized rundll32 [T1218.011] to load malicious DLLs, and in cloud environments, they used compromised credentials to revert cloud instances [T1578.004], restoring dashboard states to eliminate logs of malicious activities. Additionally, the ransomware component injected its encryption module into lsass.exe using portable executable injection [T1055.002] to bypass security controls and maintain stealth. For command and control, the malware implemented a dead drop resolver [T1102.001], querying public websites like Twitter and Reddit to dynamically retrieve C2 URLs, enabling resilient communication. System logs from affected endpoints showed anomalous network traffic to GitHub and social media domains, with no direct correlation to the malware's core functions, highlighting the need for enhanced monitoring of outbound connections. The company involved, a mid-sized tech firm, reported no financial loss but experienced operational disruptions during incident response, underscoring the importance of supply chain security and user awareness training.",
+    "sentence_annotations": [
+        {
+            "sentence": "Concurrently, they injected malicious JavaScript into the vendor's compromised website, facilitating drive-by compromises that automatically exploited visitors' browsers upon access, leading to initial infection.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowScript' Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowScript,' which targets software developers and cloud environments through compromised web services and drive-by compromises. The campaign involves initial access via modified software repositories, execution through malicious scripts, persistence via logon mechanisms, defense evasion using cloud and system manipulation, and command and control through public platforms. This report is intended for blue team training to enhance detection and response capabilities against multi-vector attacks.",
+        "full_report_text": "Background: 'ShadowScript' is a fictional APT group believed to operate with motivations aligned with espionage and data exfiltration, focusing on technology firms in North America and Europe. The group leverages social engineering and credential theft to infiltrate development pipelines. In this scenario, the attack began with the compromise of a legitimate GitHub account belonging to a software vendor, where the actors modified open-source libraries to include backdoor code, exploiting web services [T1584.006] to distribute tainted software updates. Concurrently, they injected malicious JavaScript into the vendor's compromised website, facilitating drive-by compromises [T1189] that automatically exploited visitors' browsers upon access, leading to initial infection. Once on a target system, the malware employed the Lua interpreter [T1059.011] to execute commands that deleted system logs and obfuscated traces, while using reg add HKCU\\Environment\\UserInitMprLogonScript /d \"C:\\malware.exe\" /f to establish persistence through Windows logon scripts [T1037.001], ensuring malware execution at user login. For execution and evasion, the threat actor utilized rundll32 [T1218.011] to load malicious DLLs, and in cloud environments, they used compromised credentials to revert cloud instances [T1578.004], restoring dashboard states to eliminate logs of malicious activities. Additionally, the ransomware component injected its encryption module into lsass.exe using portable executable injection [T1055.002] to bypass security controls and maintain stealth. For command and control, the malware implemented a dead drop resolver [T1102.001], querying public websites like Twitter and Reddit to dynamically retrieve C2 URLs, enabling resilient communication. System logs from affected endpoints showed anomalous network traffic to GitHub and social media domains, with no direct correlation to the malware's core functions, highlighting the need for enhanced monitoring of outbound connections. The company involved, a mid-sized tech firm, reported no financial loss but experienced operational disruptions during incident response, underscoring the importance of supply chain security and user awareness training.",
+        "techniques_used": [
+            "T1584.006",
+            "T1189",
+            "T1059.011",
+            "T1037.001",
+            "T1218.011",
+            "T1578.004",
+            "T1055.002",
+            "T1102.001"
+        ]
+    }
+}

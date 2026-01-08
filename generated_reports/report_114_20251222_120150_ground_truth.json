@@ -1,0 +1,76 @@
+{
+    "report_id": "report_114",
+    "generated_at": "20251222_120150",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1078.004",
+        "T1648",
+        "T1563.002",
+        "T1568",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078.001",
+        "T1078.004",
+        "T1648",
+        "T1563.002",
+        "T1568",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1048",
+        "T1078.004",
+        "T1568",
+        "T1078.001",
+        "T1589",
+        "T1648",
+        "T1563.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT-99 campaign observed in training simulations. APT-99, a simulated advanced persistent threat group, has been active in targeting organizations with hybrid Windows server and cloud infrastructure, aiming to exfiltrate sensitive financial data. Initial analysis indicates the campaign began in early 2024, with actors exploiting weak credentials and cloud misconfigurations. System logs from a compromised Windows Server 2019 instance show multiple failed login attempts prior to the breach, though these were not flagged by existing security tools due to misconfigured thresholds. The organization, a mid-sized financial services firm with operations in North America, reported anomalous network traffic originating from its AWS environment, which triggered an internal investigation.\n\nIn the Initial Access phase, APT-99 actors likely conducted reconnaissance to identify vulnerable systems, then exploited the default Administrator password 'admin123' on a Windows server to gain initial foothold. Concurrently, they used compromised Office 365 service accounts with Global Administrator privileges to access email inboxes and escalate privileges in the cloud environment. Network telemetry revealed unusual login patterns from IP addresses associated with known malicious infrastructure, but these were initially dismissed as false positives by automated monitoring systems.\n\nDuring Execution, the actors deployed a malicious Lambda function in AWS to execute code that exfiltrated data from cloud storage, while simultaneously exploiting tscon.exe to hijack an established RDP session by specifying the target session ID, allowing lateral movement within the Windows network. Internal logs from the affected server indicated increased CPU usage during this phase, but no alerts were generated due to insufficient baseline monitoring. The organization's background includes recent migration to hybrid cloud, which may have introduced configuration gaps exploited in this campaign.\n\nFor Persistence and Command and Control, APT-99 employed dynamic DNS resolution by performing queries for 'tunnel.data.com' to bypass network monitoring and maintain communication with command-and-control servers. Additional irrelevant system logs show routine maintenance tasks running on the server during the attack, such as Windows Update checks and backup operations, which did not contribute to the compromise.\n\nIn the Exfiltration phase, the backdoor collected financial records using the Net/SMB protocol to move data through port 445 over the network. This activity was masked by normal SMB traffic for file sharing within the organization, delaying detection. Post-incident analysis revealed that data was exfiltrated over several days, with exfiltration volumes peaking during off-hours to avoid suspicion. The campaign underscores the importance of securing default accounts, monitoring cloud privileges, and implementing robust network segmentation to mitigate similar threats in real-world scenarios.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT-99 campaign observed in training simulations. APT-99, a simulated advanced persistent threat group, has been active in targeting organizations with hybrid Windows server and cloud infrastructure, aiming to exfiltrate sensitive financial data. Initial analysis indicates the campaign began in early 2024, with actors exploiting weak credentials and cloud misconfigurations. System logs from a compromised Windows Server 2019 instance show multiple failed login attempts prior to the breach, though these were not flagged by existing security tools due to misconfigured thresholds. The organization, a mid-sized financial services firm with operations in North America, reported anomalous network traffic originating from its AWS environment, which triggered an internal investigation.\n\nIn the Initial Access phase, APT-99 actors likely conducted reconnaissance [T1589] to identify vulnerable systems, then exploited the default Administrator password 'admin123' on a Windows server to gain initial foothold [T1078.001]. Concurrently, they used compromised Office 365 service accounts with Global Administrator privileges to access email inboxes and escalate privileges in the cloud environment [T1078.004]. Network telemetry revealed unusual login patterns from IP addresses associated with known malicious infrastructure, but these were initially dismissed as false positives by automated monitoring systems.\n\nDuring Execution, the actors deployed a malicious Lambda function in AWS to execute code that exfiltrated data from cloud storage [T1648], while simultaneously exploiting tscon.exe to hijack an established RDP session by specifying the target session ID, allowing lateral movement within the Windows network [T1563.002]. Internal logs from the affected server indicated increased CPU usage during this phase, but no alerts were generated due to insufficient baseline monitoring. The organization's background includes recent migration to hybrid cloud, which may have introduced configuration gaps exploited in this campaign.\n\nFor Persistence and Command and Control, APT-99 employed dynamic DNS resolution by performing queries for 'tunnel.data.com' to bypass network monitoring and maintain communication with command-and-control servers [T1568]. Additional irrelevant system logs show routine maintenance tasks running on the server during the attack, such as Windows Update checks and backup operations, which did not contribute to the compromise.\n\nIn the Exfiltration phase, the backdoor collected financial records using the Net/SMB protocol to move data through port 445 over the network [T1048]. This activity was masked by normal SMB traffic for file sharing within the organization, delaying detection. Post-incident analysis revealed that data was exfiltrated over several days, with exfiltration volumes peaking during off-hours to avoid suspicion. The campaign underscores the importance of securing default accounts, monitoring cloud privileges, and implementing robust network segmentation to mitigate similar threats in real-world scenarios.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the Initial Access phase, APT-99 actors likely conducted reconnaissance to identify vulnerable systems, then exploited the default Administrator password 'admin123' on a Windows server to gain initial foothold [T1078.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "During Execution, the actors deployed a malicious Lambda function in AWS to execute code that exfiltrated data from cloud storage, while simultaneously exploiting tscon.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "com' to bypass network monitoring and maintain communication with command-and-control servers.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "In the Exfiltration phase, the backdoor collected financial records using the Net/SMB protocol to move data through port 445 over the network.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-99, targeting hybrid Windows and cloud environments. The campaign exploited default and cloud accounts, leveraged serverless execution for data exfiltration, hijacked RDP sessions, used dynamic DNS resolution for evasion, and exfiltrated data over alternative protocols. Blue teams are advised to review this report for training on detection and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT-99 campaign observed in training simulations. APT-99, a simulated advanced persistent threat group, has been active in targeting organizations with hybrid Windows server and cloud infrastructure, aiming to exfiltrate sensitive financial data. Initial analysis indicates the campaign began in early 2024, with actors exploiting weak credentials and cloud misconfigurations. System logs from a compromised Windows Server 2019 instance show multiple failed login attempts prior to the breach, though these were not flagged by existing security tools due to misconfigured thresholds. The organization, a mid-sized financial services firm with operations in North America, reported anomalous network traffic originating from its AWS environment, which triggered an internal investigation.\n\nIn the Initial Access phase, APT-99 actors likely conducted reconnaissance [T1589] to identify vulnerable systems, then exploited the default Administrator password 'admin123' on a Windows server to gain initial foothold [T1078.001]. Concurrently, they used compromised Office 365 service accounts with Global Administrator privileges to access email inboxes and escalate privileges in the cloud environment [T1078.004]. Network telemetry revealed unusual login patterns from IP addresses associated with known malicious infrastructure, but these were initially dismissed as false positives by automated monitoring systems.\n\nDuring Execution, the actors deployed a malicious Lambda function in AWS to execute code that exfiltrated data from cloud storage [T1648], while simultaneously exploiting tscon.exe to hijack an established RDP session by specifying the target session ID, allowing lateral movement within the Windows network [T1563.002]. Internal logs from the affected server indicated increased CPU usage during this phase, but no alerts were generated due to insufficient baseline monitoring. The organization's background includes recent migration to hybrid cloud, which may have introduced configuration gaps exploited in this campaign.\n\nFor Persistence and Command and Control, APT-99 employed dynamic DNS resolution by performing queries for 'tunnel.data.com' to bypass network monitoring and maintain communication with command-and-control servers [T1568]. Additional irrelevant system logs show routine maintenance tasks running on the server during the attack, such as Windows Update checks and backup operations, which did not contribute to the compromise.\n\nIn the Exfiltration phase, the backdoor collected financial records using the Net/SMB protocol to move data through port 445 over the network [T1048]. This activity was masked by normal SMB traffic for file sharing within the organization, delaying detection. Post-incident analysis revealed that data was exfiltrated over several days, with exfiltration volumes peaking during off-hours to avoid suspicion. The campaign underscores the importance of securing default accounts, monitoring cloud privileges, and implementing robust network segmentation to mitigate similar threats in real-world scenarios.",
+        "techniques_used": [
+            "T1589",
+            "T1078.001",
+            "T1078.004",
+            "T1648",
+            "T1563.002",
+            "T1568",
+            "T1048"
+        ]
+    }
+}

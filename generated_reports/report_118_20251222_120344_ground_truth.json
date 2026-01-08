@@ -1,0 +1,99 @@
+{
+    "report_id": "report_118",
+    "generated_at": "20251222_120344",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1587",
+        "T1195",
+        "T1059.009",
+        "T1546.013",
+        "T1546.009",
+        "T1552.005",
+        "T1550.002",
+        "T1021.002",
+        "T1132",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1587",
+        "T1195",
+        "T1059.009",
+        "T1546.013",
+        "T1546.009",
+        "T1552.005",
+        "T1550.002",
+        "T1021.002",
+        "T1132",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1195",
+        "T1550.002",
+        "T1132",
+        "T1059.009",
+        "T1587",
+        "T1021.002",
+        "T1552.005",
+        "T1589",
+        "T1592.003",
+        "T1498.001",
+        "T1546.009",
+        "T1546.013"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a fictional APT campaign, 'ShadowVeil,' for training purposes. This report is based on simulated activity and does not reflect real-world incidents.\n\n**Background:** The targeted organization, a mid-sized financial services firm with hybrid infrastructure, reported anomalous network traffic and unauthorized access alerts. Initial logs from their SIEM indicated unusual WMI queries and failed authentication attempts from external IP addresses, though these were later determined to be part of a routine penetration test by a third-party vendor.\n\n**Attack Narrative:**\n1. **Reconnaissance and Initial Access:** The actors likely conducted initial reconnaissance to identify targets, though specific techniques are not detailed in this scenario. They then compromised the software supply chain by modifying a build automation tool to embed a backdoor in compiled applications, which was distributed to the victim via a trusted update channel.\n2. **Execution and Persistence:** Upon execution, the backdoor used WMI to query system firmware properties for vulnerability assessment, while simultaneously employing PowerShell to interact with the cloud environment, executing commands like 'Get-AzVM' to enumerate virtual machines. For persistence, the malware modified the AppCertDLLs registry value to load 'malware.dll' during process creation and altered PowerShell profiles to maintain access across sessions.\n3. **Credential Access and Lateral Movement:** The attacker developed a custom tool, 'PassSniff.exe', to harvest domain administrator credentials. Using stolen hashes, they authenticated via pass-the-hash techniques and leveraged SMB/Windows Admin Shares for lateral movement within the on-premises network.\n4. **Collection and Exfiltration:** The malware retrieved hardcoded API keys by accessing the Cloud Instance Metadata API and decoded base64-encoded commands from a command-and-control server to orchestrate data exfiltration, though specific exfiltration logs were obscured by normal backup traffic.\n5. **Impact:** The campaign culminated in a direct network flood, sending UDP packets to the target's web server on port 80 to consume bandwidth and disrupt services, as observed in network monitoring logs showing spikes in traffic from spoofed IP addresses.\n\n**Mitigation Recommendations:** Blue teams should monitor for unusual WMI queries, enforce multi-factor authentication, segment networks, and review cloud metadata access policies. This advisory serves as a training tool to enhance defensive postures against similar tactics.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a fictional APT campaign, 'ShadowVeil,' for training purposes. This report is based on simulated activity and does not reflect real-world incidents.\n\n**Background:** The targeted organization, a mid-sized financial services firm with hybrid infrastructure, reported anomalous network traffic and unauthorized access alerts. Initial logs from their SIEM indicated unusual WMI queries and failed authentication attempts from external IP addresses, though these were later determined to be part of a routine penetration test by a third-party vendor.\n\n**Attack Narrative:**\n1. **Reconnaissance and Initial Access:** The actors likely conducted initial reconnaissance [T1589] to identify targets, though specific techniques are not detailed in this scenario. They then compromised the software supply chain by modifying a build automation tool to embed a backdoor in compiled applications [T1195], which was distributed to the victim via a trusted update channel.\n2. **Execution and Persistence:** Upon execution, the backdoor used WMI to query system firmware properties [T1592.003] for vulnerability assessment, while simultaneously employing PowerShell [T1059.009] to interact with the cloud environment, executing commands like 'Get-AzVM' to enumerate virtual machines. For persistence, the malware modified the AppCertDLLs registry value [T1546.009] to load 'malware.dll' during process creation and altered PowerShell profiles [T1546.013] to maintain access across sessions.\n3. **Credential Access and Lateral Movement:** The attacker developed a custom tool, 'PassSniff.exe' [T1587], to harvest domain administrator credentials. Using stolen hashes, they authenticated via pass-the-hash techniques [T1550.002] and leveraged SMB/Windows Admin Shares [T1021.002] for lateral movement within the on-premises network.\n4. **Collection and Exfiltration:** The malware retrieved hardcoded API keys by accessing the Cloud Instance Metadata API [T1552.005] and decoded base64-encoded commands [T1132] from a command-and-control server to orchestrate data exfiltration, though specific exfiltration logs were obscured by normal backup traffic.\n5. **Impact:** The campaign culminated in a direct network flood [T1498.001], sending UDP packets to the target's web server on port 80 to consume bandwidth and disrupt services, as observed in network monitoring logs showing spikes in traffic from spoofed IP addresses.\n\n**Mitigation Recommendations:** Blue teams should monitor for unusual WMI queries, enforce multi-factor authentication, segment networks, and review cloud metadata access policies. This advisory serves as a training tool to enhance defensive postures against similar tactics.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Reconnaissance and Initial Access:** The actors likely conducted initial reconnaissance to identify targets, though specific techniques are not detailed in this scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "They then compromised the software supply chain by modifying a build automation tool to embed a backdoor in compiled applications, which was distributed to the victim via a trusted update channel.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "exe', to harvest domain administrator credentials.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "005] and decoded base64-encoded commands from a command-and-control server to orchestrate data exfiltration, though specific exfiltration logs were obscured by normal backup traffic.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil,' targeting organizations with hybrid on-premises and cloud environments. The campaign involves supply chain compromise, credential harvesting, and persistence mechanisms, culminating in a disruptive network flood. Blue teams are advised to review detection strategies and implement mitigations.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a fictional APT campaign, 'ShadowVeil,' for training purposes. This report is based on simulated activity and does not reflect real-world incidents.\n\n**Background:** The targeted organization, a mid-sized financial services firm with hybrid infrastructure, reported anomalous network traffic and unauthorized access alerts. Initial logs from their SIEM indicated unusual WMI queries and failed authentication attempts from external IP addresses, though these were later determined to be part of a routine penetration test by a third-party vendor.\n\n**Attack Narrative:**\n1. **Reconnaissance and Initial Access:** The actors likely conducted initial reconnaissance [T1589] to identify targets, though specific techniques are not detailed in this scenario. They then compromised the software supply chain by modifying a build automation tool to embed a backdoor in compiled applications [T1195], which was distributed to the victim via a trusted update channel.\n2. **Execution and Persistence:** Upon execution, the backdoor used WMI to query system firmware properties [T1592.003] for vulnerability assessment, while simultaneously employing PowerShell [T1059.009] to interact with the cloud environment, executing commands like 'Get-AzVM' to enumerate virtual machines. For persistence, the malware modified the AppCertDLLs registry value [T1546.009] to load 'malware.dll' during process creation and altered PowerShell profiles [T1546.013] to maintain access across sessions.\n3. **Credential Access and Lateral Movement:** The attacker developed a custom tool, 'PassSniff.exe' [T1587], to harvest domain administrator credentials. Using stolen hashes, they authenticated via pass-the-hash techniques [T1550.002] and leveraged SMB/Windows Admin Shares [T1021.002] for lateral movement within the on-premises network.\n4. **Collection and Exfiltration:** The malware retrieved hardcoded API keys by accessing the Cloud Instance Metadata API [T1552.005] and decoded base64-encoded commands [T1132] from a command-and-control server to orchestrate data exfiltration, though specific exfiltration logs were obscured by normal backup traffic.\n5. **Impact:** The campaign culminated in a direct network flood [T1498.001], sending UDP packets to the target's web server on port 80 to consume bandwidth and disrupt services, as observed in network monitoring logs showing spikes in traffic from spoofed IP addresses.\n\n**Mitigation Recommendations:** Blue teams should monitor for unusual WMI queries, enforce multi-factor authentication, segment networks, and review cloud metadata access policies. This advisory serves as a training tool to enhance defensive postures against similar tactics.",
+        "techniques_used": [
+            "T1592.003",
+            "T1587",
+            "T1195",
+            "T1059.009",
+            "T1546.013",
+            "T1546.009",
+            "T1552.005",
+            "T1550.002",
+            "T1021.002",
+            "T1132",
+            "T1498.001"
+        ]
+    }
+}

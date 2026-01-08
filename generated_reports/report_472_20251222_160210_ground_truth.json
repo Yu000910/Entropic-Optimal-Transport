@@ -1,0 +1,85 @@
+{
+    "report_id": "report_472",
+    "generated_at": "20251222_160210",
+    "scenario_target_ids": [
+        "T1091",
+        "T1204.002",
+        "T1563.001",
+        "T1205",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1204.002",
+        "T1091",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1563.001",
+        "T1205",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1112",
+        "T1589",
+        "T1205",
+        "T1091",
+        "T1563.001",
+        "T1105",
+        "T1020.001",
+        "T1204.002",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actor group 'ShadowCrawl'. This group has been observed targeting energy and manufacturing sectors since early 2023, with initial infections traced to phishing campaigns. Background analysis indicates that ShadowCrawl operates with moderate sophistication, often reusing publicly available tools. System logs from a compromised entity, 'PowerGrid Inc.', show anomalous SSH connections from unknown IP addresses at 03:00 UTC on 2023-10-15, though these were initially dismissed as false positives due to network maintenance schedules. The attack follows a kill-chain progression: Initial Access: The actors likely conduct reconnaissance to identify high-value targets, then deliver weaponized documents via spear-phishing emails that mimic legitimate invoices, exploiting macros to execute malicious code. Execution: Upon user interaction, the malware replicates through infected USB drives to propagate laterally across air-gapped networks, using PowerShell to download additional payloads while simultaneously modifying registry keys for persistence. Persistence: The adversary establishes footholds by hijacking SSH agent sockets to authenticate to multiple systems in the DMZ, enabling unauthorized access without credentials. Defense Evasion: To obscure malicious activities, the malware employs traffic signaling by exploiting libpcap libraries to monitor network traffic and hide communication ports, while also implementing traffic duplication through patched boot images to mirror data for automated exfiltration. Exfiltration: Data is siphoned via encrypted channels during off-peak hours, with logs showing increased outbound traffic to suspicious domains. PowerGrid Inc. reported no initial data loss, but subsequent forensic analysis revealed compromised backup servers. Defensive recommendations include disabling autorun for removable media, enforcing macro restrictions, and monitoring SSH session anomalies.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actor group 'ShadowCrawl'. This group has been observed targeting energy and manufacturing sectors since early 2023, with initial infections traced to phishing campaigns. Background analysis indicates that ShadowCrawl operates with moderate sophistication, often reusing publicly available tools. System logs from a compromised entity, 'PowerGrid Inc.', show anomalous SSH connections from unknown IP addresses at 03:00 UTC on 2023-10-15, though these were initially dismissed as false positives due to network maintenance schedules. The attack follows a kill-chain progression: Initial Access: The actors likely conduct reconnaissance [T1589] to identify high-value targets, then deliver weaponized documents via spear-phishing emails [T1204.002] that mimic legitimate invoices, exploiting macros to execute malicious code. Execution: Upon user interaction, the malware replicates through infected USB drives [T1091] to propagate laterally across air-gapped networks, using PowerShell [T1059.001] to download additional payloads [T1105] while simultaneously modifying registry keys [T1112] for persistence. Persistence: The adversary establishes footholds by hijacking SSH agent sockets [T1563.001] to authenticate to multiple systems in the DMZ, enabling unauthorized access without credentials. Defense Evasion: To obscure malicious activities, the malware employs traffic signaling [T1205] by exploiting libpcap libraries to monitor network traffic and hide communication ports, while also implementing traffic duplication [T1020.001] through patched boot images to mirror data for automated exfiltration. Exfiltration: Data is siphoned via encrypted channels during off-peak hours, with logs showing increased outbound traffic to suspicious domains. PowerGrid Inc. reported no initial data loss, but subsequent forensic analysis revealed compromised backup servers. Defensive recommendations include disabling autorun for removable media, enforcing macro restrictions, and monitoring SSH session anomalies.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack follows a kill-chain progression: Initial Access: The actors likely conduct reconnaissance to identify high-value targets, then deliver weaponized documents via spear-phishing emails [T1204.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Execution: Upon user interaction, the malware replicates through infected USB drives to propagate laterally across air-gapped networks, using PowerShell [T1059.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "001] to download additional payloads while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to download additional payloads while simultaneously modifying registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "Defense Evasion: To obscure malicious activities, the malware employs traffic signaling by exploiting libpcap libraries to monitor network traffic and hide communication ports, while also implementing traffic duplication [T1020.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowCrawl' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowCrawl', targeting critical infrastructure sectors. The campaign leverages removable media, malicious documents, and network manipulation to achieve persistence and data exfiltration. Blue teams are advised to review defensive measures and indicators of compromise.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional threat actor group 'ShadowCrawl'. This group has been observed targeting energy and manufacturing sectors since early 2023, with initial infections traced to phishing campaigns. Background analysis indicates that ShadowCrawl operates with moderate sophistication, often reusing publicly available tools. System logs from a compromised entity, 'PowerGrid Inc.', show anomalous SSH connections from unknown IP addresses at 03:00 UTC on 2023-10-15, though these were initially dismissed as false positives due to network maintenance schedules. The attack follows a kill-chain progression: Initial Access: The actors likely conduct reconnaissance [T1589] to identify high-value targets, then deliver weaponized documents via spear-phishing emails [T1204.002] that mimic legitimate invoices, exploiting macros to execute malicious code. Execution: Upon user interaction, the malware replicates through infected USB drives [T1091] to propagate laterally across air-gapped networks, using PowerShell [T1059.001] to download additional payloads [T1105] while simultaneously modifying registry keys [T1112] for persistence. Persistence: The adversary establishes footholds by hijacking SSH agent sockets [T1563.001] to authenticate to multiple systems in the DMZ, enabling unauthorized access without credentials. Defense Evasion: To obscure malicious activities, the malware employs traffic signaling [T1205] by exploiting libpcap libraries to monitor network traffic and hide communication ports, while also implementing traffic duplication [T1020.001] through patched boot images to mirror data for automated exfiltration. Exfiltration: Data is siphoned via encrypted channels during off-peak hours, with logs showing increased outbound traffic to suspicious domains. PowerGrid Inc. reported no initial data loss, but subsequent forensic analysis revealed compromised backup servers. Defensive recommendations include disabling autorun for removable media, enforcing macro restrictions, and monitoring SSH session anomalies.",
+        "techniques_used": [
+            "T1589",
+            "T1204.002",
+            "T1091",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1563.001",
+            "T1205",
+            "T1020.001"
+        ]
+    }
+}

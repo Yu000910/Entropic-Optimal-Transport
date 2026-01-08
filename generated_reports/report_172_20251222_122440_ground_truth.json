@@ -1,0 +1,73 @@
+{
+    "report_id": "report_172",
+    "generated_at": "20251222_122440",
+    "scenario_target_ids": [
+        "T1189",
+        "T1204.001",
+        "T1056.003",
+        "T1615",
+        "T1016.002",
+        "T1120",
+        "T1090.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1189",
+        "T1204.001",
+        "T1056.003",
+        "T1615",
+        "T1016.002",
+        "T1120",
+        "T1090.001"
+    ],
+    "actual_found_ids": [
+        "T1056.003",
+        "T1615",
+        "T1090.001",
+        "T1204.001",
+        "T1189",
+        "T1120",
+        "T1016.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity attributed to the fictional threat actor 'Cobalt Phantom', targeting organizations in the media and entertainment industry. This campaign is designed for educational training and does not reflect real-world incidents.\n\nInitial Access: The actors initiated their campaign by compromising a legitimate website hosting pirated audio software, where they embedded malicious scripts to redirect unsuspecting users to a fake download portal. Concurrently, they conducted spearphishing attacks, sending emails with malicious links that led to the download of a Cobalt Strike beacon, mimicking tactics observed in APT32 campaigns.\n\nExecution and Persistence: Upon execution, the malware deployed a credential harvesting module that monitored for Outlook Web App (OWA) authentication requests, capturing user credentials through a web portal capture technique similar to the IceApple logger. System logs from the victim's environment showed unusual network traffic spikes at 03:45 UTC, but no immediate alerts were triggered due to misconfigured SIEM rules.\n\nDiscovery: The actors then performed extensive reconnaissance within the Active Directory environment, enumerating Group Policy objects to identify security settings and potential misconfigurations. They also conducted network discovery by scanning for locally reachable Wi-Fi networks, extracting names to plan lateral movement, and used Windows APIs to discover connected Bluetooth devices, gathering peripheral device information as part of their situational awareness.\n\nCommand and Control (C2): To evade detection, the actors established a multi-hop proxy chain using an internal proxy tool, masking the final destination of C2 communications and mimicking HTRAN deployment patterns. This allowed them to maintain persistent access while obfuscating their network footprint.\n\nBackground: The targeted organization, 'Global Media Studios', is a mid-sized company with offices in New York and Los Angeles, specializing in audio production. Their IT infrastructure includes a mix of Windows and macOS systems, with limited security monitoring in place. This scenario highlights common vulnerabilities in such environments.\n\nRecommendations: Blue teams should monitor for unusual network scans, implement strict email filtering, and regularly audit Active Directory configurations to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity attributed to the fictional threat actor 'Cobalt Phantom', targeting organizations in the media and entertainment industry. This campaign is designed for educational training and does not reflect real-world incidents.\n\nInitial Access: The actors initiated their campaign by compromising a legitimate website hosting pirated audio software, where they embedded malicious scripts [T1189] to redirect unsuspecting users to a fake download portal. Concurrently, they conducted spearphishing attacks, sending emails with malicious links [T1204.001] that led to the download of a Cobalt Strike beacon, mimicking tactics observed in APT32 campaigns.\n\nExecution and Persistence: Upon execution, the malware deployed a credential harvesting module that monitored for Outlook Web App (OWA) authentication requests, capturing user credentials [T1056.003] through a web portal capture technique similar to the IceApple logger. System logs from the victim's environment showed unusual network traffic spikes at 03:45 UTC, but no immediate alerts were triggered due to misconfigured SIEM rules.\n\nDiscovery: The actors then performed extensive reconnaissance within the Active Directory environment, enumerating Group Policy objects [T1615] to identify security settings and potential misconfigurations. They also conducted network discovery by scanning for locally reachable Wi-Fi networks [T1016.002], extracting names to plan lateral movement, and used Windows APIs to discover connected Bluetooth devices [T1120], gathering peripheral device information as part of their situational awareness.\n\nCommand and Control (C2): To evade detection, the actors established a multi-hop proxy chain using an internal proxy tool [T1090.001], masking the final destination of C2 communications and mimicking HTRAN deployment patterns. This allowed them to maintain persistent access while obfuscating their network footprint.\n\nBackground: The targeted organization, 'Global Media Studios', is a mid-sized company with offices in New York and Los Angeles, specializing in audio production. Their IT infrastructure includes a mix of Windows and macOS systems, with limited security monitoring in place. This scenario highlights common vulnerabilities in such environments.\n\nRecommendations: Blue teams should monitor for unusual network scans, implement strict email filtering, and regularly audit Active Directory configurations to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors initiated their campaign by compromising a legitimate website hosting pirated audio software, where they embedded malicious scripts to redirect unsuspecting users to a fake download portal.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "Discovery: The actors then performed extensive reconnaissance within the Active Directory environment, enumerating Group Policy objects to identify security settings and potential misconfigurations.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "002], extracting names to plan lateral movement, and used Windows APIs to discover connected Bluetooth devices, gathering peripheral device information as part of their situational awareness.",
+            "technique_id": "T1120",
+            "technique_name": "Peripheral Device Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor 'Cobalt Phantom'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Cobalt Phantom' targeting media and entertainment sectors, leveraging drive-by compromises and spearphishing to deploy credential harvesters and establish persistent proxy chains for data exfiltration. The campaign demonstrates reconnaissance, lateral movement, and evasion techniques for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity attributed to the fictional threat actor 'Cobalt Phantom', targeting organizations in the media and entertainment industry. This campaign is designed for educational training and does not reflect real-world incidents.\n\nInitial Access: The actors initiated their campaign by compromising a legitimate website hosting pirated audio software, where they embedded malicious scripts [T1189] to redirect unsuspecting users to a fake download portal. Concurrently, they conducted spearphishing attacks, sending emails with malicious links [T1204.001] that led to the download of a Cobalt Strike beacon, mimicking tactics observed in APT32 campaigns.\n\nExecution and Persistence: Upon execution, the malware deployed a credential harvesting module that monitored for Outlook Web App (OWA) authentication requests, capturing user credentials [T1056.003] through a web portal capture technique similar to the IceApple logger. System logs from the victim's environment showed unusual network traffic spikes at 03:45 UTC, but no immediate alerts were triggered due to misconfigured SIEM rules.\n\nDiscovery: The actors then performed extensive reconnaissance within the Active Directory environment, enumerating Group Policy objects [T1615] to identify security settings and potential misconfigurations. They also conducted network discovery by scanning for locally reachable Wi-Fi networks [T1016.002], extracting names to plan lateral movement, and used Windows APIs to discover connected Bluetooth devices [T1120], gathering peripheral device information as part of their situational awareness.\n\nCommand and Control (C2): To evade detection, the actors established a multi-hop proxy chain using an internal proxy tool [T1090.001], masking the final destination of C2 communications and mimicking HTRAN deployment patterns. This allowed them to maintain persistent access while obfuscating their network footprint.\n\nBackground: The targeted organization, 'Global Media Studios', is a mid-sized company with offices in New York and Los Angeles, specializing in audio production. Their IT infrastructure includes a mix of Windows and macOS systems, with limited security monitoring in place. This scenario highlights common vulnerabilities in such environments.\n\nRecommendations: Blue teams should monitor for unusual network scans, implement strict email filtering, and regularly audit Active Directory configurations to mitigate similar threats.",
+        "techniques_used": [
+            "T1189",
+            "T1204.001",
+            "T1056.003",
+            "T1615",
+            "T1016.002",
+            "T1120",
+            "T1090.001"
+        ]
+    }
+}

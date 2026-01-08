@@ -1,0 +1,98 @@
+{
+    "report_id": "report_194",
+    "generated_at": "20251222_123336",
+    "scenario_target_ids": [
+        "T1592",
+        "T1595.002",
+        "T1566.001",
+        "T1059.011",
+        "T1078",
+        "T1546.011",
+        "T1543",
+        "T1016.001",
+        "T1071.004",
+        "T1531",
+        "T1498.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "discovery",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592",
+        "T1595.002",
+        "T1566.001",
+        "T1059.011",
+        "T1078",
+        "T1546.011",
+        "T1543",
+        "T1016.001",
+        "T1071.004",
+        "T1531",
+        "T1498.001"
+    ],
+    "actual_found_ids": [
+        "T1059.011",
+        "T1071.004",
+        "T1566.001",
+        "T1543",
+        "T1016.001",
+        "T1546.011",
+        "T1498.001",
+        "T1078",
+        "T1595.002",
+        "T1592",
+        "T1531"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) in a controlled, fictional scenario. This report is based on simulated activity attributed to the fictional group 'ShadowWeaver', which has been observed targeting financial organizations in North America and Europe since early 2024. Background analysis of network logs from a fictional victim, 'FinSecure Bank', shows routine HTTP traffic to external APIs, but no prior indicators of compromise were detected in system audits conducted last quarter.\n\nInitial Access: The actors likely conducted reconnaissance by gathering victim host information through malware that queried User-Agent headers to identify browser and OS versions, while simultaneously performing vulnerability scanning by analyzing server response headers to detect outdated software. This data was used to craft targeted spearphishing emails with malicious HTML attachments, which, when opened, executed a Lua script to spawn a reverse shell and gain remote access.\n\nExecution and Persistence: Upon gaining initial foothold, the adversary employed valid accounts, including those shared between Managed Service Providers and clients, to move laterally between environments while using application shimming with a custom.sdb file to achieve persistence and creating or modifying system processes by executing malicious.dll through svchost.exe.\n\nCommand and Control (C2): For C2 communications, the malware conducted internet connection discovery by making Ping GET HTTP requests at regular intervals and utilized DNS tunneling to exfiltrate data covertly. Network logs from FinSecure Bank show increased DNS query volumes to suspicious domains, though these were initially flagged as low-priority alerts in the SIEM.\n\nImpact: In the final stage, the actors executed account access removal through PowerShell commands to disable password self-service and launched a direct network flood with a UDP flood to port 80, consuming all available bandwidth and disrupting web services. Incident response teams noted that firewall rules were updated post-incident, but no actual data loss occurred in this training scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) in a controlled, fictional scenario. This report is based on simulated activity attributed to the fictional group 'ShadowWeaver', which has been observed targeting financial organizations in North America and Europe since early 2024. Background analysis of network logs from a fictional victim, 'FinSecure Bank', shows routine HTTP traffic to external APIs, but no prior indicators of compromise were detected in system audits conducted last quarter.\n\nInitial Access: The actors likely conducted reconnaissance by gathering victim host information [T1592] through malware that queried User-Agent headers to identify browser and OS versions, while simultaneously performing vulnerability scanning [T1595.002] by analyzing server response headers to detect outdated software. This data was used to craft targeted spearphishing emails with malicious HTML attachments [T1566.001], which, when opened, executed a Lua script [T1059.011] to spawn a reverse shell and gain remote access.\n\nExecution and Persistence: Upon gaining initial foothold, the adversary employed valid accounts [T1078], including those shared between Managed Service Providers and clients, to move laterally between environments while using application shimming [T1546.011] with a custom.sdb file to achieve persistence and creating or modifying system processes [T1543] by executing malicious.dll through svchost.exe.\n\nCommand and Control (C2): For C2 communications, the malware conducted internet connection discovery [T1016.001] by making Ping GET HTTP requests at regular intervals and utilized DNS tunneling [T1071.004] to exfiltrate data covertly. Network logs from FinSecure Bank show increased DNS query volumes to suspicious domains, though these were initially flagged as low-priority alerts in the SIEM.\n\nImpact: In the final stage, the actors executed account access removal [T1531] through PowerShell commands to disable password self-service and launched a direct network flood [T1498.001] with a UDP flood to port 80, consuming all available bandwidth and disrupting web services. Incident response teams noted that firewall rules were updated post-incident, but no actual data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conducted reconnaissance by gathering victim host information through malware that queried User-Agent headers to identify browser and OS versions, while simultaneously performing vulnerability scanning [T1595.",
+            "technique_id": "T1592",
+            "technique_name": "Gather Victim Host Information"
+        },
+        {
+            "sentence": "Execution and Persistence: Upon gaining initial foothold, the adversary employed valid accounts, including those shared between Managed Service Providers and clients, to move laterally between environments while using application shimming [T1546.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "sdb file to achieve persistence and creating or modifying system processes by executing malicious.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "Impact: In the final stage, the actors executed account access removal through PowerShell commands to disable password self-service and launched a direct network flood [T1498.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, 'ShadowWeaver', targeting financial institutions to exfiltrate sensitive data and disrupt operations. The campaign employs a multi-stage attack leveraging reconnaissance, phishing, persistence mechanisms, and denial-of-service techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on identifying and mitigating advanced persistent threat (APT) tactics, techniques, and procedures (TTPs) in a controlled, fictional scenario. This report is based on simulated activity attributed to the fictional group 'ShadowWeaver', which has been observed targeting financial organizations in North America and Europe since early 2024. Background analysis of network logs from a fictional victim, 'FinSecure Bank', shows routine HTTP traffic to external APIs, but no prior indicators of compromise were detected in system audits conducted last quarter.\n\nInitial Access: The actors likely conducted reconnaissance by gathering victim host information [T1592] through malware that queried User-Agent headers to identify browser and OS versions, while simultaneously performing vulnerability scanning [T1595.002] by analyzing server response headers to detect outdated software. This data was used to craft targeted spearphishing emails with malicious HTML attachments [T1566.001], which, when opened, executed a Lua script [T1059.011] to spawn a reverse shell and gain remote access.\n\nExecution and Persistence: Upon gaining initial foothold, the adversary employed valid accounts [T1078], including those shared between Managed Service Providers and clients, to move laterally between environments while using application shimming [T1546.011] with a custom.sdb file to achieve persistence and creating or modifying system processes [T1543] by executing malicious.dll through svchost.exe.\n\nCommand and Control (C2): For C2 communications, the malware conducted internet connection discovery [T1016.001] by making Ping GET HTTP requests at regular intervals and utilized DNS tunneling [T1071.004] to exfiltrate data covertly. Network logs from FinSecure Bank show increased DNS query volumes to suspicious domains, though these were initially flagged as low-priority alerts in the SIEM.\n\nImpact: In the final stage, the actors executed account access removal [T1531] through PowerShell commands to disable password self-service and launched a direct network flood [T1498.001] with a UDP flood to port 80, consuming all available bandwidth and disrupting web services. Incident response teams noted that firewall rules were updated post-incident, but no actual data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1592",
+            "T1595.002",
+            "T1566.001",
+            "T1059.011",
+            "T1078",
+            "T1546.011",
+            "T1543",
+            "T1016.001",
+            "T1071.004",
+            "T1531",
+            "T1498.001"
+        ]
+    }
+}

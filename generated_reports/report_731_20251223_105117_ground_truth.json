@@ -1,0 +1,63 @@
+{
+    "report_id": "report_731",
+    "generated_at": "20251223_105117",
+    "scenario_target_ids": [
+        "T1078",
+        "T1204.001",
+        "T1134.003",
+        "T1666",
+        "T1071.005",
+        "T1496.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1204.001",
+        "T1078",
+        "T1134.003",
+        "T1666",
+        "T1071.005",
+        "T1496.002"
+    ],
+    "actual_found_ids": [
+        "T1496.002",
+        "T1204.001",
+        "T1134.003",
+        "T1078",
+        "T1666",
+        "T1071.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the simulated threat actor group 'Crimson Horizon'. This group has been observed targeting financial and technology sectors with hybrid Azure and on-premises environments. Initial reconnaissance involved scanning public social media profiles and job postings, though no specific techniques are tagged here as this is background noise. The attack began with the actors sending spear-phishing emails disguised as recruitment opportunities, enticing employees to click on malicious links that redirected to credential-harvesting pages. Upon compromise, the adversaries used dumped legitimate credentials to authenticate into the victim's network via VPN, leveraging valid accounts to move laterally while impersonating low-privilege users. System logs from the on-premises Active Directory server showed unusual login times, but this is irrelevant noise. Once inside, the actors executed a PowerShell script that employed LogonUser to make and impersonate tokens, elevating privileges to domain administrator levels, and simultaneously used these elevated permissions to modify the Azure Global Administrator role permissions, altering the cloud resource hierarchy to bypass security controls. The malicious backdoor, deployed via a compromised IoT device, utilized MQTT topics to receive commands, blending with legitimate IoT traffic, and was configured to redirect all outbound network traffic through compromised residential proxies to hijack bandwidth and obscure exfiltration. Additional noise includes routine system updates and firewall alerts that were unrelated to the attack. The campaign demonstrates a sophisticated blend of on-premises and cloud-based techniques aimed at long-term persistence and data theft.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the simulated threat actor group 'Crimson Horizon'. This group has been observed targeting financial and technology sectors with hybrid Azure and on-premises environments. Initial reconnaissance involved scanning public social media profiles and job postings, though no specific techniques are tagged here as this is background noise. The attack began with the actors sending spear-phishing emails disguised as recruitment opportunities, enticing employees to click on malicious links [T1204.001] that redirected to credential-harvesting pages. Upon compromise, the adversaries used dumped legitimate credentials to authenticate into the victim's network via VPN, leveraging valid accounts [T1078] to move laterally while impersonating low-privilege users. System logs from the on-premises Active Directory server showed unusual login times, but this is irrelevant noise. Once inside, the actors executed a PowerShell script that employed LogonUser to make and impersonate tokens [T1134.003], elevating privileges to domain administrator levels, and simultaneously used these elevated permissions to modify the Azure Global Administrator role permissions [T1666], altering the cloud resource hierarchy to bypass security controls. The malicious backdoor, deployed via a compromised IoT device, utilized MQTT topics to receive commands [T1071.005], blending with legitimate IoT traffic, and was configured to redirect all outbound network traffic through compromised residential proxies [T1496.002] to hijack bandwidth and obscure exfiltration. Additional noise includes routine system updates and firewall alerts that were unrelated to the attack. The campaign demonstrates a sophisticated blend of on-premises and cloud-based techniques aimed at long-term persistence and data theft.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon compromise, the adversaries used dumped legitimate credentials to authenticate into the victim's network via VPN, leveraging valid accounts to move laterally while impersonating low-privilege users.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "003], elevating privileges to domain administrator levels, and simultaneously used these elevated permissions to modify the Azure Global Administrator role permissions, altering the cloud resource hierarchy to bypass security controls.",
+            "technique_id": "T1666",
+            "technique_name": "Modify Cloud Resource Hierarchy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'Crimson Horizon' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a fictional campaign by threat actor group 'Crimson Horizon' targeting organizations with hybrid cloud infrastructure. The campaign leverages social engineering, credential theft, and cloud manipulation to establish persistence and exfiltrate data while evading detection.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the simulated threat actor group 'Crimson Horizon'. This group has been observed targeting financial and technology sectors with hybrid Azure and on-premises environments. Initial reconnaissance involved scanning public social media profiles and job postings, though no specific techniques are tagged here as this is background noise. The attack began with the actors sending spear-phishing emails disguised as recruitment opportunities, enticing employees to click on malicious links [T1204.001] that redirected to credential-harvesting pages. Upon compromise, the adversaries used dumped legitimate credentials to authenticate into the victim's network via VPN, leveraging valid accounts [T1078] to move laterally while impersonating low-privilege users. System logs from the on-premises Active Directory server showed unusual login times, but this is irrelevant noise. Once inside, the actors executed a PowerShell script that employed LogonUser to make and impersonate tokens [T1134.003], elevating privileges to domain administrator levels, and simultaneously used these elevated permissions to modify the Azure Global Administrator role permissions [T1666], altering the cloud resource hierarchy to bypass security controls. The malicious backdoor, deployed via a compromised IoT device, utilized MQTT topics to receive commands [T1071.005], blending with legitimate IoT traffic, and was configured to redirect all outbound network traffic through compromised residential proxies [T1496.002] to hijack bandwidth and obscure exfiltration. Additional noise includes routine system updates and firewall alerts that were unrelated to the attack. The campaign demonstrates a sophisticated blend of on-premises and cloud-based techniques aimed at long-term persistence and data theft.",
+        "techniques_used": [
+            "T1204.001",
+            "T1078",
+            "T1134.003",
+            "T1666",
+            "T1071.005",
+            "T1496.002"
+        ]
+    }
+}

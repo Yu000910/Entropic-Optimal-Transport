@@ -1,0 +1,136 @@
+{
+    "report_id": "report_106",
+    "generated_at": "20251222_132827",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1059.005",
+        "T1559.003",
+        "T1480",
+        "T1027.001",
+        "T1552",
+        "T1497.002",
+        "T1010",
+        "T1021.001",
+        "T1021.003",
+        "T1039",
+        "T1568",
+        "T1561",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.004",
+        "T1059.005",
+        "T1559.003",
+        "T1480",
+        "T1027.001",
+        "T1552",
+        "T1497.002",
+        "T1010",
+        "T1021.001",
+        "T1021.003",
+        "T1039",
+        "T1568",
+        "T1561",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1566.004",
+        "T1497.002",
+        "T1552",
+        "T1589",
+        "T1059.005",
+        "T1489",
+        "T1021.001",
+        "T1568",
+        "T1010",
+        "T1021.003",
+        "T1561",
+        "T1480",
+        "T1559.003",
+        "T1027.001"
+    ],
+    "clean_text": "On March 15, 2024, ShadowPhantom initiated a campaign targeting a mid-sized bank, 'SecureTrust Financial', by conducting reconnaissance through publicly available sources to identify help desk staff. The actors then used spearphishing voice calls to social engineer help desk personnel into installing LogMeIn for purported system troubleshooting, which provided initial access. Once inside, they executed Visual Basic scripts to download and install a malicious downloader component while simultaneously abusing XPC services to escalate privileges from user to administrator levels. To evade detection, the malware employed execution guardrails by using Cloudflare geofencing to limit payload downloads and applied binary padding with null characters in its DLL payloads. The adversaries then searched for unsecured credentials stored on network appliances and performed user activity-based checks by scanning process memory for 'malware.exe' strings to identify sandbox environments. For discovery, they conducted application window discovery to report window names and used remote desktop protocol to establish RDP connections on non-standard ports like 28035 and 46892 for lateral movement, while also leveraging distributed component object model via Invoke-DCOM for remote COM execution. Data exfiltration involved extracting documents from network shared drives, and the malware utilized dynamic resolution to create resilient backdoor connections. In the final stages, the actors deployed a disk wipe payload through the ADMIN$ share to corrupt system files and stopped SQL services to ensure encryption of databases. System logs from SecureTrust's SIEM showed increased network traffic to external IPs, but no unusual login attempts were detected in the Active Directory logs during this period.",
+    "tagged_text": "On March 15, 2024, ShadowPhantom initiated a campaign targeting a mid-sized bank, 'SecureTrust Financial', by conducting reconnaissance through publicly available sources to identify help desk staff [T1589]. The actors then used spearphishing voice calls [T1566.004] to social engineer help desk personnel into installing LogMeIn for purported system troubleshooting, which provided initial access. Once inside, they executed Visual Basic scripts [T1059.005] to download and install a malicious downloader component while simultaneously abusing XPC services [T1559.003] to escalate privileges from user to administrator levels. To evade detection, the malware employed execution guardrails [T1480] by using Cloudflare geofencing to limit payload downloads and applied binary padding [T1027.001] with null characters in its DLL payloads. The adversaries then searched for unsecured credentials [T1552] stored on network appliances and performed user activity-based checks [T1497.002] by scanning process memory for 'malware.exe' strings to identify sandbox environments. For discovery, they conducted application window discovery [T1010] to report window names and used remote desktop protocol [T1021.001] to establish RDP connections on non-standard ports like 28035 and 46892 for lateral movement, while also leveraging distributed component object model [T1021.003] via Invoke-DCOM for remote COM execution. Data exfiltration involved extracting documents from network shared drives [T1039], and the malware utilized dynamic resolution [T1568] to create resilient backdoor connections. In the final stages, the actors deployed a disk wipe payload [T1561] through the ADMIN$ share to corrupt system files and stopped SQL services [T1489] to ensure encryption of databases. System logs from SecureTrust's SIEM showed increased network traffic to external IPs, but no unusual login attempts were detected in the Active Directory logs during this period.",
+    "sentence_annotations": [
+        {
+            "sentence": "On March 15, 2024, ShadowPhantom initiated a campaign targeting a mid-sized bank, 'SecureTrust Financial', by conducting reconnaissance through publicly available sources to identify help desk staff.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "To evade detection, the malware employed execution guardrails by using Cloudflare geofencing to limit payload downloads and applied binary padding [T1027.",
+            "technique_id": "T1480",
+            "technique_name": "Execution Guardrails"
+        },
+        {
+            "sentence": "The adversaries then searched for unsecured credentials stored on network appliances and performed user activity-based checks [T1497.",
+            "technique_id": "T1552",
+            "technique_name": "Unsecured Credentials"
+        },
+        {
+            "sentence": "For discovery, they conducted application window discovery to report window names and used remote desktop protocol [T1021.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        },
+        {
+            "sentence": "Data exfiltration involved extracting documents from network shared drives, and the malware utilized dynamic resolution to create resilient backdoor connections.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "Data exfiltration involved extracting documents from network shared drives, and the malware utilized dynamic resolution to create resilient backdoor connections.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "In the final stages, the actors deployed a disk wipe payload through the ADMIN$ share to corrupt system files and stopped SQL services to ensure encryption of databases.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        },
+        {
+            "sentence": "In the final stages, the actors deployed a disk wipe payload through the ADMIN$ share to corrupt system files and stopped SQL services to ensure encryption of databases.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowPhantom' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'ShadowPhantom' against financial institutions, leveraging social engineering, privilege escalation, and lateral movement to exfiltrate sensitive data and deploy destructive payloads. Blue teams should review logs for unusual RDP connections and monitor for VBS script execution.",
+        "full_report_text": "On March 15, 2024, ShadowPhantom initiated a campaign targeting a mid-sized bank, 'SecureTrust Financial', by conducting reconnaissance through publicly available sources to identify help desk staff [T1589]. The actors then used spearphishing voice calls [T1566.004] to social engineer help desk personnel into installing LogMeIn for purported system troubleshooting, which provided initial access. Once inside, they executed Visual Basic scripts [T1059.005] to download and install a malicious downloader component while simultaneously abusing XPC services [T1559.003] to escalate privileges from user to administrator levels. To evade detection, the malware employed execution guardrails [T1480] by using Cloudflare geofencing to limit payload downloads and applied binary padding [T1027.001] with null characters in its DLL payloads. The adversaries then searched for unsecured credentials [T1552] stored on network appliances and performed user activity-based checks [T1497.002] by scanning process memory for 'malware.exe' strings to identify sandbox environments. For discovery, they conducted application window discovery [T1010] to report window names and used remote desktop protocol [T1021.001] to establish RDP connections on non-standard ports like 28035 and 46892 for lateral movement, while also leveraging distributed component object model [T1021.003] via Invoke-DCOM for remote COM execution. Data exfiltration involved extracting documents from network shared drives [T1039], and the malware utilized dynamic resolution [T1568] to create resilient backdoor connections. In the final stages, the actors deployed a disk wipe payload [T1561] through the ADMIN$ share to corrupt system files and stopped SQL services [T1489] to ensure encryption of databases. System logs from SecureTrust's SIEM showed increased network traffic to external IPs, but no unusual login attempts were detected in the Active Directory logs during this period.",
+        "techniques_used": [
+            "T1589",
+            "T1566.004",
+            "T1059.005",
+            "T1559.003",
+            "T1480",
+            "T1027.001",
+            "T1552",
+            "T1497.002",
+            "T1010",
+            "T1021.001",
+            "T1021.003",
+            "T1039",
+            "T1568",
+            "T1561",
+            "T1489"
+        ]
+    }
+}

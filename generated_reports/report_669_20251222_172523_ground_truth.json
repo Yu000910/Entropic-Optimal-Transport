@@ -1,0 +1,71 @@
+{
+    "report_id": "report_669",
+    "generated_at": "20251222_172523",
+    "scenario_target_ids": [
+        "T1078",
+        "T1659",
+        "T1059.002",
+        "T1574.010",
+        "T1550.004",
+        "T1102.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078",
+        "T1059.002",
+        "T1659",
+        "T1574.010",
+        "T1550.004",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1574.010",
+        "T1102.001",
+        "T1589",
+        "T1550.004",
+        "T1659",
+        "T1078",
+        "T1059.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs). APT-99, a fictional advanced persistent threat group, has been active in targeting MSPs and client networks. Initial analysis of system logs from a compromised MSP server, 'MSP-SRV-01', shows unusual authentication attempts from IP address 192.168.1.100 at 03:45 UTC on 2023-10-05, though these were initially dismissed as false positives. The actors likely conduct reconnaissance to identify valid accounts, including those shared between MSPs and clients, which they then exploit to gain initial access. For example, they used a compromised admin account 'svc_mspadmin' to authenticate via RDP to a client's file server, 'CLIENT-FS-01', bypassing standard security controls. Once inside, the adversary employed AppleScript to execute osascript commands that enumerate running processes and system information, such as listing all active applications and checking for installed security software, while simultaneously injecting malicious encryption modules into network file transfer protocols like SMB and FTP to disrupt data integrity. System logs from 'CLIENT-FS-01' recorded multiple failed file access attempts at 04:20 UTC, but these were not flagged due to misconfigured alert thresholds. To establish persistence, APT-99 used 'sc query' to locate services with weak file permissions, identifying vulnerabilities for DLL hijacking attacks, and modified registry keys to ensure malicious DLLs load on system startup. Additionally, the actors collected authentication tokens, including web session cookies from browser local storage, to circumvent multi-factor authentication and maintain access, and employed a dead drop resolver to access malicious payloads hosted on compromised websites, downloading additional tools like keyloggers and backdoors. For instance, they downloaded a payload from 'malicious-drop[.]com' using PowerShell, evading network monitoring. Background on the targeted MSP indicates it provides IT services to small businesses in the healthcare sector, but this information is not directly related to the attack chain. Blue teams should monitor for these behaviors, such as unusual account usage, AppleScript executions, and network protocol anomalies, to enhance detection capabilities.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs). APT-99, a fictional advanced persistent threat group, has been active in targeting MSPs and client networks. Initial analysis of system logs from a compromised MSP server, 'MSP-SRV-01', shows unusual authentication attempts from IP address 192.168.1.100 at 03:45 UTC on 2023-10-05, though these were initially dismissed as false positives. The actors likely conduct reconnaissance [T1589] to identify valid accounts, including those shared between MSPs and clients, which they then exploit to gain initial access [T1078]. For example, they used a compromised admin account 'svc_mspadmin' to authenticate via RDP to a client's file server, 'CLIENT-FS-01', bypassing standard security controls. Once inside, the adversary employed AppleScript [T1059.002] to execute osascript commands that enumerate running processes and system information, such as listing all active applications and checking for installed security software, while simultaneously injecting malicious encryption modules into network file transfer protocols like SMB and FTP to disrupt data integrity [T1659]. System logs from 'CLIENT-FS-01' recorded multiple failed file access attempts at 04:20 UTC, but these were not flagged due to misconfigured alert thresholds. To establish persistence, APT-99 used 'sc query' to locate services with weak file permissions, identifying vulnerabilities for DLL hijacking attacks [T1574.010], and modified registry keys to ensure malicious DLLs load on system startup. Additionally, the actors collected authentication tokens, including web session cookies from browser local storage, to circumvent multi-factor authentication and maintain access [T1550.004], and employed a dead drop resolver to access malicious payloads hosted on compromised websites, downloading additional tools like keyloggers and backdoors [T1102.001]. For instance, they downloaded a payload from 'malicious-drop[.]com' using PowerShell, evading network monitoring. Background on the targeted MSP indicates it provides IT services to small businesses in the healthcare sector, but this information is not directly related to the attack chain. Blue teams should monitor for these behaviors, such as unusual account usage, AppleScript executions, and network protocol anomalies, to enhance detection capabilities.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify valid accounts, including those shared between MSPs and clients, which they then exploit to gain initial access.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify valid accounts, including those shared between MSPs and clients, which they then exploit to gain initial access.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "002] to execute osascript commands that enumerate running processes and system information, such as listing all active applications and checking for installed security software, while simultaneously injecting malicious encryption modules into network file transfer protocols like SMB and FTP to disrupt data integrity.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Managed Service Providers",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated APT-99, targeting Managed Service Providers (MSPs) and their clients. APT-99 leverages compromised valid accounts to move between environments, injects malicious content into network protocols, and uses various techniques for persistence and data exfiltration. Blue teams should review this report for training on detecting and mitigating such multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs). APT-99, a fictional advanced persistent threat group, has been active in targeting MSPs and client networks. Initial analysis of system logs from a compromised MSP server, 'MSP-SRV-01', shows unusual authentication attempts from IP address 192.168.1.100 at 03:45 UTC on 2023-10-05, though these were initially dismissed as false positives. The actors likely conduct reconnaissance [T1589] to identify valid accounts, including those shared between MSPs and clients, which they then exploit to gain initial access [T1078]. For example, they used a compromised admin account 'svc_mspadmin' to authenticate via RDP to a client's file server, 'CLIENT-FS-01', bypassing standard security controls. Once inside, the adversary employed AppleScript [T1059.002] to execute osascript commands that enumerate running processes and system information, such as listing all active applications and checking for installed security software, while simultaneously injecting malicious encryption modules into network file transfer protocols like SMB and FTP to disrupt data integrity [T1659]. System logs from 'CLIENT-FS-01' recorded multiple failed file access attempts at 04:20 UTC, but these were not flagged due to misconfigured alert thresholds. To establish persistence, APT-99 used 'sc query' to locate services with weak file permissions, identifying vulnerabilities for DLL hijacking attacks [T1574.010], and modified registry keys to ensure malicious DLLs load on system startup. Additionally, the actors collected authentication tokens, including web session cookies from browser local storage, to circumvent multi-factor authentication and maintain access [T1550.004], and employed a dead drop resolver to access malicious payloads hosted on compromised websites, downloading additional tools like keyloggers and backdoors [T1102.001]. For instance, they downloaded a payload from 'malicious-drop[.]com' using PowerShell, evading network monitoring. Background on the targeted MSP indicates it provides IT services to small businesses in the healthcare sector, but this information is not directly related to the attack chain. Blue teams should monitor for these behaviors, such as unusual account usage, AppleScript executions, and network protocol anomalies, to enhance detection capabilities.",
+        "techniques_used": [
+            "T1589",
+            "T1078",
+            "T1059.002",
+            "T1659",
+            "T1574.010",
+            "T1550.004",
+            "T1102.001"
+        ]
+    }
+}

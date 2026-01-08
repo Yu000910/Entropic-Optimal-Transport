@@ -1,0 +1,88 @@
+{
+    "report_id": "report_542",
+    "generated_at": "20251222_163323",
+    "scenario_target_ids": [
+        "T1598",
+        "T1595.003",
+        "T1586.002",
+        "T1566.002",
+        "T1053.003",
+        "T1056",
+        "T1556.007",
+        "T1602.002",
+        "T1071.004",
+        "T1205"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1598",
+        "T1586.002",
+        "T1566.002",
+        "T1595.003",
+        "T1053.003",
+        "T1056",
+        "T1556.007",
+        "T1602.002",
+        "T1071.004",
+        "T1205"
+    ],
+    "actual_found_ids": [
+        "T1598",
+        "T1595.003",
+        "T1205",
+        "T1566.002",
+        "T1602.002",
+        "T1056",
+        "T1053.003",
+        "T1071.004",
+        "T1586.002",
+        "T1556.007"
+    ],
+    "clean_text": "Cerulean Serpent, a fictional APT group created for training purposes, initiated this campaign by conducting targeted reconnaissance against Veridian Trust Corp., a mid-sized financial institution with offices in New York and London, to gather employee email addresses and organizational details through phishing interactions. The actors then leveraged a compromised email account from an earlier, unrelated breach to send spearphishing emails containing malicious links to key personnel, including IT administrators and senior executives, which directed victims to a compromised website hosting a fake login portal designed to capture credentials. Upon successful credential theft, the actors used DirBuster to perform wordlist scanning on the company's external web servers, identifying vulnerable plugin directories such as '/wp-content/plugins/old-backup/' with known security flaws. They exploited these vulnerabilities to gain initial access, deploying a backdoor that employed PowerShell to modify the /var/spool/cron/crontabs/root file, scheduling a keylogger to execute every 5 minutes and capture sensitive user input, including passwords and financial data. To maintain persistence and expand access, the actors used AADInternals to inject a malicious DLL (PTASpy) into the AzureADConnectAuthenticationAgentService, backdooring Azure AD Pass-Through Authentication and enabling unauthorized access to hybrid identity resources. Additionally, they executed SNMP queries against network devices to dump configuration data, collecting interface status and network topology information for lateral movement planning. The backdoor communicated with command-and-control servers over the DNS protocol, embedding data in DNS queries to evade detection, while using libpcap to monitor network traffic patterns and only activate when specific signals, such as low network usage during off-hours, were detected. Throughout the campaign, system logs from Veridian Trust Corp. showed normal authentication events and routine database backups, with no immediate alerts triggered, highlighting the stealthy nature of the simulated attack. The company's security team, during a scheduled penetration test, identified anomalous DNS queries and cron job modifications, leading to the discovery and containment of the activity.",
+    "tagged_text": "Cerulean Serpent, a fictional APT group created for training purposes, initiated this campaign by conducting targeted reconnaissance against Veridian Trust Corp., a mid-sized financial institution with offices in New York and London, to gather employee email addresses and organizational details through phishing interactions [T1598]. The actors then leveraged a compromised email account from an earlier, unrelated breach to send spearphishing emails containing malicious links to key personnel, including IT administrators and senior executives [T1586.002], which directed victims to a compromised website hosting a fake login portal designed to capture credentials [T1566.002]. Upon successful credential theft, the actors used DirBuster to perform wordlist scanning on the company's external web servers, identifying vulnerable plugin directories such as '/wp-content/plugins/old-backup/' with known security flaws [T1595.003]. They exploited these vulnerabilities to gain initial access, deploying a backdoor that employed PowerShell to modify the /var/spool/cron/crontabs/root file, scheduling a keylogger to execute every 5 minutes and capture sensitive user input, including passwords and financial data [T1053.003] [T1056]. To maintain persistence and expand access, the actors used AADInternals to inject a malicious DLL (PTASpy) into the AzureADConnectAuthenticationAgentService, backdooring Azure AD Pass-Through Authentication and enabling unauthorized access to hybrid identity resources [T1556.007]. Additionally, they executed SNMP queries against network devices to dump configuration data, collecting interface status and network topology information for lateral movement planning [T1602.002]. The backdoor communicated with command-and-control servers over the DNS protocol, embedding data in DNS queries to evade detection [T1071.004], while using libpcap to monitor network traffic patterns and only activate when specific signals, such as low network usage during off-hours, were detected [T1205]. Throughout the campaign, system logs from Veridian Trust Corp. showed normal authentication events and routine database backups, with no immediate alerts triggered, highlighting the stealthy nature of the simulated attack. The company's security team, during a scheduled penetration test, identified anomalous DNS queries and cron job modifications, leading to the discovery and containment of the activity.",
+    "sentence_annotations": [
+        {
+            "sentence": ", a mid-sized financial institution with offices in New York and London, to gather employee email addresses and organizational details through phishing interactions.",
+            "technique_id": "T1598",
+            "technique_name": "Phishing for Information"
+        },
+        {
+            "sentence": "003].",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "004], while using libpcap to monitor network traffic patterns and only activate when specific signals, such as low network usage during off-hours, were detected.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor 'Cerulean Serpent'",
+        "summary": "This advisory details a simulated, educational campaign by the fictional threat actor Cerulean Serpent, targeting a hypothetical financial services firm, 'Veridian Trust Corp.', to train blue teams on advanced persistent threat (APT) tactics. The campaign involves initial reconnaissance, phishing, exploitation, persistence, and command-and-control activities, as observed in a controlled training environment from June to August 2024.",
+        "full_report_text": "Cerulean Serpent, a fictional APT group created for training purposes, initiated this campaign by conducting targeted reconnaissance against Veridian Trust Corp., a mid-sized financial institution with offices in New York and London, to gather employee email addresses and organizational details through phishing interactions [T1598]. The actors then leveraged a compromised email account from an earlier, unrelated breach to send spearphishing emails containing malicious links to key personnel, including IT administrators and senior executives [T1586.002], which directed victims to a compromised website hosting a fake login portal designed to capture credentials [T1566.002]. Upon successful credential theft, the actors used DirBuster to perform wordlist scanning on the company's external web servers, identifying vulnerable plugin directories such as '/wp-content/plugins/old-backup/' with known security flaws [T1595.003]. They exploited these vulnerabilities to gain initial access, deploying a backdoor that employed PowerShell to modify the /var/spool/cron/crontabs/root file, scheduling a keylogger to execute every 5 minutes and capture sensitive user input, including passwords and financial data [T1053.003] [T1056]. To maintain persistence and expand access, the actors used AADInternals to inject a malicious DLL (PTASpy) into the AzureADConnectAuthenticationAgentService, backdooring Azure AD Pass-Through Authentication and enabling unauthorized access to hybrid identity resources [T1556.007]. Additionally, they executed SNMP queries against network devices to dump configuration data, collecting interface status and network topology information for lateral movement planning [T1602.002]. The backdoor communicated with command-and-control servers over the DNS protocol, embedding data in DNS queries to evade detection [T1071.004], while using libpcap to monitor network traffic patterns and only activate when specific signals, such as low network usage during off-hours, were detected [T1205]. Throughout the campaign, system logs from Veridian Trust Corp. showed normal authentication events and routine database backups, with no immediate alerts triggered, highlighting the stealthy nature of the simulated attack. The company's security team, during a scheduled penetration test, identified anomalous DNS queries and cron job modifications, leading to the discovery and containment of the activity.",
+        "techniques_used": [
+            "T1598",
+            "T1586.002",
+            "T1566.002",
+            "T1595.003",
+            "T1053.003",
+            "T1056",
+            "T1556.007",
+            "T1602.002",
+            "T1071.004",
+            "T1205"
+        ]
+    }
+}

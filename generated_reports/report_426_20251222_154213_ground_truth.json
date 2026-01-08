@@ -1,0 +1,78 @@
+{
+    "report_id": "report_426",
+    "generated_at": "20251222_154213",
+    "scenario_target_ids": [
+        "T1592",
+        "T1195.002",
+        "T1059.003",
+        "T1137.004",
+        "T1548.004",
+        "T1548.006",
+        "T1110.004",
+        "T1573.002",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592",
+        "T1195.002",
+        "T1059.003",
+        "T1137.004",
+        "T1548.004",
+        "T1548.006",
+        "T1110.004",
+        "T1573.002",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1592",
+        "T1195.002",
+        "T1110.004",
+        "T1059.003",
+        "T1548.004",
+        "T1489",
+        "T1137.004",
+        "T1548.006",
+        "T1573.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. In this simulated campaign, the actors likely conduct reconnaissance by injecting malicious JavaScript into vulnerable web applications to gather victim host information, such as operating system details and installed software. Subsequently, they compromised the software supply chain by modifying the source code of an open-source library used in enterprise applications to include a backdoor before compilation, which was then distributed via legitimate update channels. Upon execution, the malware utilized the Windows Command Shell to download additional payloads and modify system configurations while simultaneously establishing persistence through Outlook by updating registry values to force the loading of malicious HTML files each time Outlook launches. For privilege escalation, the attackers exploited world-writable files in the /tmp directory on Linux systems to plant scripts that run with elevated privileges and manipulated the TCC database on macOS to authorize accessibility access for a keylogger. To gain initial access, they performed credential stuffing attacks by querying SSH services on multiple servers using recycled credentials from a breach dump file, and once inside, they employed asymmetric cryptography with hardcoded RSA keys to encrypt command and control traffic. Finally, to disrupt operations, the malware terminated critical services based on a hardcoded list of processes, as observed in logs showing unexpected service stoppages across several systems. Additional system logs indicate routine network traffic and user logins unrelated to the attack, such as daily backup processes and employee access to internal portals, which should be filtered during analysis to focus on malicious indicators.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. In this simulated campaign, the actors likely conduct reconnaissance by injecting malicious JavaScript into vulnerable web applications to gather victim host information [T1592], such as operating system details and installed software. Subsequently, they compromised the software supply chain by modifying the source code of an open-source library used in enterprise applications to include a backdoor before compilation [T1195.002], which was then distributed via legitimate update channels. Upon execution, the malware utilized the Windows Command Shell [T1059.003] to download additional payloads and modify system configurations while simultaneously establishing persistence through Outlook by updating registry values to force the loading of malicious HTML files each time Outlook launches [T1137.004]. For privilege escalation, the attackers exploited world-writable files in the /tmp directory on Linux systems to plant scripts that run with elevated privileges [T1548.004] and manipulated the TCC database on macOS to authorize accessibility access for a keylogger [T1548.006]. To gain initial access, they performed credential stuffing attacks by querying SSH services on multiple servers using recycled credentials from a breach dump file [T1110.004], and once inside, they employed asymmetric cryptography with hardcoded RSA keys to encrypt command and control traffic [T1573.002]. Finally, to disrupt operations, the malware terminated critical services based on a hardcoded list of processes [T1489], as observed in logs showing unexpected service stoppages across several systems. Additional system logs indicate routine network traffic and user logins unrelated to the attack, such as daily backup processes and employee access to internal portals, which should be filtered during analysis to focus on malicious indicators.",
+    "sentence_annotations": [
+        {
+            "sentence": "In this simulated campaign, the actors likely conduct reconnaissance by injecting malicious JavaScript into vulnerable web applications to gather victim host information, such as operating system details and installed software.",
+            "technique_id": "T1592",
+            "technique_name": "Gather Victim Host Information"
+        },
+        {
+            "sentence": "Finally, to disrupt operations, the malware terminated critical services based on a hardcoded list of processes, as observed in logs showing unexpected service stoppages across several systems.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentVector' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'SilentVector', which targets critical infrastructure sectors through a multi-stage attack involving supply chain compromise, credential exploitation, and persistence mechanisms. The campaign leverages modified open-source libraries, command-line tools, and registry manipulations to maintain access and disrupt services, as observed in recent training exercises.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. In this simulated campaign, the actors likely conduct reconnaissance by injecting malicious JavaScript into vulnerable web applications to gather victim host information [T1592], such as operating system details and installed software. Subsequently, they compromised the software supply chain by modifying the source code of an open-source library used in enterprise applications to include a backdoor before compilation [T1195.002], which was then distributed via legitimate update channels. Upon execution, the malware utilized the Windows Command Shell [T1059.003] to download additional payloads and modify system configurations while simultaneously establishing persistence through Outlook by updating registry values to force the loading of malicious HTML files each time Outlook launches [T1137.004]. For privilege escalation, the attackers exploited world-writable files in the /tmp directory on Linux systems to plant scripts that run with elevated privileges [T1548.004] and manipulated the TCC database on macOS to authorize accessibility access for a keylogger [T1548.006]. To gain initial access, they performed credential stuffing attacks by querying SSH services on multiple servers using recycled credentials from a breach dump file [T1110.004], and once inside, they employed asymmetric cryptography with hardcoded RSA keys to encrypt command and control traffic [T1573.002]. Finally, to disrupt operations, the malware terminated critical services based on a hardcoded list of processes [T1489], as observed in logs showing unexpected service stoppages across several systems. Additional system logs indicate routine network traffic and user logins unrelated to the attack, such as daily backup processes and employee access to internal portals, which should be filtered during analysis to focus on malicious indicators.",
+        "techniques_used": [
+            "T1592",
+            "T1195.002",
+            "T1059.003",
+            "T1137.004",
+            "T1548.004",
+            "T1548.006",
+            "T1110.004",
+            "T1573.002",
+            "T1489"
+        ]
+    }
+}

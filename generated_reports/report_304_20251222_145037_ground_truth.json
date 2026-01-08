@@ -1,0 +1,168 @@
+{
+    "report_id": "report_304",
+    "generated_at": "20251222_145037",
+    "scenario_target_ids": [
+        "T1591.002",
+        "T1596.003",
+        "T1598",
+        "T1608.004",
+        "T1608",
+        "T1078.004",
+        "T1559",
+        "T1072",
+        "T1505",
+        "T1547.014",
+        "T1010",
+        "T1615",
+        "T1560.001",
+        "T1113",
+        "T1102",
+        "T1572",
+        "T1537",
+        "T1499.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591.002",
+        "T1596.003",
+        "T1598",
+        "T1608.004",
+        "T1608",
+        "T1078.004",
+        "T1559",
+        "T1072",
+        "T1505",
+        "T1547.014",
+        "T1010",
+        "T1615",
+        "T1560.001",
+        "T1113",
+        "T1102",
+        "T1572",
+        "T1537",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1572",
+        "T1598",
+        "T1537",
+        "T1591.002",
+        "T1113",
+        "T1608",
+        "T1596.003",
+        "T1559",
+        "T1615",
+        "T1560.001",
+        "T1499.004",
+        "T1078.004",
+        "T1072",
+        "T1010",
+        "T1547.014",
+        "T1505",
+        "T1608.004",
+        "T1102"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. Crimson Shadow actors initiated reconnaissance by querying the victim's corporate website to extract client relationship information and simultaneously searched CT log aggregators to discover newly issued digital certificates for the target's web applications. Following this, they conducted phishing for information by sending fake password reset emails, which security analysts collected for investigation. The actors then staged capabilities using controlled servers to validate tracking pixels sent to phishing victims, while deploying a drive-by target by writing malicious.js to the website's scripts directory to execute payloads upon user visits. For initial access, they abused Azure Managed Identities to maintain persistent access to cloud key vaults, leveraging inter-process communication to pipe command output to targeted processes. During lateral movement, the threat actors used PDQ Deploy as a software deployment tool to distribute AvosLocker and other tools across the network, and installed a rogue DLL as a server software component on the web server. Persistence was achieved by writing a registry key under HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components to run on each user login. For discovery, the malware performed application window discovery to identify and close windows on controlled systems, and executed 'gpresult /z' for group policy discovery to display all available Group Policy information. Prior to exfiltration, data was archived via utility using WinZip, and screen capture capabilities were employed to take JPEG screenshots. Exfiltration involved using web services like Dropbox, Amazon S3, and Google Drive to host malicious downloads, while protocol tunneling abused DoH protocols to conceal DNS queries. A script utilized the Dropbox API to transfer data to cloud accounts, and a zero-day vulnerability in the database management system was exploited for application or system exploitation to trigger memory leaks and instability. Logs from the victim's SIEM showed increased network traffic to external IPs, but no immediate alerts were triggered due to encrypted payloads. The company, a mid-sized financial firm, reported unusual system slowdowns during peak hours, which were initially attributed to routine maintenance.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. Crimson Shadow actors initiated reconnaissance by querying the victim's corporate website to extract client relationship information [T1591.002] and simultaneously searched CT log aggregators to discover newly issued digital certificates for the target's web applications [T1596.003]. Following this, they conducted phishing for information [T1598] by sending fake password reset emails, which security analysts collected for investigation. The actors then staged capabilities [T1608] using controlled servers to validate tracking pixels sent to phishing victims, while deploying a drive-by target [T1608.004] by writing malicious.js to the website's scripts directory to execute payloads upon user visits. For initial access, they abused Azure Managed Identities to maintain persistent access to cloud key vaults [T1078.004], leveraging inter-process communication [T1559] to pipe command output to targeted processes. During lateral movement, the threat actors used PDQ Deploy as a software deployment tool [T1072] to distribute AvosLocker and other tools across the network, and installed a rogue DLL as a server software component [T1505] on the web server. Persistence was achieved by writing a registry key under HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components to run on each user login [T1547.014]. For discovery, the malware performed application window discovery [T1010] to identify and close windows on controlled systems, and executed 'gpresult /z' for group policy discovery [T1615] to display all available Group Policy information. Prior to exfiltration, data was archived via utility [T1560.001] using WinZip, and screen capture [T1113] capabilities were employed to take JPEG screenshots. Exfiltration involved using web services [T1102] like Dropbox, Amazon S3, and Google Drive to host malicious downloads, while protocol tunneling [T1572] abused DoH protocols to conceal DNS queries. A script utilized the Dropbox API to transfer data to cloud accounts [T1537], and a zero-day vulnerability in the database management system was exploited for application or system exploitation [T1499.004] to trigger memory leaks and instability. Logs from the victim's SIEM showed increased network traffic to external IPs, but no immediate alerts were triggered due to encrypted payloads. The company, a mid-sized financial firm, reported unusual system slowdowns during peak hours, which were initially attributed to routine maintenance.",
+    "sentence_annotations": [
+        {
+            "sentence": "Following this, they conducted phishing for information by sending fake password reset emails, which security analysts collected for investigation.",
+            "technique_id": "T1598",
+            "technique_name": "Phishing for Information"
+        },
+        {
+            "sentence": "The actors then staged capabilities using controlled servers to validate tracking pixels sent to phishing victims, while deploying a drive-by target [T1608.",
+            "technique_id": "T1608",
+            "technique_name": "Stage Capabilities"
+        },
+        {
+            "sentence": "004], leveraging inter-process communication to pipe command output to targeted processes.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "During lateral movement, the threat actors used PDQ Deploy as a software deployment tool to distribute AvosLocker and other tools across the network, and installed a rogue DLL as a server software component on the web server.",
+            "technique_id": "T1072",
+            "technique_name": "Software Deployment Tools"
+        },
+        {
+            "sentence": "During lateral movement, the threat actors used PDQ Deploy as a software deployment tool to distribute AvosLocker and other tools across the network, and installed a rogue DLL as a server software component on the web server.",
+            "technique_id": "T1505",
+            "technique_name": "Server Software Component"
+        },
+        {
+            "sentence": "For discovery, the malware performed application window discovery to identify and close windows on controlled systems, and executed 'gpresult /z' for group policy discovery to display all available Group Policy information.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        },
+        {
+            "sentence": "For discovery, the malware performed application window discovery to identify and close windows on controlled systems, and executed 'gpresult /z' for group policy discovery to display all available Group Policy information.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "001] using WinZip, and screen capture capabilities were employed to take JPEG screenshots.",
+            "technique_id": "T1113",
+            "technique_name": "Screen Capture"
+        },
+        {
+            "sentence": "Exfiltration involved using web services like Dropbox, Amazon S3, and Google Drive to host malicious downloads, while protocol tunneling abused DoH protocols to conceal DNS queries.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "Exfiltration involved using web services like Dropbox, Amazon S3, and Google Drive to host malicious downloads, while protocol tunneling abused DoH protocols to conceal DNS queries.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "A script utilized the Dropbox API to transfer data to cloud accounts, and a zero-day vulnerability in the database management system was exploited for application or system exploitation [T1499.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Corporate Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting corporate networks through a multi-phase attack leveraging reconnaissance, phishing, and cloud exploitation. The campaign demonstrates sophisticated techniques for initial access, persistence, lateral movement, and data exfiltration, intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. Crimson Shadow actors initiated reconnaissance by querying the victim's corporate website to extract client relationship information [T1591.002] and simultaneously searched CT log aggregators to discover newly issued digital certificates for the target's web applications [T1596.003]. Following this, they conducted phishing for information [T1598] by sending fake password reset emails, which security analysts collected for investigation. The actors then staged capabilities [T1608] using controlled servers to validate tracking pixels sent to phishing victims, while deploying a drive-by target [T1608.004] by writing malicious.js to the website's scripts directory to execute payloads upon user visits. For initial access, they abused Azure Managed Identities to maintain persistent access to cloud key vaults [T1078.004], leveraging inter-process communication [T1559] to pipe command output to targeted processes. During lateral movement, the threat actors used PDQ Deploy as a software deployment tool [T1072] to distribute AvosLocker and other tools across the network, and installed a rogue DLL as a server software component [T1505] on the web server. Persistence was achieved by writing a registry key under HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components to run on each user login [T1547.014]. For discovery, the malware performed application window discovery [T1010] to identify and close windows on controlled systems, and executed 'gpresult /z' for group policy discovery [T1615] to display all available Group Policy information. Prior to exfiltration, data was archived via utility [T1560.001] using WinZip, and screen capture [T1113] capabilities were employed to take JPEG screenshots. Exfiltration involved using web services [T1102] like Dropbox, Amazon S3, and Google Drive to host malicious downloads, while protocol tunneling [T1572] abused DoH protocols to conceal DNS queries. A script utilized the Dropbox API to transfer data to cloud accounts [T1537], and a zero-day vulnerability in the database management system was exploited for application or system exploitation [T1499.004] to trigger memory leaks and instability. Logs from the victim's SIEM showed increased network traffic to external IPs, but no immediate alerts were triggered due to encrypted payloads. The company, a mid-sized financial firm, reported unusual system slowdowns during peak hours, which were initially attributed to routine maintenance.",
+        "techniques_used": [
+            "T1591.002",
+            "T1596.003",
+            "T1598",
+            "T1608.004",
+            "T1608",
+            "T1078.004",
+            "T1559",
+            "T1072",
+            "T1505",
+            "T1547.014",
+            "T1010",
+            "T1615",
+            "T1560.001",
+            "T1113",
+            "T1102",
+            "T1572",
+            "T1537",
+            "T1499.004"
+        ]
+    }
+}

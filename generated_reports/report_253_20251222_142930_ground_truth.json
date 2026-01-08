@@ -1,0 +1,88 @@
+{
+    "report_id": "report_253",
+    "generated_at": "20251222_142930",
+    "scenario_target_ids": [
+        "T1078.001",
+        "T1648",
+        "T1112",
+        "T1553.002",
+        "T1134.005",
+        "T1550.004",
+        "T1125",
+        "T1102.001",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078.001",
+        "T1648",
+        "T1112",
+        "T1553.002",
+        "T1134.005",
+        "T1550.004",
+        "T1125",
+        "T1102.001",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1029",
+        "T1648",
+        "T1112",
+        "T1550.004",
+        "T1125",
+        "T1553.002",
+        "T1078.001",
+        "T1134.005"
+    ],
+    "clean_text": "On January 15, 2024, the fictional organization 'TechGlobal Corp' reported anomalous activity in its AWS and on-premises systems. Background investigation revealed that TechGlobal Corp, a mid-sized tech firm with 500 employees, had recently migrated part of its infrastructure to AWS, including Lambda functions, while maintaining a Windows Server 2019 domain controller for legacy applications. Initial logs from the domain controller showed multiple failed login attempts from an external IP address, followed by a successful login using the built-in Administrator account with a weak default password, which the actors exploited to compromise the domain controller. Once inside, the actors deployed a rogue Lambda function that executed arbitrary Python code to establish a reverse shell, enabling serverless execution for persistent access. They then used PowerShell to modify registry keys in HKEY_LOCAL_MACHINE\\Software\\Classes\\scConfig, altering system configurations to maintain persistence. To evade detection, the actors employed ad hoc Apple Developer code signing certificates to sign malicious payloads, mimicking legitimate software. For privilege escalation, they exploited the SID-History attribute to grant Domain Admin privileges to a compromised user account, allowing lateral movement across the network. The actors also imported cookie files from the victim's browser profile to hijack authenticated web sessions, facilitating access to sensitive internal applications. In a separate incident, malware activated the victim's webcam to capture video content, though this was detected and blocked by endpoint security software. For command and control, the backdoor wrote updated endpoints to dead_drop_resolver.txt after initial compromise, using dead drop resolvers to dynamically adjust C2 infrastructure. Data exfiltration occurred via scheduled transfers, with ShadowPad sending encrypted data back to the C2 server every 8 hours, mimicking normal network traffic. Additional logs showed routine system updates and user activity unrelated to the attack, such as failed printer jobs and scheduled backups, which were not tagged as malicious. The actors' use of default accounts and serverless execution highlights the importance of securing cloud and on-premises environments against blended threats.",
+    "tagged_text": "On January 15, 2024, the fictional organization 'TechGlobal Corp' reported anomalous activity in its AWS and on-premises systems. Background investigation revealed that TechGlobal Corp, a mid-sized tech firm with 500 employees, had recently migrated part of its infrastructure to AWS, including Lambda functions, while maintaining a Windows Server 2019 domain controller for legacy applications. Initial logs from the domain controller showed multiple failed login attempts from an external IP address, followed by a successful login using the built-in Administrator account with a weak default password, which the actors exploited to compromise the domain controller [T1078.001]. Once inside, the actors deployed a rogue Lambda function that executed arbitrary Python code to establish a reverse shell, enabling serverless execution for persistent access [T1648]. They then used PowerShell to modify registry keys in HKEY_LOCAL_MACHINE\\Software\\Classes\\scConfig, altering system configurations to maintain persistence [T1112]. To evade detection, the actors employed ad hoc Apple Developer code signing certificates to sign malicious payloads, mimicking legitimate software [T1553.002]. For privilege escalation, they exploited the SID-History attribute to grant Domain Admin privileges to a compromised user account, allowing lateral movement across the network [T1134.005]. The actors also imported cookie files from the victim's browser profile to hijack authenticated web sessions, facilitating access to sensitive internal applications [T1550.004]. In a separate incident, malware activated the victim's webcam to capture video content, though this was detected and blocked by endpoint security software [T1125]. For command and control, the backdoor wrote updated endpoints to dead_drop_resolver.txt after initial compromise, using dead drop resolvers to dynamically adjust C2 infrastructure [T1102.001]. Data exfiltration occurred via scheduled transfers, with ShadowPad sending encrypted data back to the C2 server every 8 hours, mimicking normal network traffic [T1029]. Additional logs showed routine system updates and user activity unrelated to the attack, such as failed printer jobs and scheduled backups, which were not tagged as malicious. The actors' use of default accounts and serverless execution highlights the importance of securing cloud and on-premises environments against blended threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, the actors deployed a rogue Lambda function that executed arbitrary Python code to establish a reverse shell, enabling serverless execution for persistent access.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "They then used PowerShell to modify registry keys in HKEY_LOCAL_MACHINE\\Software\\Classes\\scConfig, altering system configurations to maintain persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "In a separate incident, malware activated the victim's webcam to capture video content, though this was detected and blocked by endpoint security software.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        },
+        {
+            "sentence": "Data exfiltration occurred via scheduled transfers, with ShadowPad sending encrypted data back to the C2 server every 8 hours, mimicking normal network traffic.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Serpent' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Shadow Serpent,' which targets organizations with hybrid cloud and on-premises environments. The actors exploit weak default credentials to gain initial access, leverage serverless execution for persistence, and employ various techniques for privilege escalation, credential theft, and data exfiltration. This report is intended for blue team training to enhance detection and response capabilities against sophisticated multi-vector attacks.",
+        "full_report_text": "On January 15, 2024, the fictional organization 'TechGlobal Corp' reported anomalous activity in its AWS and on-premises systems. Background investigation revealed that TechGlobal Corp, a mid-sized tech firm with 500 employees, had recently migrated part of its infrastructure to AWS, including Lambda functions, while maintaining a Windows Server 2019 domain controller for legacy applications. Initial logs from the domain controller showed multiple failed login attempts from an external IP address, followed by a successful login using the built-in Administrator account with a weak default password, which the actors exploited to compromise the domain controller [T1078.001]. Once inside, the actors deployed a rogue Lambda function that executed arbitrary Python code to establish a reverse shell, enabling serverless execution for persistent access [T1648]. They then used PowerShell to modify registry keys in HKEY_LOCAL_MACHINE\\Software\\Classes\\scConfig, altering system configurations to maintain persistence [T1112]. To evade detection, the actors employed ad hoc Apple Developer code signing certificates to sign malicious payloads, mimicking legitimate software [T1553.002]. For privilege escalation, they exploited the SID-History attribute to grant Domain Admin privileges to a compromised user account, allowing lateral movement across the network [T1134.005]. The actors also imported cookie files from the victim's browser profile to hijack authenticated web sessions, facilitating access to sensitive internal applications [T1550.004]. In a separate incident, malware activated the victim's webcam to capture video content, though this was detected and blocked by endpoint security software [T1125]. For command and control, the backdoor wrote updated endpoints to dead_drop_resolver.txt after initial compromise, using dead drop resolvers to dynamically adjust C2 infrastructure [T1102.001]. Data exfiltration occurred via scheduled transfers, with ShadowPad sending encrypted data back to the C2 server every 8 hours, mimicking normal network traffic [T1029]. Additional logs showed routine system updates and user activity unrelated to the attack, such as failed printer jobs and scheduled backups, which were not tagged as malicious. The actors' use of default accounts and serverless execution highlights the importance of securing cloud and on-premises environments against blended threats.",
+        "techniques_used": [
+            "T1078.001",
+            "T1648",
+            "T1112",
+            "T1553.002",
+            "T1134.005",
+            "T1550.004",
+            "T1125",
+            "T1102.001",
+            "T1029"
+        ]
+    }
+}

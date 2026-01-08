@@ -1,0 +1,104 @@
+{
+    "report_id": "report_547",
+    "generated_at": "20251222_163537",
+    "scenario_target_ids": [
+        "T1608.004",
+        "T1078.004",
+        "T1059.006",
+        "T1546.010",
+        "T1546.017",
+        "T1218.004",
+        "T1574.010",
+        "T1119",
+        "T1573.001",
+        "T1001.003",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1608.004",
+        "T1059.006",
+        "T1218.004",
+        "T1112",
+        "T1546.010",
+        "T1546.017",
+        "T1574.010",
+        "T1078.004",
+        "T1573.001",
+        "T1001.003",
+        "T1119",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1546.017",
+        "T1218.004",
+        "T1574.010",
+        "T1001.003",
+        "T1052",
+        "T1112",
+        "T1589",
+        "T1546.010",
+        "T1573.001",
+        "T1078.004",
+        "T1119",
+        "T1059.006",
+        "T1608.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the threat actor group 'ShadowByte'. This report simulates a campaign that combines cloud and on-premise attacks for training purposes.\n\n**Attack Narrative:**\nInitial Access: The actors likely conducted reconnaissance to identify target organizations, then compromised a legitimate digital product website, modifying download links to point to trojanized software, enabling drive-by targeting. System logs from the victim's network firewall showed anomalous outbound traffic to unknown IP addresses during this phase, though this is unrelated noise.\n\nExecution: Upon user download, the malware employed Python scripts to execute payloads while simultaneously using InstallUtil to deploy additional executables and modify registry keys for persistence. Background: The targeted company, 'TechGlobal Inc.', is a mid-sized firm in the manufacturing sector with hybrid Azure and on-premise infrastructure.\n\nPersistence: To maintain access, the adversary modified HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows to load a persistence DLL via AppInit_DLLs and created udev rules to execute PowerShell scripts whenever network interfaces were brought up, while also exploiting services file permissions weaknesses by using 'sc query' to discover and hijack SYSTEM-privileged services. Noise: Routine system updates were logged but did not correlate with malicious activity.\n\nPrivilege Escalation and Defense Evasion: The malware abused compromised cloud accounts, specifically Managed Identities, to persistently access Azure SQL databases across resource groups, and used symmetric cryptography with RC4 to encrypt data sent over HTTP to C2 servers, while employing protocol impersonation through a FakeTLS method to evade detection.\n\nCollection and Exfiltration: The actors performed automated collection by identifying and archiving files with specific extensions, and conducted exfiltration over physical media by detecting attached USB drives and automatically copying system configuration files to them. Unrelated log entries showed normal user activity on shared drives during this time.\n\n**Mitigation Recommendations:** Blue teams should monitor for unusual download sources, review cloud identity permissions, scan for malicious Python scripts and registry modifications, inspect udev rules and services configurations, implement network traffic analysis for encrypted C2, and restrict USB device usage in sensitive environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the threat actor group 'ShadowByte'. This report simulates a campaign that combines cloud and on-premise attacks for training purposes.\n\n**Attack Narrative:**\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify target organizations, then compromised a legitimate digital product website, modifying download links to point to trojanized software, enabling drive-by targeting [T1608.004]. System logs from the victim's network firewall showed anomalous outbound traffic to unknown IP addresses during this phase, though this is unrelated noise.\n\nExecution: Upon user download, the malware employed Python scripts [T1059.006] to execute payloads while simultaneously using InstallUtil [T1218.004] to deploy additional executables and modify registry keys for persistence [T1112]. Background: The targeted company, 'TechGlobal Inc.', is a mid-sized firm in the manufacturing sector with hybrid Azure and on-premise infrastructure.\n\nPersistence: To maintain access, the adversary modified HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows to load a persistence DLL via AppInit_DLLs [T1546.010] and created udev rules [T1546.017] to execute PowerShell scripts whenever network interfaces were brought up, while also exploiting services file permissions weaknesses [T1574.010] by using 'sc query' to discover and hijack SYSTEM-privileged services. Noise: Routine system updates were logged but did not correlate with malicious activity.\n\nPrivilege Escalation and Defense Evasion: The malware abused compromised cloud accounts [T1078.004], specifically Managed Identities, to persistently access Azure SQL databases across resource groups, and used symmetric cryptography [T1573.001] with RC4 to encrypt data sent over HTTP to C2 servers, while employing protocol impersonation [T1001.003] through a FakeTLS method to evade detection.\n\nCollection and Exfiltration: The actors performed automated collection [T1119] by identifying and archiving files with specific extensions, and conducted exfiltration over physical media [T1052] by detecting attached USB drives and automatically copying system configuration files to them. Unrelated log entries showed normal user activity on shared drives during this time.\n\n**Mitigation Recommendations:** Blue teams should monitor for unusual download sources, review cloud identity permissions, scan for malicious Python scripts and registry modifications, inspect udev rules and services configurations, implement network traffic analysis for encrypted C2, and restrict USB device usage in sensitive environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Attack Narrative:**\nInitial Access: The actors likely conducted reconnaissance to identify target organizations, then compromised a legitimate digital product website, modifying download links to point to trojanized software, enabling drive-by targeting [T1608.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "004] to deploy additional executables and modify registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The actors performed automated collection by identifying and archiving files with specific extensions, and conducted exfiltration over physical media by detecting attached USB drives and automatically copying system configuration files to them.",
+            "technique_id": "T1119",
+            "technique_name": "Automated Collection"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The actors performed automated collection by identifying and archiving files with specific extensions, and conducted exfiltration over physical media by detecting attached USB drives and automatically copying system configuration files to them.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowByte' Targeting Cloud and On-Premise Systems",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowByte', which targets organizations through compromised software downloads, cloud account abuse, and persistent malware deployment. The campaign leverages multiple techniques across the kill chain, including initial access via drive-by compromises, execution through Python scripts, persistence via AppInit DLLs and udev rules, and exfiltration over physical media. Blue teams should review this report for training on detecting and mitigating such multi-faceted attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the threat actor group 'ShadowByte'. This report simulates a campaign that combines cloud and on-premise attacks for training purposes.\n\n**Attack Narrative:**\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify target organizations, then compromised a legitimate digital product website, modifying download links to point to trojanized software, enabling drive-by targeting [T1608.004]. System logs from the victim's network firewall showed anomalous outbound traffic to unknown IP addresses during this phase, though this is unrelated noise.\n\nExecution: Upon user download, the malware employed Python scripts [T1059.006] to execute payloads while simultaneously using InstallUtil [T1218.004] to deploy additional executables and modify registry keys for persistence [T1112]. Background: The targeted company, 'TechGlobal Inc.', is a mid-sized firm in the manufacturing sector with hybrid Azure and on-premise infrastructure.\n\nPersistence: To maintain access, the adversary modified HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows to load a persistence DLL via AppInit_DLLs [T1546.010] and created udev rules [T1546.017] to execute PowerShell scripts whenever network interfaces were brought up, while also exploiting services file permissions weaknesses [T1574.010] by using 'sc query' to discover and hijack SYSTEM-privileged services. Noise: Routine system updates were logged but did not correlate with malicious activity.\n\nPrivilege Escalation and Defense Evasion: The malware abused compromised cloud accounts [T1078.004], specifically Managed Identities, to persistently access Azure SQL databases across resource groups, and used symmetric cryptography [T1573.001] with RC4 to encrypt data sent over HTTP to C2 servers, while employing protocol impersonation [T1001.003] through a FakeTLS method to evade detection.\n\nCollection and Exfiltration: The actors performed automated collection [T1119] by identifying and archiving files with specific extensions, and conducted exfiltration over physical media [T1052] by detecting attached USB drives and automatically copying system configuration files to them. Unrelated log entries showed normal user activity on shared drives during this time.\n\n**Mitigation Recommendations:** Blue teams should monitor for unusual download sources, review cloud identity permissions, scan for malicious Python scripts and registry modifications, inspect udev rules and services configurations, implement network traffic analysis for encrypted C2, and restrict USB device usage in sensitive environments.",
+        "techniques_used": [
+            "T1589",
+            "T1608.004",
+            "T1059.006",
+            "T1218.004",
+            "T1112",
+            "T1546.010",
+            "T1546.017",
+            "T1574.010",
+            "T1078.004",
+            "T1573.001",
+            "T1001.003",
+            "T1119",
+            "T1052"
+        ]
+    }
+}

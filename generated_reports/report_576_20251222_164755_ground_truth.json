@@ -1,0 +1,73 @@
+{
+    "report_id": "report_576",
+    "generated_at": "20251222_164755",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1204",
+        "T1547.009",
+        "T1574.014",
+        "T1560",
+        "T1090.002",
+        "T1491"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1078.002",
+        "T1204",
+        "T1547.009",
+        "T1574.014",
+        "T1560",
+        "T1090.002",
+        "T1491"
+    ],
+    "actual_found_ids": [
+        "T1491",
+        "T1560",
+        "T1078.002",
+        "T1090.002",
+        "T1574.014",
+        "T1547.009",
+        "T1204"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide awareness of the fictional APT group 'Shadow Serpent.' This report is based on a simulated incident at a mid-sized regional bank, First Regional Trust (FRT), where routine network monitoring on October 26, 2024, detected anomalous outbound traffic to an external proxy server in a non-standard port range. FRT's security team, led by SOC analyst Jane Doe, initiated an investigation that uncovered a coordinated attack beginning with a phishing email sent to an accounting department employee on October 20, 2024.\n\nInitial Access: The campaign started with a spear-phishing email containing a malicious Word document disguised as an invoice update. Upon user interaction, the document executed a remote access tool, leveraging macros to download and run a PowerShell script from a compromised web server. System logs from the victim's workstation (hostname FRT-ACCT-07) showed unusual PowerShell activity at 14:32 UTC, including commands to disable Windows Defender real-time protection, though this was not tagged as it's irrelevant noise for technique mapping.\n\nExecution and Persistence: After initial execution, the actors employed Mimikatz to dump domain account credentials from memory, specifically targeting the 'Domain Admins' group. They then established persistence by modifying Windows shortcuts in the Startup folder and replacing the legitimate AppDomainManager with a malicious one to achieve arbitrary code execution, allowing the backdoor to maintain access even after system reboots. FRT's background includes a recent merger with a smaller bank, which expanded their attack surface, but this detail is provided as contextual noise and not directly related to the attack chain.\n\nCollection and Exfiltration: The adversary collected sensitive financial data, including customer records and transaction logs, and compressed it using 7-Zip prior to exfiltration. They routed the data through an external SOCKS proxy to obscure their origin, with network logs showing traffic to IP address 192.0.2.100 on port 1080. Additionally, the backdoor injected a PowerShell script named 'evil.ps1' to modify the visual layout of application windows, causing display glitches reported by users, though this was a secondary effect not critical to the core data theft.\n\nImpact and Recommendations: The simulated campaign resulted in the potential exfiltration of approximately 2 GB of data, though no real data was compromised in this training exercise. Blue teams should monitor for unusual credential access events, user-executed macros, shortcut modifications, and outbound proxy traffic. Implement application whitelisting and conduct regular user awareness training to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide awareness of the fictional APT group 'Shadow Serpent.' This report is based on a simulated incident at a mid-sized regional bank, First Regional Trust (FRT), where routine network monitoring on October 26, 2024, detected anomalous outbound traffic to an external proxy server in a non-standard port range. FRT's security team, led by SOC analyst Jane Doe, initiated an investigation that uncovered a coordinated attack beginning with a phishing email sent to an accounting department employee on October 20, 2024.\n\nInitial Access: The campaign started with a spear-phishing email containing a malicious Word document disguised as an invoice update. Upon user interaction, the document executed a remote access tool [T1204], leveraging macros to download and run a PowerShell script from a compromised web server. System logs from the victim's workstation (hostname FRT-ACCT-07) showed unusual PowerShell activity at 14:32 UTC, including commands to disable Windows Defender real-time protection, though this was not tagged as it's irrelevant noise for technique mapping.\n\nExecution and Persistence: After initial execution, the actors employed Mimikatz [T1078.002] to dump domain account credentials from memory, specifically targeting the 'Domain Admins' group. They then established persistence by modifying Windows shortcuts in the Startup folder [T1547.009] and replacing the legitimate AppDomainManager with a malicious one to achieve arbitrary code execution [T1574.014], allowing the backdoor to maintain access even after system reboots. FRT's background includes a recent merger with a smaller bank, which expanded their attack surface, but this detail is provided as contextual noise and not directly related to the attack chain.\n\nCollection and Exfiltration: The adversary collected sensitive financial data, including customer records and transaction logs, and compressed it using 7-Zip [T1560] prior to exfiltration. They routed the data through an external SOCKS proxy [T1090.002] to obscure their origin, with network logs showing traffic to IP address 192.0.2.100 on port 1080. Additionally, the backdoor injected a PowerShell script named 'evil.ps1' to modify the visual layout of application windows [T1491], causing display glitches reported by users, though this was a secondary effect not critical to the core data theft.\n\nImpact and Recommendations: The simulated campaign resulted in the potential exfiltration of approximately 2 GB of data, though no real data was compromised in this training exercise. Blue teams should monitor for unusual credential access events, user-executed macros, shortcut modifications, and outbound proxy traffic. Implement application whitelisting and conduct regular user awareness training to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon user interaction, the document executed a remote access tool, leveraging macros to download and run a PowerShell script from a compromised web server.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "Collection and Exfiltration: The adversary collected sensitive financial data, including customer records and transaction logs, and compressed it using 7-Zip prior to exfiltration.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "ps1' to modify the visual layout of application windows, causing display glitches reported by users, though this was a secondary effect not critical to the core data theft.",
+            "technique_id": "T1491",
+            "technique_name": "Defacement"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Serpent'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Shadow Serpent' targeting financial institutions. The campaign demonstrates a multi-stage attack leveraging credential theft, user interaction, persistence mechanisms, and data exfiltration techniques for blue team training purposes.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide awareness of the fictional APT group 'Shadow Serpent.' This report is based on a simulated incident at a mid-sized regional bank, First Regional Trust (FRT), where routine network monitoring on October 26, 2024, detected anomalous outbound traffic to an external proxy server in a non-standard port range. FRT's security team, led by SOC analyst Jane Doe, initiated an investigation that uncovered a coordinated attack beginning with a phishing email sent to an accounting department employee on October 20, 2024.\n\nInitial Access: The campaign started with a spear-phishing email containing a malicious Word document disguised as an invoice update. Upon user interaction, the document executed a remote access tool [T1204], leveraging macros to download and run a PowerShell script from a compromised web server. System logs from the victim's workstation (hostname FRT-ACCT-07) showed unusual PowerShell activity at 14:32 UTC, including commands to disable Windows Defender real-time protection, though this was not tagged as it's irrelevant noise for technique mapping.\n\nExecution and Persistence: After initial execution, the actors employed Mimikatz [T1078.002] to dump domain account credentials from memory, specifically targeting the 'Domain Admins' group. They then established persistence by modifying Windows shortcuts in the Startup folder [T1547.009] and replacing the legitimate AppDomainManager with a malicious one to achieve arbitrary code execution [T1574.014], allowing the backdoor to maintain access even after system reboots. FRT's background includes a recent merger with a smaller bank, which expanded their attack surface, but this detail is provided as contextual noise and not directly related to the attack chain.\n\nCollection and Exfiltration: The adversary collected sensitive financial data, including customer records and transaction logs, and compressed it using 7-Zip [T1560] prior to exfiltration. They routed the data through an external SOCKS proxy [T1090.002] to obscure their origin, with network logs showing traffic to IP address 192.0.2.100 on port 1080. Additionally, the backdoor injected a PowerShell script named 'evil.ps1' to modify the visual layout of application windows [T1491], causing display glitches reported by users, though this was a secondary effect not critical to the core data theft.\n\nImpact and Recommendations: The simulated campaign resulted in the potential exfiltration of approximately 2 GB of data, though no real data was compromised in this training exercise. Blue teams should monitor for unusual credential access events, user-executed macros, shortcut modifications, and outbound proxy traffic. Implement application whitelisting and conduct regular user awareness training to mitigate similar threats.",
+        "techniques_used": [
+            "T1078.002",
+            "T1204",
+            "T1547.009",
+            "T1574.014",
+            "T1560",
+            "T1090.002",
+            "T1491"
+        ]
+    }
+}

@@ -1,0 +1,123 @@
+{
+    "report_id": "report_310",
+    "generated_at": "20251222_145258",
+    "scenario_target_ids": [
+        "T1592",
+        "T1588.005",
+        "T1133",
+        "T1569.003",
+        "T1010",
+        "T1080",
+        "T1039",
+        "T1105",
+        "T1537",
+        "T1029",
+        "T1531"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592",
+        "T1588.005",
+        "T1133",
+        "T1569.003",
+        "T1010",
+        "T1080",
+        "T1039",
+        "T1105",
+        "T1537",
+        "T1029",
+        "T1531"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1592",
+        "T1029",
+        "T1588.005",
+        "T1133",
+        "T1080",
+        "T1531",
+        "T1105",
+        "T1569.003",
+        "T1010",
+        "T1537"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a fictional APT campaign for educational use. This report is based on simulated threat intelligence and does not reflect real-world incidents.\n\nBackground: 'ShadowWeave' is a fictional threat actor believed to operate with financial motives, targeting mid-sized banks in North America. Initial detection occurred through anomalous network traffic from a compromised web server running outdated software. System logs from the victim environment show increased CPU usage on a file server, but this was initially attributed to routine backups. The organization, 'SecureBank Inc.', had recently migrated some services to a hybrid cloud model, which introduced new attack surfaces.\n\nAttack Narrative:\n1. Reconnaissance and Initial Access: The actors likely conducted reconnaissance by gathering victim host information through malicious web content that exploited browser vulnerabilities to collect system details like OS versions and installed applications. Concurrently, they searched dark web marketplaces for exploits targeting CVE-2021-44228 (Log4Shell) to weaponize their initial access vectors.\n2. Execution and Persistence: After gaining a foothold, the adversary leveraged external remote services such as legitimate remote management tools to maintain persistent access, and they used systemctl to enable a daemon named 'persistence-daemon' for survival across system reboots while also performing application window discovery to list open windows on compromised hosts.\n3. Lateral Movement and Data Collection: To spread within the network, the group tainted shared content by writing a backdoor executable masquerading as 'svchost.exe' to a publicly accessible network share, and they collected data from network shared drives to identify files of interest, such as financial records and customer databases.\n4. Exfiltration: For data theft, the actors employed ingress tool transfer to download additional payloads from a command-and-control domain, and they transferred data to a cloud account using the Dropbox API to move encrypted files to an attacker-owned Dropbox account, with scheduled transfers initiated via PowerShell scripts to automate the exfiltration process.\n5. Impact and Evasion: Finally, to hinder recovery, the group executed account access removal by running PowerShell commands to modify local user accounts, such as setting 'backupsvc' to have a non-expiring password, interfering with password policies and backup operations. Additional noise in logs included failed login attempts from IP addresses later identified as benign, which were not part of the attack chain.\n\nMitigation Recommendations: Organizations should patch known vulnerabilities like CVE-2021-44228, monitor for unusual remote service usage, restrict network share permissions, implement application allowlisting, and enforce strong password policies. This advisory serves as a training tool to enhance defensive capabilities against similar TTPs in real-world scenarios.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a fictional APT campaign for educational use. This report is based on simulated threat intelligence and does not reflect real-world incidents.\n\nBackground: 'ShadowWeave' is a fictional threat actor believed to operate with financial motives, targeting mid-sized banks in North America. Initial detection occurred through anomalous network traffic from a compromised web server running outdated software. System logs from the victim environment show increased CPU usage on a file server, but this was initially attributed to routine backups. The organization, 'SecureBank Inc.', had recently migrated some services to a hybrid cloud model, which introduced new attack surfaces.\n\nAttack Narrative:\n1. Reconnaissance and Initial Access: The actors likely conducted reconnaissance by gathering victim host information [T1592] through malicious web content that exploited browser vulnerabilities to collect system details like OS versions and installed applications. Concurrently, they searched dark web marketplaces for exploits [T1588.005] targeting CVE-2021-44228 (Log4Shell) to weaponize their initial access vectors.\n2. Execution and Persistence: After gaining a foothold, the adversary leveraged external remote services [T1133] such as legitimate remote management tools to maintain persistent access, and they used systemctl [T1569.003] to enable a daemon named 'persistence-daemon' for survival across system reboots while also performing application window discovery [T1010] to list open windows on compromised hosts.\n3. Lateral Movement and Data Collection: To spread within the network, the group tainted shared content [T1080] by writing a backdoor executable masquerading as 'svchost.exe' to a publicly accessible network share, and they collected data from network shared drives [T1039] to identify files of interest, such as financial records and customer databases.\n4. Exfiltration: For data theft, the actors employed ingress tool transfer [T1105] to download additional payloads from a command-and-control domain, and they transferred data to a cloud account [T1537] using the Dropbox API to move encrypted files to an attacker-owned Dropbox account, with scheduled transfers [T1029] initiated via PowerShell scripts to automate the exfiltration process.\n5. Impact and Evasion: Finally, to hinder recovery, the group executed account access removal [T1531] by running PowerShell commands to modify local user accounts, such as setting 'backupsvc' to have a non-expiring password, interfering with password policies and backup operations. Additional noise in logs included failed login attempts from IP addresses later identified as benign, which were not part of the attack chain.\n\nMitigation Recommendations: Organizations should patch known vulnerabilities like CVE-2021-44228, monitor for unusual remote service usage, restrict network share permissions, implement application allowlisting, and enforce strong password policies. This advisory serves as a training tool to enhance defensive capabilities against similar TTPs in real-world scenarios.",
+    "sentence_annotations": [
+        {
+            "sentence": "Reconnaissance and Initial Access: The actors likely conducted reconnaissance by gathering victim host information through malicious web content that exploited browser vulnerabilities to collect system details like OS versions and installed applications.",
+            "technique_id": "T1592",
+            "technique_name": "Gather Victim Host Information"
+        },
+        {
+            "sentence": "Execution and Persistence: After gaining a foothold, the adversary leveraged external remote services such as legitimate remote management tools to maintain persistent access, and they used systemctl [T1569.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "003] to enable a daemon named 'persistence-daemon' for survival across system reboots while also performing application window discovery to list open windows on compromised hosts.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        },
+        {
+            "sentence": "Lateral Movement and Data Collection: To spread within the network, the group tainted shared content by writing a backdoor executable masquerading as 'svchost.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        },
+        {
+            "sentence": "exe' to a publicly accessible network share, and they collected data from network shared drives to identify files of interest, such as financial records and customer databases.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "Exfiltration: For data theft, the actors employed ingress tool transfer to download additional payloads from a command-and-control domain, and they transferred data to a cloud account using the Dropbox API to move encrypted files to an attacker-owned Dropbox account, with scheduled transfers initiated via PowerShell scripts to automate the exfiltration process.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "Exfiltration: For data theft, the actors employed ingress tool transfer to download additional payloads from a command-and-control domain, and they transferred data to a cloud account using the Dropbox API to move encrypted files to an attacker-owned Dropbox account, with scheduled transfers initiated via PowerShell scripts to automate the exfiltration process.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        },
+        {
+            "sentence": "Exfiltration: For data theft, the actors employed ingress tool transfer to download additional payloads from a command-and-control domain, and they transferred data to a cloud account using the Dropbox API to move encrypted files to an attacker-owned Dropbox account, with scheduled transfers initiated via PowerShell scripts to automate the exfiltration process.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        },
+        {
+            "sentence": "Impact and Evasion: Finally, to hinder recovery, the group executed account access removal by running PowerShell commands to modify local user accounts, such as setting 'backupsvc' to have a non-expiring password, interfering with password policies and backup operations.",
+            "technique_id": "T1531",
+            "technique_name": "Account Access Removal"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeave' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowWeave', targeting financial institutions. Based on intelligence from CISA, the FBI, and industry partners, this report outlines the group's tactics, techniques, and procedures (TTPs) for blue team training purposes. The scenario involves initial access via exploited web content, persistence through remote services, data exfiltration to cloud storage, and account manipulation to hinder recovery efforts.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate information on a fictional APT campaign for educational use. This report is based on simulated threat intelligence and does not reflect real-world incidents.\n\nBackground: 'ShadowWeave' is a fictional threat actor believed to operate with financial motives, targeting mid-sized banks in North America. Initial detection occurred through anomalous network traffic from a compromised web server running outdated software. System logs from the victim environment show increased CPU usage on a file server, but this was initially attributed to routine backups. The organization, 'SecureBank Inc.', had recently migrated some services to a hybrid cloud model, which introduced new attack surfaces.\n\nAttack Narrative:\n1. Reconnaissance and Initial Access: The actors likely conducted reconnaissance by gathering victim host information [T1592] through malicious web content that exploited browser vulnerabilities to collect system details like OS versions and installed applications. Concurrently, they searched dark web marketplaces for exploits [T1588.005] targeting CVE-2021-44228 (Log4Shell) to weaponize their initial access vectors.\n2. Execution and Persistence: After gaining a foothold, the adversary leveraged external remote services [T1133] such as legitimate remote management tools to maintain persistent access, and they used systemctl [T1569.003] to enable a daemon named 'persistence-daemon' for survival across system reboots while also performing application window discovery [T1010] to list open windows on compromised hosts.\n3. Lateral Movement and Data Collection: To spread within the network, the group tainted shared content [T1080] by writing a backdoor executable masquerading as 'svchost.exe' to a publicly accessible network share, and they collected data from network shared drives [T1039] to identify files of interest, such as financial records and customer databases.\n4. Exfiltration: For data theft, the actors employed ingress tool transfer [T1105] to download additional payloads from a command-and-control domain, and they transferred data to a cloud account [T1537] using the Dropbox API to move encrypted files to an attacker-owned Dropbox account, with scheduled transfers [T1029] initiated via PowerShell scripts to automate the exfiltration process.\n5. Impact and Evasion: Finally, to hinder recovery, the group executed account access removal [T1531] by running PowerShell commands to modify local user accounts, such as setting 'backupsvc' to have a non-expiring password, interfering with password policies and backup operations. Additional noise in logs included failed login attempts from IP addresses later identified as benign, which were not part of the attack chain.\n\nMitigation Recommendations: Organizations should patch known vulnerabilities like CVE-2021-44228, monitor for unusual remote service usage, restrict network share permissions, implement application allowlisting, and enforce strong password policies. This advisory serves as a training tool to enhance defensive capabilities against similar TTPs in real-world scenarios.",
+        "techniques_used": [
+            "T1592",
+            "T1588.005",
+            "T1133",
+            "T1569.003",
+            "T1010",
+            "T1080",
+            "T1039",
+            "T1105",
+            "T1537",
+            "T1029",
+            "T1531"
+        ]
+    }
+}

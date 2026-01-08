@@ -1,0 +1,108 @@
+{
+    "report_id": "report_13",
+    "generated_at": "20251222_112231",
+    "scenario_target_ids": [
+        "T1586",
+        "T1200",
+        "T1203",
+        "T1574.013",
+        "T1037",
+        "T1218",
+        "T1218.010",
+        "T1557.002",
+        "T1614.001",
+        "T1557",
+        "T1090.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1586",
+        "T1200",
+        "T1203",
+        "T1574.013",
+        "T1037",
+        "T1218",
+        "T1218.010",
+        "T1557.002",
+        "T1614.001",
+        "T1557",
+        "T1090.001"
+    ],
+    "actual_found_ids": [
+        "T1037",
+        "T1574.013",
+        "T1557",
+        "T1090.001",
+        "T1218",
+        "T1203",
+        "T1586",
+        "T1218.010",
+        "T1614.001",
+        "T1200",
+        "T1557.002"
+    ],
+    "clean_text": "APT-Sidewinder, a fictional advanced persistent threat group, has been observed targeting financial sector executives in a coordinated campaign. The actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify key personnel and their email addresses, though this activity is not directly attributed to the provided techniques. Initial access was achieved by sending spear phishing emails to executives, requesting they update their cloud storage account passwords, which compromised their credentials. Following this, the adversary used a USB Rubber Ducky to deliver a malicious payload that established remote access on a compromised workstation. Execution was facilitated by exploiting vulnerabilities, including CVE-2017-11882 and CVE-2020-0674, to gain client-side execution. System logs from the affected environment show unusual network traffic spikes around the time of the USB insertion, but these logs are not directly linked to the attack techniques. The attacker then employed WriteProcessMemory to inject malicious code into a legitimate browser process using the KernelCallbackTable method, while simultaneously running the malicious script 'evil.ps1' from the Group Policy startup scripts directory to ensure persistence across reboots. To evade detection, the malware executed a split operation to divide its payload across multiple files, bypassing signature-based scanning, and used regsvr32 with a crafted COM scriptlet to establish persistence in the system. Network discovery involved using a network sniffer to find ARP requests and map device relationships, enabling ARP cache poisoning. The malware also checked the system language, with LockBit 2.0 variants exiting without infection if Eastern European languages were detected. For credential theft, the adversary set up an adversary-in-the-middle (AiTM) attack by opening a new network listener for the mpnotify.exe process, typically contacted by Winlogon, and establishing an alternative RPC channel with a malicious DLL to record plaintext credentials entered into Winlogon. Additionally, Duqu-like capabilities were observed, where commands were relayed over a peer-to-peer network of infected hosts using an internal proxy for hosts without Internet access. Background information on the targeted company, FinSecure Inc., indicates it had recently migrated to a hybrid cloud environment, but this detail is not relevant to the attack chain. Blue teams should monitor for these behaviors in their environments.",
+    "tagged_text": "APT-Sidewinder, a fictional advanced persistent threat group, has been observed targeting financial sector executives in a coordinated campaign. The actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify key personnel and their email addresses, though this activity is not directly attributed to the provided techniques. Initial access was achieved by sending spear phishing emails to executives, requesting they update their cloud storage account passwords, which compromised their credentials [T1586]. Following this, the adversary used a USB Rubber Ducky to deliver a malicious payload that established remote access on a compromised workstation [T1200]. Execution was facilitated by exploiting vulnerabilities, including CVE-2017-11882 and CVE-2020-0674, to gain client-side execution [T1203]. System logs from the affected environment show unusual network traffic spikes around the time of the USB insertion, but these logs are not directly linked to the attack techniques. The attacker then employed WriteProcessMemory to inject malicious code into a legitimate browser process using the KernelCallbackTable method [T1574.013], while simultaneously running the malicious script 'evil.ps1' from the Group Policy startup scripts directory to ensure persistence across reboots [T1037]. To evade detection, the malware executed a split operation to divide its payload across multiple files, bypassing signature-based scanning [T1218], and used regsvr32 with a crafted COM scriptlet to establish persistence in the system [T1218.010]. Network discovery involved using a network sniffer to find ARP requests and map device relationships, enabling ARP cache poisoning [T1557.002]. The malware also checked the system language, with LockBit 2.0 variants exiting without infection if Eastern European languages were detected [T1614.001]. For credential theft, the adversary set up an adversary-in-the-middle (AiTM) attack by opening a new network listener for the mpnotify.exe process, typically contacted by Winlogon, and establishing an alternative RPC channel with a malicious DLL to record plaintext credentials entered into Winlogon [T1557]. Additionally, Duqu-like capabilities were observed, where commands were relayed over a peer-to-peer network of infected hosts using an internal proxy for hosts without Internet access [T1090.001]. Background information on the targeted company, FinSecure Inc., indicates it had recently migrated to a hybrid cloud environment, but this detail is not relevant to the attack chain. Blue teams should monitor for these behaviors in their environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved by sending spear phishing emails to executives, requesting they update their cloud storage account passwords, which compromised their credentials.",
+            "technique_id": "T1586",
+            "technique_name": "Compromise Accounts"
+        },
+        {
+            "sentence": "Following this, the adversary used a USB Rubber Ducky to deliver a malicious payload that established remote access on a compromised workstation.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Execution was facilitated by exploiting vulnerabilities, including CVE-2017-11882 and CVE-2020-0674, to gain client-side execution.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "ps1' from the Group Policy startup scripts directory to ensure persistence across reboots.",
+            "technique_id": "T1037",
+            "technique_name": "Boot or Logon Initialization Scripts"
+        },
+        {
+            "sentence": "To evade detection, the malware executed a split operation to divide its payload across multiple files, bypassing signature-based scanning, and used regsvr32 with a crafted COM scriptlet to establish persistence in the system [T1218.",
+            "technique_id": "T1218",
+            "technique_name": "System Binary Proxy Execution"
+        },
+        {
+            "sentence": "exe process, typically contacted by Winlogon, and establishing an alternative RPC channel with a malicious DLL to record plaintext credentials entered into Winlogon.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT-Sidewinder Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor APT-Sidewinder, targeting financial institutions through a multi-stage attack involving credential compromise, hardware-based payload delivery, and network manipulation. The campaign leverages spear phishing, USB devices, and exploitation of known vulnerabilities to establish persistence, evade detection, and intercept sensitive data. Blue teams are advised to review logs for suspicious activities related to these techniques and implement defensive measures outlined in the report.",
+        "full_report_text": "APT-Sidewinder, a fictional advanced persistent threat group, has been observed targeting financial sector executives in a coordinated campaign. The actors likely conducted reconnaissance through open-source intelligence (OSINT) to identify key personnel and their email addresses, though this activity is not directly attributed to the provided techniques. Initial access was achieved by sending spear phishing emails to executives, requesting they update their cloud storage account passwords, which compromised their credentials [T1586]. Following this, the adversary used a USB Rubber Ducky to deliver a malicious payload that established remote access on a compromised workstation [T1200]. Execution was facilitated by exploiting vulnerabilities, including CVE-2017-11882 and CVE-2020-0674, to gain client-side execution [T1203]. System logs from the affected environment show unusual network traffic spikes around the time of the USB insertion, but these logs are not directly linked to the attack techniques. The attacker then employed WriteProcessMemory to inject malicious code into a legitimate browser process using the KernelCallbackTable method [T1574.013], while simultaneously running the malicious script 'evil.ps1' from the Group Policy startup scripts directory to ensure persistence across reboots [T1037]. To evade detection, the malware executed a split operation to divide its payload across multiple files, bypassing signature-based scanning [T1218], and used regsvr32 with a crafted COM scriptlet to establish persistence in the system [T1218.010]. Network discovery involved using a network sniffer to find ARP requests and map device relationships, enabling ARP cache poisoning [T1557.002]. The malware also checked the system language, with LockBit 2.0 variants exiting without infection if Eastern European languages were detected [T1614.001]. For credential theft, the adversary set up an adversary-in-the-middle (AiTM) attack by opening a new network listener for the mpnotify.exe process, typically contacted by Winlogon, and establishing an alternative RPC channel with a malicious DLL to record plaintext credentials entered into Winlogon [T1557]. Additionally, Duqu-like capabilities were observed, where commands were relayed over a peer-to-peer network of infected hosts using an internal proxy for hosts without Internet access [T1090.001]. Background information on the targeted company, FinSecure Inc., indicates it had recently migrated to a hybrid cloud environment, but this detail is not relevant to the attack chain. Blue teams should monitor for these behaviors in their environments.",
+        "techniques_used": [
+            "T1586",
+            "T1200",
+            "T1203",
+            "T1574.013",
+            "T1037",
+            "T1218",
+            "T1218.010",
+            "T1557.002",
+            "T1614.001",
+            "T1557",
+            "T1090.001"
+        ]
+    }
+}

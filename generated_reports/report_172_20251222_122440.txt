@@ -1,0 +1,13 @@
+The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated malicious activity attributed to the fictional threat actor 'Cobalt Phantom', targeting organizations in the media and entertainment industry. This campaign is designed for educational training and does not reflect real-world incidents.
+
+Initial Access: The actors initiated their campaign by compromising a legitimate website hosting pirated audio software, where they embedded malicious scripts [T1189] to redirect unsuspecting users to a fake download portal. Concurrently, they conducted spearphishing attacks, sending emails with malicious links [T1204.001] that led to the download of a Cobalt Strike beacon, mimicking tactics observed in APT32 campaigns.
+
+Execution and Persistence: Upon execution, the malware deployed a credential harvesting module that monitored for Outlook Web App (OWA) authentication requests, capturing user credentials [T1056.003] through a web portal capture technique similar to the IceApple logger. System logs from the victim's environment showed unusual network traffic spikes at 03:45 UTC, but no immediate alerts were triggered due to misconfigured SIEM rules.
+
+Discovery: The actors then performed extensive reconnaissance within the Active Directory environment, enumerating Group Policy objects [T1615] to identify security settings and potential misconfigurations. They also conducted network discovery by scanning for locally reachable Wi-Fi networks [T1016.002], extracting names to plan lateral movement, and used Windows APIs to discover connected Bluetooth devices [T1120], gathering peripheral device information as part of their situational awareness.
+
+Command and Control (C2): To evade detection, the actors established a multi-hop proxy chain using an internal proxy tool [T1090.001], masking the final destination of C2 communications and mimicking HTRAN deployment patterns. This allowed them to maintain persistent access while obfuscating their network footprint.
+
+Background: The targeted organization, 'Global Media Studios', is a mid-sized company with offices in New York and Los Angeles, specializing in audio production. Their IT infrastructure includes a mix of Windows and macOS systems, with limited security monitoring in place. This scenario highlights common vulnerabilities in such environments.
+
+Recommendations: Blue teams should monitor for unusual network scans, implement strict email filtering, and regularly audit Active Directory configurations to mitigate similar threats.

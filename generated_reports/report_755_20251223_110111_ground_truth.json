@@ -1,0 +1,98 @@
+{
+    "report_id": "report_755",
+    "generated_at": "20251223_110111",
+    "scenario_target_ids": [
+        "T1650",
+        "T1091",
+        "T1059.009",
+        "T1505",
+        "T1187",
+        "T1497.003",
+        "T1526",
+        "T1550",
+        "T1102.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1650",
+        "T1091",
+        "T1059.009",
+        "T1505",
+        "T1187",
+        "T1497.003",
+        "T1526",
+        "T1550",
+        "T1102.003"
+    ],
+    "actual_found_ids": [
+        "T1187",
+        "T1550",
+        "T1526",
+        "T1497.003",
+        "T1102.003",
+        "T1091",
+        "T1059.009",
+        "T1505",
+        "T1650"
+    ],
+    "clean_text": "On October 15, 2023, a mid-sized financial services firm, 'SecureFin Corp,' reported anomalous activity in its Azure environment. SecureFin Corp, headquartered in New York with 500 employees, operates a hybrid infrastructure including on-premises Windows servers and Microsoft Azure cloud services. Initial logs from their SIEM showed unusual PowerShell executions from an unknown IP address, but routine network scans revealed no immediate malware signatures.\n\nThe actors likely acquired domain administrator credentials through dark web brokers, enabling initial access to the corporate network. Once inside, they used removable USB drives to propagate malware via the Windows AUTORUN feature, spreading to isolated systems while evading network-based detection. The adversary then employed PowerShell through Azure Automation's cloud API to execute credential harvesting scripts across multiple virtual machines, simultaneously querying the Microsoft Graph API to discover cloud services and enumerate Azure AD users and roles.\n\nTo maintain persistence, the threat actor wrote a malicious DLL to the WordPress wp-content/plugins directory on an internal web server, ensuring continuous access even after initial compromises were remediated. They leveraged forced authentication techniques by loading malicious templates via file://remote_address/Normal.dotm to dump credential hashes from memory, which were then extracted using Mimikatz.exe to obtain alternate authentication material. System logs from affected hosts showed PowerShell executions collecting system information in a one-way communication pattern, with data exfiltration delayed by 5 minutes to evade time-based detection mechanisms.\n\nIncident responders noted that the attack leveraged multiple evasion tactics, including minimal network noise and use of legitimate administrative tools. SecureFin Corp's backup systems were unaffected, but recovery efforts required full credential resets and isolation of compromised endpoints. This scenario highlights the importance of monitoring for unusual cloud API usage and credential abuse in hybrid environments.",
+    "tagged_text": "On October 15, 2023, a mid-sized financial services firm, 'SecureFin Corp,' reported anomalous activity in its Azure environment. SecureFin Corp, headquartered in New York with 500 employees, operates a hybrid infrastructure including on-premises Windows servers and Microsoft Azure cloud services. Initial logs from their SIEM showed unusual PowerShell executions from an unknown IP address, but routine network scans revealed no immediate malware signatures.\n\nThe actors likely acquired domain administrator credentials through dark web brokers [T1650], enabling initial access to the corporate network. Once inside, they used removable USB drives to propagate malware via the Windows AUTORUN feature [T1091], spreading to isolated systems while evading network-based detection. The adversary then employed PowerShell through Azure Automation's cloud API [T1059.009] to execute credential harvesting scripts across multiple virtual machines, simultaneously querying the Microsoft Graph API to discover cloud services and enumerate Azure AD users and roles [T1526].\n\nTo maintain persistence, the threat actor wrote a malicious DLL to the WordPress wp-content/plugins directory on an internal web server [T1505], ensuring continuous access even after initial compromises were remediated. They leveraged forced authentication techniques by loading malicious templates via file://remote_address/Normal.dotm [T1187] to dump credential hashes from memory, which were then extracted using Mimikatz.exe to obtain alternate authentication material [T1550]. System logs from affected hosts showed PowerShell executions collecting system information in a one-way communication pattern [T1102.003], with data exfiltration delayed by 5 minutes to evade time-based detection mechanisms [T1497.003].\n\nIncident responders noted that the attack leveraged multiple evasion tactics, including minimal network noise and use of legitimate administrative tools. SecureFin Corp's backup systems were unaffected, but recovery efforts required full credential resets and isolation of compromised endpoints. This scenario highlights the importance of monitoring for unusual cloud API usage and credential abuse in hybrid environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely acquired domain administrator credentials through dark web brokers, enabling initial access to the corporate network.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "Once inside, they used removable USB drives to propagate malware via the Windows AUTORUN feature, spreading to isolated systems while evading network-based detection.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "009] to execute credential harvesting scripts across multiple virtual machines, simultaneously querying the Microsoft Graph API to discover cloud services and enumerate Azure AD users and roles.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        },
+        {
+            "sentence": "To maintain persistence, the threat actor wrote a malicious DLL to the WordPress wp-content/plugins directory on an internal web server, ensuring continuous access even after initial compromises were remediated.",
+            "technique_id": "T1505",
+            "technique_name": "Server Software Component"
+        },
+        {
+            "sentence": "dotm to dump credential hashes from memory, which were then extracted using Mimikatz.",
+            "technique_id": "T1187",
+            "technique_name": "Forced Authentication"
+        },
+        {
+            "sentence": "exe to obtain alternate authentication material.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGate' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowGate,' targeting organizations with hybrid on-premises and cloud environments. Based on intelligence from CISA, FBI, and industry partners, this report outlines tactics, techniques, and procedures (TTPs) used in a recent incident to educate blue teams on detection and mitigation strategies.",
+        "full_report_text": "On October 15, 2023, a mid-sized financial services firm, 'SecureFin Corp,' reported anomalous activity in its Azure environment. SecureFin Corp, headquartered in New York with 500 employees, operates a hybrid infrastructure including on-premises Windows servers and Microsoft Azure cloud services. Initial logs from their SIEM showed unusual PowerShell executions from an unknown IP address, but routine network scans revealed no immediate malware signatures.\n\nThe actors likely acquired domain administrator credentials through dark web brokers [T1650], enabling initial access to the corporate network. Once inside, they used removable USB drives to propagate malware via the Windows AUTORUN feature [T1091], spreading to isolated systems while evading network-based detection. The adversary then employed PowerShell through Azure Automation's cloud API [T1059.009] to execute credential harvesting scripts across multiple virtual machines, simultaneously querying the Microsoft Graph API to discover cloud services and enumerate Azure AD users and roles [T1526].\n\nTo maintain persistence, the threat actor wrote a malicious DLL to the WordPress wp-content/plugins directory on an internal web server [T1505], ensuring continuous access even after initial compromises were remediated. They leveraged forced authentication techniques by loading malicious templates via file://remote_address/Normal.dotm [T1187] to dump credential hashes from memory, which were then extracted using Mimikatz.exe to obtain alternate authentication material [T1550]. System logs from affected hosts showed PowerShell executions collecting system information in a one-way communication pattern [T1102.003], with data exfiltration delayed by 5 minutes to evade time-based detection mechanisms [T1497.003].\n\nIncident responders noted that the attack leveraged multiple evasion tactics, including minimal network noise and use of legitimate administrative tools. SecureFin Corp's backup systems were unaffected, but recovery efforts required full credential resets and isolation of compromised endpoints. This scenario highlights the importance of monitoring for unusual cloud API usage and credential abuse in hybrid environments.",
+        "techniques_used": [
+            "T1650",
+            "T1091",
+            "T1059.009",
+            "T1505",
+            "T1187",
+            "T1497.003",
+            "T1526",
+            "T1550",
+            "T1102.003"
+        ]
+    }
+}

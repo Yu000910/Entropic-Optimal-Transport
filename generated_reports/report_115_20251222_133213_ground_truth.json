@@ -1,0 +1,118 @@
+{
+    "report_id": "report_115",
+    "generated_at": "20251222_133213",
+    "scenario_target_ids": [
+        "T1590.002",
+        "T1133",
+        "T1195.003",
+        "T1204.003",
+        "T1547.008",
+        "T1535",
+        "T1006",
+        "T1564.012",
+        "T1558.002",
+        "T1518",
+        "T1082",
+        "T1056.002",
+        "T1571"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1590.002",
+        "T1133",
+        "T1195.003",
+        "T1204.003",
+        "T1547.008",
+        "T1535",
+        "T1006",
+        "T1564.012",
+        "T1558.002",
+        "T1518",
+        "T1082",
+        "T1056.002",
+        "T1571"
+    ],
+    "actual_found_ids": [
+        "T1535",
+        "T1558.002",
+        "T1590.002",
+        "T1518",
+        "T1006",
+        "T1195.003",
+        "T1133",
+        "T1547.008",
+        "T1564.012",
+        "T1082",
+        "T1571",
+        "T1204.003",
+        "T1056.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated APT campaign. In this fictional scenario, 'ShadowViper' actors likely conduct reconnaissance by gathering passive DNS information to map target infrastructure, such as analyzing historical DNS query logs from public sources, which revealed patterns in domain usage. The company, a mid-sized bank with offices in New York and London, reported unusual network traffic spikes last month, but initial logs showed no immediate threats. For initial access, the actors exploited external remote services by compromising a VPN gateway, while simultaneously using a compromised hardware supply chain with a reprogrammed Teensy USB device that mounted as storage containing malware for automatic execution upon insertion into a target system. System administrators noted failed login attempts from unrecognized IP addresses, though these were initially dismissed as noise. During execution, the adversary deployed a malicious image by dropping a compromised Amazon Machine Image with a hidden SSH backdoor into the target's cloud environment, and they established persistence by modifying the LSASS driver to ensure malicious driver loading on each boot through configuration changes to lsass.exe. The bank's cloud team observed unauthorized instance creations in unused/unsupported cloud regions via a Python script that automatically created cloud instances across different providers for redundancy, leading to increased billing alerts. For defense evasion, the actors employed direct volume access using vssadmin resize shadow to manipulate shadow storage before data theft, and they hid artifacts by placing a backdoor as malware.exe into the Windows Prefetch folder to blend with legitimate system files. Internal security scans flagged unusual file sizes in system directories, but no immediate action was taken. In the credential access phase, the actors used a Silver Ticket by executing Kerberoast.ps1 to harvest service principal name (SPN) tickets for password cracking, while also conducting software discovery with a PowerShell backdoor to check for Skype connectivity on the target machine. Discovery activities included system information discovery where PingPull retrieved the hostname of a compromised host, and the actors performed GUI input capture by presenting victims with spoofed Windows Authentication prompts to collect credentials, as reported in past FIN4 campaigns. For command and control, the actors utilized a non-standard port with a custom RC4 and XOR encrypted protocol over port 443, similar to techniques used by BendyBear. The bank's firewall logs showed encrypted traffic on standard ports, but deep packet inspection was not enabled. This scenario highlights the need for enhanced monitoring and response training.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated APT campaign. In this fictional scenario, 'ShadowViper' actors likely conduct reconnaissance by gathering passive DNS information [T1590.002] to map target infrastructure, such as analyzing historical DNS query logs from public sources, which revealed patterns in domain usage. The company, a mid-sized bank with offices in New York and London, reported unusual network traffic spikes last month, but initial logs showed no immediate threats. For initial access, the actors exploited external remote services [T1133] by compromising a VPN gateway, while simultaneously using a compromised hardware supply chain [T1195.003] with a reprogrammed Teensy USB device that mounted as storage containing malware for automatic execution upon insertion into a target system. System administrators noted failed login attempts from unrecognized IP addresses, though these were initially dismissed as noise. During execution, the adversary deployed a malicious image [T1204.003] by dropping a compromised Amazon Machine Image with a hidden SSH backdoor into the target's cloud environment, and they established persistence by modifying the LSASS driver [T1547.008] to ensure malicious driver loading on each boot through configuration changes to lsass.exe. The bank's cloud team observed unauthorized instance creations in unused/unsupported cloud regions [T1535] via a Python script that automatically created cloud instances across different providers for redundancy, leading to increased billing alerts. For defense evasion, the actors employed direct volume access [T1006] using vssadmin resize shadow to manipulate shadow storage before data theft, and they hid artifacts by placing a backdoor as malware.exe into the Windows Prefetch folder to blend with legitimate system files [T1564.012]. Internal security scans flagged unusual file sizes in system directories, but no immediate action was taken. In the credential access phase, the actors used a Silver Ticket [T1558.002] by executing Kerberoast.ps1 to harvest service principal name (SPN) tickets for password cracking, while also conducting software discovery [T1518] with a PowerShell backdoor to check for Skype connectivity on the target machine. Discovery activities included system information discovery [T1082] where PingPull retrieved the hostname of a compromised host, and the actors performed GUI input capture [T1056.002] by presenting victims with spoofed Windows Authentication prompts to collect credentials, as reported in past FIN4 campaigns. For command and control, the actors utilized a non-standard port [T1571] with a custom RC4 and XOR encrypted protocol over port 443, similar to techniques used by BendyBear. The bank's firewall logs showed encrypted traffic on standard ports, but deep packet inspection was not enabled. This scenario highlights the need for enhanced monitoring and response training.",
+    "sentence_annotations": [
+        {
+            "sentence": "For initial access, the actors exploited external remote services by compromising a VPN gateway, while simultaneously using a compromised hardware supply chain [T1195.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "The bank's cloud team observed unauthorized instance creations in unused/unsupported cloud regions via a Python script that automatically created cloud instances across different providers for redundancy, leading to increased billing alerts.",
+            "technique_id": "T1535",
+            "technique_name": "Unused/Unsupported Cloud Regions"
+        },
+        {
+            "sentence": "For defense evasion, the actors employed direct volume access using vssadmin resize shadow to manipulate shadow storage before data theft, and they hid artifacts by placing a backdoor as malware.",
+            "technique_id": "T1006",
+            "technique_name": "Direct Volume Access"
+        },
+        {
+            "sentence": "ps1 to harvest service principal name (SPN) tickets for password cracking, while also conducting software discovery with a PowerShell backdoor to check for Skype connectivity on the target machine.",
+            "technique_id": "T1518",
+            "technique_name": "Software Discovery"
+        },
+        {
+            "sentence": "Discovery activities included system information discovery where PingPull retrieved the hostname of a compromised host, and the actors performed GUI input capture [T1056.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        },
+        {
+            "sentence": "For command and control, the actors utilized a non-standard port with a custom RC4 and XOR encrypted protocol over port 443, similar to techniques used by BendyBear.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'ShadowViper' Targeting Financial Sector",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group, 'ShadowViper', targeting financial institutions. The campaign leverages a multi-faceted approach including supply chain compromise, cloud exploitation, and credential theft for initial access and persistence. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a simulated APT campaign. In this fictional scenario, 'ShadowViper' actors likely conduct reconnaissance by gathering passive DNS information [T1590.002] to map target infrastructure, such as analyzing historical DNS query logs from public sources, which revealed patterns in domain usage. The company, a mid-sized bank with offices in New York and London, reported unusual network traffic spikes last month, but initial logs showed no immediate threats. For initial access, the actors exploited external remote services [T1133] by compromising a VPN gateway, while simultaneously using a compromised hardware supply chain [T1195.003] with a reprogrammed Teensy USB device that mounted as storage containing malware for automatic execution upon insertion into a target system. System administrators noted failed login attempts from unrecognized IP addresses, though these were initially dismissed as noise. During execution, the adversary deployed a malicious image [T1204.003] by dropping a compromised Amazon Machine Image with a hidden SSH backdoor into the target's cloud environment, and they established persistence by modifying the LSASS driver [T1547.008] to ensure malicious driver loading on each boot through configuration changes to lsass.exe. The bank's cloud team observed unauthorized instance creations in unused/unsupported cloud regions [T1535] via a Python script that automatically created cloud instances across different providers for redundancy, leading to increased billing alerts. For defense evasion, the actors employed direct volume access [T1006] using vssadmin resize shadow to manipulate shadow storage before data theft, and they hid artifacts by placing a backdoor as malware.exe into the Windows Prefetch folder to blend with legitimate system files [T1564.012]. Internal security scans flagged unusual file sizes in system directories, but no immediate action was taken. In the credential access phase, the actors used a Silver Ticket [T1558.002] by executing Kerberoast.ps1 to harvest service principal name (SPN) tickets for password cracking, while also conducting software discovery [T1518] with a PowerShell backdoor to check for Skype connectivity on the target machine. Discovery activities included system information discovery [T1082] where PingPull retrieved the hostname of a compromised host, and the actors performed GUI input capture [T1056.002] by presenting victims with spoofed Windows Authentication prompts to collect credentials, as reported in past FIN4 campaigns. For command and control, the actors utilized a non-standard port [T1571] with a custom RC4 and XOR encrypted protocol over port 443, similar to techniques used by BendyBear. The bank's firewall logs showed encrypted traffic on standard ports, but deep packet inspection was not enabled. This scenario highlights the need for enhanced monitoring and response training.",
+        "techniques_used": [
+            "T1590.002",
+            "T1133",
+            "T1195.003",
+            "T1204.003",
+            "T1547.008",
+            "T1535",
+            "T1006",
+            "T1564.012",
+            "T1558.002",
+            "T1518",
+            "T1082",
+            "T1056.002",
+            "T1571"
+        ]
+    }
+}

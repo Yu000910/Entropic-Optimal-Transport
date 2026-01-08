@@ -1,0 +1,113 @@
+{
+    "report_id": "report_460",
+    "generated_at": "20251222_155726",
+    "scenario_target_ids": [
+        "T1591",
+        "T1592.002",
+        "T1595.002",
+        "T1078.002",
+        "T1659",
+        "T1059.005",
+        "T1059.001",
+        "T1546",
+        "T1548.006",
+        "T1036.002",
+        "T1036.001",
+        "T1550.002",
+        "T1550.001",
+        "T1090.002",
+        "T1561.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591",
+        "T1592.002",
+        "T1595.002",
+        "T1078.002",
+        "T1659",
+        "T1059.005",
+        "T1059.001",
+        "T1546",
+        "T1548.006",
+        "T1036.002",
+        "T1036.001",
+        "T1550.002",
+        "T1550.001",
+        "T1090.002",
+        "T1561.002"
+    ],
+    "actual_found_ids": [
+        "T1550.002",
+        "T1546",
+        "T1059.005",
+        "T1659",
+        "T1561.002",
+        "T1550.001",
+        "T1078.002",
+        "T1591",
+        "T1548.006",
+        "T1090.002",
+        "T1595.002",
+        "T1036.002",
+        "T1592.002",
+        "T1036.001",
+        "T1059.001"
+    ],
+    "clean_text": "**Initial Access and Reconnaissance:** The actors, likely affiliated with OrionVoid, initiated their campaign by gathering victim organization information through queries to large language models (LLMs) to identify satellite capabilities and personnel. During this phase, they conducted vulnerability scanning by analyzing SSH and web service banners to collect software version data, which revealed outdated Apache servers and weak configurations. The organization, 'AeroSat Dynamics', reported unusual network scans from IP addresses linked to previous APT activity, though no immediate breaches were detected in system logs at this stage.\n\n**Execution and Persistence:** After identifying vulnerabilities, the actors exploited a compromised domain admin account to gain initial access, using pass-the-hash authentication with pth.exe to move laterally to a file server. They then employed Visual Basic via VBS files to download and execute malicious payloads, while simultaneously using PowerShell to modify registry keys and establish event-triggered execution by registering a malicious DLL as a Windows service. To maintain persistence, they manipulated the TCC.db file to add their application as a trusted accessibility tool, bypassing security prompts. System administrators noted anomalous service creations but initially attributed them to routine updates.\n\n**Defense Evasion and Lateral Movement:** The actors implemented multiple defense evasion techniques, including right-to-left override to rename 'regedit.exe' as 'tedi.pdf' and invalid code signatures by copying 'cmd.exe' to the startup folder with a deceptive filename. They leveraged application access tokens harvested from OAuth tokens to gain unauthorized access to email accounts, exfiltrating sensitive data. For command and control (C2), they deployed HTRAN as an external proxy to encrypt and tunnel traffic between infected systems and attacker servers, while using content injection to redirect user traffic through a malicious proxy via a compromised ISP channel. Network logs showed spikes in encrypted traffic to unknown domains, but no alerts were triggered due to misconfigured monitoring tools.\n\n**Impact and Exfiltration:** In the final stage, the actors executed a disk structure wipe using a script to format the C: drive, rendering the operating system unbootable and causing significant operational disruption. Prior to this, they exfiltrated proprietary satellite designs via the proxy tunnel. Incident response teams at AeroSat Dynamics discovered the breach during a routine audit, noting the destruction occurred after data theft, highlighting the need for improved backup and recovery procedures. This fictional scenario underscores the importance of multi-layered defenses and continuous monitoring in critical infrastructure sectors.",
+    "tagged_text": "**Initial Access and Reconnaissance:** The actors, likely affiliated with OrionVoid, initiated their campaign by gathering victim organization information [T1591] through queries to large language models (LLMs) to identify satellite capabilities and personnel. During this phase, they conducted vulnerability scanning [T1595.002] by analyzing SSH and web service banners to collect software version data [T1592.002], which revealed outdated Apache servers and weak configurations. The organization, 'AeroSat Dynamics', reported unusual network scans from IP addresses linked to previous APT activity, though no immediate breaches were detected in system logs at this stage.\n\n**Execution and Persistence:** After identifying vulnerabilities, the actors exploited a compromised domain admin account [T1078.002] to gain initial access, using pass-the-hash authentication [T1550.002] with pth.exe to move laterally to a file server. They then employed Visual Basic [T1059.005] via VBS files to download and execute malicious payloads, while simultaneously using PowerShell [T1059.001] to modify registry keys and establish event-triggered execution [T1546] by registering a malicious DLL as a Windows service. To maintain persistence, they manipulated the TCC.db file [T1548.006] to add their application as a trusted accessibility tool, bypassing security prompts. System administrators noted anomalous service creations but initially attributed them to routine updates.\n\n**Defense Evasion and Lateral Movement:** The actors implemented multiple defense evasion techniques, including right-to-left override [T1036.002] to rename 'regedit.exe' as 'tedi.pdf' and invalid code signatures [T1036.001] by copying 'cmd.exe' to the startup folder with a deceptive filename. They leveraged application access tokens [T1550.001] harvested from OAuth tokens to gain unauthorized access to email accounts, exfiltrating sensitive data. For command and control (C2), they deployed HTRAN as an external proxy [T1090.002] to encrypt and tunnel traffic between infected systems and attacker servers, while using content injection [T1659] to redirect user traffic through a malicious proxy via a compromised ISP channel. Network logs showed spikes in encrypted traffic to unknown domains, but no alerts were triggered due to misconfigured monitoring tools.\n\n**Impact and Exfiltration:** In the final stage, the actors executed a disk structure wipe [T1561.002] using a script to format the C: drive, rendering the operating system unbootable and causing significant operational disruption. Prior to this, they exfiltrated proprietary satellite designs via the proxy tunnel. Incident response teams at AeroSat Dynamics discovered the breach during a routine audit, noting the destruction occurred after data theft, highlighting the need for improved backup and recovery procedures. This fictional scenario underscores the importance of multi-layered defenses and continuous monitoring in critical infrastructure sectors.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Initial Access and Reconnaissance:** The actors, likely affiliated with OrionVoid, initiated their campaign by gathering victim organization information through queries to large language models (LLMs) to identify satellite capabilities and personnel.",
+            "technique_id": "T1591",
+            "technique_name": "Gather Victim Org Information"
+        },
+        {
+            "sentence": "001] to modify registry keys and establish event-triggered execution by registering a malicious DLL as a Windows service.",
+            "technique_id": "T1546",
+            "technique_name": "Event Triggered Execution"
+        },
+        {
+            "sentence": "002] to encrypt and tunnel traffic between infected systems and attacker servers, while using content injection to redirect user traffic through a malicious proxy via a compromised ISP channel.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SatelliteShadow' Targeting Aerospace Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'OrionVoid', targeting aerospace organizations to exfiltrate satellite technology data. Based on intelligence from CISA, FBI, and NSA, the actors employ sophisticated techniques across the kill-chain, including reconnaissance, credential abuse, and destructive actions. The scenario is designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "**Initial Access and Reconnaissance:** The actors, likely affiliated with OrionVoid, initiated their campaign by gathering victim organization information [T1591] through queries to large language models (LLMs) to identify satellite capabilities and personnel. During this phase, they conducted vulnerability scanning [T1595.002] by analyzing SSH and web service banners to collect software version data [T1592.002], which revealed outdated Apache servers and weak configurations. The organization, 'AeroSat Dynamics', reported unusual network scans from IP addresses linked to previous APT activity, though no immediate breaches were detected in system logs at this stage.\n\n**Execution and Persistence:** After identifying vulnerabilities, the actors exploited a compromised domain admin account [T1078.002] to gain initial access, using pass-the-hash authentication [T1550.002] with pth.exe to move laterally to a file server. They then employed Visual Basic [T1059.005] via VBS files to download and execute malicious payloads, while simultaneously using PowerShell [T1059.001] to modify registry keys and establish event-triggered execution [T1546] by registering a malicious DLL as a Windows service. To maintain persistence, they manipulated the TCC.db file [T1548.006] to add their application as a trusted accessibility tool, bypassing security prompts. System administrators noted anomalous service creations but initially attributed them to routine updates.\n\n**Defense Evasion and Lateral Movement:** The actors implemented multiple defense evasion techniques, including right-to-left override [T1036.002] to rename 'regedit.exe' as 'tedi.pdf' and invalid code signatures [T1036.001] by copying 'cmd.exe' to the startup folder with a deceptive filename. They leveraged application access tokens [T1550.001] harvested from OAuth tokens to gain unauthorized access to email accounts, exfiltrating sensitive data. For command and control (C2), they deployed HTRAN as an external proxy [T1090.002] to encrypt and tunnel traffic between infected systems and attacker servers, while using content injection [T1659] to redirect user traffic through a malicious proxy via a compromised ISP channel. Network logs showed spikes in encrypted traffic to unknown domains, but no alerts were triggered due to misconfigured monitoring tools.\n\n**Impact and Exfiltration:** In the final stage, the actors executed a disk structure wipe [T1561.002] using a script to format the C: drive, rendering the operating system unbootable and causing significant operational disruption. Prior to this, they exfiltrated proprietary satellite designs via the proxy tunnel. Incident response teams at AeroSat Dynamics discovered the breach during a routine audit, noting the destruction occurred after data theft, highlighting the need for improved backup and recovery procedures. This fictional scenario underscores the importance of multi-layered defenses and continuous monitoring in critical infrastructure sectors.",
+        "techniques_used": [
+            "T1591",
+            "T1592.002",
+            "T1595.002",
+            "T1078.002",
+            "T1659",
+            "T1059.005",
+            "T1059.001",
+            "T1546",
+            "T1548.006",
+            "T1036.002",
+            "T1036.001",
+            "T1550.002",
+            "T1550.001",
+            "T1090.002",
+            "T1561.002"
+        ]
+    }
+}

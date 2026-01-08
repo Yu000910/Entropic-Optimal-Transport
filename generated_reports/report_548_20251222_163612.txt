@@ -1,0 +1,17 @@
+On October 15, 2023, a fictional financial institution, 'SecureBank Corp', reported anomalous activity in its network. Investigation revealed a campaign attributed to the threat actor 'ShadowWeaver', likely operating since early 2023. SecureBank Corp, headquartered in New York with 5,000 employees, uses a hybrid cloud environment with Microsoft 365 and on-premises SharePoint servers. Initial logs showed unusual PowerShell executions from a developer workstation, but these were initially dismissed as false positives during routine system maintenance checks.
+
+**Kill-Chain Analysis:**
+1. **Reconnaissance:** The actors likely conducted reconnaissance by searching YouTube for corporate training videos from SecureBank to gather victim org information about internal IT processes and employee roles [T1591].
+2. **Resource Development:** To maintain anonymity, the adversary purchased multiple Cloudflare Workers accounts using cryptocurrency to establish serverless infrastructure for command and control [T1583.007].
+3. **Initial Access:** During the campaign, ShadowWeaver sent spearphishing messages via Telegram, impersonating IT personnel to harvest credentials from employees [T1598.001].
+4. **Execution:** The attacker modified the source code of an open-source library used in SecureBank's software development, compromising the software supply chain to include a backdoor before its official release [T1195.002].
+5. **Persistence:** Once inside, the malware employed DLL side-loading to install RCSession, ensuring persistence by hijacking legitimate processes [T1574.001].
+6. **Privilege Escalation:** The actors used Distributed Component Object Model (DCOM) to execute code remotely through Microsoft PowerPoint's COM objects, leveraging elevated privileges [T1021.003].
+7. **Defense Evasion:** The malware monitored the Windows message loop to capture keystrokes from user applications via input injection, evading detection by traditional antivirus software [T1674].
+8. **Credential Access:** An adversary executed PowerShell commands to set up Exchange transport rules that forward executive emails to a malicious recipient, harvesting sensitive credentials [T1114.003].
+9. **Discovery:** The threat actor used PowerShell to query SharePoint for files modified in the last 30 days, extracting data from information repositories [T1213], while malicious scripts were used to query Smart Install clients for switch configuration details, dumping network device configurations [T1602.002].
+10. **Collection:** A malicious script automatically copied command instructions to a USB flash drive when inserted, facilitating communication through removable media [T1092].
+11. **Command and Control:** Data was exfiltrated over the C2 channel using AppleSeed, blending with normal traffic [T1041], and separately, FTP was used to exfiltrate data over an unencrypted non-C2 protocol to avoid detection [T1048.003].
+12. **Exfiltration:** The attacker modified the company intranet homepage to display false information about financial losses, conducting internal defacement to create confusion and cover tracks [T1491.001].
+
+**Additional Context:** SecureBank's SIEM alerts flagged unusual outbound traffic to unknown IP addresses, but initial triage focused on firewall misconfigurations. Network logs from October 10 showed repeated failed login attempts from Eastern European IPs, though these were unrelated to the main campaign. The company's backup systems were unaffected, and no customer data was compromised in this fictional scenario.

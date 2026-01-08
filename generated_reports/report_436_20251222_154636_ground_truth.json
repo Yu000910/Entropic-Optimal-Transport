@@ -1,0 +1,96 @@
+{
+    "report_id": "report_436",
+    "generated_at": "20251222_154636",
+    "scenario_target_ids": [
+        "T1584.001",
+        "T1588.004",
+        "T1608.001",
+        "T1078.001",
+        "T1059.008",
+        "T1053.002",
+        "T1543.003",
+        "T1574.009",
+        "T1535",
+        "T1003.004",
+        "T1573.002",
+        "T1090.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1584.001",
+        "T1588.004",
+        "T1608.001",
+        "T1078.001",
+        "T1059.008",
+        "T1053.002",
+        "T1543.003",
+        "T1574.009",
+        "T1535",
+        "T1003.004",
+        "T1573.002",
+        "T1090.004"
+    ],
+    "actual_found_ids": [
+        "T1059.008",
+        "T1053.002",
+        "T1535",
+        "T1589",
+        "T1574.009",
+        "T1543.003",
+        "T1573.002",
+        "T1608.001",
+        "T1090.004",
+        "T1584.001",
+        "T1588.004",
+        "T1003.004",
+        "T1078.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil'. This campaign targets energy companies, with observed activity starting in early 2024. The actors likely conduct reconnaissance to identify corporate domains and default accounts. In the initial access phase, the adversary modified DNS A records to redirect legitimate corporate domains to IP addresses under their control, while simultaneously acquiring Cloudflare Origin CA TLS certificates to impersonate trusted services. System logs from a compromised web server show unusual traffic spikes during off-peak hours, though this is unrelated to the attack. During the execution phase, the actors uploaded commonly available hacker tools, such as Mimikatz, to the compromised servers and leveraged weak default credentials on the Administrator account to deploy payloads. A script was then executed to use the network device CLI with commands like 'access-list 101 permit ip any any' to bypass firewall restrictions, and at.exe was employed to schedule a malicious script to run at 2:00 AM. For persistence, the actors created new Windows services and modified existing ones, and placed a malicious 'calc.exe' in the current user's AppData folder to exploit path interception by unquoted path. Company background: The targeted organization, 'EnergyCorp', operates in multiple regions with legacy systems. In the defense evasion phase, an automated script was written to create cloud instances in unused or unsupported regions during off-peak hours when security monitoring might be less vigilant. Credential access was achieved by using Mimikatz's lsadump module to extract LSA secrets. For command and control, the malware used asymmetric cryptography, sending a random 64-byte RC4 key encrypted with an RSA public key to communicate with actor-controlled C2 servers, and the malicious script changed TLS extension fields in the header to implement domain fronting and bypass network filtering. Additional logs indicate routine system updates, but no further malicious activity was detected.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil'. This campaign targets energy companies, with observed activity starting in early 2024. The actors likely conduct reconnaissance [T1589] to identify corporate domains and default accounts. In the initial access phase, the adversary modified DNS A records to redirect legitimate corporate domains to IP addresses under their control [T1584.001], while simultaneously acquiring Cloudflare Origin CA TLS certificates to impersonate trusted services [T1588.004]. System logs from a compromised web server show unusual traffic spikes during off-peak hours, though this is unrelated to the attack. During the execution phase, the actors uploaded commonly available hacker tools, such as Mimikatz, to the compromised servers [T1608.001] and leveraged weak default credentials on the Administrator account to deploy payloads [T1078.001]. A script was then executed to use the network device CLI with commands like 'access-list 101 permit ip any any' to bypass firewall restrictions [T1059.008], and at.exe was employed to schedule a malicious script to run at 2:00 AM [T1053.002]. For persistence, the actors created new Windows services and modified existing ones [T1543.003], and placed a malicious 'calc.exe' in the current user's AppData folder to exploit path interception by unquoted path [T1574.009]. Company background: The targeted organization, 'EnergyCorp', operates in multiple regions with legacy systems. In the defense evasion phase, an automated script was written to create cloud instances in unused or unsupported regions during off-peak hours when security monitoring might be less vigilant [T1535]. Credential access was achieved by using Mimikatz's lsadump module to extract LSA secrets [T1003.004]. For command and control, the malware used asymmetric cryptography, sending a random 64-byte RC4 key encrypted with an RSA public key to communicate with actor-controlled C2 servers [T1573.002], and the malicious script changed TLS extension fields in the header to implement domain fronting and bypass network filtering [T1090.004]. Additional logs indicate routine system updates, but no further malicious activity was detected.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify corporate domains and default accounts.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "In the defense evasion phase, an automated script was written to create cloud instances in unused or unsupported regions during off-peak hours when security monitoring might be less vigilant.",
+            "technique_id": "T1535",
+            "technique_name": "Unused/Unsupported Cloud Regions"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowVeil' targeting energy sector organizations, leveraging compromised domains, digital certificates, and cloud infrastructure to deploy malware and establish persistence. The campaign involves initial access through DNS manipulation, execution via scheduled tasks and network device commands, and data exfiltration using encrypted communication.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowVeil'. This campaign targets energy companies, with observed activity starting in early 2024. The actors likely conduct reconnaissance [T1589] to identify corporate domains and default accounts. In the initial access phase, the adversary modified DNS A records to redirect legitimate corporate domains to IP addresses under their control [T1584.001], while simultaneously acquiring Cloudflare Origin CA TLS certificates to impersonate trusted services [T1588.004]. System logs from a compromised web server show unusual traffic spikes during off-peak hours, though this is unrelated to the attack. During the execution phase, the actors uploaded commonly available hacker tools, such as Mimikatz, to the compromised servers [T1608.001] and leveraged weak default credentials on the Administrator account to deploy payloads [T1078.001]. A script was then executed to use the network device CLI with commands like 'access-list 101 permit ip any any' to bypass firewall restrictions [T1059.008], and at.exe was employed to schedule a malicious script to run at 2:00 AM [T1053.002]. For persistence, the actors created new Windows services and modified existing ones [T1543.003], and placed a malicious 'calc.exe' in the current user's AppData folder to exploit path interception by unquoted path [T1574.009]. Company background: The targeted organization, 'EnergyCorp', operates in multiple regions with legacy systems. In the defense evasion phase, an automated script was written to create cloud instances in unused or unsupported regions during off-peak hours when security monitoring might be less vigilant [T1535]. Credential access was achieved by using Mimikatz's lsadump module to extract LSA secrets [T1003.004]. For command and control, the malware used asymmetric cryptography, sending a random 64-byte RC4 key encrypted with an RSA public key to communicate with actor-controlled C2 servers [T1573.002], and the malicious script changed TLS extension fields in the header to implement domain fronting and bypass network filtering [T1090.004]. Additional logs indicate routine system updates, but no further malicious activity was detected.",
+        "techniques_used": [
+            "T1589",
+            "T1584.001",
+            "T1588.004",
+            "T1608.001",
+            "T1078.001",
+            "T1059.008",
+            "T1053.002",
+            "T1543.003",
+            "T1574.009",
+            "T1535",
+            "T1003.004",
+            "T1573.002",
+            "T1090.004"
+        ]
+    }
+}

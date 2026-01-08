@@ -1,0 +1,88 @@
+{
+    "report_id": "report_371",
+    "generated_at": "20251222_151904",
+    "scenario_target_ids": [
+        "T1592.002",
+        "T1590.002",
+        "T1195",
+        "T1106",
+        "T1574.014",
+        "T1055.005",
+        "T1556.009",
+        "T1021.005",
+        "T1021.008",
+        "T1219.001",
+        "T1071.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.002",
+        "T1590.002",
+        "T1195",
+        "T1106",
+        "T1574.014",
+        "T1055.005",
+        "T1556.009",
+        "T1021.005",
+        "T1021.008",
+        "T1219.001",
+        "T1071.003"
+    ],
+    "actual_found_ids": [
+        "T1021.005",
+        "T1106",
+        "T1590.002",
+        "T1021.008",
+        "T1071.003",
+        "T1195",
+        "T1556.009",
+        "T1055.005",
+        "T1574.014",
+        "T1592.002",
+        "T1219.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'Crimson Serpent'. This group has been observed targeting technology firms through a multi-phase attack campaign, with initial activities dating back to early 2024. Background analysis indicates the group operates from unknown regions, focusing on intellectual property theft and data exfiltration.\n\nIn the reconnaissance phase, Crimson Serpent actors conducted passive DNS analysis to map target infrastructure and used network scanning tools to inventory software versions, identifying vulnerabilities in web applications. Logs from internal SIEM systems showed anomalous DNS queries from external IPs, but these were initially dismissed as false positives due to high network traffic volumes.\n\nFor initial access, the adversary executed a supply chain compromise by tampering with a continuous integration (CI) pipeline, injecting a malicious component into production builds that was automatically deployed across target environments. This component leveraged the Native API through CreateProcessW calls to execute payloads while simultaneously modifying application configuration files to hijack assembly loading via AppDomainManager, establishing persistence early in the attack chain.\n\nDuring execution and persistence, the malware employed reflective DLL injection to load into legitimate processes using Thread Local Storage, evading traditional antivirus detection. Additionally, the actors altered Entra ID conditional access policies to disable location-based restrictions, facilitating unauthorized access. For lateral movement, they utilized VNC tools such as UltraVNC for remote interaction and established direct cloud VM connections via Azure Serial Console to bypass firewall rules, gaining console-level control over virtual machines.\n\nTo maintain persistent access, Crimson Serpent exploited IDE tunneling through Visual Studio Code's remote features, embedding backdoors in development environments. Command and control (C2) communications were disguised as legitimate SMTP traffic, blending with normal email flow to avoid network-based alerts. Internal firewall logs recorded sporadic VNC connections from unknown IPs, but these were not correlated with other IoCs during the initial investigation phase.\n\nThis campaign underscores the need for enhanced monitoring of CI/CD pipelines and cloud access controls. Blue teams should implement behavioral analytics to detect anomalous API usage and review conditional access policies regularly.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'Crimson Serpent'. This group has been observed targeting technology firms through a multi-phase attack campaign, with initial activities dating back to early 2024. Background analysis indicates the group operates from unknown regions, focusing on intellectual property theft and data exfiltration.\n\nIn the reconnaissance phase, Crimson Serpent actors conducted passive DNS analysis [T1590.002] to map target infrastructure and used network scanning tools to inventory software versions [T1592.002], identifying vulnerabilities in web applications. Logs from internal SIEM systems showed anomalous DNS queries from external IPs, but these were initially dismissed as false positives due to high network traffic volumes.\n\nFor initial access, the adversary executed a supply chain compromise [T1195] by tampering with a continuous integration (CI) pipeline, injecting a malicious component into production builds that was automatically deployed across target environments. This component leveraged the Native API [T1106] through CreateProcessW calls to execute payloads while simultaneously modifying application configuration files to hijack assembly loading via AppDomainManager [T1574.014], establishing persistence early in the attack chain.\n\nDuring execution and persistence, the malware employed reflective DLL injection to load into legitimate processes using Thread Local Storage [T1055.005], evading traditional antivirus detection. Additionally, the actors altered Entra ID conditional access policies [T1556.009] to disable location-based restrictions, facilitating unauthorized access. For lateral movement, they utilized VNC tools [T1021.005] such as UltraVNC for remote interaction and established direct cloud VM connections [T1021.008] via Azure Serial Console to bypass firewall rules, gaining console-level control over virtual machines.\n\nTo maintain persistent access, Crimson Serpent exploited IDE tunneling [T1219.001] through Visual Studio Code's remote features, embedding backdoors in development environments. Command and control (C2) communications were disguised as legitimate SMTP traffic [T1071.003], blending with normal email flow to avoid network-based alerts. Internal firewall logs recorded sporadic VNC connections from unknown IPs, but these were not correlated with other IoCs during the initial investigation phase.\n\nThis campaign underscores the need for enhanced monitoring of CI/CD pipelines and cloud access controls. Blue teams should implement behavioral analytics to detect anomalous API usage and review conditional access policies regularly.",
+    "sentence_annotations": [
+        {
+            "sentence": "For initial access, the adversary executed a supply chain compromise by tampering with a continuous integration (CI) pipeline, injecting a malicious component into production builds that was automatically deployed across target environments.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "This component leveraged the Native API through CreateProcessW calls to execute payloads while simultaneously modifying application configuration files to hijack assembly loading via AppDomainManager [T1574.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud Infrastructure via Supply Chain Compromise",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Serpent', targeting organizations in the technology sector. The campaign leverages supply chain compromises and sophisticated persistence mechanisms to infiltrate cloud environments and maintain long-term access. Blue teams are advised to review detection strategies and implement mitigations outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with the fictional APT group 'Crimson Serpent'. This group has been observed targeting technology firms through a multi-phase attack campaign, with initial activities dating back to early 2024. Background analysis indicates the group operates from unknown regions, focusing on intellectual property theft and data exfiltration.\n\nIn the reconnaissance phase, Crimson Serpent actors conducted passive DNS analysis [T1590.002] to map target infrastructure and used network scanning tools to inventory software versions [T1592.002], identifying vulnerabilities in web applications. Logs from internal SIEM systems showed anomalous DNS queries from external IPs, but these were initially dismissed as false positives due to high network traffic volumes.\n\nFor initial access, the adversary executed a supply chain compromise [T1195] by tampering with a continuous integration (CI) pipeline, injecting a malicious component into production builds that was automatically deployed across target environments. This component leveraged the Native API [T1106] through CreateProcessW calls to execute payloads while simultaneously modifying application configuration files to hijack assembly loading via AppDomainManager [T1574.014], establishing persistence early in the attack chain.\n\nDuring execution and persistence, the malware employed reflective DLL injection to load into legitimate processes using Thread Local Storage [T1055.005], evading traditional antivirus detection. Additionally, the actors altered Entra ID conditional access policies [T1556.009] to disable location-based restrictions, facilitating unauthorized access. For lateral movement, they utilized VNC tools [T1021.005] such as UltraVNC for remote interaction and established direct cloud VM connections [T1021.008] via Azure Serial Console to bypass firewall rules, gaining console-level control over virtual machines.\n\nTo maintain persistent access, Crimson Serpent exploited IDE tunneling [T1219.001] through Visual Studio Code's remote features, embedding backdoors in development environments. Command and control (C2) communications were disguised as legitimate SMTP traffic [T1071.003], blending with normal email flow to avoid network-based alerts. Internal firewall logs recorded sporadic VNC connections from unknown IPs, but these were not correlated with other IoCs during the initial investigation phase.\n\nThis campaign underscores the need for enhanced monitoring of CI/CD pipelines and cloud access controls. Blue teams should implement behavioral analytics to detect anomalous API usage and review conditional access policies regularly.",
+        "techniques_used": [
+            "T1592.002",
+            "T1590.002",
+            "T1195",
+            "T1106",
+            "T1574.014",
+            "T1055.005",
+            "T1556.009",
+            "T1021.005",
+            "T1021.008",
+            "T1219.001",
+            "T1071.003"
+        ]
+    }
+}

@@ -1,0 +1,101 @@
+{
+    "report_id": "report_187",
+    "generated_at": "20251222_140056",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1204",
+        "T1525",
+        "T1070.004",
+        "T1562.003",
+        "T1110.004",
+        "T1056",
+        "T1095",
+        "T1041"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1195.001",
+        "T1204",
+        "T1525",
+        "T1070.004",
+        "T1562.003",
+        "T1110.004",
+        "T1056",
+        "T1095",
+        "T1041"
+    ],
+    "actual_found_ids": [
+        "T1562.003",
+        "T1110.004",
+        "T1070.004",
+        "T1095",
+        "T1525",
+        "T1195.001",
+        "T1589",
+        "T1056",
+        "T1041",
+        "T1204"
+    ],
+    "clean_text": "ShadowHydra, a fictional APT group with suspected ties to cybercriminal elements, has been observed conducting a multi-phase campaign against technology and energy firms since early 2024. Initial analysis indicates the actors likely conduct reconnaissance to identify target developers and infrastructure. In the Initial Access phase, the adversary compromised a third-party software repository to inject a backdoor into a widely used PowerShell script, evil.ps1, which established persistent access and exfiltrated documents. Concurrently, they sent phishing emails with malicious Excel documents that executed a remote access trojan (RAT) when users enabled macros, leveraging social engineering to gain footholds. During Execution, the malware modified a Docker image by embedding a reverse shell in the ENTRYPOINT instruction, allowing for stealthy deployment in containerized environments. For Persistence and Defense Evasion, the actors employed the backdoor to delete forensic artifacts and logs while running 'export HISTFILESIZE=0' in terminals to impair command history logging, ensuring no traces were preserved beyond active sessions. In the Credential Access phase, they used credentials from breach_dump.txt to query SSH services across the corporate network and deployed FlawedAmmyy to capture mouse events and input data. For Command and Control (C2), StealBit utilized the Windows Socket networking library to communicate with attacker-controlled endpoints over non-application layer protocols, blending traffic with legitimate network activity. Finally, in the Exfiltration phase, OilBooster leveraged an actor-controlled OneDrive account for C2 communication and data exfiltration over established channels, siphoning intellectual property and operational documents. System logs from affected servers show anomalous PowerShell executions and failed SSH login attempts, though these were often obscured by the actors' evasion techniques. The targeted company, 'TechFlow Inc.', reported minor disruptions in development pipelines, but no real data loss occurred as this was a training exercise.",
+    "tagged_text": "ShadowHydra, a fictional APT group with suspected ties to cybercriminal elements, has been observed conducting a multi-phase campaign against technology and energy firms since early 2024. Initial analysis indicates the actors likely conduct reconnaissance [T1589] to identify target developers and infrastructure. In the Initial Access phase, the adversary compromised a third-party software repository to inject a backdoor into a widely used PowerShell script, evil.ps1, which established persistent access and exfiltrated documents [T1195.001]. Concurrently, they sent phishing emails with malicious Excel documents that executed a remote access trojan (RAT) when users enabled macros [T1204], leveraging social engineering to gain footholds. During Execution, the malware modified a Docker image by embedding a reverse shell in the ENTRYPOINT instruction [T1525], allowing for stealthy deployment in containerized environments. For Persistence and Defense Evasion, the actors employed the backdoor to delete forensic artifacts and logs [T1070.004] while running 'export HISTFILESIZE=0' in terminals to impair command history logging [T1562.003], ensuring no traces were preserved beyond active sessions. In the Credential Access phase, they used credentials from breach_dump.txt to query SSH services across the corporate network [T1110.004] and deployed FlawedAmmyy to capture mouse events and input data [T1056]. For Command and Control (C2), StealBit utilized the Windows Socket networking library to communicate with attacker-controlled endpoints over non-application layer protocols [T1095], blending traffic with legitimate network activity. Finally, in the Exfiltration phase, OilBooster leveraged an actor-controlled OneDrive account for C2 communication and data exfiltration over established channels [T1041], siphoning intellectual property and operational documents. System logs from affected servers show anomalous PowerShell executions and failed SSH login attempts, though these were often obscured by the actors' evasion techniques. The targeted company, 'TechFlow Inc.', reported minor disruptions in development pipelines, but no real data loss occurred as this was a training exercise.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis indicates the actors likely conduct reconnaissance to identify target developers and infrastructure.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Concurrently, they sent phishing emails with malicious Excel documents that executed a remote access trojan (RAT) when users enabled macros, leveraging social engineering to gain footholds.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "During Execution, the malware modified a Docker image by embedding a reverse shell in the ENTRYPOINT instruction, allowing for stealthy deployment in containerized environments.",
+            "technique_id": "T1525",
+            "technique_name": "Implant Internal Image"
+        },
+        {
+            "sentence": "004] and deployed FlawedAmmyy to capture mouse events and input data.",
+            "technique_id": "T1056",
+            "technique_name": "Input Capture"
+        },
+        {
+            "sentence": "For Command and Control (C2), StealBit utilized the Windows Socket networking library to communicate with attacker-controlled endpoints over non-application layer protocols, blending traffic with legitimate network activity.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "Finally, in the Exfiltration phase, OilBooster leveraged an actor-controlled OneDrive account for C2 communication and data exfiltration over established channels, siphoning intellectual property and operational documents.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowHydra', targeting organizations in the technology and energy sectors. The campaign leverages compromised software dependencies, phishing, and container image manipulation to establish persistent access, exfiltrate sensitive data, and evade detection. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "ShadowHydra, a fictional APT group with suspected ties to cybercriminal elements, has been observed conducting a multi-phase campaign against technology and energy firms since early 2024. Initial analysis indicates the actors likely conduct reconnaissance [T1589] to identify target developers and infrastructure. In the Initial Access phase, the adversary compromised a third-party software repository to inject a backdoor into a widely used PowerShell script, evil.ps1, which established persistent access and exfiltrated documents [T1195.001]. Concurrently, they sent phishing emails with malicious Excel documents that executed a remote access trojan (RAT) when users enabled macros [T1204], leveraging social engineering to gain footholds. During Execution, the malware modified a Docker image by embedding a reverse shell in the ENTRYPOINT instruction [T1525], allowing for stealthy deployment in containerized environments. For Persistence and Defense Evasion, the actors employed the backdoor to delete forensic artifacts and logs [T1070.004] while running 'export HISTFILESIZE=0' in terminals to impair command history logging [T1562.003], ensuring no traces were preserved beyond active sessions. In the Credential Access phase, they used credentials from breach_dump.txt to query SSH services across the corporate network [T1110.004] and deployed FlawedAmmyy to capture mouse events and input data [T1056]. For Command and Control (C2), StealBit utilized the Windows Socket networking library to communicate with attacker-controlled endpoints over non-application layer protocols [T1095], blending traffic with legitimate network activity. Finally, in the Exfiltration phase, OilBooster leveraged an actor-controlled OneDrive account for C2 communication and data exfiltration over established channels [T1041], siphoning intellectual property and operational documents. System logs from affected servers show anomalous PowerShell executions and failed SSH login attempts, though these were often obscured by the actors' evasion techniques. The targeted company, 'TechFlow Inc.', reported minor disruptions in development pipelines, but no real data loss occurred as this was a training exercise.",
+        "techniques_used": [
+            "T1589",
+            "T1195.001",
+            "T1204",
+            "T1525",
+            "T1070.004",
+            "T1562.003",
+            "T1110.004",
+            "T1056",
+            "T1095",
+            "T1041"
+        ]
+    }
+}

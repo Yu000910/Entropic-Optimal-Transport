@@ -1,0 +1,11 @@
+On 2023-10-15, a simulated APT group, dubbed 'DarkHydrus Reborn,' initiated a campaign against a fictional financial services company, 'SecureFin Corp.' The company's background includes operations in North America and Europe, with an IT infrastructure running Windows and Linux systems. Initial logs from their email gateway showed an increase in suspicious traffic, but no immediate alerts were triggered.
+
+**Initial Access:** The actors conducted reconnaissance [T1589] to identify key employees, then sent spearphishing emails with password-protected RAR archives containing malicious Excel Web Query files (.iqy) [T1566.001], mimicking DarkHydrus tactics. System logs indicated the emails bypassed initial spam filters due to their tailored content.
+
+**Execution:** Upon opening the attachment, a VBA macro executed [T1059.005] to download a payload from a remote server, similar to Operation Sharpshooter, while simultaneously modifying registry keys [T1112] to establish persistence. The payload installed a ROMMONkit [T1542.004] to enable unauthorized code execution during boot, and deployed a custom.sdb file using sdbinst.exe for application shimming [T1546.011].
+
+**Persistence and Privilege Escalation:** The actors parsed the bash_history file [T1552.003] to extract API keys and used modules to identify local administrator accounts [T1087.001]. They then performed a Pass-the-Hash attack [T1550] using collected password hashes to access the domain controller, and updated Entra ID conditional access policies [T1556.009] to exclude compromised accounts from security controls.
+
+**Command and Control (C2) and Exfiltration:** The malware issued wget requests [T1071] to communicate with C2 servers over HTTP, and exfiltrated sensitive data over the C2 channel [T1041]. Network logs showed anomalous outbound traffic, but it was initially mistaken for legitimate updates.
+
+**Impact:** The campaign resulted in simulated data theft and system compromise, highlighting the need for enhanced detection of multi-stage attacks. No real systems were harmed in this training scenario.

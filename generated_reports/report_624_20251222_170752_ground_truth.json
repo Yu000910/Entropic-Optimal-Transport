@@ -1,0 +1,93 @@
+{
+    "report_id": "report_624",
+    "generated_at": "20251222_170752",
+    "scenario_target_ids": [
+        "T1592.003",
+        "T1586",
+        "T1566.001",
+        "T1059.011",
+        "T1204.003",
+        "T1547.013",
+        "T1482",
+        "T1087.001",
+        "T1021",
+        "T1568.001",
+        "T1205.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592.003",
+        "T1566.001",
+        "T1059.011",
+        "T1021",
+        "T1547.013",
+        "T1204.003",
+        "T1586",
+        "T1482",
+        "T1087.001",
+        "T1568.001",
+        "T1205.002"
+    ],
+    "actual_found_ids": [
+        "T1566.001",
+        "T1059.011",
+        "T1021",
+        "T1205.002",
+        "T1568.001",
+        "T1547.013",
+        "T1592.003",
+        "T1586",
+        "T1087.001",
+        "T1204.003",
+        "T1482"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional campaign by the threat actor 'ShadowMimic', designed for educational purposes. This campaign targets organizations in the energy and manufacturing sectors, with a focus on operational technology networks. Background analysis indicates that the actor has been active since early 2023, using infrastructure registered in various countries to obscure their origins. System logs from a simulated victim, 'PowerGrid Inc.', show anomalous network traffic patterns starting on October 15, 2023, including increased DNS queries to unknown domains, though these were initially dismissed as false positives by automated monitoring tools.\n\nIn the Initial Access phase, the actors conducted reconnaissance by executing WMI queries to collect BIOS firmware details from multiple systems in the network and used spearphishing attachments, such as malicious Microsoft Office documents disguised as vendor invoices, to gain entry. Upon execution, the malware employed a malicious Lua script to create a reverse shell connection to their C2 server and simultaneously downloaded additional payloads via remote services like WebDAV to execute Ryuk-like ransomware hosted on network file shares.\n\nFor Persistence, the actors modified XDG Autostart entries to ensure malware execution on startup and used a Dockerfile that secretly installed a remote access trojan during the container build process. In the Discovery phase, they harvested saved browser credentials to compromise social media accounts for lateral movement, utilized dsquery to gather information on domain trusts, and ran commands like net localgroup to enumerate local accounts on the system.\n\nCommand-and-Control was established using fast flux DNS for dynamic IP resolution to evade detection, while the backdoor employed libpcap with custom BPF filters to detect and respond to specific network packet sequences. Additional noise includes routine system updates and user login events logged during the campaign, which are unrelated to the attack but provide realistic context for training. Blue teams are advised to monitor for these behaviors and implement layered defenses, including network segmentation and endpoint detection, to mitigate similar threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional campaign by the threat actor 'ShadowMimic', designed for educational purposes. This campaign targets organizations in the energy and manufacturing sectors, with a focus on operational technology networks. Background analysis indicates that the actor has been active since early 2023, using infrastructure registered in various countries to obscure their origins. System logs from a simulated victim, 'PowerGrid Inc.', show anomalous network traffic patterns starting on October 15, 2023, including increased DNS queries to unknown domains, though these were initially dismissed as false positives by automated monitoring tools.\n\nIn the Initial Access phase, the actors conducted reconnaissance by executing WMI queries to collect BIOS firmware details from multiple systems in the network [T1592.003] and used spearphishing attachments, such as malicious Microsoft Office documents disguised as vendor invoices, to gain entry [T1566.001]. Upon execution, the malware employed a malicious Lua script to create a reverse shell connection to their C2 server [T1059.011] and simultaneously downloaded additional payloads via remote services like WebDAV to execute Ryuk-like ransomware hosted on network file shares [T1021].\n\nFor Persistence, the actors modified XDG Autostart entries to ensure malware execution on startup [T1547.013] and used a Dockerfile that secretly installed a remote access trojan during the container build process [T1204.003]. In the Discovery phase, they harvested saved browser credentials to compromise social media accounts for lateral movement [T1586], utilized dsquery to gather information on domain trusts [T1482], and ran commands like net localgroup to enumerate local accounts on the system [T1087.001].\n\nCommand-and-Control was established using fast flux DNS for dynamic IP resolution to evade detection [T1568.001], while the backdoor employed libpcap with custom BPF filters to detect and respond to specific network packet sequences [T1205.002]. Additional noise includes routine system updates and user login events logged during the campaign, which are unrelated to the attack but provide realistic context for training. Blue teams are advised to monitor for these behaviors and implement layered defenses, including network segmentation and endpoint detection, to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "011] and simultaneously downloaded additional payloads via remote services like WebDAV to execute Ryuk-like ransomware hosted on network file shares.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        },
+        {
+            "sentence": "In the Discovery phase, they harvested saved browser credentials to compromise social media accounts for lateral movement, utilized dsquery to gather information on domain trusts, and ran commands like net localgroup to enumerate local accounts on the system [T1087.",
+            "technique_id": "T1586",
+            "technique_name": "Compromise Accounts"
+        },
+        {
+            "sentence": "In the Discovery phase, they harvested saved browser credentials to compromise social media accounts for lateral movement, utilized dsquery to gather information on domain trusts, and ran commands like net localgroup to enumerate local accounts on the system [T1087.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowMimic' targeting critical infrastructure sectors, leveraging sophisticated techniques for initial access, persistence, and command-and-control to train blue teams on detection and response.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on a fictional campaign by the threat actor 'ShadowMimic', designed for educational purposes. This campaign targets organizations in the energy and manufacturing sectors, with a focus on operational technology networks. Background analysis indicates that the actor has been active since early 2023, using infrastructure registered in various countries to obscure their origins. System logs from a simulated victim, 'PowerGrid Inc.', show anomalous network traffic patterns starting on October 15, 2023, including increased DNS queries to unknown domains, though these were initially dismissed as false positives by automated monitoring tools.\n\nIn the Initial Access phase, the actors conducted reconnaissance by executing WMI queries to collect BIOS firmware details from multiple systems in the network [T1592.003] and used spearphishing attachments, such as malicious Microsoft Office documents disguised as vendor invoices, to gain entry [T1566.001]. Upon execution, the malware employed a malicious Lua script to create a reverse shell connection to their C2 server [T1059.011] and simultaneously downloaded additional payloads via remote services like WebDAV to execute Ryuk-like ransomware hosted on network file shares [T1021].\n\nFor Persistence, the actors modified XDG Autostart entries to ensure malware execution on startup [T1547.013] and used a Dockerfile that secretly installed a remote access trojan during the container build process [T1204.003]. In the Discovery phase, they harvested saved browser credentials to compromise social media accounts for lateral movement [T1586], utilized dsquery to gather information on domain trusts [T1482], and ran commands like net localgroup to enumerate local accounts on the system [T1087.001].\n\nCommand-and-Control was established using fast flux DNS for dynamic IP resolution to evade detection [T1568.001], while the backdoor employed libpcap with custom BPF filters to detect and respond to specific network packet sequences [T1205.002]. Additional noise includes routine system updates and user login events logged during the campaign, which are unrelated to the attack but provide realistic context for training. Blue teams are advised to monitor for these behaviors and implement layered defenses, including network segmentation and endpoint detection, to mitigate similar threats.",
+        "techniques_used": [
+            "T1592.003",
+            "T1566.001",
+            "T1059.011",
+            "T1021",
+            "T1547.013",
+            "T1204.003",
+            "T1586",
+            "T1482",
+            "T1087.001",
+            "T1568.001",
+            "T1205.002"
+        ]
+    }
+}

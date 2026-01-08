@@ -1,0 +1,64 @@
+{
+    "report_id": "report_107",
+    "generated_at": "20251222_115912",
+    "scenario_target_ids": [
+        "T1583.002",
+        "T1586.002",
+        "T1078.003",
+        "T1059.008",
+        "T1037.005",
+        "T1001.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1586.002",
+        "T1059.001",
+        "T1583.002",
+        "T1037.005",
+        "T1078.003",
+        "T1001.003",
+        "T1059.008"
+    ],
+    "actual_found_ids": [
+        "T1583.002",
+        "T1037.005",
+        "T1001.003",
+        "T1078.003",
+        "T1589",
+        "T1059.001",
+        "T1059.008",
+        "T1586.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training on the tactics, techniques, and procedures (TTPs) used by the APT group 'SilentDNS'. This report is based on a simulated incident involving a fictional energy company, 'PowerGrid Inc.', which reported anomalous network activity in Q3 2024. Background: PowerGrid Inc. operates across North America with 5,000 employees and uses a hybrid cloud environment. Initial detection occurred via SIEM alerts showing unusual DNS query patterns from an internal server. The attack unfolded as follows: Initial Access: The threat actors likely conducted reconnaissance to identify target email domains, then ran bruteforce.exe against multiple employee email accounts to gain unauthorized access, exploiting weak password policies. Execution: Upon compromising a user account, the adversary employed PowerShell to download and execute a custom implant that transmitted commands via DNS requests to a custom DNS server operated by the attacker. Persistence: To maintain access, the malware created a malicious executable in /Library/StartupItems on compromised macOS systems, ensuring automatic execution upon reboot. Privilege Escalation: On Windows hosts, the actors used Mimikatz's lsadump::sam command to extract local account credentials, enabling lateral movement to administrative systems. Defense Evasion: The implant used custom HTTP Accept headers to exchange commands with the C2 server, impersonating legitimate web traffic to avoid detection by network security tools. Impact: In the final stage, malicious code executed 'delete flash:vlan.dat' to remove VLAN configuration from network switches, disrupting network segmentation and causing operational downtime. Logs from affected systems show increased CPU usage and failed authentication attempts, though these were initially dismissed as routine maintenance noise. Recommendations include implementing multi-factor authentication, monitoring DNS anomalies, and restricting CLI access on network devices.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training on the tactics, techniques, and procedures (TTPs) used by the APT group 'SilentDNS'. This report is based on a simulated incident involving a fictional energy company, 'PowerGrid Inc.', which reported anomalous network activity in Q3 2024. Background: PowerGrid Inc. operates across North America with 5,000 employees and uses a hybrid cloud environment. Initial detection occurred via SIEM alerts showing unusual DNS query patterns from an internal server. The attack unfolded as follows: Initial Access: The threat actors likely conducted reconnaissance [T1589] to identify target email domains, then ran bruteforce.exe against multiple employee email accounts [T1586.002] to gain unauthorized access, exploiting weak password policies. Execution: Upon compromising a user account, the adversary employed PowerShell [T1059.001] to download and execute a custom implant that transmitted commands via DNS requests to a custom DNS server operated by the attacker [T1583.002]. Persistence: To maintain access, the malware created a malicious executable in /Library/StartupItems [T1037.005] on compromised macOS systems, ensuring automatic execution upon reboot. Privilege Escalation: On Windows hosts, the actors used Mimikatz's lsadump::sam command to extract local account credentials [T1078.003], enabling lateral movement to administrative systems. Defense Evasion: The implant used custom HTTP Accept headers to exchange commands with the C2 server [T1001.003], impersonating legitimate web traffic to avoid detection by network security tools. Impact: In the final stage, malicious code executed 'delete flash:vlan.dat' to remove VLAN configuration from network switches [T1059.008], disrupting network segmentation and causing operational downtime. Logs from affected systems show increased CPU usage and failed authentication attempts, though these were initially dismissed as routine maintenance noise. Recommendations include implementing multi-factor authentication, monitoring DNS anomalies, and restricting CLI access on network devices.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack unfolded as follows: Initial Access: The threat actors likely conducted reconnaissance to identify target email domains, then ran bruteforce.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentDNS' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'SilentDNS', targeting critical infrastructure sectors. Based on analysis of fictional incident response data, the group employs a multi-stage attack leveraging DNS tunneling, credential theft, and network device manipulation to establish persistence and exfiltrate data. The FBI, CISA, and NSA recommend organizations review defensive measures outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide fictional training on the tactics, techniques, and procedures (TTPs) used by the APT group 'SilentDNS'. This report is based on a simulated incident involving a fictional energy company, 'PowerGrid Inc.', which reported anomalous network activity in Q3 2024. Background: PowerGrid Inc. operates across North America with 5,000 employees and uses a hybrid cloud environment. Initial detection occurred via SIEM alerts showing unusual DNS query patterns from an internal server. The attack unfolded as follows: Initial Access: The threat actors likely conducted reconnaissance [T1589] to identify target email domains, then ran bruteforce.exe against multiple employee email accounts [T1586.002] to gain unauthorized access, exploiting weak password policies. Execution: Upon compromising a user account, the adversary employed PowerShell [T1059.001] to download and execute a custom implant that transmitted commands via DNS requests to a custom DNS server operated by the attacker [T1583.002]. Persistence: To maintain access, the malware created a malicious executable in /Library/StartupItems [T1037.005] on compromised macOS systems, ensuring automatic execution upon reboot. Privilege Escalation: On Windows hosts, the actors used Mimikatz's lsadump::sam command to extract local account credentials [T1078.003], enabling lateral movement to administrative systems. Defense Evasion: The implant used custom HTTP Accept headers to exchange commands with the C2 server [T1001.003], impersonating legitimate web traffic to avoid detection by network security tools. Impact: In the final stage, malicious code executed 'delete flash:vlan.dat' to remove VLAN configuration from network switches [T1059.008], disrupting network segmentation and causing operational downtime. Logs from affected systems show increased CPU usage and failed authentication attempts, though these were initially dismissed as routine maintenance noise. Recommendations include implementing multi-factor authentication, monitoring DNS anomalies, and restricting CLI access on network devices.",
+        "techniques_used": [
+            "T1589",
+            "T1586.002",
+            "T1059.001",
+            "T1583.002",
+            "T1037.005",
+            "T1078.003",
+            "T1001.003",
+            "T1059.008"
+        ]
+    }
+}

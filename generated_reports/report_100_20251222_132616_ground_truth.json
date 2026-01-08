@@ -1,0 +1,108 @@
+{
+    "report_id": "report_100",
+    "generated_at": "20251222_132616",
+    "scenario_target_ids": [
+        "T1078",
+        "T1651",
+        "T1547",
+        "T1539",
+        "T1552.004",
+        "T1615",
+        "T1570",
+        "T1001.001",
+        "T1071.002",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1651",
+        "T1547",
+        "T1539",
+        "T1552.004",
+        "T1615",
+        "T1570",
+        "T1001.001",
+        "T1071.002",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1570",
+        "T1071.002",
+        "T1539",
+        "T1547",
+        "T1052",
+        "T1552.004",
+        "T1001.001",
+        "T1078",
+        "T1615"
+    ],
+    "clean_text": "On March 15, 2024, the fictional company 'CloudTech Solutions' reported anomalous activity in its Azure environment, leading to the discovery of the 'ShadowMiner' campaign. Initial investigation revealed that the actors likely conducted reconnaissance via social media profiles and public code repositories, though no specific techniques were tagged here. The attack began with the adversary using a compromised valid account to gain initial access to an Azure virtual machine. Once inside, they abused Azure RunCommand to deploy a malicious cryptocurrency mining payload while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run registry key to ensure automatic execution on system boot. The actors then extracted a web session cookie from a browser process to hijack an active administrative session, enabling them to search for and collect private key files with '.pfx' extensions from the compromised system. To facilitate lateral movement, they used PowerShell to execute 'Get-DomainGPO -Properties displayname' to identify specific Group Policy Objects of interest, then copied a web shell tool between servers using SMB protocols for command and control. During exfiltration, the actors encoded C2 data in DNS query labels to tunnel information out of the network, and ultimately wrote proprietary source code to a USB flash drive for physical data theft. System logs from CloudTech Solutions indicated increased CPU usage on VMs, but these were not tagged as they represent noise. The company's background in financial software development made it a high-value target, though this detail is irrelevant to the kill-chain analysis.",
+    "tagged_text": "On March 15, 2024, the fictional company 'CloudTech Solutions' reported anomalous activity in its Azure environment, leading to the discovery of the 'ShadowMiner' campaign. Initial investigation revealed that the actors likely conducted reconnaissance via social media profiles and public code repositories, though no specific techniques were tagged here. The attack began with the adversary using a compromised valid account [T1078] to gain initial access to an Azure virtual machine. Once inside, they abused Azure RunCommand [T1651] to deploy a malicious cryptocurrency mining payload while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run registry key [T1547] to ensure automatic execution on system boot. The actors then extracted a web session cookie [T1539] from a browser process to hijack an active administrative session, enabling them to search for and collect private key files with '.pfx' extensions [T1552.004] from the compromised system. To facilitate lateral movement, they used PowerShell to execute 'Get-DomainGPO -Properties displayname' [T1615] to identify specific Group Policy Objects of interest, then copied a web shell tool [T1570] between servers using SMB protocols [T1071.002] for command and control. During exfiltration, the actors encoded C2 data in DNS query labels [T1001.001] to tunnel information out of the network, and ultimately wrote proprietary source code to a USB flash drive [T1052] for physical data theft. System logs from CloudTech Solutions indicated increased CPU usage on VMs, but these were not tagged as they represent noise. The company's background in financial software development made it a high-value target, though this detail is irrelevant to the kill-chain analysis.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with the adversary using a compromised valid account to gain initial access to an Azure virtual machine.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Once inside, they abused Azure RunCommand to deploy a malicious cryptocurrency mining payload while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run registry key to ensure automatic execution on system boot.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "Once inside, they abused Azure RunCommand to deploy a malicious cryptocurrency mining payload while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run registry key to ensure automatic execution on system boot.",
+            "technique_id": "T1547",
+            "technique_name": "Boot or Logon Autostart Execution"
+        },
+        {
+            "sentence": "The actors then extracted a web session cookie from a browser process to hijack an active administrative session, enabling them to search for and collect private key files with '.",
+            "technique_id": "T1539",
+            "technique_name": "Steal Web Session Cookie"
+        },
+        {
+            "sentence": "To facilitate lateral movement, they used PowerShell to execute 'Get-DomainGPO -Properties displayname' to identify specific Group Policy Objects of interest, then copied a web shell tool between servers using SMB protocols [T1071.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "To facilitate lateral movement, they used PowerShell to execute 'Get-DomainGPO -Properties displayname' to identify specific Group Policy Objects of interest, then copied a web shell tool between servers using SMB protocols [T1071.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "001] to tunnel information out of the network, and ultimately wrote proprietary source code to a USB flash drive for physical data theft.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMiner' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowMiner' targeting hybrid cloud environments, using valid accounts to deploy cryptocurrency miners and exfiltrate sensitive data. The campaign combines cloud administration abuse, persistence mechanisms, and data theft techniques to maintain access and achieve objectives.",
+        "full_report_text": "On March 15, 2024, the fictional company 'CloudTech Solutions' reported anomalous activity in its Azure environment, leading to the discovery of the 'ShadowMiner' campaign. Initial investigation revealed that the actors likely conducted reconnaissance via social media profiles and public code repositories, though no specific techniques were tagged here. The attack began with the adversary using a compromised valid account [T1078] to gain initial access to an Azure virtual machine. Once inside, they abused Azure RunCommand [T1651] to deploy a malicious cryptocurrency mining payload while simultaneously modifying the HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run registry key [T1547] to ensure automatic execution on system boot. The actors then extracted a web session cookie [T1539] from a browser process to hijack an active administrative session, enabling them to search for and collect private key files with '.pfx' extensions [T1552.004] from the compromised system. To facilitate lateral movement, they used PowerShell to execute 'Get-DomainGPO -Properties displayname' [T1615] to identify specific Group Policy Objects of interest, then copied a web shell tool [T1570] between servers using SMB protocols [T1071.002] for command and control. During exfiltration, the actors encoded C2 data in DNS query labels [T1001.001] to tunnel information out of the network, and ultimately wrote proprietary source code to a USB flash drive [T1052] for physical data theft. System logs from CloudTech Solutions indicated increased CPU usage on VMs, but these were not tagged as they represent noise. The company's background in financial software development made it a high-value target, though this detail is irrelevant to the kill-chain analysis.",
+        "techniques_used": [
+            "T1078",
+            "T1651",
+            "T1547",
+            "T1539",
+            "T1552.004",
+            "T1615",
+            "T1570",
+            "T1001.001",
+            "T1071.002",
+            "T1052"
+        ]
+    }
+}

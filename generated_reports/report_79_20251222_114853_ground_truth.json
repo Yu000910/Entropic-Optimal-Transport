@@ -1,0 +1,103 @@
+{
+    "report_id": "report_79",
+    "generated_at": "20251222_114853",
+    "scenario_target_ids": [
+        "T1595.003",
+        "T1598.003",
+        "T1590.004",
+        "T1585",
+        "T1584.003",
+        "T1199",
+        "T1059.003",
+        "T1546.008",
+        "T1027.015",
+        "T1218.004",
+        "T1021.001",
+        "T1090.004",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1595.003",
+        "T1590.004",
+        "T1585",
+        "T1598.003",
+        "T1584.003",
+        "T1090.004",
+        "T1199",
+        "T1059.003",
+        "T1027.015",
+        "T1218.004",
+        "T1546.008",
+        "T1021.001",
+        "T1565"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1584.003",
+        "T1059.003",
+        "T1021.001",
+        "T1027.015",
+        "T1565",
+        "T1090.004",
+        "T1590.004",
+        "T1546.008",
+        "T1598.003",
+        "T1585",
+        "T1595.003",
+        "T1218.004"
+    ],
+    "clean_text": "CrimsonViper initiated their campaign by conducting extensive reconnaissance, using wordlist scanning to identify outdated plugin directories on RetailCorp's public-facing web servers, while simultaneously gathering network topology details from the company's website at www.retailcorp.com to map potential entry points. The adversary established a fake Facebook account with carefully crafted personal details to build trust with employees, leveraging this persona to send spearphishing emails containing malicious links that harvested user credentials when clicked. Concurrently, they exploited a Google Cloud Platform compute instance to host command and control (C2) servers, using domain fronting to obfuscate the hard-coded C2 domain and evade network-based detection. After gaining initial access, CrimsonViper abused a trusted partner relationship with delegated permissions to create new administrative accounts, then employed the Windows Command Shell to execute malicious scripts that downloaded and decompressed a ransomware payload hidden within a ZIP file. For persistence, they utilized InstallUtil.exe to load and execute a .NET payload with the RunInstaller attribute, while also modifying accessibility features to bypass RDP login screens on remote systems. Lateral movement was achieved through Remote Desktop Protocol, allowing the actors to access critical servers where they conducted data manipulation by using specialized tools to falsify stock levels in inventory management software, aiming to disrupt operations and enable financial fraud. Throughout the incident, system logs from RetailCorp's SIEM showed anomalous login attempts from IP addresses associated with the GCP instance, but these were initially dismissed as false positives due to the domain fronting techniques. RetailCorp, founded in 1995, operates 50 stores nationwide and recently migrated its e-commerce platform to a cloud-based solution, which may have introduced vulnerabilities exploited in this scenario.",
+    "tagged_text": "CrimsonViper initiated their campaign by conducting extensive reconnaissance, using wordlist scanning [T1595.003] to identify outdated plugin directories on RetailCorp's public-facing web servers, while simultaneously gathering network topology details [T1590.004] from the company's website at www.retailcorp.com to map potential entry points. The adversary established a fake Facebook account [T1585] with carefully crafted personal details to build trust with employees, leveraging this persona to send spearphishing emails containing malicious links [T1598.003] that harvested user credentials when clicked. Concurrently, they exploited a Google Cloud Platform compute instance [T1584.003] to host command and control (C2) servers, using domain fronting [T1090.004] to obfuscate the hard-coded C2 domain and evade network-based detection. After gaining initial access, CrimsonViper abused a trusted partner relationship with delegated permissions [T1199] to create new administrative accounts, then employed the Windows Command Shell [T1059.003] to execute malicious scripts that downloaded and decompressed a ransomware payload hidden within a ZIP file [T1027.015]. For persistence, they utilized InstallUtil.exe [T1218.004] to load and execute a .NET payload with the RunInstaller attribute, while also modifying accessibility features [T1546.008] to bypass RDP login screens on remote systems. Lateral movement was achieved through Remote Desktop Protocol [T1021.001], allowing the actors to access critical servers where they conducted data manipulation [T1565] by using specialized tools to falsify stock levels in inventory management software, aiming to disrupt operations and enable financial fraud. Throughout the incident, system logs from RetailCorp's SIEM showed anomalous login attempts from IP addresses associated with the GCP instance, but these were initially dismissed as false positives due to the domain fronting techniques. RetailCorp, founded in 1995, operates 50 stores nationwide and recently migrated its e-commerce platform to a cloud-based solution, which may have introduced vulnerabilities exploited in this scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The adversary established a fake Facebook account with carefully crafted personal details to build trust with employees, leveraging this persona to send spearphishing emails containing malicious links [T1598.",
+            "technique_id": "T1585",
+            "technique_name": "Establish Accounts"
+        },
+        {
+            "sentence": "After gaining initial access, CrimsonViper abused a trusted partner relationship with delegated permissions to create new administrative accounts, then employed the Windows Command Shell [T1059.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "001], allowing the actors to access critical servers where they conducted data manipulation by using specialized tools to falsify stock levels in inventory management software, aiming to disrupt operations and enable financial fraud.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Retail Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CrimsonViper,' targeting a mid-sized retail company, 'RetailCorp Inc.,' to conduct data manipulation and financial fraud. The campaign involved initial reconnaissance, spearphishing, exploitation of trusted relationships, and lateral movement using RDP, culminating in the manipulation of inventory data. This report is intended for blue team training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "CrimsonViper initiated their campaign by conducting extensive reconnaissance, using wordlist scanning [T1595.003] to identify outdated plugin directories on RetailCorp's public-facing web servers, while simultaneously gathering network topology details [T1590.004] from the company's website at www.retailcorp.com to map potential entry points. The adversary established a fake Facebook account [T1585] with carefully crafted personal details to build trust with employees, leveraging this persona to send spearphishing emails containing malicious links [T1598.003] that harvested user credentials when clicked. Concurrently, they exploited a Google Cloud Platform compute instance [T1584.003] to host command and control (C2) servers, using domain fronting [T1090.004] to obfuscate the hard-coded C2 domain and evade network-based detection. After gaining initial access, CrimsonViper abused a trusted partner relationship with delegated permissions [T1199] to create new administrative accounts, then employed the Windows Command Shell [T1059.003] to execute malicious scripts that downloaded and decompressed a ransomware payload hidden within a ZIP file [T1027.015]. For persistence, they utilized InstallUtil.exe [T1218.004] to load and execute a .NET payload with the RunInstaller attribute, while also modifying accessibility features [T1546.008] to bypass RDP login screens on remote systems. Lateral movement was achieved through Remote Desktop Protocol [T1021.001], allowing the actors to access critical servers where they conducted data manipulation [T1565] by using specialized tools to falsify stock levels in inventory management software, aiming to disrupt operations and enable financial fraud. Throughout the incident, system logs from RetailCorp's SIEM showed anomalous login attempts from IP addresses associated with the GCP instance, but these were initially dismissed as false positives due to the domain fronting techniques. RetailCorp, founded in 1995, operates 50 stores nationwide and recently migrated its e-commerce platform to a cloud-based solution, which may have introduced vulnerabilities exploited in this scenario.",
+        "techniques_used": [
+            "T1595.003",
+            "T1590.004",
+            "T1585",
+            "T1598.003",
+            "T1584.003",
+            "T1090.004",
+            "T1199",
+            "T1059.003",
+            "T1027.015",
+            "T1218.004",
+            "T1546.008",
+            "T1021.001",
+            "T1565"
+        ]
+    }
+}

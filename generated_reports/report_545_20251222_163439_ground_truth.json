@@ -1,0 +1,133 @@
+{
+    "report_id": "report_545",
+    "generated_at": "20251222_163439",
+    "scenario_target_ids": [
+        "T1590.001",
+        "T1590.006",
+        "T1590.002",
+        "T1199",
+        "T1559.001",
+        "T1059.012",
+        "T1547.008",
+        "T1098.006",
+        "T1087.001",
+        "T1622",
+        "T1550.002",
+        "T1021.006",
+        "T1056.004",
+        "T1568.001",
+        "T1048.003",
+        "T1020.001",
+        "T1561",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1590.001",
+        "T1590.006",
+        "T1590.002",
+        "T1199",
+        "T1559.001",
+        "T1059.012",
+        "T1547.008",
+        "T1098.006",
+        "T1087.001",
+        "T1622",
+        "T1550.002",
+        "T1021.006",
+        "T1056.004",
+        "T1568.001",
+        "T1048.003",
+        "T1020.001",
+        "T1561",
+        "T1565"
+    ],
+    "actual_found_ids": [
+        "T1098.006",
+        "T1059.012",
+        "T1199",
+        "T1550.002",
+        "T1568.001",
+        "T1559.001",
+        "T1590.002",
+        "T1056.004",
+        "T1021.006",
+        "T1547.008",
+        "T1048.003",
+        "T1087.001",
+        "T1590.006",
+        "T1565",
+        "T1622",
+        "T1020.001",
+        "T1590.001",
+        "T1561"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. In this simulated campaign, the actors initiated reconnaissance by querying domain federation settings via the GetUserRealm API and enumerating DNS servers using dig commands to profile network security appliances, while simultaneously harvesting passive DNS data from cached resolver logs to build comprehensive domain profiles. System logs from the target's Active Directory server showed unusual spikes in authentication requests, though these were later determined to be unrelated to the initial breach. The actors then exploited a trusted relationship with a compromised third-party service provider account to modify security configurations across multiple client organizations, allowing them to deploy malware that leveraged the Internet Explorer COM object to load and execute a malicious DLL directly in memory. Internal network traffic analysis revealed anomalous patterns, but initial alerts were dismissed as false positives. For lateral movement, the actors used Mimikatz.exe to dump NTLM hashes from LSASS memory and employed Windows Remote Management (WinRM) to propagate across the network, while hooking keyboard input procedures via credential API techniques to capture login credentials in real-time. The malware also incorporated debugger evasion by using the IsDebuggerPresent call to avoid detection. In cloud environments, the actors updated RoleBinding.yaml files to add their service account to the edit role in multiple Kubernetes namespaces and used the Hypervisor CLI esxcli to list and terminate running virtual machines. A backdoor was installed that modified the LSASS process to load a custom driver for persistent operation, and local account profiling was conducted using net commands to identify user accounts. For command and control, the actors utilized fast flux DNS through dynamic DNS service providers to host malicious domains, and exfiltrated data over unencrypted FTP protocols separate from primary C2 channels. Network interception tools were deployed to duplicate and copy communications for automated data collection. Finally, the actors executed impact activities by deploying a wiper tool that used the shred command to erase all data partitions and manipulated inventory management software to falsify stock levels, causing significant operational disruption. Background information on the targeted company, a mid-sized logistics firm with offices in three countries, is included for context but is not directly related to the attack techniques.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. In this simulated campaign, the actors initiated reconnaissance by querying domain federation settings via the GetUserRealm API [T1590.001] and enumerating DNS servers using dig commands [T1590.006] to profile network security appliances, while simultaneously harvesting passive DNS data from cached resolver logs to build comprehensive domain profiles [T1590.002]. System logs from the target's Active Directory server showed unusual spikes in authentication requests, though these were later determined to be unrelated to the initial breach. The actors then exploited a trusted relationship with a compromised third-party service provider account to modify security configurations across multiple client organizations [T1199], allowing them to deploy malware that leveraged the Internet Explorer COM object to load and execute a malicious DLL directly in memory [T1559.001]. Internal network traffic analysis revealed anomalous patterns, but initial alerts were dismissed as false positives. For lateral movement, the actors used Mimikatz.exe to dump NTLM hashes from LSASS memory [T1550.002] and employed Windows Remote Management (WinRM) to propagate across the network [T1021.006], while hooking keyboard input procedures via credential API techniques to capture login credentials in real-time [T1056.004]. The malware also incorporated debugger evasion by using the IsDebuggerPresent call to avoid detection [T1622]. In cloud environments, the actors updated RoleBinding.yaml files to add their service account to the edit role in multiple Kubernetes namespaces [T1098.006] and used the Hypervisor CLI esxcli to list and terminate running virtual machines [T1059.012]. A backdoor was installed that modified the LSASS process to load a custom driver for persistent operation [T1547.008], and local account profiling was conducted using net commands to identify user accounts [T1087.001]. For command and control, the actors utilized fast flux DNS through dynamic DNS service providers to host malicious domains [T1568.001], and exfiltrated data over unencrypted FTP protocols separate from primary C2 channels [T1048.003]. Network interception tools were deployed to duplicate and copy communications for automated data collection [T1020.001]. Finally, the actors executed impact activities by deploying a wiper tool that used the shred command to erase all data partitions [T1561] and manipulated inventory management software to falsify stock levels [T1565], causing significant operational disruption. Background information on the targeted company, a mid-sized logistics firm with offices in three countries, is included for context but is not directly related to the attack techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors then exploited a trusted relationship with a compromised third-party service provider account to modify security configurations across multiple client organizations, allowing them to deploy malware that leveraged the Internet Explorer COM object to load and execute a malicious DLL directly in memory [T1559.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "The malware also incorporated debugger evasion by using the IsDebuggerPresent call to avoid detection.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "Finally, the actors executed impact activities by deploying a wiper tool that used the shred command to erase all data partitions and manipulated inventory management software to falsify stock levels, causing significant operational disruption.",
+            "technique_id": "T1561",
+            "technique_name": "Disk Wipe"
+        },
+        {
+            "sentence": "Finally, the actors executed impact activities by deploying a wiper tool that used the shred command to erase all data partitions and manipulated inventory management software to falsify stock levels, causing significant operational disruption.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentStorm' Targeting Multi-Cloud Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'SilentStorm' targeting organizations with hybrid cloud infrastructure. The actors leveraged compromised third-party service provider accounts to manipulate security settings and exfiltrate sensitive data, employing sophisticated techniques across the attack lifecycle for reconnaissance, execution, persistence, and impact.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. In this simulated campaign, the actors initiated reconnaissance by querying domain federation settings via the GetUserRealm API [T1590.001] and enumerating DNS servers using dig commands [T1590.006] to profile network security appliances, while simultaneously harvesting passive DNS data from cached resolver logs to build comprehensive domain profiles [T1590.002]. System logs from the target's Active Directory server showed unusual spikes in authentication requests, though these were later determined to be unrelated to the initial breach. The actors then exploited a trusted relationship with a compromised third-party service provider account to modify security configurations across multiple client organizations [T1199], allowing them to deploy malware that leveraged the Internet Explorer COM object to load and execute a malicious DLL directly in memory [T1559.001]. Internal network traffic analysis revealed anomalous patterns, but initial alerts were dismissed as false positives. For lateral movement, the actors used Mimikatz.exe to dump NTLM hashes from LSASS memory [T1550.002] and employed Windows Remote Management (WinRM) to propagate across the network [T1021.006], while hooking keyboard input procedures via credential API techniques to capture login credentials in real-time [T1056.004]. The malware also incorporated debugger evasion by using the IsDebuggerPresent call to avoid detection [T1622]. In cloud environments, the actors updated RoleBinding.yaml files to add their service account to the edit role in multiple Kubernetes namespaces [T1098.006] and used the Hypervisor CLI esxcli to list and terminate running virtual machines [T1059.012]. A backdoor was installed that modified the LSASS process to load a custom driver for persistent operation [T1547.008], and local account profiling was conducted using net commands to identify user accounts [T1087.001]. For command and control, the actors utilized fast flux DNS through dynamic DNS service providers to host malicious domains [T1568.001], and exfiltrated data over unencrypted FTP protocols separate from primary C2 channels [T1048.003]. Network interception tools were deployed to duplicate and copy communications for automated data collection [T1020.001]. Finally, the actors executed impact activities by deploying a wiper tool that used the shred command to erase all data partitions [T1561] and manipulated inventory management software to falsify stock levels [T1565], causing significant operational disruption. Background information on the targeted company, a mid-sized logistics firm with offices in three countries, is included for context but is not directly related to the attack techniques.",
+        "techniques_used": [
+            "T1590.001",
+            "T1590.006",
+            "T1590.002",
+            "T1199",
+            "T1559.001",
+            "T1059.012",
+            "T1547.008",
+            "T1098.006",
+            "T1087.001",
+            "T1622",
+            "T1550.002",
+            "T1021.006",
+            "T1056.004",
+            "T1568.001",
+            "T1048.003",
+            "T1020.001",
+            "T1561",
+            "T1565"
+        ]
+    }
+}

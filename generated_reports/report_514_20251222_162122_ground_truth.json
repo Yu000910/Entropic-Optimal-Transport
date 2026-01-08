@@ -1,0 +1,93 @@
+{
+    "report_id": "report_514",
+    "generated_at": "20251222_162122",
+    "scenario_target_ids": [
+        "T1566",
+        "T1059.006",
+        "T1055.003",
+        "T1497",
+        "T1556.004",
+        "T1003.007",
+        "T1021.003",
+        "T1568.003",
+        "T1048",
+        "T1561.001",
+        "T1496.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566",
+        "T1059.006",
+        "T1055.003",
+        "T1497",
+        "T1556.004",
+        "T1003.007",
+        "T1021.003",
+        "T1568.003",
+        "T1048",
+        "T1561.001",
+        "T1496.002"
+    ],
+    "actual_found_ids": [
+        "T1497",
+        "T1003.007",
+        "T1496.002",
+        "T1055.003",
+        "T1566",
+        "T1568.003",
+        "T1561.001",
+        "T1021.003",
+        "T1059.006",
+        "T1048",
+        "T1556.004"
+    ],
+    "clean_text": "CRIMSON SHADOW, a fictional advanced persistent threat (APT) group, has been observed targeting financial institutions in a multi-stage campaign designed to steal sensitive data and disrupt operations. The group operates with high sophistication, leveraging custom tools and evasive tactics to bypass security controls. This report outlines the attack lifecycle based on simulated incident response data from a fictional victim, 'Global Finance Corp.', a mid-sized bank with operations in North America and Europe. Initial detection occurred via anomalous network traffic alerts, but the attack had progressed to late stages before full containment.\n\n**Initial Access:** The campaign began with spear phishing emails sent to employees at Global Finance Corp., masquerading as legitimate communications from a banking regulatory body. These emails contained malicious attachments that, when opened, executed Python scripts to establish a foothold on the victim's systems. System logs from the email gateway showed a spike in suspicious activity, but initial scans flagged only 10% of the emails as malicious due to obfuscation techniques.\n\n**Execution and Persistence:** Upon execution, the Python scripts leveraged Thread Execution Hijacking to inject malicious code into legitimate system processes, such as svchost.exe, thereby escalating privileges and maintaining persistence. Concurrently, the malware performed Virtualization/Sandbox Evasion by running PowerShell commands to query BIOS information and detect virtual environments, ensuring it only activated on physical endpoints. Background processes on infected machines showed increased CPU usage, but standard antivirus tools failed to detect the injection due to memory-based execution.\n\n**Privilege Escalation and Defense Evasion:** To further evade detection and gain higher access, the actors manipulated Network Device Authentication by intercepting LDAP authentication flows and using a backdoor password to bypass two-factor authentication, allowing unauthorized access to domain controllers. Additionally, they exploited the Proc Filesystem to dump cleartext passwords from browser process memory, harvesting credentials for lateral movement. Network logs indicated unusual authentication attempts from compromised workstations, but these were initially attributed to user error.\n\n**Lateral Movement and Command and Control:** For lateral movement, the malware used Distributed Component Object Model (DCOM) to remotely execute code through Microsoft Visio's COM objects, spreading across the network to critical servers. Command and control (C2) communication was established via DNS Calculation, where iodine tools tunneled TCP traffic through DNS queries to bypass network filtering and maintain stealthy connections to attacker-controlled infrastructure. Firewall logs showed a 300% increase in DNS query volumes, but deep packet inspection was not enabled at the time.\n\n**Exfiltration and Impact:** Once access to sensitive data was achieved, the actors performed Exfiltration Over Alternative Protocol by transferring financial records via FTP to a cloud storage service, siphoning gigabytes of data over several days. In the final stage, they executed a Disk Content Wipe script that filled storage volumes with pseudorandom bytes to prevent data recovery, causing significant operational disruption. Furthermore, they conducted Bandwidth Hijacking by leveraging the compromised botnet to generate massive network traffic for cryptocurrency mining, degrading network performance and increasing resource costs. Post-incident analysis revealed that backup systems were partially corrupted, complicating recovery efforts.\n\n**Recommendations for Blue Teams:** Organizations should enhance email filtering, monitor for unusual process injections and authentication anomalies, implement network segmentation to limit lateral movement, and enable deep packet inspection for DNS traffic. Regular backups and incident response drills are critical to mitigate such threats. This fictional scenario underscores the importance of proactive defense measures in real-world environments.",
+    "tagged_text": "CRIMSON SHADOW, a fictional advanced persistent threat (APT) group, has been observed targeting financial institutions in a multi-stage campaign designed to steal sensitive data and disrupt operations. The group operates with high sophistication, leveraging custom tools and evasive tactics to bypass security controls. This report outlines the attack lifecycle based on simulated incident response data from a fictional victim, 'Global Finance Corp.', a mid-sized bank with operations in North America and Europe. Initial detection occurred via anomalous network traffic alerts, but the attack had progressed to late stages before full containment.\n\n**Initial Access:** The campaign began with spear phishing emails [T1566] sent to employees at Global Finance Corp., masquerading as legitimate communications from a banking regulatory body. These emails contained malicious attachments that, when opened, executed Python scripts [T1059.006] to establish a foothold on the victim's systems. System logs from the email gateway showed a spike in suspicious activity, but initial scans flagged only 10% of the emails as malicious due to obfuscation techniques.\n\n**Execution and Persistence:** Upon execution, the Python scripts leveraged Thread Execution Hijacking [T1055.003] to inject malicious code into legitimate system processes, such as svchost.exe, thereby escalating privileges and maintaining persistence. Concurrently, the malware performed Virtualization/Sandbox Evasion [T1497] by running PowerShell commands to query BIOS information and detect virtual environments, ensuring it only activated on physical endpoints. Background processes on infected machines showed increased CPU usage, but standard antivirus tools failed to detect the injection due to memory-based execution.\n\n**Privilege Escalation and Defense Evasion:** To further evade detection and gain higher access, the actors manipulated Network Device Authentication [T1556.004] by intercepting LDAP authentication flows and using a backdoor password to bypass two-factor authentication, allowing unauthorized access to domain controllers. Additionally, they exploited the Proc Filesystem [T1003.007] to dump cleartext passwords from browser process memory, harvesting credentials for lateral movement. Network logs indicated unusual authentication attempts from compromised workstations, but these were initially attributed to user error.\n\n**Lateral Movement and Command and Control:** For lateral movement, the malware used Distributed Component Object Model (DCOM) [T1021.003] to remotely execute code through Microsoft Visio's COM objects, spreading across the network to critical servers. Command and control (C2) communication was established via DNS Calculation [T1568.003], where iodine tools tunneled TCP traffic through DNS queries to bypass network filtering and maintain stealthy connections to attacker-controlled infrastructure. Firewall logs showed a 300% increase in DNS query volumes, but deep packet inspection was not enabled at the time.\n\n**Exfiltration and Impact:** Once access to sensitive data was achieved, the actors performed Exfiltration Over Alternative Protocol [T1048] by transferring financial records via FTP to a cloud storage service, siphoning gigabytes of data over several days. In the final stage, they executed a Disk Content Wipe [T1561.001] script that filled storage volumes with pseudorandom bytes to prevent data recovery, causing significant operational disruption. Furthermore, they conducted Bandwidth Hijacking [T1496.002] by leveraging the compromised botnet to generate massive network traffic for cryptocurrency mining, degrading network performance and increasing resource costs. Post-incident analysis revealed that backup systems were partially corrupted, complicating recovery efforts.\n\n**Recommendations for Blue Teams:** Organizations should enhance email filtering, monitor for unusual process injections and authentication anomalies, implement network segmentation to limit lateral movement, and enable deep packet inspection for DNS traffic. Regular backups and incident response drills are critical to mitigate such threats. This fictional scenario underscores the importance of proactive defense measures in real-world environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Initial Access:** The campaign began with spear phishing emails sent to employees at Global Finance Corp.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "Concurrently, the malware performed Virtualization/Sandbox Evasion by running PowerShell commands to query BIOS information and detect virtual environments, ensuring it only activated on physical endpoints.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "**Exfiltration and Impact:** Once access to sensitive data was achieved, the actors performed Exfiltration Over Alternative Protocol by transferring financial records via FTP to a cloud storage service, siphoning gigabytes of data over several days.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CRIMSON SHADOW' Targeting Financial Institutions",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, CRIMSON SHADOW, targeting financial institutions to exfiltrate sensitive data and deploy destructive payloads. Based on intelligence from CISA, FBI, and NSA, the campaign employs sophisticated techniques across the kill-chain, including phishing, privilege escalation, and exfiltration over alternative protocols. Blue teams should use this report for training to enhance detection and response capabilities.",
+        "full_report_text": "CRIMSON SHADOW, a fictional advanced persistent threat (APT) group, has been observed targeting financial institutions in a multi-stage campaign designed to steal sensitive data and disrupt operations. The group operates with high sophistication, leveraging custom tools and evasive tactics to bypass security controls. This report outlines the attack lifecycle based on simulated incident response data from a fictional victim, 'Global Finance Corp.', a mid-sized bank with operations in North America and Europe. Initial detection occurred via anomalous network traffic alerts, but the attack had progressed to late stages before full containment.\n\n**Initial Access:** The campaign began with spear phishing emails [T1566] sent to employees at Global Finance Corp., masquerading as legitimate communications from a banking regulatory body. These emails contained malicious attachments that, when opened, executed Python scripts [T1059.006] to establish a foothold on the victim's systems. System logs from the email gateway showed a spike in suspicious activity, but initial scans flagged only 10% of the emails as malicious due to obfuscation techniques.\n\n**Execution and Persistence:** Upon execution, the Python scripts leveraged Thread Execution Hijacking [T1055.003] to inject malicious code into legitimate system processes, such as svchost.exe, thereby escalating privileges and maintaining persistence. Concurrently, the malware performed Virtualization/Sandbox Evasion [T1497] by running PowerShell commands to query BIOS information and detect virtual environments, ensuring it only activated on physical endpoints. Background processes on infected machines showed increased CPU usage, but standard antivirus tools failed to detect the injection due to memory-based execution.\n\n**Privilege Escalation and Defense Evasion:** To further evade detection and gain higher access, the actors manipulated Network Device Authentication [T1556.004] by intercepting LDAP authentication flows and using a backdoor password to bypass two-factor authentication, allowing unauthorized access to domain controllers. Additionally, they exploited the Proc Filesystem [T1003.007] to dump cleartext passwords from browser process memory, harvesting credentials for lateral movement. Network logs indicated unusual authentication attempts from compromised workstations, but these were initially attributed to user error.\n\n**Lateral Movement and Command and Control:** For lateral movement, the malware used Distributed Component Object Model (DCOM) [T1021.003] to remotely execute code through Microsoft Visio's COM objects, spreading across the network to critical servers. Command and control (C2) communication was established via DNS Calculation [T1568.003], where iodine tools tunneled TCP traffic through DNS queries to bypass network filtering and maintain stealthy connections to attacker-controlled infrastructure. Firewall logs showed a 300% increase in DNS query volumes, but deep packet inspection was not enabled at the time.\n\n**Exfiltration and Impact:** Once access to sensitive data was achieved, the actors performed Exfiltration Over Alternative Protocol [T1048] by transferring financial records via FTP to a cloud storage service, siphoning gigabytes of data over several days. In the final stage, they executed a Disk Content Wipe [T1561.001] script that filled storage volumes with pseudorandom bytes to prevent data recovery, causing significant operational disruption. Furthermore, they conducted Bandwidth Hijacking [T1496.002] by leveraging the compromised botnet to generate massive network traffic for cryptocurrency mining, degrading network performance and increasing resource costs. Post-incident analysis revealed that backup systems were partially corrupted, complicating recovery efforts.\n\n**Recommendations for Blue Teams:** Organizations should enhance email filtering, monitor for unusual process injections and authentication anomalies, implement network segmentation to limit lateral movement, and enable deep packet inspection for DNS traffic. Regular backups and incident response drills are critical to mitigate such threats. This fictional scenario underscores the importance of proactive defense measures in real-world environments.",
+        "techniques_used": [
+            "T1566",
+            "T1059.006",
+            "T1055.003",
+            "T1497",
+            "T1556.004",
+            "T1003.007",
+            "T1021.003",
+            "T1568.003",
+            "T1048",
+            "T1561.001",
+            "T1496.002"
+        ]
+    }
+}

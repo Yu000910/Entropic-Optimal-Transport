@@ -1,0 +1,123 @@
+{
+    "report_id": "report_193",
+    "generated_at": "20251222_123313",
+    "scenario_target_ids": [
+        "T1078",
+        "T1675",
+        "T1547.003",
+        "T1556.007",
+        "T1037.003",
+        "T1547.010",
+        "T1218.012",
+        "T1553.004",
+        "T1622",
+        "T1652",
+        "T1614",
+        "T1091",
+        "T1205.001",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1675",
+        "T1547.003",
+        "T1556.007",
+        "T1037.003",
+        "T1547.010",
+        "T1218.012",
+        "T1553.004",
+        "T1622",
+        "T1652",
+        "T1614",
+        "T1091",
+        "T1205.001",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1205.001",
+        "T1553.004",
+        "T1622",
+        "T1037.003",
+        "T1614",
+        "T1547.010",
+        "T1652",
+        "T1567.004",
+        "T1675",
+        "T1547.003",
+        "T1078",
+        "T1556.007",
+        "T1091",
+        "T1218.012"
+    ],
+    "clean_text": "On October 15, 2023, a fictional financial services organization, 'SecureBank Inc.,' reported anomalous activity in its virtualized and cloud environments. SecureBank operates a hybrid infrastructure with VMware ESXi hosts, Windows servers, and Azure Active Directory (Azure AD) integration, serving customers across North America and Europe. Initial investigation revealed that CRIMSON SHADOW likely gained access by exploiting harvested valid administrative credentials from a prior phishing campaign, as noted in unrelated system logs showing failed login attempts from IP addresses in Eastern Europe. The actors then abused the ESXi Administration Command StartProgramInGuest to execute a malicious payload within guest virtual machines, while simultaneously creating registry entries under HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ to establish persistence after system reboots. Additionally, they modified AzureADConnectAuthenticationAgentService registry keys to maintain persistent access to cloud resources and altered Group Policy Objects to embed a network logon script that runs during user authentication. For further evasion, the malware registered a port monitor via AddMonitor to load a malicious 'ntprint.dll' file and abused verclsid.exe to bypass application controls, while also installing untrusted root certificates using /usr/bin/security add-certificates on macOS systems within the environment. The payload incorporated debugger evasion by calling IsDebuggerPresent() to avoid analysis and performed device driver discovery through repeated EnumDeviceDrivers() calls to monitor driver changes. It also invoked GetLocaleInfoW to determine the system's geographical location based on locale settings, as seen in logs indicating queries for 'en-US' and 'fr-FR.' For lateral movement, the malware modified Autorun.inf files on removable media to execute scripts automatically upon insertion, and it established command and control via port knocking with raw socket connections to obscure communications. Finally, exfiltration was conducted by posting stolen credentials to https://webhook.site/endpoint using HTTP POST requests, with network traffic showing spikes in outbound data to external domains. SecureBank's incident response team noted that these activities were detected through enhanced monitoring of ESXi logs and Azure AD sign-ins, but no customer data was confirmed compromised in this fictional scenario.",
+    "tagged_text": "On October 15, 2023, a fictional financial services organization, 'SecureBank Inc.,' reported anomalous activity in its virtualized and cloud environments. SecureBank operates a hybrid infrastructure with VMware ESXi hosts, Windows servers, and Azure Active Directory (Azure AD) integration, serving customers across North America and Europe. Initial investigation revealed that CRIMSON SHADOW likely gained access by exploiting harvested valid administrative credentials [T1078] from a prior phishing campaign, as noted in unrelated system logs showing failed login attempts from IP addresses in Eastern Europe. The actors then abused the ESXi Administration Command StartProgramInGuest [T1675] to execute a malicious payload within guest virtual machines, while simultaneously creating registry entries under HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ [T1547.003] to establish persistence after system reboots. Additionally, they modified AzureADConnectAuthenticationAgentService registry keys [T1556.007] to maintain persistent access to cloud resources and altered Group Policy Objects to embed a network logon script [T1037.003] that runs during user authentication. For further evasion, the malware registered a port monitor via AddMonitor to load a malicious 'ntprint.dll' file [T1547.010] and abused verclsid.exe [T1218.012] to bypass application controls, while also installing untrusted root certificates using /usr/bin/security add-certificates [T1553.004] on macOS systems within the environment. The payload incorporated debugger evasion by calling IsDebuggerPresent() [T1622] to avoid analysis and performed device driver discovery through repeated EnumDeviceDrivers() calls [T1652] to monitor driver changes. It also invoked GetLocaleInfoW [T1614] to determine the system's geographical location based on locale settings, as seen in logs indicating queries for 'en-US' and 'fr-FR.' For lateral movement, the malware modified Autorun.inf files on removable media [T1091] to execute scripts automatically upon insertion, and it established command and control via port knocking with raw socket connections [T1205.001] to obscure communications. Finally, exfiltration was conducted by posting stolen credentials to https://webhook.site/endpoint using HTTP POST requests [T1567.004], with network traffic showing spikes in outbound data to external domains. SecureBank's incident response team noted that these activities were detected through enhanced monitoring of ESXi logs and Azure AD sign-ins, but no customer data was confirmed compromised in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that CRIMSON SHADOW likely gained access by exploiting harvested valid administrative credentials from a prior phishing campaign, as noted in unrelated system logs showing failed login attempts from IP addresses in Eastern Europe.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "The actors then abused the ESXi Administration Command StartProgramInGuest to execute a malicious payload within guest virtual machines, while simultaneously creating registry entries under HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ [T1547.",
+            "technique_id": "T1675",
+            "technique_name": "ESXi Administration Command"
+        },
+        {
+            "sentence": "The payload incorporated debugger evasion by calling IsDebuggerPresent() to avoid analysis and performed device driver discovery through repeated EnumDeviceDrivers() calls to monitor driver changes.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "The payload incorporated debugger evasion by calling IsDebuggerPresent() to avoid analysis and performed device driver discovery through repeated EnumDeviceDrivers() calls to monitor driver changes.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "It also invoked GetLocaleInfoW to determine the system's geographical location based on locale settings, as seen in logs indicating queries for 'en-US' and 'fr-FR.",
+            "technique_id": "T1614",
+            "technique_name": "System Location Discovery"
+        },
+        {
+            "sentence": "inf files on removable media to execute scripts automatically upon insertion, and it established command and control via port knocking with raw socket connections [T1205.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CRIMSON SHADOW,' targeting organizations with hybrid cloud and on-premises infrastructure. The campaign leverages stolen administrative credentials to deploy persistence mechanisms, evade detection, and exfiltrate data, emphasizing the need for robust identity management and monitoring.",
+        "full_report_text": "On October 15, 2023, a fictional financial services organization, 'SecureBank Inc.,' reported anomalous activity in its virtualized and cloud environments. SecureBank operates a hybrid infrastructure with VMware ESXi hosts, Windows servers, and Azure Active Directory (Azure AD) integration, serving customers across North America and Europe. Initial investigation revealed that CRIMSON SHADOW likely gained access by exploiting harvested valid administrative credentials [T1078] from a prior phishing campaign, as noted in unrelated system logs showing failed login attempts from IP addresses in Eastern Europe. The actors then abused the ESXi Administration Command StartProgramInGuest [T1675] to execute a malicious payload within guest virtual machines, while simultaneously creating registry entries under HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ [T1547.003] to establish persistence after system reboots. Additionally, they modified AzureADConnectAuthenticationAgentService registry keys [T1556.007] to maintain persistent access to cloud resources and altered Group Policy Objects to embed a network logon script [T1037.003] that runs during user authentication. For further evasion, the malware registered a port monitor via AddMonitor to load a malicious 'ntprint.dll' file [T1547.010] and abused verclsid.exe [T1218.012] to bypass application controls, while also installing untrusted root certificates using /usr/bin/security add-certificates [T1553.004] on macOS systems within the environment. The payload incorporated debugger evasion by calling IsDebuggerPresent() [T1622] to avoid analysis and performed device driver discovery through repeated EnumDeviceDrivers() calls [T1652] to monitor driver changes. It also invoked GetLocaleInfoW [T1614] to determine the system's geographical location based on locale settings, as seen in logs indicating queries for 'en-US' and 'fr-FR.' For lateral movement, the malware modified Autorun.inf files on removable media [T1091] to execute scripts automatically upon insertion, and it established command and control via port knocking with raw socket connections [T1205.001] to obscure communications. Finally, exfiltration was conducted by posting stolen credentials to https://webhook.site/endpoint using HTTP POST requests [T1567.004], with network traffic showing spikes in outbound data to external domains. SecureBank's incident response team noted that these activities were detected through enhanced monitoring of ESXi logs and Azure AD sign-ins, but no customer data was confirmed compromised in this fictional scenario.",
+        "techniques_used": [
+            "T1078",
+            "T1675",
+            "T1547.003",
+            "T1556.007",
+            "T1037.003",
+            "T1547.010",
+            "T1218.012",
+            "T1553.004",
+            "T1622",
+            "T1652",
+            "T1614",
+            "T1091",
+            "T1205.001",
+            "T1567.004"
+        ]
+    }
+}

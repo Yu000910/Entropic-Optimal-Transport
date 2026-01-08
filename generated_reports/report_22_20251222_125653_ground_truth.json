@@ -1,0 +1,86 @@
+{
+    "report_id": "report_22",
+    "generated_at": "20251222_125653",
+    "scenario_target_ids": [
+        "T1078",
+        "T1059.003",
+        "T1059.005",
+        "T1546.001",
+        "T1546.004",
+        "T1053.003",
+        "T1110.001",
+        "T1105",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1110.001",
+        "T1078",
+        "T1059.003",
+        "T1059.005",
+        "T1105",
+        "T1546.001",
+        "T1546.004",
+        "T1053.003",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1011.001",
+        "T1059.003",
+        "T1589",
+        "T1059.005",
+        "T1110.001",
+        "T1546.004",
+        "T1078",
+        "T1546.001",
+        "T1053.003",
+        "T1105"
+    ],
+    "clean_text": "On March 15, 2024, a fictional energy company, 'GridSecure Inc.', reported anomalous network activity indicative of a compromise. Initial analysis suggests that ShadowVeil actors likely conducted reconnaissance to identify vulnerable systems, though specific logs from firewall entries show routine traffic patterns unrelated to the attack. The actors then attempted password guessing against TCP ports 135 and 1433, using default usernames and common password lists, which triggered multiple failed login alerts in the SIEM. Subsequently, they exploited valid accounts obtained from credential dumpers, gaining unauthorized access to a Windows server and a Unix-based engineering workstation. Once inside, the adversary employed a Windows Command Shell to execute a Visual Basic script embedded in a malicious Word document, which downloaded additional payloads while simultaneously modifying file associations via Assoc.exe to trigger malware execution upon accessing specific file types. On the Unix system, they added a command to the .bashrc file for persistence and scheduled a cron job to exfiltrate sensitive data, which included operational schematics and employee records. Additionally, the actors attempted exfiltration over Bluetooth by exploiting SDP vulnerabilities on nearby devices, though network logs indicate this was blocked by security controls. Irrelevant background: GridSecure Inc. was founded in 1998 and specializes in smart grid technologies, with no prior significant security incidents reported.",
+    "tagged_text": "On March 15, 2024, a fictional energy company, 'GridSecure Inc.', reported anomalous network activity indicative of a compromise. Initial analysis suggests that ShadowVeil actors likely conducted reconnaissance [T1589] to identify vulnerable systems, though specific logs from firewall entries show routine traffic patterns unrelated to the attack. The actors then attempted password guessing [T1110.001] against TCP ports 135 and 1433, using default usernames and common password lists, which triggered multiple failed login alerts in the SIEM. Subsequently, they exploited valid accounts [T1078] obtained from credential dumpers, gaining unauthorized access to a Windows server and a Unix-based engineering workstation. Once inside, the adversary employed a Windows Command Shell [T1059.003] to execute a Visual Basic script [T1059.005] embedded in a malicious Word document, which downloaded additional payloads [T1105] while simultaneously modifying file associations via Assoc.exe [T1546.001] to trigger malware execution upon accessing specific file types. On the Unix system, they added a command to the .bashrc file [T1546.004] for persistence and scheduled a cron job [T1053.003] to exfiltrate sensitive data, which included operational schematics and employee records. Additionally, the actors attempted exfiltration over Bluetooth [T1011.001] by exploiting SDP vulnerabilities on nearby devices, though network logs indicate this was blocked by security controls. Irrelevant background: GridSecure Inc. was founded in 1998 and specializes in smart grid technologies, with no prior significant security incidents reported.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis suggests that ShadowVeil actors likely conducted reconnaissance to identify vulnerable systems, though specific logs from firewall entries show routine traffic patterns unrelated to the attack.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Subsequently, they exploited valid accounts obtained from credential dumpers, gaining unauthorized access to a Windows server and a Unix-based engineering workstation.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "005] embedded in a malicious Word document, which downloaded additional payloads while simultaneously modifying file associations via Assoc.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil', targeting energy sector organizations. The actors employ a multi-stage attack leveraging stolen credentials, shell-based execution, and persistence mechanisms across Windows and Unix systems to exfiltrate sensitive operational data. The report is intended for blue team training to enhance detection and response capabilities against such sophisticated threats.",
+        "full_report_text": "On March 15, 2024, a fictional energy company, 'GridSecure Inc.', reported anomalous network activity indicative of a compromise. Initial analysis suggests that ShadowVeil actors likely conducted reconnaissance [T1589] to identify vulnerable systems, though specific logs from firewall entries show routine traffic patterns unrelated to the attack. The actors then attempted password guessing [T1110.001] against TCP ports 135 and 1433, using default usernames and common password lists, which triggered multiple failed login alerts in the SIEM. Subsequently, they exploited valid accounts [T1078] obtained from credential dumpers, gaining unauthorized access to a Windows server and a Unix-based engineering workstation. Once inside, the adversary employed a Windows Command Shell [T1059.003] to execute a Visual Basic script [T1059.005] embedded in a malicious Word document, which downloaded additional payloads [T1105] while simultaneously modifying file associations via Assoc.exe [T1546.001] to trigger malware execution upon accessing specific file types. On the Unix system, they added a command to the .bashrc file [T1546.004] for persistence and scheduled a cron job [T1053.003] to exfiltrate sensitive data, which included operational schematics and employee records. Additionally, the actors attempted exfiltration over Bluetooth [T1011.001] by exploiting SDP vulnerabilities on nearby devices, though network logs indicate this was blocked by security controls. Irrelevant background: GridSecure Inc. was founded in 1998 and specializes in smart grid technologies, with no prior significant security incidents reported.",
+        "techniques_used": [
+            "T1589",
+            "T1110.001",
+            "T1078",
+            "T1059.003",
+            "T1059.005",
+            "T1105",
+            "T1546.001",
+            "T1546.004",
+            "T1053.003",
+            "T1011.001"
+        ]
+    }
+}

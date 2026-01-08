@@ -1,0 +1,92 @@
+{
+    "report_id": "report_673",
+    "generated_at": "20251222_172707",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1195.003",
+        "T1559.001",
+        "T1569.001",
+        "T1518.001",
+        "T1570",
+        "T1074.001",
+        "T1132",
+        "T1011",
+        "T1496"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.001",
+        "T1195.003",
+        "T1559.001",
+        "T1569.001",
+        "T1518.001",
+        "T1570",
+        "T1074.001",
+        "T1132",
+        "T1011",
+        "T1496"
+    ],
+    "actual_found_ids": [
+        "T1570",
+        "T1011",
+        "T1195.001",
+        "T1132",
+        "T1559.001",
+        "T1569.001",
+        "T1518.001",
+        "T1195.003",
+        "T1496"
+    ],
+    "clean_text": "CrimsonViper actors likely conducted initial reconnaissance to identify vulnerable software repositories and hardware suppliers, though specific indicators for this phase were not captured in this scenario. The attack began with the compromise of a third-party PowerShell module repository, where malicious code (evil.ps1) was injected to dump LSASS memory and extract authentication tokens. Concurrently, the threat actors modified USB firmware in distributed hardware components to bypass security controls and deploy additional malware payloads, as evidenced by anomalous device logs from affected systems. Upon execution, the malware abused the ShellWindows COM interface to create and manipulate browser instances for covert communication, while on macOS systems, the attacker used 'launchctl load /Library/LaunchDaemons/malware.plist' to execute malicious code as a persistent system service. System logs from host-192-168-1-10 showed increased CPU usage during this phase, unrelated to the attack. The actors then employed PowerShell scripts to actively discover security software by checking for the presence of 29 different antivirus tools and laterally moved between compromised hosts using SMB to copy tools and maintain persistence. Data staging involved saving gathered information to a file in the %TEMP% directory, compressing it with gzip, encrypting it, and uploading it to a command and control server [T1074.001, T1132]. Network traffic analysis revealed encoded command structures using gzip compression to evade detection, and exfiltration occurred over a public WiFi network to send encryption keys to the C2 server. Finally, the attackers monetized the compromised network by selling SOCKS5 proxy access to other criminals, with internal firewall logs showing unusual outbound connections to unknown IP addresses.",
+    "tagged_text": "CrimsonViper actors likely conducted initial reconnaissance to identify vulnerable software repositories and hardware suppliers, though specific indicators for this phase were not captured in this scenario. The attack began with the compromise of a third-party PowerShell module repository, where malicious code (evil.ps1) was injected to dump LSASS memory and extract authentication tokens [T1195.001]. Concurrently, the threat actors modified USB firmware in distributed hardware components to bypass security controls and deploy additional malware payloads [T1195.003], as evidenced by anomalous device logs from affected systems. Upon execution, the malware abused the ShellWindows COM interface to create and manipulate browser instances for covert communication [T1559.001], while on macOS systems, the attacker used 'launchctl load /Library/LaunchDaemons/malware.plist' to execute malicious code as a persistent system service [T1569.001]. System logs from host-192-168-1-10 showed increased CPU usage during this phase, unrelated to the attack. The actors then employed PowerShell scripts to actively discover security software by checking for the presence of 29 different antivirus tools [T1518.001] and laterally moved between compromised hosts using SMB to copy tools and maintain persistence [T1570]. Data staging involved saving gathered information to a file in the %TEMP% directory, compressing it with gzip, encrypting it, and uploading it to a command and control server [T1074.001, T1132]. Network traffic analysis revealed encoded command structures using gzip compression to evade detection [T1132], and exfiltration occurred over a public WiFi network to send encryption keys to the C2 server [T1011]. Finally, the attackers monetized the compromised network by selling SOCKS5 proxy access to other criminals [T1496], with internal firewall logs showing unusual outbound connections to unknown IP addresses.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] and laterally moved between compromised hosts using SMB to copy tools and maintain persistence.",
+            "technique_id": "T1570",
+            "technique_name": "Lateral Tool Transfer"
+        },
+        {
+            "sentence": "Network traffic analysis revealed encoded command structures using gzip compression to evade detection, and exfiltration occurred over a public WiFi network to send encryption keys to the C2 server.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        },
+        {
+            "sentence": "Network traffic analysis revealed encoded command structures using gzip compression to evade detection, and exfiltration occurred over a public WiFi network to send encryption keys to the C2 server.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        },
+        {
+            "sentence": "Finally, the attackers monetized the compromised network by selling SOCKS5 proxy access to other criminals, with internal firewall logs showing unusual outbound connections to unknown IP addresses.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor 'CrimsonViper' Targeting Software Development and Supply Chains",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor CrimsonViper, which compromised software dependencies and hardware supply chains to infiltrate networks, execute malicious code, and exfiltrate data. The attack leveraged a multi-stage approach involving initial access through tampered components, lateral movement, and resource monetization, with techniques observed across various operating systems including Windows and macOS. Blue teams are advised to review software integrity, monitor for unusual COM object usage, and enhance detection of unauthorized network traffic and service creations.",
+        "full_report_text": "CrimsonViper actors likely conducted initial reconnaissance to identify vulnerable software repositories and hardware suppliers, though specific indicators for this phase were not captured in this scenario. The attack began with the compromise of a third-party PowerShell module repository, where malicious code (evil.ps1) was injected to dump LSASS memory and extract authentication tokens [T1195.001]. Concurrently, the threat actors modified USB firmware in distributed hardware components to bypass security controls and deploy additional malware payloads [T1195.003], as evidenced by anomalous device logs from affected systems. Upon execution, the malware abused the ShellWindows COM interface to create and manipulate browser instances for covert communication [T1559.001], while on macOS systems, the attacker used 'launchctl load /Library/LaunchDaemons/malware.plist' to execute malicious code as a persistent system service [T1569.001]. System logs from host-192-168-1-10 showed increased CPU usage during this phase, unrelated to the attack. The actors then employed PowerShell scripts to actively discover security software by checking for the presence of 29 different antivirus tools [T1518.001] and laterally moved between compromised hosts using SMB to copy tools and maintain persistence [T1570]. Data staging involved saving gathered information to a file in the %TEMP% directory, compressing it with gzip, encrypting it, and uploading it to a command and control server [T1074.001, T1132]. Network traffic analysis revealed encoded command structures using gzip compression to evade detection [T1132], and exfiltration occurred over a public WiFi network to send encryption keys to the C2 server [T1011]. Finally, the attackers monetized the compromised network by selling SOCKS5 proxy access to other criminals [T1496], with internal firewall logs showing unusual outbound connections to unknown IP addresses.",
+        "techniques_used": [
+            "T1195.001",
+            "T1195.003",
+            "T1559.001",
+            "T1569.001",
+            "T1518.001",
+            "T1570",
+            "T1074.001",
+            "T1132",
+            "T1011",
+            "T1496"
+        ]
+    }
+}

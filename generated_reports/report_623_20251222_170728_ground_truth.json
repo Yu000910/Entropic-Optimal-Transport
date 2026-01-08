@@ -1,0 +1,113 @@
+{
+    "report_id": "report_623",
+    "generated_at": "20251222_170728",
+    "scenario_target_ids": [
+        "T1593.001",
+        "T1585.003",
+        "T1588.005",
+        "T1585.002",
+        "T1078.002",
+        "T1059.003",
+        "T1574.009",
+        "T1550",
+        "T1021",
+        "T1557.001",
+        "T1114.001",
+        "T1132.002",
+        "T1567.001",
+        "T1567.003",
+        "T1499.002",
+        "T1496.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1593.001",
+        "T1585.003",
+        "T1588.005",
+        "T1585.002",
+        "T1078.002",
+        "T1059.003",
+        "T1574.009",
+        "T1550",
+        "T1021",
+        "T1557.001",
+        "T1114.001",
+        "T1132.002",
+        "T1567.001",
+        "T1567.003",
+        "T1499.002",
+        "T1496.003"
+    ],
+    "actual_found_ids": [
+        "T1593.001",
+        "T1059.003",
+        "T1114.001",
+        "T1588.005",
+        "T1585.002",
+        "T1550",
+        "T1021",
+        "T1574.009",
+        "T1496.003",
+        "T1567.003",
+        "T1557.001",
+        "T1132.002",
+        "T1499.002",
+        "T1078.002",
+        "T1585.003",
+        "T1567.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate threat intelligence on the fictional APT group 'SilentHarvest,' active since early 2023. This group primarily targets financial organizations in North America and Europe, with incidents reported at three major banks leading to data breaches and service disruptions.\n\n**Attack Narrative and Kill-Chain Analysis**\n\n**Reconnaissance and Resource Development:** The actors initiated their campaign by conducting reconnaissance on corporate social media pages to collect publicly available contact information, including employee names and email addresses. Concurrently, they established malicious Microsoft 365 email accounts for command and control (C2) infrastructure and purchased a zero-day exploit from an underground marketplace to target unpatched vulnerabilities in financial software. Additionally, they created identified email accounts to register multiple domains used throughout the campaign for phishing and malware delivery.\n\n**Initial Access and Execution:** Using the collected data, the actors launched phishing emails that bypassed filters by mimicking internal communications. Upon compromise, they leveraged compromised domain admin credentials to mount local network shares and move laterally within the environment. Execution involved employing the Windows Command Shell to run batch scripts that deleted traces of initial access tools while deploying ransomware that created C:\\program.exe to intercept legitimate program executions via unquoted path vulnerabilities.\n\n**Persistence and Privilege Escalation:** To maintain access, the actors used alternate authentication material, such as forged SAML tokens, to impersonate users and bypass multi-factor authentication, enabling unauthorized access to enterprise cloud applications. They also abused remote services to trigger keyboard input and mouse clicks on compromised systems, facilitating further exploitation.\n\n**Credential Access and Lateral Movement:** The campaign included LLMNR/NBT-NS poisoning and SMB relay attacks using tools like Inveigh to steal credentials and relay them for lateral movement across the network. This allowed the actors to access additional systems and escalate privileges.\n\n**Collection and Exfiltration:** The actors collected local emails from compromised accounts to use in future phishing campaigns. For exfiltration, they employed non-standard encoding, such as modified Base64, to obfuscate communications with C2 servers. Data was exfiltrated to code repositories like GitHub and text storage sites, where stolen email contacts were saved for later use.\n\n**Impact:** The campaign culminated in impact activities, including service exhaustion floods that exploited SSL/TLS renegotiation to exhaust server CPU resources, causing denial-of-service conditions. Additionally, the actors conducted SMS pumping by analyzing network traffic to identify and exploit Twilio API communication patterns, leading to financial fraud through unauthorized SMS charges.\n\n**Irrelevant Information:** The targeted banks reported increased network latency during peak hours, unrelated to the attack, due to routine maintenance. Background checks on employee social media activity revealed no prior security incidents at these institutions. Log analysis showed normal system reboots occurring weekly, with no correlation to malicious events.\n\n**Mitigation Recommendations:** Blue teams should implement strict access controls, monitor for unusual authentication patterns, and apply patches promptly. Enhanced network segmentation and user training on phishing are advised to reduce initial access vectors.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate threat intelligence on the fictional APT group 'SilentHarvest,' active since early 2023. This group primarily targets financial organizations in North America and Europe, with incidents reported at three major banks leading to data breaches and service disruptions.\n\n**Attack Narrative and Kill-Chain Analysis**\n\n**Reconnaissance and Resource Development:** The actors initiated their campaign by conducting reconnaissance on corporate social media pages to collect publicly available contact information, including employee names and email addresses [T1593.001]. Concurrently, they established malicious Microsoft 365 email accounts for command and control (C2) infrastructure [T1585.003] and purchased a zero-day exploit from an underground marketplace to target unpatched vulnerabilities in financial software [T1588.005]. Additionally, they created identified email accounts to register multiple domains used throughout the campaign for phishing and malware delivery [T1585.002].\n\n**Initial Access and Execution:** Using the collected data, the actors launched phishing emails that bypassed filters by mimicking internal communications. Upon compromise, they leveraged compromised domain admin credentials to mount local network shares and move laterally within the environment [T1078.002]. Execution involved employing the Windows Command Shell [T1059.003] to run batch scripts that deleted traces of initial access tools while deploying ransomware that created C:\\program.exe to intercept legitimate program executions via unquoted path vulnerabilities [T1574.009].\n\n**Persistence and Privilege Escalation:** To maintain access, the actors used alternate authentication material, such as forged SAML tokens, to impersonate users and bypass multi-factor authentication, enabling unauthorized access to enterprise cloud applications [T1550]. They also abused remote services to trigger keyboard input and mouse clicks on compromised systems, facilitating further exploitation [T1021].\n\n**Credential Access and Lateral Movement:** The campaign included LLMNR/NBT-NS poisoning and SMB relay attacks using tools like Inveigh to steal credentials and relay them for lateral movement across the network [T1557.001]. This allowed the actors to access additional systems and escalate privileges.\n\n**Collection and Exfiltration:** The actors collected local emails from compromised accounts to use in future phishing campaigns [T1114.001]. For exfiltration, they employed non-standard encoding, such as modified Base64, to obfuscate communications with C2 servers [T1132.002]. Data was exfiltrated to code repositories like GitHub [T1567.001] and text storage sites, where stolen email contacts were saved for later use [T1567.003].\n\n**Impact:** The campaign culminated in impact activities, including service exhaustion floods that exploited SSL/TLS renegotiation to exhaust server CPU resources, causing denial-of-service conditions [T1499.002]. Additionally, the actors conducted SMS pumping by analyzing network traffic to identify and exploit Twilio API communication patterns, leading to financial fraud through unauthorized SMS charges [T1496.003].\n\n**Irrelevant Information:** The targeted banks reported increased network latency during peak hours, unrelated to the attack, due to routine maintenance. Background checks on employee social media activity revealed no prior security incidents at these institutions. Log analysis showed normal system reboots occurring weekly, with no correlation to malicious events.\n\n**Mitigation Recommendations:** Blue teams should implement strict access controls, monitor for unusual authentication patterns, and apply patches promptly. Enhanced network segmentation and user training on phishing are advised to reduce initial access vectors.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Persistence and Privilege Escalation:** To maintain access, the actors used alternate authentication material, such as forged SAML tokens, to impersonate users and bypass multi-factor authentication, enabling unauthorized access to enterprise cloud applications.",
+            "technique_id": "T1550",
+            "technique_name": "Use Alternate Authentication Material"
+        },
+        {
+            "sentence": "They also abused remote services to trigger keyboard input and mouse clicks on compromised systems, facilitating further exploitation.",
+            "technique_id": "T1021",
+            "technique_name": "Remote Services"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentHarvest' Targeting Financial Sector",
+        "summary": "This advisory details a simulated advanced persistent threat (APT) campaign, designated 'SilentHarvest,' targeting financial institutions globally. The campaign involves sophisticated techniques across the attack lifecycle, from reconnaissance to exfiltration and impact, with actors leveraging social engineering, cloud infrastructure abuse, and novel exploits. Blue teams are advised to review defenses against these tactics, particularly focusing on credential management, network monitoring, and endpoint detection.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to disseminate threat intelligence on the fictional APT group 'SilentHarvest,' active since early 2023. This group primarily targets financial organizations in North America and Europe, with incidents reported at three major banks leading to data breaches and service disruptions.\n\n**Attack Narrative and Kill-Chain Analysis**\n\n**Reconnaissance and Resource Development:** The actors initiated their campaign by conducting reconnaissance on corporate social media pages to collect publicly available contact information, including employee names and email addresses [T1593.001]. Concurrently, they established malicious Microsoft 365 email accounts for command and control (C2) infrastructure [T1585.003] and purchased a zero-day exploit from an underground marketplace to target unpatched vulnerabilities in financial software [T1588.005]. Additionally, they created identified email accounts to register multiple domains used throughout the campaign for phishing and malware delivery [T1585.002].\n\n**Initial Access and Execution:** Using the collected data, the actors launched phishing emails that bypassed filters by mimicking internal communications. Upon compromise, they leveraged compromised domain admin credentials to mount local network shares and move laterally within the environment [T1078.002]. Execution involved employing the Windows Command Shell [T1059.003] to run batch scripts that deleted traces of initial access tools while deploying ransomware that created C:\\program.exe to intercept legitimate program executions via unquoted path vulnerabilities [T1574.009].\n\n**Persistence and Privilege Escalation:** To maintain access, the actors used alternate authentication material, such as forged SAML tokens, to impersonate users and bypass multi-factor authentication, enabling unauthorized access to enterprise cloud applications [T1550]. They also abused remote services to trigger keyboard input and mouse clicks on compromised systems, facilitating further exploitation [T1021].\n\n**Credential Access and Lateral Movement:** The campaign included LLMNR/NBT-NS poisoning and SMB relay attacks using tools like Inveigh to steal credentials and relay them for lateral movement across the network [T1557.001]. This allowed the actors to access additional systems and escalate privileges.\n\n**Collection and Exfiltration:** The actors collected local emails from compromised accounts to use in future phishing campaigns [T1114.001]. For exfiltration, they employed non-standard encoding, such as modified Base64, to obfuscate communications with C2 servers [T1132.002]. Data was exfiltrated to code repositories like GitHub [T1567.001] and text storage sites, where stolen email contacts were saved for later use [T1567.003].\n\n**Impact:** The campaign culminated in impact activities, including service exhaustion floods that exploited SSL/TLS renegotiation to exhaust server CPU resources, causing denial-of-service conditions [T1499.002]. Additionally, the actors conducted SMS pumping by analyzing network traffic to identify and exploit Twilio API communication patterns, leading to financial fraud through unauthorized SMS charges [T1496.003].\n\n**Irrelevant Information:** The targeted banks reported increased network latency during peak hours, unrelated to the attack, due to routine maintenance. Background checks on employee social media activity revealed no prior security incidents at these institutions. Log analysis showed normal system reboots occurring weekly, with no correlation to malicious events.\n\n**Mitigation Recommendations:** Blue teams should implement strict access controls, monitor for unusual authentication patterns, and apply patches promptly. Enhanced network segmentation and user training on phishing are advised to reduce initial access vectors.",
+        "techniques_used": [
+            "T1593.001",
+            "T1585.003",
+            "T1588.005",
+            "T1585.002",
+            "T1078.002",
+            "T1059.003",
+            "T1574.009",
+            "T1550",
+            "T1021",
+            "T1557.001",
+            "T1114.001",
+            "T1132.002",
+            "T1567.001",
+            "T1567.003",
+            "T1499.002",
+            "T1496.003"
+        ]
+    }
+}

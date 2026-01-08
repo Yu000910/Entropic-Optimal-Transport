@@ -1,0 +1,81 @@
+{
+    "report_id": "report_31",
+    "generated_at": "20251222_130022",
+    "scenario_target_ids": [
+        "T1566.004",
+        "T1091",
+        "T1059.001",
+        "T1059.011",
+        "T1547.006",
+        "T1082",
+        "T1497.002",
+        "T1102.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "discovery",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.004",
+        "T1091",
+        "T1059.001",
+        "T1059.011",
+        "T1547.006",
+        "T1082",
+        "T1497.002",
+        "T1102.001"
+    ],
+    "actual_found_ids": [
+        "T1102.001",
+        "T1547.006",
+        "T1566.004",
+        "T1059.011",
+        "T1497.002",
+        "T1589",
+        "T1091",
+        "T1082",
+        "T1059.001"
+    ],
+    "clean_text": "On October 15, 2023, a financial services company, 'SecureFin Corp', reported anomalous network activity following a phishing incident. SecureFin Corp, headquartered in New York with 5,000 employees, specializes in digital payment processing and maintains critical infrastructure across multiple data centers. Initial logs from their SIEM showed unusual PowerShell executions and kernel module modifications, prompting an internal investigation. The actors likely conducted reconnaissance to identify key personnel, including IT administrators and executives, through LinkedIn and corporate websites, though this was not directly observed in logs. The attack began with a spearphishing voice call where an adversary impersonated a trusted vendor, convincing an employee to open a malicious email attachment that installed a remote access tool, granting full system control. Following initial compromise, the adversary replicated through removable media by placing a malicious script on a USB drive, which automatically executed to drop malware.exe onto air-gapped systems during routine maintenance checks. System logs from the infected host recorded multiple failed login attempts from unknown IP addresses, which were later attributed to misconfigured firewall rules. The adversary then employed PowerShell to actively download additional payloads from a command-and-control (C2) server while simultaneously using Lua commands to modify registry keys for persistence, evading standard antivirus scans. To maintain deep access, they modified a custom kernel module to include backdoor functionality, allowing persistent rootkit capabilities that bypassed security software. During the exploitation phase, the actor conducted system information discovery to collect detailed host profiles, including OS version and installed software, and performed user activity-based checks by searching for process names like 'malware.exe' to detect sandbox environments and avoid analysis. Network traffic analysis revealed that the malware utilized a dead drop resolver to retrieve updated C2 domain information from actor-controlled S3 buckets, enabling dynamic infrastructure changes. Additional irrelevant logs showed routine backup failures and high CPU usage on non-critical servers, unrelated to the attack. The campaign was contained after SecureFin Corp implemented enhanced monitoring and isolated affected systems, with no data exfiltration confirmed in this fictional scenario.",
+    "tagged_text": "On October 15, 2023, a financial services company, 'SecureFin Corp', reported anomalous network activity following a phishing incident. SecureFin Corp, headquartered in New York with 5,000 employees, specializes in digital payment processing and maintains critical infrastructure across multiple data centers. Initial logs from their SIEM showed unusual PowerShell executions and kernel module modifications, prompting an internal investigation. The actors likely conducted reconnaissance [T1589] to identify key personnel, including IT administrators and executives, through LinkedIn and corporate websites, though this was not directly observed in logs. The attack began with a spearphishing voice call [T1566.004] where an adversary impersonated a trusted vendor, convincing an employee to open a malicious email attachment that installed a remote access tool, granting full system control. Following initial compromise, the adversary replicated through removable media [T1091] by placing a malicious script on a USB drive, which automatically executed to drop malware.exe onto air-gapped systems during routine maintenance checks. System logs from the infected host recorded multiple failed login attempts from unknown IP addresses, which were later attributed to misconfigured firewall rules. The adversary then employed PowerShell [T1059.001] to actively download additional payloads from a command-and-control (C2) server while simultaneously using Lua commands [T1059.011] to modify registry keys for persistence, evading standard antivirus scans. To maintain deep access, they modified a custom kernel module [T1547.006] to include backdoor functionality, allowing persistent rootkit capabilities that bypassed security software. During the exploitation phase, the actor conducted system information discovery [T1082] to collect detailed host profiles, including OS version and installed software, and performed user activity-based checks [T1497.002] by searching for process names like 'malware.exe' to detect sandbox environments and avoid analysis. Network traffic analysis revealed that the malware utilized a dead drop resolver [T1102.001] to retrieve updated C2 domain information from actor-controlled S3 buckets, enabling dynamic infrastructure changes. Additional irrelevant logs showed routine backup failures and high CPU usage on non-critical servers, unrelated to the attack. The campaign was contained after SecureFin Corp implemented enhanced monitoring and isolated affected systems, with no data exfiltration confirmed in this fictional scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify key personnel, including IT administrators and executives, through LinkedIn and corporate websites, though this was not directly observed in logs.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Following initial compromise, the adversary replicated through removable media by placing a malicious script on a USB drive, which automatically executed to drop malware.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "During the exploitation phase, the actor conducted system information discovery to collect detailed host profiles, including OS version and installed software, and performed user activity-based checks [T1497.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Silent Echo' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Silent Echo', targeting financial institutions in North America. The campaign employs sophisticated techniques, including social engineering and kernel-level persistence, to compromise systems and exfiltrate sensitive data. Blue teams are advised to review logs, implement endpoint detection, and enhance user awareness training.",
+        "full_report_text": "On October 15, 2023, a financial services company, 'SecureFin Corp', reported anomalous network activity following a phishing incident. SecureFin Corp, headquartered in New York with 5,000 employees, specializes in digital payment processing and maintains critical infrastructure across multiple data centers. Initial logs from their SIEM showed unusual PowerShell executions and kernel module modifications, prompting an internal investigation. The actors likely conducted reconnaissance [T1589] to identify key personnel, including IT administrators and executives, through LinkedIn and corporate websites, though this was not directly observed in logs. The attack began with a spearphishing voice call [T1566.004] where an adversary impersonated a trusted vendor, convincing an employee to open a malicious email attachment that installed a remote access tool, granting full system control. Following initial compromise, the adversary replicated through removable media [T1091] by placing a malicious script on a USB drive, which automatically executed to drop malware.exe onto air-gapped systems during routine maintenance checks. System logs from the infected host recorded multiple failed login attempts from unknown IP addresses, which were later attributed to misconfigured firewall rules. The adversary then employed PowerShell [T1059.001] to actively download additional payloads from a command-and-control (C2) server while simultaneously using Lua commands [T1059.011] to modify registry keys for persistence, evading standard antivirus scans. To maintain deep access, they modified a custom kernel module [T1547.006] to include backdoor functionality, allowing persistent rootkit capabilities that bypassed security software. During the exploitation phase, the actor conducted system information discovery [T1082] to collect detailed host profiles, including OS version and installed software, and performed user activity-based checks [T1497.002] by searching for process names like 'malware.exe' to detect sandbox environments and avoid analysis. Network traffic analysis revealed that the malware utilized a dead drop resolver [T1102.001] to retrieve updated C2 domain information from actor-controlled S3 buckets, enabling dynamic infrastructure changes. Additional irrelevant logs showed routine backup failures and high CPU usage on non-critical servers, unrelated to the attack. The campaign was contained after SecureFin Corp implemented enhanced monitoring and isolated affected systems, with no data exfiltration confirmed in this fictional scenario.",
+        "techniques_used": [
+            "T1589",
+            "T1566.004",
+            "T1091",
+            "T1059.001",
+            "T1059.011",
+            "T1547.006",
+            "T1082",
+            "T1497.002",
+            "T1102.001"
+        ]
+    }
+}

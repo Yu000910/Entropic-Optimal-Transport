@@ -1,0 +1,88 @@
+{
+    "report_id": "report_465",
+    "generated_at": "20251222_155928",
+    "scenario_target_ids": [
+        "T1593.003",
+        "T1595.002",
+        "T1078.001",
+        "T1651",
+        "T1059",
+        "T1556.008",
+        "T1187",
+        "T1021.001",
+        "T1001.001",
+        "T1567.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1593.003",
+        "T1595.002",
+        "T1078.001",
+        "T1651",
+        "T1059",
+        "T1556.008",
+        "T1187",
+        "T1021.001",
+        "T1001.001",
+        "T1567.003"
+    ],
+    "actual_found_ids": [
+        "T1187",
+        "T1651",
+        "T1001.001",
+        "T1567.003",
+        "T1059",
+        "T1021.001",
+        "T1593.003",
+        "T1595.002",
+        "T1556.008",
+        "T1078.001"
+    ],
+    "clean_text": "On 2024-10-05, security analysts at a fictional manufacturing company, 'GlobalTech Industries', detected anomalous activity in their Azure environment. The company, which produces industrial automation systems, maintains a hybrid infrastructure with on-premises servers and cloud-based virtual machines (VMs) for customer data processing. Initial logs showed unusual network scans originating from an external IP address, later traced to a compromised developer account. The actors likely conducted reconnaissance by searching public code repositories like GitHub for exposed API keys and credentials, then used vulnerability scanning tools to query service banners across the network, identifying unpatched systems running outdated web services. This led to the discovery of a default Guest account on an internal server with blank password credentials, which the adversary exploited to gain initial access. Once inside, they employed Azure RunCommand to execute malicious scripts on cloud VMs, exfiltrating sensitive customer data while using bash commands to add a persistent backdoor to the system. To maintain persistence and credential access, the attacker dropped a malicious DLL into the System32 directory to intercept authentication credentials via network provider hooks and leveraged a malicious Word document designed to force authentication and extract LSASS memory for hashes using PowerShell scripts. The adversary then established remote access via Remote Desktop Protocol (RDP) sessions to move laterally across the network, while using junk data techniques by retrieving non-existent webpages from command and control servers to parse commands from error logs, obfuscating communication with a web shell. Finally, they exfiltrated harvested database records to a text-sharing platform for external retrieval. System logs from the affected VMs showed increased CPU usage and unusual outbound traffic to unknown domains, but no immediate alerts were triggered due to misconfigured monitoring tools.",
+    "tagged_text": "On 2024-10-05, security analysts at a fictional manufacturing company, 'GlobalTech Industries', detected anomalous activity in their Azure environment. The company, which produces industrial automation systems, maintains a hybrid infrastructure with on-premises servers and cloud-based virtual machines (VMs) for customer data processing. Initial logs showed unusual network scans originating from an external IP address, later traced to a compromised developer account. The actors likely conducted reconnaissance by searching public code repositories like GitHub for exposed API keys and credentials [T1593.003], then used vulnerability scanning tools to query service banners across the network, identifying unpatched systems running outdated web services [T1595.002]. This led to the discovery of a default Guest account on an internal server with blank password credentials, which the adversary exploited to gain initial access [T1078.001]. Once inside, they employed Azure RunCommand to execute malicious scripts on cloud VMs, exfiltrating sensitive customer data [T1651] while using bash commands to add a persistent backdoor to the system [T1059]. To maintain persistence and credential access, the attacker dropped a malicious DLL into the System32 directory to intercept authentication credentials via network provider hooks [T1556.008] and leveraged a malicious Word document designed to force authentication and extract LSASS memory for hashes using PowerShell scripts [T1187]. The adversary then established remote access via Remote Desktop Protocol (RDP) sessions to move laterally across the network [T1021.001], while using junk data techniques by retrieving non-existent webpages from command and control servers to parse commands from error logs, obfuscating communication with a web shell [T1001.001]. Finally, they exfiltrated harvested database records to a text-sharing platform for external retrieval [T1567.003]. System logs from the affected VMs showed increased CPU usage and unusual outbound traffic to unknown domains, but no immediate alerts were triggered due to misconfigured monitoring tools.",
+    "sentence_annotations": [
+        {
+            "sentence": "Once inside, they employed Azure RunCommand to execute malicious scripts on cloud VMs, exfiltrating sensitive customer data while using bash commands to add a persistent backdoor to the system.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "Once inside, they employed Azure RunCommand to execute malicious scripts on cloud VMs, exfiltrating sensitive customer data while using bash commands to add a persistent backdoor to the system.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "008] and leveraged a malicious Word document designed to force authentication and extract LSASS memory for hashes using PowerShell scripts.",
+            "technique_id": "T1187",
+            "technique_name": "Forced Authentication"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a fictional, educational campaign by a simulated threat actor, referred to as 'CRIMSON SHADOW', targeting organizations with hybrid cloud environments. The campaign leverages reconnaissance of public code repositories, exploitation of default accounts, and cloud administration tools to achieve initial access, persistence, and data exfiltration. This report is intended for blue team training to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "On 2024-10-05, security analysts at a fictional manufacturing company, 'GlobalTech Industries', detected anomalous activity in their Azure environment. The company, which produces industrial automation systems, maintains a hybrid infrastructure with on-premises servers and cloud-based virtual machines (VMs) for customer data processing. Initial logs showed unusual network scans originating from an external IP address, later traced to a compromised developer account. The actors likely conducted reconnaissance by searching public code repositories like GitHub for exposed API keys and credentials [T1593.003], then used vulnerability scanning tools to query service banners across the network, identifying unpatched systems running outdated web services [T1595.002]. This led to the discovery of a default Guest account on an internal server with blank password credentials, which the adversary exploited to gain initial access [T1078.001]. Once inside, they employed Azure RunCommand to execute malicious scripts on cloud VMs, exfiltrating sensitive customer data [T1651] while using bash commands to add a persistent backdoor to the system [T1059]. To maintain persistence and credential access, the attacker dropped a malicious DLL into the System32 directory to intercept authentication credentials via network provider hooks [T1556.008] and leveraged a malicious Word document designed to force authentication and extract LSASS memory for hashes using PowerShell scripts [T1187]. The adversary then established remote access via Remote Desktop Protocol (RDP) sessions to move laterally across the network [T1021.001], while using junk data techniques by retrieving non-existent webpages from command and control servers to parse commands from error logs, obfuscating communication with a web shell [T1001.001]. Finally, they exfiltrated harvested database records to a text-sharing platform for external retrieval [T1567.003]. System logs from the affected VMs showed increased CPU usage and unusual outbound traffic to unknown domains, but no immediate alerts were triggered due to misconfigured monitoring tools.",
+        "techniques_used": [
+            "T1593.003",
+            "T1595.002",
+            "T1078.001",
+            "T1651",
+            "T1059",
+            "T1556.008",
+            "T1187",
+            "T1021.001",
+            "T1001.001",
+            "T1567.003"
+        ]
+    }
+}

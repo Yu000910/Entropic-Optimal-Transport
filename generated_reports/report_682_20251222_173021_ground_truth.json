@@ -1,0 +1,66 @@
+{
+    "report_id": "report_682",
+    "generated_at": "20251222_173021",
+    "scenario_target_ids": [
+        "T1566.003",
+        "T1059.007",
+        "T1562.010",
+        "T1555.001",
+        "T1132.002",
+        "T1485"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.003",
+        "T1059.007",
+        "T1562.010",
+        "T1555.001",
+        "T1132.002",
+        "T1485"
+    ],
+    "actual_found_ids": [
+        "T1562.010",
+        "T1485",
+        "T1059.007",
+        "T1589",
+        "T1132.002",
+        "T1555.001",
+        "T1566.003"
+    ],
+    "clean_text": "On May 15, 2024, a simulated incident was reported at a fictional multinational corporation, Acme Corp, which operates in the manufacturing sector with offices in North America and Europe. The company's IT team noted unusual network traffic from several employee workstations, prompting an investigation. Background: Acme Corp uses Microsoft 365 for email and collaboration, with endpoint detection and response (EDR) tools deployed on all corporate devices. Initial logs showed no anomalies in firewall rules or user authentication patterns prior to the attack. The actors likely conducted reconnaissance to identify targets, though no specific indicators were captured in this simulation. The attack began with the adversary using spearphishing via service by sharing malicious Google Drive links through WhatsApp groups targeting corporate users, which led to the download of a malicious JavaScript file. Upon execution, the JavaScript scriptlets ran on victim machines, initiating a downgrade attack by executing PowerShell.exe with downgraded security settings to bypass application whitelisting while simultaneously gathering credentials from keychain files stored locally. The backdoor then employed non-standard encoding with modified Base64 and padding removed to hide command and control (C2) communications, exfiltrating stolen data to a simulated external server. Finally, the attacker executed data destruction by running 'del /f /s /q C:\\*.docx' to permanently delete all Word documents from the system, causing simulated operational disruption. Post-incident, Acme Corp's security team reviewed logs showing increased CPU usage on affected machines, but no actual data loss occurred as this was a training exercise.",
+    "tagged_text": "On May 15, 2024, a simulated incident was reported at a fictional multinational corporation, Acme Corp, which operates in the manufacturing sector with offices in North America and Europe. The company's IT team noted unusual network traffic from several employee workstations, prompting an investigation. Background: Acme Corp uses Microsoft 365 for email and collaboration, with endpoint detection and response (EDR) tools deployed on all corporate devices. Initial logs showed no anomalies in firewall rules or user authentication patterns prior to the attack. The actors likely conducted reconnaissance [T1589] to identify targets, though no specific indicators were captured in this simulation. The attack began with the adversary using spearphishing via service [T1566.003] by sharing malicious Google Drive links through WhatsApp groups targeting corporate users, which led to the download of a malicious JavaScript file. Upon execution, the JavaScript [T1059.007] scriptlets ran on victim machines, initiating a downgrade attack [T1562.010] by executing PowerShell.exe with downgraded security settings to bypass application whitelisting while simultaneously gathering credentials from keychain files [T1555.001] stored locally. The backdoor then employed non-standard encoding [T1132.002] with modified Base64 and padding removed to hide command and control (C2) communications, exfiltrating stolen data to a simulated external server. Finally, the attacker executed data destruction [T1485] by running 'del /f /s /q C:\\*.docx' to permanently delete all Word documents from the system, causing simulated operational disruption. Post-incident, Acme Corp's security team reviewed logs showing increased CPU usage on affected machines, but no actual data loss occurred as this was a training exercise.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify targets, though no specific indicators were captured in this simulation.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Finally, the attacker executed data destruction by running 'del /f /s /q C:\\*.",
+            "technique_id": "T1485",
+            "technique_name": "Data Destruction"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Corporate Environments via Spearphishing and Data Destruction",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) actor, designed for blue team training. The campaign involves spearphishing via messaging services, execution of JavaScript payloads, credential theft, and destructive data deletion to simulate real-world attack chains.",
+        "full_report_text": "On May 15, 2024, a simulated incident was reported at a fictional multinational corporation, Acme Corp, which operates in the manufacturing sector with offices in North America and Europe. The company's IT team noted unusual network traffic from several employee workstations, prompting an investigation. Background: Acme Corp uses Microsoft 365 for email and collaboration, with endpoint detection and response (EDR) tools deployed on all corporate devices. Initial logs showed no anomalies in firewall rules or user authentication patterns prior to the attack. The actors likely conducted reconnaissance [T1589] to identify targets, though no specific indicators were captured in this simulation. The attack began with the adversary using spearphishing via service [T1566.003] by sharing malicious Google Drive links through WhatsApp groups targeting corporate users, which led to the download of a malicious JavaScript file. Upon execution, the JavaScript [T1059.007] scriptlets ran on victim machines, initiating a downgrade attack [T1562.010] by executing PowerShell.exe with downgraded security settings to bypass application whitelisting while simultaneously gathering credentials from keychain files [T1555.001] stored locally. The backdoor then employed non-standard encoding [T1132.002] with modified Base64 and padding removed to hide command and control (C2) communications, exfiltrating stolen data to a simulated external server. Finally, the attacker executed data destruction [T1485] by running 'del /f /s /q C:\\*.docx' to permanently delete all Word documents from the system, causing simulated operational disruption. Post-incident, Acme Corp's security team reviewed logs showing increased CPU usage on affected machines, but no actual data loss occurred as this was a training exercise.",
+        "techniques_used": [
+            "T1589",
+            "T1566.003",
+            "T1059.007",
+            "T1562.010",
+            "T1555.001",
+            "T1132.002",
+            "T1485"
+        ]
+    }
+}

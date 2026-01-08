@@ -1,0 +1,68 @@
+{
+    "report_id": "report_19",
+    "generated_at": "20251222_112446",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1195",
+        "T1059",
+        "T1037.005",
+        "T1132.002",
+        "T1071.003",
+        "T1048.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1059",
+        "T1078.004",
+        "T1037.005",
+        "T1132.002",
+        "T1071.003",
+        "T1048.002"
+    ],
+    "actual_found_ids": [
+        "T1195",
+        "T1037.005",
+        "T1078.004",
+        "T1071.003",
+        "T1048.002",
+        "T1132.002",
+        "T1059"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with CrimsonShadow, a fictional advanced persistent threat (APT) group. This report is based on a simulated incident for training purposes, involving a mid-sized financial services company, 'SecureFin Corp', which reported anomalous activity in its Azure environment starting in early 2024. Initial logs from Azure Monitor showed unusual access patterns to storage accounts, but no immediate alerts were triggered due to misconfigured thresholds.\n\nCrimsonShadow likely conducted reconnaissance on SecureFin's public GitHub repositories to identify development tools, though this phase is not detailed in the provided scenario. The attack began with the actors compromising a compiler executable used by SecureFin's software team, modifying it to inject backdoor code into all compiled applications. This supply chain compromise allowed the malicious code to be distributed internally as part of legitimate software updates. Once executed, the backdoor employed PowerShell to abuse Azure Managed Identities, granting persistent access to cloud storage accounts without requiring explicit credentials. The malware then wrote a StartupParameters.plist file to configure automatic execution during system boot, ensuring persistence across reboots. For command and control (C2), the script encoded its payloads using a modified Base64 scheme with special characters replacing standard ones and utilized POP3 protocols to periodically check for new commands from the operator's email server. Additionally, the actors used malicious.exe to harvest browser cookies and session tokens, exfiltrating this data over asymmetric encrypted non-C2 protocols. System logs from SecureFin's endpoints showed increased PowerShell usage and network traffic to unknown IP addresses, but these were initially overlooked due to high volume during peak business hours. The company's incident response team eventually detected the activity during a routine audit of cloud permissions, leading to containment and remediation efforts.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with CrimsonShadow, a fictional advanced persistent threat (APT) group. This report is based on a simulated incident for training purposes, involving a mid-sized financial services company, 'SecureFin Corp', which reported anomalous activity in its Azure environment starting in early 2024. Initial logs from Azure Monitor showed unusual access patterns to storage accounts, but no immediate alerts were triggered due to misconfigured thresholds.\n\nCrimsonShadow likely conducted reconnaissance on SecureFin's public GitHub repositories to identify development tools, though this phase is not detailed in the provided scenario. The attack began with the actors compromising a compiler executable used by SecureFin's software team, modifying it to inject backdoor code into all compiled applications [T1195]. This supply chain compromise allowed the malicious code to be distributed internally as part of legitimate software updates. Once executed, the backdoor employed PowerShell [T1059] to abuse Azure Managed Identities, granting persistent access to cloud storage accounts without requiring explicit credentials [T1078.004]. The malware then wrote a StartupParameters.plist file to configure automatic execution during system boot [T1037.005], ensuring persistence across reboots. For command and control (C2), the script encoded its payloads using a modified Base64 scheme with special characters replacing standard ones [T1132.002] and utilized POP3 protocols to periodically check for new commands from the operator's email server [T1071.003]. Additionally, the actors used malicious.exe to harvest browser cookies and session tokens, exfiltrating this data over asymmetric encrypted non-C2 protocols [T1048.002]. System logs from SecureFin's endpoints showed increased PowerShell usage and network traffic to unknown IP addresses, but these were initially overlooked due to high volume during peak business hours. The company's incident response team eventually detected the activity during a routine audit of cloud permissions, leading to containment and remediation efforts.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with the actors compromising a compiler executable used by SecureFin's software team, modifying it to inject backdoor code into all compiled applications.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Once executed, the backdoor employed PowerShell to abuse Azure Managed Identities, granting persistent access to cloud storage accounts without requiring explicit credentials [T1078.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud Infrastructure via Supply Chain",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'CrimsonShadow', targeting organizations using Azure cloud services. The actors compromised a software development toolchain to inject backdoors into compiled applications, enabling persistent access and data exfiltration. Blue teams should review cloud identity management, monitor for unusual command-line activity, and inspect startup configurations for unauthorized modifications.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to highlight tactics, techniques, and procedures (TTPs) associated with CrimsonShadow, a fictional advanced persistent threat (APT) group. This report is based on a simulated incident for training purposes, involving a mid-sized financial services company, 'SecureFin Corp', which reported anomalous activity in its Azure environment starting in early 2024. Initial logs from Azure Monitor showed unusual access patterns to storage accounts, but no immediate alerts were triggered due to misconfigured thresholds.\n\nCrimsonShadow likely conducted reconnaissance on SecureFin's public GitHub repositories to identify development tools, though this phase is not detailed in the provided scenario. The attack began with the actors compromising a compiler executable used by SecureFin's software team, modifying it to inject backdoor code into all compiled applications [T1195]. This supply chain compromise allowed the malicious code to be distributed internally as part of legitimate software updates. Once executed, the backdoor employed PowerShell [T1059] to abuse Azure Managed Identities, granting persistent access to cloud storage accounts without requiring explicit credentials [T1078.004]. The malware then wrote a StartupParameters.plist file to configure automatic execution during system boot [T1037.005], ensuring persistence across reboots. For command and control (C2), the script encoded its payloads using a modified Base64 scheme with special characters replacing standard ones [T1132.002] and utilized POP3 protocols to periodically check for new commands from the operator's email server [T1071.003]. Additionally, the actors used malicious.exe to harvest browser cookies and session tokens, exfiltrating this data over asymmetric encrypted non-C2 protocols [T1048.002]. System logs from SecureFin's endpoints showed increased PowerShell usage and network traffic to unknown IP addresses, but these were initially overlooked due to high volume during peak business hours. The company's incident response team eventually detected the activity during a routine audit of cloud permissions, leading to containment and remediation efforts.",
+        "techniques_used": [
+            "T1195",
+            "T1059",
+            "T1078.004",
+            "T1037.005",
+            "T1132.002",
+            "T1071.003",
+            "T1048.002"
+        ]
+    }
+}

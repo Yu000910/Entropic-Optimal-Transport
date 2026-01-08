@@ -1,0 +1,128 @@
+{
+    "report_id": "report_315",
+    "generated_at": "20251222_145510",
+    "scenario_target_ids": [
+        "T1596",
+        "T1583.001",
+        "T1584.001",
+        "T1587",
+        "T1669",
+        "T1091",
+        "T1059.010",
+        "T1480",
+        "T1036.006",
+        "T1003.006",
+        "T1550.001",
+        "T1074.002",
+        "T1213.004",
+        "T1105",
+        "T1561.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1596",
+        "T1583.001",
+        "T1584.001",
+        "T1587",
+        "T1669",
+        "T1091",
+        "T1059.010",
+        "T1480",
+        "T1036.006",
+        "T1003.006",
+        "T1550.001",
+        "T1074.002",
+        "T1213.004",
+        "T1105",
+        "T1561.002"
+    ],
+    "actual_found_ids": [
+        "T1587",
+        "T1036.006",
+        "T1669",
+        "T1213.004",
+        "T1105",
+        "T1091",
+        "T1059.010",
+        "T1003.006",
+        "T1550.001",
+        "T1561.002",
+        "T1074.002",
+        "T1584.001",
+        "T1583.001",
+        "T1596",
+        "T1480"
+    ],
+    "clean_text": "On 2024-10-01, security analysts at a fictional financial organization, 'SecureBank Inc.', detected anomalous network traffic from an external IP address. The organization, headquartered in New York with 5,000 employees, reported unusual login attempts to their Microsoft Dynamics 365 platform. Initial logs showed failed authentication events from unrecognized domains, prompting a deeper investigation.\n\nThe adversary likely conducted reconnaissance by searching open technical databases, such as WHOIS, to identify domain registration details of SecureBank Inc. and its subsidiaries. Based on this intelligence, the actors registered multiple domains to facilitate payload staging and command-and-control (C2) operations, while also compromising existing domains for infrastructure, including C2 servers and malware staging sites. To develop capabilities, they created malicious npm packages designed for delivery to or retrieval by victims, mimicking legitimate software updates. The attack began with initial access through an open Wi-Fi network at a satellite office, where the malware exploited weak encryption to establish a foothold. Once inside, the malware replicated through removable media by modifying Autorun.inf files to automatically execute when USB drives were connected to infected systems.\n\nFor execution, the dropper employed AutoHotKey to write malicious scripts that simulated administrative actions, disabling security software while simultaneously using execution guardrails like 'net share' commands to discover accessible file shares for data exfiltration. To evade detection, attackers used space after filename techniques, renaming 'malware.dll' to 'annual_report.docx ' to mask its true nature. The malicious script then executed DCSync attacks via the Mimikatz lsadump module to dump domain credential hashes from Active Directory, leveraging application access tokens to query financial APIs with hijacked tokens for unauthorized fund transfers. For collection, the actor used remote data staging through cmd.exe to gather network configuration data, storing it centrally, and exploited customer relationship management software by using compromised credentials to access Microsoft Dynamics 365 and harvest customer data. Throughout the campaign, the adversary conducted ingress tool transfer to download additional files to victim machines, and in the final stage, performed disk structure wipes by retrieving device handles to \\\\.\\PhysicalDrive0 to corrupt boot sectors, aiming to disrupt recovery efforts. System logs from SecureBank Inc. showed increased CPU usage on domain controllers during these activities, but no actual data loss occurred in this training scenario.",
+    "tagged_text": "On 2024-10-01, security analysts at a fictional financial organization, 'SecureBank Inc.', detected anomalous network traffic from an external IP address. The organization, headquartered in New York with 5,000 employees, reported unusual login attempts to their Microsoft Dynamics 365 platform. Initial logs showed failed authentication events from unrecognized domains, prompting a deeper investigation.\n\nThe adversary likely conducted reconnaissance by searching open technical databases [T1596], such as WHOIS, to identify domain registration details of SecureBank Inc. and its subsidiaries. Based on this intelligence, the actors registered multiple domains [T1583.001] to facilitate payload staging and command-and-control (C2) operations, while also compromising existing domains [T1584.001] for infrastructure, including C2 servers and malware staging sites. To develop capabilities, they created malicious npm packages [T1587] designed for delivery to or retrieval by victims, mimicking legitimate software updates. The attack began with initial access through an open Wi-Fi network [T1669] at a satellite office, where the malware exploited weak encryption to establish a foothold. Once inside, the malware replicated through removable media [T1091] by modifying Autorun.inf files to automatically execute when USB drives were connected to infected systems.\n\nFor execution, the dropper employed AutoHotKey [T1059.010] to write malicious scripts that simulated administrative actions, disabling security software while simultaneously using execution guardrails [T1480] like 'net share' commands to discover accessible file shares for data exfiltration. To evade detection, attackers used space after filename techniques [T1036.006], renaming 'malware.dll' to 'annual_report.docx ' to mask its true nature. The malicious script then executed DCSync attacks [T1003.006] via the Mimikatz lsadump module to dump domain credential hashes from Active Directory, leveraging application access tokens [T1550.001] to query financial APIs with hijacked tokens for unauthorized fund transfers. For collection, the actor used remote data staging [T1074.002] through cmd.exe to gather network configuration data, storing it centrally, and exploited customer relationship management software [T1213.004] by using compromised credentials to access Microsoft Dynamics 365 and harvest customer data. Throughout the campaign, the adversary conducted ingress tool transfer [T1105] to download additional files to victim machines, and in the final stage, performed disk structure wipes [T1561.002] by retrieving device handles to \\\\.\\PhysicalDrive0 to corrupt boot sectors, aiming to disrupt recovery efforts. System logs from SecureBank Inc. showed increased CPU usage on domain controllers during these activities, but no actual data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The adversary likely conducted reconnaissance by searching open technical databases, such as WHOIS, to identify domain registration details of SecureBank Inc.",
+            "technique_id": "T1596",
+            "technique_name": "Search Open Technical Databases"
+        },
+        {
+            "sentence": "To develop capabilities, they created malicious npm packages designed for delivery to or retrieval by victims, mimicking legitimate software updates.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "The attack began with initial access through an open Wi-Fi network at a satellite office, where the malware exploited weak encryption to establish a foothold.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Once inside, the malware replicated through removable media by modifying Autorun.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "010] to write malicious scripts that simulated administrative actions, disabling security software while simultaneously using execution guardrails like 'net share' commands to discover accessible file shares for data exfiltration.",
+            "technique_id": "T1480",
+            "technique_name": "Execution Guardrails"
+        },
+        {
+            "sentence": "Throughout the campaign, the adversary conducted ingress tool transfer to download additional files to victim machines, and in the final stage, performed disk structure wipes [T1561.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Financial and IT Sectors",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowMimic', targeting financial institutions and IT service providers. The campaign leverages a multi-stage attack involving domain exploitation, malicious package delivery, and credential theft to exfiltrate sensitive data and disrupt operations. Blue teams are advised to review detection and mitigation strategies.",
+        "full_report_text": "On 2024-10-01, security analysts at a fictional financial organization, 'SecureBank Inc.', detected anomalous network traffic from an external IP address. The organization, headquartered in New York with 5,000 employees, reported unusual login attempts to their Microsoft Dynamics 365 platform. Initial logs showed failed authentication events from unrecognized domains, prompting a deeper investigation.\n\nThe adversary likely conducted reconnaissance by searching open technical databases [T1596], such as WHOIS, to identify domain registration details of SecureBank Inc. and its subsidiaries. Based on this intelligence, the actors registered multiple domains [T1583.001] to facilitate payload staging and command-and-control (C2) operations, while also compromising existing domains [T1584.001] for infrastructure, including C2 servers and malware staging sites. To develop capabilities, they created malicious npm packages [T1587] designed for delivery to or retrieval by victims, mimicking legitimate software updates. The attack began with initial access through an open Wi-Fi network [T1669] at a satellite office, where the malware exploited weak encryption to establish a foothold. Once inside, the malware replicated through removable media [T1091] by modifying Autorun.inf files to automatically execute when USB drives were connected to infected systems.\n\nFor execution, the dropper employed AutoHotKey [T1059.010] to write malicious scripts that simulated administrative actions, disabling security software while simultaneously using execution guardrails [T1480] like 'net share' commands to discover accessible file shares for data exfiltration. To evade detection, attackers used space after filename techniques [T1036.006], renaming 'malware.dll' to 'annual_report.docx ' to mask its true nature. The malicious script then executed DCSync attacks [T1003.006] via the Mimikatz lsadump module to dump domain credential hashes from Active Directory, leveraging application access tokens [T1550.001] to query financial APIs with hijacked tokens for unauthorized fund transfers. For collection, the actor used remote data staging [T1074.002] through cmd.exe to gather network configuration data, storing it centrally, and exploited customer relationship management software [T1213.004] by using compromised credentials to access Microsoft Dynamics 365 and harvest customer data. Throughout the campaign, the adversary conducted ingress tool transfer [T1105] to download additional files to victim machines, and in the final stage, performed disk structure wipes [T1561.002] by retrieving device handles to \\\\.\\PhysicalDrive0 to corrupt boot sectors, aiming to disrupt recovery efforts. System logs from SecureBank Inc. showed increased CPU usage on domain controllers during these activities, but no actual data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1596",
+            "T1583.001",
+            "T1584.001",
+            "T1587",
+            "T1669",
+            "T1091",
+            "T1059.010",
+            "T1480",
+            "T1036.006",
+            "T1003.006",
+            "T1550.001",
+            "T1074.002",
+            "T1213.004",
+            "T1105",
+            "T1561.002"
+        ]
+    }
+}

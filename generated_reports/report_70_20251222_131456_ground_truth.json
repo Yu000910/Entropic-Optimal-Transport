@@ -1,0 +1,93 @@
+{
+    "report_id": "report_70",
+    "generated_at": "20251222_131456",
+    "scenario_target_ids": [
+        "T1583.008",
+        "T1583.006",
+        "T1650",
+        "T1195.002",
+        "T1053.002",
+        "T1505.004",
+        "T1036.011",
+        "T1074",
+        "T1213.001",
+        "T1573",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583.008",
+        "T1583.006",
+        "T1650",
+        "T1195.002",
+        "T1053.002",
+        "T1505.004",
+        "T1036.011",
+        "T1074",
+        "T1213.001",
+        "T1573",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1053.002",
+        "T1036.011",
+        "T1583.006",
+        "T1583.008",
+        "T1505.004",
+        "T1074",
+        "T1213.001",
+        "T1496.004",
+        "T1573",
+        "T1650"
+    ],
+    "clean_text": "APT-FINX, a fictional advanced persistent threat group, conducted reconnaissance to identify financial sector targets, focusing on banking customers and their associated web services. The actors initiated the campaign by purchasing banner ads on reputable financial websites to deliver malicious payloads to unsuspecting users, while simultaneously establishing redundant infrastructure by registering multiple GitHub accounts for malware distribution and command-and-control (C2) operations. Initial access was achieved by compromising the victim's software supply chain, where malicious code was injected into legitimate software updates, allowing the adversary to deploy a web shell via a file upload vulnerability on the target's web server to maintain persistent access. Once inside, the group employed scheduled tasks using Win32_ScheduledJob to execute encryption routines during off-hours, while also deploying a rogue ISAPI filter DLL named 'authfilter.dll' to the IIS server for long-term persistence and stealth. To evade detection, malicious code overwrote process arguments in /proc/1122/cmdline to appear as an innocent sleep process, and data was staged using bash commands to save network configuration information to a hidden directory for later exfiltration. The compromised user account collected sensitive deployment procedures from the Confluence repository, and C2 communications were secured through encrypted channels to obfuscate command traffic. In the final stage, the actors abused AWS SNS to broadcast millions of notifications, consuming service capacity and causing availability issues as part of a disruptive attack. Throughout the incident, system logs showed routine administrative activity unrelated to the attack, such as daily backup processes and user login attempts from internal IP addresses, which were not indicative of malicious behavior. The victim organization, a mid-sized regional bank with operations across three states, reported no prior significant security incidents, but this campaign highlighted gaps in their software update validation and cloud monitoring protocols.",
+    "tagged_text": "APT-FINX, a fictional advanced persistent threat group, conducted reconnaissance to identify financial sector targets, focusing on banking customers and their associated web services. The actors initiated the campaign by purchasing banner ads on reputable financial websites [T1583.008] to deliver malicious payloads to unsuspecting users, while simultaneously establishing redundant infrastructure by registering multiple GitHub accounts [T1583.006] for malware distribution and command-and-control (C2) operations. Initial access was achieved by compromising the victim's software supply chain [T1195.002], where malicious code was injected into legitimate software updates, allowing the adversary to deploy a web shell via a file upload vulnerability on the target's web server [T1650] to maintain persistent access. Once inside, the group employed scheduled tasks using Win32_ScheduledJob [T1053.002] to execute encryption routines during off-hours, while also deploying a rogue ISAPI filter DLL named 'authfilter.dll' to the IIS server [T1505.004] for long-term persistence and stealth. To evade detection, malicious code overwrote process arguments in /proc/1122/cmdline to appear as an innocent sleep process [T1036.011], and data was staged using bash commands to save network configuration information to a hidden directory [T1074] for later exfiltration. The compromised user account collected sensitive deployment procedures from the Confluence repository [T1213.001], and C2 communications were secured through encrypted channels [T1573] to obfuscate command traffic. In the final stage, the actors abused AWS SNS to broadcast millions of notifications [T1496.004], consuming service capacity and causing availability issues as part of a disruptive attack. Throughout the incident, system logs showed routine administrative activity unrelated to the attack, such as daily backup processes and user login attempts from internal IP addresses, which were not indicative of malicious behavior. The victim organization, a mid-sized regional bank with operations across three states, reported no prior significant security incidents, but this campaign highlighted gaps in their software update validation and cloud monitoring protocols.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], where malicious code was injected into legitimate software updates, allowing the adversary to deploy a web shell via a file upload vulnerability on the target's web server to maintain persistent access.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "011], and data was staged using bash commands to save network configuration information to a hidden directory for later exfiltration.",
+            "technique_id": "T1074",
+            "technique_name": "Data Staged"
+        },
+        {
+            "sentence": "001], and C2 communications were secured through encrypted channels to obfuscate command traffic.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial Sector via Malvertising and Supply Chain Compromise",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as APT-FINX, targeting financial institutions through a multi-vector attack involving malvertising, supply chain compromise, and cloud service abuse. The campaign leverages initial access via compromised software updates and malicious advertisements, followed by persistence through web shells and scheduled tasks, data collection from internal repositories, and disruption via cloud hijacking. This report is intended for blue team training to enhance detection and response capabilities against sophisticated, multi-stage attacks.",
+        "full_report_text": "APT-FINX, a fictional advanced persistent threat group, conducted reconnaissance to identify financial sector targets, focusing on banking customers and their associated web services. The actors initiated the campaign by purchasing banner ads on reputable financial websites [T1583.008] to deliver malicious payloads to unsuspecting users, while simultaneously establishing redundant infrastructure by registering multiple GitHub accounts [T1583.006] for malware distribution and command-and-control (C2) operations. Initial access was achieved by compromising the victim's software supply chain [T1195.002], where malicious code was injected into legitimate software updates, allowing the adversary to deploy a web shell via a file upload vulnerability on the target's web server [T1650] to maintain persistent access. Once inside, the group employed scheduled tasks using Win32_ScheduledJob [T1053.002] to execute encryption routines during off-hours, while also deploying a rogue ISAPI filter DLL named 'authfilter.dll' to the IIS server [T1505.004] for long-term persistence and stealth. To evade detection, malicious code overwrote process arguments in /proc/1122/cmdline to appear as an innocent sleep process [T1036.011], and data was staged using bash commands to save network configuration information to a hidden directory [T1074] for later exfiltration. The compromised user account collected sensitive deployment procedures from the Confluence repository [T1213.001], and C2 communications were secured through encrypted channels [T1573] to obfuscate command traffic. In the final stage, the actors abused AWS SNS to broadcast millions of notifications [T1496.004], consuming service capacity and causing availability issues as part of a disruptive attack. Throughout the incident, system logs showed routine administrative activity unrelated to the attack, such as daily backup processes and user login attempts from internal IP addresses, which were not indicative of malicious behavior. The victim organization, a mid-sized regional bank with operations across three states, reported no prior significant security incidents, but this campaign highlighted gaps in their software update validation and cloud monitoring protocols.",
+        "techniques_used": [
+            "T1583.008",
+            "T1583.006",
+            "T1650",
+            "T1195.002",
+            "T1053.002",
+            "T1505.004",
+            "T1036.011",
+            "T1074",
+            "T1213.001",
+            "T1573",
+            "T1496.004"
+        ]
+    }
+}

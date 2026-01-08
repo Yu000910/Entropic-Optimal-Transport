@@ -1,0 +1,93 @@
+{
+    "report_id": "report_563",
+    "generated_at": "20251222_164235",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1047",
+        "T1137.003",
+        "T1548.005",
+        "T1484.001",
+        "T1550.001",
+        "T1556.008",
+        "T1135",
+        "T1010",
+        "T1071.004",
+        "T1567.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1047",
+        "T1137.003",
+        "T1548.005",
+        "T1484.001",
+        "T1550.001",
+        "T1556.008",
+        "T1135",
+        "T1010",
+        "T1071.004",
+        "T1567.002"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1484.001",
+        "T1566.001",
+        "T1135",
+        "T1548.005",
+        "T1137.003",
+        "T1550.001",
+        "T1567.002",
+        "T1071.004",
+        "T1556.008",
+        "T1010"
+    ],
+    "clean_text": "On October 15, 2023, multiple organizations reported suspicious email activity originating from spoofed domains mimicking legitimate business partners. The actors likely conducted reconnaissance to gather target information, though specific techniques are not detailed in this scenario. The campaign began with spearphishing emails containing malicious attachments, such as PDFs with embedded macros, which, when opened, executed Clambling malware to establish initial footholds. Upon execution, the malware leveraged Windows Management Instrumentation (WMI) to create scheduled tasks that launched additional plugins, enabling persistence and lateral movement. For further persistence, the actors modified Outlook forms to embed encryption routines that trigger automatically upon Outlook startup, ensuring continued access even after system reboots. To escalate privileges in cloud environments, the adversary exploited misconfigured IAM roles, specifically the iam.serviceAccountTokenCreator, to temporarily impersonate high-privilege service accounts and gain elevated access to sensitive cloud resources. The actors then used Group Policy Objects (GPOs) to deploy batch scripts across the network, facilitating ransomware deployment and system-wide encryption. For discovery and reconnaissance, the malware queried REST endpoints using stolen application access tokens to map the organization's digital infrastructure and identify critical assets, while also altering registry keys to include a malicious network provider DLL, enabling network interception and data capture. Additionally, the actors employed commands like 'net view' to discover mapped network shares and used API functions such as EnumWindows to identify open application windows for potential data theft or user activity monitoring. Command and control (C2) communications were established through DNS queries to attacker-controlled domains, blending with legitimate traffic to evade detection. Finally, exfiltration of sensitive data was conducted by uploading stolen files to an attacker-controlled OneDrive account, leveraging cloud storage for stealthy data transfer. Throughout the incident, system logs from affected Windows 10 and Server 2019 machines showed anomalous process creations and network connections, with no prior alerts from legacy antivirus solutions. The fictional company 'Global Finance Corp' reported initial detection delays due to outdated security policies, highlighting the need for updated threat intelligence feeds and employee training on phishing awareness.",
+    "tagged_text": "On October 15, 2023, multiple organizations reported suspicious email activity originating from spoofed domains mimicking legitimate business partners. The actors likely conducted reconnaissance to gather target information, though specific techniques are not detailed in this scenario. The campaign began with spearphishing emails containing malicious attachments, such as PDFs with embedded macros, which, when opened, executed Clambling malware to establish initial footholds [T1566.001]. Upon execution, the malware leveraged Windows Management Instrumentation (WMI) to create scheduled tasks that launched additional plugins, enabling persistence and lateral movement [T1047]. For further persistence, the actors modified Outlook forms to embed encryption routines that trigger automatically upon Outlook startup, ensuring continued access even after system reboots [T1137.003]. To escalate privileges in cloud environments, the adversary exploited misconfigured IAM roles, specifically the iam.serviceAccountTokenCreator, to temporarily impersonate high-privilege service accounts and gain elevated access to sensitive cloud resources [T1548.005]. The actors then used Group Policy Objects (GPOs) to deploy batch scripts across the network, facilitating ransomware deployment and system-wide encryption [T1484.001]. For discovery and reconnaissance, the malware queried REST endpoints using stolen application access tokens to map the organization's digital infrastructure and identify critical assets [T1550.001], while also altering registry keys to include a malicious network provider DLL, enabling network interception and data capture [T1556.008]. Additionally, the actors employed commands like 'net view' to discover mapped network shares [T1135] and used API functions such as EnumWindows to identify open application windows for potential data theft or user activity monitoring [T1010]. Command and control (C2) communications were established through DNS queries to attacker-controlled domains, blending with legitimate traffic to evade detection [T1071.004]. Finally, exfiltration of sensitive data was conducted by uploading stolen files to an attacker-controlled OneDrive account, leveraging cloud storage for stealthy data transfer [T1567.002]. Throughout the incident, system logs from affected Windows 10 and Server 2019 machines showed anomalous process creations and network connections, with no prior alerts from legacy antivirus solutions. The fictional company 'Global Finance Corp' reported initial detection delays due to outdated security policies, highlighting the need for updated threat intelligence feeds and employee training on phishing awareness.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon execution, the malware leveraged Windows Management Instrumentation (WMI) to create scheduled tasks that launched additional plugins, enabling persistence and lateral movement.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "Additionally, the actors employed commands like 'net view' to discover mapped network shares and used API functions such as EnumWindows to identify open application windows for potential data theft or user activity monitoring.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "Additionally, the actors employed commands like 'net view' to discover mapped network shares and used API functions such as EnumWindows to identify open application windows for potential data theft or user activity monitoring.",
+            "technique_id": "T1010",
+            "technique_name": "Application Window Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Shadow Veil' Targeting Financial and Healthcare Sectors",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Shadow Veil', targeting financial institutions and healthcare organizations globally. The campaign employs sophisticated techniques for initial access, persistence, privilege escalation, discovery, command and control, and exfiltration. Blue teams should use this report for training to enhance detection and response capabilities.",
+        "full_report_text": "On October 15, 2023, multiple organizations reported suspicious email activity originating from spoofed domains mimicking legitimate business partners. The actors likely conducted reconnaissance to gather target information, though specific techniques are not detailed in this scenario. The campaign began with spearphishing emails containing malicious attachments, such as PDFs with embedded macros, which, when opened, executed Clambling malware to establish initial footholds [T1566.001]. Upon execution, the malware leveraged Windows Management Instrumentation (WMI) to create scheduled tasks that launched additional plugins, enabling persistence and lateral movement [T1047]. For further persistence, the actors modified Outlook forms to embed encryption routines that trigger automatically upon Outlook startup, ensuring continued access even after system reboots [T1137.003]. To escalate privileges in cloud environments, the adversary exploited misconfigured IAM roles, specifically the iam.serviceAccountTokenCreator, to temporarily impersonate high-privilege service accounts and gain elevated access to sensitive cloud resources [T1548.005]. The actors then used Group Policy Objects (GPOs) to deploy batch scripts across the network, facilitating ransomware deployment and system-wide encryption [T1484.001]. For discovery and reconnaissance, the malware queried REST endpoints using stolen application access tokens to map the organization's digital infrastructure and identify critical assets [T1550.001], while also altering registry keys to include a malicious network provider DLL, enabling network interception and data capture [T1556.008]. Additionally, the actors employed commands like 'net view' to discover mapped network shares [T1135] and used API functions such as EnumWindows to identify open application windows for potential data theft or user activity monitoring [T1010]. Command and control (C2) communications were established through DNS queries to attacker-controlled domains, blending with legitimate traffic to evade detection [T1071.004]. Finally, exfiltration of sensitive data was conducted by uploading stolen files to an attacker-controlled OneDrive account, leveraging cloud storage for stealthy data transfer [T1567.002]. Throughout the incident, system logs from affected Windows 10 and Server 2019 machines showed anomalous process creations and network connections, with no prior alerts from legacy antivirus solutions. The fictional company 'Global Finance Corp' reported initial detection delays due to outdated security policies, highlighting the need for updated threat intelligence feeds and employee training on phishing awareness.",
+        "techniques_used": [
+            "T1566.001",
+            "T1047",
+            "T1137.003",
+            "T1548.005",
+            "T1484.001",
+            "T1550.001",
+            "T1556.008",
+            "T1135",
+            "T1010",
+            "T1071.004",
+            "T1567.002"
+        ]
+    }
+}

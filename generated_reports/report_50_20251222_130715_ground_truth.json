@@ -1,0 +1,88 @@
+{
+    "report_id": "report_50",
+    "generated_at": "20251222_130715",
+    "scenario_target_ids": [
+        "T1195.003",
+        "T1059.012",
+        "T1558",
+        "T1526",
+        "T1602.002",
+        "T1039",
+        "T1185",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1059.012",
+        "T1558",
+        "T1526",
+        "T1602.002",
+        "T1039",
+        "T1185",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1039",
+        "T1059.012",
+        "T1526",
+        "T1558",
+        "T1602.002",
+        "T1195.003",
+        "T1185",
+        "T1573"
+    ],
+    "clean_text": "Crimson Shadow actors initiated their campaign by compromising USB hardware during the manufacturing process, embedding malicious firmware that bypassed endpoint security controls upon insertion into target systems. Once initial access was achieved, the actors executed reconnaissance within virtualized environments, using the esxcli command 'esxcli storage filesystem list' to enumerate datastores while simultaneously querying the Azure Resource Manager API via PowerShell to discover all virtual machines in cloud subscriptions. Concurrently, malware on compromised hosts executed klist to steal Kerberos service tickets from memory and used SNMP queries to dump network device configurations, gathering critical infrastructure details. For lateral movement, the actors employed a script that executed 'net use' to access data from network shared drives and injected a malicious browser extension to hijack active sessions, enabling pivots through internal networks. All command and control traffic was masked using encrypted WebSocket connections, evading network monitoring tools. Logs from affected systems showed routine administrative activity, such as failed login attempts and scheduled backups, which were unrelated to the attack but added noise to forensic analysis. The organization, a mid-sized financial services firm with hybrid cloud deployments, reported no initial alerts due to the stealthy nature of the hardware compromise and encrypted channels.",
+    "tagged_text": "Crimson Shadow actors initiated their campaign by compromising USB hardware during the manufacturing process [T1195.003], embedding malicious firmware that bypassed endpoint security controls upon insertion into target systems. Once initial access was achieved, the actors executed reconnaissance within virtualized environments, using the esxcli command 'esxcli storage filesystem list' [T1059.012] to enumerate datastores while simultaneously querying the Azure Resource Manager API via PowerShell [T1526] to discover all virtual machines in cloud subscriptions. Concurrently, malware on compromised hosts executed klist to steal Kerberos service tickets from memory [T1558] and used SNMP queries to dump network device configurations [T1602.002], gathering critical infrastructure details. For lateral movement, the actors employed a script that executed 'net use' to access data from network shared drives [T1039] and injected a malicious browser extension to hijack active sessions [T1185], enabling pivots through internal networks. All command and control traffic was masked using encrypted WebSocket connections [T1573], evading network monitoring tools. Logs from affected systems showed routine administrative activity, such as failed login attempts and scheduled backups, which were unrelated to the attack but added noise to forensic analysis. The organization, a mid-sized financial services firm with hybrid cloud deployments, reported no initial alerts due to the stealthy nature of the hardware compromise and encrypted channels.",
+    "sentence_annotations": [
+        {
+            "sentence": "012] to enumerate datastores while simultaneously querying the Azure Resource Manager API via PowerShell to discover all virtual machines in cloud subscriptions.",
+            "technique_id": "T1526",
+            "technique_name": "Cloud Service Discovery"
+        },
+        {
+            "sentence": "Concurrently, malware on compromised hosts executed klist to steal Kerberos service tickets from memory and used SNMP queries to dump network device configurations [T1602.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        },
+        {
+            "sentence": "For lateral movement, the actors employed a script that executed 'net use' to access data from network shared drives and injected a malicious browser extension to hijack active sessions, enabling pivots through internal networks.",
+            "technique_id": "T1039",
+            "technique_name": "Data from Network Shared Drive"
+        },
+        {
+            "sentence": "For lateral movement, the actors employed a script that executed 'net use' to access data from network shared drives and injected a malicious browser extension to hijack active sessions, enabling pivots through internal networks.",
+            "technique_id": "T1185",
+            "technique_name": "Browser Session Hijacking"
+        },
+        {
+            "sentence": "All command and control traffic was masked using encrypted WebSocket connections, evading network monitoring tools.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Supply Chain and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting organizations through hardware supply chain compromises and subsequent exploitation of virtualized and cloud environments. The campaign leverages modified USB devices, hypervisor command-line tools, and encrypted communication to exfiltrate sensitive data and pivot across networks. Blue teams should use this report for training to enhance detection and response capabilities against multi-stage attacks.",
+        "full_report_text": "Crimson Shadow actors initiated their campaign by compromising USB hardware during the manufacturing process [T1195.003], embedding malicious firmware that bypassed endpoint security controls upon insertion into target systems. Once initial access was achieved, the actors executed reconnaissance within virtualized environments, using the esxcli command 'esxcli storage filesystem list' [T1059.012] to enumerate datastores while simultaneously querying the Azure Resource Manager API via PowerShell [T1526] to discover all virtual machines in cloud subscriptions. Concurrently, malware on compromised hosts executed klist to steal Kerberos service tickets from memory [T1558] and used SNMP queries to dump network device configurations [T1602.002], gathering critical infrastructure details. For lateral movement, the actors employed a script that executed 'net use' to access data from network shared drives [T1039] and injected a malicious browser extension to hijack active sessions [T1185], enabling pivots through internal networks. All command and control traffic was masked using encrypted WebSocket connections [T1573], evading network monitoring tools. Logs from affected systems showed routine administrative activity, such as failed login attempts and scheduled backups, which were unrelated to the attack but added noise to forensic analysis. The organization, a mid-sized financial services firm with hybrid cloud deployments, reported no initial alerts due to the stealthy nature of the hardware compromise and encrypted channels.",
+        "techniques_used": [
+            "T1195.003",
+            "T1059.012",
+            "T1558",
+            "T1526",
+            "T1602.002",
+            "T1039",
+            "T1185",
+            "T1573"
+        ]
+    }
+}

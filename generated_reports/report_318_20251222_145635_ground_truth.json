@@ -1,0 +1,118 @@
+{
+    "report_id": "report_318",
+    "generated_at": "20251222_145635",
+    "scenario_target_ids": [
+        "T1659",
+        "T1559.002",
+        "T1547.008",
+        "T1037.004",
+        "T1546.012",
+        "T1056.001",
+        "T1111",
+        "T1021.008",
+        "T1602",
+        "T1665",
+        "T1020",
+        "T1011.001",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1659",
+        "T1559.002",
+        "T1056.001",
+        "T1546.012",
+        "T1547.008",
+        "T1037.004",
+        "T1021.008",
+        "T1602",
+        "T1565",
+        "T1665",
+        "T1111",
+        "T1020",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1011.001",
+        "T1056.001",
+        "T1659",
+        "T1021.008",
+        "T1565",
+        "T1602",
+        "T1547.008",
+        "T1546.012",
+        "T1665",
+        "T1111",
+        "T1559.002",
+        "T1037.004",
+        "T1020"
+    ],
+    "clean_text": "On March 15, 2024, GlobalTech Solutions, a fictional multinational technology firm with operations in energy and telecommunications, reported anomalous network activity to the FBI, CISA, and NSA. Initial investigation revealed that malicious actors, likely associated with the fictional APT group 'ShadowGate,' had compromised the organization's internet service provider (ISP) to inject adware into HTTP responses, which redirected employees to phishing sites hosting malicious documents. These documents exploited the Dynamic Data Exchange (DDE) protocol to download remote payloads, including a keylogger and a backdoor, while simultaneously modifying registry keys to establish persistence through Image File Execution Options (IFEO) injection for the process dllhost.exe. System logs from the affected Windows servers showed unusual LSASS driver activity, where a malicious DLL was replaced in the configuration to maintain access and bypass credential checks, and the attackers added a decryption service to rc.common for automatic execution after reboot on Linux systems. The actors then used compromised credentials to gain command-line access via Azure Serial Console, where they extracted domain controller configuration details including trust relationships and manipulated configuration data by injecting a malicious DLL into system processes to disable security controls. To obscure their activities, the malware established an encrypted VPN tunnel to hide command-and-control (C2) traffic from network monitoring tools, and the attackers intercepted multi-factor authentication (MFA) prompts by replaying stolen session tokens to gain approval. Automated scripts were deployed to exfiltrate sensitive documents, such as sensitive_docs.zip, from user folders, and in a lateral movement phase, they exploited Bluetooth HID protocol weaknesses to exfiltrate keystroke logs from infected systems. GlobalTech's security team noted increased network latency and unauthorized access attempts during this period, but no real data loss occurred as this was a training exercise.",
+    "tagged_text": "On March 15, 2024, GlobalTech Solutions, a fictional multinational technology firm with operations in energy and telecommunications, reported anomalous network activity to the FBI, CISA, and NSA. Initial investigation revealed that malicious actors, likely associated with the fictional APT group 'ShadowGate,' had compromised the organization's internet service provider (ISP) to inject adware into HTTP responses [T1659], which redirected employees to phishing sites hosting malicious documents. These documents exploited the Dynamic Data Exchange (DDE) protocol [T1559.002] to download remote payloads, including a keylogger [T1056.001] and a backdoor, while simultaneously modifying registry keys to establish persistence through Image File Execution Options (IFEO) injection [T1546.012] for the process dllhost.exe. System logs from the affected Windows servers showed unusual LSASS driver activity, where a malicious DLL was replaced in the configuration [T1547.008] to maintain access and bypass credential checks, and the attackers added a decryption service to rc.common [T1037.004] for automatic execution after reboot on Linux systems. The actors then used compromised credentials to gain command-line access via Azure Serial Console [T1021.008], where they extracted domain controller configuration details including trust relationships [T1602] and manipulated configuration data [T1565] by injecting a malicious DLL into system processes to disable security controls. To obscure their activities, the malware established an encrypted VPN tunnel [T1665] to hide command-and-control (C2) traffic from network monitoring tools, and the attackers intercepted multi-factor authentication (MFA) prompts [T1111] by replaying stolen session tokens to gain approval. Automated scripts were deployed to exfiltrate sensitive documents, such as sensitive_docs.zip, from user folders [T1020], and in a lateral movement phase, they exploited Bluetooth HID protocol weaknesses [T1011.001] to exfiltrate keystroke logs from infected systems. GlobalTech's security team noted increased network latency and unauthorized access attempts during this period, but no real data loss occurred as this was a training exercise.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial investigation revealed that malicious actors, likely associated with the fictional APT group 'ShadowGate,' had compromised the organization's internet service provider (ISP) to inject adware into HTTP responses, which redirected employees to phishing sites hosting malicious documents.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "008], where they extracted domain controller configuration details including trust relationships and manipulated configuration data by injecting a malicious DLL into system processes to disable security controls.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "008], where they extracted domain controller configuration details including trust relationships and manipulated configuration data by injecting a malicious DLL into system processes to disable security controls.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        },
+        {
+            "sentence": "To obscure their activities, the malware established an encrypted VPN tunnel to hide command-and-control (C2) traffic from network monitoring tools, and the attackers intercepted multi-factor authentication (MFA) prompts by replaying stolen session tokens to gain approval.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        },
+        {
+            "sentence": "To obscure their activities, the malware established an encrypted VPN tunnel to hide command-and-control (C2) traffic from network monitoring tools, and the attackers intercepted multi-factor authentication (MFA) prompts by replaying stolen session tokens to gain approval.",
+            "technique_id": "T1111",
+            "technique_name": "Multi-Factor Authentication Interception"
+        },
+        {
+            "sentence": "zip, from user folders, and in a lateral movement phase, they exploited Bluetooth HID protocol weaknesses [T1011.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGate' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowGate,' which targeted a fictional critical infrastructure organization, 'GlobalTech Solutions,' between January and March 2024. The campaign involved sophisticated techniques to inject malicious content, establish persistence, bypass security controls, and exfiltrate sensitive data, leveraging a combination of network-level attacks and endpoint manipulation. The advisory provides analysis for blue teams to enhance detection and response capabilities.",
+        "full_report_text": "On March 15, 2024, GlobalTech Solutions, a fictional multinational technology firm with operations in energy and telecommunications, reported anomalous network activity to the FBI, CISA, and NSA. Initial investigation revealed that malicious actors, likely associated with the fictional APT group 'ShadowGate,' had compromised the organization's internet service provider (ISP) to inject adware into HTTP responses [T1659], which redirected employees to phishing sites hosting malicious documents. These documents exploited the Dynamic Data Exchange (DDE) protocol [T1559.002] to download remote payloads, including a keylogger [T1056.001] and a backdoor, while simultaneously modifying registry keys to establish persistence through Image File Execution Options (IFEO) injection [T1546.012] for the process dllhost.exe. System logs from the affected Windows servers showed unusual LSASS driver activity, where a malicious DLL was replaced in the configuration [T1547.008] to maintain access and bypass credential checks, and the attackers added a decryption service to rc.common [T1037.004] for automatic execution after reboot on Linux systems. The actors then used compromised credentials to gain command-line access via Azure Serial Console [T1021.008], where they extracted domain controller configuration details including trust relationships [T1602] and manipulated configuration data [T1565] by injecting a malicious DLL into system processes to disable security controls. To obscure their activities, the malware established an encrypted VPN tunnel [T1665] to hide command-and-control (C2) traffic from network monitoring tools, and the attackers intercepted multi-factor authentication (MFA) prompts [T1111] by replaying stolen session tokens to gain approval. Automated scripts were deployed to exfiltrate sensitive documents, such as sensitive_docs.zip, from user folders [T1020], and in a lateral movement phase, they exploited Bluetooth HID protocol weaknesses [T1011.001] to exfiltrate keystroke logs from infected systems. GlobalTech's security team noted increased network latency and unauthorized access attempts during this period, but no real data loss occurred as this was a training exercise.",
+        "techniques_used": [
+            "T1659",
+            "T1559.002",
+            "T1056.001",
+            "T1546.012",
+            "T1547.008",
+            "T1037.004",
+            "T1021.008",
+            "T1602",
+            "T1565",
+            "T1665",
+            "T1111",
+            "T1020",
+            "T1011.001"
+        ]
+    }
+}

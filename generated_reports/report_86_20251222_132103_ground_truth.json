@@ -1,0 +1,118 @@
+{
+    "report_id": "report_86",
+    "generated_at": "20251222_132103",
+    "scenario_target_ids": [
+        "T1584.001",
+        "T1583.001",
+        "T1585.001",
+        "T1195",
+        "T1559.003",
+        "T1569",
+        "T1546.009",
+        "T1055.013",
+        "T1222",
+        "T1027.014",
+        "T1562.011",
+        "T1069",
+        "T1092",
+        "T1496.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.001",
+        "T1583.001",
+        "T1585.001",
+        "T1195",
+        "T1559.003",
+        "T1569",
+        "T1546.009",
+        "T1055.013",
+        "T1222",
+        "T1027.014",
+        "T1562.011",
+        "T1069",
+        "T1092",
+        "T1496.001"
+    ],
+    "actual_found_ids": [
+        "T1496.001",
+        "T1069",
+        "T1585.001",
+        "T1546.009",
+        "T1195",
+        "T1569",
+        "T1222",
+        "T1055.013",
+        "T1027.014",
+        "T1584.001",
+        "T1562.011",
+        "T1092",
+        "T1583.001",
+        "T1559.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity attributed to 'Leviathan'. This campaign targets organizations in the energy and financial sectors, leveraging a blend of technical exploits and social engineering to achieve persistent access and data theft.\n\nBackground: Leviathan is a fictional advanced persistent threat group with suspected ties to cybercriminal networks, known for high-profile attacks against global infrastructure. In this scenario, the group operates from compromised infrastructure, using a mix of legitimate and malicious tools to evade detection. The attack timeline spans several weeks, with initial access gained through phishing campaigns and supply chain vulnerabilities.\n\nKill-Chain Analysis:\n- **Initial Access:** The actors conducted reconnaissance by compromising AWS Route53 credentials to alter domain routing for phishing campaigns and established domains that impersonate legitimate entities to use for targeting efforts, while simultaneously creating a Facebook account using stolen identity information to establish a deceptive persona for social engineering lures. A malicious DLL was injected into the software development kit, compromising all applications built using that SDK, which served as a primary infection vector when users downloaded and executed tainted software updates.\n- **Execution:** Upon execution, the malware employed a malicious script that established an NSXPCConnection to a system service, enabling it to install persistence mechanisms and used svchost.exe to load and execute a malicious DLL for privilege escalation. The registry key HKLM\\System\\CurrentControlSet\\Control\\Session Manager\\AppCertDLLs was altered to include a backdoor DLL, ensuring the malware loads with system processes.\n- **Persistence and Defense Evasion:** The threat actor wrote malicious.exe into memory using TxF transaction mechanisms to avoid file-based detection and employed 'chmod o+w config.php' to allow other users to modify the web application configuration, facilitating backdoor access. The dropper modified 'injector.dll' by adding junk instructions to create unique variants and altered the Windows Security interface to hide the fact that real-time protection was disabled, effectively spoofing security alerts.\n- **Discovery and Lateral Movement:** The script executed 'net group \"Domain Admins\" /domain' to identify privileged users, aiding in lateral movement planning. USBStealer drops commands for a second victim onto a removable media drive inserted into the first victim, and commands are executed when the drive is inserted into the second victim, enabling air-gapped network infiltration.\n- **Impact:** Imminent Monitor has the capability to run a cryptocurrency miner on the victim machine, hijacking compute resources for financial gain and degrading system performance.\n\nSystem Logs: During the investigation, irrelevant logs were observed, such as routine system updates at 2023-10-05 14:30:00 UTC and failed login attempts from IP 192.168.1.100, which were unrelated to the campaign. The company background includes a fictional energy provider, 'GridSecure Inc.', with operations across North America, but this information does not directly correlate with the attack techniques.\n\nRecommendations: Blue teams should monitor for unusual domain activity, implement application whitelisting, conduct regular supply chain audits, and use behavioral analytics to detect memory-based exploits. This scenario underscores the importance of layered defense strategies in mitigating advanced threats.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity attributed to 'Leviathan'. This campaign targets organizations in the energy and financial sectors, leveraging a blend of technical exploits and social engineering to achieve persistent access and data theft.\n\nBackground: Leviathan is a fictional advanced persistent threat group with suspected ties to cybercriminal networks, known for high-profile attacks against global infrastructure. In this scenario, the group operates from compromised infrastructure, using a mix of legitimate and malicious tools to evade detection. The attack timeline spans several weeks, with initial access gained through phishing campaigns and supply chain vulnerabilities.\n\nKill-Chain Analysis:\n- **Initial Access:** The actors conducted reconnaissance by compromising AWS Route53 credentials to alter domain routing for phishing campaigns [T1584.001] and established domains that impersonate legitimate entities to use for targeting efforts [T1583.001], while simultaneously creating a Facebook account using stolen identity information to establish a deceptive persona [T1585.001] for social engineering lures. A malicious DLL was injected into the software development kit, compromising all applications built using that SDK [T1195], which served as a primary infection vector when users downloaded and executed tainted software updates.\n- **Execution:** Upon execution, the malware employed a malicious script that established an NSXPCConnection to a system service, enabling it to install persistence mechanisms [T1559.003] and used svchost.exe to load and execute a malicious DLL for privilege escalation [T1569]. The registry key HKLM\\System\\CurrentControlSet\\Control\\Session Manager\\AppCertDLLs was altered to include a backdoor DLL [T1546.009], ensuring the malware loads with system processes.\n- **Persistence and Defense Evasion:** The threat actor wrote malicious.exe into memory using TxF transaction mechanisms [T1055.013] to avoid file-based detection and employed 'chmod o+w config.php' to allow other users to modify the web application configuration [T1222], facilitating backdoor access. The dropper modified 'injector.dll' by adding junk instructions to create unique variants [T1027.014] and altered the Windows Security interface to hide the fact that real-time protection was disabled [T1562.011], effectively spoofing security alerts.\n- **Discovery and Lateral Movement:** The script executed 'net group \"Domain Admins\" /domain' to identify privileged users [T1069], aiding in lateral movement planning. USBStealer drops commands for a second victim onto a removable media drive inserted into the first victim, and commands are executed when the drive is inserted into the second victim [T1092], enabling air-gapped network infiltration.\n- **Impact:** Imminent Monitor has the capability to run a cryptocurrency miner on the victim machine [T1496.001], hijacking compute resources for financial gain and degrading system performance.\n\nSystem Logs: During the investigation, irrelevant logs were observed, such as routine system updates at 2023-10-05 14:30:00 UTC and failed login attempts from IP 192.168.1.100, which were unrelated to the campaign. The company background includes a fictional energy provider, 'GridSecure Inc.', with operations across North America, but this information does not directly correlate with the attack techniques.\n\nRecommendations: Blue teams should monitor for unusual domain activity, implement application whitelisting, conduct regular supply chain audits, and use behavioral analytics to detect memory-based exploits. This scenario underscores the importance of layered defense strategies in mitigating advanced threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "A malicious DLL was injected into the software development kit, compromising all applications built using that SDK, which served as a primary infection vector when users downloaded and executed tainted software updates.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "exe to load and execute a malicious DLL for privilege escalation.",
+            "technique_id": "T1569",
+            "technique_name": "System Services"
+        },
+        {
+            "sentence": "php' to allow other users to modify the web application configuration, facilitating backdoor access.",
+            "technique_id": "T1222",
+            "technique_name": "File and Directory Permissions Modification"
+        },
+        {
+            "sentence": "- **Discovery and Lateral Movement:** The script executed 'net group \"Domain Admins\" /domain' to identify privileged users, aiding in lateral movement planning.",
+            "technique_id": "T1069",
+            "technique_name": "Permission Groups Discovery"
+        },
+        {
+            "sentence": "USBStealer drops commands for a second victim onto a removable media drive inserted into the first victim, and commands are executed when the drive is inserted into the second victim, enabling air-gapped network infiltration.",
+            "technique_id": "T1092",
+            "technique_name": "Communication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Leviathan' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Leviathan', targeting critical infrastructure sectors through a multi-faceted attack involving domain manipulation, social engineering, supply chain compromise, and advanced persistence techniques. The campaign demonstrates a sophisticated kill-chain from initial reconnaissance to data exfiltration and resource hijacking, designed to educate blue teams on identifying and mitigating complex threats.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity attributed to 'Leviathan'. This campaign targets organizations in the energy and financial sectors, leveraging a blend of technical exploits and social engineering to achieve persistent access and data theft.\n\nBackground: Leviathan is a fictional advanced persistent threat group with suspected ties to cybercriminal networks, known for high-profile attacks against global infrastructure. In this scenario, the group operates from compromised infrastructure, using a mix of legitimate and malicious tools to evade detection. The attack timeline spans several weeks, with initial access gained through phishing campaigns and supply chain vulnerabilities.\n\nKill-Chain Analysis:\n- **Initial Access:** The actors conducted reconnaissance by compromising AWS Route53 credentials to alter domain routing for phishing campaigns [T1584.001] and established domains that impersonate legitimate entities to use for targeting efforts [T1583.001], while simultaneously creating a Facebook account using stolen identity information to establish a deceptive persona [T1585.001] for social engineering lures. A malicious DLL was injected into the software development kit, compromising all applications built using that SDK [T1195], which served as a primary infection vector when users downloaded and executed tainted software updates.\n- **Execution:** Upon execution, the malware employed a malicious script that established an NSXPCConnection to a system service, enabling it to install persistence mechanisms [T1559.003] and used svchost.exe to load and execute a malicious DLL for privilege escalation [T1569]. The registry key HKLM\\System\\CurrentControlSet\\Control\\Session Manager\\AppCertDLLs was altered to include a backdoor DLL [T1546.009], ensuring the malware loads with system processes.\n- **Persistence and Defense Evasion:** The threat actor wrote malicious.exe into memory using TxF transaction mechanisms [T1055.013] to avoid file-based detection and employed 'chmod o+w config.php' to allow other users to modify the web application configuration [T1222], facilitating backdoor access. The dropper modified 'injector.dll' by adding junk instructions to create unique variants [T1027.014] and altered the Windows Security interface to hide the fact that real-time protection was disabled [T1562.011], effectively spoofing security alerts.\n- **Discovery and Lateral Movement:** The script executed 'net group \"Domain Admins\" /domain' to identify privileged users [T1069], aiding in lateral movement planning. USBStealer drops commands for a second victim onto a removable media drive inserted into the first victim, and commands are executed when the drive is inserted into the second victim [T1092], enabling air-gapped network infiltration.\n- **Impact:** Imminent Monitor has the capability to run a cryptocurrency miner on the victim machine [T1496.001], hijacking compute resources for financial gain and degrading system performance.\n\nSystem Logs: During the investigation, irrelevant logs were observed, such as routine system updates at 2023-10-05 14:30:00 UTC and failed login attempts from IP 192.168.1.100, which were unrelated to the campaign. The company background includes a fictional energy provider, 'GridSecure Inc.', with operations across North America, but this information does not directly correlate with the attack techniques.\n\nRecommendations: Blue teams should monitor for unusual domain activity, implement application whitelisting, conduct regular supply chain audits, and use behavioral analytics to detect memory-based exploits. This scenario underscores the importance of layered defense strategies in mitigating advanced threats.",
+        "techniques_used": [
+            "T1584.001",
+            "T1583.001",
+            "T1585.001",
+            "T1195",
+            "T1559.003",
+            "T1569",
+            "T1546.009",
+            "T1055.013",
+            "T1222",
+            "T1027.014",
+            "T1562.011",
+            "T1069",
+            "T1092",
+            "T1496.001"
+        ]
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "report_id": "report_311",
+    "generated_at": "20251222_145324",
+    "scenario_target_ids": [
+        "T1583.006",
+        "T1195",
+        "T1059.008",
+        "T1204.004",
+        "T1080",
+        "T1205.002",
+        "T1102"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "execution",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1583.006",
+        "T1195",
+        "T1102",
+        "T1059.001",
+        "T1105",
+        "T1112",
+        "T1204.004",
+        "T1205.002",
+        "T1080",
+        "T1059.008"
+    ],
+    "actual_found_ids": [
+        "T1059.008",
+        "T1112",
+        "T1583.006",
+        "T1205.002",
+        "T1589",
+        "T1195",
+        "T1204.004",
+        "T1080",
+        "T1105",
+        "T1102",
+        "T1059.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign attributed to IndigoZebra. This actor has been observed targeting organizations in the energy and manufacturing sectors since early 2024, with initial access often gained through compromised third-party software. In a recent incident at a fictional U.S.-based utility company, 'PowerGrid Inc.', system logs from April 15, 2024, showed unusual network traffic patterns originating from development servers, though initial scans flagged no immediate threats. The company, which operates critical infrastructure across multiple states, reported no prior breaches in its annual security audit last quarter.\n\nIndigoZebra likely conducts reconnaissance to identify targets, but specific details are omitted for training purposes. The campaign began with the actor creating Dropbox accounts to host malicious tools and exfiltrate data, while simultaneously compromising the software supply chain by modifying a legitimate executable, 'development_tools.exe', to include a backdoor before distribution. Once installed, the backdoor leveraged Google Drive to retrieve encrypted command scripts for execution, and it employed PowerShell to download additional payloads while modifying registry keys for persistence. A phishing email containing a link that displayed a fake 'System Update Available' message triggered malware execution when users approved it via copy-paste actions, leading to the implant being deployed. This implant then used socket filters to modify timeout values with setsockopt, waiting for delayed activation packets, and it tainted shared content by copying rogue software to a team collaboration folder disguised as a legitimate document. Subsequently, the adversary executed commands via Telnet, such as 'show running-config', to exfiltrate network device configurations and facilitate lateral movement. Routine system logs from PowerGrid Inc.'s internal monitoring showed increased Telnet sessions from unauthorized IP addresses, but these were initially dismissed as false positives due to ongoing network upgrades.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign attributed to IndigoZebra. This actor has been observed targeting organizations in the energy and manufacturing sectors since early 2024, with initial access often gained through compromised third-party software. In a recent incident at a fictional U.S.-based utility company, 'PowerGrid Inc.', system logs from April 15, 2024, showed unusual network traffic patterns originating from development servers, though initial scans flagged no immediate threats. The company, which operates critical infrastructure across multiple states, reported no prior breaches in its annual security audit last quarter.\n\nIndigoZebra likely conducts reconnaissance [T1589] to identify targets, but specific details are omitted for training purposes. The campaign began with the actor creating Dropbox accounts [T1583.006] to host malicious tools and exfiltrate data, while simultaneously compromising the software supply chain by modifying a legitimate executable, 'development_tools.exe', to include a backdoor before distribution [T1195]. Once installed, the backdoor leveraged Google Drive [T1102] to retrieve encrypted command scripts for execution, and it employed PowerShell [T1059.001] to download additional payloads [T1105] while modifying registry keys [T1112] for persistence. A phishing email containing a link that displayed a fake 'System Update Available' message triggered malware execution when users approved it via copy-paste actions [T1204.004], leading to the implant being deployed. This implant then used socket filters [T1205.002] to modify timeout values with setsockopt, waiting for delayed activation packets, and it tainted shared content by copying rogue software to a team collaboration folder disguised as a legitimate document [T1080]. Subsequently, the adversary executed commands via Telnet, such as 'show running-config' [T1059.008], to exfiltrate network device configurations and facilitate lateral movement. Routine system logs from PowerGrid Inc.'s internal monitoring showed increased Telnet sessions from unauthorized IP addresses, but these were initially dismissed as false positives due to ongoing network upgrades.",
+    "sentence_annotations": [
+        {
+            "sentence": "IndigoZebra likely conducts reconnaissance to identify targets, but specific details are omitted for training purposes.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "exe', to include a backdoor before distribution.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Once installed, the backdoor leveraged Google Drive to retrieve encrypted command scripts for execution, and it employed PowerShell [T1059.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "001] to download additional payloads while modifying registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to download additional payloads while modifying registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "002] to modify timeout values with setsockopt, waiting for delayed activation packets, and it tainted shared content by copying rogue software to a team collaboration folder disguised as a legitimate document.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'IndigoZebra' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor IndigoZebra, which compromised software supply chains and used web services for command and control, leading to network device exploitation and lateral movement within critical infrastructure environments. The campaign highlights the need for enhanced monitoring of development tools, collaboration platforms, and network device access.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign attributed to IndigoZebra. This actor has been observed targeting organizations in the energy and manufacturing sectors since early 2024, with initial access often gained through compromised third-party software. In a recent incident at a fictional U.S.-based utility company, 'PowerGrid Inc.', system logs from April 15, 2024, showed unusual network traffic patterns originating from development servers, though initial scans flagged no immediate threats. The company, which operates critical infrastructure across multiple states, reported no prior breaches in its annual security audit last quarter.\n\nIndigoZebra likely conducts reconnaissance [T1589] to identify targets, but specific details are omitted for training purposes. The campaign began with the actor creating Dropbox accounts [T1583.006] to host malicious tools and exfiltrate data, while simultaneously compromising the software supply chain by modifying a legitimate executable, 'development_tools.exe', to include a backdoor before distribution [T1195]. Once installed, the backdoor leveraged Google Drive [T1102] to retrieve encrypted command scripts for execution, and it employed PowerShell [T1059.001] to download additional payloads [T1105] while modifying registry keys [T1112] for persistence. A phishing email containing a link that displayed a fake 'System Update Available' message triggered malware execution when users approved it via copy-paste actions [T1204.004], leading to the implant being deployed. This implant then used socket filters [T1205.002] to modify timeout values with setsockopt, waiting for delayed activation packets, and it tainted shared content by copying rogue software to a team collaboration folder disguised as a legitimate document [T1080]. Subsequently, the adversary executed commands via Telnet, such as 'show running-config' [T1059.008], to exfiltrate network device configurations and facilitate lateral movement. Routine system logs from PowerGrid Inc.'s internal monitoring showed increased Telnet sessions from unauthorized IP addresses, but these were initially dismissed as false positives due to ongoing network upgrades.",
+        "techniques_used": [
+            "T1589",
+            "T1583.006",
+            "T1195",
+            "T1102",
+            "T1059.001",
+            "T1105",
+            "T1112",
+            "T1204.004",
+            "T1205.002",
+            "T1080",
+            "T1059.008"
+        ]
+    }
+}

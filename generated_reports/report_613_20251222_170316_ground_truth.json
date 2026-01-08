@@ -1,0 +1,68 @@
+{
+    "report_id": "report_613",
+    "generated_at": "20251222_170316",
+    "scenario_target_ids": [
+        "T1586.002",
+        "T1078.002",
+        "T1053.002",
+        "T1053.007",
+        "T1078.004",
+        "T1046",
+        "T1571"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1586.002",
+        "T1078.002",
+        "T1053.002",
+        "T1053.007",
+        "T1078.004",
+        "T1046",
+        "T1571"
+    ],
+    "actual_found_ids": [
+        "T1046",
+        "T1053.002",
+        "T1078.002",
+        "T1053.007",
+        "T1078.004",
+        "T1571",
+        "T1586.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional Advanced Persistent Threat (APT) campaign designated 'ShadowMist'. This campaign leverages compromised credentials and scheduled tasks to establish persistence and conduct reconnaissance within victim networks.\n\nBackground: The fictional victim, 'GlobalTech Solutions', is a mid-sized technology firm with a mix of on-premises Windows servers and Microsoft 365 cloud services. Initial logs from their SIEM showed unusual login attempts from dormant email accounts that had not been accessed in over six months, originating from IP addresses in Eastern Europe. These accounts were later used to send phishing emails to internal administrators, though no successful clicks were recorded in this scenario.\n\nKill-Chain Analysis:\n- **Initial Access**: The actors likely conducted reconnaissance by compromising dormant email accounts to enable phishing campaigns, which facilitated the theft of domain administrator credentials through credential harvesting attacks. Concurrently, they used stolen credentials to access administrative domain accounts, allowing them to move laterally within the on-premises network while also exploiting compromised credentials to sign into victims' Microsoft 365 cloud accounts for broader access to cloud resources.\n- **Execution**: After gaining access, the adversary employed at.exe to schedule a backdoor deployment during off-hours, ensuring persistence and avoiding detection by security teams. Additionally, they utilized CronJob to automatically deploy a malicious container that establishes command and control (C2) communication every 30 minutes, maintaining a foothold in containerized environments.\n- **Persistence**: The scheduled tasks and container jobs provided continuous access, with the malicious container configured to restart upon failure, as noted in system logs from a Kubernetes cluster audit.\n- **Discovery**: Once established, the actors conducted network service discovery by using tools like `nmap` to scan for internal MS-SQL servers and other critical services, mapping the network topology for further exploitation. This scanning activity was logged but not flagged due to whitelisted IP ranges.\n- **Command and Control (C2)**: To evade detection, the adversary encrypted communications over non-standard ports, specifically using TLS over port 143 to blend with legitimate email traffic, as observed in network packet captures showing encrypted data flows during off-peak hours.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication (MFA) for all accounts, monitor for unusual scheduling tasks, and regularly audit container orchestration jobs. Network segmentation and logging of non-standard port usage are also advised to detect similar tactics.\n\nThis report is for educational purposes only; any resemblance to real incidents is coincidental.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional Advanced Persistent Threat (APT) campaign designated 'ShadowMist'. This campaign leverages compromised credentials and scheduled tasks to establish persistence and conduct reconnaissance within victim networks.\n\nBackground: The fictional victim, 'GlobalTech Solutions', is a mid-sized technology firm with a mix of on-premises Windows servers and Microsoft 365 cloud services. Initial logs from their SIEM showed unusual login attempts from dormant email accounts that had not been accessed in over six months, originating from IP addresses in Eastern Europe. These accounts were later used to send phishing emails to internal administrators, though no successful clicks were recorded in this scenario.\n\nKill-Chain Analysis:\n- **Initial Access**: The actors likely conducted reconnaissance [T1586.002] by compromising dormant email accounts to enable phishing campaigns, which facilitated the theft of domain administrator credentials through credential harvesting attacks. Concurrently, they used stolen credentials [T1078.002] to access administrative domain accounts, allowing them to move laterally within the on-premises network while also exploiting compromised credentials [T1078.004] to sign into victims' Microsoft 365 cloud accounts for broader access to cloud resources.\n- **Execution**: After gaining access, the adversary employed at.exe [T1053.002] to schedule a backdoor deployment during off-hours, ensuring persistence and avoiding detection by security teams. Additionally, they utilized CronJob [T1053.007] to automatically deploy a malicious container that establishes command and control (C2) communication every 30 minutes, maintaining a foothold in containerized environments.\n- **Persistence**: The scheduled tasks and container jobs provided continuous access, with the malicious container configured to restart upon failure, as noted in system logs from a Kubernetes cluster audit.\n- **Discovery**: Once established, the actors conducted network service discovery [T1046] by using tools like `nmap` to scan for internal MS-SQL servers and other critical services, mapping the network topology for further exploitation. This scanning activity was logged but not flagged due to whitelisted IP ranges.\n- **Command and Control (C2)**: To evade detection, the adversary encrypted communications over non-standard ports [T1571], specifically using TLS over port 143 to blend with legitimate email traffic, as observed in network packet captures showing encrypted data flows during off-peak hours.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication (MFA) for all accounts, monitor for unusual scheduling tasks, and regularly audit container orchestration jobs. Network segmentation and logging of non-standard port usage are also advised to detect similar tactics.\n\nThis report is for educational purposes only; any resemblance to real incidents is coincidental.",
+    "sentence_annotations": [
+        {
+            "sentence": "- **Discovery**: Once established, the actors conducted network service discovery by using tools like `nmap` to scan for internal MS-SQL servers and other critical services, mapping the network topology for further exploitation.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "- **Command and Control (C2)**: To evade detection, the adversary encrypted communications over non-standard ports, specifically using TLS over port 143 to blend with legitimate email traffic, as observed in network packet captures showing encrypted data flows during off-peak hours.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMist' Targeting Hybrid Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowMist' targeting organizations with hybrid on-premises and cloud infrastructures. The campaign involves credential theft, persistence mechanisms, and network reconnaissance to facilitate data exfiltration and lateral movement.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional Advanced Persistent Threat (APT) campaign designated 'ShadowMist'. This campaign leverages compromised credentials and scheduled tasks to establish persistence and conduct reconnaissance within victim networks.\n\nBackground: The fictional victim, 'GlobalTech Solutions', is a mid-sized technology firm with a mix of on-premises Windows servers and Microsoft 365 cloud services. Initial logs from their SIEM showed unusual login attempts from dormant email accounts that had not been accessed in over six months, originating from IP addresses in Eastern Europe. These accounts were later used to send phishing emails to internal administrators, though no successful clicks were recorded in this scenario.\n\nKill-Chain Analysis:\n- **Initial Access**: The actors likely conducted reconnaissance [T1586.002] by compromising dormant email accounts to enable phishing campaigns, which facilitated the theft of domain administrator credentials through credential harvesting attacks. Concurrently, they used stolen credentials [T1078.002] to access administrative domain accounts, allowing them to move laterally within the on-premises network while also exploiting compromised credentials [T1078.004] to sign into victims' Microsoft 365 cloud accounts for broader access to cloud resources.\n- **Execution**: After gaining access, the adversary employed at.exe [T1053.002] to schedule a backdoor deployment during off-hours, ensuring persistence and avoiding detection by security teams. Additionally, they utilized CronJob [T1053.007] to automatically deploy a malicious container that establishes command and control (C2) communication every 30 minutes, maintaining a foothold in containerized environments.\n- **Persistence**: The scheduled tasks and container jobs provided continuous access, with the malicious container configured to restart upon failure, as noted in system logs from a Kubernetes cluster audit.\n- **Discovery**: Once established, the actors conducted network service discovery [T1046] by using tools like `nmap` to scan for internal MS-SQL servers and other critical services, mapping the network topology for further exploitation. This scanning activity was logged but not flagged due to whitelisted IP ranges.\n- **Command and Control (C2)**: To evade detection, the adversary encrypted communications over non-standard ports [T1571], specifically using TLS over port 143 to blend with legitimate email traffic, as observed in network packet captures showing encrypted data flows during off-peak hours.\n\nMitigation Recommendations: Organizations should implement multi-factor authentication (MFA) for all accounts, monitor for unusual scheduling tasks, and regularly audit container orchestration jobs. Network segmentation and logging of non-standard port usage are also advised to detect similar tactics.\n\nThis report is for educational purposes only; any resemblance to real incidents is coincidental.",
+        "techniques_used": [
+            "T1586.002",
+            "T1078.002",
+            "T1053.002",
+            "T1053.007",
+            "T1078.004",
+            "T1046",
+            "T1571"
+        ]
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "report_id": "report_126",
+    "generated_at": "20251222_133621",
+    "scenario_target_ids": [
+        "T1584.006",
+        "T1091",
+        "T1190",
+        "T1059.009",
+        "T1204.003",
+        "T1176.001",
+        "T1001.003",
+        "T1205.001",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.006",
+        "T1091",
+        "T1190",
+        "T1059.009",
+        "T1204.003",
+        "T1176.001",
+        "T1001.003",
+        "T1205.001",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1176.001",
+        "T1001.003",
+        "T1091",
+        "T1205.001",
+        "T1059.009",
+        "T1584.006",
+        "T1190",
+        "T1496.004",
+        "T1204.003"
+    ],
+    "clean_text": "On April 15, 2024, security analysts at a fictional energy company, 'PowerGrid Inc.', detected anomalous network traffic originating from their Ivanti Connect Secure VPN appliances. Investigation revealed that threat actors, likely associated with the APT group 'ShadowVeil', had exploited CVE-2023-46805 and CVE-2024-21887 to gain initial access, chaining these with CVE-2024-21893 to bypass mitigations. Prior to this, the actors conducted reconnaissance by abusing GitHub Issues to hide operational commands in ticket comments, gathering intelligence on target infrastructure. Upon compromise, the adversary used PowerShell to execute a QakBot variant, which replicated through removable media to spread across segmented networks, as observed in system logs from USB drive insertions on engineering workstations. The malware then employed the Azure CLI 'az vm extension set' command to install malicious extensions on virtual machines, while simultaneously deploying a malicious Docker image that users were tricked into downloading from a spoofed registry. To maintain persistence, the actors installed a malicious Safari browser extension that served ads and exfiltrated data, and used FakeTLS for session authentication to impersonate legitimate protocols. Command and control communications were hidden via raw socket connections implementing port knocking, and the campaign escalated by abusing AWS SNS to broadcast millions of notifications, overwhelming services and disrupting operations. Logs from PowerGrid Inc. showed increased CPU usage on cloud instances, though unrelated to the attack, and background checks revealed no prior incidents at the company, which has been operational since 1995 with 500 employees.",
+    "tagged_text": "On April 15, 2024, security analysts at a fictional energy company, 'PowerGrid Inc.', detected anomalous network traffic originating from their Ivanti Connect Secure VPN appliances. Investigation revealed that threat actors, likely associated with the APT group 'ShadowVeil', had exploited CVE-2023-46805 and CVE-2024-21887 [T1190] to gain initial access, chaining these with CVE-2024-21893 to bypass mitigations. Prior to this, the actors conducted reconnaissance by abusing GitHub Issues to hide operational commands in ticket comments [T1584.006], gathering intelligence on target infrastructure. Upon compromise, the adversary used PowerShell to execute a QakBot variant, which replicated through removable media [T1091] to spread across segmented networks, as observed in system logs from USB drive insertions on engineering workstations. The malware then employed the Azure CLI 'az vm extension set' command [T1059.009] to install malicious extensions on virtual machines, while simultaneously deploying a malicious Docker image [T1204.003] that users were tricked into downloading from a spoofed registry. To maintain persistence, the actors installed a malicious Safari browser extension [T1176.001] that served ads and exfiltrated data, and used FakeTLS for session authentication [T1001.003] to impersonate legitimate protocols. Command and control communications were hidden via raw socket connections implementing port knocking [T1205.001], and the campaign escalated by abusing AWS SNS to broadcast millions of notifications [T1496.004], overwhelming services and disrupting operations. Logs from PowerGrid Inc. showed increased CPU usage on cloud instances, though unrelated to the attack, and background checks revealed no prior incidents at the company, which has been operational since 1995 with 500 employees.",
+    "sentence_annotations": [
+        {
+            "sentence": "Investigation revealed that threat actors, likely associated with the APT group 'ShadowVeil', had exploited CVE-2023-46805 and CVE-2024-21887 to gain initial access, chaining these with CVE-2024-21893 to bypass mitigations.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Upon compromise, the adversary used PowerShell to execute a QakBot variant, which replicated through removable media to spread across segmented networks, as observed in system logs from USB drive insertions on engineering workstations.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowVeil' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowVeil', targeting critical infrastructure sectors. The campaign leverages multiple initial access vectors, including exploitation of public-facing applications and abuse of web services, to deploy malware via removable media, cloud APIs, and malicious images, while employing evasion techniques such as protocol impersonation and port knocking. Blue teams are advised to review logs and implement mitigations outlined in this report.",
+        "full_report_text": "On April 15, 2024, security analysts at a fictional energy company, 'PowerGrid Inc.', detected anomalous network traffic originating from their Ivanti Connect Secure VPN appliances. Investigation revealed that threat actors, likely associated with the APT group 'ShadowVeil', had exploited CVE-2023-46805 and CVE-2024-21887 [T1190] to gain initial access, chaining these with CVE-2024-21893 to bypass mitigations. Prior to this, the actors conducted reconnaissance by abusing GitHub Issues to hide operational commands in ticket comments [T1584.006], gathering intelligence on target infrastructure. Upon compromise, the adversary used PowerShell to execute a QakBot variant, which replicated through removable media [T1091] to spread across segmented networks, as observed in system logs from USB drive insertions on engineering workstations. The malware then employed the Azure CLI 'az vm extension set' command [T1059.009] to install malicious extensions on virtual machines, while simultaneously deploying a malicious Docker image [T1204.003] that users were tricked into downloading from a spoofed registry. To maintain persistence, the actors installed a malicious Safari browser extension [T1176.001] that served ads and exfiltrated data, and used FakeTLS for session authentication [T1001.003] to impersonate legitimate protocols. Command and control communications were hidden via raw socket connections implementing port knocking [T1205.001], and the campaign escalated by abusing AWS SNS to broadcast millions of notifications [T1496.004], overwhelming services and disrupting operations. Logs from PowerGrid Inc. showed increased CPU usage on cloud instances, though unrelated to the attack, and background checks revealed no prior incidents at the company, which has been operational since 1995 with 500 employees.",
+        "techniques_used": [
+            "T1584.006",
+            "T1091",
+            "T1190",
+            "T1059.009",
+            "T1204.003",
+            "T1176.001",
+            "T1001.003",
+            "T1205.001",
+            "T1496.004"
+        ]
+    }
+}

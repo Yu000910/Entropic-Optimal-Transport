@@ -1,0 +1,103 @@
+{
+    "report_id": "report_606",
+    "generated_at": "20251222_170036",
+    "scenario_target_ids": [
+        "T1133",
+        "T1053.003",
+        "T1556.001",
+        "T1055.001",
+        "T1542.004",
+        "T1218.011",
+        "T1558.001",
+        "T1482",
+        "T1091",
+        "T1530",
+        "T1090"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1133",
+        "T1053.003",
+        "T1556.001",
+        "T1055.001",
+        "T1542.004",
+        "T1218.011",
+        "T1558.001",
+        "T1482",
+        "T1091",
+        "T1530",
+        "T1090"
+    ],
+    "actual_found_ids": [
+        "T1218.011",
+        "T1530",
+        "T1542.004",
+        "T1091",
+        "T1090",
+        "T1556.001",
+        "T1133",
+        "T1053.003",
+        "T1482",
+        "T1558.001",
+        "T1055.001"
+    ],
+    "clean_text": "Crimson Shadow actors likely conducted reconnaissance to identify vulnerable external services, such as VPNs or Citrix gateways, and used compromised legitimate credentials to gain initial access. Upon entry, they established persistence by installing a cron job that periodically downloaded and executed malicious payloads from a command-and-control (C2) server. To maintain stealth and escalate privileges, the actors deployed a Skeleton Key malware variant to modify domain controller authentication processes, enabling authentication bypass across the domain. They then employed dynamic-link library injection through rundll32 execution to load additional tools, such as a gh0st RAT variant, for remote access and data exfiltration. For broader network persistence, the malware modified the ROMMON image on routers to establish a backdoor, while the actors used the compromised KRBTGT password hash to generate a golden ticket, allowing them to impersonate any domain user. To map the environment, they conducted domain trust discovery using LDAP queries and tools like nltest. For lateral movement and data spread, the actors replicated malware through removable media by modifying executables stored on these devices. In parallel, they exfiltrated data from cloud storage by using boto3 to query the AWS S3 API and list all accessible buckets, while establishing proxy connections with tools like FRP or Venom to obscure their network traffic. Throughout the campaign, system logs showed normal user activity and routine network scans, with no immediate alerts from standard security tools, indicating the actors' efforts to blend in with legitimate operations.",
+    "tagged_text": "Crimson Shadow actors likely conducted reconnaissance to identify vulnerable external services, such as VPNs or Citrix gateways, and used compromised legitimate credentials to gain initial access [T1133]. Upon entry, they established persistence by installing a cron job that periodically downloaded and executed malicious payloads from a command-and-control (C2) server [T1053.003]. To maintain stealth and escalate privileges, the actors deployed a Skeleton Key malware variant to modify domain controller authentication processes, enabling authentication bypass across the domain [T1556.001]. They then employed dynamic-link library injection [T1055.001] through rundll32 execution [T1218.011] to load additional tools, such as a gh0st RAT variant, for remote access and data exfiltration. For broader network persistence, the malware modified the ROMMON image on routers to establish a backdoor [T1542.004], while the actors used the compromised KRBTGT password hash to generate a golden ticket, allowing them to impersonate any domain user [T1558.001]. To map the environment, they conducted domain trust discovery using LDAP queries and tools like nltest [T1482]. For lateral movement and data spread, the actors replicated malware through removable media by modifying executables stored on these devices [T1091]. In parallel, they exfiltrated data from cloud storage by using boto3 to query the AWS S3 API and list all accessible buckets [T1530], while establishing proxy connections with tools like FRP or Venom to obscure their network traffic [T1090]. Throughout the campaign, system logs showed normal user activity and routine network scans, with no immediate alerts from standard security tools, indicating the actors' efforts to blend in with legitimate operations.",
+    "sentence_annotations": [
+        {
+            "sentence": "Crimson Shadow actors likely conducted reconnaissance to identify vulnerable external services, such as VPNs or Citrix gateways, and used compromised legitimate credentials to gain initial access.",
+            "technique_id": "T1133",
+            "technique_name": "External Remote Services"
+        },
+        {
+            "sentence": "To map the environment, they conducted domain trust discovery using LDAP queries and tools like nltest.",
+            "technique_id": "T1482",
+            "technique_name": "Domain Trust Discovery"
+        },
+        {
+            "sentence": "For lateral movement and data spread, the actors replicated malware through removable media by modifying executables stored on these devices.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "In parallel, they exfiltrated data from cloud storage by using boto3 to query the AWS S3 API and list all accessible buckets, while establishing proxy connections with tools like FRP or Venom to obscure their network traffic.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "In parallel, they exfiltrated data from cloud storage by using boto3 to query the AWS S3 API and list all accessible buckets, while establishing proxy connections with tools like FRP or Venom to obscure their network traffic.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Financial and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting financial institutions and cloud environments. The actors exploited external remote services for initial access, deployed persistence mechanisms across systems and network devices, and leveraged domain authentication bypasses and cloud data exfiltration techniques. The campaign demonstrates a multi-stage approach combining credential theft, lateral movement, and data collection from both on-premises and cloud assets.",
+        "full_report_text": "Crimson Shadow actors likely conducted reconnaissance to identify vulnerable external services, such as VPNs or Citrix gateways, and used compromised legitimate credentials to gain initial access [T1133]. Upon entry, they established persistence by installing a cron job that periodically downloaded and executed malicious payloads from a command-and-control (C2) server [T1053.003]. To maintain stealth and escalate privileges, the actors deployed a Skeleton Key malware variant to modify domain controller authentication processes, enabling authentication bypass across the domain [T1556.001]. They then employed dynamic-link library injection [T1055.001] through rundll32 execution [T1218.011] to load additional tools, such as a gh0st RAT variant, for remote access and data exfiltration. For broader network persistence, the malware modified the ROMMON image on routers to establish a backdoor [T1542.004], while the actors used the compromised KRBTGT password hash to generate a golden ticket, allowing them to impersonate any domain user [T1558.001]. To map the environment, they conducted domain trust discovery using LDAP queries and tools like nltest [T1482]. For lateral movement and data spread, the actors replicated malware through removable media by modifying executables stored on these devices [T1091]. In parallel, they exfiltrated data from cloud storage by using boto3 to query the AWS S3 API and list all accessible buckets [T1530], while establishing proxy connections with tools like FRP or Venom to obscure their network traffic [T1090]. Throughout the campaign, system logs showed normal user activity and routine network scans, with no immediate alerts from standard security tools, indicating the actors' efforts to blend in with legitimate operations.",
+        "techniques_used": [
+            "T1133",
+            "T1053.003",
+            "T1556.001",
+            "T1055.001",
+            "T1542.004",
+            "T1218.011",
+            "T1558.001",
+            "T1482",
+            "T1091",
+            "T1530",
+            "T1090"
+        ]
+    }
+}

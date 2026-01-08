@@ -1,0 +1,88 @@
+{
+    "report_id": "report_112",
+    "generated_at": "20251222_120102",
+    "scenario_target_ids": [
+        "T1598.002",
+        "T1588.007",
+        "T1078.002",
+        "T1648",
+        "T1547",
+        "T1021.004",
+        "T1095",
+        "T1132.002",
+        "T1029"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1598.002",
+        "T1588.007",
+        "T1078.002",
+        "T1648",
+        "T1547",
+        "T1021.004",
+        "T1095",
+        "T1132.002",
+        "T1029"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1021.004",
+        "T1029",
+        "T1078.002",
+        "T1648",
+        "T1588.007",
+        "T1132.002",
+        "T1547",
+        "T1598.002"
+    ],
+    "clean_text": "On March 15, 2024, a financial services company, FinSecure Inc., reported anomalous network activity after an employee received a phishing email with a malicious attachment, which the adversary used to gain initial access via a spearphishing attachment. The attachment, disguised as an invoice, executed a PowerShell script (malicious.ps1) in the Temp directory to harvest credentials from memory while simultaneously establishing persistence by creating a scheduled task. System logs from the infected endpoint showed unusual process creation events, but initial scans by antivirus software returned no alerts. The threat actors then leveraged a compromised domain admin account to move laterally across the network, accessing critical servers including a cloud environment where they triggered a Lambda function with crafted event data to achieve serverless execution. To maintain access, the attacker modified the Windows Run registry key to execute malicious.exe on boot and used SSH tunneling for persistent remote control over network devices, enabling covert data exfiltration. Communication with the command-and-control (C2) server was conducted over a non-application layer protocol, with data encoded using a custom base62 and de-facto base32 scheme to evade detection. The adversary executed PowerShell scripts with parameters designed to schedule data transfers in small, stealthy batches, exfiltrating financial records over several days. Background checks on FinSecure Inc. revealed no prior security incidents, and network traffic analysis indicated normal business operations during off-hours, complicating early detection.",
+    "tagged_text": "On March 15, 2024, a financial services company, FinSecure Inc., reported anomalous network activity after an employee received a phishing email with a malicious attachment, which the adversary used to gain initial access via a spearphishing attachment [T1598.002]. The attachment, disguised as an invoice, executed a PowerShell script (malicious.ps1) in the Temp directory to harvest credentials from memory [T1588.007] while simultaneously establishing persistence by creating a scheduled task [T1588.007]. System logs from the infected endpoint showed unusual process creation events, but initial scans by antivirus software returned no alerts. The threat actors then leveraged a compromised domain admin account [T1078.002] to move laterally across the network, accessing critical servers including a cloud environment where they triggered a Lambda function with crafted event data to achieve serverless execution [T1648]. To maintain access, the attacker modified the Windows Run registry key to execute malicious.exe on boot [T1547] and used SSH tunneling [T1021.004] for persistent remote control over network devices, enabling covert data exfiltration. Communication with the command-and-control (C2) server was conducted over a non-application layer protocol [T1095], with data encoded using a custom base62 and de-facto base32 scheme [T1132.002] to evade detection. The adversary executed PowerShell scripts with parameters designed to schedule data transfers in small, stealthy batches [T1029], exfiltrating financial records over several days. Background checks on FinSecure Inc. revealed no prior security incidents, and network traffic analysis indicated normal business operations during off-hours, complicating early detection.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] to move laterally across the network, accessing critical servers including a cloud environment where they triggered a Lambda function with crafted event data to achieve serverless execution.",
+            "technique_id": "T1648",
+            "technique_name": "Serverless Execution"
+        },
+        {
+            "sentence": "exe on boot and used SSH tunneling [T1021.",
+            "technique_id": "T1547",
+            "technique_name": "Boot or Logon Autostart Execution"
+        },
+        {
+            "sentence": "Communication with the command-and-control (C2) server was conducted over a non-application layer protocol, with data encoded using a custom base62 and de-facto base32 scheme [T1132.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "The adversary executed PowerShell scripts with parameters designed to schedule data transfers in small, stealthy batches, exfiltrating financial records over several days.",
+            "technique_id": "T1029",
+            "technique_name": "Scheduled Transfer"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Operation MidnightEclipse'",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, targeting organizations in the financial sector to exfiltrate sensitive data. Based on analysis from CISA, FBI, and NSA, this report provides blue teams with a realistic scenario for training on detecting and mitigating sophisticated attack chains.",
+        "full_report_text": "On March 15, 2024, a financial services company, FinSecure Inc., reported anomalous network activity after an employee received a phishing email with a malicious attachment, which the adversary used to gain initial access via a spearphishing attachment [T1598.002]. The attachment, disguised as an invoice, executed a PowerShell script (malicious.ps1) in the Temp directory to harvest credentials from memory [T1588.007] while simultaneously establishing persistence by creating a scheduled task [T1588.007]. System logs from the infected endpoint showed unusual process creation events, but initial scans by antivirus software returned no alerts. The threat actors then leveraged a compromised domain admin account [T1078.002] to move laterally across the network, accessing critical servers including a cloud environment where they triggered a Lambda function with crafted event data to achieve serverless execution [T1648]. To maintain access, the attacker modified the Windows Run registry key to execute malicious.exe on boot [T1547] and used SSH tunneling [T1021.004] for persistent remote control over network devices, enabling covert data exfiltration. Communication with the command-and-control (C2) server was conducted over a non-application layer protocol [T1095], with data encoded using a custom base62 and de-facto base32 scheme [T1132.002] to evade detection. The adversary executed PowerShell scripts with parameters designed to schedule data transfers in small, stealthy batches [T1029], exfiltrating financial records over several days. Background checks on FinSecure Inc. revealed no prior security incidents, and network traffic analysis indicated normal business operations during off-hours, complicating early detection.",
+        "techniques_used": [
+            "T1598.002",
+            "T1588.007",
+            "T1078.002",
+            "T1648",
+            "T1547",
+            "T1021.004",
+            "T1095",
+            "T1132.002",
+            "T1029"
+        ]
+    }
+}

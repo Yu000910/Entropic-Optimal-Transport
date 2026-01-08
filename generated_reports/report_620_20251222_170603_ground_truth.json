@@ -1,0 +1,98 @@
+{
+    "report_id": "report_620",
+    "generated_at": "20251222_170603",
+    "scenario_target_ids": [
+        "T1588.004",
+        "T1659",
+        "T1053.007",
+        "T1546.009",
+        "T1546.002",
+        "T1036.005",
+        "T1563",
+        "T1534",
+        "T1123",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "defense-evasion",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1588.004",
+        "T1659",
+        "T1053.007",
+        "T1546.009",
+        "T1546.002",
+        "T1036.005",
+        "T1563",
+        "T1534",
+        "T1123",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1546.009",
+        "T1659",
+        "T1546.002",
+        "T1534",
+        "T1053.007",
+        "T1563",
+        "T1123",
+        "T1588.004",
+        "T1573",
+        "T1036.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign designated 'ShadowVeil'. This campaign targets financial organizations, using a multi-stage attack chain. Initial reconnaissance involved monitoring network traffic and employee activities, though no specific techniques were tagged here. In the Initial Access phase, the actors acquired stolen Cloudflare Origin CA TLS certificates to impersonate legitimate services, while exploiting a vulnerable ISP infrastructure to inject malicious advertisements into web traffic, redirecting users to phishing sites. During Execution, the adversary employed PowerShell to download payloads and modify registry keys, but this was not tagged as part of the scenario. For Persistence, they created a CronJob to run a container that established reverse shell connections every 15 minutes, modified the Session Manager registry key to include a malicious DLL in the AppCertDLLs list, and changed HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that runs every time the screen saver activates. System logs showed routine updates at 02:00 UTC, unrelated to the attack. In Defense Evasion, they named a backdoor 'calc.exe' to appear as a legitimate calculator program and used encrypted channels for C2 communications, though network scans indicated normal encrypted traffic. For Lateral Movement, the actor took over an established RDP connection using session hijacking techniques and used an Outlook VBA module on infected systems to send phishing emails with malicious attachments to other employees within the organization. Company background: the targeted firm, 'SecureBank Inc.', has 500 employees and uses hybrid cloud infrastructure. In Collection, the spyware leveraged the built-in microphone to record sensitive conversations in the office environment, while exfiltration occurred via encrypted channels, as noted earlier. The campaign concluded with data exfiltration, but no specific techniques were tagged for this phase.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign designated 'ShadowVeil'. This campaign targets financial organizations, using a multi-stage attack chain. Initial reconnaissance involved monitoring network traffic and employee activities, though no specific techniques were tagged here. In the Initial Access phase, the actors acquired stolen Cloudflare Origin CA TLS certificates [T1588.004] to impersonate legitimate services, while exploiting a vulnerable ISP infrastructure to inject malicious advertisements into web traffic [T1659], redirecting users to phishing sites. During Execution, the adversary employed PowerShell to download payloads and modify registry keys, but this was not tagged as part of the scenario. For Persistence, they created a CronJob to run a container that established reverse shell connections every 15 minutes [T1053.007], modified the Session Manager registry key to include a malicious DLL in the AppCertDLLs list [T1546.009], and changed HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that runs every time the screen saver activates [T1546.002]. System logs showed routine updates at 02:00 UTC, unrelated to the attack. In Defense Evasion, they named a backdoor 'calc.exe' to appear as a legitimate calculator program [T1036.005] and used encrypted channels for C2 communications [T1573], though network scans indicated normal encrypted traffic. For Lateral Movement, the actor took over an established RDP connection using session hijacking techniques [T1563] and used an Outlook VBA module on infected systems to send phishing emails with malicious attachments to other employees within the organization [T1534]. Company background: the targeted firm, 'SecureBank Inc.', has 500 employees and uses hybrid cloud infrastructure. In Collection, the spyware leveraged the built-in microphone to record sensitive conversations in the office environment [T1123], while exfiltration occurred via encrypted channels, as noted earlier. The campaign concluded with data exfiltration, but no specific techniques were tagged for this phase.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] to impersonate legitimate services, while exploiting a vulnerable ISP infrastructure to inject malicious advertisements into web traffic, redirecting users to phishing sites.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "005] and used encrypted channels for C2 communications, though network scans indicated normal encrypted traffic.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        },
+        {
+            "sentence": "For Lateral Movement, the actor took over an established RDP connection using session hijacking techniques and used an Outlook VBA module on infected systems to send phishing emails with malicious attachments to other employees within the organization.",
+            "technique_id": "T1563",
+            "technique_name": "Remote Service Session Hijacking"
+        },
+        {
+            "sentence": "For Lateral Movement, the actor took over an established RDP connection using session hijacking techniques and used an Outlook VBA module on infected systems to send phishing emails with malicious attachments to other employees within the organization.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "In Collection, the spyware leveraged the built-in microphone to record sensitive conversations in the office environment, while exfiltration occurred via encrypted channels, as noted earlier.",
+            "technique_id": "T1123",
+            "technique_name": "Audio Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowVeil', targeting financial institutions. The campaign leverages stolen digital certificates, content injection, and sophisticated persistence mechanisms to compromise networks and exfiltrate sensitive data. Blue teams should use this report for training to identify and mitigate similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide information on a fictional APT campaign designated 'ShadowVeil'. This campaign targets financial organizations, using a multi-stage attack chain. Initial reconnaissance involved monitoring network traffic and employee activities, though no specific techniques were tagged here. In the Initial Access phase, the actors acquired stolen Cloudflare Origin CA TLS certificates [T1588.004] to impersonate legitimate services, while exploiting a vulnerable ISP infrastructure to inject malicious advertisements into web traffic [T1659], redirecting users to phishing sites. During Execution, the adversary employed PowerShell to download payloads and modify registry keys, but this was not tagged as part of the scenario. For Persistence, they created a CronJob to run a container that established reverse shell connections every 15 minutes [T1053.007], modified the Session Manager registry key to include a malicious DLL in the AppCertDLLs list [T1546.009], and changed HKCU\\Control Panel\\Desktop\\SCRNSAVE.exe to a malicious script that runs every time the screen saver activates [T1546.002]. System logs showed routine updates at 02:00 UTC, unrelated to the attack. In Defense Evasion, they named a backdoor 'calc.exe' to appear as a legitimate calculator program [T1036.005] and used encrypted channels for C2 communications [T1573], though network scans indicated normal encrypted traffic. For Lateral Movement, the actor took over an established RDP connection using session hijacking techniques [T1563] and used an Outlook VBA module on infected systems to send phishing emails with malicious attachments to other employees within the organization [T1534]. Company background: the targeted firm, 'SecureBank Inc.', has 500 employees and uses hybrid cloud infrastructure. In Collection, the spyware leveraged the built-in microphone to record sensitive conversations in the office environment [T1123], while exfiltration occurred via encrypted channels, as noted earlier. The campaign concluded with data exfiltration, but no specific techniques were tagged for this phase.",
+        "techniques_used": [
+            "T1588.004",
+            "T1659",
+            "T1053.007",
+            "T1546.009",
+            "T1546.002",
+            "T1036.005",
+            "T1563",
+            "T1534",
+            "T1123",
+            "T1573"
+        ]
+    }
+}

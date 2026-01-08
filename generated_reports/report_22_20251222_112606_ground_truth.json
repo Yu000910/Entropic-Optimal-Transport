@@ -1,0 +1,85 @@
+{
+    "report_id": "report_22",
+    "generated_at": "20251222_112606",
+    "scenario_target_ids": [
+        "T1078.003",
+        "T1569.002",
+        "T1497.003",
+        "T1568",
+        "T1567.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078",
+        "T1078.003",
+        "T1569.002",
+        "T1105",
+        "T1112",
+        "T1497.003",
+        "T1568",
+        "T1567.001"
+    ],
+    "actual_found_ids": [
+        "T1497.003",
+        "T1078.003",
+        "T1568",
+        "T1589",
+        "T1078",
+        "T1105",
+        "T1569.002",
+        "T1112",
+        "T1567.001"
+    ],
+    "clean_text": "On June 15, 2024, a fictional financial institution, SecureBank Corp, reported anomalous activity in its internal network. SecureBank, headquartered in New York with over 5,000 employees, detected unauthorized access to its customer database servers. Initial logs showed failed login attempts from an IP address in a non-business region, but no immediate alerts were triggered due to misconfigured SIEM rules. The actors likely conducted reconnaissance to identify vulnerable systems, though specific details are omitted for training purposes. Subsequently, Umbreon exploited weak default passwords on an administrative account to gain initial access, then created valid local user accounts to establish persistence and provide backdoor access across multiple Windows servers. For execution, the adversary employed PsExec to remotely deploy a malicious payload, Empire, which downloaded additional modules while simultaneously modifying system configurations to evade detection. The payload included a time-based evasion module, XCSSET, which monitored the creation timestamp of a file named .report and waited 43200 seconds (12 hours) before executing further malicious activities, such as data collection and lateral movement. During command and control, the compromised systems sent DNS queries containing base64-encoded data to dynamically resolve domains and communicate with attacker-controlled infrastructure, bypassing traditional firewall rules. For exfiltration, Umbreon collected sensitive database dumps, including customer PII and transaction records, and used the Azure DevOps Services API to upload the data to a private Git repository on Azure DevOps, masking the activity as legitimate development work. Incident responders noted that network traffic logs showed increased DNS queries during off-hours, but no alerts were generated due to a lack of behavioral analytics. SecureBank's security team is currently reviewing access controls and implementing multi-factor authentication as part of remediation efforts.",
+    "tagged_text": "On June 15, 2024, a fictional financial institution, SecureBank Corp, reported anomalous activity in its internal network. SecureBank, headquartered in New York with over 5,000 employees, detected unauthorized access to its customer database servers. Initial logs showed failed login attempts from an IP address in a non-business region, but no immediate alerts were triggered due to misconfigured SIEM rules. The actors likely conducted reconnaissance [T1589] to identify vulnerable systems, though specific details are omitted for training purposes. Subsequently, Umbreon exploited weak default passwords on an administrative account to gain initial access [T1078], then created valid local user accounts [T1078.003] to establish persistence and provide backdoor access across multiple Windows servers. For execution, the adversary employed PsExec [T1569.002] to remotely deploy a malicious payload, Empire, which downloaded additional modules [T1105] while simultaneously modifying system configurations [T1112] to evade detection. The payload included a time-based evasion module, XCSSET, which monitored the creation timestamp of a file named .report and waited 43200 seconds (12 hours) [T1497.003] before executing further malicious activities, such as data collection and lateral movement. During command and control, the compromised systems sent DNS queries containing base64-encoded data [T1568] to dynamically resolve domains and communicate with attacker-controlled infrastructure, bypassing traditional firewall rules. For exfiltration, Umbreon collected sensitive database dumps, including customer PII and transaction records, and used the Azure DevOps Services API to upload the data to a private Git repository on Azure DevOps [T1567.001], masking the activity as legitimate development work. Incident responders noted that network traffic logs showed increased DNS queries during off-hours, but no alerts were generated due to a lack of behavioral analytics. SecureBank's security team is currently reviewing access controls and implementing multi-factor authentication as part of remediation efforts.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify vulnerable systems, though specific details are omitted for training purposes.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Subsequently, Umbreon exploited weak default passwords on an administrative account to gain initial access, then created valid local user accounts [T1078.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "002] to remotely deploy a malicious payload, Empire, which downloaded additional modules while simultaneously modifying system configurations to evade detection.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "002] to remotely deploy a malicious payload, Empire, which downloaded additional modules while simultaneously modifying system configurations to evade detection.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "During command and control, the compromised systems sent DNS queries containing base64-encoded data to dynamically resolve domains and communicate with attacker-controlled infrastructure, bypassing traditional firewall rules.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Umbreon' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor Umbreon, targeting financial institutions to exfiltrate sensitive data. The campaign involves initial access through compromised credentials, persistence via local accounts, execution using remote services, evasion through time-based delays, command and control via DNS, and exfiltration to cloud repositories. Blue teams are advised to monitor for these behaviors and implement defensive measures.",
+        "full_report_text": "On June 15, 2024, a fictional financial institution, SecureBank Corp, reported anomalous activity in its internal network. SecureBank, headquartered in New York with over 5,000 employees, detected unauthorized access to its customer database servers. Initial logs showed failed login attempts from an IP address in a non-business region, but no immediate alerts were triggered due to misconfigured SIEM rules. The actors likely conducted reconnaissance [T1589] to identify vulnerable systems, though specific details are omitted for training purposes. Subsequently, Umbreon exploited weak default passwords on an administrative account to gain initial access [T1078], then created valid local user accounts [T1078.003] to establish persistence and provide backdoor access across multiple Windows servers. For execution, the adversary employed PsExec [T1569.002] to remotely deploy a malicious payload, Empire, which downloaded additional modules [T1105] while simultaneously modifying system configurations [T1112] to evade detection. The payload included a time-based evasion module, XCSSET, which monitored the creation timestamp of a file named .report and waited 43200 seconds (12 hours) [T1497.003] before executing further malicious activities, such as data collection and lateral movement. During command and control, the compromised systems sent DNS queries containing base64-encoded data [T1568] to dynamically resolve domains and communicate with attacker-controlled infrastructure, bypassing traditional firewall rules. For exfiltration, Umbreon collected sensitive database dumps, including customer PII and transaction records, and used the Azure DevOps Services API to upload the data to a private Git repository on Azure DevOps [T1567.001], masking the activity as legitimate development work. Incident responders noted that network traffic logs showed increased DNS queries during off-hours, but no alerts were generated due to a lack of behavioral analytics. SecureBank's security team is currently reviewing access controls and implementing multi-factor authentication as part of remediation efforts.",
+        "techniques_used": [
+            "T1589",
+            "T1078",
+            "T1078.003",
+            "T1569.002",
+            "T1105",
+            "T1112",
+            "T1497.003",
+            "T1568",
+            "T1567.001"
+        ]
+    }
+}

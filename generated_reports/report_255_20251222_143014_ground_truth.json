@@ -1,0 +1,98 @@
+{
+    "report_id": "report_255",
+    "generated_at": "20251222_143014",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1610",
+        "T1037.001",
+        "T1546.004",
+        "T1218.007",
+        "T1550.003",
+        "T1550.004",
+        "T1056.004",
+        "T1530",
+        "T1001",
+        "T1048.003",
+        "T1499.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "lateral-movement",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1610",
+        "T1037.001",
+        "T1546.004",
+        "T1218.007",
+        "T1550.003",
+        "T1550.004",
+        "T1056.004",
+        "T1530",
+        "T1001",
+        "T1048.003",
+        "T1499.002"
+    ],
+    "actual_found_ids": [
+        "T1610",
+        "T1530",
+        "T1218.007",
+        "T1550.003",
+        "T1550.004",
+        "T1037.001",
+        "T1546.004",
+        "T1566.002",
+        "T1056.004",
+        "T1499.002",
+        "T1048.003",
+        "T1001"
+    ],
+    "clean_text": "APT-47 likely conducts reconnaissance to identify high-value targets in financial and technology sectors, though specific IP addresses (e.g., 192.168.1.100) and domain names (e.g., fakecorp.com) in logs remain unconfirmed. The actors initiated the attack by sending spearphishing emails with malicious links that directed victims to download a ZIP file containing a PowerShell script, which executed upon extraction to deploy a malicious container in the victim's Kubernetes cluster for cryptocurrency mining. On Windows systems, persistence was established by modifying the registry to set a logon script that runs malware at startup, while on Unix systems, they added a reverse shell command to /etc/profile to maintain access. To evade detection, the adversary used msiexec.exe to disable security tools and employed mimikatz.exe to dump Kerberos tickets from LSASS memory for pass-the-ticket attacks, facilitating lateral movement across the network. Additionally, they stole web session cookies using a tool like EvilGinx to bypass multi-factor authentication on email accounts and hooked the GetUserNameW function via credential API hooking to capture usernames during authentication processes. Data theft involved dumping contents from AWS S3 buckets and using base64 encoding to obfuscate command and control traffic, with exfiltration conducted over unencrypted HTTP POST requests. Finally, the malware launched a service exhaustion flood by exploiting SSL/TLS renegotiation to degrade availability of critical web services, as observed in network logs showing repeated connection attempts to port 443.",
+    "tagged_text": "APT-47 likely conducts reconnaissance to identify high-value targets in financial and technology sectors, though specific IP addresses (e.g., 192.168.1.100) and domain names (e.g., fakecorp.com) in logs remain unconfirmed. The actors initiated the attack by sending spearphishing emails with malicious links [T1566.002] that directed victims to download a ZIP file containing a PowerShell script, which executed upon extraction to deploy a malicious container in the victim's Kubernetes cluster [T1610] for cryptocurrency mining. On Windows systems, persistence was established by modifying the registry to set a logon script [T1037.001] that runs malware at startup, while on Unix systems, they added a reverse shell command to /etc/profile [T1546.004] to maintain access. To evade detection, the adversary used msiexec.exe [T1218.007] to disable security tools and employed mimikatz.exe to dump Kerberos tickets from LSASS memory for pass-the-ticket attacks [T1550.003], facilitating lateral movement across the network. Additionally, they stole web session cookies using a tool like EvilGinx [T1550.004] to bypass multi-factor authentication on email accounts and hooked the GetUserNameW function via credential API hooking [T1056.004] to capture usernames during authentication processes. Data theft involved dumping contents from AWS S3 buckets [T1530] and using base64 encoding [T1001] to obfuscate command and control traffic, with exfiltration conducted over unencrypted HTTP POST requests [T1048.003]. Finally, the malware launched a service exhaustion flood by exploiting SSL/TLS renegotiation [T1499.002] to degrade availability of critical web services, as observed in network logs showing repeated connection attempts to port 443.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] that directed victims to download a ZIP file containing a PowerShell script, which executed upon extraction to deploy a malicious container in the victim's Kubernetes cluster for cryptocurrency mining.",
+            "technique_id": "T1610",
+            "technique_name": "Deploy Container"
+        },
+        {
+            "sentence": "Data theft involved dumping contents from AWS S3 buckets and using base64 encoding to obfuscate command and control traffic, with exfiltration conducted over unencrypted HTTP POST requests [T1048.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "Data theft involved dumping contents from AWS S3 buckets and using base64 encoding to obfuscate command and control traffic, with exfiltration conducted over unencrypted HTTP POST requests [T1048.",
+            "technique_id": "T1001",
+            "technique_name": "Data Obfuscation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated APT-47, targeting organizations with hybrid cloud infrastructures. APT-47 employs a multi-stage attack leveraging spearphishing, container deployment, credential theft, and data exfiltration to compromise Windows and Unix systems, cloud storage, and disrupt services. The campaign demonstrates advanced techniques for initial access, persistence, lateral movement, and impact, based on real-world TTPs from groups like APT29, TeamTNT, Clop, Star Blizzard, and others.",
+        "full_report_text": "APT-47 likely conducts reconnaissance to identify high-value targets in financial and technology sectors, though specific IP addresses (e.g., 192.168.1.100) and domain names (e.g., fakecorp.com) in logs remain unconfirmed. The actors initiated the attack by sending spearphishing emails with malicious links [T1566.002] that directed victims to download a ZIP file containing a PowerShell script, which executed upon extraction to deploy a malicious container in the victim's Kubernetes cluster [T1610] for cryptocurrency mining. On Windows systems, persistence was established by modifying the registry to set a logon script [T1037.001] that runs malware at startup, while on Unix systems, they added a reverse shell command to /etc/profile [T1546.004] to maintain access. To evade detection, the adversary used msiexec.exe [T1218.007] to disable security tools and employed mimikatz.exe to dump Kerberos tickets from LSASS memory for pass-the-ticket attacks [T1550.003], facilitating lateral movement across the network. Additionally, they stole web session cookies using a tool like EvilGinx [T1550.004] to bypass multi-factor authentication on email accounts and hooked the GetUserNameW function via credential API hooking [T1056.004] to capture usernames during authentication processes. Data theft involved dumping contents from AWS S3 buckets [T1530] and using base64 encoding [T1001] to obfuscate command and control traffic, with exfiltration conducted over unencrypted HTTP POST requests [T1048.003]. Finally, the malware launched a service exhaustion flood by exploiting SSL/TLS renegotiation [T1499.002] to degrade availability of critical web services, as observed in network logs showing repeated connection attempts to port 443.",
+        "techniques_used": [
+            "T1566.002",
+            "T1610",
+            "T1037.001",
+            "T1546.004",
+            "T1218.007",
+            "T1550.003",
+            "T1550.004",
+            "T1056.004",
+            "T1530",
+            "T1001",
+            "T1048.003",
+            "T1499.002"
+        ]
+    }
+}

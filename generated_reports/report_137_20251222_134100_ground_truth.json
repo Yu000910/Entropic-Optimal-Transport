@@ -1,0 +1,98 @@
+{
+    "report_id": "report_137",
+    "generated_at": "20251222_134100",
+    "scenario_target_ids": [
+        "T1591.001",
+        "T1593.003",
+        "T1608.005",
+        "T1588.002",
+        "T1078.003",
+        "T1059.009",
+        "T1547.003",
+        "T1114.001",
+        "T1114.002",
+        "T1114.003",
+        "T1659",
+        "T1011",
+        "T1499.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1591.001",
+        "T1593.003",
+        "T1608.005",
+        "T1588.002",
+        "T1547.003",
+        "T1078.003",
+        "T1059.009",
+        "T1114.001",
+        "T1114.002",
+        "T1114.003",
+        "T1659",
+        "T1011",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1114.002",
+        "T1011",
+        "T1591.001",
+        "T1114.001",
+        "T1659",
+        "T1588.002",
+        "T1059.009",
+        "T1114.003",
+        "T1608.005",
+        "T1547.003",
+        "T1593.003",
+        "T1078.003",
+        "T1499.004"
+    ],
+    "clean_text": "On 2024-10-01, a fictional financial institution, 'SecureBank Inc.', reported anomalous network activity, prompting an investigation that revealed a coordinated APT campaign. The actors likely conducted reconnaissance by querying Twitter location data to determine employee work sites and searching GitHub for commit histories revealing internal network architecture details. Initial access was achieved through spear-phishing, where LuminousMoth created a link to a Dropbox file used in their operations. Upon execution, the adversary employed open-source tools such as NBTscan and Meterpreter, acquired by IndigoZebra, to scan the network and establish a foothold. Persistence was established by writing a new malicious subkey to HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ for boot-time execution. The threat actor then executed Mimikatz.exe to obtain password hashes from local user accounts and used Azure PowerShell to execute 'Get-AzVM' commands and enumerate virtual machines. For collection, a PowerShell command was used to locate and collect PST files from user profile directories, while LightNeuron collected Exchange emails matching rules specified in its configuration, and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account. The actors injected a keylogger payload into encrypted network communications and connected to an unauthorized WiFi network to transfer intellectual property. Finally, malicious.exe was executed to flood the target server with crafted packets, overwhelming its resources and causing sustained downtime. System logs from SecureBank's SIEM showed increased outbound traffic to unknown IPs, but this was unrelated to the attack. The company, founded in 1995, has 500 employees across three offices, with no actual data loss reported in this training scenario.",
+    "tagged_text": "On 2024-10-01, a fictional financial institution, 'SecureBank Inc.', reported anomalous network activity, prompting an investigation that revealed a coordinated APT campaign. The actors likely conducted reconnaissance by querying Twitter location data to determine employee work sites [T1591.001] and searching GitHub for commit histories revealing internal network architecture details [T1593.003]. Initial access was achieved through spear-phishing, where LuminousMoth created a link to a Dropbox file used in their operations [T1608.005]. Upon execution, the adversary employed open-source tools such as NBTscan and Meterpreter, acquired by IndigoZebra [T1588.002], to scan the network and establish a foothold. Persistence was established by writing a new malicious subkey to HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ for boot-time execution [T1547.003]. The threat actor then executed Mimikatz.exe to obtain password hashes from local user accounts [T1078.003] and used Azure PowerShell to execute 'Get-AzVM' commands and enumerate virtual machines [T1059.009]. For collection, a PowerShell command was used to locate and collect PST files from user profile directories [T1114.001], while LightNeuron collected Exchange emails matching rules specified in its configuration [T1114.002], and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account [T1114.003]. The actors injected a keylogger payload into encrypted network communications [T1659] and connected to an unauthorized WiFi network to transfer intellectual property [T1011]. Finally, malicious.exe was executed to flood the target server with crafted packets, overwhelming its resources and causing sustained downtime [T1499.004]. System logs from SecureBank's SIEM showed increased outbound traffic to unknown IPs, but this was unrelated to the attack. The company, founded in 1995, has 500 employees across three offices, with no actual data loss reported in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors injected a keylogger payload into encrypted network communications and connected to an unauthorized WiFi network to transfer intellectual property.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "The actors injected a keylogger payload into encrypted network communications and connected to an unauthorized WiFi network to transfer intellectual property.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGale' Targeting Financial Sector",
+        "summary": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to detail a simulated campaign by the advanced persistent threat (APT) group 'ShadowGale'. This fictional report is designed for blue team training purposes, illustrating a multi-stage attack on a financial institution. The campaign involves reconnaissance, initial access via spear-phishing, execution of open-source tools, persistence mechanisms, credential access, discovery of cloud resources, email collection and forwarding, content injection, exfiltration over unauthorized networks, and a denial-of-service attack. No actual systems are compromised in this scenario.",
+        "full_report_text": "On 2024-10-01, a fictional financial institution, 'SecureBank Inc.', reported anomalous network activity, prompting an investigation that revealed a coordinated APT campaign. The actors likely conducted reconnaissance by querying Twitter location data to determine employee work sites [T1591.001] and searching GitHub for commit histories revealing internal network architecture details [T1593.003]. Initial access was achieved through spear-phishing, where LuminousMoth created a link to a Dropbox file used in their operations [T1608.005]. Upon execution, the adversary employed open-source tools such as NBTscan and Meterpreter, acquired by IndigoZebra [T1588.002], to scan the network and establish a foothold. Persistence was established by writing a new malicious subkey to HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\W32Time\\TimeProviders\\ for boot-time execution [T1547.003]. The threat actor then executed Mimikatz.exe to obtain password hashes from local user accounts [T1078.003] and used Azure PowerShell to execute 'Get-AzVM' commands and enumerate virtual machines [T1059.009]. For collection, a PowerShell command was used to locate and collect PST files from user profile directories [T1114.001], while LightNeuron collected Exchange emails matching rules specified in its configuration [T1114.002], and a malicious transport rule was created in Microsoft Exchange to forward emails containing financial keywords to a threat actor-controlled account [T1114.003]. The actors injected a keylogger payload into encrypted network communications [T1659] and connected to an unauthorized WiFi network to transfer intellectual property [T1011]. Finally, malicious.exe was executed to flood the target server with crafted packets, overwhelming its resources and causing sustained downtime [T1499.004]. System logs from SecureBank's SIEM showed increased outbound traffic to unknown IPs, but this was unrelated to the attack. The company, founded in 1995, has 500 employees across three offices, with no actual data loss reported in this training scenario.",
+        "techniques_used": [
+            "T1591.001",
+            "T1593.003",
+            "T1608.005",
+            "T1588.002",
+            "T1547.003",
+            "T1078.003",
+            "T1059.009",
+            "T1114.001",
+            "T1114.002",
+            "T1114.003",
+            "T1659",
+            "T1011",
+            "T1499.004"
+        ]
+    }
+}

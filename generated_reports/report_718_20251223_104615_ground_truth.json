@@ -1,0 +1,108 @@
+{
+    "report_id": "report_718",
+    "generated_at": "20251223_104615",
+    "scenario_target_ids": [
+        "T1200",
+        "T1669",
+        "T1559",
+        "T1059.003",
+        "T1546.013",
+        "T1563.002",
+        "T1021.002",
+        "T1219",
+        "T1132.001",
+        "T1567",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1200",
+        "T1669",
+        "T1559",
+        "T1059.003",
+        "T1546.013",
+        "T1563.002",
+        "T1021.002",
+        "T1219",
+        "T1132.001",
+        "T1567",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1567",
+        "T1546.013",
+        "T1059.003",
+        "T1669",
+        "T1200",
+        "T1132.001",
+        "T1489",
+        "T1559",
+        "T1021.002",
+        "T1219",
+        "T1563.002"
+    ],
+    "clean_text": "On October 15, 2023, network administrators at a fictional critical infrastructure company, Global Energy Solutions Inc., discovered an unauthorized passive network tap connected to the main switch in the server room, indicating physical intrusion. The device, later identified as a malicious hardware implant, was designed to monitor network traffic and exfiltrate data. Concurrently, the payload from this implant automatically scanned for and connected to any open Wi-Fi networks within range to establish a covert communication channel. Once active, the adversary abused COM automation through Internet Explorer to execute JavaScript that ran system commands, facilitating initial code execution. This led to the use of cmd.exe to execute commands for reconnaissance and lateral movement, while PowerShell.exe was configured to automatically run a script from a modified CurrentUserAllHosts profile to maintain persistence. The actors then exploited tscon.exe functionality to hijack a logged-in user's remote desktop session, gaining unauthorized access to sensitive systems. To pivot within the compromised network, they utilized SMB to access Windows Admin Shares for lateral movement. A malicious Windows Service named 'SystemHealthMonitor' was created to maintain interactive remote control of infected hosts. Communication with command-and-control (C2) servers was obfuscated using Base64 encoding to uniquely identify data exchanges. The script malicious.ps1 was executed to gather browser history and saved passwords, with data exfiltrated over web services. Finally, to disrupt operations, the adversary stopped VM services on compromised networks using techniques similar to those observed in BlackCat ransomware campaigns. Throughout the incident, system logs showed normal user activity, including routine backups and software updates, which were unrelated to the attack but added noise to the investigation. Global Energy Solutions Inc., a mid-sized energy provider with operations in North America, reported no impact on critical services due to this training exercise.",
+    "tagged_text": "On October 15, 2023, network administrators at a fictional critical infrastructure company, Global Energy Solutions Inc., discovered an unauthorized passive network tap connected to the main switch in the server room, indicating physical intrusion [T1200]. The device, later identified as a malicious hardware implant, was designed to monitor network traffic and exfiltrate data. Concurrently, the payload from this implant automatically scanned for and connected to any open Wi-Fi networks within range to establish a covert communication channel [T1669]. Once active, the adversary abused COM automation through Internet Explorer to execute JavaScript that ran system commands, facilitating initial code execution [T1559]. This led to the use of cmd.exe to execute commands for reconnaissance and lateral movement [T1059.003], while PowerShell.exe was configured to automatically run a script from a modified CurrentUserAllHosts profile to maintain persistence [T1546.013]. The actors then exploited tscon.exe functionality to hijack a logged-in user's remote desktop session, gaining unauthorized access to sensitive systems [T1563.002]. To pivot within the compromised network, they utilized SMB to access Windows Admin Shares for lateral movement [T1021.002]. A malicious Windows Service named 'SystemHealthMonitor' was created to maintain interactive remote control of infected hosts [T1219]. Communication with command-and-control (C2) servers was obfuscated using Base64 encoding to uniquely identify data exchanges [T1132.001]. The script malicious.ps1 was executed to gather browser history and saved passwords, with data exfiltrated over web services [T1567]. Finally, to disrupt operations, the adversary stopped VM services on compromised networks using techniques similar to those observed in BlackCat ransomware campaigns [T1489]. Throughout the incident, system logs showed normal user activity, including routine backups and software updates, which were unrelated to the attack but added noise to the investigation. Global Energy Solutions Inc., a mid-sized energy provider with operations in North America, reported no impact on critical services due to this training exercise.",
+    "sentence_annotations": [
+        {
+            "sentence": ", discovered an unauthorized passive network tap connected to the main switch in the server room, indicating physical intrusion.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "Concurrently, the payload from this implant automatically scanned for and connected to any open Wi-Fi networks within range to establish a covert communication channel.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "Once active, the adversary abused COM automation through Internet Explorer to execute JavaScript that ran system commands, facilitating initial code execution.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "A malicious Windows Service named 'SystemHealthMonitor' was created to maintain interactive remote control of infected hosts.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "ps1 was executed to gather browser history and saved passwords, with data exfiltrated over web services.",
+            "technique_id": "T1567",
+            "technique_name": "Exfiltration Over Web Service"
+        },
+        {
+            "sentence": "Finally, to disrupt operations, the adversary stopped VM services on compromised networks using techniques similar to those observed in BlackCat ransomware campaigns.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-99, targeting a critical infrastructure organization. The scenario involves initial physical access, network exploitation, and data exfiltration, designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "On October 15, 2023, network administrators at a fictional critical infrastructure company, Global Energy Solutions Inc., discovered an unauthorized passive network tap connected to the main switch in the server room, indicating physical intrusion [T1200]. The device, later identified as a malicious hardware implant, was designed to monitor network traffic and exfiltrate data. Concurrently, the payload from this implant automatically scanned for and connected to any open Wi-Fi networks within range to establish a covert communication channel [T1669]. Once active, the adversary abused COM automation through Internet Explorer to execute JavaScript that ran system commands, facilitating initial code execution [T1559]. This led to the use of cmd.exe to execute commands for reconnaissance and lateral movement [T1059.003], while PowerShell.exe was configured to automatically run a script from a modified CurrentUserAllHosts profile to maintain persistence [T1546.013]. The actors then exploited tscon.exe functionality to hijack a logged-in user's remote desktop session, gaining unauthorized access to sensitive systems [T1563.002]. To pivot within the compromised network, they utilized SMB to access Windows Admin Shares for lateral movement [T1021.002]. A malicious Windows Service named 'SystemHealthMonitor' was created to maintain interactive remote control of infected hosts [T1219]. Communication with command-and-control (C2) servers was obfuscated using Base64 encoding to uniquely identify data exchanges [T1132.001]. The script malicious.ps1 was executed to gather browser history and saved passwords, with data exfiltrated over web services [T1567]. Finally, to disrupt operations, the adversary stopped VM services on compromised networks using techniques similar to those observed in BlackCat ransomware campaigns [T1489]. Throughout the incident, system logs showed normal user activity, including routine backups and software updates, which were unrelated to the attack but added noise to the investigation. Global Energy Solutions Inc., a mid-sized energy provider with operations in North America, reported no impact on critical services due to this training exercise.",
+        "techniques_used": [
+            "T1200",
+            "T1669",
+            "T1559",
+            "T1059.003",
+            "T1546.013",
+            "T1563.002",
+            "T1021.002",
+            "T1219",
+            "T1132.001",
+            "T1567",
+            "T1489"
+        ]
+    }
+}

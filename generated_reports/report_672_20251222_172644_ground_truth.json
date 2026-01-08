@@ -1,0 +1,101 @@
+{
+    "report_id": "report_672",
+    "generated_at": "20251222_172644",
+    "scenario_target_ids": [
+        "T1608.003",
+        "T1586.002",
+        "T1078.004",
+        "T1059",
+        "T1053.005",
+        "T1098.001",
+        "T1003.005",
+        "T1210",
+        "T1573",
+        "T1499"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1586.002",
+        "T1078.004",
+        "T1608.003",
+        "T1059",
+        "T1003.005",
+        "T1210",
+        "T1053.005",
+        "T1098.001",
+        "T1573",
+        "T1499"
+    ],
+    "actual_found_ids": [
+        "T1499",
+        "T1003.005",
+        "T1589",
+        "T1608.003",
+        "T1059",
+        "T1078.004",
+        "T1586.002",
+        "T1573",
+        "T1053.005",
+        "T1210",
+        "T1098.001"
+    ],
+    "clean_text": "On April 15, 2024, security analysts at a fictional multinational corporation, 'GlobalTech Inc.', detected anomalous activity in their hybrid infrastructure, which includes on-premises Windows servers and cloud-based Azure and AWS environments. GlobalTech, a manufacturer with offices in North America and Europe, reported unusual network traffic patterns originating from their Apache web servers, which host customer portals and internal applications. Initial logs showed increased CPU usage on web servers, but no immediate alerts were triggered by their SIEM system, which had been tuned for common malware signatures but lacked behavioral analytics.\n\nIn the Initial Access phase, the threat actors likely conducted reconnaissance to identify target email accounts, though specific logs were not available due to retention policies. They then deployed a phishing script, 'phishing.ps1', via a spear-phishing campaign to harvest credentials from fake authentication portals, which led to the compromise of a global administrator account in Azure AD. Using this access, the actors leveraged Service Principal credentials in Exchange to move laterally into cloud resources, while simultaneously modifying the Apache SSL configuration to install a compromised digital certificate stored at /etc/httpd/ssl/evil.crt to facilitate man-in-the-middle attacks and evade detection.\n\nDuring the Execution phase, the malware employed bash -c as a command and scripting interpreter to run commands that exfiltrated sensitive files, such as financial records and intellectual property, to an external IP address, while also using Mimikatz to extract cached domain passwords from memory for credential harvesting. The actors further exploited remote services by utilizing a PoshC2 module to target SMB via EternalBlue, enabling lateral movement across the network and persistence through scheduled tasks that ensured malware execution at regular intervals.\n\nIn the Persistence phase, the threat group utilized tools like Pacu to generate SSH and API keys for AWS infrastructure and additional API keys for other IAM users, establishing long-term access to cloud environments. Command and control (C2) communications were secured through encrypted channels, with PowGoop receiving encrypted commands from C2 servers, making network traffic analysis challenging. Additionally, the malware exploited a resource exhaustion vulnerability in the web application framework to launch endpoint denial of service attacks, disrupting business operations and creating distractions for security teams.\n\nIrrelevant system logs from GlobalTech's network showed routine backup processes and user login attempts, which were not indicative of malicious activity. The company's background includes a recent merger with a smaller firm, leading to integration challenges in IT systems, but this was unrelated to the attack. Security analysts noted that the Apache servers had been patched for critical vulnerabilities six months prior, but misconfigurations in certificate management were overlooked during audits.",
+    "tagged_text": "On April 15, 2024, security analysts at a fictional multinational corporation, 'GlobalTech Inc.', detected anomalous activity in their hybrid infrastructure, which includes on-premises Windows servers and cloud-based Azure and AWS environments. GlobalTech, a manufacturer with offices in North America and Europe, reported unusual network traffic patterns originating from their Apache web servers, which host customer portals and internal applications. Initial logs showed increased CPU usage on web servers, but no immediate alerts were triggered by their SIEM system, which had been tuned for common malware signatures but lacked behavioral analytics.\n\nIn the Initial Access phase, the threat actors likely conducted reconnaissance [T1589] to identify target email accounts, though specific logs were not available due to retention policies. They then deployed a phishing script, 'phishing.ps1', via a spear-phishing campaign to harvest credentials from fake authentication portals [T1586.002], which led to the compromise of a global administrator account in Azure AD. Using this access, the actors leveraged Service Principal credentials in Exchange to move laterally into cloud resources [T1078.004], while simultaneously modifying the Apache SSL configuration to install a compromised digital certificate stored at /etc/httpd/ssl/evil.crt [T1608.003] to facilitate man-in-the-middle attacks and evade detection.\n\nDuring the Execution phase, the malware employed bash -c as a command and scripting interpreter [T1059] to run commands that exfiltrated sensitive files, such as financial records and intellectual property, to an external IP address, while also using Mimikatz to extract cached domain passwords from memory [T1003.005] for credential harvesting. The actors further exploited remote services by utilizing a PoshC2 module to target SMB via EternalBlue [T1210], enabling lateral movement across the network and persistence through scheduled tasks [T1053.005] that ensured malware execution at regular intervals.\n\nIn the Persistence phase, the threat group utilized tools like Pacu to generate SSH and API keys for AWS infrastructure and additional API keys for other IAM users [T1098.001], establishing long-term access to cloud environments. Command and control (C2) communications were secured through encrypted channels, with PowGoop receiving encrypted commands from C2 servers [T1573], making network traffic analysis challenging. Additionally, the malware exploited a resource exhaustion vulnerability in the web application framework to launch endpoint denial of service attacks [T1499], disrupting business operations and creating distractions for security teams.\n\nIrrelevant system logs from GlobalTech's network showed routine backup processes and user login attempts, which were not indicative of malicious activity. The company's background includes a recent merger with a smaller firm, leading to integration challenges in IT systems, but this was unrelated to the attack. Security analysts noted that the Apache servers had been patched for critical vulnerabilities six months prior, but misconfigurations in certificate management were overlooked during audits.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the Initial Access phase, the threat actors likely conducted reconnaissance to identify target email accounts, though specific logs were not available due to retention policies.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "During the Execution phase, the malware employed bash -c as a command and scripting interpreter to run commands that exfiltrated sensitive files, such as financial records and intellectual property, to an external IP address, while also using Mimikatz to extract cached domain passwords from memory [T1003.",
+            "technique_id": "T1059",
+            "technique_name": "Command and Scripting Interpreter"
+        },
+        {
+            "sentence": "The actors further exploited remote services by utilizing a PoshC2 module to target SMB via EternalBlue, enabling lateral movement across the network and persistence through scheduled tasks [T1053.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "Command and control (C2) communications were secured through encrypted channels, with PowGoop receiving encrypted commands from C2 servers, making network traffic analysis challenging.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        },
+        {
+            "sentence": "Additionally, the malware exploited a resource exhaustion vulnerability in the web application framework to launch endpoint denial of service attacks, disrupting business operations and creating distractions for security teams.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a fictional campaign by a simulated advanced persistent threat (APT) group, designated as 'CRIMSON SHADOW,' targeting organizations with hybrid on-premises and cloud environments. Based on training scenarios, this report outlines tactics, techniques, and procedures (TTPs) observed in a multi-phase attack involving credential theft, lateral movement, and persistence mechanisms. The activity leverages a combination of phishing, exploitation of remote services, and cloud account compromise to achieve objectives including data exfiltration and denial of service. Blue teams are advised to review logs, enhance monitoring for suspicious certificate usage and scheduled tasks, and implement strict access controls in cloud environments.",
+        "full_report_text": "On April 15, 2024, security analysts at a fictional multinational corporation, 'GlobalTech Inc.', detected anomalous activity in their hybrid infrastructure, which includes on-premises Windows servers and cloud-based Azure and AWS environments. GlobalTech, a manufacturer with offices in North America and Europe, reported unusual network traffic patterns originating from their Apache web servers, which host customer portals and internal applications. Initial logs showed increased CPU usage on web servers, but no immediate alerts were triggered by their SIEM system, which had been tuned for common malware signatures but lacked behavioral analytics.\n\nIn the Initial Access phase, the threat actors likely conducted reconnaissance [T1589] to identify target email accounts, though specific logs were not available due to retention policies. They then deployed a phishing script, 'phishing.ps1', via a spear-phishing campaign to harvest credentials from fake authentication portals [T1586.002], which led to the compromise of a global administrator account in Azure AD. Using this access, the actors leveraged Service Principal credentials in Exchange to move laterally into cloud resources [T1078.004], while simultaneously modifying the Apache SSL configuration to install a compromised digital certificate stored at /etc/httpd/ssl/evil.crt [T1608.003] to facilitate man-in-the-middle attacks and evade detection.\n\nDuring the Execution phase, the malware employed bash -c as a command and scripting interpreter [T1059] to run commands that exfiltrated sensitive files, such as financial records and intellectual property, to an external IP address, while also using Mimikatz to extract cached domain passwords from memory [T1003.005] for credential harvesting. The actors further exploited remote services by utilizing a PoshC2 module to target SMB via EternalBlue [T1210], enabling lateral movement across the network and persistence through scheduled tasks [T1053.005] that ensured malware execution at regular intervals.\n\nIn the Persistence phase, the threat group utilized tools like Pacu to generate SSH and API keys for AWS infrastructure and additional API keys for other IAM users [T1098.001], establishing long-term access to cloud environments. Command and control (C2) communications were secured through encrypted channels, with PowGoop receiving encrypted commands from C2 servers [T1573], making network traffic analysis challenging. Additionally, the malware exploited a resource exhaustion vulnerability in the web application framework to launch endpoint denial of service attacks [T1499], disrupting business operations and creating distractions for security teams.\n\nIrrelevant system logs from GlobalTech's network showed routine backup processes and user login attempts, which were not indicative of malicious activity. The company's background includes a recent merger with a smaller firm, leading to integration challenges in IT systems, but this was unrelated to the attack. Security analysts noted that the Apache servers had been patched for critical vulnerabilities six months prior, but misconfigurations in certificate management were overlooked during audits.",
+        "techniques_used": [
+            "T1589",
+            "T1586.002",
+            "T1078.004",
+            "T1608.003",
+            "T1059",
+            "T1003.005",
+            "T1210",
+            "T1053.005",
+            "T1098.001",
+            "T1573",
+            "T1499"
+        ]
+    }
+}

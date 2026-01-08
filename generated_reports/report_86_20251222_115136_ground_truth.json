@@ -1,0 +1,57 @@
+{
+    "report_id": "report_86",
+    "generated_at": "20251222_115136",
+    "scenario_target_ids": [
+        "T1078.002",
+        "T1059.003",
+        "T1559.002",
+        "T1546.006",
+        "T1090.004",
+        "T1102.002",
+        "T1011.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1559.002",
+        "T1059.003",
+        "T1546.006",
+        "T1078.002",
+        "T1090.004",
+        "T1102.002",
+        "T1011.001"
+    ],
+    "actual_found_ids": [
+        "T1559.002",
+        "T1059.003",
+        "T1078.002",
+        "T1090.004",
+        "T1546.006",
+        "T1102.002",
+        "T1011.001"
+    ],
+    "clean_text": "Background: GlobalTrust Bank, a multinational financial services provider with headquarters in New York and operations across 50 countries, reported anomalous network activity on October 15, 2023. Initial logs indicated unusual outbound traffic from an internal server, prompting an investigation that revealed a multi-month intrusion. The bank's IT infrastructure includes Windows and macOS systems, with Active Directory for domain management and Google Workspace for collaboration tools.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance to identify high-value targets, though specific techniques are not detailed in this scenario. Initial access was achieved through a spear-phishing campaign, where employees received a malicious Word document titled 'Q3 Financial Report.docx'. Upon opening, the document exploited the Dynamic Data Exchange (DDE) protocol to execute PowerShell commands remotely, which in turn downloaded additional payloads from a command-and-control (C2) server. For execution, the adversary used the Windows Command Shell to run scripts that modified system configurations and deployed backdoors.\n\nPersistence was established by targeting macOS systems within the bank's development environment. The actors injected a malicious dynamic library (dylib) by modifying the LC_LOAD_DYLIB commands in Mach-O binaries, ensuring the malware loaded automatically upon system startup. Lateral movement was facilitated through compromised domain accounts, with the actors using stolen credentials to access sensitive servers and escalate privileges across the network. Logs show multiple failed login attempts from unusual IP addresses, but these were initially dismissed as noise.\n\nCommand and control (C2) communications were obfuscated using Domain Fronting, where the actors altered TLS headers to route traffic through legitimate content delivery networks, making detection difficult. Additionally, bidirectional communication was maintained through Google Calendar events, with the malware sending encoded data and receiving instructions via calendar entries, evading traditional network monitoring tools. System administrators noted increased calendar API calls but attributed them to routine automation scripts.\n\nExfiltration of stolen data, including customer credentials and financial records, was conducted over Bluetooth, leveraging protocol weaknesses to transfer information to a nearby device controlled by the actors. This method allowed data theft without triggering network-based alerts, as the exfiltration occurred offline from compromised workstations in secure areas. Incident responders later discovered Bluetooth pairing logs on affected devices, indicating unauthorized connections during off-hours.\n\nMitigation recommendations include implementing multi-factor authentication for domain accounts, monitoring for unusual DDE and command shell activity, and restricting Bluetooth usage on sensitive systems. This fictional scenario underscores the importance of layered defenses and continuous threat hunting in financial environments.",
+    "tagged_text": "Background: GlobalTrust Bank, a multinational financial services provider with headquarters in New York and operations across 50 countries, reported anomalous network activity on October 15, 2023. Initial logs indicated unusual outbound traffic from an internal server, prompting an investigation that revealed a multi-month intrusion. The bank's IT infrastructure includes Windows and macOS systems, with Active Directory for domain management and Google Workspace for collaboration tools.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance to identify high-value targets, though specific techniques are not detailed in this scenario. Initial access was achieved through a spear-phishing campaign, where employees received a malicious Word document titled 'Q3 Financial Report.docx'. Upon opening, the document exploited the Dynamic Data Exchange (DDE) protocol [T1559.002] to execute PowerShell commands remotely, which in turn downloaded additional payloads from a command-and-control (C2) server. For execution, the adversary used the Windows Command Shell [T1059.003] to run scripts that modified system configurations and deployed backdoors.\n\nPersistence was established by targeting macOS systems within the bank's development environment. The actors injected a malicious dynamic library (dylib) by modifying the LC_LOAD_DYLIB commands in Mach-O binaries [T1546.006], ensuring the malware loaded automatically upon system startup. Lateral movement was facilitated through compromised domain accounts [T1078.002], with the actors using stolen credentials to access sensitive servers and escalate privileges across the network. Logs show multiple failed login attempts from unusual IP addresses, but these were initially dismissed as noise.\n\nCommand and control (C2) communications were obfuscated using Domain Fronting [T1090.004], where the actors altered TLS headers to route traffic through legitimate content delivery networks, making detection difficult. Additionally, bidirectional communication was maintained through Google Calendar events [T1102.002], with the malware sending encoded data and receiving instructions via calendar entries, evading traditional network monitoring tools. System administrators noted increased calendar API calls but attributed them to routine automation scripts.\n\nExfiltration of stolen data, including customer credentials and financial records, was conducted over Bluetooth [T1011.001], leveraging protocol weaknesses to transfer information to a nearby device controlled by the actors. This method allowed data theft without triggering network-based alerts, as the exfiltration occurred offline from compromised workstations in secure areas. Incident responders later discovered Bluetooth pairing logs on affected devices, indicating unauthorized connections during off-hours.\n\nMitigation recommendations include implementing multi-factor authentication for domain accounts, monitoring for unusual DDE and command shell activity, and restricting Bluetooth usage on sensitive systems. This fictional scenario underscores the importance of layered defenses and continuous threat hunting in financial environments.",
+    "sentence_annotations": [],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowRift' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowRift', targeting financial institutions. Based on analysis of incident response data from a fictional breach at 'GlobalTrust Bank', the actors employed sophisticated techniques for initial access, execution, persistence, command and control, and exfiltration. The report is intended for blue team training to enhance detection and response capabilities against similar multi-stage attacks.",
+        "full_report_text": "Background: GlobalTrust Bank, a multinational financial services provider with headquarters in New York and operations across 50 countries, reported anomalous network activity on October 15, 2023. Initial logs indicated unusual outbound traffic from an internal server, prompting an investigation that revealed a multi-month intrusion. The bank's IT infrastructure includes Windows and macOS systems, with Active Directory for domain management and Google Workspace for collaboration tools.\n\nAttack Narrative:\nThe actors likely conducted reconnaissance to identify high-value targets, though specific techniques are not detailed in this scenario. Initial access was achieved through a spear-phishing campaign, where employees received a malicious Word document titled 'Q3 Financial Report.docx'. Upon opening, the document exploited the Dynamic Data Exchange (DDE) protocol [T1559.002] to execute PowerShell commands remotely, which in turn downloaded additional payloads from a command-and-control (C2) server. For execution, the adversary used the Windows Command Shell [T1059.003] to run scripts that modified system configurations and deployed backdoors.\n\nPersistence was established by targeting macOS systems within the bank's development environment. The actors injected a malicious dynamic library (dylib) by modifying the LC_LOAD_DYLIB commands in Mach-O binaries [T1546.006], ensuring the malware loaded automatically upon system startup. Lateral movement was facilitated through compromised domain accounts [T1078.002], with the actors using stolen credentials to access sensitive servers and escalate privileges across the network. Logs show multiple failed login attempts from unusual IP addresses, but these were initially dismissed as noise.\n\nCommand and control (C2) communications were obfuscated using Domain Fronting [T1090.004], where the actors altered TLS headers to route traffic through legitimate content delivery networks, making detection difficult. Additionally, bidirectional communication was maintained through Google Calendar events [T1102.002], with the malware sending encoded data and receiving instructions via calendar entries, evading traditional network monitoring tools. System administrators noted increased calendar API calls but attributed them to routine automation scripts.\n\nExfiltration of stolen data, including customer credentials and financial records, was conducted over Bluetooth [T1011.001], leveraging protocol weaknesses to transfer information to a nearby device controlled by the actors. This method allowed data theft without triggering network-based alerts, as the exfiltration occurred offline from compromised workstations in secure areas. Incident responders later discovered Bluetooth pairing logs on affected devices, indicating unauthorized connections during off-hours.\n\nMitigation recommendations include implementing multi-factor authentication for domain accounts, monitoring for unusual DDE and command shell activity, and restricting Bluetooth usage on sensitive systems. This fictional scenario underscores the importance of layered defenses and continuous threat hunting in financial environments.",
+        "techniques_used": [
+            "T1559.002",
+            "T1059.003",
+            "T1546.006",
+            "T1078.002",
+            "T1090.004",
+            "T1102.002",
+            "T1011.001"
+        ]
+    }
+}

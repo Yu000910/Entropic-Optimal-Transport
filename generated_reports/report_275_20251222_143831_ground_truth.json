@@ -1,0 +1,118 @@
+{
+    "report_id": "report_275",
+    "generated_at": "20251222_143831",
+    "scenario_target_ids": [
+        "T1583",
+        "T1199",
+        "T1106",
+        "T1546.008",
+        "T1055.015",
+        "T1218.007",
+        "T1218.012",
+        "T1036.006",
+        "T1003.008",
+        "T1652",
+        "T1615",
+        "T1071.003",
+        "T1565.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583",
+        "T1218.007",
+        "T1218.012",
+        "T1106",
+        "T1055.015",
+        "T1199",
+        "T1546.008",
+        "T1565.003",
+        "T1003.008",
+        "T1036.006",
+        "T1652",
+        "T1615",
+        "T1071.003"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1583",
+        "T1199",
+        "T1055.015",
+        "T1218.007",
+        "T1546.008",
+        "T1106",
+        "T1218.012",
+        "T1565.003",
+        "T1071.003",
+        "T1615",
+        "T1003.008",
+        "T1036.006"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'CloudShadow'. This report is based on simulated incident response data from a fictional manufacturing company, 'GlobalTech Inc.', which reported anomalous behavior in its Azure and on-premises Windows/Linux systems starting in early 2024. Background investigation revealed that GlobalTech Inc. had recently migrated critical workloads to a multi-cloud setup, with delegated administrator roles for third-party vendors, though no prior breaches were documented in their SIEM logs from Q4 2023.\n\nInitial Access: The actors likely acquired scalable cloud infrastructure, such as virtual machines across multiple regions, to host and distribute malicious .MSI files that initiated the infection chain via phishing emails with spoofed sender addresses. System logs from GlobalTech's mail server showed an increase in spam filter bypass attempts, though most were blocked.\n\nExecution: Upon user execution, the malware abused verclsid.exe to bypass application control and then employed PowerShell to call native Windows APIs, retrieving hard disk handles to prepare for shutdown commands while simultaneously using FindWindow to locate explorer.exe processes for ListPlanting code injection. Incident responders noted unusual PowerShell script activity in Windows Event Logs with high memory usage spikes.\n\nPersistence: The adversary exploited delegated administrator permissions in the cloud environment to escalate privileges and then replaced Sticky Keys accessibility features within RDP sessions to maintain backdoor access, while also modifying registry keys to associate .pdf files with a compromised viewer through runtime data manipulation. On Linux systems, a rootkit was installed to continuously monitor and dump changes to the /etc/passwd and /etc/shadow files, with cron jobs set to run every hour.\n\nDefense Evasion: Attackers used space after filename techniques, renaming 'update.bat' to 'security_update.pdf ' to evade user suspicion and endpoint detection, and they invoked driverquery.exe with /fo table parameters to list device drivers and identify vulnerabilities for potential exploitation. Network traffic analysis showed encrypted packets to unknown IPs, but firewall logs were incomplete due to a misconfiguration.\n\nDiscovery: The malware executed gpresult /h report.html to export Group Policy results to an HTML file for later analysis of domain settings, and it scanned system directories for configuration files, though no data exfiltration was confirmed in this simulation.\n\nCommand and Control (C2): RDAT malware components utilized email attachments over SMTP protocols for C2 communications, embedding encrypted commands in seemingly benign documents, with network sensors detecting unusual outbound traffic on port 587 during off-hours.\n\nImpact: In the final stage, the KillDisk component called native APIs to forcibly shut down machines, causing operational disruption at GlobalTech's production facilities, with recovery requiring system restores from backups; no ransom demands were observed, aligning with fictional destructive intent for training purposes. Post-incident, blue teams identified gaps in cloud permission reviews and enhanced monitoring for API anomalies.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'CloudShadow'. This report is based on simulated incident response data from a fictional manufacturing company, 'GlobalTech Inc.', which reported anomalous behavior in its Azure and on-premises Windows/Linux systems starting in early 2024. Background investigation revealed that GlobalTech Inc. had recently migrated critical workloads to a multi-cloud setup, with delegated administrator roles for third-party vendors, though no prior breaches were documented in their SIEM logs from Q4 2023.\n\nInitial Access: The actors likely acquired scalable cloud infrastructure [T1583], such as virtual machines across multiple regions, to host and distribute malicious .MSI files [T1218.007] that initiated the infection chain via phishing emails with spoofed sender addresses. System logs from GlobalTech's mail server showed an increase in spam filter bypass attempts, though most were blocked.\n\nExecution: Upon user execution, the malware abused verclsid.exe [T1218.012] to bypass application control and then employed PowerShell to call native Windows APIs [T1106], retrieving hard disk handles to prepare for shutdown commands while simultaneously using FindWindow to locate explorer.exe processes for ListPlanting code injection [T1055.015]. Incident responders noted unusual PowerShell script activity in Windows Event Logs with high memory usage spikes.\n\nPersistence: The adversary exploited delegated administrator permissions in the cloud environment [T1199] to escalate privileges and then replaced Sticky Keys accessibility features within RDP sessions [T1546.008] to maintain backdoor access, while also modifying registry keys to associate .pdf files with a compromised viewer through runtime data manipulation [T1565.003]. On Linux systems, a rootkit was installed to continuously monitor and dump changes to the /etc/passwd and /etc/shadow files [T1003.008], with cron jobs set to run every hour.\n\nDefense Evasion: Attackers used space after filename techniques [T1036.006], renaming 'update.bat' to 'security_update.pdf ' to evade user suspicion and endpoint detection, and they invoked driverquery.exe with /fo table parameters [T1652] to list device drivers and identify vulnerabilities for potential exploitation. Network traffic analysis showed encrypted packets to unknown IPs, but firewall logs were incomplete due to a misconfiguration.\n\nDiscovery: The malware executed gpresult /h report.html [T1615] to export Group Policy results to an HTML file for later analysis of domain settings, and it scanned system directories for configuration files, though no data exfiltration was confirmed in this simulation.\n\nCommand and Control (C2): RDAT malware components utilized email attachments over SMTP protocols [T1071.003] for C2 communications, embedding encrypted commands in seemingly benign documents, with network sensors detecting unusual outbound traffic on port 587 during off-hours.\n\nImpact: In the final stage, the KillDisk component called native APIs [T1106] to forcibly shut down machines, causing operational disruption at GlobalTech's production facilities, with recovery requiring system restores from backups; no ransom demands were observed, aligning with fictional destructive intent for training purposes. Post-incident, blue teams identified gaps in cloud permission reviews and enhanced monitoring for API anomalies.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely acquired scalable cloud infrastructure, such as virtual machines across multiple regions, to host and distribute malicious.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "012] to bypass application control and then employed PowerShell to call native Windows APIs, retrieving hard disk handles to prepare for shutdown commands while simultaneously using FindWindow to locate explorer.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "Persistence: The adversary exploited delegated administrator permissions in the cloud environment to escalate privileges and then replaced Sticky Keys accessibility features within RDP sessions [T1546.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "exe with /fo table parameters to list device drivers and identify vulnerabilities for potential exploitation.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "html to export Group Policy results to an HTML file for later analysis of domain settings, and it scanned system directories for configuration files, though no data exfiltration was confirmed in this simulation.",
+            "technique_id": "T1615",
+            "technique_name": "Group Policy Discovery"
+        },
+        {
+            "sentence": "Impact: In the final stage, the KillDisk component called native APIs to forcibly shut down machines, causing operational disruption at GlobalTech's production facilities, with recovery requiring system restores from backups; no ransom demands were observed, aligning with fictional destructive intent for training purposes.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShadow' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'CloudShadow', targeting organizations with hybrid cloud and on-premises environments. The campaign leverages trusted cloud relationships and native system tools to deploy destructive malware, manipulate data, and maintain persistence. Blue teams should review logs for unusual API calls, file modifications, and policy exports to detect similar activity.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign dubbed 'CloudShadow'. This report is based on simulated incident response data from a fictional manufacturing company, 'GlobalTech Inc.', which reported anomalous behavior in its Azure and on-premises Windows/Linux systems starting in early 2024. Background investigation revealed that GlobalTech Inc. had recently migrated critical workloads to a multi-cloud setup, with delegated administrator roles for third-party vendors, though no prior breaches were documented in their SIEM logs from Q4 2023.\n\nInitial Access: The actors likely acquired scalable cloud infrastructure [T1583], such as virtual machines across multiple regions, to host and distribute malicious .MSI files [T1218.007] that initiated the infection chain via phishing emails with spoofed sender addresses. System logs from GlobalTech's mail server showed an increase in spam filter bypass attempts, though most were blocked.\n\nExecution: Upon user execution, the malware abused verclsid.exe [T1218.012] to bypass application control and then employed PowerShell to call native Windows APIs [T1106], retrieving hard disk handles to prepare for shutdown commands while simultaneously using FindWindow to locate explorer.exe processes for ListPlanting code injection [T1055.015]. Incident responders noted unusual PowerShell script activity in Windows Event Logs with high memory usage spikes.\n\nPersistence: The adversary exploited delegated administrator permissions in the cloud environment [T1199] to escalate privileges and then replaced Sticky Keys accessibility features within RDP sessions [T1546.008] to maintain backdoor access, while also modifying registry keys to associate .pdf files with a compromised viewer through runtime data manipulation [T1565.003]. On Linux systems, a rootkit was installed to continuously monitor and dump changes to the /etc/passwd and /etc/shadow files [T1003.008], with cron jobs set to run every hour.\n\nDefense Evasion: Attackers used space after filename techniques [T1036.006], renaming 'update.bat' to 'security_update.pdf ' to evade user suspicion and endpoint detection, and they invoked driverquery.exe with /fo table parameters [T1652] to list device drivers and identify vulnerabilities for potential exploitation. Network traffic analysis showed encrypted packets to unknown IPs, but firewall logs were incomplete due to a misconfiguration.\n\nDiscovery: The malware executed gpresult /h report.html [T1615] to export Group Policy results to an HTML file for later analysis of domain settings, and it scanned system directories for configuration files, though no data exfiltration was confirmed in this simulation.\n\nCommand and Control (C2): RDAT malware components utilized email attachments over SMTP protocols [T1071.003] for C2 communications, embedding encrypted commands in seemingly benign documents, with network sensors detecting unusual outbound traffic on port 587 during off-hours.\n\nImpact: In the final stage, the KillDisk component called native APIs [T1106] to forcibly shut down machines, causing operational disruption at GlobalTech's production facilities, with recovery requiring system restores from backups; no ransom demands were observed, aligning with fictional destructive intent for training purposes. Post-incident, blue teams identified gaps in cloud permission reviews and enhanced monitoring for API anomalies.",
+        "techniques_used": [
+            "T1583",
+            "T1218.007",
+            "T1218.012",
+            "T1106",
+            "T1055.015",
+            "T1199",
+            "T1546.008",
+            "T1565.003",
+            "T1003.008",
+            "T1036.006",
+            "T1652",
+            "T1615",
+            "T1071.003"
+        ]
+    }
+}

@@ -1,0 +1,108 @@
+{
+    "report_id": "report_663",
+    "generated_at": "20251222_172317",
+    "scenario_target_ids": [
+        "T1596.005",
+        "T1199",
+        "T1078.003",
+        "T1053.002",
+        "T1037",
+        "T1087.002",
+        "T1538",
+        "T1049",
+        "T1080",
+        "T1001.002",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1596.005",
+        "T1538",
+        "T1199",
+        "T1087.002",
+        "T1078.003",
+        "T1037",
+        "T1053.002",
+        "T1049",
+        "T1080",
+        "T1001.002",
+        "T1665"
+    ],
+    "actual_found_ids": [
+        "T1087.002",
+        "T1596.005",
+        "T1199",
+        "T1053.002",
+        "T1001.002",
+        "T1538",
+        "T1665",
+        "T1080",
+        "T1037",
+        "T1049",
+        "T1078.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'ShadowDocker'. This scenario is based on observed tactics, techniques, and procedures (TTPs) in simulated environments and is intended for educational purposes only. No real entities are implicated.\n\nBackground: The fictional victim organization, 'CloudTech Solutions', is a mid-sized IT services provider with hybrid infrastructure spanning Microsoft Azure, Google Cloud Platform (GCP), and on-premises Windows servers. Routine system logs from last month showed unusual spikes in network traffic, but initial investigations flagged them as false positives related to a scheduled backup job. The company's security team later identified anomalous account creations in their Office 365 tenant, which triggered this advisory.\n\nAttack Narrative:\nIn the Initial Access phase, the actors likely conducted reconnaissance by scanning databases to identify misconfigured Docker daemons exposed online, while simultaneously using GCP Command Center queries to discover cloud databases with weak authentication. Through a compromised partner relationship, they leveraged Office 365 partner privileges to create administrative accounts in client tenants, gaining initial foothold. System logs from the affected tenant show multiple failed login attempts from IP addresses geolocated to non-business regions, though these were initially dismissed as brute-force attacks from botnets.\n\nUpon Execution, the adversary employed tools like AdFind to enumerate domain accounts and extracted local account credentials using Mimikatz's lsadump::sam command on a compromised host. For Persistence, they wrote a malicious PowerShell script named 'evil.ps1' to the Windows Startup folder and used at.exe to schedule commands for deleting log files at midnight, while BADHATCH executed netstat.exe -f to discover system network connections. In Lateral Movement, RedCurl placed modified LNK files on network drives to taint shared content, facilitating spread across the environment.\n\nFor Command and Control, HAMMERTOSS used steganography by appending commands to image files to exfiltrate data covertly. The actors hid their infrastructure by routing C2 communications through a VPN service, evading network monitoring tools. Additional noise includes unrelated firewall alerts from a misconfigured IoT device and routine database maintenance logs that showed no signs of compromise.\n\nMitigation recommendations include reviewing partner access controls, enabling multi-factor authentication, monitoring for unusual scheduled tasks, and inspecting network traffic for VPN anomalies. This report serves as a training tool to enhance defensive postures against similar TTPs.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'ShadowDocker'. This scenario is based on observed tactics, techniques, and procedures (TTPs) in simulated environments and is intended for educational purposes only. No real entities are implicated.\n\nBackground: The fictional victim organization, 'CloudTech Solutions', is a mid-sized IT services provider with hybrid infrastructure spanning Microsoft Azure, Google Cloud Platform (GCP), and on-premises Windows servers. Routine system logs from last month showed unusual spikes in network traffic, but initial investigations flagged them as false positives related to a scheduled backup job. The company's security team later identified anomalous account creations in their Office 365 tenant, which triggered this advisory.\n\nAttack Narrative:\nIn the Initial Access phase, the actors likely conducted reconnaissance by scanning databases [T1596.005] to identify misconfigured Docker daemons exposed online, while simultaneously using GCP Command Center queries [T1538] to discover cloud databases with weak authentication. Through a compromised partner relationship [T1199], they leveraged Office 365 partner privileges to create administrative accounts in client tenants, gaining initial foothold. System logs from the affected tenant show multiple failed login attempts from IP addresses geolocated to non-business regions, though these were initially dismissed as brute-force attacks from botnets.\n\nUpon Execution, the adversary employed tools like AdFind to enumerate domain accounts [T1087.002] and extracted local account credentials using Mimikatz's lsadump::sam command on a compromised host [T1078.003]. For Persistence, they wrote a malicious PowerShell script named 'evil.ps1' to the Windows Startup folder [T1037] and used at.exe to schedule commands for deleting log files at midnight [T1053.002], while BADHATCH executed netstat.exe -f to discover system network connections [T1049]. In Lateral Movement, RedCurl placed modified LNK files on network drives to taint shared content [T1080], facilitating spread across the environment.\n\nFor Command and Control, HAMMERTOSS used steganography by appending commands to image files [T1001.002] to exfiltrate data covertly. The actors hid their infrastructure by routing C2 communications through a VPN service [T1665], evading network monitoring tools. Additional noise includes unrelated firewall alerts from a misconfigured IoT device and routine database maintenance logs that showed no signs of compromise.\n\nMitigation recommendations include reviewing partner access controls, enabling multi-factor authentication, monitoring for unusual scheduled tasks, and inspecting network traffic for VPN anomalies. This report serves as a training tool to enhance defensive postures against similar TTPs.",
+    "sentence_annotations": [
+        {
+            "sentence": "005] to identify misconfigured Docker daemons exposed online, while simultaneously using GCP Command Center queries to discover cloud databases with weak authentication.",
+            "technique_id": "T1538",
+            "technique_name": "Cloud Service Dashboard"
+        },
+        {
+            "sentence": "Through a compromised partner relationship, they leveraged Office 365 partner privileges to create administrative accounts in client tenants, gaining initial foothold.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "ps1' to the Windows Startup folder and used at.",
+            "technique_id": "T1037",
+            "technique_name": "Boot or Logon Initialization Scripts"
+        },
+        {
+            "sentence": "exe -f to discover system network connections.",
+            "technique_id": "T1049",
+            "technique_name": "System Network Connections Discovery"
+        },
+        {
+            "sentence": "In Lateral Movement, RedCurl placed modified LNK files on network drives to taint shared content, facilitating spread across the environment.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        },
+        {
+            "sentence": "The actors hid their infrastructure by routing C2 communications through a VPN service, evading network monitoring tools.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowDocker' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated as 'ShadowDocker', which leverages trusted relationships and cloud reconnaissance to compromise hybrid environments. The activity involves initial access through partner privileges, followed by credential harvesting, persistence mechanisms, and data exfiltration using steganography, with actors employing VPNs to obscure their infrastructure. Blue teams should review detection strategies and mitigation steps outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'ShadowDocker'. This scenario is based on observed tactics, techniques, and procedures (TTPs) in simulated environments and is intended for educational purposes only. No real entities are implicated.\n\nBackground: The fictional victim organization, 'CloudTech Solutions', is a mid-sized IT services provider with hybrid infrastructure spanning Microsoft Azure, Google Cloud Platform (GCP), and on-premises Windows servers. Routine system logs from last month showed unusual spikes in network traffic, but initial investigations flagged them as false positives related to a scheduled backup job. The company's security team later identified anomalous account creations in their Office 365 tenant, which triggered this advisory.\n\nAttack Narrative:\nIn the Initial Access phase, the actors likely conducted reconnaissance by scanning databases [T1596.005] to identify misconfigured Docker daemons exposed online, while simultaneously using GCP Command Center queries [T1538] to discover cloud databases with weak authentication. Through a compromised partner relationship [T1199], they leveraged Office 365 partner privileges to create administrative accounts in client tenants, gaining initial foothold. System logs from the affected tenant show multiple failed login attempts from IP addresses geolocated to non-business regions, though these were initially dismissed as brute-force attacks from botnets.\n\nUpon Execution, the adversary employed tools like AdFind to enumerate domain accounts [T1087.002] and extracted local account credentials using Mimikatz's lsadump::sam command on a compromised host [T1078.003]. For Persistence, they wrote a malicious PowerShell script named 'evil.ps1' to the Windows Startup folder [T1037] and used at.exe to schedule commands for deleting log files at midnight [T1053.002], while BADHATCH executed netstat.exe -f to discover system network connections [T1049]. In Lateral Movement, RedCurl placed modified LNK files on network drives to taint shared content [T1080], facilitating spread across the environment.\n\nFor Command and Control, HAMMERTOSS used steganography by appending commands to image files [T1001.002] to exfiltrate data covertly. The actors hid their infrastructure by routing C2 communications through a VPN service [T1665], evading network monitoring tools. Additional noise includes unrelated firewall alerts from a misconfigured IoT device and routine database maintenance logs that showed no signs of compromise.\n\nMitigation recommendations include reviewing partner access controls, enabling multi-factor authentication, monitoring for unusual scheduled tasks, and inspecting network traffic for VPN anomalies. This report serves as a training tool to enhance defensive postures against similar TTPs.",
+        "techniques_used": [
+            "T1596.005",
+            "T1538",
+            "T1199",
+            "T1087.002",
+            "T1078.003",
+            "T1037",
+            "T1053.002",
+            "T1049",
+            "T1080",
+            "T1001.002",
+            "T1665"
+        ]
+    }
+}

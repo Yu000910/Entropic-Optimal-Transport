@@ -1,0 +1,108 @@
+{
+    "report_id": "report_219",
+    "generated_at": "20251222_141525",
+    "scenario_target_ids": [
+        "T1585",
+        "T1588.003",
+        "T1669",
+        "T1204.004",
+        "T1098.002",
+        "T1003",
+        "T1563.001",
+        "T1056.002",
+        "T1090",
+        "T1568",
+        "T1011"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1585",
+        "T1588.003",
+        "T1669",
+        "T1204.004",
+        "T1098.002",
+        "T1003",
+        "T1563.001",
+        "T1056.002",
+        "T1090",
+        "T1568",
+        "T1011"
+    ],
+    "actual_found_ids": [
+        "T1011",
+        "T1585",
+        "T1669",
+        "T1003",
+        "T1563.001",
+        "T1090",
+        "T1588.003",
+        "T1098.002",
+        "T1204.004",
+        "T1568",
+        "T1056.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. On April 15, 2024, a mid-sized technology firm, 'TechGlobal Inc.', reported anomalous network activity traced back to a social media-based initial access vector. TechGlobal Inc., founded in 2010, specializes in cloud infrastructure solutions and employs approximately 500 staff across three offices. Initial logs from their SIEM showed unusual outbound connections to unknown IP addresses, but no immediate alerts were triggered by their legacy antivirus software.\n\nIn the reconnaissance phase, the actors established fake social media accounts, posing as recruiters on Facebook to gather intelligence on target employees and organizational structure. This persona, 'Sarah Chen - Tech Recruiter', connected with several mid-level engineers over two weeks, sharing job postings that included malicious links. Concurrently, the campaign utilized stolen code signing certificates to sign malware payloads, allowing them to bypass application whitelisting and evade initial detection mechanisms.\n\nFor initial access, a compromised website displayed a fake 'Java Runtime Error' message, urging users to copy and paste a malicious script into their terminals, which then executed PowerShell commands to download and run the signed malware. The malware, once active, employed GUI input capture by generating a fake login window to steal credentials, while also performing OS credential dumping using Mimikatz's sekurlsa::logonpasswords command to harvest additional credentials from memory. System logs from affected endpoints showed increased CPU usage during these activities, but no correlation was made with the earlier social media interactions.\n\nFor persistence and lateral movement, the actors used the stolen credentials to hijack SSH sessions by exploiting weak key pairs on laterally connected Linux servers, and they added additional email delegate permissions in Azure AD through a compromised global administrator account to backdoor a service principal with ApplicationImpersonation rights, enabling email collection from targeted mailboxes. The campaign maintained command and control (C2) by using proxy tools like FRPC to establish reverse connections and dynamic resolution through 'malware.exe' to communicate with attacker-controlled servers, with DNS queries observed to domains like 'update-server[.]com' that resolved to multiple IP addresses over time.\n\nFor exfiltration, the actors connected to unprotected Wi-Fi networks to send stolen data, including exfiltrating encryption keys over a public WiFi hotspot as part of a simulated ransomware deployment. Network traffic analysis revealed outbound connections on port 443 to IP addresses in foreign jurisdictions, but these were initially dismissed as benign due to lack of context. The campaign's use of multiple exfiltration methods highlights the need for comprehensive network monitoring beyond corporate perimeters.\n\nTechGlobal Inc.'s incident response team eventually contained the threat after a week, but not before sensitive intellectual property was compromised. This scenario underscores the importance of user awareness training, robust credential management, and multi-layered defense strategies.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. On April 15, 2024, a mid-sized technology firm, 'TechGlobal Inc.', reported anomalous network activity traced back to a social media-based initial access vector. TechGlobal Inc., founded in 2010, specializes in cloud infrastructure solutions and employs approximately 500 staff across three offices. Initial logs from their SIEM showed unusual outbound connections to unknown IP addresses, but no immediate alerts were triggered by their legacy antivirus software.\n\nIn the reconnaissance phase, the actors established fake social media accounts [T1585], posing as recruiters on Facebook to gather intelligence on target employees and organizational structure. This persona, 'Sarah Chen - Tech Recruiter', connected with several mid-level engineers over two weeks, sharing job postings that included malicious links. Concurrently, the campaign utilized stolen code signing certificates [T1588.003] to sign malware payloads, allowing them to bypass application whitelisting and evade initial detection mechanisms.\n\nFor initial access, a compromised website displayed a fake 'Java Runtime Error' message, urging users to copy and paste a malicious script into their terminals [T1204.004], which then executed PowerShell commands to download and run the signed malware. The malware, once active, employed GUI input capture [T1056.002] by generating a fake login window to steal credentials, while also performing OS credential dumping [T1003] using Mimikatz's sekurlsa::logonpasswords command to harvest additional credentials from memory. System logs from affected endpoints showed increased CPU usage during these activities, but no correlation was made with the earlier social media interactions.\n\nFor persistence and lateral movement, the actors used the stolen credentials to hijack SSH sessions [T1563.001] by exploiting weak key pairs on laterally connected Linux servers, and they added additional email delegate permissions [T1098.002] in Azure AD through a compromised global administrator account to backdoor a service principal with ApplicationImpersonation rights, enabling email collection from targeted mailboxes. The campaign maintained command and control (C2) by using proxy tools like FRPC [T1090] to establish reverse connections and dynamic resolution [T1568] through 'malware.exe' to communicate with attacker-controlled servers, with DNS queries observed to domains like 'update-server[.]com' that resolved to multiple IP addresses over time.\n\nFor exfiltration, the actors connected to unprotected Wi-Fi networks [T1669] to send stolen data, including exfiltrating encryption keys over a public WiFi hotspot [T1011] as part of a simulated ransomware deployment. Network traffic analysis revealed outbound connections on port 443 to IP addresses in foreign jurisdictions, but these were initially dismissed as benign due to lack of context. The campaign's use of multiple exfiltration methods highlights the need for comprehensive network monitoring beyond corporate perimeters.\n\nTechGlobal Inc.'s incident response team eventually contained the threat after a week, but not before sensitive intellectual property was compromised. This scenario underscores the importance of user awareness training, robust credential management, and multi-layered defense strategies.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the reconnaissance phase, the actors established fake social media accounts, posing as recruiters on Facebook to gather intelligence on target employees and organizational structure.",
+            "technique_id": "T1585",
+            "technique_name": "Establish Accounts"
+        },
+        {
+            "sentence": "002] by generating a fake login window to steal credentials, while also performing OS credential dumping using Mimikatz's sekurlsa::logonpasswords command to harvest additional credentials from memory.",
+            "technique_id": "T1003",
+            "technique_name": "OS Credential Dumping"
+        },
+        {
+            "sentence": "The campaign maintained command and control (C2) by using proxy tools like FRPC to establish reverse connections and dynamic resolution through 'malware.",
+            "technique_id": "T1090",
+            "technique_name": "Proxy"
+        },
+        {
+            "sentence": "The campaign maintained command and control (C2) by using proxy tools like FRPC to establish reverse connections and dynamic resolution through 'malware.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "For exfiltration, the actors connected to unprotected Wi-Fi networks to send stolen data, including exfiltrating encryption keys over a public WiFi hotspot as part of a simulated ransomware deployment.",
+            "technique_id": "T1669",
+            "technique_name": "Wi-Fi Networks"
+        },
+        {
+            "sentence": "For exfiltration, the actors connected to unprotected Wi-Fi networks to send stolen data, including exfiltrating encryption keys over a public WiFi hotspot as part of a simulated ransomware deployment.",
+            "technique_id": "T1011",
+            "technique_name": "Exfiltration Over Other Network Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SILENT RECRUITER'",
+        "summary": "This advisory details a simulated advanced persistent threat (APT) campaign targeting corporate networks through social engineering, credential theft, and data exfiltration. The campaign, attributed to the fictional threat actor group 'SILENT RECRUITER', leverages a multi-stage attack chain involving fake recruitment personas, code-signed malware, and lateral movement via compromised credentials. This report is intended for blue team training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. On April 15, 2024, a mid-sized technology firm, 'TechGlobal Inc.', reported anomalous network activity traced back to a social media-based initial access vector. TechGlobal Inc., founded in 2010, specializes in cloud infrastructure solutions and employs approximately 500 staff across three offices. Initial logs from their SIEM showed unusual outbound connections to unknown IP addresses, but no immediate alerts were triggered by their legacy antivirus software.\n\nIn the reconnaissance phase, the actors established fake social media accounts [T1585], posing as recruiters on Facebook to gather intelligence on target employees and organizational structure. This persona, 'Sarah Chen - Tech Recruiter', connected with several mid-level engineers over two weeks, sharing job postings that included malicious links. Concurrently, the campaign utilized stolen code signing certificates [T1588.003] to sign malware payloads, allowing them to bypass application whitelisting and evade initial detection mechanisms.\n\nFor initial access, a compromised website displayed a fake 'Java Runtime Error' message, urging users to copy and paste a malicious script into their terminals [T1204.004], which then executed PowerShell commands to download and run the signed malware. The malware, once active, employed GUI input capture [T1056.002] by generating a fake login window to steal credentials, while also performing OS credential dumping [T1003] using Mimikatz's sekurlsa::logonpasswords command to harvest additional credentials from memory. System logs from affected endpoints showed increased CPU usage during these activities, but no correlation was made with the earlier social media interactions.\n\nFor persistence and lateral movement, the actors used the stolen credentials to hijack SSH sessions [T1563.001] by exploiting weak key pairs on laterally connected Linux servers, and they added additional email delegate permissions [T1098.002] in Azure AD through a compromised global administrator account to backdoor a service principal with ApplicationImpersonation rights, enabling email collection from targeted mailboxes. The campaign maintained command and control (C2) by using proxy tools like FRPC [T1090] to establish reverse connections and dynamic resolution [T1568] through 'malware.exe' to communicate with attacker-controlled servers, with DNS queries observed to domains like 'update-server[.]com' that resolved to multiple IP addresses over time.\n\nFor exfiltration, the actors connected to unprotected Wi-Fi networks [T1669] to send stolen data, including exfiltrating encryption keys over a public WiFi hotspot [T1011] as part of a simulated ransomware deployment. Network traffic analysis revealed outbound connections on port 443 to IP addresses in foreign jurisdictions, but these were initially dismissed as benign due to lack of context. The campaign's use of multiple exfiltration methods highlights the need for comprehensive network monitoring beyond corporate perimeters.\n\nTechGlobal Inc.'s incident response team eventually contained the threat after a week, but not before sensitive intellectual property was compromised. This scenario underscores the importance of user awareness training, robust credential management, and multi-layered defense strategies.",
+        "techniques_used": [
+            "T1585",
+            "T1588.003",
+            "T1669",
+            "T1204.004",
+            "T1098.002",
+            "T1003",
+            "T1563.001",
+            "T1056.002",
+            "T1090",
+            "T1568",
+            "T1011"
+        ]
+    }
+}

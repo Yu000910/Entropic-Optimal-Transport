@@ -1,0 +1,98 @@
+{
+    "report_id": "report_591",
+    "generated_at": "20251222_165432",
+    "scenario_target_ids": [
+        "T1589.002",
+        "T1195.003",
+        "T1059.001",
+        "T1140",
+        "T1003.002",
+        "T1652",
+        "T1217",
+        "T1560.003",
+        "T1132",
+        "T1567.004",
+        "T1020.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589.002",
+        "T1195.003",
+        "T1059.001",
+        "T1140",
+        "T1003.002",
+        "T1652",
+        "T1217",
+        "T1560.003",
+        "T1132",
+        "T1567.004",
+        "T1020.001"
+    ],
+    "actual_found_ids": [
+        "T1652",
+        "T1567.004",
+        "T1132",
+        "T1003.002",
+        "T1140",
+        "T1217",
+        "T1195.003",
+        "T1589.002",
+        "T1560.003",
+        "T1020.001",
+        "T1059.001"
+    ],
+    "clean_text": "Crimson Serpent, a fictional advanced persistent threat (APT) group, has been observed targeting U.S. financial sectors since early 2024. The actors likely conduct reconnaissance by gathering employee email addresses from public sources and social media platforms. In the initial access phase, they executed spear phishing operations by spoofing existing email threads to deliver malicious attachments, mimicking legitimate internal communications. The attack chain began when a compromised USB-to-Ethernet adapter, modified to perform network reconnaissance upon connection, was distributed through a hardware supply chain compromise. Once connected to a victim's system, the adapter initiated network scanning and data collection, logging activities in system logs such as 'Adapter_Scan_Log_2024-03-15.txt' without triggering immediate alerts.\n\nUpon successful access, the adversary employed PowerShell to actively download and execute malicious scripts from a command-and-control (C2) server while simultaneously decoding obfuscated payloads to evade detection. For instance, a script named 'Update_Module.ps1' was used to retrieve and run encoded commands. In the execution phase, the actors leveraged PowerShell to invoke tools like gsecdump, extracting credentials stored in the Windows Security Account Manager (SAM) and monitoring device drivers through repeated calls to EnumDeviceDrivers() to track changes in the driver environment over time. Concurrently, they conducted browser information discovery by uploading victim browser bookmarks to the C2 server, as seen in logs showing 'Bookmark_Upload_Success' entries.\n\nFor data staging and exfiltration, Crimson Serpent used a custom implementation of AES encryption to archive collected data and encoded exfiltrated information in base64 format before transmitting it. The malicious PowerShell scripts collected system information and sent it to a webhook.site address via exfiltration over webhook, with traffic logs indicating multiple POST requests to 'https://webhook.site/abc123'. Additionally, the threat actor patched the boot image to embed traffic mirroring capabilities, enabling automated data theft through traffic duplication. This allowed them to silently copy network traffic without alerting security systems, as noted in network monitoring logs showing duplicated packets to external IPs. The campaign's sophistication highlights the need for enhanced monitoring of supply chain risks and email security protocols.",
+    "tagged_text": "Crimson Serpent, a fictional advanced persistent threat (APT) group, has been observed targeting U.S. financial sectors since early 2024. The actors likely conduct reconnaissance by gathering employee email addresses [T1589.002] from public sources and social media platforms. In the initial access phase, they executed spear phishing operations by spoofing existing email threads to deliver malicious attachments, mimicking legitimate internal communications. The attack chain began when a compromised USB-to-Ethernet adapter, modified to perform network reconnaissance upon connection, was distributed through a hardware supply chain compromise [T1195.003]. Once connected to a victim's system, the adapter initiated network scanning and data collection, logging activities in system logs such as 'Adapter_Scan_Log_2024-03-15.txt' without triggering immediate alerts.\n\nUpon successful access, the adversary employed PowerShell [T1059.001] to actively download and execute malicious scripts from a command-and-control (C2) server while simultaneously decoding obfuscated payloads [T1140] to evade detection. For instance, a script named 'Update_Module.ps1' was used to retrieve and run encoded commands. In the execution phase, the actors leveraged PowerShell to invoke tools like gsecdump, extracting credentials stored in the Windows Security Account Manager (SAM) [T1003.002] and monitoring device drivers through repeated calls to EnumDeviceDrivers() to track changes in the driver environment over time [T1652]. Concurrently, they conducted browser information discovery by uploading victim browser bookmarks to the C2 server [T1217], as seen in logs showing 'Bookmark_Upload_Success' entries.\n\nFor data staging and exfiltration, Crimson Serpent used a custom implementation of AES encryption to archive collected data [T1560.003] and encoded exfiltrated information in base64 format [T1132] before transmitting it. The malicious PowerShell scripts collected system information and sent it to a webhook.site address via exfiltration over webhook [T1567.004], with traffic logs indicating multiple POST requests to 'https://webhook.site/abc123'. Additionally, the threat actor patched the boot image to embed traffic mirroring capabilities, enabling automated data theft through traffic duplication [T1020.001]. This allowed them to silently copy network traffic without alerting security systems, as noted in network monitoring logs showing duplicated packets to external IPs. The campaign's sophistication highlights the need for enhanced monitoring of supply chain risks and email security protocols.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] to actively download and execute malicious scripts from a command-and-control (C2) server while simultaneously decoding obfuscated payloads to evade detection.",
+            "technique_id": "T1140",
+            "technique_name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+            "sentence": "002] and monitoring device drivers through repeated calls to EnumDeviceDrivers() to track changes in the driver environment over time.",
+            "technique_id": "T1652",
+            "technique_name": "Device Driver Discovery"
+        },
+        {
+            "sentence": "Concurrently, they conducted browser information discovery by uploading victim browser bookmarks to the C2 server, as seen in logs showing 'Bookmark_Upload_Success' entries.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "003] and encoded exfiltrated information in base64 format before transmitting it.",
+            "technique_id": "T1132",
+            "technique_name": "Data Encoding"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional Threat Actor 'Crimson Serpent'",
+        "summary": "This advisory details a simulated cyber campaign by the fictional threat actor 'Crimson Serpent' targeting financial institutions in the United States. Based on intelligence from the Federal Bureau of Investigation (FBI), CISA, and NSA, this report outlines the tactics, techniques, and procedures (TTPs) used in a multi-stage attack involving spear phishing, supply chain compromise, and data exfiltration. The scenario is designed for blue team training to enhance detection and response capabilities against advanced persistent threats.",
+        "full_report_text": "Crimson Serpent, a fictional advanced persistent threat (APT) group, has been observed targeting U.S. financial sectors since early 2024. The actors likely conduct reconnaissance by gathering employee email addresses [T1589.002] from public sources and social media platforms. In the initial access phase, they executed spear phishing operations by spoofing existing email threads to deliver malicious attachments, mimicking legitimate internal communications. The attack chain began when a compromised USB-to-Ethernet adapter, modified to perform network reconnaissance upon connection, was distributed through a hardware supply chain compromise [T1195.003]. Once connected to a victim's system, the adapter initiated network scanning and data collection, logging activities in system logs such as 'Adapter_Scan_Log_2024-03-15.txt' without triggering immediate alerts.\n\nUpon successful access, the adversary employed PowerShell [T1059.001] to actively download and execute malicious scripts from a command-and-control (C2) server while simultaneously decoding obfuscated payloads [T1140] to evade detection. For instance, a script named 'Update_Module.ps1' was used to retrieve and run encoded commands. In the execution phase, the actors leveraged PowerShell to invoke tools like gsecdump, extracting credentials stored in the Windows Security Account Manager (SAM) [T1003.002] and monitoring device drivers through repeated calls to EnumDeviceDrivers() to track changes in the driver environment over time [T1652]. Concurrently, they conducted browser information discovery by uploading victim browser bookmarks to the C2 server [T1217], as seen in logs showing 'Bookmark_Upload_Success' entries.\n\nFor data staging and exfiltration, Crimson Serpent used a custom implementation of AES encryption to archive collected data [T1560.003] and encoded exfiltrated information in base64 format [T1132] before transmitting it. The malicious PowerShell scripts collected system information and sent it to a webhook.site address via exfiltration over webhook [T1567.004], with traffic logs indicating multiple POST requests to 'https://webhook.site/abc123'. Additionally, the threat actor patched the boot image to embed traffic mirroring capabilities, enabling automated data theft through traffic duplication [T1020.001]. This allowed them to silently copy network traffic without alerting security systems, as noted in network monitoring logs showing duplicated packets to external IPs. The campaign's sophistication highlights the need for enhanced monitoring of supply chain risks and email security protocols.",
+        "techniques_used": [
+            "T1589.002",
+            "T1195.003",
+            "T1059.001",
+            "T1140",
+            "T1003.002",
+            "T1652",
+            "T1217",
+            "T1560.003",
+            "T1132",
+            "T1567.004",
+            "T1020.001"
+        ]
+    }
+}

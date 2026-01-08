@@ -1,0 +1,21 @@
+### Background
+Crimson Sandstorm, a simulated APT actor, has been observed targeting organizations in the energy and financial sectors since early 2024. This campaign leverages social engineering and malware to compromise networks, with initial access often gained through compromised legitimate accounts. The following narrative outlines the attack lifecycle based on simulated incident response data.
+
+### Attack Narrative
+**Initial Access:** The actors conducted reconnaissance by creating fake credential capture webpages to compromise existing, legitimate social media accounts [T1586.001] and deployed a fraudulent Office 365 login page to harvest cloud account credentials from targeted users [T1586.003]. Using these harvested credentials, they gained initial access through valid VPN accounts [T1078], while simultaneously sending spearphishing emails with malicious attachments, such as WarzoneRAT disguised as software updates [T1566.001], and executing broader phishing campaigns with ransomware-laden executables [T1566] to lure victims via malicious links [T1204.001].
+
+**Execution:** Upon access, the adversary employed PowerShell to download and execute payloads, masking malware DLLs as dat and jpg files [T1036] and dropping payload.dll into the Windows directory for proxy execution via regsvr32 [T1218.002]. They then compiled malicious.cs on-the-fly to bypass signature-based detection [T1027.004] and examined /proc/self/maps to understand memory structure before attempting injection into processes [T1055.009].
+
+**Persistence and Exfiltration:** To maintain access and exfiltrate data, the actors configured HTRAN on an intermediate system to proxy malicious traffic to the final C2 server [T1090.001], gathered information from USB thumb drives and CD-ROMs based on specific criteria [T1025], and moved data from airgapped networks to Internet-connected systems using removable USB devices [T1052.001].
+
+### Additional Context
+Logs from affected systems show increased network traffic to suspicious IP addresses, but no actual data breaches occurred in this training scenario. The simulated company, 'Global Energy Solutions,' reported anomalous login attempts from unrecognized locations, which were part of the exercise. Blue teams should focus on detecting credential harvesting pages, monitoring for unusual file extensions, and implementing strict USB device policies.
+
+### Mitigation Recommendations
+- Implement multi-factor authentication for all cloud and VPN accounts.
+- Train employees to recognize phishing attempts and avoid clicking on suspicious links.
+- Use endpoint detection and response (EDR) tools to monitor for memory injection and file masquerading.
+- Restrict the use of removable media and monitor for unauthorized data transfers.
+- Regularly update threat intelligence feeds to identify known APT tactics.
+
+This report is fictional and intended solely for educational purposes to enhance cybersecurity preparedness.

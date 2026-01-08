@@ -1,0 +1,118 @@
+{
+    "report_id": "report_256",
+    "generated_at": "20251222_143038",
+    "scenario_target_ids": [
+        "T1595",
+        "T1587",
+        "T1584",
+        "T1650",
+        "T1659",
+        "T1204.003",
+        "T1574.010",
+        "T1546.001",
+        "T1070.006",
+        "T1078.002",
+        "T1110.002",
+        "T1550.002",
+        "T1001.003",
+        "T1567.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1595",
+        "T1587",
+        "T1584",
+        "T1650",
+        "T1659",
+        "T1204.003",
+        "T1574.010",
+        "T1546.001",
+        "T1070.006",
+        "T1078.002",
+        "T1110.002",
+        "T1550.002",
+        "T1001.003",
+        "T1567.004"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1001.003",
+        "T1587",
+        "T1595",
+        "T1574.010",
+        "T1070.006",
+        "T1550.002",
+        "T1659",
+        "T1078.002",
+        "T1546.001",
+        "T1584",
+        "T1110.002",
+        "T1204.003",
+        "T1650"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. ShadowStrike actors likely conducted initial reconnaissance by performing ICMP address mask queries to map the victim's network topology and identify vulnerable endpoints. Following this, they developed a custom keylogger executable named 'KeySnatch.exe' to capture user keystrokes, which was hosted on a compromised DNS server that redirected legitimate traffic to malicious infrastructure. To gain initial access, the attackers placed a web shell in the web root directory and injected malicious JavaScript into HTTP responses to execute cross-site scripting attacks, enabling further exploitation. Once inside, they uploaded a backdoored Amazon Machine Image (AMI) with a compromised SSH key to establish persistent access to cloud instances, while simultaneously using 'icacls' to manipulate service file permissions and assoc.exe to change default file associations for persistence. The malware then employed timestomping techniques to modify file timestamps and obscure forensic evidence, leveraging compromised domain accounts for authentication across the network. To escalate privileges, the actors used password cracking tools to brute force hashes and Mimikatz.exe to perform pass-the-hash attacks, collecting Kerberos tickets and NTLM hashes. For command and control (C2) evasion, they modified URI endpoints with random query parameters to impersonate legitimate protocols, and exfiltrated stolen credentials via HTTP POST requests to webhook endpoints. System logs from the victim's environment showed routine backup activities and user login attempts, though these were unrelated to the attack. The financial institution, 'SecureBank Inc.', reported no actual data loss, but the simulation highlights critical defensive gaps.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. ShadowStrike actors likely conducted initial reconnaissance by performing ICMP address mask queries [T1595] to map the victim's network topology and identify vulnerable endpoints. Following this, they developed a custom keylogger executable named 'KeySnatch.exe' [T1587] to capture user keystrokes, which was hosted on a compromised DNS server [T1584] that redirected legitimate traffic to malicious infrastructure. To gain initial access, the attackers placed a web shell in the web root directory [T1650] and injected malicious JavaScript into HTTP responses [T1659] to execute cross-site scripting attacks, enabling further exploitation. Once inside, they uploaded a backdoored Amazon Machine Image (AMI) with a compromised SSH key [T1204.003] to establish persistent access to cloud instances, while simultaneously using 'icacls' to manipulate service file permissions [T1574.010] and assoc.exe to change default file associations [T1546.001] for persistence. The malware then employed timestomping techniques [T1070.006] to modify file timestamps and obscure forensic evidence, leveraging compromised domain accounts [T1078.002] for authentication across the network. To escalate privileges, the actors used password cracking tools [T1110.002] to brute force hashes and Mimikatz.exe to perform pass-the-hash attacks [T1550.002], collecting Kerberos tickets and NTLM hashes. For command and control (C2) evasion, they modified URI endpoints with random query parameters [T1001.003] to impersonate legitimate protocols, and exfiltrated stolen credentials via HTTP POST requests to webhook endpoints [T1567.004]. System logs from the victim's environment showed routine backup activities and user login attempts, though these were unrelated to the attack. The financial institution, 'SecureBank Inc.', reported no actual data loss, but the simulation highlights critical defensive gaps.",
+    "sentence_annotations": [
+        {
+            "sentence": "ShadowStrike actors likely conducted initial reconnaissance by performing ICMP address mask queries to map the victim's network topology and identify vulnerable endpoints.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "exe' to capture user keystrokes, which was hosted on a compromised DNS server that redirected legitimate traffic to malicious infrastructure.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "exe' to capture user keystrokes, which was hosted on a compromised DNS server that redirected legitimate traffic to malicious infrastructure.",
+            "technique_id": "T1584",
+            "technique_name": "Compromise Infrastructure"
+        },
+        {
+            "sentence": "To gain initial access, the attackers placed a web shell in the web root directory and injected malicious JavaScript into HTTP responses to execute cross-site scripting attacks, enabling further exploitation.",
+            "technique_id": "T1650",
+            "technique_name": "Acquire Access"
+        },
+        {
+            "sentence": "To gain initial access, the attackers placed a web shell in the web root directory and injected malicious JavaScript into HTTP responses to execute cross-site scripting attacks, enabling further exploitation.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowStrike' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowStrike', targeting financial institutions to exfiltrate sensitive data and establish persistent access. The campaign employs a multi-stage attack leveraging compromised infrastructure, custom malware, and credential theft techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with training on a fictional APT campaign. ShadowStrike actors likely conducted initial reconnaissance by performing ICMP address mask queries [T1595] to map the victim's network topology and identify vulnerable endpoints. Following this, they developed a custom keylogger executable named 'KeySnatch.exe' [T1587] to capture user keystrokes, which was hosted on a compromised DNS server [T1584] that redirected legitimate traffic to malicious infrastructure. To gain initial access, the attackers placed a web shell in the web root directory [T1650] and injected malicious JavaScript into HTTP responses [T1659] to execute cross-site scripting attacks, enabling further exploitation. Once inside, they uploaded a backdoored Amazon Machine Image (AMI) with a compromised SSH key [T1204.003] to establish persistent access to cloud instances, while simultaneously using 'icacls' to manipulate service file permissions [T1574.010] and assoc.exe to change default file associations [T1546.001] for persistence. The malware then employed timestomping techniques [T1070.006] to modify file timestamps and obscure forensic evidence, leveraging compromised domain accounts [T1078.002] for authentication across the network. To escalate privileges, the actors used password cracking tools [T1110.002] to brute force hashes and Mimikatz.exe to perform pass-the-hash attacks [T1550.002], collecting Kerberos tickets and NTLM hashes. For command and control (C2) evasion, they modified URI endpoints with random query parameters [T1001.003] to impersonate legitimate protocols, and exfiltrated stolen credentials via HTTP POST requests to webhook endpoints [T1567.004]. System logs from the victim's environment showed routine backup activities and user login attempts, though these were unrelated to the attack. The financial institution, 'SecureBank Inc.', reported no actual data loss, but the simulation highlights critical defensive gaps.",
+        "techniques_used": [
+            "T1595",
+            "T1587",
+            "T1584",
+            "T1650",
+            "T1659",
+            "T1204.003",
+            "T1574.010",
+            "T1546.001",
+            "T1070.006",
+            "T1078.002",
+            "T1110.002",
+            "T1550.002",
+            "T1001.003",
+            "T1567.004"
+        ]
+    }
+}

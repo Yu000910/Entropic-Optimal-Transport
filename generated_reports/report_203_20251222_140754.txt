@@ -1,0 +1,12 @@
+**Background:** The target, a mid-sized financial services firm 'SecureCorp Inc.,' reported anomalous network traffic and unauthorized access attempts over a two-week period in October 2024. Initial analysis revealed no prior breaches, but system logs showed increased failed login attempts from unknown IPs. SecureCorp uses Microsoft Exchange for email and has a hybrid cloud infrastructure with on-premises Active Directory.
+
+**Kill-Chain Analysis:**
+1. **Reconnaissance:** The actors likely conducted reconnaissance by querying open technical databases [T1596] using large language models to refine scripts, while simultaneously searching engines [T1593.002] with specific syntax like 'inurl:login SecureCorp' to identify authentication portals and querying threat intelligence vendors [T1597.001] to assess email security defenses.
+2. **Weaponization:** For initial access, the adversary deployed malvertising [T1583.008] through compromised ad networks, delivering malicious archive files hosted on Discord, and uploaded tools [T1608.002] to their infrastructure for direct download onto compromised systems.
+3. **Delivery:** The campaign utilized spearphishing via service [T1566.003] by sharing malicious Google Drive links through WhatsApp groups targeting corporate users, leading to the execution of payloads.
+4. **Exploitation:** Upon compromise, the actors leveraged domain accounts [T1078.002] to move laterally within the network and exploited XPC services [T1559.003] with weak input validation to escalate privileges on macOS systems.
+5. **Installation:** Persistence was established by loading malicious IIS components [T1505.004] disguised as ISAPI filters on Exchange servers, which were executed by the w3wp.exe process.
+6. **Command and Control (C2):** The malware employed non-application layer protocols [T1095] for C2 communications over TCP, while RDP hijacking [T1563.002] was used to enumerate and execute commands on active remote desktop sessions.
+7. **Actions on Objectives:** Data exfiltration involved compressing collected information with bzip2 via archive libraries [T1560.002] before transmission to C2 servers.
+
+**Additional Context:** System logs from SecureCorp showed routine backup activities and false positives from antivirus scans unrelated to this campaign. The company's incident response team noted no impact on customer data during initial assessment, but further investigation is ongoing.

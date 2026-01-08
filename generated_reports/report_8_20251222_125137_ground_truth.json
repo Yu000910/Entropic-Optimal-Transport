@@ -1,0 +1,63 @@
+{
+    "report_id": "report_8",
+    "generated_at": "20251222_125137",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1053.006",
+        "T1205",
+        "T1546",
+        "T1070.005",
+        "T1205.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1053.006",
+        "T1205",
+        "T1546",
+        "T1070.005",
+        "T1205.001"
+    ],
+    "actual_found_ids": [
+        "T1053.006",
+        "T1566.001",
+        "T1546",
+        "T1205",
+        "T1070.005",
+        "T1205.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional threat actor 'ShadowHook'. This actor has been observed targeting U.S. energy companies since early 2024, with a focus on operational technology networks. Background analysis indicates that ShadowHook leverages open-source intelligence (OSINT) to identify key personnel, though no specific techniques are tagged here as this is preparatory activity. In one incident at a fictional utility company, 'PowerGrid Inc.', system logs from the email server showed an anomalous spike in traffic on March 15, 2024, which was later attributed to malicious activity.\n\nThe initial access vector involved spearphishing emails that mimicked legitimate vendor communications, containing malicious attachments disguised as invoice documents. Upon execution, the payload leveraged PowerShell to schedule malicious tasks via Systemd timers while simultaneously establishing persistence through event-triggered execution by installing a rogue service. The actor then employed traffic signaling using raw sockets to craft custom packets, which triggered port knocking via libpcap libraries to open hidden backdoor ports for command and control. To cover their tracks, the adversary issued commands to remove network share connections and deleted temporary files, though the latter is not tagged as it is part of general cleanup. Additional logs from PowerGrid Inc.'s firewall indicated unusual outbound traffic to IP addresses in Eastern Europe, but this was not immediately flagged due to encrypted protocols.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional threat actor 'ShadowHook'. This actor has been observed targeting U.S. energy companies since early 2024, with a focus on operational technology networks. Background analysis indicates that ShadowHook leverages open-source intelligence (OSINT) to identify key personnel, though no specific techniques are tagged here as this is preparatory activity. In one incident at a fictional utility company, 'PowerGrid Inc.', system logs from the email server showed an anomalous spike in traffic on March 15, 2024, which was later attributed to malicious activity.\n\nThe initial access vector involved spearphishing emails [T1566.001] that mimicked legitimate vendor communications, containing malicious attachments disguised as invoice documents. Upon execution, the payload leveraged PowerShell to schedule malicious tasks via Systemd timers [T1053.006] while simultaneously establishing persistence through event-triggered execution by installing a rogue service [T1546]. The actor then employed traffic signaling [T1205] using raw sockets to craft custom packets, which triggered port knocking [T1205.001] via libpcap libraries to open hidden backdoor ports for command and control. To cover their tracks, the adversary issued commands to remove network share connections [T1070.005] and deleted temporary files, though the latter is not tagged as it is part of general cleanup. Additional logs from PowerGrid Inc.'s firewall indicated unusual outbound traffic to IP addresses in Eastern Europe, but this was not immediately flagged due to encrypted protocols.",
+    "sentence_annotations": [
+        {
+            "sentence": "006] while simultaneously establishing persistence through event-triggered execution by installing a rogue service.",
+            "technique_id": "T1546",
+            "technique_name": "Event Triggered Execution"
+        },
+        {
+            "sentence": "The actor then employed traffic signaling using raw sockets to craft custom packets, which triggered port knocking [T1205.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated 'ShadowHook', targeting energy sector organizations. The campaign employs sophisticated techniques to establish persistence, evade detection, and exfiltrate sensitive data, based on observed tactics from real-world groups like Gamaredon. Blue teams should use this report for training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide actionable intelligence on the fictional threat actor 'ShadowHook'. This actor has been observed targeting U.S. energy companies since early 2024, with a focus on operational technology networks. Background analysis indicates that ShadowHook leverages open-source intelligence (OSINT) to identify key personnel, though no specific techniques are tagged here as this is preparatory activity. In one incident at a fictional utility company, 'PowerGrid Inc.', system logs from the email server showed an anomalous spike in traffic on March 15, 2024, which was later attributed to malicious activity.\n\nThe initial access vector involved spearphishing emails [T1566.001] that mimicked legitimate vendor communications, containing malicious attachments disguised as invoice documents. Upon execution, the payload leveraged PowerShell to schedule malicious tasks via Systemd timers [T1053.006] while simultaneously establishing persistence through event-triggered execution by installing a rogue service [T1546]. The actor then employed traffic signaling [T1205] using raw sockets to craft custom packets, which triggered port knocking [T1205.001] via libpcap libraries to open hidden backdoor ports for command and control. To cover their tracks, the adversary issued commands to remove network share connections [T1070.005] and deleted temporary files, though the latter is not tagged as it is part of general cleanup. Additional logs from PowerGrid Inc.'s firewall indicated unusual outbound traffic to IP addresses in Eastern Europe, but this was not immediately flagged due to encrypted protocols.",
+        "techniques_used": [
+            "T1566.001",
+            "T1053.006",
+            "T1205",
+            "T1546",
+            "T1070.005",
+            "T1205.001"
+        ]
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "report_id": "report_635",
+    "generated_at": "20251222_171219",
+    "scenario_target_ids": [
+        "T1195.001",
+        "T1059.002",
+        "T1129",
+        "T1574.010",
+        "T1505.003",
+        "T1056.003",
+        "T1132.001",
+        "T1048.003",
+        "T1537"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1195.001",
+        "T1059.002",
+        "T1129",
+        "T1574.010",
+        "T1505.003",
+        "T1056.003",
+        "T1132.001",
+        "T1048.003",
+        "T1537"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1574.010",
+        "T1195.001",
+        "T1589",
+        "T1132.001",
+        "T1056.003",
+        "T1048.003",
+        "T1505.003",
+        "T1059.002",
+        "T1537"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of APT activity based on the 'ShadowMimic' campaign. This report is intended for training purposes to help blue teams recognize and mitigate complex attack vectors in a controlled scenario.\n\nBackground: The fictional victim organization, 'GlobalTech Solutions', is a mid-sized software development company with offices in North America and Europe, operating both macOS and Windows systems. Initial detection occurred on April 15, 2024, when anomalous network traffic was flagged by an IDS, but no actual breach has occurred; this narrative is purely for exercise.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance to identify software dependencies used by GlobalTech Solutions. They then compromised a third-party update server, injecting malicious code into an update.ps1 script to steal browser cookies and session data during routine software updates.\n- Execution: On compromised macOS systems, the adversary employed AppleScript via osascript calls in a Launch Agent .plist file to execute shell commands, while simultaneously using dlopen to load a shared object containing backdoor functionality on Linux-based development servers.\n- Persistence: To maintain access, the malware manipulated file permissions using icacls to change ownership of a critical service file, enabling its replacement with a malicious version, and deployed the SEASHARPEE web shell on an internal web server for remote control.\n- Collection: The actors set up spoofed government email logon sites to capture credentials through web portal capture, and used Base64 encoding to obfuscate command and control (C2) traffic while exfiltrating data over unencrypted HTTP posts to a web server.\n- Exfiltration: Stolen data, including confidential financial records, was transferred to an attacker-owned Dropbox account using the Dropbox API, with additional logs showing failed attempts to sync via other cloud services that were blocked by network policies.\n\nIrrelevant Information: GlobalTech Solutions reported increased CPU usage on several development machines, but this was later attributed to a scheduled backup process. The company's firewall logs from March 2024 show routine traffic to legitimate software repositories, with no indicators of compromise at that time. A security audit in February 2024 highlighted weak password policies, but this issue was unrelated to the simulated attack.\n\nMitigation Recommendations: For training purposes, blue teams should monitor for unusual update scripts, review service file permissions, inspect web server logs for anomalous activity, and implement network segmentation to limit cloud service access. This scenario emphasizes the importance of multi-platform defense strategies and supply chain security.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of APT activity based on the 'ShadowMimic' campaign. This report is intended for training purposes to help blue teams recognize and mitigate complex attack vectors in a controlled scenario.\n\nBackground: The fictional victim organization, 'GlobalTech Solutions', is a mid-sized software development company with offices in North America and Europe, operating both macOS and Windows systems. Initial detection occurred on April 15, 2024, when anomalous network traffic was flagged by an IDS, but no actual breach has occurred; this narrative is purely for exercise.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify software dependencies used by GlobalTech Solutions. They then compromised a third-party update server, injecting malicious code into an update.ps1 script to steal browser cookies and session data during routine software updates [T1195.001].\n- Execution: On compromised macOS systems, the adversary employed AppleScript [T1059.002] via osascript calls in a Launch Agent .plist file to execute shell commands, while simultaneously using dlopen to load a shared object containing backdoor functionality [T1129] on Linux-based development servers.\n- Persistence: To maintain access, the malware manipulated file permissions using icacls to change ownership of a critical service file, enabling its replacement with a malicious version [T1574.010], and deployed the SEASHARPEE web shell [T1505.003] on an internal web server for remote control.\n- Collection: The actors set up spoofed government email logon sites to capture credentials through web portal capture [T1056.003], and used Base64 encoding [T1132.001] to obfuscate command and control (C2) traffic while exfiltrating data over unencrypted HTTP posts to a web server [T1048.003].\n- Exfiltration: Stolen data, including confidential financial records, was transferred to an attacker-owned Dropbox account using the Dropbox API [T1537], with additional logs showing failed attempts to sync via other cloud services that were blocked by network policies.\n\nIrrelevant Information: GlobalTech Solutions reported increased CPU usage on several development machines, but this was later attributed to a scheduled backup process. The company's firewall logs from March 2024 show routine traffic to legitimate software repositories, with no indicators of compromise at that time. A security audit in February 2024 highlighted weak password policies, but this issue was unrelated to the simulated attack.\n\nMitigation Recommendations: For training purposes, blue teams should monitor for unusual update scripts, review service file permissions, inspect web server logs for anomalous activity, and implement network segmentation to limit cloud service access. This scenario emphasizes the importance of multi-platform defense strategies and supply chain security.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance to identify software dependencies used by GlobalTech Solutions.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "plist file to execute shell commands, while simultaneously using dlopen to load a shared object containing backdoor functionality on Linux-based development servers.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        },
+        {
+            "sentence": "- Exfiltration: Stolen data, including confidential financial records, was transferred to an attacker-owned Dropbox account using the Dropbox API, with additional logs showing failed attempts to sync via other cloud services that were blocked by network policies.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Cross-Platform Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowMimic', targeting organizations with mixed macOS and Windows environments. The campaign involves supply chain compromise, persistence mechanisms, data theft, and exfiltration via cloud services, designed for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide a fictional, educational overview of APT activity based on the 'ShadowMimic' campaign. This report is intended for training purposes to help blue teams recognize and mitigate complex attack vectors in a controlled scenario.\n\nBackground: The fictional victim organization, 'GlobalTech Solutions', is a mid-sized software development company with offices in North America and Europe, operating both macOS and Windows systems. Initial detection occurred on April 15, 2024, when anomalous network traffic was flagged by an IDS, but no actual breach has occurred; this narrative is purely for exercise.\n\nAttack Narrative (Kill-Chain Structure):\n- Initial Access: The actors likely conducted reconnaissance [T1589] to identify software dependencies used by GlobalTech Solutions. They then compromised a third-party update server, injecting malicious code into an update.ps1 script to steal browser cookies and session data during routine software updates [T1195.001].\n- Execution: On compromised macOS systems, the adversary employed AppleScript [T1059.002] via osascript calls in a Launch Agent .plist file to execute shell commands, while simultaneously using dlopen to load a shared object containing backdoor functionality [T1129] on Linux-based development servers.\n- Persistence: To maintain access, the malware manipulated file permissions using icacls to change ownership of a critical service file, enabling its replacement with a malicious version [T1574.010], and deployed the SEASHARPEE web shell [T1505.003] on an internal web server for remote control.\n- Collection: The actors set up spoofed government email logon sites to capture credentials through web portal capture [T1056.003], and used Base64 encoding [T1132.001] to obfuscate command and control (C2) traffic while exfiltrating data over unencrypted HTTP posts to a web server [T1048.003].\n- Exfiltration: Stolen data, including confidential financial records, was transferred to an attacker-owned Dropbox account using the Dropbox API [T1537], with additional logs showing failed attempts to sync via other cloud services that were blocked by network policies.\n\nIrrelevant Information: GlobalTech Solutions reported increased CPU usage on several development machines, but this was later attributed to a scheduled backup process. The company's firewall logs from March 2024 show routine traffic to legitimate software repositories, with no indicators of compromise at that time. A security audit in February 2024 highlighted weak password policies, but this issue was unrelated to the simulated attack.\n\nMitigation Recommendations: For training purposes, blue teams should monitor for unusual update scripts, review service file permissions, inspect web server logs for anomalous activity, and implement network segmentation to limit cloud service access. This scenario emphasizes the importance of multi-platform defense strategies and supply chain security.",
+        "techniques_used": [
+            "T1589",
+            "T1195.001",
+            "T1059.002",
+            "T1129",
+            "T1574.010",
+            "T1505.003",
+            "T1056.003",
+            "T1132.001",
+            "T1048.003",
+            "T1537"
+        ]
+    }
+}

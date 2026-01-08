@@ -1,0 +1,116 @@
+{
+    "report_id": "report_344",
+    "generated_at": "20251222_150714",
+    "scenario_target_ids": [
+        "T1091",
+        "T1059.011",
+        "T1059.010",
+        "T1137.006",
+        "T1556.005",
+        "T1558",
+        "T1046",
+        "T1040",
+        "T1557.004",
+        "T1568.003",
+        "T1041",
+        "T1496.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1091",
+        "T1059.011",
+        "T1059.010",
+        "T1137.006",
+        "T1556.005",
+        "T1558",
+        "T1046",
+        "T1040",
+        "T1557.004",
+        "T1568.003",
+        "T1041",
+        "T1496.004"
+    ],
+    "actual_found_ids": [
+        "T1046",
+        "T1059.011",
+        "T1589",
+        "T1091",
+        "T1558",
+        "T1059.010",
+        "T1556.005",
+        "T1040",
+        "T1137.006",
+        "T1568.003",
+        "T1041",
+        "T1496.004",
+        "T1557.004"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. The actors likely conducted reconnaissance through open-source intelligence gathering, though no specific logs were identified. Initial access was achieved when an employee inserted a USB drive, where the Autorun.inf file was altered to execute malware.exe automatically. Upon execution, the malware employed a legitimate Lua script to create a scheduled task for persistence while simultaneously using AutoHotKey to establish a reverse shell connection to the command and control server. System logs from the infected workstation showed unusual process activity at 03:14 UTC. For further persistence, the adversary abused the Microsoft Word Startup folder by placing a malicious WLL file, which triggered upon application launch. The threat actor then leveraged a script to access the G$RADIUSCHAP shared secret, obtaining plaintext authentication credentials through reversible encryption and executed klist to enumerate available Kerberos service tickets in memory. Network discovery followed, with DarkVishnya performing port scanning to identify active services and using Impacket to sniff network traffic via a raw socket. Additionally, the attacker deployed a Wi-Fi Pineapple to intercept unencrypted HTTP traffic from connected devices through an evil twin attack. To bypass network egress filters, the malware queried TXT records via DNS tunneling, and exfiltrated screenshot files over the established C2 channel. Finally, malicious scripts leveraged AWS SNS to broadcast millions of notifications, consuming resources and degrading cloud service performance in a hijacking attempt. Incident responders noted anomalous DNS queries in firewall logs but no immediate impact on core banking systems.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. The actors likely conducted reconnaissance through open-source intelligence gathering [T1589], though no specific logs were identified. Initial access was achieved when an employee inserted a USB drive, where the Autorun.inf file was altered to execute malware.exe automatically [T1091]. Upon execution, the malware employed a legitimate Lua script [T1059.011] to create a scheduled task for persistence while simultaneously using AutoHotKey [T1059.010] to establish a reverse shell connection to the command and control server. System logs from the infected workstation showed unusual process activity at 03:14 UTC. For further persistence, the adversary abused the Microsoft Word Startup folder by placing a malicious WLL file [T1137.006], which triggered upon application launch. The threat actor then leveraged a script to access the G$RADIUSCHAP shared secret, obtaining plaintext authentication credentials through reversible encryption [T1556.005] and executed klist to enumerate available Kerberos service tickets in memory [T1558]. Network discovery followed, with DarkVishnya performing port scanning to identify active services [T1046] and using Impacket to sniff network traffic via a raw socket [T1040]. Additionally, the attacker deployed a Wi-Fi Pineapple to intercept unencrypted HTTP traffic from connected devices through an evil twin attack [T1557.004]. To bypass network egress filters, the malware queried TXT records via DNS tunneling [T1568.003], and exfiltrated screenshot files over the established C2 channel [T1041]. Finally, malicious scripts leveraged AWS SNS to broadcast millions of notifications, consuming resources and degrading cloud service performance in a hijacking attempt [T1496.004]. Incident responders noted anomalous DNS queries in firewall logs but no immediate impact on core banking systems.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance through open-source intelligence gathering, though no specific logs were identified.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "exe automatically.",
+            "technique_id": "T1091",
+            "technique_name": "Replication Through Removable Media"
+        },
+        {
+            "sentence": "005] and executed klist to enumerate available Kerberos service tickets in memory.",
+            "technique_id": "T1558",
+            "technique_name": "Steal or Forge Kerberos Tickets"
+        },
+        {
+            "sentence": "Network discovery followed, with DarkVishnya performing port scanning to identify active services and using Impacket to sniff network traffic via a raw socket.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "Network discovery followed, with DarkVishnya performing port scanning to identify active services and using Impacket to sniff network traffic via a raw socket.",
+            "technique_id": "T1040",
+            "technique_name": "Network Sniffing"
+        },
+        {
+            "sentence": "003], and exfiltrated screenshot files over the established C2 channel.",
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowReaper' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowReaper', targeting financial institutions through a multi-stage attack involving removable media, scripting abuse, and network exploitation for credential theft and data exfiltration.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign. The actors likely conducted reconnaissance through open-source intelligence gathering [T1589], though no specific logs were identified. Initial access was achieved when an employee inserted a USB drive, where the Autorun.inf file was altered to execute malware.exe automatically [T1091]. Upon execution, the malware employed a legitimate Lua script [T1059.011] to create a scheduled task for persistence while simultaneously using AutoHotKey [T1059.010] to establish a reverse shell connection to the command and control server. System logs from the infected workstation showed unusual process activity at 03:14 UTC. For further persistence, the adversary abused the Microsoft Word Startup folder by placing a malicious WLL file [T1137.006], which triggered upon application launch. The threat actor then leveraged a script to access the G$RADIUSCHAP shared secret, obtaining plaintext authentication credentials through reversible encryption [T1556.005] and executed klist to enumerate available Kerberos service tickets in memory [T1558]. Network discovery followed, with DarkVishnya performing port scanning to identify active services [T1046] and using Impacket to sniff network traffic via a raw socket [T1040]. Additionally, the attacker deployed a Wi-Fi Pineapple to intercept unencrypted HTTP traffic from connected devices through an evil twin attack [T1557.004]. To bypass network egress filters, the malware queried TXT records via DNS tunneling [T1568.003], and exfiltrated screenshot files over the established C2 channel [T1041]. Finally, malicious scripts leveraged AWS SNS to broadcast millions of notifications, consuming resources and degrading cloud service performance in a hijacking attempt [T1496.004]. Incident responders noted anomalous DNS queries in firewall logs but no immediate impact on core banking systems.",
+        "techniques_used": [
+            "T1589",
+            "T1091",
+            "T1059.011",
+            "T1059.010",
+            "T1137.006",
+            "T1556.005",
+            "T1558",
+            "T1046",
+            "T1040",
+            "T1557.004",
+            "T1568.003",
+            "T1041",
+            "T1496.004"
+        ]
+    }
+}

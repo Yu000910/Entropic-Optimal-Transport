@@ -1,0 +1,118 @@
+{
+    "report_id": "report_637",
+    "generated_at": "20251222_171300",
+    "scenario_target_ids": [
+        "T1195.002",
+        "T1559",
+        "T1037",
+        "T1555.003",
+        "T1528",
+        "T1007",
+        "T1518.001",
+        "T1082",
+        "T1530",
+        "T1219",
+        "T1489"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.002",
+        "T1559",
+        "T1037",
+        "T1555.003",
+        "T1528",
+        "T1007",
+        "T1518.001",
+        "T1082",
+        "T1530",
+        "T1219",
+        "T1489"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1530",
+        "T1528",
+        "T1489",
+        "T1518.001",
+        "T1559",
+        "T1082",
+        "T1007",
+        "T1219",
+        "T1037",
+        "T1555.003"
+    ],
+    "clean_text": "On June 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a coordinated cyber campaign attributed to the fictional APT group 'ShadowSupply'. The actors targeted a software distribution server used by several mid-sized technology firms, replacing a legitimate compiled binary with a trojanized version containing backdoor functionality. Upon execution by unsuspecting users, the malicious payload, identified as 'RotaJakiro', initiated inter-process communication using the shmget API to create shared memory between other RotaJakiro processes, allowing them to share their PID and coordinate activities. System logs from victim environments showed anomalous process creation events at boot time, correlating with the adversary writing a malicious batch file to the system's Run registry key to establish persistence. The backdoor then executed discovery commands, including retrieving a list of services on the infected host and enumerating logical drives to map the system's storage layout, while also identifying installed anti-virus products to evade detection. Concurrently, RotaJakiro leveraged its access to steal credentials from common web browsers such as Google Chrome and Firefox and exploited container escape vulnerabilities to copy service account tokens from the host system for privilege escalation. In later stages, the actors used remote access tools like AnyDesk to maintain control over compromised systems and executed malicious scripts to collect sensitive data from an exposed Amazon S3 bucket containing customer financial records. As part of their operational security, the group employed PowerShell commands to disconnect network adapters on select hosts, disrupting monitoring efforts. Background investigation revealed that the targeted firms had recently updated their software from the compromised server, but no prior incidents were reported in their security logs. This campaign underscores the need for robust supply chain verification and endpoint monitoring.",
+    "tagged_text": "On June 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a coordinated cyber campaign attributed to the fictional APT group 'ShadowSupply'. The actors targeted a software distribution server used by several mid-sized technology firms, replacing a legitimate compiled binary with a trojanized version containing backdoor functionality [T1195.002]. Upon execution by unsuspecting users, the malicious payload, identified as 'RotaJakiro', initiated inter-process communication using the shmget API to create shared memory between other RotaJakiro processes, allowing them to share their PID and coordinate activities [T1559]. System logs from victim environments showed anomalous process creation events at boot time, correlating with the adversary writing a malicious batch file to the system's Run registry key to establish persistence [T1037]. The backdoor then executed discovery commands, including retrieving a list of services on the infected host [T1007] and enumerating logical drives to map the system's storage layout [T1082], while also identifying installed anti-virus products to evade detection [T1518.001]. Concurrently, RotaJakiro leveraged its access to steal credentials from common web browsers such as Google Chrome and Firefox [T1555.003] and exploited container escape vulnerabilities to copy service account tokens from the host system for privilege escalation [T1528]. In later stages, the actors used remote access tools like AnyDesk to maintain control over compromised systems [T1219] and executed malicious scripts to collect sensitive data from an exposed Amazon S3 bucket containing customer financial records [T1530]. As part of their operational security, the group employed PowerShell commands to disconnect network adapters on select hosts, disrupting monitoring efforts [T1489]. Background investigation revealed that the targeted firms had recently updated their software from the compromised server, but no prior incidents were reported in their security logs. This campaign underscores the need for robust supply chain verification and endpoint monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "Upon execution by unsuspecting users, the malicious payload, identified as 'RotaJakiro', initiated inter-process communication using the shmget API to create shared memory between other RotaJakiro processes, allowing them to share their PID and coordinate activities.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "System logs from victim environments showed anomalous process creation events at boot time, correlating with the adversary writing a malicious batch file to the system's Run registry key to establish persistence.",
+            "technique_id": "T1037",
+            "technique_name": "Boot or Logon Initialization Scripts"
+        },
+        {
+            "sentence": "The backdoor then executed discovery commands, including retrieving a list of services on the infected host and enumerating logical drives to map the system's storage layout, while also identifying installed anti-virus products to evade detection [T1518.",
+            "technique_id": "T1007",
+            "technique_name": "System Service Discovery"
+        },
+        {
+            "sentence": "The backdoor then executed discovery commands, including retrieving a list of services on the infected host and enumerating logical drives to map the system's storage layout, while also identifying installed anti-virus products to evade detection [T1518.",
+            "technique_id": "T1082",
+            "technique_name": "System Information Discovery"
+        },
+        {
+            "sentence": "003] and exploited container escape vulnerabilities to copy service account tokens from the host system for privilege escalation.",
+            "technique_id": "T1528",
+            "technique_name": "Steal Application Access Token"
+        },
+        {
+            "sentence": "In later stages, the actors used remote access tools like AnyDesk to maintain control over compromised systems and executed malicious scripts to collect sensitive data from an exposed Amazon S3 bucket containing customer financial records.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        },
+        {
+            "sentence": "In later stages, the actors used remote access tools like AnyDesk to maintain control over compromised systems and executed malicious scripts to collect sensitive data from an exposed Amazon S3 bucket containing customer financial records.",
+            "technique_id": "T1530",
+            "technique_name": "Data from Cloud Storage"
+        },
+        {
+            "sentence": "As part of their operational security, the group employed PowerShell commands to disconnect network adapters on select hosts, disrupting monitoring efforts.",
+            "technique_id": "T1489",
+            "technique_name": "Service Stop"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowSupply' Targeting Software Distribution",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowSupply', which compromised a software supply chain to deploy a backdoor named 'RotaJakiro' across multiple organizations. The campaign involved initial access through trojanized binaries, persistence via registry modifications, credential theft from web browsers and cloud storage, and extensive discovery activities to facilitate lateral movement and data exfiltration. Blue teams should review this report for training on identifying and mitigating such multi-stage attacks.",
+        "full_report_text": "On June 15, 2024, the Federal Bureau of Investigation (FBI), CISA, and NSA identified a coordinated cyber campaign attributed to the fictional APT group 'ShadowSupply'. The actors targeted a software distribution server used by several mid-sized technology firms, replacing a legitimate compiled binary with a trojanized version containing backdoor functionality [T1195.002]. Upon execution by unsuspecting users, the malicious payload, identified as 'RotaJakiro', initiated inter-process communication using the shmget API to create shared memory between other RotaJakiro processes, allowing them to share their PID and coordinate activities [T1559]. System logs from victim environments showed anomalous process creation events at boot time, correlating with the adversary writing a malicious batch file to the system's Run registry key to establish persistence [T1037]. The backdoor then executed discovery commands, including retrieving a list of services on the infected host [T1007] and enumerating logical drives to map the system's storage layout [T1082], while also identifying installed anti-virus products to evade detection [T1518.001]. Concurrently, RotaJakiro leveraged its access to steal credentials from common web browsers such as Google Chrome and Firefox [T1555.003] and exploited container escape vulnerabilities to copy service account tokens from the host system for privilege escalation [T1528]. In later stages, the actors used remote access tools like AnyDesk to maintain control over compromised systems [T1219] and executed malicious scripts to collect sensitive data from an exposed Amazon S3 bucket containing customer financial records [T1530]. As part of their operational security, the group employed PowerShell commands to disconnect network adapters on select hosts, disrupting monitoring efforts [T1489]. Background investigation revealed that the targeted firms had recently updated their software from the compromised server, but no prior incidents were reported in their security logs. This campaign underscores the need for robust supply chain verification and endpoint monitoring.",
+        "techniques_used": [
+            "T1195.002",
+            "T1559",
+            "T1037",
+            "T1555.003",
+            "T1528",
+            "T1007",
+            "T1518.001",
+            "T1082",
+            "T1530",
+            "T1219",
+            "T1489"
+        ]
+    }
+}

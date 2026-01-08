@@ -1,0 +1,83 @@
+{
+    "report_id": "report_307",
+    "generated_at": "20251222_145144",
+    "scenario_target_ids": [
+        "T1583.002",
+        "T1584.007",
+        "T1583",
+        "T1195",
+        "T1053.005",
+        "T1574.014",
+        "T1003.006",
+        "T1219",
+        "T1485.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "credential-access",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1583",
+        "T1583.002",
+        "T1195",
+        "T1053.005",
+        "T1574.014",
+        "T1584.007",
+        "T1003.006",
+        "T1219",
+        "T1485.001"
+    ],
+    "actual_found_ids": [
+        "T1583",
+        "T1003.006",
+        "T1195",
+        "T1583.002",
+        "T1584.007",
+        "T1574.014",
+        "T1485.001",
+        "T1219",
+        "T1053.005"
+    ],
+    "clean_text": "Crimson Shadow, a cybercriminal group active since early 2023, has been observed conducting reconnaissance against financial institutions, with recent incidents involving anomalous DNS queries logged at 14:32 UTC on April 15, 2024, from internal IP 192.168.1.105. The actors likely acquire infrastructure by utilizing cloud-based virtual private servers (VPS) to host malware distribution points while maintaining anonymity, and they configure a Windows DNS server role to handle their command and control (C2) communications, redirecting traffic through a malicious domain, 'update-secure[.]com'. Initial access was achieved through a supply chain compromise, where a malicious dependency was injected into the project's package.json file during the build process of a widely used open-source library, leading to execution upon installation. Once inside the network, the adversary employed PowerShell to create a scheduled task that runs at system startup for persistence, while simultaneously using living-off-the-land scripts to execute a malicious payload. For further execution and evasion, they replaced the legitimate AppDomainManager with a malicious one to achieve arbitrary code execution within .NET applications, and they used AWS Lambda to create a serverless redirect service for stolen credentials, exfiltrating data via encrypted HTTPS connections. To escalate privileges and move laterally, Mimikatz's lsadump module was executed to perform DCSync, retrieving domain credential hashes from LSASS memory, and a malicious script created and started a Windows Service called 'SystemMonitor' to enable persistent remote administration. Finally, for impact and cleanup, a script was deployed that executed PutLifecycleConfiguration to trigger lifecycle-triggered deletion, removing all objects from the cloud storage account to obscure forensic evidence. Network logs from the affected organization, 'FinSecure Corp.', showed increased outbound traffic to IP 203.0.113.45 during the exfiltration phase, but no alerts were triggered due to misconfigured SIEM rules.",
+    "tagged_text": "Crimson Shadow, a cybercriminal group active since early 2023, has been observed conducting reconnaissance against financial institutions, with recent incidents involving anomalous DNS queries logged at 14:32 UTC on April 15, 2024, from internal IP 192.168.1.105. The actors likely acquire infrastructure [T1583] by utilizing cloud-based virtual private servers (VPS) to host malware distribution points while maintaining anonymity, and they configure a Windows DNS server role [T1583.002] to handle their command and control (C2) communications, redirecting traffic through a malicious domain, 'update-secure[.]com'. Initial access was achieved through a supply chain compromise [T1195], where a malicious dependency was injected into the project's package.json file during the build process of a widely used open-source library, leading to execution upon installation. Once inside the network, the adversary employed PowerShell to create a scheduled task [T1053.005] that runs at system startup for persistence, while simultaneously using living-off-the-land scripts to execute a malicious payload. For further execution and evasion, they replaced the legitimate AppDomainManager with a malicious one [T1574.014] to achieve arbitrary code execution within .NET applications, and they used AWS Lambda to create a serverless redirect service [T1584.007] for stolen credentials, exfiltrating data via encrypted HTTPS connections. To escalate privileges and move laterally, Mimikatz's lsadump module was executed to perform DCSync [T1003.006], retrieving domain credential hashes from LSASS memory, and a malicious script created and started a Windows Service called 'SystemMonitor' [T1219] to enable persistent remote administration. Finally, for impact and cleanup, a script was deployed that executed PutLifecycleConfiguration to trigger lifecycle-triggered deletion [T1485.001], removing all objects from the cloud storage account to obscure forensic evidence. Network logs from the affected organization, 'FinSecure Corp.', showed increased outbound traffic to IP 203.0.113.45 during the exfiltration phase, but no alerts were triggered due to misconfigured SIEM rules.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely acquire infrastructure by utilizing cloud-based virtual private servers (VPS) to host malware distribution points while maintaining anonymity, and they configure a Windows DNS server role [T1583.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "Initial access was achieved through a supply chain compromise, where a malicious dependency was injected into the project's package.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "006], retrieving domain credential hashes from LSASS memory, and a malicious script created and started a Windows Service called 'SystemMonitor' to enable persistent remote administration.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Enterprise Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Shadow', targeting organizations in the financial and technology sectors. The campaign leverages cloud infrastructure, supply chain compromises, and living-off-the-land techniques to achieve initial access, persistence, and data exfiltration. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "Crimson Shadow, a cybercriminal group active since early 2023, has been observed conducting reconnaissance against financial institutions, with recent incidents involving anomalous DNS queries logged at 14:32 UTC on April 15, 2024, from internal IP 192.168.1.105. The actors likely acquire infrastructure [T1583] by utilizing cloud-based virtual private servers (VPS) to host malware distribution points while maintaining anonymity, and they configure a Windows DNS server role [T1583.002] to handle their command and control (C2) communications, redirecting traffic through a malicious domain, 'update-secure[.]com'. Initial access was achieved through a supply chain compromise [T1195], where a malicious dependency was injected into the project's package.json file during the build process of a widely used open-source library, leading to execution upon installation. Once inside the network, the adversary employed PowerShell to create a scheduled task [T1053.005] that runs at system startup for persistence, while simultaneously using living-off-the-land scripts to execute a malicious payload. For further execution and evasion, they replaced the legitimate AppDomainManager with a malicious one [T1574.014] to achieve arbitrary code execution within .NET applications, and they used AWS Lambda to create a serverless redirect service [T1584.007] for stolen credentials, exfiltrating data via encrypted HTTPS connections. To escalate privileges and move laterally, Mimikatz's lsadump module was executed to perform DCSync [T1003.006], retrieving domain credential hashes from LSASS memory, and a malicious script created and started a Windows Service called 'SystemMonitor' [T1219] to enable persistent remote administration. Finally, for impact and cleanup, a script was deployed that executed PutLifecycleConfiguration to trigger lifecycle-triggered deletion [T1485.001], removing all objects from the cloud storage account to obscure forensic evidence. Network logs from the affected organization, 'FinSecure Corp.', showed increased outbound traffic to IP 203.0.113.45 during the exfiltration phase, but no alerts were triggered due to misconfigured SIEM rules.",
+        "techniques_used": [
+            "T1583",
+            "T1583.002",
+            "T1195",
+            "T1053.005",
+            "T1574.014",
+            "T1584.007",
+            "T1003.006",
+            "T1219",
+            "T1485.001"
+        ]
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "report_id": "report_121",
+    "generated_at": "20251222_120457",
+    "scenario_target_ids": [
+        "T1566.003",
+        "T1053.002",
+        "T1547.009",
+        "T1105",
+        "T1020"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.003",
+        "T1053.002",
+        "T1547.009",
+        "T1105",
+        "T1112",
+        "T1020"
+    ],
+    "actual_found_ids": [
+        "T1020",
+        "T1566.003",
+        "T1589"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign, 'RedShadow', designed for training purposes. This report is based on a simulated attack scenario at TechInnovate Corp., a mid-sized software development company with offices in San Francisco and Austin, specializing in cloud-based solutions. System logs from the incident show routine network traffic patterns prior to the attack, including standard HTTP requests to internal servers and backup processes running nightly at 11 PM EST.\n\nInitial Access: The actors likely conduct reconnaissance by monitoring online forums, then used Reddit comments in popular tech forums, such as r/programming and r/cybersecurity, to drop malicious links disguised as software downloads for tools like 'Advanced Debugger Pro' or 'Secure VPN Client', exploiting trust in community platforms to target employees at TechInnovate Corp..\n\nExecution: Upon user interaction, the malicious link triggered a download of a PowerShell script, which employed at.exe to schedule a malicious script execution for 2 AM local time on compromised systems, while simultaneously creating a shortcut (.LNK file) in the Windows startup folder to run a script each time the user logs in for persistence [T1053.002, T1547.009]. This shortcut modification was observed in system logs with entries showing file creation events in C:\\Users\\[User]\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup at approximately 1:45 AM, alongside scheduled task entries for 'SystemUpdateTask' via at.exe.\n\nPersistence and Command and Control: The adversary maintained access by using the scheduled task to actively download additional payloads from a command-and-control (C2) server hosted on a compromised domain, tech-support-update[.]com, while modifying registry keys to disable security software [T1105, T1112]. Network logs from TechInnovate Corp.'s firewall indicated outbound HTTPS connections to this domain during off-peak hours, with data transfers averaging 5 MB per session, though no actual data loss was confirmed in this fictional scenario.\n\nExfiltration: To automate data collection, a scheduled task was configured to collect malicious.exe from multiple workstations and compress files into ZIP archives for exfiltration via encrypted channels, with system logs showing task triggers every 6 hours and network spikes correlating to these periods. Background company information: TechInnovate Corp. reported no financial impact from this simulated incident, as it was part of a routine penetration test, but employee training sessions were conducted post-incident to raise awareness about phishing threats.\n\nMitigation recommendations include implementing email filtering for spearphishing detection, monitoring for unusual scheduled task creations, and restricting outbound network connections to known malicious domains. This advisory serves as an educational tool for blue teams to enhance defensive strategies against similar tactics in real-world environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign, 'RedShadow', designed for training purposes. This report is based on a simulated attack scenario at TechInnovate Corp., a mid-sized software development company with offices in San Francisco and Austin, specializing in cloud-based solutions. System logs from the incident show routine network traffic patterns prior to the attack, including standard HTTP requests to internal servers and backup processes running nightly at 11 PM EST.\n\nInitial Access: The actors likely conduct reconnaissance [T1589] by monitoring online forums, then used Reddit comments in popular tech forums, such as r/programming and r/cybersecurity, to drop malicious links disguised as software downloads for tools like 'Advanced Debugger Pro' or 'Secure VPN Client', exploiting trust in community platforms to target employees at TechInnovate Corp. [T1566.003].\n\nExecution: Upon user interaction, the malicious link triggered a download of a PowerShell script, which employed at.exe to schedule a malicious script execution for 2 AM local time on compromised systems, while simultaneously creating a shortcut (.LNK file) in the Windows startup folder to run a script each time the user logs in for persistence [T1053.002, T1547.009]. This shortcut modification was observed in system logs with entries showing file creation events in C:\\Users\\[User]\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup at approximately 1:45 AM, alongside scheduled task entries for 'SystemUpdateTask' via at.exe.\n\nPersistence and Command and Control: The adversary maintained access by using the scheduled task to actively download additional payloads from a command-and-control (C2) server hosted on a compromised domain, tech-support-update[.]com, while modifying registry keys to disable security software [T1105, T1112]. Network logs from TechInnovate Corp.'s firewall indicated outbound HTTPS connections to this domain during off-peak hours, with data transfers averaging 5 MB per session, though no actual data loss was confirmed in this fictional scenario.\n\nExfiltration: To automate data collection, a scheduled task was configured to collect malicious.exe from multiple workstations and compress files into ZIP archives for exfiltration via encrypted channels, with system logs showing task triggers every 6 hours and network spikes correlating to these periods [T1020]. Background company information: TechInnovate Corp. reported no financial impact from this simulated incident, as it was part of a routine penetration test, but employee training sessions were conducted post-incident to raise awareness about phishing threats.\n\nMitigation recommendations include implementing email filtering for spearphishing detection, monitoring for unusual scheduled task creations, and restricting outbound network connections to known malicious domains. This advisory serves as an educational tool for blue teams to enhance defensive strategies against similar tactics in real-world environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conduct reconnaissance by monitoring online forums, then used Reddit comments in popular tech forums, such as r/programming and r/cybersecurity, to drop malicious links disguised as software downloads for tools like 'Advanced Debugger Pro' or 'Secure VPN Client', exploiting trust in community platforms to target employees at TechInnovate Corp.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "exe from multiple workstations and compress files into ZIP archives for exfiltration via encrypted channels, with system logs showing task triggers every 6 hours and network spikes correlating to these periods.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'RedShadow' Targeting Technology Firms",
+        "summary": "This advisory details a simulated campaign by a fictional Advanced Persistent Threat (APT) group, designated 'RedShadow', targeting technology companies through spearphishing and persistence mechanisms. The campaign leverages social engineering via online platforms and automated tools for initial access, execution, and data exfiltration, as observed in a fictional incident at 'TechInnovate Corp.' in Q3 2024. Blue teams are advised to review detection strategies and implement mitigations outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign, 'RedShadow', designed for training purposes. This report is based on a simulated attack scenario at TechInnovate Corp., a mid-sized software development company with offices in San Francisco and Austin, specializing in cloud-based solutions. System logs from the incident show routine network traffic patterns prior to the attack, including standard HTTP requests to internal servers and backup processes running nightly at 11 PM EST.\n\nInitial Access: The actors likely conduct reconnaissance [T1589] by monitoring online forums, then used Reddit comments in popular tech forums, such as r/programming and r/cybersecurity, to drop malicious links disguised as software downloads for tools like 'Advanced Debugger Pro' or 'Secure VPN Client', exploiting trust in community platforms to target employees at TechInnovate Corp. [T1566.003].\n\nExecution: Upon user interaction, the malicious link triggered a download of a PowerShell script, which employed at.exe to schedule a malicious script execution for 2 AM local time on compromised systems, while simultaneously creating a shortcut (.LNK file) in the Windows startup folder to run a script each time the user logs in for persistence [T1053.002, T1547.009]. This shortcut modification was observed in system logs with entries showing file creation events in C:\\Users\\[User]\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup at approximately 1:45 AM, alongside scheduled task entries for 'SystemUpdateTask' via at.exe.\n\nPersistence and Command and Control: The adversary maintained access by using the scheduled task to actively download additional payloads from a command-and-control (C2) server hosted on a compromised domain, tech-support-update[.]com, while modifying registry keys to disable security software [T1105, T1112]. Network logs from TechInnovate Corp.'s firewall indicated outbound HTTPS connections to this domain during off-peak hours, with data transfers averaging 5 MB per session, though no actual data loss was confirmed in this fictional scenario.\n\nExfiltration: To automate data collection, a scheduled task was configured to collect malicious.exe from multiple workstations and compress files into ZIP archives for exfiltration via encrypted channels, with system logs showing task triggers every 6 hours and network spikes correlating to these periods [T1020]. Background company information: TechInnovate Corp. reported no financial impact from this simulated incident, as it was part of a routine penetration test, but employee training sessions were conducted post-incident to raise awareness about phishing threats.\n\nMitigation recommendations include implementing email filtering for spearphishing detection, monitoring for unusual scheduled task creations, and restricting outbound network connections to known malicious domains. This advisory serves as an educational tool for blue teams to enhance defensive strategies against similar tactics in real-world environments.",
+        "techniques_used": [
+            "T1589",
+            "T1566.003",
+            "T1053.002",
+            "T1547.009",
+            "T1105",
+            "T1112",
+            "T1020"
+        ]
+    }
+}

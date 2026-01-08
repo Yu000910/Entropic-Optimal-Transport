@@ -1,0 +1,83 @@
+{
+    "report_id": "report_321",
+    "generated_at": "20251222_145748",
+    "scenario_target_ids": [
+        "T1566.002",
+        "T1569.002",
+        "T1106",
+        "T1552.004",
+        "T1614",
+        "T1046",
+        "T1056.004",
+        "T1219"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1566.002",
+        "T1569.002",
+        "T1106",
+        "T1552.004",
+        "T1614",
+        "T1046",
+        "T1056.004",
+        "T1219"
+    ],
+    "actual_found_ids": [
+        "T1046",
+        "T1219",
+        "T1106",
+        "T1552.004",
+        "T1566.002",
+        "T1569.002",
+        "T1056.004",
+        "T1614"
+    ],
+    "clean_text": "On October 15, 2023, a mid-sized financial services company, 'SecureFin Corp.', headquartered in New York with branches across Europe, reported anomalous network activity. Initial logs from their Microsoft 365 environment showed an increase in failed login attempts from unrecognized IP addresses, though these were unrelated to the primary incident. The company's security team, using Splunk for log analysis, identified that the attack began when an employee in the accounting department received a spearphishing email purporting to be from a trusted vendor, containing a link to a malicious document hosted on an actor-controlled domain. Upon clicking the link, the document executed a macro that downloaded a PowerShell script, which the adversary then used to create a new Windows service named 'UpdateHelper' to run a malicious executable while simultaneously making native API calls to bypass security controls and modify system configurations. The malware proceeded to search for and collect all files with '.pfx' extensions containing private keys from the compromised system, and it called GetLocaleInfoW with LOCALE_SISO3166CTRYNAME to directly fetch the country name associated with the system's locale for targeting purposes. Additionally, the trojan conducted network service discovery by scanning for open ports on internal servers, and it employed credential API hooking to intercept authentication data from memory processes. Finally, the adversary used Google Chrome Remote Desktop to establish persistent remote access for data exfiltration, as evidenced by unusual outbound traffic to cloud storage services. Incident responders noted that the company's firewall logs, which were configured to block non-standard ports, showed no alerts during the initial phases, indicating the actor's use of encrypted channels.",
+    "tagged_text": "On October 15, 2023, a mid-sized financial services company, 'SecureFin Corp.', headquartered in New York with branches across Europe, reported anomalous network activity. Initial logs from their Microsoft 365 environment showed an increase in failed login attempts from unrecognized IP addresses, though these were unrelated to the primary incident. The company's security team, using Splunk for log analysis, identified that the attack began when an employee in the accounting department received a spearphishing email [T1566.002] purporting to be from a trusted vendor, containing a link to a malicious document hosted on an actor-controlled domain. Upon clicking the link, the document executed a macro that downloaded a PowerShell script, which the adversary then used to create a new Windows service named 'UpdateHelper' to run a malicious executable [T1569.002] while simultaneously making native API calls [T1106] to bypass security controls and modify system configurations. The malware proceeded to search for and collect all files with '.pfx' extensions containing private keys [T1552.004] from the compromised system, and it called GetLocaleInfoW with LOCALE_SISO3166CTRYNAME to directly fetch the country name associated with the system's locale [T1614] for targeting purposes. Additionally, the trojan conducted network service discovery [T1046] by scanning for open ports on internal servers, and it employed credential API hooking [T1056.004] to intercept authentication data from memory processes. Finally, the adversary used Google Chrome Remote Desktop [T1219] to establish persistent remote access for data exfiltration, as evidenced by unusual outbound traffic to cloud storage services. Incident responders noted that the company's firewall logs, which were configured to block non-standard ports, showed no alerts during the initial phases, indicating the actor's use of encrypted channels.",
+    "sentence_annotations": [
+        {
+            "sentence": "002] while simultaneously making native API calls to bypass security controls and modify system configurations.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "004] from the compromised system, and it called GetLocaleInfoW with LOCALE_SISO3166CTRYNAME to directly fetch the country name associated with the system's locale for targeting purposes.",
+            "technique_id": "T1614",
+            "technique_name": "System Location Discovery"
+        },
+        {
+            "sentence": "Additionally, the trojan conducted network service discovery by scanning for open ports on internal servers, and it employed credential API hooking [T1056.",
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery"
+        },
+        {
+            "sentence": "Finally, the adversary used Google Chrome Remote Desktop to establish persistent remote access for data exfiltration, as evidenced by unusual outbound traffic to cloud storage services.",
+            "technique_id": "T1219",
+            "technique_name": "Remote Access Tools"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, 'ShadowHook', targeting financial institutions to exfiltrate sensitive data and establish persistent remote access. The campaign employs spearphishing, service manipulation, API exploitation, credential theft, and network discovery, based on techniques observed in real-world APT activities.",
+        "full_report_text": "On October 15, 2023, a mid-sized financial services company, 'SecureFin Corp.', headquartered in New York with branches across Europe, reported anomalous network activity. Initial logs from their Microsoft 365 environment showed an increase in failed login attempts from unrecognized IP addresses, though these were unrelated to the primary incident. The company's security team, using Splunk for log analysis, identified that the attack began when an employee in the accounting department received a spearphishing email [T1566.002] purporting to be from a trusted vendor, containing a link to a malicious document hosted on an actor-controlled domain. Upon clicking the link, the document executed a macro that downloaded a PowerShell script, which the adversary then used to create a new Windows service named 'UpdateHelper' to run a malicious executable [T1569.002] while simultaneously making native API calls [T1106] to bypass security controls and modify system configurations. The malware proceeded to search for and collect all files with '.pfx' extensions containing private keys [T1552.004] from the compromised system, and it called GetLocaleInfoW with LOCALE_SISO3166CTRYNAME to directly fetch the country name associated with the system's locale [T1614] for targeting purposes. Additionally, the trojan conducted network service discovery [T1046] by scanning for open ports on internal servers, and it employed credential API hooking [T1056.004] to intercept authentication data from memory processes. Finally, the adversary used Google Chrome Remote Desktop [T1219] to establish persistent remote access for data exfiltration, as evidenced by unusual outbound traffic to cloud storage services. Incident responders noted that the company's firewall logs, which were configured to block non-standard ports, showed no alerts during the initial phases, indicating the actor's use of encrypted channels.",
+        "techniques_used": [
+            "T1566.002",
+            "T1569.002",
+            "T1106",
+            "T1552.004",
+            "T1614",
+            "T1046",
+            "T1056.004",
+            "T1219"
+        ]
+    }
+}

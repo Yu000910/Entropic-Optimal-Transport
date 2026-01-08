@@ -1,0 +1,113 @@
+{
+    "report_id": "report_758",
+    "generated_at": "20251223_110225",
+    "scenario_target_ids": [
+        "T1593.002",
+        "T1586.003",
+        "T1584.008",
+        "T1078.001",
+        "T1204",
+        "T1546.008",
+        "T1134.005",
+        "T1217",
+        "T1563.002",
+        "T1210",
+        "T1090.004",
+        "T1495",
+        "T1486"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1593.002",
+        "T1586.003",
+        "T1584.008",
+        "T1078.001",
+        "T1204",
+        "T1546.008",
+        "T1134.005",
+        "T1217",
+        "T1563.002",
+        "T1210",
+        "T1090.004",
+        "T1495",
+        "T1486"
+    ],
+    "actual_found_ids": [
+        "T1584.008",
+        "T1090.004",
+        "T1546.008",
+        "T1593.002",
+        "T1495",
+        "T1217",
+        "T1586.003",
+        "T1486",
+        "T1563.002",
+        "T1204",
+        "T1078.001",
+        "T1210",
+        "T1134.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the fictional threat actor 'ShadowPhish,' which has been observed targeting financial organizations in a multi-stage attack campaign. This report is based on simulated incident response data from a fictitious bank, 'SecureBank Inc.,' and is intended for educational purposes to enhance blue team readiness. The actors likely conduct reconnaissance by using Google search operators with queries like 'filetype:xls site:company.com \"password\"' to locate credential spreadsheets. Following this, they sent phishing emails disguised as IT support to collect employee cloud account credentials, while simultaneously exploiting compromised small office/home office (SOHO) devices to interact with vulnerable Versa Director servers. System logs from SecureBank's perimeter firewall show increased traffic from unknown IPs, but these were unrelated to the attack and not tagged. Upon initial access, the adversary leveraged default accounts on WinCC machines using a hardcoded database server password and crafted a fake invoice PDF to execute a remote access tool when the user opens the embedded link. For persistence, they replaced the Sticky Keys binary C:\\Windows\\System32\\sethc.exe and used Mimikatz to add enterprise admin SIDs to the SID-History of a compromised account. Internal network scans revealed outdated software versions, but this was part of routine maintenance and not tagged. The actors then conducted discovery by querying %APPDATA%/Google/Chrome to retrieve cached network information and cookies and executed tscon.exe with a session ID parameter to gain control of an administrative RDP session. They exploited SMB via EternalBlue using a PoshC2 module and manipulated HTTP Referer headers to obfuscate the destination of encrypted web traffic. Background on SecureBank's recent merger with another firm is irrelevant to the attack and not tagged. Finally, for impact, they overwrote the BIOS firmware flash utility with a corrupted version, rendering the system unbootable, and encrypted files and disks using AES-128-CBC and RSA-2048. This campaign highlights the need for robust monitoring and incident response protocols.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the fictional threat actor 'ShadowPhish,' which has been observed targeting financial organizations in a multi-stage attack campaign. This report is based on simulated incident response data from a fictitious bank, 'SecureBank Inc.,' and is intended for educational purposes to enhance blue team readiness. The actors likely conduct reconnaissance by using Google search operators with queries like 'filetype:xls site:company.com \"password\"' to locate credential spreadsheets [T1593.002]. Following this, they sent phishing emails disguised as IT support to collect employee cloud account credentials [T1586.003], while simultaneously exploiting compromised small office/home office (SOHO) devices to interact with vulnerable Versa Director servers [T1584.008]. System logs from SecureBank's perimeter firewall show increased traffic from unknown IPs, but these were unrelated to the attack and not tagged. Upon initial access, the adversary leveraged default accounts on WinCC machines using a hardcoded database server password [T1078.001] and crafted a fake invoice PDF to execute a remote access tool when the user opens the embedded link [T1204]. For persistence, they replaced the Sticky Keys binary C:\\Windows\\System32\\sethc.exe [T1546.008] and used Mimikatz to add enterprise admin SIDs to the SID-History of a compromised account [T1134.005]. Internal network scans revealed outdated software versions, but this was part of routine maintenance and not tagged. The actors then conducted discovery by querying %APPDATA%/Google/Chrome to retrieve cached network information and cookies [T1217] and executed tscon.exe with a session ID parameter to gain control of an administrative RDP session [T1563.002]. They exploited SMB via EternalBlue using a PoshC2 module [T1210] and manipulated HTTP Referer headers to obfuscate the destination of encrypted web traffic [T1090.004]. Background on SecureBank's recent merger with another firm is irrelevant to the attack and not tagged. Finally, for impact, they overwrote the BIOS firmware flash utility with a corrupted version, rendering the system unbootable [T1495], and encrypted files and disks using AES-128-CBC and RSA-2048 [T1486]. This campaign highlights the need for robust monitoring and incident response protocols.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] and crafted a fake invoice PDF to execute a remote access tool when the user opens the embedded link.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "The actors then conducted discovery by querying %APPDATA%/Google/Chrome to retrieve cached network information and cookies and executed tscon.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "They exploited SMB via EternalBlue using a PoshC2 module and manipulated HTTP Referer headers to obfuscate the destination of encrypted web traffic [T1090.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "Finally, for impact, they overwrote the BIOS firmware flash utility with a corrupted version, rendering the system unbootable, and encrypted files and disks using AES-128-CBC and RSA-2048.",
+            "technique_id": "T1495",
+            "technique_name": "Firmware Corruption"
+        },
+        {
+            "sentence": "Finally, for impact, they overwrote the BIOS firmware flash utility with a corrupted version, rendering the system unbootable, and encrypted files and disks using AES-128-CBC and RSA-2048.",
+            "technique_id": "T1486",
+            "technique_name": "Data Encrypted for Impact"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowPhish' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowPhish' against financial institutions, leveraging reconnaissance, credential theft, exploitation, and destructive actions for training blue teams in detection and response.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the fictional threat actor 'ShadowPhish,' which has been observed targeting financial organizations in a multi-stage attack campaign. This report is based on simulated incident response data from a fictitious bank, 'SecureBank Inc.,' and is intended for educational purposes to enhance blue team readiness. The actors likely conduct reconnaissance by using Google search operators with queries like 'filetype:xls site:company.com \"password\"' to locate credential spreadsheets [T1593.002]. Following this, they sent phishing emails disguised as IT support to collect employee cloud account credentials [T1586.003], while simultaneously exploiting compromised small office/home office (SOHO) devices to interact with vulnerable Versa Director servers [T1584.008]. System logs from SecureBank's perimeter firewall show increased traffic from unknown IPs, but these were unrelated to the attack and not tagged. Upon initial access, the adversary leveraged default accounts on WinCC machines using a hardcoded database server password [T1078.001] and crafted a fake invoice PDF to execute a remote access tool when the user opens the embedded link [T1204]. For persistence, they replaced the Sticky Keys binary C:\\Windows\\System32\\sethc.exe [T1546.008] and used Mimikatz to add enterprise admin SIDs to the SID-History of a compromised account [T1134.005]. Internal network scans revealed outdated software versions, but this was part of routine maintenance and not tagged. The actors then conducted discovery by querying %APPDATA%/Google/Chrome to retrieve cached network information and cookies [T1217] and executed tscon.exe with a session ID parameter to gain control of an administrative RDP session [T1563.002]. They exploited SMB via EternalBlue using a PoshC2 module [T1210] and manipulated HTTP Referer headers to obfuscate the destination of encrypted web traffic [T1090.004]. Background on SecureBank's recent merger with another firm is irrelevant to the attack and not tagged. Finally, for impact, they overwrote the BIOS firmware flash utility with a corrupted version, rendering the system unbootable [T1495], and encrypted files and disks using AES-128-CBC and RSA-2048 [T1486]. This campaign highlights the need for robust monitoring and incident response protocols.",
+        "techniques_used": [
+            "T1593.002",
+            "T1586.003",
+            "T1584.008",
+            "T1078.001",
+            "T1204",
+            "T1546.008",
+            "T1134.005",
+            "T1217",
+            "T1563.002",
+            "T1210",
+            "T1090.004",
+            "T1495",
+            "T1486"
+        ]
+    }
+}

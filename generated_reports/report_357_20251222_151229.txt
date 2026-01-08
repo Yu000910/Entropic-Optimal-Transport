@@ -1,0 +1,16 @@
+### Attack Narrative and Kill-Chain Analysis
+
+**Initial Access:** The campaign began with targeted phishing emails [T1566] sent to employees at a fictional financial firm, 'SecureBank Inc.', which included password-protected ZIP files containing trojanized executables designed to mimic legitimate software updates. Concurrently, the actors compromised a third-party software repository used by 'SecureBank' for internal tools, substituting the authentic release package with a maliciously modified executable [T1195.002] that was distributed via automated update mechanisms.
+
+**Execution:** Upon execution, the malware dropped a malicious CHM file named 'help.chm' into the temp directory [T1218.001] and employed Windows Command Shell [T1059.003] to execute cmd.exe, providing a reverse shell to adversaries while simultaneously modifying the malicious.lnk file to include obfuscated commands for downloading data exfiltration tools [T1027.012]. System logs from 'SecureBank' show anomalous process creation events at 14:30 UTC on February 15, 2024, though these were initially dismissed as false positives due to high network traffic during a quarterly audit.
+
+**Persistence:** To maintain access, the actors added a reverse shell command to /etc/profile on Unix-based systems [T1546.004] and created a backdoor in KeePass using a malicious config file and in TortoiseSVN using a registry hook [T1556], leveraging SILENTTRINITY frameworks observed in previous training scenarios. Additionally, the threat actor deployed a new Azure virtual machine from a custom snapshot to evade detection [T1578.001], as noted in cloud activity logs from 'AzureMonitor' with timestamps around March 1, 2024.
+
+**Defense Evasion:** The actors used raw sockets to transmit data directly at the network layer, implementing port knocking [T1205.001] to evade port monitoring while calling 'aws secretsmanager get-secret-value --secret-id encryption-keys' to collect cryptographic material from cloud secrets management stores [T1555.006]. Background: 'SecureBank' had recently migrated to hybrid cloud infrastructure, but misconfigured IAM policies allowed excessive permissions, as highlighted in an internal security review report dated February 10, 2024.
+
+**Exfiltration:** Finally, the threat actor exploited Bluetooth RFCOMM channels to transfer stolen financial records [T1011.001], exfiltrating data over Bluetooth from compromised endpoints during off-hours. Network logs from 'SecureBank' show unusual Bluetooth pairing attempts on March 5, 2024, though these were not correlated with other alerts due to segmentation issues in the SIEM.
+
+### Recommendations for Blue Teams
+- Enhance email filtering for password-protected attachments and monitor software supply chains for integrity violations.
+- Implement strict access controls and audit cloud snapshot usage and secrets management APIs.
+- Deploy network monitoring for raw socket traffic and Bluetooth anomalies, and conduct regular reviews of authentication processes and shell configurations.

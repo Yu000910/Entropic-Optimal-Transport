@@ -1,0 +1,79 @@
+{
+    "report_id": "report_294",
+    "generated_at": "20251222_144604",
+    "scenario_target_ids": [
+        "T1588.006",
+        "T1190",
+        "T1651",
+        "T1037.002",
+        "T1134.004",
+        "T1563.002",
+        "T1056.004",
+        "T1219.003"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1588.006",
+        "T1190",
+        "T1651",
+        "T1037.002",
+        "T1134.004",
+        "T1563.002",
+        "T1056.004",
+        "T1219.003"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1588.006",
+        "T1589",
+        "T1037.002",
+        "T1056.004",
+        "T1219.003",
+        "T1190",
+        "T1134.004",
+        "T1563.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the tactics, techniques, and procedures (TTPs) of the fictional threat actor 'Crimson Serpent'. This group has been observed targeting sectors such as finance and healthcare, with a focus on organizations using Citrix, Microsoft Exchange, and Fortinet VPNs. Initial analysis of network logs from a compromised entity, 'AlphaCorp', shows anomalous traffic patterns originating from IP addresses associated with known malicious infrastructure, though these logs are unconfirmed and may include false positives from routine maintenance activities. The actors likely conduct reconnaissance to identify vulnerable systems, though this phase is not detailed in the provided scenario.\n\nIn the initial access phase, Crimson Serpent exploited publicly available vulnerabilities, specifically leveraging exploit code for CVE-2019-19781 in Citrix ADC and CVE-2020-0688 in Microsoft Exchange Server to gain unauthorized entry. Once inside, they executed a cloud administration command using Azure RunCommand to deploy backdoors across virtual machines while simultaneously configuring a login hook via defaults write to ensure persistence by running a harmful executable upon user login. For execution and evasion, the malware employed parent PID spoofing by exploiting the CreateProcess API to launch svchost.exe from a compromised service, and it hijacked remote desktop connections by executing tscon.exe with stolen credentials to take over existing sessions. In the credential access phase, the actors hooked the GetClipboardData function to capture clipboard contents containing authentication tokens, and they installed remote access hardware such as TinyPilot on critical systems to maintain operational control during incident response. Additional system logs from AlphaCorp indicate increased CPU usage on several servers, but these are unrelated to the attack and likely due to scheduled backups. The campaign demonstrates a blend of traditional and cloud-based techniques, emphasizing the need for robust monitoring and response strategies in hybrid environments.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the tactics, techniques, and procedures (TTPs) of the fictional threat actor 'Crimson Serpent'. This group has been observed targeting sectors such as finance and healthcare, with a focus on organizations using Citrix, Microsoft Exchange, and Fortinet VPNs. Initial analysis of network logs from a compromised entity, 'AlphaCorp', shows anomalous traffic patterns originating from IP addresses associated with known malicious infrastructure, though these logs are unconfirmed and may include false positives from routine maintenance activities. The actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though this phase is not detailed in the provided scenario.\n\nIn the initial access phase, Crimson Serpent exploited publicly available vulnerabilities [T1588.006], specifically leveraging exploit code for CVE-2019-19781 in Citrix ADC and CVE-2020-0688 in Microsoft Exchange Server to gain unauthorized entry [T1190]. Once inside, they executed a cloud administration command [T1651] using Azure RunCommand to deploy backdoors across virtual machines while simultaneously configuring a login hook [T1037.002] via defaults write to ensure persistence by running a harmful executable upon user login. For execution and evasion, the malware employed parent PID spoofing [T1134.004] by exploiting the CreateProcess API to launch svchost.exe from a compromised service, and it hijacked remote desktop connections [T1563.002] by executing tscon.exe with stolen credentials to take over existing sessions. In the credential access phase, the actors hooked the GetClipboardData function [T1056.004] to capture clipboard contents containing authentication tokens, and they installed remote access hardware [T1219.003] such as TinyPilot on critical systems to maintain operational control during incident response. Additional system logs from AlphaCorp indicate increased CPU usage on several servers, but these are unrelated to the attack and likely due to scheduled backups. The campaign demonstrates a blend of traditional and cloud-based techniques, emphasizing the need for robust monitoring and response strategies in hybrid environments.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance to identify vulnerable systems, though this phase is not detailed in the provided scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "006], specifically leveraging exploit code for CVE-2019-19781 in Citrix ADC and CVE-2020-0688 in Microsoft Exchange Server to gain unauthorized entry.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "Once inside, they executed a cloud administration command using Azure RunCommand to deploy backdoors across virtual machines while simultaneously configuring a login hook [T1037.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Crimson Serpent' Targeting Hybrid Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Serpent' targeting organizations with hybrid on-premises and cloud environments. The campaign exploits public-facing vulnerabilities for initial access, leverages cloud administration tools for lateral movement, and employs sophisticated persistence and credential theft techniques to maintain access and evade detection. This report is intended for blue team training to enhance defensive capabilities against multi-stage attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into the tactics, techniques, and procedures (TTPs) of the fictional threat actor 'Crimson Serpent'. This group has been observed targeting sectors such as finance and healthcare, with a focus on organizations using Citrix, Microsoft Exchange, and Fortinet VPNs. Initial analysis of network logs from a compromised entity, 'AlphaCorp', shows anomalous traffic patterns originating from IP addresses associated with known malicious infrastructure, though these logs are unconfirmed and may include false positives from routine maintenance activities. The actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though this phase is not detailed in the provided scenario.\n\nIn the initial access phase, Crimson Serpent exploited publicly available vulnerabilities [T1588.006], specifically leveraging exploit code for CVE-2019-19781 in Citrix ADC and CVE-2020-0688 in Microsoft Exchange Server to gain unauthorized entry [T1190]. Once inside, they executed a cloud administration command [T1651] using Azure RunCommand to deploy backdoors across virtual machines while simultaneously configuring a login hook [T1037.002] via defaults write to ensure persistence by running a harmful executable upon user login. For execution and evasion, the malware employed parent PID spoofing [T1134.004] by exploiting the CreateProcess API to launch svchost.exe from a compromised service, and it hijacked remote desktop connections [T1563.002] by executing tscon.exe with stolen credentials to take over existing sessions. In the credential access phase, the actors hooked the GetClipboardData function [T1056.004] to capture clipboard contents containing authentication tokens, and they installed remote access hardware [T1219.003] such as TinyPilot on critical systems to maintain operational control during incident response. Additional system logs from AlphaCorp indicate increased CPU usage on several servers, but these are unrelated to the attack and likely due to scheduled backups. The campaign demonstrates a blend of traditional and cloud-based techniques, emphasizing the need for robust monitoring and response strategies in hybrid environments.",
+        "techniques_used": [
+            "T1588.006",
+            "T1190",
+            "T1651",
+            "T1037.002",
+            "T1134.004",
+            "T1563.002",
+            "T1056.004",
+            "T1219.003"
+        ]
+    }
+}

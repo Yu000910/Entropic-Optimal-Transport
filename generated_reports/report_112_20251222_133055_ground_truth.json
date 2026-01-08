@@ -1,0 +1,128 @@
+{
+    "report_id": "report_112",
+    "generated_at": "20251222_133055",
+    "scenario_target_ids": [
+        "T1593",
+        "T1595",
+        "T1590",
+        "T1608.001",
+        "T1584.006",
+        "T1078",
+        "T1053",
+        "T1068",
+        "T1218",
+        "T1564.009",
+        "T1222.001",
+        "T1563.001",
+        "T1132.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1593",
+        "T1595",
+        "T1590",
+        "T1608.001",
+        "T1584.006",
+        "T1078",
+        "T1053",
+        "T1068",
+        "T1218",
+        "T1564.009",
+        "T1222.001",
+        "T1563.001",
+        "T1132.001"
+    ],
+    "actual_found_ids": [
+        "T1218",
+        "T1222.001",
+        "T1132.001",
+        "T1563.001",
+        "T1078",
+        "T1584.006",
+        "T1608.001",
+        "T1564.009",
+        "T1053",
+        "T1590",
+        "T1593",
+        "T1595",
+        "T1068"
+    ],
+    "clean_text": "### Attack Narrative\n\n**Background:** On a routine audit, Acme Financial Corp. detected anomalous network traffic from an external IP address, later traced to a series of coordinated activities. The company, a mid-sized bank with operations in North America and Europe, reported no immediate financial loss, but the incident highlighted gaps in their security posture, including outdated IoT devices and weak SSH configurations on development servers. Logs from their SIEM showed increased DNS queries and scheduled task creations over a two-week period, coinciding with news about Acme's recent acquisition of a smaller fintech startup.\n\n**Kill-Chain Analysis:**\n\n1. **Reconnaissance:** The actors likely conducted reconnaissance by searching open news websites for articles about recent corporate acquisitions to identify potential targets like Acme Financial, followed by active scanning using tools like nmap.exe with script scanning to detect vulnerabilities in exposed services such as web servers and VPN endpoints. They gathered victim network information by querying DNS servers to resolve domain names for command and control infrastructure.\n\n2. **Initial Access:** The adversary gained initial access by using valid accounts, specifically leveraging credentials stolen through a spearphishing email to log into the corporate network, while also exploiting default manufacturer's passwords on IoT devices like a VOIP phone and printer to establish footholds.\n\n3. **Execution and Persistence:** Upon access, they uploaded malware by hosting malicious documents on domains registered by the group and used web services by compromising a GitHub gist to store command and control configuration data. For persistence, they configured scheduled tasks via schtasks.exe to execute a backdoor payload daily at midnight.\n\n4. **Privilege Escalation and Defense Evasion:** To escalate privileges, the actors exploited vulnerabilities such as CVE-2015-1701 and CVE-2015-2387, while employing system binary proxy execution by splitting operations to divide payloads across multiple files and bypass signature scanning. They used resource forking to present a macOS JPEG or text file icon rather than the executable's icon assigned by the operating system and modified Windows file and directory permissions using icacls /reset and takeown /F to reset targeted executable permissions and take ownership.\n\n5. **Lateral Movement and Exfiltration:** For lateral movement, they conducted SSH hijacking by exploiting weak SSH key pairs to authenticate to laterally connected systems. During exfiltration, they used standard encoding, such as base64, to hide command strings delivered from the command and control server.\n\n**Irrelevant Information:** Acme Financial's internal logs showed routine backup processes running during the attack, with no direct correlation to malicious activity. The company's HR department reported a phishing simulation exercise conducted the same week, which may have caused confusion among employees. Network diagrams indicated that the compromised IoT devices were located in a branch office with limited monitoring capabilities, and system administrators noted that scheduled tasks were often used for legitimate maintenance, making detection challenging without behavioral analysis.\n\n**Recommendations:** Blue teams should enhance monitoring for unusual DNS queries, review IoT device configurations, implement multi-factor authentication for critical accounts, and conduct regular vulnerability assessments to mitigate similar threats.",
+    "tagged_text": "### Attack Narrative\n\n**Background:** On a routine audit, Acme Financial Corp. detected anomalous network traffic from an external IP address, later traced to a series of coordinated activities. The company, a mid-sized bank with operations in North America and Europe, reported no immediate financial loss, but the incident highlighted gaps in their security posture, including outdated IoT devices and weak SSH configurations on development servers. Logs from their SIEM showed increased DNS queries and scheduled task creations over a two-week period, coinciding with news about Acme's recent acquisition of a smaller fintech startup.\n\n**Kill-Chain Analysis:**\n\n1. **Reconnaissance:** The actors likely conducted reconnaissance by searching open news websites for articles about recent corporate acquisitions to identify potential targets like Acme Financial [T1593], followed by active scanning using tools like nmap.exe with script scanning to detect vulnerabilities in exposed services such as web servers and VPN endpoints [T1595]. They gathered victim network information by querying DNS servers to resolve domain names for command and control infrastructure [T1590].\n\n2. **Initial Access:** The adversary gained initial access by using valid accounts, specifically leveraging credentials stolen through a spearphishing email to log into the corporate network [T1078], while also exploiting default manufacturer's passwords on IoT devices like a VOIP phone and printer to establish footholds [T1078].\n\n3. **Execution and Persistence:** Upon access, they uploaded malware by hosting malicious documents on domains registered by the group [T1608.001] and used web services by compromising a GitHub gist to store command and control configuration data [T1584.006]. For persistence, they configured scheduled tasks via schtasks.exe to execute a backdoor payload daily at midnight [T1053].\n\n4. **Privilege Escalation and Defense Evasion:** To escalate privileges, the actors exploited vulnerabilities such as CVE-2015-1701 and CVE-2015-2387 [T1068], while employing system binary proxy execution by splitting operations to divide payloads across multiple files and bypass signature scanning [T1218]. They used resource forking to present a macOS JPEG or text file icon rather than the executable's icon assigned by the operating system [T1564.009] and modified Windows file and directory permissions using icacls /reset and takeown /F to reset targeted executable permissions and take ownership [T1222.001].\n\n5. **Lateral Movement and Exfiltration:** For lateral movement, they conducted SSH hijacking by exploiting weak SSH key pairs to authenticate to laterally connected systems [T1563.001]. During exfiltration, they used standard encoding, such as base64, to hide command strings delivered from the command and control server [T1132.001].\n\n**Irrelevant Information:** Acme Financial's internal logs showed routine backup processes running during the attack, with no direct correlation to malicious activity. The company's HR department reported a phishing simulation exercise conducted the same week, which may have caused confusion among employees. Network diagrams indicated that the compromised IoT devices were located in a branch office with limited monitoring capabilities, and system administrators noted that scheduled tasks were often used for legitimate maintenance, making detection challenging without behavioral analysis.\n\n**Recommendations:** Blue teams should enhance monitoring for unusual DNS queries, review IoT device configurations, implement multi-factor authentication for critical accounts, and conduct regular vulnerability assessments to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "**Reconnaissance:** The actors likely conducted reconnaissance by searching open news websites for articles about recent corporate acquisitions to identify potential targets like Acme Financial, followed by active scanning using tools like nmap.",
+            "technique_id": "T1593",
+            "technique_name": "Search Open Websites/Domains"
+        },
+        {
+            "sentence": "exe with script scanning to detect vulnerabilities in exposed services such as web servers and VPN endpoints.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "They gathered victim network information by querying DNS servers to resolve domain names for command and control infrastructure.",
+            "technique_id": "T1590",
+            "technique_name": "Gather Victim Network Information"
+        },
+        {
+            "sentence": "**Initial Access:** The adversary gained initial access by using valid accounts, specifically leveraging credentials stolen through a spearphishing email to log into the corporate network, while also exploiting default manufacturer's passwords on IoT devices like a VOIP phone and printer to establish footholds.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "**Initial Access:** The adversary gained initial access by using valid accounts, specifically leveraging credentials stolen through a spearphishing email to log into the corporate network, while also exploiting default manufacturer's passwords on IoT devices like a VOIP phone and printer to establish footholds.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "exe to execute a backdoor payload daily at midnight.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        },
+        {
+            "sentence": "**Privilege Escalation and Defense Evasion:** To escalate privileges, the actors exploited vulnerabilities such as CVE-2015-1701 and CVE-2015-2387, while employing system binary proxy execution by splitting operations to divide payloads across multiple files and bypass signature scanning.",
+            "technique_id": "T1068",
+            "technique_name": "Exploitation for Privilege Escalation"
+        },
+        {
+            "sentence": "**Privilege Escalation and Defense Evasion:** To escalate privileges, the actors exploited vulnerabilities such as CVE-2015-1701 and CVE-2015-2387, while employing system binary proxy execution by splitting operations to divide payloads across multiple files and bypass signature scanning.",
+            "technique_id": "T1218",
+            "technique_name": "System Binary Proxy Execution"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMimic' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowMimic', which targets financial institutions through a multi-stage attack involving reconnaissance, initial access via compromised credentials, and persistence mechanisms. The campaign leverages publicly available information, active scanning, and exploitation of vulnerabilities to achieve objectives, including data exfiltration and lateral movement. Blue teams should use this report for training to identify and mitigate similar tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "### Attack Narrative\n\n**Background:** On a routine audit, Acme Financial Corp. detected anomalous network traffic from an external IP address, later traced to a series of coordinated activities. The company, a mid-sized bank with operations in North America and Europe, reported no immediate financial loss, but the incident highlighted gaps in their security posture, including outdated IoT devices and weak SSH configurations on development servers. Logs from their SIEM showed increased DNS queries and scheduled task creations over a two-week period, coinciding with news about Acme's recent acquisition of a smaller fintech startup.\n\n**Kill-Chain Analysis:**\n\n1. **Reconnaissance:** The actors likely conducted reconnaissance by searching open news websites for articles about recent corporate acquisitions to identify potential targets like Acme Financial [T1593], followed by active scanning using tools like nmap.exe with script scanning to detect vulnerabilities in exposed services such as web servers and VPN endpoints [T1595]. They gathered victim network information by querying DNS servers to resolve domain names for command and control infrastructure [T1590].\n\n2. **Initial Access:** The adversary gained initial access by using valid accounts, specifically leveraging credentials stolen through a spearphishing email to log into the corporate network [T1078], while also exploiting default manufacturer's passwords on IoT devices like a VOIP phone and printer to establish footholds [T1078].\n\n3. **Execution and Persistence:** Upon access, they uploaded malware by hosting malicious documents on domains registered by the group [T1608.001] and used web services by compromising a GitHub gist to store command and control configuration data [T1584.006]. For persistence, they configured scheduled tasks via schtasks.exe to execute a backdoor payload daily at midnight [T1053].\n\n4. **Privilege Escalation and Defense Evasion:** To escalate privileges, the actors exploited vulnerabilities such as CVE-2015-1701 and CVE-2015-2387 [T1068], while employing system binary proxy execution by splitting operations to divide payloads across multiple files and bypass signature scanning [T1218]. They used resource forking to present a macOS JPEG or text file icon rather than the executable's icon assigned by the operating system [T1564.009] and modified Windows file and directory permissions using icacls /reset and takeown /F to reset targeted executable permissions and take ownership [T1222.001].\n\n5. **Lateral Movement and Exfiltration:** For lateral movement, they conducted SSH hijacking by exploiting weak SSH key pairs to authenticate to laterally connected systems [T1563.001]. During exfiltration, they used standard encoding, such as base64, to hide command strings delivered from the command and control server [T1132.001].\n\n**Irrelevant Information:** Acme Financial's internal logs showed routine backup processes running during the attack, with no direct correlation to malicious activity. The company's HR department reported a phishing simulation exercise conducted the same week, which may have caused confusion among employees. Network diagrams indicated that the compromised IoT devices were located in a branch office with limited monitoring capabilities, and system administrators noted that scheduled tasks were often used for legitimate maintenance, making detection challenging without behavioral analysis.\n\n**Recommendations:** Blue teams should enhance monitoring for unusual DNS queries, review IoT device configurations, implement multi-factor authentication for critical accounts, and conduct regular vulnerability assessments to mitigate similar threats.",
+        "techniques_used": [
+            "T1593",
+            "T1595",
+            "T1590",
+            "T1608.001",
+            "T1584.006",
+            "T1078",
+            "T1053",
+            "T1068",
+            "T1218",
+            "T1564.009",
+            "T1222.001",
+            "T1563.001",
+            "T1132.001"
+        ]
+    }
+}

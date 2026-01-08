@@ -1,0 +1,143 @@
+{
+    "report_id": "report_287",
+    "generated_at": "20251222_144318",
+    "scenario_target_ids": [
+        "T1590.005",
+        "T1595",
+        "T1566.002",
+        "T1203",
+        "T1134.003",
+        "T1548",
+        "T1622",
+        "T1036.006",
+        "T1205",
+        "T1557",
+        "T1558.005",
+        "T1124",
+        "T1573.002",
+        "T1052",
+        "T1048.002"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1590.005",
+        "T1595",
+        "T1566.002",
+        "T1203",
+        "T1134.003",
+        "T1548",
+        "T1622",
+        "T1036.006",
+        "T1205",
+        "T1557",
+        "T1558.005",
+        "T1124",
+        "T1573.002",
+        "T1052",
+        "T1048.002"
+    ],
+    "actual_found_ids": [
+        "T1036.006",
+        "T1048.002",
+        "T1052",
+        "T1548",
+        "T1557",
+        "T1205",
+        "T1590.005",
+        "T1558.005",
+        "T1566.002",
+        "T1134.003",
+        "T1573.002",
+        "T1124",
+        "T1622",
+        "T1203",
+        "T1595"
+    ],
+    "clean_text": "Background: Magic Hound is a fictional APT group believed to operate with financial motives, focusing on banks and investment firms. In this simulated incident, the group targeted 'SecureBank Corp.', a mid-sized financial institution with global operations. Initial logs from SecureBank's perimeter firewall showed unusual scanning activity from IP addresses in Eastern Europe, but no immediate alerts were triggered due to misconfigured thresholds.\n\nKill-Chain Analysis:\n- **Reconnaissance**: The actors likely conducted reconnaissance by capturing IP addresses of visitors to their phishing sites and actively scanning exposed services using nmap.exe with script scanning to detect vulnerabilities. SecureBank's external web servers logged multiple connection attempts from these IPs over a two-week period, though these were initially dismissed as benign bot traffic.\n- **Initial Access**: The adversary employed spearphishing links in emails to deliver malicious ZIP archives containing scripts, which led to the download and installation of a payload similar to Pikabot. One employee at SecureBank reported receiving a suspicious email with a hyperlink, but it was not flagged by the email security gateway due to a recent rule update oversight.\n- **Execution**: Upon execution, the payload exploited Oracle Java vulnerabilities, including CVE-2011-3544, for client-side execution, while simultaneously using PowerShell to modify registry keys and abuse UAC by manipulating settings to run a high-integrity process. System logs from the compromised workstation showed unusual PowerShell activity, but no alerts were generated as the commands were obfuscated.\n- **Persistence and Privilege Escalation**: The actor made and impersonated a SYSTEM-level token using SetThreadToken to elevate privileges, and abused elevation control mechanisms by further registry manipulations. Additionally, they used space after filename techniques, putting several spaces before file extensions to avoid detection. A scheduled task was created to maintain persistence, but it was named with common system terms to blend in.\n- **Defense Evasion**: To evade analysis, the malware checked for debugger strings by invoking GetForegroundWindow and looking for terms like 'x32dbg' and 'windbg', and employed traffic signaling by using Wake-on-Lan to power on turned-off systems for lateral movement. Network monitoring tools at SecureBank detected unusual WoL packets but attributed them to maintenance activities.\n- **Lateral Movement and Collection**: The adversary conducted adversary-in-the-middle attacks by poisoning the DNS cache to redirect internal traffic to a phishing site, and used klist queries to determine available service tickets for silver ticket forgery via ccache files. During this phase, they also performed system time discovery to set timestamps for triggering wiper functionality, though no wiping occurred in this scenario. Internal DNS logs showed anomalies, but they were not investigated promptly due to high volume.\n- **Command and Control**: The actor established C2 channels using asymmetric cryptography with SSL connections, encrypting communications to blend with normal web traffic. SecureBank's IDS flagged some encrypted traffic as suspicious, but it was allowed due to whitelisted domains.\n- **Exfiltration**: Data exfiltration was performed by writing proprietary source code to a USB flash drive and using OpenSSL to encrypt stolen credentials prior to transmission over non-C2 protocols. Security cameras captured an unauthorized individual inserting a USB device, but the incident was not reported until after the exfiltration was complete. Network egress logs showed large outbound data transfers, but they were masked as backup operations.\n\nRecommendations for Blue Teams: Enhance monitoring for scanning activities, implement stricter email filtering, audit privilege escalation attempts, and conduct regular reviews of encrypted traffic patterns. This fictional scenario underscores the importance of layered defense and proactive threat hunting.",
+    "tagged_text": "Background: Magic Hound is a fictional APT group believed to operate with financial motives, focusing on banks and investment firms. In this simulated incident, the group targeted 'SecureBank Corp.', a mid-sized financial institution with global operations. Initial logs from SecureBank's perimeter firewall showed unusual scanning activity from IP addresses in Eastern Europe, but no immediate alerts were triggered due to misconfigured thresholds.\n\nKill-Chain Analysis:\n- **Reconnaissance**: The actors likely conducted reconnaissance by capturing IP addresses of visitors to their phishing sites [T1590.005] and actively scanning exposed services using nmap.exe with script scanning to detect vulnerabilities [T1595]. SecureBank's external web servers logged multiple connection attempts from these IPs over a two-week period, though these were initially dismissed as benign bot traffic.\n- **Initial Access**: The adversary employed spearphishing links in emails to deliver malicious ZIP archives containing scripts [T1566.002], which led to the download and installation of a payload similar to Pikabot. One employee at SecureBank reported receiving a suspicious email with a hyperlink, but it was not flagged by the email security gateway due to a recent rule update oversight.\n- **Execution**: Upon execution, the payload exploited Oracle Java vulnerabilities, including CVE-2011-3544, for client-side execution [T1203], while simultaneously using PowerShell to modify registry keys and abuse UAC by manipulating settings to run a high-integrity process [T1548]. System logs from the compromised workstation showed unusual PowerShell activity, but no alerts were generated as the commands were obfuscated.\n- **Persistence and Privilege Escalation**: The actor made and impersonated a SYSTEM-level token using SetThreadToken [T1134.003] to elevate privileges, and abused elevation control mechanisms by further registry manipulations [T1548]. Additionally, they used space after filename techniques, putting several spaces before file extensions to avoid detection [T1036.006]. A scheduled task was created to maintain persistence, but it was named with common system terms to blend in.\n- **Defense Evasion**: To evade analysis, the malware checked for debugger strings by invoking GetForegroundWindow and looking for terms like 'x32dbg' and 'windbg' [T1622], and employed traffic signaling by using Wake-on-Lan to power on turned-off systems for lateral movement [T1205]. Network monitoring tools at SecureBank detected unusual WoL packets but attributed them to maintenance activities.\n- **Lateral Movement and Collection**: The adversary conducted adversary-in-the-middle attacks by poisoning the DNS cache to redirect internal traffic to a phishing site [T1557], and used klist queries to determine available service tickets for silver ticket forgery via ccache files [T1558.005]. During this phase, they also performed system time discovery to set timestamps for triggering wiper functionality [T1124], though no wiping occurred in this scenario. Internal DNS logs showed anomalies, but they were not investigated promptly due to high volume.\n- **Command and Control**: The actor established C2 channels using asymmetric cryptography with SSL connections [T1573.002], encrypting communications to blend with normal web traffic. SecureBank's IDS flagged some encrypted traffic as suspicious, but it was allowed due to whitelisted domains.\n- **Exfiltration**: Data exfiltration was performed by writing proprietary source code to a USB flash drive [T1052] and using OpenSSL to encrypt stolen credentials prior to transmission over non-C2 protocols [T1048.002]. Security cameras captured an unauthorized individual inserting a USB device, but the incident was not reported until after the exfiltration was complete. Network egress logs showed large outbound data transfers, but they were masked as backup operations.\n\nRecommendations for Blue Teams: Enhance monitoring for scanning activities, implement stricter email filtering, audit privilege escalation attempts, and conduct regular reviews of encrypted traffic patterns. This fictional scenario underscores the importance of layered defense and proactive threat hunting.",
+    "sentence_annotations": [
+        {
+            "sentence": "exe with script scanning to detect vulnerabilities.",
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning"
+        },
+        {
+            "sentence": "- **Execution**: Upon execution, the payload exploited Oracle Java vulnerabilities, including CVE-2011-3544, for client-side execution, while simultaneously using PowerShell to modify registry keys and abuse UAC by manipulating settings to run a high-integrity process.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "- **Execution**: Upon execution, the payload exploited Oracle Java vulnerabilities, including CVE-2011-3544, for client-side execution, while simultaneously using PowerShell to modify registry keys and abuse UAC by manipulating settings to run a high-integrity process.",
+            "technique_id": "T1548",
+            "technique_name": "Abuse Elevation Control Mechanism"
+        },
+        {
+            "sentence": "003] to elevate privileges, and abused elevation control mechanisms by further registry manipulations.",
+            "technique_id": "T1548",
+            "technique_name": "Abuse Elevation Control Mechanism"
+        },
+        {
+            "sentence": "- **Defense Evasion**: To evade analysis, the malware checked for debugger strings by invoking GetForegroundWindow and looking for terms like 'x32dbg' and 'windbg', and employed traffic signaling by using Wake-on-Lan to power on turned-off systems for lateral movement.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "- **Defense Evasion**: To evade analysis, the malware checked for debugger strings by invoking GetForegroundWindow and looking for terms like 'x32dbg' and 'windbg', and employed traffic signaling by using Wake-on-Lan to power on turned-off systems for lateral movement.",
+            "technique_id": "T1205",
+            "technique_name": "Traffic Signaling"
+        },
+        {
+            "sentence": "- **Lateral Movement and Collection**: The adversary conducted adversary-in-the-middle attacks by poisoning the DNS cache to redirect internal traffic to a phishing site, and used klist queries to determine available service tickets for silver ticket forgery via ccache files [T1558.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        },
+        {
+            "sentence": "During this phase, they also performed system time discovery to set timestamps for triggering wiper functionality, though no wiping occurred in this scenario.",
+            "technique_id": "T1124",
+            "technique_name": "System Time Discovery"
+        },
+        {
+            "sentence": "- **Exfiltration**: Data exfiltration was performed by writing proprietary source code to a USB flash drive and using OpenSSL to encrypt stolen credentials prior to transmission over non-C2 protocols [T1048.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign 'Magic Hound' Targeting Financial Sector",
+        "summary": "This advisory details a fictional campaign by threat actors, designated as 'Magic Hound', targeting financial institutions for data exfiltration and credential theft. The scenario is designed for blue team training to recognize and mitigate advanced persistent threat (APT) tactics, techniques, and procedures (TTPs).",
+        "full_report_text": "Background: Magic Hound is a fictional APT group believed to operate with financial motives, focusing on banks and investment firms. In this simulated incident, the group targeted 'SecureBank Corp.', a mid-sized financial institution with global operations. Initial logs from SecureBank's perimeter firewall showed unusual scanning activity from IP addresses in Eastern Europe, but no immediate alerts were triggered due to misconfigured thresholds.\n\nKill-Chain Analysis:\n- **Reconnaissance**: The actors likely conducted reconnaissance by capturing IP addresses of visitors to their phishing sites [T1590.005] and actively scanning exposed services using nmap.exe with script scanning to detect vulnerabilities [T1595]. SecureBank's external web servers logged multiple connection attempts from these IPs over a two-week period, though these were initially dismissed as benign bot traffic.\n- **Initial Access**: The adversary employed spearphishing links in emails to deliver malicious ZIP archives containing scripts [T1566.002], which led to the download and installation of a payload similar to Pikabot. One employee at SecureBank reported receiving a suspicious email with a hyperlink, but it was not flagged by the email security gateway due to a recent rule update oversight.\n- **Execution**: Upon execution, the payload exploited Oracle Java vulnerabilities, including CVE-2011-3544, for client-side execution [T1203], while simultaneously using PowerShell to modify registry keys and abuse UAC by manipulating settings to run a high-integrity process [T1548]. System logs from the compromised workstation showed unusual PowerShell activity, but no alerts were generated as the commands were obfuscated.\n- **Persistence and Privilege Escalation**: The actor made and impersonated a SYSTEM-level token using SetThreadToken [T1134.003] to elevate privileges, and abused elevation control mechanisms by further registry manipulations [T1548]. Additionally, they used space after filename techniques, putting several spaces before file extensions to avoid detection [T1036.006]. A scheduled task was created to maintain persistence, but it was named with common system terms to blend in.\n- **Defense Evasion**: To evade analysis, the malware checked for debugger strings by invoking GetForegroundWindow and looking for terms like 'x32dbg' and 'windbg' [T1622], and employed traffic signaling by using Wake-on-Lan to power on turned-off systems for lateral movement [T1205]. Network monitoring tools at SecureBank detected unusual WoL packets but attributed them to maintenance activities.\n- **Lateral Movement and Collection**: The adversary conducted adversary-in-the-middle attacks by poisoning the DNS cache to redirect internal traffic to a phishing site [T1557], and used klist queries to determine available service tickets for silver ticket forgery via ccache files [T1558.005]. During this phase, they also performed system time discovery to set timestamps for triggering wiper functionality [T1124], though no wiping occurred in this scenario. Internal DNS logs showed anomalies, but they were not investigated promptly due to high volume.\n- **Command and Control**: The actor established C2 channels using asymmetric cryptography with SSL connections [T1573.002], encrypting communications to blend with normal web traffic. SecureBank's IDS flagged some encrypted traffic as suspicious, but it was allowed due to whitelisted domains.\n- **Exfiltration**: Data exfiltration was performed by writing proprietary source code to a USB flash drive [T1052] and using OpenSSL to encrypt stolen credentials prior to transmission over non-C2 protocols [T1048.002]. Security cameras captured an unauthorized individual inserting a USB device, but the incident was not reported until after the exfiltration was complete. Network egress logs showed large outbound data transfers, but they were masked as backup operations.\n\nRecommendations for Blue Teams: Enhance monitoring for scanning activities, implement stricter email filtering, audit privilege escalation attempts, and conduct regular reviews of encrypted traffic patterns. This fictional scenario underscores the importance of layered defense and proactive threat hunting.",
+        "techniques_used": [
+            "T1590.005",
+            "T1595",
+            "T1566.002",
+            "T1203",
+            "T1134.003",
+            "T1548",
+            "T1622",
+            "T1036.006",
+            "T1205",
+            "T1557",
+            "T1558.005",
+            "T1124",
+            "T1573.002",
+            "T1052",
+            "T1048.002"
+        ]
+    }
+}

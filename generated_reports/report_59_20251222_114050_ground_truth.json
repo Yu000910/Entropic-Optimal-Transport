@@ -1,0 +1,68 @@
+{
+    "report_id": "report_59",
+    "generated_at": "20251222_114050",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1053.005",
+        "T1558.002",
+        "T1135",
+        "T1534",
+        "T1071.003",
+        "T1499.004"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "credential-access",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.001",
+        "T1053.005",
+        "T1558.002",
+        "T1135",
+        "T1534",
+        "T1071.003",
+        "T1499.004"
+    ],
+    "actual_found_ids": [
+        "T1499.004",
+        "T1534",
+        "T1566.001",
+        "T1071.003",
+        "T1053.005",
+        "T1558.002",
+        "T1135"
+    ],
+    "clean_text": "Background: The fictional company 'SecureFin Corp', a mid-sized financial services provider, reported anomalous network activity during a routine security audit, prompting this investigation. Logs from their email gateway showed a spike in suspicious messages, but initial scans flagged only 2% as malicious, with the rest being routine business correspondence.\n\nInitial Access: The actors initiated the campaign by sending spearphishing emails with malicious Microsoft Word attachments to key employees in the finance department, leveraging social engineering tactics to appear as legitimate vendor invoices.\n\nExecution and Persistence: Upon opening the attachment, a macro executed a PowerShell script that created a scheduled task using the command 'schtasks /create /sc daily' to maintain persistence on the compromised system, while simultaneously downloading additional payloads from a command-and-control server.\n\nPrivilege Escalation and Credential Access: The adversary then employed Mimikatz's kerberos module to forge Kerberos service tickets, creating a Silver Ticket to gain unauthorized access to domain resources, and used network discovery tools like 'net view /all' to map out accessible shares and identify high-value targets.\n\nLateral Movement: To spread internally, the malware dropped a malicious PowerShell script to the Temp directory, which was used to conduct internal spearphishing attacks to compromise additional accounts, while disguising beaconing signals as routine business emails sent via SMTP protocols to evade detection.\n\nImpact: In the final stage, the attackers exploited an unpatched zero-day vulnerability in the database service to create persistent deadlock conditions that prevented legitimate access, aiming to disrupt operations and exfiltrate data. System logs from the database server indicated unusual lock patterns, but no actual data loss occurred in this training scenario.\n\nRecommendations: Blue teams should enhance email filtering, monitor for anomalous scheduled tasks, implement strict Kerberos ticket policies, segment network shares, and prioritize patch management to mitigate similar threats.",
+    "tagged_text": "Background: The fictional company 'SecureFin Corp', a mid-sized financial services provider, reported anomalous network activity during a routine security audit, prompting this investigation. Logs from their email gateway showed a spike in suspicious messages, but initial scans flagged only 2% as malicious, with the rest being routine business correspondence.\n\nInitial Access: The actors initiated the campaign by sending spearphishing emails with malicious Microsoft Word attachments to key employees in the finance department [T1566.001], leveraging social engineering tactics to appear as legitimate vendor invoices.\n\nExecution and Persistence: Upon opening the attachment, a macro executed a PowerShell script that created a scheduled task using the command 'schtasks /create /sc daily' to maintain persistence on the compromised system [T1053.005], while simultaneously downloading additional payloads from a command-and-control server.\n\nPrivilege Escalation and Credential Access: The adversary then employed Mimikatz's kerberos module to forge Kerberos service tickets, creating a Silver Ticket to gain unauthorized access to domain resources [T1558.002], and used network discovery tools like 'net view /all' to map out accessible shares and identify high-value targets [T1135].\n\nLateral Movement: To spread internally, the malware dropped a malicious PowerShell script to the Temp directory, which was used to conduct internal spearphishing attacks to compromise additional accounts [T1534], while disguising beaconing signals as routine business emails sent via SMTP protocols to evade detection [T1071.003].\n\nImpact: In the final stage, the attackers exploited an unpatched zero-day vulnerability in the database service to create persistent deadlock conditions that prevented legitimate access, aiming to disrupt operations and exfiltrate data [T1499.004]. System logs from the database server indicated unusual lock patterns, but no actual data loss occurred in this training scenario.\n\nRecommendations: Blue teams should enhance email filtering, monitor for anomalous scheduled tasks, implement strict Kerberos ticket policies, segment network shares, and prioritize patch management to mitigate similar threats.",
+    "sentence_annotations": [
+        {
+            "sentence": "002], and used network discovery tools like 'net view /all' to map out accessible shares and identify high-value targets.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "Lateral Movement: To spread internally, the malware dropped a malicious PowerShell script to the Temp directory, which was used to conduct internal spearphishing attacks to compromise additional accounts, while disguising beaconing signals as routine business emails sent via SMTP protocols to evade detection [T1071.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowWeaver', which targeted financial institutions to exfiltrate sensitive data and disrupt operations. The campaign involved sophisticated spearphishing, persistence mechanisms, credential theft, internal propagation, and exploitation techniques, as observed in a training exercise designed to enhance blue team readiness.",
+        "full_report_text": "Background: The fictional company 'SecureFin Corp', a mid-sized financial services provider, reported anomalous network activity during a routine security audit, prompting this investigation. Logs from their email gateway showed a spike in suspicious messages, but initial scans flagged only 2% as malicious, with the rest being routine business correspondence.\n\nInitial Access: The actors initiated the campaign by sending spearphishing emails with malicious Microsoft Word attachments to key employees in the finance department [T1566.001], leveraging social engineering tactics to appear as legitimate vendor invoices.\n\nExecution and Persistence: Upon opening the attachment, a macro executed a PowerShell script that created a scheduled task using the command 'schtasks /create /sc daily' to maintain persistence on the compromised system [T1053.005], while simultaneously downloading additional payloads from a command-and-control server.\n\nPrivilege Escalation and Credential Access: The adversary then employed Mimikatz's kerberos module to forge Kerberos service tickets, creating a Silver Ticket to gain unauthorized access to domain resources [T1558.002], and used network discovery tools like 'net view /all' to map out accessible shares and identify high-value targets [T1135].\n\nLateral Movement: To spread internally, the malware dropped a malicious PowerShell script to the Temp directory, which was used to conduct internal spearphishing attacks to compromise additional accounts [T1534], while disguising beaconing signals as routine business emails sent via SMTP protocols to evade detection [T1071.003].\n\nImpact: In the final stage, the attackers exploited an unpatched zero-day vulnerability in the database service to create persistent deadlock conditions that prevented legitimate access, aiming to disrupt operations and exfiltrate data [T1499.004]. System logs from the database server indicated unusual lock patterns, but no actual data loss occurred in this training scenario.\n\nRecommendations: Blue teams should enhance email filtering, monitor for anomalous scheduled tasks, implement strict Kerberos ticket policies, segment network shares, and prioritize patch management to mitigate similar threats.",
+        "techniques_used": [
+            "T1566.001",
+            "T1053.005",
+            "T1558.002",
+            "T1135",
+            "T1534",
+            "T1071.003",
+            "T1499.004"
+        ]
+    }
+}

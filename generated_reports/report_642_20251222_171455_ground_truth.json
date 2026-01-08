@@ -1,0 +1,106 @@
+{
+    "report_id": "report_642",
+    "generated_at": "20251222_171455",
+    "scenario_target_ids": [
+        "T1195",
+        "T1106",
+        "T1543.004",
+        "T1078.001",
+        "T1546.006",
+        "T1074.002",
+        "T1572",
+        "T1568",
+        "T1011.001",
+        "T1498"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "privilege-escalation",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1195",
+        "T1106",
+        "T1543.004",
+        "T1078.001",
+        "T1546.006",
+        "T1074.002",
+        "T1572",
+        "T1568",
+        "T1011.001",
+        "T1498"
+    ],
+    "actual_found_ids": [
+        "T1572",
+        "T1011.001",
+        "T1568",
+        "T1589",
+        "T1106",
+        "T1195",
+        "T1074.002",
+        "T1543.004",
+        "T1498",
+        "T1546.006",
+        "T1078.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign, 'ShadowDeploy.' This group targeted a software development company, 'TechSoft Inc.,' which provides enterprise applications to global clients. Initial analysis of system logs from TechSoft's Jenkins server on 2023-10-15 revealed anomalous configuration changes, but no immediate alerts were triggered due to misconfigured monitoring tools.\n\nThe actors likely conducted reconnaissance to identify TechSoft's software supply chain vulnerabilities. They then compromised the continuous integration server by altering its configuration to inject malicious code into software updates, distributing trojanized builds to over 500 customers. Upon execution on a macOS endpoint, the malware used Native API calls such as GetTickCount for timing-based obfuscation to evade detection while writing a new plist file to /Library/LaunchDaemons/ to ensure persistence during system boot.\n\nFor lateral movement, the adversary exploited the built-in Administrator account with a weak default password to gain access to the domain controller, where they modified the Mach-O structure to inject a path to a malicious dylib. The malware then executed cmd.exe commands to harvest credentials and centralized stolen data in a hidden directory on a staging server, using a custom protocol tunneled through DNS for covert communication.\n\nC2 infrastructure was dynamically resolved via HTTP requests to download resources containing IP address and port pairs, enabling the actors to maintain stealth. In the exfiltration phase, they exploited Bluetooth RFCOMM channels to transfer stolen financial records from air-gapped systems. Finally, to disrupt incident response, the group conducted a distributed denial-of-service (DDoS) attack against TechSoft's external-facing web servers, overwhelming them with traffic and delaying forensic analysis. Logs from firewall devices showed a spike in UDP packets, but initial triage misattributed this to a misconfigured network appliance.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign, 'ShadowDeploy.' This group targeted a software development company, 'TechSoft Inc.,' which provides enterprise applications to global clients. Initial analysis of system logs from TechSoft's Jenkins server on 2023-10-15 revealed anomalous configuration changes, but no immediate alerts were triggered due to misconfigured monitoring tools.\n\nThe actors likely conducted reconnaissance [T1589] to identify TechSoft's software supply chain vulnerabilities. They then compromised the continuous integration server by altering its configuration to inject malicious code into software updates [T1195], distributing trojanized builds to over 500 customers. Upon execution on a macOS endpoint, the malware used Native API calls such as GetTickCount for timing-based obfuscation [T1106] to evade detection while writing a new plist file to /Library/LaunchDaemons/ to ensure persistence during system boot [T1543.004].\n\nFor lateral movement, the adversary exploited the built-in Administrator account with a weak default password to gain access to the domain controller [T1078.001], where they modified the Mach-O structure to inject a path to a malicious dylib [T1546.006]. The malware then executed cmd.exe commands to harvest credentials and centralized stolen data in a hidden directory on a staging server [T1074.002], using a custom protocol tunneled through DNS for covert communication [T1572].\n\nC2 infrastructure was dynamically resolved via HTTP requests to download resources containing IP address and port pairs [T1568], enabling the actors to maintain stealth. In the exfiltration phase, they exploited Bluetooth RFCOMM channels to transfer stolen financial records from air-gapped systems [T1011.001]. Finally, to disrupt incident response, the group conducted a distributed denial-of-service (DDoS) attack against TechSoft's external-facing web servers [T1498], overwhelming them with traffic and delaying forensic analysis. Logs from firewall devices showed a spike in UDP packets, but initial triage misattributed this to a misconfigured network appliance.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify TechSoft's software supply chain vulnerabilities.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "They then compromised the continuous integration server by altering its configuration to inject malicious code into software updates, distributing trojanized builds to over 500 customers.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Upon execution on a macOS endpoint, the malware used Native API calls such as GetTickCount for timing-based obfuscation to evade detection while writing a new plist file to /Library/LaunchDaemons/ to ensure persistence during system boot [T1543.",
+            "technique_id": "T1106",
+            "technique_name": "Native API"
+        },
+        {
+            "sentence": "002], using a custom protocol tunneled through DNS for covert communication.",
+            "technique_id": "T1572",
+            "technique_name": "Protocol Tunneling"
+        },
+        {
+            "sentence": "C2 infrastructure was dynamically resolved via HTTP requests to download resources containing IP address and port pairs, enabling the actors to maintain stealth.",
+            "technique_id": "T1568",
+            "technique_name": "Dynamic Resolution"
+        },
+        {
+            "sentence": "Finally, to disrupt incident response, the group conducted a distributed denial-of-service (DDoS) attack against TechSoft's external-facing web servers, overwhelming them with traffic and delaying forensic analysis.",
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowDeploy' Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowDeploy,' which compromised a continuous integration server to distribute malware-laden software updates. The actors leveraged native APIs for obfuscation, established persistence via launch daemons, exploited default accounts for lateral movement, and employed dynamic resolution for command and control (C2), culminating in data exfiltration over Bluetooth and network denial-of-service attacks. This report is intended for blue team training to enhance detection and response capabilities against sophisticated supply chain attacks.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign, 'ShadowDeploy.' This group targeted a software development company, 'TechSoft Inc.,' which provides enterprise applications to global clients. Initial analysis of system logs from TechSoft's Jenkins server on 2023-10-15 revealed anomalous configuration changes, but no immediate alerts were triggered due to misconfigured monitoring tools.\n\nThe actors likely conducted reconnaissance [T1589] to identify TechSoft's software supply chain vulnerabilities. They then compromised the continuous integration server by altering its configuration to inject malicious code into software updates [T1195], distributing trojanized builds to over 500 customers. Upon execution on a macOS endpoint, the malware used Native API calls such as GetTickCount for timing-based obfuscation [T1106] to evade detection while writing a new plist file to /Library/LaunchDaemons/ to ensure persistence during system boot [T1543.004].\n\nFor lateral movement, the adversary exploited the built-in Administrator account with a weak default password to gain access to the domain controller [T1078.001], where they modified the Mach-O structure to inject a path to a malicious dylib [T1546.006]. The malware then executed cmd.exe commands to harvest credentials and centralized stolen data in a hidden directory on a staging server [T1074.002], using a custom protocol tunneled through DNS for covert communication [T1572].\n\nC2 infrastructure was dynamically resolved via HTTP requests to download resources containing IP address and port pairs [T1568], enabling the actors to maintain stealth. In the exfiltration phase, they exploited Bluetooth RFCOMM channels to transfer stolen financial records from air-gapped systems [T1011.001]. Finally, to disrupt incident response, the group conducted a distributed denial-of-service (DDoS) attack against TechSoft's external-facing web servers [T1498], overwhelming them with traffic and delaying forensic analysis. Logs from firewall devices showed a spike in UDP packets, but initial triage misattributed this to a misconfigured network appliance.",
+        "techniques_used": [
+            "T1589",
+            "T1195",
+            "T1106",
+            "T1543.004",
+            "T1078.001",
+            "T1546.006",
+            "T1074.002",
+            "T1572",
+            "T1568",
+            "T1011.001",
+            "T1498"
+        ]
+    }
+}

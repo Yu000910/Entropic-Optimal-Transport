@@ -1,0 +1,91 @@
+{
+    "report_id": "report_330",
+    "generated_at": "20251222_150116",
+    "scenario_target_ids": [
+        "T1078",
+        "T1059.008",
+        "T1550.004",
+        "T1213",
+        "T1125",
+        "T1213.004",
+        "T1219.002",
+        "T1529"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078",
+        "T1059.008",
+        "T1219.002",
+        "T1550.004",
+        "T1529",
+        "T1213.004",
+        "T1213",
+        "T1125"
+    ],
+    "actual_found_ids": [
+        "T1213.004",
+        "T1589",
+        "T1550.004",
+        "T1125",
+        "T1078",
+        "T1219.002",
+        "T1059.008",
+        "T1213",
+        "T1529"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure entities about a fictional APT campaign, 'ShadowGaze'. This report is for educational purposes to enhance blue team training and preparedness. Background: The fictional victim, 'GlobalTech Solutions', a mid-sized manufacturing firm, reported unusual network activity after a routine audit flagged anomalous SSH logins from external IP addresses. System logs from March 15, 2024, show multiple failed login attempts followed by successful entries, though no immediate alerts were triggered due to misconfigured monitoring tools. The company's IT infrastructure includes Oracle databases, Salesforce CRM, and network switches from Cisco, with employees using TeamViewer for remote support. Initial Access: The actors likely conducted reconnaissance to identify weak credentials, then gained initial access by exploiting valid SSH accounts obtained through previous credential theft campaigns. Execution: Upon entry, the adversary employed the network device CLI to configure port mirroring with 'monitor session 1 destination interface Gi1/0/24', enabling traffic capture for lateral movement. Persistence: To maintain access, they abused TeamViewer to establish a persistent command and control channel, while simultaneously collecting web session cookies from browser local storage to bypass multi-factor authentication (MFA) on internal web applications. Defense Evasion: The actors used PowerShell to invoke 'Stop-Computer -Force' for immediate system shutdowns during incident response attempts, creating operational disruptions. Credential Access: No additional techniques beyond initial valid accounts were observed in this phase. Discovery: The adversary queried Salesforce using compromised credentials to extract customer account details, supporting subsequent phishing operations. Lateral Movement: They leveraged the captured network traffic and valid accounts to move across segments, accessing Oracle databases. Collection: Data was exfiltrated from Oracle databases using SQLULDR2, and the malware activated built-in cameras on compromised devices to capture video footage without user consent, though this was limited to test environments. Command and Control: The TeamViewer channel facilitated ongoing communications. Exfiltration: Data was transferred via encrypted channels, with logs showing unusual outbound traffic to cloud storage services. Impact: The campaign resulted in data theft and potential privacy violations, but no real-world damage occurred as this is a training scenario. Defensive recommendations include enforcing strong password policies, monitoring network device configurations, and disabling unnecessary remote access software.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure entities about a fictional APT campaign, 'ShadowGaze'. This report is for educational purposes to enhance blue team training and preparedness. Background: The fictional victim, 'GlobalTech Solutions', a mid-sized manufacturing firm, reported unusual network activity after a routine audit flagged anomalous SSH logins from external IP addresses. System logs from March 15, 2024, show multiple failed login attempts followed by successful entries, though no immediate alerts were triggered due to misconfigured monitoring tools. The company's IT infrastructure includes Oracle databases, Salesforce CRM, and network switches from Cisco, with employees using TeamViewer for remote support. Initial Access: The actors likely conducted reconnaissance [T1589] to identify weak credentials, then gained initial access by exploiting valid SSH accounts [T1078] obtained through previous credential theft campaigns. Execution: Upon entry, the adversary employed the network device CLI [T1059.008] to configure port mirroring with 'monitor session 1 destination interface Gi1/0/24', enabling traffic capture for lateral movement. Persistence: To maintain access, they abused TeamViewer [T1219.002] to establish a persistent command and control channel, while simultaneously collecting web session cookies [T1550.004] from browser local storage to bypass multi-factor authentication (MFA) on internal web applications. Defense Evasion: The actors used PowerShell to invoke 'Stop-Computer -Force' [T1529] for immediate system shutdowns during incident response attempts, creating operational disruptions. Credential Access: No additional techniques beyond initial valid accounts were observed in this phase. Discovery: The adversary queried Salesforce [T1213.004] using compromised credentials to extract customer account details, supporting subsequent phishing operations. Lateral Movement: They leveraged the captured network traffic and valid accounts to move across segments, accessing Oracle databases. Collection: Data was exfiltrated from Oracle databases using SQLULDR2 [T1213], and the malware activated built-in cameras [T1125] on compromised devices to capture video footage without user consent, though this was limited to test environments. Command and Control: The TeamViewer channel facilitated ongoing communications. Exfiltration: Data was transferred via encrypted channels, with logs showing unusual outbound traffic to cloud storage services. Impact: The campaign resulted in data theft and potential privacy violations, but no real-world damage occurred as this is a training scenario. Defensive recommendations include enforcing strong password policies, monitoring network device configurations, and disabling unnecessary remote access software.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conducted reconnaissance to identify weak credentials, then gained initial access by exploiting valid SSH accounts obtained through previous credential theft campaigns.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Initial Access: The actors likely conducted reconnaissance to identify weak credentials, then gained initial access by exploiting valid SSH accounts obtained through previous credential theft campaigns.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Defense Evasion: The actors used PowerShell to invoke 'Stop-Computer -Force' for immediate system shutdowns during incident response attempts, creating operational disruptions.",
+            "technique_id": "T1529",
+            "technique_name": "System Shutdown/Reboot"
+        },
+        {
+            "sentence": "Collection: Data was exfiltrated from Oracle databases using SQLULDR2, and the malware activated built-in cameras on compromised devices to capture video footage without user consent, though this was limited to test environments.",
+            "technique_id": "T1213",
+            "technique_name": "Data from Information Repositories"
+        },
+        {
+            "sentence": "Collection: Data was exfiltrated from Oracle databases using SQLULDR2, and the malware activated built-in cameras on compromised devices to capture video footage without user consent, though this was limited to test environments.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowGaze' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowGaze', targeting critical infrastructure sectors. The campaign leverages valid credentials, network device exploitation, and data exfiltration techniques to compromise systems and steal sensitive information. Blue teams are advised to review defensive measures and indicators of compromise (IoCs) provided.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform critical infrastructure entities about a fictional APT campaign, 'ShadowGaze'. This report is for educational purposes to enhance blue team training and preparedness. Background: The fictional victim, 'GlobalTech Solutions', a mid-sized manufacturing firm, reported unusual network activity after a routine audit flagged anomalous SSH logins from external IP addresses. System logs from March 15, 2024, show multiple failed login attempts followed by successful entries, though no immediate alerts were triggered due to misconfigured monitoring tools. The company's IT infrastructure includes Oracle databases, Salesforce CRM, and network switches from Cisco, with employees using TeamViewer for remote support. Initial Access: The actors likely conducted reconnaissance [T1589] to identify weak credentials, then gained initial access by exploiting valid SSH accounts [T1078] obtained through previous credential theft campaigns. Execution: Upon entry, the adversary employed the network device CLI [T1059.008] to configure port mirroring with 'monitor session 1 destination interface Gi1/0/24', enabling traffic capture for lateral movement. Persistence: To maintain access, they abused TeamViewer [T1219.002] to establish a persistent command and control channel, while simultaneously collecting web session cookies [T1550.004] from browser local storage to bypass multi-factor authentication (MFA) on internal web applications. Defense Evasion: The actors used PowerShell to invoke 'Stop-Computer -Force' [T1529] for immediate system shutdowns during incident response attempts, creating operational disruptions. Credential Access: No additional techniques beyond initial valid accounts were observed in this phase. Discovery: The adversary queried Salesforce [T1213.004] using compromised credentials to extract customer account details, supporting subsequent phishing operations. Lateral Movement: They leveraged the captured network traffic and valid accounts to move across segments, accessing Oracle databases. Collection: Data was exfiltrated from Oracle databases using SQLULDR2 [T1213], and the malware activated built-in cameras [T1125] on compromised devices to capture video footage without user consent, though this was limited to test environments. Command and Control: The TeamViewer channel facilitated ongoing communications. Exfiltration: Data was transferred via encrypted channels, with logs showing unusual outbound traffic to cloud storage services. Impact: The campaign resulted in data theft and potential privacy violations, but no real-world damage occurred as this is a training scenario. Defensive recommendations include enforcing strong password policies, monitoring network device configurations, and disabling unnecessary remote access software.",
+        "techniques_used": [
+            "T1589",
+            "T1078",
+            "T1059.008",
+            "T1219.002",
+            "T1550.004",
+            "T1529",
+            "T1213.004",
+            "T1213",
+            "T1125"
+        ]
+    }
+}

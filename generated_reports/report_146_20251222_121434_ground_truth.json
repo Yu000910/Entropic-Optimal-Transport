@@ -1,0 +1,68 @@
+{
+    "report_id": "report_146",
+    "generated_at": "20251222_121434",
+    "scenario_target_ids": [
+        "T1598",
+        "T1078.003",
+        "T1204.003",
+        "T1059.010",
+        "T1055.011",
+        "T1546.008",
+        "T1205.002",
+        "T1090.003"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1598",
+        "T1078.003",
+        "T1204.003",
+        "T1059.010",
+        "T1055.011",
+        "T1546.008",
+        "T1205.002",
+        "T1090.003"
+    ],
+    "actual_found_ids": [
+        "T1090.003",
+        "T1078.003",
+        "T1205.002",
+        "T1546.008",
+        "T1204.003",
+        "T1598",
+        "T1059.010",
+        "T1055.011"
+    ],
+    "clean_text": "On October 15, 2023, investigators at a fictional energy company, 'GridSecure Inc.', detected anomalous activity following a phishing campaign that harvested employee credentials through a fake authentication portal mimicking internal systems. The actors then used Mimikatz.exe to dump LSASS memory, extracting local administrator credentials and leveraging these to deploy a malicious Dockerfile that installed a remote access trojan from a compromised package repository. System logs from the affected server, 'SRV-ADMIN-01', showed unusual network traffic spikes at 03:00 UTC, but initial scans flagged no malware. Concurrently, the dropper executed a malicious AutoHotKey script ('malicious.ahk') to elevate privileges and install additional payloads, while the ransomware injected a malicious DLL into the memory space of a legitimate system process to evade detection. Background: GridSecure Inc. operates in the energy sector with 500 employees, and their security team noted increased failed login attempts in the weeks prior, though these were attributed to routine scanning. The attacker further exploited accessibility features to execute cmd.exe with elevated privileges, and the PITSTOP malware listened on a domain socket at '/data/runtime/cockpit/wd.fd' for predefined magic byte sequences, using socket filters to evaluate incoming commands before establishing command and control (C2) communication over TLS via a multi-hop proxy through the Tor network. Incident responders observed encrypted traffic to onion domains, but firewall logs from 'FW-MAIN-01' showed no prior alerts for these connections.",
+    "tagged_text": "On October 15, 2023, investigators at a fictional energy company, 'GridSecure Inc.', detected anomalous activity following a phishing campaign that harvested employee credentials through a fake authentication portal mimicking internal systems [T1598]. The actors then used Mimikatz.exe to dump LSASS memory, extracting local administrator credentials [T1078.003] and leveraging these to deploy a malicious Dockerfile that installed a remote access trojan from a compromised package repository [T1204.003]. System logs from the affected server, 'SRV-ADMIN-01', showed unusual network traffic spikes at 03:00 UTC, but initial scans flagged no malware. Concurrently, the dropper executed a malicious AutoHotKey script ('malicious.ahk') to elevate privileges and install additional payloads [T1059.010], while the ransomware injected a malicious DLL into the memory space of a legitimate system process to evade detection [T1055.011]. Background: GridSecure Inc. operates in the energy sector with 500 employees, and their security team noted increased failed login attempts in the weeks prior, though these were attributed to routine scanning. The attacker further exploited accessibility features to execute cmd.exe with elevated privileges [T1546.008], and the PITSTOP malware listened on a domain socket at '/data/runtime/cockpit/wd.fd' for predefined magic byte sequences, using socket filters to evaluate incoming commands [T1205.002] before establishing command and control (C2) communication over TLS via a multi-hop proxy through the Tor network [T1090.003]. Incident responders observed encrypted traffic to onion domains, but firewall logs from 'FW-MAIN-01' showed no prior alerts for these connections.",
+    "sentence_annotations": [
+        {
+            "sentence": "', detected anomalous activity following a phishing campaign that harvested employee credentials through a fake authentication portal mimicking internal systems.",
+            "technique_id": "T1598",
+            "technique_name": "Phishing for Information"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowHook', targeting critical infrastructure sectors. The campaign employs a multi-stage attack involving phishing, credential theft, containerization, and sophisticated evasion techniques to establish persistence and exfiltrate data. Blue teams should use this report for training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "On October 15, 2023, investigators at a fictional energy company, 'GridSecure Inc.', detected anomalous activity following a phishing campaign that harvested employee credentials through a fake authentication portal mimicking internal systems [T1598]. The actors then used Mimikatz.exe to dump LSASS memory, extracting local administrator credentials [T1078.003] and leveraging these to deploy a malicious Dockerfile that installed a remote access trojan from a compromised package repository [T1204.003]. System logs from the affected server, 'SRV-ADMIN-01', showed unusual network traffic spikes at 03:00 UTC, but initial scans flagged no malware. Concurrently, the dropper executed a malicious AutoHotKey script ('malicious.ahk') to elevate privileges and install additional payloads [T1059.010], while the ransomware injected a malicious DLL into the memory space of a legitimate system process to evade detection [T1055.011]. Background: GridSecure Inc. operates in the energy sector with 500 employees, and their security team noted increased failed login attempts in the weeks prior, though these were attributed to routine scanning. The attacker further exploited accessibility features to execute cmd.exe with elevated privileges [T1546.008], and the PITSTOP malware listened on a domain socket at '/data/runtime/cockpit/wd.fd' for predefined magic byte sequences, using socket filters to evaluate incoming commands [T1205.002] before establishing command and control (C2) communication over TLS via a multi-hop proxy through the Tor network [T1090.003]. Incident responders observed encrypted traffic to onion domains, but firewall logs from 'FW-MAIN-01' showed no prior alerts for these connections.",
+        "techniques_used": [
+            "T1598",
+            "T1078.003",
+            "T1204.003",
+            "T1059.010",
+            "T1055.011",
+            "T1546.008",
+            "T1205.002",
+            "T1090.003"
+        ]
+    }
+}

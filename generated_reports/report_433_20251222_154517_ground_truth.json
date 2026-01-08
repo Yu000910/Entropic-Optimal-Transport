@@ -1,0 +1,93 @@
+{
+    "report_id": "report_433",
+    "generated_at": "20251222_154517",
+    "scenario_target_ids": [
+        "T1589.003",
+        "T1608.002",
+        "T1078",
+        "T1609",
+        "T1505.003",
+        "T1552.001",
+        "T1003.007",
+        "T1534",
+        "T1102",
+        "T1052.001"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "credential-access",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589.003",
+        "T1608.002",
+        "T1078",
+        "T1609",
+        "T1505.003",
+        "T1552.001",
+        "T1003.007",
+        "T1534",
+        "T1102",
+        "T1052.001"
+    ],
+    "actual_found_ids": [
+        "T1608.002",
+        "T1534",
+        "T1078",
+        "T1589.003",
+        "T1609",
+        "T1102",
+        "T1552.001",
+        "T1505.003",
+        "T1052.001",
+        "T1003.007"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT33 campaign. This report is based on simulated activity and includes realistic noise for educational purposes. The actors likely conduct reconnaissance by scraping the corporate website's team directory for employee names to target specific individuals. Initial access was achieved through internal spearphishing, where the attacker sent fake authentication requests via Microsoft Teams to compromise valid accounts, which were then used for initial access and privilege escalation. Upon gaining access, the adversary employed PowerShell to download and execute a remote access tool from https://c2.com/tools, saving it to the victim's temp directory, while simultaneously leveraging Microsoft's OneDrive service to download additional malicious payloads onto compromised systems. For persistence, the actors installed a reGeorg web shell on exposed web servers, allowing continued access to the victim environment. Lateral movement involved using the compromised valid accounts to access Docker environments, where the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers. Credential theft was conducted through multiple methods: the script recursively searched user home directories for configuration files with hardcoded passwords, and tools like LaZagne were used to access the /proc filesystem, specifically /maps and /mem files, to identify regex patterns and dump cleartext passwords from browser process memory. System logs from the affected servers showed unusual network traffic patterns, but no actual breaches occurred in this training scenario. Finally, exfiltration was performed using a USB Rubber Ducky script designed to collect system configuration files from compromised workstations over USB. The company, a mid-sized tech firm with offices in New York and San Francisco, reported no real incidents, but this simulation highlights common attack vectors. This advisory serves as a training tool to improve defensive measures against such techniques.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT33 campaign. This report is based on simulated activity and includes realistic noise for educational purposes. The actors likely conduct reconnaissance by scraping the corporate website's team directory for employee names [T1589.003] to target specific individuals. Initial access was achieved through internal spearphishing, where the attacker sent fake authentication requests via Microsoft Teams to compromise valid accounts [T1534], which were then used for initial access and privilege escalation [T1078]. Upon gaining access, the adversary employed PowerShell to download and execute a remote access tool from https://c2.com/tools, saving it to the victim's temp directory [T1608.002], while simultaneously leveraging Microsoft's OneDrive service to download additional malicious payloads onto compromised systems [T1102]. For persistence, the actors installed a reGeorg web shell on exposed web servers [T1505.003], allowing continued access to the victim environment. Lateral movement involved using the compromised valid accounts to access Docker environments, where the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers [T1609]. Credential theft was conducted through multiple methods: the script recursively searched user home directories for configuration files with hardcoded passwords [T1552.001], and tools like LaZagne were used to access the /proc filesystem, specifically /maps and /mem files, to identify regex patterns and dump cleartext passwords from browser process memory [T1003.007]. System logs from the affected servers showed unusual network traffic patterns, but no actual breaches occurred in this training scenario. Finally, exfiltration was performed using a USB Rubber Ducky script designed to collect system configuration files from compromised workstations over USB [T1052.001]. The company, a mid-sized tech firm with offices in New York and San Francisco, reported no real incidents, but this simulation highlights common attack vectors. This advisory serves as a training tool to improve defensive measures against such techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial access was achieved through internal spearphishing, where the attacker sent fake authentication requests via Microsoft Teams to compromise valid accounts, which were then used for initial access and privilege escalation.",
+            "technique_id": "T1534",
+            "technique_name": "Internal Spearphishing"
+        },
+        {
+            "sentence": "Initial access was achieved through internal spearphishing, where the attacker sent fake authentication requests via Microsoft Teams to compromise valid accounts, which were then used for initial access and privilege escalation.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "002], while simultaneously leveraging Microsoft's OneDrive service to download additional malicious payloads onto compromised systems.",
+            "technique_id": "T1102",
+            "technique_name": "Web Service"
+        },
+        {
+            "sentence": "Lateral movement involved using the compromised valid accounts to access Docker environments, where the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers.",
+            "technique_id": "T1609",
+            "technique_name": "Container Administration Command"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT33 Campaign Targeting Containerized Environments",
+        "summary": "This advisory details a simulated campaign by a fictional APT33 threat actor, designed for blue team training purposes. The scenario involves initial access via spearphishing, lateral movement using valid accounts, and data exfiltration from Docker containers, culminating in USB-based exfiltration. Techniques include reconnaissance, tool deployment, credential theft, and persistence mechanisms.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT33 campaign. This report is based on simulated activity and includes realistic noise for educational purposes. The actors likely conduct reconnaissance by scraping the corporate website's team directory for employee names [T1589.003] to target specific individuals. Initial access was achieved through internal spearphishing, where the attacker sent fake authentication requests via Microsoft Teams to compromise valid accounts [T1534], which were then used for initial access and privilege escalation [T1078]. Upon gaining access, the adversary employed PowerShell to download and execute a remote access tool from https://c2.com/tools, saving it to the victim's temp directory [T1608.002], while simultaneously leveraging Microsoft's OneDrive service to download additional malicious payloads onto compromised systems [T1102]. For persistence, the actors installed a reGeorg web shell on exposed web servers [T1505.003], allowing continued access to the victim environment. Lateral movement involved using the compromised valid accounts to access Docker environments, where the exploit script connected to the Docker daemon and executed commands to exfiltrate data from containers [T1609]. Credential theft was conducted through multiple methods: the script recursively searched user home directories for configuration files with hardcoded passwords [T1552.001], and tools like LaZagne were used to access the /proc filesystem, specifically /maps and /mem files, to identify regex patterns and dump cleartext passwords from browser process memory [T1003.007]. System logs from the affected servers showed unusual network traffic patterns, but no actual breaches occurred in this training scenario. Finally, exfiltration was performed using a USB Rubber Ducky script designed to collect system configuration files from compromised workstations over USB [T1052.001]. The company, a mid-sized tech firm with offices in New York and San Francisco, reported no real incidents, but this simulation highlights common attack vectors. This advisory serves as a training tool to improve defensive measures against such techniques.",
+        "techniques_used": [
+            "T1589.003",
+            "T1608.002",
+            "T1078",
+            "T1609",
+            "T1505.003",
+            "T1552.001",
+            "T1003.007",
+            "T1534",
+            "T1102",
+            "T1052.001"
+        ]
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "report_id": "report_393",
+    "generated_at": "20251222_152827",
+    "scenario_target_ids": [
+        "T1584.007",
+        "T1583",
+        "T1195.002",
+        "T1559",
+        "T1218.007",
+        "T1021.002",
+        "T1132.001",
+        "T1657"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1584.007",
+        "T1583",
+        "T1195.002",
+        "T1559",
+        "T1218.007",
+        "T1021.002",
+        "T1132.001",
+        "T1657"
+    ],
+    "actual_found_ids": [
+        "T1195.002",
+        "T1583",
+        "T1218.007",
+        "T1657",
+        "T1132.001",
+        "T1559",
+        "T1584.007",
+        "T1021.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'CloudShatter.' This report is based on simulated threat intelligence and is intended for educational purposes to enhance defensive capabilities. Background: The fictional target is 'FinSecure Bank,' a mid-sized financial institution with hybrid cloud infrastructure using AWS and Azure services. System logs from FinSecure's SIEM show anomalous network traffic patterns starting in early 2024, including increased outbound connections to unknown IP addresses. The bank's IT team reported unusual activity in their development pipeline, but initial investigations were inconclusive due to obfuscated payloads. Kill-Chain Analysis: 1. Initial Access: The actors likely conducted reconnaissance to identify vulnerabilities in FinSecure's software dependencies, though this phase is not detailed in the scenario. They then compromised the software supply chain by injecting malicious code into an open-source logging library's GitHub repository, which was later compiled into FinSecure's production builds, allowing initial foothold without direct exploitation. 2. Execution: Upon deployment, the malware used inter-process communication by writing encoded commands to stdout and piping them to bash for execution, while simultaneously employing msiexec.exe to invoke a malicious DLL disguised as a legitimate component, bypassing application controls. 3. Persistence and Command & Control (C2): The actors acquired infrastructure by signing up for free cloud hosting trials to deploy malware distribution servers and utilized serverless technologies like Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels, with C2 traffic often using standard encoding such as Base64 in HTTP request bodies to evade detection. 4. Lateral Movement: Once inside the network, the malware spread via SMB/Windows Admin Shares to move laterally across systems, leveraging compromised credentials harvested from memory dumps. Network logs from FinSecure's internal segments show multiple SMB connection attempts to administrative shares, though some were blocked by firewall rules. 5. Impact: The campaign culminated in financial theft, where actors sent fake invoices with altered banking details via a compromised business email account, attempting to redirect payments. FinSecure's accounting department reported a suspicious email, but no funds were lost in this simulation. Additional noise: The bank's security team noted unrelated false positives from their IDS during this period, including alerts for outdated SSL certificates and failed login attempts from legacy systems, which were investigated and deemed benign. Recommendations for blue teams include monitoring for unusual cloud service usage, implementing code signing for software dependencies, and training staff on phishing awareness. This advisory is fictional and for training only.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'CloudShatter.' This report is based on simulated threat intelligence and is intended for educational purposes to enhance defensive capabilities. Background: The fictional target is 'FinSecure Bank,' a mid-sized financial institution with hybrid cloud infrastructure using AWS and Azure services. System logs from FinSecure's SIEM show anomalous network traffic patterns starting in early 2024, including increased outbound connections to unknown IP addresses. The bank's IT team reported unusual activity in their development pipeline, but initial investigations were inconclusive due to obfuscated payloads. Kill-Chain Analysis: 1. Initial Access: The actors likely conducted reconnaissance to identify vulnerabilities in FinSecure's software dependencies, though this phase is not detailed in the scenario. They then compromised the software supply chain by injecting malicious code into an open-source logging library's GitHub repository [T1195.002], which was later compiled into FinSecure's production builds, allowing initial foothold without direct exploitation. 2. Execution: Upon deployment, the malware used inter-process communication by writing encoded commands to stdout and piping them to bash for execution [T1559], while simultaneously employing msiexec.exe to invoke a malicious DLL disguised as a legitimate component, bypassing application controls [T1218.007]. 3. Persistence and Command & Control (C2): The actors acquired infrastructure by signing up for free cloud hosting trials to deploy malware distribution servers [T1583] and utilized serverless technologies like Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels [T1584.007], with C2 traffic often using standard encoding such as Base64 in HTTP request bodies [T1132.001] to evade detection. 4. Lateral Movement: Once inside the network, the malware spread via SMB/Windows Admin Shares to move laterally across systems [T1021.002], leveraging compromised credentials harvested from memory dumps. Network logs from FinSecure's internal segments show multiple SMB connection attempts to administrative shares, though some were blocked by firewall rules. 5. Impact: The campaign culminated in financial theft, where actors sent fake invoices with altered banking details via a compromised business email account [T1657], attempting to redirect payments. FinSecure's accounting department reported a suspicious email, but no funds were lost in this simulation. Additional noise: The bank's security team noted unrelated false positives from their IDS during this period, including alerts for outdated SSL certificates and failed login attempts from legacy systems, which were investigated and deemed benign. Recommendations for blue teams include monitoring for unusual cloud service usage, implementing code signing for software dependencies, and training staff on phishing awareness. This advisory is fictional and for training only.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution: Upon deployment, the malware used inter-process communication by writing encoded commands to stdout and piping them to bash for execution, while simultaneously employing msiexec.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "Persistence and Command & Control (C2): The actors acquired infrastructure by signing up for free cloud hosting trials to deploy malware distribution servers and utilized serverless technologies like Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels [T1584.",
+            "technique_id": "T1583",
+            "technique_name": "Acquire Infrastructure"
+        },
+        {
+            "sentence": "Impact: The campaign culminated in financial theft, where actors sent fake invoices with altered banking details via a compromised business email account, attempting to redirect payments.",
+            "technique_id": "T1657",
+            "technique_name": "Financial Theft"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'CloudShatter' Targeting Financial and Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'CloudShatter,' targeting financial institutions and cloud environments. The campaign leverages serverless technologies, supply chain compromises, and cloud infrastructure to deploy malware, facilitate lateral movement, and execute financial theft. Blue teams are advised to review logs, implement network segmentation, and monitor for the described behaviors.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional APT campaign dubbed 'CloudShatter.' This report is based on simulated threat intelligence and is intended for educational purposes to enhance defensive capabilities. Background: The fictional target is 'FinSecure Bank,' a mid-sized financial institution with hybrid cloud infrastructure using AWS and Azure services. System logs from FinSecure's SIEM show anomalous network traffic patterns starting in early 2024, including increased outbound connections to unknown IP addresses. The bank's IT team reported unusual activity in their development pipeline, but initial investigations were inconclusive due to obfuscated payloads. Kill-Chain Analysis: 1. Initial Access: The actors likely conducted reconnaissance to identify vulnerabilities in FinSecure's software dependencies, though this phase is not detailed in the scenario. They then compromised the software supply chain by injecting malicious code into an open-source logging library's GitHub repository [T1195.002], which was later compiled into FinSecure's production builds, allowing initial foothold without direct exploitation. 2. Execution: Upon deployment, the malware used inter-process communication by writing encoded commands to stdout and piping them to bash for execution [T1559], while simultaneously employing msiexec.exe to invoke a malicious DLL disguised as a legitimate component, bypassing application controls [T1218.007]. 3. Persistence and Command & Control (C2): The actors acquired infrastructure by signing up for free cloud hosting trials to deploy malware distribution servers [T1583] and utilized serverless technologies like Cloudflare Workers to obfuscate communication with compromised systems through encrypted channels [T1584.007], with C2 traffic often using standard encoding such as Base64 in HTTP request bodies [T1132.001] to evade detection. 4. Lateral Movement: Once inside the network, the malware spread via SMB/Windows Admin Shares to move laterally across systems [T1021.002], leveraging compromised credentials harvested from memory dumps. Network logs from FinSecure's internal segments show multiple SMB connection attempts to administrative shares, though some were blocked by firewall rules. 5. Impact: The campaign culminated in financial theft, where actors sent fake invoices with altered banking details via a compromised business email account [T1657], attempting to redirect payments. FinSecure's accounting department reported a suspicious email, but no funds were lost in this simulation. Additional noise: The bank's security team noted unrelated false positives from their IDS during this period, including alerts for outdated SSL certificates and failed login attempts from legacy systems, which were investigated and deemed benign. Recommendations for blue teams include monitoring for unusual cloud service usage, implementing code signing for software dependencies, and training staff on phishing awareness. This advisory is fictional and for training only.",
+        "techniques_used": [
+            "T1584.007",
+            "T1583",
+            "T1195.002",
+            "T1559",
+            "T1218.007",
+            "T1021.002",
+            "T1132.001",
+            "T1657"
+        ]
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "report_id": "report_484",
+    "generated_at": "20251222_160739",
+    "scenario_target_ids": [
+        "T1078",
+        "T1053.002",
+        "T1574.001",
+        "T1219.002",
+        "T1567.004",
+        "T1537"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1053.002",
+        "T1574.001",
+        "T1219.002",
+        "T1567.004",
+        "T1537"
+    ],
+    "actual_found_ids": [
+        "T1567.004",
+        "T1053.002",
+        "T1078",
+        "T1219.002",
+        "T1574.001",
+        "T1537"
+    ],
+    "clean_text": "On October 15, 2023, a fictional financial institution, 'GlobalTrust Bank', reported suspicious activity indicative of a sophisticated cyber intrusion. The actors, attributed to the APT group 'CrimsonVault', likely conducted initial reconnaissance through open-source intelligence gathering, though no specific techniques were tagged in this phase. The attack began with the adversary using compromised employee credentials to gain unauthorized access to the internal network, mimicking tactics seen in historical Carbanak campaigns. Once inside, they employed at.exe to schedule the execution of a malicious reverse shell payload during off-hours, ensuring stealthy persistence. Concurrently, the actors dropped a legitimate Microsoft binary, igfxtray.exe, which contained a side-loading vulnerability to load a malicious DLL, facilitating further malware deployment. To maintain remote access, they configured a VNC service on a non-standard port, allowing covert control over compromised hosts. For exfiltration, the group utilized webhook.site to collect system information and then transferred stolen data to a cloud storage account using megatools utilities, mirroring techniques observed in RedCurl operations. System logs from GlobalTrust Bank showed routine authentication events, but deeper analysis revealed anomalous login attempts from unfamiliar IP addresses, which were not tagged as they did not correspond to specific MITRE techniques. The bank's background includes operations in 20 countries, with this incident affecting its European division primarily.",
+    "tagged_text": "On October 15, 2023, a fictional financial institution, 'GlobalTrust Bank', reported suspicious activity indicative of a sophisticated cyber intrusion. The actors, attributed to the APT group 'CrimsonVault', likely conducted initial reconnaissance through open-source intelligence gathering, though no specific techniques were tagged in this phase. The attack began with the adversary using compromised employee credentials [T1078] to gain unauthorized access to the internal network, mimicking tactics seen in historical Carbanak campaigns. Once inside, they employed at.exe [T1053.002] to schedule the execution of a malicious reverse shell payload during off-hours, ensuring stealthy persistence. Concurrently, the actors dropped a legitimate Microsoft binary, igfxtray.exe, which contained a side-loading vulnerability to load a malicious DLL [T1574.001], facilitating further malware deployment. To maintain remote access, they configured a VNC service on a non-standard port [T1219.002], allowing covert control over compromised hosts. For exfiltration, the group utilized webhook.site [T1567.004] to collect system information and then transferred stolen data to a cloud storage account using megatools utilities [T1537], mirroring techniques observed in RedCurl operations. System logs from GlobalTrust Bank showed routine authentication events, but deeper analysis revealed anomalous login attempts from unfamiliar IP addresses, which were not tagged as they did not correspond to specific MITRE techniques. The bank's background includes operations in 20 countries, with this incident affecting its European division primarily.",
+    "sentence_annotations": [
+        {
+            "sentence": "The attack began with the adversary using compromised employee credentials to gain unauthorized access to the internal network, mimicking tactics seen in historical Carbanak campaigns.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "004] to collect system information and then transferred stolen data to a cloud storage account using megatools utilities, mirroring techniques observed in RedCurl operations.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by APT Group 'CrimsonVault' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by the fictional APT group 'CrimsonVault', which targets financial institutions to exfiltrate sensitive data and conduct fraudulent transactions. The campaign leverages legitimate credentials, scheduled tasks, DLL side-loading, remote access tools, and cloud-based exfiltration methods. Blue teams are advised to review authentication logs, monitor for unusual scheduled tasks, and inspect DLL loading behaviors.",
+        "full_report_text": "On October 15, 2023, a fictional financial institution, 'GlobalTrust Bank', reported suspicious activity indicative of a sophisticated cyber intrusion. The actors, attributed to the APT group 'CrimsonVault', likely conducted initial reconnaissance through open-source intelligence gathering, though no specific techniques were tagged in this phase. The attack began with the adversary using compromised employee credentials [T1078] to gain unauthorized access to the internal network, mimicking tactics seen in historical Carbanak campaigns. Once inside, they employed at.exe [T1053.002] to schedule the execution of a malicious reverse shell payload during off-hours, ensuring stealthy persistence. Concurrently, the actors dropped a legitimate Microsoft binary, igfxtray.exe, which contained a side-loading vulnerability to load a malicious DLL [T1574.001], facilitating further malware deployment. To maintain remote access, they configured a VNC service on a non-standard port [T1219.002], allowing covert control over compromised hosts. For exfiltration, the group utilized webhook.site [T1567.004] to collect system information and then transferred stolen data to a cloud storage account using megatools utilities [T1537], mirroring techniques observed in RedCurl operations. System logs from GlobalTrust Bank showed routine authentication events, but deeper analysis revealed anomalous login attempts from unfamiliar IP addresses, which were not tagged as they did not correspond to specific MITRE techniques. The bank's background includes operations in 20 countries, with this incident affecting its European division primarily.",
+        "techniques_used": [
+            "T1078",
+            "T1053.002",
+            "T1574.001",
+            "T1219.002",
+            "T1567.004",
+            "T1537"
+        ]
+    }
+}

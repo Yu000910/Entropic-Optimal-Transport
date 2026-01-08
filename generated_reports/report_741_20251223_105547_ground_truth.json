@@ -1,0 +1,83 @@
+{
+    "report_id": "report_741",
+    "generated_at": "20251223_105547",
+    "scenario_target_ids": [
+        "T1585.001",
+        "T1189",
+        "T1053",
+        "T1037.005",
+        "T1055.003",
+        "T1558.001",
+        "T1021.008",
+        "T1550.003",
+        "T1071.002",
+        "T1491.002"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1585.001",
+        "T1189",
+        "T1053",
+        "T1037.005",
+        "T1055.003",
+        "T1558.001",
+        "T1021.008",
+        "T1550.003",
+        "T1071.002",
+        "T1491.002"
+    ],
+    "actual_found_ids": [
+        "T1071.002",
+        "T1550.003",
+        "T1585.001",
+        "T1021.008",
+        "T1055.003",
+        "T1189",
+        "T1053",
+        "T1491.002",
+        "T1558.001",
+        "T1037.005"
+    ],
+    "clean_text": "On April 15, 2024, a fictional multinational corporation, 'CloudTech Solutions,' reported suspicious activity in its Azure environment. Initial investigation revealed that the threat actors, posing as a legitimate IT support technician, created a deceptive Facebook account with fabricated personal details to gather intelligence on employees. Subsequently, they delivered the Snip3 malware via drive-by compromises from malicious domains, exploiting unpatched browsers to initiate infections. Once initial access was achieved, the actors used PowerShell to establish persistence by scheduling malicious.exe to run every 15 minutes via schtasks.exe and modifying StartupParameters.plist to define launch parameters for automatic execution upon system startup. For privilege escalation, they hijacked OpenThread in svchost.exe to execute payloads with system-level permissions and leveraged the Rubeus framework to forge Kerberos Golden Tickets, enabling domain-wide access. Using compromised credentials, the attacker gained command-line access to a virtual machine via Azure Serial Console and employed mimikatz.exe to dump Kerberos tickets from LSASS memory for lateral movement across the network. To maintain command and control, the malware employed SMB session hijacking to relay commands through authenticated connections, and finally, the attacker replaced the legitimate index.html with a defaced version containing hacker group branding as a disruptive action. System logs from affected VMs showed anomalous network traffic spikes and unauthorized file modifications, but no actual data exfiltration was confirmed in this training scenario. CloudTech Solutions' incident response team, in collaboration with external cybersecurity firms, contained the incident by isolating compromised systems and rotating credentials, though the fictional nature of this exercise limits real-world impact assessment.",
+    "tagged_text": "On April 15, 2024, a fictional multinational corporation, 'CloudTech Solutions,' reported suspicious activity in its Azure environment. Initial investigation revealed that the threat actors, posing as a legitimate IT support technician, created a deceptive Facebook account with fabricated personal details to gather intelligence on employees [T1585.001]. Subsequently, they delivered the Snip3 malware via drive-by compromises from malicious domains, exploiting unpatched browsers to initiate infections [T1189]. Once initial access was achieved, the actors used PowerShell to establish persistence by scheduling malicious.exe to run every 15 minutes via schtasks.exe [T1053] and modifying StartupParameters.plist to define launch parameters for automatic execution upon system startup [T1037.005]. For privilege escalation, they hijacked OpenThread in svchost.exe to execute payloads with system-level permissions [T1055.003] and leveraged the Rubeus framework to forge Kerberos Golden Tickets, enabling domain-wide access [T1558.001]. Using compromised credentials, the attacker gained command-line access to a virtual machine via Azure Serial Console [T1021.008] and employed mimikatz.exe to dump Kerberos tickets from LSASS memory for lateral movement across the network [T1550.003]. To maintain command and control, the malware employed SMB session hijacking to relay commands through authenticated connections [T1071.002], and finally, the attacker replaced the legitimate index.html with a defaced version containing hacker group branding as a disruptive action [T1491.002]. System logs from affected VMs showed anomalous network traffic spikes and unauthorized file modifications, but no actual data exfiltration was confirmed in this training scenario. CloudTech Solutions' incident response team, in collaboration with external cybersecurity firms, contained the incident by isolating compromised systems and rotating credentials, though the fictional nature of this exercise limits real-world impact assessment.",
+    "sentence_annotations": [
+        {
+            "sentence": "Subsequently, they delivered the Snip3 malware via drive-by compromises from malicious domains, exploiting unpatched browsers to initiate infections.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "exe and modifying StartupParameters.",
+            "technique_id": "T1053",
+            "technique_name": "Scheduled Task/Job"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Cloud Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'ShadowVeil,' targeting organizations with cloud-based virtual machines. The actors employed social engineering, malware delivery, persistence mechanisms, privilege escalation, lateral movement, and data manipulation techniques to compromise systems and disrupt operations. This report is intended for blue team training to enhance detection and response capabilities against similar tactics.",
+        "full_report_text": "On April 15, 2024, a fictional multinational corporation, 'CloudTech Solutions,' reported suspicious activity in its Azure environment. Initial investigation revealed that the threat actors, posing as a legitimate IT support technician, created a deceptive Facebook account with fabricated personal details to gather intelligence on employees [T1585.001]. Subsequently, they delivered the Snip3 malware via drive-by compromises from malicious domains, exploiting unpatched browsers to initiate infections [T1189]. Once initial access was achieved, the actors used PowerShell to establish persistence by scheduling malicious.exe to run every 15 minutes via schtasks.exe [T1053] and modifying StartupParameters.plist to define launch parameters for automatic execution upon system startup [T1037.005]. For privilege escalation, they hijacked OpenThread in svchost.exe to execute payloads with system-level permissions [T1055.003] and leveraged the Rubeus framework to forge Kerberos Golden Tickets, enabling domain-wide access [T1558.001]. Using compromised credentials, the attacker gained command-line access to a virtual machine via Azure Serial Console [T1021.008] and employed mimikatz.exe to dump Kerberos tickets from LSASS memory for lateral movement across the network [T1550.003]. To maintain command and control, the malware employed SMB session hijacking to relay commands through authenticated connections [T1071.002], and finally, the attacker replaced the legitimate index.html with a defaced version containing hacker group branding as a disruptive action [T1491.002]. System logs from affected VMs showed anomalous network traffic spikes and unauthorized file modifications, but no actual data exfiltration was confirmed in this training scenario. CloudTech Solutions' incident response team, in collaboration with external cybersecurity firms, contained the incident by isolating compromised systems and rotating credentials, though the fictional nature of this exercise limits real-world impact assessment.",
+        "techniques_used": [
+            "T1585.001",
+            "T1189",
+            "T1053",
+            "T1037.005",
+            "T1055.003",
+            "T1558.001",
+            "T1021.008",
+            "T1550.003",
+            "T1071.002",
+            "T1491.002"
+        ]
+    }
+}

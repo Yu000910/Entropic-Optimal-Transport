@@ -1,0 +1,86 @@
+{
+    "report_id": "report_174",
+    "generated_at": "20251222_135602",
+    "scenario_target_ids": [
+        "T1190",
+        "T1204.001",
+        "T1078.002",
+        "T1563.002",
+        "T1560",
+        "T1056.001",
+        "T1571",
+        "T1485.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1190",
+        "T1204.001",
+        "T1078.002",
+        "T1563.002",
+        "T1560",
+        "T1056.001",
+        "T1571",
+        "T1485.001"
+    ],
+    "actual_found_ids": [
+        "T1056.001",
+        "T1589",
+        "T1204.001",
+        "T1078.002",
+        "T1190",
+        "T1571",
+        "T1560",
+        "T1485.001",
+        "T1563.002"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide details on a fictional APT campaign, 'ShadowVeil', observed targeting financial organizations in Q4 2023. This report is based on simulated threat intelligence for educational purposes, designed to train defensive teams in identifying and mitigating complex attack chains. The campaign begins with initial access, where actors likely conduct reconnaissance to identify vulnerabilities in public-facing applications, such as exploiting a Sangfor SSL VPN flaw to deploy malicious update binaries, while simultaneously sending spearphishing emails with malicious links that download .LNK files to compromise additional endpoints. Upon execution, the adversary moves laterally by leveraging compromised domain admin accounts to access sensitive systems and employs RDP hijacking using tscon.exe to steal control of established remote desktop sessions, often logging activities in system event logs that show unusual login patterns from internal IP addresses. During persistence and collection, the actors archive collected documents for exfiltration and deploy a keylogger to capture keystrokes from financial software, with network traffic analysis revealing anomalous data transfers during off-hours. For exfiltration and impact, data is transmitted outbound over TCP port 443 using a FakeTLS method to blend with legitimate traffic, and the attacker uses the PutBucketLifecycle API to configure immediate deletion of all objects in an S3 bucket as part of lifecycle-triggered deletion to erase evidence, while internal monitoring systems flag unusual API calls from unauthorized user accounts. This campaign underscores the importance of multi-layered defense strategies, including patch management, email filtering, and network segmentation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide details on a fictional APT campaign, 'ShadowVeil', observed targeting financial organizations in Q4 2023. This report is based on simulated threat intelligence for educational purposes, designed to train defensive teams in identifying and mitigating complex attack chains. The campaign begins with initial access, where actors likely conduct reconnaissance [T1589] to identify vulnerabilities in public-facing applications, such as exploiting a Sangfor SSL VPN flaw [T1190] to deploy malicious update binaries, while simultaneously sending spearphishing emails with malicious links [T1204.001] that download .LNK files to compromise additional endpoints. Upon execution, the adversary moves laterally by leveraging compromised domain admin accounts [T1078.002] to access sensitive systems and employs RDP hijacking [T1563.002] using tscon.exe to steal control of established remote desktop sessions, often logging activities in system event logs that show unusual login patterns from internal IP addresses. During persistence and collection, the actors archive collected documents [T1560] for exfiltration and deploy a keylogger [T1056.001] to capture keystrokes from financial software, with network traffic analysis revealing anomalous data transfers during off-hours. For exfiltration and impact, data is transmitted outbound over TCP port 443 using a FakeTLS method [T1571] to blend with legitimate traffic, and the attacker uses the PutBucketLifecycle API to configure immediate deletion of all objects in an S3 bucket [T1485.001] as part of lifecycle-triggered deletion to erase evidence, while internal monitoring systems flag unusual API calls from unauthorized user accounts. This campaign underscores the importance of multi-layered defense strategies, including patch management, email filtering, and network segmentation.",
+    "sentence_annotations": [
+        {
+            "sentence": "The campaign begins with initial access, where actors likely conduct reconnaissance to identify vulnerabilities in public-facing applications, such as exploiting a Sangfor SSL VPN flaw to deploy malicious update binaries, while simultaneously sending spearphishing emails with malicious links [T1204.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "The campaign begins with initial access, where actors likely conduct reconnaissance to identify vulnerabilities in public-facing applications, such as exploiting a Sangfor SSL VPN flaw to deploy malicious update binaries, while simultaneously sending spearphishing emails with malicious links [T1204.",
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application"
+        },
+        {
+            "sentence": "During persistence and collection, the actors archive collected documents for exfiltration and deploy a keylogger [T1056.",
+            "technique_id": "T1560",
+            "technique_name": "Archive Collected Data"
+        },
+        {
+            "sentence": "For exfiltration and impact, data is transmitted outbound over TCP port 443 using a FakeTLS method to blend with legitimate traffic, and the attacker uses the PutBucketLifecycle API to configure immediate deletion of all objects in an S3 bucket [T1485.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowVeil' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'ShadowVeil', targeting financial institutions. The campaign involves initial access through exploitation and phishing, lateral movement via compromised credentials and RDP hijacking, data collection through keylogging and archiving, and exfiltration over non-standard ports with lifecycle-triggered deletion to cover tracks. The report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide details on a fictional APT campaign, 'ShadowVeil', observed targeting financial organizations in Q4 2023. This report is based on simulated threat intelligence for educational purposes, designed to train defensive teams in identifying and mitigating complex attack chains. The campaign begins with initial access, where actors likely conduct reconnaissance [T1589] to identify vulnerabilities in public-facing applications, such as exploiting a Sangfor SSL VPN flaw [T1190] to deploy malicious update binaries, while simultaneously sending spearphishing emails with malicious links [T1204.001] that download .LNK files to compromise additional endpoints. Upon execution, the adversary moves laterally by leveraging compromised domain admin accounts [T1078.002] to access sensitive systems and employs RDP hijacking [T1563.002] using tscon.exe to steal control of established remote desktop sessions, often logging activities in system event logs that show unusual login patterns from internal IP addresses. During persistence and collection, the actors archive collected documents [T1560] for exfiltration and deploy a keylogger [T1056.001] to capture keystrokes from financial software, with network traffic analysis revealing anomalous data transfers during off-hours. For exfiltration and impact, data is transmitted outbound over TCP port 443 using a FakeTLS method [T1571] to blend with legitimate traffic, and the attacker uses the PutBucketLifecycle API to configure immediate deletion of all objects in an S3 bucket [T1485.001] as part of lifecycle-triggered deletion to erase evidence, while internal monitoring systems flag unusual API calls from unauthorized user accounts. This campaign underscores the importance of multi-layered defense strategies, including patch management, email filtering, and network segmentation.",
+        "techniques_used": [
+            "T1589",
+            "T1190",
+            "T1204.001",
+            "T1078.002",
+            "T1563.002",
+            "T1560",
+            "T1056.001",
+            "T1571",
+            "T1485.001"
+        ]
+    }
+}

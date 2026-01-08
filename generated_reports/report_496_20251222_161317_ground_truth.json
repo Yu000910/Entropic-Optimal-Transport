@@ -1,0 +1,94 @@
+{
+    "report_id": "report_496",
+    "generated_at": "20251222_161317",
+    "scenario_target_ids": [
+        "T1195",
+        "T1059.003",
+        "T1204",
+        "T1136",
+        "T1134.005",
+        "T1613",
+        "T1213.003",
+        "T1095"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "discovery",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1195",
+        "T1059.003",
+        "T1204",
+        "T1136",
+        "T1134.005",
+        "T1613",
+        "T1213.003",
+        "T1095"
+    ],
+    "actual_found_ids": [
+        "T1136",
+        "T1095",
+        "T1059.003",
+        "T1613",
+        "T1213.003",
+        "T1589",
+        "T1195",
+        "T1204",
+        "T1134.005"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario, 'SilentChain', designed for blue team exercises. This campaign simulates advanced persistent threat (APT) activity against a mid-sized technology firm, 'TechCorp Solutions', which develops cloud-based applications. Background logs from TechCorp's internal systems show routine software updates were deployed last week, with no initial anomalies detected in network traffic patterns.\n\nInitial Access: The actors likely conducted reconnaissance to identify TechCorp's software distribution channels. They then compromised a third-party software installer used by TechCorp for internal tools, modifying it to include additional malicious payloads that execute during installation. This supply chain attack allowed initial foothold without direct network intrusion.\n\nExecution: Upon installation by an unsuspecting user, the malicious payload relied on user interaction with a crafted LNK file, triggering execution. The payload subsequently employed the Windows Command Shell to run commands via cmd.exe, downloading secondary modules and establishing persistence mechanisms.\n\nPersistence: To maintain access, the adversary created a new local account on compromised systems using simple names like 'a' and used Mimikatz to add enterprise admin SIDs to the SID-History of this account, enabling privilege escalation across the domain. System logs from TechCorp's Active Directory server showed unusual account creation events during off-hours, but these were initially overlooked due to high volume of routine administrative tasks.\n\nDiscovery: The malware then performed container and resource discovery by querying the Docker API to list all available container networks and leveraged git commands to clone a private repository containing sensitive configuration files from TechCorp's internal code repositories. This allowed the actors to map the environment and identify valuable assets for exfiltration.\n\nCommand and Control (C2): For stealthy communication, the Regin malware platform was utilized to send data between infected computers using ICMP, a non-application layer protocol. Network monitoring at TechCorp detected increased ICMP traffic but attributed it to legitimate network diagnostics. The campaign concluded with simulated data exfiltration, though no actual data loss occurred in this training scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario, 'SilentChain', designed for blue team exercises. This campaign simulates advanced persistent threat (APT) activity against a mid-sized technology firm, 'TechCorp Solutions', which develops cloud-based applications. Background logs from TechCorp's internal systems show routine software updates were deployed last week, with no initial anomalies detected in network traffic patterns.\n\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify TechCorp's software distribution channels. They then compromised a third-party software installer used by TechCorp for internal tools, modifying it to include additional malicious payloads that execute during installation [T1195]. This supply chain attack allowed initial foothold without direct network intrusion.\n\nExecution: Upon installation by an unsuspecting user, the malicious payload relied on user interaction with a crafted LNK file, triggering execution [T1204]. The payload subsequently employed the Windows Command Shell [T1059.003] to run commands via cmd.exe, downloading secondary modules and establishing persistence mechanisms.\n\nPersistence: To maintain access, the adversary created a new local account on compromised systems using simple names like 'a' [T1136] and used Mimikatz to add enterprise admin SIDs to the SID-History of this account, enabling privilege escalation across the domain [T1134.005]. System logs from TechCorp's Active Directory server showed unusual account creation events during off-hours, but these were initially overlooked due to high volume of routine administrative tasks.\n\nDiscovery: The malware then performed container and resource discovery by querying the Docker API to list all available container networks [T1613] and leveraged git commands to clone a private repository containing sensitive configuration files from TechCorp's internal code repositories [T1213.003]. This allowed the actors to map the environment and identify valuable assets for exfiltration.\n\nCommand and Control (C2): For stealthy communication, the Regin malware platform was utilized to send data between infected computers using ICMP, a non-application layer protocol [T1095]. Network monitoring at TechCorp detected increased ICMP traffic but attributed it to legitimate network diagnostics. The campaign concluded with simulated data exfiltration, though no actual data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors likely conducted reconnaissance to identify TechCorp's software distribution channels.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "They then compromised a third-party software installer used by TechCorp for internal tools, modifying it to include additional malicious payloads that execute during installation.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "Execution: Upon installation by an unsuspecting user, the malicious payload relied on user interaction with a crafted LNK file, triggering execution.",
+            "technique_id": "T1204",
+            "technique_name": "User Execution"
+        },
+        {
+            "sentence": "Persistence: To maintain access, the adversary created a new local account on compromised systems using simple names like 'a' and used Mimikatz to add enterprise admin SIDs to the SID-History of this account, enabling privilege escalation across the domain [T1134.",
+            "technique_id": "T1136",
+            "technique_name": "Create Account"
+        },
+        {
+            "sentence": "Discovery: The malware then performed container and resource discovery by querying the Docker API to list all available container networks and leveraged git commands to clone a private repository containing sensitive configuration files from TechCorp's internal code repositories [T1213.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "Command and Control (C2): For stealthy communication, the Regin malware platform was utilized to send data between infected computers using ICMP, a non-application layer protocol.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'SilentChain' Targeting Software Supply Chains",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor, designated as 'SilentChain', targeting organizations through a compromised software installer, leading to initial access, persistence, and data exfiltration via non-standard protocols. The campaign leverages multiple techniques across the kill chain, including supply chain compromise, user execution, account creation, privilege escalation, discovery, and command-and-control communication.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional attack scenario, 'SilentChain', designed for blue team exercises. This campaign simulates advanced persistent threat (APT) activity against a mid-sized technology firm, 'TechCorp Solutions', which develops cloud-based applications. Background logs from TechCorp's internal systems show routine software updates were deployed last week, with no initial anomalies detected in network traffic patterns.\n\nInitial Access: The actors likely conducted reconnaissance [T1589] to identify TechCorp's software distribution channels. They then compromised a third-party software installer used by TechCorp for internal tools, modifying it to include additional malicious payloads that execute during installation [T1195]. This supply chain attack allowed initial foothold without direct network intrusion.\n\nExecution: Upon installation by an unsuspecting user, the malicious payload relied on user interaction with a crafted LNK file, triggering execution [T1204]. The payload subsequently employed the Windows Command Shell [T1059.003] to run commands via cmd.exe, downloading secondary modules and establishing persistence mechanisms.\n\nPersistence: To maintain access, the adversary created a new local account on compromised systems using simple names like 'a' [T1136] and used Mimikatz to add enterprise admin SIDs to the SID-History of this account, enabling privilege escalation across the domain [T1134.005]. System logs from TechCorp's Active Directory server showed unusual account creation events during off-hours, but these were initially overlooked due to high volume of routine administrative tasks.\n\nDiscovery: The malware then performed container and resource discovery by querying the Docker API to list all available container networks [T1613] and leveraged git commands to clone a private repository containing sensitive configuration files from TechCorp's internal code repositories [T1213.003]. This allowed the actors to map the environment and identify valuable assets for exfiltration.\n\nCommand and Control (C2): For stealthy communication, the Regin malware platform was utilized to send data between infected computers using ICMP, a non-application layer protocol [T1095]. Network monitoring at TechCorp detected increased ICMP traffic but attributed it to legitimate network diagnostics. The campaign concluded with simulated data exfiltration, though no actual data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1195",
+            "T1059.003",
+            "T1204",
+            "T1136",
+            "T1134.005",
+            "T1613",
+            "T1213.003",
+            "T1095"
+        ]
+    }
+}

@@ -1,0 +1,102 @@
+{
+    "report_id": "report_578",
+    "generated_at": "20251222_164850",
+    "scenario_target_ids": [
+        "T1608.006",
+        "T1078.003",
+        "T1047",
+        "T1546.004",
+        "T1555.003",
+        "T1021.001",
+        "T1602",
+        "T1665"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "credential-access",
+        "lateral-movement",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1608.006",
+        "T1105",
+        "T1112",
+        "T1078.003",
+        "T1047",
+        "T1555.003",
+        "T1021.001",
+        "T1546.004",
+        "T1602",
+        "T1665"
+    ],
+    "actual_found_ids": [
+        "T1047",
+        "T1112",
+        "T1105",
+        "T1589",
+        "T1546.004",
+        "T1602",
+        "T1665",
+        "T1021.001",
+        "T1608.006",
+        "T1555.003",
+        "T1078.003"
+    ],
+    "clean_text": "On October 15, 2023, security analysts at a fictional mid-sized technology firm, 'TechGlobal Inc.', detected anomalous network traffic originating from a compromised marketing website. TechGlobal Inc., headquartered in San Francisco with 500 employees, specializes in cloud-based software solutions and maintains a hybrid IT environment with Windows servers for internal operations and Unix-based systems for development. Initial logs showed a spike in traffic to the company's public-facing blog, which had been recently updated with SEO-optimized content.\n\nThe actors likely conducted reconnaissance to identify vulnerable websites, then employed SEO poisoning by embedding hidden keywords in white text on a white background within the compromised website's header section, redirecting users to malicious domains. Upon a user visiting the site, a drive-by download occurred, leading to the execution of a PowerShell script that downloaded a payload and modified registry keys for persistence. On a compromised Windows host, the adversary used Mimikatz's lsadump::sam command to extract local account credentials and employed Windows Management Instrumentation (WMI) to gather information on installed antivirus products while simultaneously using LaZagne to obtain credentials from web browsers such as Google Chrome. For lateral movement, the actors utilized Remote Desktop Protocol (RDP) enabled via Koadic to access other systems, and on Unix-based machines, they altered ~/.bash_profile to establish persistence by running a backdoor script. During exfiltration, ransomware extracted SSH keys and configuration data from the system's configuration management repository, and the malware established an encrypted VPN tunnel to hide C2 traffic from network monitoring tools. Post-incident analysis revealed additional noise in system logs, including routine backup failures and unrelated firewall alerts, which were not indicative of malicious activity.",
+    "tagged_text": "On October 15, 2023, security analysts at a fictional mid-sized technology firm, 'TechGlobal Inc.', detected anomalous network traffic originating from a compromised marketing website. TechGlobal Inc., headquartered in San Francisco with 500 employees, specializes in cloud-based software solutions and maintains a hybrid IT environment with Windows servers for internal operations and Unix-based systems for development. Initial logs showed a spike in traffic to the company's public-facing blog, which had been recently updated with SEO-optimized content.\n\nThe actors likely conducted reconnaissance [T1589] to identify vulnerable websites, then employed SEO poisoning [T1608.006] by embedding hidden keywords in white text on a white background within the compromised website's header section, redirecting users to malicious domains. Upon a user visiting the site, a drive-by download occurred, leading to the execution of a PowerShell script that downloaded a payload [T1105] and modified registry keys [T1112] for persistence. On a compromised Windows host, the adversary used Mimikatz's lsadump::sam command to extract local account credentials [T1078.003] and employed Windows Management Instrumentation (WMI) [T1047] to gather information on installed antivirus products while simultaneously using LaZagne to obtain credentials from web browsers such as Google Chrome [T1555.003]. For lateral movement, the actors utilized Remote Desktop Protocol (RDP) [T1021.001] enabled via Koadic to access other systems, and on Unix-based machines, they altered ~/.bash_profile [T1546.004] to establish persistence by running a backdoor script. During exfiltration, ransomware extracted SSH keys and configuration data from the system's configuration management repository [T1602], and the malware established an encrypted VPN tunnel [T1665] to hide C2 traffic from network monitoring tools. Post-incident analysis revealed additional noise in system logs, including routine backup failures and unrelated firewall alerts, which were not indicative of malicious activity.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance to identify vulnerable websites, then employed SEO poisoning [T1608.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Upon a user visiting the site, a drive-by download occurred, leading to the execution of a PowerShell script that downloaded a payload and modified registry keys for persistence.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "Upon a user visiting the site, a drive-by download occurred, leading to the execution of a PowerShell script that downloaded a payload and modified registry keys for persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "003] and employed Windows Management Instrumentation (WMI) to gather information on installed antivirus products while simultaneously using LaZagne to obtain credentials from web browsers such as Google Chrome [T1555.",
+            "technique_id": "T1047",
+            "technique_name": "Windows Management Instrumentation"
+        },
+        {
+            "sentence": "During exfiltration, ransomware extracted SSH keys and configuration data from the system's configuration management repository, and the malware established an encrypted VPN tunnel to hide C2 traffic from network monitoring tools.",
+            "technique_id": "T1602",
+            "technique_name": "Data from Configuration Repository"
+        },
+        {
+            "sentence": "During exfiltration, ransomware extracted SSH keys and configuration data from the system's configuration management repository, and the malware established an encrypted VPN tunnel to hide C2 traffic from network monitoring tools.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign 'ShadowSeeker' Targeting Hybrid IT Environments",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowSeeker', which targets organizations with mixed Windows and Unix systems. The campaign leverages SEO poisoning for initial access, exploits local accounts and web browser credentials for lateral movement, and uses encrypted VPN tunnels to hide command and control (C2) infrastructure. This report is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "On October 15, 2023, security analysts at a fictional mid-sized technology firm, 'TechGlobal Inc.', detected anomalous network traffic originating from a compromised marketing website. TechGlobal Inc., headquartered in San Francisco with 500 employees, specializes in cloud-based software solutions and maintains a hybrid IT environment with Windows servers for internal operations and Unix-based systems for development. Initial logs showed a spike in traffic to the company's public-facing blog, which had been recently updated with SEO-optimized content.\n\nThe actors likely conducted reconnaissance [T1589] to identify vulnerable websites, then employed SEO poisoning [T1608.006] by embedding hidden keywords in white text on a white background within the compromised website's header section, redirecting users to malicious domains. Upon a user visiting the site, a drive-by download occurred, leading to the execution of a PowerShell script that downloaded a payload [T1105] and modified registry keys [T1112] for persistence. On a compromised Windows host, the adversary used Mimikatz's lsadump::sam command to extract local account credentials [T1078.003] and employed Windows Management Instrumentation (WMI) [T1047] to gather information on installed antivirus products while simultaneously using LaZagne to obtain credentials from web browsers such as Google Chrome [T1555.003]. For lateral movement, the actors utilized Remote Desktop Protocol (RDP) [T1021.001] enabled via Koadic to access other systems, and on Unix-based machines, they altered ~/.bash_profile [T1546.004] to establish persistence by running a backdoor script. During exfiltration, ransomware extracted SSH keys and configuration data from the system's configuration management repository [T1602], and the malware established an encrypted VPN tunnel [T1665] to hide C2 traffic from network monitoring tools. Post-incident analysis revealed additional noise in system logs, including routine backup failures and unrelated firewall alerts, which were not indicative of malicious activity.",
+        "techniques_used": [
+            "T1589",
+            "T1608.006",
+            "T1105",
+            "T1112",
+            "T1078.003",
+            "T1047",
+            "T1555.003",
+            "T1021.001",
+            "T1546.004",
+            "T1602",
+            "T1665"
+        ]
+    }
+}

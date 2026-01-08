@@ -1,0 +1,106 @@
+{
+    "report_id": "report_92",
+    "generated_at": "20251222_115344",
+    "scenario_target_ids": [
+        "T1587",
+        "T1078.003",
+        "T1059.001",
+        "T1055.014",
+        "T1578.002",
+        "T1552.006",
+        "T1497.003",
+        "T1135",
+        "T1613",
+        "T1219.002",
+        "T1030"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1587",
+        "T1078.003",
+        "T1059.001",
+        "T1055.014",
+        "T1578.002",
+        "T1552.006",
+        "T1219.002",
+        "T1135",
+        "T1613",
+        "T1497.003",
+        "T1030"
+    ],
+    "actual_found_ids": [
+        "T1219.002",
+        "T1613",
+        "T1578.002",
+        "T1055.014",
+        "T1552.006",
+        "T1078.003",
+        "T1587",
+        "T1589",
+        "T1059.001",
+        "T1030",
+        "T1135",
+        "T1497.003"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowHarvest'. This group has been observed targeting financial and healthcare sectors in a coordinated campaign designed to harvest credentials and exfiltrate sensitive data. Initial analysis indicates the actors likely conduct reconnaissance to identify vulnerable systems, though specific techniques in this phase are not detailed in this scenario.\n\nIn the initial access phase, the adversary developed a custom credential harvesting tool named 'passdump.dll' to extract login information from compromised systems. Once deployed, the threat actor executed Mimikatz's sekurlsa::logonpasswords module to extract plaintext passwords from local accounts while simultaneously using PowerShell to download additional payloads and modify registry keys for persistence. The malicious script then overwrote vDSO functions to redirect execution flow to attacker-controlled code, enabling stealthy execution. Concurrently, the actor created a cloud instance to mount a volume snapshot from a compromised account, accessing sensitive data stored in cloud environments.\n\nFor lateral movement and credential discovery, the script performed a recursive directory search with 'dir /s *.xml' to find Group Policy Preferences files with embedded credentials, and the malware used TeamViewer to give the attacker interactive remote access to the victim's computer. Network share discovery was conducted using a PlugX module to enumerate accessible shares, and the adversary queried the Docker API to retrieve information about container resource limits and requests, indicating an interest in containerized environments. To evade detection, AppleJeus has waited a specified time before downloading a second stage payload, and Helminth splits data into chunks up to 23 bytes and sends the data in DNS queries to its C2 server, bypassing data transfer size limits.\n\nSystem logs from victim machines show routine updates and user login attempts, which are unrelated to the attack. The company background involves a mid-sized enterprise with hybrid cloud infrastructure, but this information does not impact the technical analysis. Recommendations include monitoring for unusual PowerShell activity, securing cloud instances, and implementing network segmentation to limit lateral movement.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowHarvest'. This group has been observed targeting financial and healthcare sectors in a coordinated campaign designed to harvest credentials and exfiltrate sensitive data. Initial analysis indicates the actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though specific techniques in this phase are not detailed in this scenario.\n\nIn the initial access phase, the adversary developed a custom credential harvesting tool named 'passdump.dll' [T1587] to extract login information from compromised systems. Once deployed, the threat actor executed Mimikatz's sekurlsa::logonpasswords module to extract plaintext passwords from local accounts [T1078.003] while simultaneously using PowerShell [T1059.001] to download additional payloads and modify registry keys for persistence. The malicious script then overwrote vDSO functions to redirect execution flow to attacker-controlled code [T1055.014], enabling stealthy execution. Concurrently, the actor created a cloud instance [T1578.002] to mount a volume snapshot from a compromised account, accessing sensitive data stored in cloud environments.\n\nFor lateral movement and credential discovery, the script performed a recursive directory search with 'dir /s *.xml' to find Group Policy Preferences files with embedded credentials [T1552.006], and the malware used TeamViewer to give the attacker interactive remote access to the victim's computer [T1219.002]. Network share discovery was conducted using a PlugX module to enumerate accessible shares [T1135], and the adversary queried the Docker API to retrieve information about container resource limits and requests [T1613], indicating an interest in containerized environments. To evade detection, AppleJeus has waited a specified time before downloading a second stage payload [T1497.003], and Helminth splits data into chunks up to 23 bytes and sends the data in DNS queries to its C2 server [T1030], bypassing data transfer size limits.\n\nSystem logs from victim machines show routine updates and user login attempts, which are unrelated to the attack. The company background involves a mid-sized enterprise with hybrid cloud infrastructure, but this information does not impact the technical analysis. Recommendations include monitoring for unusual PowerShell activity, securing cloud instances, and implementing network segmentation to limit lateral movement.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial analysis indicates the actors likely conduct reconnaissance to identify vulnerable systems, though specific techniques in this phase are not detailed in this scenario.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "dll' to extract login information from compromised systems.",
+            "technique_id": "T1587",
+            "technique_name": "Develop Capabilities"
+        },
+        {
+            "sentence": "Network share discovery was conducted using a PlugX module to enumerate accessible shares, and the adversary queried the Docker API to retrieve information about container resource limits and requests, indicating an interest in containerized environments.",
+            "technique_id": "T1135",
+            "technique_name": "Network Share Discovery"
+        },
+        {
+            "sentence": "Network share discovery was conducted using a PlugX module to enumerate accessible shares, and the adversary queried the Docker API to retrieve information about container resource limits and requests, indicating an interest in containerized environments.",
+            "technique_id": "T1613",
+            "technique_name": "Container and Resource Discovery"
+        },
+        {
+            "sentence": "003], and Helminth splits data into chunks up to 23 bytes and sends the data in DNS queries to its C2 server, bypassing data transfer size limits.",
+            "technique_id": "T1030",
+            "technique_name": "Data Transfer Size Limits"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHarvest' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowHarvest', which targets organizations to steal credentials and sensitive data through a multi-stage attack involving custom tools, lateral movement, and evasion techniques. The campaign leverages cloud instances, network discovery, and remote access software for persistence and data exfiltration.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on the activities of the fictional APT group 'ShadowHarvest'. This group has been observed targeting financial and healthcare sectors in a coordinated campaign designed to harvest credentials and exfiltrate sensitive data. Initial analysis indicates the actors likely conduct reconnaissance [T1589] to identify vulnerable systems, though specific techniques in this phase are not detailed in this scenario.\n\nIn the initial access phase, the adversary developed a custom credential harvesting tool named 'passdump.dll' [T1587] to extract login information from compromised systems. Once deployed, the threat actor executed Mimikatz's sekurlsa::logonpasswords module to extract plaintext passwords from local accounts [T1078.003] while simultaneously using PowerShell [T1059.001] to download additional payloads and modify registry keys for persistence. The malicious script then overwrote vDSO functions to redirect execution flow to attacker-controlled code [T1055.014], enabling stealthy execution. Concurrently, the actor created a cloud instance [T1578.002] to mount a volume snapshot from a compromised account, accessing sensitive data stored in cloud environments.\n\nFor lateral movement and credential discovery, the script performed a recursive directory search with 'dir /s *.xml' to find Group Policy Preferences files with embedded credentials [T1552.006], and the malware used TeamViewer to give the attacker interactive remote access to the victim's computer [T1219.002]. Network share discovery was conducted using a PlugX module to enumerate accessible shares [T1135], and the adversary queried the Docker API to retrieve information about container resource limits and requests [T1613], indicating an interest in containerized environments. To evade detection, AppleJeus has waited a specified time before downloading a second stage payload [T1497.003], and Helminth splits data into chunks up to 23 bytes and sends the data in DNS queries to its C2 server [T1030], bypassing data transfer size limits.\n\nSystem logs from victim machines show routine updates and user login attempts, which are unrelated to the attack. The company background involves a mid-sized enterprise with hybrid cloud infrastructure, but this information does not impact the technical analysis. Recommendations include monitoring for unusual PowerShell activity, securing cloud instances, and implementing network segmentation to limit lateral movement.",
+        "techniques_used": [
+            "T1589",
+            "T1587",
+            "T1078.003",
+            "T1059.001",
+            "T1055.014",
+            "T1578.002",
+            "T1552.006",
+            "T1219.002",
+            "T1135",
+            "T1613",
+            "T1497.003",
+            "T1030"
+        ]
+    }
+}

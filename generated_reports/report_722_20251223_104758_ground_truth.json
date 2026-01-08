@@ -1,0 +1,83 @@
+{
+    "report_id": "report_722",
+    "generated_at": "20251223_104758",
+    "scenario_target_ids": [
+        "T1584",
+        "T1199",
+        "T1059.007",
+        "T1057",
+        "T1210",
+        "T1021.003",
+        "T1102.001",
+        "T1573.001"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "execution",
+        "discovery",
+        "lateral-movement",
+        "lateral-movement",
+        "command-and-control",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1584",
+        "T1199",
+        "T1059.007",
+        "T1057",
+        "T1210",
+        "T1021.003",
+        "T1102.001",
+        "T1573.001"
+    ],
+    "actual_found_ids": [
+        "T1199",
+        "T1102.001",
+        "T1059.007",
+        "T1057",
+        "T1573.001",
+        "T1584",
+        "T1021.003",
+        "T1210"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign, 'Dust Storm,' observed in simulated environments. This report is based on training scenarios designed to enhance defensive capabilities against sophisticated threats.\n\nBackground: The fictional target is 'GlobalTech Corp,' a multinational technology firm with offices in North America and Asia. Initial alerts were triggered by anomalous network traffic patterns detected by the SIEM system, including unusual DNS queries and SMB protocol anomalies logged on server 'SRV-APP-01' at 2023-10-05 14:30 UTC. Company logs show routine maintenance activities prior to the incident, with no prior history of major breaches.\n\nAttack Narrative:\n- **Initial Access**: The adversaries first exploited a remote SMB vulnerability on an internet-facing server to gain initial foothold into the network. Concurrently, they compromised a DNS server infrastructure to manipulate domain resolutions, facilitating stealthy command and control (C2) communications.\n- **Execution**: After gaining access, the actors employed JavaScript code embedded in a malicious document delivered via phishing, which executed payloads to establish persistence. They then used Distributed Component Object Model (DCOM) through Microsoft PowerPoint's COM objects to remotely execute additional code on targeted systems, bypassing local security controls.\n- **Persistence and Discovery**: To maintain access, the threat actors abused a compromised Office 365 partner account to elevate privileges within the customer environment, allowing them to modify registry keys and deploy backdoors. They also conducted process discovery using tools similar to gh0st RAT to list running processes and identify critical services for lateral movement.\n- **Command and Control**: For resilient communications, the malware implemented symmetric cryptography using AES to encrypt C2 traffic, making detection more difficult. Additionally, the malicious script wrote encrypted IP addresses to a file named 'dead_drop_resolver.txt' as backup communication channels, ensuring redundancy if primary C2 servers were blocked.\n\nIrrelevant Information: GlobalTech Corp's IT team reported increased CPU usage on several workstations during the attack, but initial investigations attributed this to a scheduled software update. Network logs show normal HTTP traffic to cloud services like AWS and Azure, with no direct correlation to the malicious activity. The company's cybersecurity insurance policy was up-to-date, covering incidents up to $10 million.\n\nMitigation Recommendations: Blue teams should implement network segmentation, monitor for unusual DCOM and SMB activities, enforce multi-factor authentication on partner accounts, and use endpoint detection tools to identify encrypted C2 traffic and dead drop resolvers. Regular patching of remote services is critical to prevent exploitation.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign, 'Dust Storm,' observed in simulated environments. This report is based on training scenarios designed to enhance defensive capabilities against sophisticated threats.\n\nBackground: The fictional target is 'GlobalTech Corp,' a multinational technology firm with offices in North America and Asia. Initial alerts were triggered by anomalous network traffic patterns detected by the SIEM system, including unusual DNS queries and SMB protocol anomalies logged on server 'SRV-APP-01' at 2023-10-05 14:30 UTC. Company logs show routine maintenance activities prior to the incident, with no prior history of major breaches.\n\nAttack Narrative:\n- **Initial Access**: The adversaries first exploited a remote SMB vulnerability [T1210] on an internet-facing server to gain initial foothold into the network. Concurrently, they compromised a DNS server infrastructure [T1584] to manipulate domain resolutions, facilitating stealthy command and control (C2) communications.\n- **Execution**: After gaining access, the actors employed JavaScript code [T1059.007] embedded in a malicious document delivered via phishing, which executed payloads to establish persistence. They then used Distributed Component Object Model (DCOM) [T1021.003] through Microsoft PowerPoint's COM objects to remotely execute additional code on targeted systems, bypassing local security controls.\n- **Persistence and Discovery**: To maintain access, the threat actors abused a compromised Office 365 partner account [T1199] to elevate privileges within the customer environment, allowing them to modify registry keys and deploy backdoors. They also conducted process discovery [T1057] using tools similar to gh0st RAT to list running processes and identify critical services for lateral movement.\n- **Command and Control**: For resilient communications, the malware implemented symmetric cryptography [T1573.001] using AES to encrypt C2 traffic, making detection more difficult. Additionally, the malicious script wrote encrypted IP addresses to a file named 'dead_drop_resolver.txt' [T1102.001] as backup communication channels, ensuring redundancy if primary C2 servers were blocked.\n\nIrrelevant Information: GlobalTech Corp's IT team reported increased CPU usage on several workstations during the attack, but initial investigations attributed this to a scheduled software update. Network logs show normal HTTP traffic to cloud services like AWS and Azure, with no direct correlation to the malicious activity. The company's cybersecurity insurance policy was up-to-date, covering incidents up to $10 million.\n\nMitigation Recommendations: Blue teams should implement network segmentation, monitor for unusual DCOM and SMB activities, enforce multi-factor authentication on partner accounts, and use endpoint detection tools to identify encrypted C2 traffic and dead drop resolvers. Regular patching of remote services is critical to prevent exploitation.",
+    "sentence_annotations": [
+        {
+            "sentence": "Attack Narrative:\n- **Initial Access**: The adversaries first exploited a remote SMB vulnerability on an internet-facing server to gain initial foothold into the network.",
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services"
+        },
+        {
+            "sentence": "Concurrently, they compromised a DNS server infrastructure to manipulate domain resolutions, facilitating stealthy command and control (C2) communications.",
+            "technique_id": "T1584",
+            "technique_name": "Compromise Infrastructure"
+        },
+        {
+            "sentence": "- **Persistence and Discovery**: To maintain access, the threat actors abused a compromised Office 365 partner account to elevate privileges within the customer environment, allowing them to modify registry keys and deploy backdoors.",
+            "technique_id": "T1199",
+            "technique_name": "Trusted Relationship"
+        },
+        {
+            "sentence": "They also conducted process discovery using tools similar to gh0st RAT to list running processes and identify critical services for lateral movement.",
+            "technique_id": "T1057",
+            "technique_name": "Process Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'Dust Storm' Targeting Enterprise Networks",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'Dust Storm,' targeting enterprise environments through a multi-stage attack leveraging compromised infrastructure and trusted relationships. The campaign involves initial access via exploitation, execution through JavaScript and DCOM, persistence via registry modifications, and encrypted command and control communications. Blue teams are advised to review detection and mitigation strategies outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform blue teams about a fictional APT campaign, 'Dust Storm,' observed in simulated environments. This report is based on training scenarios designed to enhance defensive capabilities against sophisticated threats.\n\nBackground: The fictional target is 'GlobalTech Corp,' a multinational technology firm with offices in North America and Asia. Initial alerts were triggered by anomalous network traffic patterns detected by the SIEM system, including unusual DNS queries and SMB protocol anomalies logged on server 'SRV-APP-01' at 2023-10-05 14:30 UTC. Company logs show routine maintenance activities prior to the incident, with no prior history of major breaches.\n\nAttack Narrative:\n- **Initial Access**: The adversaries first exploited a remote SMB vulnerability [T1210] on an internet-facing server to gain initial foothold into the network. Concurrently, they compromised a DNS server infrastructure [T1584] to manipulate domain resolutions, facilitating stealthy command and control (C2) communications.\n- **Execution**: After gaining access, the actors employed JavaScript code [T1059.007] embedded in a malicious document delivered via phishing, which executed payloads to establish persistence. They then used Distributed Component Object Model (DCOM) [T1021.003] through Microsoft PowerPoint's COM objects to remotely execute additional code on targeted systems, bypassing local security controls.\n- **Persistence and Discovery**: To maintain access, the threat actors abused a compromised Office 365 partner account [T1199] to elevate privileges within the customer environment, allowing them to modify registry keys and deploy backdoors. They also conducted process discovery [T1057] using tools similar to gh0st RAT to list running processes and identify critical services for lateral movement.\n- **Command and Control**: For resilient communications, the malware implemented symmetric cryptography [T1573.001] using AES to encrypt C2 traffic, making detection more difficult. Additionally, the malicious script wrote encrypted IP addresses to a file named 'dead_drop_resolver.txt' [T1102.001] as backup communication channels, ensuring redundancy if primary C2 servers were blocked.\n\nIrrelevant Information: GlobalTech Corp's IT team reported increased CPU usage on several workstations during the attack, but initial investigations attributed this to a scheduled software update. Network logs show normal HTTP traffic to cloud services like AWS and Azure, with no direct correlation to the malicious activity. The company's cybersecurity insurance policy was up-to-date, covering incidents up to $10 million.\n\nMitigation Recommendations: Blue teams should implement network segmentation, monitor for unusual DCOM and SMB activities, enforce multi-factor authentication on partner accounts, and use endpoint detection tools to identify encrypted C2 traffic and dead drop resolvers. Regular patching of remote services is critical to prevent exploitation.",
+        "techniques_used": [
+            "T1584",
+            "T1199",
+            "T1059.007",
+            "T1057",
+            "T1210",
+            "T1021.003",
+            "T1102.001",
+            "T1573.001"
+        ]
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "report_id": "report_409",
+    "generated_at": "20251222_153528",
+    "scenario_target_ids": [
+        "T1078",
+        "T1129",
+        "T1542.005",
+        "T1497.002",
+        "T1021.008",
+        "T1219.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "discovery",
+        "lateral-movement",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078",
+        "T1129",
+        "T1542.005",
+        "T1497.002",
+        "T1021.008",
+        "T1219.001"
+    ],
+    "actual_found_ids": [
+        "T1129",
+        "T1497.002",
+        "T1021.008",
+        "T1078",
+        "T1542.005",
+        "T1219.001"
+    ],
+    "clean_text": "Background: The targeted organization, TechGlobal Inc., is a Fortune 500 company specializing in cloud services and software development, with operations across North America, Europe, and Asia. Initial detection occurred on 2023-10-15 when anomalous login attempts were flagged in Azure Active Directory logs from IP addresses associated with known malicious infrastructure. Further investigation revealed a coordinated attack leveraging multiple advanced techniques.\n\nAttack Narrative:\n1. Initial Access: The actors gained initial access by using previously compromised valid user accounts obtained through phishing campaigns targeting IT administrators. Logs show successful authentication from unusual geographic locations, but these were initially dismissed as false positives due to travel notifications.\n2. Execution and Persistence: Upon access, the adversary employed shared module injection to load malicious DLLs into critical system processes like svchost.exe, enabling stealthy execution while evading traditional antivirus scans. Concurrently, they modified network switch configurations to force devices to boot from a rogue TFTP server, establishing persistence across the corporate network and facilitating lateral movement to segmented environments.\n3. Defense Evasion: To avoid detection during dormant periods, the malware implemented user activity-based checks by monitoring mouse cursor movements and keyboard inputs; if no activity was detected for extended intervals, it suspended malicious operations to mimic idle system behavior, as observed in security logs showing periodic process halts.\n4. Lateral Movement and Command and Control: The threat actor utilized direct cloud VM connections via the Azure Serial Console to bypass network security groups and firewalls, gaining administrative access to virtual machines in the development environment. They then established persistent remote control by exploiting a compromised Visual Studio Code installation through custom workspace settings that enabled IDE tunneling, allowing encrypted command channels masked as legitimate development traffic.\n5. Additional Context: TechGlobal Inc.'s incident response team noted increased network latency during peak hours, but this was attributed to routine maintenance. No data exfiltration was confirmed in this simulation, though indicators suggest reconnaissance of sensitive repositories.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication, monitor for anomalous TFTP boot requests, implement behavioral analytics to detect user activity spoofing, restrict Azure Serial Console access, and audit IDE configurations for unauthorized modifications.",
+    "tagged_text": "Background: The targeted organization, TechGlobal Inc., is a Fortune 500 company specializing in cloud services and software development, with operations across North America, Europe, and Asia. Initial detection occurred on 2023-10-15 when anomalous login attempts were flagged in Azure Active Directory logs from IP addresses associated with known malicious infrastructure. Further investigation revealed a coordinated attack leveraging multiple advanced techniques.\n\nAttack Narrative:\n1. Initial Access: The actors gained initial access by using previously compromised valid user accounts [T1078] obtained through phishing campaigns targeting IT administrators. Logs show successful authentication from unusual geographic locations, but these were initially dismissed as false positives due to travel notifications.\n2. Execution and Persistence: Upon access, the adversary employed shared module injection [T1129] to load malicious DLLs into critical system processes like svchost.exe, enabling stealthy execution while evading traditional antivirus scans. Concurrently, they modified network switch configurations to force devices to boot from a rogue TFTP server [T1542.005], establishing persistence across the corporate network and facilitating lateral movement to segmented environments.\n3. Defense Evasion: To avoid detection during dormant periods, the malware implemented user activity-based checks [T1497.002] by monitoring mouse cursor movements and keyboard inputs; if no activity was detected for extended intervals, it suspended malicious operations to mimic idle system behavior, as observed in security logs showing periodic process halts.\n4. Lateral Movement and Command and Control: The threat actor utilized direct cloud VM connections [T1021.008] via the Azure Serial Console to bypass network security groups and firewalls, gaining administrative access to virtual machines in the development environment. They then established persistent remote control by exploiting a compromised Visual Studio Code installation [T1219.001] through custom workspace settings that enabled IDE tunneling, allowing encrypted command channels masked as legitimate development traffic.\n5. Additional Context: TechGlobal Inc.'s incident response team noted increased network latency during peak hours, but this was attributed to routine maintenance. No data exfiltration was confirmed in this simulation, though indicators suggest reconnaissance of sensitive repositories.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication, monitor for anomalous TFTP boot requests, implement behavioral analytics to detect user activity spoofing, restrict Azure Serial Console access, and audit IDE configurations for unauthorized modifications.",
+    "sentence_annotations": [
+        {
+            "sentence": "Initial Access: The actors gained initial access by using previously compromised valid user accounts obtained through phishing campaigns targeting IT administrators.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "Execution and Persistence: Upon access, the adversary employed shared module injection to load malicious DLLs into critical system processes like svchost.",
+            "technique_id": "T1129",
+            "technique_name": "Shared Modules"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional Campaign by Threat Actor Group 'Cobalt Serpent'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'Cobalt Serpent', targeting a multinational technology corporation. The campaign involves initial access via compromised credentials, lateral movement through network infrastructure manipulation, evasion of detection mechanisms, and persistent access via cloud and development tools. This report is intended for blue team training to enhance defensive capabilities against sophisticated multi-vector attacks.",
+        "full_report_text": "Background: The targeted organization, TechGlobal Inc., is a Fortune 500 company specializing in cloud services and software development, with operations across North America, Europe, and Asia. Initial detection occurred on 2023-10-15 when anomalous login attempts were flagged in Azure Active Directory logs from IP addresses associated with known malicious infrastructure. Further investigation revealed a coordinated attack leveraging multiple advanced techniques.\n\nAttack Narrative:\n1. Initial Access: The actors gained initial access by using previously compromised valid user accounts [T1078] obtained through phishing campaigns targeting IT administrators. Logs show successful authentication from unusual geographic locations, but these were initially dismissed as false positives due to travel notifications.\n2. Execution and Persistence: Upon access, the adversary employed shared module injection [T1129] to load malicious DLLs into critical system processes like svchost.exe, enabling stealthy execution while evading traditional antivirus scans. Concurrently, they modified network switch configurations to force devices to boot from a rogue TFTP server [T1542.005], establishing persistence across the corporate network and facilitating lateral movement to segmented environments.\n3. Defense Evasion: To avoid detection during dormant periods, the malware implemented user activity-based checks [T1497.002] by monitoring mouse cursor movements and keyboard inputs; if no activity was detected for extended intervals, it suspended malicious operations to mimic idle system behavior, as observed in security logs showing periodic process halts.\n4. Lateral Movement and Command and Control: The threat actor utilized direct cloud VM connections [T1021.008] via the Azure Serial Console to bypass network security groups and firewalls, gaining administrative access to virtual machines in the development environment. They then established persistent remote control by exploiting a compromised Visual Studio Code installation [T1219.001] through custom workspace settings that enabled IDE tunneling, allowing encrypted command channels masked as legitimate development traffic.\n5. Additional Context: TechGlobal Inc.'s incident response team noted increased network latency during peak hours, but this was attributed to routine maintenance. No data exfiltration was confirmed in this simulation, though indicators suggest reconnaissance of sensitive repositories.\n\nMitigation Recommendations: Organizations should enforce multi-factor authentication, monitor for anomalous TFTP boot requests, implement behavioral analytics to detect user activity spoofing, restrict Azure Serial Console access, and audit IDE configurations for unauthorized modifications.",
+        "techniques_used": [
+            "T1078",
+            "T1129",
+            "T1542.005",
+            "T1497.002",
+            "T1021.008",
+            "T1219.001"
+        ]
+    }
+}

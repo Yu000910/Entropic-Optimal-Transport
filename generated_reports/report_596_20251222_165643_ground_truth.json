@@ -1,0 +1,98 @@
+{
+    "report_id": "report_596",
+    "generated_at": "20251222_165643",
+    "scenario_target_ids": [
+        "T1594",
+        "T1078.002",
+        "T1059.004",
+        "T1098.003",
+        "T1611",
+        "T1558.002",
+        "T1018",
+        "T1557",
+        "T1573.001",
+        "T1052"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "credential-access",
+        "discovery",
+        "collection",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1594",
+        "T1078.002",
+        "T1059.004",
+        "T1098.003",
+        "T1611",
+        "T1558.002",
+        "T1018",
+        "T1557",
+        "T1573.001",
+        "T1052"
+    ],
+    "actual_found_ids": [
+        "T1558.002",
+        "T1052",
+        "T1098.003",
+        "T1018",
+        "T1573.001",
+        "T1078.002",
+        "T1594",
+        "T1059.004",
+        "T1611",
+        "T1557"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the threat actor group 'ShadowCrawl'. This report is designed for training purposes and does not reflect real-world incidents.\n\nBackground: 'ShadowCrawl' is a fictional advanced persistent threat (APT) group believed to operate with financial motivations, targeting sectors such as finance and healthcare. In this scenario, the group compromised a mid-sized technology firm, 'TechGlobal Inc.', which uses a mix of AWS cloud services and on-premises Windows and Linux servers. Initial detection occurred through anomalous network traffic alerts from the SIEM system, but no actual breach has been confirmed.\n\nAttack Narrative:\n- **Initial Access and Reconnaissance**: The actors began by conducting reconnaissance on TechGlobal Inc.'s public-facing websites, searching for sitemap.xml files to identify the website's structure and discover hidden pages. This allowed them to map potential entry points, including outdated web applications. Logs from the web server showed increased requests to /sitemap.xml over a 24-hour period, though these were not flagged as malicious at the time.\n- **Execution and Credential Access**: After identifying a vulnerable web server, the adversary employed a combination of PowerShell scripts and mimikatz.exe to dump domain account credentials from memory, while simultaneously using Unix shell commands to deploy the 'J-magic' agent through command-line arguments specifying an interface and listening port for persistent access. System administrators noted unusual process activity on a Linux server, but attributed it to scheduled maintenance tasks.\n- **Persistence and Privilege Escalation**: To maintain access, the actors modified IAM policies in the AWS environment to assign additional cloud roles, enabling unauthorized access to sensitive S3 buckets, and they deployed privileged containers that mounted the filesystem of the victim machine to evade detection and gain higher privileges. Cloud audit logs showed policy changes from an unrecognized IP address, but these were not investigated immediately due to high volume.\n- **Lateral Movement and Discovery**: The group then used tools such as AdFind and BloodHound to enumerate shares and hostnames on the compromised network, facilitating lateral movement across Windows domains, and they ran a Kerberoasting script to request and extract service tickets for offline brute-force attacks to compromise additional accounts. Network scans revealed unusual SMB traffic between servers, but it was logged as part of routine network mapping exercises.\n- **Collection and Exfiltration**: For data collection, the actors implemented an adversary-in-the-middle (AiTM) attack by intercepting HTTP traffic to victim devices to parse command and control information, and they used a custom encryption algorithm similar to the Blum Blum Shub algorithm to obfuscate exfiltrated data. Finally, they saved customer database files to an external hard drive during the breach as a physical exfiltration method. Security cameras recorded an unauthorized individual accessing a server room, but this was later dismissed as a contractor error.\n\nMitigation Recommendations: Blue teams should monitor for sitemap.xml scans, enforce multi-factor authentication, regularly audit IAM policies, and implement network segmentation to limit lateral movement. This fictional scenario highlights the importance of integrating cloud and on-premises security monitoring.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the threat actor group 'ShadowCrawl'. This report is designed for training purposes and does not reflect real-world incidents.\n\nBackground: 'ShadowCrawl' is a fictional advanced persistent threat (APT) group believed to operate with financial motivations, targeting sectors such as finance and healthcare. In this scenario, the group compromised a mid-sized technology firm, 'TechGlobal Inc.', which uses a mix of AWS cloud services and on-premises Windows and Linux servers. Initial detection occurred through anomalous network traffic alerts from the SIEM system, but no actual breach has been confirmed.\n\nAttack Narrative:\n- **Initial Access and Reconnaissance**: The actors began by conducting reconnaissance on TechGlobal Inc.'s public-facing websites, searching for sitemap.xml files to identify the website's structure and discover hidden pages [T1594]. This allowed them to map potential entry points, including outdated web applications. Logs from the web server showed increased requests to /sitemap.xml over a 24-hour period, though these were not flagged as malicious at the time.\n- **Execution and Credential Access**: After identifying a vulnerable web server, the adversary employed a combination of PowerShell scripts and mimikatz.exe to dump domain account credentials from memory [T1078.002], while simultaneously using Unix shell commands [T1059.004] to deploy the 'J-magic' agent through command-line arguments specifying an interface and listening port for persistent access. System administrators noted unusual process activity on a Linux server, but attributed it to scheduled maintenance tasks.\n- **Persistence and Privilege Escalation**: To maintain access, the actors modified IAM policies in the AWS environment to assign additional cloud roles [T1098.003], enabling unauthorized access to sensitive S3 buckets, and they deployed privileged containers that mounted the filesystem of the victim machine [T1611] to evade detection and gain higher privileges. Cloud audit logs showed policy changes from an unrecognized IP address, but these were not investigated immediately due to high volume.\n- **Lateral Movement and Discovery**: The group then used tools such as AdFind and BloodHound to enumerate shares and hostnames on the compromised network [T1018], facilitating lateral movement across Windows domains, and they ran a Kerberoasting script to request and extract service tickets for offline brute-force attacks [T1558.002] to compromise additional accounts. Network scans revealed unusual SMB traffic between servers, but it was logged as part of routine network mapping exercises.\n- **Collection and Exfiltration**: For data collection, the actors implemented an adversary-in-the-middle (AiTM) attack by intercepting HTTP traffic to victim devices [T1557] to parse command and control information, and they used a custom encryption algorithm similar to the Blum Blum Shub algorithm [T1573.001] to obfuscate exfiltrated data. Finally, they saved customer database files to an external hard drive during the breach [T1052] as a physical exfiltration method. Security cameras recorded an unauthorized individual accessing a server room, but this was later dismissed as a contractor error.\n\nMitigation Recommendations: Blue teams should monitor for sitemap.xml scans, enforce multi-factor authentication, regularly audit IAM policies, and implement network segmentation to limit lateral movement. This fictional scenario highlights the importance of integrating cloud and on-premises security monitoring.",
+    "sentence_annotations": [
+        {
+            "sentence": "xml files to identify the website's structure and discover hidden pages.",
+            "technique_id": "T1594",
+            "technique_name": "Search Victim-Owned Websites"
+        },
+        {
+            "sentence": "003], enabling unauthorized access to sensitive S3 buckets, and they deployed privileged containers that mounted the filesystem of the victim machine to evade detection and gain higher privileges.",
+            "technique_id": "T1611",
+            "technique_name": "Escape to Host"
+        },
+        {
+            "sentence": "- **Lateral Movement and Discovery**: The group then used tools such as AdFind and BloodHound to enumerate shares and hostnames on the compromised network, facilitating lateral movement across Windows domains, and they ran a Kerberoasting script to request and extract service tickets for offline brute-force attacks [T1558.",
+            "technique_id": "T1018",
+            "technique_name": "Remote System Discovery"
+        },
+        {
+            "sentence": "- **Collection and Exfiltration**: For data collection, the actors implemented an adversary-in-the-middle (AiTM) attack by intercepting HTTP traffic to victim devices to parse command and control information, and they used a custom encryption algorithm similar to the Blum Blum Shub algorithm [T1573.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        },
+        {
+            "sentence": "Finally, they saved customer database files to an external hard drive during the breach as a physical exfiltration method.",
+            "technique_id": "T1052",
+            "technique_name": "Exfiltration Over Physical Medium"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowCrawl' Targeting Cloud and On-Premises Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'ShadowCrawl', targeting organizations with hybrid cloud and on-premises environments. The campaign involves initial reconnaissance, credential theft, lateral movement, and data exfiltration, leveraging techniques such as website enumeration, credential dumping, and cloud role manipulation. Blue teams should use this report for training to identify and mitigate similar attack patterns.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on observed tactics, techniques, and procedures (TTPs) attributed to the threat actor group 'ShadowCrawl'. This report is designed for training purposes and does not reflect real-world incidents.\n\nBackground: 'ShadowCrawl' is a fictional advanced persistent threat (APT) group believed to operate with financial motivations, targeting sectors such as finance and healthcare. In this scenario, the group compromised a mid-sized technology firm, 'TechGlobal Inc.', which uses a mix of AWS cloud services and on-premises Windows and Linux servers. Initial detection occurred through anomalous network traffic alerts from the SIEM system, but no actual breach has been confirmed.\n\nAttack Narrative:\n- **Initial Access and Reconnaissance**: The actors began by conducting reconnaissance on TechGlobal Inc.'s public-facing websites, searching for sitemap.xml files to identify the website's structure and discover hidden pages [T1594]. This allowed them to map potential entry points, including outdated web applications. Logs from the web server showed increased requests to /sitemap.xml over a 24-hour period, though these were not flagged as malicious at the time.\n- **Execution and Credential Access**: After identifying a vulnerable web server, the adversary employed a combination of PowerShell scripts and mimikatz.exe to dump domain account credentials from memory [T1078.002], while simultaneously using Unix shell commands [T1059.004] to deploy the 'J-magic' agent through command-line arguments specifying an interface and listening port for persistent access. System administrators noted unusual process activity on a Linux server, but attributed it to scheduled maintenance tasks.\n- **Persistence and Privilege Escalation**: To maintain access, the actors modified IAM policies in the AWS environment to assign additional cloud roles [T1098.003], enabling unauthorized access to sensitive S3 buckets, and they deployed privileged containers that mounted the filesystem of the victim machine [T1611] to evade detection and gain higher privileges. Cloud audit logs showed policy changes from an unrecognized IP address, but these were not investigated immediately due to high volume.\n- **Lateral Movement and Discovery**: The group then used tools such as AdFind and BloodHound to enumerate shares and hostnames on the compromised network [T1018], facilitating lateral movement across Windows domains, and they ran a Kerberoasting script to request and extract service tickets for offline brute-force attacks [T1558.002] to compromise additional accounts. Network scans revealed unusual SMB traffic between servers, but it was logged as part of routine network mapping exercises.\n- **Collection and Exfiltration**: For data collection, the actors implemented an adversary-in-the-middle (AiTM) attack by intercepting HTTP traffic to victim devices [T1557] to parse command and control information, and they used a custom encryption algorithm similar to the Blum Blum Shub algorithm [T1573.001] to obfuscate exfiltrated data. Finally, they saved customer database files to an external hard drive during the breach [T1052] as a physical exfiltration method. Security cameras recorded an unauthorized individual accessing a server room, but this was later dismissed as a contractor error.\n\nMitigation Recommendations: Blue teams should monitor for sitemap.xml scans, enforce multi-factor authentication, regularly audit IAM policies, and implement network segmentation to limit lateral movement. This fictional scenario highlights the importance of integrating cloud and on-premises security monitoring.",
+        "techniques_used": [
+            "T1594",
+            "T1078.002",
+            "T1059.004",
+            "T1098.003",
+            "T1611",
+            "T1558.002",
+            "T1018",
+            "T1557",
+            "T1573.001",
+            "T1052"
+        ]
+    }
+}

@@ -1,0 +1,114 @@
+{
+    "report_id": "report_115",
+    "generated_at": "20251222_120214",
+    "scenario_target_ids": [
+        "T1566.003",
+        "T1204.002",
+        "T1136.001",
+        "T1176.002",
+        "T1217",
+        "T1016.001",
+        "T1550.004",
+        "T1602.001",
+        "T1557",
+        "T1025",
+        "T1090.001",
+        "T1567.002",
+        "T1496.004",
+        "T1499.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "persistence",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "collection",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1566.003",
+        "T1204.002",
+        "T1136.001",
+        "T1176.002",
+        "T1217",
+        "T1016.001",
+        "T1550.004",
+        "T1602.001",
+        "T1557",
+        "T1025",
+        "T1090.001",
+        "T1567.002",
+        "T1496.004",
+        "T1499.002"
+    ],
+    "actual_found_ids": [
+        "T1550.004",
+        "T1566.003",
+        "T1025",
+        "T1567.002",
+        "T1557",
+        "T1090.001",
+        "T1136.001",
+        "T1204.002",
+        "T1176.002",
+        "T1589",
+        "T1016.001",
+        "T1496.004",
+        "T1602.001",
+        "T1217",
+        "T1499.002"
+    ],
+    "clean_text": "CrimsonShadow, a fictional advanced persistent threat (APT) group, has been observed targeting technology firms in a simulated campaign designed for training. The actors likely conduct reconnaissance by gathering employee information from LinkedIn and other public sources, though this is not directly tagged in the provided techniques. Initial access was achieved through spearphishing via service, where fake Instagram profiles sent malicious links disguised as photo album invitations to employees. Upon clicking, victims were directed to a compromised website that delivered malicious files, specifically LNK files that executed PowerShell scripts when opened. The scripts downloaded additional payloads while simultaneously creating a local account with administrative privileges using commands like 'net user backdooruser Password123! /add' and establishing persistence via IDE extensions by dropping malicious .vsix files into the Visual Studio extensions directory. Post-compromise, the malware conducted browser information discovery to locate Google Chrome folders and collect browsing history and cookies, and performed internet connection discovery by calling 'ping.exe 192.168.1.100' to confirm network connectivity. It then hijacked web session cookies by importing cookie files to maintain authenticated access and executed SNMP queries to identify firewall rules on network devices. The adversary deployed an adversary-in-the-middle capability using modified PHProxy to intercept web traffic and extracted data from removable media connected to the endpoint. For command and control, they used an internal proxy to route traffic through other infected hosts and exfiltrated stolen data to cloud storage via actor-controlled Blogspot accounts. Additionally, they engaged in cloud service hijacking by exploiting a compromised IAM role to invoke AWS SES for mass email campaigns, depleting quotas and causing service disruption, and launched a service exhaustion flood by exploiting SSL/TLS renegotiation to degrade server availability. System logs from the victim environment showed routine backup processes and user login attempts, which are unrelated to the attack. The company, a mid-sized software developer, reported no actual financial loss, but this scenario highlights critical vulnerabilities in social engineering defenses and endpoint security.",
+    "tagged_text": "CrimsonShadow, a fictional advanced persistent threat (APT) group, has been observed targeting technology firms in a simulated campaign designed for training. The actors likely conduct reconnaissance [T1589] by gathering employee information from LinkedIn and other public sources, though this is not directly tagged in the provided techniques. Initial access was achieved through spearphishing via service [T1566.003], where fake Instagram profiles sent malicious links disguised as photo album invitations to employees. Upon clicking, victims were directed to a compromised website that delivered malicious files [T1204.002], specifically LNK files that executed PowerShell scripts when opened. The scripts downloaded additional payloads while simultaneously creating a local account [T1136.001] with administrative privileges using commands like 'net user backdooruser Password123! /add' and establishing persistence via IDE extensions [T1176.002] by dropping malicious .vsix files into the Visual Studio extensions directory. Post-compromise, the malware conducted browser information discovery [T1217] to locate Google Chrome folders and collect browsing history and cookies, and performed internet connection discovery [T1016.001] by calling 'ping.exe 192.168.1.100' to confirm network connectivity. It then hijacked web session cookies [T1550.004] by importing cookie files to maintain authenticated access and executed SNMP queries [T1602.001] to identify firewall rules on network devices. The adversary deployed an adversary-in-the-middle [T1557] capability using modified PHProxy to intercept web traffic and extracted data from removable media [T1025] connected to the endpoint. For command and control, they used an internal proxy [T1090.001] to route traffic through other infected hosts and exfiltrated stolen data to cloud storage [T1567.002] via actor-controlled Blogspot accounts. Additionally, they engaged in cloud service hijacking [T1496.004] by exploiting a compromised IAM role to invoke AWS SES for mass email campaigns, depleting quotas and causing service disruption, and launched a service exhaustion flood [T1499.002] by exploiting SSL/TLS renegotiation to degrade server availability. System logs from the victim environment showed routine backup processes and user login attempts, which are unrelated to the attack. The company, a mid-sized software developer, reported no actual financial loss, but this scenario highlights critical vulnerabilities in social engineering defenses and endpoint security.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance by gathering employee information from LinkedIn and other public sources, though this is not directly tagged in the provided techniques.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Post-compromise, the malware conducted browser information discovery to locate Google Chrome folders and collect browsing history and cookies, and performed internet connection discovery [T1016.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "The adversary deployed an adversary-in-the-middle capability using modified PHProxy to intercept web traffic and extracted data from removable media connected to the endpoint.",
+            "technique_id": "T1557",
+            "technique_name": "Adversary-in-the-Middle"
+        },
+        {
+            "sentence": "The adversary deployed an adversary-in-the-middle capability using modified PHProxy to intercept web traffic and extracted data from removable media connected to the endpoint.",
+            "technique_id": "T1025",
+            "technique_name": "Data from Removable Media"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by FICTIONAL Threat Actor 'CrimsonShadow'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'CrimsonShadow' targeting technology firms. The campaign involves spearphishing via social media, malicious file execution, and persistence through IDE extensions, culminating in data exfiltration and service disruption. This report is for blue team training purposes to enhance detection and response capabilities.",
+        "full_report_text": "CrimsonShadow, a fictional advanced persistent threat (APT) group, has been observed targeting technology firms in a simulated campaign designed for training. The actors likely conduct reconnaissance [T1589] by gathering employee information from LinkedIn and other public sources, though this is not directly tagged in the provided techniques. Initial access was achieved through spearphishing via service [T1566.003], where fake Instagram profiles sent malicious links disguised as photo album invitations to employees. Upon clicking, victims were directed to a compromised website that delivered malicious files [T1204.002], specifically LNK files that executed PowerShell scripts when opened. The scripts downloaded additional payloads while simultaneously creating a local account [T1136.001] with administrative privileges using commands like 'net user backdooruser Password123! /add' and establishing persistence via IDE extensions [T1176.002] by dropping malicious .vsix files into the Visual Studio extensions directory. Post-compromise, the malware conducted browser information discovery [T1217] to locate Google Chrome folders and collect browsing history and cookies, and performed internet connection discovery [T1016.001] by calling 'ping.exe 192.168.1.100' to confirm network connectivity. It then hijacked web session cookies [T1550.004] by importing cookie files to maintain authenticated access and executed SNMP queries [T1602.001] to identify firewall rules on network devices. The adversary deployed an adversary-in-the-middle [T1557] capability using modified PHProxy to intercept web traffic and extracted data from removable media [T1025] connected to the endpoint. For command and control, they used an internal proxy [T1090.001] to route traffic through other infected hosts and exfiltrated stolen data to cloud storage [T1567.002] via actor-controlled Blogspot accounts. Additionally, they engaged in cloud service hijacking [T1496.004] by exploiting a compromised IAM role to invoke AWS SES for mass email campaigns, depleting quotas and causing service disruption, and launched a service exhaustion flood [T1499.002] by exploiting SSL/TLS renegotiation to degrade server availability. System logs from the victim environment showed routine backup processes and user login attempts, which are unrelated to the attack. The company, a mid-sized software developer, reported no actual financial loss, but this scenario highlights critical vulnerabilities in social engineering defenses and endpoint security.",
+        "techniques_used": [
+            "T1566.003",
+            "T1204.002",
+            "T1136.001",
+            "T1176.002",
+            "T1217",
+            "T1016.001",
+            "T1550.004",
+            "T1602.001",
+            "T1557",
+            "T1025",
+            "T1090.001",
+            "T1567.002",
+            "T1496.004",
+            "T1499.002"
+        ]
+    }
+}

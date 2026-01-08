@@ -1,0 +1,108 @@
+{
+    "report_id": "report_323",
+    "generated_at": "20251222_145836",
+    "scenario_target_ids": [
+        "T1593",
+        "T1189",
+        "T1569.001",
+        "T1574.011",
+        "T1574.005",
+        "T1110.003",
+        "T1003.001",
+        "T1114",
+        "T1659",
+        "T1537",
+        "T1667"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "collection",
+        "command-and-control",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1593",
+        "T1189",
+        "T1569.001",
+        "T1574.011",
+        "T1574.005",
+        "T1110.003",
+        "T1003.001",
+        "T1114",
+        "T1659",
+        "T1537",
+        "T1667"
+    ],
+    "actual_found_ids": [
+        "T1110.003",
+        "T1574.005",
+        "T1114",
+        "T1537",
+        "T1659",
+        "T1569.001",
+        "T1189",
+        "T1574.011",
+        "T1593",
+        "T1667",
+        "T1003.001"
+    ],
+    "clean_text": "Crimson Shadow actors initiated their campaign by conducting reconnaissance on open websites and domains, specifically querying financial news sites for articles about recent mergers and acquisitions to identify potential targets. Following this, they executed a drive-by compromise by strategically compromising a popular financial forum website, using a JavaScript-based profiler similar to RICECURRY to deliver malicious code tailored to victim browsers, which downloaded a payload that exploited weak registry permissions in system services by hijacking the HKLM\\SYSTEM\\CurrentControlSet\\Services\\WinDefend key to execute malicious code while simultaneously altering executable installer file permissions in a %TEMP% subfolder to bypass user account controls. The malware then employed Launchctl to activate a malicious service named 'com.exploit.service', enabling persistence and further execution. System logs from the affected server, dated 2023-10-15, showed unusual network traffic spikes, though these were initially attributed to routine backups. Concurrently, the actors conducted password spraying attacks against SSH credentials on development workstations, harvesting private keys to gain deeper access, and used custom tools to dump LSASS process memory for credential theft, mimicking APT28 tactics. Once inside, they executed Outlook.exe to collect email data, exporting mailbox contents to PST files stored locally. The threat actor then injected a keylogger payload into encrypted network communications to capture additional credentials and sensitive data, which was subsequently transferred to a cloud account using the Azure Storage REST API to upload files to an adversary-controlled container. Finally, to create disruption and cover their tracks, they executed a Python script for email bombing, repeatedly sending empty emails with large attachments to overwhelm victim mail servers. Background checks on the compromised forum revealed no prior security incidents, and the company's internal audit logs from last quarter showed normal user activity with no flags raised.",
+    "tagged_text": "Crimson Shadow actors initiated their campaign by conducting reconnaissance on open websites and domains [T1593], specifically querying financial news sites for articles about recent mergers and acquisitions to identify potential targets. Following this, they executed a drive-by compromise [T1189] by strategically compromising a popular financial forum website, using a JavaScript-based profiler similar to RICECURRY to deliver malicious code tailored to victim browsers, which downloaded a payload that exploited weak registry permissions in system services [T1574.011] by hijacking the HKLM\\SYSTEM\\CurrentControlSet\\Services\\WinDefend key to execute malicious code while simultaneously altering executable installer file permissions [T1574.005] in a %TEMP% subfolder to bypass user account controls. The malware then employed Launchctl [T1569.001] to activate a malicious service named 'com.exploit.service', enabling persistence and further execution. System logs from the affected server, dated 2023-10-15, showed unusual network traffic spikes, though these were initially attributed to routine backups. Concurrently, the actors conducted password spraying attacks [T1110.003] against SSH credentials on development workstations, harvesting private keys to gain deeper access, and used custom tools to dump LSASS process memory [T1003.001] for credential theft, mimicking APT28 tactics. Once inside, they executed Outlook.exe to collect email data [T1114], exporting mailbox contents to PST files stored locally. The threat actor then injected a keylogger payload [T1659] into encrypted network communications to capture additional credentials and sensitive data, which was subsequently transferred to a cloud account [T1537] using the Azure Storage REST API to upload files to an adversary-controlled container. Finally, to create disruption and cover their tracks, they executed a Python script for email bombing [T1667], repeatedly sending empty emails with large attachments to overwhelm victim mail servers. Background checks on the compromised forum revealed no prior security incidents, and the company's internal audit logs from last quarter showed normal user activity with no flags raised.",
+    "sentence_annotations": [
+        {
+            "sentence": "Crimson Shadow actors initiated their campaign by conducting reconnaissance on open websites and domains, specifically querying financial news sites for articles about recent mergers and acquisitions to identify potential targets.",
+            "technique_id": "T1593",
+            "technique_name": "Search Open Websites/Domains"
+        },
+        {
+            "sentence": "Following this, they executed a drive-by compromise by strategically compromising a popular financial forum website, using a JavaScript-based profiler similar to RICECURRY to deliver malicious code tailored to victim browsers, which downloaded a payload that exploited weak registry permissions in system services [T1574.",
+            "technique_id": "T1189",
+            "technique_name": "Drive-by Compromise"
+        },
+        {
+            "sentence": "exe to collect email data, exporting mailbox contents to PST files stored locally.",
+            "technique_id": "T1114",
+            "technique_name": "Email Collection"
+        },
+        {
+            "sentence": "The threat actor then injected a keylogger payload into encrypted network communications to capture additional credentials and sensitive data, which was subsequently transferred to a cloud account using the Azure Storage REST API to upload files to an adversary-controlled container.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "The threat actor then injected a keylogger payload into encrypted network communications to capture additional credentials and sensitive data, which was subsequently transferred to a cloud account using the Azure Storage REST API to upload files to an adversary-controlled container.",
+            "technique_id": "T1537",
+            "technique_name": "Transfer Data to Cloud Account"
+        },
+        {
+            "sentence": "Finally, to create disruption and cover their tracks, they executed a Python script for email bombing, repeatedly sending empty emails with large attachments to overwhelm victim mail servers.",
+            "technique_id": "T1667",
+            "technique_name": "Email Bombing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, designated as 'Crimson Shadow', targeting financial institutions for data exfiltration and disruption. The campaign leverages a combination of reconnaissance, exploitation, and persistence techniques to compromise systems and steal sensitive information. Blue teams are advised to review logs and implement mitigations as outlined.",
+        "full_report_text": "Crimson Shadow actors initiated their campaign by conducting reconnaissance on open websites and domains [T1593], specifically querying financial news sites for articles about recent mergers and acquisitions to identify potential targets. Following this, they executed a drive-by compromise [T1189] by strategically compromising a popular financial forum website, using a JavaScript-based profiler similar to RICECURRY to deliver malicious code tailored to victim browsers, which downloaded a payload that exploited weak registry permissions in system services [T1574.011] by hijacking the HKLM\\SYSTEM\\CurrentControlSet\\Services\\WinDefend key to execute malicious code while simultaneously altering executable installer file permissions [T1574.005] in a %TEMP% subfolder to bypass user account controls. The malware then employed Launchctl [T1569.001] to activate a malicious service named 'com.exploit.service', enabling persistence and further execution. System logs from the affected server, dated 2023-10-15, showed unusual network traffic spikes, though these were initially attributed to routine backups. Concurrently, the actors conducted password spraying attacks [T1110.003] against SSH credentials on development workstations, harvesting private keys to gain deeper access, and used custom tools to dump LSASS process memory [T1003.001] for credential theft, mimicking APT28 tactics. Once inside, they executed Outlook.exe to collect email data [T1114], exporting mailbox contents to PST files stored locally. The threat actor then injected a keylogger payload [T1659] into encrypted network communications to capture additional credentials and sensitive data, which was subsequently transferred to a cloud account [T1537] using the Azure Storage REST API to upload files to an adversary-controlled container. Finally, to create disruption and cover their tracks, they executed a Python script for email bombing [T1667], repeatedly sending empty emails with large attachments to overwhelm victim mail servers. Background checks on the compromised forum revealed no prior security incidents, and the company's internal audit logs from last quarter showed normal user activity with no flags raised.",
+        "techniques_used": [
+            "T1593",
+            "T1189",
+            "T1569.001",
+            "T1574.011",
+            "T1574.005",
+            "T1110.003",
+            "T1003.001",
+            "T1114",
+            "T1659",
+            "T1537",
+            "T1667"
+        ]
+    }
+}

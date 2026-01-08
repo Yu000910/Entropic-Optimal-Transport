@@ -1,0 +1,103 @@
+{
+    "report_id": "report_274",
+    "generated_at": "20251222_143755",
+    "scenario_target_ids": [
+        "T1592.004",
+        "T1659",
+        "T1053.007",
+        "T1078.001",
+        "T1134.001",
+        "T1542.002",
+        "T1120",
+        "T1622",
+        "T1080",
+        "T1132.002",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1592.004",
+        "T1659",
+        "T1053.007",
+        "T1078.001",
+        "T1134.001",
+        "T1542.002",
+        "T1120",
+        "T1622",
+        "T1080",
+        "T1132.002",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1120",
+        "T1542.002",
+        "T1659",
+        "T1592.004",
+        "T1132.002",
+        "T1053.007",
+        "T1080",
+        "T1134.001",
+        "T1622",
+        "T1078.001",
+        "T1048"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for training purposes. Crimson Hydra actors likely conduct reconnaissance by scanning web servers to gather client configuration details and discover peripheral devices such as external storage units to identify potential targets. In the initial access phase, the actors exploited default administrator accounts to gain entry into the domain, followed by using PowerShell to schedule a malicious Kubernetes CronJob for execution with elevated privileges. During execution, the malware employed token impersonation to assume the identity of a logged-on administrator and modified shared content by altering the 'documents.lnk' file to point to a malicious script. For persistence, the actors injected a command and control beacon into DNS queries and overwrote component firmware on hard drives to maintain a foothold. To evade detection, the malicious process invoked NtQueryInformationProcess() to check for debugger attachment and used non-standard encoding with a custom Base64 alphabet to obfuscate communications. Finally, the backdoor exfiltrated collected user documents over alternative protocols using NetBIOS file transfers. System logs from the affected environment showed routine network traffic, but analysis revealed anomalous DNS queries and unauthorized container deployments, though some logs were corrupted due to system errors unrelated to the attack. The targeted organization, a mid-sized financial services firm, had recently upgraded its infrastructure, but this background information is not directly linked to the techniques used.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for training purposes. Crimson Hydra actors likely conduct reconnaissance by scanning web servers to gather client configuration details [T1592.004] and discover peripheral devices such as external storage units [T1120] to identify potential targets. In the initial access phase, the actors exploited default administrator accounts [T1078.001] to gain entry into the domain, followed by using PowerShell to schedule a malicious Kubernetes CronJob [T1053.007] for execution with elevated privileges. During execution, the malware employed token impersonation [T1134.001] to assume the identity of a logged-on administrator and modified shared content by altering the 'documents.lnk' file [T1080] to point to a malicious script. For persistence, the actors injected a command and control beacon into DNS queries [T1659] and overwrote component firmware on hard drives [T1542.002] to maintain a foothold. To evade detection, the malicious process invoked NtQueryInformationProcess() to check for debugger attachment [T1622] and used non-standard encoding with a custom Base64 alphabet [T1132.002] to obfuscate communications. Finally, the backdoor exfiltrated collected user documents over alternative protocols using NetBIOS file transfers [T1048]. System logs from the affected environment showed routine network traffic, but analysis revealed anomalous DNS queries and unauthorized container deployments, though some logs were corrupted due to system errors unrelated to the attack. The targeted organization, a mid-sized financial services firm, had recently upgraded its infrastructure, but this background information is not directly linked to the techniques used.",
+    "sentence_annotations": [
+        {
+            "sentence": "004] and discover peripheral devices such as external storage units to identify potential targets.",
+            "technique_id": "T1120",
+            "technique_name": "Peripheral Device Discovery"
+        },
+        {
+            "sentence": "lnk' file to point to a malicious script.",
+            "technique_id": "T1080",
+            "technique_name": "Taint Shared Content"
+        },
+        {
+            "sentence": "For persistence, the actors injected a command and control beacon into DNS queries and overwrote component firmware on hard drives [T1542.",
+            "technique_id": "T1659",
+            "technique_name": "Content Injection"
+        },
+        {
+            "sentence": "To evade detection, the malicious process invoked NtQueryInformationProcess() to check for debugger attachment and used non-standard encoding with a custom Base64 alphabet [T1132.",
+            "technique_id": "T1622",
+            "technique_name": "Debugger Evasion"
+        },
+        {
+            "sentence": "Finally, the backdoor exfiltrated collected user documents over alternative protocols using NetBIOS file transfers.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Enterprise Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as 'Crimson Hydra', targeting enterprise networks to deploy ransomware and exfiltrate sensitive data. The campaign leverages a combination of reconnaissance, privilege escalation, and evasion techniques to compromise systems and maintain persistence. Blue teams should use this report for training to identify and mitigate similar attack patterns in real-world scenarios.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide insights into a fictional APT campaign for training purposes. Crimson Hydra actors likely conduct reconnaissance by scanning web servers to gather client configuration details [T1592.004] and discover peripheral devices such as external storage units [T1120] to identify potential targets. In the initial access phase, the actors exploited default administrator accounts [T1078.001] to gain entry into the domain, followed by using PowerShell to schedule a malicious Kubernetes CronJob [T1053.007] for execution with elevated privileges. During execution, the malware employed token impersonation [T1134.001] to assume the identity of a logged-on administrator and modified shared content by altering the 'documents.lnk' file [T1080] to point to a malicious script. For persistence, the actors injected a command and control beacon into DNS queries [T1659] and overwrote component firmware on hard drives [T1542.002] to maintain a foothold. To evade detection, the malicious process invoked NtQueryInformationProcess() to check for debugger attachment [T1622] and used non-standard encoding with a custom Base64 alphabet [T1132.002] to obfuscate communications. Finally, the backdoor exfiltrated collected user documents over alternative protocols using NetBIOS file transfers [T1048]. System logs from the affected environment showed routine network traffic, but analysis revealed anomalous DNS queries and unauthorized container deployments, though some logs were corrupted due to system errors unrelated to the attack. The targeted organization, a mid-sized financial services firm, had recently upgraded its infrastructure, but this background information is not directly linked to the techniques used.",
+        "techniques_used": [
+            "T1592.004",
+            "T1659",
+            "T1053.007",
+            "T1078.001",
+            "T1134.001",
+            "T1542.002",
+            "T1120",
+            "T1622",
+            "T1080",
+            "T1132.002",
+            "T1048"
+        ]
+    }
+}

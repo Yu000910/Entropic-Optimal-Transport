@@ -1,0 +1,84 @@
+{
+    "report_id": "report_134",
+    "generated_at": "20251222_133939",
+    "scenario_target_ids": [
+        "T1078",
+        "T1569.002",
+        "T1071.004",
+        "T1048.003",
+        "T1020",
+        "T1667"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "command-and-control",
+        "exfiltration",
+        "exfiltration",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1078",
+        "T1569.002",
+        "T1112",
+        "T1071.004",
+        "T1048.003",
+        "T1020",
+        "T1667"
+    ],
+    "actual_found_ids": [
+        "T1112",
+        "T1589",
+        "T1569.002",
+        "T1078",
+        "T1048.003",
+        "T1071.004",
+        "T1667",
+        "T1020"
+    ],
+    "clean_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed targeting mid-sized financial organizations in North America, with a focus on stealing customer financial records and internal communications. The actors likely conduct reconnaissance through open-source intelligence (OSINT) gathering, including social media profiling and domain enumeration, to identify potential entry points. Initial access was achieved by exploiting weak password policies, allowing the adversary to use compromised user accounts to log into the corporate VPN and deploy malicious payloads directly onto internal servers. For example, on 2023-10-15, anomalous login activity was detected from an IP address in a non-business region, but it was initially dismissed as a false positive due to system noise from routine maintenance logs. Once inside, the actors employed PsExec to remotely create and start a Windows service named 'SystemUpdateHelper', which executed a copy of their custom malware to facilitate lateral movement across the network while simultaneously modifying registry keys to maintain persistence. Command and control (C2) communications were established using DNS queries to domains masquerading as legitimate cloud services, such as 'update.azure-mirror.net', to blend with normal traffic and evade detection by firewalls. Data exfiltration occurred in multiple phases: first, the actors used FTP to transfer reconnaissance data, including network diagrams and user lists, to an external server over unencrypted channels, and then automated tools were triggered to send gathered email credentials via HTTP POST requests to C2 servers immediately after collection. Finally, as a distraction tactic, the malware leveraged an automated bot to generate and dispatch bulk spam emails to the target's employees, overwhelming email servers and delaying incident response efforts. Throughout the campaign, system logs showed intermittent failures in backup processes unrelated to the attack, which added noise and complicated forensic analysis.",
+    "tagged_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed targeting mid-sized financial organizations in North America, with a focus on stealing customer financial records and internal communications. The actors likely conduct reconnaissance [T1589] through open-source intelligence (OSINT) gathering, including social media profiling and domain enumeration, to identify potential entry points. Initial access was achieved by exploiting weak password policies, allowing the adversary to use compromised user accounts [T1078] to log into the corporate VPN and deploy malicious payloads directly onto internal servers. For example, on 2023-10-15, anomalous login activity was detected from an IP address in a non-business region, but it was initially dismissed as a false positive due to system noise from routine maintenance logs. Once inside, the actors employed PsExec [T1569.002] to remotely create and start a Windows service named 'SystemUpdateHelper', which executed a copy of their custom malware to facilitate lateral movement across the network while simultaneously modifying registry keys [T1112] to maintain persistence. Command and control (C2) communications were established using DNS queries [T1071.004] to domains masquerading as legitimate cloud services, such as 'update.azure-mirror.net', to blend with normal traffic and evade detection by firewalls. Data exfiltration occurred in multiple phases: first, the actors used FTP [T1048.003] to transfer reconnaissance data, including network diagrams and user lists, to an external server over unencrypted channels, and then automated tools [T1020] were triggered to send gathered email credentials via HTTP POST requests to C2 servers immediately after collection. Finally, as a distraction tactic, the malware leveraged an automated bot to generate and dispatch bulk spam emails [T1667] to the target's employees, overwhelming email servers and delaying incident response efforts. Throughout the campaign, system logs showed intermittent failures in backup processes unrelated to the attack, which added noise and complicated forensic analysis.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conduct reconnaissance through open-source intelligence (OSINT) gathering, including social media profiling and domain enumeration, to identify potential entry points.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Initial access was achieved by exploiting weak password policies, allowing the adversary to use compromised user accounts to log into the corporate VPN and deploy malicious payloads directly onto internal servers.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "002] to remotely create and start a Windows service named 'SystemUpdateHelper', which executed a copy of their custom malware to facilitate lateral movement across the network while simultaneously modifying registry keys to maintain persistence.",
+            "technique_id": "T1112",
+            "technique_name": "Modify Registry"
+        },
+        {
+            "sentence": "003] to transfer reconnaissance data, including network diagrams and user lists, to an external server over unencrypted channels, and then automated tools were triggered to send gathered email credentials via HTTP POST requests to C2 servers immediately after collection.",
+            "technique_id": "T1020",
+            "technique_name": "Automated Exfiltration"
+        },
+        {
+            "sentence": "Finally, as a distraction tactic, the malware leveraged an automated bot to generate and dispatch bulk spam emails to the target's employees, overwhelming email servers and delaying incident response efforts.",
+            "technique_id": "T1667",
+            "technique_name": "Email Bombing"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated Campaign by Fictional Threat Actor 'Crimson Tempest'",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'Crimson Tempest', targeting financial institutions to exfiltrate sensitive data. The campaign leverages compromised accounts, service execution, DNS-based command and control, and automated exfiltration via email bombing. This report is intended for blue team training to recognize and mitigate such tactics.",
+        "full_report_text": "Crimson Tempest, a fictional advanced persistent threat (APT) group, has been observed targeting mid-sized financial organizations in North America, with a focus on stealing customer financial records and internal communications. The actors likely conduct reconnaissance [T1589] through open-source intelligence (OSINT) gathering, including social media profiling and domain enumeration, to identify potential entry points. Initial access was achieved by exploiting weak password policies, allowing the adversary to use compromised user accounts [T1078] to log into the corporate VPN and deploy malicious payloads directly onto internal servers. For example, on 2023-10-15, anomalous login activity was detected from an IP address in a non-business region, but it was initially dismissed as a false positive due to system noise from routine maintenance logs. Once inside, the actors employed PsExec [T1569.002] to remotely create and start a Windows service named 'SystemUpdateHelper', which executed a copy of their custom malware to facilitate lateral movement across the network while simultaneously modifying registry keys [T1112] to maintain persistence. Command and control (C2) communications were established using DNS queries [T1071.004] to domains masquerading as legitimate cloud services, such as 'update.azure-mirror.net', to blend with normal traffic and evade detection by firewalls. Data exfiltration occurred in multiple phases: first, the actors used FTP [T1048.003] to transfer reconnaissance data, including network diagrams and user lists, to an external server over unencrypted channels, and then automated tools [T1020] were triggered to send gathered email credentials via HTTP POST requests to C2 servers immediately after collection. Finally, as a distraction tactic, the malware leveraged an automated bot to generate and dispatch bulk spam emails [T1667] to the target's employees, overwhelming email servers and delaying incident response efforts. Throughout the campaign, system logs showed intermittent failures in backup processes unrelated to the attack, which added noise and complicated forensic analysis.",
+        "techniques_used": [
+            "T1589",
+            "T1078",
+            "T1569.002",
+            "T1112",
+            "T1071.004",
+            "T1048.003",
+            "T1020",
+            "T1667"
+        ]
+    }
+}

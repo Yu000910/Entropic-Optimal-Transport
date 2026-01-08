@@ -1,0 +1,144 @@
+{
+    "report_id": "report_470",
+    "generated_at": "20251222_160126",
+    "scenario_target_ids": [
+        "T1566.001",
+        "T1203",
+        "T1134.001",
+        "T1548",
+        "T1036",
+        "T1003.004",
+        "T1217",
+        "T1497.002",
+        "T1497",
+        "T1213.005",
+        "T1125",
+        "T1071.001",
+        "T1565"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "defense-evasion",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "discovery",
+        "discovery",
+        "discovery",
+        "collection",
+        "collection",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1589",
+        "T1566.001",
+        "T1203",
+        "T1105",
+        "T1134.001",
+        "T1548",
+        "T1036",
+        "T1565",
+        "T1003.004",
+        "T1217",
+        "T1497.002",
+        "T1497",
+        "T1213.005",
+        "T1125",
+        "T1071.001"
+    ],
+    "actual_found_ids": [
+        "T1003.004",
+        "T1497",
+        "T1071.001",
+        "T1566.001",
+        "T1548",
+        "T1497.002",
+        "T1589",
+        "T1213.005",
+        "T1217",
+        "T1565",
+        "T1125",
+        "T1134.001",
+        "T1105",
+        "T1203",
+        "T1036"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated threat actor activity for educational purposes. In this fictional scenario, actors likely conducted reconnaissance through open-source intelligence gathering, though specific details are omitted for training realism. The campaign began with the adversary sending spearphishing emails containing malicious PDF attachments to targeted employees at a fictional financial services company, 'AlphaCorp Inc.', which has 500 employees and uses Microsoft Office 365. Upon opening the attachment, the malware exploited a known Microsoft Office vulnerability, CVE-2017-11882, to execute a payload that downloaded additional components from a remote server. System logs from AlphaCorp's endpoint detection showed unusual PowerShell activity at 14:30 UTC on 2023-10-05, but this was initially flagged as low priority. The payload then employed token impersonation by calling DuplicateToken to gain privileged access matching the current user's security context, while simultaneously abusing the Windows AutoElevate backdoor through a ucmDccwCOMMethod variation to bypass User Account Control (UAC) and elevate privileges. To avoid detection, the malware masqueraded by using filenames that matched the compromised system's hostname, such as 'ALPHACORP-SVR01.dll', and injected malicious code into a legitimate DLL to manipulate application behavior without triggering alerts. AlphaCorp's security team noted anomalous registry modifications in their SIEM, but these were buried in routine maintenance logs. Following privilege escalation, the actor dumped LSA secrets from registry keys including HKLM\\SECURITY\\Policy\\PolEKList\\default to harvest credentials, and conducted browser information discovery by scanning for Google Chrome directories to collect user session data like cookies and browsing history. The malware also performed user activity-based checks, searching for 'malware.exe' in task manager to identify virtualized environments, and implemented virtualization/sandbox evasion by checking for VM indicators and exiting if detected, ensuring persistence in real systems. Additionally, the actor searched the network for messaging applications like MS Teams or Slack to discover high-privilege account credentials, and initiated continuous video capture using the system's camera hardware to gather visual intelligence. For command and control (C2) communications, the malware used HTTP protocols to blend with normal web traffic, exfiltrating stolen data to a remote server while mimicking legitimate API calls. AlphaCorp's background includes a recent merger with a smaller tech firm, leading to network integration challenges that may have provided initial access vectors, though this is unrelated to the attack techniques. The campaign concluded with data manipulation to alter system configurations, though no real data loss occurred in this training scenario.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated threat actor activity for educational purposes. In this fictional scenario, actors likely conducted reconnaissance [T1589] through open-source intelligence gathering, though specific details are omitted for training realism. The campaign began with the adversary sending spearphishing emails containing malicious PDF attachments [T1566.001] to targeted employees at a fictional financial services company, 'AlphaCorp Inc.', which has 500 employees and uses Microsoft Office 365. Upon opening the attachment, the malware exploited a known Microsoft Office vulnerability, CVE-2017-11882 [T1203], to execute a payload that downloaded additional components from a remote server [T1105]. System logs from AlphaCorp's endpoint detection showed unusual PowerShell activity at 14:30 UTC on 2023-10-05, but this was initially flagged as low priority. The payload then employed token impersonation by calling DuplicateToken [T1134.001] to gain privileged access matching the current user's security context, while simultaneously abusing the Windows AutoElevate backdoor through a ucmDccwCOMMethod variation [T1548] to bypass User Account Control (UAC) and elevate privileges. To avoid detection, the malware masqueraded [T1036] by using filenames that matched the compromised system's hostname, such as 'ALPHACORP-SVR01.dll', and injected malicious code into a legitimate DLL [T1565] to manipulate application behavior without triggering alerts. AlphaCorp's security team noted anomalous registry modifications in their SIEM, but these were buried in routine maintenance logs. Following privilege escalation, the actor dumped LSA secrets from registry keys including HKLM\\SECURITY\\Policy\\PolEKList\\default [T1003.004] to harvest credentials, and conducted browser information discovery [T1217] by scanning for Google Chrome directories to collect user session data like cookies and browsing history. The malware also performed user activity-based checks [T1497.002], searching for 'malware.exe' in task manager to identify virtualized environments, and implemented virtualization/sandbox evasion [T1497] by checking for VM indicators and exiting if detected, ensuring persistence in real systems. Additionally, the actor searched the network for messaging applications like MS Teams or Slack [T1213.005] to discover high-privilege account credentials, and initiated continuous video capture [T1125] using the system's camera hardware to gather visual intelligence. For command and control (C2) communications, the malware used HTTP protocols [T1071.001] to blend with normal web traffic, exfiltrating stolen data to a remote server while mimicking legitimate API calls. AlphaCorp's background includes a recent merger with a smaller tech firm, leading to network integration challenges that may have provided initial access vectors, though this is unrelated to the attack techniques. The campaign concluded with data manipulation [T1565] to alter system configurations, though no real data loss occurred in this training scenario.",
+    "sentence_annotations": [
+        {
+            "sentence": "In this fictional scenario, actors likely conducted reconnaissance through open-source intelligence gathering, though specific details are omitted for training realism.",
+            "technique_id": "T1589",
+            "technique_name": "Gather Victim Identity Information"
+        },
+        {
+            "sentence": "Upon opening the attachment, the malware exploited a known Microsoft Office vulnerability, CVE-2017-11882, to execute a payload that downloaded additional components from a remote server.",
+            "technique_id": "T1203",
+            "technique_name": "Exploitation for Client Execution"
+        },
+        {
+            "sentence": "Upon opening the attachment, the malware exploited a known Microsoft Office vulnerability, CVE-2017-11882, to execute a payload that downloaded additional components from a remote server.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "001] to gain privileged access matching the current user's security context, while simultaneously abusing the Windows AutoElevate backdoor through a ucmDccwCOMMethod variation to bypass User Account Control (UAC) and elevate privileges.",
+            "technique_id": "T1548",
+            "technique_name": "Abuse Elevation Control Mechanism"
+        },
+        {
+            "sentence": "To avoid detection, the malware masqueraded by using filenames that matched the compromised system's hostname, such as 'ALPHACORP-SVR01.",
+            "technique_id": "T1036",
+            "technique_name": "Masquerading"
+        },
+        {
+            "sentence": "dll', and injected malicious code into a legitimate DLL to manipulate application behavior without triggering alerts.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        },
+        {
+            "sentence": "004] to harvest credentials, and conducted browser information discovery by scanning for Google Chrome directories to collect user session data like cookies and browsing history.",
+            "technique_id": "T1217",
+            "technique_name": "Browser Information Discovery"
+        },
+        {
+            "sentence": "exe' in task manager to identify virtualized environments, and implemented virtualization/sandbox evasion by checking for VM indicators and exiting if detected, ensuring persistence in real systems.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "005] to discover high-privilege account credentials, and initiated continuous video capture using the system's camera hardware to gather visual intelligence.",
+            "technique_id": "T1125",
+            "technique_name": "Video Capture"
+        },
+        {
+            "sentence": "The campaign concluded with data manipulation to alter system configurations, though no real data loss occurred in this training scenario.",
+            "technique_id": "T1565",
+            "technique_name": "Data Manipulation"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Simulated APT Campaign Targeting Corporate Networks",
+        "summary": "This advisory details a fictional campaign by threat actors, designed for blue team training, involving spearphishing, exploitation, privilege escalation, credential theft, and data exfiltration to simulate real-world attack techniques.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to report on simulated threat actor activity for educational purposes. In this fictional scenario, actors likely conducted reconnaissance [T1589] through open-source intelligence gathering, though specific details are omitted for training realism. The campaign began with the adversary sending spearphishing emails containing malicious PDF attachments [T1566.001] to targeted employees at a fictional financial services company, 'AlphaCorp Inc.', which has 500 employees and uses Microsoft Office 365. Upon opening the attachment, the malware exploited a known Microsoft Office vulnerability, CVE-2017-11882 [T1203], to execute a payload that downloaded additional components from a remote server [T1105]. System logs from AlphaCorp's endpoint detection showed unusual PowerShell activity at 14:30 UTC on 2023-10-05, but this was initially flagged as low priority. The payload then employed token impersonation by calling DuplicateToken [T1134.001] to gain privileged access matching the current user's security context, while simultaneously abusing the Windows AutoElevate backdoor through a ucmDccwCOMMethod variation [T1548] to bypass User Account Control (UAC) and elevate privileges. To avoid detection, the malware masqueraded [T1036] by using filenames that matched the compromised system's hostname, such as 'ALPHACORP-SVR01.dll', and injected malicious code into a legitimate DLL [T1565] to manipulate application behavior without triggering alerts. AlphaCorp's security team noted anomalous registry modifications in their SIEM, but these were buried in routine maintenance logs. Following privilege escalation, the actor dumped LSA secrets from registry keys including HKLM\\SECURITY\\Policy\\PolEKList\\default [T1003.004] to harvest credentials, and conducted browser information discovery [T1217] by scanning for Google Chrome directories to collect user session data like cookies and browsing history. The malware also performed user activity-based checks [T1497.002], searching for 'malware.exe' in task manager to identify virtualized environments, and implemented virtualization/sandbox evasion [T1497] by checking for VM indicators and exiting if detected, ensuring persistence in real systems. Additionally, the actor searched the network for messaging applications like MS Teams or Slack [T1213.005] to discover high-privilege account credentials, and initiated continuous video capture [T1125] using the system's camera hardware to gather visual intelligence. For command and control (C2) communications, the malware used HTTP protocols [T1071.001] to blend with normal web traffic, exfiltrating stolen data to a remote server while mimicking legitimate API calls. AlphaCorp's background includes a recent merger with a smaller tech firm, leading to network integration challenges that may have provided initial access vectors, though this is unrelated to the attack techniques. The campaign concluded with data manipulation [T1565] to alter system configurations, though no real data loss occurred in this training scenario.",
+        "techniques_used": [
+            "T1589",
+            "T1566.001",
+            "T1203",
+            "T1105",
+            "T1134.001",
+            "T1548",
+            "T1036",
+            "T1565",
+            "T1003.004",
+            "T1217",
+            "T1497.002",
+            "T1497",
+            "T1213.005",
+            "T1125",
+            "T1071.001"
+        ]
+    }
+}

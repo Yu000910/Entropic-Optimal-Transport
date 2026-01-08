@@ -1,0 +1,78 @@
+{
+    "report_id": "report_24",
+    "generated_at": "20251222_125737",
+    "scenario_target_ids": [
+        "T1587.002",
+        "T1195.003",
+        "T1078.003",
+        "T1651",
+        "T1059.010",
+        "T1074.002",
+        "T1001.001",
+        "T1090.004",
+        "T1048"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "exfiltration"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1078.003",
+        "T1059.010",
+        "T1651",
+        "T1074.002",
+        "T1587.002",
+        "T1001.001",
+        "T1090.004",
+        "T1048"
+    ],
+    "actual_found_ids": [
+        "T1651",
+        "T1090.004",
+        "T1587.002",
+        "T1001.001",
+        "T1048",
+        "T1059.010",
+        "T1195.003",
+        "T1074.002",
+        "T1078.003"
+    ],
+    "clean_text": "On April 15, 2024, security analysts at a fictional multinational corporation, 'TechGlobal Inc.,' detected anomalous network traffic from an Azure VM in their hybrid cloud environment, which hosts critical financial and customer data. TechGlobal Inc. operates in the technology sector with offices in North America and Europe, and their infrastructure includes on-premises servers running Windows and Linux, integrated with Azure and AWS cloud services. Initial investigation revealed that the attack likely began months earlier when a malicious actor, posing as a hardware vendor, supplied compromised Teensy devices programmed to automatically execute PowerShell scripts for lateral movement upon connection to internal systems. System logs from affected endpoints showed unusual PowerShell activity at 03:00 UTC on April 10, 2024, correlating with failed login attempts from unknown IP addresses, though these were initially dismissed as noise. The adversary then abused local accounts, compromising cPanel accounts in victim environments to gain unauthorized access and establish persistence, while simultaneously employing AutoHotKey scripts to automate keystroke logging and data exfiltration from key systems. In the cloud segment, malicious code was deployed that abused Azure RunCommand to disable security controls on Azure VMs, allowing for unrestricted administrative access. The malware collected command outputs using cmd.exe and stored them in a central, remote location for later retrieval, and to obscure their activities, the actors used code signing certificates to sign malicious macOS files, evading detection mechanisms. Further analysis uncovered that the malware was highly obfuscated with junk code to hinder reverse engineering efforts, and it modified TLS handshake headers to hide the actual destination server through domain fronting techniques. Finally, the campaign exfiltrated stolen credentials over the network via UDP, leveraging alternative protocols to bypass traditional monitoring. Additional irrelevant logs from firewall devices showed routine traffic spikes during business hours, unrelated to the attack, and background checks on employee accounts revealed no prior security incidents at TechGlobal Inc.",
+    "tagged_text": "On April 15, 2024, security analysts at a fictional multinational corporation, 'TechGlobal Inc.,' detected anomalous network traffic from an Azure VM in their hybrid cloud environment, which hosts critical financial and customer data. TechGlobal Inc. operates in the technology sector with offices in North America and Europe, and their infrastructure includes on-premises servers running Windows and Linux, integrated with Azure and AWS cloud services. Initial investigation revealed that the attack likely began months earlier when a malicious actor, posing as a hardware vendor, supplied compromised Teensy devices programmed to automatically execute PowerShell scripts for lateral movement upon connection to internal systems [T1195.003]. System logs from affected endpoints showed unusual PowerShell activity at 03:00 UTC on April 10, 2024, correlating with failed login attempts from unknown IP addresses, though these were initially dismissed as noise. The adversary then abused local accounts, compromising cPanel accounts in victim environments to gain unauthorized access and establish persistence [T1078.003], while simultaneously employing AutoHotKey scripts to automate keystroke logging and data exfiltration from key systems [T1059.010]. In the cloud segment, malicious code was deployed that abused Azure RunCommand to disable security controls on Azure VMs, allowing for unrestricted administrative access [T1651]. The malware collected command outputs using cmd.exe and stored them in a central, remote location for later retrieval [T1074.002], and to obscure their activities, the actors used code signing certificates to sign malicious macOS files, evading detection mechanisms [T1587.002]. Further analysis uncovered that the malware was highly obfuscated with junk code to hinder reverse engineering efforts [T1001.001], and it modified TLS handshake headers to hide the actual destination server through domain fronting techniques [T1090.004]. Finally, the campaign exfiltrated stolen credentials over the network via UDP, leveraging alternative protocols to bypass traditional monitoring [T1048]. Additional irrelevant logs from firewall devices showed routine traffic spikes during business hours, unrelated to the attack, and background checks on employee accounts revealed no prior security incidents at TechGlobal Inc.",
+    "sentence_annotations": [
+        {
+            "sentence": "In the cloud segment, malicious code was deployed that abused Azure RunCommand to disable security controls on Azure VMs, allowing for unrestricted administrative access.",
+            "technique_id": "T1651",
+            "technique_name": "Cloud Administration Command"
+        },
+        {
+            "sentence": "Finally, the campaign exfiltrated stolen credentials over the network via UDP, leveraging alternative protocols to bypass traditional monitoring.",
+            "technique_id": "T1048",
+            "technique_name": "Exfiltration Over Alternative Protocol"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowWeaver' Targeting Hybrid Cloud Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, 'ShadowWeaver,' which targets hybrid cloud infrastructures through a multi-faceted attack chain involving supply chain compromise, credential abuse, and sophisticated evasion techniques. The campaign leverages hardware implants, cloud administration tools, and automated scripting to achieve persistence, lateral movement, and data exfiltration, with observed activities spanning from initial access via compromised hardware to exfiltration over alternative protocols. Blue teams are advised to review defensive measures against these tactics.",
+        "full_report_text": "On April 15, 2024, security analysts at a fictional multinational corporation, 'TechGlobal Inc.,' detected anomalous network traffic from an Azure VM in their hybrid cloud environment, which hosts critical financial and customer data. TechGlobal Inc. operates in the technology sector with offices in North America and Europe, and their infrastructure includes on-premises servers running Windows and Linux, integrated with Azure and AWS cloud services. Initial investigation revealed that the attack likely began months earlier when a malicious actor, posing as a hardware vendor, supplied compromised Teensy devices programmed to automatically execute PowerShell scripts for lateral movement upon connection to internal systems [T1195.003]. System logs from affected endpoints showed unusual PowerShell activity at 03:00 UTC on April 10, 2024, correlating with failed login attempts from unknown IP addresses, though these were initially dismissed as noise. The adversary then abused local accounts, compromising cPanel accounts in victim environments to gain unauthorized access and establish persistence [T1078.003], while simultaneously employing AutoHotKey scripts to automate keystroke logging and data exfiltration from key systems [T1059.010]. In the cloud segment, malicious code was deployed that abused Azure RunCommand to disable security controls on Azure VMs, allowing for unrestricted administrative access [T1651]. The malware collected command outputs using cmd.exe and stored them in a central, remote location for later retrieval [T1074.002], and to obscure their activities, the actors used code signing certificates to sign malicious macOS files, evading detection mechanisms [T1587.002]. Further analysis uncovered that the malware was highly obfuscated with junk code to hinder reverse engineering efforts [T1001.001], and it modified TLS handshake headers to hide the actual destination server through domain fronting techniques [T1090.004]. Finally, the campaign exfiltrated stolen credentials over the network via UDP, leveraging alternative protocols to bypass traditional monitoring [T1048]. Additional irrelevant logs from firewall devices showed routine traffic spikes during business hours, unrelated to the attack, and background checks on employee accounts revealed no prior security incidents at TechGlobal Inc.",
+        "techniques_used": [
+            "T1195.003",
+            "T1078.003",
+            "T1059.010",
+            "T1651",
+            "T1074.002",
+            "T1587.002",
+            "T1001.001",
+            "T1090.004",
+            "T1048"
+        ]
+    }
+}

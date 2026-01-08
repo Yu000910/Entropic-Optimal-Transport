@@ -1,0 +1,118 @@
+{
+    "report_id": "report_64",
+    "generated_at": "20251222_131240",
+    "scenario_target_ids": [
+        "T1592.001",
+        "T1596.005",
+        "T1566",
+        "T1059.004",
+        "T1556.003",
+        "T1547.012",
+        "T1016.002",
+        "T1614.001",
+        "T1021.006",
+        "T1213.004",
+        "T1665",
+        "T1105",
+        "T1499",
+        "T1496"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "discovery",
+        "discovery",
+        "lateral-movement",
+        "collection",
+        "command-and-control",
+        "command-and-control",
+        "impact",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1592.001",
+        "T1596.005",
+        "T1566",
+        "T1059.004",
+        "T1556.003",
+        "T1547.012",
+        "T1016.002",
+        "T1614.001",
+        "T1021.006",
+        "T1213.004",
+        "T1665",
+        "T1105",
+        "T1499",
+        "T1496"
+    ],
+    "actual_found_ids": [
+        "T1596.005",
+        "T1556.003",
+        "T1016.002",
+        "T1499",
+        "T1213.004",
+        "T1547.012",
+        "T1592.001",
+        "T1614.001",
+        "T1566",
+        "T1021.006",
+        "T1665",
+        "T1059.004",
+        "T1105",
+        "T1496"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on the threat actor 'ShadowMiner'. This campaign is designed for training purposes to enhance defensive capabilities against advanced persistent threats.\n\n**Attack Narrative**\nShadowMiner likely conducts initial reconnaissance by scanning public databases like FOFA and Shodan to identify exposed victim infrastructure, including web servers and IoT devices. Concurrently, the actors gather hardware details from Windows event logs using wevtutil.exe to profile target systems. On 2023-10-15, system logs from a fictional energy company, 'PowerGrid Inc.', showed unusual network traffic from IP 192.168.1.100, though this was later determined to be a false positive from a routine maintenance script.\n\nFor initial access, the adversary sent a phishing email with an attached invoice document containing malicious macros, which, when opened, executed a PowerShell script to download additional payloads. The malware then employed Unix shell scripts to execute commands on compromised Linux servers, while modifying the pam_unix.so module to log authentication attempts to a hidden file. In one instance, a backup server at PowerGrid Inc. experienced a temporary slowdown due to a misconfigured cron job, unrelated to the attack.\n\nFor persistence and lateral movement, the actor modified registry keys in HKLM\\SYSTEM\\CurrentControlSet\\Control\\Print\\Environments\\Windows x64\\Print Processors to point to a malicious DLL and used Windows Remote Management (WinRM) to query system information remotely. Additionally, the malware executed 'netsh wlan show profile key=clear' to gather Wi-Fi credentials and listed keyboard layouts using GetKeyboardLayoutList API to check against a hardcoded language list, sleeping if a match was found. Network logs indicated intermittent connection drops on port 443, but this was attributed to an overloaded firewall rule, not malicious activity.\n\nFor data collection and exfiltration, the threat actor utilized Microsoft Dynamics 365 APIs to gather customer billing information and downloaded various modules, including IcedID and NetSupport Manager RAT-based malware, to the compromised host. To obscure their infrastructure, ShadowMiner used compromised residential endpoints within the same ISP IP range as proxies, making C2 traffic appear legitimate. A routine audit at PowerGrid Inc. flagged an unauthorized access attempt to the CRM system, though it was later traced to a developer testing a new integration.\n\nFor impact, the malware exploited a slowloris vulnerability in nginx web servers to exhaust connection pools and hijacked the victim's GPU resources to mine Ethereum through a compromised graphics driver, causing significant performance degradation. Incident responders noted that the system's CPU usage spiked to 95% during the mining activity, but initial reports mistakenly blamed a faulty cooling system.\n\n**Recommendations**\nBlue teams should implement network segmentation, monitor for unusual WinRM and database scanning activities, and educate users on phishing awareness. Regular patching of web servers and review of authentication logs are advised to mitigate these techniques.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on the threat actor 'ShadowMiner'. This campaign is designed for training purposes to enhance defensive capabilities against advanced persistent threats.\n\n**Attack Narrative**\nShadowMiner likely conducts initial reconnaissance by scanning public databases like FOFA and Shodan [T1596.005] to identify exposed victim infrastructure, including web servers and IoT devices. Concurrently, the actors gather hardware details from Windows event logs using wevtutil.exe [T1592.001] to profile target systems. On 2023-10-15, system logs from a fictional energy company, 'PowerGrid Inc.', showed unusual network traffic from IP 192.168.1.100, though this was later determined to be a false positive from a routine maintenance script.\n\nFor initial access, the adversary sent a phishing email with an attached invoice document containing malicious macros [T1566], which, when opened, executed a PowerShell script to download additional payloads. The malware then employed Unix shell scripts [T1059.004] to execute commands on compromised Linux servers, while modifying the pam_unix.so module to log authentication attempts to a hidden file [T1556.003]. In one instance, a backup server at PowerGrid Inc. experienced a temporary slowdown due to a misconfigured cron job, unrelated to the attack.\n\nFor persistence and lateral movement, the actor modified registry keys in HKLM\\SYSTEM\\CurrentControlSet\\Control\\Print\\Environments\\Windows x64\\Print Processors to point to a malicious DLL [T1547.012] and used Windows Remote Management (WinRM) [T1021.006] to query system information remotely. Additionally, the malware executed 'netsh wlan show profile key=clear' to gather Wi-Fi credentials [T1016.002] and listed keyboard layouts using GetKeyboardLayoutList API to check against a hardcoded language list, sleeping if a match was found [T1614.001]. Network logs indicated intermittent connection drops on port 443, but this was attributed to an overloaded firewall rule, not malicious activity.\n\nFor data collection and exfiltration, the threat actor utilized Microsoft Dynamics 365 APIs to gather customer billing information [T1213.004] and downloaded various modules, including IcedID and NetSupport Manager RAT-based malware, to the compromised host [T1105]. To obscure their infrastructure, ShadowMiner used compromised residential endpoints within the same ISP IP range as proxies [T1665], making C2 traffic appear legitimate. A routine audit at PowerGrid Inc. flagged an unauthorized access attempt to the CRM system, though it was later traced to a developer testing a new integration.\n\nFor impact, the malware exploited a slowloris vulnerability in nginx web servers to exhaust connection pools [T1499] and hijacked the victim's GPU resources to mine Ethereum through a compromised graphics driver [T1496], causing significant performance degradation. Incident responders noted that the system's CPU usage spiked to 95% during the mining activity, but initial reports mistakenly blamed a faulty cooling system.\n\n**Recommendations**\nBlue teams should implement network segmentation, monitor for unusual WinRM and database scanning activities, and educate users on phishing awareness. Regular patching of web servers and review of authentication logs are advised to mitigate these techniques.",
+    "sentence_annotations": [
+        {
+            "sentence": "For initial access, the adversary sent a phishing email with an attached invoice document containing malicious macros, which, when opened, executed a PowerShell script to download additional payloads.",
+            "technique_id": "T1566",
+            "technique_name": "Phishing"
+        },
+        {
+            "sentence": "004] and downloaded various modules, including IcedID and NetSupport Manager RAT-based malware, to the compromised host.",
+            "technique_id": "T1105",
+            "technique_name": "Ingress Tool Transfer"
+        },
+        {
+            "sentence": "To obscure their infrastructure, ShadowMiner used compromised residential endpoints within the same ISP IP range as proxies, making C2 traffic appear legitimate.",
+            "technique_id": "T1665",
+            "technique_name": "Hide Infrastructure"
+        },
+        {
+            "sentence": "For impact, the malware exploited a slowloris vulnerability in nginx web servers to exhaust connection pools and hijacked the victim's GPU resources to mine Ethereum through a compromised graphics driver, causing significant performance degradation.",
+            "technique_id": "T1499",
+            "technique_name": "Endpoint Denial of Service"
+        },
+        {
+            "sentence": "For impact, the malware exploited a slowloris vulnerability in nginx web servers to exhaust connection pools and hijacked the victim's GPU resources to mine Ethereum through a compromised graphics driver, causing significant performance degradation.",
+            "technique_id": "T1496",
+            "technique_name": "Resource Hijacking"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowMiner' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor 'ShadowMiner', which targets critical infrastructure sectors through a multi-phase attack. The campaign involves reconnaissance, phishing, lateral movement, and resource hijacking, leveraging techniques such as hardware discovery, database scanning, and denial of service. Blue teams should review this report for training on detection and mitigation strategies.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a fictional, educational scenario based on the threat actor 'ShadowMiner'. This campaign is designed for training purposes to enhance defensive capabilities against advanced persistent threats.\n\n**Attack Narrative**\nShadowMiner likely conducts initial reconnaissance by scanning public databases like FOFA and Shodan [T1596.005] to identify exposed victim infrastructure, including web servers and IoT devices. Concurrently, the actors gather hardware details from Windows event logs using wevtutil.exe [T1592.001] to profile target systems. On 2023-10-15, system logs from a fictional energy company, 'PowerGrid Inc.', showed unusual network traffic from IP 192.168.1.100, though this was later determined to be a false positive from a routine maintenance script.\n\nFor initial access, the adversary sent a phishing email with an attached invoice document containing malicious macros [T1566], which, when opened, executed a PowerShell script to download additional payloads. The malware then employed Unix shell scripts [T1059.004] to execute commands on compromised Linux servers, while modifying the pam_unix.so module to log authentication attempts to a hidden file [T1556.003]. In one instance, a backup server at PowerGrid Inc. experienced a temporary slowdown due to a misconfigured cron job, unrelated to the attack.\n\nFor persistence and lateral movement, the actor modified registry keys in HKLM\\SYSTEM\\CurrentControlSet\\Control\\Print\\Environments\\Windows x64\\Print Processors to point to a malicious DLL [T1547.012] and used Windows Remote Management (WinRM) [T1021.006] to query system information remotely. Additionally, the malware executed 'netsh wlan show profile key=clear' to gather Wi-Fi credentials [T1016.002] and listed keyboard layouts using GetKeyboardLayoutList API to check against a hardcoded language list, sleeping if a match was found [T1614.001]. Network logs indicated intermittent connection drops on port 443, but this was attributed to an overloaded firewall rule, not malicious activity.\n\nFor data collection and exfiltration, the threat actor utilized Microsoft Dynamics 365 APIs to gather customer billing information [T1213.004] and downloaded various modules, including IcedID and NetSupport Manager RAT-based malware, to the compromised host [T1105]. To obscure their infrastructure, ShadowMiner used compromised residential endpoints within the same ISP IP range as proxies [T1665], making C2 traffic appear legitimate. A routine audit at PowerGrid Inc. flagged an unauthorized access attempt to the CRM system, though it was later traced to a developer testing a new integration.\n\nFor impact, the malware exploited a slowloris vulnerability in nginx web servers to exhaust connection pools [T1499] and hijacked the victim's GPU resources to mine Ethereum through a compromised graphics driver [T1496], causing significant performance degradation. Incident responders noted that the system's CPU usage spiked to 95% during the mining activity, but initial reports mistakenly blamed a faulty cooling system.\n\n**Recommendations**\nBlue teams should implement network segmentation, monitor for unusual WinRM and database scanning activities, and educate users on phishing awareness. Regular patching of web servers and review of authentication logs are advised to mitigate these techniques.",
+        "techniques_used": [
+            "T1592.001",
+            "T1596.005",
+            "T1566",
+            "T1059.004",
+            "T1556.003",
+            "T1547.012",
+            "T1016.002",
+            "T1614.001",
+            "T1021.006",
+            "T1213.004",
+            "T1665",
+            "T1105",
+            "T1499",
+            "T1496"
+        ]
+    }
+}

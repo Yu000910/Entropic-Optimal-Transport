@@ -1,0 +1,105 @@
+{
+    "report_id": "report_166",
+    "generated_at": "20251222_135302",
+    "scenario_target_ids": [
+        "T1595.002",
+        "T1589.001",
+        "T1595.001",
+        "T1587.004",
+        "T1195",
+        "T1059.007",
+        "T1547.008",
+        "T1053.003",
+        "T1553",
+        "T1202",
+        "T1110.002",
+        "T1114.003",
+        "T1095"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "privilege-escalation",
+        "privilege-escalation",
+        "defense-evasion",
+        "defense-evasion",
+        "credential-access",
+        "collection",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1595.001",
+        "T1595.002",
+        "T1589.001",
+        "T1195",
+        "T1059.007",
+        "T1202",
+        "T1547.008",
+        "T1053.003",
+        "T1095",
+        "T1553",
+        "T1110.002",
+        "T1114.003"
+    ],
+    "actual_found_ids": [
+        "T1095",
+        "T1059.007",
+        "T1595.001",
+        "T1195",
+        "T1547.008",
+        "T1202",
+        "T1053.003",
+        "T1595.002",
+        "T1110.002",
+        "T1553",
+        "T1114.003",
+        "T1589.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The actors, designated 'ShadowHarvest', likely conduct reconnaissance by scanning IP blocks using tools like hping3 to identify active hosts and performing vulnerability scanning on web servers to extract HTTP headers for exploitable applications. Concurrently, they established a malicious website mimicking corporate login portals to harvest user credentials through form submissions, while compromising the software supply chain by injecting a malicious DLL into a package repository used by developers at SecureBank Corp. Following initial access, the adversary employed JavaScript delivered via Roundcube Webmail exploits to execute malicious payloads, which then used forfiles.exe for indirect command execution to launch PowerShell scripts from temporary directories. To maintain persistence, the malware modified the LSASS process to load a custom driver and executed cron jobs to schedule backdoor connections to command and control servers using non-application layer protocols like TCP. Additionally, the actors subverted trust controls by disabling Windows Defender via registry modifications and conducted password cracking on weak encryption from compromised network device configuration files. As part of data exfiltration, they modified Exchange server settings using the Messaging API to create email forwarding rules that automatically forwarded internal communications to external monitoring accounts. System logs from SecureBank Corp's SIEM showed anomalous traffic patterns on port 443, but no immediate alerts were triggered due to misconfigured thresholds. The company, founded in 1998, reported no financial losses in this simulated incident, but the campaign highlights the need for enhanced monitoring of third-party dependencies and user awareness training.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The actors, designated 'ShadowHarvest', likely conduct reconnaissance by scanning IP blocks [T1595.001] using tools like hping3 to identify active hosts and performing vulnerability scanning [T1595.002] on web servers to extract HTTP headers for exploitable applications. Concurrently, they established a malicious website mimicking corporate login portals to harvest user credentials [T1589.001] through form submissions, while compromising the software supply chain [T1195] by injecting a malicious DLL into a package repository used by developers at SecureBank Corp. Following initial access, the adversary employed JavaScript [T1059.007] delivered via Roundcube Webmail exploits to execute malicious payloads, which then used forfiles.exe for indirect command execution [T1202] to launch PowerShell scripts from temporary directories. To maintain persistence, the malware modified the LSASS process to load a custom driver [T1547.008] and executed cron jobs [T1053.003] to schedule backdoor connections to command and control servers using non-application layer protocols [T1095] like TCP. Additionally, the actors subverted trust controls [T1553] by disabling Windows Defender via registry modifications and conducted password cracking [T1110.002] on weak encryption from compromised network device configuration files. As part of data exfiltration, they modified Exchange server settings using the Messaging API to create email forwarding rules [T1114.003] that automatically forwarded internal communications to external monitoring accounts. System logs from SecureBank Corp's SIEM showed anomalous traffic patterns on port 443, but no immediate alerts were triggered due to misconfigured thresholds. The company, founded in 1998, reported no financial losses in this simulated incident, but the campaign highlights the need for enhanced monitoring of third-party dependencies and user awareness training.",
+    "sentence_annotations": [
+        {
+            "sentence": "001] through form submissions, while compromising the software supply chain by injecting a malicious DLL into a package repository used by developers at SecureBank Corp.",
+            "technique_id": "T1195",
+            "technique_name": "Supply Chain Compromise"
+        },
+        {
+            "sentence": "exe for indirect command execution to launch PowerShell scripts from temporary directories.",
+            "technique_id": "T1202",
+            "technique_name": "Indirect Command Execution"
+        },
+        {
+            "sentence": "003] to schedule backdoor connections to command and control servers using non-application layer protocols like TCP.",
+            "technique_id": "T1095",
+            "technique_name": "Non-Application Layer Protocol"
+        },
+        {
+            "sentence": "Additionally, the actors subverted trust controls by disabling Windows Defender via registry modifications and conducted password cracking [T1110.",
+            "technique_id": "T1553",
+            "technique_name": "Subvert Trust Controls"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHarvest' Targeting Financial Sector",
+        "summary": "This advisory details a simulated campaign by a fictional APT group, 'ShadowHarvest', targeting financial institutions through a multi-vector approach involving supply chain compromise, credential harvesting, and persistence mechanisms. The campaign leverages both external reconnaissance and internal exploitation to maintain access and exfiltrate sensitive data, as observed in a fictional incident at 'SecureBank Corp'.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide blue teams with a realistic training scenario based on fictional APT activity. The actors, designated 'ShadowHarvest', likely conduct reconnaissance by scanning IP blocks [T1595.001] using tools like hping3 to identify active hosts and performing vulnerability scanning [T1595.002] on web servers to extract HTTP headers for exploitable applications. Concurrently, they established a malicious website mimicking corporate login portals to harvest user credentials [T1589.001] through form submissions, while compromising the software supply chain [T1195] by injecting a malicious DLL into a package repository used by developers at SecureBank Corp. Following initial access, the adversary employed JavaScript [T1059.007] delivered via Roundcube Webmail exploits to execute malicious payloads, which then used forfiles.exe for indirect command execution [T1202] to launch PowerShell scripts from temporary directories. To maintain persistence, the malware modified the LSASS process to load a custom driver [T1547.008] and executed cron jobs [T1053.003] to schedule backdoor connections to command and control servers using non-application layer protocols [T1095] like TCP. Additionally, the actors subverted trust controls [T1553] by disabling Windows Defender via registry modifications and conducted password cracking [T1110.002] on weak encryption from compromised network device configuration files. As part of data exfiltration, they modified Exchange server settings using the Messaging API to create email forwarding rules [T1114.003] that automatically forwarded internal communications to external monitoring accounts. System logs from SecureBank Corp's SIEM showed anomalous traffic patterns on port 443, but no immediate alerts were triggered due to misconfigured thresholds. The company, founded in 1998, reported no financial losses in this simulated incident, but the campaign highlights the need for enhanced monitoring of third-party dependencies and user awareness training.",
+        "techniques_used": [
+            "T1595.001",
+            "T1595.002",
+            "T1589.001",
+            "T1195",
+            "T1059.007",
+            "T1202",
+            "T1547.008",
+            "T1053.003",
+            "T1095",
+            "T1553",
+            "T1110.002",
+            "T1114.003"
+        ]
+    }
+}

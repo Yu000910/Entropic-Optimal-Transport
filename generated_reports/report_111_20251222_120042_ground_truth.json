@@ -1,0 +1,88 @@
+{
+    "report_id": "report_111",
+    "generated_at": "20251222_120042",
+    "scenario_target_ids": [
+        "T1586",
+        "T1078",
+        "T1078.003",
+        "T1059.002",
+        "T1569.002",
+        "T1505.003",
+        "T1137",
+        "T1037.005",
+        "T1573"
+    ],
+    "scenario_flow": [
+        "resource-development",
+        "initial-access",
+        "initial-access",
+        "execution",
+        "execution",
+        "persistence",
+        "persistence",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1586",
+        "T1078",
+        "T1078.003",
+        "T1059.002",
+        "T1569.002",
+        "T1505.003",
+        "T1137",
+        "T1037.005",
+        "T1573"
+    ],
+    "actual_found_ids": [
+        "T1037.005",
+        "T1078.003",
+        "T1059.002",
+        "T1137",
+        "T1573",
+        "T1586",
+        "T1078",
+        "T1569.002",
+        "T1505.003"
+    ],
+    "clean_text": "On 2024-08-15, the Federal Bureau of Investigation (FBI), CISA, and NSA began investigating reports of anomalous activity at a fictional financial institution, 'SecureBank Corp.', which operates primarily on macOS servers for internal operations. Initial logs from SecureBank's SIEM showed unusual login attempts from IP addresses associated with known malicious infrastructure, though these were initially dismissed as false positives due to high network traffic during a quarterly audit. The actors likely conducted reconnaissance by querying public data breach repositories to find compromised credentials for target email accounts, which they then used to gain initial access through valid local accounts while simultaneously exploiting previously compromised administrative accounts to escalate privileges. Once inside, the adversary employed AppleScript to enumerate running processes and system information, and they leveraged service execution by configuring custom-compiled payloads to run via the 'wercplsupport' service. To maintain access, they deployed obfuscated web shells on compromised web servers for remote code execution, and they established persistence through Office application startup by embedding VBA code in Outlook that executes on launch, while also creating startup items in the /Library/StartupItems directory for boot-time execution. All exfiltration was conducted over an encrypted channel with rotating keys to evade detection. Additional noise in the logs included routine backup failures and unrelated firewall alerts that complicated early analysis.",
+    "tagged_text": "On 2024-08-15, the Federal Bureau of Investigation (FBI), CISA, and NSA began investigating reports of anomalous activity at a fictional financial institution, 'SecureBank Corp.', which operates primarily on macOS servers for internal operations. Initial logs from SecureBank's SIEM showed unusual login attempts from IP addresses associated with known malicious infrastructure, though these were initially dismissed as false positives due to high network traffic during a quarterly audit. The actors likely conducted reconnaissance by querying public data breach repositories to find compromised credentials for target email accounts [T1586], which they then used to gain initial access through valid local accounts [T1078.003] while simultaneously exploiting previously compromised administrative accounts to escalate privileges [T1078]. Once inside, the adversary employed AppleScript [T1059.002] to enumerate running processes and system information, and they leveraged service execution [T1569.002] by configuring custom-compiled payloads to run via the 'wercplsupport' service. To maintain access, they deployed obfuscated web shells [T1505.003] on compromised web servers for remote code execution, and they established persistence through Office application startup [T1137] by embedding VBA code in Outlook that executes on launch, while also creating startup items [T1037.005] in the /Library/StartupItems directory for boot-time execution. All exfiltration was conducted over an encrypted channel [T1573] with rotating keys to evade detection. Additional noise in the logs included routine backup failures and unrelated firewall alerts that complicated early analysis.",
+    "sentence_annotations": [
+        {
+            "sentence": "The actors likely conducted reconnaissance by querying public data breach repositories to find compromised credentials for target email accounts, which they then used to gain initial access through valid local accounts [T1078.",
+            "technique_id": "T1586",
+            "technique_name": "Compromise Accounts"
+        },
+        {
+            "sentence": "003] while simultaneously exploiting previously compromised administrative accounts to escalate privileges.",
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts"
+        },
+        {
+            "sentence": "003] on compromised web servers for remote code execution, and they established persistence through Office application startup by embedding VBA code in Outlook that executes on launch, while also creating startup items [T1037.",
+            "technique_id": "T1137",
+            "technique_name": "Office Application Startup"
+        },
+        {
+            "sentence": "All exfiltration was conducted over an encrypted channel with rotating keys to evade detection.",
+            "technique_id": "T1573",
+            "technique_name": "Encrypted Channel"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting macOS Environments",
+        "summary": "This advisory details a simulated campaign by a fictional threat actor group, designated as 'CRIMSON SHADOW', targeting macOS-based systems in the financial sector. The campaign leverages compromised credentials, local account exploitation, and multi-stage payloads to establish persistence and exfiltrate data via encrypted channels.",
+        "full_report_text": "On 2024-08-15, the Federal Bureau of Investigation (FBI), CISA, and NSA began investigating reports of anomalous activity at a fictional financial institution, 'SecureBank Corp.', which operates primarily on macOS servers for internal operations. Initial logs from SecureBank's SIEM showed unusual login attempts from IP addresses associated with known malicious infrastructure, though these were initially dismissed as false positives due to high network traffic during a quarterly audit. The actors likely conducted reconnaissance by querying public data breach repositories to find compromised credentials for target email accounts [T1586], which they then used to gain initial access through valid local accounts [T1078.003] while simultaneously exploiting previously compromised administrative accounts to escalate privileges [T1078]. Once inside, the adversary employed AppleScript [T1059.002] to enumerate running processes and system information, and they leveraged service execution [T1569.002] by configuring custom-compiled payloads to run via the 'wercplsupport' service. To maintain access, they deployed obfuscated web shells [T1505.003] on compromised web servers for remote code execution, and they established persistence through Office application startup [T1137] by embedding VBA code in Outlook that executes on launch, while also creating startup items [T1037.005] in the /Library/StartupItems directory for boot-time execution. All exfiltration was conducted over an encrypted channel [T1573] with rotating keys to evade detection. Additional noise in the logs included routine backup failures and unrelated firewall alerts that complicated early analysis.",
+        "techniques_used": [
+            "T1586",
+            "T1078",
+            "T1078.003",
+            "T1059.002",
+            "T1569.002",
+            "T1505.003",
+            "T1137",
+            "T1037.005",
+            "T1573"
+        ]
+    }
+}

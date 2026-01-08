@@ -1,0 +1,68 @@
+{
+    "report_id": "report_11",
+    "generated_at": "20251222_125305",
+    "scenario_target_ids": [
+        "T1195.003",
+        "T1559",
+        "T1497",
+        "T1071.002",
+        "T1571",
+        "T1499.002"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "discovery",
+        "command-and-control",
+        "command-and-control",
+        "impact"
+    ],
+    "llm_declared_ids": [
+        "T1195.003",
+        "T1559",
+        "T1497",
+        "T1071.002",
+        "T1571",
+        "T1499.002"
+    ],
+    "actual_found_ids": [
+        "T1497",
+        "T1071.002",
+        "T1499.002",
+        "T1195.003",
+        "T1559",
+        "T1571"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional APT campaign, 'SilentAdapter', designed for educational purposes. This report outlines a realistic attack scenario based on observed techniques to train defensive teams in identifying and mitigating sophisticated threats.\n\nBackground: The fictional victim organization, 'InfraCorp', is a mid-sized energy company with operations across North America. On 2024-10-01, security logs from their network monitoring system showed unusual activity originating from a newly deployed USB-to-Ethernet adapter in the engineering department. The adapter was procured from a third-party vendor, 'TechSupply Inc.', as part of a routine hardware refresh. Initial analysis revealed no malware signatures, but network traffic patterns indicated reconnaissance behavior.\n\nAttack Narrative:\n1. Initial Access: The adversary compromised the hardware supply chain by modifying USB-to-Ethernet adapters to include embedded malicious firmware. When an employee at InfraCorp connected the adapter to a workstation, it automatically initiated network reconnaissance, scanning for active hosts and open ports on the local subnet. Logs from the workstation's firewall showed outbound connections to internal IP addresses on port 445, which were not typical for this device.\n2. Execution: Upon establishing a foothold, the malicious firmware exploited Component Object Model (COM) interfaces to create and execute a remote script component on the target machine. This script was designed to evade detection by employing anti-emulation techniques, such as checking for virtual machine artifacts and delaying execution in sandbox environments. System administrators noted unusual PowerShell activity in event logs, but initial antivirus scans returned no alerts.\n3. Persistence and Command & Control: The script established persistence via a scheduled task and then utilized Server Message Block (SMB) protocol exploitation to covertly transmit commands while appearing as standard network file access. Additionally, it communicated with a command-and-control (C2) server over HTTP using a non-standard TCP port, specifically port 14146, as configured in the backdoor. Network traffic analysis revealed encrypted data transfers during off-peak hours, mimicking legitimate backup operations.\n4. Impact: In the final stage, the adversary launched a service exhaustion flood by having the compromised systems continuously send HTTP POST requests with large payloads to exhaust InfraCorp's application servers. This caused significant downtime for internal web applications, impacting operational efficiency. Incident response teams were able to isolate affected systems and restore services after 48 hours, but the attack highlighted gaps in supply chain security and network monitoring.\n\nRecommendations for Blue Teams: Organizations should implement hardware supply chain vetting, monitor for unusual inter-process communication, deploy sandbox evasion detection tools, inspect non-standard port usage, and prepare for denial-of-service mitigations. This fictional scenario underscores the importance of layered defenses and proactive threat hunting.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional APT campaign, 'SilentAdapter', designed for educational purposes. This report outlines a realistic attack scenario based on observed techniques to train defensive teams in identifying and mitigating sophisticated threats.\n\nBackground: The fictional victim organization, 'InfraCorp', is a mid-sized energy company with operations across North America. On 2024-10-01, security logs from their network monitoring system showed unusual activity originating from a newly deployed USB-to-Ethernet adapter in the engineering department. The adapter was procured from a third-party vendor, 'TechSupply Inc.', as part of a routine hardware refresh. Initial analysis revealed no malware signatures, but network traffic patterns indicated reconnaissance behavior.\n\nAttack Narrative:\n1. Initial Access: The adversary compromised the hardware supply chain by modifying USB-to-Ethernet adapters to include embedded malicious firmware [T1195.003]. When an employee at InfraCorp connected the adapter to a workstation, it automatically initiated network reconnaissance, scanning for active hosts and open ports on the local subnet. Logs from the workstation's firewall showed outbound connections to internal IP addresses on port 445, which were not typical for this device.\n2. Execution: Upon establishing a foothold, the malicious firmware exploited Component Object Model (COM) interfaces to create and execute a remote script component on the target machine [T1559]. This script was designed to evade detection by employing anti-emulation techniques, such as checking for virtual machine artifacts and delaying execution in sandbox environments [T1497]. System administrators noted unusual PowerShell activity in event logs, but initial antivirus scans returned no alerts.\n3. Persistence and Command & Control: The script established persistence via a scheduled task and then utilized Server Message Block (SMB) protocol exploitation to covertly transmit commands while appearing as standard network file access [T1071.002]. Additionally, it communicated with a command-and-control (C2) server over HTTP using a non-standard TCP port, specifically port 14146, as configured in the backdoor [T1571]. Network traffic analysis revealed encrypted data transfers during off-peak hours, mimicking legitimate backup operations.\n4. Impact: In the final stage, the adversary launched a service exhaustion flood by having the compromised systems continuously send HTTP POST requests with large payloads to exhaust InfraCorp's application servers [T1499.002]. This caused significant downtime for internal web applications, impacting operational efficiency. Incident response teams were able to isolate affected systems and restore services after 48 hours, but the attack highlighted gaps in supply chain security and network monitoring.\n\nRecommendations for Blue Teams: Organizations should implement hardware supply chain vetting, monitor for unusual inter-process communication, deploy sandbox evasion detection tools, inspect non-standard port usage, and prepare for denial-of-service mitigations. This fictional scenario underscores the importance of layered defenses and proactive threat hunting.",
+    "sentence_annotations": [
+        {
+            "sentence": "Execution: Upon establishing a foothold, the malicious firmware exploited Component Object Model (COM) interfaces to create and execute a remote script component on the target machine.",
+            "technique_id": "T1559",
+            "technique_name": "Inter-Process Communication"
+        },
+        {
+            "sentence": "This script was designed to evade detection by employing anti-emulation techniques, such as checking for virtual machine artifacts and delaying execution in sandbox environments.",
+            "technique_id": "T1497",
+            "technique_name": "Virtualization/Sandbox Evasion"
+        },
+        {
+            "sentence": "Additionally, it communicated with a command-and-control (C2) server over HTTP using a non-standard TCP port, specifically port 14146, as configured in the backdoor.",
+            "technique_id": "T1571",
+            "technique_name": "Non-Standard Port"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'SilentAdapter' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated 'SilentAdapter', targeting critical infrastructure sectors. The campaign involves supply chain compromise, evasion techniques, and network-based attacks. It is intended for blue team training to enhance detection and response capabilities.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to inform organizations about a fictional APT campaign, 'SilentAdapter', designed for educational purposes. This report outlines a realistic attack scenario based on observed techniques to train defensive teams in identifying and mitigating sophisticated threats.\n\nBackground: The fictional victim organization, 'InfraCorp', is a mid-sized energy company with operations across North America. On 2024-10-01, security logs from their network monitoring system showed unusual activity originating from a newly deployed USB-to-Ethernet adapter in the engineering department. The adapter was procured from a third-party vendor, 'TechSupply Inc.', as part of a routine hardware refresh. Initial analysis revealed no malware signatures, but network traffic patterns indicated reconnaissance behavior.\n\nAttack Narrative:\n1. Initial Access: The adversary compromised the hardware supply chain by modifying USB-to-Ethernet adapters to include embedded malicious firmware [T1195.003]. When an employee at InfraCorp connected the adapter to a workstation, it automatically initiated network reconnaissance, scanning for active hosts and open ports on the local subnet. Logs from the workstation's firewall showed outbound connections to internal IP addresses on port 445, which were not typical for this device.\n2. Execution: Upon establishing a foothold, the malicious firmware exploited Component Object Model (COM) interfaces to create and execute a remote script component on the target machine [T1559]. This script was designed to evade detection by employing anti-emulation techniques, such as checking for virtual machine artifacts and delaying execution in sandbox environments [T1497]. System administrators noted unusual PowerShell activity in event logs, but initial antivirus scans returned no alerts.\n3. Persistence and Command & Control: The script established persistence via a scheduled task and then utilized Server Message Block (SMB) protocol exploitation to covertly transmit commands while appearing as standard network file access [T1071.002]. Additionally, it communicated with a command-and-control (C2) server over HTTP using a non-standard TCP port, specifically port 14146, as configured in the backdoor [T1571]. Network traffic analysis revealed encrypted data transfers during off-peak hours, mimicking legitimate backup operations.\n4. Impact: In the final stage, the adversary launched a service exhaustion flood by having the compromised systems continuously send HTTP POST requests with large payloads to exhaust InfraCorp's application servers [T1499.002]. This caused significant downtime for internal web applications, impacting operational efficiency. Incident response teams were able to isolate affected systems and restore services after 48 hours, but the attack highlighted gaps in supply chain security and network monitoring.\n\nRecommendations for Blue Teams: Organizations should implement hardware supply chain vetting, monitor for unusual inter-process communication, deploy sandbox evasion detection tools, inspect non-standard port usage, and prepare for denial-of-service mitigations. This fictional scenario underscores the importance of layered defenses and proactive threat hunting.",
+        "techniques_used": [
+            "T1195.003",
+            "T1559",
+            "T1497",
+            "T1071.002",
+            "T1571",
+            "T1499.002"
+        ]
+    }
+}

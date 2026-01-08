@@ -1,0 +1,47 @@
+{
+    "report_id": "report_254",
+    "generated_at": "20251222_142950",
+    "scenario_target_ids": [
+        "T1078.004",
+        "T1569.003",
+        "T1205.002",
+        "T1547.009",
+        "T1219.001"
+    ],
+    "scenario_flow": [
+        "initial-access",
+        "execution",
+        "persistence",
+        "privilege-escalation",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1078.004",
+        "T1569.003",
+        "T1205.002",
+        "T1547.009",
+        "T1219.001"
+    ],
+    "actual_found_ids": [
+        "T1205.002",
+        "T1547.009",
+        "T1078.004",
+        "T1569.003",
+        "T1219.001"
+    ],
+    "clean_text": "APT-EDU-01, a fictional threat actor, has been observed targeting organizations in the financial and technology sectors, with a focus on those using Azure cloud services and Linux-based development environments. The campaign begins with reconnaissance activities, where actors gather information on cloud infrastructure through publicly available sources, though no specific techniques are tagged here. Initial access was achieved by exploiting weak credentials in Azure Active Directory, allowing the actors to abuse system-assigned managed identities to gain persistent access to Azure Key Vault resources, which stored sensitive API keys and certificates. Once inside the cloud environment, the actors pivoted to on-premises Linux servers via compromised SSH keys. On a critical server running Ubuntu 20.04, they executed malicious commands, including using systemctl to start a custom service named 'network-sniffer.service' for packet capture, while simultaneously programming a backdoor to use setsockopt for enabling promiscuous mode on network interfaces to monitor all traffic. Persistence was established through multiple methods: the attacker modified a desktop shortcut.lnk file on a Windows 10 workstation to execute malicious payload.exe upon user click, and they executed a hidden code tunnel through development tools like Visual Studio Code to maintain persistent access on the target machine. Additional activities included data exfiltration over encrypted channels, with logs showing unusual outbound traffic to IP addresses in non-standard regions, though this is not tagged. Defensive recommendations include auditing cloud identities, monitoring for unauthorized service starts, and inspecting IDE configurations for anomalies.",
+    "tagged_text": "APT-EDU-01, a fictional threat actor, has been observed targeting organizations in the financial and technology sectors, with a focus on those using Azure cloud services and Linux-based development environments. The campaign begins with reconnaissance activities, where actors gather information on cloud infrastructure through publicly available sources, though no specific techniques are tagged here. Initial access was achieved by exploiting weak credentials in Azure Active Directory, allowing the actors to abuse system-assigned managed identities [T1078.004] to gain persistent access to Azure Key Vault resources, which stored sensitive API keys and certificates. Once inside the cloud environment, the actors pivoted to on-premises Linux servers via compromised SSH keys. On a critical server running Ubuntu 20.04, they executed malicious commands, including using systemctl [T1569.003] to start a custom service named 'network-sniffer.service' for packet capture, while simultaneously programming a backdoor to use setsockopt for enabling promiscuous mode on network interfaces [T1205.002] to monitor all traffic. Persistence was established through multiple methods: the attacker modified a desktop shortcut.lnk file on a Windows 10 workstation to execute malicious payload.exe upon user click [T1547.009], and they executed a hidden code tunnel through development tools like Visual Studio Code to maintain persistent access on the target machine [T1219.001]. Additional activities included data exfiltration over encrypted channels, with logs showing unusual outbound traffic to IP addresses in non-standard regions, though this is not tagged. Defensive recommendations include auditing cloud identities, monitoring for unauthorized service starts, and inspecting IDE configurations for anomalies.",
+    "sentence_annotations": [],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign Targeting Cloud and Development Environments",
+        "summary": "This advisory details a simulated campaign by a fictional advanced persistent threat (APT) group, designated as APT-EDU-01, targeting organizations with hybrid cloud and on-premises infrastructure. The campaign leverages cloud account abuse, system service manipulation, network sniffing, shortcut modification, and IDE tunneling for initial access, execution, persistence, and data exfiltration. Blue teams are advised to review logs, monitor for anomalous activities, and implement defensive measures as outlined.",
+        "full_report_text": "APT-EDU-01, a fictional threat actor, has been observed targeting organizations in the financial and technology sectors, with a focus on those using Azure cloud services and Linux-based development environments. The campaign begins with reconnaissance activities, where actors gather information on cloud infrastructure through publicly available sources, though no specific techniques are tagged here. Initial access was achieved by exploiting weak credentials in Azure Active Directory, allowing the actors to abuse system-assigned managed identities [T1078.004] to gain persistent access to Azure Key Vault resources, which stored sensitive API keys and certificates. Once inside the cloud environment, the actors pivoted to on-premises Linux servers via compromised SSH keys. On a critical server running Ubuntu 20.04, they executed malicious commands, including using systemctl [T1569.003] to start a custom service named 'network-sniffer.service' for packet capture, while simultaneously programming a backdoor to use setsockopt for enabling promiscuous mode on network interfaces [T1205.002] to monitor all traffic. Persistence was established through multiple methods: the attacker modified a desktop shortcut.lnk file on a Windows 10 workstation to execute malicious payload.exe upon user click [T1547.009], and they executed a hidden code tunnel through development tools like Visual Studio Code to maintain persistent access on the target machine [T1219.001]. Additional activities included data exfiltration over encrypted channels, with logs showing unusual outbound traffic to IP addresses in non-standard regions, though this is not tagged. Defensive recommendations include auditing cloud identities, monitoring for unauthorized service starts, and inspecting IDE configurations for anomalies.",
+        "techniques_used": [
+            "T1078.004",
+            "T1569.003",
+            "T1205.002",
+            "T1547.009",
+            "T1219.001"
+        ]
+    }
+}

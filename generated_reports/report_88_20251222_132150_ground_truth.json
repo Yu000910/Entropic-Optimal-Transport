@@ -1,0 +1,118 @@
+{
+    "report_id": "report_88",
+    "generated_at": "20251222_132150",
+    "scenario_target_ids": [
+        "T1592",
+        "T1590",
+        "T1588.004",
+        "T1588.001",
+        "T1200",
+        "T1059.003",
+        "T1543",
+        "T1548",
+        "T1528",
+        "T1003.005",
+        "T1057",
+        "T1071.004"
+    ],
+    "scenario_flow": [
+        "reconnaissance",
+        "reconnaissance",
+        "resource-development",
+        "resource-development",
+        "initial-access",
+        "execution",
+        "persistence",
+        "defense-evasion",
+        "credential-access",
+        "credential-access",
+        "discovery",
+        "command-and-control"
+    ],
+    "llm_declared_ids": [
+        "T1592",
+        "T1590",
+        "T1588.004",
+        "T1588.001",
+        "T1200",
+        "T1059.003",
+        "T1543",
+        "T1548",
+        "T1528",
+        "T1003.005",
+        "T1057",
+        "T1071.004"
+    ],
+    "actual_found_ids": [
+        "T1592",
+        "T1059.003",
+        "T1548",
+        "T1528",
+        "T1003.005",
+        "T1200",
+        "T1543",
+        "T1057",
+        "T1071.004",
+        "T1590",
+        "T1588.004",
+        "T1588.001"
+    ],
+    "clean_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowHook'. This campaign targets organizations in the energy and manufacturing sectors, with initial activity detected in Q3 2023. ShadowHook actors likely conduct reconnaissance by gathering victim host information through malicious Office documents with embedded macros that exploit vulnerabilities to collect system data and perform DNS queries to resolve domain names, thereby gathering victim network information. System logs from a compromised endpoint at 'InfraCorp' show unusual PowerShell activity at 14:32 UTC, but this was unrelated to the initial access vector. The actors then employed stolen digital certificates to sign their malware, enhancing evasion, and downloaded a keylogger from a C2 server hosted on a compromised cloud service. In a separate incident at 'TechGlobal', an attacker used a USB Rubber Ducky to deliver a payload that established remote access, demonstrating hardware additions for initial compromise. Once inside, ShadowHook utilized the Windows Command Shell via .bat scripts and `cmd` for execution on compromised hosts to create or modify system processes by initializing a daemon for persistent background operation. The group abused elevation control mechanisms by manipulating the fodhelper.exe registry key to launch elevated commands, bypassing User Account Control (UAC). During post-exploitation, the actors stole application access tokens by leveraging container privileges to read authentication tokens from configuration files and extracted cached domain credentials from memory using tools like Mimikatz. Process discovery was conducted using Tasklist to identify running processes for evasion and targeting, and C2 communication was maintained through DNS tunneling to exfiltrate data and receive commands. Additional noise includes routine firewall logs showing blocked connections from IP 192.168.1.100, which were unrelated to the campaign. This report is based on simulated data for educational purposes, and organizations should implement network segmentation, application whitelisting, and monitor for anomalous DNS traffic as mitigations.",
+    "tagged_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowHook'. This campaign targets organizations in the energy and manufacturing sectors, with initial activity detected in Q3 2023. ShadowHook actors likely conduct reconnaissance by gathering victim host information through malicious Office documents with embedded macros that exploit vulnerabilities to collect system data [T1592] and perform DNS queries to resolve domain names, thereby gathering victim network information [T1590]. System logs from a compromised endpoint at 'InfraCorp' show unusual PowerShell activity at 14:32 UTC, but this was unrelated to the initial access vector. The actors then employed stolen digital certificates to sign their malware, enhancing evasion [T1588.004], and downloaded a keylogger from a C2 server hosted on a compromised cloud service [T1588.001]. In a separate incident at 'TechGlobal', an attacker used a USB Rubber Ducky to deliver a payload that established remote access, demonstrating hardware additions for initial compromise [T1200]. Once inside, ShadowHook utilized the Windows Command Shell via .bat scripts and `cmd` for execution on compromised hosts [T1059.003] to create or modify system processes by initializing a daemon for persistent background operation [T1543]. The group abused elevation control mechanisms by manipulating the fodhelper.exe registry key to launch elevated commands, bypassing User Account Control (UAC) [T1548]. During post-exploitation, the actors stole application access tokens by leveraging container privileges to read authentication tokens from configuration files [T1528] and extracted cached domain credentials from memory using tools like Mimikatz [T1003.005]. Process discovery was conducted using Tasklist to identify running processes for evasion and targeting [T1057], and C2 communication was maintained through DNS tunneling to exfiltrate data and receive commands [T1071.004]. Additional noise includes routine firewall logs showing blocked connections from IP 192.168.1.100, which were unrelated to the campaign. This report is based on simulated data for educational purposes, and organizations should implement network segmentation, application whitelisting, and monitor for anomalous DNS traffic as mitigations.",
+    "sentence_annotations": [
+        {
+            "sentence": "ShadowHook actors likely conduct reconnaissance by gathering victim host information through malicious Office documents with embedded macros that exploit vulnerabilities to collect system data and perform DNS queries to resolve domain names, thereby gathering victim network information.",
+            "technique_id": "T1592",
+            "technique_name": "Gather Victim Host Information"
+        },
+        {
+            "sentence": "ShadowHook actors likely conduct reconnaissance by gathering victim host information through malicious Office documents with embedded macros that exploit vulnerabilities to collect system data and perform DNS queries to resolve domain names, thereby gathering victim network information.",
+            "technique_id": "T1590",
+            "technique_name": "Gather Victim Network Information"
+        },
+        {
+            "sentence": "In a separate incident at 'TechGlobal', an attacker used a USB Rubber Ducky to deliver a payload that established remote access, demonstrating hardware additions for initial compromise.",
+            "technique_id": "T1200",
+            "technique_name": "Hardware Additions"
+        },
+        {
+            "sentence": "003] to create or modify system processes by initializing a daemon for persistent background operation.",
+            "technique_id": "T1543",
+            "technique_name": "Create or Modify System Process"
+        },
+        {
+            "sentence": "exe registry key to launch elevated commands, bypassing User Account Control (UAC).",
+            "technique_id": "T1548",
+            "technique_name": "Abuse Elevation Control Mechanism"
+        },
+        {
+            "sentence": "During post-exploitation, the actors stole application access tokens by leveraging container privileges to read authentication tokens from configuration files and extracted cached domain credentials from memory using tools like Mimikatz [T1003.",
+            "technique_id": "T1528",
+            "technique_name": "Steal Application Access Token"
+        },
+        {
+            "sentence": "Process discovery was conducted using Tasklist to identify running processes for evasion and targeting, and C2 communication was maintained through DNS tunneling to exfiltrate data and receive commands [T1071.",
+            "technique_id": "T1057",
+            "technique_name": "Process Discovery"
+        }
+    ],
+    "llm_raw_response": {
+        "title": "Joint Cybersecurity Advisory: Fictional APT Campaign 'ShadowHook' Targeting Critical Infrastructure",
+        "summary": "This advisory details a simulated campaign by the fictional threat actor group 'ShadowHook', which targets critical infrastructure sectors through a multi-stage attack involving initial access via malicious documents, network reconnaissance, and credential theft for persistence and lateral movement. The campaign leverages stolen digital certificates, hardware-based payload delivery, and DNS tunneling for command and control (C2) communication, aiming to exfiltrate sensitive data and maintain long-term access. Blue teams are advised to review detection strategies and implement mitigations outlined in this report.",
+        "full_report_text": "The Federal Bureau of Investigation (FBI), CISA, and NSA are releasing this joint Cybersecurity Advisory to provide training on a fictional advanced persistent threat (APT) campaign designated 'ShadowHook'. This campaign targets organizations in the energy and manufacturing sectors, with initial activity detected in Q3 2023. ShadowHook actors likely conduct reconnaissance by gathering victim host information through malicious Office documents with embedded macros that exploit vulnerabilities to collect system data [T1592] and perform DNS queries to resolve domain names, thereby gathering victim network information [T1590]. System logs from a compromised endpoint at 'InfraCorp' show unusual PowerShell activity at 14:32 UTC, but this was unrelated to the initial access vector. The actors then employed stolen digital certificates to sign their malware, enhancing evasion [T1588.004], and downloaded a keylogger from a C2 server hosted on a compromised cloud service [T1588.001]. In a separate incident at 'TechGlobal', an attacker used a USB Rubber Ducky to deliver a payload that established remote access, demonstrating hardware additions for initial compromise [T1200]. Once inside, ShadowHook utilized the Windows Command Shell via .bat scripts and `cmd` for execution on compromised hosts [T1059.003] to create or modify system processes by initializing a daemon for persistent background operation [T1543]. The group abused elevation control mechanisms by manipulating the fodhelper.exe registry key to launch elevated commands, bypassing User Account Control (UAC) [T1548]. During post-exploitation, the actors stole application access tokens by leveraging container privileges to read authentication tokens from configuration files [T1528] and extracted cached domain credentials from memory using tools like Mimikatz [T1003.005]. Process discovery was conducted using Tasklist to identify running processes for evasion and targeting [T1057], and C2 communication was maintained through DNS tunneling to exfiltrate data and receive commands [T1071.004]. Additional noise includes routine firewall logs showing blocked connections from IP 192.168.1.100, which were unrelated to the campaign. This report is based on simulated data for educational purposes, and organizations should implement network segmentation, application whitelisting, and monitor for anomalous DNS traffic as mitigations.",
+        "techniques_used": [
+            "T1592",
+            "T1590",
+            "T1588.004",
+            "T1588.001",
+            "T1200",
+            "T1059.003",
+            "T1543",
+            "T1548",
+            "T1528",
+            "T1003.005",
+            "T1057",
+            "T1071.004"
+        ]
+    }
+}
