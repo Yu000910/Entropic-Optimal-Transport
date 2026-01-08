@@ -7,8 +7,8 @@ from collections import Counter
 
 # --- 配置路径 ---
 # 请确保这些路径与你的实际文件位置一致
-BEDR_PATH = 'graph_deep_attackg/BEDR_resampled_dataset.csv'
-REPORT_DIR = 'generated_reports' 
+BEDR_PATH = 'BEDR_dataset.csv'
+REPORT_DIR = 'CTI_reports' 
 
 def analyze_bedr(path):
     print("="*60)

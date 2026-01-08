@@ -12,11 +12,11 @@ from utils_embedding import embed_sentences
 
 # --- 配置路径 ---
 # 1. CSV 数据集路径
-BEDR_CSV_PATH = 'graph_deep_attackg/BEDR_resampled_dataset.csv'
+BEDR_CSV_PATH = 'BEDR_dataset.csv'
 # 2. 向量缓存保存路径 (生成一次后，下次直接读这个)
 EMBED_CACHE_PATH = 'bedr_embeddings_cache.npy'
 # 3. CTI 报告目录
-REPORT_DIR = '/Users/nnn/Desktop/temp/博士毕业/第六篇/elsarticle/experiment/generated_reports/'
+REPORT_DIR = 'CTI_reports'
 # 4. 选取前 5 篇报告进行测试
 REPORT_FILES = sorted(glob.glob(os.path.join(REPORT_DIR, '*.json')))[:5]
 

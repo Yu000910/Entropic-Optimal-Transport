@@ -11,9 +11,9 @@ from utils_llm import deepseek_extract_attack_graph, deepseek_contrastive_select
 from utils_embedding import embed_sentences
 
 # --- 配置路径 ---
-BEDR_CSV_PATH = 'graph_deep_attackg/BEDR_resampled_dataset.csv'
+BEDR_CSV_PATH = 'BEDR_dataset.csv'
 EMBED_CACHE_PATH = 'bedr_embeddings_cache.npy'
-REPORT_DIR = '/Users/nnn/Desktop/temp/博士毕业/第六篇/elsarticle/experiment/generated_reports/'
+REPORT_DIR = 'CTI_reports'
 REPORT_FILES = sorted(glob.glob(os.path.join(REPORT_DIR, '*.json')))[:200]
 
 # ==============================================================================

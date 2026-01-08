@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from collections import Counter
 
 # 数据路径
-data_path = '/Users/nnn/Desktop/temp/博士毕业/第五篇/verb-tool-project/datasets/D_BEDR.npz'
+data_path = './datasets/D_BEDR.npz'
 
 def analyze_bedr_dataset(path):
     print(f"--- 正在加载数据集: {path} ---")

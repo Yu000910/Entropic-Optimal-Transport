@@ -1,6 +1,6 @@
 import numpy as np
 
-path = '/Users/nnn/Desktop/temp/博士毕业/第五篇/verb-tool-project/datasets/D_BEDR.npz'
+path = './datasets/D_BEDR.npz'
 data = np.load(path, allow_pickle=True)
 
 print("Keys:", list(data.keys()))

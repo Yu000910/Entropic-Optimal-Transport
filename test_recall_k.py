@@ -10,9 +10,9 @@ from utils_llm import deepseek_extract_attack_graph
 from utils_embedding import embed_sentences
 
 # --- 配置路径 ---
-BEDR_CSV_PATH = 'graph_deep_attackg/BEDR_resampled_dataset.csv'
+BEDR_CSV_PATH = 'BEDR_dataset.csv'
 EMBED_CACHE_PATH = 'bedr_embeddings_cache.npy'
-REPORT_DIR = 'generated_reports' # 请确认路径
+REPORT_DIR = 'CTI_reports' # 请确认路径
 REPORT_FILES = sorted(glob.glob(os.path.join(REPORT_DIR, '*.json')))[:5] # 只测5篇
 
 # --- 复用之前的类和函数 ---
