@@ -5,9 +5,12 @@ import time
 import re
 from openai import OpenAI
 
+import os
+
 client = OpenAI(
-    api_key="", 
-    base_url="https://api.deepseek.com"
+    # 密钥仅从环境变量读取；请先 export DEEPSEEK_API_KEY=sk-...
+    api_key=os.environ.get("DEEPSEEK_API_KEY", ""),
+    base_url=os.environ.get("LLM_BASE_URL", "https://api.deepseek.com"),
 )
 
 # 1. 抽取函数 (保持 Version 3.0 上下文感知逻辑不变)

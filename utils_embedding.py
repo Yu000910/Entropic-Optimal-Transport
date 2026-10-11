@@ -3,13 +3,16 @@ import numpy as np, requests, json
 from tqdm import tqdm
 from openai import OpenAI
 
-# QWEN_KEY = "sk-480e9685a65d475f830a96e2b7c172f4"
-# QWEN_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 
+
+import os
 
 client = OpenAI(
-api_key="",  # 如果您没有配置环境变量，请在此处用您的API Key进行替换
-base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"  # 百炼服务的base_url
+    # 密钥仅从环境变量读取；请先 export DASHSCOPE_API_KEY=sk-...
+    api_key=os.environ.get("DASHSCOPE_API_KEY", ""),
+    base_url=os.environ.get(
+        "EMBED_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    ),
 )
 
 
